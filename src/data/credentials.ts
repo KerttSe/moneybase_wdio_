@@ -6,7 +6,7 @@ export interface AuthData {
 }
 
 export const AUTH: AuthData = {
-  country: 'Malta',
-  phone: '99011190',
-  pin: '2468',
+  country: process.env.MB_COUNTRY || 'Malta',
+  phone: process.env.MB_PHONE || '99011190',
+  pin: process.env.MB_PIN || '2468',
 }

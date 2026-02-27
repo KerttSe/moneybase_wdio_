@@ -1,0 +1,43 @@
+name: WDIO E2E
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  e2e:
+    name: E2E (${{ matrix.platform }})
+    runs-on: self-hosted
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [android, ios]
+    env:
+      MB_COUNTRY: ${{ secrets.MB_COUNTRY }}
+      MB_PHONE: ${{ secrets.MB_PHONE }}
+      MB_PIN: ${{ secrets.MB_PIN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Assumes self-hosted runner has Android SDK/Xcode + devices/emulators configured
+      - name: Start Appium
+        run: npx appium --base-path / --log-level info &
+
+      - name: Run tests
+        run: |
+          if [ "${{ matrix.platform }}" = "android" ]; then
+            npm run wdio -- --spec src/tests/addbeneficiary.individual.spec.ts
+          else
+            npm run wdio -- --spec src/tests/virtualcardcreation.spec.ts
+          fi
