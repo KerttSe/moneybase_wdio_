@@ -1,6 +1,7 @@
 import type { Options } from '@wdio/types'
 import { browser } from '@wdio/globals'
 import allure from '@wdio/allure-reporter'
+import { execSync } from 'node:child_process'
 
 
 
@@ -87,5 +88,13 @@ export const config: WebdriverIO.Config = {
     // 4) Capabilities (device/os/build)
     const caps = browser.capabilities
     allure.addAttachment('Capabilities', JSON.stringify(caps, null, 2), 'application/json')
+  },
+
+  onComplete: function () {
+    try {
+      execSync('npx allure generate allure-results -o allure-report --clean', { stdio: 'inherit' })
+    } catch (err) {
+      console.warn('Allure report generation failed:', err)
+    }
   },
 }
