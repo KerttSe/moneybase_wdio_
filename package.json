@@ -1,0 +1,29 @@
+{
+  "name": "mobile-wdio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "wdio": "wdio run ./wdio.conf.ts"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.19.3",
+    "@wdio/allure-reporter": "^9.24.0",
+    "@wdio/cli": "^9.21.1",
+    "@wdio/globals": "^9.23.0",
+    "@wdio/local-runner": "^9.21.0",
+    "@wdio/mocha-framework": "^9.21.0",
+    "@wdio/spec-reporter": "^9.20.0",
+    "@wdio/types": "^9.23.2",
+    "allure-commandline": "^2.36.0",
+    "appium": "^3.1.2",
+    "appium-uiautomator2-driver": "^6.7.13",
+    "appium-xcuitest-driver": "^10.11.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "volta": {
+    "node": "20.20.0"
+  }
+}
