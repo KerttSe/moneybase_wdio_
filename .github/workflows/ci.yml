@@ -5,6 +5,15 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   e2e:
     name: E2E (${{ matrix.platform }})
@@ -12,7 +21,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [android, ios]
+        include:
+          - platform: android
+            spec: src/tests/addbeneficiary.individual.spec.ts
+          - platform: ios
+            spec: src/tests/virtualcardcreation.spec.ts
     env:
       MB_COUNTRY: ${{ secrets.MB_COUNTRY }}
       MB_PHONE: ${{ secrets.MB_PHONE }}
@@ -36,8 +49,42 @@ jobs:
 
       - name: Run tests
         run: |
-          if [ "${{ matrix.platform }}" = "android" ]; then
-            npm run wdio -- --spec src/tests/addbeneficiary.individual.spec.ts
-          else
-            npm run wdio -- --spec src/tests/virtualcardcreation.spec.ts
-          fi
+          npm run wdio -- --spec ${{ matrix.spec }}
+
+      - name: Generate Allure report
+        if: always()
+        run: npx allure generate allure-results -o allure-report --clean
+
+      - name: Upload Allure results artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-${{ matrix.platform }}
+          path: allure-results
+          if-no-files-found: warn
+
+      - name: Upload Allure report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report-${{ matrix.platform }}
+          path: allure-report
+          if-no-files-found: warn
+
+      - name: Upload Allure report to Pages
+        if: ${{ matrix.platform == 'android' }}
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: allure-report
+
+  deploy-pages:
+    name: Deploy Allure report to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: e2e
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
