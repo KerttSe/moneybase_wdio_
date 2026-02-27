@@ -71,12 +71,6 @@ jobs:
           path: allure-report
           if-no-files-found: warn
 
-      - name: Upload Allure report to Pages
-        if: ${{ matrix.platform == 'android' }}
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: allure-report
-
   deploy-pages:
     name: Deploy Allure report to GitHub Pages
     runs-on: ubuntu-latest
@@ -85,6 +79,22 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Download Allure results artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: allure-results-*
+          path: ./allure-results
+          merge-multiple: true
+
+      - name: Generate combined Allure report
+        run: |
+          npx allure generate ./allure-results -o ./allure-report --clean
+
+      - name: Upload Allure report to Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: allure-report
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
