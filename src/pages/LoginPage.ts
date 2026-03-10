@@ -11,6 +11,14 @@ export class LoginPage extends BasePage {
     registerScreen: 'register_screen',
   } as const
 
+  private get alertTitleAndroid() {
+    return $('id=com.moneybase.qa:id/alertTitle')
+  }
+
+  private get alertBtn3Android() {
+    return $('id=android:id/button3')
+  }
+
   private byId(name: string) {
     if (browser.isAndroid) {
       //  cover і "welcomeToMoneybase_button_skip", and "com.xxx:id/welcomeToMoneybase_button_skip"
@@ -32,7 +40,15 @@ export class LoginPage extends BasePage {
 
     if (browser.isIOS) {
       await this.dismissIOSAlerts()
-      await this.registerScreen.waitForDisplayed({ timeout: 8000 })
+      await browser.waitUntil(async () => {
+        const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
+        const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+        return registerShown || homeShown
+      }, {
+        timeout: 20000,
+        interval: 500,
+        timeoutMsg: 'Register screen or Home did not appear',
+      })
       return
     }
 
@@ -352,7 +368,7 @@ async tapContinueAfterOtp() {
     const home = await this.homeRoot.isDisplayed().catch(() => false)
     return continueVisible || applePay || home
   }, {
-    timeout: 30000,
+    timeout: 60000,
     interval: 500,
     timeoutMsg: 'After OTP: Continue/Home/ApplePay did not appear',
   })
@@ -388,6 +404,40 @@ async closeApplePayIfVisible() {
 
 /** 4) waiting for Home screen */
 async waitForHome(timeout = 30000) {
+  if (browser.isAndroid) {
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    await browser.waitUntil(
+      async () => {
+        const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+        if (homeShown) return true
+
+        const alertShown = await this.alertBtn3Android.isDisplayed().catch(() => false)
+        if (alertShown) {
+          await this.tap(this.alertBtn3Android)
+          await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+        }
+
+        const alertTitleShown = await this.alertTitleAndroid.isDisplayed().catch(() => false)
+        if (alertTitleShown && !alertShown) {
+          const btnShown = await this.alertBtn3Android.waitForDisplayed({ timeout: 3000 }).catch(() => false)
+          if (btnShown) {
+            await this.tap(this.alertBtn3Android)
+            await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+          }
+        }
+
+        return await this.homeRoot.isDisplayed().catch(() => false)
+      },
+      {
+        timeout,
+        interval: 500,
+        timeoutMsg: 'Home screen did not appear (blocked by alert?)',
+      }
+    )
+    return
+  }
+
   await this.homeRoot.waitForDisplayed({ timeout })
 }
 
@@ -396,6 +446,8 @@ async waitForHome(timeout = 30000) {
 
 /* ---------- FULL FLOW ---------- */
 async loginFlow(auth: AuthData) {
+  const alreadyHome = await this.homeRoot.isDisplayed().catch(() => false)
+  if (alreadyHome) return
   await this.prepare()
   await this.selectCountry(auth.country)
   await this.enterMobile(auth.phone)
