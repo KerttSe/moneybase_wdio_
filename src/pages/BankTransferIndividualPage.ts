@@ -27,11 +27,44 @@ class BankTransferIndividualPage extends BasePage {
   }
 
   /* =========================
+   * IOS: PROFILE PICKER (ensure Individual)
+   * ========================= */
+
+  private get profilePickerUserNameLabelIOS() {
+    return $('~profilePicker_label_userName')
+  }
+
+  private get profilePickerIndividualItemIOS() {
+    return $('~Individual')
+  }
+
+  private get homeRootIOS() {
+    return $('~home_screen_view')
+  }
+
+  /* =========================
    * ANDROID: blocking AlertDialog
    * ========================= */
 
+  private get alertTitleAndroid() {
+    return $('id=com.moneybase.qa:id/alertTitle')
+  }
+
   private get alertBtn3Android() {
     return $('android=new UiSelector().resourceId("android:id/button3")')
+  }
+
+  private async dismissBlockingAlertAndroid(timeoutMs = 5000) {
+    if (!browser.isAndroid) return
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const appeared = await this.alertTitleAndroid.waitForDisplayed({ timeout: timeoutMs }).catch(() => false)
+    if (!appeared) return
+
+    await this.alertBtn3Android.waitForDisplayed({ timeout: 7000 })
+    await this.tap(this.alertBtn3Android)
+    await this.alertTitleAndroid.waitForDisplayed({ reverse: true, timeout: 10000 }).catch(() => {})
   }
 
   /**
@@ -145,6 +178,46 @@ private async waitAndDismissAlertAfterSwitchAndroid(
   }
 
   /* =========================
+   * IOS: P2P LOCATORS
+   * ========================= */
+
+  private get payTabIOS() {
+    return $('~Pay')
+  }
+
+  private get carlosCatIOS() {
+    return $('~pay_item_Carlos Cat')
+  }
+
+  private get beneficiaryPayBtnIOS() {
+    return $('~beneficiaryDetails_button_pay')
+  }
+
+  private get amountP2PIOS() {
+    return $('~makePayment_input_amount')
+  }
+
+  private get slideTextIOS() {
+    return $('~Slide to make payment')
+  }
+
+  private get sliderPayIconIOS() {
+    return $('~makePayment_slider_pay')
+  }
+
+  private get txDetailsCloseIOS() {
+    return $('~transactionDetails_button_close')
+  }
+
+  private get headerBackIOS() {
+    return $('~BackButton')
+  }
+
+  private get homeTabIOS() {
+    return $('~Home')
+  }
+
+  /* =========================
    * SLIDER
    * ========================= */
 
@@ -191,6 +264,50 @@ private async waitAndDismissAlertAfterSwitchAndroid(
     throw new Error('Slider drag did not trigger payment')
   }
 
+  private async ensureSliderReadyIOS() {
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+    await browser.hideKeyboard().catch(() => {})
+    await this.slideTextIOS.waitForDisplayed({ timeout: 30000 })
+  }
+
+  private async dragSliderToRightIOS() {
+    await this.sliderPayIconIOS.waitForDisplayed({ timeout: 20000 })
+
+    const icon = await this.sliderPayIconIOS
+    const loc = await icon.getLocation()
+    const size = await icon.getSize()
+    const { width } = await browser.getWindowRect()
+
+    const y = Math.round(loc.y + size.height * 0.5)
+    const startX = Math.round(loc.x + size.width * 0.5)
+    const endX = Math.max(startX + 200, width - 20)
+
+    for (let i = 0; i < 3; i++) {
+      await browser.performActions([
+        {
+          type: 'pointer',
+          id: 'finger1',
+          parameters: { pointerType: 'touch' },
+          actions: [
+            { type: 'pointerMove', duration: 0, x: startX, y },
+            { type: 'pointerDown', button: 0 },
+            { type: 'pause', duration: 200 },
+            { type: 'pointerMove', duration: 900, x: endX, y },
+            { type: 'pointerUp', button: 0 },
+          ],
+        },
+      ])
+
+      await browser.releaseActions()
+      await browser.pause(600)
+
+      const stillThere = await this.slideTextIOS.isDisplayed().catch(() => false)
+      if (!stillThere) return
+    }
+
+    throw new Error('Slider drag did not trigger payment (iOS)')
+  }
+
   /* =========================
    * EXIT FLOW
    * ========================= */
@@ -216,6 +333,16 @@ private async waitAndDismissAlertAfterSwitchAndroid(
     return $(`android=new UiSelector().textContains("- €${formatted}")`)
   }
 
+  private formatIosAmount(amount: number | string) {
+    const fixed = Number(amount).toFixed(2)
+    return fixed.replace('.', ',')
+  }
+
+  private minusAmountHomeAnchorIOS(amount: number | string) {
+    const formatted = this.formatIosAmount(amount)
+    return $(`//XCUIElementTypeStaticText[contains(@label,"-${formatted}") and contains(@label,"€")] | //XCUIElementTypeStaticText[contains(@name,"-${formatted}") and contains(@name,"€")]`)
+  }
+
   private async exitToHomeAfterP2PAndroid() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
@@ -235,9 +362,75 @@ private async waitAndDismissAlertAfterSwitchAndroid(
     await this.tap(this.homeTabAndroid)
   }
 
-    public async ensureIndividualAccount() {
-    await this.ensureSingleAccountAndroid()
+  private async exitToHomeAfterP2PIOS() {
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    await this.txDetailsCloseIOS.waitForDisplayed({ timeout: 15000 })
+    await this.tap(this.txDetailsCloseIOS)
+
+    const backShown = await this.headerBackIOS.waitForDisplayed({ timeout: 8000 }).catch(() => false)
+    if (backShown) {
+      await this.tap(this.headerBackIOS)
     }
+
+    await browser.pause(800)
+    await this.homeTabIOS.waitForDisplayed({ timeout: 15000 })
+    await this.tap(this.homeTabIOS)
+  }
+
+  private async scrollHomeIOS() {
+    const { width, height } = await browser.getWindowRect()
+    const startX = Math.round(width * 0.5)
+    const startY = Math.round(height * 0.75)
+    const endY = Math.round(height * 0.3)
+
+    await browser.performActions([
+      {
+        type: 'pointer',
+        id: 'finger1',
+        parameters: { pointerType: 'touch' },
+        actions: [
+          { type: 'pointerMove', duration: 0, x: startX, y: startY },
+          { type: 'pointerDown', button: 0 },
+          { type: 'pause', duration: 150 },
+          { type: 'pointerMove', duration: 500, x: startX, y: endY },
+          { type: 'pointerUp', button: 0 },
+        ],
+      },
+    ])
+    await browser.releaseActions()
+    await browser.pause(400)
+  }
+
+  private async waitForMinusAmountHomeIOS(amount: number | string, timeoutMs = 60000) {
+    const deadline = Date.now() + timeoutMs
+    while (Date.now() < deadline) {
+      if (await this.minusAmountHomeAnchorIOS(amount).isDisplayed().catch(() => false)) return
+      await this.scrollHomeIOS()
+    }
+    await this.minusAmountHomeAnchorIOS(amount).waitForDisplayed({ timeout: 3000 })
+  }
+
+  private async ensureIndividualAccountIOS() {
+    if (!browser.isIOS) return
+
+    await this.profilePickerUserNameLabelIOS.waitForDisplayed({ timeout: 15000 })
+    await this.tap(this.profilePickerUserNameLabelIOS)
+
+    await this.profilePickerIndividualItemIOS.waitForDisplayed({ timeout: 15000 })
+    await this.tap(this.profilePickerIndividualItemIOS)
+
+    await this.profilePickerIndividualItemIOS
+      .waitForDisplayed({ reverse: true, timeout: 15000 })
+      .catch(() => {})
+    await this.homeRootIOS.waitForDisplayed({ timeout: 30000 }).catch(() => {})
+    await browser.pause(300)
+  }
+
+  public async ensureIndividualAccount() {
+    if (browser.isIOS) return this.ensureIndividualAccountIOS()
+    if (browser.isAndroid) return this.ensureSingleAccountAndroid()
+  }
   /* =========================
    * MAIN FLOW
    * ========================= */
@@ -248,6 +441,8 @@ private async waitAndDismissAlertAfterSwitchAndroid(
     await this.ensureSingleAccountAndroid()
 
     await browser.pause(700)
+
+    await this.dismissBlockingAlertAndroid(5000)
 
     await this.payTabAndroid.waitForDisplayed({ timeout: 20000 })
     await this.tap(this.payTabAndroid)
@@ -271,6 +466,35 @@ private async waitAndDismissAlertAfterSwitchAndroid(
     await this.exitToHomeAfterP2PAndroid()
 
     await this.minusAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 30000 })
+  }
+
+  public async sendP2PBySlideIOS(amount: number | string = 11) {
+    if (!browser.isIOS) return
+
+    await browser.pause(700)
+
+    await this.payTabIOS.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.payTabIOS)
+
+    await this.carlosCatIOS.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.carlosCatIOS)
+
+    await this.beneficiaryPayBtnIOS.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.beneficiaryPayBtnIOS)
+
+    await this.amountP2PIOS.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.amountP2PIOS)
+    await this.amountP2PIOS.clearValue().catch(() => {})
+    await this.amountP2PIOS.setValue(String(amount))
+
+    await this.ensureSliderReadyIOS()
+    await this.dragSliderToRightIOS()
+
+    await this.txDetailsCloseIOS.waitForDisplayed({ timeout: 60000 })
+
+    await this.exitToHomeAfterP2PIOS()
+
+    await this.waitForMinusAmountHomeIOS(amount, 60000)
   }
 }
 
