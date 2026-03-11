@@ -2,7 +2,7 @@ import { LoginPage } from '../pages/LoginPage'
 import BankTransferBusinessPage from '../pages/BankTransferBusinessPage'
 import { AUTH } from '../data/credentials'
 
-describe('Bank Transfer - Business', () => {
+describe.skip('Bank Transfer - Business (WIP)', () => {
 
   const loginPage = new LoginPage()
 

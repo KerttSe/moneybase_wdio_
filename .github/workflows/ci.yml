@@ -16,16 +16,54 @@ concurrency:
 
 jobs:
   e2e:
-    name: E2E (${{ matrix.platform }})
+    name: ${{ matrix.smoke && format('SMOKE ({0})', matrix.platform) || format('E2E ({0})', matrix.platform) }}
     runs-on: self-hosted
     strategy:
       fail-fast: false
       matrix:
         include:
           - platform: android
+            spec: src/tests/launch.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/launch.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/addfunds.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/addfunds.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/bankTransfer.individual.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/bankTransfer.individual.spec.ts
+            smoke: true
+          - platform: android
             spec: src/tests/addbeneficiary.individual.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/addbeneficiary.individual.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/homeScreen.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/homeScreen.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/bankTransfer.business.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/bankTransfer.business.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/virtualcardcreation.spec.ts
+            smoke: true
           - platform: ios
             spec: src/tests/virtualcardcreation.spec.ts
+            smoke: true
     env:
       MB_COUNTRY: ${{ secrets.MB_COUNTRY }}
       MB_PHONE: ${{ secrets.MB_PHONE }}
