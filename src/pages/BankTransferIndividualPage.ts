@@ -378,6 +378,39 @@ private async waitAndDismissAlertAfterSwitchAndroid(
     await this.tap(this.homeTabIOS)
   }
 
+    private async scrollHomeAndroid() {
+      const { width, height } = await browser.getWindowRect()
+      const startX = Math.round(width * 0.5)
+      const startY = Math.round(height * 0.75)
+      const endY = Math.round(height * 0.3)
+
+      await browser.performActions([
+        {
+          type: 'pointer',
+          id: 'finger1',
+          parameters: { pointerType: 'touch' },
+          actions: [
+            { type: 'pointerMove', duration: 0, x: startX, y: startY },
+            { type: 'pointerDown', button: 0 },
+            { type: 'pause', duration: 150 },
+            { type: 'pointerMove', duration: 600, x: startX, y: endY },
+            { type: 'pointerUp', button: 0 },
+          ],
+        },
+      ])
+      await browser.releaseActions()
+      await browser.pause(700)
+    }
+
+    private async waitForMinusAmountHomeAndroid(amount: number | string, timeoutMs = 30000) {
+      const deadline = Date.now() + timeoutMs
+      while (Date.now() < deadline) {
+        if (await this.minusAmountHomeAnchorAndroid(amount).isDisplayed().catch(() => false)) return
+        await this.scrollHomeAndroid()
+      }
+      await this.minusAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 5000 })
+    }
+
   private async scrollHomeIOS() {
     const { width, height } = await browser.getWindowRect()
     const startX = Math.round(width * 0.5)
@@ -465,7 +498,7 @@ private async waitAndDismissAlertAfterSwitchAndroid(
 
     await this.exitToHomeAfterP2PAndroid()
 
-    await this.minusAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 30000 })
+  await this.waitForMinusAmountHomeAndroid(amount, 30000)
   }
 
   public async sendP2PBySlideIOS(amount: number | string = 11) {
