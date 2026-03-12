@@ -206,7 +206,7 @@ class HomeScreenPage extends BasePage {
       },
     ])
     await browser.releaseActions()
-    await browser.pause(400)
+    await browser.pause(900)
   }
 
   private async ensureVisibleByScrolling(
@@ -408,16 +408,22 @@ class HomeScreenPage extends BasePage {
     return (await $$('~home_recentTransactions_item')) as unknown as WebdriverIO.ElementArray
   }
 
-  private get recentPayeesCandidates(): WdioEl[] {
+  private get recentActivitiesCandidates(): WdioEl[] {
     if (browser.isAndroid) {
       return [
+        this.byId('home_section_recentActivities'),
         this.byId('home_section_recentPayees'),
+        this.androidTextContains('Recent Activity'),
+        this.androidTextContains('Recent Activities'),
         this.androidTextContains('Recent payees'),
       ]
     }
 
     return [
+      this.byId('home_section_recentActivities'),
       this.byId('home_section_recentPayees'),
+      this.iosPredicateContains('Recent Activity'),
+      this.iosPredicateContains('Recent Activities'),
       this.iosPredicateContains('Recent payees'),
     ]
   }
@@ -593,8 +599,8 @@ class HomeScreenPage extends BasePage {
     )
   }
 
-  public async verifyRecentPayees() {
-    await this.ensureVisibleByScrolling(this.recentPayeesCandidates, 'Recent payees section')
+  public async verifyRecentActivities() {
+    await this.ensureVisibleByScrolling(this.recentActivitiesCandidates, 'Recent Activities section')
   }
 
   public async verifySpendAnalytics() {
