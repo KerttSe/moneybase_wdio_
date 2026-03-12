@@ -2,7 +2,7 @@ import BasePage from './BasePage'
 import { $, $$, browser } from '@wdio/globals'
 
 
-class VirtualCardCreationPage extends BasePage {
+class PhysicalCardCreationPage extends BasePage {
   /* =========================
    * ANDROID: HOME / ACCOUNT (Single vs Business)
    * ========================= */
@@ -906,4 +906,4 @@ class VirtualCardCreationPage extends BasePage {
   }
 }
 
-export default new VirtualCardCreationPage()
+export default new PhysicalCardCreationPage()

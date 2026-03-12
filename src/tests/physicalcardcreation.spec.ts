@@ -2,9 +2,9 @@ import { browser } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
 import { AUTH } from '../data/credentials'
 import BankTransferIndividualPage from '../pages/BankTransferIndividualPage'
-import VirtualCardCreationPage from '../pages/VirtualCardCreationPage'
+import PhysicalCardCreationPage from '../pages/PhysicalCardCreationPage'
 
-describe('Virtual card creation - Individual', function () {
+describe('Physical card creation - Individual', function () {
   this.timeout(240000)
   const loginPage = new LoginPage()
 
@@ -17,13 +17,13 @@ describe('Virtual card creation - Individual', function () {
 
   it('Create card -> success', async function () {
     if (browser.isAndroid) {
-      await VirtualCardCreationPage.openCardsTabAndroid()
-      await VirtualCardCreationPage.createPhysicalCardAndroid('2468', '000000')
+      await PhysicalCardCreationPage.openCardsTabAndroid()
+      await PhysicalCardCreationPage.createPhysicalCardAndroid('2468', '000000')
       return
     }
 
     if (browser.isIOS) {
-      await VirtualCardCreationPage.createPhysicalCardIOS('2468', '000000')
+      await PhysicalCardCreationPage.createPhysicalCardIOS('2468', '000000')
     }
   })
 })
