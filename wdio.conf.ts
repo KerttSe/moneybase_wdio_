@@ -1,7 +1,6 @@
 import type { Options } from '@wdio/types'
-import { browser } from '@wdio/globals'
-import allure from '@wdio/allure-reporter'
 import { execSync } from 'node:child_process'
+import { attachFailureArtifacts, writeAllureEnvironment } from './src/helpers/allure.helper'
 
 
 
@@ -101,29 +100,13 @@ export const config: WebdriverIO.Config = {
 
   mochaOpts: { ui: 'bdd', timeout: 120000 },
 
-  //  Add this without changing anything else
+  onPrepare: function () {
+    writeAllureEnvironment()
+  },
+
   afterTest: async function (test, context, { error }) {
     if (!error) return
-
-    // 1) Screenshot
-    const screenshot = await browser.takeScreenshot()
-    allure.addAttachment(
-      'Screenshot',
-      Buffer.from(screenshot, 'base64'),
-      'image/png'
-    )
-
-    // 2) Page source (native hierarchy)
-    const source = await browser.getPageSource()
-    allure.addAttachment('Page Source', source, 'text/xml')
-
-    // 3) Contexts (useful for WebView)
-    const contexts = await browser.getContexts().catch(() => [])
-    allure.addAttachment('Contexts', JSON.stringify(contexts, null, 2), 'application/json')
-
-    // 4) Capabilities (device/os/build)
-    const caps = browser.capabilities
-    allure.addAttachment('Capabilities', JSON.stringify(caps, null, 2), 'application/json')
+    await attachFailureArtifacts()
   },
 
   onComplete: function () {
