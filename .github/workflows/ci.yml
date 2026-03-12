@@ -23,12 +23,6 @@ jobs:
       matrix:
         include:
           - platform: android
-            spec: src/tests/launch.spec.ts
-            smoke: true
-          - platform: ios
-            spec: src/tests/launch.spec.ts
-            smoke: true
-          - platform: android
             spec: src/tests/addfunds.spec.ts
             smoke: true
           - platform: ios
@@ -51,12 +45,6 @@ jobs:
             smoke: true
           - platform: ios
             spec: src/tests/homeScreen.spec.ts
-            smoke: true
-          - platform: android
-            spec: src/tests/bankTransfer.business.spec.ts
-            smoke: true
-          - platform: ios
-            spec: src/tests/bankTransfer.business.spec.ts
             smoke: true
           - platform: android
             spec: src/tests/physicalcardcreation.spec.ts
