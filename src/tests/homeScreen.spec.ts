@@ -24,7 +24,7 @@ describe('Home Screen - Individual', function () {
     await HomeScreenPage.verifyPromoBanners()
     await HomeScreenPage.verifyPendingTransactions()
     await HomeScreenPage.verifyRecentTransactions()
-    await HomeScreenPage.verifyRecentPayees()
+    await HomeScreenPage.verifyRecentActivities()
     await HomeScreenPage.verifySpendAnalytics()
     await HomeScreenPage.verifyBottomNavigation()
   })
