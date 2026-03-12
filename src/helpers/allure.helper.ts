@@ -116,3 +116,78 @@ export function writeAllureEnvironment() {
     console.warn('[Allure] Failed to write environment.properties:', err)
   }
 }
+
+/**
+ * Call in wdio.conf.ts → onPrepare to write executor.json
+ * Allure shows this in the Executors widget and uses buildOrder for trend history.
+ *
+ * Supports:
+ *  - GitHub Actions  (GITHUB_ACTIONS, GITHUB_RUN_NUMBER, GITHUB_SERVER_URL, GITHUB_REPOSITORY, GITHUB_RUN_ID)
+ *  - GitLab CI       (GITLAB_CI, CI_PIPELINE_IID, CI_PIPELINE_URL, CI_JOB_URL)
+ *  - Jenkins         (JENKINS_URL, BUILD_NUMBER, BUILD_URL)
+ *  - Local fallback
+ */
+export function writeAllureExecutor() {
+  const { writeFileSync, mkdirSync } = require('fs')
+  const { join } = require('path')
+  const env = process.env
+
+  let executor: Record<string, unknown>
+
+  if (env.GITHUB_ACTIONS === 'true') {
+    const runNumber = env.GITHUB_RUN_NUMBER ?? '0'
+    const serverUrl = env.GITHUB_SERVER_URL ?? 'https://github.com'
+    const repo = env.GITHUB_REPOSITORY ?? ''
+    const runId = env.GITHUB_RUN_ID ?? ''
+    executor = {
+      name: 'GitHub Actions',
+      type: 'github',
+      url: `${serverUrl}/${repo}`,
+      buildOrder: Number(runNumber),
+      buildName: `Run #${runNumber}`,
+      buildUrl: `${serverUrl}/${repo}/actions/runs/${runId}`,
+      reportUrl: `${serverUrl}/${repo}/actions/runs/${runId}`,
+    }
+  } else if (env.GITLAB_CI === 'true') {
+    const pipelineId = env.CI_PIPELINE_IID ?? '0'
+    executor = {
+      name: 'GitLab CI',
+      type: 'gitlab',
+      url: env.CI_PROJECT_URL ?? '',
+      buildOrder: Number(pipelineId),
+      buildName: `Pipeline #${pipelineId}`,
+      buildUrl: env.CI_PIPELINE_URL ?? '',
+      reportUrl: env.CI_JOB_URL ?? '',
+    }
+  } else if (env.JENKINS_URL) {
+    const buildNumber = env.BUILD_NUMBER ?? '0'
+    executor = {
+      name: 'Jenkins',
+      type: 'jenkins',
+      url: env.JENKINS_URL,
+      buildOrder: Number(buildNumber),
+      buildName: `Build #${buildNumber}`,
+      buildUrl: env.BUILD_URL ?? '',
+      reportUrl: env.BUILD_URL ?? '',
+    }
+  } else {
+    executor = {
+      name: 'Local',
+      type: 'local',
+      buildOrder: Date.now(),
+      buildName: `Local run — ${new Date().toLocaleString()}`,
+    }
+  }
+
+  try {
+    mkdirSync('allure-results', { recursive: true })
+    writeFileSync(
+      join('allure-results', 'executor.json'),
+      JSON.stringify(executor, null, 2),
+      'utf8'
+    )
+    console.log(`[Allure] executor.json written: ${executor.name} — ${executor.buildName}`)
+  } catch (err) {
+    console.warn('[Allure] Failed to write executor.json:', err)
+  }
+}
