@@ -1,6 +1,6 @@
 import type { Options } from '@wdio/types'
 import { execSync } from 'node:child_process'
-import { attachFailureArtifacts, writeAllureEnvironment } from './src/helpers/allure.helper'
+import { attachFailureArtifacts, writeAllureEnvironment, writeAllureExecutor } from './src/helpers/allure.helper'
 
 
 
@@ -102,6 +102,7 @@ export const config: WebdriverIO.Config = {
 
   onPrepare: function () {
     writeAllureEnvironment()
+    writeAllureExecutor()
   },
 
   afterTest: async function (test, context, { error }) {
