@@ -64,7 +64,7 @@ npm run wdio -- --spec src/tests/addbeneficiary.individual.spec.ts
 npm run wdio -- --spec src/tests/bankTransfer.individual.spec.ts
 
 # Virtual card creation
-npm run wdio -- --spec src/tests/virtualcardcreation.spec.ts
+npm run wdio -- --spec src/tests/physicalcardcreation.spec.ts
 ```
 
 ---
@@ -131,7 +131,7 @@ export BS_APP_IOS=bs://<ios-app-id>
 - src/tests/addfunds.spec.ts — top-up flow
 - src/tests/addbeneficiary.individual.spec.ts — add beneficiary (individual)
 - src/tests/bankTransfer.individual.spec.ts — P2P transfer (individual)
-- src/tests/virtualcardcreation.spec.ts — virtual card creation
+- src/tests/physicalcardcreation.spec.ts — physical card creation
 - src/tests/bankTransfer.business.spec.ts — WIP (currently skipped)
 
 ---

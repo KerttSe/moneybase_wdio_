@@ -59,10 +59,10 @@ jobs:
             spec: src/tests/bankTransfer.business.spec.ts
             smoke: true
           - platform: android
-            spec: src/tests/virtualcardcreation.spec.ts
+            spec: src/tests/physicalcardcreation.spec.ts
             smoke: true
           - platform: ios
-            spec: src/tests/virtualcardcreation.spec.ts
+            spec: src/tests/physicalcardcreation.spec.ts
             smoke: true
     env:
       MB_COUNTRY: ${{ secrets.MB_COUNTRY }}
