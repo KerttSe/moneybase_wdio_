@@ -100,8 +100,8 @@ export const config: WebdriverIO.Config = {
 
   mochaOpts: { ui: 'bdd', timeout: 120000 },
 
-  onPrepare: function () {
-    writeAllureEnvironment()
+  onPrepare: function (_config, capabilities) {
+    writeAllureEnvironment(capabilities as WebdriverIO.Capabilities[])
     writeAllureExecutor()
   },
 

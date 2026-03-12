@@ -98,20 +98,43 @@ export async function attachFailureArtifacts() {
 
 /**
  * Call in wdio.conf.ts → onPrepare to write environment.properties
- * so Allure shows device/OS info in the Environment widget
+ * so Allure shows device/OS info in the Environment widget.
+ * Pass the raw capabilities array from onPrepare to include device names.
  */
-export function writeAllureEnvironment() {
+export function writeAllureEnvironment(capabilities?: WebdriverIO.Capabilities[]) {
   const { writeFileSync, mkdirSync } = require('fs')
   const { join } = require('path')
 
   try {
     mkdirSync('allure-results', { recursive: true })
+
     const lines: string[] = [
       `Framework=WebdriverIO`,
       `Language=TypeScript`,
       `Runner=Appium`,
     ]
+
+    if (capabilities && capabilities.length > 0) {
+      capabilities.forEach((cap, idx: number) => {
+        const c = cap as unknown as Record<string, unknown>
+        const platform = (c.platformName as string) ?? `Device${idx + 1}`
+        // Local Appium: appium:deviceName / appium:avd
+        const deviceName =
+          (c['appium:deviceName'] as string) ??
+          (c['appium:avd'] as string) ??
+          // BrowserStack: bstack:options.deviceName
+          ((c['bstack:options'] as Record<string, string>)?.deviceName) ??
+          'unknown'
+        const osVersion =
+          (c['appium:platformVersion'] as string) ??
+          ((c['bstack:options'] as Record<string, string>)?.osVersion) ??
+          ''
+        lines.push(`${platform}.Device=${osVersion ? `${deviceName} (${osVersion})` : deviceName}`)
+      })
+    }
+
     writeFileSync(join('allure-results', 'environment.properties'), lines.join('\n'), 'utf8')
+    console.log('[Allure] environment.properties written')
   } catch (err) {
     console.warn('[Allure] Failed to write environment.properties:', err)
   }
