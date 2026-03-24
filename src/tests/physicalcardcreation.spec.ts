@@ -1,7 +1,7 @@
 import { browser } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
 import { AUTH } from '../data/credentials'
-import BankTransferIndividualPage from '../pages/BankTransferIndividualPage'
+import BankTransferP2PIndividualPage from '../pages/BankTransferP2PIndividualPage'
 import PhysicalCardCreationPage from '../pages/PhysicalCardCreationPage'
 
 describe('Physical card creation - Individual', function () {
@@ -11,7 +11,7 @@ describe('Physical card creation - Individual', function () {
   beforeEach(async function () {
     await loginPage.loginFlow(AUTH)
     if (browser.isAndroid) {
-      await BankTransferIndividualPage.ensureIndividualAccount()
+      await BankTransferP2PIndividualPage.ensureIndividualAccount()
     }
   })
 

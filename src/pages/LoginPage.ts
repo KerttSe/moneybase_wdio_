@@ -6,6 +6,8 @@ import type { AuthData } from '../data/credentials'
 
 
 export class LoginPage extends BasePage {
+  private readonly iosBundleId = 'com.moneybase.quality'
+
   private static readonly IDS = {
     welcomeSkip: 'welcomeToMoneybase_button_skip',
     registerScreen: 'register_screen',
@@ -445,9 +447,24 @@ async waitForHome(timeout = 30000) {
 
 
 /* ---------- FULL FLOW ---------- */
-async loginFlow(auth: AuthData) {
+private async relaunchIOSApp() {
+  if (!browser.isIOS) return
+
+  await this.dismissIOSAlerts()
+  await browser.pause(600)
+
+  await browser.terminateApp(this.iosBundleId).catch(() => {})
+  await browser.pause(800)
+  await browser.activateApp(this.iosBundleId).catch(() => {})
+
+  await this.dismissIOSAlerts()
+  await browser.pause(1200)
+}
+
+private async loginFlowOnce(auth: AuthData) {
   const alreadyHome = await this.homeRoot.isDisplayed().catch(() => false)
   if (alreadyHome) return
+
   await this.prepare()
   await this.selectCountry(auth.country)
   await this.enterMobile(auth.phone)
@@ -467,6 +484,18 @@ async loginFlow(auth: AuthData) {
   // Ensure app stays in foreground after successful login
   if (browser.isAndroid) {
     await browser.pause(500)
+  }
+}
+
+async loginFlow(auth: AuthData) {
+  try {
+    await this.loginFlowOnce(auth)
+  } catch (error) {
+    if (!browser.isIOS) throw error
+
+    console.warn('[LoginPage] iOS login failed, trying one recovery retry:', error)
+    await this.relaunchIOSApp()
+    await this.loginFlowOnce(auth)
   }
 }
 

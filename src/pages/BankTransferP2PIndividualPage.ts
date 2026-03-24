@@ -1,7 +1,7 @@
 import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
 
-class BankTransferIndividualPage extends BasePage {
+class BankTransferP2PIndividualPage extends BasePage {
   /* =========================
    * ANDROID: HOME / ACCOUNT
    * ========================= */
@@ -68,48 +68,46 @@ class BankTransferIndividualPage extends BasePage {
   }
 
   /**
- * Use this ONLY after account switch
- * Waits for alert to appear and dismisses it.
- * If alert doesn't appear, waits until home is STABLE for a short grace window.
- */
-private async waitAndDismissAlertAfterSwitchAndroid(
-  timeoutMs = 12000,
-  stableHomeMs = 1200,   // home must stay visible this long
-  pollMs = 250
-) {
-  if (!browser.isAndroid) return
+   * Use this ONLY after account switch.
+   * Waits for alert to appear and dismisses it.
+   * If alert doesn't appear, waits until home is stable for a short grace window.
+   */
+  private async waitAndDismissAlertAfterSwitchAndroid(
+    timeoutMs = 12000,
+    stableHomeMs = 1200,
+    pollMs = 250
+  ) {
+    if (!browser.isAndroid) return
 
-  await browser.switchContext('NATIVE_APP').catch(() => {})
+    await browser.switchContext('NATIVE_APP').catch(() => {})
 
-  const deadline = Date.now() + timeoutMs
-  let homeVisibleSince: number | null = null
+    const deadline = Date.now() + timeoutMs
+    let homeVisibleSince: number | null = null
 
-  while (Date.now() < deadline) {
-    // 1) Always prioritize alert (it can appear late)
-    const btnExists = await this.alertBtn3Android.isExisting().catch(() => false)
-    const btnShown  = btnExists && (await this.alertBtn3Android.isDisplayed().catch(() => false))
+    while (Date.now() < deadline) {
+      const btnExists = await this.alertBtn3Android.isExisting().catch(() => false)
+      const btnShown = btnExists && (await this.alertBtn3Android.isDisplayed().catch(() => false))
 
-    if (btnShown) {
-      await this.tap(this.alertBtn3Android)
-      await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
-      await browser.pause(250)
-      return
+      if (btnShown) {
+        await this.tap(this.alertBtn3Android)
+        await this.alertBtn3Android
+          .waitForDisplayed({ reverse: true, timeout: 7000 })
+          .catch(() => {})
+        await browser.pause(250)
+        return
+      }
+
+      const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
+      if (homeShown) {
+        if (homeVisibleSince === null) homeVisibleSince = Date.now()
+        if (Date.now() - homeVisibleSince >= stableHomeMs) return
+      } else {
+        homeVisibleSince = null
+      }
+
+      await browser.pause(pollMs)
     }
-
-    // 2) Home stability check (do NOT exit immediately on first homeShown)
-    const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
-    if (homeShown) {
-      if (homeVisibleSince === null) homeVisibleSince = Date.now()
-
-      // if home has been continuously visible long enough -> accept "no alert"
-      if (Date.now() - homeVisibleSince >= stableHomeMs) return
-    } else {
-      homeVisibleSince = null
-    }
-
-    await browser.pause(pollMs)
   }
-}
 
   /* =========================
    * ANDROID: ensure Single
@@ -150,8 +148,8 @@ private async waitAndDismissAlertAfterSwitchAndroid(
   }
 
   private get carlosCatAndroid() {
-  return $('~Carlos Cat')
-  } 
+    return $('~Carlos Cat')
+  }
 
   private get beneficiaryPayBtnAndroid() {
     return $('//*[@resource-id="beneficiaryDetails_button_pay"]')
@@ -171,6 +169,16 @@ private async waitAndDismissAlertAfterSwitchAndroid(
 
   private get seekBarAndroid() {
     return $('//*[@resource-id="com.moneybase.qa:id/slideButton"]//android.widget.SeekBar')
+  }
+
+  // TODO: replace with stable selector for SEPA beneficiary/item card
+  private get sepaBeneficiaryAndroid() {
+    return $('~SEPA')
+  }
+
+  // TODO: replace with stable selector for SWIFT beneficiary/item card
+  private get swiftBeneficiaryAndroid() {
+    return $('~SWIFT')
   }
 
   private get slideTextAndroid() {
@@ -195,6 +203,16 @@ private async waitAndDismissAlertAfterSwitchAndroid(
 
   private get amountP2PIOS() {
     return $('~makePayment_input_amount')
+  }
+
+  // TODO: replace with stable selector for SEPA beneficiary/item card
+  private get sepaBeneficiaryIOS() {
+    return $('~pay_item_SEPA')
+  }
+
+  // TODO: replace with stable selector for SWIFT beneficiary/item card
+  private get swiftBeneficiaryIOS() {
+    return $('~pay_item_SWIFT')
   }
 
   private get slideTextIOS() {
@@ -378,38 +396,38 @@ private async waitAndDismissAlertAfterSwitchAndroid(
     await this.tap(this.homeTabIOS)
   }
 
-    private async scrollHomeAndroid() {
-      const { width, height } = await browser.getWindowRect()
-      const startX = Math.round(width * 0.5)
-      const startY = Math.round(height * 0.75)
-      const endY = Math.round(height * 0.3)
+  private async scrollHomeAndroid() {
+    const { width, height } = await browser.getWindowRect()
+    const startX = Math.round(width * 0.5)
+    const startY = Math.round(height * 0.75)
+    const endY = Math.round(height * 0.3)
 
-      await browser.performActions([
-        {
-          type: 'pointer',
-          id: 'finger1',
-          parameters: { pointerType: 'touch' },
-          actions: [
-            { type: 'pointerMove', duration: 0, x: startX, y: startY },
-            { type: 'pointerDown', button: 0 },
-            { type: 'pause', duration: 150 },
-            { type: 'pointerMove', duration: 600, x: startX, y: endY },
-            { type: 'pointerUp', button: 0 },
-          ],
-        },
-      ])
-      await browser.releaseActions()
-      await browser.pause(700)
-    }
+    await browser.performActions([
+      {
+        type: 'pointer',
+        id: 'finger1',
+        parameters: { pointerType: 'touch' },
+        actions: [
+          { type: 'pointerMove', duration: 0, x: startX, y: startY },
+          { type: 'pointerDown', button: 0 },
+          { type: 'pause', duration: 150 },
+          { type: 'pointerMove', duration: 600, x: startX, y: endY },
+          { type: 'pointerUp', button: 0 },
+        ],
+      },
+    ])
+    await browser.releaseActions()
+    await browser.pause(700)
+  }
 
-    private async waitForMinusAmountHomeAndroid(amount: number | string, timeoutMs = 30000) {
-      const deadline = Date.now() + timeoutMs
-      while (Date.now() < deadline) {
-        if (await this.minusAmountHomeAnchorAndroid(amount).isDisplayed().catch(() => false)) return
-        await this.scrollHomeAndroid()
-      }
-      await this.minusAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 5000 })
+  private async waitForMinusAmountHomeAndroid(amount: number | string, timeoutMs = 30000) {
+    const deadline = Date.now() + timeoutMs
+    while (Date.now() < deadline) {
+      if (await this.minusAmountHomeAnchorAndroid(amount).isDisplayed().catch(() => false)) return
+      await this.scrollHomeAndroid()
     }
+    await this.minusAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 5000 })
+  }
 
   private async scrollHomeIOS() {
     const { width, height } = await browser.getWindowRect()
@@ -498,7 +516,7 @@ private async waitAndDismissAlertAfterSwitchAndroid(
 
     await this.exitToHomeAfterP2PAndroid()
 
-  await this.waitForMinusAmountHomeAndroid(amount, 30000)
+    await this.waitForMinusAmountHomeAndroid(amount, 30000)
   }
 
   public async sendP2PBySlideIOS(amount: number | string = 11) {
@@ -529,6 +547,118 @@ private async waitAndDismissAlertAfterSwitchAndroid(
 
     await this.waitForMinusAmountHomeIOS(amount, 60000)
   }
+
+  public async sendSepaBySlideAndroid(amount: number | string = 11) {
+    if (!browser.isAndroid) return
+
+    await this.ensureSingleAccountAndroid()
+    await browser.pause(700)
+    await this.dismissBlockingAlertAndroid(5000)
+
+    await this.payTabAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.payTabAndroid)
+
+    await this.sepaBeneficiaryAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.sepaBeneficiaryAndroid)
+
+    await this.beneficiaryPayBtnAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.beneficiaryPayBtnAndroid)
+
+    await this.amountP2PAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.amountP2PAndroid.clearValue().catch(() => {})
+    await this.amountP2PAndroid.setValue(String(amount))
+
+    await this.ensureSliderReadyAndroid()
+    await this.dragSliderToRightAndroid()
+
+    await this.minusAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 60000 })
+    await this.exitToHomeAfterP2PAndroid()
+    await this.waitForMinusAmountHomeAndroid(amount, 30000)
+  }
+
+  public async sendSepaBySlideIOS(amount: number | string = 11) {
+    if (!browser.isIOS) return
+
+    await this.ensureIndividualAccountIOS()
+    await browser.pause(700)
+
+    await this.payTabIOS.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.payTabIOS)
+
+    await this.sepaBeneficiaryIOS.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.sepaBeneficiaryIOS)
+
+    await this.beneficiaryPayBtnIOS.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.beneficiaryPayBtnIOS)
+
+    await this.amountP2PIOS.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.amountP2PIOS)
+    await this.amountP2PIOS.clearValue().catch(() => {})
+    await this.amountP2PIOS.setValue(String(amount))
+
+    await this.ensureSliderReadyIOS()
+    await this.dragSliderToRightIOS()
+
+    await this.txDetailsCloseIOS.waitForDisplayed({ timeout: 60000 })
+    await this.exitToHomeAfterP2PIOS()
+    await this.waitForMinusAmountHomeIOS(amount, 60000)
+  }
+
+  public async sendSwiftBySlideAndroid(amount: number | string = 11) {
+    if (!browser.isAndroid) return
+
+    await this.ensureSingleAccountAndroid()
+    await browser.pause(700)
+    await this.dismissBlockingAlertAndroid(5000)
+
+    await this.payTabAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.payTabAndroid)
+
+    await this.swiftBeneficiaryAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.swiftBeneficiaryAndroid)
+
+    await this.beneficiaryPayBtnAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.beneficiaryPayBtnAndroid)
+
+    await this.amountP2PAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.amountP2PAndroid.clearValue().catch(() => {})
+    await this.amountP2PAndroid.setValue(String(amount))
+
+    await this.ensureSliderReadyAndroid()
+    await this.dragSliderToRightAndroid()
+
+    await this.minusAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 60000 })
+    await this.exitToHomeAfterP2PAndroid()
+    await this.waitForMinusAmountHomeAndroid(amount, 30000)
+  }
+
+  public async sendSwiftBySlideIOS(amount: number | string = 11) {
+    if (!browser.isIOS) return
+
+    await this.ensureIndividualAccountIOS()
+    await browser.pause(700)
+
+    await this.payTabIOS.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.payTabIOS)
+
+    await this.swiftBeneficiaryIOS.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.swiftBeneficiaryIOS)
+
+    await this.beneficiaryPayBtnIOS.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.beneficiaryPayBtnIOS)
+
+    await this.amountP2PIOS.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.amountP2PIOS)
+    await this.amountP2PIOS.clearValue().catch(() => {})
+    await this.amountP2PIOS.setValue(String(amount))
+
+    await this.ensureSliderReadyIOS()
+    await this.dragSliderToRightIOS()
+
+    await this.txDetailsCloseIOS.waitForDisplayed({ timeout: 60000 })
+    await this.exitToHomeAfterP2PIOS()
+    await this.waitForMinusAmountHomeIOS(amount, 60000)
+  }
 }
 
-export default new BankTransferIndividualPage()
+export default new BankTransferP2PIndividualPage()
