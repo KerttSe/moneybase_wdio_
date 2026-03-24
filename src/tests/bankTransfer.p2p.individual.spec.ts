@@ -1,6 +1,6 @@
 import { browser } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
-import BankTransferIndividualPage from '../pages/BankTransferIndividualPage'
+import BankTransferP2PIndividualPage from '../pages/BankTransferP2PIndividualPage'
 import { AUTH } from '../data/credentials'
 
 describe('Bank Transfer - Individual', () => {
@@ -19,13 +19,13 @@ describe('Bank Transfer - Individual', () => {
     await browser.pause(2000)
 
     console.log('[TEST] Ensuring individual account...')
-    await BankTransferIndividualPage.ensureIndividualAccount()
+    await BankTransferP2PIndividualPage.ensureIndividualAccount()
 
     console.log('[TEST] Sending P2P...')
     if (browser.isAndroid) {
-      await BankTransferIndividualPage.sendP2PBySlideAndroid(11)
+      await BankTransferP2PIndividualPage.sendP2PBySlideAndroid(11)
     } else {
-      await BankTransferIndividualPage.sendP2PBySlideIOS(11)
+      await BankTransferP2PIndividualPage.sendP2PBySlideIOS(11)
     }
 
     console.log('[TEST] ✅ Test completed!')
