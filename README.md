@@ -10,6 +10,32 @@ Production-ready mobile automation framework built with WebdriverIO, TypeScript 
 
 ---
 
+## How to share this repository from your phone
+
+### GitHub Mobile App (iOS / Android)
+
+1. Open the **GitHub** app and navigate to this repository (`KerttSe/moneybase_wdio_`).
+2. Tap the **⋯** (three-dot menu) in the top-right corner.
+3. Select **Share via…** — this opens your phone's native share sheet.
+4. Choose a messenger, email, or any other app to send the link.
+
+### Mobile Browser (Safari / Chrome)
+
+1. Open the repository page in your browser:
+   `https://github.com/KerttSe/moneybase_wdio_`
+2. Tap the **Share** button (Safari: square-with-arrow ↑ at the bottom; Chrome: three-dot menu → **Share…**).
+3. Pick any app from the share sheet — Telegram, WhatsApp, Viber, email, etc.
+
+### Quick Copy-Paste
+
+Simply copy and send this link:
+
+```
+https://github.com/KerttSe/moneybase_wdio_
+```
+
+---
+
 ## Setup
 
 Install dependencies:
