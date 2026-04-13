@@ -11,6 +11,15 @@ class BankTransferSepaIndividualPage extends BasePage {
 
   private readonly sepaIbanTail = '1350 454'
 
+  private byAndroidResId(id: string) {
+    const rx = `.*:id/${id}$|^${id}$`
+    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+  }
+
+  private byAndroidResIdMatches(rx: string) {
+    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+  }
+
   private get payTabAndroid() {
     return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_pay")')
   }
@@ -76,20 +85,87 @@ class BankTransferSepaIndividualPage extends BasePage {
     return $('//*[@resource-id="beneficiaryDetails_button_pay"]')
   }
 
-  private get amountInputAndroid() {
+  private get amountInputAndroidLegacy() {
     return $('id=com.moneybase.qa:id/paymentAmount')
   }
 
-  private get sliderWrapperAndroid() {
+  private get amountInputAndroidAcc() {
+    return $('~makePayment_input_amount')
+  }
+
+  private get amountInputAndroidNew() {
+    // New make-payment screen (Compose)
+    return this.byAndroidResId('bankTransfer_input_amount')
+  }
+
+  private get amountInputAndroidNewAlt() {
+    // Some flows still reuse p2p naming; keep as fallback
+    return this.byAndroidResId('p2p_input_amount')
+  }
+
+  private async resolveAmountInputSepaAndroid() {
+    const accShown = await this.amountInputAndroidAcc.isDisplayed().catch(() => false)
+    if (accShown) return this.amountInputAndroidAcc
+
+    const legacyShown = await this.amountInputAndroidLegacy.isDisplayed().catch(() => false)
+    if (legacyShown) return this.amountInputAndroidLegacy
+
+    const newShown = await this.amountInputAndroidNew.waitForDisplayed({ timeout: 8000 }).catch(() => false)
+    if (newShown) return this.amountInputAndroidNew
+
+    await this.amountInputAndroidNewAlt.waitForDisplayed({ timeout: 20000 })
+    return this.amountInputAndroidNewAlt
+  }
+
+  private get reviewPaymentBtnAndroid() {
+    // New Compose flows use different prefixes
+    return this.byAndroidResIdMatches(
+      '.*:id/(p2p|sepa|bankTransfer)_button_review_payment$|^(p2p|sepa|bankTransfer)_button_review_payment$'
+    )
+  }
+
+  private async maybeTapReviewPaymentAndroid() {
+    if (!browser.isAndroid) return
+
+    const shown = await this.reviewPaymentBtnAndroid.waitForDisplayed({ timeout: 3000 }).catch(() => false)
+    if (!shown) return
+
+    await browser.hideKeyboard().catch(() => {})
+
+    await browser
+      .waitUntil(async () => await this.reviewPaymentBtnAndroid.isEnabled().catch(() => false), {
+        timeout: 20000,
+        interval: 250,
+      })
+      .catch(() => {})
+
+    await this.tap(this.reviewPaymentBtnAndroid)
+  }
+
+  private get sliderWrapperAndroidLegacy() {
     return $('id=com.moneybase.qa:id/clPaymentBankTransferSliderWrapper')
   }
 
-  private get seekBarAndroid() {
+  private get seekBarAndroidLegacy() {
     return $('//*[@resource-id="com.moneybase.qa:id/slideButton"]//android.widget.SeekBar')
   }
 
+  private get verificationSliderWrapperAndroid() {
+    return this.byAndroidResId('varificationOfPayee_slider_confirm')
+  }
+
+  private get verificationSeekBarAndroid() {
+    return $(
+      '//*[@resource-id="varificationOfPayee_slider_confirm" or @resource-id="com.moneybase.qa:id/varificationOfPayee_slider_confirm"]//android.widget.SeekBar'
+    )
+  }
+
   private get slideTextAndroid() {
-    return $('android=new UiSelector().text("Slide to make payment")')
+    return $('android=new UiSelector().textContains("Slide to make payment")')
+  }
+
+  private get slideDescAndroid() {
+    return $('android=new UiSelector().descriptionContains("Slide to make payment")')
   }
 
   private get txDetailsBackAndroid() {
@@ -152,6 +228,10 @@ class BankTransferSepaIndividualPage extends BasePage {
     return $('~makePayment_input_amount')
   }
 
+  private get reviewPaymentBtnIOS() {
+    return $('~makePayment_button_review')
+  }
+
   private get slideTextIOS() {
     return $('~Slide to make payment')
   }
@@ -189,7 +269,32 @@ class BankTransferSepaIndividualPage extends BasePage {
   private async ensureSliderReadyIOS() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
     await browser.hideKeyboard().catch(() => {})
-    await this.slideTextIOS.waitForDisplayed({ timeout: 30000 })
+    await browser
+      .waitUntil(
+        async () =>
+          (await this.slideTextIOS.isDisplayed().catch(() => false)) ||
+          (await this.sliderPayIconIOS.isDisplayed().catch(() => false)),
+        { timeout: 30000, interval: 250 }
+      )
+      .catch(() => {})
+  }
+
+  private async maybeTapReviewPaymentIOS() {
+    if (!browser.isIOS) return
+
+    await browser.hideKeyboard().catch(() => {})
+
+    const shown = await this.reviewPaymentBtnIOS.waitForDisplayed({ timeout: 3000 }).catch(() => false)
+    if (!shown) return
+
+    await browser
+      .waitUntil(async () => await this.reviewPaymentBtnIOS.isEnabled().catch(() => false), {
+        timeout: 20000,
+        interval: 250,
+      })
+      .catch(() => {})
+
+    await this.tap(this.reviewPaymentBtnIOS)
   }
 
   private async waitForPaymentCompletedIOS(timeoutMs = 15000) {
@@ -428,7 +533,30 @@ class BankTransferSepaIndividualPage extends BasePage {
   private async ensureSliderReadyAndroid() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
     await browser.hideKeyboard().catch(() => {})
-    await this.sliderWrapperAndroid.waitForDisplayed({ timeout: 30000 })
+
+    await browser
+      .waitUntil(
+        async () =>
+          (await this.sliderWrapperAndroidLegacy.isDisplayed().catch(() => false)) ||
+          (await this.verificationSliderWrapperAndroid.isDisplayed().catch(() => false)),
+        { timeout: 30000, interval: 250 }
+      )
+      .catch(() => {})
+  }
+
+  private async resolveSeekBarSepaAndroid() {
+    const legacyShown = await this.seekBarAndroidLegacy.isDisplayed().catch(() => false)
+    if (legacyShown) return this.seekBarAndroidLegacy
+
+    await this.verificationSeekBarAndroid.waitForDisplayed({ timeout: 20000 })
+    return this.verificationSeekBarAndroid
+  }
+
+  private async isSlideHintVisibleAndroid() {
+    return (
+      (await this.slideTextAndroid.isDisplayed().catch(() => false)) ||
+      (await this.slideDescAndroid.isDisplayed().catch(() => false))
+    )
   }
 
   private async waitForPaymentCompletedAndroid(timeoutMs = 15000) {
@@ -445,15 +573,21 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private async dragSliderToRightAndroid() {
-    await this.seekBarAndroid.waitForDisplayed({ timeout: 20000 })
+    const legacyShown = await this.seekBarAndroidLegacy.isDisplayed().catch(() => false)
 
-    const sb = await this.seekBarAndroid
-    const loc = await sb.getLocation()
-    const size = await sb.getSize()
+    // Prefer dragging from the thumb/handle (works for new verification sheet)
+    const thumbShown = await this.slideDescAndroid.isDisplayed().catch(() => false)
+    const dragEl = legacyShown ? this.seekBarAndroidLegacy : thumbShown ? this.slideDescAndroid : await this.resolveSeekBarSepaAndroid()
+
+    await dragEl.waitForDisplayed({ timeout: 20000 })
+
+    const loc = await dragEl.getLocation()
+    const size = await dragEl.getSize()
+    const { width } = await browser.getWindowRect()
 
     const y = Math.round(loc.y + size.height * 0.5)
-    const startX = Math.round(loc.x + 2)
-    const endX = Math.round(loc.x + size.width - 2)
+    const startX = Math.round(loc.x + size.width * 0.6)
+    const endX = Math.max(startX + 260, Math.round(width - 30))
 
     for (let i = 0; i < 3; i++) {
       await browser.performActions([
@@ -465,7 +599,7 @@ class BankTransferSepaIndividualPage extends BasePage {
             { type: 'pointerMove', duration: 0, x: startX, y },
             { type: 'pointerDown', button: 0 },
             { type: 'pause', duration: 250 },
-            { type: 'pointerMove', duration: 900, x: endX, y },
+            { type: 'pointerMove', duration: 1100, x: endX, y },
             { type: 'pointerUp', button: 0 },
           ],
         },
@@ -477,7 +611,7 @@ class BankTransferSepaIndividualPage extends BasePage {
       const detailsShown = await this.txDetailsBackAndroid.isDisplayed().catch(() => false)
       if (detailsShown) return
 
-      const stillThere = await this.slideTextAndroid.isDisplayed().catch(() => false)
+      const stillThere = await this.isSlideHintVisibleAndroid()
       if (!stillThere) {
         await this.waitForPaymentCompletedAndroid()
         return
@@ -636,14 +770,16 @@ class BankTransferSepaIndividualPage extends BasePage {
     await this.beneficiaryPayBtnAndroid.waitForDisplayed({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnAndroid)
 
-    await this.amountInputAndroid.waitForDisplayed({ timeout: 20000 })
-    await this.amountInputAndroid.clearValue().catch(() => {})
-    await this.amountInputAndroid.setValue(String(amount))
+    const amountInput = await this.resolveAmountInputSepaAndroid()
+    await amountInput.waitForDisplayed({ timeout: 20000 })
+    await amountInput.clearValue().catch(() => {})
+    await amountInput.setValue(String(amount))
+
+    await this.maybeTapReviewPaymentAndroid()
 
     await this.ensureSliderReadyAndroid()
     await this.dragSliderToRightAndroid()
 
-    await this.minusAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 60000 })
     await this.exitToHomeAfterPaymentAndroid()
     await this.waitForMinusAmountHomeAndroid(amount, 30000)
   }
@@ -669,6 +805,8 @@ class BankTransferSepaIndividualPage extends BasePage {
     await this.tap(this.amountInputIOS)
     await this.amountInputIOS.clearValue().catch(() => {})
     await this.amountInputIOS.setValue(String(amount))
+
+    await this.maybeTapReviewPaymentIOS()
 
     await this.ensureSliderReadyIOS()
     await this.dragSliderToRightIOS()

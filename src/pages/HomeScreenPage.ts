@@ -481,6 +481,31 @@ class HomeScreenPage extends BasePage {
    * ========================= */
 
   public async waitForHomeLoaded(timeout = 30000) {
+    if (browser.isAndroid) {
+      await browser.switchContext('NATIVE_APP').catch(() => {})
+
+      await browser.waitUntil(
+        async () => {
+          const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+          if (homeShown) return true
+
+          const alertShown = await this.alertBtn3Android.isDisplayed().catch(() => false)
+          if (alertShown) {
+            await this.tap(this.alertBtn3Android).catch(() => {})
+            await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+          }
+
+          return await this.homeRoot.isDisplayed().catch(() => false)
+        },
+        {
+          timeout,
+          interval: 500,
+          timeoutMsg: 'Home screen did not appear (blocked by alert?)',
+        }
+      )
+      return
+    }
+
     await this.homeRoot.waitForDisplayed({ timeout })
   }
 

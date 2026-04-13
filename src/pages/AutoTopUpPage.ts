@@ -1,3 +1,4 @@
+
 import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
 
@@ -96,7 +97,9 @@ export default class AutoTopUpPage extends BasePage {
 
   private get addFundsScreen() {
     if (browser.isAndroid) return $('android=new UiSelector().resourceId("addFunds_screen")')
-    return $('~addFunds_screen')
+    // iOS: anchor to a cell unique to Add Funds screen (addFunds_item_card is accessible=true
+    // and only exists here; avoids false-positive on the home "plus" button whose label is "Add Funds")
+    return $('-ios predicate string: name == "addFunds_item_card" OR name == "addFunds_item_autoTopup" OR name == "addFunds_item_bankTransfer"')
   }
 
   /* =========================
@@ -108,7 +111,7 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   private get autoTopUpTileIOS() {
-    return $('~addFunds_card_autoTopUp')
+    return $('-ios predicate string: name == "addFunds_item_autoTopup" OR name == "addFunds_card_autoTopUp"')
   }
 
   private get autoTopUpTile() {
@@ -126,19 +129,19 @@ export default class AutoTopUpPage extends BasePage {
   get autoTopUpListScreen() {
     if (browser.isAndroid)
       return $('android=new UiSelector().resourceId("autoTopUpList_screen")')
-    return $('~autoTopUpList_screen')
+    return $('-ios predicate string: name == "autoTopUpList_screen" OR name == "Auto Top-Up"')
   }
 
   get backBtnList() {
     if (browser.isAndroid)
       return $('android=new UiSelector().resourceId("autoTopUpList_button_back")')
-    return $('~autoTopUpList_button_back')
+    return $('-ios predicate string: name == "BackButton" OR name == "autoTopUpList_button_back"')
   }
 
   get addNewBtn() {
     if (browser.isAndroid)
       return $('android=new UiSelector().resourceId("autoTopUpDetails_button_addNew")')
-    return $('~autoTopUpDetails_button_addNew')
+    return $('-ios predicate string: name == "autoTopUpDetails_button_addNew" OR label == "Add New" OR name == "Add New"')
   }
 
   /* =========================
@@ -156,31 +159,31 @@ export default class AutoTopUpPage extends BasePage {
   get autoTopUpDetailsScreen() {
     if (browser.isAndroid)
       return $('android=new UiSelector().resourceId("autoTopUpDetails_screen")')
-    return $('~autoTopUpDetails_screen')
+    return $('-ios predicate string: name == "autoTopUpDetails_screen" OR name == "Auto Top-Up"')
   }
 
   get backBtnDetails() {
     if (browser.isAndroid)
       return $('android=new UiSelector().resourceId("autoTopUpDetails_button_back")')
-    return $('~autoTopUpDetails_button_back')
+    return $('-ios predicate string: name == "BackButton" OR name == "autoTopUpDetails_button_back"')
   }
 
   get cardPicker() {
     if (browser.isAndroid)
-      return $('android=new UiSelector().resourceId("autoTopUpDetails_picker_card")')
-    return $('~autoTopUpDetails_picker_card')
+      return $('android=new UiSelector().resourceId("autoTopUpDetails_button_pickCard")')
+    return $('-ios predicate string: name == "autoTopup_item_cardPicker" OR name == "autoTopUpDetails_picker_card"')
   }
 
   get currencyPicker() {
     if (browser.isAndroid)
-      return $('android=new UiSelector().resourceId("autoTopUpDetails_picker_currency")')
-    return $('~autoTopUpDetails_picker_currency')
+      return $('android=new UiSelector().resourceId("autoTopUpDetails_button_pickCurrency")')
+    return $('-ios predicate string: name == "autoTopup_item_currencyPicker" OR name == "autoTopUpDetails_picker_currency"')
   }
 
   get deleteBtn() {
     if (browser.isAndroid)
       return $('android=new UiSelector().resourceId("autoTopUpDetails_button_delete")')
-    return $('~autoTopUpDetails_button_delete')
+    return $('-ios predicate string: name == "autoTopup_button_delete" OR name == "autoTopUpDetails_button_delete"')
   }
 
   private get confirmDeleteBtnAndroidByText() {
@@ -192,19 +195,27 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   private get confirmDeleteBtnIOS() {
-    return $('-ios predicate string: name == "Confirm" OR label == "Confirm"')
+    return $('-ios predicate string: name == "alert_button_Confirm" OR name == "Confirm" OR label == "Confirm"')
   }
 
   get saveBtn() {
     if (browser.isAndroid)
       return $('android=new UiSelector().resourceId("autoTopUpDetails_button_save")')
-    return $('~autoTopUpDetails_button_save')
+    return $('-ios predicate string: name == "autoTopup_button_save" OR name == "autoTopUpDetails_button_save"')
   }
 
   get customAmountInput() {
     if (browser.isAndroid)
       return $('android=new UiSelector().resourceId("autoTopUpDetails_input_customAmount")')
-    return $('~autoTopUpDetails_input_customAmount')
+    return $('-ios predicate string: name == "autoTopUpDetails_input_customAmount" OR type == "XCUIElementTypeTextField"')
+  }
+
+  private get customAmountModalScreenAndroid() {
+    return $('android=new UiSelector().resourceId("autoTopUpCustomAmountModal_screen")')
+  }
+
+  private get customAmountModalInputAndroid() {
+    return $('android=new UiSelector().resourceId("autoTopUpCustomAmountModal_input")')
   }
 
   private get presetAmount500Android() {
@@ -236,7 +247,15 @@ export default class AutoTopUpPage extends BasePage {
       return $(
         'android=new UiSelector().resourceId("autoTopUpDetails_button_customAmountDone")'
       )
-    return $('~autoTopUpDetails_button_customAmountDone')
+    return $('-ios predicate string: name == "autoTopUpDetails_button_customAmountDone" OR name == "Done" OR label == "Done"')
+  }
+
+  private get customAmountModalDoneBtnAndroid() {
+    return $('android=new UiSelector().resourceId("autoTopUpCustomAmountModal_button_done")')
+  }
+
+  private get amountOtherBtnIOS() {
+    return $('-ios predicate string: name == "amountPicker_item_Other" OR name == "Other" OR label == "Other"')
   }
 
   private get customAmountDoneBtnAndroidByText() {
@@ -331,10 +350,30 @@ export default class AutoTopUpPage extends BasePage {
     await this.currencyPicker.waitForDisplayed({ timeout: 15000 })
     await this.tap(this.currencyPicker)
 
-    const currencyItem = browser.isAndroid
-      ? $(`android=new UiSelector().textContains("${currency}")`)
-      : $(`-ios predicate string: label CONTAINS "${currency}" OR name CONTAINS "${currency}"`)
+    if (browser.isIOS) {
+      await browser.pause(800)
+      // Try full name first, then ISO code (e.g. "Euro" → "EUR")
+      const currencyCode = currency.length === 3 ? currency.toUpperCase() : currency.slice(0, 3).toUpperCase()
+      const predicates = [
+        `-ios predicate string: label CONTAINS "${currency}" OR name CONTAINS "${currency}"`,
+        `-ios predicate string: label CONTAINS "${currencyCode}" OR name CONTAINS "${currencyCode}"`,
+        `-ios predicate string: value CONTAINS "${currency}" OR value CONTAINS "${currencyCode}"`,
+        `-ios class chain:**/XCUIElementTypeCell[\`label CONTAINS "${currency}"\`]`,
+        `-ios class chain:**/XCUIElementTypeStaticText[\`label CONTAINS "${currency}"\`]`,
+      ]
+      for (const pred of predicates) {
+        const el = $(pred)
+        const found = await el.waitForDisplayed({ timeout: 4000 }).then(() => true).catch(() => false)
+        if (found) {
+          await this.tap(el)
+          await browser.pause(300)
+          return
+        }
+      }
+      throw new Error(`Currency item "${currency}" not found on iOS after trying multiple selectors`)
+    }
 
+    const currencyItem = $(`android=new UiSelector().textContains("${currency}")`)
     await currencyItem.waitForDisplayed({ timeout: 15000 })
     await this.tap(currencyItem)
     await browser.pause(300)
@@ -368,10 +407,18 @@ export default class AutoTopUpPage extends BasePage {
       }
 
       const byIdVisible = await this.customAmountInput.isDisplayed().catch(() => false)
+      const modalVisible = await this.customAmountModalScreenAndroid.isDisplayed().catch(() => false)
+      const modalInputVisible = await this.customAmountModalInputAndroid.isDisplayed().catch(() => false)
+
       if (byIdVisible) {
         await this.tap(this.customAmountInput)
         await this.customAmountInput.clearValue().catch(() => {})
         await this.customAmountInput.setValue(String(amount))
+      } else if (modalVisible || modalInputVisible) {
+        await this.customAmountModalInputAndroid.waitForDisplayed({ timeout: 7000 })
+        await this.tap(this.customAmountModalInputAndroid)
+        await this.customAmountModalInputAndroid.clearValue().catch(() => {})
+        await this.customAmountModalInputAndroid.setValue(String(amount))
       } else {
         const byClassVisible = await this.amountEditTextAndroid
           .waitForDisplayed({ timeout: 7000 })
@@ -390,8 +437,12 @@ export default class AutoTopUpPage extends BasePage {
       await browser.pause(300)
 
       const doneByIdVisible = await this.customAmountDoneBtn.isDisplayed().catch(() => false)
+      const modalDoneVisible = await this.customAmountModalDoneBtnAndroid.isDisplayed().catch(() => false)
       if (doneByIdVisible) {
         await this.tap(this.customAmountDoneBtn)
+      } else if (modalDoneVisible) {
+        await this.customAmountModalDoneBtnAndroid.waitForEnabled({ timeout: 7000 })
+        await this.tap(this.customAmountModalDoneBtnAndroid)
       } else {
         await this.customAmountDoneBtnAndroidByText.waitForDisplayed({ timeout: 7000 })
         await this.tap(this.customAmountDoneBtnAndroidByText)
@@ -401,14 +452,75 @@ export default class AutoTopUpPage extends BasePage {
       return
     }
 
-    await this.customAmountInput.waitForDisplayed({ timeout: 15000 })
-    await this.tap(this.customAmountInput)
-    await this.customAmountInput.clearValue().catch(() => {})
-    await this.customAmountInput.setValue(String(amount))
-
-    await this.customAmountDoneBtn.waitForDisplayed({ timeout: 15000 })
-    await this.tap(this.customAmountDoneBtn)
-    await browser.pause(300)
+    if (browser.isIOS) {
+      // iOS: шукаємо саме у нижньому блоці (autoTopup_item_amountPicker)
+      const amountCell = await $('-ios predicate string: name == "autoTopup_item_amountPicker"')
+      const cellVisible = await amountCell.isDisplayed().catch(() => false)
+      if (!cellVisible) throw new Error('Amount picker cell not visible on iOS')
+      const normalized = String(amount).replace(/^€\s?/, '').trim()
+      // Якщо amount = 50/200/500 — клікнути preset
+      const presetBtn = await amountCell.$(`-ios predicate string: name == "amountPicker_item_€${normalized}" OR label == "€${normalized}"`)
+      if (await presetBtn.isDisplayed().catch(() => false)) {
+        await this.tap(presetBtn)
+        await browser.pause(300)
+        return
+      }
+      // Вводимо суму у input (спочатку пробуємо знайти поле, якщо не знайдено — тиснемо Other і пробуємо ще раз)
+      let inputSet = false
+      let inputCandidates = [
+        this.customAmountInput,
+        await amountCell.$('-ios class chain:**/XCUIElementTypeTextField[`visible == 1`]'),
+        await amountCell.$('-ios class chain:**/XCUIElementTypeTextView[`visible == 1`]'),
+      ]
+      for (const input of inputCandidates) {
+        const visible = await input.isDisplayed().catch(() => false)
+        if (!visible) continue
+        await this.tap(input)
+        await input.clearValue().catch(() => {})
+        await input.setValue(String(amount))
+        inputSet = true
+        break
+      }
+      if (!inputSet) {
+        // Якщо поле не знайдено — тиснемо Other і пробуємо ще раз
+        const otherBtn = await amountCell.$('-ios predicate string: name == "amountPicker_item_Other" OR label == "Other"')
+        if (await otherBtn.isDisplayed().catch(() => false)) {
+          await this.tap(otherBtn)
+          await browser.pause(300)
+        }
+        inputCandidates = [
+          this.customAmountInput,
+          await amountCell.$('-ios class chain:**/XCUIElementTypeTextField[`visible == 1`]'),
+          await amountCell.$('-ios class chain:**/XCUIElementTypeTextView[`visible == 1`]'),
+        ]
+        for (const input of inputCandidates) {
+          const visible = await input.isDisplayed().catch(() => false)
+          if (!visible) continue
+          await this.tap(input)
+          await input.clearValue().catch(() => {})
+          await input.setValue(String(amount))
+          inputSet = true
+          break
+        }
+      }
+      if (!inputSet) {
+        throw new Error('Could not open custom amount input for iOS Auto Top-Up')
+      }
+      // Done
+      const doneCandidates = [
+        this.customAmountDoneBtn,
+        $('~Done'),
+        $('-ios predicate string: name == "Done" OR label == "Done"'),
+      ]
+      for (const done of doneCandidates) {
+        const visible = await done.isDisplayed().catch(() => false)
+        if (!visible) continue
+        await this.tap(done)
+        await browser.pause(300)
+        return
+      }
+      throw new Error('Could not confirm custom amount for iOS Auto Top-Up')
+    }
   }
 
   /**
@@ -479,6 +591,12 @@ export default class AutoTopUpPage extends BasePage {
             `-ios predicate string: (name CONTAINS "When balance falls below" OR label CONTAINS "When balance falls below") AND (name CONTAINS "${fragment}" OR label CONTAINS "${fragment}")`
           )
         )
+        // Добавляем поиск по accessibility id, если сумма похожа на число
+        const addNum = Number(String(amount).replace(/[^\d.]/g, ''))
+        if (Number.isFinite(addNum) && addNum > 0) {
+          // Пробуем найти cell по accessibility id вида autoTopupList_item_active_€500_€1500
+          selectors.push($(`~autoTopupList_item_active_€500_€${addNum}`))
+        }
       }
     }
 
@@ -560,8 +678,19 @@ export default class AutoTopUpPage extends BasePage {
     await this.openFromHome()
     await this.goToAutoTopUpList()
 
-    await this.verifyThresholdRuleIsVisible(options.amount)
-    await this.openThresholdRuleDetails(options.amount)
+    //for ios: search by accessibility id autoTopupList_item_active_€500_€{amount}
+
+    let ruleItem: any;
+    if (browser.isIOS) {
+      ruleItem = this.getAutoTopUpListItemByAmount(options.amount);
+      if (!ruleItem) throw new Error('Could not build locator for autoTopupList_item_active');
+      const visible = await ruleItem.isDisplayed().catch(() => false);
+      if (!visible) throw new Error(`Auto Top-Up rule not found by accessibility id: autoTopupList_item_active_€500_€${options.amount}`);
+      await this.tap(ruleItem);
+    } else {
+      await this.verifyThresholdRuleIsVisible(options.amount);
+      await this.openThresholdRuleDetails(options.amount);
+    }
 
     await this.deleteAutoTopUp()
     await this.confirmDeleteAutoTopUp()
@@ -574,23 +703,38 @@ export default class AutoTopUpPage extends BasePage {
 
     await this.autoTopUpTile.waitForDisplayed({ timeout: 15000 })
     await this.goToAutoTopUpList()
-    await this.verifyThresholdRuleIsNotVisible(options.amount)
+    if (browser.isIOS) {
+      // Проверяем, что элемент исчез
+      ruleItem = this.getAutoTopUpListItemByAmount(options.amount);
+      const stillVisible = ruleItem && (await ruleItem.isDisplayed().catch(() => false));
+      if (stillVisible) throw new Error(`Auto Top-Up rule все еще виден по accessibility id: autoTopupList_item_active_€500_€${options.amount}`);
+    } else {
+      await this.verifyThresholdRuleIsNotVisible(options.amount);
+    }
   }
 
   private async openExistingAutoTopUpFromList(cardLabel?: string) {
     await this.autoTopUpListScreen.waitForDisplayed({ timeout: 15000 })
 
-    const candidates = [
-      cardLabel
-        ? $(`android=new UiSelector().resourceId("autoTopUpList_screen").childSelector(new UiSelector().textContains("${cardLabel}"))`)
-        : undefined,
-      cardLabel
-        ? $(`android=new UiSelector().descriptionContains("${cardLabel}")`)
-        : undefined,
-      $('android=new UiSelector().descriptionContains("Auto Top-Up")'),
-      $('android=new UiSelector().textContains("Auto Top-Up")'),
-      $('(//*[@resource-id="autoTopUpList_screen"]//*[@clickable="true"])[1]'),
-    ]
+    const candidates = browser.isAndroid
+      ? [
+          cardLabel
+            ? $(`android=new UiSelector().resourceId("autoTopUpList_screen").childSelector(new UiSelector().textContains("${cardLabel}"))`)
+            : undefined,
+          cardLabel
+            ? $(`android=new UiSelector().descriptionContains("${cardLabel}")`)
+            : undefined,
+          $('android=new UiSelector().descriptionContains("Auto Top-Up")'),
+          $('android=new UiSelector().textContains("Auto Top-Up")'),
+          $('(//*[@resource-id="autoTopUpList_screen"]//*[@clickable="true"])[1]'),
+        ]
+      : [
+          cardLabel
+            ? $(`-ios predicate string: (name CONTAINS "${cardLabel}" OR label CONTAINS "${cardLabel}")`)
+            : undefined,
+          $('-ios class chain:**/XCUIElementTypeCollectionView/XCUIElementTypeCell[`visible == 1`][1]'),
+          $('-ios class chain:**/XCUIElementTypeCell[`visible == 1`][1]'),
+        ]
 
     for (const el of candidates) {
       if (!el) continue
@@ -642,16 +786,54 @@ export default class AutoTopUpPage extends BasePage {
     await this.tapAddNew()
     await this.selectCard(options.cardLabel)
     await this.selectCurrency(options.currency)
-    await this.enterCustomAmount(options.amount)
 
     if (browser.isAndroid) {
+      // Android: threshold → amount
       await this.selectPreset500Android()
+      await this.enterCustomAmount(options.amount)
+    } else {
+      // iOS: amount → threshold
+      await this.enterCustomAmount(options.amount)
+      await this.selectPreset500IOS()
     }
-
     await this.saveAutoTopUp()
 
-    // Після Save очікуємо повернення на Home
-    await this.addFundsBtnAndroid.waitForDisplayed({ timeout: 30000 })
+    // iOS повертається на Add Funds screen, Android — на Home
+    if (browser.isIOS) {
+      const backOnAddFunds = await this.addFundsScreen
+        .waitForDisplayed({ timeout: 20000 })
+        .then(() => true)
+        .catch(() => false)
+      if (!backOnAddFunds) {
+        await this.openBtn.waitForDisplayed({ timeout: 15000 })
+      }
+    } else {
+      await this.openBtn.waitForDisplayed({ timeout: 30000 })
+    }
+  }
+
+  async selectPreset500IOS() {
+    if (!browser.isIOS) return
+
+    // Threshold preset €500 — шукаємо тільки у cell name="autoTopup_item_lowBarierPicker"
+    const thresholdCell = await $('-ios predicate string: name == "autoTopup_item_lowBarierPicker"')
+    const appeared = await thresholdCell.waitForDisplayed({ timeout: 7000 }).then(() => true).catch(() => false)
+    if (!appeared) throw new Error('Threshold picker cell not visible on iOS')
+    const candidates = [
+      await thresholdCell.$('-ios predicate string: name == "amountPicker_item_€500"'),
+      await thresholdCell.$('-ios predicate string: label == "€500" OR name == "€500"'),
+      await thresholdCell.$('-ios class chain:**/XCUIElementTypeButton[`label == "€500"`]'),
+      await thresholdCell.$('-ios class chain:**/XCUIElementTypeCell[`label CONTAINS "€500" OR name CONTAINS "€500"`]'),
+      await thresholdCell.$('-ios class chain:**/XCUIElementTypeStaticText[`label == "€500"`]'),
+    ]
+    for (const el of candidates) {
+      const visible = await el.isDisplayed().catch(() => false)
+      if (!visible) continue
+      await this.tap(el)
+      await browser.pause(300)
+      return
+    }
+    throw new Error('Could not select threshold preset €500 on iOS')
   }
 
   async selectPreset500Android() {
@@ -694,6 +876,7 @@ export default class AutoTopUpPage extends BasePage {
     // відкриваємо існуюче правило та видаляємо його.
     await this.openExistingAutoTopUpDetailsFlow(options.cardLabel)
     await this.deleteAutoTopUp()
+    await this.confirmDeleteAutoTopUp()
   }
 
   /* =========================
@@ -718,8 +901,19 @@ export default class AutoTopUpPage extends BasePage {
     }
 
     await this.homeRootAndroid.waitForDisplayed({ timeout: 30000 }).catch(() => {})
+
     await this.businessAccountLabelAndroid
       .waitForDisplayed({ reverse: true, timeout: 30000 })
       .catch(() => {})
+  }
+
+  /**
+   * Returns a locator for an existing Auto Top-Up rule by amount.
+   * @param amount - sum
+   */
+  private getAutoTopUpListItemByAmount(amount: number | string) {
+    const addNum = Number(String(amount).replace(/[^\d.]/g, ''));
+    if (!Number.isFinite(addNum) || addNum <= 0) return undefined;
+    return $(`~autoTopupList_item_active_€500_€${addNum}`);
   }
 }
