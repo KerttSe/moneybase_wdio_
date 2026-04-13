@@ -9,19 +9,18 @@ describe('Auto Top-Up', function () {
   const autoTopUpPage = new AutoTopUpPage()
 
   before(async function () {
-    if (!browser.isAndroid) this.skip()
     await loginPage.loginFlow(AUTH)
   })
 
-  it('Android: create Auto Top-Up, verify, delete and verify absence', async () => {
+  it('create Auto Top-Up, verify, delete and verify absence', async () => {
     await autoTopUpPage.createAutoTopUpToHomeFlow({
       cardLabel: '0015',
       currency: 'Euro',
-      amount: 77777,
+      amount: 1500,
     })
 
     await autoTopUpPage.verifyAndDeleteAutoTopUpFromHomeFlow({
-      amount: 77777,
+      amount: 1500,
     })
   })
 })

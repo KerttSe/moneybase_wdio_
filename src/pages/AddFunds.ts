@@ -1,4 +1,5 @@
 import BasePage from './BasePage'
+import HomeScreenPage from './HomeScreenPage'
 import { $, browser } from '@wdio/globals'
 
 export default class AddFundsPage extends BasePage {
@@ -24,49 +25,6 @@ export default class AddFundsPage extends BasePage {
 
   private get homeRootAndroid() {
     return $('android=new UiSelector().resourceId("home_screen")')
-  }
-
-  /* =========================
-   * iOS: PROFILE PICKER (ensure Individual)
-   * ========================= */
-
-  private get profilePickerUserNameLabelIOS() {
-    return $('~profilePicker_label_userName')
-  }
-
-  private get profilePickerIndividualItemIOS() {
-    return $('~Individual')
-  }
-
-  private async ensureIndividualAccountIOS() {
-    if (!browser.isIOS) return
-
-    // Open picker
-    await this.profilePickerUserNameLabelIOS.waitForDisplayed({ timeout: 15000 })
-    await this.tap(this.profilePickerUserNameLabelIOS)
-
-    // Pick Individual
-    await this.profilePickerIndividualItemIOS.waitForDisplayed({ timeout: 15000 })
-    await this.tap(this.profilePickerIndividualItemIOS)
-
-    // Wait picker closed / back
-    await this.profilePickerIndividualItemIOS
-      .waitForDisplayed({ reverse: true, timeout: 15000 })
-      .catch(() => {})
-    await browser.pause(300)
-  }
-     public async ensureIndividualAccount() {
-    if (browser.isIOS) {
-      await this.ensureIndividualAccountIOS()
-      return
-    }
-
-    if (browser.isAndroid) {
-      await this.ensureSingleAccountAndroid()
-      
-      // await this.ensureSingleAccountAndroid()
-      return
-    }
   }
 
   /* =========================
@@ -163,8 +121,11 @@ private get payProcessingBtnIOS() {
     }
 
     if (browser.isIOS) {
-      // same idea as Android ensure: normalize account before Add Funds
-      await this.ensureIndividualAccountIOS()
+      await this.dismissIOSAlerts()
+      await HomeScreenPage.waitForHomeLoaded()
+      await HomeScreenPage.ensureIndividualAccount()
+      await HomeScreenPage.waitForHomeLoaded()
+      await this.dismissIOSAlerts()
     }
 
     await this.openBtn.waitForDisplayed({ timeout: 15000 })
@@ -224,6 +185,30 @@ private get cardPickerBtnAndroid() {
 // к ".... 0036" / "•••• 0036" / "Card *0036" — 
 private get card0036Android() {
   return $('android=new UiSelector().textContains("0036")')
+}
+
+private async smallScrollDownToDepositIOS() {
+  const { width, height } = await browser.getWindowRect()
+  const x = Math.round(width * 0.5)
+  const startY = Math.round(height * 0.8)
+  const endY = Math.round(height * 0.4)
+
+  await browser.performActions([
+    {
+      type: 'pointer',
+      id: 'finger1',
+      parameters: { pointerType: 'touch' },
+      actions: [
+        { type: 'pointerMove', duration: 0, x, y: startY },
+        { type: 'pointerDown', button: 0 },
+        { type: 'pause', duration: 150 },
+        { type: 'pointerMove', duration: 500, x, y: endY },
+        { type: 'pointerUp', button: 0 },
+      ],
+    },
+  ])
+  await browser.releaseActions()
+  await browser.pause(1000)
 }
 
 async selectCard0036Android() {
@@ -339,8 +324,15 @@ if (browser.isIOS) {
   await this.payProcessingBtnIOS.waitForDisplayed({ timeout: 30000 })
   await this.payProcessingBtnIOS.waitForEnabled({ timeout: 30000 })
   await this.tap(this.payProcessingBtnIOS)
-  await this.depositApprovedIOS.waitForDisplayed({ timeout: 60000 })
 
+  // Wait for home screen to be visible (payment processing completes and navigates back)
+  const homeRoot = $('~home_screen_view')
+  await homeRoot.waitForDisplayed({ timeout: 30000 })
+
+  // Scroll on home page to ensure 'Deposit by Card' anchor is visible (gesture-based, same pattern as FXExchangePage)
+  await this.smallScrollDownToDepositIOS()
+
+  await this.depositApprovedIOS.waitForDisplayed({ timeout: 60000 })
   return
 }
 

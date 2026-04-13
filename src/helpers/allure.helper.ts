@@ -1,6 +1,8 @@
 import { browser } from '@wdio/globals'
 import allure from '@wdio/allure-reporter'
 import { execSync } from 'node:child_process'
+import { writeFileSync, mkdirSync } from 'node:fs'
+import { join } from 'node:path'
 
 export async function attachFailureArtifacts() {
   const caps = browser.capabilities as Record<string, unknown>
@@ -102,9 +104,6 @@ export async function attachFailureArtifacts() {
  * Pass the raw capabilities array from onPrepare to include device names.
  */
 export function writeAllureEnvironment(capabilities?: WebdriverIO.Capabilities[]) {
-  const { writeFileSync, mkdirSync } = require('fs')
-  const { join } = require('path')
-
   try {
     mkdirSync('allure-results', { recursive: true })
 
@@ -151,8 +150,6 @@ export function writeAllureEnvironment(capabilities?: WebdriverIO.Capabilities[]
  *  - Local fallback
  */
 export function writeAllureExecutor() {
-  const { writeFileSync, mkdirSync } = require('fs')
-  const { join } = require('path')
   const env = process.env
 
   let executor: Record<string, unknown>

@@ -2,6 +2,11 @@ import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
 
 class BankTransferP2PIndividualPage extends BasePage {
+  private byAndroidResId(id: string) {
+    const rx = `.*:id/${id}$|^${id}$`
+    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+  }
+
   /* =========================
    * ANDROID: HOME / ACCOUNT
    * ========================= */
@@ -156,19 +161,45 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get amountP2PAndroid() {
-    return $('id=com.moneybase.qa:id/etAmountP2P')
+    return $('~makePayment_input_amount')
+  }
+
+  private get amountP2PAndroidNew() {
+    return this.byAndroidResId('p2p_input_amount')
+  }
+
+  private async resolveAmountInputP2PAndroid() {
+    const legacyShown = await this.amountP2PAndroid.isDisplayed().catch(() => false)
+    if (legacyShown) return this.amountP2PAndroid
+
+    await this.amountP2PAndroidNew.waitForDisplayed({ timeout: 20000 })
+    return this.amountP2PAndroidNew
+  }
+
+  private get reviewPaymentBtnAndroid() {
+    return this.byAndroidResId('p2p_button_review_payment')
   }
 
   private get p2pScrollAndroid() {
     return $('id=com.moneybase.qa:id/p2pMakePaymentScrollview')
   }
 
-  private get sliderWrapperAndroid() {
-    return $('id=com.moneybase.qa:id/clP2PSliderWrapper')
+  private get sliderWrapperAndroidLegacy() {
+    return $('~makePayment_slider_pay')
   }
 
-  private get seekBarAndroid() {
-    return $('//*[@resource-id="com.moneybase.qa:id/slideButton"]//android.widget.SeekBar')
+  private get seekBarAndroidLegacy() {
+    return $('~makePayment_slider_pay')
+  }
+
+  private get verificationSliderWrapperAndroid() {
+    return this.byAndroidResId('varificationOfPayee_slider_confirm')
+  }
+
+  private get verificationSeekBarAndroid() {
+    return $(
+      '//*[@resource-id="varificationOfPayee_slider_confirm" or @resource-id="com.moneybase.qa:id/varificationOfPayee_slider_confirm"]//android.widget.SeekBar'
+    )
   }
 
   // TODO: replace with stable selector for SEPA beneficiary/item card
@@ -182,7 +213,11 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get slideTextAndroid() {
-    return $('android=new UiSelector().text("Slide to make payment")')
+    return $('android=new UiSelector().textContains("Slide to make payment")')
+  }
+
+  private get slideDescAndroid() {
+    return $('android=new UiSelector().descriptionContains("Slide to make payment")')
   }
 
   /* =========================
@@ -203,6 +238,10 @@ class BankTransferP2PIndividualPage extends BasePage {
 
   private get amountP2PIOS() {
     return $('~makePayment_input_amount')
+  }
+
+  private get reviewPaymentBtnIOS() {
+    return $('~makePayment_button_review')
   }
 
   // TODO: replace with stable selector for SEPA beneficiary/item card
@@ -242,19 +281,66 @@ class BankTransferP2PIndividualPage extends BasePage {
   private async ensureSliderReadyAndroid() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
     await browser.hideKeyboard().catch(() => {})
-    await this.sliderWrapperAndroid.waitForDisplayed({ timeout: 30000 })
+
+    await browser
+      .waitUntil(
+        async () =>
+          (await this.sliderWrapperAndroidLegacy.isDisplayed().catch(() => false)) ||
+          (await this.verificationSliderWrapperAndroid.isDisplayed().catch(() => false)),
+        { timeout: 30000, interval: 250 }
+      )
+      .catch(() => {})
+  }
+
+  private async maybeTapReviewPaymentAndroid() {
+    if (!browser.isAndroid) return
+
+    const shown = await this.reviewPaymentBtnAndroid.waitForDisplayed({ timeout: 3000 }).catch(() => false)
+    if (!shown) return
+
+    await browser.hideKeyboard().catch(() => {})
+
+    await browser
+      .waitUntil(async () => await this.reviewPaymentBtnAndroid.isEnabled().catch(() => false), {
+        timeout: 20000,
+        interval: 250,
+      })
+      .catch(() => {})
+
+    await this.tap(this.reviewPaymentBtnAndroid)
+  }
+
+  private async resolveSeekBarAndroid() {
+    const legacyShown = await this.seekBarAndroidLegacy.isDisplayed().catch(() => false)
+    if (legacyShown) return this.seekBarAndroidLegacy
+
+    await this.verificationSeekBarAndroid.waitForDisplayed({ timeout: 20000 })
+    return this.verificationSeekBarAndroid
+  }
+
+  private async isSlideHintVisibleAndroid() {
+    return (
+      (await this.slideTextAndroid.isDisplayed().catch(() => false)) ||
+      (await this.slideDescAndroid.isDisplayed().catch(() => false))
+    )
   }
 
   private async dragSliderToRightAndroid() {
-    await this.seekBarAndroid.waitForDisplayed({ timeout: 20000 })
+    const legacyShown = await this.seekBarAndroidLegacy.isDisplayed().catch(() => false)
 
-    const sb = await this.seekBarAndroid
-    const loc = await sb.getLocation()
-    const size = await sb.getSize()
+    // Prefer dragging from the thumb/handle (works for new verification sheet)
+    const thumbShown = await this.slideDescAndroid.isDisplayed().catch(() => false)
+    const dragEl = legacyShown ? this.seekBarAndroidLegacy : thumbShown ? this.slideDescAndroid : await this.resolveSeekBarAndroid()
+
+    await dragEl.waitForDisplayed({ timeout: 20000 })
+
+    const loc = await dragEl.getLocation()
+    const size = await dragEl.getSize()
+    const { width } = await browser.getWindowRect()
 
     const y = Math.round(loc.y + size.height * 0.5)
-    const startX = Math.round(loc.x + 2)
-    const endX = Math.round(loc.x + size.width - 2)
+    const startX = Math.round(loc.x + size.width * 0.6)
+    const endX = Math.max(startX + 260, Math.round(width - 30))
 
     for (let i = 0; i < 3; i++) {
       await browser.performActions([
@@ -266,7 +352,7 @@ class BankTransferP2PIndividualPage extends BasePage {
             { type: 'pointerMove', duration: 0, x: startX, y },
             { type: 'pointerDown', button: 0 },
             { type: 'pause', duration: 250 },
-            { type: 'pointerMove', duration: 900, x: endX, y },
+            { type: 'pointerMove', duration: 1100, x: endX, y },
             { type: 'pointerUp', button: 0 },
           ],
         },
@@ -275,7 +361,7 @@ class BankTransferP2PIndividualPage extends BasePage {
       await browser.releaseActions()
       await browser.pause(600)
 
-      const stillThere = await this.slideTextAndroid.isDisplayed().catch(() => false)
+      const stillThere = await this.isSlideHintVisibleAndroid()
       if (!stillThere) return
     }
 
@@ -285,7 +371,32 @@ class BankTransferP2PIndividualPage extends BasePage {
   private async ensureSliderReadyIOS() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
     await browser.hideKeyboard().catch(() => {})
-    await this.slideTextIOS.waitForDisplayed({ timeout: 30000 })
+    await browser
+      .waitUntil(
+        async () =>
+          (await this.slideTextIOS.isDisplayed().catch(() => false)) ||
+          (await this.sliderPayIconIOS.isDisplayed().catch(() => false)),
+        { timeout: 30000, interval: 250 }
+      )
+      .catch(() => {})
+  }
+
+  private async maybeTapReviewPaymentIOS() {
+    if (!browser.isIOS) return
+
+    await browser.hideKeyboard().catch(() => {})
+
+    const shown = await this.reviewPaymentBtnIOS.waitForDisplayed({ timeout: 3000 }).catch(() => false)
+    if (!shown) return
+
+    await browser
+      .waitUntil(async () => await this.reviewPaymentBtnIOS.isEnabled().catch(() => false), {
+        timeout: 20000,
+        interval: 250,
+      })
+      .catch(() => {})
+
+    await this.tap(this.reviewPaymentBtnIOS)
   }
 
   private async dragSliderToRightIOS() {
@@ -465,10 +576,18 @@ class BankTransferP2PIndividualPage extends BasePage {
   private async ensureIndividualAccountIOS() {
     if (!browser.isIOS) return
 
-    await this.profilePickerUserNameLabelIOS.waitForDisplayed({ timeout: 15000 })
+    const pickerShown = await this.profilePickerUserNameLabelIOS
+      .waitForDisplayed({ timeout: 6000 })
+      .catch(() => false)
+    if (!pickerShown) return
+
     await this.tap(this.profilePickerUserNameLabelIOS)
 
-    await this.profilePickerIndividualItemIOS.waitForDisplayed({ timeout: 15000 })
+    const individualShown = await this.profilePickerIndividualItemIOS
+      .waitForDisplayed({ timeout: 8000 })
+      .catch(() => false)
+    if (!individualShown) return
+
     await this.tap(this.profilePickerIndividualItemIOS)
 
     await this.profilePickerIndividualItemIOS
@@ -504,15 +623,16 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.beneficiaryPayBtnAndroid.waitForDisplayed({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnAndroid)
 
-    await this.amountP2PAndroid.waitForDisplayed({ timeout: 20000 })
-    await this.amountP2PAndroid.clearValue().catch(() => {})
-    await this.amountP2PAndroid.setValue(String(amount))
+    const amountInput = await this.resolveAmountInputP2PAndroid()
+    await amountInput.waitForDisplayed({ timeout: 20000 })
+    await amountInput.clearValue().catch(() => {})
+    await amountInput.setValue(String(amount))
+
+    await this.maybeTapReviewPaymentAndroid()
 
     await this.ensureSliderReadyAndroid()
 
     await this.dragSliderToRightAndroid()
-
-    await this.minusAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 60000 })
 
     await this.exitToHomeAfterP2PAndroid()
 
@@ -537,6 +657,8 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.tap(this.amountP2PIOS)
     await this.amountP2PIOS.clearValue().catch(() => {})
     await this.amountP2PIOS.setValue(String(amount))
+
+    await this.maybeTapReviewPaymentIOS()
 
     await this.ensureSliderReadyIOS()
     await this.dragSliderToRightIOS()
@@ -596,6 +718,8 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.amountP2PIOS.clearValue().catch(() => {})
     await this.amountP2PIOS.setValue(String(amount))
 
+    await this.maybeTapReviewPaymentIOS()
+
     await this.ensureSliderReadyIOS()
     await this.dragSliderToRightIOS()
 
@@ -651,6 +775,8 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.tap(this.amountP2PIOS)
     await this.amountP2PIOS.clearValue().catch(() => {})
     await this.amountP2PIOS.setValue(String(amount))
+
+    await this.maybeTapReviewPaymentIOS()
 
     await this.ensureSliderReadyIOS()
     await this.dragSliderToRightIOS()
