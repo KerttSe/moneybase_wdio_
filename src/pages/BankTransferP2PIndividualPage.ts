@@ -343,26 +343,51 @@ class BankTransferP2PIndividualPage extends BasePage {
     const endX = Math.max(startX + 260, Math.round(width - 30))
 
     for (let i = 0; i < 3; i++) {
-      await browser.performActions([
-        {
-          type: 'pointer',
-          id: 'finger1',
-          parameters: { pointerType: 'touch' },
-          actions: [
-            { type: 'pointerMove', duration: 0, x: startX, y },
-            { type: 'pointerDown', button: 0 },
-            { type: 'pause', duration: 250 },
-            { type: 'pointerMove', duration: 1100, x: endX, y },
-            { type: 'pointerUp', button: 0 },
-          ],
-        },
-      ])
+        try {
+          await browser.performActions([
+            {
+              type: 'pointer',
+              id: 'finger1',
+              parameters: { pointerType: 'touch' },
+              actions: [
+                { type: 'pointerMove', duration: 0, x: startX, y },
+                { type: 'pointerDown', button: 0 },
+                { type: 'pause', duration: 250 },
+                { type: 'pointerMove', duration: 1100, x: endX, y },
+                { type: 'pointerUp', button: 0 },
+              ],
+            },
+          ])
 
-      await browser.releaseActions()
-      await browser.pause(600)
+          await browser.releaseActions().catch(() => {})
+        } catch (err) {
+          // Fallbacks for environments where performActions/releaseActions fail
+          try {
+            const resolved = dragEl
+            await resolved.touchAction([
+              { action: 'press', x: startX, y },
+              { action: 'wait', ms: 250 },
+              { action: 'moveTo', x: endX, y },
+              'release',
+            ])
+          } catch (err2) {
+            try {
+              const resolved = dragEl as any
+              const elId = resolved.elementId || resolved.ELEMENT
+              if (elId) {
+                await browser.execute('mobile: dragGesture', { elementId: elId, endX, endY: y, speed: 1000 }).catch(() => {})
+              }
+            } catch (_) {
+              // final fallback: ignore and let checks detect failure
+            }
+          }
 
-      const stillThere = await this.isSlideHintVisibleAndroid()
-      if (!stillThere) return
+          await browser.pause(600)
+
+        }
+
+        const stillThere = await this.isSlideHintVisibleAndroid()
+        if (!stillThere) return
     }
 
     throw new Error('Slider drag did not trigger payment')
@@ -427,7 +452,7 @@ class BankTransferP2PIndividualPage extends BasePage {
         },
       ])
 
-      await browser.releaseActions()
+      await browser.releaseActions().catch(() => {})
       await browser.pause(600)
 
       const stillThere = await this.slideTextIOS.isDisplayed().catch(() => false)
@@ -527,7 +552,7 @@ class BankTransferP2PIndividualPage extends BasePage {
         ],
       },
     ])
-    await browser.releaseActions()
+    await browser.releaseActions().catch(() => {})
     await browser.pause(700)
   }
 
@@ -560,7 +585,7 @@ class BankTransferP2PIndividualPage extends BasePage {
         ],
       },
     ])
-    await browser.releaseActions()
+    await browser.releaseActions().catch(() => {})
     await browser.pause(400)
   }
 

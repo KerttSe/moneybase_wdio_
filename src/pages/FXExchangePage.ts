@@ -40,6 +40,10 @@ class FXExchangePage extends BasePage {
     return $('-ios predicate string: type == "XCUIElementTypeButton" AND name == "New"')
   }
 
+  private get newTabButtonAndroidByResId() {
+    return $('//*[@resource-id="mat-tab-link-0"]')
+  }
+
   private get historyTabButton() {
     if (browser.isAndroid) {
       return $('android=new UiSelector().text("History")')
@@ -448,7 +452,21 @@ class FXExchangePage extends BasePage {
 
       if (newSelected && fromWalletVisible) return
 
-      await this.tapElementCenter(this.newTabButton, 10000)
+      if (browser.isAndroid) {
+        const newByTextVisible = await this.newTabButton.isDisplayed().catch(() => false)
+        const newByResIdVisible = await this.newTabButtonAndroidByResId.isDisplayed().catch(() => false)
+
+        if (newByTextVisible) {
+          await this.tapElementCenter(this.newTabButton, 10000)
+        } else if (newByResIdVisible) {
+          await this.tapElementCenter(this.newTabButtonAndroidByResId, 10000)
+        } else if (fromWalletVisible) {
+          return
+        }
+      } else {
+        await this.tapElementCenter(this.newTabButton, 10000)
+      }
+
       await browser.pause(600)
 
       const formVisible = await this.fromWalletField.isDisplayed().catch(() => false)
@@ -486,7 +504,7 @@ class FXExchangePage extends BasePage {
         ],
       },
     ])
-    await browser.releaseActions()
+    await browser.releaseActions().catch(() => {})
     await browser.pause(700)
   }
 
@@ -500,7 +518,6 @@ class FXExchangePage extends BasePage {
     await this.homeExchangeButton.waitForDisplayed({ timeout: 15000 })
     await this.tapElementCenter(this.homeExchangeButton, 15000)
     await this.waitForAnyDisplayed(this.fxExchangeScreenCandidates, 15000, 'FX Exchange screen')
-    await this.newTabButton.waitForDisplayed({ timeout: 15000 })
     await this.ensureNewTabActive()
     await this.waitForAnyDisplayed(this.fromWalletCandidates, 15000, 'From Wallet field')
   }
@@ -529,13 +546,29 @@ class FXExchangePage extends BasePage {
   public async submitExchange(amount = 11) {
     await this.waitForReadyToSubmit(amount)
     await this.exchangeSubmitButton.waitForDisplayed({ timeout: 15000 })
-    await this.exchangeSubmitButton.waitForEnabled({ timeout: 15000 }).catch(() => {})
+
+    const canSubmit = await this.exchangeSubmitButton
+      .waitForEnabled({ timeout: 30000 })
+      .then(() => true)
+      .catch(() => false)
+
+    if (!canSubmit) {
+      await this.debugSnapshot('fx-exchange-button-disabled')
+      throw new Error('FX Exchange button did not become enabled')
+    }
+
     await this.tapElementCenter(this.exchangeSubmitButton, 15000)
 
-    await this.continueBtn.waitForDisplayed({ timeout: 20000 })
-    await this.tapElementCenter(this.continueBtn, 20000)
-
     if (browser.isAndroid) {
+      const continueShown = await this.continueBtn
+        .waitForDisplayed({ timeout: 12000 })
+        .then(() => true)
+        .catch(() => false)
+
+      if (continueShown) {
+        await this.tapElementCenter(this.continueBtn, 12000)
+      }
+
       const homeRoot = $('android=new UiSelector().resourceId("home_screen")')
       const homeVisibleAfterContinue = await homeRoot
         .waitForDisplayed({ timeout: 5000 })
@@ -564,6 +597,9 @@ class FXExchangePage extends BasePage {
       await HomeScreenPage.waitForHomeLoaded()
       return
     }
+
+    await this.continueBtn.waitForDisplayed({ timeout: 20000 })
+    await this.tapElementCenter(this.continueBtn, 20000)
 
     await this.backBtn.waitForDisplayed({ timeout: 20000 })
     await this.tapElementCenter(this.backBtn, 20000)

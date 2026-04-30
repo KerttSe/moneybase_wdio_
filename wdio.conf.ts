@@ -1,13 +1,40 @@
+import * as dotenv from 'dotenv'
 import type { Options } from '@wdio/types'
 import { execSync } from 'node:child_process'
+import { resolve } from 'node:path'
 import { attachFailureArtifacts, writeAllureEnvironment, writeAllureExecutor } from './src/helpers/allure.helper'
 
+const envBaseDir = process.env.INIT_CWD ?? process.env.PWD ?? process.cwd()
+const envPath = resolve(envBaseDir, '.env')
+dotenv.config({ path: envPath })
 
 
 
+
+
+
+const requireEnv = (name: string): string => {
+  const value = process.env[name]
+  if (!value) {
+    throw new Error(
+      `[BrowserStack] Missing env ${name}. Fill it in .env / CI secrets and re-run (BROWSERSTACK=true).`,
+    )
+  }
+  return value
+}
 
 const useBrowserStack = process.env.BROWSERSTACK === 'true'
 const platformFilter = process.env.PLATFORM?.toLowerCase()
+
+const browserStackUser = useBrowserStack ? requireEnv('BROWSERSTACK_USERNAME') : undefined
+const browserStackKey = useBrowserStack ? requireEnv('BROWSERSTACK_ACCESS_KEY') : undefined
+
+if (useBrowserStack) {
+  const needsAndroid = !platformFilter || platformFilter === 'android'
+  const needsIos = !platformFilter || platformFilter === 'ios'
+  if (needsAndroid) requireEnv('BS_APP_ANDROID')
+  if (needsIos) requireEnv('BS_APP_IOS')
+}
 
 const browserStackCapabilities: WebdriverIO.Capabilities[] = [
   {
@@ -16,13 +43,16 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
       projectName: process.env.BS_PROJECT || 'moneybase_wdio',
       buildName: process.env.BS_BUILD || `local-${new Date().toISOString()}`,
       sessionName: 'Android tests',
-      userName: process.env.BROWSERSTACK_USERNAME,
-      accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
+      userName: browserStackUser,
+      accessKey: browserStackKey,
       appiumVersion: '2.0.0',
-      deviceName: process.env.BS_ANDROID_DEVICE || 'Google Pixel 6',
-      osVersion: process.env.BS_ANDROID_OS || '13.0',
+      deviceName: 'Google Pixel 9',
+      osVersion: '15.0',
     },
     'appium:app': process.env.BS_APP_ANDROID,
+    'appium:autoGrantPermissions': true,
+    'appium:appPackage': process.env.BS_ANDROID_APP_PACKAGE,
+    'appium:appActivity': process.env.BS_ANDROID_APP_ACTIVITY,
   },
   {
     platformName: 'iOS',
@@ -30,13 +60,14 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
       projectName: process.env.BS_PROJECT || 'moneybase_wdio',
       buildName: process.env.BS_BUILD || `local-${new Date().toISOString()}`,
       sessionName: 'iOS tests',
-      userName: process.env.BROWSERSTACK_USERNAME,
-      accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
+      userName: browserStackUser,
+      accessKey: browserStackKey,
       appiumVersion: '2.0.0',
       deviceName: process.env.BS_IOS_DEVICE || 'iPhone 14',
       osVersion: process.env.BS_IOS_OS || '16',
     },
     'appium:app': process.env.BS_APP_IOS,
+    'appium:bundleId': process.env.BS_IOS_BUNDLE_ID,
   },
 ]
 
@@ -114,6 +145,11 @@ export const config: WebdriverIO.Config = {
   },
 
   afterTest: async function (test, context, { error }) {
+    if (!error) return
+    await attachFailureArtifacts()
+  },
+
+  afterHook: async function (_test, _context, { error }) {
     if (!error) return
     await attachFailureArtifacts()
   },

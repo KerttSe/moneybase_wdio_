@@ -207,7 +207,7 @@ private async smallScrollDownToDepositIOS() {
       ],
     },
   ])
-  await browser.releaseActions()
+  await browser.releaseActions().catch(() => {})
   await browser.pause(1000)
 }
 
@@ -268,7 +268,7 @@ if (browser.isAndroid) {
         ],
       },
     ])
-    await browser.releaseActions()
+    await browser.releaseActions().catch(() => {})
     await browser.pause(300)
     await browser.pressKeyCode(66).catch(() => {})
 
