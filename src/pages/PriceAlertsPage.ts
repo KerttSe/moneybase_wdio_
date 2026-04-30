@@ -15,6 +15,44 @@ type CreatePriceAlertParams = {
 }
 
 export default class PriceAlertsPage extends BasePage {
+  private async tapIOSDisplayed(el: WdioEl | WebdriverIO.Element, timeout = 10000) {
+    const resolved = (await el) as WebdriverIO.Element
+    await resolved.waitForDisplayed({ timeout })
+    const loc = await resolved.getLocation()
+    const size = await resolved.getSize()
+    const x = Math.round(loc.x + size.width / 2)
+    const y = Math.round(loc.y + size.height / 2)
+    await browser.execute('mobile: tap', { x, y })
+  }
+
+  private async focusSearchInstrumentIOS() {
+    // iOS flake: first tap on Search Instrument can “bounce” back.
+    // We keep the same locators and simply retry by re-opening Price Alerts.
+    const searchCandidates = [this.searchInstrumentTextFieldIOS, this.searchInstrumentInputIOS]
+
+    for (let attempt = 1; attempt <= 2; attempt += 1) {
+      await this.openPriceAlertsIOS()
+      await this.goToNewTabIOS()
+
+      const input = await this.getFirstDisplayed(searchCandidates, 'Search Instrument input (iOS)')
+      await this.tapIOSDisplayed(input, 20000)
+      await browser.pause(350)
+
+      const stillOnScreen = await this.waitForAnyDisplayed(searchCandidates, 4000, 'Search Instrument input after tap (iOS)')
+        .then(() => true)
+        .catch(() => false)
+
+      if (stillOnScreen) return input
+
+      if (attempt < 2) {
+        await browser.pause(650)
+      }
+    }
+
+    await this.debugSnapshot('price-alerts-ios-search-bounced-after-tap')
+    throw new Error('Search Instrument did not stay open after tap (iOS)')
+  }
+
   private byIdAndroid(name: string) {
     const rx = `.*:id/${name}$|^${name}$`
     return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
@@ -175,12 +213,20 @@ export default class PriceAlertsPage extends BasePage {
     return $('//*[@class="android.widget.EditText" and @input-type="1" and not(contains(@resource-id,"globalCodeInput"))]')
   }
 
+  private get investSearchOverlayInputAndroidLoose() {
+    return $('//*[@class="android.widget.EditText" and not(contains(@resource-id,"globalCodeInput"))]')
+  }
+
   private get investSearchCancelAndroid() {
     return this.androidText('Cancel')
   }
 
   private get investSearchInstrumentsHeaderAndroid() {
     return this.androidText('Instruments')
+  }
+
+  private get investSearchLabelAndroid() {
+    return this.androidText('Search Instrument')
   }
 
   private get priceAlertsHeaderAndroid() {
@@ -257,6 +303,10 @@ export default class PriceAlertsPage extends BasePage {
     return $('//*[@class="android.widget.EditText" and (@hint="Find Instrument" or @content-desc="Find Instrument")]')
   }
 
+  private get findInstrumentSearchTriggerAndroid() {
+    return $('//*[@class="android.widget.EditText" and (@hint="Find Instrument" or @content-desc="Find Instrument")]/following-sibling::android.view.View[1]')
+  }
+
   private get addNewPriceAlertAnchorAndroid() {
     return this.androidText('Add a New Price Alert')
   }
@@ -271,6 +321,14 @@ export default class PriceAlertsPage extends BasePage {
 
   private get saveBtnAndroidById() {
     return this.byIdAndroid('priceAlerts_button_save')
+  }
+
+  private get newOrderHeaderAndroid() {
+    return this.androidText('New Order')
+  }
+
+  private get placeBuyOrderBtnAndroid() {
+    return this.androidText('Place Buy Order')
   }
 
   private get bmwSearchResultImageAndroid() {
@@ -356,16 +414,32 @@ export default class PriceAlertsPage extends BasePage {
       this.globalCodeInputAndroidByResourceId,
     ]
 
+    const overlayCandidates = [
+      this.investSearchOverlayInputAndroid,
+      this.investSearchOverlayInputAndroidLoose,
+      this.findInstrumentInputAndroidByXpathMatTab,
+      this.findInstrumentInputAndroidByHint,
+      this.findInstrumentInputAndroidByResourceId,
+      this.findInstrumentInputAndroidByClassInstance,
+      this.investSearchLabelAndroid,
+      this.investSearchCancelAndroid,
+      this.investSearchInstrumentsHeaderAndroid,
+    ]
+
+    const alreadyOpen = await this
+      .waitForAnyDisplayed(overlayCandidates, 2500, 'Invest search overlay')
+      .then(() => true)
+      .catch(() => false)
+
+    if (alreadyOpen) {
+      await browser.pause(300)
+      return
+    }
+
     await this.waitForAnyDisplayed(triggerCandidates, 20000, 'Invest search trigger')
     const trigger = await this.getFirstDisplayed(triggerCandidates, 'Invest search trigger')
     await trigger.click()
     await browser.pause(500)
-
-    const overlayCandidates = [
-      this.investSearchOverlayInputAndroid,
-      this.investSearchCancelAndroid,
-      this.investSearchInstrumentsHeaderAndroid,
-    ]
 
     await this.waitForAnyDisplayed(overlayCandidates, 20000, 'Invest search overlay')
     await browser.pause(500)
@@ -424,7 +498,7 @@ export default class PriceAlertsPage extends BasePage {
         ],
       },
     ])
-    await browser.releaseActions()
+    await browser.releaseActions().catch(() => {})
     await browser.pause(450)
   }
 
@@ -517,6 +591,22 @@ export default class PriceAlertsPage extends BasePage {
     ]
 
     await this.waitForAnyDisplayed(anchors, 20000, 'Price Alerts screen (Android)')
+  }
+
+  private async isOnNewOrderScreenAndroid() {
+    const anchors = [
+      this.newOrderHeaderAndroid,
+      this.placeBuyOrderBtnAndroid,
+      this.androidText('BUY'),
+      this.androidText('SELL'),
+    ]
+
+    for (const candidate of anchors) {
+      const el = (await candidate) as unknown as WebdriverIO.Element
+      if (await el.isDisplayed().catch(() => false)) return true
+    }
+
+    return false
   }
 
   private async openPriceAlertsIOS() {
@@ -620,7 +710,7 @@ export default class PriceAlertsPage extends BasePage {
         ],
       },
     ])
-    await browser.releaseActions()
+    await browser.releaseActions().catch(() => {})
     await browser.pause(450)
   }
 
@@ -637,27 +727,77 @@ export default class PriceAlertsPage extends BasePage {
   }
 
   private async typeInstrumentQueryIOS(query: string) {
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
     // On iOS the search lives under the "New" tab.
     await this.goToNewTabIOS()
 
-    const input = await this.getSearchInstrumentFieldIOS()
-    await input.click()
-    await input.clearValue().catch(() => {})
-    await input.setValue(query)
-    await browser.pause(600)
+    const inputPrimary = await this.focusSearchInstrumentIOS()
+
+    const typeInto = async (input: WebdriverIO.Element) => {
+      await this.tapIOSDisplayed(input, 20000)
+      await input.clearValue().catch(() => {})
+      await input.setValue(query)
+      await browser.pause(350)
+
+      const returnKey = this.iosA11y('Return')
+      const returnShown = await returnKey.isDisplayed().catch(() => false)
+      if (returnShown) {
+        await returnKey.click()
+      } else {
+        await browser.hideKeyboard().catch(() => {})
+      }
+
+      await browser.pause(600)
+    }
+
+    await typeInto(inputPrimary)
+
+    const value = await inputPrimary.getValue().catch(() => '')
+    if (!value || !value.toLowerCase().includes(query.trim().toLowerCase())) {
+      // Some builds expose a non-editable placeholder element first; retry with the other candidate.
+      const textField = (await this.searchInstrumentTextFieldIOS) as unknown as WebdriverIO.Element
+      const a11yInput = (await this.searchInstrumentInputIOS) as unknown as WebdriverIO.Element
+
+      const inputSecondary = inputPrimary.elementId === textField.elementId ? a11yInput : textField
+      const secondaryShown = await inputSecondary.isDisplayed().catch(() => false)
+      if (secondaryShown) {
+        await typeInto(inputSecondary)
+      }
+    }
   }
 
   private async selectFirstSearchResultIOS(query: string) {
     const q = query.trim()
 
     const byTextCandidates = [
+      this.iosPredicate(
+        `(
+          type == "XCUIElementTypeCell" OR
+          type == "XCUIElementTypeLink" OR
+          type == "XCUIElementTypeStaticText" OR
+          type == "XCUIElementTypeButton"
+        ) AND (
+          label CONTAINS[c] "${q}" OR name CONTAINS[c] "${q}" OR value CONTAINS[c] "${q}"
+        )`
+      ),
       this.iosPredicate(`label CONTAINS[c] "${q}" OR name CONTAINS[c] "${q}"`),
       this.iosPredicate(`value CONTAINS[c] "${q}"`),
     ]
 
-    const shown = await this.waitForAnyDisplayed(byTextCandidates, 15000, `Search result for ${q} (iOS)`).then(() => true).catch(() => false)
+    const anyResultCandidates = [this.iosClassChain('**/XCUIElementTypeCell'), this.iosClassChain('**/XCUIElementTypeLink')]
+
+    // First, wait for a result containing the query; otherwise, fall back to any visible result container.
+    const shown = await this.waitForAnyDisplayed(byTextCandidates, 25000, `Search result for ${q} (iOS)`).then(() => true).catch(() => false)
     if (shown) {
       await this.tapFirstDisplayed(byTextCandidates, `Search result for ${q} (iOS)`)
+      await browser.pause(700)
+      return
+    }
+
+    const anyShown = await this.waitForAnyDisplayed(anyResultCandidates, 12000, `Any search result container (iOS)`).then(() => true).catch(() => false)
+    if (anyShown) {
+      await this.tapFirstDisplayed(anyResultCandidates, `Any search result container (iOS)`)
       await browser.pause(700)
       return
     }
@@ -717,15 +857,33 @@ export default class PriceAlertsPage extends BasePage {
     await input.click()
     await input.clearValue().catch(() => {})
     await input.setValue(query)
-    await browser.pause(400)
+    await browser.pause(500)
+
+    const typedText = [
+      await input.getText().catch(() => ''),
+      await input.getAttribute('text').catch(() => ''),
+      await input.getAttribute('value').catch(() => ''),
+    ].join(' ')
+
+    if (!typedText.toLowerCase().includes(query.trim().toLowerCase())) {
+      // Some Android WebView builds drop the first setValue.
+      await input.click()
+      await input.clearValue().catch(() => {})
+      await input.setValue(query)
+      await browser.pause(350)
+    }
 
     // Trigger search (some builds only populate results after Enter/search action)
     await browser.keys(['Enter']).catch(() => {})
+    const triggerShown = await this.findInstrumentSearchTriggerAndroid.isDisplayed().catch(() => false)
+    if (triggerShown) {
+      await this.findInstrumentSearchTriggerAndroid.click().catch(() => {})
+    }
     await browser.pause(250)
 
     // Best-effort: hide keyboard so results can update.
     await browser.hideKeyboard().catch(() => {})
-    await browser.pause(650)
+    await browser.pause(1200)
   }
 
   private async selectFirstSearchResultAndroid(query: string) {
@@ -754,7 +912,7 @@ export default class PriceAlertsPage extends BasePage {
     ]
 
     // Wait a bit for results; fall back to any clickable item in the first result list
-    const shown = await this.waitForAnyDisplayed(candidates, 15000, `Search result for ${q}`).then(() => true).catch(() => false)
+    const shown = await this.waitForAnyDisplayed(candidates, 22000, `Search result for ${q}`).then(() => true).catch(() => false)
     if (shown) {
       await this.tapFirstDisplayed(candidates, `Search result for ${q}`)
       await browser.pause(600)
@@ -810,9 +968,111 @@ export default class PriceAlertsPage extends BasePage {
   private async fillOptionalFieldsAndSaveAndroid(params: CreatePriceAlertParams) {
     const { thresholdValue, dateValue } = params
 
+    const saveCandidates = [
+      this.saveBtnAndroidById,
+      this.saveBtnAndroidByText,
+      this.saveBtnAndroidByDesc,
+      this.androidTextContains('Save'),
+      $('//android.widget.Button[@text="Save"]'),
+    ]
+
+    const ensureRequiredFieldsForNewRuleAndroid = async () => {
+      const newRuleShown = await this.androidText('New Rule').isDisplayed().catch(() => false)
+      if (!newRuleShown) return
+
+      const isSaveEnabled = async () => {
+        for (const candidate of saveCandidates) {
+          const el = (await candidate) as unknown as WebdriverIO.Element
+          const visible = await el.isDisplayed().catch(() => false)
+          if (!visible) continue
+          const enabled = await el.isEnabled().catch(() => false)
+          if (enabled) return true
+        }
+        return false
+      }
+
+      if (await isSaveEnabled()) return
+
+      const plusButtonCandidates = [
+        $('//*[contains(@text,"Target Price")]/following::android.widget.Button[@enabled="true"][1]'),
+        $('//android.view.View[contains(@text,"Target Price")]/following::android.widget.Button[@enabled="true"][1]'),
+      ]
+
+      const plusShown = await this.waitForAnyDisplayed(plusButtonCandidates, 2000, 'Target Price plus button (Android)')
+        .then(() => true)
+        .catch(() => false)
+
+      if (plusShown) {
+        const plusBtn = await this.getFirstDisplayed(plusButtonCandidates, 'Target Price plus button (Android)')
+        await plusBtn.click().catch(() => {})
+        await browser.pause(150)
+      }
+
+      if (await isSaveEnabled()) return
+
+      const conditionFieldCandidates = [
+        $('//android.view.View[@text="Select" and @clickable="true"]'),
+        $('//*[contains(@text,"Condition")]/following::*[(self::android.view.View or self::android.widget.TextView) and (@text="Select" or contains(@text,"Select"))][1]'),
+        $('//android.view.View[@text="Select"]'),
+        $('//*[contains(@text,"Condition")]/following::android.view.View[@clickable="true"][1]'),
+      ]
+
+      const conditionFieldShown = await this.waitForAnyDisplayed(conditionFieldCandidates, 3000, 'Condition selector (Android)')
+        .then(() => true)
+        .catch(() => false)
+
+      if (conditionFieldShown) {
+        await this.tapFirstDisplayed(conditionFieldCandidates, 'Condition selector (Android)')
+        await browser.pause(300)
+
+        const conditionOptionCandidates = [
+          $('//android.view.View[contains(@text,"Greater than")]'),
+          $('//*[contains(@text,"Greater than")]'),
+          $('//android.widget.CheckedTextView[contains(@text,"Greater than")]'),
+          $('//android.widget.TextView[contains(@text,"Greater than")]'),
+          $('//android.widget.ListView//android.widget.TextView[1]'),
+          $('//android.widget.ListView//android.widget.CheckedTextView[1]'),
+          $('//android.widget.CheckedTextView[1]'),
+        ]
+
+        const optionShown = await this.waitForAnyDisplayed(conditionOptionCandidates, 3000, 'Condition option (Android)')
+          .then(() => true)
+          .catch(() => false)
+
+        if (optionShown) {
+          await this.tapFirstDisplayed(conditionOptionCandidates, 'Condition option (Android)')
+          await browser.pause(350)
+        }
+      }
+
+      const targetPriceCandidates = [
+        $('//*[contains(@text,"Target Price")]/following::android.widget.EditText[1]'),
+        $('//android.widget.TextView[contains(@text,"Target Price")]/following::android.widget.EditText[1]'),
+        $('//*[@resource-id="new-form-target-price"]//android.widget.EditText'),
+      ]
+
+      const targetShown = await this.waitForAnyDisplayed(targetPriceCandidates, 3000, 'Target Price input (Android)')
+        .then(() => true)
+        .catch(() => false)
+
+      if (targetShown) {
+        const targetInput = await this.getFirstDisplayed(targetPriceCandidates, 'Target Price input (Android)')
+        await targetInput.click().catch(() => {})
+        await targetInput.clearValue().catch(() => {})
+        await targetInput.setValue(String(thresholdValue ?? '100')).catch(async () => {
+          await browser.keys(String(thresholdValue ?? '100')).catch(() => {})
+        })
+        await browser.pause(250)
+        await browser.hideKeyboard().catch(() => {})
+      }
+    }
+
+    await ensureRequiredFieldsForNewRuleAndroid()
+
     // Best-effort fill: try a numeric threshold/price input if present
     if (thresholdValue) {
       const thresholdCandidates = [
+        $('//*[contains(@text,"Target Price")]/following::android.widget.EditText[1]'),
         $('//*[@class="android.widget.EditText" and (contains(@hint,"Price") or contains(@hint,"Target") or contains(@hint,"Value") or contains(@content-desc,"Price") or contains(@content-desc,"Target"))]'),
         this.byIdAndroid('priceAlerts_input_price'),
         this.byIdAndroid('priceAlerts_input_threshold'),
@@ -857,14 +1117,6 @@ export default class PriceAlertsPage extends BasePage {
       }
     }
 
-    const saveCandidates = [
-      this.saveBtnAndroidById,
-      this.saveBtnAndroidByText,
-      this.saveBtnAndroidByDesc,
-      this.androidTextContains('Save'),
-      $('//android.widget.Button[@text="Save"]'),
-    ]
-
     await this.waitForAnyDisplayed(saveCandidates, 15000, 'Save button')
 
     // Prefer enabled if possible
@@ -878,6 +1130,22 @@ export default class PriceAlertsPage extends BasePage {
       await el.click()
       tapped = true
       break
+    }
+
+    if (!tapped) {
+      // One more try: in New Rule flow Save can stay disabled until required fields are populated.
+      await ensureRequiredFieldsForNewRuleAndroid()
+
+      for (const candidate of saveCandidates) {
+        const el = (await candidate) as unknown as WebdriverIO.Element
+        const visible = await el.isDisplayed().catch(() => false)
+        if (!visible) continue
+        const enabled = await el.isEnabled().catch(() => true)
+        if (!enabled) continue
+        await el.click()
+        tapped = true
+        break
+      }
     }
 
     if (!tapped) {
@@ -937,12 +1205,18 @@ export default class PriceAlertsPage extends BasePage {
   public async createPriceAlertAndroid(params: CreatePriceAlertParams) {
     if (!browser.isAndroid) return
 
-    // On Android we create the alert from the first Invest search input,
-    // then after Back we re-open the Price Alerts tile to verify/delete it.
-    await this.openInvestSearchAndroid()
+    // On Android always create from Price Alerts -> New tab.
+    // Global Invest search can open Trade/New Order screen instead of Price Alerts create flow.
+    await this.openPriceAlertsAndroid()
+    await this.goToNewTabAndroid()
     await this.waitForFindInstrumentInputAndroid()
     await this.typeInstrumentQueryAndroid(params.instrumentQuery)
-    await this.selectFirstSearchResultAndroid(params.instrumentQuery)
+    await this.selectFirstSearchResultAndroid(params.instrumentQuery).catch(async () => {
+      // Retry once from the same New tab context; search results can be flaky on Android WebView.
+      await this.waitForFindInstrumentInputAndroid()
+      await this.typeInstrumentQueryAndroid(params.instrumentQuery)
+      await this.selectFirstSearchResultAndroid(params.instrumentQuery)
+    })
 
     // Align sequence with iOS: prefer +1% flow if present; fallback to Save/date flow.
     const usedPlus = await this.pickPlusOnePercentAndReturnAndroid().then(() => true).catch(() => false)
@@ -962,8 +1236,34 @@ export default class PriceAlertsPage extends BasePage {
       if (saveShown) {
         await this.fillOptionalFieldsAndSaveAndroid(params)
       } else {
+        const onOrderScreen = await this.isOnNewOrderScreenAndroid()
+        if (onOrderScreen) {
+          await browser.back().catch(() => {})
+          await browser.pause(700)
+
+          // Retry once from the correct Price Alerts context.
+          await this.openPriceAlertsAndroid()
+          await this.goToNewTabAndroid()
+          await this.waitForFindInstrumentInputAndroid()
+          await this.typeInstrumentQueryAndroid(params.instrumentQuery)
+          await this.selectFirstSearchResultAndroid(params.instrumentQuery)
+
+          const usedPlusRetry = await this.pickPlusOnePercentAndReturnAndroid().then(() => true).catch(() => false)
+          if (!usedPlusRetry) {
+            const saveShownRetry = await this.waitForAnyDisplayed(saveCandidates, 4000, 'Save button (retry)')
+              .then(() => true)
+              .catch(() => false)
+            if (saveShownRetry) {
+              await this.fillOptionalFieldsAndSaveAndroid(params)
+            } else {
+              await this.debugSnapshot('price-alerts-android-no-plus-no-save-retry')
+              throw new Error('Neither +1% option nor Save button appeared after selecting instrument (Android, retry)')
+            }
+          }
+        } else {
         await this.debugSnapshot('price-alerts-android-no-plus-no-save')
         throw new Error('Neither +1% option nor Save button appeared after selecting instrument (Android)')
+        }
       }
     }
 
@@ -1061,7 +1361,7 @@ export default class PriceAlertsPage extends BasePage {
         ],
       },
     ])
-    await browser.releaseActions()
+    await browser.releaseActions().catch(() => {})
     await browser.pause(600)
   }
 
@@ -1084,7 +1384,7 @@ export default class PriceAlertsPage extends BasePage {
         ],
       },
     ])
-    await browser.releaseActions()
+    await browser.releaseActions().catch(() => {})
     await browser.pause(400)
   }
 
