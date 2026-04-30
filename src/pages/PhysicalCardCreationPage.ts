@@ -234,8 +234,24 @@ class PhysicalCardCreationPage extends BasePage {
     return $('android=new UiSelector().text("Order")')
   }
 
+  private get orderPhysicalCardBtnAndroidByXpath() {
+    return $('//*[@text="Order"]/ancestor::android.view.View[@clickable="true"][1]')
+  }
+
+  private get cardDesignScreenAndroid() {
+    return $('android=new UiSelector().resourceId("cardDesignSelection_screen")')
+  }
+
   private get otpInputAndroid() {
     return $('id=com.moneybase.qa:id/otp_input')
+  }
+
+  private get pinInputAndroidFocused() {
+    return $('android=new UiSelector().className("android.widget.EditText").focused(true)')
+  }
+
+  private get pinInputAndroidFirst() {
+    return $('android=new UiSelector().className("android.widget.EditText").instance(0)')
   }
 
   private get closeSheetAndroid() {
@@ -433,10 +449,51 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private async typeOtpAndroid(value: string) {
-    await this.otpInputAndroid.waitForDisplayed({ timeout: 20000 })
-    await this.tap(this.otpInputAndroid)
-    await this.otpInputAndroid.clearValue().catch(() => {})
-    await this.otpInputAndroid.setValue(value)
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const candidates = [
+      this.otpInputAndroid,
+      this.pinInputAndroidFocused,
+      this.pinInputAndroidFirst,
+    ]
+
+    await browser.waitUntil(
+      async () => {
+        for (const el of candidates) {
+          if (await el.isDisplayed().catch(() => false)) return true
+        }
+        return false
+      },
+      {
+        timeout: 20000,
+        interval: 400,
+        timeoutMsg: 'PIN/OTP input did not appear on Android',
+      }
+    )
+
+    let target: WebdriverIO.Element | null = null
+    for (const el of candidates) {
+      if (await el.isDisplayed().catch(() => false)) {
+        target = el
+        break
+      }
+    }
+
+    if (!target) {
+      throw new Error('PIN/OTP input did not appear on Android')
+    }
+
+    await this.tap(target)
+    await target.clearValue().catch(() => {})
+
+    const typed = await target
+      .setValue(value)
+      .then(() => true)
+      .catch(() => false)
+
+    if (!typed) {
+      await browser.execute('mobile: type', { text: value }).catch(() => {})
+    }
   }
 
   private async closeCardSheetAndroid(timeoutMs = 60000) {
@@ -450,7 +507,10 @@ class PhysicalCardCreationPage extends BasePage {
         const closeButtonVisible = await this.closeButtonAndroid.isDisplayed().catch(() => false)
         const viewMyCardsVisible = await this.viewMyCardsBtnAndroid.isDisplayed().catch(() => false)
         const successVisible = await this.cardAddedSuccessTextAndroid.isDisplayed().catch(() => false)
-        return closeSheetExists || closeSheetAltExists || closeButtonVisible || viewMyCardsVisible || successVisible
+        const cardsShown = await this.cardsRootAndroid.isDisplayed().catch(() => false)
+        const freezeShown = await this.freezeButtonAndroid.isDisplayed().catch(() => false)
+        const reportShown = await this.reportButtonAndroid.isDisplayed().catch(() => false)
+        return closeSheetExists || closeSheetAltExists || closeButtonVisible || viewMyCardsVisible || successVisible || cardsShown || freezeShown || reportShown
       },
       {
         timeout: timeoutMs,
@@ -464,6 +524,9 @@ class PhysicalCardCreationPage extends BasePage {
     const closeButtonVisible = await this.closeButtonAndroid.isDisplayed().catch(() => false)
     const viewMyCardsVisible = await this.viewMyCardsBtnAndroid.isDisplayed().catch(() => false)
     const successVisible = await this.cardAddedSuccessTextAndroid.isDisplayed().catch(() => false)
+    const cardsShown = await this.cardsRootAndroid.isDisplayed().catch(() => false)
+    const freezeShown = await this.freezeButtonAndroid.isDisplayed().catch(() => false)
+    const reportShown = await this.reportButtonAndroid.isDisplayed().catch(() => false)
 
     if (closeSheetVisible) {
       await this.closeSheetAndroid.click()
@@ -475,6 +538,8 @@ class PhysicalCardCreationPage extends BasePage {
       await this.closeButtonAndroid.click()
     } else if (successVisible && closeSheetAltVisible) {
       await this.closeSheetAndroidByXpath.click()
+    } else if (cardsShown || freezeShown || reportShown) {
+      return
     } else {
       throw new Error('Close sheet controls not found')
     }
@@ -493,6 +558,33 @@ class PhysicalCardCreationPage extends BasePage {
         timeoutMsg: 'Card sheet did not close in time',
       }
     )
+  }
+
+  private async cleanupExistingCardAndroid(timeoutMs = 20000) {
+    if (!browser.isAndroid) return
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+    const hasExistingCard = await browser.waitUntil(
+      async () => {
+        const freezeShown = await this.freezeButtonAndroid.isDisplayed().catch(() => false)
+        const reportShown = await this.reportButtonAndroid.isDisplayed().catch(() => false)
+        const addNewShown = await this.addNewCardBtnAndroid.isDisplayed().catch(() => false)
+        if (freezeShown || reportShown) return true
+        if (addNewShown) return false
+        return false
+      },
+      {
+        timeout: 8000,
+        interval: 500,
+        timeoutMsg: 'Card screen readiness timeout',
+      }
+    ).catch(() => false)
+
+    if (!hasExistingCard) return
+
+    await this.reportAndBlockCardAndroid(timeoutMs)
+    await this.cardsRootAndroid.waitForDisplayed({ timeout: timeoutMs }).catch(() => {})
+    await this.addNewCardBtnAndroid.waitForDisplayed({ timeout: timeoutMs }).catch(() => {})
   }
 
   private async freezeAndUnfreezeCardAndroid(timeoutMs = 60000) {
@@ -727,14 +819,54 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   public async confirmPhysicalCardAndroid() {
-    const canConfirmDesign = await this.confirmDesignBtnAndroid.isDisplayed().catch(() => false)
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const canConfirmDesign = await this.confirmDesignBtnAndroid
+      .waitForDisplayed({ timeout: 20000 })
+      .then(() => true)
+      .catch(() => false)
+
     if (canConfirmDesign) {
       await this.tap(this.confirmDesignBtnAndroid)
-      return
+      await browser.pause(500)
     }
 
-    await this.orderPhysicalCardBtnAndroid.waitForDisplayed({ timeout: 20000 })
-    await this.tap(this.orderPhysicalCardBtnAndroid)
+    const canOrderByText = await this.orderPhysicalCardBtnAndroid
+      .waitForDisplayed({ timeout: 10000 })
+      .then(() => true)
+      .catch(() => false)
+    const canOrderByXpath = await this.orderPhysicalCardBtnAndroidByXpath.isDisplayed().catch(() => false)
+
+    if (canOrderByXpath) {
+      await this.tap(this.orderPhysicalCardBtnAndroidByXpath)
+    } else if (canOrderByText) {
+      await this.tap(this.orderPhysicalCardBtnAndroid)
+    }
+
+    await browser.waitUntil(
+      async () => {
+        const confirmAddress = await this.confirmAddressBtnAndroid.isDisplayed().catch(() => false)
+        const otpShown = await this.otpInputAndroid.isDisplayed().catch(() => false)
+        const addressLineShown = await this.addressLine1Android.isDisplayed().catch(() => false)
+        const stillOnDesign = await this.cardDesignScreenAndroid.isDisplayed().catch(() => false)
+        return confirmAddress || otpShown || addressLineShown || !stillOnDesign
+      },
+      {
+        timeout: 20000,
+        interval: 500,
+        timeoutMsg: 'Physical card flow did not move past card design screen',
+      }
+    )
+
+    const stillOnDesign = await this.cardDesignScreenAndroid.isDisplayed().catch(() => false)
+    if (stillOnDesign) {
+      const retryOrderByXpath = await this.orderPhysicalCardBtnAndroidByXpath.isDisplayed().catch(() => false)
+      if (retryOrderByXpath) {
+        await this.tap(this.orderPhysicalCardBtnAndroidByXpath)
+      } else if (await this.orderPhysicalCardBtnAndroid.isDisplayed().catch(() => false)) {
+        await this.tap(this.orderPhysicalCardBtnAndroid)
+      }
+    }
   }
 
   public async confirmDeliveryAddressAndroid() {
@@ -874,6 +1006,7 @@ class PhysicalCardCreationPage extends BasePage {
   /** Full flow — but data must come from spec */
   public async createPhysicalCardAndroid(pin: string, otp: string) {
     await this.openCardsTabAndroid()
+    await this.cleanupExistingCardAndroid(30000)
     await this.startAddNewCardAndroid()
     await this.choosePhysicalCardTypeAndroid()
     await this.confirmPhysicalCardAndroid()

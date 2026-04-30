@@ -1,6 +1,7 @@
 import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
 import type { AuthData } from '../data/credentials'
+import type { ChainablePromiseElement } from 'webdriverio'
 
 
 
@@ -34,6 +35,50 @@ export class LoginPage extends BasePage {
   get welcomeSkipBtn() { return this.byId(LoginPage.IDS.welcomeSkip) }
   get registerScreen() { return this.byId(LoginPage.IDS.registerScreen) }
 
+  private async dismissAndroidBlockersOnce() {
+    if (!browser.isAndroid) return
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const permissionAllow = $('id=com.android.permissioncontroller:id/permission_allow_button')
+    const permissionAllowLegacy = $('id=com.android.packageinstaller:id/permission_allow_button')
+    const permissionAllowText = $('android=new UiSelector().textMatches("(?i)allow")')
+
+    const clickIfVisible = async (el: ChainablePromiseElement) => {
+      const visible = await el.isDisplayed().catch(() => false)
+      if (!visible) return false
+      await el.click().catch(() => {})
+      return true
+    }
+
+    // System permissions
+    if (await clickIfVisible(permissionAllow)) return
+    if (await clickIfVisible(permissionAllowLegacy)) return
+    if (await clickIfVisible(permissionAllowText)) return
+
+    // In-app blocking alert
+    const alertShown = await this.alertBtn3Android.isDisplayed().catch(() => false)
+    if (alertShown) {
+      await this.tap(this.alertBtn3Android)
+      await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+    }
+  }
+
+  private async dismissPostOtpPopupAndroidOnce() {
+    if (!browser.isAndroid) return
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const googlePayClose = this.applePayProposalCloseBtn
+    const closeShown = await googlePayClose.isDisplayed().catch(() => false)
+    if (closeShown) {
+      await googlePayClose.click().catch(() => {})
+      await googlePayClose.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+    }
+
+    await this.dismissAndroidBlockersOnce()
+  }
+
   async prepare() {
     // welcome skip (2 ios and android)
     if (await this.isDisplayed(this.welcomeSkipBtn, 5000)) {
@@ -54,8 +99,21 @@ export class LoginPage extends BasePage {
       return
     }
 
-    //  Android: waiting for  register_screen, if not appears, try to dismiss possible system alerts and wait again
-    await this.registerScreen.waitForDisplayed({ timeout: 20000 })
+    // Android: wait for Register or Home, dismissing potential permission dialogs/alerts
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    await browser.waitUntil(async () => {
+      const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
+      const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+      if (registerShown || homeShown) return true
+
+      await this.dismissAndroidBlockersOnce()
+      return false
+    }, {
+      timeout: 60000,
+      interval: 800,
+      timeoutMsg: 'Register screen or Home did not appear on Android',
+    })
   }
 
 
@@ -299,7 +357,21 @@ async waitForOtpScreen() {
   }
 
   if (browser.isAndroid) {
-    await this.otpContainerAndroid.waitForDisplayed({ timeout: 40000 });
+    await browser.waitUntil(async () => {
+      const otpShown = await this.otpContainerAndroid.isDisplayed().catch(() => false)
+      const continueShown = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
+      const popupShown = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
+      const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+
+      if (otpShown || continueShown || popupShown || homeShown) return true
+
+      await this.dismissAndroidBlockersOnce()
+      return false
+    }, {
+      timeout: 40000,
+      interval: 500,
+      timeoutMsg: 'OTP or post-OTP screen did not appear on Android',
+    })
     return;
   }
 
@@ -324,7 +396,8 @@ async enterOtp(code: string = '123456') {
 
   if (browser.isAndroid) {
     const field = this.otpFieldAndroid; 
-    await field.waitForDisplayed({ timeout: 40000 });
+    const hasField = await field.waitForDisplayed({ timeout: 8000 }).catch(() => false)
+    if (!hasField) return
     await field.click();
     await field.setValue(otp); //  Android setValue ок
     return;
@@ -354,7 +427,7 @@ get applePayProposalCloseBtn() {
 
 get homeRoot() {
   if (browser.isAndroid) {
-    return $('android=new UiSelector().resourceId("home_screen")')
+    return this.byId('home_screen')
   }
   return $('~home_screen_view')
 }
@@ -362,9 +435,10 @@ get homeRoot() {
 
 /** 1) tap Continue */
 async tapContinueAfterOtp() {
-  await browser.pause(8200)
+  await browser.pause(1200)
 
   await browser.waitUntil(async () => {
+    await this.dismissPostOtpPopupAndroidOnce()
     const continueVisible = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
     const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
     const home = await this.homeRoot.isDisplayed().catch(() => false)
@@ -378,16 +452,23 @@ async tapContinueAfterOtp() {
   const continueVisible = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
   if (!continueVisible) return
 
-  await this.postOtpContinueBtn.waitForEnabled({ timeout: 10000 })
-  await this.tap(this.postOtpContinueBtn)
+  const enabled = await this.postOtpContinueBtn.waitForEnabled({ timeout: 10000 }).catch(() => false)
+  if (enabled) {
+    await this.tap(this.postOtpContinueBtn)
+    return
+  }
+
+  await this.postOtpContinueBtn.click().catch(() => {})
 }
 
 /** 2) we awaiting for  Home, if card exist ApplePay in-app) */
 async waitForPostOtpNextStep(timeout = 30000) {
   await browser.waitUntil(async () => {
+    await this.dismissPostOtpPopupAndroidOnce()
+    const continueVisible = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
     const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
     const home = await this.homeRoot.isDisplayed().catch(() => false)
-    return applePay || home
+    return continueVisible || applePay || home
   }, {
     timeout,
     interval: 400,
@@ -411,6 +492,7 @@ async waitForHome(timeout = 30000) {
 
     await browser.waitUntil(
       async () => {
+        await this.dismissPostOtpPopupAndroidOnce()
         const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
         if (homeShown) return true
 
