@@ -338,7 +338,7 @@ class BankTransferSepaIndividualPage extends BasePage {
         },
       ])
 
-      await browser.releaseActions()
+      await browser.releaseActions().catch(() => {})
       await browser.pause(600)
 
       const detailsShown = await this.txDetailsCloseIOS.isDisplayed().catch(() => false)
@@ -400,7 +400,7 @@ class BankTransferSepaIndividualPage extends BasePage {
         ],
       },
     ])
-    await browser.releaseActions()
+    await browser.releaseActions().catch(() => {})
     await browser.pause(400)
   }
 
@@ -456,7 +456,7 @@ class BankTransferSepaIndividualPage extends BasePage {
         ],
       },
     ])
-    await browser.releaseActions()
+    await browser.releaseActions().catch(() => {})
     await browser.pause(350)
   }
 
@@ -590,22 +590,48 @@ class BankTransferSepaIndividualPage extends BasePage {
     const endX = Math.max(startX + 260, Math.round(width - 30))
 
     for (let i = 0; i < 3; i++) {
-      await browser.performActions([
-        {
-          type: 'pointer',
-          id: 'finger1',
-          parameters: { pointerType: 'touch' },
-          actions: [
-            { type: 'pointerMove', duration: 0, x: startX, y },
-            { type: 'pointerDown', button: 0 },
-            { type: 'pause', duration: 250 },
-            { type: 'pointerMove', duration: 1100, x: endX, y },
-            { type: 'pointerUp', button: 0 },
-          ],
-        },
-      ])
+      try {
+        await browser.performActions([
+          {
+            type: 'pointer',
+            id: 'finger1',
+            parameters: { pointerType: 'touch' },
+            actions: [
+              { type: 'pointerMove', duration: 0, x: startX, y },
+              { type: 'pointerDown', button: 0 },
+              { type: 'pause', duration: 250 },
+              { type: 'pointerMove', duration: 1100, x: endX, y },
+              { type: 'pointerUp', button: 0 },
+            ],
+          },
+        ])
 
-      await browser.releaseActions()
+        await browser.releaseActions().catch(() => {})
+      } catch (err) {
+        // Fallbacks for environments where performActions/releaseActions fail
+        try {
+          const resolved = dragEl
+          await resolved.touchAction([
+            { action: 'press', x: startX, y },
+            { action: 'wait', ms: 250 },
+            { action: 'moveTo', x: endX, y },
+            'release',
+          ])
+        } catch (err2) {
+          try {
+            const resolved = dragEl as any
+            const elId = resolved.elementId || resolved.ELEMENT
+            if (elId) {
+              await browser.execute('mobile: dragGesture', { elementId: elId, endX, endY: y, speed: 1000 }).catch(() => {})
+            }
+          } catch (_) {
+            // final fallback: ignore and let checks detect failure
+          }
+        }
+
+        await browser.pause(600)
+      }
+
       await browser.pause(600)
 
       const detailsShown = await this.txDetailsBackAndroid.isDisplayed().catch(() => false)
@@ -666,7 +692,7 @@ class BankTransferSepaIndividualPage extends BasePage {
         ],
       },
     ])
-    await browser.releaseActions()
+    await browser.releaseActions().catch(() => {})
     await browser.pause(700)
   }
 
@@ -739,7 +765,7 @@ class BankTransferSepaIndividualPage extends BasePage {
           ],
         },
       ])
-      await browser.releaseActions()
+      await browser.releaseActions().catch(() => {})
       await browser.pause(350)
     }
 

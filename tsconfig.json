@@ -16,5 +16,6 @@
     "noEmit": true,
     "resolveJsonModule": true
   },
-  "include": ["wdio.conf.ts", "src/**/*.ts"]
+  "include": ["wdio.conf.ts", "src/**/*.ts"],
+  "exclude": ["node_modules", "allure-report", "allure-results"]
 }

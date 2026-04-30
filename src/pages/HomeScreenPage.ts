@@ -205,7 +205,7 @@ class HomeScreenPage extends BasePage {
         ],
       },
     ])
-    await browser.releaseActions()
+    await browser.releaseActions().catch(() => {})
     await browser.pause(900)
   }
 
