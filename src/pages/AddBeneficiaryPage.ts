@@ -286,7 +286,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get monacoOptionIOS() {
-    return $('~Monaco')
+    return $('~Malta')
   }
 
   private get countryContinueBtnIOS() {
@@ -342,7 +342,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get monacoOptionAndroid() {
-    return $('//android.widget.TextView[@text="Monaco"]')
+    return $('//android.widget.TextView[@text="Malta"]')
   }
 
   private get currencyPickerAndroid() {
@@ -619,12 +619,12 @@ export default class AddBeneficiaryPage extends BasePage {
   async continueFromCountrySelectionAndroid() {
     if (!browser.isAndroid) return
 
-    // Select country (Monaco)
+    // Select country (Malta)
     await this.countryPickerAndroid.waitForDisplayed({ timeout: 15000 })
     await this.tap(this.countryPickerAndroid)
 
     await this.countrySearchInputAndroid.waitForDisplayed({ timeout: 15000 })
-    await this.type(this.countrySearchInputAndroid, 'Monaco')
+    await this.type(this.countrySearchInputAndroid, 'Malta')
 
     await this.monacoOptionAndroid.waitForDisplayed({ timeout: 15000 })
     await this.tap(this.monacoOptionAndroid)
@@ -649,7 +649,7 @@ export default class AddBeneficiaryPage extends BasePage {
     await this.tap(this.countryPickerIOS)
 
     await this.countrySearchInputIOS.waitForDisplayed({ timeout: 15000 })
-    await this.type(this.countrySearchInputIOS, 'Monaco')
+    await this.type(this.countrySearchInputIOS, 'Malta')
 
     await this.monacoOptionIOS.waitForDisplayed({ timeout: 15000 })
     await this.tap(this.monacoOptionIOS)
@@ -872,6 +872,11 @@ export default class AddBeneficiaryPage extends BasePage {
       )
     }
 
+    const otpFetchDelayMs = Number(process.env.OTP_FETCH_DELAY_MS || 3000)
+    if (Number.isFinite(otpFetchDelayMs) && otpFetchDelayMs > 0) {
+      await browser.pause(Math.floor(otpFetchDelayMs))
+    }
+
     const otp = await OtpHelper.getLatestOtp({
       phone: otpPhone,
       timeoutMs: Number(process.env.OTP_TIMEOUT_MS || 90000),
@@ -884,11 +889,6 @@ export default class AddBeneficiaryPage extends BasePage {
     await this.otpInputAndroid.clearValue().catch(() => {})
     await this.otpInputAndroid.setValue(otp)
     await browser.hideKeyboard().catch(() => {})
-
-    const continueShown = await this.otpContinueBtnAndroid.isDisplayed().catch(() => false)
-    if (continueShown) {
-      await this.tap(this.otpContinueBtnAndroid)
-    }
 
     await browser.waitUntil(
       async () => {

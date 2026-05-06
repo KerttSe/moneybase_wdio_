@@ -45,7 +45,6 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
       sessionName: 'Android tests',
       userName: browserStackUser,
       accessKey: browserStackKey,
-      appiumVersion: '2.0.0',
       deviceName: 'Google Pixel 9',
       osVersion: '15.0',
     },

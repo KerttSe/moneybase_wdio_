@@ -1,5 +1,6 @@
 import BasePage from './BasePage'
 import { $, $$, browser } from '@wdio/globals'
+import type { ChainablePromiseElement } from 'webdriverio'
 
 
 class PhysicalCardCreationPage extends BasePage {
@@ -41,20 +42,8 @@ class PhysicalCardCreationPage extends BasePage {
 
   
 
-  private get alertBtn3Android() {
-    return $('id=android:id/button3') // OK (нейтральна)
-  }
-
   private async dismissBlockingAlertAndroid(timeoutMs = 10000) {
-    if (!browser.isAndroid) return
-
-    await browser.switchContext('NATIVE_APP').catch(() => {})
-
-    const isVisible = await this.alertBtn3Android.isDisplayed().catch(() => false)
-    if (!isVisible) return
-
-    await this.tap(this.alertBtn3Android)
-    await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: timeoutMs }).catch(() => {})
+    await this.dismissCommonAndroidAlert(timeoutMs).catch(() => false)
   }
 
   private async waitAndDismissAlertAfterSwitchAndroid(
@@ -70,12 +59,8 @@ class PhysicalCardCreationPage extends BasePage {
     let homeVisibleSince: number | null = null
 
     while (Date.now() < deadline) {
-      const btnExists = await this.alertBtn3Android.isExisting().catch(() => false)
-      const btnShown = btnExists && (await this.alertBtn3Android.isDisplayed().catch(() => false))
-
-      if (btnShown) {
-        await this.tap(this.alertBtn3Android)
-        await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+      const dismissed = await this.dismissCommonAndroidAlert(2000).catch(() => false)
+      if (dismissed) {
         await browser.pause(250)
         return
       }
@@ -471,7 +456,7 @@ class PhysicalCardCreationPage extends BasePage {
       }
     )
 
-    let target: WebdriverIO.Element | null = null
+    let target: ChainablePromiseElement | null = null
     for (const el of candidates) {
       if (await el.isDisplayed().catch(() => false)) {
         target = el

@@ -223,83 +223,28 @@ export class OtpHelper {
 	}
 
 	static async getLatestOtp(params: OtpFetchParams): Promise<string> {
-		const timeoutMs = params.timeoutMs ?? Number(process.env.OTP_TIMEOUT_MS || 90000)
-		const intervalMs = params.intervalMs ?? Number(process.env.OTP_POLL_INTERVAL_MS || 2000)
-		const requestDelayMsRaw = Number(process.env.OTP_REQUEST_DELAY_MS || Math.max(intervalMs, 8000))
-		const requestDelayMs = Number.isFinite(requestDelayMsRaw) && requestDelayMsRaw > 0
-			? Math.floor(requestDelayMsRaw)
-			: Math.max(intervalMs, 8000)
-		const maxAgeSeconds = this.normalizeOtpMaxAgeSeconds(process.env.OTP_MAX_AGE_SECONDS || 60)
-		const maxRequestsRaw = params.maxRequests ?? Number(process.env.OTP_MAX_REQUESTS || 0)
-		const maxRequests = Number.isFinite(maxRequestsRaw) && maxRequestsRaw > 0 ? Math.floor(maxRequestsRaw) : Number.POSITIVE_INFINITY
+		const timeoutMs = params.timeoutMs ?? Number(process.env.OTP_TIMEOUT_MS || 15000)
 		const requestHeaders = this.buildRequestHeaders()
 
 		const phoneCandidate = this.buildPhoneCandidate(params.phone)
 		const url = this.buildUrl(phoneCandidate)
 
-		const deadline = Date.now() + timeoutMs
-		let lastStatus: number | undefined
-		let lastBody = ''
-		let lastUrl = ''
-		let requestCount = 0
-		let lastRequestAt = 0
+		const response = await axios.get(url, {
+			headers: requestHeaders,
+			timeout: Math.max(1000, timeoutMs),
+			validateStatus: () => true,
+		})
 
-		while (Date.now() < deadline && requestCount < maxRequests) {
-			if (requestCount >= maxRequests) break
-
-			const now = Date.now()
-			if (lastRequestAt > 0) {
-				const elapsed = now - lastRequestAt
-				if (elapsed < requestDelayMs) {
-					await new Promise((resolve) => setTimeout(resolve, requestDelayMs - elapsed))
-				}
-			}
-			lastRequestAt = Date.now()
-
-			requestCount += 1
-
-			try {
-				const response = await axios.get(url, {
-					headers: requestHeaders,
-					responseType: 'text',
-					transformResponse: [(data) => data],
-					timeout: Math.min(intervalMs, 10000),
-					validateStatus: () => true,
-				})
-
-				const bodyText = typeof response.data === 'string' ? response.data : JSON.stringify(response.data ?? '')
-				lastStatus = response.status
-				lastBody = bodyText
-				lastUrl = url
-
-				let payload: unknown = bodyText
-				try {
-					payload = JSON.parse(bodyText)
-				} catch {
-					// Keep raw text when response is not JSON
-				}
-
-				const otp = this.extractOtp(payload, maxAgeSeconds)
-				if (otp) {
-					return otp
-				}
-			} catch (error) {
-				lastUrl = url
-				if (axios.isAxiosError(error)) {
-					lastStatus = error.response?.status
-					lastBody = String(error.response?.data ?? error.message)
-				} else {
-					lastBody = String((error as Error)?.message || error)
-				}
-			}
-
-			if (requestCount >= maxRequests) break
-			await new Promise((resolve) => setTimeout(resolve, intervalMs))
+		if (response.status !== 200) {
+			throw new Error(`OTP request failed. URL: ${url}. Status: ${response.status}`)
 		}
 
-		throw new Error(
-			`OTP token was not received in ${timeoutMs}ms after ${requestCount} request(s). Max age: ${maxAgeSeconds}s. Last URL: ${lastUrl}. Last status: ${String(lastStatus)}. Last body: ${lastBody.slice(0, 500)}`
-		)
+		const token = String((response.data as Record<string, unknown> | undefined)?.token ?? '').replace(/\D/g, '')
+		if (token.length !== 6) {
+			throw new Error(`OTP token is missing or invalid in response. URL: ${url}`)
+		}
+
+		return token
 	}
 }
 

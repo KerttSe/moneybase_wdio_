@@ -27,6 +27,10 @@ export default class AutoTopUpPage extends BasePage {
     return $('android=new UiSelector().resourceId("home_screen")')
   }
 
+  private get homeTabAndroid() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_home")')
+  }
+
   /* =========================
    * iOS: PROFILE PICKER (ensure Individual)
    * ========================= */
@@ -58,24 +62,35 @@ export default class AutoTopUpPage extends BasePage {
    * ANDROID: blocking AlertDialog
    * ========================= */
 
-  private get alertBtn3Android() {
-    return $('android=new UiSelector().resourceId("android:id/button3")')
+  private async dismissBlockingAlertAndroid(timeoutMs = 7000) {
+    await this.dismissCommonAndroidAlert(timeoutMs).catch(() => false)
   }
 
-  private async dismissBlockingAlertAndroid() {
+  private async ensureHomeLandingAndroid() {
     if (!browser.isAndroid) return
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    const alertVisible = await this.alertBtn3Android
-      .waitForDisplayed({ timeout: 2000 })
-      .then(() => true)
-      .catch(() => false)
+    const addFundsOnScreen = await this.addFundsBtnAndroid.isDisplayed().catch(() => false)
+    if (addFundsOnScreen) return
 
-    if (!alertVisible) return
+    const homeTabShown = await this.homeTabAndroid.isDisplayed().catch(() => false)
+    if (homeTabShown) {
+      await this.tap(this.homeTabAndroid)
+    }
 
-    await this.tap(this.alertBtn3Android)
-    await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+    await browser.waitUntil(
+      async () => {
+        const addFundsShown = await this.addFundsBtnAndroid.isDisplayed().catch(() => false)
+        const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
+        return addFundsShown || homeShown
+      },
+      {
+        timeout: 15000,
+        interval: 500,
+        timeoutMsg: 'Home screen did not appear before opening Add Funds',
+      }
+    )
   }
 
   /* =========================
@@ -274,8 +289,8 @@ export default class AutoTopUpPage extends BasePage {
     if (browser.isAndroid) {
       await this.ensureSingleAccountAndroid()
       await browser.pause(700)
-      await this.alertBtn3Android.waitForDisplayed({ timeout: 7000 }).catch(() => {})
-      await this.dismissBlockingAlertAndroid()
+      await this.dismissBlockingAlertAndroid(7000)
+      await this.ensureHomeLandingAndroid()
     }
 
     if (browser.isIOS) {

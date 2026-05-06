@@ -25,12 +25,28 @@ class HomeScreenPage extends BasePage {
     return $('android=new UiSelector().text("Single")')
   }
 
-  private get alertBtn3Android() {
-    return $('android=new UiSelector().resourceId("android:id/button3")')
+  private get homeRootAndroid() {
+    return this.byId('home_screen')
   }
 
-  private get homeRootAndroid() {
-    return $('android=new UiSelector().resourceId("home_screen")')
+  private get homeTabAndroid() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_home")')
+  }
+
+  private get homeTabAndroidA11y() {
+    return $('~Home')
+  }
+
+  private get homeTabAndroidXpath() {
+    return $('//android.widget.FrameLayout[@content-desc="Home"]')
+  }
+
+  private get cardsRootAndroid() {
+    return this.byId('cards_screen')
+  }
+
+  private get payRootAndroid() {
+    return this.byId('pay_screen')
   }
 
   /* =========================
@@ -240,24 +256,68 @@ class HomeScreenPage extends BasePage {
   }
 
   private async ensureSingleAccountAndroid() {
-    const isBusiness = await this.businessAccountLabelAndroid.isDisplayed().catch(() => false)
-    if (!isBusiness) return
+    await this.ensureSingleAccountAndroidFlow({
+      userAvatarBtn: this.userAvatarBtnAndroid,
+      businessAccountLabel: this.businessAccountLabelAndroid,
+      singleAccountItemByDesc: this.singleAccountItemAndroid,
+      singleAccountItemByText: this.singleAccountItemAndroidByText,
+      homeRoot: this.homeRootAndroid,
+      timeoutMs: 15000,
+      alertTimeoutMs: 2500,
+    })
 
-    await this.userAvatarBtnAndroid.waitForDisplayed({ timeout: 15000 })
-    await this.tap(this.userAvatarBtnAndroid)
-
-    if (await this.singleAccountItemAndroid.isDisplayed().catch(() => false)) {
-      await this.tap(this.singleAccountItemAndroid)
-    } else {
-      await this.tap(this.singleAccountItemAndroidByText).catch(() => {})
-    }
-
-    await this.alertBtn3Android.waitForDisplayed({ timeout: 7000 }).catch(() => {})
-    await this.tap(this.alertBtn3Android).catch(() => {})
-    await this.homeRootAndroid.waitForDisplayed({ timeout: 30000 }).catch(() => {})
     await this.businessAccountLabelAndroid
       .waitForDisplayed({ reverse: true, timeout: 30000 })
       .catch(() => {})
+  }
+
+  private async ensureHomeLandingAndroid() {
+    if (!browser.isAndroid) return
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    await browser.waitUntil(
+      async () => {
+        await this.dismissKnownAndroidBlockingPopups().catch(() => {})
+        await this.dismissCommonAndroidAlert(2500).catch(() => false)
+
+        const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
+        if (homeShown) return true
+
+        await this.tapHomeBottomNavAndroid().catch(() => {})
+
+        await this.dismissKnownAndroidBlockingPopups().catch(() => {})
+        await this.dismissCommonAndroidAlert(2000).catch(() => false)
+
+        return await this.homeRootAndroid.isDisplayed().catch(() => false)
+      },
+      {
+        timeout: 20000,
+        interval: 500,
+        timeoutMsg: 'Failed to stabilize on Home screen (Android)',
+      }
+    )
+  }
+
+  private async tapHomeBottomNavAndroid() {
+    if (!browser.isAndroid) return
+
+    const cardsShown = await this.cardsRootAndroid.isDisplayed().catch(() => false)
+    if (!cardsShown) return
+
+    if (await this.homeTabAndroid.isDisplayed().catch(() => false)) {
+      await this.tap(this.homeTabAndroid).catch(() => {})
+      return
+    }
+
+    if (await this.homeTabAndroidA11y.isDisplayed().catch(() => false)) {
+      await this.tap(this.homeTabAndroidA11y).catch(() => {})
+      return
+    }
+
+    if (await this.homeTabAndroidXpath.isDisplayed().catch(() => false)) {
+      await this.tap(this.homeTabAndroidXpath).catch(() => {})
+    }
   }
 
   public async ensureIndividualAccount() {
@@ -268,6 +328,7 @@ class HomeScreenPage extends BasePage {
 
     if (browser.isAndroid) {
       await this.ensureSingleAccountAndroid()
+      await this.ensureHomeLandingAndroid()
     }
   }
 
@@ -489,10 +550,18 @@ class HomeScreenPage extends BasePage {
           const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
           if (homeShown) return true
 
-          const alertShown = await this.alertBtn3Android.isDisplayed().catch(() => false)
-          if (alertShown) {
-            await this.tap(this.alertBtn3Android).catch(() => {})
-            await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+          await this.dismissKnownAndroidBlockingPopups().catch(() => {})
+          await this.dismissCommonAndroidAlert(2000).catch(() => false)
+
+          const cardsShown = await this.cardsRootAndroid.isDisplayed().catch(() => false)
+          const homeTabShown = await this.homeTabAndroid.isDisplayed().catch(() => false)
+          const homeTabA11yShown = await this.homeTabAndroidA11y.isDisplayed().catch(() => false)
+          const homeTabXpathShown = await this.homeTabAndroidXpath.isDisplayed().catch(() => false)
+          if (cardsShown && (homeTabShown || homeTabA11yShown || homeTabXpathShown)) {
+            await this.tapHomeBottomNavAndroid().catch(() => {})
+            await browser.pause(300)
+            const homeAfterTap = await this.homeRoot.isDisplayed().catch(() => false)
+            if (homeAfterTap) return true
           }
 
           return await this.homeRoot.isDisplayed().catch(() => false)
