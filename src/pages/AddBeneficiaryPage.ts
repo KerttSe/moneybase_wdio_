@@ -1,5 +1,6 @@
 import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
+import OtpHelper from '../helpers/otp.helper'
 
 export default class AddBeneficiaryPage extends BasePage {
   /* =========================
@@ -24,6 +25,22 @@ export default class AddBeneficiaryPage extends BasePage {
 
   private get homeRootAndroid() {
     return $('android=new UiSelector().resourceId("home_screen")')
+  }
+
+  private get homeTabAndroid() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_home")')
+  }
+
+  private get homeTabAndroidA11y() {
+    return $('~Home')
+  }
+
+  private get homeTabAndroidXpath() {
+    return $('//android.widget.FrameLayout[@content-desc="Home"]')
+  }
+
+  private get cardsRootAndroid() {
+    return $('android=new UiSelector().resourceIdMatches(".*:id/cards_screen$|^cards_screen$")')
   }
 
   /* =========================
@@ -56,17 +73,138 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get alertBtn3Android() {
-    return $('android=new UiSelector().resourceId("android:id/button3")') // OK
+    return $('id=android:id/button3') // OK
+  }
+
+  private get alertBtn3AndroidByUi() {
+    return $('android=new UiSelector().resourceId("android:id/button3")')
+  }
+
+  private get alertBtn3AndroidByText() {
+    return $('android=new UiSelector().text("OK")')
+  }
+
+  private get alertTitleAndroid() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/alertTitle")')
+  }
+
+  private get alertBtn1Android() {
+    return $('android=new UiSelector().resourceId("android:id/button1")')
+  }
+
+  private get somethingWentWrongTitleAndroid() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/alertTitle").text("Something went wrong")')
+  }
+
+  private get somethingWentWrongTitleAndroidContains() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/alertTitle").textContains("Something went wrong")')
+  }
+
+  private get tryAgainTextAndroid() {
+    return $('android=new UiSelector().text("Try Again")')
+  }
+
+  private get closeSheetAndroid() {
+    return $('android=new UiSelector().description("Close sheet")')
+  }
+
+  private get googlePayNotNowAndroid() {
+    return $('android=new UiSelector().text("Not Now")')
+  }
+
+  private get googlePayScreenAndroid() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/clSelectCardGooglePay")')
+  }
+
+  private get googlePayCloseBtnAndroid() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/rightActionView")')
   }
 
   private async dismissBlockingAlertAndroid(timeoutMs = 10000) {
+    await this.dismissCommonAndroidAlert(timeoutMs).catch(() => false)
+  }
+
+  private async dismissErrorDialogAndroid(): Promise<boolean> {
+    if (!browser.isAndroid) return false
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const titleCandidates = [this.somethingWentWrongTitleAndroid, this.somethingWentWrongTitleAndroidContains]
+    const okCandidates = [this.alertBtn1Android, this.alertBtn3Android, this.alertBtn3AndroidByUi, this.alertBtn3AndroidByText]
+
+    let dialogShown = false
+    for (const title of titleCandidates) {
+      if (await title.isDisplayed().catch(() => false)) {
+        dialogShown = true
+        break
+      }
+    }
+    if (!dialogShown) return false
+
+    for (const btn of okCandidates) {
+      const shown = await btn.isDisplayed().catch(() => false)
+      if (!shown) continue
+
+      await this.tap(btn).catch(() => {})
+      await browser.pause(300)
+      return true
+    }
+
+    await browser.back().catch(() => {})
+    return true
+  }
+
+  private async dismissGooglePayPromoAndroid(timeoutMs = 7000) {
     if (!browser.isAndroid) return
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    await this.alertBtn3Android.waitForDisplayed({ timeout: 7000 })
-    await this.tap(this.alertBtn3Android)
-    await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+    const fullScreenShown = await this.googlePayScreenAndroid.isDisplayed().catch(() => false)
+    if (fullScreenShown) {
+      const closeShown = await this.googlePayCloseBtnAndroid.isDisplayed().catch(() => false)
+      if (closeShown) {
+        await this.tap(this.googlePayCloseBtnAndroid)
+      } else {
+        await browser.back().catch(() => {})
+      }
+
+      await this.googlePayScreenAndroid.waitForDisplayed({ reverse: true, timeout: timeoutMs }).catch(() => {})
+      return
+    }
+
+    const shown = await this.googlePayNotNowAndroid.waitForDisplayed({ timeout: 3000 }).catch(() => false)
+    if (!shown) return
+
+    await this.tap(this.googlePayNotNowAndroid)
+    await this.googlePayNotNowAndroid.waitForDisplayed({ reverse: true, timeout: timeoutMs }).catch(() => {})
+  }
+
+  private async recoverFromTryAgainSheetAndroid() {
+    if (!browser.isAndroid) return false
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const dialogDismissed = await this.dismissErrorDialogAndroid().catch(() => false)
+    if (dialogDismissed) {
+      await browser.pause(300)
+      return true
+    }
+
+    const tryAgainShown = await this.tryAgainTextAndroid.isDisplayed().catch(() => false)
+    if (tryAgainShown) {
+      await this.tap(this.tryAgainTextAndroid).catch(() => {})
+      await browser.pause(500)
+      return true
+    }
+
+    const closeSheetShown = await this.closeSheetAndroid.isDisplayed().catch(() => false)
+    if (closeSheetShown) {
+      await this.tap(this.closeSheetAndroid).catch(() => {})
+      await browser.pause(400)
+      return true
+    }
+
+    return false
   }
 
   private async ensureSingleAccountAndroid() {
@@ -228,6 +366,62 @@ export default class AddBeneficiaryPage extends BasePage {
     return $('android=new UiSelector().resourceId("addBeneficiaryDetails_button_continue")')
   }
 
+  private get otpContainerAndroid() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/composeViewRegisterMobile")')
+  }
+
+  private get otpInputAndroid() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/otp_input")')
+  }
+
+  private get otpPhoneViewAndroid() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/otpPhoneView")')
+  }
+
+  private get otpContinueBtnAndroid() {
+    return $('android=new UiSelector().resourceIdMatches(".*:id/.*continue.*")')
+  }
+
+  private get otpLockedErrorAndroid() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/errorText").textContains("temporarily locked")')
+  }
+
+  private get otpCountdownAndroid() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/otpCountdown")')
+  }
+
+  private get otpResendBtnAndroidById() {
+    return $('android=new UiSelector().resourceIdMatches(".*:id/.*resend.*").clickable(true)')
+  }
+
+  private get otpResendBtnAndroidByText() {
+    return $('android=new UiSelector().textMatches("(?i)^resend( code)?$").clickable(true)')
+  }
+
+  private get otpResendBtnAndroidByDesc() {
+    return $('android=new UiSelector().descriptionMatches("(?i)^resend( code)?$").clickable(true)')
+  }
+
+  private get createConfirmBtnAndroidById() {
+    return $('android=new UiSelector().resourceIdMatches(".*:id/(.*confirm.*|.*create.*|.*beneficiary.*continue.*)$")')
+  }
+
+  private get createConfirmBtnAndroidByTextConfirm() {
+    return $('android=new UiSelector().textMatches("(?i)confirm|create|continue")')
+  }
+
+  private get vopScreenAndroid() {
+    return $('android=new UiSelector().resourceId("varificationOfPayee_screen")')
+  }
+
+  private get vopConfirmBtnAndroid() {
+    return $('android=new UiSelector().resourceId("varificationOfPayee_button_confirm")')
+  }
+
+  private get vopConfirmBtnAndroidByText() {
+    return $('android=new UiSelector().text("Confirm")')
+  }
+
   private get detailsContinueViewAndroid() {
     return $('//android.view.View[@resource-id="addBeneficiaryDetails_button_continue"]')
   }
@@ -278,18 +472,92 @@ export default class AddBeneficiaryPage extends BasePage {
     await this.tap(this.payTabAndroid)
   }
 
+  private async ensureHomeLandingAndroid() {
+    if (!browser.isAndroid) return
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    await browser.waitUntil(
+      async () => {
+        await this.dismissKnownAndroidBlockingPopups().catch(() => {})
+
+        await this.dismissBlockingAlertAndroid(3000).catch(() => {})
+
+        const homeNow = await this.homeRootAndroid.isDisplayed().catch(() => false)
+        if (homeNow) return true
+
+        const cardsShown = await this.cardsRootAndroid.isDisplayed().catch(() => false)
+        if (cardsShown) {
+          const homeTabShown = await this.homeTabAndroid.isDisplayed().catch(() => false)
+          const homeTabA11yShown = await this.homeTabAndroidA11y.isDisplayed().catch(() => false)
+          const homeTabXpathShown = await this.homeTabAndroidXpath.isDisplayed().catch(() => false)
+
+          if (homeTabShown) {
+            await this.tap(this.homeTabAndroid).catch(() => {})
+            await browser.pause(300)
+          } else if (homeTabA11yShown) {
+            await this.tap(this.homeTabAndroidA11y).catch(() => {})
+            await browser.pause(300)
+          } else if (homeTabXpathShown) {
+            await this.tap(this.homeTabAndroidXpath).catch(() => {})
+            await browser.pause(300)
+          }
+        }
+
+        await this.dismissKnownAndroidBlockingPopups().catch(() => {})
+        await this.dismissBlockingAlertAndroid(3000).catch(() => {})
+
+        const homeAfterRecover = await this.homeRootAndroid.isDisplayed().catch(() => false)
+        if (homeAfterRecover) return true
+
+        const alertStillShown = await this.alertBtn3Android.isDisplayed().catch(() => false)
+        if (alertStillShown) {
+          await this.tap(this.alertBtn3Android).catch(() => {})
+          await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+        }
+
+        return await this.homeRootAndroid.isDisplayed().catch(() => false)
+      },
+      {
+        timeout: 30000,
+        interval: 500,
+        timeoutMsg: 'Home screen did not appear before opening Add Beneficiary (Android)',
+      }
+    )
+  }
+
   async startAddBeneficiaryAndroid() {
     if (!browser.isAndroid) return
 
     // ensure Individual/Single account before flow
     await this.ensureSingleAccountAndroid()
+    await this.ensureHomeLandingAndroid()
 
     await browser.pause(700)
-    await this.alertBtn3Android.waitForDisplayed({ timeout: 7000 }).catch(() => {})
-    await this.dismissBlockingAlertAndroid()
 
     // 1️ Pay tab
-    await this.payTabAndroid.waitForDisplayed({ timeout: 20000 })
+    await browser.waitUntil(
+      async () => {
+        const payShown = await this.payTabAndroid.isDisplayed().catch(() => false)
+        if (payShown) return true
+
+        // Optional popups: they may appear only for some users (e.g. existing card)
+        const gpayShown = await this.googlePayNotNowAndroid.isDisplayed().catch(() => false)
+        if (gpayShown) {
+          await this.dismissGooglePayPromoAndroid()
+        }
+
+        await this.dismissErrorDialogAndroid()
+        await this.dismissBlockingAlertAndroid()
+
+        return await this.payTabAndroid.isDisplayed().catch(() => false)
+      },
+      {
+        timeout: 45000,
+        interval: 500,
+        timeoutMsg: 'Pay tab did not appear (Android)',
+      }
+    )
     await this.tap(this.payTabAndroid)
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
@@ -450,6 +718,256 @@ export default class AddBeneficiaryPage extends BasePage {
     await this.tap(this.detailsContinueViewAndroid)
   }
 
+  private async confirmCreationIfRequiredAndroid() {
+    if (!browser.isAndroid) return
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const confirmCandidates = [
+      this.vopConfirmBtnAndroid,
+      this.vopConfirmBtnAndroidByText,
+      this.createConfirmBtnAndroidById,
+      this.createConfirmBtnAndroidByTextConfirm,
+      this.detailsContinueBtnAndroid,
+    ]
+
+    const shouldConfirm = await browser.waitUntil(
+      async () => {
+        await this.recoverFromTryAgainSheetAndroid().catch(() => false)
+
+        const otpShown = await this.otpInputAndroid.isDisplayed().catch(() => false)
+        if (otpShown) return false
+
+        const detailsStillShown = await this.detailsContinueViewAndroid.isDisplayed().catch(() => false)
+        if (!detailsStillShown) {
+          const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
+          const payShown = await this.payTabAndroid.isDisplayed().catch(() => false)
+          if (homeShown || payShown) return false
+        }
+
+        for (const candidate of confirmCandidates) {
+          if (await candidate.isDisplayed().catch(() => false)) return true
+        }
+        return false
+      },
+      {
+        timeout: 12000,
+        interval: 400,
+      }
+    ).catch(() => false)
+
+    if (!shouldConfirm) return
+
+    for (const candidate of confirmCandidates) {
+      const shown = await candidate.isDisplayed().catch(() => false)
+      if (!shown) continue
+
+      await this.tap(candidate).catch(async () => {
+        await candidate.click().catch(() => {})
+      })
+      await browser.pause(500)
+      return
+    }
+  }
+
+  private async waitForOtpAndSubmitAndroid() {
+    if (!browser.isAndroid) return
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const otpAppeared = await browser.waitUntil(
+      async () => {
+        await this.recoverFromTryAgainSheetAndroid().catch(() => false)
+
+        const vopShown = await this.vopScreenAndroid.isDisplayed().catch(() => false)
+        if (vopShown) {
+          const vopConfirmShown = await this.vopConfirmBtnAndroid.isDisplayed().catch(() => false)
+          if (vopConfirmShown) {
+            await this.tap(this.vopConfirmBtnAndroid).catch(() => {})
+            await browser.pause(400)
+          } else if (await this.vopConfirmBtnAndroidByText.isDisplayed().catch(() => false)) {
+            await this.tap(this.vopConfirmBtnAndroidByText).catch(() => {})
+            await browser.pause(400)
+          }
+        }
+
+        const containerShown = await this.otpContainerAndroid.isDisplayed().catch(() => false)
+        const inputShown = await this.otpInputAndroid.isDisplayed().catch(() => false)
+
+        if (containerShown || inputShown) return true
+
+        // Some users can proceed without OTP screen in this flow.
+        const detailsStillShown = await this.detailsContinueViewAndroid.isDisplayed().catch(() => false)
+        const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
+        const payShown = await this.payTabAndroid.isDisplayed().catch(() => false)
+        const newTransferShown = await this.newTransferTitleAndroid.isDisplayed().catch(() => false)
+
+        if (!detailsStillShown && (homeShown || payShown || newTransferShown)) {
+          return true
+        }
+
+        return false
+      },
+      {
+        timeout: 30000,
+        interval: 500,
+        timeoutMsg: 'Neither OTP nor next screen appeared (Android)',
+      }
+    ).catch(() => false)
+
+    if (!otpAppeared) {
+      throw new Error('OTP step did not appear and flow did not move to a known next screen (Android)')
+    }
+
+    const otpInputShown = await this.otpInputAndroid.isDisplayed().catch(() => false)
+    if (!otpInputShown) {
+      // Flow may advance without OTP input for some users.
+      const detailsStillShown = await this.detailsContinueViewAndroid.isDisplayed().catch(() => false)
+      const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
+      const payShown = await this.payTabAndroid.isDisplayed().catch(() => false)
+      const newTransferShown = await this.newTransferTitleAndroid.isDisplayed().catch(() => false)
+
+      if (!detailsStillShown && (homeShown || payShown || newTransferShown)) {
+        return
+      }
+
+      throw new Error('Flow moved unexpectedly after details confirm: OTP input not shown and no known next screen detected')
+    }
+
+    const otpLockedBeforeSubmit = await this.otpLockedErrorAndroid.isDisplayed().catch(() => false)
+    if (otpLockedBeforeSubmit) {
+      throw new Error('OTP step blocked (Android): Too many attempts. Account is temporarily locked')
+    }
+
+    const otpPhone = process.env.OTP_PHONE || process.env.MB_PHONE || ''
+    if (!otpPhone) {
+      throw new Error('OTP phone is not configured. Set OTP_PHONE or MB_PHONE')
+    }
+
+    const otpPhoneShown = await this.otpPhoneViewAndroid.isDisplayed().catch(() => false)
+    if (!otpPhoneShown) {
+      throw new Error('OTP phone label is not visible on OTP screen')
+    }
+
+    const shownPhoneText = await this.otpPhoneViewAndroid.getText().catch(() => '')
+    const shownDigits = shownPhoneText.replace(/\D/g, '')
+    const expectedDigits = String(otpPhone).replace(/\D/g, '')
+    const countryCode = String(process.env.OTP_COUNTRY_CODE || '356').replace(/\D/g, '')
+    const expectedWithCountry = expectedDigits.startsWith(countryCode) ? expectedDigits : `${countryCode}${expectedDigits}`
+    const expectedLocal = expectedWithCountry.startsWith(countryCode)
+      ? expectedWithCountry.slice(countryCode.length)
+      : expectedDigits
+
+    const phoneMatches = Boolean(
+      shownDigits && (
+        shownDigits === expectedDigits ||
+        shownDigits === expectedWithCountry ||
+        (expectedLocal ? shownDigits.endsWith(expectedLocal) : false)
+      )
+    )
+
+    if (!phoneMatches) {
+      throw new Error(
+        `OTP phone mismatch. Expected ${expectedWithCountry} (or local ${expectedLocal}), but screen shows ${shownPhoneText}`
+      )
+    }
+
+    const otp = await OtpHelper.getLatestOtp({
+      phone: otpPhone,
+      timeoutMs: Number(process.env.OTP_TIMEOUT_MS || 90000),
+      intervalMs: Number(process.env.OTP_POLL_INTERVAL_MS || 2000),
+      maxRequests: Number(process.env.OTP_MAX_REQUESTS || 1),
+    })
+
+    await this.otpInputAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.tap(this.otpInputAndroid)
+    await this.otpInputAndroid.clearValue().catch(() => {})
+    await this.otpInputAndroid.setValue(otp)
+    await browser.hideKeyboard().catch(() => {})
+
+    const continueShown = await this.otpContinueBtnAndroid.isDisplayed().catch(() => false)
+    if (continueShown) {
+      await this.tap(this.otpContinueBtnAndroid)
+    }
+
+    await browser.waitUntil(
+      async () => {
+        // If backend popup appears after OTP submit, keep dismissing it (OK) and continue waiting.
+        await this.recoverFromTryAgainSheetAndroid().catch(() => false)
+        await this.dismissBlockingAlertAndroid(2000).catch(() => {})
+
+        const otpLocked = await this.otpLockedErrorAndroid.isDisplayed().catch(() => false)
+        if (otpLocked) {
+          throw new Error('OTP step blocked (Android): Too many attempts. Account is temporarily locked')
+        }
+
+        const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
+        const payShown = await this.payTabAndroid.isDisplayed().catch(() => false)
+        const newTransferShown = await this.newTransferTitleAndroid.isDisplayed().catch(() => false)
+
+        // We consider OTP step completed only when the next known screen is visible.
+        if (homeShown || payShown || newTransferShown) return true
+
+        // Keep waiting while OTP screen is still visible.
+        const otpStillShown = await this.otpInputAndroid.isDisplayed().catch(() => false)
+        if (otpStillShown) return false
+
+        // OTP may disappear briefly during transitions; keep waiting for a stable next screen.
+        return false
+      },
+      {
+        timeout: 30000,
+        interval: 500,
+        timeoutMsg: 'OTP step did not complete (Android): next screen did not appear',
+      }
+    )
+  }
+
+  private async forceResendOtpBeforeFetchAndroid() {
+    if (!browser.isAndroid) return
+
+    const enabledRaw = String(process.env.OTP_FORCE_RESEND_BEFORE_FETCH || '').trim().toLowerCase()
+    const enabled = enabledRaw === '1' || enabledRaw === 'true' || enabledRaw === 'yes'
+    if (!enabled) return
+
+    const waitMs = Number(process.env.OTP_RESEND_WAIT_MS || 70000)
+    const postResendPauseMs = Number(process.env.OTP_POST_RESEND_PAUSE_MS || 1500)
+    const start = Date.now()
+
+    while (Date.now() - start < waitMs) {
+      const resendById = await this.otpResendBtnAndroidById.isDisplayed().catch(() => false)
+      if (resendById) {
+        await this.tap(this.otpResendBtnAndroidById).catch(() => {})
+        await browser.pause(postResendPauseMs)
+        return
+      }
+
+      const resendByText = await this.otpResendBtnAndroidByText.isDisplayed().catch(() => false)
+      if (resendByText) {
+        await this.tap(this.otpResendBtnAndroidByText).catch(() => {})
+        await browser.pause(postResendPauseMs)
+        return
+      }
+
+      const resendByDesc = await this.otpResendBtnAndroidByDesc.isDisplayed().catch(() => false)
+      if (resendByDesc) {
+        await this.tap(this.otpResendBtnAndroidByDesc).catch(() => {})
+        await browser.pause(postResendPauseMs)
+        return
+      }
+
+      const countdownShown = await this.otpCountdownAndroid.isDisplayed().catch(() => false)
+      if (!countdownShown) {
+        await browser.pause(700)
+        continue
+      }
+
+      await browser.pause(1000)
+    }
+
+    throw new Error(`OTP resend button did not appear within ${waitMs}ms while OTP_FORCE_RESEND_BEFORE_FETCH is enabled`)
+  }
+
   async continueFromDetailsIOS() {
     if (!browser.isIOS) return
     await this.detailsContinueBtnIOS.waitForDisplayed({ timeout: 15000 })
@@ -471,6 +989,8 @@ export default class AddBeneficiaryPage extends BasePage {
 
     await this.fillBeneficiaryDetailsAndroid(params)
     await this.continueFromDetailsAndroid()
+    await this.confirmCreationIfRequiredAndroid()
+    await this.waitForOtpAndSubmitAndroid()
   }
 
   async addBeneficiaryAnotherPersonIOS(params: {
