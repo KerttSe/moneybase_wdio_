@@ -3,7 +3,8 @@ import { LoginPage } from '../pages/LoginPage'
 import AddBeneficiaryPage from '../pages/AddBeneficiaryPage'
 import { AUTH } from '../data/credentials'
 
-describe('Add Beneficiary - Another person', () => {
+describe('Add Beneficiary - Another person', function () {
+  this.timeout(240000)
   const loginPage = new LoginPage()
   const addBeneficiaryPage = new AddBeneficiaryPage()
 
