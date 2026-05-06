@@ -14,14 +14,6 @@ export class LoginPage extends BasePage {
     registerScreen: 'register_screen',
   } as const
 
-  private get alertTitleAndroid() {
-    return $('id=com.moneybase.qa:id/alertTitle')
-  }
-
-  private get alertBtn3Android() {
-    return $('id=android:id/button3')
-  }
-
   private byId(name: string) {
     if (browser.isAndroid) {
       //  cover і "welcomeToMoneybase_button_skip", and "com.xxx:id/welcomeToMoneybase_button_skip"
@@ -56,12 +48,7 @@ export class LoginPage extends BasePage {
     if (await clickIfVisible(permissionAllowLegacy)) return
     if (await clickIfVisible(permissionAllowText)) return
 
-    // In-app blocking alert
-    const alertShown = await this.alertBtn3Android.isDisplayed().catch(() => false)
-    if (alertShown) {
-      await this.tap(this.alertBtn3Android)
-      await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
-    }
+    await this.dismissCommonAndroidAlert(2500).catch(() => false)
   }
 
   private async dismissPostOtpPopupAndroidOnce() {
@@ -74,9 +61,35 @@ export class LoginPage extends BasePage {
     if (closeShown) {
       await googlePayClose.click().catch(() => {})
       await googlePayClose.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+
+      await this.forceHomeViaBottomNavAndroid().catch(() => {})
     }
 
     await this.dismissAndroidBlockersOnce()
+    await this.forceHomeViaBottomNavAndroid().catch(() => {})
+  }
+
+  private async forceHomeViaBottomNavAndroid() {
+    if (!browser.isAndroid) return
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+    if (homeShown) return
+
+    const cardsShown = await this.cardsRootAndroid.isDisplayed().catch(() => false)
+    if (!cardsShown) return
+
+    const homeTabShown = await this.homeTabAndroid.isDisplayed().catch(() => false)
+    if (homeTabShown) {
+      await this.tap(this.homeTabAndroid).catch(() => {})
+    } else if (await this.homeTabAndroidA11y.isDisplayed().catch(() => false)) {
+      await this.tap(this.homeTabAndroidA11y).catch(() => {})
+    } else if (await this.homeTabAndroidXpath.isDisplayed().catch(() => false)) {
+      await this.tap(this.homeTabAndroidXpath).catch(() => {})
+    }
+
+    await browser.pause(300)
   }
 
   async prepare() {
@@ -432,6 +445,26 @@ get homeRoot() {
   return $('~home_screen_view')
 }
 
+get homeTabAndroid() {
+  return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_home")')
+}
+
+get homeTabAndroidA11y() {
+  return $('~Home')
+}
+
+get homeTabAndroidXpath() {
+  return $('//android.widget.FrameLayout[@content-desc="Home"]')
+}
+
+get cardsRootAndroid() {
+  return this.byId('cards_screen')
+}
+
+get payRootAndroid() {
+  return this.byId('pay_screen')
+}
+
 
 /** 1) tap Continue */
 async tapContinueAfterOtp() {
@@ -496,20 +529,16 @@ async waitForHome(timeout = 30000) {
         const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
         if (homeShown) return true
 
-        const alertShown = await this.alertBtn3Android.isDisplayed().catch(() => false)
-        if (alertShown) {
-          await this.tap(this.alertBtn3Android)
-          await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+        const cardsShown = await this.cardsRootAndroid.isDisplayed().catch(() => false)
+        const homeTabShown = await this.homeTabAndroid.isDisplayed().catch(() => false)
+        if (cardsShown && homeTabShown) {
+          await this.tap(this.homeTabAndroid)
+          await browser.pause(300)
+          const homeAfterTap = await this.homeRoot.isDisplayed().catch(() => false)
+          if (homeAfterTap) return true
         }
 
-        const alertTitleShown = await this.alertTitleAndroid.isDisplayed().catch(() => false)
-        if (alertTitleShown && !alertShown) {
-          const btnShown = await this.alertBtn3Android.waitForDisplayed({ timeout: 3000 }).catch(() => false)
-          if (btnShown) {
-            await this.tap(this.alertBtn3Android)
-            await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
-          }
-        }
+        await this.dismissCommonAndroidAlert(3000).catch(() => false)
 
         return await this.homeRoot.isDisplayed().catch(() => false)
       },

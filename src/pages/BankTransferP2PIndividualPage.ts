@@ -51,25 +51,8 @@ class BankTransferP2PIndividualPage extends BasePage {
    * ANDROID: blocking AlertDialog
    * ========================= */
 
-  private get alertTitleAndroid() {
-    return $('id=com.moneybase.qa:id/alertTitle')
-  }
-
-  private get alertBtn3Android() {
-    return $('android=new UiSelector().resourceId("android:id/button3")')
-  }
-
   private async dismissBlockingAlertAndroid(timeoutMs = 5000) {
-    if (!browser.isAndroid) return
-
-    await browser.switchContext('NATIVE_APP').catch(() => {})
-
-    const appeared = await this.alertTitleAndroid.waitForDisplayed({ timeout: timeoutMs }).catch(() => false)
-    if (!appeared) return
-
-    await this.alertBtn3Android.waitForDisplayed({ timeout: 7000 })
-    await this.tap(this.alertBtn3Android)
-    await this.alertTitleAndroid.waitForDisplayed({ reverse: true, timeout: 10000 }).catch(() => {})
+    await this.dismissCommonAndroidAlert(timeoutMs).catch(() => false)
   }
 
   /**
@@ -90,14 +73,8 @@ class BankTransferP2PIndividualPage extends BasePage {
     let homeVisibleSince: number | null = null
 
     while (Date.now() < deadline) {
-      const btnExists = await this.alertBtn3Android.isExisting().catch(() => false)
-      const btnShown = btnExists && (await this.alertBtn3Android.isDisplayed().catch(() => false))
-
-      if (btnShown) {
-        await this.tap(this.alertBtn3Android)
-        await this.alertBtn3Android
-          .waitForDisplayed({ reverse: true, timeout: 7000 })
-          .catch(() => {})
+      const dismissed = await this.dismissCommonAndroidAlert(2000).catch(() => false)
+      if (dismissed) {
         await browser.pause(250)
         return
       }

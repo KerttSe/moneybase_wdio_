@@ -28,14 +28,6 @@ class BankTransferSepaIndividualPage extends BasePage {
     return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_bar_item_icon_container").instance(2)')
   }
 
-  private get alertTitleAndroid() {
-    return $('id=com.moneybase.qa:id/alertTitle')
-  }
-
-  private get alertBtn3Android() {
-    return $('android=new UiSelector().resourceId("android:id/button3")')
-  }
-
   private get payAddBtnAndroidByDesc() {
     return $('~pay_button_add')
   }
@@ -711,17 +703,8 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private async dismissBlockingAlertAndroid(timeoutMs = 8000) {
-    if (!browser.isAndroid) return
-
-    await browser.switchContext('NATIVE_APP').catch(() => {})
-
-    const appeared = await this.alertTitleAndroid.waitForDisplayed({ timeout: timeoutMs }).catch(() => false)
-    if (!appeared) return
-
-    await this.alertBtn3Android.waitForDisplayed({ timeout: 7000 })
-    await this.tap(this.alertBtn3Android)
-    await this.alertTitleAndroid.waitForDisplayed({ reverse: true, timeout: 10000 }).catch(() => {})
-    await browser.pause(250)
+    const dismissed = await this.dismissCommonAndroidAlert(timeoutMs).catch(() => false)
+    if (dismissed) await browser.pause(250)
   }
 
   private async openSepaBeneficiaryIOS() {

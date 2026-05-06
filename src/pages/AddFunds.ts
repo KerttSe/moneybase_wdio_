@@ -31,19 +31,9 @@ export default class AddFundsPage extends BasePage {
    * ANDROID: blocking AlertDialog
    * ========================= */
 
-  private get alertBtn3Android() {
-    return $('android=new UiSelector().resourceId("android:id/button3")') // OK
-  }
-
   private async dismissBlockingAlertAndroid(timeoutMs = 10000) {
-    if (!browser.isAndroid) return
-
-    await browser.switchContext('NATIVE_APP').catch(() => {})
-
-    await this.alertBtn3Android.waitForDisplayed({ timeout: 7000 })
-    await this.tap(this.alertBtn3Android)
-    await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
-  }   
+    await this.dismissCommonAndroidAlert(timeoutMs).catch(() => false)
+  }
   /* =========================
    * OPEN ADD FUNDS FROM HOME
    * ========================= */
@@ -116,8 +106,7 @@ private get payProcessingBtnIOS() {
     if (browser.isAndroid) {
       await this.ensureSingleAccountAndroid()
       await browser.pause(700)
-      await this.alertBtn3Android.waitForDisplayed({ timeout: 7000 }).catch(() => {})
-      await this.dismissBlockingAlertAndroid()
+      await this.dismissBlockingAlertAndroid().catch(() => {})
     }
 
     if (browser.isIOS) {
