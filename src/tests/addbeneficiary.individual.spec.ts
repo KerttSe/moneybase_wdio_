@@ -22,7 +22,7 @@ describe('Add Beneficiary - Another person', function () {
     await addBeneficiaryPage.addBeneficiaryAnotherPerson({
       name: 'Test',
       surname: 'Aqa test',
-      iban: 'MT27MMEB44060000000006029946050',
+      iban: 'MT31MALT01100000000000000000123',
       friendName: 'Aqa test',
     })
 

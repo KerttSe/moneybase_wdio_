@@ -224,27 +224,47 @@ export class OtpHelper {
 
 	static async getLatestOtp(params: OtpFetchParams): Promise<string> {
 		const timeoutMs = params.timeoutMs ?? Number(process.env.OTP_TIMEOUT_MS || 15000)
+		const intervalMs = params.intervalMs ?? Number(process.env.OTP_POLL_INTERVAL_MS || 2000)
+		const maxRequests = params.maxRequests ?? Number(process.env.OTP_MAX_REQUESTS || 10)
 		const requestHeaders = this.buildRequestHeaders()
 
 		const phoneCandidate = this.buildPhoneCandidate(params.phone)
 		const url = this.buildUrl(phoneCandidate)
 
-		const response = await axios.get(url, {
-			headers: requestHeaders,
-			timeout: Math.max(1000, timeoutMs),
-			validateStatus: () => true,
-		})
+		const startedAt = Date.now()
+		let attempts = 0
+		let lastReason = 'No OTP response yet'
 
-		if (response.status !== 200) {
-			throw new Error(`OTP request failed. URL: ${url}. Status: ${response.status}`)
+		while (attempts < Math.max(1, maxRequests) && Date.now() - startedAt <= Math.max(1000, timeoutMs)) {
+			attempts += 1
+
+			const response = await axios.get(url, {
+				headers: requestHeaders,
+				timeout: Math.max(1000, timeoutMs),
+				validateStatus: () => true,
+			})
+
+			if (response.status !== 200) {
+				lastReason = `Status ${response.status}`
+			} else {
+				const payload = (response.data as Record<string, unknown> | undefined) ?? {}
+				const token = String(payload.token ?? '').replace(/\D/g, '')
+
+				if (token.length !== 6) {
+					lastReason = 'Token missing or invalid'
+				} else {
+					return token
+				}
+			}
+
+			if (attempts < Math.max(1, maxRequests)) {
+				await new Promise((resolve) => setTimeout(resolve, Math.max(200, intervalMs)))
+			}
 		}
 
-		const token = String((response.data as Record<string, unknown> | undefined)?.token ?? '').replace(/\D/g, '')
-		if (token.length !== 6) {
-			throw new Error(`OTP token is missing or invalid in response. URL: ${url}`)
-		}
-
-		return token
+		throw new Error(
+			`OTP token is not fresh for current flow. URL: ${url}. Attempts: ${attempts}. Last reason: ${lastReason}`
+		)
 	}
 }
 
