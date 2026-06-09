@@ -3,12 +3,17 @@ import HomeScreenPage from './HomeScreenPage'
 import { $, browser } from '@wdio/globals'
 
 export default class AddFundsPage extends BasePage {
+  private byAndroidResId(id: string) {
+    const rx = `.*:id/${id}$|^${id}$`
+    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+  }
+
   /* =========================
    * ANDROID: HOME / ACCOUNT
    * ========================= */
 
   private get userAvatarBtnAndroid() {
-    return $('android=new UiSelector().resourceId("home_button_userAvatar")')
+    return this.byAndroidResId('home_button_userAvatar')
   }
 
   private get businessAccountLabelAndroid() {
@@ -24,7 +29,11 @@ export default class AddFundsPage extends BasePage {
   }
 
   private get homeRootAndroid() {
-    return $('android=new UiSelector().resourceId("home_screen")')
+    return this.byAndroidResId('home_screen')
+  }
+
+  private get supportSheetTitleAndroid() {
+    return $('android=new UiSelector().text("Support")')
   }
 
   /* =========================
@@ -32,14 +41,37 @@ export default class AddFundsPage extends BasePage {
    * ========================= */
 
   private async dismissBlockingAlertAndroid(timeoutMs = 10000) {
+    await this.dismissKnownAndroidBlockingPopups(4).catch(() => false)
     await this.dismissCommonAndroidAlert(timeoutMs).catch(() => false)
+  }
+
+  private async dismissSupportSheetAndroid(timeoutMs = 7000) {
+    if (!browser.isAndroid) return false
+
+    const currentActivity = await browser.getCurrentActivity().catch(() => '')
+    const isFreshchatActivity = /freshchat|CategoryListActivity|ConversationActivity/i.test(currentActivity)
+    const supportShown = await this.supportSheetTitleAndroid.isDisplayed().catch(() => false)
+    if (isFreshchatActivity || supportShown) {
+      await browser.back().catch(() => {})
+      await browser.pause(400)
+      await browser.waitUntil(
+        async () => {
+          const activity = await browser.getCurrentActivity().catch(() => '')
+          return !/freshchat|CategoryListActivity|ConversationActivity/i.test(activity)
+        },
+        { timeout: timeoutMs, interval: 300 }
+      ).catch(() => {})
+      return true
+    }
+
+    return false
   }
   /* =========================
    * OPEN ADD FUNDS FROM HOME
    * ========================= */
 
   get openBtn() {
-    if (browser.isAndroid) return $('android=new UiSelector().resourceId("home_button_addFunds")')
+    if (browser.isAndroid) return this.byAndroidResId('home_button_addFunds')
     return $('~plus')
   }
 
@@ -48,7 +80,7 @@ export default class AddFundsPage extends BasePage {
    * ========================= */
 
   get cardTile() {
-    if (browser.isAndroid) return $('android=new UiSelector().resourceId("addFunds_card_cardTopUp")')
+    if (browser.isAndroid) return this.byAndroidResId('addFunds_card_cardTopUp')
     return $('~Card')
   }
 
@@ -65,7 +97,7 @@ export default class AddFundsPage extends BasePage {
    * ========================= */
 
   get amountInput() {
-    if (browser.isAndroid) return $('id=com.moneybase.qa:id/depositAmountText')
+    if (browser.isAndroid) return this.byAndroidResId('depositAmountText')
     return $('~cardDeposit_textInput_')
   }
 
@@ -74,7 +106,7 @@ export default class AddFundsPage extends BasePage {
    * ========================= */
 
   get continueBtn() {
-    if (browser.isAndroid) return $('id=com.moneybase.qa:id/cardTopUp_button_continue')
+    if (browser.isAndroid) return this.byAndroidResId('cardTopUp_button_continue')
     return $('~Continue')
   }
 
@@ -107,6 +139,8 @@ private get payProcessingBtnIOS() {
       await this.ensureSingleAccountAndroid()
       await browser.pause(700)
       await this.dismissBlockingAlertAndroid().catch(() => {})
+      await this.dismissSupportSheetAndroid().catch(() => false)
+      await this.stabilizeAndroidHomeSurface(15000).catch(() => false)
     }
 
     if (browser.isIOS) {
@@ -117,7 +151,20 @@ private get payProcessingBtnIOS() {
       await this.dismissIOSAlerts()
     }
 
-    await this.openBtn.waitForDisplayed({ timeout: 15000 })
+    await this.openBtn.waitForDisplayed({ timeout: 15000 }).catch(async () => {
+      await browser.waitUntil(
+        async () => {
+          await this.dismissBlockingAlertAndroid().catch(() => {})
+          await this.dismissSupportSheetAndroid().catch(() => false)
+          return await this.openBtn.isDisplayed().catch(() => false)
+        },
+        {
+          timeout: 25000,
+          interval: 700,
+          timeoutMsg: 'Add Funds button not visible on Home after blocker cleanup',
+        }
+      )
+    })
     await this.tap(this.openBtn)
   }
 

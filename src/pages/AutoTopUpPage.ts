@@ -3,6 +3,11 @@ import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
 
 export default class AutoTopUpPage extends BasePage {
+  private byAndroidResId(id: string) {
+    const rx = `.*:id/${id}$|^${id}$`
+    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+  }
+
   /* =========================
    * ANDROID: HOME / ACCOUNT (ensure Individual / Single)
    * ========================= */
@@ -24,11 +29,7 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   private get homeRootAndroid() {
-    return $('android=new UiSelector().resourceId("home_screen")')
-  }
-
-  private get homeTabAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_home")')
+    return this.byAndroidResId('home_screen')
   }
 
   /* =========================
@@ -70,25 +71,20 @@ export default class AutoTopUpPage extends BasePage {
     if (!browser.isAndroid) return
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
-
-    const addFundsOnScreen = await this.addFundsBtnAndroid.isDisplayed().catch(() => false)
-    if (addFundsOnScreen) return
-
-    const homeTabShown = await this.homeTabAndroid.isDisplayed().catch(() => false)
-    if (homeTabShown) {
-      await this.tap(this.homeTabAndroid)
-    }
+    await this.dismissBlockingAlertAndroid(7000).catch(() => {})
 
     await browser.waitUntil(
       async () => {
-        const addFundsShown = await this.addFundsBtnAndroid.isDisplayed().catch(() => false)
-        const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
-        return addFundsShown || homeShown
+        await this.dismissBlockingAlertAndroid(1000).catch(() => {})
+        return (
+          (await this.homeRootAndroid.isDisplayed().catch(() => false)) &&
+          (await this.addFundsBtnAndroid.isDisplayed().catch(() => false))
+        )
       },
       {
         timeout: 15000,
         interval: 500,
-        timeoutMsg: 'Home screen did not appear before opening Add Funds',
+        timeoutMsg: 'Home Add Funds button did not appear before opening Auto Top-Up',
       }
     )
   }
@@ -98,7 +94,7 @@ export default class AutoTopUpPage extends BasePage {
    * ========================= */
 
   private get addFundsBtnAndroid() {
-    return $('android=new UiSelector().resourceId("home_button_addFunds")')
+    return this.byAndroidResId('home_button_addFunds')
   }
 
   private get addFundsBtnIOS() {
@@ -111,7 +107,10 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   private get addFundsScreen() {
-    if (browser.isAndroid) return $('android=new UiSelector().resourceId("addFunds_screen")')
+    if (browser.isAndroid)
+      return $(
+        'android=new UiSelector().resourceIdMatches(".*:id/(addFunds_screen|addFunds_card_autoTopUp|addFunds_card_cardTopUp)$|^(addFunds_screen|addFunds_card_autoTopUp|addFunds_card_cardTopUp)$")'
+      )
     // iOS: anchor to a cell unique to Add Funds screen (addFunds_item_card is accessible=true
     // and only exists here; avoids false-positive on the home "plus" button whose label is "Add Funds")
     return $('-ios predicate string: name == "addFunds_item_card" OR name == "addFunds_item_autoTopup" OR name == "addFunds_item_bankTransfer"')
@@ -122,7 +121,7 @@ export default class AutoTopUpPage extends BasePage {
    * ========================= */
 
   private get autoTopUpTileAndroid() {
-    return $('android=new UiSelector().resourceId("addFunds_card_autoTopUp")')
+    return this.byAndroidResId('addFunds_card_autoTopUp')
   }
 
   private get autoTopUpTileIOS() {
@@ -149,7 +148,7 @@ export default class AutoTopUpPage extends BasePage {
 
   get backBtnList() {
     if (browser.isAndroid)
-      return $('android=new UiSelector().resourceId("autoTopUpList_button_back")')
+      return this.byAndroidResId('autoTopUpList_button_back')
     return $('-ios predicate string: name == "BackButton" OR name == "autoTopUpList_button_back"')
   }
 
@@ -179,7 +178,7 @@ export default class AutoTopUpPage extends BasePage {
 
   get backBtnDetails() {
     if (browser.isAndroid)
-      return $('android=new UiSelector().resourceId("autoTopUpDetails_button_back")')
+      return this.byAndroidResId('autoTopUpDetails_button_back')
     return $('-ios predicate string: name == "BackButton" OR name == "autoTopUpDetails_button_back"')
   }
 
@@ -205,8 +204,36 @@ export default class AutoTopUpPage extends BasePage {
     return $('android=new UiSelector().text("Confirm")')
   }
 
+  private get confirmDeleteBtnAndroidByAlertId() {
+    return this.byAndroidResId('alert_button_Confirm')
+  }
+
+  private get confirmDeleteBtnAndroidByAlertA11y() {
+    return $('~alert_button_Confirm')
+  }
+
+  private get confirmDeleteBtnAndroidByModalPrimaryId() {
+    return this.byAndroidResId('modal_button_primary')
+  }
+
+  private get confirmDeleteBtnAndroidByModalPrimaryA11y() {
+    return $('~modal_button_primary')
+  }
+
+  private get confirmDeleteBtnAndroidByTextContains() {
+    return $('android=new UiSelector().textContains("Confirm")')
+  }
+
   private get confirmDeleteBtnAndroidByDesc() {
     return $('android=new UiSelector().description("Confirm")')
+  }
+
+  private get confirmDeleteBtnAndroidByButton1() {
+    return $('android=new UiSelector().resourceId("android:id/button1")')
+  }
+
+  private get confirmDeleteBtnAndroidByButton1Id() {
+    return $('id=android:id/button1')
   }
 
   private get confirmDeleteBtnIOS() {
@@ -290,18 +317,28 @@ export default class AutoTopUpPage extends BasePage {
       await this.ensureSingleAccountAndroid()
       await browser.pause(700)
       await this.dismissBlockingAlertAndroid(7000)
+
+      const addFundsAlreadyOpen = await this.addFundsScreen.isDisplayed().catch(() => false)
+      if (addFundsAlreadyOpen) return
+
       await this.ensureHomeLandingAndroid()
+
+      await this.openBtn.waitForDisplayed({ timeout: 15000 })
+      await this.tap(this.openBtn)
+      await this.addFundsScreen.waitForDisplayed({ timeout: 15000 })
+      return
     }
 
     if (browser.isIOS) {
       await this.ensureIndividualAccountIOS()
+
+      const addFundsAlreadyOpen = await this.addFundsScreen.isDisplayed().catch(() => false)
+      if (addFundsAlreadyOpen) return
+
+      await this.openBtn.waitForDisplayed({ timeout: 15000 })
+      await this.tap(this.openBtn)
+      await this.addFundsScreen.waitForDisplayed({ timeout: 15000 })
     }
-
-    const addFundsAlreadyOpen = await this.addFundsScreen.isDisplayed().catch(() => false)
-    if (addFundsAlreadyOpen) return
-
-    await this.openBtn.waitForDisplayed({ timeout: 15000 })
-    await this.tap(this.openBtn)
   }
 
   /**
@@ -556,23 +593,60 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   async confirmDeleteAutoTopUp() {
-    if (browser.isAndroid) {
-      const byTextVisible = await this.confirmDeleteBtnAndroidByText
-        .isDisplayed()
-        .catch(() => false)
+    const candidates = browser.isAndroid
+      ? [
+          this.confirmDeleteBtnAndroidByAlertId,
+          this.confirmDeleteBtnAndroidByAlertA11y,
+          this.confirmDeleteBtnAndroidByModalPrimaryId,
+          this.confirmDeleteBtnAndroidByModalPrimaryA11y,
+          this.confirmDeleteBtnAndroidByText,
+          this.confirmDeleteBtnAndroidByTextContains,
+          this.confirmDeleteBtnAndroidByDesc,
+          this.confirmDeleteBtnAndroidByButton1,
+          this.confirmDeleteBtnAndroidByButton1Id,
+        ]
+      : [this.confirmDeleteBtnIOS]
 
-      if (byTextVisible) {
-        await this.tap(this.confirmDeleteBtnAndroidByText)
-        return
+    let confirmButton: (typeof candidates)[number] | undefined
+
+    await browser.waitUntil(
+      async () => {
+        for (const candidate of candidates) {
+          const visible = await candidate.isDisplayed().catch(() => false)
+          if (!visible) continue
+
+          confirmButton = candidate
+          return true
+        }
+        return false
+      },
+      {
+        timeout: 15000,
+        interval: 300,
+        timeoutMsg: 'Auto Top-Up delete Confirm button did not appear',
       }
+    )
 
-      await this.confirmDeleteBtnAndroidByDesc.waitForDisplayed({ timeout: 15000 })
-      await this.tap(this.confirmDeleteBtnAndroidByDesc)
-      return
+    if (!confirmButton) {
+      throw new Error('Auto Top-Up delete Confirm button was not resolved')
     }
 
-    await this.confirmDeleteBtnIOS.waitForDisplayed({ timeout: 15000 })
-    await this.tap(this.confirmDeleteBtnIOS)
+    await this.tap(confirmButton)
+    await browser.pause(500)
+
+    await browser.waitUntil(
+      async () => {
+        for (const candidate of candidates) {
+          if (await candidate.isDisplayed().catch(() => false)) return false
+        }
+        return true
+      },
+      {
+        timeout: 7000,
+        interval: 300,
+        timeoutMsg: 'Auto Top-Up delete Confirm button stayed visible after tap',
+      }
+    )
   }
 
   private thresholdAmountFragments(amount: number | string) {
@@ -668,7 +742,8 @@ export default class AutoTopUpPage extends BasePage {
       await this.backBtnDetails.waitForDisplayed({ timeout: 5000 }).catch(() => {})
       const backDetailsVisible = await this.backBtnDetails.isDisplayed().catch(() => false)
       if (backDetailsVisible) {
-        await this.tap(this.backBtnDetails)
+        if (browser.isAndroid) await this.backBtnDetails.click()
+        else await this.tap(this.backBtnDetails)
       }
     }
 
@@ -677,7 +752,8 @@ export default class AutoTopUpPage extends BasePage {
       await this.backBtnList.waitForDisplayed({ timeout: 5000 }).catch(() => {})
       const backListVisible = await this.backBtnList.isDisplayed().catch(() => false)
       if (backListVisible) {
-        await this.tap(this.backBtnList)
+        if (browser.isAndroid) await this.backBtnList.click()
+        else await this.tap(this.backBtnList)
       }
     }
 

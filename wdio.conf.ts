@@ -25,6 +25,40 @@ const requireEnv = (name: string): string => {
 
 const useBrowserStack = process.env.BROWSERSTACK === 'true'
 const platformFilter = process.env.PLATFORM?.toLowerCase()
+const androidUdid = process.env.ANDROID_UDID?.trim()
+const onboardingCameraMediaUrls = [
+  process.env.ONBOARDING_CAMERA_FRONT_MEDIA_URL,
+  process.env.ONBOARDING_CAMERA_BACK_MEDIA_URL,
+  process.env.ONBOARDING_CAMERA_FACE_MEDIA_URL,
+].filter(Boolean)
+const onboardingCameraVideoMediaUrls = [
+  process.env.ONBOARDING_CAMERA_FRONT_VIDEO_MEDIA_URL,
+  process.env.ONBOARDING_CAMERA_BACK_VIDEO_MEDIA_URL,
+  process.env.ONBOARDING_CAMERA_LIVE_VIDEO_MEDIA_URL,
+].filter(Boolean)
+const enableBrowserStackVideoInjection =
+  process.env.BS_ENABLE_CAMERA_VIDEO_INJECTION === 'false'
+    ? false
+    : process.env.BS_ENABLE_CAMERA_VIDEO_INJECTION === 'true' || onboardingCameraVideoMediaUrls.length > 0
+const enableBrowserStackCameraInjection =
+  process.env.BS_ENABLE_CAMERA_IMAGE_INJECTION === 'false'
+    ? false
+    : process.env.BS_ENABLE_CAMERA_IMAGE_INJECTION === 'true' || onboardingCameraMediaUrls.length > 0
+const enableBrowserStackCameraPreview = process.env.BS_ENABLE_CAMERA_PREVIEW === 'true'
+const envFlag = (name: string, defaultValue: boolean) => {
+  const value = process.env[name]?.trim().toLowerCase()
+  if (value === undefined || value === '') return defaultValue
+  return ['1', 'true', 'yes', 'on'].includes(value)
+}
+const browserStackDebugOptions = {
+  debug: envFlag('BS_DEBUG', true),
+  appiumLogs: envFlag('BS_APPIUM_LOGS', true),
+  deviceLogs: envFlag('BS_DEVICE_LOGS', true),
+  networkLogs: envFlag('BS_NETWORK_LOGS', true),
+  ...(envFlag('BS_NETWORK_LOGS_CAPTURE_CONTENT', false)
+    ? { networkLogsOptions: { captureContent: true } }
+    : {}),
+}
 
 const browserStackUser = useBrowserStack ? requireEnv('BROWSERSTACK_USERNAME') : undefined
 const browserStackKey = useBrowserStack ? requireEnv('BROWSERSTACK_ACCESS_KEY') : undefined
@@ -45,13 +79,21 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
       sessionName: 'Android tests',
       userName: browserStackUser,
       accessKey: browserStackKey,
-      deviceName: 'Google Pixel 9',
-      osVersion: '15.0',
+      ...browserStackDebugOptions,
+      appiumVersion: '2.6.0',
+      deviceName: process.env.BS_ANDROID_DEVICE || 'Samsung Galaxy S24',
+      osVersion: process.env.BS_ANDROID_OS || '15.0',
+      ...(enableBrowserStackCameraInjection ? { enableCameraImageInjection: true } : {}),
+      ...(enableBrowserStackVideoInjection ? { enableCameraVideoInjection: true } : {}),
+      ...(enableBrowserStackCameraPreview ? { enableCameraPreview: true } : {}),
     },
     'appium:app': process.env.BS_APP_ANDROID,
     'appium:autoGrantPermissions': true,
     'appium:appPackage': process.env.BS_ANDROID_APP_PACKAGE,
     'appium:appActivity': process.env.BS_ANDROID_APP_ACTIVITY,
+    'appium:adbExecTimeout': 120000,
+    'appium:appWaitDuration': 120000,
+    'appium:appWaitActivity': '*',
   },
   {
     platformName: 'iOS',
@@ -61,7 +103,8 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
       sessionName: 'iOS tests',
       userName: browserStackUser,
       accessKey: browserStackKey,
-      appiumVersion: '2.0.0',
+      ...browserStackDebugOptions,
+      appiumVersion: '2.6.0',
       deviceName: process.env.BS_IOS_DEVICE || 'iPhone 14',
       osVersion: process.env.BS_IOS_OS || '16',
     },
@@ -90,9 +133,15 @@ const localCapabilities: WebdriverIO.Capabilities[] = [
   {
     platformName: 'Android',
     'appium:automationName': 'UiAutomator2',
-    'appium:avd': 'Pixel_6a',
-    'appium:avdLaunchTimeout': 180000,
-    'appium:avdReadyTimeout': 180000,
+    ...(androidUdid
+      ? {
+        'appium:udid': androidUdid,
+      }
+      : {
+        'appium:avd': 'Pixel_6a',
+        'appium:avdLaunchTimeout': 180000,
+        'appium:avdReadyTimeout': 180000,
+      }),
     'appium:app': '/Users/dmytrokertys/Desktop/app/app-qa-debug.apk',
     'appium:autoGrantPermissions': true,
     'appium:noReset': false,
@@ -109,9 +158,36 @@ const capabilities = (useBrowserStack ? browserStackCapabilities : localCapabili
   return String(capability.platformName).toLowerCase() === platformFilter
 })
 
+const smokeSpecs = [
+  './src/tests/addbeneficiary.individual.spec.ts',
+  './src/tests/addfunds.spec.ts',
+  './src/tests/autoTopUp.spec.ts',
+  './src/tests/bankTransfer.p2p.individual.spec.ts',
+  './src/tests/bankTransfer.sepa.individual.spec.ts',
+  './src/tests/bankTransfer.swift.individual.spec.ts',
+  './src/tests/cardFreezeUnfreeze.joint.spec.ts',
+  './src/tests/cashFunds.spec.ts',
+  './src/tests/fxExchange.spec.ts',
+  './src/tests/homeAccountSwitch.spec.ts',
+  './src/tests/homeScreen.spec.ts',
+  './src/tests/homeSearch.spec.ts',
+  './src/tests/onboarding.spec.ts',
+  './src/tests/orders.spec.ts',
+  './src/tests/physicalcardcreation.spec.ts',
+  './src/tests/portfolio.spec.ts',
+  './src/tests/priceAlerts.spec.ts',
+  './src/tests/watchlist.spec.ts',
+]
+
 export const config: WebdriverIO.Config = {
   runner: 'local',
   specs: ['./src/tests/**/*.spec.ts'],
+  suites: {
+    smoke: smokeSpecs,
+    launchOnly: ['./src/tests/launch.spec.ts'],
+    onboarding: ['./src/tests/onboarding.spec.ts'],
+    smokeWithoutOnboarding: smokeSpecs.filter((spec) => spec !== './src/tests/onboarding.spec.ts'),
+  },
   maxInstances: 1,
   logLevel: 'info',
   framework: 'mocha',
@@ -136,7 +212,7 @@ export const config: WebdriverIO.Config = {
 
   capabilities,
 
-  mochaOpts: { ui: 'bdd', timeout: 120000 },
+  mochaOpts: { ui: 'bdd', timeout: Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000) },
 
   onPrepare: function (_config, capabilities) {
     writeAllureEnvironment(capabilities as WebdriverIO.Capabilities[])

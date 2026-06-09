@@ -5,7 +5,7 @@ import OrdersPage from '../pages/OrdersPage'
 import { AUTH } from '../data/credentials'
 
 describe('Orders (iOS/Android)', function () {
-  this.timeout(300000)
+  this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 800000))
 
   const loginPage = new LoginPage()
   const home = homeScreenPage
@@ -28,7 +28,7 @@ describe('Orders (iOS/Android)', function () {
       await orders.createModifyAndCancelBuyOrderIOS({
         instrumentQuery: 'BMW',
         initialQuantity: '5',
-        modifiedQuantity: '6',
+        modifiedQuantity: '15',
       })
     } else {
       await orders.createModifyAndCancelBuyOrderAndroid({

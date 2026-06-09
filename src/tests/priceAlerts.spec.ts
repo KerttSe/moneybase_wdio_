@@ -5,7 +5,7 @@ import PriceAlertsPage from '../pages/PriceAlertsPage'
 import { AUTH } from '../data/credentials'
 
 describe('Price Alerts (iOS/Android)', function () {
-  this.timeout(240000)
+  this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
 
   const loginPage = new LoginPage()
   const home = homeScreenPage

@@ -35,9 +35,6 @@ export default class BasePage {
     return $('android=new UiSelector().text("OK")')
   }
 
-  private get androidAlertBtn1() {
-    return $('android=new UiSelector().resourceId("android:id/button1")')
-  }
 
   private get androidSomethingWentWrongTitle() {
     return $('android=new UiSelector().resourceId("com.moneybase.qa:id/alertTitle").text("Something went wrong")')
@@ -57,6 +54,14 @@ export default class BasePage {
 
   private get androidGooglePayCloseBtn() {
     return $('android=new UiSelector().resourceId("com.moneybase.qa:id/rightActionView")')
+  }
+
+  private get androidVerificationSuccessContinueBtn() {
+    return this.byIdRx('verificationSuccess_button_continue')
+  }
+
+  private get androidVerificationSuccessScreen() {
+    return this.byIdRx('verificationSuccess_screen')
   }
 
   private get androidHomeTab() {
@@ -97,10 +102,76 @@ export default class BasePage {
     await browser.pause(300)
   }
 
+  protected async tapAndroidVerificationSuccessContinueIfVisible() {
+    if (!browser.isAndroid) return false
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const continueShown = await this.androidVerificationSuccessContinueBtn.isDisplayed().catch(() => false)
+    const successShown = await this.androidVerificationSuccessScreen.isDisplayed().catch(() => false)
+    if (!continueShown && !successShown) return false
+
+    if (continueShown) {
+      await this.androidVerificationSuccessContinueBtn.click().catch(async () => {
+        const location = await this.androidVerificationSuccessContinueBtn.getLocation()
+        const size = await this.androidVerificationSuccessContinueBtn.getSize()
+        await browser.performActions([
+          {
+            type: 'pointer',
+            id: 'finger-verification-success-continue',
+            parameters: { pointerType: 'touch' },
+            actions: [
+              {
+                type: 'pointerMove',
+                duration: 0,
+                x: Math.round(location.x + size.width / 2),
+                y: Math.round(location.y + size.height / 2),
+              },
+              { type: 'pointerDown', button: 0 },
+              { type: 'pause', duration: 80 },
+              { type: 'pointerUp', button: 0 },
+            ],
+          },
+        ])
+        await browser.releaseActions().catch(() => {})
+      })
+    } else {
+      const { width, height } = await browser.getWindowRect()
+      await browser.performActions([
+        {
+          type: 'pointer',
+          id: 'finger-verification-success-fallback',
+          parameters: { pointerType: 'touch' },
+          actions: [
+            { type: 'pointerMove', duration: 0, x: Math.round(width * 0.5), y: Math.round(height * 0.9) },
+            { type: 'pointerDown', button: 0 },
+            { type: 'pause', duration: 80 },
+            { type: 'pointerUp', button: 0 },
+          ],
+        },
+      ])
+      await browser.releaseActions().catch(() => {})
+    }
+
+    await browser.pause(800)
+    return true
+  }
+
   private async dismissKnownAndroidBlockingPopupOnce() {
     if (!browser.isAndroid) return false
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const currentActivity = await browser.getCurrentActivity().catch(() => '')
+    const isFreshchatActivity = /freshchat|CategoryListActivity|ConversationActivity/i.test(currentActivity)
+    if (isFreshchatActivity) {
+      await browser.back().catch(() => {})
+      await browser.pause(500)
+      return true
+    }
+
+    const continuedFromVerificationSuccess = await this.tapAndroidVerificationSuccessContinueIfVisible()
+    if (continuedFromVerificationSuccess) return true
 
     const gpayFullScreenShown = await this.androidGooglePayScreen.isDisplayed().catch(() => false)
     if (gpayFullScreenShown) {
@@ -122,16 +193,7 @@ export default class BasePage {
       return true
     }
 
-    const somethingWrongShown = await this.androidSomethingWentWrongTitle.isDisplayed().catch(() => false)
-    if (somethingWrongShown) {
-      const okShown = await this.androidAlertBtn1.isDisplayed().catch(() => false)
-      if (okShown) {
-        await this.androidAlertBtn1.click().catch(() => {})
-        await this.androidSomethingWentWrongTitle.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
-        return true
-      }
-      return false
-    }
+ 
 
     const neutralDismissed = await this.dismissCommonAndroidAlert(2500).catch(() => false)
     if (neutralDismissed) return true
@@ -148,7 +210,7 @@ export default class BasePage {
       this.androidAlertBtn3,
       this.androidAlertBtn3ById,
       this.androidAlertBtn3ByText,
-      this.androidAlertBtn1,
+      
     ]
 
     for (const candidate of candidates) {
@@ -194,6 +256,54 @@ export default class BasePage {
       await browser.pause(150)
     }
     return dismissedAny
+  }
+
+  protected async stabilizeAndroidHomeSurface(timeoutMs = 15000) {
+    if (!browser.isAndroid) return false
+
+    const deadline = Date.now() + timeoutMs
+    while (Date.now() < deadline) {
+      await browser.switchContext('NATIVE_APP').catch(() => {})
+
+      await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
+      await this.dismissCommonAndroidAlert(2000).catch(() => false)
+
+      const currentActivity = await browser.getCurrentActivity().catch(() => '')
+      const isFreshchatActivity = /freshchat|CategoryListActivity|ConversationActivity/i.test(currentActivity)
+      if (isFreshchatActivity) {
+        await browser.back().catch(() => {})
+        await browser.pause(400)
+        continue
+      }
+
+      const homeShown = await this.byIdRx('home_screen').isDisplayed().catch(() => false)
+      if (homeShown) return true
+
+      const cardsShown = await this.byIdRx('cards_screen').isDisplayed().catch(() => false)
+      const payShown = await this.byIdRx('pay_screen').isDisplayed().catch(() => false)
+
+      const homeTabShown = await this.androidHomeTab.isDisplayed().catch(() => false)
+      const homeTabA11yShown = await this.androidHomeTabA11y.isDisplayed().catch(() => false)
+      const homeTabXpathShown = await this.androidHomeTabXpath.isDisplayed().catch(() => false)
+
+      if (cardsShown || payShown || homeTabShown || homeTabA11yShown || homeTabXpathShown) {
+        if (homeTabShown) {
+          await this.androidHomeTab.click().catch(() => {})
+        } else if (homeTabA11yShown) {
+          await this.androidHomeTabA11y.click().catch(() => {})
+        } else if (homeTabXpathShown) {
+          await this.androidHomeTabXpath.click().catch(() => {})
+        }
+
+        await browser.pause(400)
+        const homeAfterTap = await this.byIdRx('home_screen').isDisplayed().catch(() => false)
+        if (homeAfterTap) return true
+      }
+
+      await browser.pause(300)
+    }
+
+    return await this.byIdRx('home_screen').isDisplayed().catch(() => false)
   }
 
   async pause(ms = 1000) {

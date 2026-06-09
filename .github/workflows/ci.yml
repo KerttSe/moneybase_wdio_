@@ -29,10 +29,10 @@ jobs:
             spec: src/tests/addfunds.spec.ts
             smoke: true
           - platform: android
-            spec: src/tests/bankTransfer.individual.spec.ts
+            spec: src/tests/bankTransfer.p2p.individual.spec.ts
             smoke: true
           - platform: ios
-            spec: src/tests/bankTransfer.individual.spec.ts
+            spec: src/tests/bankTransfer.p2p.individual.spec.ts
             smoke: true
           - platform: android
             spec: src/tests/addbeneficiary.individual.spec.ts

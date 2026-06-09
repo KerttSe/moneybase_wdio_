@@ -28,7 +28,7 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get homeRootAndroid() {
-    return $('android=new UiSelector().resourceId("home_screen")')
+    return this.byAndroidResId('home_screen')
   }
 
   /* =========================
@@ -126,7 +126,23 @@ class BankTransferP2PIndividualPage extends BasePage {
    * ========================= */
 
   private get payTabAndroid() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_pay")')
+  }
+
+  private get payTabAndroidByA11y() {
+    return $('~Pay')
+  }
+
+  private get payTabAndroidLegacy() {
     return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_bar_item_icon_container").instance(2)')
+  }
+
+  private get supportSheetTitleAndroid() {
+    return $('android=new UiSelector().text("Support")')
+  }
+
+  private get supportSheetCloseAndroid() {
+    return $('android=new UiSelector().description("Close sheet")')
   }
 
   private get carlosCatAndroid() {
@@ -145,16 +161,89 @@ class BankTransferP2PIndividualPage extends BasePage {
     return this.byAndroidResId('p2p_input_amount')
   }
 
-  private async resolveAmountInputP2PAndroid() {
-    const legacyShown = await this.amountP2PAndroid.isDisplayed().catch(() => false)
-    if (legacyShown) return this.amountP2PAndroid
+  private get amountBankTransferAndroid() {
+    return this.byAndroidResId('bankTransfer_input_amount')
+  }
 
-    await this.amountP2PAndroidNew.waitForDisplayed({ timeout: 20000 })
-    return this.amountP2PAndroidNew
+  private get amountBankTransferAndroidLegacy() {
+    return $('id=com.moneybase.qa:id/paymentAmount')
+  }
+
+  private async resolveAmountInputP2PAndroid() {
+    const candidates = [
+      this.amountP2PAndroid,
+      this.amountP2PAndroidNew,
+      this.amountBankTransferAndroid,
+      this.amountBankTransferAndroidLegacy,
+    ]
+
+    for (const candidate of candidates) {
+      const shown = await candidate.isDisplayed().catch(() => false)
+      if (shown) return candidate
+    }
+
+    await browser.waitUntil(
+      async () => {
+        for (const candidate of candidates) {
+          const shown = await candidate.isDisplayed().catch(() => false)
+          if (shown) return true
+        }
+        return false
+      },
+      { timeout: 20000, interval: 500, timeoutMsg: 'Amount input was not displayed' }
+    )
+
+    for (const candidate of candidates) {
+      const shown = await candidate.isDisplayed().catch(() => false)
+      if (shown) return candidate
+    }
+
+    throw new Error('Amount input was not displayed')
+  }
+
+  private async assertSupportSheetNotShownAndroid(timeoutMs = 3000) {
+    if (!browser.isAndroid) return
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const deadline = Date.now() + timeoutMs
+    while (Date.now() < deadline) {
+      const titleShown = await this.supportSheetTitleAndroid.isDisplayed().catch(() => false)
+      const closeShown = await this.supportSheetCloseAndroid.isDisplayed().catch(() => false)
+
+      if (titleShown || closeShown) {
+        throw new Error('Unexpected Support sheet appeared before opening Pay tab')
+      }
+
+      await browser.pause(250)
+    }
+  }
+
+  private async openPayTabAndroid() {
+    await this.dismissBlockingAlertAndroid(5000)
+    await this.assertSupportSheetNotShownAndroid(5000)
+
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const candidates = [this.payTabAndroid, this.payTabAndroidByA11y, this.payTabAndroidLegacy]
+
+      for (const candidate of candidates) {
+        const shown = await candidate.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+        if (shown) {
+          await this.tap(candidate)
+          return
+        }
+      }
+
+      await this.assertSupportSheetNotShownAndroid(2000)
+    }
+
+    throw new Error('Pay tab was not displayed')
   }
 
   private get reviewPaymentBtnAndroid() {
-    return this.byAndroidResId('p2p_button_review_payment')
+    return $(
+      'android=new UiSelector().resourceIdMatches(".*:id/(p2p|bankTransfer)_button_review_payment$|^(p2p|bankTransfer)_button_review_payment$")'
+    )
   }
 
   private get p2pScrollAndroid() {
@@ -167,6 +256,14 @@ class BankTransferP2PIndividualPage extends BasePage {
 
   private get seekBarAndroidLegacy() {
     return $('~makePayment_slider_pay')
+  }
+
+  private get slideToMakePaymentAndroid() {
+    return this.byAndroidResId('slide_to_make_payment')
+  }
+
+  private get slideToMakePaymentAndroidA11y() {
+    return $('~slide_to_make_payment')
   }
 
   private get verificationSliderWrapperAndroid() {
@@ -184,9 +281,18 @@ class BankTransferP2PIndividualPage extends BasePage {
     return $('~SEPA')
   }
 
-  // TODO: replace with stable selector for SWIFT beneficiary/item card
+  private readonly swiftBeneficiaryName = 'usjsk whwjwk'
+
   private get swiftBeneficiaryAndroid() {
-    return $('~SWIFT')
+    return $(`~${this.swiftBeneficiaryName}`)
+  }
+
+  private get swiftBeneficiaryAndroidByDesc() {
+    return $(`android=new UiSelector().description("${this.swiftBeneficiaryName}")`)
+  }
+
+  private get swiftBeneficiaryAndroidByXPath() {
+    return $(`//android.view.View[@content-desc="${this.swiftBeneficiaryName}"]`)
   }
 
   private get slideTextAndroid() {
@@ -259,14 +365,34 @@ class BankTransferP2PIndividualPage extends BasePage {
     await browser.switchContext('NATIVE_APP').catch(() => {})
     await browser.hideKeyboard().catch(() => {})
 
-    await browser
-      .waitUntil(
-        async () =>
-          (await this.sliderWrapperAndroidLegacy.isDisplayed().catch(() => false)) ||
-          (await this.verificationSliderWrapperAndroid.isDisplayed().catch(() => false)),
-        { timeout: 30000, interval: 250 }
-      )
-      .catch(() => {})
+    await browser.waitUntil(
+      async () => {
+        const slideByIdReady =
+          (await this.slideToMakePaymentAndroid.isDisplayed().catch(() => false)) &&
+          (await this.slideToMakePaymentAndroid.isEnabled().catch(() => false))
+        if (slideByIdReady) return true
+
+        const slideByA11yReady =
+          (await this.slideToMakePaymentAndroidA11y.isDisplayed().catch(() => false)) &&
+          (await this.slideToMakePaymentAndroidA11y.isEnabled().catch(() => false))
+        if (slideByA11yReady) return true
+
+        const legacyReady =
+          (await this.sliderWrapperAndroidLegacy.isDisplayed().catch(() => false)) &&
+          (await this.sliderWrapperAndroidLegacy.isEnabled().catch(() => false))
+        if (legacyReady) return true
+
+        return (
+          (await this.slideDescAndroid.isDisplayed().catch(() => false)) &&
+          (await this.slideDescAndroid.isEnabled().catch(() => false))
+        )
+      },
+      {
+        timeout: 90000,
+        interval: 500,
+        timeoutMsg: 'P2P payment slider did not become ready after verification',
+      }
+    )
   }
 
   private async maybeTapReviewPaymentAndroid() {
@@ -277,17 +403,27 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     await browser.hideKeyboard().catch(() => {})
 
-    await browser
-      .waitUntil(async () => await this.reviewPaymentBtnAndroid.isEnabled().catch(() => false), {
-        timeout: 20000,
+    await browser.waitUntil(
+      async () =>
+        (await this.reviewPaymentBtnAndroid.isDisplayed().catch(() => false)) &&
+        (await this.reviewPaymentBtnAndroid.isEnabled().catch(() => false)),
+      {
+        timeout: 60000,
         interval: 250,
-      })
-      .catch(() => {})
+        timeoutMsg: 'Review payment button did not become enabled',
+      }
+    )
 
     await this.tap(this.reviewPaymentBtnAndroid)
   }
 
   private async resolveSeekBarAndroid() {
+    const slideByIdShown = await this.slideToMakePaymentAndroid.isDisplayed().catch(() => false)
+    if (slideByIdShown) return this.slideToMakePaymentAndroid
+
+    const slideByA11yShown = await this.slideToMakePaymentAndroidA11y.isDisplayed().catch(() => false)
+    if (slideByA11yShown) return this.slideToMakePaymentAndroidA11y
+
     const legacyShown = await this.seekBarAndroidLegacy.isDisplayed().catch(() => false)
     if (legacyShown) return this.seekBarAndroidLegacy
 
@@ -444,11 +580,43 @@ class BankTransferP2PIndividualPage extends BasePage {
    * ========================= */
 
   private get txDetailsBackAndroid() {
-    return $('android=new UiSelector().resourceId("transactionDetails_button_back")')
+    return this.byAndroidResId('transactionDetails_button_back')
+  }
+
+  private get txDetailsPaymentStatusAndroid() {
+    return $('android=new UiSelector().text("PAYMENT STATUS")')
+  }
+
+  private get txDetailsAcceptedByMoneybaseAndroid() {
+    return $('android=new UiSelector().text("Accepted by Moneybase")')
+  }
+
+  private get txDetailsProcessedAndroid() {
+    return $('android=new UiSelector().text("Processed")')
+  }
+
+  private get txDetailsSentToBankAndroid() {
+    return $('android=new UiSelector().text("Sent to Bank")')
+  }
+
+  private get txDetailsBicSwiftAndroid() {
+    return $('android=new UiSelector().text("BIC/SWIFT")')
+  }
+
+  private get txDetailsSwiftFeeAndroid() {
+    return $('android=new UiSelector().text("SWIFT Fee")')
+  }
+
+  private get txDetailsFeeAndroid() {
+    return $('android=new UiSelector().text("Fee")')
+  }
+
+  private get txDetailsSwiftFeeAmountAndroid() {
+    return $('android=new UiSelector().text("$10.00")')
   }
 
   private get headerBackAndroid() {
-    return $('android=new UiSelector().resourceId("beneficiaryDetails_button_back")')
+    return this.byAndroidResId('beneficiaryDetails_button_back')
   }
 
   private get headerBackAltAndroid() {
@@ -456,12 +624,25 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get homeTabAndroid() {
+    return this.byAndroidResId('navigation_button_home')
+  }
+
+  private get homeTabAndroidA11y() {
+    return $('~Home')
+  }
+
+  private get homeTabAndroidLegacy() {
     return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_bar_item_icon_view").instance(0)')
   }
 
   private minusAmountHomeAnchorAndroid(amount: number | string) {
     const formatted = Number(amount).toFixed(2)
     return $(`android=new UiSelector().textContains("- €${formatted}")`)
+  }
+
+  private sentAmountHomeAnchorAndroid(amount: number | string) {
+    const formatted = Number(amount).toFixed(2)
+    return $(`android=new UiSelector().textContains("Sent €${formatted}")`)
   }
 
   private formatIosAmount(amount: number | string) {
@@ -484,13 +665,29 @@ class BankTransferP2PIndividualPage extends BasePage {
     if (backShown) {
       await this.tap(this.headerBackAndroid)
     } else {
-      await this.headerBackAltAndroid.waitForDisplayed({ timeout: 8000 })
-      await this.tap(this.headerBackAltAndroid)
+      const backAltShown = await this.headerBackAltAndroid.waitForDisplayed({ timeout: 8000 }).catch(() => false)
+      if (backAltShown) await this.tap(this.headerBackAltAndroid)
+      else await browser.back()
     }
 
     await browser.pause(800)
-    await this.homeTabAndroid.waitForDisplayed({ timeout: 15000 })
-    await this.tap(this.homeTabAndroid)
+    const homeShown = await this.homeTabAndroid.waitForDisplayed({ timeout: 15000 }).catch(() => false)
+    if (homeShown) {
+      await this.tap(this.homeTabAndroid)
+      await this.homeRootAndroid.waitForDisplayed({ timeout: 15000 })
+      return
+    }
+
+    const homeA11yShown = await this.homeTabAndroidA11y.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+    if (homeA11yShown) {
+      await this.tap(this.homeTabAndroidA11y)
+      await this.homeRootAndroid.waitForDisplayed({ timeout: 15000 })
+      return
+    }
+
+    await this.homeTabAndroidLegacy.waitForDisplayed({ timeout: 8000 })
+    await this.tap(this.homeTabAndroidLegacy)
+    await this.homeRootAndroid.waitForDisplayed({ timeout: 15000 })
   }
 
   private async exitToHomeAfterP2PIOS() {
@@ -534,12 +731,105 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private async waitForMinusAmountHomeAndroid(amount: number | string, timeoutMs = 30000) {
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+    await this.scrollHomeAndroid()
+
     const deadline = Date.now() + timeoutMs
     while (Date.now() < deadline) {
       if (await this.minusAmountHomeAnchorAndroid(amount).isDisplayed().catch(() => false)) return
+      if (await this.sentAmountHomeAnchorAndroid(amount).isDisplayed().catch(() => false)) return
       await this.scrollHomeAndroid()
     }
-    await this.minusAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 5000 })
+
+    const minusShown = await this.minusAmountHomeAnchorAndroid(amount)
+      .waitForDisplayed({ timeout: 2500 })
+      .catch(() => false)
+    if (minusShown) return
+
+    await this.sentAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 2500 })
+  }
+
+  private async scrollCurrentScreenAndroid() {
+    const { width, height } = await browser.getWindowRect()
+    const startX = Math.round(width * 0.5)
+    const startY = Math.round(height * 0.78)
+    const endY = Math.round(height * 0.38)
+
+    await browser.performActions([
+      {
+        type: 'pointer',
+        id: 'finger1',
+        parameters: { pointerType: 'touch' },
+        actions: [
+          { type: 'pointerMove', duration: 0, x: startX, y: startY },
+          { type: 'pointerDown', button: 0 },
+          { type: 'pause', duration: 150 },
+          { type: 'pointerMove', duration: 600, x: startX, y: endY },
+          { type: 'pointerUp', button: 0 },
+        ],
+      },
+    ])
+    await browser.releaseActions().catch(() => {})
+    await browser.pause(500)
+  }
+
+  private async openSwiftBeneficiaryAndroid() {
+    const deadline = Date.now() + 25000
+
+    while (Date.now() < deadline) {
+      const byA11y = await this.swiftBeneficiaryAndroid.isDisplayed().catch(() => false)
+      if (byA11y) {
+        await this.tap(this.swiftBeneficiaryAndroid)
+        return
+      }
+
+      const byDesc = await this.swiftBeneficiaryAndroidByDesc.isDisplayed().catch(() => false)
+      if (byDesc) {
+        await this.tap(this.swiftBeneficiaryAndroidByDesc)
+        return
+      }
+
+      const byXPath = await this.swiftBeneficiaryAndroidByXPath.isDisplayed().catch(() => false)
+      if (byXPath) {
+        await this.tap(this.swiftBeneficiaryAndroidByXPath)
+        return
+      }
+
+      await this.scrollCurrentScreenAndroid()
+    }
+
+    throw new Error(`SWIFT beneficiary "${this.swiftBeneficiaryName}" not found on Android`)
+  }
+
+  private async waitForSwiftTransactionDetailsAndroid() {
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    await this.txDetailsBackAndroid.waitForDisplayed({ timeout: 60000 })
+    await this.txDetailsPaymentStatusAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.txDetailsAcceptedByMoneybaseAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.txDetailsProcessedAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.txDetailsSentToBankAndroid.waitForDisplayed({ timeout: 15000 })
+
+    const bicShown = await this.txDetailsBicSwiftAndroid.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+    if (!bicShown) {
+      await this.scrollCurrentScreenAndroid()
+      await this.txDetailsBicSwiftAndroid.waitForDisplayed({ timeout: 10000 })
+    }
+
+    let swiftFeeShown = await this.txDetailsSwiftFeeAndroid
+      .waitForDisplayed({ timeout: 5000 })
+      .catch(() => false)
+    if (!swiftFeeShown) {
+      await this.scrollCurrentScreenAndroid()
+      swiftFeeShown = await this.txDetailsSwiftFeeAndroid
+        .waitForDisplayed({ timeout: 3000 })
+        .catch(() => false)
+    }
+
+    if (!swiftFeeShown) {
+      await this.txDetailsFeeAndroid.waitForDisplayed({ timeout: 10000 })
+      await this.txDetailsSwiftFeeAmountAndroid.waitForDisplayed({ timeout: 10000 })
+    }
   }
 
   private async scrollHomeIOS() {
@@ -614,10 +904,7 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     await browser.pause(700)
 
-    await this.dismissBlockingAlertAndroid(5000)
-
-    await this.payTabAndroid.waitForDisplayed({ timeout: 20000 })
-    await this.tap(this.payTabAndroid)
+    await this.openPayTabAndroid()
 
     await this.carlosCatAndroid.waitForDisplayed({ timeout: 20000 })
     await this.tap(this.carlosCatAndroid)
@@ -677,10 +964,7 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     await this.ensureSingleAccountAndroid()
     await browser.pause(700)
-    await this.dismissBlockingAlertAndroid(5000)
-
-    await this.payTabAndroid.waitForDisplayed({ timeout: 20000 })
-    await this.tap(this.payTabAndroid)
+    await this.openPayTabAndroid()
 
     await this.sepaBeneficiaryAndroid.waitForDisplayed({ timeout: 20000 })
     await this.tap(this.sepaBeneficiaryAndroid)
@@ -735,25 +1019,24 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     await this.ensureSingleAccountAndroid()
     await browser.pause(700)
-    await this.dismissBlockingAlertAndroid(5000)
+    await this.openPayTabAndroid()
 
-    await this.payTabAndroid.waitForDisplayed({ timeout: 20000 })
-    await this.tap(this.payTabAndroid)
-
-    await this.swiftBeneficiaryAndroid.waitForDisplayed({ timeout: 20000 })
-    await this.tap(this.swiftBeneficiaryAndroid)
+    await this.openSwiftBeneficiaryAndroid()
 
     await this.beneficiaryPayBtnAndroid.waitForDisplayed({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnAndroid)
 
-    await this.amountP2PAndroid.waitForDisplayed({ timeout: 20000 })
-    await this.amountP2PAndroid.clearValue().catch(() => {})
-    await this.amountP2PAndroid.setValue(String(amount))
+    const amountInput = await this.resolveAmountInputP2PAndroid()
+    await amountInput.waitForDisplayed({ timeout: 20000 })
+    await amountInput.clearValue().catch(() => {})
+    await amountInput.setValue(String(amount))
+
+    await this.maybeTapReviewPaymentAndroid()
 
     await this.ensureSliderReadyAndroid()
     await this.dragSliderToRightAndroid()
 
-    await this.minusAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 60000 })
+    await this.waitForSwiftTransactionDetailsAndroid()
     await this.exitToHomeAfterP2PAndroid()
     await this.waitForMinusAmountHomeAndroid(amount, 30000)
   }

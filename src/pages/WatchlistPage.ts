@@ -55,6 +55,10 @@ export default class WatchlistPage extends BasePage {
     return this.androidText('Watchlist')
   }
 
+  private get watchlistEntryAndroidByParent() {
+    return $('//android.widget.TextView[@text="Watchlist"]/parent::android.view.View')
+  }
+
   private get watchlistEntryAndroidByTextContains() {
     return this.androidTextContains('Watchlist')
   }
@@ -93,6 +97,10 @@ export default class WatchlistPage extends BasePage {
 
   private get instrumentHeaderAndroid() {
     return this.androidText('Instrument')
+  }
+
+  private get instrumentBuyButtonAndroid() {
+    return $('//*[@resource-id="instrument-landing-page-buy-btn-mobile"]')
   }
 
   private get instrumentTopRightActionAndroid() {
@@ -191,6 +199,7 @@ export default class WatchlistPage extends BasePage {
     await this.investTabAndroid.click()
 
     const watchlistEntryCandidates = [
+      this.watchlistEntryAndroidByParent,
       this.watchlistEntryAndroidByText,
       this.watchlistEntryAndroidByTextContains,
       this.androidDescContains('Watchlist'),
@@ -209,11 +218,15 @@ export default class WatchlistPage extends BasePage {
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    let onInstrumentDetails = await this.instrumentHeaderAndroid.waitForDisplayed({ timeout: 8000 }).then(() => true).catch(() => false)
+    let onInstrumentDetails = await this.waitForAnyDisplayed([this.instrumentHeaderAndroid, this.instrumentBuyButtonAndroid], 8000, 'Instrument details (Android)')
+      .then(() => true)
+      .catch(() => false)
     if (!onInstrumentDetails) {
       await this.firstInstrumentRowAndroidByClickableView.waitForDisplayed({ timeout: 10000 })
       await this.firstInstrumentRowAndroidByClickableView.click()
-      onInstrumentDetails = await this.instrumentHeaderAndroid.waitForDisplayed({ timeout: 12000 }).then(() => true).catch(() => false)
+      onInstrumentDetails = await this.waitForAnyDisplayed([this.instrumentHeaderAndroid, this.instrumentBuyButtonAndroid], 12000, 'Instrument details (Android)')
+        .then(() => true)
+        .catch(() => false)
     }
     if (!onInstrumentDetails) {
       await this.debugSnapshot('watchlist-android-instrument-not-opened')
@@ -275,7 +288,9 @@ export default class WatchlistPage extends BasePage {
     }
 
     if (!toastShown && !topRightStateChanged) {
-      const stillOnInstrument = await this.instrumentHeaderAndroid.isDisplayed().catch(() => false)
+      const stillOnInstrument = await this.waitForAnyDisplayed([this.instrumentHeaderAndroid, this.instrumentBuyButtonAndroid], 1500, 'Instrument details (Android)')
+        .then(() => true)
+        .catch(() => false)
       const actionStillVisible = await this.isAnyDisplayed(watchlistActionCandidates)
       if (stillOnInstrument && !actionStillVisible) {
         return

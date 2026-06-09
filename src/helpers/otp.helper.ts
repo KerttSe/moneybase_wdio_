@@ -5,6 +5,8 @@ type OtpFetchParams = {
 	timeoutMs?: number
 	intervalMs?: number
 	maxRequests?: number
+	requestTimeoutMs?: number
+	excludeTokens?: string[]
 }
 
 export class OtpHelper {
@@ -226,10 +228,21 @@ export class OtpHelper {
 		const timeoutMs = params.timeoutMs ?? Number(process.env.OTP_TIMEOUT_MS || 15000)
 		const intervalMs = params.intervalMs ?? Number(process.env.OTP_POLL_INTERVAL_MS || 2000)
 		const maxRequests = params.maxRequests ?? Number(process.env.OTP_MAX_REQUESTS || 10)
+		const requestTimeoutMs = Math.min(
+			Math.max(1000, params.requestTimeoutMs ?? Number(process.env.OTP_REQUEST_TIMEOUT_MS || timeoutMs)),
+			Math.max(1000, timeoutMs)
+		)
 		const requestHeaders = this.buildRequestHeaders()
+		const excludedTokens = new Set(
+			(params.excludeTokens || [])
+				.map((token) => this.normalizeDigits(token))
+				.filter((token) => token.length === 6)
+		)
 
 		const phoneCandidate = this.buildPhoneCandidate(params.phone)
 		const url = this.buildUrl(phoneCandidate)
+
+		console.log(`[OtpHelper] getLatestOtp started: maxRequests=${Math.max(1, maxRequests)}, timeoutMs=${timeoutMs}, intervalMs=${intervalMs}`)
 
 		const startedAt = Date.now()
 		let attempts = 0
@@ -237,10 +250,11 @@ export class OtpHelper {
 
 		while (attempts < Math.max(1, maxRequests) && Date.now() - startedAt <= Math.max(1000, timeoutMs)) {
 			attempts += 1
+			console.log(`[OtpHelper] OTP request attempt ${attempts}/${Math.max(1, maxRequests)}`)
 
 			const response = await axios.get(url, {
 				headers: requestHeaders,
-				timeout: Math.max(1000, timeoutMs),
+				timeout: requestTimeoutMs,
 				validateStatus: () => true,
 			})
 
@@ -252,7 +266,10 @@ export class OtpHelper {
 
 				if (token.length !== 6) {
 					lastReason = 'Token missing or invalid'
+				} else if (excludedTokens.has(token)) {
+					lastReason = `Latest token ${token} is excluded`
 				} else {
+					console.log(`[OtpHelper] OTP fetched successfully on attempt ${attempts}`)
 					return token
 				}
 			}

@@ -2,22 +2,22 @@ import { browser } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
 import { AUTH } from '../data/credentials'
 import HomeScreenPage from '../pages/HomeScreenPage'
-import HomeSearchPage from '../pages/HomeSearchPage'
 
-describe('Home Search - Individual', function () {
+describe('Home Account Switch', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
+
   const loginPage = new LoginPage()
-  const homeSearchPage = new HomeSearchPage()
 
   beforeEach(async function () {
-    await loginPage.loginFlow(AUTH)
-    await HomeScreenPage.ensureIndividualAccount()
-  })
-
-  it('Home search returns Carlos Cat for query "cat"', async function () {
     if (!(browser.isAndroid || browser.isIOS)) this.skip()
 
+    await loginPage.loginFlow(AUTH)
     await HomeScreenPage.waitForHomeLoaded()
-    await homeSearchPage.verifyHomeSearch('cat')
+  })
+
+  it('switches between available account types', async function () {
+    if (!(browser.isAndroid || browser.isIOS)) this.skip()
+
+    await HomeScreenPage.verifyAccountSwitchingAcrossTypes()
   })
 })

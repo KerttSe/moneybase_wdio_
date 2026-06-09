@@ -47,6 +47,10 @@ export default class PortfolioPage extends BasePage {
     return this.androidText('Portfolio')
   }
 
+  private get portfolioEntryAndroidByParent() {
+    return $('//android.widget.TextView[@text="Portfolio"]/parent::android.view.View')
+  }
+
   private get portfolioEntryAndroidByTextContains() {
     return this.androidTextContains('Portfolio')
   }
@@ -108,6 +112,10 @@ export default class PortfolioPage extends BasePage {
   }
 
   private get buyBtnAndroid() {
+    return $('//*[@resource-id="instrument-landing-page-buy-btn-mobile"]')
+  }
+
+  private get buyBtnAndroidFallback() {
     return $('//*[(@class="android.widget.Button" or @clickable="true" or @focusable="true") and (contains(@text,"Buy") or contains(@text,"BUY") or contains(@content-desc,"Buy") or contains(@content-desc,"buy"))]')
   }
 
@@ -194,6 +202,7 @@ export default class PortfolioPage extends BasePage {
 
     const portfolioEntryCandidates = [
       this.portfolioEntryAndroidByText,
+      this.portfolioEntryAndroidByParent,
       this.portfolioEntryAndroidByTextContains,
       this.portfolioEntryAndroidByDescContains,
       this.portfolioEntryAndroidByIdContains,
@@ -203,6 +212,7 @@ export default class PortfolioPage extends BasePage {
       this.portfolioTitleAndroidByText,
       this.portfolioTitleAndroidByTextContains,
       this.buyBtnAndroid,
+      this.buyBtnAndroidFallback,
       this.sellBtnAndroid,
     ]
 
@@ -246,7 +256,7 @@ export default class PortfolioPage extends BasePage {
 
   private async ensureInstrumentTradeActionsVisibleAndroid(timeout = 20000) {
     await browser.switchContext('NATIVE_APP').catch(() => {})
-    await this.waitForAnyDisplayed([this.buyBtnAndroid, this.sellBtnAndroid, this.newOrderBtnAndroid], timeout, 'Instrument trade actions (Android)')
+    await this.waitForAnyDisplayed([this.buyBtnAndroid, this.buyBtnAndroidFallback, this.sellBtnAndroid, this.newOrderBtnAndroid], timeout, 'Instrument trade actions (Android)')
   }
 
   async openPortfolioFromInvestIOS() {

@@ -17,6 +17,14 @@ class HomeScreenPage extends BasePage {
     return $('android=new UiSelector().textContains("Business")')
   }
 
+  private get individualAccountLabelAndroid() {
+    return $('android=new UiSelector().textContains("Individual")')
+  }
+
+  private get jointAccountLabelAndroid() {
+    return $('android=new UiSelector().textContains("Joint")')
+  }
+
   private get singleAccountItemAndroid() {
     return $('android=new UiSelector().description("Single")')
   }
@@ -25,8 +33,24 @@ class HomeScreenPage extends BasePage {
     return $('android=new UiSelector().text("Single")')
   }
 
+  private get jointAccountItemAndroid() {
+    return $('//*[@content-desc="Joint"]/ancestor::*[@clickable="true"][1]')
+  }
+
+  private get businessAccountItemAndroid() {
+    return $('(//*[@content-desc="Business"]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[@text="Business"]/ancestor::*[@clickable="true"][1])[1]')
+  }
+
   private get homeRootAndroid() {
     return this.byId('home_screen')
+  }
+
+  private get googlePayCloseButtonAndroid() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/rightActionView")')
+  }
+
+  private get googlePayScreenAndroid() {
+    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/clSelectCardGooglePay")')
   }
 
   private get homeTabAndroid() {
@@ -57,8 +81,28 @@ class HomeScreenPage extends BasePage {
     return $('~profilePicker_label_userName')
   }
 
+  private get profilePickerAccountCodeLabelIOS() {
+    return $('~profilePicker_label_accountCode')
+  }
+
   private get profilePickerIndividualItemIOS() {
     return $('~Individual')
+  }
+
+  private get subAccountsTitleIOS() {
+    return $('~Sub Accounts')
+  }
+
+  private get individualAccountItemIOS() {
+    return $('~switchSubidentity_item_VEG40002-1')
+  }
+
+  private get jointAccountItemIOS() {
+    return $('~switchSubidentity_item_VEG40003-1')
+  }
+
+  private get businessAccountItemIOS() {
+    return $('~switchSubidentity_item_DER00003-0-86004')
   }
 
   private get homeRootIOS() {
@@ -255,6 +299,83 @@ class HomeScreenPage extends BasePage {
     await browser.pause(300)
   }
 
+  private async getIOSAccountCodeLabel() {
+    const el = await this.profilePickerAccountCodeLabelIOS
+    return (
+      await el.getAttribute('label').catch(async () => await el.getText().catch(() => ''))
+    ).trim()
+  }
+
+  private async waitForIOSHomeAccount(accountType: 'Business' | 'Individual' | 'Joint', accountCode: string, timeout = 30000) {
+    await browser.waitUntil(
+      async () => {
+        const homeShown = await this.homeRootIOS.isDisplayed().catch(() => false)
+        const accountCodeShown = await this.profilePickerAccountCodeLabelIOS.isDisplayed().catch(() => false)
+        if (!homeShown || !accountCodeShown) return false
+
+        const label = await this.getIOSAccountCodeLabel()
+        return label.includes(accountType) && label.includes(accountCode)
+      },
+      {
+        timeout,
+        interval: 500,
+        timeoutMsg: `Home screen did not switch to ${accountType} account (${accountCode}) on iOS`,
+      }
+    )
+  }
+
+  private async openIOSSubAccountsSheet() {
+    await this.waitForHomeLoaded()
+    await this.profilePickerUserNameLabelIOS.waitForDisplayed({ timeout: 20000 })
+
+    const tapAttempts = [
+      async () => this.tap(this.profilePickerUserNameLabelIOS),
+      async () => this.tap(this.profilePickerAccountCodeLabelIOS),
+      async () => {
+        const location = await this.profilePickerUserNameLabelIOS.getLocation()
+        const size = await this.profilePickerUserNameLabelIOS.getSize()
+        await browser.execute('mobile: tap', {
+          x: Math.max(24, location.x - 34),
+          y: location.y + Math.round(size.height / 2),
+        })
+      },
+    ]
+
+    for (const attempt of tapAttempts) {
+      await attempt().catch(() => {})
+      const opened = await this.subAccountsTitleIOS.waitForDisplayed({ timeout: 3000 }).catch(() => false)
+      if (opened) return
+    }
+
+    await this.subAccountsTitleIOS.waitForDisplayed({ timeout: 15000 })
+  }
+
+  private async selectIOSSubAccount(item: WdioEl) {
+    await item.waitForDisplayed({ timeout: 15000 })
+    await this.tap(item)
+    await this.subAccountsTitleIOS.waitForDisplayed({ reverse: true, timeout: 15000 }).catch(() => {})
+    await browser.pause(300)
+  }
+
+  private async ensureIOSHomeAccount(accountType: 'Business' | 'Individual' | 'Joint', accountCode: string, item: WdioEl) {
+    await this.waitForHomeLoaded()
+
+    const currentLabel = await this.getIOSAccountCodeLabel().catch(() => '')
+    if (currentLabel.includes(accountType) && currentLabel.includes(accountCode)) return
+
+    await this.openIOSSubAccountsSheet()
+    await this.selectIOSSubAccount(item)
+    await this.waitForIOSHomeAccount(accountType, accountCode)
+  }
+
+  private get iosAccountTargets() {
+    return [
+      { type: 'Individual' as const, code: 'VEG40002', item: this.individualAccountItemIOS },
+      { type: 'Joint' as const, code: 'VEG40003', item: this.jointAccountItemIOS },
+      { type: 'Business' as const, code: 'DER00003', item: this.businessAccountItemIOS },
+    ]
+  }
+
   private async ensureSingleAccountAndroid() {
     await this.ensureSingleAccountAndroidFlow({
       userAvatarBtn: this.userAvatarBtnAndroid,
@@ -299,6 +420,72 @@ class HomeScreenPage extends BasePage {
     )
   }
 
+  private async waitForAndroidHomeAccount(accountType: 'Business' | 'Individual' | 'Joint', timeout = 30000) {
+    const label = accountType === 'Business'
+      ? this.businessAccountLabelAndroid
+      : accountType === 'Individual'
+        ? this.individualAccountLabelAndroid
+        : this.jointAccountLabelAndroid
+
+    await browser.waitUntil(
+      async () => {
+        await this.dismissKnownAndroidBlockingPopups().catch(() => {})
+
+        const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
+        if (!homeShown) return false
+
+        return await label.isDisplayed().catch(() => false)
+      },
+      {
+        timeout,
+        interval: 500,
+        timeoutMsg: `Home screen did not switch to ${accountType} account`,
+      }
+    )
+  }
+
+  private async openAndroidSubAccountsSheet() {
+    await this.ensureHomeLandingAndroid()
+    await this.userAvatarBtnAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.userAvatarBtnAndroid)
+    await $('android=new UiSelector().text("Sub Accounts")').waitForDisplayed({ timeout: 15000 })
+  }
+
+  private async dismissGooglePayPopupIfPresentAndroid(timeout = 10000) {
+    if (!browser.isAndroid) return false
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const appeared = await browser.waitUntil(
+      async () => {
+        const closeShown = await this.googlePayCloseButtonAndroid.isDisplayed().catch(() => false)
+        if (closeShown) return true
+
+        const screenShown = await this.googlePayScreenAndroid.isDisplayed().catch(() => false)
+        return screenShown
+      },
+      {
+        timeout,
+        interval: 500,
+      }
+    ).catch(() => false)
+
+    if (!appeared) return false
+
+    const closeShown = await this.googlePayCloseButtonAndroid.isDisplayed().catch(() => false)
+    if (closeShown) {
+      await this.tap(this.googlePayCloseButtonAndroid)
+      await this.googlePayCloseButtonAndroid.waitForDisplayed({ reverse: true, timeout: 10000 }).catch(() => {})
+      await this.ensureHomeLandingAndroid()
+      return true
+    }
+
+    await browser.back().catch(() => {})
+    await this.ensureHomeLandingAndroid()
+    return true
+  }
+
+
   private async tapHomeBottomNavAndroid() {
     if (!browser.isAndroid) return
 
@@ -329,6 +516,94 @@ class HomeScreenPage extends BasePage {
     if (browser.isAndroid) {
       await this.ensureSingleAccountAndroid()
       await this.ensureHomeLandingAndroid()
+    }
+  }
+
+  public async ensureJointAccount() {
+    if (browser.isIOS) {
+      await this.ensureIOSHomeAccount('Joint', 'VEG40003', this.jointAccountItemIOS)
+      return
+    }
+
+    if (!browser.isAndroid) return
+
+    await this.waitForHomeLoaded()
+    const isJoint = await this.jointAccountLabelAndroid.isDisplayed().catch(() => false)
+    if (isJoint) return
+
+    await this.openAndroidSubAccountsSheet()
+    await this.tap(this.jointAccountItemAndroid)
+    await this.dismissCommonAndroidAlert(5000).catch(() => false)
+    await this.dismissGooglePayPopupIfPresentAndroid(12000).catch(() => false)
+    await this.ensureHomeLandingAndroid()
+    await this.waitForAndroidHomeAccount('Joint')
+  }
+
+  public async verifyAndroidAccountSwitchingAcrossTypes() {
+    if (!browser.isAndroid) return
+
+    await this.ensureHomeLandingAndroid()
+
+    // Flow is intentionally explicit for this account set:
+    // Business landing -> Individual -> Joint -> Business.
+    await this.waitForAndroidHomeAccount('Business', 20000)
+
+    await this.openAndroidSubAccountsSheet()
+    const singleByDescShown = await this.singleAccountItemAndroid.isDisplayed().catch(() => false)
+    if (singleByDescShown) {
+      await this.tap(this.singleAccountItemAndroid)
+    } else {
+      await this.tap(this.singleAccountItemAndroidByText)
+    }
+    await this.dismissCommonAndroidAlert(5000).catch(() => false)
+    await this.ensureHomeLandingAndroid()
+    await this.waitForAndroidHomeAccount('Individual')
+
+    await this.openAndroidSubAccountsSheet()
+    await this.tap(this.jointAccountItemAndroid)
+    await this.dismissCommonAndroidAlert(5000).catch(() => false)
+    await this.dismissGooglePayPopupIfPresentAndroid(12000).catch(() => false)
+    await this.ensureHomeLandingAndroid()
+    await this.waitForAndroidHomeAccount('Joint')
+
+    await this.openAndroidSubAccountsSheet()
+    await this.tap(this.businessAccountItemAndroid)
+    await this.dismissCommonAndroidAlert(5000).catch(() => false)
+    await this.dismissGooglePayPopupIfPresentAndroid(5000).catch(() => false)
+    await this.ensureHomeLandingAndroid()
+    await this.waitForAndroidHomeAccount('Business')
+  }
+
+  public async verifyIOSAccountSwitchingAcrossTypes() {
+    if (!browser.isIOS) return
+
+    await this.waitForHomeLoaded()
+
+    const initialLabel = await this.getIOSAccountCodeLabel()
+    const initialAccount = this.iosAccountTargets.find((account) => (
+      initialLabel.includes(account.type) && initialLabel.includes(account.code)
+    ))
+
+    if (!initialAccount) {
+      throw new Error(`Unknown initial iOS account: ${initialLabel}`)
+    }
+
+    const switchTargets = this.iosAccountTargets.filter((account) => account.code !== initialAccount.code)
+    for (const account of switchTargets) {
+      await this.ensureIOSHomeAccount(account.type, account.code, account.item)
+    }
+
+    await this.ensureIOSHomeAccount(initialAccount.type, initialAccount.code, initialAccount.item)
+  }
+
+  public async verifyAccountSwitchingAcrossTypes() {
+    if (browser.isIOS) {
+      await this.verifyIOSAccountSwitchingAcrossTypes()
+      return
+    }
+
+    if (browser.isAndroid) {
+      await this.verifyAndroidAccountSwitchingAcrossTypes()
     }
   }
 

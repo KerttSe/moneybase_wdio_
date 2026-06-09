@@ -86,6 +86,18 @@ Run a single spec:
 npm run wdio -- --spec src/tests/<file>.spec.ts
 ```
 
+Run the smoke suite:
+
+```bash
+npm run wdio -- --suite smoke
+```
+
+Run smoke on BrowserStack Android:
+
+```bash
+BROWSERSTACK=true PLATFORM=android npm run wdio -- --suite smoke
+```
+
 Run a single spec on one platform only:
 
 ```bash
@@ -97,6 +109,13 @@ Run on BrowserStack:
 
 ```bash
 BROWSERSTACK=true PLATFORM=android npm run wdio -- --spec src/tests/addfunds.spec.ts
+```
+
+Onboarding is included in the main smoke suite. For a faster run without the identity verification path:
+
+```bash
+BROWSERSTACK=true PLATFORM=android npm run wdio -- --suite onboarding
+BROWSERSTACK=true PLATFORM=android npm run wdio -- --suite smokeWithoutOnboarding
 ```
 
 ## Reporting
@@ -145,7 +164,6 @@ Current CI notes:
 
 - the workflow uploads both `allure-results` and `allure-report`
 - the matrix currently targets a smoke subset only
-- one matrix entry still references the old path `src/tests/bankTransfer.individual.spec.ts`; the repo now has `bankTransfer.p2p.individual.spec.ts` and `bankTransfer.sepa.individual.spec.ts`
 
 ## Conventions
 
