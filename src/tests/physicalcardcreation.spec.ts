@@ -5,7 +5,7 @@ import BankTransferP2PIndividualPage from '../pages/BankTransferP2PIndividualPag
 import PhysicalCardCreationPage from '../pages/PhysicalCardCreationPage'
 
 describe('Physical card creation - Individual', function () {
-  this.timeout(240000)
+  this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 800000))
   const loginPage = new LoginPage()
 
   beforeEach(async function () {

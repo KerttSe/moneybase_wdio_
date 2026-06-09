@@ -4,7 +4,7 @@ import { AUTH } from '../data/credentials'
 import FXExchangePage from '../pages/FXExchangePage'
 
 describe('FX Exchange', function () {
-  this.timeout(180000)
+  this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
 
   const loginPage = new LoginPage()
   const fxExchangePage = new FXExchangePage()

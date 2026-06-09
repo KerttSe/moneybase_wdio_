@@ -14,6 +14,13 @@ type CreatePriceAlertParams = {
   rowA11yIdIOS?: string
 }
 
+type Rect = {
+  x: number
+  y: number
+  width: number
+  height: number
+}
+
 export default class PriceAlertsPage extends BasePage {
   private async tapIOSDisplayed(el: WdioEl | WebdriverIO.Element, timeout = 10000) {
     const resolved = (await el) as WebdriverIO.Element
@@ -201,32 +208,28 @@ export default class PriceAlertsPage extends BasePage {
     return $('//android.widget.TextView[@text="Price Alerts"]/ancestor::android.view.View[@focusable="true"][1]')
   }
 
-  private get globalCodeInputAndroidByResourceId() {
-    return $('//*[@class="android.widget.EditText" and contains(@resource-id,"globalCodeInput")]')
-  }
-
-  private get globalCodeInputAndroidNumericTrigger() {
-    return $('//*[@class="android.widget.EditText" and contains(@resource-id,"globalCodeInput") and @input-type="2"]')
+  private get priceAlertsEntryAndroidByParent() {
+    return $('//android.widget.TextView[@text="Price Alerts"]/parent::android.view.View')
   }
 
   private get investSearchOverlayInputAndroid() {
     return $('//*[@class="android.widget.EditText" and @input-type="1" and not(contains(@resource-id,"globalCodeInput"))]')
   }
 
-  private get investSearchOverlayInputAndroidLoose() {
-    return $('//*[@class="android.widget.EditText" and not(contains(@resource-id,"globalCodeInput"))]')
+  private get investSearchHeaderInputAndroid() {
+    return $('//*[@resource-id="header-search-input"]//android.widget.EditText')
   }
 
-  private get investSearchCancelAndroid() {
-    return this.androidText('Cancel')
+  private get investSearchResultsListAndroid() {
+    return $('//*[@resource-id="header-search-instruments-list"]')
   }
 
-  private get investSearchInstrumentsHeaderAndroid() {
-    return this.androidText('Instruments')
+  private get firstInvestSearchResultAndroid() {
+    return $('//*[@resource-id="header-search-instruments-list"]/android.view.View[1]')
   }
 
-  private get investSearchLabelAndroid() {
-    return this.androidText('Search Instrument')
+  private get firstInvestSearchResultTextAndroid() {
+    return $('//*[@resource-id="header-search-instruments-list"]/android.view.View[1]//android.widget.TextView[1]')
   }
 
   private get priceAlertsHeaderAndroid() {
@@ -311,6 +314,14 @@ export default class PriceAlertsPage extends BasePage {
     return this.androidText('Add a New Price Alert')
   }
 
+  private get priceAlertAddedSuccessfullyAndroid() {
+    return $('//*[contains(@text,"Added") and (contains(@text,"success") or contains(@text,"Success"))]')
+  }
+
+  private get priceAlertCreatedSuccessfullyAndroid() {
+    return $('//*[contains(@text,"created") or contains(@text,"Created") or contains(@text,"successfully") or contains(@text,"Successfully")]')
+  }
+
   private get saveBtnAndroidByText() {
     return this.androidText('Save')
   }
@@ -321,6 +332,40 @@ export default class PriceAlertsPage extends BasePage {
 
   private get saveBtnAndroidById() {
     return this.byIdAndroid('priceAlerts_button_save')
+  }
+
+  // New Rule form (WebView) — resource-ids from page source
+  private get newRuleFormSaveBtnAndroid() {
+    return $('//*[@resource-id="add-rule-save-btn"]')
+  }
+
+  private get newRuleFormConditionSelectorAndroid() {
+    return $('//*[@resource-id="add-rule-condition-type"]')
+  }
+
+  private get newRuleFormTargetPricePlusBtnAndroid() {
+    // Enabled (+) Button inside Target Price row (minus is enabled=false at min value)
+    return $('//*[preceding-sibling::*[.//android.widget.TextView[@text="Target Price"]] or following-sibling::*[.//android.widget.TextView[@text="Target Price"]]]//android.widget.Button[@enabled="true"]')
+  }
+
+  private get instrumentLandingBuyBtnAndroid() {
+    return this.byIdAndroid('instrument-landing-page-buy-btn-mobile')
+  }
+
+  private get instrumentLandingHeaderActionAndroid() {
+    return $('android=new UiSelector().className("android.widget.ImageButton").instance(0)')
+  }
+
+  private get instrumentLandingFirstChartActionAndroid() {
+    return $('(//android.widget.ImageButton)[2]')
+  }
+
+  private get instrumentLandingSecondChartActionAndroid() {
+    return $('(//android.widget.ImageButton)[3]')
+  }
+
+  private get instrumentLandingChartTrailingActionAndroid() {
+    return $('//*[@clickable="true" and @class="android.widget.TextView" and contains(@bounds,"[971,")]')
   }
 
   private get newOrderHeaderAndroid() {
@@ -363,6 +408,38 @@ export default class PriceAlertsPage extends BasePage {
     return this.androidText('Delete')
   }
 
+  private get priceAlertActionSheetAndroid() {
+    return $('//*[@resource-id="bottomSheet"]')
+  }
+
+  private get priceAlertActionSheetContainerAndroid() {
+    return $('//*[@resource-id="drag-bottom-container"]')
+  }
+
+  private get priceAlertActionSheetHandleAndroid() {
+    return $('//*[@resource-id="drag-bottom-handle"]')
+  }
+
+  private get priceAlertActionSheetDeleteAndroid() {
+    return $('//*[@resource-id="bottomSheet"]//android.widget.TextView[@text="Delete"]')
+  }
+
+  private get priceAlertActionSheetDeleteRowAndroid() {
+    return $('//*[@resource-id="bottomSheet"]//android.widget.TextView[@text="Delete"]/parent::android.view.View')
+  }
+
+  private get priceAlertActionSheetViewAndroid() {
+    return $('//*[@resource-id="bottomSheet"]//android.widget.TextView[@text="View"]')
+  }
+
+  private get priceAlertActionSheetEditAndroid() {
+    return $('//*[@resource-id="bottomSheet"]//android.widget.TextView[@text="Edit"]')
+  }
+
+  private get priceAlertActionSheetDeactivateAndroid() {
+    return $('//*[@resource-id="bottomSheet"]//android.widget.TextView[@text="Deactivate"]')
+  }
+
   private get deleteBtnAndroidByDesc() {
     return this.androidDescContains('Delete')
   }
@@ -373,10 +450,6 @@ export default class PriceAlertsPage extends BasePage {
 
   private get confirmBtnAndroidByTextConfirm() {
     return this.androidText('Confirm')
-  }
-
-  private get confirmBtnAndroidByTextDelete() {
-    return this.androidText('Delete')
   }
 
   private get confirmBtnAndroidByIdButton1() {
@@ -393,6 +466,7 @@ export default class PriceAlertsPage extends BasePage {
     await this.tap(this.investTabAndroid)
 
     const entryCandidates = [
+      this.priceAlertsEntryAndroidByParent,
       this.priceAlertsEntryAndroidByXpathAncestor,
       this.priceAlertsEntryAndroid,
       this.androidTextContains('Price Alerts'),
@@ -403,46 +477,39 @@ export default class PriceAlertsPage extends BasePage {
     await this.waitForPriceAlertsScreenAndroid()
   }
 
-  private async openInvestSearchAndroid() {
+  private async openPriceAlertsFromInvestHomeAndroid() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
+    await this.closeChromeCustomTabAndroid()
+
+    const alreadyOnAlerts = await this.isOnPriceAlertsScreenAndroid()
+    if (alreadyOnAlerts) return
 
     await this.investTabAndroid.waitForDisplayed({ timeout: 20000 })
     await this.tap(this.investTabAndroid)
+    await browser.pause(800)
 
-    const triggerCandidates = [
-      this.globalCodeInputAndroidNumericTrigger,
-      this.globalCodeInputAndroidByResourceId,
+    const entryCandidates = [
+      this.priceAlertsEntryAndroidByParent,
+      this.priceAlertsEntryAndroidByXpathAncestor,
+      this.priceAlertsEntryAndroid,
+      this.androidTextContains('Price Alerts'),
     ]
 
-    const overlayCandidates = [
-      this.investSearchOverlayInputAndroid,
-      this.investSearchOverlayInputAndroidLoose,
-      this.findInstrumentInputAndroidByXpathMatTab,
-      this.findInstrumentInputAndroidByHint,
-      this.findInstrumentInputAndroidByResourceId,
-      this.findInstrumentInputAndroidByClassInstance,
-      this.investSearchLabelAndroid,
-      this.investSearchCancelAndroid,
-      this.investSearchInstrumentsHeaderAndroid,
-    ]
+    await this.waitForAnyDisplayed(entryCandidates, 20000, 'Price Alerts entry from Invest home')
+    await this.tapFirstDisplayed(entryCandidates, 'Price Alerts entry from Invest home')
+    await this.waitForPriceAlertsScreenAndroid()
+  }
 
-    const alreadyOpen = await this
-      .waitForAnyDisplayed(overlayCandidates, 2500, 'Invest search overlay')
-      .then(() => true)
-      .catch(() => false)
+  private async returnFromCreatedAlertToPriceAlertsAndroid() {
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+    await this.closeChromeCustomTabAndroid()
 
-    if (alreadyOpen) {
-      await browser.pause(300)
-      return
-    }
+    // After "+1%" the app shows a success/created state on the instrument surface.
+    // Use OS back here; the WebView may expose unrelated Back-like elements.
+    await browser.back().catch(() => {})
+    await browser.pause(1200)
 
-    await this.waitForAnyDisplayed(triggerCandidates, 20000, 'Invest search trigger')
-    const trigger = await this.getFirstDisplayed(triggerCandidates, 'Invest search trigger')
-    await trigger.click()
-    await browser.pause(500)
-
-    await this.waitForAnyDisplayed(overlayCandidates, 20000, 'Invest search overlay')
-    await browser.pause(500)
+    await this.openPriceAlertsFromInvestHomeAndroid()
   }
 
   private async goToNewTabAndroid() {
@@ -469,6 +536,7 @@ export default class PriceAlertsPage extends BasePage {
 
   private async waitForFindInstrumentInputAndroid() {
     const inputCandidates = [
+      this.investSearchHeaderInputAndroid,
       this.investSearchOverlayInputAndroid,
       this.findInstrumentInputAndroidByXpathMatTab,
       this.findInstrumentInputAndroidByHint,
@@ -513,22 +581,164 @@ export default class PriceAlertsPage extends BasePage {
     throw new Error('Target element not visible after scrolling (Android)')
   }
 
-  private async pickPlusOnePercentAndReturnAndroid() {
-    const plusCandidates = [this.plusOnePercentAndroidByText, this.plusOnePercentAndroidByTextContains]
+  private rectsOverlap(a: Rect, b: Rect) {
+    return a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y
+  }
 
-    const shown = await this.waitForAnyDisplayed(plusCandidates, 6000, '+1% option (Android)')
-      .then(() => true)
-      .catch(() => false)
+  private async displayedRect(el: WebdriverIO.Element): Promise<Rect | null> {
+    if (!(await el.isDisplayed().catch(() => false))) return null
 
-    if (!shown) {
-      // Often below the fold
-      await this.ensureVisibleByScrollingAndroid(this.plusOnePercentAndroidByTextContains, 8)
+    const loc = await el.getLocation()
+    const size = await el.getSize()
+    if (!size || size.width <= 0 || size.height <= 0) return null
+
+    return {
+      x: Number(loc.x),
+      y: Number(loc.y),
+      width: Number(size.width),
+      height: Number(size.height),
+    }
+  }
+
+  private async overlapsBuySurfaceAndroid(el: WebdriverIO.Element) {
+    const elRect = await this.displayedRect(el)
+    if (!elRect) return false
+
+    const buySurfaceCandidates = [
+      this.instrumentLandingBuyBtnAndroid,
+      this.placeBuyOrderBtnAndroid,
+    ]
+
+    for (const candidate of buySurfaceCandidates) {
+      const resolved = (await candidate) as unknown as WebdriverIO.Element
+      const rect = await this.displayedRect(resolved).catch(() => null)
+      if (rect && this.rectsOverlap(elRect, rect)) return true
     }
 
-    await this.tapFirstDisplayed(plusCandidates, '+1% option (Android)')
+    return false
+  }
+
+  private async isInChromeCustomTabAndroid() {
+    if (!browser.isAndroid) return false
+
+    const pkg = await browser.getCurrentPackage().catch(() => '')
+    const activity = await browser.getCurrentActivity().catch(() => '')
+    return String(pkg).includes('chrome') || String(activity).includes('CustomTabActivity')
+  }
+
+  private async closeChromeCustomTabAndroid() {
+    if (!(await this.isInChromeCustomTabAndroid())) return
+
+    await this.byIdAndroid('close_button').click().catch(async () => {
+      await browser.back().catch(() => {})
+    })
+    await browser.pause(1000)
+  }
+
+  private async isPriceAlertCreateSurfaceAndroid() {
+    // Strict anchors only — "Price Alert" text alone also matches the instrument landing page button
+    const anchors = [
+      this.addNewPriceAlertAnchorAndroid,           // "Add a New Price Alert"
+      this.saveBtnAndroidById,                       // priceAlerts_button_save (resource-id)
+      this.saveBtnAndroidByText,                     // "Save" button
+      this.saveBtnAndroidByDesc,                     // "Save" description
+      this.androidTextContains('New Rule'),           // form header
+      this.androidTextContains('Target Price'),       // form field label (more specific than "Target")
+      this.plusOnePercentAndroidByText,              // "+1%" preset button itself
+      this.plusOnePercentAndroidByTextContains,
+    ]
+
+    for (const anchor of anchors) {
+      const el = (await anchor) as unknown as WebdriverIO.Element
+      if (await el.isDisplayed().catch(() => false)) return true
+    }
+
+    return false
+  }
+
+  private async getSafePlusOnePercentAndroid() {
+    const plusCandidates = [this.plusOnePercentAndroidByText, this.plusOnePercentAndroidByTextContains]
+
+    for (const candidate of plusCandidates) {
+      const el = (await candidate) as unknown as WebdriverIO.Element
+      if (!(await el.isDisplayed().catch(() => false))) continue
+      if (await this.overlapsBuySurfaceAndroid(el)) continue
+      return el
+    }
+
+    return null
+  }
+
+  private async ensurePlusOneVisibleByScrollingAndroid(maxScrolls = 8) {
+    for (let i = 0; i < maxScrolls; i += 1) {
+      if (await this.isOnNewOrderScreenAndroid()) {
+        await this.debugSnapshot('price-alerts-android-new-order-before-plus-scroll')
+        throw new Error('Stopped price-alert +1% scroll because New Order screen is open (Android)')
+      }
+
+      const plus = await this.getSafePlusOnePercentAndroid()
+      if (plus) return
+
+      await this.scrollDownOnceAndroid()
+    }
+
+    throw new Error('+1% option not visible outside Buy surface after scrolling price-alert instrument screen (Android)')
+  }
+
+  private async pickPlusOnePercentAndReturnAndroid() {
+    // Hard stop: New Order screen must not be open at this point
+    if (await this.isOnNewOrderScreenAndroid()) {
+      await this.debugSnapshot('price-alerts-android-new-order-at-plus1-entry')
+      throw new Error('New Order screen is open at start of +1% flow — wrong screen (Android)')
+    }
+
+    // Hard stop: must be on the price alert create surface
+    const onCreateSurface = await this.isPriceAlertCreateSurfaceAndroid()
+    if (!onCreateSurface) {
+      await this.debugSnapshot('price-alerts-android-not-on-create-surface')
+      throw new Error('Not on Price Alert create surface when trying to tap +1% (Android)')
+    }
+
+    let plus = await browser.waitUntil(
+      async () => {
+        // Abort immediately if New Order sneaks in during scroll
+        if (await this.isOnNewOrderScreenAndroid()) {
+          throw new Error('New Order screen appeared while waiting for +1% (Android)')
+        }
+        return this.getSafePlusOnePercentAndroid()
+      },
+      {
+        timeout: 6000,
+        interval: 500,
+        timeoutMsg: '+1% option not visible on Price Alert create surface (Android)',
+      }
+    ).then((el) => el as WebdriverIO.Element | null).catch(() => null)
+
+    if (!plus) {
+      await this.ensurePlusOneVisibleByScrollingAndroid(8)
+      plus = await this.getSafePlusOnePercentAndroid()
+    }
+
+    if (await this.isOnNewOrderScreenAndroid()) {
+      await this.debugSnapshot('price-alerts-android-new-order-before-plus-tap')
+      throw new Error('New Order screen appeared before tapping +1% (Android)')
+    }
+
+    if (!plus) {
+      await this.debugSnapshot('price-alerts-android-plus-overlaps-buy')
+      throw new Error('+1% option not safe to tap — overlaps Buy surface (Android)')
+    }
+
+    await plus.click()
     await browser.pause(800)
+    if (await this.isInChromeCustomTabAndroid()) {
+      await this.closeChromeCustomTabAndroid()
+      throw new Error('+1% tap opened Chrome custom tab instead of Price Alert detail (Android)')
+    }
 
     const detailAnchors = [
+      this.priceAlertAddedSuccessfullyAndroid,
+      this.priceAlertCreatedSuccessfullyAndroid,
       this.alertSummaryAndroidByXpathBmw,
       this.alertSummaryAndroidByTextContains,
       this.alertSummaryAndroidByXpathContains,
@@ -539,27 +749,9 @@ export default class PriceAlertsPage extends BasePage {
     await this.waitForAnyDisplayed(detailAnchors, 12000, 'Created alert detail/summary (Android)')
       .catch(() => {})
 
-    // Return back to alerts list (prefer explicit back if present; otherwise Android back)
-    const backCandidates = [
-      this.backBtnAndroidByDescContains,
-      this.backBtnAndroidByText,
-      this.backBtnAndroidByResourceId,
-    ]
-
-    const backShown = await this.waitForAnyDisplayed(backCandidates, 4000, 'Back button (Android)')
-      .then(() => true)
-      .catch(() => false)
-    if (backShown) {
-      await this.tapFirstDisplayed(backCandidates, 'Back button (Android)')
-    } else {
-      await browser.back()
-    }
-
-    // On Android, Back from the created alert often returns to the Invest screen.
-    // Re-open the Price Alerts tile explicitly instead of assuming we are already on the tabs screen.
-    await browser.pause(800)
-    await this.openPriceAlertsAndroid()
+    await this.returnFromCreatedAlertToPriceAlertsAndroid()
   }
+
 
   private async isOnPriceAlertsScreenAndroid() {
     const anchors = [
@@ -591,6 +783,78 @@ export default class PriceAlertsPage extends BasePage {
     ]
 
     await this.waitForAnyDisplayed(anchors, 20000, 'Price Alerts screen (Android)')
+  }
+
+  private async isOnNewRuleFormAndroid() {
+    const anchors = [
+      this.newRuleFormConditionSelectorAndroid,
+      this.newRuleFormSaveBtnAndroid,
+      this.androidText('New Rule'),
+    ]
+    for (const el of anchors) {
+      if (await (el as unknown as WebdriverIO.Element).isDisplayed().catch(() => false)) return true
+    }
+    return false
+  }
+
+  private async fillNewRuleFormAndroid() {
+    await this.waitForAnyDisplayed(
+      [this.newRuleFormConditionSelectorAndroid, this.newRuleFormSaveBtnAndroid, this.androidText('New Rule')],
+      15000,
+      'New Rule form (Android)'
+    )
+
+    // Select condition (Greater than) — required to enable Save
+    const conditionShown = await this.newRuleFormConditionSelectorAndroid.isDisplayed().catch(() => false)
+    if (conditionShown) {
+      await (this.newRuleFormConditionSelectorAndroid as unknown as WebdriverIO.Element).click()
+      await browser.pause(500)
+
+      const conditionOptions = [
+        $('//*[contains(@text,"Greater than")]'),
+        $('//android.widget.CheckedTextView[contains(@text,"Greater than")]'),
+        $('//android.widget.TextView[contains(@text,"Greater than")]'),
+        $('//android.view.View[contains(@text,"Greater than")]'),
+        $('//android.widget.ListView//android.widget.CheckedTextView[1]'),
+        $('//android.widget.ListView//android.widget.TextView[1]'),
+      ]
+      const optionShown = await this.waitForAnyDisplayed(conditionOptions, 4000, 'Condition option (Android)').then(() => true).catch(() => false)
+      if (optionShown) {
+        await this.tapFirstDisplayed(conditionOptions, 'Greater than condition option')
+        await browser.pause(300)
+      }
+    }
+
+    // Increment Target Price via + button to give Save a non-zero value
+    const plusBtnXpath = '//*[@resource-id="add-rule-condition-type"]/following::android.widget.Button[@enabled="true"][1]'
+    const plusBtn = $(plusBtnXpath)
+    const plusShown = await (plusBtn as unknown as WebdriverIO.Element).isDisplayed().catch(() => false)
+    if (plusShown) {
+      for (let i = 0; i < 3; i++) {
+        await (plusBtn as unknown as WebdriverIO.Element).click().catch(() => {})
+        await browser.pause(120)
+      }
+    } else {
+      // Fallback: use the getter
+      const plusFallback = this.newRuleFormTargetPricePlusBtnAndroid
+      const fallbackShown = await (plusFallback as unknown as WebdriverIO.Element).isDisplayed().catch(() => false)
+      if (fallbackShown) {
+        for (let i = 0; i < 3; i++) {
+          await (plusFallback as unknown as WebdriverIO.Element).click().catch(() => {})
+          await browser.pause(120)
+        }
+      }
+    }
+
+    // Wait for Save to become enabled then tap it
+    const saveBtn = this.newRuleFormSaveBtnAndroid
+    await browser.waitUntil(
+      async () => (await (saveBtn as unknown as WebdriverIO.Element).isEnabled().catch(() => false)),
+      { timeout: 10000, interval: 500, timeoutMsg: 'Save button did not become enabled on New Rule form (Android)' }
+    ).catch(() => {})
+
+    await (saveBtn as unknown as WebdriverIO.Element).click().catch(() => {})
+    await browser.pause(1500)
   }
 
   private async isOnNewOrderScreenAndroid() {
@@ -891,28 +1155,39 @@ export default class PriceAlertsPage extends BasePage {
     const qLower = q.toLowerCase()
     const qTitle = qLower.length ? qLower[0].toUpperCase() + qLower.slice(1) : q
 
+    const listShown = await this.waitForAnyDisplayed([this.investSearchResultsListAndroid], 12000, `Search results list for ${q}`)
+      .then(() => true)
+      .catch(() => false)
+
+    if (listShown) {
+      const firstRow = (await this.firstInvestSearchResultAndroid) as unknown as WebdriverIO.Element
+      if (await firstRow.isDisplayed().catch(() => false)) {
+        await this.tapLeftCenterOnElement(firstRow)
+        return
+      }
+
+      const firstRowText = (await this.firstInvestSearchResultTextAndroid) as unknown as WebdriverIO.Element
+      if (await firstRowText.isDisplayed().catch(() => false)) {
+        await firstRowText.click()
+        await browser.pause(600)
+        return
+      }
+    }
+
     // IMPORTANT: avoid matching the input itself (it may contain the typed query).
-    // Restrict to likely result containers.
+    // Restrict to likely result containers and content descriptions.
     const candidates = [
       this.bmwSearchResultImageAndroid,
       this.bmw3SearchResultImageAndroid,
-      this.searchResultViewWithBmwTextAndroid,
-      this.searchResultViewWithBMWTextAndroid,
-      $(`android=new UiSelector().className("android.widget.TextView").textContains("${q}")`),
-      $(`android=new UiSelector().className("android.widget.TextView").textContains("${qTitle}")`),
-      $(`android=new UiSelector().className("android.widget.TextView").textContains("${q.toUpperCase()}")`),
+      this.firstInvestSearchResultAndroid,
       $(`android=new UiSelector().className("android.view.View").descriptionContains("${q}")`),
       $(`android=new UiSelector().className("android.view.View").descriptionContains("${qTitle}")`),
-      $(`//android.widget.TextView[contains(@text,"${q}")]`),
-      $(`//*[contains(@text,"${q}")]`),
-      $(`//*[contains(@text,"${qTitle}")]`),
-      $(`//*[contains(@text,"${q.toUpperCase()}")]`),
       $(`//android.view.View[contains(@content-desc,"${q}")]`),
       $(`//*[contains(@content-desc,"${q.toUpperCase()}")]`),
     ]
 
     // Wait a bit for results; fall back to any clickable item in the first result list
-    const shown = await this.waitForAnyDisplayed(candidates, 22000, `Search result for ${q}`).then(() => true).catch(() => false)
+    const shown = await this.waitForAnyDisplayed([this.investSearchResultsListAndroid, ...candidates], 22000, `Search result for ${q}`).then(() => true).catch(() => false)
     if (shown) {
       await this.tapFirstDisplayed(candidates, `Search result for ${q}`)
       await browser.pause(600)
@@ -925,22 +1200,7 @@ export default class PriceAlertsPage extends BasePage {
       throw new Error(`No Instruments Found for query: ${q}`)
     }
 
-    // Fallback 1: click the first displayed TextView that looks like a result
-    const tvs = await $$('android.widget.TextView')
-    for (const tv of tvs) {
-      const visible = await tv.isDisplayed().catch(() => false)
-      if (!visible) continue
-      const text = (await tv.getText().catch(() => '')).trim()
-      if (!text) continue
-      const low = text.toLowerCase()
-      if (low.includes(qLower)) {
-        await tv.click()
-        await browser.pause(600)
-        return
-      }
-    }
-
-    // Fallback 2: some webview-backed results appear as android.view.View with content-desc
+    // Fallback: some webview-backed results appear as android.view.View with content-desc.
     const views = await $$('android.view.View')
     for (const v of views) {
       const visible = await v.isDisplayed().catch(() => false)
@@ -963,197 +1223,6 @@ export default class PriceAlertsPage extends BasePage {
 
     await this.debugSnapshot('price-alerts-no-results')
     throw new Error(`Could not find search results for instrument query: ${q}`)
-  }
-
-  private async fillOptionalFieldsAndSaveAndroid(params: CreatePriceAlertParams) {
-    const { thresholdValue, dateValue } = params
-
-    const saveCandidates = [
-      this.saveBtnAndroidById,
-      this.saveBtnAndroidByText,
-      this.saveBtnAndroidByDesc,
-      this.androidTextContains('Save'),
-      $('//android.widget.Button[@text="Save"]'),
-    ]
-
-    const ensureRequiredFieldsForNewRuleAndroid = async () => {
-      const newRuleShown = await this.androidText('New Rule').isDisplayed().catch(() => false)
-      if (!newRuleShown) return
-
-      const isSaveEnabled = async () => {
-        for (const candidate of saveCandidates) {
-          const el = (await candidate) as unknown as WebdriverIO.Element
-          const visible = await el.isDisplayed().catch(() => false)
-          if (!visible) continue
-          const enabled = await el.isEnabled().catch(() => false)
-          if (enabled) return true
-        }
-        return false
-      }
-
-      if (await isSaveEnabled()) return
-
-      const plusButtonCandidates = [
-        $('//*[contains(@text,"Target Price")]/following::android.widget.Button[@enabled="true"][1]'),
-        $('//android.view.View[contains(@text,"Target Price")]/following::android.widget.Button[@enabled="true"][1]'),
-      ]
-
-      const plusShown = await this.waitForAnyDisplayed(plusButtonCandidates, 2000, 'Target Price plus button (Android)')
-        .then(() => true)
-        .catch(() => false)
-
-      if (plusShown) {
-        const plusBtn = await this.getFirstDisplayed(plusButtonCandidates, 'Target Price plus button (Android)')
-        await plusBtn.click().catch(() => {})
-        await browser.pause(150)
-      }
-
-      if (await isSaveEnabled()) return
-
-      const conditionFieldCandidates = [
-        $('//android.view.View[@text="Select" and @clickable="true"]'),
-        $('//*[contains(@text,"Condition")]/following::*[(self::android.view.View or self::android.widget.TextView) and (@text="Select" or contains(@text,"Select"))][1]'),
-        $('//android.view.View[@text="Select"]'),
-        $('//*[contains(@text,"Condition")]/following::android.view.View[@clickable="true"][1]'),
-      ]
-
-      const conditionFieldShown = await this.waitForAnyDisplayed(conditionFieldCandidates, 3000, 'Condition selector (Android)')
-        .then(() => true)
-        .catch(() => false)
-
-      if (conditionFieldShown) {
-        await this.tapFirstDisplayed(conditionFieldCandidates, 'Condition selector (Android)')
-        await browser.pause(300)
-
-        const conditionOptionCandidates = [
-          $('//android.view.View[contains(@text,"Greater than")]'),
-          $('//*[contains(@text,"Greater than")]'),
-          $('//android.widget.CheckedTextView[contains(@text,"Greater than")]'),
-          $('//android.widget.TextView[contains(@text,"Greater than")]'),
-          $('//android.widget.ListView//android.widget.TextView[1]'),
-          $('//android.widget.ListView//android.widget.CheckedTextView[1]'),
-          $('//android.widget.CheckedTextView[1]'),
-        ]
-
-        const optionShown = await this.waitForAnyDisplayed(conditionOptionCandidates, 3000, 'Condition option (Android)')
-          .then(() => true)
-          .catch(() => false)
-
-        if (optionShown) {
-          await this.tapFirstDisplayed(conditionOptionCandidates, 'Condition option (Android)')
-          await browser.pause(350)
-        }
-      }
-
-      const targetPriceCandidates = [
-        $('//*[contains(@text,"Target Price")]/following::android.widget.EditText[1]'),
-        $('//android.widget.TextView[contains(@text,"Target Price")]/following::android.widget.EditText[1]'),
-        $('//*[@resource-id="new-form-target-price"]//android.widget.EditText'),
-      ]
-
-      const targetShown = await this.waitForAnyDisplayed(targetPriceCandidates, 3000, 'Target Price input (Android)')
-        .then(() => true)
-        .catch(() => false)
-
-      if (targetShown) {
-        const targetInput = await this.getFirstDisplayed(targetPriceCandidates, 'Target Price input (Android)')
-        await targetInput.click().catch(() => {})
-        await targetInput.clearValue().catch(() => {})
-        await targetInput.setValue(String(thresholdValue ?? '100')).catch(async () => {
-          await browser.keys(String(thresholdValue ?? '100')).catch(() => {})
-        })
-        await browser.pause(250)
-        await browser.hideKeyboard().catch(() => {})
-      }
-    }
-
-    await ensureRequiredFieldsForNewRuleAndroid()
-
-    // Best-effort fill: try a numeric threshold/price input if present
-    if (thresholdValue) {
-      const thresholdCandidates = [
-        $('//*[contains(@text,"Target Price")]/following::android.widget.EditText[1]'),
-        $('//*[@class="android.widget.EditText" and (contains(@hint,"Price") or contains(@hint,"Target") or contains(@hint,"Value") or contains(@content-desc,"Price") or contains(@content-desc,"Target"))]'),
-        this.byIdAndroid('priceAlerts_input_price'),
-        this.byIdAndroid('priceAlerts_input_threshold'),
-      ]
-
-      const visible = await this.waitForAnyDisplayed(thresholdCandidates, 4000, 'Threshold input').then(() => true).catch(() => false)
-      if (visible) {
-        const el = await this.getFirstDisplayed(thresholdCandidates, 'Threshold input')
-        await el.click()
-        await el.clearValue().catch(() => {})
-        await el.setValue(String(thresholdValue))
-        await browser.pause(300)
-      }
-    }
-
-    // Best-effort fill: date/valid-until input if present
-    if (dateValue) {
-      const dateCandidates = [
-        $('//*[@class="android.widget.EditText" and (contains(@hint,"Date") or contains(@hint,"Valid") or contains(@hint,"Until") or contains(@content-desc,"Date") or contains(@content-desc,"Valid") or contains(@content-desc,"Until"))]'),
-        this.byIdAndroid('priceAlerts_input_date'),
-        this.byIdAndroid('priceAlerts_input_validUntil'),
-      ]
-
-      const visible = await this.waitForAnyDisplayed(dateCandidates, 4000, 'Date input').then(() => true).catch(() => false)
-      if (visible) {
-        const el = await this.getFirstDisplayed(dateCandidates, 'Date input')
-        await el.click()
-        await browser.pause(400)
-
-        const pickerOkVisible = await this.confirmBtnAndroidByIdButton1
-          .isDisplayed()
-          .catch(() => false)
-
-        if (pickerOkVisible) {
-          // If a native picker opens, at least confirm the default date.
-          await this.tap(this.confirmBtnAndroidByIdButton1)
-        } else {
-          await el.clearValue().catch(() => {})
-          await el.setValue(String(dateValue))
-          await browser.pause(300)
-        }
-      }
-    }
-
-    await this.waitForAnyDisplayed(saveCandidates, 15000, 'Save button')
-
-    // Prefer enabled if possible
-    let tapped = false
-    for (const candidate of saveCandidates) {
-      const el = (await candidate) as unknown as WebdriverIO.Element
-      const visible = await el.isDisplayed().catch(() => false)
-      if (!visible) continue
-      const enabled = await el.isEnabled().catch(() => true)
-      if (!enabled) continue
-      await el.click()
-      tapped = true
-      break
-    }
-
-    if (!tapped) {
-      // One more try: in New Rule flow Save can stay disabled until required fields are populated.
-      await ensureRequiredFieldsForNewRuleAndroid()
-
-      for (const candidate of saveCandidates) {
-        const el = (await candidate) as unknown as WebdriverIO.Element
-        const visible = await el.isDisplayed().catch(() => false)
-        if (!visible) continue
-        const enabled = await el.isEnabled().catch(() => true)
-        if (!enabled) continue
-        await el.click()
-        tapped = true
-        break
-      }
-    }
-
-    if (!tapped) {
-      await this.debugSnapshot('price-alerts-save-disabled')
-      throw new Error('Save button is visible but not enabled (missing required fields?)')
-    }
-
-    await browser.pause(1500)
   }
 
   private alertRowCandidatesAndroid(instrumentQuery: string) {
@@ -1205,74 +1274,37 @@ export default class PriceAlertsPage extends BasePage {
   public async createPriceAlertAndroid(params: CreatePriceAlertParams) {
     if (!browser.isAndroid) return
 
-    // On Android always create from Price Alerts -> New tab.
-    // Global Invest search can open Trade/New Order screen instead of Price Alerts create flow.
+    // Mirror iOS: Price Alerts → New tab → Find Instrument → select → +1%
+    // Do NOT go through invest home search → instrument landing (that path lands on New Order)
     await this.openPriceAlertsAndroid()
     await this.goToNewTabAndroid()
+
+    // Type in the Find Instrument field inside the New tab (not global invest search)
     await this.waitForFindInstrumentInputAndroid()
     await this.typeInstrumentQueryAndroid(params.instrumentQuery)
-    await this.selectFirstSearchResultAndroid(params.instrumentQuery).catch(async () => {
-      // Retry once from the same New tab context; search results can be flaky on Android WebView.
-      await this.waitForFindInstrumentInputAndroid()
-      await this.typeInstrumentQueryAndroid(params.instrumentQuery)
-      await this.selectFirstSearchResultAndroid(params.instrumentQuery)
-    })
 
-    // Align sequence with iOS: prefer +1% flow if present; fallback to Save/date flow.
-    const usedPlus = await this.pickPlusOnePercentAndReturnAndroid().then(() => true).catch(() => false)
-    if (!usedPlus) {
-      const saveCandidates = [
-        this.saveBtnAndroidById,
-        this.saveBtnAndroidByText,
-        this.saveBtnAndroidByDesc,
-        this.androidTextContains('Save'),
-        $('//android.widget.Button[@text="Save"]'),
-      ]
+    // Select the instrument from results
+    await this.selectFirstSearchResultAndroid(params.instrumentQuery)
+    await browser.pause(800)
 
-      const saveShown = await this.waitForAnyDisplayed(saveCandidates, 4000, 'Save button')
-        .then(() => true)
-        .catch(() => false)
+    // Hard stop — selecting instrument must NOT open New Order
+    if (await this.isOnNewOrderScreenAndroid()) {
+      await this.debugSnapshot('price-alerts-android-new-order-after-instrument-select')
+      throw new Error('Selecting instrument from Price Alerts New tab opened New Order screen (Android)')
+    }
 
-      if (saveShown) {
-        await this.fillOptionalFieldsAndSaveAndroid(params)
-      } else {
-        const onOrderScreen = await this.isOnNewOrderScreenAndroid()
-        if (onOrderScreen) {
-          await browser.back().catch(() => {})
-          await browser.pause(700)
-
-          // Retry once from the correct Price Alerts context.
-          await this.openPriceAlertsAndroid()
-          await this.goToNewTabAndroid()
-          await this.waitForFindInstrumentInputAndroid()
-          await this.typeInstrumentQueryAndroid(params.instrumentQuery)
-          await this.selectFirstSearchResultAndroid(params.instrumentQuery)
-
-          const usedPlusRetry = await this.pickPlusOnePercentAndReturnAndroid().then(() => true).catch(() => false)
-          if (!usedPlusRetry) {
-            const saveShownRetry = await this.waitForAnyDisplayed(saveCandidates, 4000, 'Save button (retry)')
-              .then(() => true)
-              .catch(() => false)
-            if (saveShownRetry) {
-              await this.fillOptionalFieldsAndSaveAndroid(params)
-            } else {
-              await this.debugSnapshot('price-alerts-android-no-plus-no-save-retry')
-              throw new Error('Neither +1% option nor Save button appeared after selecting instrument (Android, retry)')
-            }
-          }
-        } else {
-        await this.debugSnapshot('price-alerts-android-no-plus-no-save')
-        throw new Error('Neither +1% option nor Save button appeared after selecting instrument (Android)')
-        }
-      }
+    // New Rule form (Condition + Target Price + Save) or legacy +1% preset buttons
+    if (await this.isOnNewRuleFormAndroid()) {
+      await this.fillNewRuleFormAndroid()
+    } else {
+      await this.pickPlusOnePercentAndReturnAndroid()
     }
 
     await this.openPriceAlertsAndroid()
     await this.goToOverviewTabAndroid()
 
-    // Validate the alert appears in the list
     const rowCandidates = this.alertRowCandidatesAndroid(params.instrumentQuery)
-    await this.waitForAnyDisplayed(rowCandidates, 20000, 'Created alert row')
+    await this.waitForAnyDisplayed(rowCandidates, 20000, 'Created alert row (Android)')
   }
 
   public async createPriceAlertIOS(params: CreatePriceAlertParams) {
@@ -1388,10 +1420,33 @@ export default class PriceAlertsPage extends BasePage {
     await browser.pause(400)
   }
 
+  private async tapLeftCenterOnElement(el: WebdriverIO.Element) {
+    const loc = await el.getLocation()
+    const size = await el.getSize()
+    const x = Math.round(loc.x + size.width * 0.25)
+    const y = Math.round(loc.y + size.height * 0.5)
+
+    await browser.performActions([
+      {
+        type: 'pointer',
+        id: 'finger1',
+        parameters: { pointerType: 'touch' },
+        actions: [
+          { type: 'pointerMove', duration: 0, x, y },
+          { type: 'pointerDown', button: 0 },
+          { type: 'pause', duration: 80 },
+          { type: 'pointerUp', button: 0 },
+        ],
+      },
+    ])
+    await browser.releaseActions().catch(() => {})
+    await browser.pause(600)
+  }
+
   public async deletePriceAlertAndroid(instrumentQuery: string) {
     if (!browser.isAndroid) return
 
-    await this.openPriceAlertsAndroid()
+    await this.openPriceAlertsFromInvestHomeAndroid()
     await this.goToOverviewTabAndroid()
 
     const rowCandidates = this.alertRowCandidatesAndroid(instrumentQuery)
@@ -1403,7 +1458,23 @@ export default class PriceAlertsPage extends BasePage {
     await this.tapCenterOnElement(row)
     await browser.pause(800)
 
+    const actionSheetCandidates = [
+      this.priceAlertActionSheetDeleteRowAndroid,
+      this.priceAlertActionSheetDeleteAndroid,
+      this.priceAlertActionSheetAndroid,
+      this.priceAlertActionSheetContainerAndroid,
+      this.priceAlertActionSheetHandleAndroid,
+      this.priceAlertActionSheetViewAndroid,
+      this.priceAlertActionSheetEditAndroid,
+      this.priceAlertActionSheetDeactivateAndroid,
+    ]
+
+    await this.waitForAnyDisplayed(actionSheetCandidates, 6000, 'Price alert action sheet')
+      .catch(() => {})
+
     const deleteCandidates = [
+      this.priceAlertActionSheetDeleteRowAndroid,
+      this.priceAlertActionSheetDeleteAndroid,
       this.deleteBtnAndroidById,
       this.deleteBtnAndroidByText,
       this.deleteBtnAndroidByDesc,
@@ -1417,7 +1488,9 @@ export default class PriceAlertsPage extends BasePage {
       .catch(() => false)
 
     if (deleteVisible) {
-      await this.tapFirstDisplayed(deleteCandidates, 'Delete button')
+      const deleteEl = await this.getFirstDisplayed(deleteCandidates, 'Delete button')
+      await this.tapCenterOnElement(deleteEl)
+      await browser.pause(800)
     } else {
       // Fallback: attempt swipe-to-delete on a swipable row container.
       await this.openPriceAlertsAndroid()
@@ -1438,7 +1511,9 @@ export default class PriceAlertsPage extends BasePage {
           .catch(() => false)
 
         if (deleteShownNow) {
-          await this.tapFirstDisplayed(deleteCandidates, 'Delete button after swipe')
+          const deleteEl = await this.getFirstDisplayed(deleteCandidates, 'Delete button after swipe')
+          await this.tapCenterOnElement(deleteEl)
+          await browser.pause(800)
           deletedViaSwipe = true
           break
         }
@@ -1450,20 +1525,19 @@ export default class PriceAlertsPage extends BasePage {
       }
     }
 
-    // Confirm deletion if a dialog appears
+    // Confirm deletion if a dialog appears (delete may be immediate with no dialog)
     const confirmCandidates = [
-      this.confirmBtnAndroidByTextDelete,
       this.confirmBtnAndroidByTextConfirm,
       this.confirmBtnAndroidByIdButton1,
       this.androidTextContains('Confirm'),
     ]
 
-    const confirmShown = await this.waitForAnyDisplayed(confirmCandidates, 6000, 'Confirm delete')
+    const confirmShown = await this.waitForAnyDisplayed(confirmCandidates, 4000, 'Confirm delete')
       .then(() => true)
       .catch(() => false)
 
     if (confirmShown) {
-      await this.tapFirstDisplayed(confirmCandidates, 'Confirm delete')
+      await this.tapFirstDisplayed(confirmCandidates, 'Confirm delete').catch(() => {})
     }
 
     await browser.pause(1500)

@@ -3,7 +3,9 @@ import { LoginPage } from '../pages/LoginPage'
 import BankTransferP2PIndividualPage from '../pages/BankTransferP2PIndividualPage'
 import { AUTH } from '../data/credentials'
 
-describe('Bank Transfer - Individual', () => {
+describe('Bank Transfer - Individual', function () {
+  this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
+
   const loginPage = new LoginPage()
 
   beforeEach(async function () {

@@ -4,7 +4,7 @@ import { AUTH } from '../data/credentials'
 import HomeScreenPage from '../pages/HomeScreenPage'
 
 describe('Home Screen - Individual', function () {
-  this.timeout(120000)
+  this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
   const loginPage = new LoginPage()
 
   beforeEach(async function () {

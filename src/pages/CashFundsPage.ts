@@ -366,9 +366,37 @@ export default class CashFundsPage extends BasePage {
     return this.androidUiSelector('new UiSelector().className("android.view.View").instance(13)')
   }
 
+  private get discoverAndroidTileByParent() {
+    return $('//android.widget.TextView[@text="Discover"]/parent::android.view.View')
+  }
+
   private get discoverAndroidA11y() {
     // Sometimes content-desc is set; this maps to accessibility id.
     return this.androidA11y('Discover')
+  }
+
+  private get discoverHeaderAndroid() {
+    return this.androidUiSelector('new UiSelector().text("Discover")')
+  }
+
+  private get discoverCategoriesHeadingAndroid() {
+    return $('//*[@resource-id="filter-query-mobile-heading"]')
+  }
+
+  private get discoverCategoriesCaptionAndroid() {
+    return $('//*[@resource-id="filter-query-mobile-caption"]')
+  }
+
+  private get discoverViewOrdersButtonAndroid() {
+    return $('//*[@resource-id="filter-query-mobile-view-orders-btn"]')
+  }
+
+  private get discoverCategoryLinksAndroid() {
+    return $('//*[@resource-id="filter-query-mobile-discovery-links"]')
+  }
+
+  private get discoverMostBoughtCategoryAndroid() {
+    return $('//*[@content-desc="Most Bought"]')
   }
 
   private get cashFundsCardAndroidLongA11y() {
@@ -410,6 +438,10 @@ export default class CashFundsPage extends BasePage {
     return $('//*[@content-desc="Cash Funds Earn up to 4.87% APY, no fees"]')
   }
 
+  private get cashFundsCardAndroidByParent() {
+    return $('//android.widget.TextView[@text="Cash Funds"]/parent::android.view.View')
+  }
+
   private get cashFundsHeaderAndroid() {
     return this.androidUiSelector('new UiSelector().text("Cash Funds")')
   }
@@ -435,16 +467,47 @@ export default class CashFundsPage extends BasePage {
       return
     }
 
-    // Strict path per docs:
-    // Invest -> android=new UiSelector().className("android.view.View").instance(13) -> ~Cash Funds Earn up to ...
+    // Strict path with XML-backed anchors:
+    // Invest -> Discover -> Cash Funds.
     await this.investTabAndroidA11y.waitForDisplayed({ timeout: 20000 })
     await this.investTabAndroidA11y.click()
 
-    await this.discoverAndroidText.waitForDisplayed({ timeout: 20000 })
-    await this.discoverAndroidText.click()
+    const discoverScreenAnchors = [
+      this.discoverCategoriesHeadingAndroid,
+      this.discoverCategoriesCaptionAndroid,
+      this.discoverCategoryLinksAndroid,
+      this.discoverViewOrdersButtonAndroid,
+      this.discoverMostBoughtCategoryAndroid,
+    ]
 
-    await this.cashFundsCardAndroidLongA11y.waitForDisplayed({ timeout: 25000 })
-    await this.cashFundsCardAndroidLongA11y.click()
+    const alreadyOnDiscover = await this.isAnyDisplayed(discoverScreenAnchors)
+    if (!alreadyOnDiscover) {
+      const discoverTapCandidates = [
+        this.discoverAndroidTileByParent,
+        this.discoverAndroidA11y,
+        this.discoverHeaderAndroid,
+        this.discoverAndroidText,
+      ]
+
+      await this.waitForAnyDisplayed(discoverTapCandidates, 20000, 'Discover entry (Android)')
+      await this.tapFirstDisplayed(discoverTapCandidates, 'Discover entry (Android)')
+    }
+
+    await this.waitForAnyDisplayed(discoverScreenAnchors, 25000, 'Discover screen (Android)')
+
+    const cashFundsCandidates = [
+      this.cashFundsCardAndroidLongA11y,
+      this.cashFundsCardAndroidLongXpath,
+      this.cashFundsCardAndroidLongUiAutomator,
+      this.cashFundsCardAndroidDescContainsCashFunds,
+      this.cashFundsCardAndroidByParent,
+      this.cashFundsCardAndroidTextContainsCashFunds,
+      this.cashFundsCardAndroidScrollIntoViewByDescContainsCashFunds,
+      this.cashFundsCardAndroidScrollIntoViewByTextContainsCashFunds,
+    ]
+
+    await this.waitForAnyDisplayed(cashFundsCandidates, 25000, 'Cash Funds card (Android)')
+    await this.tapFirstDisplayed(cashFundsCandidates, 'Cash Funds card (Android)')
 
     await browser.pause(900)
     await this.verifyCashFundsScreenAndroid()

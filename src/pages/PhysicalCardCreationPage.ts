@@ -251,6 +251,10 @@ class PhysicalCardCreationPage extends BasePage {
     return $('android=new UiSelector().text("Close")')
   }
 
+  private get closeButtonParentAndroid() {
+    return $('//android.widget.TextView[@text="Close"]/parent::android.view.View[@clickable="true"]')
+  }
+
   private get viewMyCardsBtnAndroid() {
     return $('android=new UiSelector().text("View my Cards")')
   }
@@ -315,6 +319,34 @@ class PhysicalCardCreationPage extends BasePage {
     return $('android=new UiSelector().text("Unfreeze")')
   }
 
+  private get physicalCardItemAndroid() {
+    return $('(//*[contains(@text,"Physical") or contains(@content-desc,"Physical")]/ancestor::*[@clickable="true"][1])[1]')
+  }
+
+  private get activeCardItemAndroid() {
+    return $('(//*[contains(@text,"Active") or contains(@content-desc,"Active")]/ancestor::*[@clickable="true"][1])[1]')
+  }
+
+  private get maskedCardItemAndroid() {
+    return $('(//*[contains(@text,"****") or contains(@text,"••") or contains(@content-desc,"****") or contains(@content-desc,"••")]/ancestor::*[@clickable="true"][1])[1]')
+  }
+
+  private get physicalCardItemIOS() {
+    return $('-ios class chain:**/XCUIElementTypeCell[`label CONTAINS "Physical" OR name CONTAINS "Physical"`]')
+  }
+
+  private get activeCardItemIOS() {
+    return $('-ios class chain:**/XCUIElementTypeCell[`label CONTAINS "Active" OR name CONTAINS "Active"`]')
+  }
+
+  private get maskedCardItemIOS() {
+    return $('-ios class chain:**/XCUIElementTypeCell[`label CONTAINS "****" OR name CONTAINS "****" OR label CONTAINS "••" OR name CONTAINS "••"`]')
+  }
+
+  private get cardSearchFieldIOS() {
+    return $('-ios predicate string:type == "XCUIElementTypeSearchField" AND (label == "Search" OR name == "Search" OR value == "Search")')
+  }
+
   private get unfreezeButtonIOS() {
     return $('~cards_button_unfreeze')
   }
@@ -329,10 +361,6 @@ class PhysicalCardCreationPage extends BasePage {
 
   private get reportButtonAndroid() {
     return $('android=new UiSelector().resourceId("cards_button_report")')
-  }
-
-  private get moreButtonAndroid() {
-    return $('android=new UiSelector().resourceId("cards_button_more")')
   }
 
   private get blockButtonAndroid() {
@@ -487,8 +515,8 @@ class PhysicalCardCreationPage extends BasePage {
     await browser.switchContext('NATIVE_APP').catch(() => {})
     await browser.waitUntil(
       async () => {
-        const closeSheetExists = await this.closeSheetAndroid.isExisting().catch(() => false)
-        const closeSheetAltExists = await this.closeSheetAndroidByXpath.isExisting().catch(() => false)
+        const closeSheetExists = await this.closeSheetAndroid.isDisplayed().catch(() => false)
+        const closeSheetAltExists = await this.closeSheetAndroidByXpath.isDisplayed().catch(() => false)
         const closeButtonVisible = await this.closeButtonAndroid.isDisplayed().catch(() => false)
         const viewMyCardsVisible = await this.viewMyCardsBtnAndroid.isDisplayed().catch(() => false)
         const successVisible = await this.cardAddedSuccessTextAndroid.isDisplayed().catch(() => false)
@@ -504,38 +532,72 @@ class PhysicalCardCreationPage extends BasePage {
       }
     )
 
-    const closeSheetVisible = await this.closeSheetAndroid.isExisting().catch(() => false)
-    const closeSheetAltVisible = await this.closeSheetAndroidByXpath.isExisting().catch(() => false)
-    const closeButtonVisible = await this.closeButtonAndroid.isDisplayed().catch(() => false)
-    const viewMyCardsVisible = await this.viewMyCardsBtnAndroid.isDisplayed().catch(() => false)
-    const successVisible = await this.cardAddedSuccessTextAndroid.isDisplayed().catch(() => false)
-    const cardsShown = await this.cardsRootAndroid.isDisplayed().catch(() => false)
-    const freezeShown = await this.freezeButtonAndroid.isDisplayed().catch(() => false)
-    const reportShown = await this.reportButtonAndroid.isDisplayed().catch(() => false)
-
-    if (closeSheetVisible) {
-      await this.closeSheetAndroid.click()
-    } else if (closeSheetAltVisible) {
-      await this.closeSheetAndroidByXpath.click()
-    } else if (viewMyCardsVisible) {
-      await this.viewMyCardsBtnAndroid.click()
-    } else if (closeButtonVisible) {
-      await this.closeButtonAndroid.click()
-    } else if (successVisible && closeSheetAltVisible) {
-      await this.closeSheetAndroidByXpath.click()
-    } else if (cardsShown || freezeShown || reportShown) {
-      return
-    } else {
-      throw new Error('Close sheet controls not found')
+    const tapCenter = async (el: ChainablePromiseElement) => {
+      const target = await el
+      const location = await target.getLocation()
+      const size = await target.getSize()
+      const x = Math.round(location.x + size.width / 2)
+      const y = Math.round(location.y + size.height / 2)
+      await browser.execute('mobile: clickGesture', { x, y }).catch(async () => {
+        await target.click()
+      })
     }
+
+    let tappedControl = false
+    for (let attempt = 0; attempt < 4; attempt += 1) {
+      const closeButtonParentVisible = await this.closeButtonParentAndroid.isDisplayed().catch(() => false)
+      const closeButtonVisible = await this.closeButtonAndroid.isDisplayed().catch(() => false)
+      const viewMyCardsVisible = await this.viewMyCardsBtnAndroid.isDisplayed().catch(() => false)
+      const closeSheetVisible = await this.closeSheetAndroid.isDisplayed().catch(() => false)
+      const closeSheetAltVisible = await this.closeSheetAndroidByXpath.isDisplayed().catch(() => false)
+      const successVisible = await this.cardAddedSuccessTextAndroid.isDisplayed().catch(() => false)
+      const cardsShown = await this.cardsRootAndroid.isDisplayed().catch(() => false)
+      const freezeShown = await this.freezeButtonAndroid.isDisplayed().catch(() => false)
+      const reportShown = await this.reportButtonAndroid.isDisplayed().catch(() => false)
+      const addNewShown = await this.addNewCardBtnAndroid.isDisplayed().catch(() => false)
+
+      if (!closeSheetVisible && !closeSheetAltVisible && !closeButtonParentVisible && !closeButtonVisible && !viewMyCardsVisible && !successVisible) {
+        if (cardsShown || freezeShown || reportShown || addNewShown) return
+      }
+
+      if (closeButtonParentVisible) {
+        await tapCenter(this.closeButtonParentAndroid)
+        tappedControl = true
+      } else if (closeButtonVisible) {
+        await tapCenter(this.closeButtonAndroid)
+        tappedControl = true
+      } else if (viewMyCardsVisible) {
+        await tapCenter(this.viewMyCardsBtnAndroid)
+        tappedControl = true
+      } else if (closeSheetVisible) {
+        await tapCenter(this.closeSheetAndroid)
+        tappedControl = true
+      } else if (closeSheetAltVisible) {
+        await tapCenter(this.closeSheetAndroidByXpath)
+        tappedControl = true
+      } else if (cardsShown || freezeShown || reportShown || addNewShown) {
+        return
+      } else if (!successVisible) {
+        break
+      }
+
+      await browser.pause(1000)
+    }
+
+    if (!tappedControl) throw new Error('Close sheet controls not found')
 
     await browser.waitUntil(
       async () => {
-        const closeSheetStill = await this.closeSheetAndroid.isExisting().catch(() => false)
-        const closeSheetAltStill = await this.closeSheetAndroidByXpath.isExisting().catch(() => false)
+        const closeSheetStill = await this.closeSheetAndroid.isDisplayed().catch(() => false)
+        const closeSheetAltStill = await this.closeSheetAndroidByXpath.isDisplayed().catch(() => false)
         const closeButtonStill = await this.closeButtonAndroid.isDisplayed().catch(() => false)
         const viewMyCardsStill = await this.viewMyCardsBtnAndroid.isDisplayed().catch(() => false)
-        return !closeSheetStill && !closeSheetAltStill && !closeButtonStill && !viewMyCardsStill
+        const successStill = await this.cardAddedSuccessTextAndroid.isDisplayed().catch(() => false)
+        const cardsShown = await this.cardsRootAndroid.isDisplayed().catch(() => false)
+        const freezeShown = await this.freezeButtonAndroid.isDisplayed().catch(() => false)
+        const reportShown = await this.reportButtonAndroid.isDisplayed().catch(() => false)
+        const addNewShown = await this.addNewCardBtnAndroid.isDisplayed().catch(() => false)
+        return !closeSheetStill && !closeSheetAltStill && !closeButtonStill && !viewMyCardsStill && !successStill && (cardsShown || freezeShown || reportShown || addNewShown)
       },
       {
         timeout: timeoutMs,
@@ -668,6 +730,62 @@ class PhysicalCardCreationPage extends BasePage {
     await this.assertCardsAfterDeletionIOS(20000)
   }
 
+  private async isIOSCardsSurfaceVisible() {
+    if (!browser.isIOS) return false
+
+    const addCardShown = await this.addNewCardBtnIOS.isDisplayed().catch(() => false)
+    const freezeShown = await this.freezeButtonIOS.isDisplayed().catch(() => false)
+    const unfreezeShown = await this.unfreezeButtonIOS.isDisplayed().catch(() => false)
+    const physicalShown = await this.physicalCardItemIOS.isDisplayed().catch(() => false)
+    const activeShown = await this.activeCardItemIOS.isDisplayed().catch(() => false)
+    const maskedShown = await this.maskedCardItemIOS.isDisplayed().catch(() => false)
+
+    return addCardShown || freezeShown || unfreezeShown || physicalShown || activeShown || maskedShown
+  }
+
+  private async getDisplayedIOSCardListItem(): Promise<WebdriverIO.Element | null> {
+    if (!browser.isIOS) return null
+
+    const explicitCandidates = [
+      this.physicalCardItemIOS,
+      this.activeCardItemIOS,
+      this.maskedCardItemIOS,
+    ]
+
+    for (const candidate of explicitCandidates) {
+      const shown = await candidate.isDisplayed().catch(() => false)
+      if (shown) return (await candidate) as unknown as WebdriverIO.Element
+    }
+
+    const cells = await $$('-ios class chain:**/XCUIElementTypeCell')
+    for (const cell of cells) {
+      const shown = await cell.isDisplayed().catch(() => false)
+      if (!shown) continue
+
+      const label = await cell.getAttribute('label').catch(async () => await cell.getText().catch(() => ''))
+      const name = await cell.getAttribute('name').catch(() => '')
+      const descriptor = `${label} ${name}`.toLowerCase()
+
+      if (!descriptor.trim()) continue
+      if (descriptor.includes('search')) continue
+      if (descriptor.includes('add') && descriptor.includes('card')) continue
+      if (descriptor === 'cards') continue
+      if (descriptor.includes('story position')) continue
+
+      const looksLikeCard =
+        descriptor.includes('physical') ||
+        descriptor.includes('active') ||
+        descriptor.includes('freeze') ||
+        descriptor.includes('unfreeze') ||
+        descriptor.includes('****') ||
+        descriptor.includes('••')
+
+      if (looksLikeCard) return cell
+    }
+
+    return null
+  }
+
   private async reportAndBlockCardAndroid(timeoutMs = 15000) {
     if (!browser.isAndroid) return
 
@@ -680,21 +798,35 @@ class PhysicalCardCreationPage extends BasePage {
     await this.waitForFreezeReadyAndroid(timeoutMs)
     const freezeShown = await this.freezeButtonAndroid.waitForDisplayed({ timeout: timeoutMs }).catch(() => false)
     if (freezeShown) {
-      await this.tap(this.freezeButtonAndroid)
+      await this.tap(this.freezeButtonAndroid, timeoutMs)
+      // Wait briefly for freeze to take effect before checking report button
+      await browser.pause(1500)
     }
 
-    const reportShown = await this.reportButtonAndroid.waitForDisplayed({ timeout: timeoutMs }).catch(() => false)
+    const reportShown = await this.reportButtonAndroid.waitForDisplayed({ timeout: 10000 }).catch(() => false)
+
+    // Fallback: if report button still not visible — navigate Home → Cards to force UI refresh
     if (!reportShown) {
-      const moreShown = await this.moreButtonAndroid.waitForDisplayed({ timeout: timeoutMs }).catch(() => false)
-      if (moreShown) {
-        await this.tap(this.moreButtonAndroid)
+      console.log('[PhysicalCard] report button not visible, navigating Home → Cards to refresh...')
+      const homeTab = $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_home")')
+      const homeTabA11y = $('~Home')
+      if (await homeTab.isDisplayed().catch(() => false)) {
+        await homeTab.click().catch(() => {})
+      } else if (await homeTabA11y.isDisplayed().catch(() => false)) {
+        await homeTabA11y.click().catch(() => {})
       }
+      await this.homeRootAndroid.waitForDisplayed({ timeout: 10000 }).catch(() => {})
+      await browser.pause(1000)
+      await this.openCardsTabAndroid()
+      await this.waitForFreezeReadyAndroid(timeoutMs)
+      // After re-open, wait report directly (without tapping More)
       await this.reportButtonAndroid.waitForDisplayed({ timeout: timeoutMs })
     }
-    await this.tap(this.reportButtonAndroid)
+
+    await this.tap(this.reportButtonAndroid, timeoutMs)
 
     await this.blockButtonAndroid.waitForDisplayed({ timeout: timeoutMs })
-    await this.tap(this.blockButtonAndroid)
+    await this.tap(this.blockButtonAndroid, timeoutMs)
 
     await this.blockedSuccessTextAndroid.waitForDisplayed({ timeout: timeoutMs }).catch(() => {})
 
@@ -709,6 +841,27 @@ class PhysicalCardCreationPage extends BasePage {
 
   private async assertCardsAfterDeletionAndroid(timeoutMs = 15000) {
     if (!browser.isAndroid) return
+    await this.cardsRootAndroid.waitForDisplayed({ timeout: timeoutMs })
+
+    const addNewShown = await this.addNewCardBtnAndroid.waitForDisplayed({ timeout: timeoutMs }).catch(() => false)
+    if (addNewShown) return
+
+    // Fallback: backend/card-state sync can lag; refresh Cards surface via Home tab
+    console.log('[PhysicalCard] add new card not visible after deletion, navigating Home → Cards to refresh...')
+
+    const homeTab = $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_home")')
+    const homeTabA11y = $('~Home')
+
+    if (await homeTab.isDisplayed().catch(() => false)) {
+      await homeTab.click().catch(() => {})
+    } else if (await homeTabA11y.isDisplayed().catch(() => false)) {
+      await homeTabA11y.click().catch(() => {})
+    }
+
+    await this.homeRootAndroid.waitForDisplayed({ timeout: 10000 }).catch(() => {})
+    await browser.pause(1000)
+
+    await this.openCardsTabAndroidCurrentAccount()
     await this.cardsRootAndroid.waitForDisplayed({ timeout: timeoutMs })
     await this.addNewCardBtnAndroid.waitForDisplayed({ timeout: timeoutMs })
   }
@@ -726,6 +879,12 @@ class PhysicalCardCreationPage extends BasePage {
   public async openCardsTabAndroid() {
     if (!browser.isAndroid) return
     await this.ensureSingleAccountAndroid()
+    await this.openCardsTabAndroidCurrentAccount()
+  }
+
+  public async openCardsTabAndroidCurrentAccount() {
+    if (!browser.isAndroid) return
+
     await browser.pause(700)
     await browser.switchContext('NATIVE_APP').catch(() => {})
     await this.dismissBlockingAlertAndroid(3000)
@@ -753,13 +912,120 @@ class PhysicalCardCreationPage extends BasePage {
     })
   }
 
+  public async openActivePhysicalCardDetailsAndroid(timeoutMs = 60000) {
+    if (!browser.isAndroid) return
+
+    if (!(await this.cardsRootAndroid.isDisplayed().catch(() => false))) {
+      await this.openCardsTabAndroidCurrentAccount()
+    }
+
+    await this.waitForSyncToFinishAndroid(timeoutMs)
+    if (await this.freezeButtonAndroid.isDisplayed().catch(() => false)) return
+    if (await this.unfreezeTextAndroid.isDisplayed().catch(() => false)) return
+
+    const candidates = [
+      this.physicalCardItemAndroid,
+      this.activeCardItemAndroid,
+      this.maskedCardItemAndroid,
+    ]
+
+    for (const candidate of candidates) {
+      const shown = await candidate.waitForDisplayed({ timeout: 3000 }).catch(() => false)
+      if (!shown) continue
+
+      await this.tap(candidate)
+      await this.waitForFreezeReadyAndroid(timeoutMs)
+      return
+    }
+
+    throw new Error('Active physical card was not found on Android Cards screen')
+  }
+
+  public async freezeAndUnfreezeActivePhysicalCardAndroid(timeoutMs = 60000) {
+    if (!browser.isAndroid) return
+
+    await this.openActivePhysicalCardDetailsAndroid(timeoutMs)
+    await this.waitForFreezeReadyAndroid(timeoutMs)
+
+    const alreadyFrozen = await this.unfreezeTextAndroid.isDisplayed().catch(() => false)
+    if (alreadyFrozen) {
+      await this.tap(this.freezeButtonAndroid)
+      await this.freezeTextAndroid.waitForDisplayed({ timeout: timeoutMs })
+    }
+
+    await this.freezeTextAndroid.waitForDisplayed({ timeout: timeoutMs })
+    await this.tap(this.freezeButtonAndroid)
+    await this.unfreezeTextAndroid.waitForDisplayed({ timeout: timeoutMs })
+
+    await this.tap(this.freezeButtonAndroid)
+    await this.unfreezeTextAndroid.waitForDisplayed({ reverse: true, timeout: timeoutMs }).catch(() => {})
+    await this.freezeTextAndroid.waitForDisplayed({ timeout: timeoutMs })
+  }
+
   public async openCardsTabIOS() {
     if (!browser.isIOS) return
     await this.ensureIndividualAccountIOS()
+    await this.openCardsTabIOSCurrentAccount()
+  }
+
+  public async openCardsTabIOSCurrentAccount() {
+    if (!browser.isIOS) return
+
     await browser.switchContext('NATIVE_APP').catch(() => {})
+    if (await this.isIOSCardsSurfaceVisible()) return
+
     await this.cardsTabIOS.waitForDisplayed({ timeout: 20000 })
     await this.tap(this.cardsTabIOS)
-    await this.cardsRootIOS.waitForDisplayed({ timeout: 20000 })
+    await browser.waitUntil(
+      async () => await this.isIOSCardsSurfaceVisible(),
+      {
+        timeout: 20000,
+        interval: 500,
+        timeoutMsg: 'Cards screen did not load on iOS',
+      }
+    )
+  }
+
+  public async openActivePhysicalCardDetailsIOS(timeoutMs = 60000) {
+    if (!browser.isIOS) return
+
+    await this.openCardsTabIOSCurrentAccount()
+    await this.waitForSyncToFinishIOS(timeoutMs)
+    if (await this.freezeButtonIOS.isDisplayed().catch(() => false)) return
+    if (await this.unfreezeButtonIOS.isDisplayed().catch(() => false)) return
+    if (await this.cardSearchFieldIOS.isDisplayed().catch(() => false)) {
+      await browser.hideKeyboard().catch(() => {})
+    }
+
+    const cardItem = await this.getDisplayedIOSCardListItem()
+    if (cardItem) {
+      await cardItem.click()
+      await this.waitForFreezeReadyIOS(timeoutMs)
+      return
+    }
+
+    throw new Error('Active physical card was not found on iOS Cards screen')
+  }
+
+  public async freezeAndUnfreezeActivePhysicalCardIOS(timeoutMs = 60000) {
+    if (!browser.isIOS) return
+
+    await this.openActivePhysicalCardDetailsIOS(timeoutMs)
+    await this.waitForFreezeReadyIOS(timeoutMs)
+
+    const alreadyFrozen = await this.unfreezeButtonIOS.isDisplayed().catch(() => false)
+    if (alreadyFrozen) {
+      await this.tap(this.unfreezeButtonIOS)
+      await this.freezeButtonIOS.waitForDisplayed({ timeout: timeoutMs })
+    }
+
+    await this.freezeButtonIOS.waitForDisplayed({ timeout: timeoutMs })
+    await this.tap(this.freezeButtonIOS)
+    await this.unfreezeButtonIOS.waitForDisplayed({ timeout: timeoutMs })
+
+    await this.tap(this.unfreezeButtonIOS)
+    await this.unfreezeButtonIOS.waitForDisplayed({ reverse: true, timeout: timeoutMs }).catch(() => {})
+    await this.freezeButtonIOS.waitForDisplayed({ timeout: timeoutMs })
   }
 
   public async startAddNewCardAndroid() {
@@ -1001,7 +1267,7 @@ class PhysicalCardCreationPage extends BasePage {
     await this.reenterPinAndroid(pin)
     await this.enterOtpAndroid(otp)
     await this.closeCardSheetAndroid()
-    await this.reportAndBlockCardAndroid()
+    await this.reportAndBlockCardAndroid(30000)
   }
 
   public async createPhysicalCardIOS(pin: string, otp: string) {

@@ -2,6 +2,12 @@ import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
 import type { AuthData } from '../data/credentials'
 import type { ChainablePromiseElement } from 'webdriverio'
+import OtpHelper from '../helpers/otp.helper'
+
+type LoginFlowOptions = {
+  useApiOtp?: boolean
+  otpPhone?: string
+}
 
 
 
@@ -22,6 +28,14 @@ export class LoginPage extends BasePage {
     }
     // iOS: accessibility id
     return $(`~${name}`)
+  }
+
+  private text(text: string) {
+    return $(`android=new UiSelector().text("${text}")`)
+  }
+
+  private buttonByText(text: string) {
+    return $(`//android.widget.TextView[@text="${text}"]/ancestor::android.view.View[@clickable="true"][1]`)
   }
 
   get welcomeSkipBtn() { return this.byId(LoginPage.IDS.welcomeSkip) }
@@ -103,11 +117,12 @@ export class LoginPage extends BasePage {
       await browser.waitUntil(async () => {
         const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
         const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
-        return registerShown || homeShown
+        const passcodeShown = await this.isIOSPasscodeScreenShown()
+        return registerShown || homeShown || passcodeShown
       }, {
         timeout: 20000,
         interval: 500,
-        timeoutMsg: 'Register screen or Home did not appear',
+        timeoutMsg: 'Register screen, passcode screen, or Home did not appear',
       })
       return
     }
@@ -294,17 +309,47 @@ private async tapDigitIOS(d: string) {
   await container.click();
 }
 
+  private async isIOSPasscodeScreenShown() {
+    if (!browser.isIOS) return false
+    return this.iosKeypadContainerByDigit('1').isDisplayed().catch(() => false)
+  }
+
 /* ===== Aos ===== */
 private androidKeypadDigit(d: string) {
   //  повний resource-id з package
   return $(`android=new UiSelector().resourceId("com.moneybase.qa:id/keypad_text_${d}")`);
 }
 
-private async tapDigitAndroid(d: string) {
-  const el = this.androidKeypadDigit(d);
-  await el.waitForDisplayed({ timeout: 5000 });
-  await el.click();
-}
+  private async tapDigitAndroid(d: string) {
+    const el = this.androidKeypadDigit(d);
+    await el.waitForDisplayed({ timeout: 5000 });
+    await el.click();
+  }
+
+  private async isAndroidPasscodeScreenShown() {
+    if (!browser.isAndroid) return false
+    return this.androidKeypadDigit('1').isDisplayed().catch(() => false)
+  }
+
+  private async waitForAndroidLoginNextStepAfterMobile(timeout = 45000) {
+    if (!browser.isAndroid) return
+
+    await browser.waitUntil(async () => {
+      await browser.switchContext('NATIVE_APP').catch(() => {})
+      const otpShown = await this.otpContainerAndroid.isDisplayed().catch(() => false)
+      const continueShown = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
+      const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+      const passcodeShown = await this.isAndroidPasscodeScreenShown()
+      if (otpShown || continueShown || homeShown || passcodeShown) return true
+
+      await this.dismissAndroidBlockersOnce()
+      return false
+    }, {
+      timeout,
+      interval: 500,
+      timeoutMsg: 'After mobile Continue: Android login next step did not appear',
+    })
+  }
 
 /* ===== Shared ===== */
 private async tapDigit(d: string) {
@@ -420,16 +465,60 @@ async enterOtp(code: string = '123456') {
 }
 
 /* ---------- POST-OTP / FIRST LOGIN UI ---------- */
-get postOtpContinueBtn() {
-  // Android — automation id
-  if (browser.isAndroid) {
-    return this.byId('verificationSuccess_button_continue')
+  get postOtpContinueBtn() {
+    // Android — automation id
+    if (browser.isAndroid) {
+      return this.byId('verificationSuccess_button_continue')
 
   }
 
   // iOS — id (~Continue)
   return $('~Continue')
-}
+  }
+
+  get verificationSuccessScreen() {
+    return this.byId('verificationSuccess_screen')
+  }
+
+  private async tapPostOtpContinueIfVisibleAndroid() {
+    if (!browser.isAndroid) return false
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const continueShown = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
+    const successShown = await this.verificationSuccessScreen.isDisplayed().catch(() => false)
+    if (!continueShown && !successShown) return false
+
+    if (continueShown) {
+      await this.postOtpContinueBtn.click().catch(async () => {
+        const loc = await this.postOtpContinueBtn.getLocation()
+        const size = await this.postOtpContinueBtn.getSize()
+        await this.tapAndroidCoordinates(loc.x + size.width / 2, loc.y + size.height / 2)
+      })
+    } else {
+      await this.tapAndroidCoordinates(540, 2266)
+    }
+
+    await browser.pause(800)
+    return true
+  }
+
+  private async tapAndroidCoordinates(x: number, y: number) {
+    await browser.performActions([
+      {
+        type: 'pointer',
+        id: 'finger-login-android-tap',
+        parameters: { pointerType: 'touch' },
+        actions: [
+          { type: 'pointerMove', duration: 0, x: Math.round(x), y: Math.round(y) },
+          { type: 'pointerDown', button: 0 },
+          { type: 'pause', duration: 80 },
+          { type: 'pointerUp', button: 0 },
+        ],
+      },
+    ])
+    await browser.releaseActions().catch(() => {})
+  }
 
 get applePayProposalCloseBtn() {
   if (browser.isAndroid) {
@@ -443,6 +532,27 @@ get homeRoot() {
     return this.byId('home_screen')
   }
   return $('~home_screen_view')
+}
+
+get verificationRequiredTitle() {
+  if (browser.isAndroid) {
+    return this.text('Verification is required')
+  }
+  return $('~Verification is required')
+}
+
+get verifyNowBtn() {
+  if (browser.isAndroid) {
+    return this.byId('infoContinueButton')
+  }
+  return $('~Verify Now')
+}
+
+get verifyNowText() {
+  if (browser.isAndroid) {
+    return this.text('Verify Now')
+  }
+  return $('~Verify Now')
 }
 
 get homeTabAndroid() {
@@ -467,23 +577,26 @@ get payRootAndroid() {
 
 
 /** 1) tap Continue */
-async tapContinueAfterOtp() {
-  await browser.pause(1200)
+  async tapContinueAfterOtp() {
+    await browser.pause(1200)
 
-  await browser.waitUntil(async () => {
-    await this.dismissPostOtpPopupAndroidOnce()
+    await browser.waitUntil(async () => {
+      await this.dismissPostOtpPopupAndroidOnce()
     const continueVisible = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
     const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
     const home = await this.homeRoot.isDisplayed().catch(() => false)
-    return continueVisible || applePay || home
+    const passcodeShown = await this.isIOSPasscodeScreenShown()
+    return continueVisible || applePay || home || passcodeShown
   }, {
     timeout: 60000,
     interval: 500,
-    timeoutMsg: 'After OTP: Continue/Home/ApplePay did not appear',
+    timeoutMsg: 'After OTP: Continue/Home/ApplePay/passcode did not appear',
   })
 
   const continueVisible = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
   if (!continueVisible) return
+
+  if (browser.isAndroid && await this.tapPostOtpContinueIfVisibleAndroid()) return
 
   const enabled = await this.postOtpContinueBtn.waitForEnabled({ timeout: 10000 }).catch(() => false)
   if (enabled) {
@@ -501,11 +614,12 @@ async waitForPostOtpNextStep(timeout = 30000) {
     const continueVisible = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
     const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
     const home = await this.homeRoot.isDisplayed().catch(() => false)
-    return continueVisible || applePay || home
+    const passcodeShown = await this.isIOSPasscodeScreenShown()
+    return continueVisible || applePay || home || passcodeShown
   }, {
     timeout,
     interval: 400,
-    timeoutMsg: 'After Continue: neither Home nor ApplePay appeared',
+    timeoutMsg: 'After Continue: neither Home nor ApplePay nor passcode appeared',
   })
 }
 
@@ -529,6 +643,10 @@ async waitForHome(timeout = 30000) {
         const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
         if (homeShown) return true
 
+        if (await this.tapPostOtpContinueIfVisibleAndroid()) {
+          return await this.homeRoot.isDisplayed().catch(() => false)
+        }
+
         const cardsShown = await this.cardsRootAndroid.isDisplayed().catch(() => false)
         const homeTabShown = await this.homeTabAndroid.isDisplayed().catch(() => false)
         if (cardsShown && homeTabShown) {
@@ -551,7 +669,45 @@ async waitForHome(timeout = 30000) {
     return
   }
 
-  await this.homeRoot.waitForDisplayed({ timeout })
+  await browser.waitUntil(async () => {
+    const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+    if (homeShown) return true
+
+    const applePayShown = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
+    if (applePayShown) {
+      await this.tap(this.applePayProposalCloseBtn).catch(() => {})
+      await browser.pause(500)
+    }
+
+    return this.homeRoot.isDisplayed().catch(() => false)
+  }, {
+    timeout,
+    interval: 500,
+    timeoutMsg: 'Home screen did not appear on iOS',
+  })
+}
+
+async waitForVerificationRequired(timeout = 45000) {
+  await browser.waitUntil(
+    async () => {
+      if (browser.isAndroid) {
+        await browser.switchContext('NATIVE_APP').catch(() => {})
+        await this.dismissAndroidBlockersOnce()
+      }
+
+      const verificationTitleShown = await this.verificationRequiredTitle.isDisplayed().catch(() => false)
+      const verifyNowShown =
+        (await this.verifyNowBtn.isDisplayed().catch(() => false)) ||
+        (await this.verifyNowText.isDisplayed().catch(() => false))
+
+      return verificationTitleShown && verifyNowShown
+    },
+    {
+      timeout,
+      interval: 500,
+      timeoutMsg: 'Expected Verification is required screen with Verify Now button after login',
+    }
+  )
 }
 
 
@@ -572,20 +728,71 @@ private async relaunchIOSApp() {
   await browser.pause(1200)
 }
 
-private async loginFlowOnce(auth: AuthData) {
+private async getLoginOtp(auth: AuthData, options: LoginFlowOptions) {
+  // ### Login always uses hardcoded 000000 — no OTP API requests on login ###
+  console.log('[LoginPage.getLoginOtp] 🔐 Using hardcoded OTP: 000000')
+  return '000000'
+
+  // eslint-disable-next-line no-unreachable
+  /* API OTP path — disabled, do not enable without rate-limit analysis
+  if (!options.useApiOtp) return '000000'
+
+  const phone = options.otpPhone || process.env.OTP_PHONE || process.env.MB_PHONE || auth.phone
+  const otp = await OtpHelper.getLatestOtp({
+    phone,
+    timeoutMs: Number(process.env.LOGIN_OTP_TIMEOUT_MS || process.env.OTP_TIMEOUT_MS || 90000),
+    intervalMs: Number(process.env.LOGIN_OTP_POLL_INTERVAL_MS || process.env.OTP_POLL_INTERVAL_MS || 2000),
+    maxRequests: Math.max(2, Number(process.env.LOGIN_OTP_MAX_REQUESTS || process.env.OTP_MAX_REQUESTS || 2)),
+  })
+  process.env.LAST_LOGIN_OTP = otp
+  return otp
+  */
+}
+
+private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
+  console.log('[LoginPage.loginFlowOnce] Starting with options:', JSON.stringify(options))
+  
   const alreadyHome = await this.homeRoot.isDisplayed().catch(() => false)
   if (alreadyHome) return
 
   await this.prepare()
+  if (browser.isIOS && await this.isIOSPasscodeScreenShown()) {
+    await this.enterPin(auth.pin)
+    await this.closeApplePayIfVisible()
+    await this.waitForHome(45000)
+    return
+  }
+
   await this.selectCountry(auth.country)
   await this.enterMobile(auth.phone)
   await this.continue()
-  await this.enterPin(auth.pin)
+
+  let androidPinEntered = false
+  if (browser.isAndroid) {
+    await this.waitForAndroidLoginNextStepAfterMobile()
+
+    if (await this.homeRoot.isDisplayed().catch(() => false)) return
+
+    if (await this.isAndroidPasscodeScreenShown()) {
+      await this.enterPin(auth.pin)
+      androidPinEntered = true
+      await browser.pause(1200)
+      const homeAfterPin = await this.homeRoot.isDisplayed().catch(() => false)
+      if (homeAfterPin) return
+    }
+  }
+
+  if (!androidPinEntered) {
+    await this.enterPin(auth.pin)
+  }
 
   await this.waitForOtpScreen()
-  await this.enterOtp('000000')
+  await this.enterOtp(await this.getLoginOtp(auth, options))
 
   await this.tapContinueAfterOtp()
+  if (browser.isIOS && await this.isIOSPasscodeScreenShown()) {
+    await this.enterPin(auth.pin)
+  }
 
   await this.waitForPostOtpNextStep(30000)
   await this.closeApplePayIfVisible()
@@ -594,20 +801,25 @@ private async loginFlowOnce(auth: AuthData) {
 
   // Ensure app stays in foreground after successful login
   if (browser.isAndroid) {
+    await this.stabilizeAndroidHomeSurface(20000).catch(() => false)
     await browser.pause(500)
   }
 }
 
-async loginFlow(auth: AuthData) {
+async loginFlow(auth: AuthData, options: LoginFlowOptions = {}) {
   try {
-    await this.loginFlowOnce(auth)
+    await this.loginFlowOnce(auth, options)
   } catch (error) {
     if (!browser.isIOS) throw error
 
     console.warn('[LoginPage] iOS login failed, trying one recovery retry:', error)
     await this.relaunchIOSApp()
-    await this.loginFlowOnce(auth)
+    await this.loginFlowOnce(auth, options)
   }
+}
+
+async loginFlowWithApiOtp(auth: AuthData) {
+  await this.loginFlow(auth, { useApiOtp: true })
 }
 
 
