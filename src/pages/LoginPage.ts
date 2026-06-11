@@ -311,7 +311,7 @@ private async tapDigitIOS(d: string) {
 
   private async isIOSPasscodeScreenShown() {
     if (!browser.isIOS) return false
-    return this.iosKeypadContainerByDigit('1').isDisplayed().catch(() => false)
+    return this.iosKeypadContainerByDigit('1').waitForDisplayed({ timeout: 3000 }).catch(() => false)
   }
 
 /* ===== Aos ===== */
@@ -328,7 +328,7 @@ private androidKeypadDigit(d: string) {
 
   private async isAndroidPasscodeScreenShown() {
     if (!browser.isAndroid) return false
-    return this.androidKeypadDigit('1').isDisplayed().catch(() => false)
+    return this.androidKeypadDigit('1').waitForDisplayed({ timeout: 3000 }).catch(() => false)
   }
 
   private async waitForAndroidLoginNextStepAfterMobile(timeout = 45000) {

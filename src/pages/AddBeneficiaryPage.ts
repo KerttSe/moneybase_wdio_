@@ -164,17 +164,42 @@ export default class AddBeneficiaryPage extends BasePage {
     throw new Error(`[AddBeneficiary] BrowserStack device is blocked by Device Security screen: ${details}`)
   }
 
-  private async throwIfOtpRateLimitedAndroid(stage: string) {
+  private async waitForOtpRateLimitOrResendAndroid(maxWaitMs = 70000) {
     if (!browser.isAndroid) return
 
     const rateLimited = await this.otpRateLimitedErrorAndroid.isDisplayed().catch(() => false)
     if (!rateLimited) return
 
-    const errorText = await this.otpRateLimitedErrorAndroid.getText().catch(() => '')
-    const countdown = await this.otpLockCountdownAndroid.getText().catch(() => '')
-    const details = [errorText, countdown].filter(Boolean).join(' ')
+    console.log('[AddBeneficiary] OTP rate limited — waiting for limit to clear or resend button...')
 
-    throw new Error(`[AddBeneficiary] OTP rate limited ${stage} (Android): ${details || 'A code was recently sent. Please try again later.'}`)
+    await browser.waitUntil(
+      async () => {
+        const stillRateLimited = await this.otpRateLimitedErrorAndroid.isDisplayed().catch(() => false)
+        if (!stillRateLimited) {
+          console.log('[AddBeneficiary] OTP rate limit cleared')
+          return true
+        }
+
+        const resendCandidates = [this.otpResendBtnAndroidById, this.otpResendBtnAndroidByText]
+        for (const btn of resendCandidates) {
+          const shown = await btn.isDisplayed().catch(() => false)
+          const enabled = shown ? await btn.isEnabled().catch(() => false) : false
+          if (shown && enabled) {
+            console.log('[AddBeneficiary] Tapping resend OTP button')
+            await this.tap(btn).catch(() => {})
+            await browser.pause(1500)
+            return true
+          }
+        }
+
+        return false
+      },
+      {
+        timeout: maxWaitMs,
+        interval: 1000,
+        timeoutMsg: `[AddBeneficiary] OTP rate limit did not clear and no resend button found after ${maxWaitMs}ms`,
+      }
+    )
   }
 
   private async dismissErrorDialogAndroid(): Promise<boolean> {
@@ -480,11 +505,11 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get otpSubmitBtnAndroidById() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/(sendOtp|.*otp.*(continue|confirm|submit|send).*)$|^sendOtp$")')
+    return $('android=new UiSelector().resourceIdMatches(".*:id/(.*otp.*(continue|confirm|submit).*)$")')
   }
 
   private get otpSubmitBtnAndroidByText() {
-    return $('android=new UiSelector().textMatches("(?i)^(send|submit|confirm|continue)( otp| code)?$")')
+    return $('android=new UiSelector().textMatches("(?i)^(submit|confirm|continue)( otp| code)?$")')
   }
 
   private get otpLockedErrorAndroid() {
@@ -495,8 +520,12 @@ export default class AddBeneficiaryPage extends BasePage {
     return $('android=new UiSelector().resourceId("com.moneybase.qa:id/errorText").textMatches("(?i).*code was recently sent.*|.*try again later.*")')
   }
 
-  private get otpLockCountdownAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/otpLockCountdown")')
+  private get otpResendBtnAndroidById() {
+    return $('android=new UiSelector().resourceIdMatches(".*:id/(.*resend.*|.*send.*code.*)$")')
+  }
+
+  private get otpResendBtnAndroidByText() {
+    return $('android=new UiSelector().textMatches("(?i)^(resend|resend code|send new code|request new code|get new code)$")')
   }
 
   private get ibanAlreadySavedErrorAndroidByText() {
@@ -1230,7 +1259,7 @@ export default class AddBeneficiaryPage extends BasePage {
     if (otpLockedBeforeSubmit) {
       throw new Error('OTP step blocked (Android): Too many attempts. Account is temporarily locked')
     }
-    await this.throwIfOtpRateLimitedAndroid('before fetching OTP')
+    await this.waitForOtpRateLimitOrResendAndroid()
 
     const otpPhone = process.env.OTP_PHONE || process.env.MB_PHONE || ''
     if (!otpPhone) {
@@ -1276,7 +1305,7 @@ export default class AddBeneficiaryPage extends BasePage {
       90000,
       Number(process.env.BENEFICIARY_OTP_TIMEOUT_MS || process.env.OTP_TIMEOUT_MS || 90000)
     )
-    const beneficiaryOtpMaxRequests = 1 // Single request only, no polling to avoid rate limiting
+    const beneficiaryOtpMaxRequests = Number(process.env.BENEFICIARY_OTP_MAX_REQUESTS || 3)
 
     console.log(
       `[AddBeneficiary][OTP API] Fetching OTP with maxRequests=${beneficiaryOtpMaxRequests}, timeoutMs=${beneficiaryOtpTimeoutMs}`
@@ -1299,15 +1328,12 @@ export default class AddBeneficiaryPage extends BasePage {
     if (otpLockedBeforeTyping) {
       throw new Error('OTP step blocked before typing (Android): Too many attempts. Account is temporarily locked')
     }
-    await this.throwIfOtpRateLimitedAndroid('before typing')
-
     await browser.waitUntil(
       async () => {
         const otpLocked = await this.otpLockedErrorAndroid.isDisplayed().catch(() => false)
         if (otpLocked) {
           throw new Error('OTP step blocked before typing (Android): Too many attempts. Account is temporarily locked')
         }
-        await this.throwIfOtpRateLimitedAndroid('before typing')
         return await this.otpInputAndroid.isEnabled().catch(() => false)
       },
       {
@@ -1317,7 +1343,7 @@ export default class AddBeneficiaryPage extends BasePage {
       }
     )
 
-    await browser.pause(15000)
+    await browser.pause(3000)
 
     const readOtpInputDigits = async () => {
       const fromAttr = await this.otpInputAndroid.getAttribute('text').catch(() => '')
@@ -1330,35 +1356,12 @@ export default class AddBeneficiaryPage extends BasePage {
     await this.tap(this.otpInputAndroid)
     await this.otpInputAndroid.clearValue().catch(() => {})
 
-    // Strategy 1: one-shot fill
-    await this.otpInputAndroid.setValue(otp).catch(async () => {
-      await this.otpInputAndroid.addValue(otp)
-    })
-
-    let enteredOtp = await readOtpInputDigits()
-
-    // Strategy 2: one more one-shot retry
-    if (enteredOtp.length < otp.length) {
-      await this.tap(this.otpInputAndroid)
-      await this.otpInputAndroid.clearValue().catch(() => {})
-      await this.otpInputAndroid.setValue(otp).catch(async () => {
-        await this.otpInputAndroid.addValue(otp)
-      })
-      enteredOtp = await readOtpInputDigits()
+    for (const digit of otp.split('')) {
+      await this.otpInputAndroid.addValue(digit)
+      await browser.pause(80)
     }
 
-    // Strategy 3: digit-by-digit fallback for flaky Android input controls
-    if (enteredOtp.length < otp.length) {
-      await this.tap(this.otpInputAndroid)
-      await this.otpInputAndroid.clearValue().catch(() => {})
-
-      for (const digit of otp.split('')) {
-        await this.otpInputAndroid.addValue(digit)
-        await browser.pause(80)
-      }
-
-      enteredOtp = await readOtpInputDigits()
-    }
+    const enteredOtp = await readOtpInputDigits()
 
     if (enteredOtp.length < otp.length) {
       throw new Error(`OTP input is incomplete on Android. Expected ${otp.length} digits, but field has ${enteredOtp.length} (${enteredOtp || '<empty>'})`)
@@ -1368,8 +1371,8 @@ export default class AddBeneficiaryPage extends BasePage {
       throw new Error(`OTP input mismatch on Android. Expected ${otp}, but field has ${enteredOtp || '<empty>'}`)
     }
 
-    await browser.hideKeyboard().catch(() => {})
     await browser.pressKeyCode(66).catch(() => {})
+    await browser.hideKeyboard().catch(() => {})
 
     await browser
       .waitUntil(

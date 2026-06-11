@@ -515,6 +515,11 @@ class PhysicalCardCreationPage extends BasePage {
     await browser.switchContext('NATIVE_APP').catch(() => {})
     await browser.waitUntil(
       async () => {
+        const errorDialog = await $('android=new UiSelector().resourceId("com.moneybase.qa:id/alertTitle")').isDisplayed().catch(() => false)
+        if (errorDialog) {
+          await $('android=new UiSelector().resourceId("android:id/button1")').click().catch(() => {})
+          return false
+        }
         const closeSheetExists = await this.closeSheetAndroid.isDisplayed().catch(() => false)
         const closeSheetAltExists = await this.closeSheetAndroidByXpath.isDisplayed().catch(() => false)
         const closeButtonVisible = await this.closeButtonAndroid.isDisplayed().catch(() => false)
@@ -1139,11 +1144,13 @@ class PhysicalCardCreationPage extends BasePage {
     city?: string
     postCode?: string
   }) {
+    const n = Math.floor(Math.random() * 900) + 1
+    const pc = Math.floor(Math.random() * 90) + 1000
     const {
-      address1 = 'Test Address 1',
-      address2 = 'Test Address 2',
-      city = 'Valetta',
-      postCode = 'VLT 1090',
+      address1 = `Triq it-Torri ${n}`,
+      address2 = `Apt ${n}`,
+      city = 'Valletta',
+      postCode = `VLT ${pc}`,
     } = params || {}
 
     if (await this.addressLine1Android.waitForDisplayed({ timeout: 10000 }).catch(() => false)) {
@@ -1178,11 +1185,13 @@ class PhysicalCardCreationPage extends BasePage {
     city?: string
     postCode?: string
   }) {
+    const n = Math.floor(Math.random() * 900) + 1
+    const pc = Math.floor(Math.random() * 90) + 1000
     const {
-      address1 = 'Test Address 1',
-      address2 = 'Test Address 2',
-      city = 'Valetta',
-      postCode = 'VLT 1090',
+      address1 = `Triq it-Torri ${n}`,
+      address2 = `Apt ${n}`,
+      city = 'Valletta',
+      postCode = `VLT ${pc}`,
     } = params || {}
 
     if (await this.addressLine1IOS.waitForDisplayed({ timeout: 10000 }).catch(() => false)) {
