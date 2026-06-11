@@ -86,6 +86,13 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
       ...(enableBrowserStackCameraInjection ? { enableCameraImageInjection: true } : {}),
       ...(enableBrowserStackVideoInjection ? { enableCameraVideoInjection: true } : {}),
       ...(enableBrowserStackCameraPreview ? { enableCameraPreview: true } : {}),
+      ...({
+        testObservability: true,
+        testObservabilityOptions: {
+          projectName: process.env.BS_PROJECT || 'moneybase_wdio',
+          buildName: process.env.BS_BUILD || `local-${new Date().toISOString()}`,
+        },
+      } as Record<string, unknown>),
     },
     'appium:app': process.env.BS_APP_ANDROID,
     'appium:autoGrantPermissions': true,
@@ -107,6 +114,13 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
       appiumVersion: '2.6.0',
       deviceName: process.env.BS_IOS_DEVICE || 'iPhone 14',
       osVersion: process.env.BS_IOS_OS || '16',
+      ...({
+        testObservability: true,
+        testObservabilityOptions: {
+          projectName: process.env.BS_PROJECT || 'moneybase_wdio',
+          buildName: process.env.BS_BUILD || `local-${new Date().toISOString()}`,
+        },
+      } as Record<string, unknown>),
     },
     'appium:app': process.env.BS_APP_IOS,
     'appium:bundleId': process.env.BS_IOS_BUNDLE_ID,
