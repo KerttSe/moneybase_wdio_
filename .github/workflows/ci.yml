@@ -16,29 +16,17 @@ concurrency:
 
 jobs:
   e2e:
-    name: ${{ matrix.smoke && format('SMOKE ({0})', matrix.platform) || format('E2E ({0})', matrix.platform) }}
+    name: ${{ matrix.smoke && format('SMOKE ({0})', matrix.platform) || format('E2E ({0})', matrix.platform) }} — ${{ matrix.spec }}
     runs-on: self-hosted
     strategy:
       fail-fast: false
       matrix:
         include:
           - platform: android
-            spec: src/tests/addfunds.spec.ts
+            spec: src/tests/launch.spec.ts
             smoke: true
           - platform: ios
-            spec: src/tests/addfunds.spec.ts
-            smoke: true
-          - platform: android
-            spec: src/tests/bankTransfer.p2p.individual.spec.ts
-            smoke: true
-          - platform: ios
-            spec: src/tests/bankTransfer.p2p.individual.spec.ts
-            smoke: true
-          - platform: android
-            spec: src/tests/addbeneficiary.individual.spec.ts
-            smoke: true
-          - platform: ios
-            spec: src/tests/addbeneficiary.individual.spec.ts
+            spec: src/tests/launch.spec.ts
             smoke: true
           - platform: android
             spec: src/tests/homeScreen.spec.ts
@@ -47,10 +35,106 @@ jobs:
             spec: src/tests/homeScreen.spec.ts
             smoke: true
           - platform: android
+            spec: src/tests/homeAccountSwitch.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/homeAccountSwitch.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/homeSearch.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/homeSearch.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/addfunds.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/addfunds.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/addbeneficiary.individual.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/addbeneficiary.individual.spec.ts
+            smoke: true
+          - platform: android
             spec: src/tests/physicalcardcreation.spec.ts
             smoke: true
           - platform: ios
             spec: src/tests/physicalcardcreation.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/cardFreezeUnfreeze.joint.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/cardFreezeUnfreeze.joint.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/bankTransfer.p2p.individual.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/bankTransfer.p2p.individual.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/bankTransfer.sepa.individual.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/bankTransfer.sepa.individual.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/bankTransfer.swift.individual.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/bankTransfer.swift.individual.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/fxExchange.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/fxExchange.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/autoTopUp.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/autoTopUp.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/cashFunds.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/cashFunds.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/portfolio.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/portfolio.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/watchlist.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/watchlist.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/orders.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/orders.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/priceAlerts.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/priceAlerts.spec.ts
+            smoke: true
+          - platform: android
+            spec: src/tests/onboarding.spec.ts
+            smoke: true
+          - platform: ios
+            spec: src/tests/onboarding.spec.ts
             smoke: true
     env:
       MB_COUNTRY: ${{ secrets.MB_COUNTRY }}
@@ -69,13 +153,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Assumes self-hosted runner has Android SDK/Xcode + devices/emulators configured
       - name: Start Appium
         run: npx appium --base-path / --log-level info &
 
-      - name: Run tests
+      - name: Wait for Appium
         run: |
-          npm run wdio -- --spec ${{ matrix.spec }}
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:4723/status && break
+            sleep 1
+          done
+
+      - name: Set artifact name
+        id: artifact
+        run: |
+          spec_name=$(basename "${{ matrix.spec }}" .spec.ts)
+          echo "name=allure-${{ matrix.platform }}-${spec_name}" >> $GITHUB_OUTPUT
+
+      - name: Run tests
+        run: npm run wdio -- --spec ${{ matrix.spec }}
 
       - name: Generate Allure report
         if: always()
@@ -85,7 +180,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results-${{ matrix.platform }}
+          name: ${{ steps.artifact.outputs.name }}-results
           path: allure-results
           if-no-files-found: warn
 
@@ -93,7 +188,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-report-${{ matrix.platform }}
+          name: ${{ steps.artifact.outputs.name }}-report
           path: allure-report
           if-no-files-found: warn
 
@@ -101,6 +196,7 @@ jobs:
     name: Deploy Allure report to GitHub Pages
     runs-on: ubuntu-latest
     needs: e2e
+    if: always()
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -108,7 +204,7 @@ jobs:
       - name: Download Allure results artifacts
         uses: actions/download-artifact@v4
         with:
-          pattern: allure-results-*
+          pattern: allure-*-results
           path: ./allure-results
           merge-multiple: true
 
