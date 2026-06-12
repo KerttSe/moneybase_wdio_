@@ -184,8 +184,20 @@ export default class OrdersPage extends BasePage {
     return $('//android.app.AlertDialog[.//*[contains(@text,"Order Preview")]]//android.widget.Button[@clickable="true" and (@text="Buy" or @text="BUY")]')
   }
 
+  private get previewBuyButtonAndroidUiSelector() {
+    return $('android=new UiSelector().textMatches("(?i)^buy$").clickable(true)')
+  }
+
+  private get previewBuyButtonAndroidAnyContainer() {
+    return $('//*[.//*[contains(@text,"Order Preview")]]//*[@clickable="true" and (contains(@text,"Buy") or contains(@text,"BUY"))]')
+  }
+
   private get orderPreviewTitleAndroid() {
     return $('//android.app.AlertDialog//*[contains(@text,"Order Preview")]')
+  }
+
+  private get orderPreviewTitleAndroidUiSelector() {
+    return $('android=new UiSelector().textContains("Order Preview")')
   }
 
   private get orderPreviewDialogAndroid() {
@@ -193,7 +205,7 @@ export default class OrdersPage extends BasePage {
   }
 
   private get orderPreviewQuantityLabelAndroid() {
-    return $('//android.app.AlertDialog[.//*[contains(@text,"Order Preview")]]//android.widget.TextView[@text="Quantity"]')
+    return $('android=new UiSelector().text("Quantity")')
   }
 
   private get orderPreviewOrderTypeLabelAndroid() {
@@ -201,7 +213,7 @@ export default class OrdersPage extends BasePage {
   }
 
   private get orderPreviewTradeValueLabelAndroid() {
-    return $('//android.app.AlertDialog[.//*[contains(@text,"Order Preview")]]//android.widget.TextView[@text="Trade Value"]')
+    return $('android=new UiSelector().text("Trade Value")')
   }
 
   private get orderSubmitErrorTitleAndroid() {
@@ -214,6 +226,25 @@ export default class OrdersPage extends BasePage {
 
   private get previewConfirmBuyButtonAndroid() {
     return $('//android.app.AlertDialog[.//*[contains(@text,"Order Preview")]]//android.widget.Button[contains(@text,"Buy") or contains(@text,"BUY")]')
+  }
+
+  private get allPreviewBuyButtonCandidatesAndroid() {
+    return [
+      this.previewConfirmBuyButtonAndroid,
+      this.previewBuyButtonAndroid,
+      this.previewBuyButtonAndroidUiSelector,
+      this.previewBuyButtonAndroidAnyContainer,
+    ]
+  }
+
+  private get allOrderPreviewAnchorCandidatesAndroid() {
+    return [
+      this.orderPreviewTitleAndroid,
+      this.orderPreviewTitleAndroidUiSelector,
+      this.orderPreviewDialogAndroid,
+      this.orderPreviewQuantityLabelAndroid,
+      this.orderPreviewTradeValueLabelAndroid,
+    ]
   }
 
   private get orderDetailsTitleAndroid() {
@@ -1429,7 +1460,7 @@ export default class OrdersPage extends BasePage {
     }
 
     const previewShown = await this.waitForAnyDisplayed(
-      [this.orderPreviewTitleAndroid, this.orderPreviewDialogAndroid, this.orderPreviewQuantityLabelAndroid, this.orderPreviewTradeValueLabelAndroid, this.previewConfirmBuyButtonAndroid],
+      [...this.allOrderPreviewAnchorCandidatesAndroid, ...this.allPreviewBuyButtonCandidatesAndroid],
       12000,
       'Order Preview (Android)'
     )
@@ -1443,7 +1474,7 @@ export default class OrdersPage extends BasePage {
 
   private async confirmPreviewBuyAndroidIfShown() {
     const previewVisible = async () => this.waitForAnyDisplayed(
-      [this.orderPreviewDialogAndroid, this.orderPreviewTitleAndroid, this.orderPreviewQuantityLabelAndroid, this.orderPreviewTradeValueLabelAndroid, this.previewConfirmBuyButtonAndroid],
+      [...this.allOrderPreviewAnchorCandidatesAndroid, ...this.allPreviewBuyButtonCandidatesAndroid],
       1200,
       'Order Preview (Android)'
     )
@@ -1455,7 +1486,7 @@ export default class OrdersPage extends BasePage {
 
     for (let i = 0; i < 6; i += 1) {
       const buyBtn = await this.getFirstDisplayed(
-        [this.previewConfirmBuyButtonAndroid, this.previewBuyButtonAndroid],
+        this.allPreviewBuyButtonCandidatesAndroid,
         'Preview Buy button (Android)'
       ).catch(() => null)
 
