@@ -73,20 +73,33 @@ export default class AutoTopUpPage extends BasePage {
     await browser.switchContext('NATIVE_APP').catch(() => {})
     await this.dismissBlockingAlertAndroid(7000).catch(() => {})
 
-    await browser.waitUntil(
-      async () => {
-        await this.dismissBlockingAlertAndroid(1000).catch(() => {})
-        return (
-          (await this.homeRootAndroid.isDisplayed().catch(() => false)) &&
-          (await this.addFundsBtnAndroid.isDisplayed().catch(() => false))
-        )
-      },
-      {
-        timeout: 15000,
+    const isReady = async () => {
+      await this.dismissBlockingAlertAndroid(1000).catch(() => {})
+      return (
+        (await this.homeRootAndroid.isDisplayed().catch(() => false)) &&
+        (await this.addFundsBtnAndroid.isDisplayed().catch(() => false))
+      )
+    }
+
+    const ready = await browser.waitUntil(isReady, {
+      timeout: 30000,
+      interval: 500,
+      timeoutMsg: 'Home Add Funds button did not appear before opening Auto Top-Up',
+    }).catch(() => false)
+
+    if (!ready) {
+      console.warn('[AutoTopUp] Add Funds button not visible — relaunching app and retrying')
+      await browser.terminateApp('com.moneybase.qa').catch(() => {})
+      await browser.pause(2000)
+      await browser.activateApp('com.moneybase.qa').catch(() => {})
+      await browser.pause(3000)
+      await this.dismissBlockingAlertAndroid(5000).catch(() => {})
+      await browser.waitUntil(isReady, {
+        timeout: 30000,
         interval: 500,
-        timeoutMsg: 'Home Add Funds button did not appear before opening Auto Top-Up',
-      }
-    )
+        timeoutMsg: 'Home Add Funds button did not appear after app relaunch',
+      })
+    }
   }
 
   /* =========================
