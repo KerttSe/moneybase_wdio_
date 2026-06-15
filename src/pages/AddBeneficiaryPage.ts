@@ -1347,14 +1347,8 @@ export default class AddBeneficiaryPage extends BasePage {
 
     await this.tap(this.otpInputAndroid)
     await this.otpInputAndroid.clearValue().catch(() => {})
-    for (const digit of otp.split('')) {
-      await this.otpInputAndroid.addValue(digit)
-      await browser.pause(80)
-    }
-
-    // Compose OTP view stores each digit in a separate slot — the text attribute
-    // reflects only the currently focused slot (last digit), not the full code.
-    // Verification by text length is unreliable; trust addValue success and proceed.
+    await browser.pause(300)
+    await this.otpInputAndroid.setValue(otp)
 
     await browser.pressKeyCode(66).catch(() => {})
     await browser.hideKeyboard().catch(() => {})
