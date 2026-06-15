@@ -153,6 +153,9 @@ jobs:
       PLATFORM: ${{ matrix.platform }}
       BS_BUILD: ${{ github.run_id }}-${{ github.run_attempt }}
       BS_BUILD_TAGS: ${{ matrix.spec }},${{ matrix.platform }}
+      OTP_FORCE_RESEND_BEFORE_FETCH: "false"
+      OTP_FETCH_DELAY_MS: "5000"
+      OTP_RESEND_WAIT_MS: "0"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
