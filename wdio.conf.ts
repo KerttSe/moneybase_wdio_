@@ -1,5 +1,6 @@
 import * as dotenv from 'dotenv'
 import type { Options } from '@wdio/types'
+import { browser } from '@wdio/globals'
 import { execSync } from 'node:child_process'
 import { resolve } from 'node:path'
 import { attachFailureArtifacts, writeAllureEnvironment, writeAllureExecutor } from './src/helpers/allure.helper'
@@ -91,6 +92,10 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
         testObservabilityOptions: {
           projectName: process.env.BS_PROJECT || 'moneybase_wdio',
           buildName: process.env.BS_BUILD || `local-${new Date().toISOString()}`,
+          buildTag: [
+            'android',
+            ...(process.env.BS_BUILD_TAGS ? process.env.BS_BUILD_TAGS.split(',').map(t => t.trim()) : []),
+          ],
         },
       } as Record<string, unknown>),
     },
@@ -119,6 +124,10 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
         testObservabilityOptions: {
           projectName: process.env.BS_PROJECT || 'moneybase_wdio',
           buildName: process.env.BS_BUILD || `local-${new Date().toISOString()}`,
+          buildTag: [
+            'ios',
+            ...(process.env.BS_BUILD_TAGS ? process.env.BS_BUILD_TAGS.split(',').map(t => t.trim()) : []),
+          ],
         },
       } as Record<string, unknown>),
     },
@@ -236,6 +245,37 @@ export const config: WebdriverIO.Config = {
   afterTest: async function (test, context, { error }) {
     if (!error) return
     await attachFailureArtifacts()
+
+    if (useBrowserStack) {
+      const msg = `${error.message ?? ''} ${error.stack ?? ''}`.toLowerCase()
+
+      let tag: string
+      if (
+        /firebase|fis_auth|fis_error|something went wrong|network request failed|5\d\d|backend|server error|api error|request failed|unauthorized|403|401/.test(msg)
+      ) {
+        tag = 'BE_ERROR'
+      } else if (
+        /account.*locked|too many attempt|otp.*reject|otp.*invalid|beneficiar.*not.*accept/.test(msg)
+      ) {
+        tag = 'BE_ERROR'
+      } else if (
+        /element.*not found|no such element|stale element|timeout|waituntil|element.*not.*displayed|element.*not.*exist/.test(msg)
+      ) {
+        tag = 'AUTOMATION_BUG'
+      } else if (
+        /browserstack|appium.*crashed|driver.*died|session.*deleted|could not.*connect/.test(msg)
+      ) {
+        tag = 'ENVIRONMENT_ISSUE'
+      } else {
+        tag = 'UNKNOWN'
+      }
+
+      await browser
+        .execute(
+          `browserstack_executor: {"action": "annotate", "arguments": {"data": "tag:${tag}", "level": "error"}}`,
+        )
+        .catch(() => {})
+    }
   },
 
   afterHook: async function (_test, _context, { error }) {

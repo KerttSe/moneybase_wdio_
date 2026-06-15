@@ -152,6 +152,7 @@ jobs:
       BS_APP_IOS: ${{ secrets.BS_APP_IOS }}
       PLATFORM: ${{ matrix.platform }}
       BS_BUILD: ${{ github.run_id }}-${{ github.run_attempt }}
+      BS_BUILD_TAGS: ${{ matrix.spec }},${{ matrix.platform }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
