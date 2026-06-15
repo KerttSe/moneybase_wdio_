@@ -1345,14 +1345,31 @@ export default class AddBeneficiaryPage extends BasePage {
 
     await browser.pause(3000)
 
-    await this.tap(this.otpInputAndroid)
-    await this.otpInputAndroid.clearValue().catch(() => {})
-    await browser.pause(300)
-    for (const digit of otp.split('')) {
-      await this.otpInputAndroid.addValue(digit)
-      await browser.pause(200)
+    const enterOtpDigits = async (intervalMs: number) => {
+      await this.tap(this.otpInputAndroid)
+      await this.otpInputAndroid.clearValue().catch(() => {})
+      await browser.pause(300)
+      for (const digit of otp.split('')) {
+        await this.otpInputAndroid.addValue(digit)
+        await browser.pause(intervalMs)
+      }
     }
-    // No pressKeyCode needed — Compose OTP view auto-submits on 6th digit via slot callbacks
+
+    await enterOtpDigits(200)
+
+    // Compose OTP auto-submits on 6th digit. If screen is still visible after 4s,
+    // some digits were dropped — clear and retry with a longer interval.
+    const autoSubmitted = await browser
+      .waitUntil(async () => !(await this.otpInputAndroid.isDisplayed().catch(() => false)), {
+        timeout: 4000,
+        interval: 300,
+      })
+      .catch(() => false)
+
+    if (!autoSubmitted) {
+      console.warn('[OTP] Auto-submit did not fire — some digits may have dropped. Retrying with 350ms interval.')
+      await enterOtpDigits(350)
+    }
 
     await browser
       .waitUntil(
