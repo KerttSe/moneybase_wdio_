@@ -1355,7 +1355,7 @@ export default class AddBeneficiaryPage extends BasePage {
       }
     }
 
-    await enterOtpDigits(200)
+    await enterOtpDigits(20)
 
     // Compose OTP auto-submits on 6th digit. If screen is still visible after 4s,
     // some digits were dropped — clear and retry with a longer interval.
@@ -1367,8 +1367,8 @@ export default class AddBeneficiaryPage extends BasePage {
       .catch(() => false)
 
     if (!autoSubmitted) {
-      console.warn('[OTP] Auto-submit did not fire — some digits may have dropped. Retrying with 350ms interval.')
-      await enterOtpDigits(350)
+      console.warn('[OTP] Auto-submit did not fire — some digits may have dropped. Retrying with 100ms interval.')
+      await enterOtpDigits(100)
     }
 
     await browser
