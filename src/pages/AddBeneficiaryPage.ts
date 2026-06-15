@@ -1350,7 +1350,9 @@ export default class AddBeneficiaryPage extends BasePage {
       await this.otpInputAndroid.clearValue().catch(() => {})
       await browser.pause(300)
       for (const digit of otp.split('')) {
-        await this.otpInputAndroid.addValue(digit)
+        const stillVisible = await this.otpInputAndroid.isDisplayed().catch(() => false)
+        if (!stillVisible) break
+        await this.otpInputAndroid.addValue(digit).catch(() => {})
         await browser.pause(intervalMs)
       }
     }
