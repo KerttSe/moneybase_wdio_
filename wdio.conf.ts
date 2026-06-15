@@ -249,40 +249,25 @@ export const config: WebdriverIO.Config = {
     if (useBrowserStack) {
       const msg = `${error.message ?? ''} ${error.stack ?? ''}`.toLowerCase()
 
-      let failureType: 'product_bug' | 'automation_bug' | 'environment_issue'
       let reason: string
-
       if (
         /firebase|fis_auth|fis_error|something went wrong|network request failed|5\d\d|backend|server error|api error|request failed|unauthorized|403|401|account.*locked|too many attempt|otp.*reject|otp.*invalid|beneficiar.*not.*accept/.test(msg)
       ) {
-        failureType = 'product_bug'
         reason = 'BE_ERROR'
       } else if (
         /browserstack|appium.*crashed|driver.*died|session.*deleted|could not.*connect/.test(msg)
       ) {
-        failureType = 'environment_issue'
         reason = 'ENVIRONMENT_ISSUE'
       } else {
-        failureType = 'automation_bug'
         reason = 'AUTOMATION_BUG'
       }
 
-      const sessionId = browser.sessionId
-      const bsUser = process.env.BROWSERSTACK_USERNAME ?? ''
-      const bsKey = process.env.BROWSERSTACK_ACCESS_KEY ?? ''
-      const credentials = Buffer.from(`${bsUser}:${bsKey}`).toString('base64')
-
-      await fetch(
-        `https://api-automate.browserstack.com/app-automate/sessions/${sessionId}.json`,
-        {
-          method: 'PUT',
-          headers: {
-            Authorization: `Basic ${credentials}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ status: 'failed', reason, failure_type: failureType }),
-        },
-      ).catch(() => {})
+      const shortMsg = error.message?.slice(0, 150) ?? ''
+      await browser
+        .execute(
+          `browserstack_executor: {"action": "setSessionStatus", "arguments": {"status": "failed", "reason": "${reason}: ${shortMsg.replace(/"/g, "'")}"}}`,
+        )
+        .catch(() => {})
     }
   },
 
