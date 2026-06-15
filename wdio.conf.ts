@@ -249,32 +249,40 @@ export const config: WebdriverIO.Config = {
     if (useBrowserStack) {
       const msg = `${error.message ?? ''} ${error.stack ?? ''}`.toLowerCase()
 
-      let tag: string
+      let failureType: 'product_bug' | 'automation_bug' | 'environment_issue'
+      let reason: string
+
       if (
-        /firebase|fis_auth|fis_error|something went wrong|network request failed|5\d\d|backend|server error|api error|request failed|unauthorized|403|401/.test(msg)
+        /firebase|fis_auth|fis_error|something went wrong|network request failed|5\d\d|backend|server error|api error|request failed|unauthorized|403|401|account.*locked|too many attempt|otp.*reject|otp.*invalid|beneficiar.*not.*accept/.test(msg)
       ) {
-        tag = 'BE_ERROR'
-      } else if (
-        /account.*locked|too many attempt|otp.*reject|otp.*invalid|beneficiar.*not.*accept/.test(msg)
-      ) {
-        tag = 'BE_ERROR'
-      } else if (
-        /element.*not found|no such element|stale element|timeout|waituntil|element.*not.*displayed|element.*not.*exist/.test(msg)
-      ) {
-        tag = 'AUTOMATION_BUG'
+        failureType = 'product_bug'
+        reason = 'BE_ERROR'
       } else if (
         /browserstack|appium.*crashed|driver.*died|session.*deleted|could not.*connect/.test(msg)
       ) {
-        tag = 'ENVIRONMENT_ISSUE'
+        failureType = 'environment_issue'
+        reason = 'ENVIRONMENT_ISSUE'
       } else {
-        tag = 'UNKNOWN'
+        failureType = 'automation_bug'
+        reason = 'AUTOMATION_BUG'
       }
 
-      await browser
-        .execute(
-          `browserstack_executor: {"action": "annotate", "arguments": {"data": "tag:${tag}", "level": "error"}}`,
-        )
-        .catch(() => {})
+      const sessionId = browser.sessionId
+      const bsUser = process.env.BROWSERSTACK_USERNAME ?? ''
+      const bsKey = process.env.BROWSERSTACK_ACCESS_KEY ?? ''
+      const credentials = Buffer.from(`${bsUser}:${bsKey}`).toString('base64')
+
+      await fetch(
+        `https://api-automate.browserstack.com/app-automate/sessions/${sessionId}.json`,
+        {
+          method: 'PUT',
+          headers: {
+            Authorization: `Basic ${credentials}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ status: 'failed', reason, failure_type: failureType }),
+        },
+      ).catch(() => {})
     }
   },
 
