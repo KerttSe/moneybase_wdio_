@@ -251,11 +251,11 @@ export const config: WebdriverIO.Config = {
 
       let reason: string
       if (
-        /firebase|fis_auth|fis_error|something went wrong|network request failed|5\d\d|backend|server error|api error|request failed|unauthorized|403|401|account.*locked|too many attempt|otp.*reject|otp.*invalid|beneficiar.*not.*accept/.test(msg)
+        /firebase|fis_auth|fis_error|something went wrong|network request failed|5\d\d|backend|server error|api error|request failed|unauthorized|403|401|account.*locked|too many attempt|otp.*reject|otp.*invalid|beneficiar.*not.*accept|otp.*did not complete|otp.*step.*did not|otp.*not.*appear|beneficiar.*screen.*not appear/.test(msg)
       ) {
         reason = 'BE_ERROR'
       } else if (
-        /browserstack|appium.*crashed|driver.*died|session.*deleted|could not.*connect/.test(msg)
+        /browserstack|appium.*crashed|driver.*died|session.*deleted|could not.*connect|sms.*timeout|sms.*not.*received/.test(msg)
       ) {
         reason = 'ENVIRONMENT_ISSUE'
       } else {
