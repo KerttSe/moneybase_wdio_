@@ -1348,10 +1348,11 @@ export default class AddBeneficiaryPage extends BasePage {
     await this.tap(this.otpInputAndroid)
     await this.otpInputAndroid.clearValue().catch(() => {})
     await browser.pause(300)
-    await this.otpInputAndroid.setValue(otp)
-
-    await browser.pressKeyCode(66).catch(() => {})
-    await browser.hideKeyboard().catch(() => {})
+    for (const digit of otp.split('')) {
+      await this.otpInputAndroid.addValue(digit)
+      await browser.pause(200)
+    }
+    // No pressKeyCode needed — Compose OTP view auto-submits on 6th digit via slot callbacks
 
     await browser
       .waitUntil(
