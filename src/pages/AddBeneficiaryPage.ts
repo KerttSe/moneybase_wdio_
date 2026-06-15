@@ -1497,7 +1497,7 @@ export default class AddBeneficiaryPage extends BasePage {
         return false
       },
       {
-        timeout: 12000,
+        timeout: 45000,
         interval: 400,
       }
     ).catch(() => false)
@@ -1526,6 +1526,16 @@ export default class AddBeneficiaryPage extends BasePage {
     await this.fillBeneficiaryDetailsAndroid(params)
     await this.continueFromDetailsAndroid()
     await this.waitForPostDetailsTransitionAndroid()
+
+    // If the form reappeared (backend rejected submission), retry Continue once
+    const formStillShown = await this.detailsContinueViewAndroid.isDisplayed().catch(() => false)
+    if (formStillShown) {
+      console.warn('[AddBeneficiary] Details form reappeared after Continue — retrying')
+      await browser.pause(2000)
+      await this.continueFromDetailsAndroid()
+      await this.waitForPostDetailsTransitionAndroid()
+    }
+
     // Temporary: extra confirm click disabled to avoid possible double-submit / second OTP request.
     // await this.confirmCreationIfRequiredAndroid()
     await this.waitForOtpAndSubmitAndroid(params.iban)
