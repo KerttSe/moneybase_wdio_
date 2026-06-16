@@ -249,9 +249,23 @@ export const config: WebdriverIO.Config = {
     if (useBrowserStack) {
       const msg = `${error.message ?? ''} ${error.stack ?? ''}`.toLowerCase()
 
+      // Classify by HTTP code first (most precise), then fall back to text patterns.
+      // This guarantees the code in brackets always matches the actual error.
+      const httpCodeMatch = msg.match(/\b(429|403|401|511|5[0-9]{2})\b/)
+      const httpCode = httpCodeMatch?.[1]
+
       let reason: string
-      if (
-        /firebase|fis_auth|fis_error|something went wrong|network request failed|5\d\d|backend|server error|api error|request failed|unauthorized|403|401|account.*locked|too many attempt|otp.*reject|otp.*invalid|beneficiar.*not.*accept|otp.*did not complete|otp.*step.*did not|otp.*not.*appear|beneficiar.*screen.*not appear/.test(msg)
+      if (httpCode) {
+        if (['500', '502', '503', '504', '429'].includes(httpCode)) {
+          reason = `BE_ERROR[${httpCode}]`
+        } else if (httpCode === '511') {
+          reason = `ENVIRONMENT_ISSUE[${httpCode}]`
+        } else {
+          // 401, 403 — backend rejected the request
+          reason = `BE_ERROR[${httpCode}]`
+        }
+      } else if (
+        /firebase|fis_auth|fis_error|something went wrong|network request failed|backend|server error|api error|request failed|account.*locked|too many attempt|otp.*reject|otp.*invalid|beneficiar.*not.*accept|otp.*did not complete|otp.*step.*did not|otp.*not.*appear|beneficiar.*screen.*not appear/.test(msg)
       ) {
         reason = 'BE_ERROR'
       } else if (
@@ -268,6 +282,12 @@ export const config: WebdriverIO.Config = {
           `browserstack_executor: {"action": "setSessionStatus", "arguments": {"status": "failed", "reason": "${reason}: ${shortMsg.replace(/"/g, "'")}"}}`,
         )
         .catch(() => {})
+
+      if (httpCode) {
+        await browser
+          .execute(`browserstack_executor: {"action": "annotate", "arguments": {"data": "HTTP_${httpCode}", "level": "error"}}`)
+          .catch(() => {})
+      }
     }
   },
 

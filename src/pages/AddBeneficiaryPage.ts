@@ -1350,8 +1350,8 @@ export default class AddBeneficiaryPage extends BasePage {
       await this.otpInputAndroid.clearValue().catch(() => {})
       await browser.pause(300)
       for (const digit of otp.split('')) {
-        const stillVisible = await this.otpInputAndroid.isDisplayed().catch(() => false)
-        if (!stillVisible) break
+        // No isDisplayed() check — Compose briefly hides the EditText during slot animation
+        // which caused a false break after 2 digits. addValue will silently fail if auto-submitted.
         await this.otpInputAndroid.addValue(digit).catch(() => {})
         await browser.pause(intervalMs)
       }
@@ -1359,18 +1359,33 @@ export default class AddBeneficiaryPage extends BasePage {
 
     await enterOtpDigits(20)
 
-    // Compose OTP auto-submits on 6th digit. If screen is still visible after 4s,
-    // some digits were dropped — clear and retry with a longer interval.
+    const otpGoneOrSuccess = async () => {
+      if (!(await this.otpInputAndroid.isDisplayed().catch(() => false))) return true
+      if (await this.beneficiaryAddedSuccessAndroidByText.isDisplayed().catch(() => false)) return true
+      return false
+    }
+
+    // Compose OTP auto-submits on 6th digit. Wait up to 15s — backend on BrowserStack
+    // can take >4s to respond, causing a false-negative that triggered an unnecessary retry.
     const autoSubmitted = await browser
-      .waitUntil(async () => !(await this.otpInputAndroid.isDisplayed().catch(() => false)), {
-        timeout: 4000,
-        interval: 300,
-      })
+      .waitUntil(otpGoneOrSuccess, { timeout: 15000, interval: 300 })
       .catch(() => false)
 
     if (!autoSubmitted) {
-      console.warn('[OTP] Auto-submit did not fire — some digits may have dropped. Retrying with 100ms interval.')
-      await enterOtpDigits(100)
+      // Confirm OTP screen is still genuinely visible before retrying.
+      // If backend already navigated away, skip retry to avoid tapping a gone element.
+      const otpStillOnScreen = await this.otpInputAndroid.isDisplayed().catch(() => false)
+      if (otpStillOnScreen) {
+        console.warn('[OTP] Auto-submit did not fire — some digits may have dropped.')
+        await this.recoverFromTryAgainSheetAndroid().catch(() => {})
+        await browser.pause(500)
+        console.warn('[OTP] Retrying with 100ms interval.')
+        await enterOtpDigits(100)
+        // Wait to confirm this retry triggered auto-submit or success appeared.
+        await browser
+          .waitUntil(otpGoneOrSuccess, { timeout: 15000, interval: 300 })
+          .catch(() => {})
+      }
     }
 
     await browser
@@ -1402,6 +1417,8 @@ export default class AddBeneficiaryPage extends BasePage {
       .catch(() => {})
 
     let successPopupSeen = false
+    let otpReentryCount = 0
+    let lastOtpReentryAt = 0
 
     await browser.waitUntil(
       async () => {
@@ -1419,7 +1436,7 @@ export default class AddBeneficiaryPage extends BasePage {
         const successPopupShown = await this.beneficiaryAddedSuccessAndroidByText.isDisplayed().catch(() => false)
         if (successPopupShown) {
           successPopupSeen = true
-          return false
+          return true
         }
 
         if (expectedIban) {
@@ -1438,21 +1455,33 @@ export default class AddBeneficiaryPage extends BasePage {
           // When home screen appears, give it extra time to fully render Pay button and tabs
           console.log('[waitForOtpAndSubmitAndroid] Home screen detected, waiting for elements to stabilize...')
           await browser.pause(2000)
-          
+
           // Re-check that elements are now visible
           const homeRecheckShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
           const payRecheckShown = Boolean(await this.getDisplayedPayTabAndroid())
           const newTransferRecheckShown = await this.newTransferTitleAndroid.isDisplayed().catch(() => false)
-          
+
           if (homeRecheckShown || payRecheckShown || newTransferRecheckShown) {
             console.log('[waitForOtpAndSubmitAndroid] ✅ Success: home/pay/transfer confirmed after stabilization')
             return true
           }
         }
 
-        // Keep waiting while OTP screen is still visible.
+        // OTP input still visible — digits may have been dropped or backend rejected the code.
+        // Re-enter up to 2 more times with at least 8s between attempts.
         const otpStillShown = await this.otpInputAndroid.isDisplayed().catch(() => false)
-        if (otpStillShown) return false
+        if (otpStillShown) {
+          const now = Date.now()
+          if (otpReentryCount < 2 && now - lastOtpReentryAt > 8000) {
+            otpReentryCount++
+            lastOtpReentryAt = now
+            console.warn(`[OTP] Input still visible in poll loop — re-entering digits (attempt ${otpReentryCount}/2)`)
+            await this.recoverFromTryAgainSheetAndroid().catch(() => {})
+            await browser.pause(500)
+            await enterOtpDigits(200)
+          }
+          return false
+        }
 
         // OTP may disappear briefly during transitions; keep waiting for a stable next screen.
         return false
