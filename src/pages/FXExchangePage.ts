@@ -443,14 +443,9 @@ class FXExchangePage extends BasePage {
   private async ensureNewTabActive() {
     for (let attempt = 0; attempt < 3; attempt += 1) {
       const fromWalletVisible = await this.fromWalletField.isDisplayed().catch(() => false)
-      const newSelected = browser.isAndroid
-        ? fromWalletVisible
-        : await this.newTabButton
-            .getAttribute('value')
-            .then((value) => String(value) === '1')
-            .catch(() => false)
 
-      if (newSelected && fromWalletVisible) return
+      // iOS: form already visible means New tab is active (no explicit "New" button in newer builds)
+      if (fromWalletVisible) return
 
       if (browser.isAndroid) {
         const newByTextVisible = await this.newTabButton.isDisplayed().catch(() => false)

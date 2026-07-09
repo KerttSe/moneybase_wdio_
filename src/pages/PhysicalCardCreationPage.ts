@@ -194,6 +194,18 @@ class PhysicalCardCreationPage extends BasePage {
     return $('~card_item_addCard')
   }
 
+  private get addNewCardBtnIOSByText() {
+    return $('//XCUIElementTypeStaticText[@name="Add Card" or @label="Add Card" or @value="Add Card"]/ancestor::XCUIElementTypeCell[1]')
+  }
+
+  private get addNewCardTextIOS() {
+    return $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (name == "Add Card" OR label == "Add Card" OR value == "Add Card")')
+  }
+
+  private get addNewCardPlusIOS() {
+    return $('-ios predicate string:type == "XCUIElementTypeImage" AND (name == "plus.circle.fill" OR label == "plus.circle.fill" OR label == "add")')
+  }
+
 
   private get virtualCardTypeAndroid() {
     return $('android=new UiSelector().resourceId("cardTypeSelection_card_virtualCard")')
@@ -205,6 +217,18 @@ class PhysicalCardCreationPage extends BasePage {
 
   private get physicalCardTypeIOS() {
     return $('~addCard_button_physical')
+  }
+
+  private get physicalCardTypeIOSByText() {
+    return $('-ios predicate string:(label CONTAINS[c] "Physical" OR name CONTAINS[c] "Physical" OR value CONTAINS[c] "Physical")')
+  }
+
+  private get physicalCardTypeIOSByContainer() {
+    return $('//XCUIElementTypeStaticText[contains(@name,"Physical") or contains(@label,"Physical") or contains(@value,"Physical")]/ancestor::XCUIElementTypeOther[2]')
+  }
+
+  private get virtualCardTypeIOSByText() {
+    return $('-ios predicate string:(label CONTAINS[c] "Virtual" OR name CONTAINS[c] "Virtual" OR value CONTAINS[c] "Virtual")')
   }
 
   private get confirmDesignBtnAndroid() {
@@ -459,6 +483,59 @@ class PhysicalCardCreationPage extends BasePage {
       if (freezeShown || unfreezeShown) return
       await browser.pause(pollMs)
     }
+  }
+
+  private async tapFirstIOSCandidate(candidates: Array<ReturnType<typeof $>>, label: string, timeoutMs = 20000) {
+    const deadline = Date.now() + timeoutMs
+    while (Date.now() < deadline) {
+      for (const candidate of candidates) {
+        const shown = await candidate.isDisplayed().catch(() => false)
+        if (!shown) continue
+        await this.tap(candidate)
+        return
+      }
+      await browser.pause(500)
+    }
+
+    throw new Error(`${label} did not appear`)
+  }
+
+  private async tapIOSCenter(el: ReturnType<typeof $>, timeoutMs = 20000) {
+    await el.waitForExist({ timeout: timeoutMs })
+    const loc = await el.getLocation()
+    const size = await el.getSize()
+    await browser.execute('mobile: tap', {
+      x: Math.round(loc.x + size.width / 2),
+      y: Math.round(loc.y + size.height / 2),
+    })
+  }
+
+  private async isCardTypeSelectionVisibleIOS() {
+    const candidates = [
+      this.physicalCardTypeIOS,
+      this.physicalCardTypeIOSByContainer,
+      this.physicalCardTypeIOSByText,
+      this.virtualCardTypeIOSByText,
+    ]
+
+    for (const candidate of candidates) {
+      const shown = await candidate.isDisplayed().catch(() => false)
+      if (shown) return true
+      const exists = await candidate.isExisting().catch(() => false)
+      if (exists) return true
+    }
+
+    return false
+  }
+
+  private async waitForCardTypeSelectionIOS(timeoutMs = 3000) {
+    return browser
+      .waitUntil(async () => await this.isCardTypeSelectionVisibleIOS(), {
+        timeout: timeoutMs,
+        interval: 300,
+      })
+      .then(() => true)
+      .catch(() => false)
   }
 
   private async typeOtpAndroid(value: string) {
@@ -1045,8 +1122,32 @@ class PhysicalCardCreationPage extends BasePage {
     if (!(await this.cardsRootIOS.isDisplayed().catch(() => false))) {
       await this.openCardsTabIOS()
     }
-    await this.addNewCardBtnIOS.waitForDisplayed({ timeout: 20000 })
-    await this.tap(this.addNewCardBtnIOS)
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+    await this.addNewCardBtnIOS.waitForExist({ timeout: 20000 }).catch(() => {})
+
+    const candidates = [
+      this.addNewCardTextIOS,
+      this.addNewCardPlusIOS,
+      this.addNewCardBtnIOS,
+      this.addNewCardBtnIOSByText,
+    ]
+
+    for (let attempt = 0; attempt < 2; attempt++) {
+      for (const candidate of candidates) {
+        const exists = await candidate.isExisting().catch(() => false)
+        if (!exists) continue
+
+        await this.tapIOSCenter(candidate, 3000).catch(async () => {
+          await this.tap(candidate).catch(() => {})
+        })
+
+        if (await this.waitForCardTypeSelectionIOS(4000)) return
+      }
+    }
+
+    await this.debugSnapshot('physical-card-ios-add-card-not-opened')
+    throw new Error('[PhysicalCard][iOS] Add Card did not open card type selection; backend/card eligibility issue')
   }
 
   public async chooseVirtualCardTypeAndroid() {
@@ -1060,8 +1161,15 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   public async choosePhysicalCardTypeIOS() {
-    await this.physicalCardTypeIOS.waitForDisplayed({ timeout: 20000 })
-    await this.tap(this.physicalCardTypeIOS)
+    await this.tapFirstIOSCandidate(
+      [
+        this.physicalCardTypeIOS,
+        this.physicalCardTypeIOSByContainer,
+        this.physicalCardTypeIOSByText,
+      ],
+      'Physical card type (iOS)',
+      20000
+    )
   }
 
   public async confirmDefaultDesignAndroid() {

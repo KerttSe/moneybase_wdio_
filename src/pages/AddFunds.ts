@@ -114,9 +114,9 @@ export default class AddFundsPage extends BasePage {
    * iOS: PAY / RESULT
    * ========================= */
 
-  // opens card list (class chain(instance 2) because of duplicate elements with same accessibility id "форма")
+  // opens card dropdown — second XCUIElementTypeImage inside Shift4 payment form container
 private get openCardListIOS() {
-  return $(`-ios class chain:**/XCUIElementTypeOther[\`name == "форма"\`]/XCUIElementTypeImage[2]`)
+  return $(`-ios class chain:**/XCUIElementTypeOther[\`name == "Shift4 Payment Page"\`]/XCUIElementTypeImage[2]`)
 }
 
 // 

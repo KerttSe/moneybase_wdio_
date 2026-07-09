@@ -22,6 +22,18 @@ type OnboardingData = {
   email?: string
 }
 
+const randomOnboardingName = () => {
+  const firstNames = ['Carlos', 'Daniel', 'Mark', 'Luke', 'David', 'James', 'Michael', 'Thomas']
+  const lastNames = ['Camilleri', 'Vella', 'Borg', 'Spiteri', 'Zammit', 'Azzopardi', 'Grima', 'Farrugia']
+  const firstName = firstNames[Math.floor(Math.random() * firstNames.length)]
+  const lastName = lastNames[Math.floor(Math.random() * lastNames.length)]
+
+  return {
+    firstName,
+    lastName,
+  }
+}
+
 export default class OnboardingPage extends BasePage {
   private readonly androidAppPackage = process.env.BS_ANDROID_APP_PACKAGE || 'com.moneybase.qa'
   private readonly androidAppActivity =
@@ -66,14 +78,17 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get otpContainer() {
+    if (browser.isIOS) return $('-ios predicate string:name == "otp_input"')
     return this.byId('composeViewRegisterMobile')
   }
 
   private get otpPhoneText() {
+    if (browser.isIOS) return $('-ios predicate string:label BEGINSWITH "+356" OR value BEGINSWITH "+356"')
     return this.byId('tvMobileVerificationPhoneNumber')
   }
 
   private get otpInput() {
+    if (browser.isIOS) return $('(//XCUIElementTypeOther[@name="otp_input"]//XCUIElementTypeTextField | //XCUIElementTypeTextField[starts-with(@name, "OTP_entry_")])[1]')
     return this.byId('otp_input')
   }
 
@@ -85,12 +100,16 @@ export default class OnboardingPage extends BasePage {
     return this.byId('verificationSuccess_screen')
   }
 
+  private get iosConversationsCloseBtn() {
+    return $('//XCUIElementTypeNavigationBar[@name="Conversations"]//XCUIElementTypeButton[@name="Close" or @label="Close"]')
+  }
+
   private get verificationSuccessTitle() {
     return this.text('Mobile successfully verified.')
   }
 
   private get verificationContinueBtn() {
-    if (browser.isIOS) return this.byId('modal_button_primary')
+    if (browser.isIOS) return $('-ios predicate string:name == "modal_button_primary"')
     return $('//*[@resource-id="verificationSuccess_button_continue" or @resource-id="com.moneybase.qa:id/verificationSuccess_button_continue"]')
   }
 
@@ -120,39 +139,47 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get onboardingDetailsNextBtn() {
-    if (browser.isIOS) return this.buttonByText('Next')
+    if (browser.isIOS) return this.byId('taxDetails_button_next')
     return this.byId('onboardingDetails_button_next')
   }
 
   private get onboardingTaxCountryBtn() {
+    if (browser.isIOS) return this.byId('taxDetails_button_taxCountryPicker')
     return this.byId('onboardingDetails_button_taxCountry')
   }
 
   private get onboardingEmploymentStatusBtn() {
+    if (browser.isIOS) return this.byId('taxDetails_button_employmentStatusPicker')
     return this.byId('onboardingDetails_button_employmentStatus')
   }
 
   private get onboardingPoliticallyPersonBtn() {
+    if (browser.isIOS) return this.byId('taxDetails_button_pepPicker')
     return this.byId('onboardingDetails_button_politicallyPerson')
   }
 
   private get onboardingCompanyInput() {
+    if (browser.isIOS) return this.byId('taxDetails_textInput_company')
     return this.byId('onboardingDetails_input_company')
   }
 
   private get onboardingOccupationInput() {
+    if (browser.isIOS) return this.byId('taxDetails_textInput_occupation')
     return this.byId('onboardingDetails_input_occupation')
   }
 
   private get taxCountrySearchInput() {
+    if (browser.isIOS) return this.visibleSearchInput
     return this.byId('taxCountrySelection_input_search')
   }
 
   private get employmentStatusSearchInput() {
+    if (browser.isIOS) return this.visibleSearchInput
     return this.byId('employmentStatusSelection_input_search')
   }
 
   private get politicallyPersonSearchInput() {
+    if (browser.isIOS) return this.visibleSearchInput
     return this.byId('politicallyPersonSelection_input_search')
   }
 
@@ -192,6 +219,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get addressCountrySearchInput() {
+    if (browser.isIOS) return $('~genericPicker_textInput_search')
     return this.byId('onboardingAddressCountrySelection_input_search')
   }
 
@@ -206,7 +234,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get onboardingEmailContinueBtn() {
-    if (browser.isIOS) return this.buttonByText('Next')
+    if (browser.isIOS) return $('-ios predicate string:name == "terms_button_next" OR (type == "XCUIElementTypeButton" AND label == "Next")')
     return this.byId('onboardingEmail_button_continue')
   }
 
@@ -282,11 +310,20 @@ export default class OnboardingPage extends BasePage {
     return $('~modal_button_close')
   }
 
+  private get verifyIdentityTitleIOS() {
+    return $('~Verify your identity')
+  }
+
+  private get verifyIdentityPrimaryBtnIOS() {
+    return $('~modal_button_primary')
+  }
+
   private get uploadIdentityDocumentAnchor() {
     return $('android=new UiSelector().text("Upload identity document")')
   }
 
   private get homeRoot() {
+    if (browser.isIOS) return $('~home_screen_view')
     return this.byId('home_screen')
   }
 
@@ -340,8 +377,14 @@ export default class OnboardingPage extends BasePage {
   }
 
   private countryItem(country: string) {
-    if (browser.isIOS) return this.byId(`country_item_${country}`)
+    if (browser.isIOS) {
+      return $(`-ios predicate string:name == "countryPicker_item_${country}" OR name == "country_item_${country}"`)
+    }
     return $(`android=new UiSelector().text("${country}")`)
+  }
+
+  private countryItemCell(country: string) {
+    return $(`//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@name="country_item_${country}" or @label="${country}" or @value="${country}"]]`)
   }
 
   private labeledInput(label: string) {
@@ -354,6 +397,10 @@ export default class OnboardingPage extends BasePage {
   }
 
   private optionByLabel(label: string) {
+    if (browser.isIOS) {
+      return $(`-ios predicate string:name == "countryPicker_item_${label}" OR name == "country_item_${label}" OR label == "${label}" OR value == "${label}"`)
+    }
+
     return $(`//android.view.View[@clickable="true" and (./android.view.View[@content-desc="${label}"] or ./android.widget.TextView[@text="${label}"])]`)
   }
 
@@ -370,6 +417,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get visibleSearchInput() {
+    if (browser.isIOS) return $('~genericPicker_textInput_search')
     return $('//android.widget.EditText[ancestor::*[@pane-title="Bottom Sheet"] or ancestor::*[.//android.widget.TextView[@text="Cancel"]]]')
   }
 
@@ -401,6 +449,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get termsCheckbox() {
+    if (browser.isIOS) return $('//XCUIElementTypeOther[@name="terms_checkbox_accept"]')
     return $('//android.widget.TextView[contains(@text, "terms and conditions")]/preceding-sibling::android.view.View[@clickable="true"][1]')
   }
 
@@ -413,7 +462,7 @@ export default class OnboardingPage extends BasePage {
     const x = Math.round(rect.width * xRatio)
     const y = Math.round(rect.height * yRatio)
 
-    if (this.isBrowserStack) {
+    if (this.isBrowserStack || browser.isIOS) {
       await browser.performActions([
         {
           type: 'pointer',
@@ -491,14 +540,19 @@ export default class OnboardingPage extends BasePage {
     })
   }
 
+  private async elFound(el: ChainablePromiseElement): Promise<boolean> {
+    // XCUITest marks many on-screen elements visible=false → use isExisting() on iOS.
+    return browser.isIOS
+      ? el.isExisting().catch(() => false)
+      : el.isDisplayed().catch(() => false)
+  }
+
   private async tapFirstVisible(candidates: ChainablePromiseElement[], timeout = 5000) {
     const deadline = Date.now() + timeout
 
     while (Date.now() < deadline) {
       for (const candidate of candidates) {
-        const shown = await candidate.isDisplayed().catch(() => false)
-        if (!shown) continue
-
+        if (!(await this.elFound(candidate))) continue
         await this.tapElementCenter(candidate)
         return true
       }
@@ -515,7 +569,7 @@ export default class OnboardingPage extends BasePage {
     await browser.waitUntil(
       async () => {
         for (const candidate of candidates) {
-          if (await candidate.isDisplayed().catch(() => false)) {
+          if (await this.elFound(candidate)) {
             visibleCandidate = candidate
             return true
           }
@@ -539,7 +593,17 @@ export default class OnboardingPage extends BasePage {
   }
 
   private async typeElement(field: ChainablePromiseElement, value: string) {
-    await field.waitForDisplayed({ timeout: 20000 })
+    if (browser.isIOS) {
+      await field.waitForExist({ timeout: 20000 })
+    } else {
+      await field.waitForDisplayed({ timeout: 20000 })
+    }
+    if (browser.isIOS) {
+      await this.typeIOSTextInput(field, value)
+      await this.dismissIOSKeyboardIfOpen()
+      return
+    }
+
     await this.tap(field)
     await field.clearValue().catch(() => {})
     await field.setValue(value)
@@ -548,26 +612,47 @@ export default class OnboardingPage extends BasePage {
 
   private async tapNext() {
     const next = this.buttonByText('Next')
-    const visible = await next.isDisplayed().catch(() => false)
+    const visible = await this.elFound(next)
     if (visible) {
       await this.tap(next)
       return
     }
 
-    await browser.hideKeyboard().catch(() => {})
+    if (browser.isIOS) {
+      await this.dismissIOSKeyboardIfOpen()
+    } else {
+      await browser.hideKeyboard().catch(() => {})
+    }
     await this.tapByRatio(0.5, 0.93)
   }
 
   private async tapNextButton(button: ChainablePromiseElement) {
+    if (browser.isIOS) {
+      await button.click()
+      return
+    }
+
     await button.waitForDisplayed({ timeout: 10000 })
+    await browser.waitUntil(
+      async () => (await button.getAttribute('enabled').catch(() => 'true')) !== 'false',
+      {
+        timeout: 10000,
+        interval: 250,
+        timeoutMsg: 'Expected Next button to become enabled',
+      }
+    )
     await this.tap(button)
   }
 
   private async tapContinue() {
-    const continueButton = (await this.onboardingEmailContinueBtn.isDisplayed().catch(() => false))
+    const continueButton = (await this.elFound(this.onboardingEmailContinueBtn))
       ? this.onboardingEmailContinueBtn
       : this.buttonByText('Continue')
-    await continueButton.waitForDisplayed({ timeout: 10000 })
+    if (browser.isIOS) {
+      await continueButton.waitForExist({ timeout: 10000 })
+    } else {
+      await continueButton.waitForDisplayed({ timeout: 10000 })
+    }
     await browser.waitUntil(
       async () => (await continueButton.getAttribute('enabled').catch(() => 'false')) === 'true',
       {
@@ -592,10 +677,26 @@ export default class OnboardingPage extends BasePage {
           timeoutMsg: 'Expected Continue button to become enabled after accepting terms',
         }
       )
-      return
+      return false
     }
 
     await this.termsText.waitForDisplayed({ timeout: 10000 })
+
+    if (browser.isIOS) {
+      const checkbox = this.termsCheckbox
+      await checkbox.waitForDisplayed({ timeout: 10000 })
+
+      const continueButton = this.onboardingEmailContinueBtn
+
+      await this.tapElementCenter(checkbox).catch(async () => {
+        const rect = await browser.getWindowRect()
+        await this.tapByRatio(30 / rect.width, 460 / rect.height)
+      })
+      await browser.pause(300)
+      await this.tapElementCenter(continueButton)
+      await browser.pause(500)
+      return true
+    }
 
     const termsLocation = await this.termsText.getLocation()
     const termsSize = await this.termsText.getSize()
@@ -626,10 +727,44 @@ export default class OnboardingPage extends BasePage {
         timeoutMsg: 'Expected Continue button to become enabled after accepting terms',
       }
     )
+    return false
+  }
+
+  private async dismissIOSKeyboardIfOpen() {
+    if (!browser.isIOS) return
+
+    const returnKey = $('~Return')
+    if (await returnKey.isDisplayed().catch(() => false)) {
+      await returnKey.click().catch(async () => {
+        await this.tapByRatio(0.5, 0.12)
+      })
+      await browser.pause(500)
+      return
+    }
+
+    await this.tapByRatio(0.5, 0.12).catch(() => {})
+    await browser.pause(300)
+  }
+
+  private async typeIOSTextInput(field: ChainablePromiseElement, value: string) {
+    await this.tapElementCenter(field).catch(async () => {
+      await this.tap(field)
+    })
+    await field.clearValue().catch(() => {})
+    for (const char of value) {
+      await field.addValue(char).catch(async () => {
+        await browser.keys(char)
+      })
+    }
+    await browser.pause(300)
   }
 
   private async tapPickerByLabel(label: string, fallbackXRatio: number, fallbackYRatio: number) {
-    await browser.hideKeyboard().catch(() => {})
+    if (browser.isIOS) {
+      await this.dismissIOSKeyboardIfOpen()
+    } else {
+      await browser.hideKeyboard().catch(() => {})
+    }
 
     const picker = this.pickerByLabel(label)
     if (await picker.isDisplayed().catch(() => false)) {
@@ -754,10 +889,11 @@ export default class OnboardingPage extends BasePage {
 
   private async isPickerOpen() {
     return (
-      (await this.bottomSheet.isDisplayed().catch(() => false)) ||
-      (await this.pickerCancelBtn.isDisplayed().catch(() => false)) ||
-      (await this.pickerDragHandle.isDisplayed().catch(() => false)) ||
-      (await this.visibleSearchInput.isDisplayed().catch(() => false))
+      (await this.elFound(this.bottomSheet)) ||
+      (await this.elFound(this.pickerCancelBtn)) ||
+      (await this.elFound(this.pickerDragHandle)) ||
+      (await this.elFound(this.visibleSearchInput)) ||
+      (browser.isIOS && (await this.countrySearchTap.isExisting().catch(() => false)))
     )
   }
 
@@ -791,7 +927,7 @@ export default class OnboardingPage extends BasePage {
     await browser.waitUntil(
       async () => {
         await this.throwIfSomethingWentWrong()
-        return this.text(title).isDisplayed().catch(() => false)
+        return this.elFound(this.text(title))
       },
       {
         timeout,
@@ -802,6 +938,8 @@ export default class OnboardingPage extends BasePage {
   }
 
   private async throwIfSomethingWentWrong() {
+    if (!browser.isAndroid) return
+
     const alertTitle = $('android=new UiSelector().resourceId("com.moneybase.qa:id/alertTitle").text("Something went wrong")')
     if (!(await alertTitle.isDisplayed().catch(() => false))) return
 
@@ -858,8 +996,8 @@ export default class OnboardingPage extends BasePage {
   private async prepareStart() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    const currentPackage = await driver.getCurrentPackage().catch(() => undefined)
-    if (currentPackage && currentPackage !== this.androidAppPackage) {
+    const currentPackage = browser.isAndroid ? await driver.getCurrentPackage().catch(() => undefined) : undefined
+    if (browser.isAndroid && currentPackage && currentPackage !== this.androidAppPackage) {
       await driver
         .startActivity(this.androidAppPackage, this.androidAppActivity)
         .catch(async () => driver.activateApp(this.androidAppPackage))
@@ -897,6 +1035,17 @@ export default class OnboardingPage extends BasePage {
       await browser.pause(250)
     }
 
+    if (browser.isIOS) {
+      const searchInput = await this.getIOSCountrySearchInput()
+      await searchInput.waitForDisplayed({ timeout: 10000 })
+      await searchInput.click()
+      await searchInput.clearValue().catch(() => {})
+      await searchInput.addValue(country).catch(async () => {
+        await searchInput.setValue(country)
+      })
+      return
+    }
+
     const searchInput = $('android=new UiSelector().className("android.widget.EditText").instance(0)')
     const inputShown = await searchInput.waitForDisplayed({ timeout: 10000 }).catch(() => false)
     if (!inputShown) {
@@ -911,10 +1060,32 @@ export default class OnboardingPage extends BasePage {
     })
   }
 
+  private async getIOSCountrySearchInput() {
+    const candidates = [
+      this.byId('countrySelection_input_search'),
+      $('-ios class chain:**/XCUIElementTypeSearchField'),
+      $('-ios class chain:**/XCUIElementTypeTextField'),
+      this.visibleSearchInput,
+    ]
+
+    for (const candidate of candidates) {
+      if (await candidate.isDisplayed().catch(() => false)) return candidate
+    }
+
+    return candidates[0]
+  }
+
   private async typeIntoSearchInput(searchInput: ChainablePromiseElement, value: string) {
     await searchInput.waitForDisplayed({ timeout: 10000 })
     await searchInput.click()
     await searchInput.clearValue().catch(() => {})
+    if (browser.isIOS) {
+      await searchInput.addValue(value).catch(async () => {
+        await searchInput.setValue(value)
+      })
+      return
+    }
+
     await searchInput.addValue(value).catch(async () => {
       await this.typeAndroidShell(value)
     })
@@ -928,6 +1099,23 @@ export default class OnboardingPage extends BasePage {
 
   private async searchAndSelectCountry(country: string) {
     await this.typeIntoCountrySearch(country)
+
+    if (browser.isIOS) {
+      await this.dismissIOSKeyboardIfOpen()
+
+      const cell = this.countryItemCell(country)
+      const cellShown = await cell.waitForDisplayed({ timeout: 10000 }).then(() => true).catch(() => false)
+      if (cellShown) {
+        await this.tapElementCenter(cell)
+      } else {
+        const item = this.countryItem(country)
+        await item.waitForDisplayed({ timeout: 10000 })
+        await this.tapElementCenter(item)
+      }
+
+      await this.waitForPickerClosed()
+      return
+    }
 
     const option = this.optionByLabel(country)
     const optionShown = await option.waitForDisplayed({ timeout: 20000 }).then(() => true).catch(() => false)
@@ -972,10 +1160,45 @@ export default class OnboardingPage extends BasePage {
   private async enterPinTwice(pin: string) {
     await this.passcodeScreen.waitForDisplayed({ timeout: 30000 })
 
-    const isOtpShown = async () =>
-      (await this.otpInputExact.isDisplayed().catch(() => false)) ||
-      (await this.otpInput.isDisplayed().catch(() => false)) ||
-      (await this.otpContainer.isDisplayed().catch(() => false))
+    const isOtpShown = async () => {
+      if (browser.isIOS) {
+        return (
+          (await this.otpInput.isDisplayed().catch(() => false)) ||
+          (await this.otpContainer.isDisplayed().catch(() => false))
+        )
+      }
+
+      return (
+        (await this.otpInputExact.isDisplayed().catch(() => false)) ||
+        (await this.otpInput.isDisplayed().catch(() => false)) ||
+        (await this.otpContainer.isDisplayed().catch(() => false))
+      )
+    }
+
+    if (browser.isIOS) {
+      for (let round = 0; round < 2; round += 1) {
+        await this.dismissIOSConversationsIfOpen()
+        if (await isOtpShown()) return
+
+        for (const digit of pin) {
+          await this.dismissIOSConversationsIfOpen()
+          if (await isOtpShown()) return
+
+          await this.tapIOSKeypadDigitByCoordinates(digit)
+          await browser.pause(250)
+        }
+
+        if (round === 0) {
+          await this.waitForIOSPinRoundSettle(isOtpShown)
+          if (await isOtpShown()) return
+          continue
+        }
+
+        await this.waitForIOSOtpAfterPin(isOtpShown)
+        return
+      }
+    }
+
     const waitForKeypadDigitOrOtp = async (digit: string) => {
       const keypadButton = this.keypadDigit(digit)
       let keypadShown = false
@@ -1027,6 +1250,72 @@ export default class OnboardingPage extends BasePage {
     }
   }
 
+  private async waitForIOSPinRoundSettle(isOtpShown: () => Promise<boolean>) {
+    const timeout = Number(process.env.ONBOARDING_IOS_PIN_CONFIRM_TIMEOUT_MS || 30000)
+    const settleDelay = Number(process.env.ONBOARDING_IOS_PIN_CONFIRM_DELAY_MS || 3500)
+    await browser.pause(settleDelay)
+
+    await browser.waitUntil(async () => {
+      await this.dismissIOSConversationsIfOpen()
+      if (await isOtpShown()) return true
+
+      return this.passcodeScreen.isDisplayed().catch(() => false)
+    }, {
+      timeout,
+      interval: 1000,
+      timeoutMsg: 'Expected iOS PIN confirmation screen or OTP after first PIN',
+    })
+  }
+
+  private async waitForIOSOtpAfterPin(isOtpShown: () => Promise<boolean>) {
+    const timeout = Number(process.env.ONBOARDING_IOS_AFTER_PIN_TIMEOUT_MS || 120000)
+    const loaderGraceMs = Number(process.env.ONBOARDING_IOS_AFTER_PIN_LOADER_GRACE_MS || 5000)
+    await browser.pause(loaderGraceMs)
+
+    await browser.waitUntil(async () => {
+      await this.dismissIOSConversationsIfOpen()
+      return isOtpShown()
+    }, {
+      timeout,
+      interval: 1000,
+      timeoutMsg: 'Expected iOS OTP screen after post-PIN loader finished',
+    })
+  }
+
+  private async tapIOSKeypadDigitByCoordinates(digit: string) {
+    const positions: Record<string, [number, number]> = {
+      '1': [0.25, 0.58],
+      '2': [0.5, 0.58],
+      '3': [0.75, 0.58],
+      '4': [0.25, 0.68],
+      '5': [0.5, 0.68],
+      '6': [0.75, 0.68],
+      '7': [0.25, 0.78],
+      '8': [0.5, 0.78],
+      '9': [0.75, 0.78],
+      '0': [0.5, 0.88],
+    }
+
+    const position = positions[digit]
+    if (!position) throw new Error(`Unsupported iOS keypad digit: ${digit}`)
+
+    await this.tapByRatio(position[0], position[1])
+  }
+
+  private async dismissIOSConversationsIfOpen() {
+    if (!browser.isIOS) return false
+
+    const closeShown = await this.iosConversationsCloseBtn.isDisplayed().catch(() => false)
+    if (!closeShown) return false
+
+    await this.iosConversationsCloseBtn.click().catch(async () => {
+      await this.tapElementCenter(this.iosConversationsCloseBtn)
+    })
+    await this.iosConversationsCloseBtn.waitForDisplayed({ reverse: true, timeout: 5000 }).catch(() => {})
+    await browser.pause(500)
+    return true
+  }
+
   private async completeOtp(otpPhone: string) {
     await this.otpContainer.waitForDisplayed({ timeout: 45000 })
     await this.otpInput.waitForDisplayed({ timeout: 30000 })
@@ -1054,12 +1343,24 @@ export default class OnboardingPage extends BasePage {
       }
     })
 
-    await this.tap(this.otpInput)
-    await this.otpInput.clearValue().catch(() => {})
-    await this.otpInput.setValue(otp).catch(async () => {
-      await this.otpInput.addValue(otp)
-    })
-    await browser.hideKeyboard().catch(() => {})
+    if (browser.isIOS) {
+      await this.otpInput.click()
+      await this.otpInput.clearValue().catch(() => {})
+      await this.otpInput.addValue(otp).catch(async () => {
+        await this.otpInput.setValue(otp)
+      })
+    } else {
+      await this.tap(this.otpInput)
+      await this.otpInput.clearValue().catch(() => {})
+      await this.otpInput.setValue(otp).catch(async () => {
+        await this.otpInput.addValue(otp)
+      })
+    }
+    if (browser.isIOS) {
+      await this.dismissIOSKeyboardIfOpen()
+    } else {
+      await browser.hideKeyboard().catch(() => {})
+    }
   }
 
   private async continueAfterVerification() {
@@ -1089,7 +1390,11 @@ export default class OnboardingPage extends BasePage {
 
     const continueShown = await this.verificationContinueBtn.isDisplayed().catch(() => false)
     if (continueShown) {
-      await this.verificationContinueBtn.click().catch(() => {})
+      if (browser.isIOS) {
+        await this.tapElementCenter(this.verificationContinueBtn)
+      } else {
+        await this.verificationContinueBtn.click().catch(() => {})
+      }
       await this.waitForOnboardingNameScreen()
       await this.debugAfterVerificationContinue()
       return
@@ -1234,16 +1539,27 @@ export default class OnboardingPage extends BasePage {
     await emailInput.waitForDisplayed({ timeout: 30000 })
     await this.tap(emailInput)
     await emailInput.clearValue().catch(() => {})
-    await emailInput.setValue(email)
-    await browser.hideKeyboard().catch(() => {})
+    if (browser.isIOS) {
+      await this.typeIOSTextInput(emailInput, email)
+      await this.dismissIOSKeyboardIfOpen()
+    } else {
+      await emailInput.setValue(email)
+      await browser.hideKeyboard().catch(() => {})
+    }
 
-    await this.tapTermsCheckbox()
-
-    await this.tapContinue()
+    const submittedFromTermsStep = await this.tapTermsCheckbox()
+    if (!submittedFromTermsStep) {
+      await this.tapContinue()
+    }
     await this.waitAfterFinalContinue()
   }
 
   private async waitAfterFinalContinue() {
+    if (browser.isIOS) {
+      await this.waitAfterFinalContinueIOS()
+      return
+    }
+
     await browser.waitUntil(
       async () => {
         await this.throwIfSomethingWentWrong()
@@ -1267,6 +1583,84 @@ export default class OnboardingPage extends BasePage {
     if (pauseMs > 0) {
       await browser.pause(pauseMs)
     }
+  }
+
+  private async waitAfterFinalContinueIOS() {
+    const modalShown = await browser.waitUntil(
+      async () => this.isIOSVerifyIdentityModalShown(),
+      {
+        timeout: Number(process.env.ONBOARDING_FINAL_CONTINUE_TIMEOUT_MS || 45000),
+        interval: 500,
+        timeoutMsg: 'Expected iOS Verify your identity modal after tapping final Next',
+      }
+    ).catch(() => false)
+
+    if (!modalShown) {
+      await this.throwMissingIOSVerifyIdentityModal()
+    }
+
+    await this.closeIOSVerifyIdentityModal()
+
+    await browser.waitUntil(
+      async () => {
+        // System permission dialogs (location, camera) from Springboard appear here
+        // and push the app out of accessibility focus — home_screen_view vanishes.
+        // acceptAlert() reaches Springboard-level dialogs that predicate queries cannot.
+        try { await browser.acceptAlert() } catch {}
+        await this.dismissIOSPermissionAlertsIfPresent().catch(() => {})
+        return this.homeRoot.isExisting().catch(() => false)
+      },
+      {
+        timeout: Number(process.env.ONBOARDING_IOS_HOME_AFTER_VERIFY_CLOSE_TIMEOUT_MS || 45000),
+        interval: 500,
+        timeoutMsg: 'Expected iOS Home screen after closing Verify your identity modal',
+      }
+    )
+
+    const screenshotPath = process.env.ONBOARDING_SCREENSHOT_AFTER_FINAL_CONTINUE
+    if (screenshotPath) {
+      await browser.saveScreenshot(screenshotPath)
+    }
+
+    const pauseMs = Number(process.env.ONBOARDING_PAUSE_AFTER_FINAL_CONTINUE_MS || 0)
+    if (pauseMs > 0) {
+      await browser.pause(pauseMs)
+    }
+  }
+
+  private async isIOSVerifyIdentityModalShown() {
+    return (
+      (await this.verificationRequiredCloseBtnIOS.isExisting().catch(() => false)) &&
+      ((await this.verifyIdentityTitleIOS.isExisting().catch(() => false)) ||
+        (await this.verifyIdentityPrimaryBtnIOS.isExisting().catch(() => false)))
+    )
+  }
+
+  private async closeIOSVerifyIdentityModal() {
+    await this.verificationRequiredCloseBtnIOS.waitForExist({ timeout: 10000 })
+
+    const displayed = await this.verificationRequiredCloseBtnIOS.isDisplayed().catch(() => false)
+    if (displayed) {
+      await this.tapElementCenter(this.verificationRequiredCloseBtnIOS)
+      return
+    }
+
+    await this.verificationRequiredCloseBtnIOS.click().catch(async () => {
+      await this.tapByRatio(0.08, 0.08)
+    })
+  }
+
+  private async throwMissingIOSVerifyIdentityModal() {
+    const source = await browser.getPageSource().catch(() => '')
+    const interesting = source
+      .split('\n')
+      .filter((line) =>
+        /name=|label=|value=|Verify your identity|Identity|identity|modal_button|Onfido|onfido|Continue|Close|home_screen_view/i.test(line),
+      )
+      .slice(0, 140)
+      .join('\n')
+
+    throw new Error(`[Onboarding][iOS] Verify identity modal was not present after final Next. Source:\n${interesting}`)
   }
 
   private async isVerificationRequiredScreenShown() {
@@ -2005,6 +2399,7 @@ export default class OnboardingPage extends BasePage {
 
     const generatedPhone = generateUniqueMalteseMobileNumber()
     const pin = data.pin || process.env.ONBOARDING_PIN || '2468'
+    const generatedName = randomOnboardingName()
     this.onboardingSomethingWentWrongRestarts = 0
 
     console.log(`[Onboarding] Generated phone: ${generatedPhone.otpPhone}`)
@@ -2016,8 +2411,8 @@ export default class OnboardingPage extends BasePage {
     await this.continueAfterVerification()
 
     await this.fillPersonalDetails({
-      firstName: data.firstName || 'Test',
-      lastName: data.lastName || 'Automation',
+      firstName: data.firstName || generatedName.firstName,
+      lastName: data.lastName || generatedName.lastName,
     })
 
     await this.fillDetailsAndAddress(
@@ -2045,6 +2440,7 @@ export default class OnboardingPage extends BasePage {
 
     const generatedPhone = generateUniqueMalteseMobileNumber()
     const pin = data.pin || process.env.ONBOARDING_PIN || '2468'
+    const generatedName = randomOnboardingName()
 
     console.log(`[Onboarding][iOS] Generated phone: ${generatedPhone.otpPhone}`)
 
@@ -2052,30 +2448,13 @@ export default class OnboardingPage extends BasePage {
     await loginPage.selectCountry('Malta')
     await loginPage.enterMobile(generatedPhone.local)
     await loginPage.continue()
-    await loginPage.enterPin(pin)
-    await loginPage.enterPin(pin)
-
-    const previousOtpPhone = process.env.OTP_PHONE
-    process.env.OTP_PHONE = generatedPhone.otpPhone
-    const otp = await OtpHelper.getLatestOtp({
-      phone: generatedPhone.otpPhone,
-      timeoutMs: Number(process.env.OTP_TIMEOUT_MS || 90000),
-      intervalMs: Number(process.env.OTP_POLL_INTERVAL_MS || 2000),
-      maxRequests: Math.max(2, Number(process.env.OTP_MAX_REQUESTS || 2)),
-    }).finally(() => {
-      if (previousOtpPhone === undefined) {
-        delete process.env.OTP_PHONE
-      } else {
-        process.env.OTP_PHONE = previousOtpPhone
-      }
-    })
-
-    await loginPage.enterOtp(otp)
+    await this.enterPinTwice(pin)
+    await this.completeOtp(generatedPhone.otpPhone)
     await this.continueAfterVerification()
 
     await this.fillPersonalDetails({
-      firstName: data.firstName || 'Test',
-      lastName: data.lastName || 'Automation',
+      firstName: data.firstName || generatedName.firstName,
+      lastName: data.lastName || generatedName.lastName,
     })
 
     await this.fillDetailsAndAddress(

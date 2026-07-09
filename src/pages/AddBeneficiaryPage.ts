@@ -1,5 +1,6 @@
 import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
+import type { ChainablePromiseElement } from 'webdriverio'
 import OtpHelper from '../helpers/otp.helper'
 
 export default class AddBeneficiaryPage extends BasePage {
@@ -70,6 +71,35 @@ export default class AddBeneficiaryPage extends BasePage {
 
   private get homeRootIOS() {
     return $('~home_screen_view')
+  }
+
+  private get iosBundleId() {
+    return process.env.BS_IOS_BUNDLE_ID || 'com.moneybase.quality'
+  }
+
+  private async activateMoneybaseIOS() {
+    if (!browser.isIOS) return
+
+    await browser.activateApp(this.iosBundleId).catch(() => {})
+    await browser.pause(1000)
+  }
+
+  private async tapIOSScreenPoint(xRatio: number, yRatio: number, actionId: string) {
+    const { width, height } = await browser.getWindowRect()
+    await browser.performActions([
+      {
+        type: 'pointer',
+        id: actionId,
+        parameters: { pointerType: 'touch' },
+        actions: [
+          { type: 'pointerMove', duration: 0, x: Math.round(width * xRatio), y: Math.round(height * yRatio) },
+          { type: 'pointerDown', button: 0 },
+          { type: 'pause', duration: 100 },
+          { type: 'pointerUp', button: 0 },
+        ],
+      },
+    ])
+    await browser.releaseActions().catch(() => {})
   }
 
   private async ensureIndividualAccountIOS() {
@@ -463,12 +493,22 @@ export default class AddBeneficiaryPage extends BasePage {
     return $('//android.widget.TextView[@text="Malta"]')
   }
 
+  private get unitedStatesOptionAndroid() {
+    // The country list shows "United States of America", not "United States".
+    return $('//android.widget.TextView[@text="United States of America"]')
+  }
+
   private get currencyPickerAndroid() {
     return $('android=new UiSelector().resourceId("addBeneficiaryCountrySelection_picker_currency")')
   }
 
   private get euroOptionAndroid() {
     return $('~Euro')
+  }
+
+  private get usdOptionAndroid() {
+    // Accessibility id is the full currency name, same pattern as "Euro" -> EUR.
+    return $('~US Dollar')
   }
 
   private get countryContinueBtnAndroid() {
@@ -620,6 +660,16 @@ export default class AddBeneficiaryPage extends BasePage {
     return $('~addBeneficiary_textInput_bicSwift')
   }
 
+  private get otpContainerIOS() {
+    return $('-ios predicate string:name == "otp_input"')
+  }
+
+  private getBeneficiaryByIbanIOS(iban: string) {
+    const compact = String(iban || '').replace(/\s+/g, '').toUpperCase()
+    const tail = compact.length > 8 ? compact.slice(-8) : compact
+    return $(`-ios predicate string:label CONTAINS "${tail}" OR value CONTAINS "${tail}"`)
+  }
+
   private getBeneficiaryByIbanAndroid(iban: string) {
     const compact = String(iban || '').replace(/\s+/g, '').toUpperCase()
     const grouped = compact.match(/.{1,4}/g)?.join(' ') ?? compact
@@ -716,6 +766,264 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   /* =========================
+   * ANDROID: US beneficiary details (account number + BIC/SWIFT)
+   * Confirmed on real device: the US form has no routing number field.
+   * It uses Account No. (addBeneficiaryDetails_input_accountNumber) plus the
+   * same BIC/SWIFT field as the EUR flow — Continue stays disabled until BIC is filled.
+   * ========================= */
+
+  private get accountNumberInputAndroid() {
+    return $('android=new UiSelector().resourceId("addBeneficiaryDetails_input_accountNumber")')
+  }
+
+  /** Step: enter beneficiary first/last name on the US details screen. */
+  async enterBeneficiaryNameUSAndroid(name: string, surname: string) {
+    if (!browser.isAndroid) return
+
+    await this.nameInputAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.type(this.nameInputAndroid, name)
+
+    await this.surnameInputAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.type(this.surnameInputAndroid, surname)
+  }
+
+  /** Step: enter the beneficiary's account number on the US details screen. */
+  async enterBeneficiaryAccountNumberUSAndroid(accountNumber: string) {
+    if (!browser.isAndroid) return
+
+    await this.accountNumberInputAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.tap(this.accountNumberInputAndroid)
+    await this.accountNumberInputAndroid.clearValue().catch(() => {})
+    await this.accountNumberInputAndroid.setValue(accountNumber)
+  }
+
+  /** Step: enter the BIC/SWIFT code on the US details screen. */
+  async enterBeneficiaryBicUSAndroid(bic: string) {
+    if (!browser.isAndroid) return
+    await this.setBicAndroid(bic)
+  }
+
+  async fillBeneficiaryDetailsUSAndroid(params: {
+    name: string
+    surname: string
+    accountNumber: string
+    bic?: string
+    friendName?: string
+  }) {
+    if (!browser.isAndroid) return
+
+    await this.enterBeneficiaryNameUSAndroid(params.name, params.surname)
+    await this.enterBeneficiaryAccountNumberUSAndroid(params.accountNumber)
+
+    if (params.bic) {
+      await this.enterBeneficiaryBicUSAndroid(params.bic)
+    }
+
+    await browser.hideKeyboard().catch(() => {})
+
+    // Expect continue button to appear after account details are filled
+    await this.detailsContinueViewAndroid.waitForDisplayed({ timeout: 8000 }).catch(() => {})
+
+    if (params.friendName) {
+      const shown = await this.friendNameInputAndroid.waitForDisplayed({ timeout: 4000 }).catch(() => false)
+      if (shown) await this.type(this.friendNameInputAndroid, params.friendName)
+    }
+  }
+
+  /* =========================
+   * ANDROID: US beneficiary address screen
+   * Confirmed on real device: US wire transfers require an extra address
+   * screen (Address Line 1/2, City, Post Code) after the account/BIC screen.
+   * None of its inputs expose a resourceId, so fields are matched by their
+   * child label TextView text, and the screen is skipped if it never appears.
+   * ========================= */
+
+  private get addressCountryRowAndroid() {
+    return $('//android.view.View[.//android.widget.TextView[@text="Country"]]')
+  }
+
+  private get addressLine1InputAndroid() {
+    return $('//android.widget.EditText[.//android.widget.TextView[@text="Address Line 1"]]')
+  }
+
+  private get addressLine2InputAndroid() {
+    return $('//android.widget.EditText[.//android.widget.TextView[@text="Address Line 2"]]')
+  }
+
+  private get cityInputAndroid() {
+    return $('//android.widget.EditText[.//android.widget.TextView[@text="City"]]')
+  }
+
+  private get postCodeInputAndroid() {
+    return $('//android.widget.EditText[.//android.widget.TextView[@text="Post Code"]]')
+  }
+
+  private get addressContinueBtnAndroid() {
+    return $('//android.view.View[.//android.widget.TextView[@text="Continue"]]')
+  }
+
+  private async waitForAddressTransitionSignalAndroid(timeoutMs = 10000) {
+    if (!browser.isAndroid) return false
+
+    return await browser
+      .waitUntil(
+        async () => {
+          await this.recoverFromTryAgainSheetAndroid().catch(() => false)
+
+          const otpShown =
+            (await this.otpContainerAndroid.isDisplayed().catch(() => false)) ||
+            (await this.otpInputAndroid.isDisplayed().catch(() => false))
+          if (otpShown) return true
+
+          const vopShown =
+            (await this.vopScreenAndroid.isDisplayed().catch(() => false)) ||
+            (await this.vopScreenAndroidAlt.isDisplayed().catch(() => false))
+          if (vopShown) return true
+
+          // Confirm twice before declaring the address screen gone — Compose can
+          // briefly hide elements during recomposition, the same flakiness seen on OTP.
+          let addressStillShown = await this.addressLine1InputAndroid.isDisplayed().catch(() => false)
+          if (!addressStillShown) {
+            await browser.pause(300)
+            addressStillShown = await this.addressLine1InputAndroid.isDisplayed().catch(() => false)
+          }
+          if (!addressStillShown) return true
+
+          return false
+        },
+        { timeout: timeoutMs, interval: 250 }
+      )
+      .catch(() => false)
+  }
+
+  // Same fallback pattern as setIbanAndroid: setValue() can silently fail to reach
+  // this field's Compose state, so verify via getText() and fall back to real
+  // keystrokes (browser.keys()) which always reach the focused input.
+  private async setAddressFieldAndroid(el: ChainablePromiseElement, value: string) {
+    await this.tap(el)
+    await el.clearValue().catch(() => {})
+    await el.setValue(value)
+    await browser.pause(150)
+
+    const currentValue = await el.getText().catch(() => '')
+    const currentAttr = await el.getAttribute('text').catch(() => '')
+    const hasValue = (currentValue && currentValue.length > 0) || (currentAttr && currentAttr.length > 0)
+
+    if (!hasValue) {
+      await this.tap(el)
+      await el.clearValue().catch(() => {})
+      await browser.keys(value.split(''))
+    }
+  }
+
+  async fillBeneficiaryAddressUSAndroid(params: {
+    addressLine1: string
+    addressLine2?: string
+    city: string
+    postCode: string
+  }) {
+    if (!browser.isAndroid) return
+
+    let addressScreenShown = await this.addressCountryRowAndroid.waitForDisplayed({ timeout: 20000 }).catch(() => false)
+
+    if (!addressScreenShown) {
+      // Backend can reject the account/BIC submission with a transient error.
+      // "Try Again" resubmits the same request — worth one retry before giving up.
+      const backendRejected = await this.tryAgainTextAndroid.isDisplayed().catch(() => false)
+      if (backendRejected) {
+        console.warn('[AddBeneficiary][USD] Backend rejected account/BIC submission — retrying via Try Again')
+        await this.tap(this.tryAgainTextAndroid).catch(() => {})
+        addressScreenShown = await this.addressCountryRowAndroid.waitForDisplayed({ timeout: 20000 }).catch(() => false)
+      }
+    }
+
+    if (!addressScreenShown) {
+      const backendRejectedAgain = await this.tryAgainTextAndroid.isDisplayed().catch(() => false)
+      if (backendRejectedAgain) {
+        throw new Error(
+          '[AddBeneficiary][USD] DIAG: backend rejected the account/BIC details twice ("Something went wrong" / Try Again shown) — likely a genuine backend issue, not a flake'
+        )
+      }
+      throw new Error('[AddBeneficiary][USD] DIAG: address screen (Country row) never appeared within 20s')
+    }
+
+    // Tap the pre-filled Country row to "confirm" it — the rest of the address fields
+    // may stay inert until this happens, even though they report enabled="true" in the XML.
+    await this.tap(this.addressCountryRowAndroid).catch(() => {})
+    await browser.pause(500)
+
+    // If tapping reopened the same country picker used in the earlier step, re-select it.
+    const countryPickerReopened = await this.countrySearchInputAndroid.isDisplayed().catch(() => false)
+    if (countryPickerReopened) {
+      await this.unitedStatesOptionAndroid.waitForDisplayed({ timeout: 10000 }).catch(() => {})
+      await this.tap(this.unitedStatesOptionAndroid).catch(() => {})
+      await browser.pause(500)
+    }
+
+    const addressLine1Shown = await this.addressLine1InputAndroid.waitForDisplayed({ timeout: 10000 }).catch(() => false)
+    if (!addressLine1Shown) {
+      throw new Error('[AddBeneficiary][USD] DIAG: Address Line 1 field never appeared after tapping Country row')
+    }
+
+    await this.setAddressFieldAndroid(this.addressLine1InputAndroid, params.addressLine1)
+
+    if (params.addressLine2) {
+      const addressLine2Shown = await this.addressLine2InputAndroid.isDisplayed().catch(() => false)
+      if (addressLine2Shown) await this.setAddressFieldAndroid(this.addressLine2InputAndroid, params.addressLine2)
+    }
+
+    await this.setAddressFieldAndroid(this.cityInputAndroid, params.city)
+    await this.setAddressFieldAndroid(this.postCodeInputAndroid, params.postCode)
+
+    // Compose doesn't render the Continue button at all while the keyboard is open
+    // on this screen, so closing it reliably (not just once) is required.
+    for (let attempt = 0; attempt < 3; attempt++) {
+      await browser.hideKeyboard().catch(() => {})
+      const keyboardStillShown = await browser.isKeyboardShown().catch(() => false)
+      if (!keyboardStillShown) break
+      await browser.pressKeyCode(4).catch(() => {})
+      await browser.pause(400)
+    }
+
+    const continueRowPresent = await this.addressContinueBtnAndroid.isDisplayed().catch(() => false)
+    if (!continueRowPresent) {
+      throw new Error(
+        '[AddBeneficiary][USD] DIAG: Continue button not present in view hierarchy — keyboard likely still open after fill'
+      )
+    }
+
+    const readBack = {
+      addressLine1: await this.addressLine1InputAndroid.getText().catch(() => '<error>'),
+      city: await this.cityInputAndroid.getText().catch(() => '<error>'),
+      postCode: await this.postCodeInputAndroid.getText().catch(() => '<error>'),
+    }
+
+    const continueEnabledBeforeTap = await browser
+      .waitUntil(
+        async () => {
+          const enabled = await this.addressContinueBtnAndroid.getAttribute('enabled').catch(() => null)
+          return enabled === 'true'
+        },
+        { timeout: 5000, interval: 300 }
+      )
+      .catch(() => false)
+
+    if (!continueEnabledBeforeTap) {
+      throw new Error(
+        `[AddBeneficiary][USD] DIAG: Continue still disabled after filling address. Read-back values: ${JSON.stringify(readBack)}`
+      )
+    }
+
+    await this.tap(this.addressContinueBtnAndroid).catch(() => {})
+
+    const transitioned = await this.waitForAddressTransitionSignalAndroid(15000)
+    console.log('[fillBeneficiaryAddressUSAndroid] transitioned:', transitioned)
+    if (!transitioned) {
+      console.warn('[AddBeneficiary][USD] Address Continue tap did not trigger a detected transition — proceeding anyway')
+    }
+  }
+
+  /* =========================
    * FLOW helpers
    * ========================= */
 
@@ -779,7 +1087,8 @@ export default class AddBeneficiaryPage extends BasePage {
     )
   }
 
-  async startAddBeneficiaryAndroid() {
+  /** Step: open the Pay tab from Home, ready to start a new transfer. */
+  async openPayTabForBeneficiaryAndroid() {
     if (!browser.isAndroid) return
 
     // Keep the same Android stabilization pattern as Add Funds: loginFlow already
@@ -789,7 +1098,6 @@ export default class AddBeneficiaryPage extends BasePage {
     await this.dismissBlockingAlertAndroid(3000).catch(() => {})
     await this.stabilizeAndroidHomeSurface(15000).catch(() => false)
 
-    // 1️ Pay tab
     const waitForPayTab = async (timeout: number) =>
       browser.waitUntil(
         async () => {
@@ -826,29 +1134,113 @@ export default class AddBeneficiaryPage extends BasePage {
     await this.tap(payTab)
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
+  }
 
-    // 2️ New (only if sheet not already open)
+  /** Step: tap "New" to open the transfer type sheet (skipped if it's already open). */
+  async tapNewTransferOrAddAndroid() {
+    if (!browser.isAndroid) return
+
     const newShown = await this.newBtnAndroid.waitForDisplayed({ timeout: 5000 }).catch(() => false)
     if (newShown) {
       await this.tap(this.newBtnAndroid)
     } else {
       await this.newTransferTitleAndroid.waitForDisplayed({ timeout: 8000 }).catch(() => {})
     }
+  }
 
-    // 3️ Add Beneficiary
+  /** Step: tap "Add Beneficiary" from the transfer type sheet. */
+  async tapAddBeneficiaryBtnAndroid() {
+    if (!browser.isAndroid) return
+
     await this.addBeneficiaryBtnAndroid.waitForDisplayed({ timeout: 15000 })
     await this.tap(this.addBeneficiaryBtnAndroid)
+  }
+
+  async startAddBeneficiaryAndroid() {
+    if (!browser.isAndroid) return
+
+    await this.openPayTabForBeneficiaryAndroid()
+    await this.tapNewTransferOrAddAndroid()
+    await this.tapAddBeneficiaryBtnAndroid()
+  }
+
+  private async dismissShareContactsSheetIOS(timeout = 3000) {
+    // iOS 16+ "Share All X Contacts" sheet is a SpringBoard system prompt.
+    // Check for springboard in parallel with the first accessibility search to save time.
+    const shareAllBtn = $('-ios predicate string:label BEGINSWITH "Share All" OR name BEGINSWITH "Share All"')
+    const [shownViaA11y, source] = await Promise.all([
+      shareAllBtn.waitForDisplayed({ timeout }).catch(() => false),
+      browser.getPageSource().catch(() => ''),
+    ])
+
+    if (shownViaA11y) {
+      await shareAllBtn.click().catch(async () => { await this.tap(shareAllBtn) })
+      await browser.pause(1000)
+      return true
+    }
+
+    const isSpringboard = source.includes('bundleId="com.apple.springboard"')
+    if (isSpringboard) {
+      // Single tap only — retrying causes multiple taps into the contacts picker after first miss.
+      // y=0.92 targets "Share All X Contacts" on iPhone 16 iOS 18 (Select Contacts is above ~0.88).
+      console.warn('[AddBeneficiary][iOS] Share All sheet (springboard) — single coordinate tap y=0.92')
+      await this.tapIOSScreenPoint(0.5, 0.92, 'finger-ios-share-all')
+      await browser.pause(1000)
+      return true
+    }
+
+    return false
   }
 
   async startAddBeneficiaryIOS() {
     if (!browser.isIOS) return
 
+    // Attempt to pre-grant contacts via XCUITest execute — works on some real devices
+    await browser.execute('mobile: setPermission', {
+      bundleId: this.iosBundleId,
+      access: 'contacts',
+      value: 'yes',
+    }).catch(() => {})
+
+    await this.dismissShareContactsSheetIOS(5000)
+
     await this.ensureIndividualAccountIOS()
 
-    await this.homeRootIOS.waitForDisplayed({ timeout: 30000 }).catch(() => {})
+    await this.dismissShareContactsSheetIOS(5000)
 
-    await this.payTabIOS.waitForDisplayed({ timeout: 20000 })
-    await this.tap(this.payTabIOS)
+    // Bring app to foreground in case a system sheet backgrounded it
+    await this.activateMoneybaseIOS()
+
+    // Dismiss iOS 16+ "Share All Contacts" system sheet if visible
+    await this.dismissShareContactsSheetIOS()
+
+    // Wait until home screen is stable before touching the tab bar
+    await this.homeRootIOS.waitForDisplayed({ timeout: 30000 }).catch(() => {})
+    await browser.pause(500)
+
+    await this.dismissShareContactsSheetIOS()
+
+    // Tap Pay tab with retry in case a system sheet reappears mid-tap
+    let payTapped = false
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      const contactsShared = await this.dismissShareContactsSheetIOS(5000)
+      if (contactsShared) {
+        await this.activateMoneybaseIOS()
+      }
+      const payVisible = await this.payTabIOS.isDisplayed().catch(() => false)
+      if (payVisible) {
+        await this.payTabIOS.click().catch(() => {})
+        payTapped = true
+        break
+      }
+      await browser.pause(1000)
+    }
+    if (!payTapped) {
+      await this.payTabIOS.waitForDisplayed({ timeout: 10000 })
+      await this.tap(this.payTabIOS)
+    }
+
+    await this.dismissShareContactsSheetIOS()
 
     const contactsShown = await this.contactsContinueBtnIOS.waitForDisplayed({ timeout: 4000 }).catch(() => false)
     if (contactsShown) {
@@ -858,8 +1250,32 @@ export default class AddBeneficiaryPage extends BasePage {
 
     const addShown = await this.addBtnIOS.waitForDisplayed({ timeout: 10000 }).catch(() => false)
     if (!addShown) {
-      await this.tap(this.payTabIOS)
-      await browser.pause(500)
+      const contactsShared = await this.dismissShareContactsSheetIOS(5000)
+      if (contactsShared) {
+        await this.activateMoneybaseIOS()
+      }
+
+      const payVisible = await this.payTabIOS.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+      if (payVisible) {
+        await this.tap(this.payTabIOS)
+        await browser.pause(500)
+      }
+    }
+
+    // The contacts permission sheet can leave iOS focused on SpringBoard/App Switcher.
+    // Bring Moneybase back before the final Add button wait, otherwise the XML only has SpringBoard nodes.
+    await this.activateMoneybaseIOS()
+
+    const addReadyAfterForeground = await this.addBtnIOS.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+    if (!addReadyAfterForeground) {
+      await this.dismissShareContactsSheetIOS(5000)
+      await this.activateMoneybaseIOS()
+
+      const payVisible = await this.payTabIOS.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+      if (payVisible) {
+        await this.tap(this.payTabIOS)
+        await browser.pause(500)
+      }
     }
 
     await this.addBtnIOS.waitForDisplayed({ timeout: 15000 })
@@ -881,30 +1297,46 @@ export default class AddBeneficiaryPage extends BasePage {
     await this.tap(this.anotherPersonCardIOS)
   }
 
-  async continueFromCountrySelectionAndroid() {
+  /** Step: select country for the beneficiary (Malta for EUR, United States for USD/SWIFT). */
+  async selectCountryForBeneficiaryAndroid(currency: 'EUR' | 'USD' = 'EUR') {
     if (!browser.isAndroid) return
 
-    // Select country (Malta)
+    const countryName = currency === 'USD' ? 'United States' : 'Malta'
+    const countryOption = currency === 'USD' ? this.unitedStatesOptionAndroid : this.monacoOptionAndroid
+
     await this.countryPickerAndroid.waitForDisplayed({ timeout: 15000 })
     await this.tap(this.countryPickerAndroid)
 
     await this.countrySearchInputAndroid.waitForDisplayed({ timeout: 15000 })
-    await this.type(this.countrySearchInputAndroid, 'Malta')
+    await this.type(this.countrySearchInputAndroid, countryName)
 
-    await this.monacoOptionAndroid.waitForDisplayed({ timeout: 15000 })
-    await this.tap(this.monacoOptionAndroid)
-    
-    // Select currency (Euro)
+    await countryOption.waitForDisplayed({ timeout: 15000 })
+    await this.tap(countryOption)
+  }
+
+  /** Step: select currency/wallet (Euro or USD) and tap Continue. */
+  async selectCurrencyForBeneficiaryAndroid(currency: 'EUR' | 'USD' = 'EUR') {
+    if (!browser.isAndroid) return
+
+    const currencyOption = currency === 'USD' ? this.usdOptionAndroid : this.euroOptionAndroid
+
     await this.currencyPickerAndroid.waitForDisplayed({ timeout: 15000 })
     await this.tap(this.currencyPickerAndroid)
-    
-    await this.euroOptionAndroid.waitForDisplayed({ timeout: 10000 })
-    await this.tap(this.euroOptionAndroid)
-    
+
+    await currencyOption.waitForDisplayed({ timeout: 10000 })
+    await this.tap(currencyOption)
+
     // Now continue button should be enabled
     await browser.pause(500)
     await this.countryContinueBtnAndroid.waitForDisplayed({ timeout: 15000 })
     await this.tap(this.countryContinueBtnAndroid)
+  }
+
+  async continueFromCountrySelectionAndroid(currency: 'EUR' | 'USD' = 'EUR') {
+    if (!browser.isAndroid) return
+
+    await this.selectCountryForBeneficiaryAndroid(currency)
+    await this.selectCurrencyForBeneficiaryAndroid(currency)
   }
 
   async continueFromCountrySelectionIOS() {
@@ -1180,7 +1612,7 @@ export default class AddBeneficiaryPage extends BasePage {
     }
   }
 
-  private async waitForOtpAndSubmitAndroid(expectedIban?: string) {
+  async waitForOtpAndSubmitAndroid(expectedIban?: string) {
     if (!browser.isAndroid) return
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
@@ -1305,7 +1737,7 @@ export default class AddBeneficiaryPage extends BasePage {
       90000,
       Number(process.env.BENEFICIARY_OTP_TIMEOUT_MS || process.env.OTP_TIMEOUT_MS || 90000)
     )
-    const beneficiaryOtpMaxRequests = Number(process.env.BENEFICIARY_OTP_MAX_REQUESTS || 3)
+    const beneficiaryOtpMaxRequests = Number(process.env.BENEFICIARY_OTP_MAX_REQUESTS || 1)
 
     console.log(
       `[AddBeneficiary][OTP API] Fetching OTP with maxRequests=${beneficiaryOtpMaxRequests}, timeoutMs=${beneficiaryOtpTimeoutMs}`
@@ -1558,6 +1990,182 @@ export default class AddBeneficiaryPage extends BasePage {
     await this.tap(this.detailsContinueBtnIOS)
   }
 
+  async confirmReviewBeneficiaryIOS() {
+    if (!browser.isIOS) return
+    const confirmBtn = $('~review_button_confirm')
+    const confirmText = $('~Confirm')
+    const reviewTitle = $('~Review Beneficiary')
+
+    const reviewShown = await reviewTitle.waitForDisplayed({ timeout: 30000 }).catch(() => false)
+    if (!reviewShown) return
+
+    await confirmBtn.waitForDisplayed({
+      timeout: 30000,
+      timeoutMsg: '[AddBeneficiary][iOS] review_button_confirm did not appear on Review Beneficiary screen',
+    })
+
+    const tapConfirmCandidates = [
+      async () => confirmBtn.click(),
+      async () => this.tap(confirmBtn, 3000),
+      async () => confirmText.click(),
+      async () => {
+        const location = await confirmBtn.getLocation()
+        const size = await confirmBtn.getSize()
+        await browser.performActions([
+          {
+            type: 'pointer',
+            id: 'finger-ios-review-confirm',
+            parameters: { pointerType: 'touch' },
+            actions: [
+              {
+                type: 'pointerMove',
+                duration: 0,
+                x: Math.round(location.x + size.width / 2),
+                y: Math.round(location.y + size.height / 2),
+              },
+              { type: 'pointerDown', button: 0 },
+              { type: 'pause', duration: 100 },
+              { type: 'pointerUp', button: 0 },
+            ],
+          },
+        ])
+        await browser.releaseActions().catch(() => {})
+      },
+    ]
+
+    for (const tapConfirm of tapConfirmCandidates) {
+      await tapConfirm().catch(() => {})
+      const movedForward = await browser
+        .waitUntil(
+          async () => {
+            const otpShown = await this.otpContainerIOS.isDisplayed().catch(() => false)
+            if (otpShown) return true
+
+            const stillOnReview = await reviewTitle.isDisplayed().catch(() => false)
+            return !stillOnReview
+          },
+          { timeout: 5000, interval: 300 },
+        )
+        .catch(() => false)
+
+      if (movedForward) return
+    }
+
+    throw new Error('[AddBeneficiary][iOS] Review Beneficiary Confirm did not advance to OTP/next screen')
+  }
+
+  async waitForOtpAndSubmitIOS(expectedIban?: string) {
+    if (!browser.isIOS) return
+
+    const reviewStillShown = await $('~Review Beneficiary').isDisplayed().catch(() => false)
+    if (reviewStillShown) {
+      console.warn('[AddBeneficiary][iOS] Review screen still shown before OTP wait — tapping Confirm again')
+      await this.confirmReviewBeneficiaryIOS()
+    }
+
+    // Use waitForExist — otp_input may have visible=false (XCUITest Compose bug) while
+    // still showing on screen. waitForDisplayed would time out in that case.
+    await this.otpContainerIOS.waitForExist({
+      timeout: 90000,
+      timeoutMsg: '[AddBeneficiary][iOS] OTP screen did not appear after submitting beneficiary details',
+    })
+
+    const otpPhone = process.env.OTP_PHONE || process.env.MB_PHONE || ''
+    if (!otpPhone) throw new Error('OTP phone is not configured. Set OTP_PHONE or MB_PHONE')
+
+    const beneficiaryOtpTimeoutMs = Math.max(
+      90000,
+      Number(process.env.BENEFICIARY_OTP_TIMEOUT_MS || process.env.OTP_TIMEOUT_MS || 90000),
+    )
+
+    console.log(`[AddBeneficiary][OTP iOS] Fetching OTP for ${otpPhone}`)
+    const otp = await OtpHelper.getLatestOtp({
+      phone: otpPhone,
+      timeoutMs: beneficiaryOtpTimeoutMs,
+      intervalMs: Number(process.env.OTP_POLL_INTERVAL_MS || 2000),
+      maxRequests: Number(process.env.BENEFICIARY_OTP_MAX_REQUESTS || 1),
+      requestTimeoutMs: Number(
+        process.env.BENEFICIARY_OTP_REQUEST_TIMEOUT_MS ||
+          process.env.OTP_REQUEST_TIMEOUT_MS ||
+          beneficiaryOtpTimeoutMs,
+      ),
+      excludeTokens: [process.env.LAST_LOGIN_OTP || ''],
+    })
+
+    const enterOtpDigitsIOS = async (_delayMs: number) => {
+      // Slots are XCUIElementTypeTextField named OTP_entry_0..5.
+      // One addValue(otp) call types all 6 digits as a continuous stream so
+      // XCUITest auto-advances slot focus without re-tapping slot 0 between chars.
+      const firstSlot = $('//XCUIElementTypeTextField[starts-with(@name, "OTP_entry_")]')
+      await firstSlot.waitForExist({ timeout: 15000, timeoutMsg: '[AddBeneficiary][iOS] OTP input fields not found' })
+      await firstSlot.clearValue().catch(() => {})
+      await firstSlot.addValue(otp)
+    }
+
+    await enterOtpDigitsIOS(50)
+
+    // Wait for OTP to submit. Check positive success signals first, then use isExisting()
+    // for OTP gone — isDisplayed() is unreliable when otp_input has visible=false (Compose bug).
+    const otpGoneOrSuccess = async () => {
+      if (await this.homeRootIOS.isDisplayed().catch(() => false)) return true
+      if (await this.payTabIOS.isDisplayed().catch(() => false)) return true
+      if (await $('~pay_screen_view').isExisting().catch(() => false)) return true
+      return !(await this.otpContainerIOS.isExisting().catch(() => false))
+    }
+    const autoSubmitted = await browser
+      .waitUntil(otpGoneOrSuccess, { timeout: 15000, interval: 300 })
+      .catch(() => false)
+
+    if (!autoSubmitted) {
+      console.warn('[AddBeneficiary][iOS] OTP auto-submit did not fire — retrying with 100ms interval')
+      await enterOtpDigitsIOS(100)
+      await browser.waitUntil(otpGoneOrSuccess, { timeout: 15000, interval: 300 }).catch(() => {})
+    }
+
+    // Confirm success: home screen, Pay tab, Pay screen (even behind success overlay), or IBAN visible.
+    // Delay first retry by initializing lastOtpReentryAt to now — prevents spurious re-entry
+    // on the success screen if otp_input lingers in the accessibility tree after navigation.
+    let otpReentryCount = 0
+    let lastOtpReentryAt = Date.now()
+    await browser.waitUntil(
+      async () => {
+        const homeShown = await this.homeRootIOS.isDisplayed().catch(() => false)
+        if (homeShown) return true
+
+        const payShown = await this.payTabIOS.isDisplayed().catch(() => false)
+        if (payShown) return true
+
+        // Pay screen exists but may be visible=false when a success overlay is on top
+        const payScreenExists = await $('~pay_screen_view').isExisting().catch(() => false)
+        if (payScreenExists) return true
+
+        if (expectedIban) {
+          const ibanVisible = await this.getBeneficiaryByIbanIOS(expectedIban).isDisplayed().catch(() => false)
+          if (ibanVisible) return true
+        }
+
+        // Use isExisting — visible=false doesn't mean OTP screen is gone
+        const otpStillShown = await this.otpContainerIOS.isExisting().catch(() => false)
+        if (otpStillShown) {
+          const now = Date.now()
+          if (otpReentryCount < 2 && now - lastOtpReentryAt > 8000) {
+            otpReentryCount++
+            lastOtpReentryAt = now
+            console.warn(`[AddBeneficiary][iOS] OTP still visible — re-entering digits (attempt ${otpReentryCount}/2)`)
+            await enterOtpDigitsIOS(150)
+          }
+        }
+
+        return false
+      },
+      {
+        timeout: 180000,
+        interval: 1000,
+        timeoutMsg: '[AddBeneficiary][iOS] Success screen did not appear after OTP submit',
+      },
+    )
+  }
+
   /**
    * One-shot E2E flow to add beneficiary of type "Another person" on Android, starting from Pay tab. Used in addbeneficiary.individual.spec.ts, but can be reused in future tests if needed.
    */
@@ -1603,6 +2211,8 @@ export default class AddBeneficiaryPage extends BasePage {
 
     await this.fillBeneficiaryDetailsIOS(params)
     await this.continueFromDetailsIOS()
+    await this.confirmReviewBeneficiaryIOS()
+    await this.waitForOtpAndSubmitIOS(params.iban)
   }
 
   async addBeneficiaryAnotherPerson(params: {
@@ -1623,5 +2233,70 @@ export default class AddBeneficiaryPage extends BasePage {
     }
 
     throw new Error('Unsupported platform for addBeneficiaryAnotherPerson')
+  }
+
+  async addBeneficiaryAnotherPersonUSDAndroid(params: {
+    name: string
+    surname: string
+    accountNumber: string
+    bic?: string
+    addressLine1: string
+    addressLine2?: string
+    city: string
+    postCode: string
+    friendName?: string
+  }) {
+    await this.startAddBeneficiaryAndroid()
+    await this.chooseAnotherPersonAndroid()
+    await this.continueFromCountrySelectionAndroid('USD')
+
+    await this.fillBeneficiaryDetailsUSAndroid(params)
+    await this.continueFromDetailsAndroid()
+
+    // US wire transfers require an extra beneficiary address screen that the EUR/IBAN flow doesn't have.
+    await this.fillBeneficiaryAddressUSAndroid(params)
+
+    // The address Continue tap can silently fail to navigate (only warns, doesn't throw).
+    // If we're still on the address screen, retry it once before waiting for OTP.
+    const addressScreenStillShown = await this.addressCountryRowAndroid.isDisplayed().catch(() => false)
+    if (addressScreenStillShown) {
+      console.warn('[AddBeneficiary][USD] Address screen still shown after Continue — retrying')
+      await browser.pause(2000)
+      await this.fillBeneficiaryAddressUSAndroid(params)
+    }
+
+    await this.waitForPostDetailsTransitionAndroid()
+
+    // If the form reappeared (backend rejected submission), retry Continue once
+    const formStillShown = await this.detailsContinueViewAndroid.isDisplayed().catch(() => false)
+    if (formStillShown) {
+      console.warn('[AddBeneficiary][USD] Details form reappeared after Continue — retrying')
+      await browser.pause(2000)
+      await this.continueFromDetailsAndroid()
+      await this.waitForPostDetailsTransitionAndroid()
+    }
+
+    // No IBAN anchor for US beneficiaries — success detection relies on the
+    // "Added Successfully" popup / home screen checks inside waitForOtpAndSubmitAndroid.
+    await this.waitForOtpAndSubmitAndroid()
+  }
+
+  async addBeneficiaryAnotherPersonUSD(params: {
+    name: string
+    surname: string
+    accountNumber: string
+    bic?: string
+    addressLine1: string
+    addressLine2?: string
+    city: string
+    postCode: string
+    friendName?: string
+  }) {
+    if (browser.isAndroid) {
+      await this.addBeneficiaryAnotherPersonUSDAndroid(params)
+      return
+    }
+
+    throw new Error('USD beneficiary flow is not yet implemented for iOS')
   }
 }

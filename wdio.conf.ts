@@ -51,6 +51,12 @@ const envFlag = (name: string, defaultValue: boolean) => {
   if (value === undefined || value === '') return defaultValue
   return ['1', 'true', 'yes', 'on'].includes(value)
 }
+const browserStackBuildTags = (platform: 'android' | 'ios') => [
+  platform,
+  ...(process.env.BS_BUILD_TAGS ? process.env.BS_BUILD_TAGS.split(',').map(t => t.trim()).filter(Boolean) : []),
+]
+const browserStackServicePlatform = platformFilter === 'ios' ? 'ios' : 'android'
+const browserStackServiceBuildTags = browserStackBuildTags(browserStackServicePlatform)
 const browserStackDebugOptions = {
   debug: envFlag('BS_DEBUG', true),
   appiumLogs: envFlag('BS_APPIUM_LOGS', true),
@@ -60,9 +66,74 @@ const browserStackDebugOptions = {
     ? { networkLogsOptions: { captureContent: true } }
     : {}),
 }
+const browserStackResetOptions = {
+  ...(envFlag('BS_FULL_RESET', false) ? { 'appium:fullReset': true, 'appium:noReset': false } : {}),
+}
 
 const browserStackUser = useBrowserStack ? requireEnv('BROWSERSTACK_USERNAME') : undefined
 const browserStackKey = useBrowserStack ? requireEnv('BROWSERSTACK_ACCESS_KEY') : undefined
+
+const classifyFailureReason = (error: Error) => {
+  const msg = `${error.message ?? ''} ${error.stack ?? ''}`.toLowerCase()
+
+  // Classify by HTTP code first (most precise), then fall back to text patterns.
+  // This guarantees the code in brackets always matches the actual error.
+  const httpCodeMatch = msg.match(/\b(429|403|401|511|5[0-9]{2})\b/)
+  const httpCode = httpCodeMatch?.[1]
+
+  let reason: string
+  if (httpCode) {
+    if (['500', '502', '503', '504', '429'].includes(httpCode)) {
+      reason = `BE_ERROR[${httpCode}]`
+    } else if (httpCode === '511') {
+      reason = `ENVIRONMENT_ISSUE[${httpCode}]`
+    } else {
+      // 401, 403 — backend rejected the request
+      reason = `BE_ERROR[${httpCode}]`
+    }
+  } else if (
+    /firebase|fis_auth|fis_error|something went wrong|network request failed|backend|server error|api error|request failed|account.*locked|too many attempt|otp.*reject|otp.*invalid|beneficiar.*not.*accept|otp.*did not complete|otp.*step.*did not|otp.*not.*appear|beneficiar.*screen.*not appear|add card did not open card type selection|card eligibility/.test(msg)
+  ) {
+    reason = 'BE_ERROR'
+  } else if (
+    /browserstack|appium.*crashed|driver.*died|session.*deleted|could not.*connect|sms.*timeout|sms.*not.*received|application under test.*not running|possibly crashed/.test(msg)
+  ) {
+    reason = 'ENVIRONMENT_ISSUE'
+  } else {
+    reason = 'AUTOMATION_BUG'
+  }
+
+  return { reason, httpCode }
+}
+
+const markBrowserStackFailure = async (error: Error) => {
+  if (!useBrowserStack) return
+
+  const { reason, httpCode } = classifyFailureReason(error)
+  const shortMsg = error.message?.slice(0, 150) ?? ''
+
+  await browser
+    .execute(`browserstack_executor: ${JSON.stringify({
+      action: 'setSessionStatus',
+      arguments: {
+        status: 'failed',
+        reason: `${reason}: ${shortMsg}`,
+      },
+    })}`)
+    .catch(() => {})
+
+  if (httpCode) {
+    await browser
+      .execute(`browserstack_executor: ${JSON.stringify({
+        action: 'annotate',
+        arguments: {
+          data: `HTTP_${httpCode}`,
+          level: 'error',
+        },
+      })}`)
+      .catch(() => {})
+  }
+}
 
 if (useBrowserStack) {
   const needsAndroid = !platformFilter || platformFilter === 'android'
@@ -77,6 +148,7 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
     'bstack:options': {
       projectName: process.env.BS_PROJECT || 'moneybase_wdio',
       buildName: process.env.BS_BUILD || `local-${new Date().toISOString()}`,
+      buildTag: 'android',
       sessionName: 'Android tests',
       userName: browserStackUser,
       accessKey: browserStackKey,
@@ -92,10 +164,7 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
         testObservabilityOptions: {
           projectName: process.env.BS_PROJECT || 'moneybase_wdio',
           buildName: process.env.BS_BUILD || `local-${new Date().toISOString()}`,
-          buildTag: [
-            'android',
-            ...(process.env.BS_BUILD_TAGS ? process.env.BS_BUILD_TAGS.split(',').map(t => t.trim()) : []),
-          ],
+          buildTag: browserStackBuildTags('android'),
         },
       } as Record<string, unknown>),
     },
@@ -106,33 +175,38 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
     'appium:adbExecTimeout': 120000,
     'appium:appWaitDuration': 120000,
     'appium:appWaitActivity': '*',
+    ...browserStackResetOptions,
   },
   {
     platformName: 'iOS',
     'bstack:options': {
       projectName: process.env.BS_PROJECT || 'moneybase_wdio',
       buildName: process.env.BS_BUILD || `local-${new Date().toISOString()}`,
+      buildTag: 'ios',
       sessionName: 'iOS tests',
       userName: browserStackUser,
       accessKey: browserStackKey,
       ...browserStackDebugOptions,
       appiumVersion: '2.6.0',
-      deviceName: process.env.BS_IOS_DEVICE || 'iPhone 14',
-      osVersion: process.env.BS_IOS_OS || '16',
+      deviceName: process.env.BS_IOS_DEVICE || 'iPhone 13',
+      osVersion: process.env.BS_IOS_OS || '15',
       ...({
         testObservability: true,
         testObservabilityOptions: {
           projectName: process.env.BS_PROJECT || 'moneybase_wdio',
           buildName: process.env.BS_BUILD || `local-${new Date().toISOString()}`,
-          buildTag: [
-            'ios',
-            ...(process.env.BS_BUILD_TAGS ? process.env.BS_BUILD_TAGS.split(',').map(t => t.trim()) : []),
-          ],
+          buildTag: browserStackBuildTags('ios'),
         },
       } as Record<string, unknown>),
     },
     'appium:app': process.env.BS_APP_IOS,
     'appium:bundleId': process.env.BS_IOS_BUNDLE_ID,
+    'appium:autoAcceptAlerts': true,
+    'appium:newCommandTimeout': 300,
+    'appium:waitForQuiescence': false,
+    'appium:nativeWebScreenshot': true,
+    'appium:permissions': '{"com.moneybase.quality":{"contacts":"YES","location":"never","notifications":"NO"}}',
+    ...browserStackResetOptions,
   },
 ]
 
@@ -145,7 +219,7 @@ const localCapabilities: WebdriverIO.Capabilities[] = [
     'appium:app': '/Users/dmytrokertys/Desktop/app/moneybase.app',
     'appium:noReset': false,
     'appium:newCommandTimeout': 300,
-    'appium:permissions': '{"com.moneybase.quality":{"contacts":"YES"}}',
+    'appium:permissions': '{"com.moneybase.quality":{"contacts":"YES","location":"never","notifications":"NO"}}',
     'appium:autoAcceptAlerts': true,
     'appium:waitForQuiescence': false,
     'appium:shouldTerminateApp': true,
@@ -231,7 +305,18 @@ export const config: WebdriverIO.Config = {
     }],
   ],
 
-  services: useBrowserStack ? ['browserstack'] : [],
+  services: useBrowserStack
+    ? [[
+      'browserstack',
+      {
+        testObservabilityOptions: {
+          projectName: process.env.BS_PROJECT || 'moneybase_wdio',
+          buildName: process.env.BS_BUILD || `local-${new Date().toISOString()}`,
+          buildTag: browserStackServiceBuildTags,
+        },
+      },
+    ]]
+    : [],
 
   capabilities,
 
@@ -245,55 +330,13 @@ export const config: WebdriverIO.Config = {
   afterTest: async function (test, context, { error }) {
     if (!error) return
     await attachFailureArtifacts()
-
-    if (useBrowserStack) {
-      const msg = `${error.message ?? ''} ${error.stack ?? ''}`.toLowerCase()
-
-      // Classify by HTTP code first (most precise), then fall back to text patterns.
-      // This guarantees the code in brackets always matches the actual error.
-      const httpCodeMatch = msg.match(/\b(429|403|401|511|5[0-9]{2})\b/)
-      const httpCode = httpCodeMatch?.[1]
-
-      let reason: string
-      if (httpCode) {
-        if (['500', '502', '503', '504', '429'].includes(httpCode)) {
-          reason = `BE_ERROR[${httpCode}]`
-        } else if (httpCode === '511') {
-          reason = `ENVIRONMENT_ISSUE[${httpCode}]`
-        } else {
-          // 401, 403 — backend rejected the request
-          reason = `BE_ERROR[${httpCode}]`
-        }
-      } else if (
-        /firebase|fis_auth|fis_error|something went wrong|network request failed|backend|server error|api error|request failed|account.*locked|too many attempt|otp.*reject|otp.*invalid|beneficiar.*not.*accept|otp.*did not complete|otp.*step.*did not|otp.*not.*appear|beneficiar.*screen.*not appear/.test(msg)
-      ) {
-        reason = 'BE_ERROR'
-      } else if (
-        /browserstack|appium.*crashed|driver.*died|session.*deleted|could not.*connect|sms.*timeout|sms.*not.*received/.test(msg)
-      ) {
-        reason = 'ENVIRONMENT_ISSUE'
-      } else {
-        reason = 'AUTOMATION_BUG'
-      }
-
-      const shortMsg = error.message?.slice(0, 150) ?? ''
-      await browser
-        .execute(
-          `browserstack_executor: {"action": "setSessionStatus", "arguments": {"status": "failed", "reason": "${reason}: ${shortMsg.replace(/"/g, "'")}"}}`,
-        )
-        .catch(() => {})
-
-      if (httpCode) {
-        await browser
-          .execute(`browserstack_executor: {"action": "annotate", "arguments": {"data": "HTTP_${httpCode}", "level": "error"}}`)
-          .catch(() => {})
-      }
-    }
+    await markBrowserStackFailure(error)
   },
 
   afterHook: async function (_test, _context, { error }) {
     if (!error) return
     await attachFailureArtifacts()
+    await markBrowserStackFailure(error)
   },
 
   onComplete: function () {

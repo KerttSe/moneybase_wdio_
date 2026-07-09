@@ -345,12 +345,66 @@ export default class BasePage {
     }
   }
 
+  protected async tapScreenPointIOS(xRatio: number, yRatio: number, actionId: string) {
+    const { width, height } = await browser.getWindowRect()
+    await browser.performActions([
+      {
+        type: 'pointer',
+        id: actionId,
+        parameters: { pointerType: 'touch' },
+        actions: [
+          { type: 'pointerMove', duration: 0, x: Math.round(width * xRatio), y: Math.round(height * yRatio) },
+          { type: 'pointerDown', button: 0 },
+          { type: 'pause', duration: 100 },
+          { type: 'pointerUp', button: 0 },
+        ],
+      },
+    ])
+    await browser.releaseActions().catch(() => {})
+  }
+
+  // In-app contacts permission screen (ic_contacts_permission) → Continue → CNContactPickerViewController sheet.
+  // Appears on iOS when the Pay screen first tries to access contacts (P2P, SEPA, add-beneficiary flows).
+  protected async dismissContactsPermissionIOS() {
+    if (!browser.isIOS) return
+    const permissionImg = $('~ic_contacts_permission')
+    const shown = await permissionImg.isExisting().catch(() => false)
+    if (!shown) return
+
+    console.warn('[iOS] Contacts permission screen detected — tapping Continue')
+    const continueBtn = $('-ios predicate string:name == "Continue" OR label == "Continue"')
+    await continueBtn.waitForExist({ timeout: 5000 }).catch(() => {})
+    await this.tap(continueBtn).catch(() => {})
+    await browser.pause(1500)
+
+    // Dismiss CNContactPickerViewController springboard sheet (runs in separate process — coordinate only).
+    // y=0.92 targets "Share All X Contacts" on iPhone 16 iOS 18.
+    console.warn('[iOS] Tapping y=0.92 to dismiss CNContactPickerViewController sheet')
+    await this.tapScreenPointIOS(0.5, 0.92, 'finger-ios-contacts-sheet')
+    await browser.pause(1000)
+  }
+
   async dismissIOSAlerts() {
     try {
       if (await browser.isAlertOpen()) {
-        await browser.acceptAlert()
+        await browser.sendAlertText('123456').catch(() => {})
+        await browser.acceptAlert().catch(() => browser.dismissAlert().catch(() => {}))
       }
     } catch {}
+  }
+
+  protected async dismissIOSPermissionAlertsIfPresent(): Promise<boolean> {
+    if (!browser.isIOS) return false
+    for (const label of ['Allow While Using App', 'Allow Once', 'OK']) {
+      const btn = $(`-ios predicate string:label == "${label}"`)
+      const shown = await btn.isDisplayed().catch(() => false)
+      if (shown) {
+        await this.tap(btn).catch(() => {})
+        await browser.pause(300)
+        return true
+      }
+    }
+    return false
   }
 
   async debugSnapshot(tag = 'debug') {

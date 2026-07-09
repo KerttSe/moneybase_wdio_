@@ -10,6 +10,10 @@ export default class PortfolioPage extends BasePage {
     return $(`-ios class chain:${chain}`)
   }
 
+  private iosPredicate(predicate: string) {
+    return $(`-ios predicate string:${predicate}`)
+  }
+
   private byIdAndroid(name: string) {
     const rx = `.*:id/${name}$|^${name}$`
     return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
@@ -36,7 +40,11 @@ export default class PortfolioPage extends BasePage {
   }
 
   private get portfolioEntryIOS() {
-    return this.iosClassChain('**/XCUIElementTypeOther[`name == "основний"`]/XCUIElementTypeOther[8]')
+    return $('//XCUIElementTypeStaticText[@name="Portfolio" and @visible="true"]/ancestor::XCUIElementTypeOther[2]')
+  }
+
+  private get portfolioEntryTextIOS() {
+    return this.iosPredicate('type == "XCUIElementTypeStaticText" AND name == "Portfolio" AND visible == 1')
   }
 
   private get portfolioTitleIOS() {
@@ -72,7 +80,11 @@ export default class PortfolioPage extends BasePage {
   }
 
   private get nextBtnIOS() {
-    return this.iosA11y('NEXT')
+    return this.iosPredicate('type == "XCUIElementTypeButton" AND (name == "NEXT" OR label == "NEXT" OR name == "Next" OR label == "Next")')
+  }
+
+  private get continueBtnIOS() {
+    return this.iosPredicate('type == "XCUIElementTypeButton" AND (name == "CONTINUE" OR label == "CONTINUE" OR name == "Continue" OR label == "Continue")')
   }
 
   private get nextBtnAndroidByText() {
@@ -92,7 +104,7 @@ export default class PortfolioPage extends BasePage {
   }
 
   private get simondsFarsonsBondIOS() {
-    return this.iosClassChain('**/XCUIElementTypeStaticText[`name == "3.5% Simonds Farsons Cisk 2027"`]')
+    return $('//XCUIElementTypeImage[@name="3.5% Simonds Farsons Cisk 2027" and @visible="true"]/ancestor::XCUIElementTypeOther[2]')
   }
 
   private get simondsFarsonsBondAndroidByTextContains() {
@@ -108,7 +120,7 @@ export default class PortfolioPage extends BasePage {
   }
 
   private get buyBtnIOS() {
-    return this.iosClassChain('**/XCUIElementTypeOther[`name == "основний"`]/**/XCUIElementTypeButton[`name == "Buy"`]')
+    return this.iosPredicate('type == "XCUIElementTypeButton" AND (name == "Buy" OR label == "Buy" OR name == "BUY" OR label == "BUY")')
   }
 
   private get buyBtnAndroid() {
@@ -120,7 +132,7 @@ export default class PortfolioPage extends BasePage {
   }
 
   private get sellBtnIOS() {
-    return this.iosClassChain('**/XCUIElementTypeOther[`name == "основний"`]/**/XCUIElementTypeButton[`name == "Sell"`]')
+    return this.iosPredicate('type == "XCUIElementTypeButton" AND (name == "Sell" OR label == "Sell" OR name == "SELL" OR label == "SELL")')
   }
 
   private get sellBtnAndroid() {
@@ -170,13 +182,39 @@ export default class PortfolioPage extends BasePage {
   private async ensurePortfolioOpenedIOS(timeout = 20000) {
     await browser.switchContext('NATIVE_APP')
 
-    await this.tapIOSDisplayed(this.investTabIOS, timeout)
+    const entryCandidates = [
+      this.portfolioEntryIOS,
+      this.portfolioEntryTextIOS,
+    ]
+
+    const openedCandidates = [
+      this.nextBtnIOS,
+      this.continueBtnIOS,
+      this.simondsFarsonsBondIOS,
+      this.buyBtnIOS,
+      this.sellBtnIOS,
+    ]
+
+    const alreadyOpened = await this.waitForAnyDisplayed(openedCandidates, 2500, 'Portfolio screen (iOS)')
+      .then(() => true)
+      .catch(() => false)
+
+    if (alreadyOpened) return
+
+    const investShown = await this.investTabIOS
+      .waitForDisplayed({ timeout: 7000 })
+      .then(() => true)
+      .catch(() => false)
+
+    if (investShown) {
+      await this.tapIOSDisplayed(this.investTabIOS, timeout)
+    }
 
     for (let attempt = 1; attempt <= 2; attempt += 1) {
-      await this.tapIOSDisplayed(this.portfolioEntryIOS, timeout)
+      await this.waitForAnyDisplayed(entryCandidates, timeout, 'Portfolio entry (iOS)')
+      await this.tapFirstDisplayed(entryCandidates, 'Portfolio entry (iOS)')
 
-      const opened = await this.portfolioTitleIOS
-        .waitForDisplayed({ timeout })
+      const opened = await this.waitForAnyDisplayed(openedCandidates, timeout, 'Portfolio screen (iOS)')
         .then(() => true)
         .catch(() => false)
 
@@ -282,23 +320,21 @@ export default class PortfolioPage extends BasePage {
 
     await this.ensurePortfolioOpenedIOS(20000)
 
-    // After Portfolio is open, the onboarding/wizard should show NEXT.
-    // Wait for it; if the screen bounced again, re-open Portfolio once using the same selector.
-    for (let attempt = 1; attempt <= 2; attempt += 1) {
-      const nextVisible = await this.nextBtnIOS
-        .waitForDisplayed({ timeout: 20000 })
+    const tutorialCandidates = [
+      this.nextBtnIOS,
+      this.continueBtnIOS,
+    ]
+
+    for (let step = 1; step <= 4; step += 1) {
+      const tutorialShown = await this.waitForAnyDisplayed(tutorialCandidates, step === 1 ? 20000 : 4000, 'Tutorial button (iOS)')
         .then(() => true)
         .catch(() => false)
 
-      if (nextVisible) break
+      if (!tutorialShown) break
 
-      if (attempt < 2) {
-        await this.ensurePortfolioOpenedIOS(20000)
-      }
+      await this.tapFirstDisplayed(tutorialCandidates, 'Tutorial button (iOS)')
+      await browser.pause(300)
     }
-
-    await this.tapIOSDisplayed(this.nextBtnIOS, 20000)
-    await this.tapIOSDisplayed(this.nextBtnIOS, 20000)
 
     // Bond tap can be flaky (sometimes it doesn't navigate on first tap).
     // Tap up to 3 times using the same selector and stop early if Instrument actions appear.

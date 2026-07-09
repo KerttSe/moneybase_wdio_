@@ -493,7 +493,7 @@ export default class OrdersPage extends BasePage {
   }
 
   private get instrumentBuyButtonIOS() {
-    return this.iosClassChain('**/XCUIElementTypeOther[`name == "основний"`]/**/XCUIElementTypeButton[`name == "Buy" OR label == "Buy"`]')
+    return this.iosClassChain('**/XCUIElementTypeOther[`name == "main"`]/**/XCUIElementTypeButton[`name == "Buy" OR label == "Buy"`]')
   }
 
   private get newOrderTitleIOS() {

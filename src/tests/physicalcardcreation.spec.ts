@@ -7,9 +7,20 @@ import PhysicalCardCreationPage from '../pages/PhysicalCardCreationPage'
 describe('Physical card creation - Individual', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 800000))
   const loginPage = new LoginPage()
+  const cardCreationAuth = {
+    ...AUTH,
+    phone: process.env.PHYSICAL_CARD_MB_PHONE || AUTH.phone,
+    pin: process.env.PHYSICAL_CARD_MB_PIN || AUTH.pin,
+  }
+  const useApiLoginOtp = ['1', 'true', 'yes', 'on'].includes(
+    String(process.env.PHYSICAL_CARD_LOGIN_USE_API_OTP || '').toLowerCase(),
+  )
 
   beforeEach(async function () {
-    await loginPage.loginFlow(AUTH)
+    await loginPage.loginFlow(cardCreationAuth, {
+      useApiOtp: useApiLoginOtp,
+      otpPhone: process.env.PHYSICAL_CARD_OTP_PHONE,
+    })
     if (browser.isAndroid) {
       await BankTransferP2PIndividualPage.ensureIndividualAccount()
     }

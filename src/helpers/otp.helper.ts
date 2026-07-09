@@ -84,7 +84,7 @@ export class OtpHelper {
 	private static buildPhoneCandidate(rawPhone: string) {
 		const countryCode = this.normalizeDigits(process.env.OTP_COUNTRY_CODE || '356')
 
-		const source = String(process.env.OTP_PHONE || rawPhone || '')
+		const source = String(rawPhone || process.env.OTP_PHONE || '')
 			.trim()
 			.replace(/^\+/, '')
 		const digits = this.normalizeDigits(source)

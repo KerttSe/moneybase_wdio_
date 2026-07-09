@@ -13,17 +13,20 @@ describe('Bank Transfer - Individual - SWIFT', function () {
   })
 
   it('Send SWIFT by slide (11)', async function () {
-    if (!browser.isAndroid) this.skip()
-
     console.log('[TEST] Starting SWIFT test...')
 
     await browser.pause(2000)
 
-    console.log('[TEST] Ensuring individual account...')
-    await BankTransferP2PIndividualPage.ensureIndividualAccount()
+    if (browser.isAndroid) {
+      console.log('[TEST] Ensuring individual account...')
+      await BankTransferP2PIndividualPage.ensureIndividualAccount()
 
-    console.log('[TEST] Sending SWIFT...')
-    await BankTransferP2PIndividualPage.sendSwiftBySlideAndroid(11)
+      console.log('[TEST] Sending SWIFT (Android)...')
+      await BankTransferP2PIndividualPage.sendSwiftBySlideAndroid(11)
+    } else {
+      console.log('[TEST] Sending SWIFT (iOS)...')
+      await BankTransferP2PIndividualPage.sendSwiftBySlideIOS(11)
+    }
 
     console.log('[TEST] SWIFT test completed!')
   })

@@ -25,10 +25,21 @@ describe('Add Beneficiary - Another person', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
   const loginPage = new LoginPage()
   const addBeneficiaryPage = new AddBeneficiaryPage()
+  const beneficiaryAuth = {
+    ...AUTH,
+    phone: process.env.MB_PHONE || AUTH.phone,
+    pin: process.env.MB_PIN || AUTH.pin,
+  }
+  const useApiLoginOtp = ['1', 'true', 'yes', 'on'].includes(
+    String(process.env.ADD_BENEFICIARY_LOGIN_USE_API_OTP || '').toLowerCase(),
+  )
 
   beforeEach(async function () {
     // Same login logic as Add Funds: uses hardcoded 000000 by default
-    await loginPage.loginFlow(AUTH)
+    await loginPage.loginFlow(beneficiaryAuth, {
+      useApiOtp: useApiLoginOtp,
+      otpPhone: process.env.ADD_BENEFICIARY_LOGIN_OTP_PHONE || process.env.OTP_PHONE,
+    })
   })
 
   it('Add beneficiary (Another person)', async function () {

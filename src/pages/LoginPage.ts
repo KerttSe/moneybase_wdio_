@@ -107,6 +107,10 @@ export class LoginPage extends BasePage {
   }
 
   async prepare() {
+    if (browser.isIOS) {
+      await this.dismissIOSAlerts()
+    }
+
     // welcome skip (2 ios and android)
     if (await this.isDisplayed(this.welcomeSkipBtn, 5000)) {
       await this.welcomeSkipBtn.click()
@@ -114,15 +118,24 @@ export class LoginPage extends BasePage {
 
     if (browser.isIOS) {
       await this.dismissIOSAlerts()
+      await this.dismissIOSPermissionAlertsIfPresent().catch(() => {})
+      let snapshotTaken = false
       await browser.waitUntil(async () => {
+        await this.dismissIOSAlerts()
+        await this.dismissIOSPermissionAlertsIfPresent().catch(() => {})
+        if (!snapshotTaken) {
+          await this.debugSnapshot('prepare-ios-loop')
+          snapshotTaken = true
+        }
         const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
         const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
         const passcodeShown = await this.isIOSPasscodeScreenShown()
-        return registerShown || homeShown || passcodeShown
+        const otpShown = await this.otpContainerIOS.isDisplayed().catch(() => false)
+        return registerShown || homeShown || passcodeShown || otpShown
       }, {
-        timeout: 20000,
+        timeout: 30000,
         interval: 500,
-        timeoutMsg: 'Register screen, passcode screen, or Home did not appear',
+        timeoutMsg: 'Register screen, passcode screen, OTP screen, or Home did not appear',
       })
       return
     }
@@ -283,19 +296,7 @@ get androidAuthLoginRoot() {
 
 /* ===== iOS ===== */
 private iosKeypadContainerByDigit(d: string) {
-  const map: Record<string, string> = {
-    '0': 'loginKeyPad_zero',
-    '1': 'loginKeyPad_one',
-    '2': 'loginKeyPad_two',
-    '3': 'loginKeyPad_three',
-    '4': 'loginKeyPad_four',
-    '5': 'loginKeyPad_five',
-    '6': 'loginKeyPad_six',
-    '7': 'loginKeyPad_seven',
-    '8': 'loginKeyPad_eight',
-    '9': 'loginKeyPad_nine',
-  };
-  return $(`-ios predicate string:type == "XCUIElementTypeOther" AND name == "${map[d]}"`);
+  return $(`-ios predicate string:type == "XCUIElementTypeOther" AND name == "loginKeyPad_${d}"`);
 }
 
 private async tapDigitIOS(d: string) {
@@ -361,7 +362,14 @@ private async tapDigit(d: string) {
 async enterPin(pin: string) {
   //  platform-specific anchor + readiness
   if (browser.isIOS) {
-    await this.authLoginNavBar.waitForDisplayed({ timeout: 50000 });
+    // On login flow the nav bar is "moneybase.AuthenticationLoginView";
+    // on onboarding it is "Account Creation" — use loginNewMobile_screen as fallback anchor.
+    await browser.waitUntil(
+      async () =>
+        (await this.authLoginNavBar.isDisplayed().catch(() => false)) ||
+        (await $('~loginNewMobile_screen').isDisplayed().catch(() => false)),
+      { timeout: 50000, interval: 500, timeoutMsg: 'iOS PIN screen (authLoginNavBar or loginNewMobile_screen) did not appear' }
+    )
     await $(`~${pin[0]}`).waitForDisplayed({ timeout: 50000 });
   }
 
@@ -388,6 +396,18 @@ get otpContainerIOS() {
 
 get otpFieldIOS() {
   return this.otpContainerIOS.$('XCUIElementTypeTextField');
+}
+
+get otpFirstSlotIOS() {
+  return $('//XCUIElementTypeTextField[starts-with(@name, "OTP_entry_")][1]')
+}
+
+get otpLastSlotIOS() {
+  return $('//XCUIElementTypeTextField[@name="OTP_entry_5"]')
+}
+
+get otpIncorrectCodeIOS() {
+  return $('//XCUIElementTypeStaticText[contains(@name, "Entered code is incorrect") or contains(@label, "Entered code is incorrect")]')
 }
 
 /* ===== Android ===== */
@@ -442,12 +462,28 @@ async enterOtp(code: string = '123456') {
   await this.waitForOtpScreen();
 
   if (browser.isIOS) {
-    const field = await this.otpFieldIOS;
+    const field = this.otpFirstSlotIOS;
     await field.waitForDisplayed({ timeout: 40000 });
     await field.click();
+    await field.clearValue().catch(() => {});
+    await field.addValue(otp);
 
-    for (const digit of otp) {
-      await field.addValue(digit);
+    const filled = await browser
+      .waitUntil(
+        async () => {
+          const value = await this.otpLastSlotIOS.getAttribute('value').catch(() => '')
+          return /\d/.test(String(value || ''))
+        },
+        { timeout: 3000, interval: 200 }
+      )
+      .catch(() => false)
+
+    if (!filled) {
+      await field.click();
+      await field.clearValue().catch(() => {});
+      for (const digit of otp) {
+        await field.addValue(digit);
+      }
     }
     return;
   }
@@ -582,16 +618,25 @@ get payRootAndroid() {
 
     await browser.waitUntil(async () => {
       await this.dismissPostOtpPopupAndroidOnce()
+    if (browser.isIOS) {
+      await this.dismissIOSAlerts()
+      await this.dismissIOSPermissionAlertsIfPresent().catch(() => false)
+    }
+    const incorrectOtp = browser.isIOS && await this.otpIncorrectCodeIOS.isExisting().catch(() => false)
     const continueVisible = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
     const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
     const home = await this.homeRoot.isDisplayed().catch(() => false)
     const passcodeShown = await this.isIOSPasscodeScreenShown()
-    return continueVisible || applePay || home || passcodeShown
+    return incorrectOtp || continueVisible || applePay || home || passcodeShown
   }, {
     timeout: 60000,
     interval: 500,
     timeoutMsg: 'After OTP: Continue/Home/ApplePay/passcode did not appear',
   })
+
+  if (browser.isIOS && await this.otpIncorrectCodeIOS.isExisting().catch(() => false)) {
+    throw new Error('Login OTP was rejected by app: Entered code is incorrect')
+  }
 
   const continueVisible = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
   if (!continueVisible) return
@@ -611,6 +656,10 @@ get payRootAndroid() {
 async waitForPostOtpNextStep(timeout = 30000) {
   await browser.waitUntil(async () => {
     await this.dismissPostOtpPopupAndroidOnce()
+    if (browser.isIOS) {
+      await this.dismissIOSAlerts()
+      await this.dismissIOSPermissionAlertsIfPresent().catch(() => false)
+    }
     const continueVisible = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
     const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
     const home = await this.homeRoot.isDisplayed().catch(() => false)
@@ -670,6 +719,9 @@ async waitForHome(timeout = 30000) {
   }
 
   await browser.waitUntil(async () => {
+    await this.dismissIOSAlerts()
+    await this.dismissIOSPermissionAlertsIfPresent().catch(() => false)
+
     const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
     if (homeShown) return true
 
@@ -720,8 +772,6 @@ private async relaunchIOSApp() {
   await this.dismissIOSAlerts()
   await browser.pause(600)
 
-  await browser.terminateApp(this.iosBundleId).catch(() => {})
-  await browser.pause(800)
   await browser.activateApp(this.iosBundleId).catch(() => {})
 
   await this.dismissIOSAlerts()
@@ -729,24 +779,23 @@ private async relaunchIOSApp() {
 }
 
 private async getLoginOtp(auth: AuthData, options: LoginFlowOptions) {
-  // ### Login always uses hardcoded 000000 — no OTP API requests on login ###
-  console.log('[LoginPage.getLoginOtp] 🔐 Using hardcoded OTP: 000000')
-  return '000000'
-
-  // eslint-disable-next-line no-unreachable
-  /* API OTP path — disabled, do not enable without rate-limit analysis
   if (!options.useApiOtp) return '000000'
 
   const phone = options.otpPhone || process.env.OTP_PHONE || process.env.MB_PHONE || auth.phone
+  const maxRequests = Number(process.env.LOGIN_OTP_MAX_REQUESTS || 1)
+  const fetchDelayMs = Number(process.env.LOGIN_OTP_FETCH_DELAY_MS || 0)
+  if (Number.isFinite(fetchDelayMs) && fetchDelayMs > 0) {
+    await browser.pause(Math.floor(fetchDelayMs))
+  }
+  console.log(`[LoginPage.getLoginOtp] Fetching login OTP via API with maxRequests=${maxRequests}`)
   const otp = await OtpHelper.getLatestOtp({
     phone,
     timeoutMs: Number(process.env.LOGIN_OTP_TIMEOUT_MS || process.env.OTP_TIMEOUT_MS || 90000),
     intervalMs: Number(process.env.LOGIN_OTP_POLL_INTERVAL_MS || process.env.OTP_POLL_INTERVAL_MS || 2000),
-    maxRequests: Math.max(2, Number(process.env.LOGIN_OTP_MAX_REQUESTS || process.env.OTP_MAX_REQUESTS || 2)),
+    maxRequests,
   })
   process.env.LAST_LOGIN_OTP = otp
   return otp
-  */
 }
 
 private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
@@ -756,10 +805,42 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
   if (alreadyHome) return
 
   await this.prepare()
+  if (browser.isIOS && await this.otpContainerIOS.isDisplayed().catch(() => false)) {
+    await this.enterOtp(await this.getLoginOtp(auth, options))
+    await this.tapContinueAfterOtp()
+    if (await this.isIOSPasscodeScreenShown()) {
+      await this.enterPin(auth.pin)
+    }
+    await this.waitForPostOtpNextStep(30000)
+    await this.closeApplePayIfVisible()
+    await this.waitForHome(30000)
+    return
+  }
+
   if (browser.isIOS && await this.isIOSPasscodeScreenShown()) {
     await this.enterPin(auth.pin)
     await this.closeApplePayIfVisible()
-    await this.waitForHome(45000)
+
+    await browser.waitUntil(async () => {
+      const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+      const otpShown = await this.otpContainerIOS.isDisplayed().catch(() => false)
+      return homeShown || otpShown
+    }, {
+      timeout: 45000,
+      interval: 500,
+      timeoutMsg: 'After iOS passcode: neither Home nor OTP appeared',
+    })
+
+    if (await this.homeRoot.isDisplayed().catch(() => false)) return
+
+    await this.enterOtp(await this.getLoginOtp(auth, options))
+    await this.tapContinueAfterOtp()
+    if (await this.isIOSPasscodeScreenShown()) {
+      await this.enterPin(auth.pin)
+    }
+    await this.waitForPostOtpNextStep(30000)
+    await this.closeApplePayIfVisible()
+    await this.waitForHome(30000)
     return
   }
 

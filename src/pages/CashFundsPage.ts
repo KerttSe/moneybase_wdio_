@@ -258,11 +258,11 @@ export default class CashFundsPage extends BasePage {
   }
 
   private get discoverTabIOS() {
-    return this.iosClassChain('**/XCUIElementTypeOther[`name == "основний"`]/XCUIElementTypeOther[7]')
+    return this.iosClassChain('**/XCUIElementTypeOther[`name == "main"`]/XCUIElementTypeOther[7]')
   }
 
   private get discoverTabIOSXpath() {
-    return $('//XCUIElementTypeOther[@name="основний"]/XCUIElementTypeOther[7]')
+    return $('//XCUIElementTypeOther[@name="main"]/XCUIElementTypeOther[7]')
   }
 
   private get discoverTabIOSFallback() {

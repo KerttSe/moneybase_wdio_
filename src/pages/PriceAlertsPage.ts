@@ -193,11 +193,11 @@ export default class PriceAlertsPage extends BasePage {
   }
 
   private get mainContainerIOSByClassChain() {
-    return this.iosClassChain('**/XCUIElementTypeOther[`name == "основний"`]/XCUIElementTypeOther[10]')
+    return this.iosClassChain('**/XCUIElementTypeOther[`name == "main"`]/XCUIElementTypeOther[10]')
   }
 
   private get mainContainerIOSByXpath() {
-    return $('//XCUIElementTypeOther[@name="основний"]/XCUIElementTypeOther[10]')
+    return $('//XCUIElementTypeOther[@name="main"]/XCUIElementTypeOther[10]')
   }
 
   private get priceAlertsEntryAndroid() {
