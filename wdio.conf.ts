@@ -155,7 +155,7 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
       ...browserStackDebugOptions,
       appiumVersion: '2.6.0',
       deviceName: process.env.BS_ANDROID_DEVICE || 'Samsung Galaxy S24',
-      osVersion: process.env.BS_ANDROID_OS || '15.0',
+      osVersion: process.env.BS_ANDROID_OS || '16.0',
       ...(enableBrowserStackCameraInjection ? { enableCameraImageInjection: true } : {}),
       ...(enableBrowserStackVideoInjection ? { enableCameraVideoInjection: true } : {}),
       ...(enableBrowserStackCameraPreview ? { enableCameraPreview: true } : {}),
@@ -188,8 +188,8 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
       accessKey: browserStackKey,
       ...browserStackDebugOptions,
       appiumVersion: '2.6.0',
-      deviceName: process.env.BS_IOS_DEVICE || 'iPhone 13',
-      osVersion: process.env.BS_IOS_OS || '15',
+      deviceName: process.env.BS_IOS_DEVICE || 'iPhone 15',
+      osVersion: process.env.BS_IOS_OS || '17',
       ...({
         testObservability: true,
         testObservabilityOptions: {
@@ -235,11 +235,14 @@ const localCapabilities: WebdriverIO.Capabilities[] = [
         'appium:udid': androidUdid,
       }
       : {
-        'appium:avd': 'Pixel_6a',
+        'appium:avd': 'Pixel_7',
         'appium:avdLaunchTimeout': 180000,
         'appium:avdReadyTimeout': 180000,
       }),
     'appium:app': '/Users/dmytrokertys/Desktop/app/app-qa-debug.apk',
+    'appium:appPackage': 'com.moneybase.qa',
+    'appium:appActivity': 'com.moneybase.views.activities.LoginActivity',
+    'appium:appWaitActivity': '*',
     'appium:autoGrantPermissions': true,
     'appium:noReset': false,
     'appium:fullReset': false,
