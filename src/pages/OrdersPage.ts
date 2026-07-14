@@ -2015,6 +2015,28 @@ export default class OrdersPage extends BasePage {
     await this.selectInstrumentResultIOS(query)
   }
 
+  private async dismissSubAccountsModalIOS() {
+    const subAccountsTitle = this.iosA11y('Sub Accounts')
+    const shown = await subAccountsTitle.isExisting().catch(() => false)
+    if (!shown) return
+
+    const closeCandidates = [
+      this.iosA11y('Close'),
+      this.iosPredicate('name == "Close" OR label == "Close"'),
+      this.iosPredicate('name == "ic_close" OR label == "ic_close"'),
+    ]
+    for (const btn of closeCandidates) {
+      const visible = await btn.isExisting().catch(() => false)
+      if (visible) {
+        await btn.click().catch(() => {})
+        await subAccountsTitle.waitForExist({ reverse: true, timeout: 5000 }).catch(() => {})
+        return
+      }
+    }
+    await browser.back().catch(() => {})
+    await browser.pause(800)
+  }
+
   private async openNewBuyOrderIOS() {
     const buyCandidates = [
       this.instrumentBuyButtonIOS,
@@ -2024,6 +2046,8 @@ export default class OrdersPage extends BasePage {
 
     await this.waitAndScrollToAnyIOS(buyCandidates, 'Instrument Buy button (iOS)', 5)
     await this.tapFirstDisplayed(buyCandidates, 'Instrument Buy button (iOS)')
+
+    await this.dismissSubAccountsModalIOS()
 
     const orderAnchors = [this.newOrderTitleIOS, this.placeBuyOrderButtonIOS, this.sharesInputIOS]
     await this.waitForAnyDisplayed(orderAnchors, 20000, 'New Order screen (iOS)')

@@ -72,7 +72,7 @@ export default class AddFundsPage extends BasePage {
 
   get openBtn() {
     if (browser.isAndroid) return this.byAndroidResId('home_button_addFunds')
-    return $('~plus')
+    return $('-ios predicate string:name == "Add Funds" OR name == "plus"')
   }
 
   /* =========================
@@ -151,21 +151,26 @@ private get payProcessingBtnIOS() {
       await this.dismissIOSAlerts()
     }
 
-    await this.openBtn.waitForDisplayed({ timeout: 15000 }).catch(async () => {
-      await browser.waitUntil(
-        async () => {
-          await this.dismissBlockingAlertAndroid().catch(() => {})
-          await this.dismissSupportSheetAndroid().catch(() => false)
-          return await this.openBtn.isDisplayed().catch(() => false)
-        },
-        {
-          timeout: 25000,
-          interval: 700,
-          timeoutMsg: 'Add Funds button not visible on Home after blocker cleanup',
-        }
-      )
-    })
-    await this.tap(this.openBtn)
+    if (browser.isIOS) {
+      await this.openBtn.waitForExist({ timeout: 20000 })
+      await this.openBtn.click()
+    } else {
+      await this.openBtn.waitForDisplayed({ timeout: 15000 }).catch(async () => {
+        await browser.waitUntil(
+          async () => {
+            await this.dismissBlockingAlertAndroid().catch(() => {})
+            await this.dismissSupportSheetAndroid().catch(() => false)
+            return await this.openBtn.isDisplayed().catch(() => false)
+          },
+          {
+            timeout: 25000,
+            interval: 700,
+            timeoutMsg: 'Add Funds button not visible on Home after blocker cleanup',
+          }
+        )
+      })
+      await this.tap(this.openBtn)
+    }
   }
 
   async goToTopUp() {

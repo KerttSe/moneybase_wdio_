@@ -751,13 +751,6 @@ class HomeScreenPage extends BasePage {
     ]
   }
 
-  private async getRecentTransactionsItems(): Promise<WebdriverIO.ElementArray> {
-    if (browser.isAndroid) {
-      return (await $$('android=new UiSelector().resourceIdMatches(".*:id/home_recentTransactions_item.*|.*:id/recentTransactions_item.*")')) as unknown as WebdriverIO.ElementArray
-    }
-
-    return (await $$('~home_recentTransactions_item')) as unknown as WebdriverIO.ElementArray
-  }
 
   private get recentActivitiesCandidates(): WdioEl[] {
     if (browser.isAndroid) {
@@ -987,13 +980,6 @@ class HomeScreenPage extends BasePage {
     if (!headerExists.some(Boolean)) return
 
     await this.ensureVisibleByScrolling(headerCandidates, 'Recent transactions header')
-
-    const items = await this.getRecentTransactionsItems()
-    const itemsArray = Array.from(items) as WebdriverIO.Element[]
-    if (itemsArray.length > 0) {
-      await this.ensureVisibleByScrolling(itemsArray, 'Recent transactions list')
-      return
-    }
 
     await this.ensureVisibleByScrolling(
       [this.byId('home_list_recentTransactions'), this.byId('home_recentTransactions_list')],

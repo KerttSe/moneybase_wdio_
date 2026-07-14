@@ -510,7 +510,7 @@ class FXExchangePage extends BasePage {
     await HomeScreenPage.waitForHomeLoaded()
     await this.dismissIOSAlerts()
 
-    await this.homeExchangeButton.waitForDisplayed({ timeout: 15000 })
+    await this.homeExchangeButton.waitForExist({ timeout: 15000 })
     await this.tapElementCenter(this.homeExchangeButton, 15000)
     await this.waitForAnyDisplayed(this.fxExchangeScreenCandidates, 15000, 'FX Exchange screen')
     await this.ensureNewTabActive()

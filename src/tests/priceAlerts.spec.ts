@@ -38,6 +38,6 @@ describe('Price Alerts (iOS/Android)', function () {
 
     // iOS: flow provided by locators: Search Instrument -> BMW -> +1% -> Back; then BMW -> Delete.
     await priceAlerts.createPriceAlertIOS({ instrumentQuery: 'BMW', rowA11yIdIOS: 'BMW i' })
-    await priceAlerts.deletePriceAlertIOS('BMW i')
+    await priceAlerts.cleanupAllAlertsIOS()
   })
 })

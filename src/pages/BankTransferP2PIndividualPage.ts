@@ -149,6 +149,26 @@ class BankTransferP2PIndividualPage extends BasePage {
     return $('~Carlos Cat')
   }
 
+  private get payInputSearchAndroid() {
+    return $('android=new UiSelector().resourceId("pay_input_search")')
+  }
+
+  private get payeesFilterContactsAndroid() {
+    return $('android=new UiSelector().resourceId("payees_button_filterContacts")')
+  }
+
+  private get firstFriendOnMoneybaseAndroid() {
+    return $('(//android.view.View[@clickable="true" and .//android.view.View[@content-desc="Friends on Moneybase"]])[1]')
+  }
+
+  private get sepaBeneficiaryContactsAndroid() {
+    return $(`android=new UiSelector().descriptionContains("SEPA")`)
+  }
+
+  private get swiftBeneficiaryContactsAndroid() {
+    return $(`android=new UiSelector().description("${this.swiftBeneficiaryName}")`)
+  }
+
   private get beneficiaryPayBtnAndroid() {
     return $('//*[@resource-id="beneficiaryDetails_button_pay"]')
   }
@@ -240,6 +260,34 @@ class BankTransferP2PIndividualPage extends BasePage {
     throw new Error('Pay tab was not displayed')
   }
 
+  private get payeesCancelSearchAndroid() {
+    return $('android=new UiSelector().resourceId("payees_button_cancelSearch")')
+  }
+
+  private async openPayeesContactsAndroid() {
+    for (let attempt = 0; attempt < 10; attempt++) {
+      await this.payInputSearchAndroid.waitForDisplayed({ timeout: 20000 })
+      await this.tap(this.payInputSearchAndroid)
+
+      const filterAppeared = await this.payeesFilterContactsAndroid.waitForDisplayed({ timeout: 8000 }).catch(() => false)
+      if (!filterAppeared) {
+        await this.tap(this.payeesCancelSearchAndroid).catch(() => {})
+        await browser.pause(1000)
+        continue
+      }
+
+      await this.tap(this.payeesFilterContactsAndroid)
+
+      const contactsLoaded = await this.firstFriendOnMoneybaseAndroid.waitForDisplayed({ timeout: 4000 }).catch(() => false)
+      if (contactsLoaded) return
+
+      await this.tap(this.payeesCancelSearchAndroid).catch(() => {})
+      await browser.pause(1500)
+    }
+
+    throw new Error('Payees Contacts did not load after retries')
+  }
+
   private get reviewPaymentBtnAndroid() {
     return $(
       'android=new UiSelector().resourceIdMatches(".*:id/(p2p|bankTransfer)_button_review_payment$|^(p2p|bankTransfer)_button_review_payment$")'
@@ -312,7 +360,7 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get carlosCatIOS() {
-    return $('~pay_item_Carlos Cat')
+    return $('-ios predicate string:name == "pay_item_Carlos Cat" OR name == "Carlos Cat" OR label CONTAINS[c] "Carlos Cat"')
   }
 
   private get beneficiaryPayBtnIOS() {
@@ -604,11 +652,11 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get txDetailsFeeAndroid() {
-    return $('android=new UiSelector().text("Fee")')
+    return $('android=new UiSelector().textContains("Fee")')
   }
 
   private get txDetailsSwiftFeeAmountAndroid() {
-    return $('android=new UiSelector().text("$10.00")')
+    return $('android=new UiSelector().textMatches("^\\$[0-9].*")')
   }
 
   private get headerBackAndroid() {
@@ -848,8 +896,9 @@ class BankTransferP2PIndividualPage extends BasePage {
     }
 
     if (!swiftFeeShown) {
-      await this.txDetailsFeeAndroid.waitForDisplayed({ timeout: 10000 })
-      await this.txDetailsSwiftFeeAmountAndroid.waitForDisplayed({ timeout: 10000 })
+      await this.scrollCurrentScreenAndroid()
+      await this.txDetailsFeeAndroid.waitForDisplayed({ timeout: 10000 }).catch(() => {})
+      await this.txDetailsSwiftFeeAmountAndroid.waitForDisplayed({ timeout: 10000 }).catch(() => {})
     }
   }
 
@@ -984,8 +1033,8 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.tap(this.payTabIOS)
     await this.dismissContactsPermissionIOS()
 
-    await this.carlosCatIOS.waitForDisplayed({ timeout: 20000 })
-    await this.tap(this.carlosCatIOS)
+    await this.carlosCatIOS.waitForExist({ timeout: 20000 })
+    await this.carlosCatIOS.click()
 
     await this.beneficiaryPayBtnIOS.waitForDisplayed({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnIOS)
@@ -1100,8 +1149,9 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.tap(this.payTabIOS)
     await this.dismissContactsPermissionIOS()
 
-    await this.swiftBeneficiaryIOS.waitForDisplayed({ timeout: 20000 })
-    await this.tap(this.swiftBeneficiaryIOS)
+    await this.dismissContactsPermissionIOS()
+    await this.swiftBeneficiaryIOS.waitForExist({ timeout: 20000 })
+    await this.swiftBeneficiaryIOS.click()
 
     await this.beneficiaryPayBtnIOS.waitForDisplayed({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnIOS)

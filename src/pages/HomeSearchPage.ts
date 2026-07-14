@@ -77,6 +77,12 @@ class HomeSearchPage extends BasePage {
     ]
   }
 
+  private async isVisibleOrExists(el: WebdriverIO.Element): Promise<boolean> {
+    if (await el.isDisplayed().catch(() => false)) return true
+    if (browser.isIOS && await el.isExisting().catch(() => false)) return true
+    return false
+  }
+
   private async waitForAnyDisplayed(
     candidates: Array<WdioEl | WebdriverIO.Element>,
     timeout = 10000,
@@ -86,7 +92,7 @@ class HomeSearchPage extends BasePage {
       async () => {
         for (const el of candidates) {
           const resolved = (await el) as WebdriverIO.Element
-          if (await resolved.isDisplayed().catch(() => false)) return true
+          if (await this.isVisibleOrExists(resolved)) return true
         }
         return false
       },
@@ -107,8 +113,7 @@ class HomeSearchPage extends BasePage {
 
     for (const el of candidates) {
       const resolved = (await el) as WebdriverIO.Element
-      const visible = await resolved.isDisplayed().catch(() => false)
-      if (visible) return resolved
+      if (await this.isVisibleOrExists(resolved)) return resolved
     }
 
     throw new Error(`${label} did not appear`)

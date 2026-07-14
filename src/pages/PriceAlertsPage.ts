@@ -1636,4 +1636,69 @@ export default class PriceAlertsPage extends BasePage {
 
     await this.addNewPriceAlertAnchorIOS.waitForDisplayed({ timeout: 20000 })
   }
+
+  public async cleanupAllAlertsIOS() {
+    if (!browser.isIOS) return
+
+    await this.openPriceAlertsIOS()
+    await this.goToOverviewTabIOS()
+
+    const containerCandidates = [this.mainContainerIOSByClassChain, this.mainContainerIOSByXpath]
+    const containerShown = await this.waitForAnyDisplayed(containerCandidates, 4000, 'Main container (iOS)')
+      .then(() => true)
+      .catch(() => false)
+    if (containerShown) {
+      await this.tapFirstDisplayed(containerCandidates, 'Main container (iOS)')
+      await browser.pause(400)
+    }
+
+    const rowCandidates = [
+      this.iosA11y('BMW i'),
+      this.iosPredicate('name CONTAINS[c] "BMW" OR label CONTAINS[c] "BMW"'),
+      this.iosPredicate('name BEGINSWITH "Bmw Ag Greater than" OR label BEGINSWITH "Bmw Ag Greater than"'),
+      this.iosPredicate('type == "XCUIElementTypeStaticText" AND name == "BMW" AND visible == 1'),
+    ]
+    const deleteCandidates = [
+      this.deleteBtnIOS,
+      this.iosPredicate('label == "Delete" OR name == "Delete"'),
+    ]
+    const confirmCandidates = [
+      this.iosA11y('Confirm'),
+      this.iosA11y('Delete'),
+      this.iosA11y('OK'),
+      this.iosA11y('Yes'),
+      this.iosPredicate('label IN {"Confirm","Delete","OK","Yes"} OR name IN {"Confirm","Delete","OK","Yes"}'),
+    ]
+
+    for (let i = 0; i < 20; i++) {
+      const done = await this.addNewPriceAlertAnchorIOS.isDisplayed().catch(() => false)
+      if (done) break
+
+      const rowShown = await this.waitForAnyDisplayed(rowCandidates, 3000, 'Alert row (iOS)')
+        .then(() => true)
+        .catch(() => false)
+      if (!rowShown) break
+
+      await this.tapFirstDisplayed(rowCandidates, 'Alert row (iOS)')
+      await browser.pause(700)
+
+      const deleteVisible = await this.waitForAnyDisplayed(deleteCandidates, 8000, 'Delete button (iOS)')
+        .then(() => true)
+        .catch(() => false)
+      if (!deleteVisible) break
+
+      await this.tapFirstDisplayed(deleteCandidates, 'Delete button (iOS)')
+
+      const confirmShown = await this.waitForAnyDisplayed(confirmCandidates, 6000, 'Confirm delete (iOS)')
+        .then(() => true)
+        .catch(() => false)
+      if (confirmShown) {
+        await this.tapFirstDisplayed(confirmCandidates, 'Confirm delete (iOS)')
+      }
+
+      // Wait to be back on overview (Overview tab is always present; addNewPriceAlertAnchorIOS appears only when empty)
+      await this.overviewTabIOS.waitForExist({ timeout: 20000 })
+      await browser.pause(500)
+    }
+  }
 }
