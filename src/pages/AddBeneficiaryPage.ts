@@ -105,13 +105,13 @@ export default class AddBeneficiaryPage extends BasePage {
   private async ensureIndividualAccountIOS() {
     if (!browser.isIOS) return
 
-    await this.profilePickerUserNameLabelIOS.waitForDisplayed({ timeout: 15000 })
+    await this.profilePickerUserNameLabelIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.profilePickerUserNameLabelIOS)
 
-    await this.profilePickerIndividualItemIOS.waitForDisplayed({ timeout: 15000 })
+    await this.profilePickerIndividualItemIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.profilePickerIndividualItemIOS)
 
-    await this.profilePickerIndividualItemIOS.waitForDisplayed({ reverse: true, timeout: 15000 }).catch(() => {})
+    await this.profilePickerIndividualItemIOS.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
     await browser.pause(300)
   }
 
@@ -1169,7 +1169,7 @@ export default class AddBeneficiaryPage extends BasePage {
     // Check for springboard in parallel with the first accessibility search to save time.
     const shareAllBtn = $('-ios predicate string:label BEGINSWITH "Share All" OR name BEGINSWITH "Share All"')
     const [shownViaA11y, source] = await Promise.all([
-      shareAllBtn.waitForDisplayed({ timeout }).catch(() => false),
+      shareAllBtn.waitForExist({ timeout }).catch(() => false),
       browser.getPageSource().catch(() => ''),
     ])
 
@@ -1215,7 +1215,7 @@ export default class AddBeneficiaryPage extends BasePage {
     await this.dismissShareContactsSheetIOS()
 
     // Wait until home screen is stable before touching the tab bar
-    await this.homeRootIOS.waitForDisplayed({ timeout: 30000 }).catch(() => {})
+    await this.homeRootIOS.waitForExist({ timeout: 30000 }).catch(() => {})
     await browser.pause(500)
 
     await this.dismissShareContactsSheetIOS()
@@ -1236,26 +1236,26 @@ export default class AddBeneficiaryPage extends BasePage {
       await browser.pause(1000)
     }
     if (!payTapped) {
-      await this.payTabIOS.waitForDisplayed({ timeout: 10000 })
+      await this.payTabIOS.waitForExist({ timeout: 10000 })
       await this.tap(this.payTabIOS)
     }
 
     await this.dismissShareContactsSheetIOS()
 
-    const contactsShown = await this.contactsContinueBtnIOS.waitForDisplayed({ timeout: 4000 }).catch(() => false)
+    const contactsShown = await this.contactsContinueBtnIOS.waitForExist({ timeout: 4000 }).catch(() => false)
     if (contactsShown) {
       await this.tap(this.contactsContinueBtnIOS)
       await browser.pause(500)
     }
 
-    const addShown = await this.addBtnIOS.waitForDisplayed({ timeout: 10000 }).catch(() => false)
+    const addShown = await this.addBtnIOS.waitForExist({ timeout: 10000 }).catch(() => false)
     if (!addShown) {
       const contactsShared = await this.dismissShareContactsSheetIOS(5000)
       if (contactsShared) {
         await this.activateMoneybaseIOS()
       }
 
-      const payVisible = await this.payTabIOS.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+      const payVisible = await this.payTabIOS.waitForExist({ timeout: 5000 }).catch(() => false)
       if (payVisible) {
         await this.tap(this.payTabIOS)
         await browser.pause(500)
@@ -1266,22 +1266,22 @@ export default class AddBeneficiaryPage extends BasePage {
     // Bring Moneybase back before the final Add button wait, otherwise the XML only has SpringBoard nodes.
     await this.activateMoneybaseIOS()
 
-    const addReadyAfterForeground = await this.addBtnIOS.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+    const addReadyAfterForeground = await this.addBtnIOS.waitForExist({ timeout: 5000 }).catch(() => false)
     if (!addReadyAfterForeground) {
       await this.dismissShareContactsSheetIOS(5000)
       await this.activateMoneybaseIOS()
 
-      const payVisible = await this.payTabIOS.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+      const payVisible = await this.payTabIOS.waitForExist({ timeout: 5000 }).catch(() => false)
       if (payVisible) {
         await this.tap(this.payTabIOS)
         await browser.pause(500)
       }
     }
 
-    await this.addBtnIOS.waitForDisplayed({ timeout: 15000 })
+    await this.addBtnIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.addBtnIOS)
 
-    await this.addBeneficiaryBtnIOS.waitForDisplayed({ timeout: 15000 })
+    await this.addBeneficiaryBtnIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.addBeneficiaryBtnIOS)
   }
 
@@ -1293,7 +1293,7 @@ export default class AddBeneficiaryPage extends BasePage {
 
   async chooseAnotherPersonIOS() {
     if (!browser.isIOS) return
-    await this.anotherPersonCardIOS.waitForDisplayed({ timeout: 15000 })
+    await this.anotherPersonCardIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.anotherPersonCardIOS)
   }
 
@@ -1342,16 +1342,16 @@ export default class AddBeneficiaryPage extends BasePage {
   async continueFromCountrySelectionIOS() {
     if (!browser.isIOS) return
 
-    await this.countryPickerIOS.waitForDisplayed({ timeout: 15000 })
+    await this.countryPickerIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.countryPickerIOS)
 
-    await this.countrySearchInputIOS.waitForDisplayed({ timeout: 15000 })
+    await this.countrySearchInputIOS.waitForExist({ timeout: 15000 })
     await this.type(this.countrySearchInputIOS, 'Malta')
 
-    await this.monacoOptionIOS.waitForDisplayed({ timeout: 15000 })
+    await this.monacoOptionIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.monacoOptionIOS)
 
-    await this.countryContinueBtnIOS.waitForDisplayed({ timeout: 15000 })
+    await this.countryContinueBtnIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.countryContinueBtnIOS)
   }
 
@@ -1394,13 +1394,13 @@ export default class AddBeneficiaryPage extends BasePage {
   }) {
     if (!browser.isIOS) return
 
-    await this.nameInputIOS.waitForDisplayed({ timeout: 20000 })
+    await this.nameInputIOS.waitForExist({ timeout: 20000 })
     await this.type(this.nameInputIOS, params.name)
 
-    await this.surnameInputIOS.waitForDisplayed({ timeout: 15000 })
+    await this.surnameInputIOS.waitForExist({ timeout: 15000 })
     await this.type(this.surnameInputIOS, params.surname)
 
-    await this.ibanInputIOS.waitForDisplayed({ timeout: 15000 })
+    await this.ibanInputIOS.waitForExist({ timeout: 15000 })
     await this.type(this.ibanInputIOS, params.iban)
 
     if (params.bic) {
@@ -1408,7 +1408,7 @@ export default class AddBeneficiaryPage extends BasePage {
     }
 
     if (params.friendName) {
-      const shown = await this.friendNameInputIOS.waitForDisplayed({ timeout: 4000 }).catch(() => false)
+      const shown = await this.friendNameInputIOS.waitForExist({ timeout: 4000 }).catch(() => false)
       if (shown) await this.type(this.friendNameInputIOS, params.friendName)
     }
   }
@@ -1986,7 +1986,7 @@ export default class AddBeneficiaryPage extends BasePage {
 
   async continueFromDetailsIOS() {
     if (!browser.isIOS) return
-    await this.detailsContinueBtnIOS.waitForDisplayed({ timeout: 15000 })
+    await this.detailsContinueBtnIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.detailsContinueBtnIOS)
   }
 
@@ -1996,10 +1996,10 @@ export default class AddBeneficiaryPage extends BasePage {
     const confirmText = $('~Confirm')
     const reviewTitle = $('~Review Beneficiary')
 
-    const reviewShown = await reviewTitle.waitForDisplayed({ timeout: 30000 }).catch(() => false)
+    const reviewShown = await reviewTitle.waitForExist({ timeout: 30000 }).catch(() => false)
     if (!reviewShown) return
 
-    await confirmBtn.waitForDisplayed({
+    await confirmBtn.waitForExist({
       timeout: 30000,
       timeoutMsg: '[AddBeneficiary][iOS] review_button_confirm did not appear on Review Beneficiary screen',
     })
@@ -2057,7 +2057,8 @@ export default class AddBeneficiaryPage extends BasePage {
   async waitForOtpAndSubmitIOS(expectedIban?: string) {
     if (!browser.isIOS) return
 
-    const reviewStillShown = await $('~Review Beneficiary').isDisplayed().catch(() => false)
+    const reviewEl = $('~Review Beneficiary')
+    const reviewStillShown = await reviewEl.isDisplayed().catch(() => false) || await reviewEl.isExisting().catch(() => false)
     if (reviewStillShown) {
       console.warn('[AddBeneficiary][iOS] Review screen still shown before OTP wait — tapping Confirm again')
       await this.confirmReviewBeneficiaryIOS()
