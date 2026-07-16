@@ -251,14 +251,14 @@ class BankTransferSepaIndividualPage extends BasePage {
   private async ensureIndividualAccountIOS() {
     if (!browser.isIOS) return
 
-    await this.profilePickerUserNameLabelIOS.waitForDisplayed({ timeout: 15000 })
+    await this.profilePickerUserNameLabelIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.profilePickerUserNameLabelIOS)
 
-    await this.profilePickerIndividualItemIOS.waitForDisplayed({ timeout: 15000 })
+    await this.profilePickerIndividualItemIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.profilePickerIndividualItemIOS)
 
-    await this.profilePickerIndividualItemIOS.waitForDisplayed({ reverse: true, timeout: 15000 }).catch(() => {})
-    await this.homeRootIOS.waitForDisplayed({ timeout: 30000 }).catch(() => {})
+    await this.profilePickerIndividualItemIOS.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
+    await this.homeRootIOS.waitForExist({ timeout: 30000 }).catch(() => {})
     await browser.pause(300)
   }
 
@@ -280,7 +280,7 @@ class BankTransferSepaIndividualPage extends BasePage {
 
     await browser.hideKeyboard().catch(() => {})
 
-    const shown = await this.reviewPaymentBtnIOS.waitForDisplayed({ timeout: 3000 }).catch(() => false)
+    const shown = await this.reviewPaymentBtnIOS.waitForExist({ timeout: 3000 }).catch(() => false)
     if (!shown) return
 
     await browser
@@ -303,11 +303,11 @@ class BankTransferSepaIndividualPage extends BasePage {
       await browser.pause(250)
     }
 
-    await this.txDetailsCloseIOS.waitForDisplayed({ timeout: 3000 })
+    await this.txDetailsCloseIOS.waitForExist({ timeout: 3000 })
   }
 
   private async dragSliderToRightIOS() {
-    await this.sliderPayIconIOS.waitForDisplayed({ timeout: 20000 })
+    await this.sliderPayIconIOS.waitForExist({ timeout: 20000 })
 
     const icon = await this.sliderPayIconIOS
     const loc = await icon.getLocation()
@@ -352,7 +352,7 @@ class BankTransferSepaIndividualPage extends BasePage {
 
   private async exitToHomeAfterPaymentIOS() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
-    const txShown = await this.txDetailsCloseIOS.waitForDisplayed({ timeout: 15000 }).catch(() => false)
+    const txShown = await this.txDetailsCloseIOS.waitForExist({ timeout: 15000 }).catch(() => false)
     if (txShown) {
       await this.tap(this.txDetailsCloseIOS)
       await browser.pause(500)
@@ -371,7 +371,7 @@ class BankTransferSepaIndividualPage extends BasePage {
         await browser.pause(300)
       }
     }
-    await this.homeTabIOS.waitForDisplayed({ timeout: 8000 })
+    await this.homeTabIOS.waitForExist({ timeout: 8000 })
     await this.tap(this.homeTabIOS)
   }
 
@@ -852,19 +852,19 @@ class BankTransferSepaIndividualPage extends BasePage {
     if (!browser.isIOS) return
 
     await this.ensureIndividualAccountIOS()
-    await this.payTabIOS.waitForDisplayed({ timeout: 20000 })
+    await this.payTabIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.payTabIOS)
     await this.dismissContactsPermissionIOS()
 
-    await this.payAddBtnIOS.waitForDisplayed({ timeout: 15000 })
+    await this.payAddBtnIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.payAddBtnIOS)
 
     await this.openSepaBeneficiaryIOS()
 
-    await this.beneficiaryPayBtnIOS.waitForDisplayed({ timeout: 20000 })
+    await this.beneficiaryPayBtnIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnIOS)
 
-    await this.amountInputIOS.waitForDisplayed({ timeout: 20000 })
+    await this.amountInputIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.amountInputIOS)
     await this.amountInputIOS.clearValue().catch(() => {})
     await this.amountInputIOS.setValue(String(amount))
@@ -874,7 +874,7 @@ class BankTransferSepaIndividualPage extends BasePage {
     await this.ensureSliderReadyIOS()
     await this.dragSliderToRightIOS()
 
-    await this.txDetailsCloseIOS.waitForDisplayed({ timeout: 60000 })
+    await this.txDetailsCloseIOS.waitForExist({ timeout: 60000 })
     await this.exitToHomeAfterPaymentIOS()
     await this.waitForMinusAmountHomeIOS(amount, 60000)
   }
