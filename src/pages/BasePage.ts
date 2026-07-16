@@ -368,7 +368,7 @@ export default class BasePage {
   protected async dismissContactsPermissionIOS() {
     if (!browser.isIOS) return
     const permissionImg = $('~ic_contacts_permission')
-    const shown = await permissionImg.waitForExist({ timeout: 3000 }).then(() => true).catch(() => false)
+    const shown = await permissionImg.waitForExist({ timeout: 4000 }).then(() => true).catch(() => false)
     if (!shown) return
 
     console.warn('[iOS] Contacts permission screen detected — tapping Continue')
