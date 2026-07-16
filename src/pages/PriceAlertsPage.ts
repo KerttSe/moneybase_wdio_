@@ -880,7 +880,7 @@ export default class PriceAlertsPage extends BasePage {
     const alreadyOnAlerts = await this.priceAlertsEntryIOS.isDisplayed().catch(() => false)
     if (alreadyOnAlerts) return
 
-    await this.investTabIOS.waitForDisplayed({ timeout: 20000 })
+    await this.investTabIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.investTabIOS)
 
     // iOS expected flow (per provided steps): after tapping Invest we land directly on
@@ -1092,7 +1092,7 @@ export default class PriceAlertsPage extends BasePage {
     ]
 
     await this.waitForAnyDisplayed(summaryCandidates, 15000, 'Alert summary text (iOS)')
-    await this.backBtnIOS.waitForDisplayed({ timeout: 15000 })
+    await this.backBtnIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.backBtnIOS)
     await browser.pause(600)
 
@@ -1634,7 +1634,7 @@ export default class PriceAlertsPage extends BasePage {
       await this.tapFirstDisplayed(confirmCandidates, 'Confirm delete (iOS)')
     }
 
-    await this.addNewPriceAlertAnchorIOS.waitForDisplayed({ timeout: 20000 })
+    await this.addNewPriceAlertAnchorIOS.waitForExist({ timeout: 20000 })
   }
 
   public async cleanupAllAlertsIOS() {

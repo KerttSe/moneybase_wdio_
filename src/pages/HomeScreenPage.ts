@@ -295,13 +295,13 @@ class HomeScreenPage extends BasePage {
   private async ensureIndividualAccountIOS() {
     if (!browser.isIOS) return
 
-    await this.profilePickerUserNameLabelIOS.waitForDisplayed({ timeout: 15000 })
+    await this.profilePickerUserNameLabelIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.profilePickerUserNameLabelIOS)
 
-    await this.profilePickerIndividualItemIOS.waitForDisplayed({ timeout: 15000 })
+    await this.profilePickerIndividualItemIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.profilePickerIndividualItemIOS)
 
-    await this.profilePickerIndividualItemIOS.waitForDisplayed({ reverse: true, timeout: 15000 }).catch(() => {})
+    await this.profilePickerIndividualItemIOS.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
     await browser.pause(300)
   }
 
@@ -332,7 +332,7 @@ class HomeScreenPage extends BasePage {
 
   private async openIOSSubAccountsSheet() {
     await this.waitForHomeLoaded()
-    await this.profilePickerUserNameLabelIOS.waitForDisplayed({ timeout: 20000 })
+    await this.profilePickerUserNameLabelIOS.waitForExist({ timeout: 20000 })
 
     const tapAttempts = [
       async () => this.tap(this.profilePickerUserNameLabelIOS),
@@ -349,17 +349,17 @@ class HomeScreenPage extends BasePage {
 
     for (const attempt of tapAttempts) {
       await attempt().catch(() => {})
-      const opened = await this.subAccountsTitleIOS.waitForDisplayed({ timeout: 3000 }).catch(() => false)
+      const opened = await this.subAccountsTitleIOS.waitForExist({ timeout: 3000 }).catch(() => false)
       if (opened) return
     }
 
-    await this.subAccountsTitleIOS.waitForDisplayed({ timeout: 15000 })
+    await this.subAccountsTitleIOS.waitForExist({ timeout: 15000 })
   }
 
   private async selectIOSSubAccount(item: WdioEl) {
     await item.waitForDisplayed({ timeout: 15000 })
     await this.tap(item)
-    await this.subAccountsTitleIOS.waitForDisplayed({ reverse: true, timeout: 15000 }).catch(() => {})
+    await this.subAccountsTitleIOS.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
     await browser.pause(300)
   }
 
