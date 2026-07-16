@@ -1610,7 +1610,8 @@ export default class PriceAlertsPage extends BasePage {
     }
 
     // Prefer tapping the condition text if it exists; otherwise tap the first matching row candidate.
-    const conditionShown = await conditionBeginsWith.isDisplayed().catch(() => false)
+    const conditionShown = await conditionBeginsWith.isDisplayed().catch(() => false) ||
+      await conditionBeginsWith.isExisting().catch(() => false)
     if (conditionShown) {
       await this.tap(conditionBeginsWith)
     } else {
