@@ -164,7 +164,7 @@ export default class WatchlistPage extends BasePage {
   }
 
   private async tapIOSDisplayed(el: ReturnType<typeof $>, timeout = 10000) {
-    await el.waitForDisplayed({ timeout })
+    await el.waitForExist({ timeout })
     const loc = await el.getLocation()
     const size = await el.getSize()
     const x = Math.round(loc.x + size.width / 2)
@@ -198,7 +198,7 @@ export default class WatchlistPage extends BasePage {
     await browser.pause(700)
 
     const toastShown = await this.watchlistUpdatedToastIOS
-      .waitForDisplayed({ timeout: 1500 })
+      .waitForExist({ timeout: 1500 })
       .then(() => true)
       .catch(() => false)
     if (toastShown) return

@@ -498,7 +498,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private async tapElementCenter(element: ChainablePromiseElement) {
-    await element.waitForDisplayed({ timeout: 5000 })
+    await element.waitForExist({ timeout: 5000 })
 
     const location = await element.getLocation()
     const size = await element.getSize()
@@ -1678,7 +1678,7 @@ export default class OnboardingPage extends BasePage {
 
   private async closeVerificationRequiredScreen() {
     if (browser.isIOS) {
-      await this.verificationRequiredCloseBtnIOS.waitForDisplayed({ timeout: 10000 })
+      await this.verificationRequiredCloseBtnIOS.waitForExist({ timeout: 10000 })
       await this.tapElementCenter(this.verificationRequiredCloseBtnIOS)
     } else {
       await this.verificationRequiredBackBtn.waitForDisplayed({ timeout: 10000 })
