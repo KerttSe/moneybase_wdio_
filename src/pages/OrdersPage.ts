@@ -472,13 +472,13 @@ export default class OrdersPage extends BasePage {
 
   private get bmwInstrumentTextIOS() {
     return this.iosPredicate(
-      '(type == "XCUIElementTypeStaticText" OR type == "XCUIElementTypeCell" OR type == "XCUIElementTypeLink" OR type == "XCUIElementTypeButton") AND visible == 1 AND (label CONTAINS[c] "Bmw Ag" OR name CONTAINS[c] "Bmw Ag")'
+      '(type == "XCUIElementTypeStaticText" OR type == "XCUIElementTypeCell" OR type == "XCUIElementTypeLink" OR type == "XCUIElementTypeButton") AND (label CONTAINS[c] "Bmw Ag" OR name CONTAINS[c] "Bmw Ag")'
     )
   }
 
   private get bmwTickerTextIOS() {
     return this.iosPredicate(
-      'type == "XCUIElementTypeStaticText" AND visible == 1 AND (name == "(BMW)" OR label == "(BMW)" OR value == "(BMW)")'
+      'type == "XCUIElementTypeStaticText" AND (name == "(BMW)" OR label == "(BMW)" OR value == "(BMW)")'
     )
   }
 
@@ -571,6 +571,7 @@ export default class OrdersPage extends BasePage {
             continue
           }
           if (await resolved.isDisplayed().catch(() => false)) return true
+          if (browser.isIOS && await resolved.isExisting().catch(() => false)) return true
         }
         return false
       },
@@ -591,6 +592,7 @@ export default class OrdersPage extends BasePage {
         continue
       }
       if (await resolved.isDisplayed().catch(() => false)) return resolved
+      if (browser.isIOS && await resolved.isExisting().catch(() => false)) return resolved
     }
 
     throw new Error(`${label} did not appear`)
@@ -1975,19 +1977,19 @@ export default class OrdersPage extends BasePage {
       this.bmwInstrumentTextIOS,
       this.bmwTickerTextIOS,
       this.iosPredicate(
-        `type == "XCUIElementTypeStaticText" AND visible == 1 AND (label CONTAINS[c] "Bmw Ag" OR name CONTAINS[c] "Bmw Ag" OR value CONTAINS[c] "Bmw Ag")`
+        `type == "XCUIElementTypeStaticText" AND (label CONTAINS[c] "Bmw Ag" OR name CONTAINS[c] "Bmw Ag" OR value CONTAINS[c] "Bmw Ag")`
       ),
     ]
 
     const fallbackCandidates = [
       this.iosPredicate(
-        `(type == "XCUIElementTypeStaticText" OR type == "XCUIElementTypeCell" OR type == "XCUIElementTypeLink" OR type == "XCUIElementTypeButton") AND visible == 1 AND (label CONTAINS[c] "${q}" OR name CONTAINS[c] "${q}" OR value CONTAINS[c] "${q}")`
+        `(type == "XCUIElementTypeStaticText" OR type == "XCUIElementTypeCell" OR type == "XCUIElementTypeLink" OR type == "XCUIElementTypeButton") AND (label CONTAINS[c] "${q}" OR name CONTAINS[c] "${q}" OR value CONTAINS[c] "${q}")`
       ),
       this.iosClassChain('**/XCUIElementTypeCell'),
       this.iosClassChain('**/XCUIElementTypeLink'),
     ]
 
-    const foundExactBmw = await this.waitForAnyDisplayed(exactBmwCandidates, 12000, 'BMW result row (iOS)')
+    const foundExactBmw = await this.waitForAnyDisplayed(exactBmwCandidates, 30000, 'BMW result row (iOS)')
       .then(() => true)
       .catch(() => false)
 

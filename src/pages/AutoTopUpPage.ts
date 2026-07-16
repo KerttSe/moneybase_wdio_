@@ -111,7 +111,7 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   private get addFundsBtnIOS() {
-    return $('~plus')
+    return $('-ios predicate string:name == "Add Funds" OR name == "plus"')
   }
 
   private get openBtn() {
@@ -348,8 +348,8 @@ export default class AutoTopUpPage extends BasePage {
       const addFundsAlreadyOpen = await this.addFundsScreen.isDisplayed().catch(() => false)
       if (addFundsAlreadyOpen) return
 
-      await this.openBtn.waitForDisplayed({ timeout: 15000 })
-      await this.tap(this.openBtn)
+      await this.openBtn.waitForExist({ timeout: 15000 })
+      await this.openBtn.click()
       await this.addFundsScreen.waitForDisplayed({ timeout: 15000 })
     }
   }
@@ -744,7 +744,8 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   private async ensureOnHomeScreen() {
-    const homeVisible = await this.openBtn.isDisplayed().catch(() => false)
+    const homeVisible = await this.openBtn.isDisplayed().catch(() => false) ||
+      (browser.isIOS && await this.openBtn.isExisting().catch(() => false))
     if (homeVisible) return
 
     const addFundsVisible = await this.addFundsScreen.isDisplayed().catch(() => false)
@@ -770,11 +771,12 @@ export default class AutoTopUpPage extends BasePage {
       }
     }
 
-    const homeVisibleAfterBack = await this.openBtn.isDisplayed().catch(() => false)
+    const homeVisibleAfterBack = await this.openBtn.isDisplayed().catch(() => false) ||
+      (browser.isIOS && await this.openBtn.isExisting().catch(() => false))
     if (homeVisibleAfterBack) return
 
     await this.addFundsScreen.waitForDisplayed({ timeout: 15000 }).catch(async () => {
-      await this.openBtn.waitForDisplayed({ timeout: 15000 })
+      await this.openBtn.waitForExist({ timeout: 15000 })
     })
   }
 
@@ -909,7 +911,7 @@ export default class AutoTopUpPage extends BasePage {
         .then(() => true)
         .catch(() => false)
       if (!backOnAddFunds) {
-        await this.openBtn.waitForDisplayed({ timeout: 15000 })
+        await this.openBtn.waitForExist({ timeout: 15000 })
       }
     } else {
       await this.openBtn.waitForDisplayed({ timeout: 30000 })

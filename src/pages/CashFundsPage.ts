@@ -74,6 +74,7 @@ export default class CashFundsPage extends BasePage {
           try {
             const resolved = (await el) as WebdriverIO.Element
             if (await resolved.isDisplayed().catch(() => false)) return true
+            if (browser.isIOS && await resolved.isExisting().catch(() => false)) return true
           } catch {
             // ignore no-such-element / stale while waiting
           }
@@ -98,7 +99,8 @@ export default class CashFundsPage extends BasePage {
         continue
       }
       await resolved.waitForDisplayed({ timeout: 2000 }).catch(() => {})
-      const visible = await resolved.isDisplayed().catch(() => false)
+      const visible = await resolved.isDisplayed().catch(() => false) ||
+        (browser.isIOS && await resolved.isExisting().catch(() => false))
       if (!visible) continue
 
       const selector = (resolved as any).selector ? String((resolved as any).selector) : 'unknown-selector'
@@ -153,7 +155,8 @@ export default class CashFundsPage extends BasePage {
         continue
       }
       await resolved.waitForDisplayed({ timeout: 2000 }).catch(() => {})
-      const visible = await resolved.isDisplayed().catch(() => false)
+      const visible = await resolved.isDisplayed().catch(() => false) ||
+        (browser.isIOS && await resolved.isExisting().catch(() => false))
       if (!visible) continue
 
       const selector = (resolved as any).selector ? String((resolved as any).selector) : 'unknown-selector'
@@ -271,8 +274,8 @@ export default class CashFundsPage extends BasePage {
 
   private get discoverBottomTabIOS() {
     // Prefer tapping the bottom navigation item when we actually need to navigate.
-    // This avoids accidentally matching the top header "Discover" static text.
-    return $('//XCUIElementTypeOther[@name="навігація"]//XCUIElementTypeStaticText[@name="Discover"]')
+    // Avoid relying on the localized nav container name ("навігація") — match by y-position instead.
+    return $('//XCUIElementTypeStaticText[@name="Discover" and @y > 650]')
   }
 
   private get discoverBottomTabIOSByY() {

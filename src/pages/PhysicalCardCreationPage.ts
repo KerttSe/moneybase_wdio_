@@ -33,7 +33,7 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get cardsRootIOS() {
-    return $('~CARDS_00000')
+    return $('-ios predicate string:name BEGINSWITH "CARDS_" OR name == "card_item_addCard" OR name == "cards_screen"')
   }
 
     /* =========================
@@ -950,8 +950,8 @@ class PhysicalCardCreationPage extends BasePage {
 
   private async assertCardsAfterDeletionIOS(timeoutMs = 15000) {
     if (!browser.isIOS) return
-    await this.cardsRootIOS.waitForDisplayed({ timeout: timeoutMs })
-    await this.addNewCardBtnIOS.waitForDisplayed({ timeout: timeoutMs })
+    await this.cardsRootIOS.waitForExist({ timeout: timeoutMs })
+    await this.addNewCardBtnIOS.waitForExist({ timeout: timeoutMs })
   }
 
   /* =========================

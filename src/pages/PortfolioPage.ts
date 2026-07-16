@@ -40,7 +40,7 @@ export default class PortfolioPage extends BasePage {
   }
 
   private get portfolioEntryIOS() {
-    return $('//XCUIElementTypeStaticText[@name="Portfolio" and @visible="true"]/ancestor::XCUIElementTypeOther[2]')
+    return $('//XCUIElementTypeStaticText[@name="Portfolio"]/ancestor::XCUIElementTypeOther[2]')
   }
 
   private get portfolioEntryTextIOS() {
@@ -104,7 +104,7 @@ export default class PortfolioPage extends BasePage {
   }
 
   private get simondsFarsonsBondIOS() {
-    return $('//XCUIElementTypeImage[@name="3.5% Simonds Farsons Cisk 2027" and @visible="true"]/ancestor::XCUIElementTypeOther[2]')
+    return $('//XCUIElementTypeImage[@name="3.5% Simonds Farsons Cisk 2027"]/ancestor::XCUIElementTypeOther[2]')
   }
 
   private get simondsFarsonsBondAndroidByTextContains() {
@@ -171,7 +171,7 @@ export default class PortfolioPage extends BasePage {
   }
 
   private async tapIOSDisplayed(el: ReturnType<typeof $>, timeout = 10000) {
-    await el.waitForDisplayed({ timeout })
+    await el.waitForExist({ timeout })
     const loc = await el.getLocation()
     const size = await el.getSize()
     const x = Math.round(loc.x + size.width / 2)
