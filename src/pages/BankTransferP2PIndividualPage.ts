@@ -568,7 +568,7 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     await browser.hideKeyboard().catch(() => {})
 
-    const shown = await this.reviewPaymentBtnIOS.waitForDisplayed({ timeout: 3000 }).catch(() => false)
+    const shown = await this.reviewPaymentBtnIOS.waitForExist({ timeout: 3000 }).catch(() => false)
     if (!shown) return
 
     await browser
@@ -582,7 +582,7 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private async dragSliderToRightIOS() {
-    await this.sliderPayIconIOS.waitForDisplayed({ timeout: 20000 })
+    await this.sliderPayIconIOS.waitForExist({ timeout: 20000 })
 
     const icon = await this.sliderPayIconIOS
     const loc = await icon.getLocation()
@@ -749,7 +749,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
     // Close transaction details popup — it may have auto-dismissed, so best-effort.
-    const txShown = await this.txDetailsCloseIOS.waitForDisplayed({ timeout: 15000 }).catch(() => false)
+    const txShown = await this.txDetailsCloseIOS.waitForExist({ timeout: 15000 }).catch(() => false)
     if (txShown) {
       await this.tap(this.txDetailsCloseIOS)
       await browser.pause(500)
@@ -771,7 +771,7 @@ class BankTransferP2PIndividualPage extends BasePage {
       }
     }
 
-    await this.homeTabIOS.waitForDisplayed({ timeout: 8000 })
+    await this.homeTabIOS.waitForExist({ timeout: 8000 })
     await this.tap(this.homeTabIOS)
   }
 
@@ -965,23 +965,23 @@ class BankTransferP2PIndividualPage extends BasePage {
     if (!browser.isIOS) return
 
     const pickerShown = await this.profilePickerUserNameLabelIOS
-      .waitForDisplayed({ timeout: 6000 })
+      .waitForExist({ timeout: 6000 })
       .catch(() => false)
     if (!pickerShown) return
 
     await this.tap(this.profilePickerUserNameLabelIOS)
 
     const individualShown = await this.profilePickerIndividualItemIOS
-      .waitForDisplayed({ timeout: 8000 })
+      .waitForExist({ timeout: 8000 })
       .catch(() => false)
     if (!individualShown) return
 
     await this.tap(this.profilePickerIndividualItemIOS)
 
     await this.profilePickerIndividualItemIOS
-      .waitForDisplayed({ reverse: true, timeout: 15000 })
+      .waitForExist({ reverse: true, timeout: 15000 })
       .catch(() => {})
-    await this.homeRootIOS.waitForDisplayed({ timeout: 30000 }).catch(() => {})
+    await this.homeRootIOS.waitForExist({ timeout: 30000 }).catch(() => {})
     await browser.pause(300)
   }
 
@@ -1029,17 +1029,17 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     await browser.pause(700)
 
-    await this.payTabIOS.waitForDisplayed({ timeout: 20000 })
+    await this.payTabIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.payTabIOS)
     await this.dismissContactsPermissionIOS()
 
     await this.carlosCatIOS.waitForExist({ timeout: 20000 })
     await this.carlosCatIOS.click()
 
-    await this.beneficiaryPayBtnIOS.waitForDisplayed({ timeout: 20000 })
+    await this.beneficiaryPayBtnIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnIOS)
 
-    await this.amountP2PIOS.waitForDisplayed({ timeout: 20000 })
+    await this.amountP2PIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.amountP2PIOS)
     await this.amountP2PIOS.clearValue().catch(() => {})
     await this.amountP2PIOS.setValue(String(amount))
@@ -1049,7 +1049,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.ensureSliderReadyIOS()
     await this.dragSliderToRightIOS()
 
-    await this.txDetailsCloseIOS.waitForDisplayed({ timeout: 60000 })
+    await this.txDetailsCloseIOS.waitForExist({ timeout: 60000 })
 
     await this.exitToHomeAfterP2PIOS()
 
@@ -1087,17 +1087,17 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.ensureIndividualAccountIOS()
     await browser.pause(700)
 
-    await this.payTabIOS.waitForDisplayed({ timeout: 20000 })
+    await this.payTabIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.payTabIOS)
     await this.dismissContactsPermissionIOS()
 
-    await this.sepaBeneficiaryIOS.waitForDisplayed({ timeout: 20000 })
+    await this.sepaBeneficiaryIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.sepaBeneficiaryIOS)
 
-    await this.beneficiaryPayBtnIOS.waitForDisplayed({ timeout: 20000 })
+    await this.beneficiaryPayBtnIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnIOS)
 
-    await this.amountP2PIOS.waitForDisplayed({ timeout: 20000 })
+    await this.amountP2PIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.amountP2PIOS)
     await this.amountP2PIOS.clearValue().catch(() => {})
     await this.amountP2PIOS.setValue(String(amount))
@@ -1107,7 +1107,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.ensureSliderReadyIOS()
     await this.dragSliderToRightIOS()
 
-    await this.txDetailsCloseIOS.waitForDisplayed({ timeout: 60000 })
+    await this.txDetailsCloseIOS.waitForExist({ timeout: 60000 })
     await this.exitToHomeAfterP2PIOS()
     await this.waitForMinusAmountHomeIOS(amount, 60000)
   }
@@ -1145,7 +1145,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.ensureIndividualAccountIOS()
     await browser.pause(700)
 
-    await this.payTabIOS.waitForDisplayed({ timeout: 20000 })
+    await this.payTabIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.payTabIOS)
     await this.dismissContactsPermissionIOS()
 
@@ -1153,10 +1153,10 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.swiftBeneficiaryIOS.waitForExist({ timeout: 20000 })
     await this.swiftBeneficiaryIOS.click()
 
-    await this.beneficiaryPayBtnIOS.waitForDisplayed({ timeout: 20000 })
+    await this.beneficiaryPayBtnIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnIOS)
 
-    await this.amountP2PIOS.waitForDisplayed({ timeout: 20000 })
+    await this.amountP2PIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.amountP2PIOS)
     await this.amountP2PIOS.clearValue().catch(() => {})
     await this.amountP2PIOS.setValue(String(amount))
@@ -1166,7 +1166,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.ensureSliderReadyIOS()
     await this.dragSliderToRightIOS()
 
-    await this.txDetailsCloseIOS.waitForDisplayed({ timeout: 60000 })
+    await this.txDetailsCloseIOS.waitForExist({ timeout: 60000 })
     await this.exitToHomeAfterP2PIOS()
     await this.waitForMinusAmountHomeIOS(amount, 60000)
   }

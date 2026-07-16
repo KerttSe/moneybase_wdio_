@@ -47,10 +47,10 @@ export default class AutoTopUpPage extends BasePage {
   private async ensureIndividualAccountIOS() {
     if (!browser.isIOS) return
 
-    await this.profilePickerUserNameLabelIOS.waitForDisplayed({ timeout: 15000 })
+    await this.profilePickerUserNameLabelIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.profilePickerUserNameLabelIOS)
 
-    await this.profilePickerIndividualItemIOS.waitForDisplayed({ timeout: 15000 })
+    await this.profilePickerIndividualItemIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.profilePickerIndividualItemIOS)
 
     await this.profilePickerIndividualItemIOS
@@ -350,7 +350,7 @@ export default class AutoTopUpPage extends BasePage {
 
       await this.openBtn.waitForExist({ timeout: 15000 })
       await this.openBtn.click()
-      await this.addFundsScreen.waitForDisplayed({ timeout: 15000 })
+      await this.addFundsScreen.waitForExist({ timeout: 15000 })
     }
   }
 

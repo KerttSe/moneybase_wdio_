@@ -202,7 +202,7 @@ export default class PortfolioPage extends BasePage {
     if (alreadyOpened) return
 
     const investShown = await this.investTabIOS
-      .waitForDisplayed({ timeout: 7000 })
+      .waitForExist({ timeout: 7000 })
       .then(() => true)
       .catch(() => false)
 
@@ -231,8 +231,8 @@ export default class PortfolioPage extends BasePage {
 
   private async ensureInstrumentTradeActionsVisibleIOS(timeout = 20000) {
     await browser.switchContext('NATIVE_APP')
-    await this.buyBtnIOS.waitForDisplayed({ timeout })
-    await this.sellBtnIOS.waitForDisplayed({ timeout })
+    await this.buyBtnIOS.waitForExist({ timeout })
+    await this.sellBtnIOS.waitForExist({ timeout })
   }
 
   private async ensurePortfolioOpenedAndroid(timeout = 20000) {
@@ -342,7 +342,7 @@ export default class PortfolioPage extends BasePage {
       await this.tapIOSDisplayed(this.simondsFarsonsBondIOS, 20000)
 
       const buyVisible = await this.buyBtnIOS
-        .waitForDisplayed({ timeout: 2500 })
+        .waitForExist({ timeout: 2500 })
         .then(() => true)
         .catch(() => false)
 

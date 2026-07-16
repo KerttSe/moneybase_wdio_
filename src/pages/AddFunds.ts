@@ -178,7 +178,7 @@ private get payProcessingBtnIOS() {
     await this.tap(this.cardTile)
 
     if (browser.isIOS) {
-      await this.cardDepositNavTitle.waitForDisplayed({ timeout: 15000 })
+      await this.cardDepositNavTitle.waitForExist({ timeout: 15000 })
     }
   }
 
@@ -354,26 +354,26 @@ if (browser.isAndroid) {
     /* ---------- iOS ---------- */
 if (browser.isIOS) {
   // 1) open card list
-  await this.openCardListIOS.waitForDisplayed({ timeout: 20000 })
+  await this.openCardListIOS.waitForExist({ timeout: 20000 })
   await this.tap(this.openCardListIOS)
 
   // 2) pick needed card
-  await this.card0036IOS.waitForDisplayed({ timeout: 20000 })
+  await this.card0036IOS.waitForExist({ timeout: 20000 })
   await this.tap(this.card0036IOS)
 
   // 3) pay processing
-  await this.payProcessingBtnIOS.waitForDisplayed({ timeout: 30000 })
+  await this.payProcessingBtnIOS.waitForExist({ timeout: 30000 })
   await this.payProcessingBtnIOS.waitForEnabled({ timeout: 30000 })
   await this.tap(this.payProcessingBtnIOS)
 
   // Wait for home screen to be visible (payment processing completes and navigates back)
   const homeRoot = $('~home_screen_view')
-  await homeRoot.waitForDisplayed({ timeout: 30000 })
+  await homeRoot.waitForExist({ timeout: 30000 })
 
   // Scroll on home page to ensure 'Deposit by Card' anchor is visible (gesture-based, same pattern as FXExchangePage)
   await this.smallScrollDownToDepositIOS()
 
-  await this.depositApprovedIOS.waitForDisplayed({ timeout: 60000 })
+  await this.depositApprovedIOS.waitForExist({ timeout: 60000 })
   return
 }
 

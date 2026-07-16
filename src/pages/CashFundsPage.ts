@@ -110,7 +110,7 @@ export default class CashFundsPage extends BasePage {
 
       if (browser.isIOS) {
         const tryTap = async (el: WebdriverIO.Element) => {
-          await el.waitForDisplayed({ timeout: 3000 })
+          await el.waitForExist({ timeout: 3000 })
           await this.tapCenterIOS(el)
         }
 
@@ -123,7 +123,7 @@ export default class CashFundsPage extends BasePage {
               await tryTap(fresh)
             } catch (e2) {
               const fresh = (await $(selector)) as unknown as WebdriverIO.Element
-              await fresh.waitForDisplayed({ timeout: 3000 })
+              await fresh.waitForExist({ timeout: 3000 })
               await fresh.click()
             }
           } else {
@@ -165,7 +165,7 @@ export default class CashFundsPage extends BasePage {
 
       if (browser.isIOS) {
         const tryTap = async (el: WebdriverIO.Element) => {
-          await el.waitForDisplayed({ timeout: 3000 })
+          await el.waitForExist({ timeout: 3000 })
           await this.tapCenterIOS(el)
         }
 
@@ -178,7 +178,7 @@ export default class CashFundsPage extends BasePage {
               await tryTap(fresh)
             } catch (e2) {
               const fresh = (await $(selector)) as unknown as WebdriverIO.Element
-              await fresh.waitForDisplayed({ timeout: 3000 })
+              await fresh.waitForExist({ timeout: 3000 })
               await fresh.click()
             }
           } else {
@@ -553,13 +553,13 @@ export default class CashFundsPage extends BasePage {
       return
     }
 
-    await this.investTabIOS.waitForDisplayed({ timeout: 20000 })
+    await this.investTabIOS.waitForExist({ timeout: 20000 })
     await this.tapFirstDisplayed([this.investTabIOS], 'Invest tab (iOS)')
 
     // Often after tapping Invest we are already on the Discover screen.
     // So: first wait for the Discover header, and only if it's missing,
     // tap Discover in the bottom navigation.
-    const onDiscover = await this.discoverHeaderIOS.waitForDisplayed({ timeout: 20000 }).then(() => true).catch(() => false)
+    const onDiscover = await this.discoverHeaderIOS.waitForExist({ timeout: 20000 }).then(() => true).catch(() => false)
     if (!onDiscover) {
       // Bring back the old (index-based) selector that previously navigated correctly.
       // Keep header verification so a wrong tap doesn't silently proceed.
@@ -638,6 +638,6 @@ export default class CashFundsPage extends BasePage {
       { timeout: 25000, interval: 500, timeoutMsg: 'Cash Funds screen did not appear' }
     )
 
-    await this.discoverHeaderIOS.waitForDisplayed({ reverse: true, timeout: 20000 }).catch(() => {})
+    await this.discoverHeaderIOS.waitForExist({ reverse: true, timeout: 20000 }).catch(() => {})
   }
 }

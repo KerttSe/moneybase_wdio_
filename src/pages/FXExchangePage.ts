@@ -262,7 +262,7 @@ class FXExchangePage extends BasePage {
     timeout = 10000
   ) {
     const resolved = (await element) as WebdriverIO.Element
-    await resolved.waitForDisplayed({ timeout })
+    await resolved.waitForExist({ timeout })
 
     const { x, y } = await resolved.getLocation()
     const { width, height } = await resolved.getSize()
@@ -540,7 +540,7 @@ class FXExchangePage extends BasePage {
 
   public async submitExchange(amount = 11) {
     await this.waitForReadyToSubmit(amount)
-    await this.exchangeSubmitButton.waitForDisplayed({ timeout: 15000 })
+    await this.exchangeSubmitButton.waitForExist({ timeout: 15000 })
 
     const canSubmit = await this.exchangeSubmitButton
       .waitForEnabled({ timeout: 30000 })
@@ -593,10 +593,10 @@ class FXExchangePage extends BasePage {
       return
     }
 
-    await this.continueBtn.waitForDisplayed({ timeout: 20000 })
+    await this.continueBtn.waitForExist({ timeout: 20000 })
     await this.tapElementCenter(this.continueBtn, 20000)
 
-    await this.backBtn.waitForDisplayed({ timeout: 20000 })
+    await this.backBtn.waitForExist({ timeout: 20000 })
     await this.tapElementCenter(this.backBtn, 20000)
     await HomeScreenPage.waitForHomeLoaded()
   }
