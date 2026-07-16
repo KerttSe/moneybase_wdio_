@@ -24,7 +24,7 @@ type Rect = {
 export default class PriceAlertsPage extends BasePage {
   private async tapIOSDisplayed(el: WdioEl | WebdriverIO.Element, timeout = 10000) {
     const resolved = (await el) as WebdriverIO.Element
-    await resolved.waitForDisplayed({ timeout })
+    await resolved.waitForExist({ timeout })
     const loc = await resolved.getLocation()
     const size = await resolved.getSize()
     const x = Math.round(loc.x + size.width / 2)
@@ -95,6 +95,7 @@ export default class PriceAlertsPage extends BasePage {
         for (const el of candidates) {
           const resolved = (await el) as WebdriverIO.Element
           if (await resolved.isDisplayed().catch(() => false)) return true
+          if (browser.isIOS && await resolved.isExisting().catch(() => false)) return true
         }
         return false
       },
@@ -109,7 +110,8 @@ export default class PriceAlertsPage extends BasePage {
   private async tapFirstDisplayed(candidates: Array<WdioEl | WebdriverIO.Element>, label = 'element') {
     for (const el of candidates) {
       const resolved = (await el) as WebdriverIO.Element
-      const visible = await resolved.isDisplayed().catch(() => false)
+      const visible = await resolved.isDisplayed().catch(() => false) ||
+        (browser.isIOS && await resolved.isExisting().catch(() => false))
       if (visible) {
         await resolved.click()
         return
@@ -122,7 +124,8 @@ export default class PriceAlertsPage extends BasePage {
   private async getFirstDisplayed(candidates: Array<WdioEl | WebdriverIO.Element>, label = 'element') {
     for (const el of candidates) {
       const resolved = (await el) as WebdriverIO.Element
-      const visible = await resolved.isDisplayed().catch(() => false)
+      const visible = await resolved.isDisplayed().catch(() => false) ||
+        (browser.isIOS && await resolved.isExisting().catch(() => false))
       if (visible) return resolved
     }
 
@@ -1586,7 +1589,7 @@ export default class PriceAlertsPage extends BasePage {
       conditionBeginsWith,
       // As a last resort, tap BMW symbol in the list.
       bmwStaticText,
-      this.iosPredicate('type == "XCUIElementTypeStaticText" AND name == "BMW" AND visible == 1'),
+      this.iosPredicate('type == "XCUIElementTypeStaticText" AND name == "BMW"'),
     ]
 
     let found = false
@@ -1656,7 +1659,7 @@ export default class PriceAlertsPage extends BasePage {
       this.iosA11y('BMW i'),
       this.iosPredicate('name CONTAINS[c] "BMW" OR label CONTAINS[c] "BMW"'),
       this.iosPredicate('name BEGINSWITH "Bmw Ag Greater than" OR label BEGINSWITH "Bmw Ag Greater than"'),
-      this.iosPredicate('type == "XCUIElementTypeStaticText" AND name == "BMW" AND visible == 1'),
+      this.iosPredicate('type == "XCUIElementTypeStaticText" AND name == "BMW"'),
     ]
     const deleteCandidates = [
       this.deleteBtnIOS,
