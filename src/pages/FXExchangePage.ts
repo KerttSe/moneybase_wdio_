@@ -10,7 +10,7 @@ class FXExchangePage extends BasePage {
     if (browser.isAndroid) {
       return $('android=new UiSelector().resourceId("home_button_exchange")')
     }
-    return $('~ic_exchange')
+    return $('-ios predicate string:name == "ic_exchange" OR name == "Exchange" OR label == "Exchange"')
   }
 
   private get exchangeSubmitButton() {
