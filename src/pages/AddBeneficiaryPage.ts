@@ -2038,10 +2038,12 @@ export default class AddBeneficiaryPage extends BasePage {
       const movedForward = await browser
         .waitUntil(
           async () => {
-            const otpShown = await this.otpContainerIOS.isDisplayed().catch(() => false)
+            const otpShown = await this.otpContainerIOS.isDisplayed().catch(() => false) ||
+              await this.otpContainerIOS.isExisting().catch(() => false)
             if (otpShown) return true
 
-            const stillOnReview = await reviewTitle.isDisplayed().catch(() => false)
+            const stillOnReview = await reviewTitle.isDisplayed().catch(() => false) ||
+              await reviewTitle.isExisting().catch(() => false)
             return !stillOnReview
           },
           { timeout: 5000, interval: 300 },
