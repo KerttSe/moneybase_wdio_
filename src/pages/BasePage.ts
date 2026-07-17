@@ -376,14 +376,18 @@ export default class BasePage {
     const shown = await permissionImg.waitForExist({ timeout: 8000 }).then(() => true).catch(() => false)
     if (!shown) return
 
-    console.warn('[iOS] Contacts permission screen detected — tapping Continue')
-    const continueBtn = $('-ios predicate string:name == "Continue" OR label == "Continue"')
-    await continueBtn.waitForExist({ timeout: 5000 }).catch(() => {})
-    await this.tap(continueBtn).catch(() => {})
+    console.warn('[iOS] Contacts permission screen detected — tapping Continue by coordinate')
+    // Continue button at ~87% screen height; use coordinate tap — button may be enabled=false
+    await this.tapScreenPointIOS(0.5, 0.87, 'finger-ios-continue-contacts')
+    await browser.pause(800)
+
+    // P2P shows a system contacts permission alert ("Allow While Using App" / "OK") instead of
+    // CNContactPickerViewController. Accept it if present so the Enable Contacts screen dismisses.
+    await this.dismissIOSPermissionAlertsIfPresent().catch(() => {})
     await browser.pause(1500)
 
-    // CNContactPickerViewController system sheet appears only in some flows (SEPA, SWIFT).
-    // For P2P the app returns directly to Pay screen — skip coordinate tap in that case.
+    // CNContactPickerViewController system sheet appears only in SEPA/SWIFT flows.
+    // For P2P the app grants permission via system alert and returns directly to Pay screen.
     const payScreenBack = $('-ios predicate string:name == "pay_button_add" OR name == "pay_screen_view"')
     const alreadyOnPay = await payScreenBack.waitForExist({ timeout: 2000 }).catch(() => false)
     if (alreadyOnPay) {
