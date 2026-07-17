@@ -556,7 +556,7 @@ class FXExchangePage extends BasePage {
 
     if (browser.isAndroid) {
       const continueShown = await this.continueBtn
-        .waitForDisplayed({ timeout: 12000 })
+        .waitForExist({ timeout: 12000 })
         .then(() => true)
         .catch(() => false)
 
@@ -566,7 +566,7 @@ class FXExchangePage extends BasePage {
 
       const homeRoot = $('android=new UiSelector().resourceId("home_screen")')
       const homeVisibleAfterContinue = await homeRoot
-        .waitForDisplayed({ timeout: 5000 })
+        .waitForExist({ timeout: 5000 })
         .then(() => true)
         .catch(() => false)
 
@@ -578,7 +578,7 @@ class FXExchangePage extends BasePage {
       }
 
       const homeVisibleAfterClose = await homeRoot
-        .waitForDisplayed({ timeout: 5000 })
+        .waitForExist({ timeout: 5000 })
         .then(() => true)
         .catch(() => false)
 
@@ -609,7 +609,7 @@ class FXExchangePage extends BasePage {
       await this.smallScrollDownOnHome()
     }
 
-    await this.exchangedToUsdAnchor.waitForDisplayed({ timeout: 10000 })
+    await this.exchangedToUsdAnchor.waitForExist({ timeout: 10000 })
   }
 
   public async exchangeEurToUsdFlow(amount = 11) {

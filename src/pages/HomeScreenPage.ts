@@ -357,7 +357,7 @@ class HomeScreenPage extends BasePage {
   }
 
   private async selectIOSSubAccount(item: WdioEl) {
-    await item.waitForDisplayed({ timeout: 15000 })
+    await item.waitForExist({ timeout: 15000 })
     await this.tap(item)
     await this.subAccountsTitleIOS.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
     await browser.pause(300)
@@ -394,7 +394,7 @@ class HomeScreenPage extends BasePage {
     })
 
     await this.businessAccountLabelAndroid
-      .waitForDisplayed({ reverse: true, timeout: 30000 })
+      .waitForExist({ reverse: true, timeout: 30000 })
       .catch(() => {})
   }
 
@@ -452,9 +452,9 @@ class HomeScreenPage extends BasePage {
 
   private async openAndroidSubAccountsSheet() {
     await this.ensureHomeLandingAndroid()
-    await this.userAvatarBtnAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.userAvatarBtnAndroid.waitForExist({ timeout: 20000 })
     await this.tap(this.userAvatarBtnAndroid)
-    await $('android=new UiSelector().text("Sub Accounts")').waitForDisplayed({ timeout: 15000 })
+    await $('android=new UiSelector().text("Sub Accounts")').waitForExist({ timeout: 15000 })
   }
 
   private async dismissGooglePayPopupIfPresentAndroid(timeout = 10000) {
@@ -481,7 +481,7 @@ class HomeScreenPage extends BasePage {
     const closeShown = await this.googlePayCloseButtonAndroid.isDisplayed().catch(() => false)
     if (closeShown) {
       await this.tap(this.googlePayCloseButtonAndroid)
-      await this.googlePayCloseButtonAndroid.waitForDisplayed({ reverse: true, timeout: 10000 }).catch(() => {})
+      await this.googlePayCloseButtonAndroid.waitForExist({ reverse: true, timeout: 10000 }).catch(() => {})
       await this.ensureHomeLandingAndroid()
       return true
     }

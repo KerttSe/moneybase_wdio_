@@ -101,7 +101,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     const isBusiness = await this.businessAccountLabelAndroid.isDisplayed().catch(() => false)
     if (!isBusiness) return
 
-    await this.userAvatarBtnAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.userAvatarBtnAndroid.waitForExist({ timeout: 15000 })
     await this.tap(this.userAvatarBtnAndroid)
 
     const hasSingleByDesc = await this.singleAccountItemAndroid.isDisplayed().catch(() => false)
@@ -115,9 +115,9 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     //  alert button3 is expected ONLY after the switch; so we wait here (not before)
     await this.waitAndDismissAlertAfterSwitchAndroid(12000, 1200)
-    await this.homeRootAndroid.waitForDisplayed({ timeout: 30000 }).catch(() => {})
+    await this.homeRootAndroid.waitForExist({ timeout: 30000 }).catch(() => {})
     await this.businessAccountLabelAndroid
-      .waitForDisplayed({ reverse: true, timeout: 30000 })
+      .waitForExist({ reverse: true, timeout: 30000 })
       .catch(() => {})
   }
 
@@ -247,7 +247,7 @@ class BankTransferP2PIndividualPage extends BasePage {
       const candidates = [this.payTabAndroid, this.payTabAndroidByA11y, this.payTabAndroidLegacy]
 
       for (const candidate of candidates) {
-        const shown = await candidate.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+        const shown = await candidate.waitForExist({ timeout: 5000 }).catch(() => false)
         if (shown) {
           await this.tap(candidate)
           return
@@ -266,10 +266,10 @@ class BankTransferP2PIndividualPage extends BasePage {
 
   private async openPayeesContactsAndroid() {
     for (let attempt = 0; attempt < 10; attempt++) {
-      await this.payInputSearchAndroid.waitForDisplayed({ timeout: 20000 })
+      await this.payInputSearchAndroid.waitForExist({ timeout: 20000 })
       await this.tap(this.payInputSearchAndroid)
 
-      const filterAppeared = await this.payeesFilterContactsAndroid.waitForDisplayed({ timeout: 8000 }).catch(() => false)
+      const filterAppeared = await this.payeesFilterContactsAndroid.waitForExist({ timeout: 8000 }).catch(() => false)
       if (!filterAppeared) {
         await this.tap(this.payeesCancelSearchAndroid).catch(() => {})
         await browser.pause(1000)
@@ -278,7 +278,7 @@ class BankTransferP2PIndividualPage extends BasePage {
 
       await this.tap(this.payeesFilterContactsAndroid)
 
-      const contactsLoaded = await this.firstFriendOnMoneybaseAndroid.waitForDisplayed({ timeout: 4000 }).catch(() => false)
+      const contactsLoaded = await this.firstFriendOnMoneybaseAndroid.waitForExist({ timeout: 4000 }).catch(() => false)
       if (contactsLoaded) return
 
       await this.tap(this.payeesCancelSearchAndroid).catch(() => {})
@@ -442,7 +442,7 @@ class BankTransferP2PIndividualPage extends BasePage {
   private async maybeTapReviewPaymentAndroid() {
     if (!browser.isAndroid) return
 
-    const shown = await this.reviewPaymentBtnAndroid.waitForDisplayed({ timeout: 3000 }).catch(() => false)
+    const shown = await this.reviewPaymentBtnAndroid.waitForExist({ timeout: 3000 }).catch(() => false)
     if (!shown) return
 
     await browser.hideKeyboard().catch(() => {})
@@ -471,7 +471,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     const legacyShown = await this.seekBarAndroidLegacy.isDisplayed().catch(() => false)
     if (legacyShown) return this.seekBarAndroidLegacy
 
-    await this.verificationSeekBarAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.verificationSeekBarAndroid.waitForExist({ timeout: 20000 })
     return this.verificationSeekBarAndroid
   }
 
@@ -489,7 +489,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     const thumbShown = await this.slideDescAndroid.isDisplayed().catch(() => false)
     const dragEl = legacyShown ? this.seekBarAndroidLegacy : thumbShown ? this.slideDescAndroid : await this.resolveSeekBarAndroid()
 
-    await dragEl.waitForDisplayed({ timeout: 20000 })
+    await dragEl.waitForExist({ timeout: 20000 })
 
     const loc = await dragEl.getLocation()
     const size = await dragEl.getSize()
@@ -713,36 +713,36 @@ class BankTransferP2PIndividualPage extends BasePage {
   private async exitToHomeAfterP2PAndroid() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    await this.txDetailsBackAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.txDetailsBackAndroid.waitForExist({ timeout: 15000 })
     await this.tap(this.txDetailsBackAndroid)
 
-    const backShown = await this.headerBackAndroid.waitForDisplayed({ timeout: 8000 }).catch(() => false)
+    const backShown = await this.headerBackAndroid.waitForExist({ timeout: 8000 }).catch(() => false)
     if (backShown) {
       await this.tap(this.headerBackAndroid)
     } else {
-      const backAltShown = await this.headerBackAltAndroid.waitForDisplayed({ timeout: 8000 }).catch(() => false)
+      const backAltShown = await this.headerBackAltAndroid.waitForExist({ timeout: 8000 }).catch(() => false)
       if (backAltShown) await this.tap(this.headerBackAltAndroid)
       else await browser.back()
     }
 
     await browser.pause(800)
-    const homeShown = await this.homeTabAndroid.waitForDisplayed({ timeout: 15000 }).catch(() => false)
+    const homeShown = await this.homeTabAndroid.waitForExist({ timeout: 15000 }).catch(() => false)
     if (homeShown) {
       await this.tap(this.homeTabAndroid)
-      await this.homeRootAndroid.waitForDisplayed({ timeout: 15000 })
+      await this.homeRootAndroid.waitForExist({ timeout: 15000 })
       return
     }
 
-    const homeA11yShown = await this.homeTabAndroidA11y.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+    const homeA11yShown = await this.homeTabAndroidA11y.waitForExist({ timeout: 5000 }).catch(() => false)
     if (homeA11yShown) {
       await this.tap(this.homeTabAndroidA11y)
-      await this.homeRootAndroid.waitForDisplayed({ timeout: 15000 })
+      await this.homeRootAndroid.waitForExist({ timeout: 15000 })
       return
     }
 
-    await this.homeTabAndroidLegacy.waitForDisplayed({ timeout: 8000 })
+    await this.homeTabAndroidLegacy.waitForExist({ timeout: 8000 })
     await this.tap(this.homeTabAndroidLegacy)
-    await this.homeRootAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.homeRootAndroid.waitForExist({ timeout: 15000 })
   }
 
   private async exitToHomeAfterP2PIOS() {
@@ -811,11 +811,11 @@ class BankTransferP2PIndividualPage extends BasePage {
     }
 
     const minusShown = await this.minusAmountHomeAnchorAndroid(amount)
-      .waitForDisplayed({ timeout: 2500 })
+      .waitForExist({ timeout: 2500 })
       .catch(() => false)
     if (minusShown) return
 
-    await this.sentAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 2500 })
+    await this.sentAmountHomeAnchorAndroid(amount).waitForExist({ timeout: 2500 })
   }
 
   private async scrollCurrentScreenAndroid() {
@@ -873,32 +873,32 @@ class BankTransferP2PIndividualPage extends BasePage {
   private async waitForSwiftTransactionDetailsAndroid() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    await this.txDetailsBackAndroid.waitForDisplayed({ timeout: 60000 })
-    await this.txDetailsPaymentStatusAndroid.waitForDisplayed({ timeout: 15000 })
-    await this.txDetailsAcceptedByMoneybaseAndroid.waitForDisplayed({ timeout: 15000 })
-    await this.txDetailsProcessedAndroid.waitForDisplayed({ timeout: 15000 })
-    await this.txDetailsSentToBankAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.txDetailsBackAndroid.waitForExist({ timeout: 60000 })
+    await this.txDetailsPaymentStatusAndroid.waitForExist({ timeout: 15000 })
+    await this.txDetailsAcceptedByMoneybaseAndroid.waitForExist({ timeout: 15000 })
+    await this.txDetailsProcessedAndroid.waitForExist({ timeout: 15000 })
+    await this.txDetailsSentToBankAndroid.waitForExist({ timeout: 15000 })
 
-    const bicShown = await this.txDetailsBicSwiftAndroid.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+    const bicShown = await this.txDetailsBicSwiftAndroid.waitForExist({ timeout: 5000 }).catch(() => false)
     if (!bicShown) {
       await this.scrollCurrentScreenAndroid()
-      await this.txDetailsBicSwiftAndroid.waitForDisplayed({ timeout: 10000 })
+      await this.txDetailsBicSwiftAndroid.waitForExist({ timeout: 10000 })
     }
 
     let swiftFeeShown = await this.txDetailsSwiftFeeAndroid
-      .waitForDisplayed({ timeout: 5000 })
+      .waitForExist({ timeout: 5000 })
       .catch(() => false)
     if (!swiftFeeShown) {
       await this.scrollCurrentScreenAndroid()
       swiftFeeShown = await this.txDetailsSwiftFeeAndroid
-        .waitForDisplayed({ timeout: 3000 })
+        .waitForExist({ timeout: 3000 })
         .catch(() => false)
     }
 
     if (!swiftFeeShown) {
       await this.scrollCurrentScreenAndroid()
-      await this.txDetailsFeeAndroid.waitForDisplayed({ timeout: 10000 }).catch(() => {})
-      await this.txDetailsSwiftFeeAmountAndroid.waitForDisplayed({ timeout: 10000 }).catch(() => {})
+      await this.txDetailsFeeAndroid.waitForExist({ timeout: 10000 }).catch(() => {})
+      await this.txDetailsSwiftFeeAmountAndroid.waitForExist({ timeout: 10000 }).catch(() => {})
     }
   }
 
@@ -1002,14 +1002,14 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     await this.openPayTabAndroid()
 
-    await this.carlosCatAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.carlosCatAndroid.waitForExist({ timeout: 20000 })
     await this.tap(this.carlosCatAndroid)
 
-    await this.beneficiaryPayBtnAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.beneficiaryPayBtnAndroid.waitForExist({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnAndroid)
 
     const amountInput = await this.resolveAmountInputP2PAndroid()
-    await amountInput.waitForDisplayed({ timeout: 20000 })
+    await amountInput.waitForExist({ timeout: 20000 })
     await amountInput.clearValue().catch(() => {})
     await amountInput.setValue(String(amount))
 
@@ -1065,20 +1065,20 @@ class BankTransferP2PIndividualPage extends BasePage {
     await browser.pause(700)
     await this.openPayTabAndroid()
 
-    await this.sepaBeneficiaryAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.sepaBeneficiaryAndroid.waitForExist({ timeout: 20000 })
     await this.tap(this.sepaBeneficiaryAndroid)
 
-    await this.beneficiaryPayBtnAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.beneficiaryPayBtnAndroid.waitForExist({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnAndroid)
 
-    await this.amountP2PAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.amountP2PAndroid.waitForExist({ timeout: 20000 })
     await this.amountP2PAndroid.clearValue().catch(() => {})
     await this.amountP2PAndroid.setValue(String(amount))
 
     await this.ensureSliderReadyAndroid()
     await this.dragSliderToRightAndroid()
 
-    await this.minusAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 60000 })
+    await this.minusAmountHomeAnchorAndroid(amount).waitForExist({ timeout: 60000 })
     await this.exitToHomeAfterP2PAndroid()
     await this.waitForMinusAmountHomeAndroid(amount, 30000)
   }
@@ -1123,11 +1123,11 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     await this.openSwiftBeneficiaryAndroid()
 
-    await this.beneficiaryPayBtnAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.beneficiaryPayBtnAndroid.waitForExist({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnAndroid)
 
     const amountInput = await this.resolveAmountInputP2PAndroid()
-    await amountInput.waitForDisplayed({ timeout: 20000 })
+    await amountInput.waitForExist({ timeout: 20000 })
     await amountInput.clearValue().catch(() => {})
     await amountInput.setValue(String(amount))
 

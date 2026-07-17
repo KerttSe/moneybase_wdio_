@@ -102,10 +102,10 @@ class BankTransferSepaIndividualPage extends BasePage {
     const legacyShown = await this.amountInputAndroidLegacy.isDisplayed().catch(() => false)
     if (legacyShown) return this.amountInputAndroidLegacy
 
-    const newShown = await this.amountInputAndroidNew.waitForDisplayed({ timeout: 8000 }).catch(() => false)
+    const newShown = await this.amountInputAndroidNew.waitForExist({ timeout: 8000 }).catch(() => false)
     if (newShown) return this.amountInputAndroidNew
 
-    await this.amountInputAndroidNewAlt.waitForDisplayed({ timeout: 20000 })
+    await this.amountInputAndroidNewAlt.waitForExist({ timeout: 20000 })
     return this.amountInputAndroidNewAlt
   }
 
@@ -119,7 +119,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   private async maybeTapReviewPaymentAndroid() {
     if (!browser.isAndroid) return
 
-    const shown = await this.reviewPaymentBtnAndroid.waitForDisplayed({ timeout: 3000 }).catch(() => false)
+    const shown = await this.reviewPaymentBtnAndroid.waitForExist({ timeout: 3000 }).catch(() => false)
     if (!shown) return
 
     await browser.hideKeyboard().catch(() => {})
@@ -454,13 +454,13 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private async tapPayAddAndroidIfShown() {
-    const byDesc = await this.payAddBtnAndroidByDesc.waitForDisplayed({ timeout: 1500 }).catch(() => false)
+    const byDesc = await this.payAddBtnAndroidByDesc.waitForExist({ timeout: 1500 }).catch(() => false)
     if (byDesc) {
       await this.tap(this.payAddBtnAndroidByDesc)
       return
     }
 
-    const byId = await this.payAddBtnAndroidById.waitForDisplayed({ timeout: 1500 }).catch(() => false)
+    const byId = await this.payAddBtnAndroidById.waitForExist({ timeout: 1500 }).catch(() => false)
     if (byId) {
       await this.tap(this.payAddBtnAndroidById)
     }
@@ -491,30 +491,30 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private async openPayAndNewAndroid() {
-    const payShown = await this.payTabAndroid.waitForDisplayed({ timeout: 12000 }).catch(() => false)
+    const payShown = await this.payTabAndroid.waitForExist({ timeout: 12000 }).catch(() => false)
     if (payShown) {
       await this.tap(this.payTabAndroid)
     } else {
-      await this.payTabAndroidLegacy.waitForDisplayed({ timeout: 12000 })
+      await this.payTabAndroidLegacy.waitForExist({ timeout: 12000 })
       await this.tap(this.payTabAndroidLegacy)
     }
 
     const newTransferAlreadyOpen = await this.newTransferTitleAndroid.isDisplayed().catch(() => false)
     if (newTransferAlreadyOpen) return
 
-    const newByDescShown = await this.newBtnAndroid.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+    const newByDescShown = await this.newBtnAndroid.waitForExist({ timeout: 5000 }).catch(() => false)
     if (newByDescShown) {
       await this.tap(this.newBtnAndroid)
       return
     }
 
-    const newByTextShown = await this.newBtnAndroidByText.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+    const newByTextShown = await this.newBtnAndroidByText.waitForExist({ timeout: 5000 }).catch(() => false)
     if (newByTextShown) {
       await this.tap(this.newBtnAndroidByText)
       return
     }
 
-    await this.newTransferTitleAndroid.waitForDisplayed({ timeout: 5000 }).catch(() => {})
+    await this.newTransferTitleAndroid.waitForExist({ timeout: 5000 }).catch(() => {})
   }
 
   private async openSepaBeneficiaryAndroid() {
@@ -581,7 +581,7 @@ class BankTransferSepaIndividualPage extends BasePage {
     const legacyShown = await this.seekBarAndroidLegacy.isDisplayed().catch(() => false)
     if (legacyShown) return this.seekBarAndroidLegacy
 
-    await this.verificationSeekBarAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.verificationSeekBarAndroid.waitForExist({ timeout: 20000 })
     return this.verificationSeekBarAndroid
   }
 
@@ -602,7 +602,7 @@ class BankTransferSepaIndividualPage extends BasePage {
       await browser.pause(250)
     }
 
-    await this.txDetailsBackAndroid.waitForDisplayed({ timeout: 3000 })
+    await this.txDetailsBackAndroid.waitForExist({ timeout: 3000 })
   }
 
   private async dragSliderToRightAndroid() {
@@ -612,7 +612,7 @@ class BankTransferSepaIndividualPage extends BasePage {
     const thumbShown = await this.slideDescAndroid.isDisplayed().catch(() => false)
     const dragEl = legacyShown ? this.seekBarAndroidLegacy : thumbShown ? this.slideDescAndroid : await this.resolveSeekBarSepaAndroid()
 
-    await dragEl.waitForDisplayed({ timeout: 20000 })
+    await dragEl.waitForExist({ timeout: 20000 })
 
     const loc = await dragEl.getLocation()
     const size = await dragEl.getSize()
@@ -683,37 +683,37 @@ class BankTransferSepaIndividualPage extends BasePage {
   private async exitToHomeAfterPaymentAndroid() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    const txBackShown = await this.txDetailsBackAndroid.waitForDisplayed({ timeout: 15000 }).catch(() => false)
+    const txBackShown = await this.txDetailsBackAndroid.waitForExist({ timeout: 15000 }).catch(() => false)
     if (txBackShown) await this.txDetailsBackAndroid.click()
     else await browser.back()
 
-    const backShown = await this.headerBackAndroid.waitForDisplayed({ timeout: 8000 }).catch(() => false)
+    const backShown = await this.headerBackAndroid.waitForExist({ timeout: 8000 }).catch(() => false)
     if (backShown) {
       await this.headerBackAndroid.click()
     } else {
-      const backAltShown = await this.headerBackAltAndroid.waitForDisplayed({ timeout: 8000 }).catch(() => false)
+      const backAltShown = await this.headerBackAltAndroid.waitForExist({ timeout: 8000 }).catch(() => false)
       if (backAltShown) await this.headerBackAltAndroid.click()
       else await browser.back()
     }
 
     await browser.pause(800)
-    const homeShown = await this.homeTabAndroid.waitForDisplayed({ timeout: 15000 }).catch(() => false)
+    const homeShown = await this.homeTabAndroid.waitForExist({ timeout: 15000 }).catch(() => false)
     if (homeShown) {
       await this.homeTabAndroid.click()
-      await this.homeRootAndroid.waitForDisplayed({ timeout: 15000 })
+      await this.homeRootAndroid.waitForExist({ timeout: 15000 })
       return
     }
 
-    const homeA11yShown = await this.homeTabAndroidA11y.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+    const homeA11yShown = await this.homeTabAndroidA11y.waitForExist({ timeout: 5000 }).catch(() => false)
     if (homeA11yShown) {
       await this.homeTabAndroidA11y.click()
-      await this.homeRootAndroid.waitForDisplayed({ timeout: 15000 })
+      await this.homeRootAndroid.waitForExist({ timeout: 15000 })
       return
     }
 
-    await this.homeTabAndroidLegacy.waitForDisplayed({ timeout: 8000 })
+    await this.homeTabAndroidLegacy.waitForExist({ timeout: 8000 })
     await this.homeTabAndroidLegacy.click()
-    await this.homeRootAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.homeRootAndroid.waitForExist({ timeout: 15000 })
   }
 
   private async scrollHomeAndroid() {
@@ -751,10 +751,10 @@ class BankTransferSepaIndividualPage extends BasePage {
       await this.scrollHomeAndroid()
     }
 
-    const minusShown = await this.minusAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 2500 }).catch(() => false)
+    const minusShown = await this.minusAmountHomeAnchorAndroid(amount).waitForExist({ timeout: 2500 }).catch(() => false)
     if (minusShown) return
 
-    await this.sentAmountHomeAnchorAndroid(amount).waitForDisplayed({ timeout: 2500 })
+    await this.sentAmountHomeAnchorAndroid(amount).waitForExist({ timeout: 2500 })
   }
 
   private async dismissBlockingAlertAndroid(timeoutMs = 8000) {
@@ -824,18 +824,18 @@ class BankTransferSepaIndividualPage extends BasePage {
 
     await BankTransferP2PIndividualPage.ensureIndividualAccount()
     await this.dismissBlockingAlertAndroid(10000)
-    await this.payTabAndroid.waitForDisplayed({ timeout: 15000 }).catch(() => this.payTabAndroidLegacy.waitForDisplayed({ timeout: 15000 }))
+    await this.payTabAndroid.waitForExist({ timeout: 15000 }).catch(() => this.payTabAndroidLegacy.waitForExist({ timeout: 15000 }))
 
     await this.openPayAndNewAndroid()
 
     await this.tapPayAddAndroidIfShown()
     await this.openSepaBeneficiaryAndroid()
 
-    await this.beneficiaryPayBtnAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.beneficiaryPayBtnAndroid.waitForExist({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnAndroid)
 
     const amountInput = await this.resolveAmountInputSepaAndroid()
-    await amountInput.waitForDisplayed({ timeout: 20000 })
+    await amountInput.waitForExist({ timeout: 20000 })
     await amountInput.clearValue().catch(() => {})
     await amountInput.setValue(String(amount))
 

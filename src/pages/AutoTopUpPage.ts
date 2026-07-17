@@ -54,7 +54,7 @@ export default class AutoTopUpPage extends BasePage {
     await this.tap(this.profilePickerIndividualItemIOS)
 
     await this.profilePickerIndividualItemIOS
-      .waitForDisplayed({ reverse: true, timeout: 15000 })
+      .waitForExist({ reverse: true, timeout: 15000 })
       .catch(() => {})
     await browser.pause(300)
   }
@@ -336,9 +336,9 @@ export default class AutoTopUpPage extends BasePage {
 
       await this.ensureHomeLandingAndroid()
 
-      await this.openBtn.waitForDisplayed({ timeout: 15000 })
+      await this.openBtn.waitForExist({ timeout: 15000 })
       await this.tap(this.openBtn)
-      await this.addFundsScreen.waitForDisplayed({ timeout: 15000 })
+      await this.addFundsScreen.waitForExist({ timeout: 15000 })
       return
     }
 
@@ -360,19 +360,19 @@ export default class AutoTopUpPage extends BasePage {
    */
   async goToAutoTopUpList() {
     // Ensure Add Funds screen is visible first
-    await this.addFundsScreen.waitForDisplayed({ timeout: 10000 })
+    await this.addFundsScreen.waitForExist({ timeout: 10000 })
     await browser.pause(500)
     
-    await this.autoTopUpTile.waitForDisplayed({ timeout: 15000 })
+    await this.autoTopUpTile.waitForExist({ timeout: 15000 })
     await this.tap(this.autoTopUpTile)
 
     const openedList = await this.autoTopUpListScreen
-      .waitForDisplayed({ timeout: 6000 })
+      .waitForExist({ timeout: 6000 })
       .then(() => true)
       .catch(() => false)
 
     if (!openedList) {
-      await this.autoTopUpDetailsScreen.waitForDisplayed({ timeout: 15000 })
+      await this.autoTopUpDetailsScreen.waitForExist({ timeout: 15000 })
     }
   }
 
@@ -384,10 +384,10 @@ export default class AutoTopUpPage extends BasePage {
     const alreadyOnDetails = await this.autoTopUpDetailsScreen.isDisplayed().catch(() => false)
     if (alreadyOnDetails) return
 
-    await this.autoTopUpListScreen.waitForDisplayed({ timeout: 15000 })
-    await this.addNewBtn.waitForDisplayed({ timeout: 5000 })
+    await this.autoTopUpListScreen.waitForExist({ timeout: 15000 })
+    await this.addNewBtn.waitForExist({ timeout: 5000 })
     await this.tap(this.addNewBtn)
-    await this.autoTopUpDetailsScreen.waitForDisplayed({ timeout: 15000 })
+    await this.autoTopUpDetailsScreen.waitForExist({ timeout: 15000 })
   }
 
   /**
@@ -395,14 +395,14 @@ export default class AutoTopUpPage extends BasePage {
    * @param cardLabel - visible label / accessibility value of the card to pick
    */
   async selectCard(cardLabel: string) {
-    await this.cardPicker.waitForDisplayed({ timeout: 15000 })
+    await this.cardPicker.waitForExist({ timeout: 15000 })
     await this.tap(this.cardPicker)
 
     const cardItem = browser.isAndroid
       ? $(`android=new UiSelector().textContains("${cardLabel}")`)
       : $(`-ios predicate string: label CONTAINS "${cardLabel}" OR name CONTAINS "${cardLabel}"`)
 
-    await cardItem.waitForDisplayed({ timeout: 15000 })
+    await cardItem.waitForExist({ timeout: 15000 })
     await this.tap(cardItem)
     await browser.pause(300)
   }
@@ -412,7 +412,7 @@ export default class AutoTopUpPage extends BasePage {
    * @param currency - e.g. "EUR", "USD"
    */
   async selectCurrency(currency: string) {
-    await this.currencyPicker.waitForDisplayed({ timeout: 15000 })
+    await this.currencyPicker.waitForExist({ timeout: 15000 })
     await this.tap(this.currencyPicker)
 
     if (browser.isIOS) {
@@ -428,7 +428,7 @@ export default class AutoTopUpPage extends BasePage {
       ]
       for (const pred of predicates) {
         const el = $(pred)
-        const found = await el.waitForDisplayed({ timeout: 4000 }).then(() => true).catch(() => false)
+        const found = await el.waitForExist({ timeout: 4000 }).then(() => true).catch(() => false)
         if (found) {
           await this.tap(el)
           await browser.pause(300)
@@ -439,7 +439,7 @@ export default class AutoTopUpPage extends BasePage {
     }
 
     const currencyItem = $(`android=new UiSelector().textContains("${currency}")`)
-    await currencyItem.waitForDisplayed({ timeout: 15000 })
+    await currencyItem.waitForExist({ timeout: 15000 })
     await this.tap(currencyItem)
     await browser.pause(300)
   }
@@ -480,13 +480,13 @@ export default class AutoTopUpPage extends BasePage {
         await this.customAmountInput.clearValue().catch(() => {})
         await this.customAmountInput.setValue(String(amount))
       } else if (modalVisible || modalInputVisible) {
-        await this.customAmountModalInputAndroid.waitForDisplayed({ timeout: 7000 })
+        await this.customAmountModalInputAndroid.waitForExist({ timeout: 7000 })
         await this.tap(this.customAmountModalInputAndroid)
         await this.customAmountModalInputAndroid.clearValue().catch(() => {})
         await this.customAmountModalInputAndroid.setValue(String(amount))
       } else {
         const byClassVisible = await this.amountEditTextAndroid
-          .waitForDisplayed({ timeout: 7000 })
+          .waitForExist({ timeout: 7000 })
           .then(() => true)
           .catch(() => false)
 
@@ -509,7 +509,7 @@ export default class AutoTopUpPage extends BasePage {
         await this.customAmountModalDoneBtnAndroid.waitForEnabled({ timeout: 7000 })
         await this.tap(this.customAmountModalDoneBtnAndroid)
       } else {
-        await this.customAmountDoneBtnAndroidByText.waitForDisplayed({ timeout: 7000 })
+        await this.customAmountDoneBtnAndroidByText.waitForExist({ timeout: 7000 })
         await this.tap(this.customAmountDoneBtnAndroidByText)
       }
 
@@ -601,7 +601,7 @@ export default class AutoTopUpPage extends BasePage {
    * when editing an existing rule).
    */
   async deleteAutoTopUp() {
-    await this.deleteBtn.waitForDisplayed({ timeout: 15000 })
+    await this.deleteBtn.waitForExist({ timeout: 15000 })
     await this.tap(this.deleteBtn)
   }
 
@@ -740,7 +740,7 @@ export default class AutoTopUpPage extends BasePage {
     }
 
     await this.tap(item)
-    await this.autoTopUpDetailsScreen.waitForDisplayed({ timeout: 15000 })
+    await this.autoTopUpDetailsScreen.waitForExist({ timeout: 15000 })
   }
 
   private async ensureOnHomeScreen() {
@@ -753,7 +753,7 @@ export default class AutoTopUpPage extends BasePage {
 
     const onDetails = await this.autoTopUpDetailsScreen.isDisplayed().catch(() => false)
     if (onDetails) {
-      await this.backBtnDetails.waitForDisplayed({ timeout: 5000 }).catch(() => {})
+      await this.backBtnDetails.waitForExist({ timeout: 5000 }).catch(() => {})
       const backDetailsVisible = await this.backBtnDetails.isDisplayed().catch(() => false)
       if (backDetailsVisible) {
         if (browser.isAndroid) await this.backBtnDetails.click()
@@ -763,7 +763,7 @@ export default class AutoTopUpPage extends BasePage {
 
     const onList = await this.autoTopUpListScreen.isDisplayed().catch(() => false)
     if (onList) {
-      await this.backBtnList.waitForDisplayed({ timeout: 5000 }).catch(() => {})
+      await this.backBtnList.waitForExist({ timeout: 5000 }).catch(() => {})
       const backListVisible = await this.backBtnList.isDisplayed().catch(() => false)
       if (backListVisible) {
         if (browser.isAndroid) await this.backBtnList.click()
@@ -775,7 +775,7 @@ export default class AutoTopUpPage extends BasePage {
       (browser.isIOS && await this.openBtn.isExisting().catch(() => false))
     if (homeVisibleAfterBack) return
 
-    await this.addFundsScreen.waitForDisplayed({ timeout: 15000 }).catch(async () => {
+    await this.addFundsScreen.waitForExist({ timeout: 15000 }).catch(async () => {
       await this.openBtn.waitForExist({ timeout: 15000 })
     })
   }
@@ -807,7 +807,7 @@ export default class AutoTopUpPage extends BasePage {
       await this.openFromHome()
     }
 
-    await this.autoTopUpTile.waitForDisplayed({ timeout: 15000 })
+    await this.autoTopUpTile.waitForExist({ timeout: 15000 })
     await this.goToAutoTopUpList()
     if (browser.isIOS) {
       // Проверяем, что элемент исчез
@@ -820,7 +820,7 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   private async openExistingAutoTopUpFromList(cardLabel?: string) {
-    await this.autoTopUpListScreen.waitForDisplayed({ timeout: 15000 })
+    await this.autoTopUpListScreen.waitForExist({ timeout: 15000 })
 
     const candidates = browser.isAndroid
       ? [
@@ -861,7 +861,7 @@ export default class AutoTopUpPage extends BasePage {
     if (alreadyOnDetails) return
 
     await this.openExistingAutoTopUpFromList(cardLabel)
-    await this.autoTopUpDetailsScreen.waitForDisplayed({ timeout: 15000 })
+    await this.autoTopUpDetailsScreen.waitForExist({ timeout: 15000 })
   }
 
   /**
@@ -907,14 +907,14 @@ export default class AutoTopUpPage extends BasePage {
     // iOS повертається на Add Funds screen, Android — на Home
     if (browser.isIOS) {
       const backOnAddFunds = await this.addFundsScreen
-        .waitForDisplayed({ timeout: 20000 })
+        .waitForExist({ timeout: 20000 })
         .then(() => true)
         .catch(() => false)
       if (!backOnAddFunds) {
         await this.openBtn.waitForExist({ timeout: 15000 })
       }
     } else {
-      await this.openBtn.waitForDisplayed({ timeout: 30000 })
+      await this.openBtn.waitForExist({ timeout: 30000 })
     }
   }
 
@@ -923,7 +923,7 @@ export default class AutoTopUpPage extends BasePage {
 
     // Threshold preset €500 — шукаємо тільки у cell name="autoTopup_item_lowBarierPicker"
     const thresholdCell = await $('-ios predicate string: name == "autoTopup_item_lowBarierPicker"')
-    const appeared = await thresholdCell.waitForDisplayed({ timeout: 7000 }).then(() => true).catch(() => false)
+    const appeared = await thresholdCell.waitForExist({ timeout: 7000 }).then(() => true).catch(() => false)
     if (!appeared) throw new Error('Threshold picker cell not visible on iOS')
     const candidates = [
       await thresholdCell.$('-ios predicate string: name == "amountPicker_item_€500"'),
@@ -954,7 +954,7 @@ export default class AutoTopUpPage extends BasePage {
       return
     }
 
-    await this.presetAmount500Android.waitForDisplayed({ timeout: 15000 })
+    await this.presetAmount500Android.waitForExist({ timeout: 15000 })
     await this.tap(this.presetAmount500Android)
   }
 
@@ -993,7 +993,7 @@ export default class AutoTopUpPage extends BasePage {
     const isBusiness = await this.businessAccountLabelAndroid.isDisplayed().catch(() => false)
     if (!isBusiness) return
 
-    await this.userAvatarBtnAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.userAvatarBtnAndroid.waitForExist({ timeout: 15000 })
     await this.tap(this.userAvatarBtnAndroid)
 
     if (await this.singleAccountItemAndroid.isDisplayed().catch(() => false)) {
@@ -1006,10 +1006,10 @@ export default class AutoTopUpPage extends BasePage {
       }
     }
 
-    await this.homeRootAndroid.waitForDisplayed({ timeout: 30000 }).catch(() => {})
+    await this.homeRootAndroid.waitForExist({ timeout: 30000 }).catch(() => {})
 
     await this.businessAccountLabelAndroid
-      .waitForDisplayed({ reverse: true, timeout: 30000 })
+      .waitForExist({ reverse: true, timeout: 30000 })
       .catch(() => {})
   }
 

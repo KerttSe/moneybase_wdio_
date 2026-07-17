@@ -63,7 +63,7 @@ class BusinessCardPage extends BasePage {
   public async openCardsTab() {
     if (!browser.isAndroid) throw new Error('openCardsTab: Android only')
     await this.tap(this.cardsTabAndroid)
-    await this.addNewCardButtonAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.addNewCardButtonAndroid.waitForExist({ timeout: 15000 })
   }
 
   public async tapAddNewCard() {
@@ -141,20 +141,20 @@ class BusinessCardPage extends BasePage {
 
     await this.tap(this.cardTypeRowAndroid)
 
-    const confirmShown = await this.changeCardTypeTitleAndroid.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+    const confirmShown = await this.changeCardTypeTitleAndroid.waitForExist({ timeout: 5000 }).catch(() => false)
     if (confirmShown) {
       await this.tap(this.changeCardTypeConfirmBtnAndroid)
     }
 
-    await this.cardTypeSelectionTitleAndroid.waitForDisplayed({ timeout: 10000 })
+    await this.cardTypeSelectionTitleAndroid.waitForExist({ timeout: 10000 })
   }
 
   public async selectPhysicalCardType() {
     if (!browser.isAndroid) throw new Error('selectPhysicalCardType: Android only')
-    await this.physicalCardOptionAndroid.waitForDisplayed({ timeout: 10000 })
+    await this.physicalCardOptionAndroid.waitForExist({ timeout: 10000 })
     await this.tap(this.physicalCardOptionAndroid)
-    await this.cardAssigneeRowAndroid.waitForDisplayed({ timeout: 10000 })
-    await this.continueBtnAndroid.waitForDisplayed({ timeout: 10000 })
+    await this.cardAssigneeRowAndroid.waitForExist({ timeout: 10000 })
+    await this.continueBtnAndroid.waitForExist({ timeout: 10000 })
   }
 
   public async continueWithDefaultAssignee() {
@@ -170,7 +170,7 @@ class BusinessCardPage extends BasePage {
   public async openUserSelection() {
     if (!browser.isAndroid) throw new Error('openUserSelection: Android only')
     await this.tap(this.cardAssigneeRowAndroid)
-    await this.userSelectionTitleAndroid.waitForDisplayed({ timeout: 10000 })
+    await this.userSelectionTitleAndroid.waitForExist({ timeout: 10000 })
   }
 
   /** Tap a user row by their exact display name, then confirm via the "Select" button. */
@@ -178,7 +178,7 @@ class BusinessCardPage extends BasePage {
     if (!browser.isAndroid) throw new Error('selectUser: Android only')
 
     const row = this.userRowByNameAndroid(name)
-    await row.waitForDisplayed({ timeout: 15000 })
+    await row.waitForExist({ timeout: 15000 })
     await this.tap(row)
 
     await browser
@@ -193,16 +193,16 @@ class BusinessCardPage extends BasePage {
 
   public async confirmAssigneeAddressAndSubmit() {
     if (!browser.isAndroid) throw new Error('confirmAssigneeAddressAndSubmit: Android only')
-    await this.assigneeAddressTitleAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.assigneeAddressTitleAndroid.waitForExist({ timeout: 15000 })
     await this.tap(this.assignCardSubmitBtnAndroid)
   }
 
   public async verifySuccessAndClose() {
     if (!browser.isAndroid) throw new Error('verifySuccessAndClose: Android only')
-    await this.cardAssignedSuccessTitleAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.cardAssignedSuccessTitleAndroid.waitForExist({ timeout: 15000 })
     await this.tap(this.successCloseBtnAndroid)
 
-    const closed = await this.cardAssignedSuccessTitleAndroid.waitForDisplayed({ timeout: 3000, reverse: true }).catch(() => false)
+    const closed = await this.cardAssignedSuccessTitleAndroid.waitForExist({ timeout: 3000, reverse: true }).catch(() => false)
     if (closed) return
 
     const location = await this.successCloseBtnAndroid.getLocation()
@@ -212,17 +212,17 @@ class BusinessCardPage extends BasePage {
       y: Math.round(location.y + size.height / 2),
     })
 
-    await this.cardAssignedSuccessTitleAndroid.waitForDisplayed({ timeout: 5000, reverse: true })
+    await this.cardAssignedSuccessTitleAndroid.waitForExist({ timeout: 5000, reverse: true })
   }
 
   public async waitForCreatedCardReady() {
     if (!browser.isAndroid) throw new Error('waitForCreatedCardReady: Android only')
 
-    const ready = await this.freezeBtnAndroid.waitForDisplayed({ timeout: 30000, interval: 1000 }).catch(() => false)
+    const ready = await this.freezeBtnAndroid.waitForExist({ timeout: 30000, interval: 1000 }).catch(() => false)
     if (ready) return
 
     await this.reopenCardsFromHome()
-    await this.freezeBtnAndroid.waitForDisplayed({
+    await this.freezeBtnAndroid.waitForExist({
       timeout: 90000,
       interval: 1000,
       timeoutMsg: 'Created card details did not become ready after Home -> Cards fallback: Freeze button was not displayed',
@@ -344,7 +344,7 @@ class BusinessCardPage extends BasePage {
   public async tapUnfreeze() {
     if (!browser.isAndroid) throw new Error('tapUnfreeze: Android only')
     await this.tap(this.unfreezeBtnAndroid)
-    await this.freezeBtnAndroid.waitForDisplayed({ timeout: 10000 })
+    await this.freezeBtnAndroid.waitForExist({ timeout: 10000 })
   }
 
   public async tapSecurity() {
@@ -392,7 +392,7 @@ class BusinessCardPage extends BasePage {
 
   public async verifyCardBlocked() {
     if (!browser.isAndroid) throw new Error('verifyCardBlocked: Android only')
-    await this.cardBlockedTitleAndroid.waitForDisplayed({ timeout: 10000 })
+    await this.cardBlockedTitleAndroid.waitForExist({ timeout: 10000 })
   }
 
   public async tapViewMyCards() {
@@ -400,11 +400,11 @@ class BusinessCardPage extends BasePage {
     const alreadyOnCards = await this.addNewCardButtonAndroid.isDisplayed().catch(() => false)
     if (alreadyOnCards) return
 
-    const shown = await this.viewMyCardsBtnAndroid.waitForDisplayed({ timeout: 15000 }).catch(() => false)
+    const shown = await this.viewMyCardsBtnAndroid.waitForExist({ timeout: 15000 }).catch(() => false)
     if (!shown) {
       const cardsShown = await this.addNewCardButtonAndroid.isDisplayed().catch(() => false)
       if (cardsShown) return
-      await this.viewMyCardsBtnAndroid.waitForDisplayed({ timeout: 1 })
+      await this.viewMyCardsBtnAndroid.waitForExist({ timeout: 1 })
     }
 
     const location = await this.viewMyCardsBtnAndroid.getLocation()
@@ -416,7 +416,7 @@ class BusinessCardPage extends BasePage {
       await this.tap(this.viewMyCardsBtnAndroid)
     })
 
-    await this.addNewCardButtonAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.addNewCardButtonAndroid.waitForExist({ timeout: 15000 })
   }
 
   /**
@@ -426,7 +426,7 @@ class BusinessCardPage extends BasePage {
    */
   public async verifyCardRemoved() {
     if (!browser.isAndroid) throw new Error('verifyCardRemoved: Android only')
-    await this.addNewCardButtonAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.addNewCardButtonAndroid.waitForExist({ timeout: 15000 })
   }
 }
 

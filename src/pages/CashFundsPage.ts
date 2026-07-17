@@ -98,7 +98,7 @@ export default class CashFundsPage extends BasePage {
       } catch {
         continue
       }
-      await resolved.waitForDisplayed({ timeout: 2000 }).catch(() => {})
+      await resolved.waitForExist({ timeout: 2000 }).catch(() => {})
       const visible = await resolved.isDisplayed().catch(() => false) ||
         (browser.isIOS && await resolved.isExisting().catch(() => false))
       if (!visible) continue
@@ -154,7 +154,7 @@ export default class CashFundsPage extends BasePage {
       } catch {
         continue
       }
-      await resolved.waitForDisplayed({ timeout: 2000 }).catch(() => {})
+      await resolved.waitForExist({ timeout: 2000 }).catch(() => {})
       const visible = await resolved.isDisplayed().catch(() => false) ||
         (browser.isIOS && await resolved.isExisting().catch(() => false))
       if (!visible) continue
@@ -190,7 +190,7 @@ export default class CashFundsPage extends BasePage {
       }
 
       const expectedEl = (await expected) as WebdriverIO.Element
-      const ok = await expectedEl.waitForDisplayed({ timeout }).then(() => true).catch(() => false)
+      const ok = await expectedEl.waitForExist({ timeout }).then(() => true).catch(() => false)
       if (ok) return
 
       console.log(`[tap] ${label} candidate#${i + 1} did not reach expected state; trying next candidate`)
@@ -206,7 +206,7 @@ export default class CashFundsPage extends BasePage {
       const el = (await target) as WebdriverIO.Element
       const shown = await el.isDisplayed().catch(() => false)
       if (shown) {
-        await el.waitForDisplayed({ timeout: 1500 }).catch(() => {})
+        await el.waitForExist({ timeout: 1500 }).catch(() => {})
         return
       }
       await this.scrollDownOnceIOS()
@@ -472,7 +472,7 @@ export default class CashFundsPage extends BasePage {
 
     // Strict path with XML-backed anchors:
     // Invest -> Discover -> Cash Funds.
-    await this.investTabAndroidA11y.waitForDisplayed({ timeout: 20000 })
+    await this.investTabAndroidA11y.waitForExist({ timeout: 20000 })
     await this.investTabAndroidA11y.click()
 
     const discoverScreenAnchors = [

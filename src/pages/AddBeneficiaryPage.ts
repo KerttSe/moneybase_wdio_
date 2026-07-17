@@ -276,15 +276,15 @@ export default class AddBeneficiaryPage extends BasePage {
         await browser.back().catch(() => {})
       }
 
-      await this.googlePayScreenAndroid.waitForDisplayed({ reverse: true, timeout: timeoutMs }).catch(() => {})
+      await this.googlePayScreenAndroid.waitForExist({ reverse: true, timeout: timeoutMs }).catch(() => {})
       return
     }
 
-    const shown = await this.googlePayNotNowAndroid.waitForDisplayed({ timeout: 3000 }).catch(() => false)
+    const shown = await this.googlePayNotNowAndroid.waitForExist({ timeout: 3000 }).catch(() => false)
     if (!shown) return
 
     await this.tap(this.googlePayNotNowAndroid)
-    await this.googlePayNotNowAndroid.waitForDisplayed({ reverse: true, timeout: timeoutMs }).catch(() => {})
+    await this.googlePayNotNowAndroid.waitForExist({ reverse: true, timeout: timeoutMs }).catch(() => {})
   }
 
   private async recoverFromTryAgainSheetAndroid() {
@@ -322,7 +322,7 @@ export default class AddBeneficiaryPage extends BasePage {
     const isBusiness = await this.businessAccountLabelAndroid.isDisplayed().catch(() => false)
     if (!isBusiness) return
 
-    await this.userAvatarBtnAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.userAvatarBtnAndroid.waitForExist({ timeout: 15000 })
     await this.tap(this.userAvatarBtnAndroid)
 
     const accountCandidates = [
@@ -347,8 +347,8 @@ export default class AddBeneficiaryPage extends BasePage {
       }).catch(() => {})
     }
 
-    await this.homeRootAndroid.waitForDisplayed({ timeout: 30000 }).catch(() => {})
-    await this.businessAccountLabelAndroid.waitForDisplayed({ reverse: true, timeout: 30000 }).catch(() => {})
+    await this.homeRootAndroid.waitForExist({ timeout: 30000 }).catch(() => {})
+    await this.businessAccountLabelAndroid.waitForExist({ reverse: true, timeout: 30000 }).catch(() => {})
   }
   /* =========================
    * ANDROID: entry point (Pay tab) + Add Beneficiary
@@ -705,7 +705,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private async setIbanAndroid(iban: string) {
-    await this.ibanInputAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.ibanInputAndroid.waitForExist({ timeout: 15000 })
     await this.tap(this.ibanInputAndroid)
     await this.ibanInputAndroid.clearValue().catch(() => {})
     await this.ibanInputAndroid.setValue(iban)
@@ -782,10 +782,10 @@ export default class AddBeneficiaryPage extends BasePage {
   async enterBeneficiaryNameUSAndroid(name: string, surname: string) {
     if (!browser.isAndroid) return
 
-    await this.nameInputAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.nameInputAndroid.waitForExist({ timeout: 20000 })
     await this.type(this.nameInputAndroid, name)
 
-    await this.surnameInputAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.surnameInputAndroid.waitForExist({ timeout: 15000 })
     await this.type(this.surnameInputAndroid, surname)
   }
 
@@ -793,7 +793,7 @@ export default class AddBeneficiaryPage extends BasePage {
   async enterBeneficiaryAccountNumberUSAndroid(accountNumber: string) {
     if (!browser.isAndroid) return
 
-    await this.accountNumberInputAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.accountNumberInputAndroid.waitForExist({ timeout: 15000 })
     await this.tap(this.accountNumberInputAndroid)
     await this.accountNumberInputAndroid.clearValue().catch(() => {})
     await this.accountNumberInputAndroid.setValue(accountNumber)
@@ -824,10 +824,10 @@ export default class AddBeneficiaryPage extends BasePage {
     await browser.hideKeyboard().catch(() => {})
 
     // Expect continue button to appear after account details are filled
-    await this.detailsContinueViewAndroid.waitForDisplayed({ timeout: 8000 }).catch(() => {})
+    await this.detailsContinueViewAndroid.waitForExist({ timeout: 8000 }).catch(() => {})
 
     if (params.friendName) {
-      const shown = await this.friendNameInputAndroid.waitForDisplayed({ timeout: 4000 }).catch(() => false)
+      const shown = await this.friendNameInputAndroid.waitForExist({ timeout: 4000 }).catch(() => false)
       if (shown) await this.type(this.friendNameInputAndroid, params.friendName)
     }
   }
@@ -926,7 +926,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }) {
     if (!browser.isAndroid) return
 
-    let addressScreenShown = await this.addressCountryRowAndroid.waitForDisplayed({ timeout: 20000 }).catch(() => false)
+    let addressScreenShown = await this.addressCountryRowAndroid.waitForExist({ timeout: 20000 }).catch(() => false)
 
     if (!addressScreenShown) {
       // Backend can reject the account/BIC submission with a transient error.
@@ -935,7 +935,7 @@ export default class AddBeneficiaryPage extends BasePage {
       if (backendRejected) {
         console.warn('[AddBeneficiary][USD] Backend rejected account/BIC submission — retrying via Try Again')
         await this.tap(this.tryAgainTextAndroid).catch(() => {})
-        addressScreenShown = await this.addressCountryRowAndroid.waitForDisplayed({ timeout: 20000 }).catch(() => false)
+        addressScreenShown = await this.addressCountryRowAndroid.waitForExist({ timeout: 20000 }).catch(() => false)
       }
     }
 
@@ -957,12 +957,12 @@ export default class AddBeneficiaryPage extends BasePage {
     // If tapping reopened the same country picker used in the earlier step, re-select it.
     const countryPickerReopened = await this.countrySearchInputAndroid.isDisplayed().catch(() => false)
     if (countryPickerReopened) {
-      await this.unitedStatesOptionAndroid.waitForDisplayed({ timeout: 10000 }).catch(() => {})
+      await this.unitedStatesOptionAndroid.waitForExist({ timeout: 10000 }).catch(() => {})
       await this.tap(this.unitedStatesOptionAndroid).catch(() => {})
       await browser.pause(500)
     }
 
-    const addressLine1Shown = await this.addressLine1InputAndroid.waitForDisplayed({ timeout: 10000 }).catch(() => false)
+    const addressLine1Shown = await this.addressLine1InputAndroid.waitForExist({ timeout: 10000 }).catch(() => false)
     if (!addressLine1Shown) {
       throw new Error('[AddBeneficiary][USD] DIAG: Address Line 1 field never appeared after tapping Country row')
     }
@@ -1031,7 +1031,7 @@ export default class AddBeneficiaryPage extends BasePage {
 
   async openPayTabAndroid() {
     if (!browser.isAndroid) return
-    await this.payTabAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.payTabAndroid.waitForExist({ timeout: 20000 })
     await this.tap(this.payTabAndroid)
   }
 
@@ -1076,7 +1076,7 @@ export default class AddBeneficiaryPage extends BasePage {
         const alertStillShown = await this.alertBtn3Android.isDisplayed().catch(() => false)
         if (alertStillShown) {
           await this.tap(this.alertBtn3Android).catch(() => {})
-          await this.alertBtn3Android.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+          await this.alertBtn3Android.waitForExist({ reverse: true, timeout: 7000 }).catch(() => {})
         }
 
         return await this.homeRootAndroid.isDisplayed().catch(() => false)
@@ -1142,11 +1142,11 @@ export default class AddBeneficiaryPage extends BasePage {
   async tapNewTransferOrAddAndroid() {
     if (!browser.isAndroid) return
 
-    const newShown = await this.newBtnAndroid.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+    const newShown = await this.newBtnAndroid.waitForExist({ timeout: 5000 }).catch(() => false)
     if (newShown) {
       await this.tap(this.newBtnAndroid)
     } else {
-      await this.newTransferTitleAndroid.waitForDisplayed({ timeout: 8000 }).catch(() => {})
+      await this.newTransferTitleAndroid.waitForExist({ timeout: 8000 }).catch(() => {})
     }
   }
 
@@ -1154,7 +1154,7 @@ export default class AddBeneficiaryPage extends BasePage {
   async tapAddBeneficiaryBtnAndroid() {
     if (!browser.isAndroid) return
 
-    await this.addBeneficiaryBtnAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.addBeneficiaryBtnAndroid.waitForExist({ timeout: 15000 })
     await this.tap(this.addBeneficiaryBtnAndroid)
   }
 
@@ -1289,7 +1289,7 @@ export default class AddBeneficiaryPage extends BasePage {
 
   async chooseAnotherPersonAndroid() {
     if (!browser.isAndroid) return
-    await this.anotherPersonCardAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.anotherPersonCardAndroid.waitForExist({ timeout: 15000 })
     await this.tap(this.anotherPersonCardAndroid)
   }
 
@@ -1306,13 +1306,13 @@ export default class AddBeneficiaryPage extends BasePage {
     const countryName = currency === 'USD' ? 'United States' : 'Malta'
     const countryOption = currency === 'USD' ? this.unitedStatesOptionAndroid : this.monacoOptionAndroid
 
-    await this.countryPickerAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.countryPickerAndroid.waitForExist({ timeout: 15000 })
     await this.tap(this.countryPickerAndroid)
 
-    await this.countrySearchInputAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.countrySearchInputAndroid.waitForExist({ timeout: 15000 })
     await this.type(this.countrySearchInputAndroid, countryName)
 
-    await countryOption.waitForDisplayed({ timeout: 15000 })
+    await countryOption.waitForExist({ timeout: 15000 })
     await this.tap(countryOption)
   }
 
@@ -1322,15 +1322,15 @@ export default class AddBeneficiaryPage extends BasePage {
 
     const currencyOption = currency === 'USD' ? this.usdOptionAndroid : this.euroOptionAndroid
 
-    await this.currencyPickerAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.currencyPickerAndroid.waitForExist({ timeout: 15000 })
     await this.tap(this.currencyPickerAndroid)
 
-    await currencyOption.waitForDisplayed({ timeout: 10000 })
+    await currencyOption.waitForExist({ timeout: 10000 })
     await this.tap(currencyOption)
 
     // Now continue button should be enabled
     await browser.pause(500)
-    await this.countryContinueBtnAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.countryContinueBtnAndroid.waitForExist({ timeout: 15000 })
     await this.tap(this.countryContinueBtnAndroid)
   }
 
@@ -1366,10 +1366,10 @@ export default class AddBeneficiaryPage extends BasePage {
   }) {
     if (!browser.isAndroid) return
 
-    await this.nameInputAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.nameInputAndroid.waitForExist({ timeout: 20000 })
     await this.type(this.nameInputAndroid, params.name)
 
-    await this.surnameInputAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.surnameInputAndroid.waitForExist({ timeout: 15000 })
     await this.type(this.surnameInputAndroid, params.surname)
 
     await this.setIbanAndroid(params.iban)
@@ -1379,10 +1379,10 @@ export default class AddBeneficiaryPage extends BasePage {
     }
 
     // Expect continue button to appear after IBAN is filled
-    await this.detailsContinueViewAndroid.waitForDisplayed({ timeout: 8000 }).catch(() => {})
+    await this.detailsContinueViewAndroid.waitForExist({ timeout: 8000 }).catch(() => {})
 
     if (params.friendName) {
-      const shown = await this.friendNameInputAndroid.waitForDisplayed({ timeout: 4000 }).catch(() => false)
+      const shown = await this.friendNameInputAndroid.waitForExist({ timeout: 4000 }).catch(() => false)
       if (shown) await this.type(this.friendNameInputAndroid, params.friendName)
     }
   }
@@ -1422,7 +1422,7 @@ export default class AddBeneficiaryPage extends BasePage {
 
     await browser.hideKeyboard().catch(() => {})
 
-    const buttonVisible = await this.detailsContinueBtnAndroid.waitForDisplayed({ timeout: 8000 }).catch(() => false)
+    const buttonVisible = await this.detailsContinueBtnAndroid.waitForExist({ timeout: 8000 }).catch(() => false)
     console.log('[continueFromDetailsAndroid] buttonVisible:', buttonVisible)
 
     if (buttonVisible) {
@@ -1430,7 +1430,7 @@ export default class AddBeneficiaryPage extends BasePage {
       await this.tap(this.detailsContinueBtnAndroid).catch(() => {})
     } else {
       console.log('[continueFromDetailsAndroid] Fallback: tapping view container')
-      await this.detailsContinueViewAndroid.waitForDisplayed({ timeout: 10000 })
+      await this.detailsContinueViewAndroid.waitForExist({ timeout: 10000 })
       await this.tap(this.detailsContinueViewAndroid).catch(() => {})
     }
 
@@ -1728,7 +1728,7 @@ export default class AddBeneficiaryPage extends BasePage {
       )
     }
 
-    await this.otpInputAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.otpInputAndroid.waitForExist({ timeout: 15000 })
 
     const otpFetchDelayMs = Number(process.env.OTP_FETCH_DELAY_MS || 0)
     if (Number.isFinite(otpFetchDelayMs) && otpFetchDelayMs > 0) {

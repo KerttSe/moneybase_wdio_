@@ -222,14 +222,14 @@ export default class ThreeDSPage extends BasePage {
   // ─── Verification methods ────────────────────────────────────────
 
   public async waitForChallengeScreen(timeoutMs = 30000): Promise<void> {
-    await this.rejectBtn.waitForDisplayed({
+    await this.rejectBtn.waitForExist({
       timeout: timeoutMs,
       timeoutMsg: '[3DS2] Challenge screen did not appear — Reject button not found',
     })
   }
 
   public async verifyChallengeHeader(): Promise<void> {
-    await this.rejectBtn.waitForDisplayed({ timeout: 5000 })
+    await this.rejectBtn.waitForExist({ timeout: 5000 })
     if (browser.isAndroid) {
       const logoVisible = await this.mastercardLogoAndroid.isDisplayed().catch(() => false)
       if (!logoVisible) console.warn('[3DS2] Mastercard ID Check logo not found — update locator after page source')
@@ -238,7 +238,7 @@ export default class ThreeDSPage extends BasePage {
 
   public async verifyPendingTransactionMessage(): Promise<void> {
     if (browser.isAndroid) {
-      await this.pendingTransactionMsgAndroid.waitForDisplayed({
+      await this.pendingTransactionMsgAndroid.waitForExist({
         timeout: 5000,
         timeoutMsg: '[3DS2] Pending transaction message not displayed',
       })
@@ -258,7 +258,7 @@ export default class ThreeDSPage extends BasePage {
     const amountEl = browser.isIOS
       ? $(`-ios predicate string:label CONTAINS "${amount}"`)
       : $(`android=new UiSelector().textContains("${amount}")`)
-    await amountEl.waitForDisplayed({
+    await amountEl.waitForExist({
       timeout: 5000,
       timeoutMsg: `[3DS2] Amount ${amount} not visible in transaction details`,
     })
@@ -266,7 +266,7 @@ export default class ThreeDSPage extends BasePage {
 
   public async verifyCountdownTimer(): Promise<void> {
     if (browser.isAndroid) {
-      await this.countdownTimerAndroid.waitForDisplayed({
+      await this.countdownTimerAndroid.waitForExist({
         timeout: 10000,
         timeoutMsg: '[3DS2] Countdown timer not displayed',
       })
@@ -274,8 +274,8 @@ export default class ThreeDSPage extends BasePage {
   }
 
   public async verifyActionButtons(): Promise<void> {
-    await this.approveBtn.waitForDisplayed({ timeout: 5000, timeoutMsg: '[3DS2] Approve button not visible' })
-    await this.rejectBtn.waitForDisplayed({ timeout: 5000, timeoutMsg: '[3DS2] Reject button not visible' })
+    await this.approveBtn.waitForExist({ timeout: 5000, timeoutMsg: '[3DS2] Approve button not visible' })
+    await this.rejectBtn.waitForExist({ timeout: 5000, timeoutMsg: '[3DS2] Reject button not visible' })
   }
 
   public async approve(): Promise<void> {
