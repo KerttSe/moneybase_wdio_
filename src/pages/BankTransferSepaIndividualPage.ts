@@ -854,6 +854,8 @@ class BankTransferSepaIndividualPage extends BasePage {
     await this.ensureIndividualAccountIOS()
     await this.payTabIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.payTabIOS)
+    await browser.pause(1500)
+    await this.dismissContactsPermissionIOS()
     await this.dismissContactsPermissionIOS()
 
     await this.payAddBtnIOS.waitForExist({ timeout: 15000 })
