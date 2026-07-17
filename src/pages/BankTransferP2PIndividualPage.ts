@@ -1031,7 +1031,7 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     await this.payTabIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.payTabIOS)
-    await browser.pause(1500)
+    await browser.pause(2500)
     await this.dismissContactsPermissionIOS()
     await this.dismissContactsPermissionIOS()
 
@@ -1149,7 +1149,7 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     await this.payTabIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.payTabIOS)
-    await browser.pause(1500)
+    await browser.pause(2500)
     await this.dismissContactsPermissionIOS()
     await this.dismissContactsPermissionIOS()
 

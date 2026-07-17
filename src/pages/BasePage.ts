@@ -372,8 +372,8 @@ export default class BasePage {
   // Appears on iOS when the Pay screen first tries to access contacts (P2P, SEPA, add-beneficiary flows).
   protected async dismissContactsPermissionIOS() {
     if (!browser.isIOS) return
-    const permissionImg = $('~ic_contacts_permission')
-    const shown = await permissionImg.waitForExist({ timeout: 4000 }).then(() => true).catch(() => false)
+    const permissionImg = $('-ios predicate string:name == "ic_contacts_permission" OR label == "ic_contacts_permission"')
+    const shown = await permissionImg.waitForExist({ timeout: 8000 }).then(() => true).catch(() => false)
     if (!shown) return
 
     console.warn('[iOS] Contacts permission screen detected — tapping Continue')
