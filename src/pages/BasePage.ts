@@ -311,6 +311,11 @@ export default class BasePage {
   }
 
   async tap(el: WdioEl, timeout = 10000) {
+    if (browser.isIOS) {
+      await el.waitForExist({ timeout })
+      await el.click()
+      return
+    }
     await this.dismissKnownAndroidBlockingPopups().catch(() => {})
     try {
       await el.waitForDisplayed({ timeout })
