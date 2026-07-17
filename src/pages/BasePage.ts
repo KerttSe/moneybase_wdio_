@@ -382,6 +382,15 @@ export default class BasePage {
     await this.tap(continueBtn).catch(() => {})
     await browser.pause(1500)
 
+    // CNContactPickerViewController system sheet appears only in some flows (SEPA, SWIFT).
+    // For P2P the app returns directly to Pay screen — skip coordinate tap in that case.
+    const payScreenBack = $('-ios predicate string:name == "pay_button_add" OR name == "pay_screen_view"')
+    const alreadyOnPay = await payScreenBack.waitForExist({ timeout: 2000 }).catch(() => false)
+    if (alreadyOnPay) {
+      console.warn('[iOS] Pay screen visible — no CNContactPickerViewController sheet, skipping y=0.92 tap')
+      return
+    }
+
     // Dismiss CNContactPickerViewController springboard sheet (runs in separate process — coordinate only).
     // y=0.92 targets "Share All X Contacts" on iPhone 16 iOS 18.
     console.warn('[iOS] Tapping y=0.92 to dismiss CNContactPickerViewController sheet')
