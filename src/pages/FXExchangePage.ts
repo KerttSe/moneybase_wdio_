@@ -28,8 +28,8 @@ class FXExchangePage extends BasePage {
       ]
     }
     return [
-      $('~FX Exchange'),
-      $('-ios predicate string: name == "FX Exchange" OR label == "FX Exchange"'),
+      $('~Exchange'),
+      $('-ios predicate string:name == "Exchange" OR label == "Exchange"'),
     ]
   }
 
