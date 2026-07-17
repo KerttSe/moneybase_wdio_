@@ -1027,6 +1027,7 @@ class BankTransferP2PIndividualPage extends BasePage {
   public async sendP2PBySlideIOS(amount: number | string = 11) {
     if (!browser.isIOS) return
 
+    await this.ensureIndividualAccountIOS()
     await browser.pause(700)
 
     await this.payTabIOS.waitForExist({ timeout: 20000 })
@@ -1091,6 +1092,8 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     await this.payTabIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.payTabIOS)
+    await browser.pause(2500)
+    await this.dismissContactsPermissionIOS()
     await this.dismissContactsPermissionIOS()
 
     await this.sepaBeneficiaryIOS.waitForExist({ timeout: 20000 })
