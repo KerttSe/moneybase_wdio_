@@ -189,7 +189,7 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
       ...browserStackDebugOptions,
       appiumVersion: '2.6.0',
       deviceName: process.env.BS_IOS_DEVICE || 'iPhone 15',
-      osVersion: process.env.BS_IOS_OS || '17',
+      osVersion: process.env.BS_IOS_OS || '17.5',
       ...({
         testObservability: true,
         testObservabilityOptions: {
