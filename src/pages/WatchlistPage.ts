@@ -231,7 +231,7 @@ export default class WatchlistPage extends BasePage {
 
     await this.tapWatchlistActionIOS()
 
-    const toastShown = await this.watchlistUpdatedToastIOS.waitForDisplayed({ timeout: 25000 }).then(() => true).catch(() => false)
+    const toastShown = await this.watchlistUpdatedToastIOS.waitForExist({ timeout: 25000 }).then(() => true).catch(() => false)
     if (!toastShown) {
       const stillOnInstrument = await this.waitForAnyDisplayed([this.instrumentHeaderIOS, this.instrumentBuyButtonIOS], 1500, 'Instrument details (iOS)')
         .then(() => true)
@@ -251,7 +251,7 @@ export default class WatchlistPage extends BasePage {
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    await this.investTabAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.investTabAndroid.waitForExist({ timeout: 20000 })
     await this.investTabAndroid.click()
 
     const watchlistEntryCandidates = [
@@ -278,7 +278,7 @@ export default class WatchlistPage extends BasePage {
       .then(() => true)
       .catch(() => false)
     if (!onInstrumentDetails) {
-      await this.firstInstrumentRowAndroidByClickableView.waitForDisplayed({ timeout: 10000 })
+      await this.firstInstrumentRowAndroidByClickableView.waitForExist({ timeout: 10000 })
       await this.firstInstrumentRowAndroidByClickableView.click()
       onInstrumentDetails = await this.waitForAnyDisplayed([this.instrumentHeaderAndroid, this.instrumentBuyButtonAndroid], 12000, 'Instrument details (Android)')
         .then(() => true)
@@ -313,7 +313,7 @@ export default class WatchlistPage extends BasePage {
       await this.tapFirstDisplayed(watchlistActionCandidates, 'Watchlist action (Android)')
     } else if (onInstrumentDetails) {
       usedTopRightFallback = true
-      await this.instrumentTopRightActionAndroid.waitForDisplayed({ timeout: 12000 })
+      await this.instrumentTopRightActionAndroid.waitForExist({ timeout: 12000 })
       const beforeState = await this.instrumentTopRightActionAndroid.getAttribute('selected').catch(() => '')
       await this.instrumentTopRightActionAndroid.click()
       await browser.pause(700)

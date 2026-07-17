@@ -74,7 +74,7 @@ export class LoginPage extends BasePage {
     const closeShown = await googlePayClose.isDisplayed().catch(() => false)
     if (closeShown) {
       await googlePayClose.click().catch(() => {})
-      await googlePayClose.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+      await googlePayClose.waitForExist({ reverse: true, timeout: 7000 }).catch(() => {})
 
       await this.forceHomeViaBottomNavAndroid().catch(() => {})
     }
@@ -213,11 +213,11 @@ private async typeAndroidFallback(value: string) {
 
 async selectCountry(country: string) {
   await browser.pause(250)
-  await this.countryCodeBtn.waitForDisplayed({ timeout: 10000 })
+  await this.countryCodeBtn.waitForExist({ timeout: 10000 })
   await this.countryCodeBtn.click()
 
   // open search and type country name
-  await this.countrySearchTap.waitForDisplayed({ timeout: 20000 })
+  await this.countrySearchTap.waitForExist({ timeout: 20000 })
   await this.countrySearchTap.click()
   await browser.pause(250)
 
@@ -225,7 +225,7 @@ async selectCountry(country: string) {
 
   // iOS: setvalue as usual but with extra checks and clear (бо іноді не кликається або не очищається)
   if (browser.isIOS) {
-    await input.waitForDisplayed({ timeout: 10000 })
+    await input.waitForExist({ timeout: 10000 })
     await input.click()
     try { await input.clearValue() } catch {}
     await input.setValue(country)
@@ -250,7 +250,7 @@ async selectCountry(country: string) {
 
   // pick country from results
   const item = this.countryItem(country)
-  await item.waitForDisplayed({ timeout: 20000 })
+  await item.waitForExist({ timeout: 20000 })
   await item.click()
 }
 
@@ -306,13 +306,13 @@ private async tapDigitIOS(d: string) {
     return;
   }
   const container = this.iosKeypadContainerByDigit(d);
-  await container.waitForDisplayed({ timeout: 5000 });
+  await container.waitForExist({ timeout: 5000 });
   await container.click();
 }
 
   private async isIOSPasscodeScreenShown() {
     if (!browser.isIOS) return false
-    return this.iosKeypadContainerByDigit('1').waitForDisplayed({ timeout: 3000 }).catch(() => false)
+    return this.iosKeypadContainerByDigit('1').waitForExist({ timeout: 3000 }).catch(() => false)
   }
 
 /* ===== Aos ===== */
@@ -323,13 +323,13 @@ private androidKeypadDigit(d: string) {
 
   private async tapDigitAndroid(d: string) {
     const el = this.androidKeypadDigit(d);
-    await el.waitForDisplayed({ timeout: 5000 });
+    await el.waitForExist({ timeout: 5000 });
     await el.click();
   }
 
   private async isAndroidPasscodeScreenShown() {
     if (!browser.isAndroid) return false
-    return this.androidKeypadDigit('1').waitForDisplayed({ timeout: 3000 }).catch(() => false)
+    return this.androidKeypadDigit('1').waitForExist({ timeout: 3000 }).catch(() => false)
   }
 
   private async waitForAndroidLoginNextStepAfterMobile(timeout = 45000) {
@@ -370,12 +370,12 @@ async enterPin(pin: string) {
         (await $('~loginNewMobile_screen').isDisplayed().catch(() => false)),
       { timeout: 50000, interval: 500, timeoutMsg: 'iOS PIN screen (authLoginNavBar or loginNewMobile_screen) did not appear' }
     )
-    await $(`~${pin[0]}`).waitForDisplayed({ timeout: 50000 });
+    await $(`~${pin[0]}`).waitForExist({ timeout: 50000 });
   }
 
   if (browser.isAndroid) {
-    await this.androidAuthLoginRoot.waitForDisplayed({ timeout: 50000 });
-    await this.androidKeypadDigit(pin[0]).waitForDisplayed({ timeout: 30000 });
+    await this.androidAuthLoginRoot.waitForExist({ timeout: 50000 });
+    await this.androidKeypadDigit(pin[0]).waitForExist({ timeout: 30000 });
   }
 
   for (const d of pin) {
@@ -430,7 +430,7 @@ private normalizeOtp(code: string): string {
 
 async waitForOtpScreen() {
   if (browser.isIOS) {
-    await this.otpContainerIOS.waitForDisplayed({ timeout: 40000 });
+    await this.otpContainerIOS.waitForExist({ timeout: 40000 });
     return;
   }
 
@@ -463,7 +463,7 @@ async enterOtp(code: string = '123456') {
 
   if (browser.isIOS) {
     const field = this.otpFirstSlotIOS;
-    await field.waitForDisplayed({ timeout: 40000 });
+    await field.waitForExist({ timeout: 40000 });
     await field.click();
     await field.clearValue().catch(() => {});
     await field.addValue(otp);
@@ -490,7 +490,7 @@ async enterOtp(code: string = '123456') {
 
   if (browser.isAndroid) {
     const field = this.otpFieldAndroid; 
-    const hasField = await field.waitForDisplayed({ timeout: 8000 }).catch(() => false)
+    const hasField = await field.waitForExist({ timeout: 8000 }).catch(() => false)
     if (!hasField) return
     await field.click();
     await field.setValue(otp); //  Android setValue ок
@@ -678,7 +678,7 @@ async closeApplePayIfVisible() {
   if (!visible) return
 
   await this.tap(this.applePayProposalCloseBtn)
-  await this.applePayProposalCloseBtn.waitForDisplayed({ reverse: true, timeout: 10000 })
+  await this.applePayProposalCloseBtn.waitForExist({ reverse: true, timeout: 10000 })
 }
 
 /** 4) waiting for Home screen */

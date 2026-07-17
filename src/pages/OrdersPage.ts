@@ -605,7 +605,7 @@ export default class OrdersPage extends BasePage {
 
   private async tapIOSDisplayed(el: WdioEl | WebdriverIO.Element, timeout = 10000) {
     const resolved = (await el) as WebdriverIO.Element
-    await resolved.waitForDisplayed({ timeout })
+    await resolved.waitForExist({ timeout })
     await this.tapCenterOnElement(resolved)
   }
 
@@ -894,7 +894,7 @@ export default class OrdersPage extends BasePage {
   private async openInvestSearchAndroid() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    const investShown = await this.investTabAndroid.waitForDisplayed({ timeout: 8000 }).then(() => true).catch(() => false)
+    const investShown = await this.investTabAndroid.waitForExist({ timeout: 8000 }).then(() => true).catch(() => false)
     if (investShown) {
       await this.investTabAndroid.click()
     }
@@ -2181,12 +2181,12 @@ export default class OrdersPage extends BasePage {
     const activeEl = await this.getFirstDisplayed([activeStatus], 'Active order row (iOS)')
     await this.tapCenterOnElement(activeEl)
 
-    let opened = await this.orderDetailsTitleIOS.waitForDisplayed({ timeout: 4000 }).then(() => true).catch(() => false)
+    let opened = await this.orderDetailsTitleIOS.waitForExist({ timeout: 4000 }).then(() => true).catch(() => false)
     if (!opened) {
       const loc = await activeEl.getLocation()
       const size = await activeEl.getSize()
       await this.tapAt(180, loc.y + size.height / 2)
-      opened = await this.orderDetailsTitleIOS.waitForDisplayed({ timeout: 4000 }).then(() => true).catch(() => false)
+      opened = await this.orderDetailsTitleIOS.waitForExist({ timeout: 4000 }).then(() => true).catch(() => false)
     }
 
     if (!opened) {
@@ -2290,12 +2290,12 @@ export default class OrdersPage extends BasePage {
     const row = await this.getFirstDisplayed(statusCandidates, 'Recent order row (iOS)')
     await this.tapCenterOnElement(row)
 
-    let opened = await this.orderDetailsTitleIOS.waitForDisplayed({ timeout: 4000 }).then(() => true).catch(() => false)
+    let opened = await this.orderDetailsTitleIOS.waitForExist({ timeout: 4000 }).then(() => true).catch(() => false)
     if (!opened) {
       const loc = await row.getLocation()
       const size = await row.getSize()
       await this.tapAt(180, loc.y + size.height / 2)
-      opened = await this.orderDetailsTitleIOS.waitForDisplayed({ timeout: 4000 }).then(() => true).catch(() => false)
+      opened = await this.orderDetailsTitleIOS.waitForExist({ timeout: 4000 }).then(() => true).catch(() => false)
     }
 
     if (!opened) {
@@ -2455,7 +2455,7 @@ export default class OrdersPage extends BasePage {
     await this.openNewBuyOrderIOS()
     await this.placeBuyOrderIOS(params.initialQuantity)
 
-    const orderDetailsOpenedDirectly = await this.orderDetailsTitleIOS.waitForDisplayed({ timeout: 6000 }).then(() => true).catch(() => false)
+    const orderDetailsOpenedDirectly = await this.orderDetailsTitleIOS.waitForExist({ timeout: 6000 }).then(() => true).catch(() => false)
     if (!orderDetailsOpenedDirectly) {
       await this.waitForRecentActiveOrderIOS()
       await this.openActiveOrderDetailsIOS()

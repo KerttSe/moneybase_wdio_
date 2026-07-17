@@ -596,7 +596,7 @@ export default class OnboardingPage extends BasePage {
     if (browser.isIOS) {
       await field.waitForExist({ timeout: 20000 })
     } else {
-      await field.waitForDisplayed({ timeout: 20000 })
+      await field.waitForExist({ timeout: 20000 })
     }
     if (browser.isIOS) {
       await this.typeIOSTextInput(field, value)
@@ -632,7 +632,7 @@ export default class OnboardingPage extends BasePage {
       return
     }
 
-    await button.waitForDisplayed({ timeout: 10000 })
+    await button.waitForExist({ timeout: 10000 })
     await browser.waitUntil(
       async () => (await button.getAttribute('enabled').catch(() => 'true')) !== 'false',
       {
@@ -651,7 +651,7 @@ export default class OnboardingPage extends BasePage {
     if (browser.isIOS) {
       await continueButton.waitForExist({ timeout: 10000 })
     } else {
-      await continueButton.waitForDisplayed({ timeout: 10000 })
+      await continueButton.waitForExist({ timeout: 10000 })
     }
     await browser.waitUntil(
       async () => (await continueButton.getAttribute('enabled').catch(() => 'false')) === 'true',
@@ -680,11 +680,11 @@ export default class OnboardingPage extends BasePage {
       return false
     }
 
-    await this.termsText.waitForDisplayed({ timeout: 10000 })
+    await this.termsText.waitForExist({ timeout: 10000 })
 
     if (browser.isIOS) {
       const checkbox = this.termsCheckbox
-      await checkbox.waitForDisplayed({ timeout: 10000 })
+      await checkbox.waitForExist({ timeout: 10000 })
 
       const continueButton = this.onboardingEmailContinueBtn
 
@@ -843,7 +843,7 @@ export default class OnboardingPage extends BasePage {
       }
     }
 
-    await option.waitForDisplayed({ timeout: 1000 })
+    await option.waitForExist({ timeout: 1000 })
     await this.tapElementCenter(option)
   }
 
@@ -869,7 +869,7 @@ export default class OnboardingPage extends BasePage {
     }
 
     const firstClickableText = $('android=new UiSelector().className("android.widget.TextView").clickable(true).instance(0)')
-    await firstClickableText.waitForDisplayed({ timeout: 5000 })
+    await firstClickableText.waitForExist({ timeout: 5000 })
     const selectedLabel = await firstClickableText.getText().catch(() => '')
     await this.tapElementCenter(firstClickableText)
     return selectedLabel
@@ -1009,7 +1009,7 @@ export default class OnboardingPage extends BasePage {
     }
 
     await this.throwIfDeviceSecurityBlocked()
-    await this.registerScreen.waitForDisplayed({ timeout: 30000 })
+    await this.registerScreen.waitForExist({ timeout: 30000 })
   }
 
   private async throwIfDeviceSecurityBlocked() {
@@ -1037,7 +1037,7 @@ export default class OnboardingPage extends BasePage {
 
     if (browser.isIOS) {
       const searchInput = await this.getIOSCountrySearchInput()
-      await searchInput.waitForDisplayed({ timeout: 10000 })
+      await searchInput.waitForExist({ timeout: 10000 })
       await searchInput.click()
       await searchInput.clearValue().catch(() => {})
       await searchInput.addValue(country).catch(async () => {
@@ -1047,7 +1047,7 @@ export default class OnboardingPage extends BasePage {
     }
 
     const searchInput = $('android=new UiSelector().className("android.widget.EditText").instance(0)')
-    const inputShown = await searchInput.waitForDisplayed({ timeout: 10000 }).catch(() => false)
+    const inputShown = await searchInput.waitForExist({ timeout: 10000 }).catch(() => false)
     if (!inputShown) {
       await this.typeAndroidShell(country)
       return
@@ -1076,7 +1076,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private async typeIntoSearchInput(searchInput: ChainablePromiseElement, value: string) {
-    await searchInput.waitForDisplayed({ timeout: 10000 })
+    await searchInput.waitForExist({ timeout: 10000 })
     await searchInput.click()
     await searchInput.clearValue().catch(() => {})
     if (browser.isIOS) {
@@ -1104,12 +1104,12 @@ export default class OnboardingPage extends BasePage {
       await this.dismissIOSKeyboardIfOpen()
 
       const cell = this.countryItemCell(country)
-      const cellShown = await cell.waitForDisplayed({ timeout: 10000 }).then(() => true).catch(() => false)
+      const cellShown = await cell.waitForExist({ timeout: 10000 }).then(() => true).catch(() => false)
       if (cellShown) {
         await this.tapElementCenter(cell)
       } else {
         const item = this.countryItem(country)
-        await item.waitForDisplayed({ timeout: 10000 })
+        await item.waitForExist({ timeout: 10000 })
         await this.tapElementCenter(item)
       }
 
@@ -1118,7 +1118,7 @@ export default class OnboardingPage extends BasePage {
     }
 
     const option = this.optionByLabel(country)
-    const optionShown = await option.waitForDisplayed({ timeout: 20000 }).then(() => true).catch(() => false)
+    const optionShown = await option.waitForExist({ timeout: 20000 }).then(() => true).catch(() => false)
     if (optionShown) {
       await option.click().catch(async () => {
         await this.tapElementCenter(option)
@@ -1128,13 +1128,13 @@ export default class OnboardingPage extends BasePage {
     }
 
     const item = this.countryItem(country)
-    await item.waitForDisplayed({ timeout: 20000 })
+    await item.waitForExist({ timeout: 20000 })
     await this.tapElementCenter(item)
     await this.waitForPickerClosed()
   }
 
   private async selectCountry(country: string) {
-    await this.countryCodeBtn.waitForDisplayed({ timeout: 15000 })
+    await this.countryCodeBtn.waitForExist({ timeout: 15000 })
 
     const currentCountryCode = await this.countryCodeBtn.getText().catch(() => '')
     if (currentCountryCode.includes('+356')) return
@@ -1142,23 +1142,23 @@ export default class OnboardingPage extends BasePage {
     await this.tap(this.countryCodeBtn)
     if (await this.text(country).isDisplayed().catch(() => false)) {
       await this.selectVisibleOption(country)
-      await this.countryCodeBtn.waitForDisplayed({ timeout: 15000 })
+      await this.countryCodeBtn.waitForExist({ timeout: 15000 })
       return
     }
 
     await this.searchAndSelectCountry(country)
-    await this.countryCodeBtn.waitForDisplayed({ timeout: 15000 })
+    await this.countryCodeBtn.waitForExist({ timeout: 15000 })
   }
 
   private async enterMobile(phone: string) {
     await this.selectCountry('Malta')
-    await this.mobileInput.waitForDisplayed({ timeout: 20000 })
+    await this.mobileInput.waitForExist({ timeout: 20000 })
     await this.type(this.mobileInput, phone, 20000)
     await this.tap(this.mobileContinueBtn, 20000)
   }
 
   private async enterPinTwice(pin: string) {
-    await this.passcodeScreen.waitForDisplayed({ timeout: 30000 })
+    await this.passcodeScreen.waitForExist({ timeout: 30000 })
 
     const isOtpShown = async () => {
       if (browser.isIOS) {
@@ -1231,7 +1231,7 @@ export default class OnboardingPage extends BasePage {
         try {
           await this.tapElementCenter(keypadButton)
         } catch (error) {
-          if (await this.otpInputExact.waitForDisplayed({ timeout: 3000 }).then(() => true).catch(() => false)) return
+          if (await this.otpInputExact.waitForExist({ timeout: 3000 }).then(() => true).catch(() => false)) return
           throw error
         }
 
@@ -1245,7 +1245,7 @@ export default class OnboardingPage extends BasePage {
         continue
       }
 
-      await this.otpInput.waitForDisplayed({ timeout: 45000 })
+      await this.otpInput.waitForExist({ timeout: 45000 })
       return
     }
   }
@@ -1311,14 +1311,14 @@ export default class OnboardingPage extends BasePage {
     await this.iosConversationsCloseBtn.click().catch(async () => {
       await this.tapElementCenter(this.iosConversationsCloseBtn)
     })
-    await this.iosConversationsCloseBtn.waitForDisplayed({ reverse: true, timeout: 5000 }).catch(() => {})
+    await this.iosConversationsCloseBtn.waitForExist({ reverse: true, timeout: 5000 }).catch(() => {})
     await browser.pause(500)
     return true
   }
 
   private async completeOtp(otpPhone: string) {
-    await this.otpContainer.waitForDisplayed({ timeout: 45000 })
-    await this.otpInput.waitForDisplayed({ timeout: 30000 })
+    await this.otpContainer.waitForExist({ timeout: 45000 })
+    await this.otpInput.waitForExist({ timeout: 30000 })
 
     const shownPhoneText = await this.otpPhoneText.getText().catch(() => '')
     const shownDigits = shownPhoneText.replace(/\D/g, '')
@@ -1406,7 +1406,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private async waitForOnboardingNameScreen() {
-    const newNameScreenShown = await this.onboardingNameScreen.waitForDisplayed({ timeout: 30000 }).then(() => true).catch(() => false)
+    const newNameScreenShown = await this.onboardingNameScreen.waitForExist({ timeout: 30000 }).then(() => true).catch(() => false)
     if (newNameScreenShown) return
 
     await this.waitForScreenTitle('Your personal details', 1000)
@@ -1439,7 +1439,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private async fillHomeAddress(data: Required<Pick<OnboardingData, 'addressLine1' | 'addressLine2' | 'city' | 'postCode' | 'country'>>) {
-    if (await this.onboardingAddressScreen.waitForDisplayed({ timeout: 3000 }).then(() => true).catch(() => false)) {
+    if (await this.onboardingAddressScreen.waitForExist({ timeout: 3000 }).then(() => true).catch(() => false)) {
       await this.typeElement(this.onboardingAddress1Input, data.addressLine1)
       await this.typeElement(this.onboardingAddress2Input, data.addressLine2)
 
@@ -1465,14 +1465,14 @@ export default class OnboardingPage extends BasePage {
   }
 
   private async isLastPersonalDetailsScreenDisplayed(timeout = 1000) {
-    const newDetailsShown = await this.onboardingDetailsScreen.waitForDisplayed({ timeout }).then(() => true).catch(() => false)
+    const newDetailsShown = await this.onboardingDetailsScreen.waitForExist({ timeout }).then(() => true).catch(() => false)
     if (newDetailsShown) return true
 
-    return this.text('Last few personal details').waitForDisplayed({ timeout }).then(() => true).catch(() => false)
+    return this.text('Last few personal details').waitForExist({ timeout }).then(() => true).catch(() => false)
   }
 
   private async fillLastPersonalDetails(data: Required<Pick<OnboardingData, 'company' | 'occupation' | 'previousEmployment'>>) {
-    if (await this.onboardingDetailsScreen.waitForDisplayed({ timeout: 3000 }).then(() => true).catch(() => false)) {
+    if (await this.onboardingDetailsScreen.waitForExist({ timeout: 3000 }).then(() => true).catch(() => false)) {
       await this.tap(this.onboardingTaxCountryBtn)
       await this.selectSearchOption(this.taxCountrySearchInput, 'Malta')
 
@@ -1530,13 +1530,13 @@ export default class OnboardingPage extends BasePage {
 
   private async typeEmailAndAcceptTerms(email: string) {
     await this.closePickerIfOpen()
-    const newEmailScreenShown = await this.onboardingEmailScreen.waitForDisplayed({ timeout: 30000 }).then(() => true).catch(() => false)
+    const newEmailScreenShown = await this.onboardingEmailScreen.waitForExist({ timeout: 30000 }).then(() => true).catch(() => false)
     if (!newEmailScreenShown) {
-      await this.text('Your primary email').waitForDisplayed({ timeout: 1000 })
+      await this.text('Your primary email').waitForExist({ timeout: 1000 })
     }
 
     const emailInput = newEmailScreenShown ? this.onboardingEmailInput : this.labeledInput('Email')
-    await emailInput.waitForDisplayed({ timeout: 30000 })
+    await emailInput.waitForExist({ timeout: 30000 })
     await this.tap(emailInput)
     await emailInput.clearValue().catch(() => {})
     if (browser.isIOS) {
@@ -1681,11 +1681,11 @@ export default class OnboardingPage extends BasePage {
       await this.verificationRequiredCloseBtnIOS.waitForExist({ timeout: 10000 })
       await this.tapElementCenter(this.verificationRequiredCloseBtnIOS)
     } else {
-      await this.verificationRequiredBackBtn.waitForDisplayed({ timeout: 10000 })
+      await this.verificationRequiredBackBtn.waitForExist({ timeout: 10000 })
       await this.tapElementCenter(this.verificationRequiredBackBtn)
     }
 
-    await this.verificationSuccessScreen.waitForDisplayed({ timeout: 10000 })
+    await this.verificationSuccessScreen.waitForExist({ timeout: 10000 })
     await this.tapPostVerificationContinue()
 
     const homeAnchorShown = await this.waitForUploadIdentityDocumentAnchor(
@@ -1747,7 +1747,7 @@ export default class OnboardingPage extends BasePage {
     if (!(await this.homeRoot.isDisplayed().catch(() => false))) {
       for (const digit of pin) {
         const keypadButton = this.keypadDigit(digit)
-        await keypadButton.waitForDisplayed({ timeout: 10000 })
+        await keypadButton.waitForExist({ timeout: 10000 })
         await this.tapElementCenter(keypadButton)
       }
     }
@@ -1780,7 +1780,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private async tapPostVerificationContinue() {
-    await this.postVerificationContinueBtn.waitForDisplayed({ timeout: 10000 })
+    await this.postVerificationContinueBtn.waitForExist({ timeout: 10000 })
     await this.postVerificationContinueBtn.click().catch(async () => {
       await this.tapElementCenter(this.postVerificationContinueBtn)
     })
@@ -1841,7 +1841,7 @@ export default class OnboardingPage extends BasePage {
       ? this.infoContinueBtn
       : this.buttonByText('Verify Now')
 
-    await verifyNowButton.waitForDisplayed({ timeout: 10000 })
+    await verifyNowButton.waitForExist({ timeout: 10000 })
     await browser.waitUntil(
       async () => (await verifyNowButton.getAttribute('enabled').catch(() => 'false')) === 'true',
       {
@@ -1924,7 +1924,7 @@ export default class OnboardingPage extends BasePage {
     }
 
     const country = process.env.ONBOARDING_ONFIDO_ISSUING_COUNTRY || 'Ukraine'
-    await this.onfidoCountryPicker.waitForDisplayed({ timeout: 15000 })
+    await this.onfidoCountryPicker.waitForExist({ timeout: 15000 })
     await this.tapElementCenter(this.onfidoCountryPicker)
 
     const searchInput = await this.waitForAnyVisible(
@@ -2017,7 +2017,7 @@ export default class OnboardingPage extends BasePage {
       await browser.pause(settleMs)
     }
 
-    await this.onfidoCaptureButton.waitForDisplayed({ timeout: 20000 })
+    await this.onfidoCaptureButton.waitForExist({ timeout: 20000 })
     await this.tapElementCenter(this.onfidoCaptureButton)
     await this.confirmCapturedDocumentSide(side)
   }
@@ -2232,7 +2232,7 @@ export default class OnboardingPage extends BasePage {
       ? this.onfidoMotionIntroStartRecordingBtn
       : this.nativeButtonByText('Start recording')
 
-    await startRecording.waitForDisplayed({ timeout: 15000 })
+    await startRecording.waitForExist({ timeout: 15000 })
     await this.tapElementCenter(startRecording)
 
     const motionDeadline = Date.now() + Number(process.env.ONBOARDING_ONFIDO_MOTION_COMPLETE_TIMEOUT_MS || 90000)
@@ -2285,12 +2285,12 @@ export default class OnboardingPage extends BasePage {
     if (alreadyOnSubmitBill) return
 
     const bankStatement = this.nativeButtonTextContains('Bank or building society statement')
-    await bankStatement.waitForDisplayed({ timeout: 30000 })
+    await bankStatement.waitForExist({ timeout: 30000 })
     await this.tapElementCenter(bankStatement)
   }
 
   private async continueProofOfAddressInstructions() {
-    await this.text('Submit bill').waitForDisplayed({ timeout: 30000 })
+    await this.text('Submit bill').waitForExist({ timeout: 30000 })
 
     const continueButton = this.nativeButtonByText('Continue')
     if (await continueButton.isDisplayed().catch(() => false)) {
@@ -2309,7 +2309,7 @@ export default class OnboardingPage extends BasePage {
 
   private async uploadProofOfAddressFile() {
     const uploadButton = this.nativeButtonByText('Upload file')
-    await uploadButton.waitForDisplayed({ timeout: 30000 })
+    await uploadButton.waitForExist({ timeout: 30000 })
 
     const localPath =
       process.env.ONBOARDING_PROOF_OF_ADDRESS_PATH ||
