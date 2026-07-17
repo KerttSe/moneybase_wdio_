@@ -1992,12 +1992,17 @@ export default class AddBeneficiaryPage extends BasePage {
 
   async confirmReviewBeneficiaryIOS() {
     if (!browser.isIOS) return
-    const confirmBtn = $('~review_button_confirm')
-    const confirmText = $('~Confirm')
+    const confirmBtn = $('-ios predicate string:name == "review_button_confirm" OR name == "Confirm" OR label == "Confirm"')
+    const confirmText = $('-ios predicate string:name == "Confirm" OR label == "Confirm"')
     const reviewTitle = $('~Review Beneficiary')
 
     const reviewShown = await reviewTitle.waitForExist({ timeout: 30000 }).catch(() => false)
     if (!reviewShown) return
+
+    // ~Review Beneficiary also appears as a back-nav label on the OTP screen.
+    // If OTP is already present we already moved forward — don't wait for confirmBtn.
+    const alreadyOnOtp = await this.otpContainerIOS.isExisting().catch(() => false)
+    if (alreadyOnOtp) return
 
     await confirmBtn.waitForExist({
       timeout: 30000,
@@ -2059,11 +2064,16 @@ export default class AddBeneficiaryPage extends BasePage {
   async waitForOtpAndSubmitIOS(expectedIban?: string) {
     if (!browser.isIOS) return
 
-    const reviewEl = $('~Review Beneficiary')
-    const reviewStillShown = await reviewEl.isDisplayed().catch(() => false) || await reviewEl.isExisting().catch(() => false)
-    if (reviewStillShown) {
-      console.warn('[AddBeneficiary][iOS] Review screen still shown before OTP wait — tapping Confirm again')
-      await this.confirmReviewBeneficiaryIOS()
+    // Check OTP first — ~Review Beneficiary also appears as a back-nav label on the OTP screen,
+    // so isExisting() on reviewEl would be true even after we've moved forward.
+    const alreadyOnOtpBeforeReviewCheck = await this.otpContainerIOS.isExisting().catch(() => false)
+    if (!alreadyOnOtpBeforeReviewCheck) {
+      const reviewEl = $('~Review Beneficiary')
+      const reviewStillShown = await reviewEl.isDisplayed().catch(() => false) || await reviewEl.isExisting().catch(() => false)
+      if (reviewStillShown) {
+        console.warn('[AddBeneficiary][iOS] Review screen still shown before OTP wait — tapping Confirm again')
+        await this.confirmReviewBeneficiaryIOS()
+      }
     }
 
     // Use waitForExist — otp_input may have visible=false (XCUITest Compose bug) while
