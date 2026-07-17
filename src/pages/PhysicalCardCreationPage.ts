@@ -153,13 +153,13 @@ class PhysicalCardCreationPage extends BasePage {
   private async ensureIndividualAccountIOS() {
     if (!browser.isIOS) return
 
-    await this.profilePickerUserNameLabelIOS.waitForDisplayed({ timeout: 15000 })
+    await this.profilePickerUserNameLabelIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.profilePickerUserNameLabelIOS)
 
-    await this.profilePickerIndividualItemIOS.waitForDisplayed({ timeout: 15000 })
+    await this.profilePickerIndividualItemIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.profilePickerIndividualItemIOS)
 
-    await this.profilePickerIndividualItemIOS.waitForDisplayed({ reverse: true, timeout: 15000 }).catch(() => {})
+    await this.profilePickerIndividualItemIOS.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
     await browser.pause(300)
   }
 
@@ -734,22 +734,22 @@ class PhysicalCardCreationPage extends BasePage {
 
   private async closeApplePayProposalIOS(timeoutMs = 10000) {
     if (!browser.isIOS) return
-    const shown = await this.applePayProposalCloseBtnIOS.waitForDisplayed({ timeout: timeoutMs }).catch(() => false)
+    const shown = await this.applePayProposalCloseBtnIOS.waitForExist({ timeout: timeoutMs }).catch(() => false)
     if (!shown) return
     await this.tap(this.applePayProposalCloseBtnIOS)
-    await this.applePayProposalCloseBtnIOS.waitForDisplayed({ reverse: true, timeout: timeoutMs }).catch(() => {})
+    await this.applePayProposalCloseBtnIOS.waitForExist({ reverse: true, timeout: timeoutMs }).catch(() => {})
   }
 
   private async typeOtpIOS(value: string) {
     await browser.switchContext('NATIVE_APP').catch(() => {})
-    const otpShown = await this.otpEntryIOS.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+    const otpShown = await this.otpEntryIOS.waitForExist({ timeout: 5000 }).catch(() => false)
     if (otpShown) {
       await this.tap(this.otpEntryIOS)
       await this.otpEntryIOS.addValue(value)
       return
     }
 
-    await this.otpTextViewIOS.waitForDisplayed({ timeout: 20000 })
+    await this.otpTextViewIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.otpTextViewIOS)
     let typed = true
     for (const digit of value) {
@@ -779,11 +779,11 @@ class PhysicalCardCreationPage extends BasePage {
       await browser.pause(500)
     }
 
-    await this.otpEntryIOS.waitForDisplayed({ timeout: 5000 })
+    await this.otpEntryIOS.waitForExist({ timeout: 5000 })
   }
 
   private async confirmPinIOS(timeoutMs = 15000) {
-    await this.confirmAddressBtnIOS.waitForDisplayed({ timeout: timeoutMs }).catch(() => {})
+    await this.confirmAddressBtnIOS.waitForExist({ timeout: timeoutMs }).catch(() => {})
     if (await this.confirmAddressBtnIOS.isDisplayed().catch(() => false)) {
       await this.tap(this.confirmAddressBtnIOS)
     }
@@ -794,15 +794,15 @@ class PhysicalCardCreationPage extends BasePage {
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    const blockShown = await this.blockButtonIOS.waitForDisplayed({ timeout: timeoutMs }).catch(() => false)
+    const blockShown = await this.blockButtonIOS.waitForExist({ timeout: timeoutMs }).catch(() => false)
     if (blockShown) {
       await this.tap(this.blockButtonIOS)
 
-      const confirmShown = await this.blockConfirmButtonIOS.waitForDisplayed({ timeout: timeoutMs }).catch(() => false)
+      const confirmShown = await this.blockConfirmButtonIOS.waitForExist({ timeout: timeoutMs }).catch(() => false)
       if (confirmShown) {
         await this.tap(this.blockConfirmButtonIOS)
       } else {
-        await this.blockButtonIOS.waitForDisplayed({ timeout: timeoutMs }).catch(() => {})
+        await this.blockButtonIOS.waitForExist({ timeout: timeoutMs }).catch(() => {})
         if (await this.blockButtonIOS.isDisplayed().catch(() => false)) {
           await this.tap(this.blockButtonIOS)
         }
@@ -1056,7 +1056,7 @@ class PhysicalCardCreationPage extends BasePage {
     await browser.switchContext('NATIVE_APP').catch(() => {})
     if (await this.isIOSCardsSurfaceVisible()) return
 
-    await this.cardsTabIOS.waitForDisplayed({ timeout: 20000 })
+    await this.cardsTabIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.cardsTabIOS)
     await browser.waitUntil(
       async () => await this.isIOSCardsSurfaceVisible(),
@@ -1098,16 +1098,16 @@ class PhysicalCardCreationPage extends BasePage {
     const alreadyFrozen = await this.unfreezeButtonIOS.isDisplayed().catch(() => false)
     if (alreadyFrozen) {
       await this.tap(this.unfreezeButtonIOS)
-      await this.freezeButtonIOS.waitForDisplayed({ timeout: timeoutMs })
+      await this.freezeButtonIOS.waitForExist({ timeout: timeoutMs })
     }
 
-    await this.freezeButtonIOS.waitForDisplayed({ timeout: timeoutMs })
+    await this.freezeButtonIOS.waitForExist({ timeout: timeoutMs })
     await this.tap(this.freezeButtonIOS)
-    await this.unfreezeButtonIOS.waitForDisplayed({ timeout: timeoutMs })
+    await this.unfreezeButtonIOS.waitForExist({ timeout: timeoutMs })
 
     await this.tap(this.unfreezeButtonIOS)
-    await this.unfreezeButtonIOS.waitForDisplayed({ reverse: true, timeout: timeoutMs }).catch(() => {})
-    await this.freezeButtonIOS.waitForDisplayed({ timeout: timeoutMs })
+    await this.unfreezeButtonIOS.waitForExist({ reverse: true, timeout: timeoutMs }).catch(() => {})
+    await this.freezeButtonIOS.waitForExist({ timeout: timeoutMs })
   }
 
   public async startAddNewCardAndroid() {
@@ -1178,7 +1178,7 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   public async confirmDefaultDesignIOS() {
-    await this.confirmDesignBtnIOS.waitForDisplayed({ timeout: 20000 })
+    await this.confirmDesignBtnIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.confirmDesignBtnIOS)
   }
 
@@ -1241,7 +1241,7 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   public async confirmDeliveryAddressIOS() {
-    const canConfirmAddress = await this.confirmAddressBtnIOS.waitForDisplayed({ timeout: 20000 }).catch(() => false)
+    const canConfirmAddress = await this.confirmAddressBtnIOS.waitForExist({ timeout: 20000 }).catch(() => false)
     if (!canConfirmAddress) return
     await this.tap(this.confirmAddressBtnIOS)
   }
@@ -1302,28 +1302,28 @@ class PhysicalCardCreationPage extends BasePage {
       postCode = `VLT ${pc}`,
     } = params || {}
 
-    if (await this.addressLine1IOS.waitForDisplayed({ timeout: 10000 }).catch(() => false)) {
+    if (await this.addressLine1IOS.waitForExist({ timeout: 10000 }).catch(() => false)) {
       await this.tap(this.addressLine1IOS)
       await this.addressLine1IOS.clearValue().catch(() => {})
       await this.addressLine1IOS.setValue(address1)
       await browser.hideKeyboard().catch(() => {})
     }
 
-    if (await this.addressLine2IOS.waitForDisplayed({ timeout: 10000 }).catch(() => false)) {
+    if (await this.addressLine2IOS.waitForExist({ timeout: 10000 }).catch(() => false)) {
       await this.tap(this.addressLine2IOS)
       await this.addressLine2IOS.clearValue().catch(() => {})
       await this.addressLine2IOS.setValue(address2)
       await browser.hideKeyboard().catch(() => {})
     }
 
-    if (await this.cityIOS.waitForDisplayed({ timeout: 10000 }).catch(() => false)) {
+    if (await this.cityIOS.waitForExist({ timeout: 10000 }).catch(() => false)) {
       await this.tap(this.cityIOS)
       await this.cityIOS.clearValue().catch(() => {})
       await this.cityIOS.setValue(city)
       await browser.hideKeyboard().catch(() => {})
     }
 
-    if (await this.postCodeIOS.waitForDisplayed({ timeout: 10000 }).catch(() => false)) {
+    if (await this.postCodeIOS.waitForExist({ timeout: 10000 }).catch(() => false)) {
       await this.tap(this.postCodeIOS)
       await this.postCodeIOS.clearValue().catch(() => {})
       await this.postCodeIOS.setValue(postCode)
@@ -1399,9 +1399,9 @@ class PhysicalCardCreationPage extends BasePage {
     await this.enterOtpIOS(otp)
     await this.closeApplePayProposalIOS()
     await this.waitForFreezeReadyIOS(60000)
-    await this.freezeButtonIOS.waitForDisplayed({ timeout: 60000 })
+    await this.freezeButtonIOS.waitForExist({ timeout: 60000 })
     await this.tap(this.freezeButtonIOS)
-    await this.unfreezeButtonIOS.waitForDisplayed({ timeout: 20000 }).catch(() => {})
+    await this.unfreezeButtonIOS.waitForExist({ timeout: 20000 }).catch(() => {})
     await this.waitForSyncToFinishIOS(60000)
     await this.blockCardIOS(20000)
   }
