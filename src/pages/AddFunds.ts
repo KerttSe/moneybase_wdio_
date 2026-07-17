@@ -84,18 +84,6 @@ export default class AddFundsPage extends BasePage {
     return $('~Card')
   }
 
-  private get applePayProposalCloseBtnIOS() {
-    return $('~applePayProposal_button_close')
-  }
-
-  private async dismissApplePayProposalIOS() {
-    if (!browser.isIOS) return
-    const shown = await this.applePayProposalCloseBtnIOS.waitForExist({ timeout: 5000 }).catch(() => false)
-    if (!shown) return
-    await this.applePayProposalCloseBtnIOS.click().catch(() => {})
-    await this.applePayProposalCloseBtnIOS.waitForExist({ reverse: true, timeout: 5000 }).catch(() => {})
-    await browser.pause(500)
-  }
 
   /* =========================
    * CARD DEPOSIT SCREEN ANCHOR (iOS only)
@@ -188,7 +176,6 @@ private get payProcessingBtnIOS() {
 
   async goToTopUp() {
     if (browser.isIOS) {
-      await this.dismissApplePayProposalIOS().catch(() => {})
       await this.cardTile.waitForExist({ timeout: 15000 })
     } else {
       await this.cardTile.waitForDisplayed({ timeout: 15000 })
