@@ -75,6 +75,10 @@ export default class AddFundsPage extends BasePage {
     return $('-ios predicate string:name == "Add Funds" OR name == "plus"')
   }
 
+  private get addFundsScreenIOS() {
+    return $('-ios predicate string:name == "addFunds_item_card" OR name == "addFunds_item_autoTopup" OR name == "addFunds_item_bankTransfer"')
+  }
+
   /* =========================
    * TOP UP TILE (Card)
    * ========================= */
@@ -167,6 +171,7 @@ private get payProcessingBtnIOS() {
     if (browser.isIOS) {
       await this.openBtn.waitForExist({ timeout: 20000 })
       await this.openBtn.click()
+      await this.addFundsScreenIOS.waitForExist({ timeout: 15000 })
     } else {
       await this.openBtn.waitForDisplayed({ timeout: 15000 }).catch(async () => {
         await browser.waitUntil(
