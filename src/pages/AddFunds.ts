@@ -201,7 +201,11 @@ private get payProcessingBtnIOS() {
   }
 
   async enterAmount(amount: number | string) {
-    await this.amountInput.waitForDisplayed({ timeout: 15000 })
+    if (browser.isIOS) {
+      await this.amountInput.waitForExist({ timeout: 15000 })
+    } else {
+      await this.amountInput.waitForDisplayed({ timeout: 15000 })
+    }
     await this.tap(this.amountInput)
     await this.amountInput.clearValue().catch(() => {})
     await this.amountInput.setValue(String(amount))
