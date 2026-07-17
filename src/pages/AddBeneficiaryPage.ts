@@ -1999,15 +1999,23 @@ export default class AddBeneficiaryPage extends BasePage {
     const reviewShown = await reviewTitle.waitForExist({ timeout: 30000 }).catch(() => false)
     if (!reviewShown) return
 
-    // ~Review Beneficiary also appears as a back-nav label on the OTP screen.
-    // If OTP is already present we already moved forward — don't wait for confirmBtn.
-    const alreadyOnOtp = await this.otpContainerIOS.isExisting().catch(() => false)
-    if (alreadyOnOtp) return
+    // Wait for EITHER the confirm button OR OTP elements to appear.
+    // ~Review Beneficiary lingers as a back-nav label on the OTP screen, so we can't rely
+    // solely on reviewTitle presence — we must race confirmBtn vs OTP.
+    const otpSlot = $('//XCUIElementTypeTextField[starts-with(@name, "OTP_entry_")]')
+    const confirmOrOtpAppeared = await browser.waitUntil(
+      async () => {
+        if (await this.otpContainerIOS.isExisting().catch(() => false)) return true
+        if (await otpSlot.isExisting().catch(() => false)) return true
+        return await confirmBtn.isExisting().catch(() => false)
+      },
+      { timeout: 30000, timeoutMsg: '[AddBeneficiary][iOS] Neither OTP screen nor review_button_confirm appeared' },
+    ).catch(() => false)
+    if (!confirmOrOtpAppeared) return
 
-    await confirmBtn.waitForExist({
-      timeout: 30000,
-      timeoutMsg: '[AddBeneficiary][iOS] review_button_confirm did not appear on Review Beneficiary screen',
-    })
+    // If OTP appeared (transition already happened), bail out — no need to tap confirm.
+    if (await this.otpContainerIOS.isExisting().catch(() => false)) return
+    if (await otpSlot.isExisting().catch(() => false)) return
 
     const tapConfirmCandidates = [
       async () => confirmBtn.click(),
