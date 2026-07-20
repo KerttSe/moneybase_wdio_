@@ -359,6 +359,10 @@ class BankTransferP2PIndividualPage extends BasePage {
     return $('~Pay')
   }
 
+  private get payScreenIOS() {
+    return $('-ios predicate string:name == "pay_screen_view" OR name == "pay_button_add"')
+  }
+
   private get carlosCatIOS() {
     return $('-ios predicate string:name == "pay_item_Carlos Cat" OR name == "Carlos Cat" OR label CONTAINS[c] "Carlos Cat"')
   }
@@ -1035,6 +1039,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     await browser.pause(2500)
     await this.dismissContactsPermissionIOS()
     await this.dismissContactsPermissionIOS()
+    await this.payScreenIOS.waitForExist({ timeout: 15000 })
 
     await this.carlosCatIOS.waitForExist({ timeout: 20000 })
     await this.carlosCatIOS.click()
@@ -1095,6 +1100,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     await browser.pause(2500)
     await this.dismissContactsPermissionIOS()
     await this.dismissContactsPermissionIOS()
+    await this.payScreenIOS.waitForExist({ timeout: 15000 })
 
     await this.sepaBeneficiaryIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.sepaBeneficiaryIOS)
@@ -1155,6 +1161,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     await browser.pause(2500)
     await this.dismissContactsPermissionIOS()
     await this.dismissContactsPermissionIOS()
+    await this.payScreenIOS.waitForExist({ timeout: 15000 })
 
     await this.swiftBeneficiaryIOS.waitForExist({ timeout: 20000 })
     await this.swiftBeneficiaryIOS.click()
