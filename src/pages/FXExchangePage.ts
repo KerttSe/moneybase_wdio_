@@ -37,7 +37,7 @@ class FXExchangePage extends BasePage {
     if (browser.isAndroid) {
       return $('android=new UiSelector().text("New")')
     }
-    return $('-ios predicate string: type == "XCUIElementTypeButton" AND name == "New"')
+    return $('-ios predicate string: type == "XCUIElementTypeButton" AND (name == "New" OR label == "New")')
   }
 
   private get newTabButtonAndroidByResId() {
@@ -442,7 +442,9 @@ class FXExchangePage extends BasePage {
 
   private async ensureNewTabActive() {
     for (let attempt = 0; attempt < 3; attempt += 1) {
-      const fromWalletVisible = await this.fromWalletField.isDisplayed().catch(() => false)
+      const fromWalletVisible = browser.isIOS
+        ? await this.fromWalletField.isExisting().catch(() => false)
+        : await this.fromWalletField.isDisplayed().catch(() => false)
 
       // iOS: form already visible means New tab is active (no explicit "New" button in newer builds)
       if (fromWalletVisible) return
@@ -459,6 +461,9 @@ class FXExchangePage extends BasePage {
           return
         }
       } else {
+        // iOS: "New" button may not exist in newer builds — skip tap if not found
+        const newBtnExists = await this.newTabButton.isExisting().catch(() => false)
+        if (!newBtnExists) return
         await this.tapElementCenter(this.newTabButton, 10000)
       }
 
