@@ -170,8 +170,13 @@ private get payProcessingBtnIOS() {
 
     if (browser.isIOS) {
       await this.openBtn.waitForExist({ timeout: 20000 })
-      await this.openBtn.click()
-      await this.addFundsScreenIOS.waitForExist({ timeout: 15000 })
+      await browser.waitUntil(
+        async () => {
+          await this.openBtn.click().catch(() => {})
+          return this.addFundsScreenIOS.isExisting().catch(() => false)
+        },
+        { timeout: 20000, interval: 1500 }
+      )
     } else {
       await this.openBtn.waitForDisplayed({ timeout: 15000 }).catch(async () => {
         await browser.waitUntil(

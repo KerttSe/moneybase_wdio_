@@ -345,12 +345,18 @@ export default class AutoTopUpPage extends BasePage {
     if (browser.isIOS) {
       await this.ensureIndividualAccountIOS()
 
-      const addFundsAlreadyOpen = await this.addFundsScreen.isDisplayed().catch(() => false)
+      const addFundsAlreadyOpen = await this.addFundsScreen.isExisting().catch(() => false)
       if (addFundsAlreadyOpen) return
 
+      // Loader may intercept the tap — retry until Add Funds screen appears
       await this.openBtn.waitForExist({ timeout: 15000 })
-      await this.openBtn.click()
-      await this.addFundsScreen.waitForExist({ timeout: 15000 })
+      await browser.waitUntil(
+        async () => {
+          await this.openBtn.click().catch(() => {})
+          return this.addFundsScreen.isExisting().catch(() => false)
+        },
+        { timeout: 20000, interval: 1500 }
+      )
     }
   }
 
