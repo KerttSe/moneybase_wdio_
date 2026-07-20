@@ -363,6 +363,23 @@ class BankTransferP2PIndividualPage extends BasePage {
     return $('-ios predicate string:name == "pay_screen_view" OR name == "pay_button_add"')
   }
 
+  private get contactsPermissionScreenIOS() {
+    return $('-ios predicate string:name == "ic_contacts_permission" OR label == "ic_contacts_permission"')
+  }
+
+  private async tapPayTabAndWaitIOS() {
+    await this.payTabIOS.waitForExist({ timeout: 20000 })
+    await browser.waitUntil(
+      async () => {
+        await this.tap(this.payTabIOS).catch(() => {})
+        const onPay = await this.payScreenIOS.isExisting().catch(() => false)
+        const onContacts = await this.contactsPermissionScreenIOS.isExisting().catch(() => false)
+        return onPay || onContacts
+      },
+      { timeout: 25000, interval: 1500 }
+    )
+  }
+
   private get carlosCatIOS() {
     return $('-ios predicate string:name == "pay_item_Carlos Cat" OR name == "Carlos Cat" OR label CONTAINS[c] "Carlos Cat"')
   }
@@ -1034,8 +1051,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.ensureIndividualAccountIOS()
     await browser.pause(700)
 
-    await this.payTabIOS.waitForExist({ timeout: 20000 })
-    await this.tap(this.payTabIOS)
+    await this.tapPayTabAndWaitIOS()
     await browser.pause(2500)
     await this.dismissContactsPermissionIOS()
     await this.dismissContactsPermissionIOS()
@@ -1095,8 +1111,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.ensureIndividualAccountIOS()
     await browser.pause(700)
 
-    await this.payTabIOS.waitForExist({ timeout: 20000 })
-    await this.tap(this.payTabIOS)
+    await this.tapPayTabAndWaitIOS()
     await browser.pause(2500)
     await this.dismissContactsPermissionIOS()
     await this.dismissContactsPermissionIOS()
@@ -1156,8 +1171,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.ensureIndividualAccountIOS()
     await browser.pause(700)
 
-    await this.payTabIOS.waitForExist({ timeout: 20000 })
-    await this.tap(this.payTabIOS)
+    await this.tapPayTabAndWaitIOS()
     await browser.pause(2500)
     await this.dismissContactsPermissionIOS()
     await this.dismissContactsPermissionIOS()
