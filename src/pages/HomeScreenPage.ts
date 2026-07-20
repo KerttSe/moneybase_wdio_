@@ -86,7 +86,7 @@ class HomeScreenPage extends BasePage {
   }
 
   private get profilePickerIndividualItemIOS() {
-    return $('~Individual')
+    return $('-ios predicate string:name == "Individual" OR label == "Individual"')
   }
 
   private get subAccountsTitleIOS() {
