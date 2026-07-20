@@ -199,7 +199,10 @@ class FXExchangePage extends BasePage {
       async () => {
         for (const el of candidates) {
           const resolved = (await el) as WebdriverIO.Element
-          if (await resolved.isDisplayed().catch(() => false)) return true
+          const visible = browser.isIOS
+            ? await resolved.isExisting().catch(() => false)
+            : await resolved.isDisplayed().catch(() => false)
+          if (visible) return true
         }
         return false
       },
@@ -516,8 +519,16 @@ class FXExchangePage extends BasePage {
     await this.dismissIOSAlerts()
 
     await this.homeExchangeButton.waitForExist({ timeout: 15000 })
-    await this.tapElementCenter(this.homeExchangeButton, 15000)
-    await this.waitForAnyDisplayed(this.fxExchangeScreenCandidates, 15000, 'FX Exchange screen')
+    await browser.waitUntil(
+      async () => {
+        await this.tapElementCenter(this.homeExchangeButton, 15000).catch(() => {})
+        for (const el of this.fxExchangeScreenCandidates) {
+          if (await el.isExisting().catch(() => false)) return true
+        }
+        return false
+      },
+      { timeout: 25000, interval: 1500 }
+    )
     await this.ensureNewTabActive()
     await this.waitForAnyDisplayed(this.fromWalletCandidates, 15000, 'From Wallet field')
   }
