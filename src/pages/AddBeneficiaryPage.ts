@@ -413,6 +413,22 @@ export default class AddBeneficiaryPage extends BasePage {
     return $('~newTransfer_button_addBeneficiary')
   }
 
+  private get payScreenIOS() {
+    return $('-ios predicate string:name == "pay_screen_view" OR name == "pay_screen"')
+  }
+
+  private get newTransferTitleIOS() {
+    return $('-ios predicate string:name == "New Transfer" OR label == "New Transfer"')
+  }
+
+  private get beneficiaryAddedSuccessIOS() {
+    return $('-ios predicate string:(name CONTAINS[c] "beneficiary" OR label CONTAINS[c] "beneficiary") AND (name CONTAINS[c] "success" OR label CONTAINS[c] "success" OR name CONTAINS[c] "added" OR label CONTAINS[c] "added")')
+  }
+
+  private get genericAddedSuccessIOS() {
+    return $('-ios predicate string:name CONTAINS[c] "added successfully" OR label CONTAINS[c] "added successfully" OR name CONTAINS[c] "successfully added" OR label CONTAINS[c] "successfully added"')
+  }
+
   /* =========================
    * iOS: type selection
    * ========================= */
@@ -670,6 +686,27 @@ export default class AddBeneficiaryPage extends BasePage {
     const compact = String(iban || '').replace(/\s+/g, '').toUpperCase()
     const tail = compact.length > 8 ? compact.slice(-8) : compact
     return $(`-ios predicate string:label CONTAINS "${tail}" OR value CONTAINS "${tail}"`)
+  }
+
+  private async isPostOtpSuccessAnchorIOS(expectedIban?: string) {
+    if (!browser.isIOS) return false
+
+    if (await this.beneficiaryAddedSuccessIOS.isExisting().catch(() => false)) return true
+    if (await this.genericAddedSuccessIOS.isExisting().catch(() => false)) return true
+
+    if (expectedIban) {
+      const ibanExists = await this.getBeneficiaryByIbanIOS(expectedIban).isExisting().catch(() => false)
+      if (ibanExists) return true
+    }
+
+    if (await this.homeRootIOS.isExisting().catch(() => false)) return true
+    if (await this.payTabIOS.isExisting().catch(() => false)) return true
+    if (await this.payScreenIOS.isExisting().catch(() => false)) return true
+    if (await this.addBtnIOS.isExisting().catch(() => false)) return true
+    if (await this.newTransferTitleIOS.isExisting().catch(() => false)) return true
+    if (await this.addBeneficiaryBtnIOS.isExisting().catch(() => false)) return true
+
+    return false
   }
 
   private getBeneficiaryByIbanAndroid(iban: string) {
@@ -1988,8 +2025,25 @@ export default class AddBeneficiaryPage extends BasePage {
 
   async continueFromDetailsIOS() {
     if (!browser.isIOS) return
+
     await this.detailsContinueBtnIOS.waitForExist({ timeout: 15000 })
+
+    // Dismiss keyboard first — on iOS a tap on Continue while the keyboard is open
+    // only closes the keyboard without triggering the button.
+    const keyboardShown = await browser.isKeyboardShown().catch(() => false)
+    if (keyboardShown) {
+      await browser.hideKeyboard().catch(() => {})
+      await browser.pause(400)
+    }
+
     await this.tap(this.detailsContinueBtnIOS)
+    await browser.pause(500)
+
+    // If the button is still on screen, the keyboard dismiss ate the first tap — retry once.
+    const stillThere = await this.detailsContinueBtnIOS.isDisplayed().catch(() => false)
+    if (stillThere) {
+      await this.tap(this.detailsContinueBtnIOS)
+    }
   }
 
   async confirmReviewBeneficiaryIOS() {
@@ -2093,6 +2147,11 @@ export default class AddBeneficiaryPage extends BasePage {
       Number(process.env.BENEFICIARY_OTP_TIMEOUT_MS || process.env.OTP_TIMEOUT_MS || 90000),
     )
 
+    const otpFetchDelayMs = Number(process.env.OTP_FETCH_DELAY_MS || 0)
+    if (Number.isFinite(otpFetchDelayMs) && otpFetchDelayMs > 0) {
+      await browser.pause(Math.floor(otpFetchDelayMs))
+    }
+
     console.log(`[AddBeneficiary][OTP iOS] Fetching OTP for ${otpPhone}`)
     const otp = await OtpHelper.getLatestOtp({
       phone: otpPhone,
@@ -2122,9 +2181,7 @@ export default class AddBeneficiaryPage extends BasePage {
     // Wait for OTP to submit. Check positive success signals first, then use isExisting()
     // for OTP gone — isDisplayed() is unreliable when otp_input has visible=false (Compose bug).
     const otpGoneOrSuccess = async () => {
-      if (await this.homeRootIOS.isDisplayed().catch(() => false)) return true
-      if (await this.payTabIOS.isDisplayed().catch(() => false)) return true
-      if (await $('~pay_screen_view').isExisting().catch(() => false)) return true
+      if (await this.isPostOtpSuccessAnchorIOS(expectedIban)) return true
       return !(await this.otpContainerIOS.isExisting().catch(() => false))
     }
     const autoSubmitted = await browser
@@ -2144,20 +2201,7 @@ export default class AddBeneficiaryPage extends BasePage {
     let lastOtpReentryAt = Date.now()
     await browser.waitUntil(
       async () => {
-        const homeShown = await this.homeRootIOS.isDisplayed().catch(() => false)
-        if (homeShown) return true
-
-        const payShown = await this.payTabIOS.isDisplayed().catch(() => false)
-        if (payShown) return true
-
-        // Pay screen exists but may be visible=false when a success overlay is on top
-        const payScreenExists = await $('~pay_screen_view').isExisting().catch(() => false)
-        if (payScreenExists) return true
-
-        if (expectedIban) {
-          const ibanVisible = await this.getBeneficiaryByIbanIOS(expectedIban).isDisplayed().catch(() => false)
-          if (ibanVisible) return true
-        }
+        if (await this.isPostOtpSuccessAnchorIOS(expectedIban)) return true
 
         // Use isExisting — visible=false doesn't mean OTP screen is gone
         const otpStillShown = await this.otpContainerIOS.isExisting().catch(() => false)

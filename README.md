@@ -54,6 +54,10 @@ Optional execution switches:
 
 - `PLATFORM=ios` or `PLATFORM=android` to filter capabilities
 - `APPIUM_PORT` to override the local Appium port
+- `IOS_UDID` to run local iOS tests on a real iPhone instead of the configured simulator
+- `IOS_DEVICE_NAME` to label the real iOS device capability, for example `iPhone`
+- `IOS_APP` to override the local iOS app path
+- `ANDROID_UDID` to run local Android tests on a real device instead of the configured emulator
 - `BROWSERSTACK=true` to use BrowserStack capabilities instead of local simulators/emulators
 
 BrowserStack-specific variables:
@@ -103,6 +107,12 @@ Run a single spec on one platform only:
 ```bash
 PLATFORM=android npm run wdio -- --spec src/tests/launch.spec.ts
 PLATFORM=ios npm run wdio -- --spec src/tests/homeScreen.spec.ts
+```
+
+Run a single spec on a connected real iPhone:
+
+```bash
+BROWSERSTACK=false PLATFORM=ios IOS_UDID=<device-udid> IOS_DEVICE_NAME=iPhone npm run wdio -- --spec src/tests/launch.spec.ts
 ```
 
 Run on BrowserStack:

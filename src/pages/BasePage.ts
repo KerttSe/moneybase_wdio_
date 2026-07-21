@@ -310,6 +310,20 @@ export default class BasePage {
     await browser.pause(ms)
   }
 
+  async click(el: WdioEl, timeout = 10000) {
+    return this.tap(el, timeout)
+  }
+
+  async waitForExist(el: WdioEl, timeout = 10000): Promise<WdioEl> {
+    await el.waitForExist({ timeout })
+    return el
+  }
+
+  async waitForDisplayed(el: WdioEl, timeout = 10000): Promise<WdioEl> {
+    await el.waitForDisplayed({ timeout })
+    return el
+  }
+
   async tap(el: WdioEl, timeout = 10000) {
     if (browser.isIOS) {
       await el.waitForExist({ timeout })
@@ -320,11 +334,14 @@ export default class BasePage {
     try {
       await el.waitForDisplayed({ timeout })
       await el.click()
-    } catch (error) {
+    } catch {
       const dismissed = await this.dismissKnownAndroidBlockingPopups().catch(() => false)
-      if (!dismissed) throw error
-      await el.waitForDisplayed({ timeout })
-      await el.click()
+      if (dismissed) {
+        await el.waitForDisplayed({ timeout })
+        await el.click()
+        return
+      }
+      throw new Error(`tap: element not found — ${String(el.selector)}`)
     }
   }
 
@@ -333,21 +350,19 @@ export default class BasePage {
     try {
       await el.waitForDisplayed({ timeout })
       await el.setValue(value)
-    } catch (error) {
+    } catch {
       const dismissed = await this.dismissKnownAndroidBlockingPopups().catch(() => false)
-      if (!dismissed) throw error
-      await el.waitForDisplayed({ timeout })
-      await el.setValue(value)
+      if (dismissed) {
+        await el.waitForDisplayed({ timeout })
+        await el.setValue(value)
+        return
+      }
+      throw new Error(`type: element not found — ${String(el.selector)}`)
     }
   }
 
   async isDisplayed(el: WdioEl, timeout = 1000) {
-    try {
-      await el.waitForDisplayed({ timeout })
-      return true
-    } catch {
-      return false
-    }
+    return el.waitForDisplayed({ timeout }).then(() => true).catch(() => false)
   }
 
   protected async tapScreenPointIOS(xRatio: number, yRatio: number, actionId: string) {
@@ -372,7 +387,7 @@ export default class BasePage {
   // Appears on iOS when the Pay screen first tries to access contacts (P2P, SEPA, add-beneficiary flows).
   protected async dismissContactsPermissionIOS() {
     if (!browser.isIOS) return
-    const permissionImg = $('-ios predicate string:name == "ic_contacts_permission" OR label == "ic_contacts_permission"')
+    const permissionImg = $('-ios predicate string:name == "ic_contacts_permission" OR label == "ic_contacts_permission" OR name == "Enable Contacts" OR label == "Enable Contacts"')
     const shown = await permissionImg.waitForExist({ timeout: 8000 }).then(() => true).catch(() => false)
     if (!shown) return
 

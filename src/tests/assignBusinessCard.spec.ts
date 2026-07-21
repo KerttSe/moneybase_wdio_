@@ -1,4 +1,3 @@
-import { browser } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
 import { AUTH } from '../data/credentials'
 import HomeScreenPage from '../pages/HomeScreenPage'
@@ -17,7 +16,6 @@ describe('Business Cards - Assign Physical card', function () {
   const loginPage = new LoginPage()
 
   before(async function () {
-    if (!browser.isAndroid) this.skip()
     await loginPage.loginFlow(AUTH)
     await HomeScreenPage.ensureBusinessAccount()
   })

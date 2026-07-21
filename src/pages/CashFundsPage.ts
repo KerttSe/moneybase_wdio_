@@ -554,7 +554,18 @@ export default class CashFundsPage extends BasePage {
     }
 
     await this.investTabIOS.waitForExist({ timeout: 20000 })
-    await this.tapFirstDisplayed([this.investTabIOS], 'Invest tab (iOS)')
+    await browser.waitUntil(
+      async () => {
+        await this.tap(this.investTabIOS).catch(() => {})
+        return (
+          (await this.discoverHeaderIOS.isExisting().catch(() => false)) ||
+          (await this.discoverTabIOS.isExisting().catch(() => false)) ||
+          (await this.discoverTabIOSXpath.isExisting().catch(() => false)) ||
+          (await this.discoverBottomTabIOS.isExisting().catch(() => false))
+        )
+      },
+      { timeout: 25000, interval: 1500 }
+    )
 
     // Often after tapping Invest we are already on the Discover screen.
     // So: first wait for the Discover header, and only if it's missing,

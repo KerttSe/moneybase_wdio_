@@ -364,7 +364,7 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get contactsPermissionScreenIOS() {
-    return $('-ios predicate string:name == "ic_contacts_permission" OR label == "ic_contacts_permission"')
+    return $('-ios predicate string:name == "ic_contacts_permission" OR label == "ic_contacts_permission" OR name == "Enable Contacts" OR label == "Enable Contacts"')
   }
 
   private async tapPayTabAndWaitIOS() {

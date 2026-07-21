@@ -27,6 +27,9 @@ const requireEnv = (name: string): string => {
 const useBrowserStack = process.env.BROWSERSTACK === 'true'
 const platformFilter = process.env.PLATFORM?.toLowerCase()
 const androidUdid = process.env.ANDROID_UDID?.trim()
+const iosUdid = process.env.IOS_UDID?.trim()
+const iosDeviceName = process.env.IOS_DEVICE_NAME?.trim() || (iosUdid ? 'iPhone' : 'iPhone 17 Pro')
+const iosApp = process.env.IOS_APP?.trim() || '/Users/dmytrokertys/Desktop/app/moneybase.app'
 const onboardingCameraMediaUrls = [
   process.env.ONBOARDING_CAMERA_FRONT_MEDIA_URL,
   process.env.ONBOARDING_CAMERA_BACK_MEDIA_URL,
@@ -189,7 +192,7 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
       ...browserStackDebugOptions,
       appiumVersion: '2.6.0',
       deviceName: process.env.BS_IOS_DEVICE || 'iPhone 15',
-      osVersion: process.env.BS_IOS_OS || '17.5',
+      osVersion: process.env.BS_IOS_OS || '17.4',
       ...({
         testObservability: true,
         testObservabilityOptions: {
@@ -205,7 +208,7 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
     'appium:newCommandTimeout': 300,
     'appium:waitForQuiescence': false,
     'appium:nativeWebScreenshot': true,
-    'appium:permissions': '{"com.moneybase.quality":{"contacts":"YES","location":"never","notifications":"NO"}}',
+    'appium:permissions': '{"com.moneybase.quality":{"location":"never","notifications":"NO"}}',
     ...browserStackResetOptions,
   },
 ]
@@ -214,12 +217,12 @@ const localCapabilities: WebdriverIO.Capabilities[] = [
   {
     platformName: 'iOS',
     'appium:automationName': 'XCUITest',
-    'appium:deviceName': 'iPhone 17 Pro',
-    'appium:udid': '4D8D55A7-2461-4ED7-A28B-9946162BA884',
-    'appium:app': '/Users/dmytrokertys/Desktop/app/moneybase.app',
+    'appium:deviceName': iosDeviceName,
+    'appium:udid': iosUdid || '4D8D55A7-2461-4ED7-A28B-9946162BA884',
+    'appium:app': iosApp,
     'appium:noReset': false,
     'appium:newCommandTimeout': 300,
-    'appium:permissions': '{"com.moneybase.quality":{"contacts":"YES","location":"never","notifications":"NO"}}',
+    'appium:permissions': '{"com.moneybase.quality":{"contacts":"YES","location":"no","notifications":"NO"}}',
     'appium:autoAcceptAlerts': true,
     'appium:waitForQuiescence': false,
     'appium:shouldTerminateApp': true,

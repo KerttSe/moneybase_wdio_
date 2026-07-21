@@ -884,7 +884,17 @@ export default class PriceAlertsPage extends BasePage {
     if (alreadyOnAlerts) return
 
     await this.investTabIOS.waitForExist({ timeout: 20000 })
-    await this.tap(this.investTabIOS)
+    await browser.waitUntil(
+      async () => {
+        await this.tap(this.investTabIOS).catch(() => {})
+        return (
+          (await this.searchInstrumentTextFieldIOS.isExisting().catch(() => false)) ||
+          (await this.searchInstrumentInputIOS.isExisting().catch(() => false)) ||
+          (await this.priceAlertsEntryIOS.isExisting().catch(() => false))
+        )
+      },
+      { timeout: 25000, interval: 1500 }
+    )
 
     // iOS expected flow (per provided steps): after tapping Invest we land directly on
     // the Price Alerts screen that has `Search Instrument`.

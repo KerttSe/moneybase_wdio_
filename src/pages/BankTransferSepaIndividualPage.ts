@@ -251,13 +251,23 @@ class BankTransferSepaIndividualPage extends BasePage {
   private async ensureIndividualAccountIOS() {
     if (!browser.isIOS) return
 
-    await this.profilePickerUserNameLabelIOS.waitForExist({ timeout: 15000 })
+    const pickerShown = await this.profilePickerUserNameLabelIOS
+      .waitForExist({ timeout: 6000 })
+      .catch(() => false)
+    if (!pickerShown) return
+
     await this.tap(this.profilePickerUserNameLabelIOS)
 
-    await this.profilePickerIndividualItemIOS.waitForExist({ timeout: 15000 })
+    const individualShown = await this.profilePickerIndividualItemIOS
+      .waitForExist({ timeout: 8000 })
+      .catch(() => false)
+    if (!individualShown) return
+
     await this.tap(this.profilePickerIndividualItemIOS)
 
-    await this.profilePickerIndividualItemIOS.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
+    await this.profilePickerIndividualItemIOS
+      .waitForExist({ reverse: true, timeout: 15000 })
+      .catch(() => {})
     await this.homeRootIOS.waitForExist({ timeout: 30000 }).catch(() => {})
     await browser.pause(300)
   }

@@ -207,7 +207,16 @@ export default class PortfolioPage extends BasePage {
       .catch(() => false)
 
     if (investShown) {
-      await this.tapIOSDisplayed(this.investTabIOS, timeout)
+      await browser.waitUntil(
+        async () => {
+          await this.tapIOSDisplayed(this.investTabIOS, timeout).catch(() => {})
+          for (const el of [...entryCandidates, ...openedCandidates]) {
+            if (await el.isExisting().catch(() => false)) return true
+          }
+          return false
+        },
+        { timeout: 25000, interval: 1500 }
+      )
     }
 
     for (let attempt = 1; attempt <= 2; attempt += 1) {

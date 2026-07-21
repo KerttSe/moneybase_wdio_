@@ -43,7 +43,7 @@ describe('Add Beneficiary - Another person', function () {
   })
 
   it('Add beneficiary (Another person)', async function () {
-    const iban = getMalteseIbanForTest()
+    const iban = process.env.TEST_IBAN || getMalteseIbanForTest()
     // const ibanUpper = iban.replace(/\s+/g, '').toUpperCase()
     // const { bic11 } = generateUniqueSwiftBic({ bankCode: 'CCUH', countryCode: 'MT' })
     const bic11 = 'CCUHMTMTXXX'

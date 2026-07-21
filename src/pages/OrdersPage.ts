@@ -866,9 +866,19 @@ export default class OrdersPage extends BasePage {
 
   private async openInvestSearchIOS() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
-    await this.tapIOSDisplayed(this.investTabIOS, 20000)
+    await this.investTabIOS.waitForExist({ timeout: 20000 })
 
     const searchCandidates = [this.searchInstrumentInputIOS, this.visibleTextFieldIOS]
+    await browser.waitUntil(
+      async () => {
+        await this.tapIOSDisplayed(this.investTabIOS, 20000).catch(() => {})
+        for (const el of searchCandidates) {
+          if (await el.isExisting().catch(() => false)) return true
+        }
+        return false
+      },
+      { timeout: 25000, interval: 1500 }
+    )
     await this.waitForAnyDisplayed(searchCandidates, 20000, 'Invest instrument search (iOS)')
   }
 
