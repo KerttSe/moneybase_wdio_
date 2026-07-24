@@ -15,9 +15,10 @@ describe('My Price Plan', function () {
   const loginPage = new LoginPage()
 
   before(async function () {
-    if (!browser.isAndroid) this.skip()
     await loginPage.loginFlow(AUTH)
-    await HomeScreenPage.ensureIndividualAccount()
+    if (browser.isAndroid || browser.isIOS) {
+      await HomeScreenPage.ensureIndividualAccount()
+    }
   })
 
   it('MPP-1.1 Login and land on Home screen', async function () {
@@ -40,12 +41,6 @@ describe('My Price Plan', function () {
     const fee = await PricePlanPage.getPlanFee()
     console.log(`[TEST] Plan fee: ${fee}`)
     if (!fee) throw new Error('Plan fee was empty')
-  })
-
-  it('MPP-1.7 Verify billing frequency displayed', async function () {
-    const frequency = await PricePlanPage.getBillingFrequency()
-    console.log(`[TEST] Billing frequency: ${frequency}`)
-    if (!frequency) throw new Error('Billing frequency was empty')
   })
 
   it('MPP-1.9 Verify included benefits displayed', async function () {

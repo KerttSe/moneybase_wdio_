@@ -794,7 +794,7 @@ export default class AddBeneficiaryPage extends BasePage {
     const candidates = [this.bicInputIOS, this.bicSwiftInputIOS, this.bicSwiftCombinedInputIOS]
 
     for (const candidate of candidates) {
-      const shown = await candidate.isDisplayed().catch(() => false)
+      const shown = await candidate.isExisting().catch(() => false)
       if (!shown) continue
 
       await this.type(candidate, bic)
@@ -1266,7 +1266,7 @@ export default class AddBeneficiaryPage extends BasePage {
       if (contactsShared) {
         await this.activateMoneybaseIOS()
       }
-      const payVisible = await this.payTabIOS.isDisplayed().catch(() => false)
+      const payVisible = await this.payTabIOS.isExisting().catch(() => false)
       if (payVisible) {
         await this.payTabIOS.click().catch(() => {})
         payTapped = true
@@ -2040,7 +2040,7 @@ export default class AddBeneficiaryPage extends BasePage {
     await browser.pause(500)
 
     // If the button is still on screen, the keyboard dismiss ate the first tap — retry once.
-    const stillThere = await this.detailsContinueBtnIOS.isDisplayed().catch(() => false)
+    const stillThere = await this.detailsContinueBtnIOS.isExisting().catch(() => false)
     if (stillThere) {
       await this.tap(this.detailsContinueBtnIOS)
     }
@@ -2099,12 +2099,10 @@ export default class AddBeneficiaryPage extends BasePage {
       const movedForward = await browser
         .waitUntil(
           async () => {
-            const otpShown = await this.otpContainerIOS.isDisplayed().catch(() => false) ||
-              await this.otpContainerIOS.isExisting().catch(() => false)
+            const otpShown = await this.otpContainerIOS.isExisting().catch(() => false)
             if (otpShown) return true
 
-            const stillOnReview = await reviewTitle.isDisplayed().catch(() => false) ||
-              await reviewTitle.isExisting().catch(() => false)
+            const stillOnReview = await reviewTitle.isExisting().catch(() => false)
             return !stillOnReview
           },
           { timeout: 5000, interval: 300 },
@@ -2125,7 +2123,7 @@ export default class AddBeneficiaryPage extends BasePage {
     const alreadyOnOtpBeforeReviewCheck = await this.otpContainerIOS.isExisting().catch(() => false)
     if (!alreadyOnOtpBeforeReviewCheck) {
       const reviewEl = $('~Review Beneficiary')
-      const reviewStillShown = await reviewEl.isDisplayed().catch(() => false) || await reviewEl.isExisting().catch(() => false)
+      const reviewStillShown = await reviewEl.isExisting().catch(() => false)
       if (reviewStillShown) {
         console.warn('[AddBeneficiary][iOS] Review screen still shown before OTP wait — tapping Confirm again')
         await this.confirmReviewBeneficiaryIOS()

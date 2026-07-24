@@ -9,13 +9,11 @@ describe('Home Screen - Storyly widget', function () {
   const loginPage = new LoginPage()
 
   beforeEach(async function () {
-    if (!browser.isAndroid) this.skip()
     await loginPage.loginFlow(AUTH)
     await HomeScreenPage.ensureIndividualAccount()
   })
 
   afterEach(async function () {
-    if (!browser.isAndroid) return
     await HomeStorylyPage.closeStoryViewerIfOpen()
   })
 

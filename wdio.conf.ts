@@ -287,8 +287,10 @@ export const config: WebdriverIO.Config = {
   specs: ['./src/tests/**/*.spec.ts'],
   suites: {
     smoke: smokeSpecs,
+    regression: ['./src/tests/**/*.spec.ts'],
     launchOnly: ['./src/tests/launch.spec.ts'],
     onboarding: ['./src/tests/onboarding.spec.ts'],
+    pricePlan: ['./src/tests/pricePlan.spec.ts'],
     smokeWithoutOnboarding: smokeSpecs.filter((spec) => spec !== './src/tests/onboarding.spec.ts'),
   },
   maxInstances: 1,

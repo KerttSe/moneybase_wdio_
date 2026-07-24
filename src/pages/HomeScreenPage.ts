@@ -295,14 +295,7 @@ class HomeScreenPage extends BasePage {
   private async ensureIndividualAccountIOS() {
     if (!browser.isIOS) return
 
-    await this.profilePickerUserNameLabelIOS.waitForExist({ timeout: 15000 })
-    await this.tap(this.profilePickerUserNameLabelIOS)
-
-    await this.profilePickerIndividualItemIOS.waitForExist({ timeout: 15000 })
-    await this.tap(this.profilePickerIndividualItemIOS)
-
-    await this.profilePickerIndividualItemIOS.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
-    await browser.pause(300)
+    await this.ensureIOSHomeAccount('Individual', 'VEG40002', this.individualAccountItemIOS)
   }
 
   private async getIOSAccountCodeLabel() {
@@ -367,7 +360,7 @@ class HomeScreenPage extends BasePage {
     await this.waitForHomeLoaded()
 
     const currentLabel = await this.getIOSAccountCodeLabel().catch(() => '')
-    if (currentLabel.includes(accountType) && currentLabel.includes(accountCode)) return
+    if (currentLabel.includes(accountCode) && (!currentLabel.includes('•') || currentLabel.includes(accountType))) return
 
     await this.openIOSSubAccountsSheet()
     await this.selectIOSSubAccount(item)

@@ -14,6 +14,14 @@ on:
           - all
           - android
           - ios
+      suite:
+        description: Test suite to run
+        required: false
+        default: smoke
+        type: choice
+        options:
+          - smoke
+          - regression
 
 permissions:
   contents: read
@@ -36,8 +44,9 @@ jobs:
         shell: bash
         env:
           PLATFORM_INPUT: ${{ github.event.inputs.platform || 'all' }}
+          SUITE_INPUT: ${{ github.event.inputs.suite || 'smoke' }}
         run: |
-          SPECS=(
+          SMOKE_SPECS=(
             "src/tests/launch.spec.ts"
             "src/tests/homeScreen.spec.ts"
             "src/tests/homeAccountSwitch.spec.ts"
@@ -60,6 +69,16 @@ jobs:
             "src/tests/onboarding.spec.ts"
           )
 
+          case "$SUITE_INPUT" in
+            regression)
+              mapfile -t SPECS < <(find src/tests -maxdepth 1 -name "*.spec.ts" | sort)
+              ;;
+            *)
+              SPECS=("${SMOKE_SPECS[@]}")
+              SUITE_INPUT="smoke"
+              ;;
+          esac
+
           PLATFORMS=()
           case "$PLATFORM_INPUT" in
             android) PLATFORMS=("android") ;;
@@ -71,18 +90,19 @@ jobs:
           for platform in "${PLATFORMS[@]}"; do
             for spec in "${SPECS[@]}"; do
               INCLUDE=$(echo "$INCLUDE" | jq -c \
-                --arg p "$platform" --arg s "$spec" \
-                '. += [{"platform": $p, "spec": $s, "smoke": true}]')
+                --arg p "$platform" --arg s "$spec" --arg suite "$SUITE_INPUT" \
+                '. += [{"platform": $p, "spec": $s, "suite": $suite}]')
             done
           done
 
           MATRIX=$(jq -c -n --argjson inc "$INCLUDE" '{"include": $inc}')
           echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
           echo "Selected platform: $PLATFORM_INPUT"
+          echo "Selected suite: $SUITE_INPUT"
           echo "Jobs to create: $(echo "$INCLUDE" | jq 'length')"
 
   e2e:
-    name: ${{ matrix.smoke && format('SMOKE ({0})', matrix.platform) || format('E2E ({0})', matrix.platform) }} — ${{ matrix.spec }}
+    name: ${{ format('{0} ({1})', matrix.suite, matrix.platform) }} — ${{ matrix.spec }}
     needs: setup
     runs-on: self-hosted
     strategy:
@@ -99,7 +119,9 @@ jobs:
       BS_APP_IOS: ${{ secrets.BS_APP_IOS }}
       PLATFORM: ${{ matrix.platform }}
       BS_BUILD: ${{ github.run_id }}-${{ github.run_attempt }}
-      BS_BUILD_TAGS: ${{ matrix.spec }},${{ matrix.platform }}
+      BS_BUILD_TAGS: ${{ matrix.suite }},${{ matrix.spec }},${{ matrix.platform }}
+      BS_ANDROID_DEVICE: "Google Pixel 9"
+      BS_ANDROID_OS: "15.0"
       OTP_FORCE_RESEND_BEFORE_FETCH: "false"
       OTP_FETCH_DELAY_MS: "5000"
       OTP_RESEND_WAIT_MS: "0"
@@ -117,7 +139,7 @@ jobs:
         run: npm ci
 
       - name: Run tests
-        run: npm run wdio -- --spec ${{ matrix.spec }}
+        run: npm run wdio -- --spec=${{ matrix.spec }}
 
       - name: Upload Allure results artifact
         if: always()

@@ -6,13 +6,16 @@ import { $, browser } from '@wdio/globals'
  * Covers the Storyly widget on Home (HM-STORY-1.2 through HM-STORY-1.10).
  * HM-STORY-1.1 (Home loaded) is covered by HomeScreenPage.
  *
- * Confirmed via real device page source:
+ * Android confirmed via real device page source:
  * - Widget: resource-id "st_storyly_list_recycler_view", content-desc "Storyly Bar".
  * - Each story ring is an android.widget.Button with
  *   content-desc "Story position N of TOTAL, <Title>, unseen|seen".
  *
- * Story viewer (open/navigate/close) locators are not yet confirmed — see
- * the TODOs below pending a real device page source for that screen.
+ * iOS confirmed via page source:
+ * - Widget: XCUIElementTypeCollectionView name="Storyly Bar" (accessible=false).
+ * - Each story cell: XCUIElementTypeCell name="Story position N of TOTAL, <Title>, unseen|seen".
+ * - Pending header: StaticText name="Pending".
+ * - Story viewer: "Story N of TOTAL", "Title Story N of TOTAL, ...", "Close Story".
  */
 class HomeStorylyPage extends BasePage {
   private readonly firstStoryContentDescPrefix = 'Story position 1 of '
@@ -21,6 +24,53 @@ class HomeStorylyPage extends BasePage {
   private byAndroidResId(id: string) {
     const rx = `.*:id/${id}$|^${id}$`
     return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+  }
+
+  private get storylyBarIOS() {
+    return $('//XCUIElementTypeCollectionView[@name="Storyly Bar"]')
+  }
+
+  private get firstStoryCellIOS() {
+    return $(`-ios predicate string:name BEGINSWITH "${this.firstStoryContentDescPrefix}"`)
+  }
+
+  private get firstStoryImageIOS() {
+    return $(`//XCUIElementTypeCell[starts-with(@name,"${this.firstStoryContentDescPrefix}")]//XCUIElementTypeImage`)
+  }
+
+  private get pendingHeaderIOS() {
+    return $('-ios predicate string:name == "Pending" OR label == "Pending"')
+  }
+
+  private get addFundsActionIOS() {
+    return $('-ios predicate string:name == "Add Funds" OR label == "Add Funds"')
+  }
+
+  private get storyProgressIOS() {
+    return $('-ios predicate string:name MATCHES "Story [0-9]+ of [0-9]+" OR label MATCHES "Story [0-9]+ of [0-9]+"')
+  }
+
+  private get storyTitleIOS() {
+    return $('//*[starts-with(@name,"Title Story ") or starts-with(@label,"Title Story ")]')
+  }
+
+  private get closeStoryBtnIOS() {
+    return $('~Close Story')
+  }
+
+  private async isStorylyVisibleIOS() {
+    return (
+      (await this.storylyBarIOS.isExisting().catch(() => false)) ||
+      (await this.firstStoryCellIOS.isExisting().catch(() => false))
+    )
+  }
+
+  private async isStoryViewerOpenIOS() {
+    return (
+      (await this.closeStoryBtnIOS.isExisting().catch(() => false)) ||
+      (await this.storyProgressIOS.isExisting().catch(() => false)) ||
+      (await this.storyTitleIOS.isExisting().catch(() => false))
+    )
   }
 
   private get widgetAndroid() {
@@ -220,6 +270,12 @@ class HomeStorylyPage extends BasePage {
 
   /** HM-STORY-1.2: widget is visible on Home. */
   public async verifyWidgetVisible() {
+    if (browser.isIOS) {
+      await this.waitForStorylyWidget()
+      const visible = await this.isStorylyVisibleIOS()
+      if (!visible) throw new Error('verifyWidgetVisible: Storyly widget not found on iOS')
+      return
+    }
     if (!browser.isAndroid) throw new Error('verifyWidgetVisible: Android only')
     await this.waitForStorylyWidget()
     const bounds = await this.storylyBounds()
@@ -228,8 +284,17 @@ class HomeStorylyPage extends BasePage {
 
   /** HM-STORY-1.3: wait for the Storyly widget at its Home position without scrolling. */
   public async waitForStorylyWidget(timeout = 45000) {
-    if (!browser.isAndroid) return
     await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    if (browser.isIOS) {
+      await browser.waitUntil(
+        async () => this.isStorylyVisibleIOS(),
+        { timeout, interval: 1000, timeoutMsg: 'Storyly widget did not appear on iOS Home' }
+      )
+      return
+    }
+
+    if (!browser.isAndroid) return
 
     const startedAt = Date.now()
     let lastSummaryAt = 0
@@ -268,6 +333,21 @@ class HomeStorylyPage extends BasePage {
 
   /** HM-STORY-1.4: widget sits between the invite card and the Pending section. */
   public async verifyWidgetPosition() {
+    if (browser.isIOS) {
+      await this.waitForStorylyWidget()
+      const widgetExists = await this.storylyBarIOS.isExisting().catch(() => false)
+      if (!widgetExists) return
+      const widgetLocation = await this.storylyBarIOS.getLocation()
+      const pendingExists = await this.pendingHeaderIOS.isExisting().catch(() => false)
+      if (!pendingExists) return
+      const pendingLocation = await this.pendingHeaderIOS.getLocation()
+      if (widgetLocation.y >= pendingLocation.y) {
+        throw new Error(
+          `verifyWidgetPosition: Storyly should be above Pending (widget y=${widgetLocation.y}, pending y=${pendingLocation.y})`
+        )
+      }
+      return
+    }
     if (!browser.isAndroid) throw new Error('verifyWidgetPosition: Android only')
     await this.waitForStorylyWidget()
 
@@ -290,6 +370,23 @@ class HomeStorylyPage extends BasePage {
 
   /** HM-STORY-1.5: widget does not visually overlap the section directly above it. */
   public async verifyNoOverlap() {
+    if (browser.isIOS) {
+      await this.waitForStorylyWidget()
+      const widgetExists = await this.storylyBarIOS.isExisting().catch(() => false)
+      if (!widgetExists) return
+      const widgetLocation = await this.storylyBarIOS.getLocation()
+      const addFundsExists = await this.addFundsActionIOS.isExisting().catch(() => false)
+      if (!addFundsExists) return
+      const addFundsLocation = await this.addFundsActionIOS.getLocation()
+      const addFundsSize = await this.addFundsActionIOS.getSize()
+      const addFundsBottom = addFundsLocation.y + addFundsSize.height
+      if (widgetLocation.y < addFundsBottom) {
+        throw new Error(
+          `verifyNoOverlap: widget top (${widgetLocation.y}) overlaps balance card bottom (${addFundsBottom})`
+        )
+      }
+      return
+    }
     if (!browser.isAndroid) throw new Error('verifyNoOverlap: Android only')
     await this.waitForStorylyWidget()
 
@@ -311,6 +408,18 @@ class HomeStorylyPage extends BasePage {
 
   /** HM-STORY-1.6: widget bounds stay stable across a short pause (no layout shift/flicker). */
   public async verifyLayoutStable() {
+    if (browser.isIOS) {
+      await this.waitForStorylyWidget()
+      const widgetExists = await this.storylyBarIOS.isExisting().catch(() => false)
+      if (!widgetExists) throw new Error('verifyLayoutStable: Storyly widget not found on iOS')
+      const before = await this.storylyBarIOS.getLocation()
+      await browser.pause(1500)
+      const after = await this.storylyBarIOS.getLocation()
+      if (before.y !== after.y || before.x !== after.x) {
+        throw new Error(`verifyLayoutStable: widget position shifted (before y=${before.y}, after y=${after.y})`)
+      }
+      return
+    }
     if (!browser.isAndroid) throw new Error('verifyLayoutStable: Android only')
     await this.waitForStorylyWidget()
 
@@ -327,6 +436,12 @@ class HomeStorylyPage extends BasePage {
 
   /** HM-STORY-1.7: at least one story is rendered (not an empty/placeholder widget). */
   public async verifyContentLoaded() {
+    if (browser.isIOS) {
+      await this.waitForStorylyWidget()
+      const hasCell = await this.firstStoryCellIOS.isExisting().catch(() => false)
+      if (!hasCell) throw new Error('verifyContentLoaded: no story cells found on iOS')
+      return
+    }
     if (!browser.isAndroid) throw new Error('verifyContentLoaded: Android only')
     await this.waitForStorylyWidget()
     const bounds = await this.storylyBounds()
@@ -349,6 +464,62 @@ class HomeStorylyPage extends BasePage {
       .catch(() => false)
   }
 
+  private async waitForStoryViewerOpenIOS(timeout = 8000): Promise<boolean> {
+    return browser.waitUntil(
+      async () => this.isStoryViewerOpenIOS(),
+      { timeout, interval: 300 }
+    ).catch(() => false)
+  }
+
+  private async nativeTap(x: number, y: number) {
+    await browser.performActions([{
+      type: 'pointer',
+      id: 'finger1',
+      parameters: { pointerType: 'touch' },
+      actions: [
+        { type: 'pointerMove', duration: 0, x, y },
+        { type: 'pointerDown', button: 0 },
+        { type: 'pause', duration: 80 },
+        { type: 'pointerUp', button: 0 },
+      ],
+    }])
+    await browser.releaseActions().catch(() => {})
+  }
+
+  private async tapIOSElement(element: ChainablePromiseElement) {
+    await element.click().catch(() => {})
+    return this.waitForStoryViewerOpenIOS(2500)
+  }
+
+  private async closeStoryViewerIOS(): Promise<boolean> {
+    const viewerOpen = await this.waitForStoryViewerOpenIOS(2000)
+    if (!viewerOpen) return true
+
+    const closeExists = await this.closeStoryBtnIOS.waitForExist({ timeout: 5000 }).catch(() => false)
+    if (!closeExists) return false
+
+    await this.closeStoryBtnIOS.click().catch(async () => {
+      const bounds = await this.getElementBounds(this.closeStoryBtnIOS)
+      await this.nativeTap(Math.round(bounds.x + bounds.width / 2), Math.round(bounds.y + bounds.height / 2))
+    })
+
+    return this.waitForStorylyWidget(8000).then(() => true).catch(() => false)
+  }
+
+  private async getStoryProgressLabelIOS(): Promise<string> {
+    const progress = this.storyProgressIOS
+    await progress.waitForExist({ timeout: 5000 })
+    const name = (await progress.getAttribute('name').catch(() => '')) ?? ''
+    const label = (await progress.getAttribute('label').catch(() => '')) ?? ''
+    return name || label
+  }
+
+  private parseStoryProgress(progress: string) {
+    const match = progress.match(/^Story\s+(\d+)\s+of\s+(\d+)/)
+    if (!match) return null
+    return { current: Number(match[1]), total: Number(match[2]) }
+  }
+
   /**
    * HM-STORY-1.8: tap the first story ring to open the viewer. Storyly's story-ring
    * Buttons handle taps via their own touch/gesture listener rather than a standard
@@ -363,6 +534,51 @@ class HomeStorylyPage extends BasePage {
    * performActions if that doesn't open the viewer.
    */
   public async openFirstStory() {
+    if (browser.isIOS) {
+      await this.waitForStorylyWidget()
+      const cell = this.firstStoryCellIOS
+      const cellExists = await cell.isExisting().catch(() => false)
+      if (!cellExists) throw new Error('openFirstStory: first story cell not found on iOS')
+
+      let opened = await this.tapIOSElement(cell)
+      if (opened) return
+
+      const imageExists = await this.firstStoryImageIOS.isExisting().catch(() => false)
+      const target = imageExists ? this.firstStoryImageIOS : cell
+      const bounds = await this.getElementBounds(target)
+      const cellBounds = await this.getElementBounds(cell)
+      const tapY = Math.round(bounds.y + bounds.height / 2)
+      const tapPoints = [
+        { x: Math.round(bounds.x + bounds.width / 2), y: tapY },
+        { x: Math.round(bounds.x + Math.min(52, bounds.width * 0.35)), y: tapY },
+        { x: Math.round(cellBounds.x + cellBounds.width / 2), y: Math.round(cellBounds.y + cellBounds.height / 2) },
+      ]
+
+      await browser.execute('mobile: tap', tapPoints[0]).catch(() => {})
+      opened = await this.waitForStoryViewerOpenIOS(4000)
+
+      if (!opened) {
+        await this.nativeTap(tapPoints[0].x, tapPoints[0].y)
+        opened = await this.waitForStoryViewerOpenIOS(4000)
+      }
+
+      if (!opened) {
+        await this.nativeTap(tapPoints[1].x, tapPoints[1].y)
+        opened = await this.waitForStoryViewerOpenIOS(8000)
+      }
+
+      if (!opened) {
+        await this.nativeTap(tapPoints[2].x, tapPoints[2].y)
+        opened = await this.waitForStoryViewerOpenIOS(8000)
+      }
+
+      if (!opened) {
+        throw new Error(
+          `openFirstStory: story viewer did not open on iOS (cell=${JSON.stringify(cellBounds)}, target=${JSON.stringify(bounds)}, taps=${JSON.stringify(tapPoints)})`
+        )
+      }
+      return
+    }
     if (!browser.isAndroid) throw new Error('openFirstStory: Android only')
     await this.waitForStorylyWidget()
     const nativeBounds = await this.nativeStorylyBounds()
@@ -402,6 +618,34 @@ class HomeStorylyPage extends BasePage {
 
   /** HM-STORY-1.9: tap the right-hand tap-zone and confirm the story position advanced. */
   public async navigateToNextStory() {
+    if (browser.isIOS) {
+      const opened = await this.waitForStoryViewerOpenIOS(5000)
+      if (!opened) throw new Error('navigateToNextStory: story viewer not open on iOS')
+
+      const before = await this.getStoryProgressLabelIOS()
+      const progress = this.parseStoryProgress(before)
+      if (!progress) throw new Error(`navigateToNextStory: could not read iOS story progress (before="${before}")`)
+
+      const { width, height } = await browser.getWindowRect()
+      const tapX = progress.current >= progress.total ? Math.round(width * 0.15) : Math.round(width * 0.85)
+      const tapY = Math.round(height * 0.5)
+      await this.nativeTap(tapX, tapY)
+
+      await browser.waitUntil(
+        async () => {
+          const after = await this.getStoryProgressLabelIOS().catch(() => '')
+          return Boolean(after && after !== before)
+        },
+        { timeout: 5000, interval: 300 }
+      )
+
+      const after = await this.getStoryProgressLabelIOS()
+      if (!after || after === before) {
+        throw new Error(`navigateToNextStory: story position did not change on iOS (before="${before}", after="${after}")`)
+      }
+
+      return { before, after }
+    }
     if (!browser.isAndroid) throw new Error('navigateToNextStory: Android only')
     await this.storyHeaderPagerAndroid.waitForDisplayed({ timeout: 10000 })
 
@@ -440,6 +684,11 @@ class HomeStorylyPage extends BasePage {
    * button lives in the same Storyly-managed view tree.
    */
   public async closeStoryViewer() {
+    if (browser.isIOS) {
+      const closed = await this.closeStoryViewerIOS()
+      if (!closed) throw new Error('closeStoryViewer: did not return to Home after closing on iOS')
+      return
+    }
     if (!browser.isAndroid) throw new Error('closeStoryViewer: Android only')
     await this.closeStoryButtonAndroid.waitForDisplayed({ timeout: 10000 })
 
@@ -477,8 +726,16 @@ class HomeStorylyPage extends BasePage {
   }
 
   public async closeStoryViewerIfOpen() {
-    if (!browser.isAndroid) return
     await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    if (browser.isIOS) {
+      const closeExists = await this.closeStoryBtnIOS.waitForExist({ timeout: 1500 }).catch(() => false)
+      if (!closeExists) return
+      await this.closeStoryViewerIOS().catch(() => {})
+      return
+    }
+
+    if (!browser.isAndroid) return
 
     const viewerOpen = await this.waitForStoryViewerOpen(1500)
     if (!viewerOpen) return
