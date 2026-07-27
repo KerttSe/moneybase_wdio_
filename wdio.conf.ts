@@ -109,6 +109,13 @@ const classifyFailureReason = (error: Error) => {
   return { reason, httpCode }
 }
 
+const isMochaSkipError = (error: Error) => {
+  const name = (error as Error & { name?: string }).name ?? ''
+  const message = error.message ?? ''
+
+  return name === 'Pending' || /sync skip; aborting execution|test has been skipped/i.test(message)
+}
+
 const markBrowserStackFailure = async (error: Error) => {
   if (!useBrowserStack) return
 
@@ -339,12 +346,17 @@ export const config: WebdriverIO.Config = {
 
   afterTest: async function (test, context, { error }) {
     if (!error) return
+    if (isMochaSkipError(error)) {
+      console.log(`[WDIO] Skipped test ignored for BrowserStack failure status: ${test.title}`)
+      return
+    }
     await attachFailureArtifacts()
     await markBrowserStackFailure(error)
   },
 
   afterHook: async function (_test, _context, { error }) {
     if (!error) return
+    if (isMochaSkipError(error)) return
     await attachFailureArtifacts()
     await markBrowserStackFailure(error)
   },
