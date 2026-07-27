@@ -46,7 +46,7 @@ export function getSessionHeals(): HealEvent[] {
 }
 
 const IOS_GUIDE = `iOS WebdriverIO selectors (pick best fit):
-- ~accessibilityId                                           e.g. ~submit_button
+- oaccessibilityId                                           e.g. ~submit_button
 - -ios predicate string:name == "x"                         e.g. -ios predicate string:name == "submit_button"
 - -ios predicate string:type == "XCUIElementTypeButton" AND label == "x"
 - //XCUIElementType...[@name="x"]                           XPath fallback`

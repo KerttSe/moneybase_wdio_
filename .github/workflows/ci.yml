@@ -22,6 +22,15 @@ on:
         options:
           - smoke
           - regression
+          - all
+      bs_app_ios:
+        description: "BrowserStack iOS app id (bs://...). Overrides BS_APP_IOS secret."
+        required: false
+        type: string
+      bs_app_android:
+        description: "BrowserStack Android app id (bs://...). Overrides BS_APP_ANDROID secret."
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -33,20 +42,23 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  setup:
-    name: Build test matrix
-    runs-on: ubuntu-latest
+  # ---------------------------------------------------------------------
+  # SMOKE
+  # ---------------------------------------------------------------------
+  setup-smoke:
+    name: Build smoke matrix
+    runs-on: arc-runner-mb-deploy-stg-scale-set
+    if: (github.event.inputs.suite || 'smoke') == 'smoke' || (github.event.inputs.suite || 'smoke') == 'all'
     outputs:
       matrix: ${{ steps.build.outputs.matrix }}
     steps:
-      - name: Build matrix filtered by platform
+      - name: Build smoke matrix filtered by platform
         id: build
         shell: bash
         env:
           PLATFORM_INPUT: ${{ github.event.inputs.platform || 'all' }}
-          SUITE_INPUT: ${{ github.event.inputs.suite || 'smoke' }}
         run: |
-          SMOKE_SPECS=(
+          SPECS=(
             "src/tests/launch.spec.ts"
             "src/tests/homeScreen.spec.ts"
             "src/tests/homeAccountSwitch.spec.ts"
@@ -68,16 +80,6 @@ jobs:
             "src/tests/onboarding.spec.ts"
           )
 
-          case "$SUITE_INPUT" in
-            regression)
-              mapfile -t SPECS < <(find src/tests -maxdepth 1 -name "*.spec.ts" | sort)
-              ;;
-            *)
-              SPECS=("${SMOKE_SPECS[@]}")
-              SUITE_INPUT="smoke"
-              ;;
-          esac
-
           PLATFORMS=()
           case "$PLATFORM_INPUT" in
             android) PLATFORMS=("android") ;;
@@ -89,24 +91,25 @@ jobs:
           for platform in "${PLATFORMS[@]}"; do
             for spec in "${SPECS[@]}"; do
               INCLUDE=$(echo "$INCLUDE" | jq -c \
-                --arg p "$platform" --arg s "$spec" --arg suite "$SUITE_INPUT" \
-                '. += [{"platform": $p, "spec": $s, "suite": $suite}]')
+                --arg p "$platform" --arg s "$spec" \
+                '. += [{"platform": $p, "spec": $s, "smoke": true}]')
             done
           done
 
           MATRIX=$(jq -c -n --argjson inc "$INCLUDE" '{"include": $inc}')
           echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
           echo "Selected platform: $PLATFORM_INPUT"
-          echo "Selected suite: $SUITE_INPUT"
           echo "Jobs to create: $(echo "$INCLUDE" | jq 'length')"
 
-  e2e:
-    name: ${{ format('{0} ({1})', matrix.suite, matrix.platform) }} — ${{ matrix.spec }}
-    needs: setup
-    runs-on: self-hosted
+  e2e-smoke:
+    name: SMOKE (${{ matrix.platform }}) — ${{ matrix.spec }}
+    needs: setup-smoke
+    if: needs.setup-smoke.result == 'success'
+    runs-on: arc-runner-mb-deploy-stg-scale-set
     strategy:
+      max-parallel: 1
       fail-fast: false
-      matrix: ${{ fromJSON(needs.setup.outputs.matrix) }}
+      matrix: ${{ fromJSON(needs.setup-smoke.outputs.matrix) }}
     env:
       MB_COUNTRY: ${{ secrets.MB_COUNTRY }}
       MB_PHONE: ${{ secrets.MB_PHONE }}
@@ -114,16 +117,16 @@ jobs:
       BROWSERSTACK: "true"
       BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
       BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-      BS_APP_ANDROID: ${{ secrets.BS_APP_ANDROID }}
-      BS_APP_IOS: ${{ secrets.BS_APP_IOS }}
+      BS_APP_ANDROID: ${{ github.event.inputs.bs_app_android || secrets.BS_APP_ANDROID }}
+      BS_APP_IOS: ${{ github.event.inputs.bs_app_ios || secrets.BS_APP_IOS }}
       PLATFORM: ${{ matrix.platform }}
-      BS_BUILD: ${{ github.run_id }}-${{ github.run_attempt }}
-      BS_BUILD_TAGS: ${{ matrix.suite }},${{ matrix.spec }},${{ matrix.platform }}
-      BS_ANDROID_DEVICE: "Google Pixel 9"
-      BS_ANDROID_OS: "15.0"
+      BS_BUILD: smoke-${{ github.run_id }}-${{ github.run_attempt }}
+      BS_BUILD_TAGS: ${{ matrix.spec }},${{ matrix.platform }},smoke
       OTP_FORCE_RESEND_BEFORE_FETCH: "false"
       OTP_FETCH_DELAY_MS: "5000"
+      OTP_GET_LATEST_URL: ${{ secrets.OTP_GET_LATEST_URL }}
       OTP_RESEND_WAIT_MS: "0"
+      CARD_FREEZE_LOGIN_USE_API_OTP: "true"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -138,20 +141,124 @@ jobs:
         run: npm ci
 
       - name: Run tests
-        run: npm run wdio -- --spec=${{ matrix.spec }}
+        run: npm run wdio -- --spec ${{ matrix.spec }}
 
       - name: Upload Allure results artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results-${{ matrix.platform }}-${{ strategy.job-index }}
+          name: allure-results-smoke-${{ matrix.platform }}-${{ strategy.job-index }}
           path: allure-results
           if-no-files-found: warn
 
+  # ---------------------------------------------------------------------
+  # REGRESSION
+  # ---------------------------------------------------------------------
+  setup-regression:
+    name: Build regression matrix
+    runs-on: arc-runner-mb-deploy-stg-scale-set
+    if: (github.event.inputs.suite || 'smoke') == 'regression' || (github.event.inputs.suite || 'smoke') == 'all'
+    outputs:
+      matrix: ${{ steps.build.outputs.matrix }}
+    steps:
+      - name: Build regression matrix filtered by platform
+        id: build
+        shell: bash
+        env:
+          PLATFORM_INPUT: ${{ github.event.inputs.platform || 'all' }}
+        run: |
+          # TODO: replace this with your full regression spec list
+          SPECS=(
+            "src/tests/launch.spec.ts"
+          )
+
+          PLATFORMS=()
+          case "$PLATFORM_INPUT" in
+            android) PLATFORMS=("android") ;;
+            ios)     PLATFORMS=("ios") ;;
+            *)       PLATFORMS=("android" "ios") ;;
+          esac
+
+          INCLUDE="[]"
+          for platform in "${PLATFORMS[@]}"; do
+            for spec in "${SPECS[@]}"; do
+              INCLUDE=$(echo "$INCLUDE" | jq -c \
+                --arg p "$platform" --arg s "$spec" \
+                '. += [{"platform": $p, "spec": $s, "smoke": false}]')
+            done
+          done
+
+          MATRIX=$(jq -c -n --argjson inc "$INCLUDE" '{"include": $inc}')
+          echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
+          echo "Selected platform: $PLATFORM_INPUT"
+          echo "Jobs to create: $(echo "$INCLUDE" | jq 'length')"
+
+  e2e-regression:
+    name: REGRESSION (${{ matrix.platform }}) — ${{ matrix.spec }}
+    # Waits on e2e-smoke so that when suite=all is selected, regression only
+    # starts once the smoke matrix has finished (sequential, not parallel —
+    # avoids hitting the test account with two suites at once). Regression
+    # runs whether smoke passed or failed — it is only gated on smoke being
+    # DONE, not on smoke succeeding.
+    # If suite=regression is selected on its own, e2e-smoke never ran (it's
+    # skipped), so this still lets you fire regression standalone/manually.
+    needs: [setup-regression, e2e-smoke]
+    if: >
+      needs.setup-regression.result == 'success' &&
+      (needs.e2e-smoke.result == 'success' || needs.e2e-smoke.result == 'failure' || needs.e2e-smoke.result == 'skipped')
+    runs-on: arc-runner-mb-deploy-stg-scale-set
+    strategy:
+      max-parallel: 1
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.setup-regression.outputs.matrix) }}
+    env:
+      MB_COUNTRY: ${{ secrets.MB_COUNTRY }}
+      MB_PHONE: ${{ secrets.MB_PHONE }}
+      MB_PIN: ${{ secrets.MB_PIN }}
+      BROWSERSTACK: "true"
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      BS_APP_ANDROID: ${{ github.event.inputs.bs_app_android || secrets.BS_APP_ANDROID }}
+      BS_APP_IOS: ${{ github.event.inputs.bs_app_ios || secrets.BS_APP_IOS }}
+      PLATFORM: ${{ matrix.platform }}
+      BS_BUILD: regression-${{ github.run_id }}-${{ github.run_attempt }}
+      BS_BUILD_TAGS: ${{ matrix.spec }},${{ matrix.platform }},regression
+      OTP_FORCE_RESEND_BEFORE_FETCH: "false"
+      OTP_FETCH_DELAY_MS: "5000"
+      OTP_GET_LATEST_URL: ${{ secrets.OTP_GET_LATEST_URL }}
+      OTP_RESEND_WAIT_MS: "0"
+      CARD_FREEZE_LOGIN_USE_API_OTP: "true"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm run wdio -- --spec ${{ matrix.spec }}
+
+      - name: Upload Allure results artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-regression-${{ matrix.platform }}-${{ strategy.job-index }}
+          path: allure-results
+          if-no-files-found: warn
+
+  # ---------------------------------------------------------------------
+  # REPORT
+  # ---------------------------------------------------------------------
   deploy-pages:
     name: Deploy Allure report to GitHub Pages
     runs-on: ubuntu-latest
-    needs: e2e
+    needs: [e2e-smoke, e2e-regression]
     if: always()
     environment:
       name: github-pages
