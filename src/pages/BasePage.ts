@@ -2,6 +2,7 @@ import type { ChainablePromiseElement } from 'webdriverio'
 import { $, browser } from '@wdio/globals'
 
 type WdioEl = ChainablePromiseElement
+type ResolvableWdioEl = WdioEl | WebdriverIO.Element | Promise<WdioEl | WebdriverIO.Element>
 
 type EnsureSingleAccountAndroidParams = {
   userAvatarBtn: WdioEl
@@ -310,7 +311,7 @@ export default class BasePage {
     await browser.pause(ms)
   }
 
-  async click(el: WdioEl, timeout = 10000) {
+  async click(el: ResolvableWdioEl, timeout = 10000) {
     return this.tap(el, timeout)
   }
 
@@ -324,24 +325,27 @@ export default class BasePage {
     return el
   }
 
-  async tap(el: WdioEl, timeout = 10000) {
+  async tap(el: ResolvableWdioEl, timeout = 10000) {
+    const target = (await Promise.resolve(el)) as WebdriverIO.Element
+
     if (browser.isIOS) {
-      await el.waitForExist({ timeout })
-      await el.click()
+      await target.waitForExist({ timeout })
+      await target.click()
       return
     }
     await this.dismissKnownAndroidBlockingPopups().catch(() => {})
     try {
-      await el.waitForDisplayed({ timeout })
-      await el.click()
+      await target.waitForDisplayed({ timeout })
+      await target.click()
     } catch {
       const dismissed = await this.dismissKnownAndroidBlockingPopups().catch(() => false)
       if (dismissed) {
-        await el.waitForDisplayed({ timeout })
-        await el.click()
+        await target.waitForDisplayed({ timeout })
+        await target.click()
         return
       }
-      throw new Error(`tap: element not found — ${String(el.selector)}`)
+      const sel = await Promise.resolve(target.selector).catch(() => '?')
+      throw new Error(`tap: element not found — ${sel}`)
     }
   }
 

@@ -22,6 +22,7 @@ describe('Physical card creation - Individual', function () {
       otpPhone: process.env.PHYSICAL_CARD_OTP_PHONE,
     })
     if (browser.isAndroid) {
+      await PhysicalCardCreationPage.dismissGooglePayPromoAndroid()
       await BankTransferP2PIndividualPage.ensureIndividualAccount()
     }
   })

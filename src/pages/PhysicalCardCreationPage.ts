@@ -85,26 +85,30 @@ class PhysicalCardCreationPage extends BasePage {
     return $('android=new UiSelector().textContains("Google Pay")')
   }
 
-  private async dismissGooglePayPromoAndroid(timeoutMs = 7000) {
+  public async dismissGooglePayPromoAndroid(timeoutMs = 7000) {
     if (!browser.isAndroid) return
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    const notNowShown = await this.googlePayNotNowAndroid.isDisplayed().catch(() => false)
+    const notNowShown = await this.googlePayNotNowAndroid.waitForExist({ timeout: 1500 }).catch(() => false)
     if (notNowShown) {
-      await this.tap(this.googlePayNotNowAndroid)
-      await this.googlePayNotNowAndroid.waitForDisplayed({ reverse: true, timeout: timeoutMs }).catch(() => {})
+      await this.googlePayNotNowAndroid.click().catch(() => {})
+      await this.googlePayNotNowAndroid.waitForExist({ reverse: true, timeout: timeoutMs }).catch(() => {})
       return
     }
 
-    const promoShown = await this.googlePayPromoTitleAndroid.isDisplayed().catch(() => false)
+    // If promo is not present at all — skip early
+    const promoShown = await this.googlePayPromoTitleAndroid.isExisting().catch(() => false)
     if (!promoShown) return
 
-    await this.googlePayNotNowAndroid.waitForDisplayed({ timeout: timeoutMs }).catch(() => {})
-    if (await this.googlePayNotNowAndroid.isDisplayed().catch(() => false)) {
-      await this.tap(this.googlePayNotNowAndroid)
-      await this.googlePayNotNowAndroid.waitForDisplayed({ reverse: true, timeout: timeoutMs }).catch(() => {})
-    }
+    // Wait for the "Not Now" button and tap it
+    const notNowReady = await this.googlePayNotNowAndroid
+      .waitForExist({ timeout: timeoutMs })
+      .catch(() => false)
+    if (!notNowReady) return
+
+    await this.googlePayNotNowAndroid.click().catch(() => {})
+    await this.googlePayNotNowAndroid.waitForExist({ reverse: true, timeout: timeoutMs }).catch(() => {})
   }
 
   /* =========================
@@ -180,6 +184,10 @@ class PhysicalCardCreationPage extends BasePage {
 
   private get cardsTabIOS() {
     return $('~Cards')
+  }
+
+  private get cardsTabIOSByPredicate() {
+    return $('-ios predicate string:name == "Cards" OR label == "Cards" OR name == "ic card NavBar"')
   }
 
   private get cardsTabAndroidById() {
@@ -478,8 +486,8 @@ class PhysicalCardCreationPage extends BasePage {
 
     const deadline = Date.now() + timeoutMs
     while (Date.now() < deadline) {
-      const freezeShown = await this.freezeButtonIOS.isDisplayed().catch(() => false)
-      const unfreezeShown = await this.unfreezeButtonIOS.isDisplayed().catch(() => false)
+      const freezeShown = await this.freezeButtonIOS.isExisting().catch(() => false)
+      const unfreezeShown = await this.unfreezeButtonIOS.isExisting().catch(() => false)
       if (freezeShown || unfreezeShown) return
       await browser.pause(pollMs)
     }
@@ -489,7 +497,7 @@ class PhysicalCardCreationPage extends BasePage {
     const deadline = Date.now() + timeoutMs
     while (Date.now() < deadline) {
       for (const candidate of candidates) {
-        const shown = await candidate.isDisplayed().catch(() => false)
+        const shown = await candidate.isExisting().catch(() => false)
         if (!shown) continue
         await this.tap(candidate)
         return
@@ -768,10 +776,10 @@ class PhysicalCardCreationPage extends BasePage {
     await browser.switchContext('NATIVE_APP').catch(() => {})
     const deadline = Date.now() + timeoutMs
     while (Date.now() < deadline) {
-      if (await this.otpEntryIOS.isDisplayed().catch(() => false)) return
-      if (await this.otpTextViewIOS.isDisplayed().catch(() => false)) return
+      if (await this.otpEntryIOS.isExisting().catch(() => false)) return
+      if (await this.otpTextViewIOS.isExisting().catch(() => false)) return
 
-      const confirmShown = await this.confirmAddressBtnIOS.isDisplayed().catch(() => false)
+      const confirmShown = await this.confirmAddressBtnIOS.isExisting().catch(() => false)
       if (confirmShown) {
         await this.tap(this.confirmAddressBtnIOS)
       }
@@ -784,7 +792,7 @@ class PhysicalCardCreationPage extends BasePage {
 
   private async confirmPinIOS(timeoutMs = 15000) {
     await this.confirmAddressBtnIOS.waitForExist({ timeout: timeoutMs }).catch(() => {})
-    if (await this.confirmAddressBtnIOS.isDisplayed().catch(() => false)) {
+    if (await this.confirmAddressBtnIOS.isExisting().catch(() => false)) {
       await this.tap(this.confirmAddressBtnIOS)
     }
   }
@@ -815,14 +823,17 @@ class PhysicalCardCreationPage extends BasePage {
   private async isIOSCardsSurfaceVisible() {
     if (!browser.isIOS) return false
 
-    const addCardShown = await this.addNewCardBtnIOS.isDisplayed().catch(() => false)
-    const freezeShown = await this.freezeButtonIOS.isDisplayed().catch(() => false)
-    const unfreezeShown = await this.unfreezeButtonIOS.isDisplayed().catch(() => false)
-    const physicalShown = await this.physicalCardItemIOS.isDisplayed().catch(() => false)
-    const activeShown = await this.activeCardItemIOS.isDisplayed().catch(() => false)
-    const maskedShown = await this.maskedCardItemIOS.isDisplayed().catch(() => false)
+    const addCardShown = await this.addNewCardBtnIOS.isExisting().catch(() => false)
+    const addCardByTextShown = await this.addNewCardBtnIOSByText.isExisting().catch(() => false)
+    const addCardTextShown = await this.addNewCardTextIOS.isExisting().catch(() => false)
+    const addCardPlusShown = await this.addNewCardPlusIOS.isExisting().catch(() => false)
+    const freezeShown = await this.freezeButtonIOS.isExisting().catch(() => false)
+    const unfreezeShown = await this.unfreezeButtonIOS.isExisting().catch(() => false)
+    const physicalShown = await this.physicalCardItemIOS.isExisting().catch(() => false)
+    const activeShown = await this.activeCardItemIOS.isExisting().catch(() => false)
+    const maskedShown = await this.maskedCardItemIOS.isExisting().catch(() => false)
 
-    return addCardShown || freezeShown || unfreezeShown || physicalShown || activeShown || maskedShown
+    return addCardShown || addCardByTextShown || addCardTextShown || addCardPlusShown || freezeShown || unfreezeShown || physicalShown || activeShown || maskedShown
   }
 
   private async getDisplayedIOSCardListItem(): Promise<WebdriverIO.Element | null> {
@@ -835,13 +846,13 @@ class PhysicalCardCreationPage extends BasePage {
     ]
 
     for (const candidate of explicitCandidates) {
-      const shown = await candidate.isDisplayed().catch(() => false)
+      const shown = await candidate.isExisting().catch(() => false)
       if (shown) return (await candidate) as unknown as WebdriverIO.Element
     }
 
     const cells = await $$('-ios class chain:**/XCUIElementTypeCell')
     for (const cell of cells) {
-      const shown = await cell.isDisplayed().catch(() => false)
+      const shown = await cell.isExisting().catch(() => false)
       if (!shown) continue
 
       const label = await cell.getAttribute('label').catch(async () => await cell.getText().catch(() => ''))
@@ -969,10 +980,12 @@ class PhysicalCardCreationPage extends BasePage {
 
     await browser.pause(700)
     await browser.switchContext('NATIVE_APP').catch(() => {})
+    await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
     await this.dismissBlockingAlertAndroid(3000)
     await this.dismissGooglePayPromoAndroid(7000)
     await browser.pause(1000) // Wait for UiAutomator2 to stabilize after login
     await this.cardsTabAndroid.waitForDisplayed({ timeout: 20000 }).catch(async () => {
+      await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
       await this.dismissBlockingAlertAndroid(3000)
       await this.dismissGooglePayPromoAndroid(7000)
       await this.cardsTabAndroidById.waitForDisplayed({ timeout: 20000 })
@@ -1056,8 +1069,27 @@ class PhysicalCardCreationPage extends BasePage {
     await browser.switchContext('NATIVE_APP').catch(() => {})
     if (await this.isIOSCardsSurfaceVisible()) return
 
-    await this.cardsTabIOS.waitForExist({ timeout: 20000 })
-    await this.tap(this.cardsTabIOS)
+    const cardsTabCandidates = [this.cardsTabIOS, this.cardsTabIOSByPredicate]
+    await browser.waitUntil(
+      async () => {
+        for (const candidate of cardsTabCandidates) {
+          if (await candidate.isExisting().catch(() => false)) return true
+        }
+        return false
+      },
+      {
+        timeout: 20000,
+        interval: 500,
+        timeoutMsg: 'Cards tab did not appear on iOS',
+      }
+    )
+
+    for (const candidate of cardsTabCandidates) {
+      if (await candidate.isExisting().catch(() => false)) {
+        await this.tap(candidate)
+        break
+      }
+    }
     await browser.waitUntil(
       async () => await this.isIOSCardsSurfaceVisible(),
       {
@@ -1073,9 +1105,9 @@ class PhysicalCardCreationPage extends BasePage {
 
     await this.openCardsTabIOSCurrentAccount()
     await this.waitForSyncToFinishIOS(timeoutMs)
-    if (await this.freezeButtonIOS.isDisplayed().catch(() => false)) return
-    if (await this.unfreezeButtonIOS.isDisplayed().catch(() => false)) return
-    if (await this.cardSearchFieldIOS.isDisplayed().catch(() => false)) {
+    if (await this.freezeButtonIOS.isExisting().catch(() => false)) return
+    if (await this.unfreezeButtonIOS.isExisting().catch(() => false)) return
+    if (await this.cardSearchFieldIOS.isExisting().catch(() => false)) {
       await browser.hideKeyboard().catch(() => {})
     }
 
@@ -1095,7 +1127,7 @@ class PhysicalCardCreationPage extends BasePage {
     await this.openActivePhysicalCardDetailsIOS(timeoutMs)
     await this.waitForFreezeReadyIOS(timeoutMs)
 
-    const alreadyFrozen = await this.unfreezeButtonIOS.isDisplayed().catch(() => false)
+    const alreadyFrozen = await this.unfreezeButtonIOS.isExisting().catch(() => false)
     if (alreadyFrozen) {
       await this.tap(this.unfreezeButtonIOS)
       await this.freezeButtonIOS.waitForExist({ timeout: timeoutMs })
@@ -1119,7 +1151,7 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   public async startAddNewCardIOS() {
-    if (!(await this.cardsRootIOS.isDisplayed().catch(() => false))) {
+    if (!(await this.isIOSCardsSurfaceVisible())) {
       await this.openCardsTabIOS()
     }
 
