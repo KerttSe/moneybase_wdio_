@@ -291,7 +291,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get infoScreen() {
-    return this.byId('infoConstraintLayout')
+    return this.byId('info_screen')
   }
 
   private get infoHeader() {
@@ -299,11 +299,35 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get infoContinueBtn() {
+    return this.byId('info_button_continue')
+  }
+
+  private get infoScreenLegacy() {
+    return this.byId('infoConstraintLayout')
+  }
+
+  private get infoContinueBtnLegacy() {
     return this.byId('infoContinueButton')
+  }
+
+  private get infoBackBtn() {
+    return this.byId('info_button_back')
   }
 
   private get verificationRequiredBackBtn() {
     return $('//*[@resource-id="com.moneybase.qa:id/composeViewFragmentInfo"]//*[@content-desc="Back"]/ancestor::*[@clickable="true"][1]')
+  }
+
+  private get verificationRequiredBackIcon() {
+    return $('//*[@resource-id="com.moneybase.qa:id/composeViewFragmentInfo"]//*[@content-desc="Back"]')
+  }
+
+  private get verificationRequiredBackByDesc() {
+    return $('android=new UiSelector().description("Back")')
+  }
+
+  private get verificationRequiredBackById() {
+    return $('android=new UiSelector().resourceIdMatches(".*:id/.*back.*$|^.*back.*$")')
   }
 
   private get verificationRequiredCloseBtnIOS() {
@@ -1013,7 +1037,9 @@ export default class OnboardingPage extends BasePage {
   }
 
   private async throwIfDeviceSecurityBlocked() {
-    if (!(await this.infoScreen.isDisplayed().catch(() => false))) return
+    const infoShown = (await this.infoScreen.isExisting().catch(() => false)) ||
+      (await this.infoScreenLegacy.isDisplayed().catch(() => false))
+    if (!infoShown) return
 
     const header = await this.infoHeader.getText().catch(() => '')
     if (header !== 'Device Security') return
@@ -1665,15 +1691,51 @@ export default class OnboardingPage extends BasePage {
 
   private async isVerificationRequiredScreenShown() {
     const verificationRequiredShown =
-      (await this.verificationRequiredTitle.isDisplayed().catch(() => false)) ||
-      ((await this.infoScreen.isDisplayed().catch(() => false)) &&
+      (await this.elFound(this.verificationRequiredTitle)) ||
+      (((await this.elFound(this.infoScreen)) || (await this.elFound(this.infoScreenLegacy))) &&
         (await this.infoHeader.getText().catch(() => '')) === 'Verification is required')
 
     const verifyNowShown =
-      (await this.infoContinueBtn.isDisplayed().catch(() => false)) ||
-      (await this.buttonByText('Verify Now').isDisplayed().catch(() => false))
+      (await this.elFound(this.infoContinueBtn)) ||
+      (await this.elFound(this.infoContinueBtnLegacy)) ||
+      (await this.elFound(this.buttonByText('Verify Now')))
 
     return verificationRequiredShown && verifyNowShown
+  }
+
+  private async closeVerificationRequiredAndroid() {
+    const closeCandidates = [
+      this.infoBackBtn,
+      this.verificationRequiredBackBtn,
+      this.verificationRequiredBackIcon,
+      this.verificationRequiredBackByDesc,
+      this.verificationRequiredBackById,
+    ]
+
+    for (let attempt = 1; attempt <= 3; attempt += 1) {
+      const tapped = await this.tapFirstVisible(closeCandidates, 3000)
+      if (!tapped) {
+        await browser.back().catch(() => {})
+      }
+
+      const leftInfoScreen = await browser.waitUntil(
+        async () => {
+          const successShown = await this.verificationSuccessScreen.isExisting().catch(() => false)
+          const homeShown = await this.homeRoot.isExisting().catch(() => false)
+          const stillOnVerification = await this.isVerificationRequiredScreenShown().catch(() => false)
+          return successShown || homeShown || !stillOnVerification
+        },
+        { timeout: 5000, interval: 500 }
+      ).catch(() => false)
+
+      if (leftInfoScreen) return
+      await this.tapByRatio(0.08, 0.07).catch(() => {})
+      await browser.pause(700)
+      if (!(await this.isVerificationRequiredScreenShown().catch(() => false))) return
+    }
+
+    await this.debugSnapshot('onboarding-android-verification-required-back-stuck')
+    throw new Error('[Onboarding][Android] Could not close Verification is required info screen')
   }
 
   private async closeVerificationRequiredScreen() {
@@ -1681,8 +1743,11 @@ export default class OnboardingPage extends BasePage {
       await this.verificationRequiredCloseBtnIOS.waitForExist({ timeout: 10000 })
       await this.tapElementCenter(this.verificationRequiredCloseBtnIOS)
     } else {
-      await this.verificationRequiredBackBtn.waitForExist({ timeout: 10000 })
-      await this.tapElementCenter(this.verificationRequiredBackBtn)
+      await this.closeVerificationRequiredAndroid()
+    }
+
+    if (browser.isAndroid && (await this.homeRoot.isExisting().catch(() => false))) {
+      return
     }
 
     await this.verificationSuccessScreen.waitForExist({ timeout: 10000 })

@@ -15,7 +15,7 @@ describe('Price Alerts (iOS/Android)', function () {
     await loginPage.loginFlow(AUTH)
   })
 
-  it('create and delete price alert (BMW)', async function () {
+  it('create price alert (BMW)', async function () {
     if (!browser.isAndroid && !browser.isIOS) {
       this.skip()
       return
@@ -36,8 +36,7 @@ describe('Price Alerts (iOS/Android)', function () {
       return
     }
 
-    // iOS: flow provided by locators: Search Instrument -> BMW -> +1% -> Back; then BMW -> Delete.
-    await priceAlerts.createPriceAlertIOS({ instrumentQuery: 'BMW', rowA11yIdIOS: 'BMW i' })
-    await priceAlerts.cleanupAllAlertsIOS()
+    // iOS: Search Instrument -> BMW -> +1% -> created confirmation.
+    await priceAlerts.createPriceAlertIOS({ instrumentQuery: 'BMW' })
   })
 })

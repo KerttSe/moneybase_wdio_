@@ -21,7 +21,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get payTabAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_pay")')
+    return this.byAndroidResId('navigation_button_pay')
   }
 
   private get payTabAndroidLegacy() {
@@ -501,10 +501,13 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private async openPayAndNewAndroid() {
+    await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
+
     const payShown = await this.payTabAndroid.waitForExist({ timeout: 12000 }).catch(() => false)
     if (payShown) {
       await this.tap(this.payTabAndroid)
     } else {
+      await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
       await this.payTabAndroidLegacy.waitForExist({ timeout: 12000 })
       await this.tap(this.payTabAndroidLegacy)
     }

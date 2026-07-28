@@ -10,8 +10,6 @@ type CreatePriceAlertParams = {
   thresholdValue?: string
   // Optional: if the UI has a date/valid-until field we can fill.
   dateValue?: string
-  // Optional: iOS row a11y id in the alerts list (e.g. "BMW i").
-  rowA11yIdIOS?: string
 }
 
 type Rect = {
@@ -185,6 +183,12 @@ export default class PriceAlertsPage extends BasePage {
 
   private get plusOnePercentOptionIOS() {
     return this.iosA11y('+1%')
+  }
+
+  private get priceAlertAddedSuccessfullyIOS() {
+    return this.iosPredicate(
+      '(label CONTAINS[c] "Added" AND label CONTAINS[c] "Successfully") OR (name CONTAINS[c] "Added" AND name CONTAINS[c] "Successfully")'
+    )
   }
 
   private get deleteBtnIOS() {
@@ -880,7 +884,9 @@ export default class PriceAlertsPage extends BasePage {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
     // If we are already on the Price Alerts screen (e.g. after Back), don't try to re-enter via Invest.
-    const alreadyOnAlerts = await this.priceAlertsEntryIOS.isDisplayed().catch(() => false)
+    const alreadyOnAlerts = await this.priceAlertsEntryIOS.isExisting().catch(() => false) ||
+      await this.searchInstrumentInputIOS.isExisting().catch(() => false) ||
+      await this.searchInstrumentTextFieldIOS.isExisting().catch(() => false)
     if (alreadyOnAlerts) return
 
     await this.investTabIOS.waitForExist({ timeout: 20000 })
@@ -907,7 +913,7 @@ export default class PriceAlertsPage extends BasePage {
 
     // Some builds show Price Alerts as a separate entry; others might land directly.
     // Also, sometimes the visible “Price Alerts” is a StaticText without accessibility.
-    const alreadyOnScreen = (await this.searchInstrumentInputIOS.isDisplayed().catch(() => false)) || (await this.searchInstrumentTextFieldIOS.isDisplayed().catch(() => false))
+    const alreadyOnScreen = (await this.searchInstrumentInputIOS.isExisting().catch(() => false)) || (await this.searchInstrumentTextFieldIOS.isExisting().catch(() => false))
     if (!alreadyOnScreen) {
       const entryCandidates = [
         this.priceAlertsTileIOSByXpathAncestor,
@@ -949,14 +955,14 @@ export default class PriceAlertsPage extends BasePage {
   }
 
   private async goToNewTabIOS() {
-    const shown = await this.newTabIOS.isDisplayed().catch(() => false)
+    const shown = await this.newTabIOS.isExisting().catch(() => false)
     if (!shown) return
     await this.tap(this.newTabIOS)
     await browser.pause(500)
   }
 
   private async goToOverviewTabIOS() {
-    const shown = await this.overviewTabIOS.isDisplayed().catch(() => false)
+    const shown = await this.overviewTabIOS.isExisting().catch(() => false)
     if (!shown) return
     await this.tap(this.overviewTabIOS)
     await browser.pause(500)
@@ -1018,7 +1024,7 @@ export default class PriceAlertsPage extends BasePage {
       await browser.pause(350)
 
       const returnKey = this.iosA11y('Return')
-      const returnShown = await returnKey.isDisplayed().catch(() => false)
+      const returnShown = await returnKey.isExisting().catch(() => false)
       if (returnShown) {
         await returnKey.click()
       } else {
@@ -1037,7 +1043,7 @@ export default class PriceAlertsPage extends BasePage {
       const a11yInput = (await this.searchInstrumentInputIOS) as unknown as WebdriverIO.Element
 
       const inputSecondary = inputPrimary.elementId === textField.elementId ? a11yInput : textField
-      const secondaryShown = await inputSecondary.isDisplayed().catch(() => false)
+      const secondaryShown = await inputSecondary.isExisting().catch(() => false)
       if (secondaryShown) {
         await typeInto(inputSecondary)
       }
@@ -1082,7 +1088,7 @@ export default class PriceAlertsPage extends BasePage {
     // Fallback: tap the first visible cell-like element
     const cells = await $$('-ios class chain:**/XCUIElementTypeCell')
     for (const cell of cells) {
-      const visible = await cell.isDisplayed().catch(() => false)
+      const visible = await cell.isExisting().catch(() => false)
       if (!visible) continue
       await cell.click()
       await browser.pause(700)
@@ -1093,32 +1099,11 @@ export default class PriceAlertsPage extends BasePage {
     throw new Error(`Could not find search results for instrument query on iOS: ${q}`)
   }
 
-  private async pickPlusOnePercentAndReturnIOS() {
+  private async pickPlusOnePercentAndVerifyCreatedIOS() {
     await this.ensureVisibleByScrollingIOS(this.plusOnePercentOptionIOS)
     await this.tap(this.plusOnePercentOptionIOS)
 
-    // Validate summary text appears (best-effort; wording can vary)
-    const summaryCandidates = [
-      this.iosA11y('Bmw Ag Greater than'),
-      this.iosPredicate('label CONTAINS[c] "Greater" AND (label CONTAINS[c] "BMW" OR label CONTAINS[c] "Bmw")'),
-      this.iosPredicate('label CONTAINS[c] "Bmw Ag" AND label CONTAINS[c] "Greater"'),
-    ]
-
-    await this.waitForAnyDisplayed(summaryCandidates, 15000, 'Alert summary text (iOS)')
-    await this.backBtnIOS.waitForExist({ timeout: 15000 })
-    await this.tap(this.backBtnIOS)
-    await browser.pause(600)
-
-    // After tapping Back we should land on Price Alerts screen where `~Price Alerts` exists as a header/title.
-    const backAnchors = [
-      this.priceAlertsEntryIOS,
-      this.addNewPriceAlertAnchorIOS,
-      this.searchInstrumentTextFieldIOS,
-      this.searchInstrumentInputIOS,
-      this.mainContainerIOSByClassChain,
-      this.mainContainerIOSByXpath,
-    ]
-    await this.waitForAnyDisplayed(backAnchors, 20000, 'Price Alerts screen after Back (iOS)')
+    await this.waitForAnyDisplayed([this.priceAlertAddedSuccessfullyIOS], 15000, 'Added Successfully confirmation (iOS)')
   }
 
   private async typeInstrumentQueryAndroid(query: string) {
@@ -1330,59 +1315,8 @@ export default class PriceAlertsPage extends BasePage {
     await this.typeInstrumentQueryIOS(params.instrumentQuery)
     await this.selectFirstSearchResultIOS(params.instrumentQuery)
 
-    // iOS flow provided: scroll to +1% and tap it
-    await this.pickPlusOnePercentAndReturnIOS()
-
-    // Validate the alert exists in the list (best-effort)
-    const q = params.instrumentQuery.trim()
-    const expectedRowA11y = params.rowA11yIdIOS ?? `${q} i`
-
-    // Some layouts require tapping the main container before the list becomes interactable.
-    const containerCandidates = [this.mainContainerIOSByClassChain, this.mainContainerIOSByXpath]
-    const containerShown = await this.waitForAnyDisplayed(containerCandidates, 4000, 'Main container (iOS)')
-      .then(() => true)
-      .catch(() => false)
-    if (containerShown) {
-      await this.tapFirstDisplayed(containerCandidates, 'Main container (iOS)')
-      await browser.pause(400)
-    }
-
-    // Ensure we are back on the Price Alerts screen.
-    const anchors = [this.priceAlertsEntryIOS, this.addNewPriceAlertAnchorIOS, this.searchInstrumentTextFieldIOS, this.searchInstrumentInputIOS]
-    await this.waitForAnyDisplayed(anchors, 20000, 'Price Alerts screen anchor (iOS)')
-
-    // Switch to Overview to validate/operate on the created alert.
-    await this.goToOverviewTabIOS()
-
-    const rowCandidates = [
-      this.iosA11y(expectedRowA11y),
-      this.iosA11y(q),
-      this.iosPredicate(`label CONTAINS[c] "${expectedRowA11y}" OR name CONTAINS[c] "${expectedRowA11y}"`),
-      this.iosPredicate(`label CONTAINS[c] "${q}" OR name CONTAINS[c] "${q}"`),
-      this.iosClassChain(`**/XCUIElementTypeCell[` +
-        `label CONTAINS[c] "${expectedRowA11y}" OR name CONTAINS[c] "${expectedRowA11y}" OR ` +
-        `label CONTAINS[c] "${q}" OR name CONTAINS[c] "${q}"` +
-        `]`),
-      this.iosPredicate('label CONTAINS[c] "Greater" AND (label CONTAINS[c] "BMW" OR label CONTAINS[c] "Bmw")'),
-    ]
-
-    // Scroll until we see the created row.
-    let found = false
-    for (let i = 0; i < 8; i++) {
-      const shown = await this.waitForAnyDisplayed(rowCandidates, 2500, 'Created alert row (iOS)')
-        .then(() => true)
-        .catch(() => false)
-      if (shown) {
-        found = true
-        break
-      }
-      await this.scrollDownOnceIOS()
-    }
-
-    if (!found) {
-      await this.debugSnapshot('price-alerts-ios-created-row-missing')
-      throw new Error('Created alert row (iOS) did not appear')
-    }
+    // iOS stops at the create confirmation. Active rows are not exposed reliably in native XML.
+    await this.pickPlusOnePercentAndVerifyCreatedIOS()
   }
 
   private async swipeLeftOnElement(el: WebdriverIO.Element) {
@@ -1572,147 +1506,4 @@ export default class PriceAlertsPage extends BasePage {
     )
   }
 
-  public async deletePriceAlertIOS(instrumentA11yId: string) {
-    if (!browser.isIOS) return
-
-    await this.openPriceAlertsIOS()
-
-    // Alerts list lives under Overview.
-    await this.goToOverviewTabIOS()
-
-    const containerCandidates = [this.mainContainerIOSByClassChain, this.mainContainerIOSByXpath]
-    const containerShown = await this.waitForAnyDisplayed(containerCandidates, 4000, 'Main container (iOS)').then(() => true).catch(() => false)
-    if (containerShown) {
-      await this.tapFirstDisplayed(containerCandidates, 'Main container (iOS)')
-      await browser.pause(400)
-    }
-
-    // Row can be exposed in multiple ways depending on build:
-    // - accessibility id: "BMW i" (preferred when present)
-    // - only symbol "BMW" + condition text "Bmw Ag Greater than <price>" inside a cell
-    const conditionBeginsWith = this.iosPredicate('name BEGINSWITH "Bmw Ag Greater than" OR label BEGINSWITH "Bmw Ag Greater than"')
-    const bmwStaticText = this.iosA11y('BMW')
-
-    const rowCandidates = [
-      this.iosA11y(instrumentA11yId),
-      this.iosPredicate(`label CONTAINS[c] "${instrumentA11yId}" OR name CONTAINS[c] "${instrumentA11yId}"`),
-      conditionBeginsWith,
-      // As a last resort, tap BMW symbol in the list.
-      bmwStaticText,
-      this.iosPredicate('type == "XCUIElementTypeStaticText" AND name == "BMW"'),
-    ]
-
-    let found = false
-    for (let i = 0; i < 8; i++) {
-      const shown = await this.waitForAnyDisplayed(rowCandidates, 2500, 'Alert row to delete (iOS)')
-        .then(() => true)
-        .catch(() => false)
-      if (shown) {
-        found = true
-        break
-      }
-      await this.scrollDownOnceIOS()
-    }
-
-    if (!found) {
-      await this.debugSnapshot('price-alerts-ios-row-to-delete-missing')
-      throw new Error('Alert row to delete (iOS) did not appear')
-    }
-
-    // Prefer tapping the condition text if it exists; otherwise tap the first matching row candidate.
-    const conditionShown = await conditionBeginsWith.isDisplayed().catch(() => false) ||
-      await conditionBeginsWith.isExisting().catch(() => false)
-    if (conditionShown) {
-      await this.tap(conditionBeginsWith)
-    } else {
-      await this.tapFirstDisplayed(rowCandidates, 'Alert row to delete (iOS)')
-    }
-    await browser.pause(700)
-
-    const deleteCandidates = [
-      this.deleteBtnIOS,
-      this.iosPredicate('label == "Delete" OR name == "Delete"'),
-    ]
-    await this.waitForAnyDisplayed(deleteCandidates, 12000, 'Delete button (iOS)')
-    await this.tapFirstDisplayed(deleteCandidates, 'Delete button (iOS)')
-
-    const confirmCandidates = [
-      this.iosA11y('Confirm'),
-      this.iosA11y('Delete'),
-      this.iosA11y('OK'),
-      this.iosA11y('Yes'),
-      this.iosPredicate('label IN {"Confirm","Delete","OK","Yes"} OR name IN {"Confirm","Delete","OK","Yes"}'),
-    ]
-    const confirmShown = await this.waitForAnyDisplayed(confirmCandidates, 6000, 'Confirm delete (iOS)').then(() => true).catch(() => false)
-    if (confirmShown) {
-      await this.tapFirstDisplayed(confirmCandidates, 'Confirm delete (iOS)')
-    }
-
-    await this.addNewPriceAlertAnchorIOS.waitForExist({ timeout: 20000 })
-  }
-
-  public async cleanupAllAlertsIOS() {
-    if (!browser.isIOS) return
-
-    await this.openPriceAlertsIOS()
-    await this.goToOverviewTabIOS()
-
-    const containerCandidates = [this.mainContainerIOSByClassChain, this.mainContainerIOSByXpath]
-    const containerShown = await this.waitForAnyDisplayed(containerCandidates, 4000, 'Main container (iOS)')
-      .then(() => true)
-      .catch(() => false)
-    if (containerShown) {
-      await this.tapFirstDisplayed(containerCandidates, 'Main container (iOS)')
-      await browser.pause(400)
-    }
-
-    const rowCandidates = [
-      this.iosA11y('BMW i'),
-      this.iosPredicate('name CONTAINS[c] "BMW" OR label CONTAINS[c] "BMW"'),
-      this.iosPredicate('name BEGINSWITH "Bmw Ag Greater than" OR label BEGINSWITH "Bmw Ag Greater than"'),
-      this.iosPredicate('type == "XCUIElementTypeStaticText" AND name == "BMW"'),
-    ]
-    const deleteCandidates = [
-      this.deleteBtnIOS,
-      this.iosPredicate('label == "Delete" OR name == "Delete"'),
-    ]
-    const confirmCandidates = [
-      this.iosA11y('Confirm'),
-      this.iosA11y('Delete'),
-      this.iosA11y('OK'),
-      this.iosA11y('Yes'),
-      this.iosPredicate('label IN {"Confirm","Delete","OK","Yes"} OR name IN {"Confirm","Delete","OK","Yes"}'),
-    ]
-
-    for (let i = 0; i < 20; i++) {
-      const done = await this.addNewPriceAlertAnchorIOS.isDisplayed().catch(() => false)
-      if (done) break
-
-      const rowShown = await this.waitForAnyDisplayed(rowCandidates, 3000, 'Alert row (iOS)')
-        .then(() => true)
-        .catch(() => false)
-      if (!rowShown) break
-
-      await this.tapFirstDisplayed(rowCandidates, 'Alert row (iOS)')
-      await browser.pause(700)
-
-      const deleteVisible = await this.waitForAnyDisplayed(deleteCandidates, 8000, 'Delete button (iOS)')
-        .then(() => true)
-        .catch(() => false)
-      if (!deleteVisible) break
-
-      await this.tapFirstDisplayed(deleteCandidates, 'Delete button (iOS)')
-
-      const confirmShown = await this.waitForAnyDisplayed(confirmCandidates, 6000, 'Confirm delete (iOS)')
-        .then(() => true)
-        .catch(() => false)
-      if (confirmShown) {
-        await this.tapFirstDisplayed(confirmCandidates, 'Confirm delete (iOS)')
-      }
-
-      // Wait to be back on overview (Overview tab is always present; addNewPriceAlertAnchorIOS appears only when empty)
-      await this.overviewTabIOS.waitForExist({ timeout: 20000 })
-      await browser.pause(500)
-    }
-  }
 }

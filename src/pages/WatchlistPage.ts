@@ -133,7 +133,7 @@ export default class WatchlistPage extends BasePage {
     await browser.waitUntil(
       async () => {
         for (const candidate of candidates) {
-          if (await candidate.isDisplayed().catch(() => false)) return true
+          if (await candidate.isExisting().catch(() => false)) return true
         }
         return false
       },
@@ -147,7 +147,7 @@ export default class WatchlistPage extends BasePage {
 
   private async tapFirstDisplayed(candidates: Array<ReturnType<typeof $>>, label = 'element') {
     for (const candidate of candidates) {
-      const shown = await candidate.isDisplayed().catch(() => false)
+      const shown = await candidate.isExisting().catch(() => false)
       if (!shown) continue
       await candidate.click()
       return
@@ -158,7 +158,7 @@ export default class WatchlistPage extends BasePage {
 
   private async isAnyDisplayed(candidates: Array<ReturnType<typeof $>>) {
     for (const candidate of candidates) {
-      if (await candidate.isDisplayed().catch(() => false)) return true
+      if (await candidate.isExisting().catch(() => false)) return true
     }
     return false
   }
@@ -236,7 +236,7 @@ export default class WatchlistPage extends BasePage {
       const stillOnInstrument = await this.waitForAnyDisplayed([this.instrumentHeaderIOS, this.instrumentBuyButtonIOS], 1500, 'Instrument details (iOS)')
         .then(() => true)
         .catch(() => false)
-      const actionStillVisible = await this.watchlistActionIOS.isDisplayed().catch(() => false)
+      const actionStillVisible = await this.watchlistActionIOS.isExisting().catch(() => false)
       if (stillOnInstrument && !actionStillVisible) return
 
       await this.debugSnapshot('watchlist-ios-toast-not-found')

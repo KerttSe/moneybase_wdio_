@@ -198,7 +198,7 @@ export default class AutoTopUpPage extends BasePage {
   get cardPicker() {
     if (browser.isAndroid)
       return $('android=new UiSelector().resourceId("autoTopUpDetails_button_pickCard")')
-    return $('-ios predicate string: name == "autoTopup_item_cardPicker" OR name == "autoTopUpDetails_picker_card"')
+    return $('-ios predicate string: name == "autoTopup_item_cardPicker" OR name == "autoTopUpDetails_picker_card" OR name == "autoTopUpDetails_button_pickCard" OR name CONTAINS[c] "cardPicker" OR name CONTAINS[c] "pickCard"')
   }
 
   get currencyPicker() {
@@ -387,7 +387,9 @@ export default class AutoTopUpPage extends BasePage {
    * and waits for the Details screen to appear.
    */
   async tapAddNew() {
-    const alreadyOnDetails = await this.autoTopUpDetailsScreen.isDisplayed().catch(() => false)
+    const alreadyOnDetails = browser.isIOS
+      ? await this.autoTopUpDetailsScreen.isExisting().catch(() => false)
+      : await this.autoTopUpDetailsScreen.isDisplayed().catch(() => false)
     if (alreadyOnDetails) return
 
     await this.autoTopUpListScreen.waitForExist({ timeout: 15000 })
@@ -737,7 +739,9 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   private async openThresholdRuleDetails(amount: number | string) {
-    const alreadyOnDetails = await this.autoTopUpDetailsScreen.isDisplayed().catch(() => false)
+    const alreadyOnDetails = browser.isIOS
+      ? await this.autoTopUpDetailsScreen.isExisting().catch(() => false)
+      : await this.autoTopUpDetailsScreen.isDisplayed().catch(() => false)
     if (alreadyOnDetails) return
 
     const item = await this.findThresholdRuleElement(amount)
@@ -754,23 +758,33 @@ export default class AutoTopUpPage extends BasePage {
       (browser.isIOS && await this.openBtn.isExisting().catch(() => false))
     if (homeVisible) return
 
-    const addFundsVisible = await this.addFundsScreen.isDisplayed().catch(() => false)
+    const addFundsVisible = browser.isIOS
+      ? await this.addFundsScreen.isExisting().catch(() => false)
+      : await this.addFundsScreen.isDisplayed().catch(() => false)
     if (addFundsVisible) return
 
-    const onDetails = await this.autoTopUpDetailsScreen.isDisplayed().catch(() => false)
+    const onDetails = browser.isIOS
+      ? await this.autoTopUpDetailsScreen.isExisting().catch(() => false)
+      : await this.autoTopUpDetailsScreen.isDisplayed().catch(() => false)
     if (onDetails) {
       await this.backBtnDetails.waitForExist({ timeout: 5000 }).catch(() => {})
-      const backDetailsVisible = await this.backBtnDetails.isDisplayed().catch(() => false)
+      const backDetailsVisible = browser.isIOS
+        ? await this.backBtnDetails.isExisting().catch(() => false)
+        : await this.backBtnDetails.isDisplayed().catch(() => false)
       if (backDetailsVisible) {
         if (browser.isAndroid) await this.backBtnDetails.click()
         else await this.tap(this.backBtnDetails)
       }
     }
 
-    const onList = await this.autoTopUpListScreen.isDisplayed().catch(() => false)
+    const onList = browser.isIOS
+      ? await this.autoTopUpListScreen.isExisting().catch(() => false)
+      : await this.autoTopUpListScreen.isDisplayed().catch(() => false)
     if (onList) {
       await this.backBtnList.waitForExist({ timeout: 5000 }).catch(() => {})
-      const backListVisible = await this.backBtnList.isDisplayed().catch(() => false)
+      const backListVisible = browser.isIOS
+        ? await this.backBtnList.isExisting().catch(() => false)
+        : await this.backBtnList.isDisplayed().catch(() => false)
       if (backListVisible) {
         if (browser.isAndroid) await this.backBtnList.click()
         else await this.tap(this.backBtnList)

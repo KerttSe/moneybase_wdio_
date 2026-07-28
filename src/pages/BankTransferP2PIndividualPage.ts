@@ -126,7 +126,7 @@ class BankTransferP2PIndividualPage extends BasePage {
    * ========================= */
 
   private get payTabAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_pay")')
+    return this.byAndroidResId('navigation_button_pay')
   }
 
   private get payTabAndroidByA11y() {
@@ -240,10 +240,13 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private async openPayTabAndroid() {
+    await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
     await this.dismissBlockingAlertAndroid(5000)
     await this.assertSupportSheetNotShownAndroid(5000)
 
     for (let attempt = 0; attempt < 2; attempt++) {
+      await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
+
       const candidates = [this.payTabAndroid, this.payTabAndroidByA11y, this.payTabAndroidLegacy]
 
       for (const candidate of candidates) {
@@ -254,6 +257,7 @@ class BankTransferP2PIndividualPage extends BasePage {
         }
       }
 
+      await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
       await this.assertSupportSheetNotShownAndroid(2000)
     }
 

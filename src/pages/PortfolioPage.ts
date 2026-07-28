@@ -40,11 +40,24 @@ export default class PortfolioPage extends BasePage {
   }
 
   private get portfolioEntryIOS() {
-    return $('//XCUIElementTypeStaticText[@name="Portfolio"]/ancestor::XCUIElementTypeOther[2]')
+    return $('//XCUIElementTypeStaticText[@name="Portfolio" or @label="Portfolio" or @value="Portfolio"]/ancestor::*[self::XCUIElementTypeButton or self::XCUIElementTypeLink][1]')
+  }
+
+  private get portfolioEntryContainerIOS() {
+    return $('//XCUIElementTypeStaticText[@name="Portfolio" or @label="Portfolio" or @value="Portfolio"]/ancestor::XCUIElementTypeOther[1]')
+  }
+
+  private get portfolioTabIOS() {
+    return this.iosPredicate(
+      '(type == "XCUIElementTypeButton" OR type == "XCUIElementTypeLink" OR type == "XCUIElementTypeStaticText") AND ' +
+      '(name == "Portfolio" OR label == "Portfolio" OR value == "Portfolio")'
+    )
   }
 
   private get portfolioEntryTextIOS() {
-    return this.iosPredicate('type == "XCUIElementTypeStaticText" AND name == "Portfolio" AND visible == 1')
+    return this.iosPredicate(
+      'type == "XCUIElementTypeStaticText" AND (name == "Portfolio" OR label == "Portfolio" OR value == "Portfolio")'
+    )
   }
 
   private get portfolioTitleIOS() {
@@ -135,6 +148,18 @@ export default class PortfolioPage extends BasePage {
     return this.iosPredicate('type == "XCUIElementTypeButton" AND (name == "Sell" OR label == "Sell" OR name == "SELL" OR label == "SELL")')
   }
 
+  private get orderDetailTradeValueIOS() {
+    return this.iosPredicate('type == "XCUIElementTypeStaticText" AND (name == "Trade Value" OR label == "Trade Value")')
+  }
+
+  private get orderDetailModifyIOS() {
+    return this.iosPredicate('type == "XCUIElementTypeStaticText" AND (name == "Modify" OR label == "Modify")')
+  }
+
+  private get orderDetailCancelIOS() {
+    return this.iosPredicate('type == "XCUIElementTypeStaticText" AND (name == "Cancel" OR label == "Cancel")')
+  }
+
   private get sellBtnAndroid() {
     return $('//*[(@class="android.widget.Button" or @clickable="true" or @focusable="true") and (contains(@text,"Sell") or contains(@text,"SELL") or contains(@content-desc,"Sell") or contains(@content-desc,"sell"))]')
   }
@@ -147,7 +172,7 @@ export default class PortfolioPage extends BasePage {
     await browser.waitUntil(
       async () => {
         for (const candidate of candidates) {
-          if (await candidate.isDisplayed().catch(() => false)) return true
+          if (await candidate.isExisting().catch(() => false)) return true
         }
         return false
       },
@@ -161,7 +186,7 @@ export default class PortfolioPage extends BasePage {
 
   private async tapFirstDisplayed(candidates: Array<ReturnType<typeof $>>, label = 'element') {
     for (const candidate of candidates) {
-      const shown = await candidate.isDisplayed().catch(() => false)
+      const shown = await candidate.isExisting().catch(() => false)
       if (!shown) continue
       await candidate.click()
       return
@@ -179,11 +204,61 @@ export default class PortfolioPage extends BasePage {
     await browser.execute('mobile: tap', { x, y })
   }
 
+  private async tapFirstExistingIOS(candidates: Array<ReturnType<typeof $>>, label = 'element') {
+    for (const candidate of candidates) {
+      const exists = await candidate.isExisting().catch(() => false)
+      if (!exists) continue
+
+      await this.tapIOSDisplayed(candidate, 2000)
+      return
+    }
+
+    throw new Error(`${label} did not appear`)
+  }
+
+  private async tapPortfolioEntryUntilOpenedIOS(candidates: Array<ReturnType<typeof $>>, openedCandidates: Array<ReturnType<typeof $>>, timeout = 20000) {
+    const end = Date.now() + timeout
+
+    while (Date.now() < end) {
+      for (const candidate of candidates) {
+        const exists = await candidate.isExisting().catch(() => false)
+        if (!exists) continue
+
+        await this.tapIOSDisplayed(candidate, 2000).catch(() => {})
+        await browser.pause(700)
+
+        const opened =
+          !(await this.isOnOrderDetailIOS()) &&
+          await this.waitForAnyDisplayed(openedCandidates, 2000, 'Portfolio screen (iOS)')
+            .then(() => true)
+            .catch(() => false)
+
+        if (opened) return true
+      }
+
+      await browser.pause(500)
+    }
+
+    return false
+  }
+
+  private async isOnOrderDetailIOS() {
+    return this.waitForAnyDisplayed(
+      [this.orderDetailTradeValueIOS, this.orderDetailModifyIOS, this.orderDetailCancelIOS],
+      1200,
+      'Order detail (iOS)'
+    )
+      .then(() => true)
+      .catch(() => false)
+  }
+
   private async ensurePortfolioOpenedIOS(timeout = 20000) {
     await browser.switchContext('NATIVE_APP')
 
     const entryCandidates = [
       this.portfolioEntryIOS,
+      this.portfolioEntryContainerIOS,
+      this.portfolioTabIOS,
       this.portfolioEntryTextIOS,
     ]
 
@@ -191,13 +266,13 @@ export default class PortfolioPage extends BasePage {
       this.nextBtnIOS,
       this.continueBtnIOS,
       this.simondsFarsonsBondIOS,
-      this.buyBtnIOS,
-      this.sellBtnIOS,
     ]
 
-    const alreadyOpened = await this.waitForAnyDisplayed(openedCandidates, 2500, 'Portfolio screen (iOS)')
-      .then(() => true)
-      .catch(() => false)
+    const alreadyOpened =
+      !(await this.isOnOrderDetailIOS()) &&
+      await this.waitForAnyDisplayed(openedCandidates, 2500, 'Portfolio screen (iOS)')
+        .then(() => true)
+        .catch(() => false)
 
     if (alreadyOpened) return
 
@@ -210,6 +285,9 @@ export default class PortfolioPage extends BasePage {
       await browser.waitUntil(
         async () => {
           await this.tapIOSDisplayed(this.investTabIOS, timeout).catch(() => {})
+          if (await this.isOnOrderDetailIOS()) {
+            await this.tapFirstExistingIOS(entryCandidates, 'Portfolio tab (iOS)').catch(() => {})
+          }
           for (const el of [...entryCandidates, ...openedCandidates]) {
             if (await el.isExisting().catch(() => false)) return true
           }
@@ -221,11 +299,7 @@ export default class PortfolioPage extends BasePage {
 
     for (let attempt = 1; attempt <= 2; attempt += 1) {
       await this.waitForAnyDisplayed(entryCandidates, timeout, 'Portfolio entry (iOS)')
-      await this.tapFirstDisplayed(entryCandidates, 'Portfolio entry (iOS)')
-
-      const opened = await this.waitForAnyDisplayed(openedCandidates, timeout, 'Portfolio screen (iOS)')
-        .then(() => true)
-        .catch(() => false)
+      const opened = await this.tapPortfolioEntryUntilOpenedIOS(entryCandidates, openedCandidates, timeout)
 
       if (opened) return
 
