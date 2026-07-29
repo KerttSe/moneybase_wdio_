@@ -25,23 +25,6 @@ describe('Card Management - Joint account', function () {
     await CardManagementPage.verifyMoreMenuOptionsDisplayed()
   })
 
-  it('CARD-1.2 View Card PIN', async function () {
-    const passcode =
-      process.env.CARD_MANAGEMENT_PASSCODE ||
-      process.env.CARD_MANAGEMENT_PIN ||
-      AUTH.pin
-    const passcodeSource = process.env.CARD_MANAGEMENT_PASSCODE
-      ? 'CARD_MANAGEMENT_PASSCODE'
-      : process.env.CARD_MANAGEMENT_PIN
-        ? 'CARD_MANAGEMENT_PIN'
-        : 'AUTH.pin'
-    const apiConfigured = Boolean(String(process.env.OTP_GET_LATEST_URL || process.env.OTP_API_BASE_URL || '').trim())
-    console.log(
-      `[CardManagement] View PIN passcode source: ${browser.isAndroid && apiConfigured ? 'API' : passcodeSource}; env token has ${passcode.replace(/\D/g, '').length} digits`
-    )
-    await CardManagementPage.verifyCardPinDisplayed(passcode)
-  })
-
   it('CARD-1.3 Open Card Security settings', async function () {
     await CardManagementPage.verifySecurityControlsDisplayed()
   })

@@ -673,6 +673,11 @@ class CardManagementPage extends BasePage {
       intervalMs: Number(process.env.CARD_MANAGEMENT_PASSCODE_POLL_INTERVAL_MS || process.env.OTP_POLL_INTERVAL_MS || 2000),
       maxRequests: Number(process.env.CARD_MANAGEMENT_PASSCODE_MAX_REQUESTS || process.env.OTP_MAX_REQUESTS || 10),
       excludeTokens,
+      urlTemplate: process.env.CARD_MANAGEMENT_PASSCODE_GET_LATEST_URL || process.env.CARD_MANAGEMENT_OTP_GET_LATEST_URL,
+      baseUrl: process.env.CARD_MANAGEMENT_PASSCODE_API_BASE_URL || process.env.CARD_MANAGEMENT_OTP_API_BASE_URL,
+      authToken: process.env.CARD_MANAGEMENT_PASSCODE_API_AUTH_TOKEN || process.env.CARD_MANAGEMENT_OTP_API_AUTH_TOKEN,
+      cookie: process.env.CARD_MANAGEMENT_PASSCODE_API_COOKIE || process.env.CARD_MANAGEMENT_OTP_API_COOKIE,
+      headersJson: process.env.CARD_MANAGEMENT_PASSCODE_API_HEADERS_JSON || process.env.CARD_MANAGEMENT_OTP_API_HEADERS_JSON,
     })
   }
 
