@@ -2,8 +2,9 @@ import * as dotenv from 'dotenv'
 import type { Options } from '@wdio/types'
 import { browser } from '@wdio/globals'
 import { execSync } from 'node:child_process'
-import { resolve } from 'node:path'
+import { basename, resolve } from 'node:path'
 import { attachFailureArtifacts, writeAllureEnvironment, writeAllureExecutor } from './src/helpers/allure.helper'
+import { getLastBrowserStackStep } from './src/helpers/browserstack.helper'
 
 const envBaseDir = process.env.INIT_CWD ?? process.env.PWD ?? process.cwd()
 const envPath = resolve(envBaseDir, '.env')
@@ -54,8 +55,22 @@ const envFlag = (name: string, defaultValue: boolean) => {
   if (value === undefined || value === '') return defaultValue
   return ['1', 'true', 'yes', 'on'].includes(value)
 }
+const cliValue = (name: string) => {
+  const eqArg = process.argv.find(arg => arg.startsWith(`--${name}=`))
+  if (eqArg) return eqArg.slice(name.length + 3)
+
+  const index = process.argv.indexOf(`--${name}`)
+  if (index >= 0) return process.argv[index + 1]
+
+  return undefined
+}
+const normalizeTag = (value?: string) => value?.trim().replace(/^\.?\//, '').replace(/[^\w.-]+/g, '-')
+const cliSuiteTag = normalizeTag(cliValue('suite'))
+const cliSpecTag = normalizeTag(cliValue('spec') ? basename(cliValue('spec') as string) : undefined)
 const browserStackBuildTags = (platform: 'android' | 'ios') => [
   platform,
+  ...(cliSuiteTag ? [cliSuiteTag] : []),
+  ...(cliSpecTag ? [cliSpecTag] : []),
   ...(process.env.BS_BUILD_TAGS ? process.env.BS_BUILD_TAGS.split(',').map(t => t.trim()).filter(Boolean) : []),
 ]
 const browserStackServicePlatform = platformFilter === 'ios' ? 'ios' : 'android'
@@ -121,13 +136,14 @@ const markBrowserStackFailure = async (error: Error) => {
 
   const { reason, httpCode } = classifyFailureReason(error)
   const shortMsg = error.message?.slice(0, 150) ?? ''
+  const lastStep = getLastBrowserStackStep()
 
   await browser
     .execute(`browserstack_executor: ${JSON.stringify({
       action: 'setSessionStatus',
       arguments: {
         status: 'failed',
-        reason: `${reason}: ${shortMsg}`,
+        reason: `${reason} after ${lastStep}: ${shortMsg}`,
       },
     })}`)
     .catch(() => {})
@@ -143,6 +159,22 @@ const markBrowserStackFailure = async (error: Error) => {
       })}`)
       .catch(() => {})
   }
+}
+
+const setBrowserStackSessionName = async (specs: string[]) => {
+  if (!useBrowserStack) return
+
+  const platform = String(browser.capabilities.platformName ?? platformFilter ?? 'unknown')
+  const specName = specs.length > 0 ? basename(specs[0]) : 'unknown-spec'
+  const suiteName = cliSuiteTag ? `${cliSuiteTag} :: ` : ''
+  const sessionName = `${platform} :: ${suiteName}${specName}`
+
+  await browser
+    .execute(`browserstack_executor: ${JSON.stringify({
+      action: 'setSessionName',
+      arguments: { name: sessionName },
+    })}`)
+    .catch(() => {})
 }
 
 if (useBrowserStack) {
@@ -345,6 +377,10 @@ export const config: WebdriverIO.Config = {
   onPrepare: function (_config, capabilities) {
     writeAllureEnvironment(capabilities as WebdriverIO.Capabilities[])
     writeAllureExecutor()
+  },
+
+  before: async function (_capabilities, specs) {
+    await setBrowserStackSessionName(specs)
   },
 
   afterTest: async function (test, context, { error }) {

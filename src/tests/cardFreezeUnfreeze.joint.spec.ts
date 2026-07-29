@@ -2,7 +2,7 @@ import { browser } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
 import { AUTH } from '../data/credentials'
 import HomeScreenPage from '../pages/HomeScreenPage'
-import PhysicalCardCreationPage from '../pages/PhysicalCardCreationPage'
+import CardManagementPage from '../pages/CardManagementPage'
 
 describe('Card freeze/unfreeze - Joint account', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
@@ -17,11 +17,6 @@ describe('Card freeze/unfreeze - Joint account', function () {
   })
 
   it('freezes and unfreezes an active physical card', async function () {
-    if (browser.isAndroid) {
-      await PhysicalCardCreationPage.freezeAndUnfreezeActivePhysicalCardAndroid()
-      return
-    }
-
-    await PhysicalCardCreationPage.freezeAndUnfreezeActivePhysicalCardIOS()
+    await CardManagementPage.freezeAndUnfreezeActiveCard()
   })
 })

@@ -211,9 +211,8 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get addNewCardPlusIOS() {
-    return $('-ios predicate string:type == "XCUIElementTypeImage" AND (name == "plus.circle.fill" OR label == "plus.circle.fill" OR label == "add")')
+    return $('//XCUIElementTypeCell[@name="card_item_addCard"]//XCUIElementTypeImage[@name="plus.circle.fill" or @label="plus.circle.fill" or @label="add"]')
   }
-
 
   private get virtualCardTypeAndroid() {
     return $('android=new UiSelector().resourceId("cardTypeSelection_card_virtualCard")')
@@ -384,6 +383,10 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get blockButtonIOS() {
+    return $('~cards_button_block')
+  }
+
+  private get blockButtonIOSByText() {
     return $('~Block')
   }
 
@@ -802,22 +805,36 @@ class PhysicalCardCreationPage extends BasePage {
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    const blockShown = await this.blockButtonIOS.waitForExist({ timeout: timeoutMs }).catch(() => false)
-    if (blockShown) {
-      await this.tap(this.blockButtonIOS)
+    let blockButton = await this.getIOSBlockButton(timeoutMs)
+    if (blockButton) {
+      await this.tap(blockButton)
 
       const confirmShown = await this.blockConfirmButtonIOS.waitForExist({ timeout: timeoutMs }).catch(() => false)
       if (confirmShown) {
         await this.tap(this.blockConfirmButtonIOS)
       } else {
-        await this.blockButtonIOS.waitForExist({ timeout: timeoutMs }).catch(() => {})
-        if (await this.blockButtonIOS.isDisplayed().catch(() => false)) {
-          await this.tap(this.blockButtonIOS)
+        blockButton = await this.getIOSBlockButton(timeoutMs)
+        if (blockButton && await blockButton.isDisplayed().catch(() => false)) {
+          await this.tap(blockButton)
         }
       }
     }
 
     await this.assertCardsAfterDeletionIOS(20000)
+  }
+
+  private async getIOSBlockButton(timeoutMs = 10000): Promise<ChainablePromiseElement | null> {
+    const candidates = [
+      this.blockButtonIOS,
+      this.blockButtonIOSByText,
+    ]
+
+    for (const candidate of candidates) {
+      const shown = await candidate.waitForExist({ timeout: timeoutMs }).catch(() => false)
+      if (shown) return candidate
+    }
+
+    return null
   }
 
   private async isIOSCardsSurfaceVisible() {
@@ -826,14 +843,13 @@ class PhysicalCardCreationPage extends BasePage {
     const addCardShown = await this.addNewCardBtnIOS.isExisting().catch(() => false)
     const addCardByTextShown = await this.addNewCardBtnIOSByText.isExisting().catch(() => false)
     const addCardTextShown = await this.addNewCardTextIOS.isExisting().catch(() => false)
-    const addCardPlusShown = await this.addNewCardPlusIOS.isExisting().catch(() => false)
     const freezeShown = await this.freezeButtonIOS.isExisting().catch(() => false)
     const unfreezeShown = await this.unfreezeButtonIOS.isExisting().catch(() => false)
     const physicalShown = await this.physicalCardItemIOS.isExisting().catch(() => false)
     const activeShown = await this.activeCardItemIOS.isExisting().catch(() => false)
     const maskedShown = await this.maskedCardItemIOS.isExisting().catch(() => false)
 
-    return addCardShown || addCardByTextShown || addCardTextShown || addCardPlusShown || freezeShown || unfreezeShown || physicalShown || activeShown || maskedShown
+    return addCardShown || addCardByTextShown || addCardTextShown || freezeShown || unfreezeShown || physicalShown || activeShown || maskedShown
   }
 
   private async getDisplayedIOSCardListItem(): Promise<WebdriverIO.Element | null> {
@@ -1107,10 +1123,6 @@ class PhysicalCardCreationPage extends BasePage {
     await this.waitForSyncToFinishIOS(timeoutMs)
     if (await this.freezeButtonIOS.isExisting().catch(() => false)) return
     if (await this.unfreezeButtonIOS.isExisting().catch(() => false)) return
-    if (await this.cardSearchFieldIOS.isExisting().catch(() => false)) {
-      await browser.hideKeyboard().catch(() => {})
-    }
-
     const cardItem = await this.getDisplayedIOSCardListItem()
     if (cardItem) {
       await cardItem.click()
@@ -1160,9 +1172,9 @@ class PhysicalCardCreationPage extends BasePage {
 
     const candidates = [
       this.addNewCardTextIOS,
-      this.addNewCardPlusIOS,
       this.addNewCardBtnIOS,
       this.addNewCardBtnIOSByText,
+      this.addNewCardPlusIOS,
     ]
 
     for (let attempt = 0; attempt < 2; attempt++) {
@@ -1338,28 +1350,24 @@ class PhysicalCardCreationPage extends BasePage {
       await this.tap(this.addressLine1IOS)
       await this.addressLine1IOS.clearValue().catch(() => {})
       await this.addressLine1IOS.setValue(address1)
-      await browser.hideKeyboard().catch(() => {})
     }
 
     if (await this.addressLine2IOS.waitForExist({ timeout: 10000 }).catch(() => false)) {
       await this.tap(this.addressLine2IOS)
       await this.addressLine2IOS.clearValue().catch(() => {})
       await this.addressLine2IOS.setValue(address2)
-      await browser.hideKeyboard().catch(() => {})
     }
 
     if (await this.cityIOS.waitForExist({ timeout: 10000 }).catch(() => false)) {
       await this.tap(this.cityIOS)
       await this.cityIOS.clearValue().catch(() => {})
       await this.cityIOS.setValue(city)
-      await browser.hideKeyboard().catch(() => {})
     }
 
     if (await this.postCodeIOS.waitForExist({ timeout: 10000 }).catch(() => false)) {
       await this.tap(this.postCodeIOS)
       await this.postCodeIOS.clearValue().catch(() => {})
       await this.postCodeIOS.setValue(postCode)
-      await browser.hideKeyboard().catch(() => {})
     }
   }
 

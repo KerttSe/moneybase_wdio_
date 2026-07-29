@@ -1,6 +1,7 @@
 import BasePage from './BasePage'
 import { $, $$, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
+import { markBrowserStackStep } from '../helpers/browserstack.helper'
 
 type WdioEl = ChainablePromiseElement
 
@@ -521,6 +522,7 @@ class HomeScreenPage extends BasePage {
   public async ensureJointAccount() {
     if (browser.isIOS) {
       await this.ensureIOSHomeAccount('Joint', 'VEG40003', this.jointAccountItemIOS)
+      await markBrowserStackStep('Switched to Joint')
       return
     }
 
@@ -528,7 +530,10 @@ class HomeScreenPage extends BasePage {
 
     await this.waitForHomeLoaded()
     const isJoint = await this.jointAccountLabelAndroid.isDisplayed().catch(() => false)
-    if (isJoint) return
+    if (isJoint) {
+      await markBrowserStackStep('Switched to Joint')
+      return
+    }
 
     await this.openAndroidSubAccountsSheet()
     await this.tap(this.jointAccountItemAndroid)
@@ -536,6 +541,7 @@ class HomeScreenPage extends BasePage {
     await this.dismissGooglePayPopupIfPresentAndroid(12000).catch(() => false)
     await this.ensureHomeLandingAndroid()
     await this.waitForAndroidHomeAccount('Joint')
+    await markBrowserStackStep('Switched to Joint')
   }
 
   public async ensureBusinessAccount() {

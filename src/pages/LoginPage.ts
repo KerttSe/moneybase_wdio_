@@ -3,6 +3,7 @@ import { $, browser } from '@wdio/globals'
 import type { AuthData } from '../data/credentials'
 import type { ChainablePromiseElement } from 'webdriverio'
 import OtpHelper from '../helpers/otp.helper'
+import { markBrowserStackStep } from '../helpers/browserstack.helper'
 
 type LoginFlowOptions = {
   useApiOtp?: boolean
@@ -421,6 +422,17 @@ get otpFieldAndroid() {
   return $('android=new UiSelector().resourceId("com.moneybase.qa:id/otp_input")');
 }
 
+get otpErrorAndroid() {
+  return $('android=new UiSelector().resourceId("com.moneybase.qa:id/tvMobileVerificationError")')
+}
+
+private async getAndroidOtpErrorText() {
+  if (!browser.isAndroid) return ''
+  const shown = await this.otpErrorAndroid.isDisplayed().catch(() => false)
+  if (!shown) return ''
+  return String(await this.otpErrorAndroid.getText().catch(() => '')).trim()
+}
+
 /* ===== Shared ===== */
 private normalizeOtp(code: string): string {
   const otp = code.replace(/\D/g, '').slice(0, 6);
@@ -623,16 +635,22 @@ get payRootAndroid() {
       await this.dismissIOSPermissionAlertsIfPresent().catch(() => false)
     }
     const incorrectOtp = browser.isIOS && await this.otpIncorrectCodeIOS.isExisting().catch(() => false)
+    const androidOtpError = await this.getAndroidOtpErrorText()
     const continueVisible = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
     const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
     const home = await this.homeRoot.isDisplayed().catch(() => false)
     const passcodeShown = await this.isIOSPasscodeScreenShown()
-    return incorrectOtp || continueVisible || applePay || home || passcodeShown
+    return Boolean(androidOtpError) || incorrectOtp || continueVisible || applePay || home || passcodeShown
   }, {
     timeout: 60000,
     interval: 500,
     timeoutMsg: 'After OTP: Continue/Home/ApplePay/passcode did not appear',
   })
+
+  const androidOtpError = await this.getAndroidOtpErrorText()
+  if (androidOtpError) {
+    throw new Error(`Login OTP was rejected by app: ${androidOtpError}`)
+  }
 
   if (browser.isIOS && await this.otpIncorrectCodeIOS.isExisting().catch(() => false)) {
     throw new Error('Login OTP was rejected by app: Entered code is incorrect')
@@ -715,6 +733,7 @@ async waitForHome(timeout = 30000) {
         timeoutMsg: 'Home screen did not appear (blocked by alert?)',
       }
     )
+    await markBrowserStackStep('Logged in')
     return
   }
 
@@ -737,6 +756,7 @@ async waitForHome(timeout = 30000) {
     interval: 500,
     timeoutMsg: 'Home screen did not appear on iOS',
   })
+  await markBrowserStackStep('Logged in')
 }
 
 async waitForVerificationRequired(timeout = 45000) {

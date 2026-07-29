@@ -4,7 +4,7 @@ import { AUTH } from '../data/credentials'
 import BankTransferP2PIndividualPage from '../pages/BankTransferP2PIndividualPage'
 import PhysicalCardCreationPage from '../pages/PhysicalCardCreationPage'
 
-describe('Physical card creation - Individual', function () {
+describe('Physical card creation, freezing and deletion - Individual', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 800000))
   const loginPage = new LoginPage()
   const cardCreationAuth = {
@@ -27,7 +27,7 @@ describe('Physical card creation - Individual', function () {
     }
   })
 
-  it('Create card -> success', async function () {
+  it('creates, freezes and deletes a physical card', async function () {
     if (browser.isAndroid) {
       await PhysicalCardCreationPage.openCardsTabAndroid()
       await PhysicalCardCreationPage.createPhysicalCardAndroid('2468', '000000')
