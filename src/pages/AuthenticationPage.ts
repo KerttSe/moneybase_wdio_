@@ -1,4 +1,5 @@
 import { $, browser, driver } from '@wdio/globals'
+import type { ChainablePromiseElement } from 'webdriverio'
 import BasePage from './BasePage'
 import { loginPage } from './LoginPage'
 import OtpHelper from '../helpers/otp.helper'
@@ -19,16 +20,26 @@ export default class AuthenticationPage extends BasePage {
     return $(`-ios predicate string:type == "XCUIElementTypeOther" AND name == "loginKeyPad_${d}"`)
   }
 
+  private async tapElementCenterIOS(el: ChainablePromiseElement) {
+    await el.waitForExist({ timeout: 5000 })
+    const location = await el.getLocation()
+    const size = await el.getSize()
+    await browser.execute('mobile: tap', {
+      x: Math.round(location.x + size.width / 2),
+      y: Math.round(location.y + size.height / 2),
+    })
+  }
+
   private async tapKeypadDigit(d: string) {
     if (browser.isIOS) {
-      const label = $(`~${d}`)
-      if (await label.isExisting().catch(() => false)) {
-        await label.click()
+      const container = this.keypadDigitIOS(d)
+      if (await container.isExisting().catch(() => false)) {
+        await this.tapElementCenterIOS(container)
         return
       }
-      const container = this.keypadDigitIOS(d)
-      await container.waitForExist({ timeout: 5000 })
-      await container.click()
+
+      const label = $(`~${d}`)
+      await this.tapElementCenterIOS(label)
       return
     }
     const el = this.keypadDigitAndroid(d)
@@ -57,7 +68,7 @@ export default class AuthenticationPage extends BasePage {
   }
 
   get passcodeErrorIOS() {
-    return $('-ios predicate string:name CONTAINS[c] "wrong passcode" OR label CONTAINS[c] "wrong passcode" OR name CONTAINS[c] "remaining" OR label CONTAINS[c] "remaining"')
+    return $('-ios predicate string:(type == "XCUIElementTypeStaticText" OR type == "XCUIElementTypeTextView") AND (name CONTAINS[c] "wrong" OR label CONTAINS[c] "wrong" OR name CONTAINS[c] "incorrect" OR label CONTAINS[c] "incorrect" OR name CONTAINS[c] "invalid" OR label CONTAINS[c] "invalid" OR name CONTAINS[c] "remaining" OR label CONTAINS[c] "remaining" OR name CONTAINS[c] "attempt" OR label CONTAINS[c] "attempt" OR name CONTAINS[c] "too many" OR label CONTAINS[c] "too many" OR name CONTAINS[c] "locked" OR label CONTAINS[c] "locked" OR name CONTAINS[c] "temporarily" OR label CONTAINS[c] "temporarily" OR name CONTAINS[c] "try again" OR label CONTAINS[c] "try again")')
   }
 
   get accountLockedAndroid() {
@@ -65,7 +76,7 @@ export default class AuthenticationPage extends BasePage {
   }
 
   get accountLockedIOS() {
-    return $('-ios predicate string:label CONTAINS "locked" OR label CONTAINS "Too many" OR name CONTAINS "locked"')
+    return $('-ios predicate string:(type == "XCUIElementTypeStaticText" OR type == "XCUIElementTypeTextView") AND (name CONTAINS[c] "locked" OR label CONTAINS[c] "locked" OR name CONTAINS[c] "blocked" OR label CONTAINS[c] "blocked" OR name CONTAINS[c] "suspended" OR label CONTAINS[c] "suspended" OR name CONTAINS[c] "too many" OR label CONTAINS[c] "too many" OR name CONTAINS[c] "temporarily" OR label CONTAINS[c] "temporarily" OR name CONTAINS[c] "try again later" OR label CONTAINS[c] "try again later")')
   }
 
   async waitForPasscodeError(timeout = 10000) {
@@ -77,7 +88,10 @@ export default class AuthenticationPage extends BasePage {
   async waitForAccountLocked(timeout = 15000) {
     const locked = browser.isIOS ? this.accountLockedIOS : this.accountLockedAndroid
     await browser.waitUntil(
-      async () => (await locked.isDisplayed().catch(() => false)),
+      async () =>
+        browser.isIOS
+          ? (await locked.isExisting().catch(() => false))
+          : (await locked.isDisplayed().catch(() => false)),
       { timeout, interval: 500, timeoutMsg: 'Expected account locked message after repeated wrong passcodes' },
     )
   }
@@ -211,7 +225,19 @@ export default class AuthenticationPage extends BasePage {
   // ── OTP unlock after lockout ─────────────────────────────────────────────
 
   async unlockViaOtp(otpPhone: string) {
-    await loginPage.waitForOtpScreen()
+    let otpReady = browser.isIOS
+      ? await loginPage.otpContainerIOS.waitForExist({ timeout: 5000 }).catch(() => false)
+      : await loginPage.otpContainerAndroid.waitForExist({ timeout: 5000 }).catch(() => false)
+
+    if (!otpReady && browser.isIOS && await this.forgotPasscodeIOS.isExisting().catch(() => false)) {
+      await this.tapForgotPasscode()
+      otpReady = await loginPage.otpContainerIOS.waitForExist({ timeout: 15000 }).catch(() => false)
+    }
+
+    if (!otpReady) {
+      throw new Error('OTP screen did not appear for lockout unlock')
+    }
+
     const otp = await OtpHelper.getLatestOtp({
       phone: otpPhone,
       timeoutMs: Number(process.env.OTP_TIMEOUT_MS || 90000),

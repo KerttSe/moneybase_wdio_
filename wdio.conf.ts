@@ -336,7 +336,7 @@ export const config: WebdriverIO.Config = {
     smokeWithoutOnboarding: smokeSpecs.filter((spec) => spec !== './src/tests/onboarding.spec.ts'),
   },
   maxInstances: 1,
-  specFileRetries: 1,
+  specFileRetries: Number(process.env.SPEC_FILE_RETRIES ?? 1),
   specFileRetriesDelay: 0,
   logLevel: 'info',
   framework: 'mocha',
