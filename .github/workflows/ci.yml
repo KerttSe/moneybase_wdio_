@@ -127,6 +127,7 @@ jobs:
       OTP_GET_LATEST_URL: ${{ secrets.OTP_GET_LATEST_URL }}
       OTP_RESEND_WAIT_MS: "0"
       CARD_FREEZE_LOGIN_USE_API_OTP: "true"
+      ONBOARDED_ACCOUNTS_FILE: ".generated/onboarded-accounts.json"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -142,6 +143,14 @@ jobs:
 
       - name: Run tests
         run: npm run wdio -- --spec ${{ matrix.spec }}
+
+      - name: Upload onboarded accounts artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: onboarded-accounts-smoke-${{ matrix.platform }}-${{ strategy.job-index }}
+          path: .generated/onboarded-accounts.json
+          if-no-files-found: ignore
 
       - name: Upload Allure results artifact
         if: always()
@@ -167,9 +176,42 @@ jobs:
         env:
           PLATFORM_INPUT: ${{ github.event.inputs.platform || 'all' }}
         run: |
-          # TODO: replace this with your full regression spec list
           SPECS=(
             "src/tests/launch.spec.ts"
+            "src/tests/homeScreen.spec.ts"
+            "src/tests/homeAccountSwitch.spec.ts"
+            "src/tests/homeSearch.spec.ts"
+            "src/tests/homeSpendAnalytics.spec.ts"
+            "src/tests/homeStoryly.spec.ts"
+            "src/tests/addfunds.spec.ts"
+            "src/tests/addFundsBankTransferWalletManager.spec.ts"
+            "src/tests/addbeneficiary.individual.spec.ts"
+            "src/tests/addbeneficiary.individual.usd.steps.spec.ts"
+            "src/tests/physicalcardcreation.spec.ts"
+            "src/tests/assignBusinessCard.spec.ts"
+            "src/tests/cardFreezeUnfreeze.joint.spec.ts"
+            "src/tests/cardManagement.joint.spec.ts"
+            "src/tests/bankTransfer.p2p.individual.spec.ts"
+            "src/tests/bankTransfer.sepa.individual.spec.ts"
+            "src/tests/bankTransfer.swift.individual.spec.ts"
+            "src/tests/fxExchange.spec.ts"
+            "src/tests/autoTopUp.spec.ts"
+            "src/tests/cashFunds.spec.ts"
+            "src/tests/portfolio.spec.ts"
+            "src/tests/watchlist.spec.ts"
+            "src/tests/orders.spec.ts"
+            "src/tests/priceAlerts.spec.ts"
+            "src/tests/pricePlan.spec.ts"
+            "src/tests/salaryStipendPension.spec.ts"
+            "src/tests/threeDS2.spec.ts"
+            "src/tests/transactions.spec.ts"
+            "src/tests/onboarding.spec.ts"
+            "src/tests/authentication.incorrectPasscode.spec.ts"
+            "src/tests/authentication.passcodeLockout.spec.ts"
+            "src/tests/authentication.otpCountdown.spec.ts"
+            "src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts"
+            "src/tests/businessCard.terminate.spec.ts"
+            "src/tests/businessCard.relink.spec.ts"
           )
 
           PLATFORMS=()
@@ -228,6 +270,17 @@ jobs:
       OTP_GET_LATEST_URL: ${{ secrets.OTP_GET_LATEST_URL }}
       OTP_RESEND_WAIT_MS: "0"
       CARD_FREEZE_LOGIN_USE_API_OTP: "true"
+      AUTH_SECURITY_MB_PHONE: ${{ secrets.AUTH_SECURITY_MB_PHONE }}
+      AUTH_SECURITY_MB_PIN: ${{ secrets.AUTH_SECURITY_MB_PIN }}
+      AUTH_SECURITY_OTP_PHONE: ${{ secrets.AUTH_SECURITY_OTP_PHONE }}
+      AUTH_OTP_MB_PHONE: ${{ secrets.AUTH_OTP_MB_PHONE }}
+      AUTH_OTP_MB_PIN: ${{ secrets.AUTH_OTP_MB_PIN }}
+      AUTH_OTP_OTP_PHONE: ${{ secrets.AUTH_OTP_OTP_PHONE }}
+      BH_MB_COUNTRY: ${{ secrets.BH_MB_COUNTRY }}
+      BH_MB_PHONE: ${{ secrets.BH_MB_PHONE }}
+      BH_MB_PIN: ${{ secrets.BH_MB_PIN }}
+      BH_OTP_PHONE: ${{ secrets.BH_OTP_PHONE }}
+      ONBOARDED_ACCOUNTS_FILE: ".generated/onboarded-accounts.json"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -240,6 +293,15 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Download onboarded accounts from smoke run
+        if: env.AUTH_SECURITY_MB_PHONE == ''
+        uses: actions/download-artifact@v4
+        with:
+          pattern: onboarded-accounts-smoke-${{ matrix.platform }}-*
+          path: .generated
+          merge-multiple: true
+        continue-on-error: true
 
       - name: Run tests
         run: npm run wdio -- --spec ${{ matrix.spec }}

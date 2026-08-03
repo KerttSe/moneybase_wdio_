@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 import { basename, resolve } from 'node:path'
 import BasePage from './BasePage'
 import OtpHelper from '../helpers/otp.helper'
-import { generateUniqueMalteseMobileNumber } from '../helpers/phone.helper'
+import { generateUniqueMalteseMobileNumber, saveOnboardedAccount } from '../helpers/phone.helper'
 import { loginPage } from './LoginPage'
 
 type OnboardingData = {
@@ -2496,6 +2496,7 @@ export default class OnboardingPage extends BasePage {
     )
 
     await this.typeEmailAndAcceptTerms(data.email || `test.${generatedPhone.local}@mail.com`)
+    saveOnboardedAccount(generatedPhone, pin)
   }
 
   async createAccountIOS(data: OnboardingData = {}) {
@@ -2538,5 +2539,10 @@ export default class OnboardingPage extends BasePage {
     )
 
     await this.typeEmailAndAcceptTerms(data.email || `test.${generatedPhone.local}@mail.com`)
+    saveOnboardedAccount(generatedPhone, pin)
   }
 }
+
+
+
+  

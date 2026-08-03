@@ -338,6 +338,9 @@ private androidKeypadDigit(d: string) {
 
     await browser.waitUntil(async () => {
       await browser.switchContext('NATIVE_APP').catch(() => {})
+      const androidOtpError = await this.getAndroidOtpErrorText()
+      if (androidOtpError) return true
+
       const otpShown = await this.otpContainerAndroid.isDisplayed().catch(() => false)
       const continueShown = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
       const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
@@ -351,6 +354,8 @@ private androidKeypadDigit(d: string) {
       interval: 500,
       timeoutMsg: 'After mobile Continue: Android login next step did not appear',
     })
+
+    await this.throwAndroidOtpErrorIfPresent()
   }
 
 /* ===== Shared ===== */
@@ -426,11 +431,34 @@ get otpErrorAndroid() {
   return $('android=new UiSelector().resourceId("com.moneybase.qa:id/tvMobileVerificationError")')
 }
 
+private get otpErrorTextAndroid() {
+  return $('android=new UiSelector().textMatches("(?i).*(too many|temporarily locked|locked|incorrect|invalid|try again).*")')
+}
+
 private async getAndroidOtpErrorText() {
   if (!browser.isAndroid) return ''
-  const shown = await this.otpErrorAndroid.isDisplayed().catch(() => false)
-  if (!shown) return ''
-  return String(await this.otpErrorAndroid.getText().catch(() => '')).trim()
+
+  const candidates = [this.otpErrorAndroid, this.otpErrorTextAndroid]
+  for (const candidate of candidates) {
+    if (!candidate || typeof candidate.isDisplayed !== 'function') continue
+
+    const shown = await candidate.isDisplayed().catch(() => false)
+    if (!shown) continue
+
+    const text = String(await candidate.getText().catch(() => '')).trim()
+    if (text) return text
+  }
+
+  return ''
+}
+
+private async throwAndroidOtpErrorIfPresent(prefix = 'Login OTP was rejected by app') {
+  if (!browser.isAndroid) return
+
+  const errorText = await this.getAndroidOtpErrorText()
+  if (!errorText) return
+
+  throw new Error(`${prefix}: ${errorText}`)
 }
 
 /* ===== Shared ===== */
@@ -448,6 +476,9 @@ async waitForOtpScreen() {
 
   if (browser.isAndroid) {
     await browser.waitUntil(async () => {
+      const androidOtpError = await this.getAndroidOtpErrorText()
+      if (androidOtpError) return true
+
       const otpShown = await this.otpContainerAndroid.isDisplayed().catch(() => false)
       const continueShown = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
       const popupShown = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
@@ -462,6 +493,8 @@ async waitForOtpScreen() {
       interval: 500,
       timeoutMsg: 'OTP or post-OTP screen did not appear on Android',
     })
+
+    await this.throwAndroidOtpErrorIfPresent()
     return;
   }
 
@@ -503,6 +536,7 @@ async enterOtp(code: string = '123456') {
   if (browser.isAndroid) {
     const field = this.otpFieldAndroid; 
     const hasField = await field.waitForExist({ timeout: 8000 }).catch(() => false)
+    await this.throwAndroidOtpErrorIfPresent()
     if (!hasField) return
     await field.click();
     await field.setValue(otp); //  Android setValue ок
@@ -629,28 +663,31 @@ get payRootAndroid() {
     await browser.pause(1200)
 
     await browser.waitUntil(async () => {
-      await this.dismissPostOtpPopupAndroidOnce()
-    if (browser.isIOS) {
-      await this.dismissIOSAlerts()
-      await this.dismissIOSPermissionAlertsIfPresent().catch(() => false)
-    }
-    const incorrectOtp = browser.isIOS && await this.otpIncorrectCodeIOS.isExisting().catch(() => false)
-    const androidOtpError = await this.getAndroidOtpErrorText()
-    const continueVisible = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
-    const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
-    const home = await this.homeRoot.isDisplayed().catch(() => false)
-    const passcodeShown = await this.isIOSPasscodeScreenShown()
-    return Boolean(androidOtpError) || incorrectOtp || continueVisible || applePay || home || passcodeShown
+      try {
+        await this.dismissPostOtpPopupAndroidOnce()
+        if (browser.isIOS) {
+          await this.dismissIOSAlerts()
+          await this.dismissIOSPermissionAlertsIfPresent().catch(() => false)
+        }
+        const incorrectOtp = browser.isIOS && await this.otpIncorrectCodeIOS.isExisting().catch(() => false)
+        const androidOtpError = await this.getAndroidOtpErrorText()
+        const continueVisible = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
+        const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
+        const home = await this.homeRoot.isDisplayed().catch(() => false)
+        const passcodeShown = await this.isIOSPasscodeScreenShown()
+        return Boolean(androidOtpError) || incorrectOtp || continueVisible || applePay || home || passcodeShown
+      } catch (error) {
+        const androidOtpError = await this.getAndroidOtpErrorText()
+        if (androidOtpError) return true
+        throw error
+      }
   }, {
     timeout: 60000,
     interval: 500,
     timeoutMsg: 'After OTP: Continue/Home/ApplePay/passcode did not appear',
   })
 
-  const androidOtpError = await this.getAndroidOtpErrorText()
-  if (androidOtpError) {
-    throw new Error(`Login OTP was rejected by app: ${androidOtpError}`)
-  }
+  await this.throwAndroidOtpErrorIfPresent()
 
   if (browser.isIOS && await this.otpIncorrectCodeIOS.isExisting().catch(() => false)) {
     throw new Error('Login OTP was rejected by app: Entered code is incorrect')

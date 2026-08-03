@@ -7,6 +7,11 @@ type OtpFetchParams = {
 	maxRequests?: number
 	requestTimeoutMs?: number
 	excludeTokens?: string[]
+	urlTemplate?: string
+	baseUrl?: string
+	authToken?: string
+	cookie?: string
+	headersJson?: string
 }
 
 export class OtpHelper {
@@ -48,24 +53,24 @@ export class OtpHelper {
 		return String(value ?? '').replace(/\D/g, '')
 	}
 
-	private static buildRequestHeaders(): Record<string, string> {
+	private static buildRequestHeaders(params: Pick<OtpFetchParams, 'authToken' | 'cookie' | 'headersJson'> = {}): Record<string, string> {
 		const headers: Record<string, string> = {
 			'cache-control': 'no-cache',
 			pragma: 'no-cache',
 			accept: '*/*',
 		}
 
-		const authToken = String(process.env.OTP_API_AUTH_TOKEN || '').trim()
+		const authToken = String(params.authToken || process.env.OTP_API_AUTH_TOKEN || '').trim()
 		if (authToken) {
 			headers.authorization = authToken.startsWith('Bearer ') ? authToken : `Bearer ${authToken}`
 		}
 
-		const cookie = String(process.env.OTP_API_COOKIE || '').trim()
+		const cookie = String(params.cookie || process.env.OTP_API_COOKIE || '').trim()
 		if (cookie) {
 			headers.cookie = cookie
 		}
 
-		const headersJsonRaw = String(process.env.OTP_API_HEADERS_JSON || '').trim()
+		const headersJsonRaw = String(params.headersJson || process.env.OTP_API_HEADERS_JSON || '').trim()
 		if (headersJsonRaw) {
 			try {
 				const parsed = JSON.parse(headersJsonRaw) as Record<string, unknown>
@@ -97,9 +102,9 @@ export class OtpHelper {
 		return `${countryCode} ${groupedLocal4}`.trim()
 	}
 
-	private static buildUrl(phoneCandidate: string) {
-		const template = String(process.env.OTP_GET_LATEST_URL || '').trim()
-		const baseUrl = String(process.env.OTP_API_BASE_URL || '').trim().replace(/\/$/, '')
+	private static buildUrl(phoneCandidate: string, params: Pick<OtpFetchParams, 'urlTemplate' | 'baseUrl'> = {}) {
+		const template = String(params.urlTemplate || process.env.OTP_GET_LATEST_URL || '').trim()
+		const baseUrl = String(params.baseUrl || process.env.OTP_API_BASE_URL || '').trim().replace(/\/$/, '')
 
 		if (!template && !baseUrl) {
 			throw new Error('OTP endpoint is not configured. Set OTP_GET_LATEST_URL or OTP_API_BASE_URL')
@@ -232,7 +237,7 @@ export class OtpHelper {
 			Math.max(1000, params.requestTimeoutMs ?? Number(process.env.OTP_REQUEST_TIMEOUT_MS || timeoutMs)),
 			Math.max(1000, timeoutMs)
 		)
-		const requestHeaders = this.buildRequestHeaders()
+		const requestHeaders = this.buildRequestHeaders(params)
 		const excludedTokens = new Set(
 			(params.excludeTokens || [])
 				.map((token) => this.normalizeDigits(token))
@@ -240,7 +245,7 @@ export class OtpHelper {
 		)
 
 		const phoneCandidate = this.buildPhoneCandidate(params.phone)
-		const url = this.buildUrl(phoneCandidate)
+		const url = this.buildUrl(phoneCandidate, params)
 
 		console.log(`[OtpHelper] getLatestOtp started: maxRequests=${Math.max(1, maxRequests)}, timeoutMs=${timeoutMs}, intervalMs=${intervalMs}`)
 

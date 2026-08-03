@@ -10,6 +10,47 @@ type GeneratedMtPhone = {
   otpPhone: string
 }
 
+type OnboardedAccount = {
+  phone: string
+  international: string
+  otpPhone: string
+  pin: string
+  createdAt: string
+}
+
+const onboardedAccountsPath = () =>
+  resolve(process.cwd(), process.env.ONBOARDED_ACCOUNTS_FILE || '.generated/onboarded-accounts.json')
+
+export const saveOnboardedAccount = (phone: GeneratedMtPhone, pin: string) => {
+  const path = onboardedAccountsPath()
+  mkdirSync(dirname(path), { recursive: true })
+
+  const account: OnboardedAccount = {
+    phone: phone.local,
+    international: phone.international,
+    otpPhone: phone.otpPhone,
+    pin,
+    createdAt: new Date().toISOString(),
+  }
+
+  writeFileSync(path, `${JSON.stringify(account, null, 2)}\n`)
+  console.log(`[Onboarding] Saved onboarded account to ${path}: ${phone.otpPhone}`)
+}
+
+export const readLatestOnboardedAccount = (): OnboardedAccount | null => {
+  const path = onboardedAccountsPath()
+  if (!existsSync(path)) return null
+
+  try {
+    const data = JSON.parse(readFileSync(path, 'utf8')) as unknown
+    if (data && typeof data === 'object' && 'phone' in (data as object)) {
+      return data as OnboardedAccount
+    }
+  } catch {}
+
+  return null
+}
+
 const normalizeDigits = (value: string) => String(value || '').replace(/\D/g, '')
 
 const usedPhonesPath = () =>
