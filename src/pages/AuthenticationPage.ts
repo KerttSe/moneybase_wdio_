@@ -79,9 +79,29 @@ export default class AuthenticationPage extends BasePage {
     return $('-ios predicate string:(type == "XCUIElementTypeStaticText" OR type == "XCUIElementTypeTextView") AND (name CONTAINS[c] "locked" OR label CONTAINS[c] "locked" OR name CONTAINS[c] "blocked" OR label CONTAINS[c] "blocked" OR name CONTAINS[c] "suspended" OR label CONTAINS[c] "suspended" OR name CONTAINS[c] "too many" OR label CONTAINS[c] "too many" OR name CONTAINS[c] "temporarily" OR label CONTAINS[c] "temporarily" OR name CONTAINS[c] "try again later" OR label CONTAINS[c] "try again later")')
   }
 
+  private async iosSourceHasPasscodeError() {
+    const source = await browser.getPageSource().catch(() => '')
+    return /wrong passcode|incorrect|invalid|remaining|too many attempts|temporarily locked|try again/i.test(source)
+  }
+
+  private async iosSourceHasAccountLocked() {
+    const source = await browser.getPageSource().catch(() => '')
+    return /too many attempts|temporarily locked|locked|blocked|suspended|try again later/i.test(source)
+  }
+
   async waitForPasscodeError(timeout = 10000) {
     const el = browser.isIOS ? this.passcodeErrorIOS : this.passcodeErrorAndroid
-    await el.waitForExist({ timeout, timeoutMsg: 'Expected passcode error message after wrong PIN' })
+    if (!browser.isIOS) {
+      await el.waitForExist({ timeout, timeoutMsg: 'Expected passcode error message after wrong PIN' })
+      return el
+    }
+
+    await browser.waitUntil(
+      async () =>
+        (await el.isExisting().catch(() => false)) ||
+        (await this.iosSourceHasPasscodeError()),
+      { timeout, interval: 750, timeoutMsg: 'Expected passcode error message after wrong PIN' },
+    )
     return el
   }
 
@@ -90,7 +110,7 @@ export default class AuthenticationPage extends BasePage {
     await browser.waitUntil(
       async () =>
         browser.isIOS
-          ? (await locked.isExisting().catch(() => false))
+          ? ((await locked.isExisting().catch(() => false)) || (await this.iosSourceHasAccountLocked()))
           : (await locked.isDisplayed().catch(() => false)),
       { timeout, interval: 500, timeoutMsg: 'Expected account locked message after repeated wrong passcodes' },
     )
