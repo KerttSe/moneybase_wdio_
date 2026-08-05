@@ -115,7 +115,7 @@ export class LoginPage extends BasePage {
     }
 
     // welcome skip (2 ios and android)
-    if (await this.isDisplayed(this.welcomeSkipBtn, 5000)) {
+    if (await this.welcomeSkipBtn.isExisting().catch(() => false)) {
       await this.welcomeSkipBtn.click()
     }
 
@@ -131,7 +131,7 @@ export class LoginPage extends BasePage {
           snapshotTaken = true
         }
         // welcome skip may appear late on slow BrowserStack devices — retry inside the loop
-        const skipShown = await this.welcomeSkipBtn.isDisplayed().catch(() => false)
+        const skipShown = await this.welcomeSkipBtn.isExisting().catch(() => false)
         if (skipShown) {
           await this.welcomeSkipBtn.click().catch(() => {})
           return false
@@ -333,7 +333,10 @@ private androidKeypadDigit(d: string) {
   private async tapDigitAndroid(d: string) {
     const el = this.androidKeypadDigit(d);
     await el.waitForExist({ timeout: 5000 });
-    await el.click();
+    const loc = await el.getLocation()
+    const size = await el.getSize()
+    await this.tapAndroidCoordinates(loc.x + size.width / 2, loc.y + size.height / 2)
+    await browser.pause(120)
   }
 
   private async isAndroidPasscodeScreenShown() {
@@ -942,7 +945,7 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
     if (await this.isAndroidPasscodeScreenShown()) {
       await this.enterPin(auth.pin)
       androidPinEntered = true
-      // Wait up to 20s for home, OTP, or Continue — dismissing biometric/Google Pay popups
+      // Wait for home, OTP, or Continue — dismissing biometric/Google Pay popups
       await browser.waitUntil(async () => {
         await this.dismissPostOtpPopupAndroidOnce()
         const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
@@ -950,7 +953,7 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
         const otpShown = await this.otpContainerAndroid.isDisplayed().catch(() => false)
         const continueShown = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
         return otpShown || continueShown
-      }, { timeout: 20000, interval: 500, timeoutMsg: 'After Android passcode: neither Home nor OTP appeared' })
+      }, { timeout: 45000, interval: 500, timeoutMsg: 'After Android passcode: neither Home nor OTP appeared' })
       const homeAfterPin = await this.homeRoot.isDisplayed().catch(() => false)
       if (homeAfterPin) return
     }
