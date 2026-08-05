@@ -326,7 +326,9 @@ export default class BasePage {
   }
 
   async tap(el: ResolvableWdioEl, timeout = 10000) {
-    const target = (await Promise.resolve(el)) as WebdriverIO.Element
+    const target = (el && typeof (el as Promise<unknown>).then === 'function' && !('waitForExist' in el)
+      ? await (el as Promise<WdioEl | WebdriverIO.Element>)
+      : el) as WebdriverIO.Element
 
     if (browser.isIOS) {
       await target.waitForExist({ timeout })
