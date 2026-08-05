@@ -161,21 +161,7 @@ const markBrowserStackFailure = async (error: Error) => {
   }
 }
 
-const setBrowserStackSessionName = async (specs: string[]) => {
-  if (!useBrowserStack) return
 
-  const platform = String(browser.capabilities.platformName ?? platformFilter ?? 'unknown')
-  const specName = specs.length > 0 ? basename(specs[0]) : 'unknown-spec'
-  const suiteName = cliSuiteTag ? `${cliSuiteTag} :: ` : ''
-  const sessionName = `${platform} :: ${suiteName}${specName}`
-
-  await browser
-    .execute(`browserstack_executor: ${JSON.stringify({
-      action: 'setSessionName',
-      arguments: { name: sessionName },
-    })}`)
-    .catch(() => {})
-}
 
 if (useBrowserStack) {
   const needsAndroid = !platformFilter || platformFilter === 'android'
@@ -377,10 +363,6 @@ export const config: WebdriverIO.Config = {
   onPrepare: function (_config, capabilities) {
     writeAllureEnvironment(capabilities as WebdriverIO.Capabilities[])
     writeAllureExecutor()
-  },
-
-  before: async function (_capabilities, specs) {
-    await setBrowserStackSessionName(specs)
   },
 
   afterTest: async function (test, context, { error }) {
