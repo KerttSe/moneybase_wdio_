@@ -71,6 +71,8 @@ export class LoginPage extends BasePage {
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
+    if (await this.tapBiometricSkipForNowIfVisibleAndroid()) return
+
     const googlePayClose = this.applePayProposalCloseBtn
     const closeShown = await googlePayClose.isDisplayed().catch(() => false)
     if (closeShown) {
@@ -128,13 +130,19 @@ export class LoginPage extends BasePage {
           await this.debugSnapshot('prepare-ios-loop')
           snapshotTaken = true
         }
+        // welcome skip may appear late on slow BrowserStack devices — retry inside the loop
+        const skipShown = await this.welcomeSkipBtn.isDisplayed().catch(() => false)
+        if (skipShown) {
+          await this.welcomeSkipBtn.click().catch(() => {})
+          return false
+        }
         const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
         const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
         const passcodeShown = await this.isIOSPasscodeScreenShown()
         const otpShown = await this.otpContainerIOS.isDisplayed().catch(() => false)
         return registerShown || homeShown || passcodeShown || otpShown
       }, {
-        timeout: 30000,
+        timeout: 45000,
         interval: 500,
         timeoutMsg: 'Register screen, passcode screen, OTP screen, or Home did not appear',
       })
@@ -585,6 +593,26 @@ async enterOtp(code: string = '123456') {
     return true
   }
 
+  private get biometricSkipForNowAndroid() {
+    return this.buttonByText('Skip for now')
+  }
+
+  private async tapBiometricSkipForNowIfVisibleAndroid() {
+    if (!browser.isAndroid) return false
+
+    const skipShown = await this.biometricSkipForNowAndroid.isDisplayed().catch(() => false)
+    if (!skipShown) return false
+
+    await this.biometricSkipForNowAndroid.click().catch(async () => {
+      const loc = await this.biometricSkipForNowAndroid.getLocation()
+      const size = await this.biometricSkipForNowAndroid.getSize()
+      await this.tapAndroidCoordinates(loc.x + size.width / 2, loc.y + size.height / 2)
+    })
+    await this.biometricSkipForNowAndroid.waitForExist({ reverse: true, timeout: 10000 }).catch(() => {})
+    await browser.pause(500)
+    return true
+  }
+
   private async tapAndroidCoordinates(x: number, y: number) {
     await browser.performActions([
       {
@@ -914,7 +942,15 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
     if (await this.isAndroidPasscodeScreenShown()) {
       await this.enterPin(auth.pin)
       androidPinEntered = true
-      await browser.pause(1200)
+      // Wait up to 20s for home, OTP, or Continue — dismissing biometric/Google Pay popups
+      await browser.waitUntil(async () => {
+        await this.dismissPostOtpPopupAndroidOnce()
+        const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+        if (homeShown) return true
+        const otpShown = await this.otpContainerAndroid.isDisplayed().catch(() => false)
+        const continueShown = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
+        return otpShown || continueShown
+      }, { timeout: 20000, interval: 500, timeoutMsg: 'After Android passcode: neither Home nor OTP appeared' })
       const homeAfterPin = await this.homeRoot.isDisplayed().catch(() => false)
       if (homeAfterPin) return
     }

@@ -18,6 +18,10 @@ This document syncs the old `Automation Coverage.xlsx` with the current state of
 | `src/tests/priceAlerts.spec.ts` | Price alert create and delete | Android, iOS | Automated | No | Platform-specific create/delete implementations |
 | `src/tests/physicalcardcreation.spec.ts` | Physical card creation | Android, iOS | Automated | Yes | This is physical card coverage, not virtual card coverage |
 | `src/tests/bankTransfer.business.spec.ts` | Business bank transfer | Android, iOS | In progress | No | `describe.skip`, only early navigation step exists |
+| `src/tests/businessCard.freezeUnfreeze.spec.ts` | Freeze / Unfreeze another user's virtual card (TC1738/TC1739) | Android, iOS | Automated | No | BH account (SED00004), admin freezes Dmytri Kerteusz's card |
+| `src/tests/businessCard.relink.spec.ts` | Relink card to a different existing wallet (TC1742/TC1743/TC1744) | Android, iOS | Automated | No | BH account, randomly selects a wallet that differs from current |
+| `src/tests/businessCard.terminate.spec.ts` | Terminate own virtual card (TC1740/TC1741) | Android, iOS | Automated | No | BH account, terminates own ACTIVE virtual card |
+| `src/tests/businessCard.walletReachOut.spec.ts` | Create New Wallet — plan limit dialog (TC1717/TC1718/TC1719) | Android | Automated | No | BH account, navigates Administration → Wallets → Add New Wallet, verifies plan-limit dialog |
 
 ## Spreadsheet-To-Repo Mapping
 
