@@ -621,7 +621,7 @@ async enterOtp(code: string = '123456') {
   private async tapBiometricSkipForNowIfVisibleAndroid() {
     if (!browser.isAndroid) return false
 
-    const skipShown = await this.biometricSkipForNowAndroid.isDisplayed().catch(() => false)
+    const skipShown = await this.biometricSkipForNowAndroid.isExisting().catch(() => false)
     if (!skipShown) return false
 
     await this.biometricSkipForNowAndroid.click().catch(async () => {
@@ -764,9 +764,9 @@ async waitForPostOtpNextStep(timeout = 30000) {
       await this.dismissIOSAlerts()
       await this.dismissIOSPermissionAlertsIfPresent().catch(() => false)
     }
-    const continueVisible = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
-    const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
-    const home = await this.homeRoot.isDisplayed().catch(() => false)
+    const continueVisible = await this.postOtpContinueBtn.isExisting().catch(() => false)
+    const applePay = await this.applePayProposalCloseBtn.isExisting().catch(() => false)
+    const home = await this.homeRoot.isExisting().catch(() => false)
     const passcodeShown = await this.isIOSPasscodeScreenShown()
     return continueVisible || applePay || home || passcodeShown
   }, {
