@@ -136,10 +136,10 @@ export class LoginPage extends BasePage {
           await this.welcomeSkipBtn.click().catch(() => {})
           return false
         }
-        const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
-        const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+        const registerShown = await this.registerScreen.isExisting().catch(() => false)
+        const homeShown = await this.homeRoot.isExisting().catch(() => false)
         const passcodeShown = await this.isIOSPasscodeScreenShown()
-        const otpShown = await this.otpContainerIOS.isDisplayed().catch(() => false)
+        const otpShown = await this.otpContainerIOS.isExisting().catch(() => false)
         return registerShown || homeShown || passcodeShown || otpShown
       }, {
         timeout: 45000,
@@ -376,15 +376,15 @@ private async tapDigit(d: string) {
   throw new Error('Unsupported platform for PIN entry');
 }
 
-async enterPin(pin: string) {
+  async enterPin(pin: string) {
   //  platform-specific anchor + readiness
   if (browser.isIOS) {
     // On login flow the nav bar is "moneybase.AuthenticationLoginView";
     // on onboarding it is "Account Creation" — use loginNewMobile_screen as fallback anchor.
     await browser.waitUntil(
       async () =>
-        (await this.authLoginNavBar.isDisplayed().catch(() => false)) ||
-        (await $('~loginNewMobile_screen').isDisplayed().catch(() => false)),
+        (await this.authLoginNavBar.isExisting().catch(() => false)) ||
+        (await $('~loginNewMobile_screen').isExisting().catch(() => false)),
       { timeout: 50000, interval: 500, timeoutMsg: 'iOS PIN screen (authLoginNavBar or loginNewMobile_screen) did not appear' }
     )
     await $(`~${pin[0]}`).waitForExist({ timeout: 50000 });
@@ -395,10 +395,24 @@ async enterPin(pin: string) {
     await this.androidKeypadDigit(pin[0]).waitForExist({ timeout: 30000 });
   }
 
-  for (const d of pin) {
-    await this.tapDigit(d);
+	  for (const d of pin) {
+	    await this.tapDigit(d);
+	  }
+	}
+
+  private async enterAndroidPinWithRetryIfStillOnPasscode(pin: string) {
+    await this.enterPin(pin)
+
+    const movedOffPasscode = await browser.waitUntil(async () => {
+      return !(await this.isAndroidPasscodeScreenShown())
+    }, { timeout: 3000, interval: 300 }).catch(() => false)
+
+    if (movedOffPasscode) return
+
+    for (const d of pin) {
+      await this.tapDigitAndroid(d)
+    }
   }
-}
 
 
 
@@ -893,7 +907,7 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
   if (alreadyHome) return
 
   await this.prepare()
-  if (browser.isIOS && await this.otpContainerIOS.isDisplayed().catch(() => false)) {
+  if (browser.isIOS && await this.otpContainerIOS.isExisting().catch(() => false)) {
     await this.enterOtp(await this.getLoginOtp(auth, options))
     await this.tapContinueAfterOtp()
     if (await this.isIOSPasscodeScreenShown()) {
@@ -910,8 +924,8 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
     await this.closeApplePayIfVisible()
 
     await browser.waitUntil(async () => {
-      const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
-      const otpShown = await this.otpContainerIOS.isDisplayed().catch(() => false)
+      const homeShown = await this.homeRoot.isExisting().catch(() => false)
+      const otpShown = await this.otpContainerIOS.isExisting().catch(() => false)
       return homeShown || otpShown
     }, {
       timeout: 45000,
@@ -942,10 +956,10 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
 
     if (await this.homeRoot.isDisplayed().catch(() => false)) return
 
-    if (await this.isAndroidPasscodeScreenShown()) {
-      await this.enterPin(auth.pin)
-      androidPinEntered = true
-      // Wait for home, OTP, or Continue — dismissing biometric/Google Pay popups
+	    if (await this.isAndroidPasscodeScreenShown()) {
+	      await this.enterAndroidPinWithRetryIfStillOnPasscode(auth.pin)
+	      androidPinEntered = true
+	      // Wait for home, OTP, or Continue — dismissing biometric/Google Pay popups
       await browser.waitUntil(async () => {
         await this.dismissPostOtpPopupAndroidOnce()
         const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
