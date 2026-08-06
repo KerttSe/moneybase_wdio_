@@ -403,11 +403,15 @@ private async tapDigit(d: string) {
   private async enterAndroidPinWithRetryIfStillOnPasscode(pin: string) {
     await this.enterPin(pin)
 
+    // use isExisting (instant, no internal timeout) so the outer waitUntil actually polls
     const movedOffPasscode = await browser.waitUntil(async () => {
-      return !(await this.isAndroidPasscodeScreenShown())
-    }, { timeout: 3000, interval: 300 }).catch(() => false)
+      return !(await this.androidKeypadDigit('1').isExisting().catch(() => false))
+    }, { timeout: 6000, interval: 300 }).catch(() => false)
 
     if (movedOffPasscode) return
+
+    // still on passcode — verify keypad is actually present before retrying
+    if (!(await this.isAndroidPasscodeScreenShown())) return
 
     for (const d of pin) {
       await this.tapDigitAndroid(d)

@@ -296,8 +296,8 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
     await this.subAccountsSheetAndroid.waitForExist({ timeout: 15000, timeoutMsg: 'Sub Accounts sheet did not open' })
     await this.seDeKeItemAndroid.waitForExist({ timeout: 10000, timeoutMsg: `SeDeKE (${BH_ACCOUNT_CODE}) not found in Sub Accounts list` })
     await this.tap(this.seDeKeItemAndroid)
-    await browser.pause(1500)
-    await this.userAvatarAndroid.waitForExist({ timeout: 20000, timeoutMsg: 'Home did not reload after switching to SeDeKE account' })
+    await this.subAccountsSheetAndroid.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
+    await this.accountChipAndroid.waitForExist({ timeout: 20000, timeoutMsg: `Home did not switch to SeDeKE account (${BH_ACCOUNT_CODE}) on Android` })
   }
 
   public async openCardsTab() {
