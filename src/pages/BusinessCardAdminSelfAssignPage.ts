@@ -2,7 +2,7 @@ import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
 
-const BH_ACCOUNT_CODE = process.env.CARD_LIMITS_ACCOUNT_CODE || 'NEX00002'
+const BH_ACCOUNT_CODE = process.env.BH_ACCOUNT_CODE || 'SED00004'
 const BH_SELF_NAME = process.env.BH_SELF_NAME || 'Dmytro Kertys'
 const ADMIN_SELF_ASSIGN_ALERT_TITLE = 'You cannot create your own card'
 const ADMIN_SELF_ASSIGN_ALERT_MESSAGE = 'Please ask another administrator or account owner to create your card.'
