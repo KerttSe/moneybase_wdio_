@@ -365,6 +365,20 @@ export const config: WebdriverIO.Config = {
     writeAllureExecutor()
   },
 
+  after: async function (_result, _capabilities, specs) {
+    if (!useBrowserStack) return
+    const platform = String(browser.capabilities.platformName ?? platformFilter ?? 'unknown')
+    const specName = specs.length > 0 ? basename(specs[0]) : 'unknown-spec'
+    const suiteName = cliSuiteTag ? `${cliSuiteTag} :: ` : ''
+    const sessionName = `${platform} :: ${suiteName}${specName}`
+    await browser
+      .execute(`browserstack_executor: ${JSON.stringify({
+        action: 'setSessionName',
+        arguments: { name: sessionName },
+      })}`)
+      .catch(() => {})
+  },
+
   afterTest: async function (test, context, { error }) {
     if (!error) return
     if (isMochaSkipError(error)) {
