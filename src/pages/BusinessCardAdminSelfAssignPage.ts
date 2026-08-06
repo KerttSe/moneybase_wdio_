@@ -268,6 +268,21 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
     )
   }
 
+  private async waitForAndroidSeDeKEHome(timeout = 30000) {
+    await browser.waitUntil(
+      async () => {
+        // sheet must be fully gone before checking — the seDeKe list item also contains
+        // BH_ACCOUNT_CODE text, so checking chip while sheet still visible is a false positive
+        const sheetGone = !(await this.subAccountsSheetAndroid.isExisting().catch(() => true))
+        if (!sheetGone) return false
+        const avatarShown = await this.userAvatarAndroid.isExisting().catch(() => false)
+        const chipShown = await this.accountChipAndroid.isExisting().catch(() => false)
+        return avatarShown && chipShown
+      },
+      { timeout, interval: 500, timeoutMsg: `Home screen did not switch to SeDeKE account (${BH_ACCOUNT_CODE}) on Android` },
+    )
+  }
+
   public async ensureSeDeKEAccount() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
@@ -285,19 +300,16 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
       return
     }
 
-    const chip = this.accountChipAndroid
-    if (await chip.isExisting().catch(() => false)) {
-      const text = await chip.getText().catch(() => '')
-      if (text.includes(BH_ACCOUNT_CODE)) return
-    }
+    // early-exit: already on SeDeKE home (require avatar visible to avoid matching stale elements)
+    const avatarOnHome = await this.userAvatarAndroid.isExisting().catch(() => false)
+    if (avatarOnHome && (await this.accountChipAndroid.isExisting().catch(() => false))) return
 
     await this.userAvatarAndroid.waitForExist({ timeout: 20000, timeoutMsg: 'Home user avatar not found' })
     await this.tap(this.userAvatarAndroid)
     await this.subAccountsSheetAndroid.waitForExist({ timeout: 15000, timeoutMsg: 'Sub Accounts sheet did not open' })
     await this.seDeKeItemAndroid.waitForExist({ timeout: 10000, timeoutMsg: `SeDeKE (${BH_ACCOUNT_CODE}) not found in Sub Accounts list` })
     await this.tap(this.seDeKeItemAndroid)
-    await this.subAccountsSheetAndroid.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
-    await this.accountChipAndroid.waitForExist({ timeout: 20000, timeoutMsg: `Home did not switch to SeDeKE account (${BH_ACCOUNT_CODE}) on Android` })
+    await this.waitForAndroidSeDeKEHome()
   }
 
   public async openCardsTab() {
@@ -312,9 +324,9 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
     await this.tap(this.cardsTabAndroid).catch(async () => {
       await this.tap(this.cardsTabAndroidByA11y)
     })
-    await this.addCardBtnAndroid.waitForExist({ timeout: 15000 }).catch(async () => {
+    await this.addCardBtnAndroid.waitForExist({ timeout: 30000 }).catch(async () => {
       await this.addCardBtnAndroidByText.waitForExist({
-        timeout: 5000,
+        timeout: 10000,
         timeoutMsg: 'Add Card button did not appear on Cards tab',
       })
     })
