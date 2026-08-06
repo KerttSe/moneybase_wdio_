@@ -352,9 +352,9 @@ private androidKeypadDigit(d: string) {
       const androidOtpError = await this.getAndroidOtpErrorText()
       if (androidOtpError) return true
 
-      const otpShown = await this.otpContainerAndroid.isDisplayed().catch(() => false)
-      const continueShown = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
-      const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+      const otpShown = await this.otpContainerAndroid.isExisting().catch(() => false)
+      const continueShown = await this.postOtpContinueBtn.isExisting().catch(() => false)
+      const homeShown = await this.homeRoot.isExisting().catch(() => false)
       const passcodeShown = await this.isAndroidPasscodeScreenShown()
       if (otpShown || continueShown || homeShown || passcodeShown) return true
 
@@ -508,10 +508,10 @@ async waitForOtpScreen() {
       const androidOtpError = await this.getAndroidOtpErrorText()
       if (androidOtpError) return true
 
-      const otpShown = await this.otpContainerAndroid.isDisplayed().catch(() => false)
-      const continueShown = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
-      const popupShown = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
-      const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+      const otpShown = await this.otpContainerAndroid.isExisting().catch(() => false)
+      const continueShown = await this.postOtpContinueBtn.isExisting().catch(() => false)
+      const popupShown = await this.applePayProposalCloseBtn.isExisting().catch(() => false)
+      const homeShown = await this.homeRoot.isExisting().catch(() => false)
 
       if (otpShown || continueShown || popupShown || homeShown) return true
 
