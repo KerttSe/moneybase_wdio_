@@ -832,7 +832,7 @@ class BankTransferSepaIndividualPage extends BasePage {
     await BankTransferP2PIndividualPage.ensureIndividualAccount()
   }
 
-  public async sendSepaBySlideAndroid(amount: number | string = 11) {
+  public async openSepaToReviewPaymentAndroid(amount: number | string = 11) {
     if (!browser.isAndroid) return
 
     await BankTransferP2PIndividualPage.ensureIndividualAccount()
@@ -853,6 +853,12 @@ class BankTransferSepaIndividualPage extends BasePage {
     await amountInput.setValue(String(amount))
 
     await this.maybeTapReviewPaymentAndroid()
+  }
+
+  public async sendSepaBySlideAndroid(amount: number | string = 11) {
+    if (!browser.isAndroid) return
+
+    await this.openSepaToReviewPaymentAndroid(amount)
 
     await this.ensureSliderReadyAndroid()
     await this.dragSliderToRightAndroid()

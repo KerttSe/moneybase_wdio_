@@ -4,8 +4,8 @@ import type { ChainablePromiseElement } from 'webdriverio'
 
 const BH_ACCOUNT_CODE = process.env.BH_ACCOUNT_CODE || 'SED00004'
 const BH_SELF_NAME = process.env.BH_SELF_NAME || 'Dmytro Kertys'
-const ADMIN_SELF_ASSIGN_ALERT_TITLE = 'You cannot create your own card'
-const ADMIN_SELF_ASSIGN_ALERT_MESSAGE = 'Please ask another administrator or account owner to create your card.'
+const ADMIN_SELF_ASSIGN_ALERT_TITLE = process.env.ADMIN_SELF_ASSIGN_ALERT_TITLE || 'You cannot create your own card'
+const ADMIN_SELF_ASSIGN_ALERT_MESSAGE = process.env.ADMIN_SELF_ASSIGN_ALERT_MESSAGE || 'Please ask another administrator or account owner to create your card.'
 
 class BusinessCardAdminSelfAssignPage extends BasePage {
   private get userAvatarAndroid() {

@@ -505,10 +505,6 @@ export default class AddBeneficiaryPage extends BasePage {
     return $('android=new UiSelector().resourceId("addBeneficiaryCountrySelection_input_search")')
   }
 
-  private get monacoOptionAndroid() {
-    return $('//android.widget.TextView[@text="Malta"]')
-  }
-
   private get unitedStatesOptionAndroid() {
     // The country list shows "United States of America", not "United States".
     return $('//android.widget.TextView[@text="United States of America"]')
@@ -1337,11 +1333,11 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   /** Step: select country for the beneficiary (Malta for EUR, United States for USD/SWIFT). */
-  async selectCountryForBeneficiaryAndroid(currency: 'EUR' | 'USD' = 'EUR') {
+  async selectCountryForBeneficiaryAndroid(currency: 'EUR' | 'USD' = 'EUR', country?: string) {
     if (!browser.isAndroid) return
 
-    const countryName = currency === 'USD' ? 'United States' : 'Malta'
-    const countryOption = currency === 'USD' ? this.unitedStatesOptionAndroid : this.monacoOptionAndroid
+    const countryName = country ?? (currency === 'USD' ? 'United States of America' : 'Malta')
+    const countryOption = $(`//android.widget.TextView[@text="${countryName}"]`)
 
     await this.countryPickerAndroid.waitForExist({ timeout: 15000 })
     await this.tap(this.countryPickerAndroid)
@@ -1371,10 +1367,10 @@ export default class AddBeneficiaryPage extends BasePage {
     await this.tap(this.countryContinueBtnAndroid)
   }
 
-  async continueFromCountrySelectionAndroid(currency: 'EUR' | 'USD' = 'EUR') {
+  async continueFromCountrySelectionAndroid(currency: 'EUR' | 'USD' = 'EUR', country?: string) {
     if (!browser.isAndroid) return
 
-    await this.selectCountryForBeneficiaryAndroid(currency)
+    await this.selectCountryForBeneficiaryAndroid(currency, country)
     await this.selectCurrencyForBeneficiaryAndroid(currency)
   }
 
@@ -2253,6 +2249,22 @@ export default class AddBeneficiaryPage extends BasePage {
     // Temporary: extra confirm click disabled to avoid possible double-submit / second OTP request.
     // await this.confirmCreationIfRequiredAndroid()
     await this.waitForOtpAndSubmitAndroid(params.iban)
+  }
+
+  async navigateBeneficiaryToVopAndroid(params: {
+    name: string
+    surname: string
+    iban: string
+    bic?: string
+    country?: string
+  }) {
+    if (!browser.isAndroid) return
+    await this.startAddBeneficiaryAndroid()
+    await this.chooseAnotherPersonAndroid()
+    await this.continueFromCountrySelectionAndroid('EUR', params.country)
+    await this.fillBeneficiaryDetailsAndroid(params)
+    await this.continueFromDetailsAndroid()
+    await this.waitForPostDetailsTransitionAndroid()
   }
 
   async addBeneficiaryAnotherPersonIOS(params: {
