@@ -363,7 +363,7 @@ export const config: WebdriverIO.Config = {
     writeAllureExecutor()
   },
 
-  after: async function (_result, _capabilities, specs) {
+  after: async function (result, _capabilities, specs) {
     if (!useBrowserStack) return
     const platform = String(browser.capabilities.platformName ?? platformFilter ?? 'unknown')
     const specName = specs.length > 0 ? basename(specs[0]) : 'unknown-spec'
@@ -376,6 +376,17 @@ export const config: WebdriverIO.Config = {
       })}`)
       .catch(() => {})
 
+    if (result !== 0) {
+      const caps = browser.capabilities as Record<string, unknown>
+      const appId = String(
+        caps['appium:appPackage']
+          ?? caps.appPackage
+          ?? caps['appium:bundleId']
+          ?? caps.bundleId
+          ?? '',
+      )
+      if (appId) await browser.terminateApp(appId).catch(() => {})
+    }
   },
 
   afterTest: async function (test, context, { error }) {
