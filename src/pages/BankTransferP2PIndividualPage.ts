@@ -1166,6 +1166,31 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.waitForMinusAmountHomeAndroid(amount, 30000)
   }
 
+  public async openSwiftPaymentInputScreenAndroid(amount: number | string = 11) {
+    await this.ensureSingleAccountAndroid()
+    await browser.pause(700)
+    await this.openPayTabAndroid()
+    await this.openSwiftBeneficiaryAndroid()
+    await this.beneficiaryPayBtnAndroid.waitForExist({ timeout: 20000 })
+    await this.tap(this.beneficiaryPayBtnAndroid)
+    const amountInput = await this.resolveAmountInputP2PAndroid()
+    await amountInput.waitForExist({ timeout: 20000 })
+    await amountInput.clearValue().catch(() => {})
+    await amountInput.setValue(String(amount))
+    await browser.hideKeyboard().catch(() => {})
+  }
+
+  public async slideToPayAndroid() {
+    await this.ensureSliderReadyAndroid()
+    await this.dragSliderToRightAndroid()
+  }
+
+  public async completeSwiftAfterReviewAndroid(amount: number | string = 11) {
+    await this.ensureSliderReadyAndroid()
+    await this.dragSliderToRightAndroid()
+    await this.verifySwiftSuccessAndroid(amount)
+  }
+
   public async sendSwiftBySlideAndroid(amount: number | string = 11) {
     if (!browser.isAndroid) return
 

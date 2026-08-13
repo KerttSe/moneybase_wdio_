@@ -2,6 +2,7 @@ import BasePage from './BasePage'
 import HomeScreenPage from './HomeScreenPage'
 import { $, $$, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
+import { markBrowserStackStep } from '../helpers/browserstack.helper'
 
 type WdioEl = ChainablePromiseElement
 
@@ -169,11 +170,181 @@ class FXExchangePage extends BasePage {
     return $('-ios predicate string: name == "flag-USD USD" OR label == "flag-USD USD"')
   }
 
+  /* ── ANDROID: resource-id based selectors (WebView elements) ── */
+
+  private get exchangeFormAndroid() {
+    return $('//*[@resource-id="exchange-form"]')
+  }
+
+  private get fromWalletSelectAndroid() {
+    return $('//*[@resource-id="fromWalletSelect"]')
+  }
+
+  private get fromWalletBalanceAndroid() {
+    return $('//*[@resource-id="fromWallet-balance"]')
+  }
+
+  private get exchangeSubmitBtnByIdAndroid() {
+    return $('//*[@resource-id="exchange-submit-btn"]')
+  }
+
+  private get exchangeSwitchBtnAndroid() {
+    return $('//*[@resource-id="exchange-switch-btn"]')
+  }
+
+  private get toWalletSelectAndroid() {
+    return $('//*[@resource-id="toWalletSelect"]')
+  }
+
+  private get insufficientBalanceErrorAndroid() {
+    return $('//*[@resource-id="insufficient-balance-error"]')
+  }
+
+  private get walletPickerSearchInputAndroid() {
+    return $('//*[@resource-id="search-wallet-input"]')
+  }
+
+  private async selectWalletFromOpenPickerAndroid(currency: string) {
+    const searchInput = this.walletPickerSearchInputAndroid
+    await searchInput.waitForExist({ timeout: 10000 })
+    await searchInput.setValue(currency)
+    await this.hideKeyboardIfNeeded()
+    await browser.pause(1000)
+
+    // Some currencies use a different flag code (e.g. GBP uses flag-GB, not flag-GBP).
+    // Try the canonical full-text first; fall back to matching on " <CODE>" (space + code)
+    // which works for any flag prefix variant.
+    const exactText = `flag-${currency} ${currency}`
+    const codeText = ` ${currency}`
+
+    const scrollPicker = async (direction: 'up' | 'down') => {
+      const startY = direction === 'up' ? 1800 : 1100
+      const endY = direction === 'up' ? 1100 : 1800
+
+      await browser.performActions([
+        {
+          type: 'pointer',
+          id: 'finger1',
+          parameters: { pointerType: 'touch' },
+          actions: [
+            { type: 'pointerMove', duration: 0, x: 540, y: startY },
+            { type: 'pointerDown', button: 0 },
+            { type: 'pause', duration: 100 },
+            { type: 'pointerMove', duration: 500, x: 540, y: endY },
+            { type: 'pointerUp', button: 0 },
+          ],
+        },
+      ])
+      await browser.releaseActions().catch(() => {})
+      await browser.pause(500)
+    }
+
+    const scrollDirections: Array<'up' | 'down'> = ['down', 'up', 'up', 'down']
+
+    for (let attempt = 0; attempt <= scrollDirections.length; attempt++) {
+      // Prefer exact match; if not found, use partial (space + code)
+      let matches = $$(`android=new UiSelector().textContains("${exactText}")`)
+      let count = await matches.length
+      if (count === 0) {
+        matches = $$(`android=new UiSelector().textContains("${codeText}")`)
+        count = await matches.length
+      }
+
+      if (count > 0) {
+        // The form Spinners (behind the AlertDialog) appear earlier in the view hierarchy than
+        // the picker items inside the AlertDialog. Use the LAST match — it is always the actual
+        // picker item. Clicking an earlier match (Spinner) sends the touch to the Spinner's
+        // y-coordinate which, within the picker overlay, lands on the header row (no selection).
+        const target = matches[count - 1]
+        const clicked = await target.click().then(() => true).catch(() => false)
+        if (!clicked) await this.tapElementCenter(target)
+        await this.confirmSelectionIfShown()
+
+        const pickerClosed = await browser.waitUntil(
+          async () => !(await $('android=new UiSelector().className("android.app.AlertDialog")').isExisting().catch(() => false)),
+          { timeout: 3000, interval: 300 }
+        ).then(() => true).catch(() => false)
+
+        if (pickerClosed) {
+          await browser.pause(600)
+          return
+        }
+      }
+
+      const direction = scrollDirections[attempt]
+      if (direction) await scrollPicker(direction)
+    }
+
+    throw new Error(`Wallet picker option not found for ${currency}`)
+  }
+
+  private async dismissOpenPickerAndroid() {
+    // First, dismiss any JS/WebView-level alerts (Angular validation popups)
+    await browser.dismissAlert().catch(() => {})
+    await browser.acceptAlert().catch(() => {})
+
+    const alertOpen = await $('android=new UiSelector().className("android.app.AlertDialog")').isExisting().catch(() => false)
+    if (!alertOpen) return
+
+    // Distinguish wallet picker (has search-wallet-input) from app-level alert dialogs
+    const isWalletPicker = await this.walletPickerSearchInputAndroid.isExisting().catch(() => false)
+
+    if (!isWalletPicker) {
+      // App validation alert — dismiss via OK button or hardware back
+      const okBtn = $('android=new UiSelector().text("OK")')
+      const hasOk = await okBtn.isExisting().catch(() => false)
+      if (hasOk) {
+        await okBtn.click().catch(() => {})
+      } else {
+        // Hardware back dismisses the dialog without navigating the WebView router
+        // (AlertDialog intercepts back press before the WebView history stack)
+        const anyBtn = $('android=new UiSelector().className("android.widget.Button")')
+        const hasBtn = await anyBtn.isExisting().catch(() => false)
+        if (hasBtn) await anyBtn.click().catch(() => {})
+      }
+      await browser.pause(600)
+      return
+    }
+
+    // Wallet picker — tap above the bottom sheet (y≈200 is above dialog start at ~641) to
+    // dismiss via backdrop; browser.back() is avoided because it navigates the WebView router
+    await browser.performActions([
+      {
+        type: 'pointer',
+        id: 'finger1',
+        parameters: { pointerType: 'touch' },
+        actions: [
+          { type: 'pointerMove', duration: 0, x: 540, y: 200 },
+          { type: 'pointerDown', button: 0 },
+          { type: 'pause', duration: 80 },
+          { type: 'pointerUp', button: 0 },
+        ],
+      },
+    ])
+    await browser.releaseActions().catch(() => {})
+    await browser.pause(1000)
+
+    const stillOpen = await $('android=new UiSelector().className("android.app.AlertDialog")').isExisting().catch(() => false)
+    if (stillOpen) {
+      await markBrowserStackStep('FX wallet picker stayed open after backdrop tap')
+    }
+  }
+
   private get backBtn() {
     if (browser.isAndroid) {
       return $('android=new UiSelector().description("Back")')
     }
     return $('~Back')
+  }
+
+  private get androidBackButtonCandidates(): WdioEl[] {
+    return [
+      $('android=new UiSelector().description("Back")'),
+      $('android=new UiSelector().text("Back")'),
+      $('android=new UiSelector().resourceIdMatches(".*:id/back$|^back$")'),
+      $('android=new UiSelector().resourceIdMatches(".*:id/back_button$|^back_button$")'),
+      $('android=new UiSelector().resourceIdMatches(".*:id/toolbar_back$|^toolbar_back$")'),
+    ]
   }
 
   private get closeBtn() {
@@ -287,6 +458,52 @@ class FXExchangePage extends BasePage {
     ])
     await browser.releaseActions().catch(() => {})
     await browser.pause(400)
+  }
+
+  private async returnToHomeFromFxSuccessAndroid() {
+    const homeRoot = $('android=new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")')
+
+    for (const backButton of this.androidBackButtonCandidates) {
+      const visible = await backButton.isDisplayed().catch(() => false)
+      if (!visible) continue
+
+      await this.tapElementCenter(backButton, 10000)
+      await markBrowserStackStep('Returned from FX success screen to Home')
+      await HomeScreenPage.waitForHomeLoaded()
+      return
+    }
+
+    await browser.back().catch(() => {})
+    const homeVisibleAfterSystemBack = await homeRoot
+      .waitForExist({ timeout: 7000 })
+      .then(() => true)
+      .catch(() => false)
+
+    if (homeVisibleAfterSystemBack) {
+      await markBrowserStackStep('Returned from FX success screen to Home using system Back')
+      await HomeScreenPage.waitForHomeLoaded()
+      return
+    }
+
+    await this.debugSnapshot('fx-exchange-success-back-missing')
+    throw new Error('FX exchange stayed on FX success screen, but Back did not return to Home')
+  }
+
+  private async tapEnabledExchangeButton(amount = 11) {
+    await this.waitForReadyToSubmit(amount)
+    await this.exchangeSubmitButton.waitForExist({ timeout: 15000 })
+
+    const canSubmit = await this.exchangeSubmitButton
+      .waitForEnabled({ timeout: 30000 })
+      .then(() => true)
+      .catch(() => false)
+
+    if (!canSubmit) {
+      await this.debugSnapshot('fx-exchange-button-disabled')
+      throw new Error('FX Exchange button did not become enabled')
+    }
+
+    await this.tapElementCenter(this.exchangeSubmitButton, 15000)
   }
 
   private async tapBottomExchangeButtonArea() {
@@ -447,7 +664,9 @@ class FXExchangePage extends BasePage {
     for (let attempt = 0; attempt < 3; attempt += 1) {
       const fromWalletVisible = browser.isIOS
         ? await this.fromWalletField.isExisting().catch(() => false)
-        : await this.fromWalletField.isDisplayed().catch(() => false)
+        : (await this.fromWalletField.isDisplayed().catch(() => false)) ||
+          (await this.fromWalletSelectAndroid.isExisting().catch(() => false)) ||
+          (await this.exchangeFormAndroid.isExisting().catch(() => false))
 
       // iOS: form already visible means New tab is active (no explicit "New" button in newer builds)
       if (fromWalletVisible) return
@@ -472,7 +691,11 @@ class FXExchangePage extends BasePage {
 
       await browser.pause(600)
 
-      const formVisible = await this.fromWalletField.isDisplayed().catch(() => false)
+      const formVisible = browser.isAndroid
+        ? (await this.fromWalletField.isDisplayed().catch(() => false)) ||
+          (await this.fromWalletSelectAndroid.isExisting().catch(() => false)) ||
+          (await this.exchangeFormAndroid.isExisting().catch(() => false))
+        : await this.fromWalletField.isDisplayed().catch(() => false)
       const nowSelected = browser.isAndroid
         ? formVisible
         : await this.newTabButton
@@ -555,22 +778,11 @@ class FXExchangePage extends BasePage {
   }
 
   public async submitExchange(amount = 11) {
-    await this.waitForReadyToSubmit(amount)
-    await this.exchangeSubmitButton.waitForExist({ timeout: 15000 })
-
-    const canSubmit = await this.exchangeSubmitButton
-      .waitForEnabled({ timeout: 30000 })
-      .then(() => true)
-      .catch(() => false)
-
-    if (!canSubmit) {
-      await this.debugSnapshot('fx-exchange-button-disabled')
-      throw new Error('FX Exchange button did not become enabled')
-    }
-
-    await this.tapElementCenter(this.exchangeSubmitButton, 15000)
+    await this.tapEnabledExchangeButton(amount)
 
     if (browser.isAndroid) {
+      const homeRoot = $('android=new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")')
+
       const continueShown = await this.continueBtn
         .waitForExist({ timeout: 12000 })
         .then(() => true)
@@ -578,35 +790,49 @@ class FXExchangePage extends BasePage {
 
       if (continueShown) {
         await this.tapElementCenter(this.continueBtn, 12000)
+        await markBrowserStackStep('Tapped FX success Continue')
       }
 
-      const homeRoot = $('android=new UiSelector().resourceId("home_screen")')
       const homeVisibleAfterContinue = await homeRoot
         .waitForExist({ timeout: 5000 })
         .then(() => true)
         .catch(() => false)
 
-      if (!homeVisibleAfterContinue) {
-        const closeVisible = await this.closeBtn.isDisplayed().catch(() => false)
-        if (closeVisible) {
-          await this.tapElementCenter(this.closeBtn, 10000)
+      if (homeVisibleAfterContinue) {
+        await HomeScreenPage.waitForHomeLoaded()
+        return
+      }
+
+      let stillOnFxScreen = false
+      for (const candidate of this.fxExchangeScreenCandidates) {
+        if (await candidate.isDisplayed().catch(() => false)) {
+          stillOnFxScreen = true
+          break
         }
       }
 
-      const homeVisibleAfterClose = await homeRoot
-        .waitForExist({ timeout: 5000 })
-        .then(() => true)
-        .catch(() => false)
-
-      if (!homeVisibleAfterClose) {
-        const stillOnFxScreen = await this.fxExchangeScreenCandidates[0]?.isDisplayed().catch(() => false)
-        if (stillOnFxScreen) {
-          await browser.back().catch(() => {})
+      if (stillOnFxScreen) {
+        const backVisible = await this.backBtn.isDisplayed().catch(() => false)
+        if (!backVisible) {
+          await this.debugSnapshot('fx-exchange-success-back-missing')
+          throw new Error('FX exchange stayed on FX screen after Continue, but Back button was not visible')
         }
+
+        await this.tapElementCenter(this.backBtn, 10000)
+        await markBrowserStackStep('Returned from FX success screen to Home')
+        await HomeScreenPage.waitForHomeLoaded()
+        return
       }
 
-      await HomeScreenPage.waitForHomeLoaded()
-      return
+      const closeVisible = await this.closeBtn.isDisplayed().catch(() => false)
+      if (closeVisible) {
+        await this.tapElementCenter(this.closeBtn, 10000)
+        await HomeScreenPage.waitForHomeLoaded()
+        return
+      }
+
+      await this.debugSnapshot('fx-exchange-post-submit-unknown-state')
+      throw new Error('FX exchange did not navigate to Home or FX success screen after submit')
     }
 
     await this.continueBtn.waitForExist({ timeout: 20000 })
@@ -615,6 +841,22 @@ class FXExchangePage extends BasePage {
     await this.backBtn.waitForExist({ timeout: 20000 })
     await this.tapElementCenter(this.backBtn, 20000)
     await HomeScreenPage.waitForHomeLoaded()
+  }
+
+  public async submitExchangeAndroid(amount = 11) {
+    await this.tapEnabledExchangeButton(amount)
+
+    const successShown = await this.continueBtn
+      .waitForExist({ timeout: 20000 })
+      .then(() => true)
+      .catch(() => false)
+
+    if (!successShown) {
+      await this.debugSnapshot('fx-exchange-success-missing')
+      throw new Error('FX exchange success screen did not appear after submit')
+    }
+
+    await markBrowserStackStep('FX success screen appeared')
   }
 
   public async verifyExchangeOnHome() {
@@ -633,6 +875,210 @@ class FXExchangePage extends BasePage {
     await this.selectExchangePair(amount)
     await this.submitExchange(amount)
     await this.verifyExchangeOnHome()
+  }
+
+  /* ── ANDROID: granular verification methods ── */
+
+  public async verifyExchangeScreenVisibleAndroid() {
+    await this.exchangeFormAndroid.waitForExist({ timeout: 15000 })
+  }
+
+  private async ensureExchangeScreenReadyAndroid() {
+    const formVisible = await this.exchangeFormAndroid.isExisting().catch(() => false)
+    const fromWalletVisible = await this.fromWalletSelectAndroid.isExisting().catch(() => false)
+    if (formVisible || fromWalletVisible) {
+      await this.ensureNewTabActive()
+      return
+    }
+
+    const homeVisible = await $('android=new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")')
+      .isExisting()
+      .catch(() => false)
+    if (homeVisible) {
+      await this.openFromHome()
+      return
+    }
+
+    await this.debugSnapshot('fx-exchange-screen-missing')
+    throw new Error('FX Exchange screen is not visible')
+  }
+
+  public async verifyFromWalletBalanceDisplayedAndroid() {
+    await this.fromWalletBalanceAndroid.waitForExist({ timeout: 10000 })
+    const text = await this.fromWalletBalanceAndroid.getText()
+    if (!text.includes('Balance')) throw new Error(`Balance not shown: "${text}"`)
+  }
+
+  public async verifySubmitDisabledAndroid() {
+    await this.exchangeSubmitBtnByIdAndroid.waitForExist({ timeout: 10000 })
+    const enabled = await this.exchangeSubmitBtnByIdAndroid.isEnabled()
+    if (enabled) throw new Error('Submit button should be disabled when amount is 0')
+  }
+
+  private async verifySelectedWalletAndroid(
+    walletField: WdioEl,
+    currency: string,
+    label: 'from' | 'to'
+  ) {
+    const selected = await browser.waitUntil(
+      async () => {
+        const text = await walletField.getText().catch(() => '')
+        return text.includes(currency)
+      },
+      { timeout: 5000, interval: 500 }
+    ).then(() => true).catch(() => false)
+
+    if (selected) return true
+
+    const homeVisible = await $('android=new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")')
+      .isExisting()
+      .catch(() => false)
+    if (homeVisible) {
+      await markBrowserStackStep(`FX ${label} wallet ${currency} selection landed on Home`)
+      return false
+    }
+
+    const pickerOpen = await $('android=new UiSelector().className("android.app.AlertDialog")')
+      .isExisting()
+      .catch(() => false)
+    if (pickerOpen) {
+      await markBrowserStackStep(`FX ${label} wallet ${currency} picker stayed open`)
+      return false
+    }
+
+    await markBrowserStackStep(`FX ${label} wallet did not update to ${currency}`)
+    return false
+  }
+
+  public async selectFromWalletAndroid(currency: string) {
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      await this.ensureExchangeScreenReadyAndroid()
+      await this.hideKeyboardIfNeeded()
+      await this.dismissOpenPickerAndroid()
+
+      // No-op if already selected — re-selecting triggers an Angular form reset
+      const currentText = await this.fromWalletSelectAndroid.getText().catch(() => '')
+      if (currentText.includes(currency)) {
+        await markBrowserStackStep(`Verified ${currency} as from wallet`)
+        return
+      }
+
+      // Prefer "From Wallet" label (triggers Angular picker); fall back to spinner when label is gone
+      const labelVisible = await this.fromWalletField.isExisting().catch(() => false)
+      if (labelVisible) {
+        await this.tapElementCenter(this.fromWalletField)
+      } else {
+        await this.tapElementCenter(this.fromWalletSelectAndroid)
+      }
+      await this.selectWalletFromOpenPickerAndroid(currency)
+
+      if (await this.verifySelectedWalletAndroid(this.fromWalletSelectAndroid, currency, 'from')) {
+        await markBrowserStackStep(`Selected ${currency} as from wallet`)
+        return
+      }
+    }
+
+    throw new Error(`From wallet did not update to ${currency}`)
+  }
+
+  public async selectToWalletAndroid(currency: string) {
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      await this.ensureExchangeScreenReadyAndroid()
+      await this.hideKeyboardIfNeeded()
+      await this.dismissOpenPickerAndroid()
+
+      // No-op if already selected — re-selecting triggers an Angular form reset
+      const currentText = await this.toWalletSelectAndroid.getText().catch(() => '')
+      if (currentText.includes(currency)) {
+        await markBrowserStackStep(`Verified ${currency} as to wallet`)
+        return
+      }
+
+      // Prefer "To Wallet" label (triggers Angular picker); fall back to spinner when label is gone
+      const labelVisible = await this.toWalletField.isExisting().catch(() => false)
+      if (labelVisible) {
+        await this.tapElementCenter(this.toWalletField)
+      } else {
+        await this.tapElementCenter(this.toWalletSelectAndroid)
+      }
+      await this.selectWalletFromOpenPickerAndroid(currency)
+
+      if (await this.verifySelectedWalletAndroid(this.toWalletSelectAndroid, currency, 'to')) {
+        await markBrowserStackStep(`Selected ${currency} as to wallet`)
+        return
+      }
+    }
+
+    throw new Error(`To wallet did not update to ${currency}`)
+  }
+
+  public async tapSwitchButtonAndroid() {
+    await this.tapElementCenter(this.exchangeSwitchBtnAndroid)
+    await browser.pause(500)
+    await markBrowserStackStep('Tapped FX swap button')
+  }
+
+  public async verifyFromWalletAndroid(currency: string) {
+    await browser.waitUntil(
+      async () => (await this.fromWalletSelectAndroid.getText().catch(() => '')).includes(currency),
+      { timeout: 10000, interval: 500, timeoutMsg: `From wallet expected "${currency}"` }
+    )
+  }
+
+  public async verifyToWalletAndroid(currency: string) {
+    await browser.waitUntil(
+      async () => (await this.toWalletSelectAndroid.getText().catch(() => '')).includes(currency),
+      { timeout: 10000, interval: 500, timeoutMsg: `To wallet expected "${currency}"` }
+    )
+  }
+
+  public async enterAmountAndroid(amount: number | string) {
+    await this.enterFromAmount(amount)
+    await this.hideKeyboardIfNeeded()
+    await browser.pause(300)
+  }
+
+  public async verifyInsufficientBalanceErrorAndroid() {
+    await browser.waitUntil(
+      async () => {
+        // Primary: submit button disabled means validation error fired (covers all error message variants)
+        const btnExists = await this.exchangeSubmitBtnByIdAndroid.isExisting().catch(() => false)
+        if (btnExists) {
+          const enabled = await this.exchangeSubmitBtnByIdAndroid.isEnabled().catch(() => true)
+          if (!enabled) return true
+        }
+        // Secondary: look for explicit error element or text
+        const byId = await this.insufficientBalanceErrorAndroid.isExisting().catch(() => false)
+        const byInsufficient = await $('android=new UiSelector().textContains("Insufficient")').isExisting().catch(() => false)
+        const byExceed = await $('android=new UiSelector().textContains("xceed")').isExisting().catch(() => false)
+        return byId || byInsufficient || byExceed
+      },
+      { timeout: 20000, interval: 500, timeoutMsg: 'Insufficient balance error did not appear and submit button did not become disabled' }
+    )
+  }
+
+  public async verifyToAmountCalculatedAndroid() {
+    const toInput = $('//*[@resource-id="custom-number-input-to"]')
+    await browser.waitUntil(
+      async () => {
+        const text =
+          (await toInput.getText().catch(() => '')) ||
+          (await toInput.getAttribute('text').catch(() => ''))
+        return !isNaN(parseFloat(text)) && parseFloat(text) > 0
+      },
+      { timeout: 10000, interval: 500, timeoutMsg: 'Exchange rate not calculated in to-amount field' }
+    )
+  }
+
+  public async completeExchangeAndroid(fromCurrency: string, toCurrency: string, amount = 11) {
+    await this.ensureExchangeScreenReadyAndroid()
+    await this.selectFromWalletAndroid(fromCurrency)
+    await this.ensureExchangeScreenReadyAndroid()
+    await this.selectToWalletAndroid(toCurrency)
+    await this.ensureExchangeScreenReadyAndroid()
+    await this.enterFromAmount(amount)
+    await this.hideKeyboardIfNeeded()
+    await this.submitExchangeAndroid(amount)
   }
 }
 

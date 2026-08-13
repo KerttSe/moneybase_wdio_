@@ -161,8 +161,6 @@ const markBrowserStackFailure = async (error: Error) => {
   }
 }
 
-
-
 if (useBrowserStack) {
   const needsAndroid = !platformFilter || platformFilter === 'android'
   const needsIos = !platformFilter || platformFilter === 'ios'
@@ -377,6 +375,7 @@ export const config: WebdriverIO.Config = {
         arguments: { name: sessionName },
       })}`)
       .catch(() => {})
+
   },
 
   afterTest: async function (test, context, { error }) {
