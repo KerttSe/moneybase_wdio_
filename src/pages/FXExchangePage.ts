@@ -204,6 +204,46 @@ class FXExchangePage extends BasePage {
     return $('//*[@resource-id="search-wallet-input"]')
   }
 
+  private get walletPickerSearchInputIOS() {
+    return $('-ios predicate string:type == "XCUIElementTypeTextField" AND (value == "Search Wallet" OR placeholderValue == "Search Wallet")')
+  }
+
+  private get insufficientBalanceErrorIOS() {
+    return $('-ios predicate string:name BEGINSWITH "Insufficient balance" OR label BEGINSWITH "Insufficient balance"')
+  }
+
+  private get currentRateIOS() {
+    return $('-ios predicate string:name BEGINSWITH "Current Rate" OR label BEGINSWITH "Current Rate"')
+  }
+
+  private selectedWalletIOS(currency: string) {
+    return $(`-ios predicate string:name == "flag-${currency} ${currency}" OR label == "flag-${currency} ${currency}"`)
+  }
+
+  private walletOptionIOS(currency: string) {
+    return $(`//XCUIElementTypeOther[.//XCUIElementTypeImage[@name="flag-${currency}" or @label="flag-${currency}"] and .//XCUIElementTypeStaticText[@name="${currency}" or @label="${currency}"]]`)
+  }
+
+  private walletOptionCodeIOS(currency: string) {
+    return $$(`-ios predicate string:type == "XCUIElementTypeStaticText" AND visible == 1 AND (name == "${currency}" OR label == "${currency}")`)
+  }
+
+  private walletOptionFlagIOS(currency: string) {
+    return $$(`-ios predicate string:type == "XCUIElementTypeImage" AND visible == 1 AND (name == "flag-${currency}" OR label == "flag-${currency}")`)
+  }
+
+  private get fromWalletFieldIOS() {
+    return $('(//XCUIElementTypeOther[starts-with(@name, "flag-") and @visible="true"])[1] | //XCUIElementTypeOther[@name="From Wallet" or @label="From Wallet"]')
+  }
+
+  private get toWalletFieldIOS() {
+    return $('(//XCUIElementTypeOther[starts-with(@name, "flag-") and @visible="true"])[2] | //XCUIElementTypeOther[@name="To Wallet" or @label="To Wallet"]')
+  }
+
+  private get successMessageIOS() {
+    return $('~Exchange Successful')
+  }
+
   private async selectWalletFromOpenPickerAndroid(currency: string) {
     const searchInput = this.walletPickerSearchInputAndroid
     await searchInput.waitForExist({ timeout: 10000 })
@@ -276,6 +316,52 @@ class FXExchangePage extends BasePage {
     }
 
     throw new Error(`Wallet picker option not found for ${currency}`)
+  }
+
+  private async selectWalletFromOpenPickerIOS(currency: string) {
+    await this.walletPickerSearchInputIOS.waitForExist({ timeout: 10000 })
+    await this.walletPickerSearchInputIOS.clearValue().catch(() => {})
+    await this.walletPickerSearchInputIOS.setValue(currency)
+    await browser.pause(700)
+
+    let option: WebdriverIO.Element | undefined
+    const found = await browser.waitUntil(
+      async () => {
+        const textMatches = await this.walletOptionCodeIOS(currency)
+        const flagMatches = await this.walletOptionFlagIOS(currency)
+        const candidates = [...textMatches, ...flagMatches]
+
+        for (const candidate of candidates) {
+          const displayed = await candidate.isDisplayed().catch(() => false)
+          if (displayed) {
+            option = candidate
+            return true
+          }
+        }
+
+        return false
+      },
+      { timeout: 10000, interval: 300 }
+    ).catch(() => false)
+
+    if (!found || !option) {
+      await this.debugSnapshot(`fx-ios-wallet-option-${currency}`)
+      throw new Error(`iOS wallet picker option not found for ${currency}`)
+    }
+
+    await this.tapElementCenter(option, 10000)
+
+    const pickerClosed = await browser.waitUntil(
+      async () => !(await this.walletPickerSearchInputIOS.isExisting().catch(() => false)),
+      { timeout: 5000, interval: 300 }
+    ).then(() => true).catch(() => false)
+
+    if (!pickerClosed) {
+      await this.debugSnapshot(`fx-ios-wallet-picker-stayed-open-${currency}`)
+      throw new Error(`iOS wallet picker stayed open after selecting ${currency}`)
+    }
+
+    await browser.pause(600)
   }
 
   private async dismissOpenPickerAndroid() {
@@ -401,13 +487,16 @@ class FXExchangePage extends BasePage {
   }
 
   private async hideKeyboardIfNeeded() {
-    await browser.hideKeyboard().catch(() => {})
-
     if (browser.isAndroid) {
+      await browser.hideKeyboard().catch(() => {})
       await browser.pause(300)
       return
     }
 
+    await this.tapOutsideKeyboard()
+  }
+
+  private async tapOutsideKeyboard() {
     const { width } = await browser.getWindowRect()
     const x = Math.round(width * 0.5)
     const y = 84
@@ -629,9 +718,9 @@ class FXExchangePage extends BasePage {
             return hasExpectedAmount && submitVisible
           }
 
-          const eurVisible = await this.selectedEurWallet.isDisplayed().catch(() => false)
-          const usdVisible = await this.selectedUsdWallet.isDisplayed().catch(() => false)
-          return eurVisible && usdVisible && hasExpectedAmount && submitVisible
+          const toAmount = Number.parseFloat(String(values[1] ?? '').replace(',', '.'))
+          const submitEnabled = await this.exchangeSubmitButton.isEnabled().catch(() => false)
+          return hasExpectedAmount && Number.isFinite(toAmount) && toAmount > 0 && submitVisible && submitEnabled
         },
         {
           timeout: 15000,
@@ -883,6 +972,23 @@ class FXExchangePage extends BasePage {
     await this.exchangeFormAndroid.waitForExist({ timeout: 15000 })
   }
 
+  public async verifyExchangeScreenVisibleIOS() {
+    await $('~FX Exchange').waitForExist({ timeout: 15000 })
+    await this.fromWalletFieldIOS.waitForExist({ timeout: 15000 })
+  }
+
+  private async ensureExchangeScreenReadyIOS() {
+    const screenVisible = await $('~FX Exchange').isExisting().catch(() => false)
+    const fromWalletVisible = await this.fromWalletFieldIOS.isExisting().catch(() => false)
+    if (screenVisible && fromWalletVisible) {
+      await this.ensureNewTabActive()
+      return
+    }
+
+    await this.debugSnapshot('fx-ios-exchange-screen-missing')
+    throw new Error('iOS FX Exchange screen is not visible')
+  }
+
   private async ensureExchangeScreenReadyAndroid() {
     const formVisible = await this.exchangeFormAndroid.isExisting().catch(() => false)
     const fromWalletVisible = await this.fromWalletSelectAndroid.isExisting().catch(() => false)
@@ -909,10 +1015,20 @@ class FXExchangePage extends BasePage {
     if (!text.includes('Balance')) throw new Error(`Balance not shown: "${text}"`)
   }
 
+  public async verifyFromWalletBalanceDisplayedIOS() {
+    await $('~New Available Balance').waitForExist({ timeout: 10000 })
+  }
+
   public async verifySubmitDisabledAndroid() {
     await this.exchangeSubmitBtnByIdAndroid.waitForExist({ timeout: 10000 })
     const enabled = await this.exchangeSubmitBtnByIdAndroid.isEnabled()
     if (enabled) throw new Error('Submit button should be disabled when amount is 0')
+  }
+
+  public async verifySubmitDisabledIOS() {
+    await this.exchangeSubmitButton.waitForExist({ timeout: 10000 })
+    const enabled = await this.exchangeSubmitButton.isEnabled()
+    if (enabled) throw new Error('iOS submit button should be disabled')
   }
 
   private async verifySelectedWalletAndroid(
@@ -981,6 +1097,28 @@ class FXExchangePage extends BasePage {
     throw new Error(`From wallet did not update to ${currency}`)
   }
 
+  public async selectFromWalletIOS(currency: string) {
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      await this.ensureExchangeScreenReadyIOS()
+      await this.hideKeyboardIfNeeded()
+
+      if (await this.selectedWalletIOS(currency).isExisting().catch(() => false)) {
+        await markBrowserStackStep(`Verified ${currency} as iOS from wallet`)
+        return
+      }
+
+      await this.tapElementCenter(this.fromWalletFieldIOS, 10000)
+      await this.selectWalletFromOpenPickerIOS(currency)
+
+      if (await this.verifySelectedWalletIOS(currency, 'from')) {
+        await markBrowserStackStep(`Selected ${currency} as iOS from wallet`)
+        return
+      }
+    }
+
+    throw new Error(`iOS from wallet did not update to ${currency}`)
+  }
+
   public async selectToWalletAndroid(currency: string) {
     for (let attempt = 0; attempt < 2; attempt += 1) {
       await this.ensureExchangeScreenReadyAndroid()
@@ -1012,10 +1150,41 @@ class FXExchangePage extends BasePage {
     throw new Error(`To wallet did not update to ${currency}`)
   }
 
+  public async selectToWalletIOS(currency: string) {
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      await this.ensureExchangeScreenReadyIOS()
+      await this.hideKeyboardIfNeeded()
+
+      const selected = await this.selectedWalletIOS(currency).isExisting().catch(() => false)
+      const selectedWalletCount = await $$('//XCUIElementTypeOther[starts-with(@name, "flag-") and @visible="true"]').length
+      if (selected && selectedWalletCount > 1) {
+        await markBrowserStackStep(`Verified ${currency} as iOS to wallet`)
+        return
+      }
+
+      await this.tapElementCenter(this.toWalletFieldIOS, 10000)
+      await this.selectWalletFromOpenPickerIOS(currency)
+
+      if (await this.verifySelectedWalletIOS(currency, 'to')) {
+        await markBrowserStackStep(`Selected ${currency} as iOS to wallet`)
+        return
+      }
+    }
+
+    throw new Error(`iOS to wallet did not update to ${currency}`)
+  }
+
   public async tapSwitchButtonAndroid() {
     await this.tapElementCenter(this.exchangeSwitchBtnAndroid)
     await browser.pause(500)
     await markBrowserStackStep('Tapped FX swap button')
+  }
+
+  public async tapSwitchButtonIOS() {
+    const switchButton = $('//XCUIElementTypeButton[@visible="true" and not(@name="Exchange") and not(@name="History") and not(@name="Back") and not(@name="Close") and not(@name="Continue")]')
+    await this.tapElementCenter(switchButton, 10000)
+    await browser.pause(500)
+    await markBrowserStackStep('Tapped iOS FX swap button')
   }
 
   public async verifyFromWalletAndroid(currency: string) {
@@ -1032,9 +1201,41 @@ class FXExchangePage extends BasePage {
     )
   }
 
+  private async verifySelectedWalletIOS(currency: string, label: 'from' | 'to') {
+    const index = label === 'from' ? 0 : 1
+    return browser.waitUntil(
+      async () => {
+        const visibleWallets = await $$('//XCUIElementTypeOther[starts-with(@name, "flag-") and @visible="true"]')
+        const text = await visibleWallets[index]?.getAttribute('name').catch(() => '')
+        return String(text).includes(currency)
+      },
+      { timeout: 7000, interval: 500 }
+    ).then(() => true).catch(() => false)
+  }
+
+  public async verifyFromWalletIOS(currency: string) {
+    await browser.waitUntil(
+      async () => this.verifySelectedWalletIOS(currency, 'from'),
+      { timeout: 10000, interval: 500, timeoutMsg: `iOS from wallet expected "${currency}"` }
+    )
+  }
+
+  public async verifyToWalletIOS(currency: string) {
+    await browser.waitUntil(
+      async () => this.verifySelectedWalletIOS(currency, 'to'),
+      { timeout: 10000, interval: 500, timeoutMsg: `iOS to wallet expected "${currency}"` }
+    )
+  }
+
   public async enterAmountAndroid(amount: number | string) {
     await this.enterFromAmount(amount)
     await this.hideKeyboardIfNeeded()
+    await browser.pause(300)
+  }
+
+  public async enterAmountIOS(amount: number | string) {
+    await this.enterFromAmount(amount)
+    await this.tapOutsideKeyboard()
     await browser.pause(300)
   }
 
@@ -1057,6 +1258,17 @@ class FXExchangePage extends BasePage {
     )
   }
 
+  public async verifyInsufficientBalanceErrorIOS() {
+    await browser.waitUntil(
+      async () => {
+        const errorVisible = await this.insufficientBalanceErrorIOS.isExisting().catch(() => false)
+        const submitDisabled = await this.exchangeSubmitButton.isEnabled().then(enabled => !enabled).catch(() => false)
+        return errorVisible || submitDisabled
+      },
+      { timeout: 15000, interval: 500, timeoutMsg: 'iOS insufficient balance error did not appear and submit stayed enabled' }
+    )
+  }
+
   public async verifyToAmountCalculatedAndroid() {
     const toInput = $('//*[@resource-id="custom-number-input-to"]')
     await browser.waitUntil(
@@ -1070,6 +1282,18 @@ class FXExchangePage extends BasePage {
     )
   }
 
+  public async verifyToAmountCalculatedIOS() {
+    await browser.waitUntil(
+      async () => {
+        const values = await this.getVisibleAmountValues()
+        const toAmount = Number.parseFloat(String(values[1] ?? '').replace(',', '.'))
+        const rateVisible = await this.currentRateIOS.isExisting().catch(() => false)
+        return Number.isFinite(toAmount) && toAmount > 0 && rateVisible
+      },
+      { timeout: 15000, interval: 500, timeoutMsg: 'iOS exchange rate was not calculated in to-amount field' }
+    )
+  }
+
   public async completeExchangeAndroid(fromCurrency: string, toCurrency: string, amount = 11) {
     await this.ensureExchangeScreenReadyAndroid()
     await this.selectFromWalletAndroid(fromCurrency)
@@ -1079,6 +1303,33 @@ class FXExchangePage extends BasePage {
     await this.enterFromAmount(amount)
     await this.hideKeyboardIfNeeded()
     await this.submitExchangeAndroid(amount)
+  }
+
+  public async completeExchangeIOS(fromCurrency: string, toCurrency: string, amount = 11) {
+    await this.ensureExchangeScreenReadyIOS()
+    await this.selectFromWalletIOS(fromCurrency)
+    await this.ensureExchangeScreenReadyIOS()
+    await this.selectToWalletIOS(toCurrency)
+    await this.ensureExchangeScreenReadyIOS()
+    await this.enterAmountIOS(amount)
+    await this.submitExchangeIOS(amount)
+  }
+
+  public async submitExchangeIOS(amount = 11) {
+    await this.tapEnabledExchangeButton(amount)
+
+    const successShown = await this.successMessageIOS
+      .waitForExist({ timeout: 20000 })
+      .then(() => true)
+      .catch(() => false)
+
+    if (!successShown) {
+      await this.debugSnapshot('fx-ios-exchange-success-missing')
+      throw new Error('iOS FX exchange success screen did not appear after submit')
+    }
+
+    await this.continueBtn.waitForExist({ timeout: 10000 })
+    await markBrowserStackStep('iOS FX success screen appeared')
   }
 }
 
