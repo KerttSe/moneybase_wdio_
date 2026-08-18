@@ -568,6 +568,7 @@ class HomeScreenPage extends BasePage {
     if (!browser.isAndroid) return false
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
+    await this.dismissKnownAndroidBlockingPopups().catch(() => {})
 
     const appeared = await browser.waitUntil(
       async () => {
