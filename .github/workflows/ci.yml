@@ -215,6 +215,10 @@ jobs:
       MB_COUNTRY: ${{ secrets.MB_COUNTRY }}
       MB_PHONE: ${{ secrets.MB_PHONE }}
       MB_PIN: ${{ secrets.MB_PIN }}
+      MB_ALT_COUNTRY: ${{ secrets.BH_MB_COUNTRY }}
+      MB_ALT_PHONE: ${{ secrets.BH_MB_PHONE }}
+      MB_ALT_PIN: ${{ secrets.BH_MB_PIN }}
+      MB_ALT_OTP_PHONE: ${{ secrets.BH_OTP_PHONE }}
       AUTH_OTP_MB_PHONE: ${{ secrets.AUTH_OTP_MB_PHONE }}
       AUTH_OTP_MB_PIN: ${{ secrets.AUTH_OTP_MB_PIN }}
       AUTH_OTP_OTP_PHONE: ${{ secrets.AUTH_OTP_OTP_PHONE }}
