@@ -141,7 +141,7 @@ jobs:
           echo "Secondary jobs: $(echo "$SECONDARY_INCLUDE" | jq 'length')"
 
   e2e-smoke:
-    name: "[Lane 1] SMOKE (${{ matrix.platform }}) — ${{ matrix.spec }}"
+    name: "[1] SMOKE (${{ matrix.platform }}) — ${{ matrix.spec }}"
     needs: setup-smoke
     if: needs.setup-smoke.result == 'success'
     runs-on: arc-runner-mb-deploy-stg-scale-set
@@ -202,7 +202,7 @@ jobs:
           if-no-files-found: warn
 
   e2e-smoke-secondary:
-    name: "[Lane 2] SMOKE secondary (${{ matrix.platform }}) — ${{ matrix.spec }}"
+    name: "[2] SMOKE secondary (${{ matrix.platform }}) — ${{ matrix.spec }}"
     needs: setup-smoke
     if: needs.setup-smoke.result == 'success'
     runs-on: arc-runner-mb-deploy-stg-scale-set
