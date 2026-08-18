@@ -1,5 +1,6 @@
 import type { ChainablePromiseElement } from 'webdriverio'
 import { $, browser } from '@wdio/globals'
+import { AUTH } from '../data/credentials'
 
 type WdioEl = ChainablePromiseElement
 type ResolvableWdioEl = WdioEl | WebdriverIO.Element | Promise<WdioEl | WebdriverIO.Element>
@@ -57,6 +58,26 @@ export default class BasePage {
     return $('android=new UiSelector().resourceId("com.moneybase.qa:id/rightActionView")')
   }
 
+  private get androidMoreMenuMovedTooltipTitle() {
+    return $('android=new UiSelector().text("More menu has been moved")')
+  }
+
+  private get androidMoreMenuMovedTooltipDismiss() {
+    return $('//android.widget.TextView[@text="Dismiss"]/ancestor::*[@clickable="true"][1]')
+  }
+
+  private get androidMoreMenuMovedTooltipDismissText() {
+    return $('android=new UiSelector().text("Dismiss")')
+  }
+
+  private get androidDeviceNotSyncedTitle() {
+    return $('android=new UiSelector().text("Device Not Synced")')
+  }
+
+  private get androidDeviceNotSyncedOkButton() {
+    return $('//android.widget.TextView[@text="Device Not Synced"]/ancestor::*[android.widget.TextView[@text="OK"]][1]//android.widget.TextView[@text="OK"]/ancestor::*[@clickable="true"][1]')
+  }
+
   private get androidVerificationSuccessContinueBtn() {
     return this.byIdRx('verificationSuccess_button_continue')
   }
@@ -83,6 +104,30 @@ export default class BasePage {
 
   private get androidPayRoot() {
     return this.byIdRx('pay_screen')
+  }
+
+  private get androidMoreRoot() {
+    return this.byIdRx('more_screen')
+  }
+
+  private get androidAccountSelectionRoot() {
+    return this.byIdRx('accountSelection_screen')
+  }
+
+  private get androidMoreCloseButton() {
+    return $('~Close')
+  }
+
+  private get androidDrawerLogoutItem() {
+    return $('android=new UiSelector().text("Log out")')
+  }
+
+  private get androidDrawerSettingsItem() {
+    return $('android=new UiSelector().text("Settings")')
+  }
+
+  private get androidDrawerWalletsItem() {
+    return $('android=new UiSelector().text("Wallets")')
   }
 
   private async normalizeHomeAfterGooglePayDismiss() {
@@ -194,7 +239,57 @@ export default class BasePage {
       return true
     }
 
- 
+    const moreMenuTooltipShown = await this.androidMoreMenuMovedTooltipTitle.isDisplayed().catch(() => false)
+    const moreMenuTooltipDismissShown = await this.androidMoreMenuMovedTooltipDismiss.isDisplayed().catch(() => false)
+    if (moreMenuTooltipShown || moreMenuTooltipDismissShown) {
+      if (moreMenuTooltipDismissShown) {
+        const clicked = await this.androidMoreMenuMovedTooltipDismiss.click().then(() => true).catch(() => false)
+        if (!clicked) {
+          const textShown = await this.androidMoreMenuMovedTooltipDismissText.isDisplayed().catch(() => false)
+          if (textShown) {
+            const location = await this.androidMoreMenuMovedTooltipDismissText.getLocation()
+            const size = await this.androidMoreMenuMovedTooltipDismissText.getSize()
+            await browser.performActions([
+              {
+                type: 'pointer',
+                id: 'finger-more-menu-tooltip-dismiss',
+                parameters: { pointerType: 'touch' },
+                actions: [
+                  {
+                    type: 'pointerMove',
+                    duration: 0,
+                    x: Math.round(location.x + size.width / 2),
+                    y: Math.round(location.y + size.height / 2),
+                  },
+                  { type: 'pointerDown', button: 0 },
+                  { type: 'pause', duration: 80 },
+                  { type: 'pointerUp', button: 0 },
+                ],
+              },
+            ])
+            await browser.releaseActions().catch(() => {})
+          }
+        }
+      } else {
+        await browser.back().catch(() => {})
+      }
+      await this.androidMoreMenuMovedTooltipTitle.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+      await browser.pause(300)
+      return true
+    }
+
+    const deviceNotSyncedShown = await this.androidDeviceNotSyncedTitle.isDisplayed().catch(() => false)
+    if (deviceNotSyncedShown) {
+      const okShown = await this.androidDeviceNotSyncedOkButton.isDisplayed().catch(() => false)
+      if (okShown) {
+        await this.androidDeviceNotSyncedOkButton.click().catch(() => {})
+      } else {
+        await browser.back().catch(() => {})
+      }
+      await this.androidDeviceNotSyncedTitle.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+      await browser.pause(300)
+      return true
+    }
 
     const neutralDismissed = await this.dismissCommonAndroidAlert(2500).catch(() => false)
     if (neutralDismissed) return true
@@ -266,8 +361,11 @@ export default class BasePage {
     while (Date.now() < deadline) {
       await browser.switchContext('NATIVE_APP').catch(() => {})
 
+      const homeShown = await this.byIdRx('home_screen').isDisplayed().catch(() => false)
+      if (homeShown) return true
+
       await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
-      await this.dismissCommonAndroidAlert(2000).catch(() => false)
+      await this.dismissCommonAndroidAlert(500).catch(() => false)
 
       const currentActivity = await browser.getCurrentActivity().catch(() => '')
       const isFreshchatActivity = /freshchat|CategoryListActivity|ConversationActivity/i.test(currentActivity)
@@ -277,8 +375,24 @@ export default class BasePage {
         continue
       }
 
-      const homeShown = await this.byIdRx('home_screen').isDisplayed().catch(() => false)
-      if (homeShown) return true
+      const moreShown = await this.androidMoreRoot.isDisplayed().catch(() => false)
+      const drawerShown = (
+        moreShown ||
+        await this.androidAccountSelectionRoot.isDisplayed().catch(() => false) ||
+        await this.androidDrawerLogoutItem.isDisplayed().catch(() => false) ||
+        await this.androidDrawerSettingsItem.isDisplayed().catch(() => false) ||
+        await this.androidDrawerWalletsItem.isDisplayed().catch(() => false)
+      )
+      if (drawerShown) {
+        const closeShown = await this.androidMoreCloseButton.isDisplayed().catch(() => false)
+        if (closeShown) {
+          await this.androidMoreCloseButton.click().catch(() => {})
+        } else {
+          await browser.back().catch(() => {})
+        }
+        await browser.pause(400)
+        continue
+      }
 
       const cardsShown = await this.byIdRx('cards_screen').isDisplayed().catch(() => false)
       const payShown = await this.byIdRx('pay_screen').isDisplayed().catch(() => false)
@@ -305,6 +419,97 @@ export default class BasePage {
     }
 
     return await this.byIdRx('home_screen').isDisplayed().catch(() => false)
+  }
+
+  protected async switchAndroidAccountByCode(accountCode: string, accountType?: string) {
+    if (!browser.isAndroid) return
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+    await this.stabilizeAndroidHomeSurface(20000).catch(() => false)
+
+    const homeAccountLabel = $(`//android.widget.TextView[contains(@text,"${accountCode}")]`)
+    const alreadyOnAccount = await homeAccountLabel.isDisplayed().catch(() => false)
+    if (alreadyOnAccount) return
+
+    const userAvatarBtn = this.byIdRx('home_button_userAvatar')
+    const moreScreen = this.byIdRx('more_screen')
+    const accountPickerButton = this.byIdRx('more_button_accountPicker')
+    const accountSelectionScreen = this.byIdRx('accountSelection_screen')
+    const oldSubAccountsTitle = $('android=new UiSelector().text("Sub Accounts")')
+
+    await userAvatarBtn.waitForDisplayed({ timeout: 20000 })
+    await this.tap(userAvatarBtn)
+
+    await browser.waitUntil(
+      async () => {
+        if (await accountSelectionScreen.isDisplayed().catch(() => false)) return true
+        if (await oldSubAccountsTitle.isDisplayed().catch(() => false)) return true
+
+        if (await moreScreen.isDisplayed().catch(() => false)) {
+          await accountPickerButton.waitForDisplayed({ timeout: 5000 }).catch(() => {})
+          if (await accountPickerButton.isDisplayed().catch(() => false)) {
+            await this.tap(accountPickerButton)
+          }
+        }
+
+        return (
+          await accountSelectionScreen.isDisplayed().catch(() => false) ||
+          await oldSubAccountsTitle.isDisplayed().catch(() => false)
+        )
+      },
+      {
+        timeout: 15000,
+        interval: 500,
+        timeoutMsg: 'Android account picker did not open',
+      }
+    )
+
+    const accountByCode = $(`//*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"${accountCode}")]/ancestor::*[@clickable="true"][1]`)
+    const accountSearchInput = $('//*[@resource-id="accountSelection_screen"]//android.widget.EditText')
+    const legacyByCode = $(`//android.widget.TextView[contains(@text,"${accountCode}")]/ancestor::*[@clickable="true"][1]`)
+    const legacyByType = accountType
+      ? $(`//*[@content-desc="${accountType}"]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[contains(@text,"${accountType}")]/ancestor::*[@clickable="true"][1]`)
+      : legacyByCode
+
+    if (!(await accountByCode.isDisplayed().catch(() => false)) && await accountSearchInput.isDisplayed().catch(() => false)) {
+      await accountSearchInput.setValue(accountCode).catch(async () => {
+        await this.tap(accountSearchInput)
+        await browser.keys(accountCode)
+      })
+      await browser.pause(500)
+    }
+
+    if (await accountByCode.isDisplayed().catch(() => false)) {
+      await this.tap(accountByCode)
+    } else if (await legacyByCode.isDisplayed().catch(() => false)) {
+      await this.tap(legacyByCode)
+    } else {
+      await legacyByType.waitForDisplayed({ timeout: 15000 })
+      await this.tap(legacyByType)
+    }
+
+    await this.dismissCommonAndroidAlert(5000).catch(() => false)
+    await this.dismissKnownAndroidBlockingPopups(3).catch(() => false)
+    await this.stabilizeAndroidHomeSurface(30000).catch(() => false)
+
+    await browser.waitUntil(
+      async () => {
+        await this.dismissKnownAndroidBlockingPopups(2).catch(() => false)
+        return await $(`//android.widget.TextView[contains(@text,"${accountCode}")]`).isDisplayed().catch(() => false)
+      },
+      {
+        timeout: 30000,
+        interval: 500,
+        timeoutMsg: `Android home did not switch to account ${accountCode}`,
+      }
+    )
+  }
+
+  protected async ensureAndroidIndividualAccount() {
+    const accountCode = AUTH.individualAccountCode
+    if (accountCode) {
+      await this.switchAndroidAccountByCode(accountCode, 'Individual')
+    }
   }
 
   async pause(ms = 1000) {
@@ -363,7 +568,8 @@ export default class BasePage {
         await el.setValue(value)
         return
       }
-      throw new Error(`type: element not found — ${String(el.selector)}`)
+      const sel = await Promise.resolve(el.selector).catch(() => '?')
+      throw new Error(`type: element not found — ${sel}`)
     }
   }
 

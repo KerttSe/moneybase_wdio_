@@ -98,27 +98,7 @@ class BankTransferP2PIndividualPage extends BasePage {
   private async ensureSingleAccountAndroid() {
     if (!browser.isAndroid) return
 
-    const isBusiness = await this.businessAccountLabelAndroid.isDisplayed().catch(() => false)
-    if (!isBusiness) return
-
-    await this.userAvatarBtnAndroid.waitForExist({ timeout: 15000 })
-    await this.tap(this.userAvatarBtnAndroid)
-
-    const hasSingleByDesc = await this.singleAccountItemAndroid.isDisplayed().catch(() => false)
-    const hasSingleByText = await this.singleAccountItemAndroidByText.isDisplayed().catch(() => false)
-
-    if (hasSingleByDesc) {
-      await this.tap(this.singleAccountItemAndroid)
-    } else if (hasSingleByText) {
-      await this.tap(this.singleAccountItemAndroidByText)
-    }
-
-    //  alert button3 is expected ONLY after the switch; so we wait here (not before)
-    await this.waitAndDismissAlertAfterSwitchAndroid(12000, 1200)
-    await this.homeRootAndroid.waitForExist({ timeout: 30000 }).catch(() => {})
-    await this.businessAccountLabelAndroid
-      .waitForExist({ reverse: true, timeout: 30000 })
-      .catch(() => {})
+    await this.ensureAndroidIndividualAccount()
   }
 
   /* =========================

@@ -2,6 +2,7 @@ import BasePage from './BasePage'
 import { $, $$, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
 import { markBrowserStackStep } from '../helpers/browserstack.helper'
+import { AUTH } from '../data/credentials'
 
 type WdioEl = ChainablePromiseElement
 
@@ -34,16 +35,48 @@ class HomeScreenPage extends BasePage {
     return $('android=new UiSelector().text("Single")')
   }
 
+  private get individualAccountItemAndroid() {
+    return $('(//*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"Individual")]/ancestor::*[@clickable="true"][1] | //*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"Individual")]/ancestor::*[@clickable="true"][1] | //*[contains(@content-desc,"Individual") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[contains(@text,"Individual") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1])[1]')
+  }
+
   private get jointAccountItemAndroid() {
-    return $('//*[@content-desc="Joint"]/ancestor::*[@clickable="true"][1]')
+    return $('(//*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"Joint")]/ancestor::*[@clickable="true"][1] | //*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"Joint")]/ancestor::*[@clickable="true"][1] | //*[contains(@content-desc,"Joint") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[contains(@text,"Joint") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1])[1]')
   }
 
   private get businessAccountItemAndroid() {
-    return $('(//*[@content-desc="Business"]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[@text="Business"]/ancestor::*[@clickable="true"][1])[1]')
+    return $('(//*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"Business")]/ancestor::*[@clickable="true"][1] | //*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"Business")]/ancestor::*[@clickable="true"][1] | //*[contains(@content-desc,"Business") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[contains(@text,"Business") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1])[1]')
   }
 
   private get homeRootAndroid() {
     return this.byId('home_screen')
+  }
+
+  private get moreRootAndroid() {
+    return this.byId('more_screen')
+  }
+
+  private get moreAccountPickerAndroid() {
+    return this.byId('more_button_accountPicker')
+  }
+
+  private get accountSelectionRootAndroid() {
+    return this.byId('accountSelection_screen')
+  }
+
+  private get homeAndroidDrawerLogoutItem() {
+    return $('android=new UiSelector().text("Log out")')
+  }
+
+  private get homeAndroidDrawerSettingsItem() {
+    return $('android=new UiSelector().text("Settings")')
+  }
+
+  private get homeAndroidDrawerWalletsItem() {
+    return $('android=new UiSelector().text("Wallets")')
+  }
+
+  private get subAccountsTitleAndroid() {
+    return $('android=new UiSelector().text("Sub Accounts")')
   }
 
   private get googlePayCloseButtonAndroid() {
@@ -95,7 +128,9 @@ class HomeScreenPage extends BasePage {
   }
 
   private get individualAccountItemIOS() {
-    return $('~switchSubidentity_item_VEG40002-1')
+    const code = AUTH.individualAccountCode ?? 'VEG40002'
+    const suffix = AUTH.individualAccountSuffix ?? '-1'
+    return $(`~switchSubidentity_item_${code}${suffix}`)
   }
 
   private get jointAccountItemIOS() {
@@ -296,7 +331,8 @@ class HomeScreenPage extends BasePage {
   private async ensureIndividualAccountIOS() {
     if (!browser.isIOS) return
 
-    await this.ensureIOSHomeAccount('Individual', 'VEG40002', this.individualAccountItemIOS)
+    const code = AUTH.individualAccountCode ?? 'VEG40002'
+    await this.ensureIOSHomeAccount('Individual', code, this.individualAccountItemIOS)
   }
 
   private async getIOSAccountCodeLabel() {
@@ -377,19 +413,27 @@ class HomeScreenPage extends BasePage {
   }
 
   private async ensureSingleAccountAndroid() {
-    await this.ensureSingleAccountAndroidFlow({
-      userAvatarBtn: this.userAvatarBtnAndroid,
-      businessAccountLabel: this.businessAccountLabelAndroid,
-      singleAccountItemByDesc: this.singleAccountItemAndroid,
-      singleAccountItemByText: this.singleAccountItemAndroidByText,
-      homeRoot: this.homeRootAndroid,
-      timeoutMs: 15000,
-      alertTimeoutMs: 2500,
-    })
+    await this.ensureHomeLandingAndroid()
 
-    await this.businessAccountLabelAndroid
-      .waitForExist({ reverse: true, timeout: 30000 })
-      .catch(() => {})
+    const isIndividual = await this.individualAccountLabelAndroid.isDisplayed().catch(() => false)
+    if (isIndividual) return
+
+    await this.openAndroidSubAccountsSheet()
+
+    const individualByNewDesignShown = await this.individualAccountItemAndroid.isDisplayed().catch(() => false)
+    if (individualByNewDesignShown) {
+      await this.tap(this.individualAccountItemAndroid)
+    } else if (await this.singleAccountItemAndroid.isDisplayed().catch(() => false)) {
+      await this.tap(this.singleAccountItemAndroid)
+    } else {
+      await this.singleAccountItemAndroidByText.waitForDisplayed({ timeout: 15000 })
+      await this.tap(this.singleAccountItemAndroidByText)
+    }
+
+    await this.dismissCommonAndroidAlert(5000).catch(() => false)
+    await this.dismissGooglePayPopupIfPresentAndroid(12000).catch(() => false)
+    await this.ensureHomeLandingAndroid()
+    await this.waitForAndroidHomeAccount('Individual')
   }
 
   private async ensureHomeLandingAndroid() {
@@ -399,16 +443,21 @@ class HomeScreenPage extends BasePage {
 
     await browser.waitUntil(
       async () => {
-        await this.dismissKnownAndroidBlockingPopups().catch(() => {})
-        await this.dismissCommonAndroidAlert(2500).catch(() => false)
-
         const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
         if (homeShown) return true
+
+        await this.dismissKnownAndroidBlockingPopups().catch(() => {})
+        await this.dismissCommonAndroidAlert(500).catch(() => false)
+
+        await this.closeAndroidDrawerIfOpen().catch(() => false)
+
+        const homeAfterDrawerClosed = await this.homeRootAndroid.isDisplayed().catch(() => false)
+        if (homeAfterDrawerClosed) return true
 
         await this.tapHomeBottomNavAndroid().catch(() => {})
 
         await this.dismissKnownAndroidBlockingPopups().catch(() => {})
-        await this.dismissCommonAndroidAlert(2000).catch(() => false)
+        await this.dismissCommonAndroidAlert(500).catch(() => false)
 
         return await this.homeRootAndroid.isDisplayed().catch(() => false)
       },
@@ -418,6 +467,24 @@ class HomeScreenPage extends BasePage {
         timeoutMsg: 'Failed to stabilize on Home screen (Android)',
       }
     )
+  }
+
+  private async closeAndroidDrawerIfOpen() {
+    if (!browser.isAndroid) return false
+
+    const drawerShown = (
+      await this.moreRootAndroid.isDisplayed().catch(() => false) ||
+      await this.accountSelectionRootAndroid.isDisplayed().catch(() => false) ||
+      await this.homeAndroidDrawerLogoutItem.isDisplayed().catch(() => false) ||
+      await this.homeAndroidDrawerSettingsItem.isDisplayed().catch(() => false) ||
+      await this.homeAndroidDrawerWalletsItem.isDisplayed().catch(() => false)
+    )
+
+    if (!drawerShown) return false
+
+    await browser.back().catch(() => {})
+    await browser.pause(500)
+    return true
   }
 
   private async waitForAndroidHomeAccount(accountType: 'Business' | 'Individual' | 'Joint', timeout = 30000) {
@@ -444,11 +511,53 @@ class HomeScreenPage extends BasePage {
     )
   }
 
+  private get moreTabAndroid() {
+    return this.byId('navigation_button_more')
+  }
+
   private async openAndroidSubAccountsSheet() {
-    await this.ensureHomeLandingAndroid()
-    await this.userAvatarBtnAndroid.waitForExist({ timeout: 20000 })
-    await this.tap(this.userAvatarBtnAndroid)
-    await $('android=new UiSelector().text("Sub Accounts")').waitForExist({ timeout: 15000 })
+    const alreadyOnMore = await this.moreRootAndroid.isDisplayed().catch(() => false)
+    if (!alreadyOnMore) {
+      const moreTabShown = await this.moreTabAndroid.isDisplayed().catch(() => false)
+      if (moreTabShown) {
+        await this.tap(this.moreTabAndroid)
+        await this.moreRootAndroid.waitForExist({ timeout: 10000 })
+      } else {
+        await this.ensureHomeLandingAndroid()
+        await this.userAvatarBtnAndroid.waitForExist({ timeout: 20000 })
+        await this.tap(this.userAvatarBtnAndroid)
+      }
+    }
+
+    await browser.waitUntil(
+      async () => {
+        const oldSheetShown = await this.subAccountsTitleAndroid.isDisplayed().catch(() => false)
+        if (oldSheetShown) return true
+
+        const moreShown = await this.moreRootAndroid.isDisplayed().catch(() => false)
+        if (!moreShown) return false
+
+        const accountPickerShown = await this.moreAccountPickerAndroid.isDisplayed().catch(() => false)
+        if (!accountPickerShown) return false
+
+        await this.tap(this.moreAccountPickerAndroid)
+        return await browser.waitUntil(
+          async () => (
+            await this.accountSelectionRootAndroid.isDisplayed().catch(() => false) ||
+            await this.subAccountsTitleAndroid.isDisplayed().catch(() => false) ||
+            await this.individualAccountItemAndroid.isDisplayed().catch(() => false) ||
+            await this.jointAccountItemAndroid.isDisplayed().catch(() => false) ||
+            await this.businessAccountItemAndroid.isDisplayed().catch(() => false)
+          ),
+          { timeout: 5000, interval: 300 }
+        ).catch(() => false)
+      },
+      {
+        timeout: 15000,
+        interval: 500,
+        timeoutMsg: 'Account picker did not open on Android',
+      }
+    )
   }
 
   private async dismissGooglePayPopupIfPresentAndroid(timeout = 10000) {
@@ -567,36 +676,24 @@ class HomeScreenPage extends BasePage {
   public async verifyAndroidAccountSwitchingAcrossTypes() {
     if (!browser.isAndroid) return
 
-    await this.ensureHomeLandingAndroid()
-
-    // Flow is intentionally explicit for this account set:
-    // Business landing -> Individual -> Joint -> Business.
-    await this.waitForAndroidHomeAccount('Business', 20000)
-
     await this.openAndroidSubAccountsSheet()
-    const singleByDescShown = await this.singleAccountItemAndroid.isDisplayed().catch(() => false)
-    if (singleByDescShown) {
-      await this.tap(this.singleAccountItemAndroid)
-    } else {
-      await this.tap(this.singleAccountItemAndroidByText)
+    const hasBusiness = await this.businessAccountItemAndroid.isDisplayed().catch(() => false)
+    if (!hasBusiness) {
+      await browser.back().catch(() => {})
+      return
     }
-    await this.dismissCommonAndroidAlert(5000).catch(() => false)
-    await this.ensureHomeLandingAndroid()
-    await this.waitForAndroidHomeAccount('Individual')
 
-    await this.openAndroidSubAccountsSheet()
-    await this.tap(this.jointAccountItemAndroid)
-    await this.dismissCommonAndroidAlert(5000).catch(() => false)
-    await this.dismissGooglePayPopupIfPresentAndroid(12000).catch(() => false)
-    await this.ensureHomeLandingAndroid()
-    await this.waitForAndroidHomeAccount('Joint')
-
-    await this.openAndroidSubAccountsSheet()
+    // Switch to Business — stays on More tab
     await this.tap(this.businessAccountItemAndroid)
     await this.dismissCommonAndroidAlert(5000).catch(() => false)
     await this.dismissGooglePayPopupIfPresentAndroid(5000).catch(() => false)
-    await this.ensureHomeLandingAndroid()
-    await this.waitForAndroidHomeAccount('Business')
+    await this.businessAccountLabelAndroid.waitForDisplayed({ timeout: 15000 })
+
+    // Switch back to Individual — stays on More tab
+    await this.openAndroidSubAccountsSheet()
+    await this.tap(this.individualAccountItemAndroid)
+    await this.dismissCommonAndroidAlert(5000).catch(() => false)
+    await this.individualAccountLabelAndroid.waitForDisplayed({ timeout: 15000 })
   }
 
   public async verifyIOSAccountSwitchingAcrossTypes() {
@@ -833,7 +930,7 @@ class HomeScreenPage extends BasePage {
           if (homeShown) return true
 
           await this.dismissKnownAndroidBlockingPopups().catch(() => {})
-          await this.dismissCommonAndroidAlert(2000).catch(() => false)
+          await this.dismissCommonAndroidAlert(500).catch(() => false)
 
           const cardsShown = await this.cardsRootAndroid.isDisplayed().catch(() => false)
           const homeTabShown = await this.homeTabAndroid.isDisplayed().catch(() => false)

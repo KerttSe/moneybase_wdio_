@@ -128,12 +128,6 @@ class FXExchangePage extends BasePage {
     return $(`-ios class chain:**/XCUIElementTypeStaticText[\`name == "EUR"\`]`)
   }
 
-  private get dollarWalletOption() {
-    if (browser.isAndroid) {
-      return $('android=new UiSelector().text("Dollar wallet")')
-    }
-    return $('~Dollar wallet')
-  }
 
   private get selectedButton() {
     if (browser.isAndroid) {
@@ -418,7 +412,7 @@ class FXExchangePage extends BasePage {
 
   private get backBtn() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().description("Back")')
+      return $('//*[@text="Back" or @content-desc="Back"]')
     }
     return $('~Back')
   }
@@ -861,7 +855,11 @@ class FXExchangePage extends BasePage {
     await this.enterFromAmount(amount)
 
     await this.tapElementCenter(this.toWalletField, 15000)
-    await this.tapElementCenter(this.dollarWalletOption, 15000)
+    if (browser.isAndroid) {
+      await this.selectWalletFromOpenPickerAndroid('USD')
+    } else {
+      await this.selectWalletFromOpenPickerIOS('USD')
+    }
     await this.confirmSelectionIfShown()
     await this.hideKeyboardIfNeeded()
   }
@@ -870,58 +868,41 @@ class FXExchangePage extends BasePage {
     await this.tapEnabledExchangeButton(amount)
 
     if (browser.isAndroid) {
-      const homeRoot = $('android=new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")')
+      // Wait for success screen: Back (secondary) or Continue (primary) appears
+      const successShown = await browser.waitUntil(
+        async () =>
+          (await this.backBtn.isDisplayed().catch(() => false)) ||
+          (await this.continueBtn.isDisplayed().catch(() => false)),
+        { timeout: 20000, interval: 500 }
+      ).then(() => true).catch(() => false)
 
-      const continueShown = await this.continueBtn
-        .waitForExist({ timeout: 12000 })
-        .then(() => true)
-        .catch(() => false)
-
-      if (continueShown) {
-        await this.tapElementCenter(this.continueBtn, 12000)
-        await markBrowserStackStep('Tapped FX success Continue')
+      if (!successShown) {
+        await this.debugSnapshot('fx-exchange-success-missing')
+        throw new Error('FX exchange success screen did not appear after submit')
       }
 
-      const homeVisibleAfterContinue = await homeRoot
-        .waitForExist({ timeout: 5000 })
-        .then(() => true)
-        .catch(() => false)
+      await markBrowserStackStep('FX success screen appeared')
 
-      if (homeVisibleAfterContinue) {
-        await HomeScreenPage.waitForHomeLoaded()
-        return
-      }
-
-      let stillOnFxScreen = false
-      for (const candidate of this.fxExchangeScreenCandidates) {
-        if (await candidate.isDisplayed().catch(() => false)) {
-          stillOnFxScreen = true
-          break
-        }
-      }
-
-      if (stillOnFxScreen) {
-        const backVisible = await this.backBtn.isDisplayed().catch(() => false)
-        if (!backVisible) {
-          await this.debugSnapshot('fx-exchange-success-back-missing')
-          throw new Error('FX exchange stayed on FX screen after Continue, but Back button was not visible')
-        }
-
+      // Dismiss success screen by tapping its button (Back on secondary, Continue on primary)
+      if (await this.backBtn.isDisplayed().catch(() => false)) {
         await this.tapElementCenter(this.backBtn, 10000)
-        await markBrowserStackStep('Returned from FX success screen to Home')
-        await HomeScreenPage.waitForHomeLoaded()
-        return
+      } else if (await this.continueBtn.isDisplayed().catch(() => false)) {
+        await this.tapElementCenter(this.continueBtn, 10000)
       }
 
-      const closeVisible = await this.closeBtn.isDisplayed().catch(() => false)
-      if (closeVisible) {
-        await this.tapElementCenter(this.closeBtn, 10000)
-        await HomeScreenPage.waitForHomeLoaded()
-        return
-      }
+      // Navigate to home: press system back until home_screen appears
+      await browser.waitUntil(
+        async () => {
+          const homeShown = await $('android=new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")').isDisplayed().catch(() => false)
+          if (homeShown) return true
+          await browser.back().catch(() => {})
+          return false
+        },
+        { timeout: 30000, interval: 800 }
+      )
 
-      await this.debugSnapshot('fx-exchange-post-submit-unknown-state')
-      throw new Error('FX exchange did not navigate to Home or FX success screen after submit')
+      await HomeScreenPage.waitForHomeLoaded()
+      return
     }
 
     await this.continueBtn.waitForExist({ timeout: 20000 })

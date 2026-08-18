@@ -1010,27 +1010,7 @@ export default class AutoTopUpPage extends BasePage {
    * ========================= */
 
   private async ensureSingleAccountAndroid() {
-    const isBusiness = await this.businessAccountLabelAndroid.isDisplayed().catch(() => false)
-    if (!isBusiness) return
-
-    await this.userAvatarBtnAndroid.waitForExist({ timeout: 15000 })
-    await this.tap(this.userAvatarBtnAndroid)
-
-    if (await this.singleAccountItemAndroid.isDisplayed().catch(() => false)) {
-      await this.tap(this.singleAccountItemAndroid)
-    } else {
-      try {
-        await this.tap(this.singleAccountItemAndroidByText)
-      } catch {
-        // element not found, continue
-      }
-    }
-
-    await this.homeRootAndroid.waitForExist({ timeout: 30000 }).catch(() => {})
-
-    await this.businessAccountLabelAndroid
-      .waitForExist({ reverse: true, timeout: 30000 })
-      .catch(() => {})
+    await this.ensureAndroidIndividualAccount()
   }
 
   /**

@@ -1,6 +1,7 @@
 import BasePage from './BasePage'
 import HomeScreenPage from './HomeScreenPage'
 import { $, browser } from '@wdio/globals'
+import { AUTH } from '../data/credentials'
 
 export default class AddFundsPage extends BasePage {
   private byAndroidResId(id: string) {
@@ -137,8 +138,9 @@ private get openCardListIOS() {
 }
 
 // 
-private get card0036IOS() {
-  return $('~.... 0036')
+private get cardIOS() {
+  const last4 = AUTH.cardLastFour ?? '0036'
+  return $(`~.... ${last4}`)
 }
 
 // pay processing
@@ -246,8 +248,9 @@ private get payProcessingBtnIOS() {
   }
 
   private get depositApprovedIOS() {
+  const last4 = AUTH.cardLastFour ?? '0036'
   return $(
-    `-ios class chain:**/XCUIElementTypeStaticText[\`name == "Deposit by Card *0036"\`][1]`
+    `-ios class chain:**/XCUIElementTypeStaticText[\`name == "Deposit by Card *${last4}"\`][1]`
   )
 }
 
@@ -255,9 +258,9 @@ private get cardPickerBtnAndroid() {
   return $('android=new UiSelector().className("android.widget.TextView").instance(4)')
 }
 
-// к ".... 0036" / "•••• 0036" / "Card *0036" — 
-private get card0036Android() {
-  return $('android=new UiSelector().textContains("0036")')
+private get cardAndroid() {
+  const last4 = AUTH.cardLastFour ?? '0036'
+  return $(`android=new UiSelector().textContains("${last4}")`)
 }
 
 private async smallScrollDownToDepositIOS() {
@@ -284,12 +287,12 @@ private async smallScrollDownToDepositIOS() {
   await browser.pause(1000)
 }
 
-async selectCard0036Android() {
+async selectCardAndroid() {
   await this.cardPickerBtnAndroid.waitForDisplayed({ timeout: 15000 })
   await this.tap(this.cardPickerBtnAndroid)
 
-  await this.card0036Android.waitForDisplayed({ timeout: 15000 })
-  await this.tap(this.card0036Android)
+  await this.cardAndroid.waitForDisplayed({ timeout: 15000 })
+  await this.tap(this.cardAndroid)
 
   // невелика пауза щоб UI встиг 
   await browser.pause(300)
@@ -306,7 +309,7 @@ async selectCard0036Android() {
     /* ---------- ANDROID ---------- */
 if (browser.isAndroid) {
   //  0036
-  await this.selectCard0036Android()
+  await this.selectCardAndroid()
 
   // 1) Pay Processing
   await this.payProcessingBtnAndroid.waitForDisplayed({ timeout: 30000 })
@@ -390,8 +393,8 @@ if (browser.isIOS) {
   await this.tap(this.openCardListIOS)
 
   // 2) pick needed card
-  await this.card0036IOS.waitForExist({ timeout: 20000 })
-  await this.tap(this.card0036IOS)
+  await this.cardIOS.waitForExist({ timeout: 20000 })
+  await this.tap(this.cardIOS)
 
   // 3) pay processing
   await this.payProcessingBtnIOS.waitForExist({ timeout: 30000 })
@@ -416,23 +419,6 @@ if (browser.isIOS) {
    * ========================= */
 
   private async ensureSingleAccountAndroid() {
-    const isBusiness = await this.businessAccountLabelAndroid.isDisplayed().catch(() => false)
-    if (!isBusiness) return
-
-    await this.userAvatarBtnAndroid.waitForDisplayed({ timeout: 15000 })
-    await this.tap(this.userAvatarBtnAndroid)
-
-    if (await this.singleAccountItemAndroid.isDisplayed().catch(() => false)) {
-      await this.tap(this.singleAccountItemAndroid)
-    } else {
-      try {
-        await this.tap(this.singleAccountItemAndroidByText)
-      } catch {
-        // Element not found, but continue
-      }
-    }
-
-    await this.homeRootAndroid.waitForDisplayed({ timeout: 30000 }).catch(() => {})
-    await this.businessAccountLabelAndroid.waitForDisplayed({ reverse: true, timeout: 30000 }).catch(() => {})
+    await this.ensureAndroidIndividualAccount()
   }
 }

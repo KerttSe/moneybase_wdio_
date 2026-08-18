@@ -300,16 +300,7 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
       return
     }
 
-    // early-exit: already on SeDeKE home (require avatar visible to avoid matching stale elements)
-    const avatarOnHome = await this.userAvatarAndroid.isExisting().catch(() => false)
-    if (avatarOnHome && (await this.accountChipAndroid.isExisting().catch(() => false))) return
-
-    await this.userAvatarAndroid.waitForExist({ timeout: 20000, timeoutMsg: 'Home user avatar not found' })
-    await this.tap(this.userAvatarAndroid)
-    await this.subAccountsSheetAndroid.waitForExist({ timeout: 15000, timeoutMsg: 'Sub Accounts sheet did not open' })
-    await this.seDeKeItemAndroid.waitForExist({ timeout: 10000, timeoutMsg: `SeDeKE (${BH_ACCOUNT_CODE}) not found in Sub Accounts list` })
-    await this.tap(this.seDeKeItemAndroid)
-    await this.waitForAndroidSeDeKEHome()
+    await this.switchAndroidAccountByCode(BH_ACCOUNT_CODE, 'Business')
   }
 
   public async openCardsTab() {

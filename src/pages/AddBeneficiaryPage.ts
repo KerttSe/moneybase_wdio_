@@ -9,6 +9,14 @@ export default class AddBeneficiaryPage extends BasePage {
     return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
   }
 
+  private androidInputByIdLabelOrIndex(id: string, labelXPath: string, index: number) {
+    return $(`((//*[@resource-id="${id}" or @resource-id="com.moneybase.qa:id/${id}"]//android.widget.EditText)[1] | //android.widget.EditText[@resource-id="${id}" or @resource-id="com.moneybase.qa:id/${id}"] | //android.widget.EditText[.//android.widget.TextView[${labelXPath}]] | (//android.widget.EditText)[${index}])[1]`)
+  }
+
+  private androidInputByIdOrLabel(id: string, labelXPath: string) {
+    return $(`((//*[@resource-id="${id}" or @resource-id="com.moneybase.qa:id/${id}"]//android.widget.EditText)[1] | //android.widget.EditText[@resource-id="${id}" or @resource-id="com.moneybase.qa:id/${id}"] | //android.widget.EditText[.//android.widget.TextView[${labelXPath}]])[1]`)
+  }
+
   /* =========================
    * ANDROID: HOME / ACCOUNT (Single vs Business)
    * ========================= */
@@ -319,36 +327,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private async ensureSingleAccountAndroid() {
-    const isBusiness = await this.businessAccountLabelAndroid.isDisplayed().catch(() => false)
-    if (!isBusiness) return
-
-    await this.userAvatarBtnAndroid.waitForExist({ timeout: 15000 })
-    await this.tap(this.userAvatarBtnAndroid)
-
-    const accountCandidates = [
-      this.individualAccountItemAndroid,
-      this.individualAccountItemAndroidByText,
-      this.singleAccountItemAndroid,
-      this.singleAccountItemAndroidByText,
-    ]
-
-    let selectedAccount = false
-    for (const account of accountCandidates) {
-      if (await account.isDisplayed().catch(() => false)) {
-        await this.tap(account)
-        selectedAccount = true
-        break
-      }
-    }
-
-    if (!selectedAccount) {
-      await this.closeSheetAndroid.isDisplayed().then(async (shown) => {
-        if (shown) await this.tap(this.closeSheetAndroid).catch(() => {})
-      }).catch(() => {})
-    }
-
-    await this.homeRootAndroid.waitForExist({ timeout: 30000 }).catch(() => {})
-    await this.businessAccountLabelAndroid.waitForExist({ reverse: true, timeout: 30000 }).catch(() => {})
+    await this.ensureAndroidIndividualAccount()
   }
   /* =========================
    * ANDROID: entry point (Pay tab) + Add Beneficiary
@@ -363,7 +342,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get payTabAndroidLegacy() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_bar_item_icon_container").instance(2)')
+    return $('//android.widget.FrameLayout[@content-desc="Pay"]')
   }
 
 
@@ -391,6 +370,26 @@ export default class AddBeneficiaryPage extends BasePage {
   private get newBtnAndroid() {
     // accessibility id: New
     return $('~New')
+  }
+
+  private get newBtnAndroidByText() {
+    return $('android=new UiSelector().text("New")')
+  }
+
+  private get newBtnAndroidByPayId() {
+    return this.byAndroidResId('pay_button_new')
+  }
+
+  private get newBtnAndroidByAddId() {
+    return this.byAndroidResId('pay_button_add')
+  }
+
+  private get newTransferAddBeneficiaryBtnAndroid() {
+    return this.byAndroidResId('newTransfer_button_addBeneficiary')
+  }
+
+  private get addBeneficiaryBtnAndroidByText() {
+    return $('android=new UiSelector().textMatches("(?i)^Add Beneficiary$")')
   }
 
   private get newTransferTitleAndroid() {
@@ -502,7 +501,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get countrySearchInputAndroid() {
-    return $('android=new UiSelector().resourceId("addBeneficiaryCountrySelection_input_search")')
+    return $('(//*[@resource-id="addBeneficiaryCountrySelection_input_search"] | //android.widget.EditText[.//*[@content-desc="Search"] or .//android.widget.TextView[@text="Search"]] | //android.widget.EditText)[1]')
   }
 
   private get unitedStatesOptionAndroid() {
@@ -515,12 +514,12 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get euroOptionAndroid() {
-    return $('~Euro')
+    return $('//*[@content-desc="Euro" or @text="Euro"]')
   }
 
   private get usdOptionAndroid() {
     // Accessibility id is the full currency name, same pattern as "Euro" -> EUR.
-    return $('~US Dollar')
+    return $('//*[@content-desc="US Dollar" or @text="US Dollar"]')
   }
 
   private get countryContinueBtnAndroid() {
@@ -625,35 +624,59 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get detailsContinueViewAndroid() {
-    return $('//android.view.View[@resource-id="addBeneficiaryDetails_button_continue"]')
+    return $('//*[@resource-id="addBeneficiaryDetails_button_continue" or @resource-id="com.moneybase.qa:id/addBeneficiaryDetails_button_continue" or .//android.widget.TextView[@text="Continue"]]')
   }
 
   private get nameInputAndroid() {
-    return $('android=new UiSelector().resourceId("addBeneficiaryDetails_input_name")')
+    return this.androidInputByIdLabelOrIndex(
+      'addBeneficiaryDetails_input_name',
+      '@text="Name" or @text="First name" or @text="First Name"',
+      1,
+    )
   }
 
   private get surnameInputAndroid() {
-    return $('android=new UiSelector().resourceId("addBeneficiaryDetails_input_surname")')
+    return this.androidInputByIdLabelOrIndex(
+      'addBeneficiaryDetails_input_surname',
+      '@text="Surname" or @text="Last name" or @text="Last Name"',
+      2,
+    )
   }
 
   private get ibanInputAndroid() {
-    return $('android=new UiSelector().resourceId("addBeneficiaryDetails_input_iban")')
+    return this.androidInputByIdLabelOrIndex(
+      'addBeneficiaryDetails_input_iban',
+      '@text="IBAN" or contains(@text, "IBAN")',
+      3,
+    )
   }
 
   private get friendNameInputAndroid() {
-    return $('android=new UiSelector().resourceId("addBeneficiaryDetails_input_friendName")')
+    return this.androidInputByIdOrLabel(
+      'addBeneficiaryDetails_input_friendName',
+      '@text="Friend name" or @text="Friend Name" or @text="Friendly Name" or @text="Friendly Name (optional)" or @text="Beneficiary name" or @text="Beneficiary Name"',
+    )
   }
 
   private get bicInputAndroidById() {
-    return $('android=new UiSelector().resourceId("addBeneficiaryDetails_input_bic")')
+    return this.androidInputByIdOrLabel(
+      'addBeneficiaryDetails_input_bic',
+      '@text="BIC" or @text="SWIFT" or @text="BIC / SWIFT" or contains(@text, "BIC") or contains(@text, "SWIFT")',
+    )
   }
 
   private get bicInputAndroidBySwiftId() {
-    return $('android=new UiSelector().resourceId("addBeneficiaryDetails_input_swift")')
+    return this.androidInputByIdOrLabel(
+      'addBeneficiaryDetails_input_swift',
+      '@text="BIC" or @text="SWIFT" or @text="BIC / SWIFT" or contains(@text, "BIC") or contains(@text, "SWIFT")',
+    )
   }
 
   private get bicInputAndroidByBicSwiftId() {
-    return $('android=new UiSelector().resourceId("addBeneficiaryDetails_input_bicSwift")')
+    return this.androidInputByIdOrLabel(
+      'addBeneficiaryDetails_input_bicSwift',
+      '@text="BIC" or @text="SWIFT" or @text="BIC / SWIFT" or contains(@text, "BIC") or contains(@text, "SWIFT")',
+    )
   }
 
   private get bicInputAndroidByResIdRegex() {
@@ -808,7 +831,11 @@ export default class AddBeneficiaryPage extends BasePage {
    * ========================= */
 
   private get accountNumberInputAndroid() {
-    return $('android=new UiSelector().resourceId("addBeneficiaryDetails_input_accountNumber")')
+    return this.androidInputByIdLabelOrIndex(
+      'addBeneficiaryDetails_input_accountNumber',
+      '@text="Account No." or @text="Account number" or @text="Account Number"',
+      3,
+    )
   }
 
   /** Step: enter beneficiary first/last name on the US details screen. */
@@ -1175,20 +1202,54 @@ export default class AddBeneficiaryPage extends BasePage {
   async tapNewTransferOrAddAndroid() {
     if (!browser.isAndroid) return
 
-    const newShown = await this.newBtnAndroid.waitForExist({ timeout: 5000 }).catch(() => false)
-    if (newShown) {
-      await this.tap(this.newBtnAndroid)
-    } else {
-      await this.newTransferTitleAndroid.waitForExist({ timeout: 8000 }).catch(() => {})
+    const transferSheetShown = await this.newTransferTitleAndroid.isDisplayed().catch(() => false)
+    const addBeneficiaryShown = await this.newTransferAddBeneficiaryBtnAndroid.isDisplayed().catch(() => false)
+    if (transferSheetShown || addBeneficiaryShown) return
+
+    const candidates = [
+      this.newBtnAndroid,
+      this.newBtnAndroidByText,
+      this.newBtnAndroidByPayId,
+      this.newBtnAndroidByAddId,
+    ]
+
+    for (const candidate of candidates) {
+      const shown = await candidate.waitForDisplayed({ timeout: 3000 }).catch(() => false)
+      if (!shown) continue
+
+      await this.tap(candidate)
+      await browser.pause(500)
+
+      const opened =
+        (await this.newTransferTitleAndroid.isDisplayed().catch(() => false)) ||
+        (await this.newTransferAddBeneficiaryBtnAndroid.isDisplayed().catch(() => false)) ||
+        (await this.addBeneficiaryBtnAndroid.isDisplayed().catch(() => false))
+
+      if (opened) return
     }
+
+    throw new Error('New transfer button did not appear/open on Android Pay screen')
   }
 
   /** Step: tap "Add Beneficiary" from the transfer type sheet. */
   async tapAddBeneficiaryBtnAndroid() {
     if (!browser.isAndroid) return
 
-    await this.addBeneficiaryBtnAndroid.waitForExist({ timeout: 15000 })
-    await this.tap(this.addBeneficiaryBtnAndroid)
+    const candidates = [
+      this.newTransferAddBeneficiaryBtnAndroid,
+      this.addBeneficiaryBtnAndroid,
+      this.addBeneficiaryBtnAndroidByText,
+    ]
+
+    for (const candidate of candidates) {
+      const shown = await candidate.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+      if (!shown) continue
+
+      await this.tap(candidate)
+      return
+    }
+
+    throw new Error('Add Beneficiary button did not appear on Android New Transfer sheet')
   }
 
   async startAddBeneficiaryAndroid() {

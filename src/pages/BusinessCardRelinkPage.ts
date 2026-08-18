@@ -240,18 +240,7 @@ class BusinessCardRelinkPage extends BasePage {
       return
     }
 
-    const chip = this.accountChipAndroid
-    if (await chip.isExisting().catch(() => false)) {
-      const text = await chip.getText().catch(() => '')
-      if (text.includes(BH_ACCOUNT_CODE)) return
-    }
-    await this.userAvatarAndroid.waitForExist({ timeout: 20000, timeoutMsg: 'Home user avatar not found' })
-    await this.tap(this.userAvatarAndroid)
-    await this.subAccountsSheetAndroid.waitForExist({ timeout: 15000, timeoutMsg: 'Sub Accounts sheet did not open' })
-    await this.seDeKeItemAndroid.waitForExist({ timeout: 10000, timeoutMsg: 'SeDeKE (SED00004) not found in Sub Accounts list' })
-    await this.tap(this.seDeKeItemAndroid)
-    await browser.pause(1500)
-    await this.userAvatarAndroid.waitForExist({ timeout: 20000, timeoutMsg: 'Home did not reload after switching to SeDeKE account' })
+    await this.switchAndroidAccountByCode(BH_ACCOUNT_CODE, 'Business')
   }
 
   public async openAdministration() {

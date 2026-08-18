@@ -27,8 +27,8 @@ describe('Add Beneficiary - Another person', function () {
   const addBeneficiaryPage = new AddBeneficiaryPage()
   const beneficiaryAuth = {
     ...AUTH,
-    phone: process.env.MB_PHONE || AUTH.phone,
-    pin: process.env.MB_PIN || AUTH.pin,
+    phone: process.env.ADD_BENEFICIARY_MB_PHONE || AUTH.phone,
+    pin: process.env.ADD_BENEFICIARY_MB_PIN || AUTH.pin,
   }
   const useApiLoginOtp = ['1', 'true', 'yes', 'on'].includes(
     String(process.env.ADD_BENEFICIARY_LOGIN_USE_API_OTP || '').toLowerCase(),
@@ -38,7 +38,7 @@ describe('Add Beneficiary - Another person', function () {
     // Same login logic as Add Funds: uses hardcoded 000000 by default
     await loginPage.loginFlow(beneficiaryAuth, {
       useApiOtp: useApiLoginOtp,
-      otpPhone: process.env.ADD_BENEFICIARY_LOGIN_OTP_PHONE || process.env.OTP_PHONE,
+      otpPhone: process.env.ADD_BENEFICIARY_LOGIN_OTP_PHONE || beneficiaryAuth.otpPhone,
     })
   })
 

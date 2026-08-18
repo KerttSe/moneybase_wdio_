@@ -55,6 +55,10 @@ const envFlag = (name: string, defaultValue: boolean) => {
   if (value === undefined || value === '') return defaultValue
   return ['1', 'true', 'yes', 'on'].includes(value)
 }
+const envPositiveInteger = (name: string, defaultValue: number) => {
+  const value = Number(process.env[name])
+  return Number.isFinite(value) && value > 0 ? Math.floor(value) : defaultValue
+}
 const cliValue = (name: string) => {
   const eqArg = process.argv.find(arg => arg.startsWith(`--${name}=`))
   if (eqArg) return eqArg.slice(name.length + 3)
@@ -67,6 +71,10 @@ const cliValue = (name: string) => {
 const normalizeTag = (value?: string) => value?.trim().replace(/^\.?\//, '').replace(/[^\w.-]+/g, '-')
 const cliSuiteTag = normalizeTag(cliValue('suite'))
 const cliSpecTag = normalizeTag(cliValue('spec') ? basename(cliValue('spec') as string) : undefined)
+
+if (cliValue('suite') === 'smokeSecondary' && !process.env.MB_AUTH_SLOT) {
+  process.env.MB_AUTH_SLOT = 'secondary'
+}
 const browserStackBuildTags = (platform: 'android' | 'ios') => [
   platform,
   ...(cliSuiteTag ? [cliSuiteTag] : []),
@@ -90,6 +98,28 @@ const browserStackResetOptions = {
 
 const browserStackUser = useBrowserStack ? requireEnv('BROWSERSTACK_USERNAME') : undefined
 const browserStackKey = useBrowserStack ? requireEnv('BROWSERSTACK_ACCESS_KEY') : undefined
+const requestedMaxInstances = envPositiveInteger(
+  'WDIO_MAX_INSTANCES',
+  useBrowserStack ? envPositiveInteger('BS_MAX_INSTANCES', 1) : 1,
+)
+const hasBrowserStackAltAccount = Boolean((process.env.MB_ALT_PHONE || process.env.AUTH_OTP_MB_PHONE)?.trim())
+const shouldKeepBrowserStackSmokeSingleLane =
+  useBrowserStack &&
+  cliSuiteTag === 'smoke' &&
+  requestedMaxInstances > 1 &&
+  envFlag('BS_SMOKE_SPLIT_BY_ACCOUNT', true)
+const maxInstances =
+  (useBrowserStack && requestedMaxInstances > 1 && !hasBrowserStackAltAccount) || shouldKeepBrowserStackSmokeSingleLane
+    ? 1
+    : requestedMaxInstances
+
+if (useBrowserStack && requestedMaxInstances > 1 && !hasBrowserStackAltAccount) {
+  console.warn('[WDIO] BS_MAX_INSTANCES > 1 but neither MB_ALT_PHONE nor AUTH_OTP_MB_PHONE is set; using maxInstances=1.')
+}
+
+if (shouldKeepBrowserStackSmokeSingleLane) {
+  console.warn('[WDIO] Use smokePrimary + smokeSecondary commands for account-safe 2-parallel smoke; keeping --suite smoke at maxInstances=1.')
+}
 
 const classifyFailureReason = (error: Error) => {
   const msg = `${error.message ?? ''} ${error.stack ?? ''}`.toLowerCase()
@@ -196,8 +226,8 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
     },
     'appium:app': process.env.BS_APP_ANDROID,
     'appium:autoGrantPermissions': true,
-    'appium:appPackage': process.env.BS_ANDROID_APP_PACKAGE,
-    'appium:appActivity': process.env.BS_ANDROID_APP_ACTIVITY,
+    ...(process.env.BS_ANDROID_APP_PACKAGE ? { 'appium:appPackage': process.env.BS_ANDROID_APP_PACKAGE } : {}),
+    ...(process.env.BS_ANDROID_APP_ACTIVITY ? { 'appium:appActivity': process.env.BS_ANDROID_APP_ACTIVITY } : {}),
     'appium:adbExecTimeout': 120000,
     'appium:appWaitDuration': 120000,
     'appium:appWaitActivity': '*',
@@ -282,11 +312,6 @@ const localCapabilities: WebdriverIO.Capabilities[] = [
   },
 ]
 
-const capabilities = (useBrowserStack ? browserStackCapabilities : localCapabilities).filter((capability) => {
-  if (!platformFilter) return true
-  return String(capability.platformName).toLowerCase() === platformFilter
-})
-
 const smokeSpecs = [
   './src/tests/addbeneficiary.individual.spec.ts',
   './src/tests/addfunds.spec.ts',
@@ -308,8 +333,46 @@ const smokeSpecs = [
   './src/tests/watchlist.spec.ts',
 ]
 
+const smokeSecondaryAccountSpecsDefault = [
+  './src/tests/addbeneficiary.individual.spec.ts',
+  './src/tests/addfunds.spec.ts',
+  './src/tests/cashFunds.spec.ts',
+  './src/tests/fxExchange.spec.ts',
+  './src/tests/homeAccountSwitch.spec.ts',
+  './src/tests/homeScreen.spec.ts',
+  './src/tests/onboarding.spec.ts',
+  './src/tests/physicalcardcreation.spec.ts',
+  './src/tests/watchlist.spec.ts',
+]
+
+const envList = (name: string, fallback: string[]) => {
+  const value = process.env[name]?.trim()
+  if (!value) return fallback
+
+  return value
+    .split(',')
+    .map(item => item.trim())
+    .filter(Boolean)
+    .map(item => item.startsWith('./') ? item : `./src/tests/${item}`)
+}
+
+const smokeSecondaryAccountSpecs = envList('BS_SMOKE_SECONDARY_ACCOUNT_SPECS', smokeSecondaryAccountSpecsDefault)
+const smokeSecondaryAccountSpecNames = new Set(smokeSecondaryAccountSpecs.map(spec => basename(spec)))
+const smokePrimaryAccountSpecs = smokeSpecs.filter(spec => !smokeSecondaryAccountSpecNames.has(basename(spec)))
+
+const capabilities = (useBrowserStack ? browserStackCapabilities : localCapabilities)
+  .filter((capability) => {
+    if (!platformFilter) return true
+    return String(capability.platformName).toLowerCase() === platformFilter
+  })
+
+const autoAuthSlot = cliValue('suite') === 'smokeSecondary' && !process.env.MB_AUTH_SLOT
+  ? 'secondary'
+  : undefined
+
 export const config: WebdriverIO.Config = {
   runner: 'local',
+  runnerEnv: autoAuthSlot ? { MB_AUTH_SLOT: autoAuthSlot } : undefined,
   specs: ['./src/tests/**/*.spec.ts'],
   suites: {
     smoke: smokeSpecs,
@@ -317,9 +380,11 @@ export const config: WebdriverIO.Config = {
     launchOnly: ['./src/tests/launch.spec.ts'],
     onboarding: ['./src/tests/onboarding.spec.ts'],
     pricePlan: ['./src/tests/pricePlan.spec.ts'],
+    smokePrimary: smokePrimaryAccountSpecs,
+    smokeSecondary: smokeSecondaryAccountSpecs,
     smokeWithoutOnboarding: smokeSpecs.filter((spec) => spec !== './src/tests/onboarding.spec.ts'),
   },
-  maxInstances: 1,
+  maxInstances,
   specFileRetries: Number(process.env.SPEC_FILE_RETRIES ?? 1),
   specFileRetriesDelay: 0,
   logLevel: 'info',
@@ -363,8 +428,24 @@ export const config: WebdriverIO.Config = {
     writeAllureExecutor()
   },
 
+  beforeSession: function (_config, capabilities, specs) {
+    const authSlot = String(
+      process.env.MB_AUTH_SLOT ||
+      (cliSuiteTag === 'smokePrimary' ? 'primary' : '') ||
+      (cliSuiteTag === 'smokeSecondary' ? 'secondary' : ''),
+    )
+    if (authSlot === 'primary' || authSlot === 'secondary') {
+      process.env.MB_AUTH_SLOT = authSlot
+      const specName = specs.length > 0 ? basename(specs[0]) : 'unknown-spec'
+      console.log(`[WDIO] Auth slot for ${specName}: ${authSlot}`)
+    } else {
+      delete process.env.MB_AUTH_SLOT
+    }
+  },
+
   after: async function (result, _capabilities, specs) {
     if (!useBrowserStack) return
+    if (typeof browser.execute !== 'function') return
     const platform = String(browser.capabilities.platformName ?? platformFilter ?? 'unknown')
     const specName = specs.length > 0 ? basename(specs[0]) : 'unknown-spec'
     const suiteName = cliSuiteTag ? `${cliSuiteTag} :: ` : ''

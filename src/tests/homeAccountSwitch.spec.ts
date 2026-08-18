@@ -10,6 +10,7 @@ describe('Home Account Switch', function () {
 
   beforeEach(async function () {
     if (!(browser.isAndroid || browser.isIOS)) this.skip()
+    if (process.env.MB_AUTH_SLOT !== 'secondary') this.skip()
 
     await loginPage.loginFlow(AUTH)
     await HomeScreenPage.waitForHomeLoaded()

@@ -117,25 +117,7 @@ class PhysicalCardCreationPage extends BasePage {
 
   /** Switch to Single if needed */
   private async ensureSingleAccountAndroid() {
-    const isBusiness = await this.businessAccountLabelAndroid.isDisplayed().catch(() => false)
-    if (!isBusiness) return
-
-    await this.userAvatarBtnAndroid.waitForDisplayed({ timeout: 15000 })
-    await this.tap(this.userAvatarBtnAndroid)
-
-    if (await this.singleAccountItemAndroid.isDisplayed().catch(() => false)) {
-      await this.tap(this.singleAccountItemAndroid)
-    } else {
-      try {
-        await this.tap(this.singleAccountItemAndroidByText)
-      } catch {
-        // Element not found, but continue
-      }
-    }
-
-    await this.waitAndDismissAlertAfterSwitchAndroid(12000, 1200)
-    await this.homeRootAndroid.waitForDisplayed({ timeout: 30000 }).catch(() => {})
-    await this.businessAccountLabelAndroid.waitForDisplayed({ reverse: true, timeout: 30000 }).catch(() => {})
+    await this.ensureAndroidIndividualAccount()
   }
 
   // Backward-compatible alias (if referenced elsewhere)

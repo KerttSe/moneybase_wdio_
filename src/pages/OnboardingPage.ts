@@ -1236,7 +1236,7 @@ export default class OnboardingPage extends BasePage {
           return keypadShown
         },
         {
-          timeout: 10000,
+          timeout: Number(process.env.ONBOARDING_ANDROID_PIN_KEYPAD_TIMEOUT_MS || 30000),
           interval: 250,
           timeoutMsg: `Expected keypad digit ${digit} or OTP input to be displayed`,
         }
@@ -1251,8 +1251,18 @@ export default class OnboardingPage extends BasePage {
       for (const digit of pin) {
         if (await isOtpShown()) return
 
-        const keypadButton = await waitForKeypadDigitOrOtp(digit)
-        if (!keypadButton) return
+        const keypadButton = await waitForKeypadDigitOrOtp(digit).catch(async () => {
+          if (await isOtpShown()) return undefined
+          const passcodeShown = await this.passcodeScreen.isDisplayed().catch(() => false)
+          if (!passcodeShown) throw new Error(`Expected keypad digit ${digit} or OTP input to be displayed`)
+
+          await this.tapAndroidKeypadDigitByCoordinates(digit)
+          return undefined
+        })
+        if (!keypadButton) {
+          await browser.pause(200)
+          continue
+        }
 
         try {
           await this.tapElementCenter(keypadButton)
@@ -1274,6 +1284,26 @@ export default class OnboardingPage extends BasePage {
       await this.otpInput.waitForExist({ timeout: 45000 })
       return
     }
+  }
+
+  private async tapAndroidKeypadDigitByCoordinates(digit: string) {
+    const positions: Record<string, [number, number]> = {
+      '1': [0.25, 0.58],
+      '2': [0.5, 0.58],
+      '3': [0.75, 0.58],
+      '4': [0.25, 0.68],
+      '5': [0.5, 0.68],
+      '6': [0.75, 0.68],
+      '7': [0.25, 0.78],
+      '8': [0.5, 0.78],
+      '9': [0.75, 0.78],
+      '0': [0.5, 0.88],
+    }
+
+    const position = positions[digit]
+    if (!position) throw new Error(`Unsupported Android keypad digit: ${digit}`)
+
+    await this.tapByRatio(position[0], position[1])
   }
 
   private async waitForIOSPinRoundSettle(isOtpShown: () => Promise<boolean>) {

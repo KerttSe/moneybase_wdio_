@@ -71,6 +71,8 @@ export class LoginPage extends BasePage {
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
+    if (await this.dismissKnownAndroidBlockingPopups(2).catch(() => false)) return
+
     if (await this.tapBiometricSkipForNowIfVisibleAndroid()) return
 
     const googlePayClose = this.applePayProposalCloseBtn
@@ -83,6 +85,7 @@ export class LoginPage extends BasePage {
     }
 
     await this.dismissAndroidBlockersOnce()
+    await this.dismissKnownAndroidBlockingPopups(2).catch(() => false)
     await this.forceHomeViaBottomNavAndroid().catch(() => {})
   }
 
@@ -158,6 +161,7 @@ export class LoginPage extends BasePage {
       if (registerShown || homeShown) return true
 
       await this.dismissAndroidBlockersOnce()
+      await this.dismissKnownAndroidBlockingPopups(2).catch(() => false)
       return false
     }, {
       timeout: 60000,
@@ -406,7 +410,7 @@ private async tapDigit(d: string) {
     // use isExisting (instant, no internal timeout) so the outer waitUntil actually polls
     const movedOffPasscode = await browser.waitUntil(async () => {
       return !(await this.androidKeypadDigit('1').isExisting().catch(() => false))
-    }, { timeout: 6000, interval: 300 }).catch(() => false)
+    }, { timeout: Number(process.env.ANDROID_PASSCODE_TRANSITION_TIMEOUT_MS || 12000), interval: 300 }).catch(() => false)
 
     if (movedOffPasscode) return
 
@@ -568,7 +572,10 @@ async enterOtp(code: string = '123456') {
     await this.throwAndroidOtpErrorIfPresent()
     if (!hasField) return
     await field.click();
-    await field.setValue(otp); //  Android setValue ок
+    await field.clearValue().catch(() => {})
+    await field.addValue(otp).catch(async () => {
+      await field.setValue(otp)
+    })
     return;
   }
 
@@ -849,6 +856,7 @@ async waitForHome(timeout = 30000) {
     await browser.waitUntil(
       async () => {
         await this.dismissPostOtpPopupAndroidOnce()
+        await this.dismissKnownAndroidBlockingPopups(2).catch(() => false)
         const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
         if (homeShown) return true
 
@@ -947,7 +955,7 @@ private async relaunchIOSApp() {
 private async getLoginOtp(auth: AuthData, options: LoginFlowOptions) {
   if (!options.useApiOtp) return '000000'
 
-  const phone = options.otpPhone || process.env.OTP_PHONE || process.env.MB_PHONE || auth.phone
+  const phone = options.otpPhone ?? auth.otpPhone ?? auth.phone
   const maxRequests = Number(process.env.LOGIN_OTP_MAX_REQUESTS || 1)
   const fetchDelayMs = Number(process.env.LOGIN_OTP_FETCH_DELAY_MS || 0)
   if (Number.isFinite(fetchDelayMs) && fetchDelayMs > 0) {
