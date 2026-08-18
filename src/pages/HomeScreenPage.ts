@@ -516,6 +516,8 @@ class HomeScreenPage extends BasePage {
   }
 
   private async openAndroidSubAccountsSheet() {
+    await this.dismissKnownAndroidBlockingPopups().catch(() => {})
+
     const alreadyOnMore = await this.moreRootAndroid.isDisplayed().catch(() => false)
     if (!alreadyOnMore) {
       const moreTabShown = await this.moreTabAndroid.isDisplayed().catch(() => false)
