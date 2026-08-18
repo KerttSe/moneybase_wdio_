@@ -533,8 +533,6 @@ class HomeScreenPage extends BasePage {
 
     await browser.waitUntil(
       async () => {
-        await this.dismissKnownAndroidBlockingPopups().catch(() => {})
-
         const oldSheetShown = await this.subAccountsTitleAndroid.isDisplayed().catch(() => false)
         if (oldSheetShown) return true
 
