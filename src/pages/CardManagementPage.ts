@@ -377,11 +377,6 @@ class CardManagementPage extends BasePage {
       return
     }
 
-    const controls = [this.viewPinButton, this.moreButton]
-    for (const control of controls) {
-      await control.waitForDisplayed({ timeout: 20000 })
-    }
-
     await browser.waitUntil(
       async () =>
         (await this.freezeTextAndroid.isDisplayed().catch(() => false)) ||
