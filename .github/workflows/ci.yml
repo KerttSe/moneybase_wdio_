@@ -421,6 +421,54 @@ jobs:
           if-no-files-found: warn
 
   # ---------------------------------------------------------------------
+  # JIRA SYNC
+  # ---------------------------------------------------------------------
+  sync-jira:
+    name: Sync failures to JIRA
+    runs-on: arc-runner-mb-deploy-stg-scale-set
+    needs: [e2e-smoke, e2e-smoke-secondary, e2e-regression]
+    if: always()
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Download Allure results artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: allure-results-*
+          path: ./allure-results
+          merge-multiple: true
+
+      - name: Sync failures to JIRA
+        if: always()
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_PROJECT_KEY: ${{ vars.JIRA_PROJECT_KEY }}
+          ALLURE_RESULTS_DIR: ./allure-results
+          BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          MAX_ISSUES_PER_RUN: "15"
+          DRY_RUN: "false"
+        run: |
+          echo "=== JIRA SYNC: START ==="
+          node scripts/allure-jira-sync/sync-allure-to-jira.cjs 2>&1 | tee jira-sync.log
+          echo "=== JIRA SYNC: END (exit code ${PIPESTATUS[0]}) ==="
+
+      - name: Upload sync log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jira-sync-log
+          path: jira-sync.log
+          if-no-files-found: warn
+
+  # ---------------------------------------------------------------------
   # REPORT
   # ---------------------------------------------------------------------
   deploy-pages:
