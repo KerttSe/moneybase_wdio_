@@ -566,7 +566,13 @@ class HomeScreenPage extends BasePage {
     if (!browser.isAndroid) return false
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
-    await this.dismissKnownAndroidBlockingPopups().catch(() => {})
+
+    const notNow = $('android=new UiSelector().text("Not Now")')
+    const notNowShown = await notNow.isDisplayed().catch(() => false)
+    if (notNowShown) {
+      await notNow.click().catch(() => {})
+      await notNow.waitForDisplayed({ reverse: true, timeout: 5000 }).catch(() => {})
+    }
 
     const appeared = await browser.waitUntil(
       async () => {
