@@ -283,29 +283,30 @@ jobs:
         env:
           PLATFORM_INPUT: ${{ github.event.inputs.platform || 'all' }}
         run: |
-          # Lane 1 — primary account only (Joint/Business/BH/Auth + account-specific data)
+          # Lane 1 — primary account (VEG40002): account-specific + agnostic Individual
           PRIMARY_SPECS=(
+            "src/tests/launch.spec.ts"
             "src/tests/homeSearch.spec.ts"
+            "src/tests/homeSpendAnalytics.spec.ts"
+            "src/tests/homeStoryly.spec.ts"
+            "src/tests/addFundsBankTransferWalletManager.spec.ts"
             "src/tests/assignBusinessCard.spec.ts"
             "src/tests/cardFreezeUnfreeze.joint.spec.ts"
             "src/tests/cardManagement.joint.spec.ts"
             "src/tests/autoTopUp.spec.ts"
             "src/tests/threeDS2.spec.ts"
             "src/tests/transactions.spec.ts"
-            "src/tests/authentication.incorrectPasscode.spec.ts"
-            "src/tests/authentication.passcodeLockout.spec.ts"
-            "src/tests/authentication.otpCountdown.spec.ts"
-            "src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts"
-            "src/tests/businessCard.terminate.spec.ts"
-            "src/tests/businessCard.relink.spec.ts"
             "src/tests/bankTransfer.p2p.individual.spec.ts"
             "src/tests/bankTransfer.sepa.individual.spec.ts"
             "src/tests/bankTransfer.swift.individual.spec.ts"
             "src/tests/portfolio.spec.ts"
+            "src/tests/orders.spec.ts"
+            "src/tests/priceAlerts.spec.ts"
           )
 
-          # Lane 2 — secondary account specs
-          SECONDARY_ACCOUNT_SPECS=(
+          # Lane 2 — secondary (KER40014) + dedicated isolated accounts (AUTH_SECURITY, AUTH_OTP, BH)
+          # Dedicated-account specs use their own env vars — authSlot value is irrelevant for them
+          SECONDARY_SPECS=(
             "src/tests/homeScreen.spec.ts"
             "src/tests/homeAccountSwitch.spec.ts"
             "src/tests/addbeneficiary.individual.spec.ts"
@@ -315,17 +316,13 @@ jobs:
             "src/tests/fxExchange.spec.ts"
             "src/tests/watchlist.spec.ts"
             "src/tests/onboarding.spec.ts"
-          )
-
-          # Lane 2 — account-agnostic Individual specs on secondary runner
-          SECONDARY_RUNNER_PRIMARY_SPECS=(
-            "src/tests/launch.spec.ts"
-            "src/tests/homeSpendAnalytics.spec.ts"
-            "src/tests/homeStoryly.spec.ts"
-            "src/tests/addFundsBankTransferWalletManager.spec.ts"
+            "src/tests/authentication.incorrectPasscode.spec.ts"
+            "src/tests/authentication.passcodeLockout.spec.ts"
+            "src/tests/authentication.otpCountdown.spec.ts"
+            "src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts"
+            "src/tests/businessCard.terminate.spec.ts"
+            "src/tests/businessCard.relink.spec.ts"
             "src/tests/addbeneficiary.individual.usd.steps.spec.ts"
-            "src/tests/orders.spec.ts"
-            "src/tests/priceAlerts.spec.ts"
             "src/tests/pricePlan.spec.ts"
             "src/tests/salaryStipendPension.spec.ts"
           )
@@ -348,15 +345,9 @@ jobs:
               INCLUDE=$(echo "$INCLUDE" | jq -c --argjson e "$entry" '. += [$e]')
               PRIMARY_INCLUDE=$(echo "$PRIMARY_INCLUDE" | jq -c --argjson e "$entry" '. += [$e]')
             done
-            for spec in "${SECONDARY_ACCOUNT_SPECS[@]}"; do
+            for spec in "${SECONDARY_SPECS[@]}"; do
               entry=$(jq -c -n --arg p "$platform" --arg s "$spec" \
                 '{"platform": $p, "spec": $s, "smoke": false, "authSlot": "secondary"}')
-              INCLUDE=$(echo "$INCLUDE" | jq -c --argjson e "$entry" '. += [$e]')
-              SECONDARY_INCLUDE=$(echo "$SECONDARY_INCLUDE" | jq -c --argjson e "$entry" '. += [$e]')
-            done
-            for spec in "${SECONDARY_RUNNER_PRIMARY_SPECS[@]}"; do
-              entry=$(jq -c -n --arg p "$platform" --arg s "$spec" \
-                '{"platform": $p, "spec": $s, "smoke": false, "authSlot": "primary"}')
               INCLUDE=$(echo "$INCLUDE" | jq -c --argjson e "$entry" '. += [$e]')
               SECONDARY_INCLUDE=$(echo "$SECONDARY_INCLUDE" | jq -c --argjson e "$entry" '. += [$e]')
             done
@@ -466,6 +457,13 @@ jobs:
       AUTH_OTP_MB_PHONE: ${{ secrets.AUTH_OTP_MB_PHONE }}
       AUTH_OTP_MB_PIN: ${{ secrets.AUTH_OTP_MB_PIN }}
       AUTH_OTP_OTP_PHONE: ${{ secrets.AUTH_OTP_OTP_PHONE }}
+      AUTH_SECURITY_MB_PHONE: ${{ secrets.AUTH_SECURITY_MB_PHONE }}
+      AUTH_SECURITY_MB_PIN: ${{ secrets.AUTH_SECURITY_MB_PIN }}
+      AUTH_SECURITY_OTP_PHONE: ${{ secrets.AUTH_SECURITY_OTP_PHONE }}
+      BH_MB_COUNTRY: ${{ secrets.BH_MB_COUNTRY }}
+      BH_MB_PHONE: ${{ secrets.BH_MB_PHONE }}
+      BH_MB_PIN: ${{ secrets.BH_MB_PIN }}
+      BH_OTP_PHONE: ${{ secrets.BH_OTP_PHONE }}
       BROWSERSTACK: "true"
       BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
       BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
