@@ -433,6 +433,15 @@ class HomeScreenPage extends BasePage {
     await this.dismissCommonAndroidAlert(5000).catch(() => false)
     await this.dismissGooglePayPopupIfPresentAndroid(12000).catch(() => false)
     await this.ensureHomeLandingAndroid()
+
+    // Single-account users (e.g. KER40014) never show the "Individual" badge on
+    // the home screen. Accept home + no competing account type visible as success.
+    const individualLabelShown = await this.individualAccountLabelAndroid.isDisplayed().catch(() => false)
+    if (individualLabelShown) return
+    const jointShown = await this.jointAccountLabelAndroid.isDisplayed().catch(() => false)
+    const businessShown = await this.businessAccountLabelAndroid.isDisplayed().catch(() => false)
+    if (!jointShown && !businessShown) return
+
     await this.waitForAndroidHomeAccount('Individual')
   }
 

@@ -21,6 +21,10 @@ export default class SalaryStipendPensionPage extends BasePage {
     return $('android=new UiSelector().description("addFunds_item_salary")')
   }
 
+  private get sspTileAndroidByText() {
+    return $('android=new UiSelector().textContains("Salary, Stipend")')
+  }
+
   /* ========================
    * PREFERENCE SCREEN
    * Unique anchor: "Select your preference" — NOT the NavBar (same name on instruction screen)
@@ -98,8 +102,22 @@ export default class SalaryStipendPensionPage extends BasePage {
         { timeout: 25000, interval: 1500 }
       )
     } else {
-      await this.sspTileAndroid.waitForDisplayed({ timeout: 15000 })
-      await this.tap(this.sspTileAndroid)
+      await browser.waitUntil(
+        async () => {
+          const byDesc = await this.sspTileAndroid.isExisting().catch(() => false)
+          if (byDesc) {
+            await this.tap(this.sspTileAndroid).catch(() => {})
+            return true
+          }
+          const byText = await this.sspTileAndroidByText.isExisting().catch(() => false)
+          if (byText) {
+            await this.tap(this.sspTileAndroidByText).catch(() => {})
+            return true
+          }
+          return false
+        },
+        { timeout: 15000, interval: 1000 }
+      )
     }
   }
 

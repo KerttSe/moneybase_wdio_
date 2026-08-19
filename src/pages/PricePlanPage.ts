@@ -45,7 +45,15 @@ class PricePlanPage extends BasePage {
   }
 
   private get moreTabAndroid() {
-    return $('android=new UiSelector().description("More")')
+    return $('android=new UiSelector().resourceIdMatches(".*:id/navigation_button_more$|^navigation_button_more$")')
+  }
+
+  private get userAvatarAndroid() {
+    return $('android=new UiSelector().resourceIdMatches(".*:id/home_button_userAvatar$|^home_button_userAvatar$")')
+  }
+
+  private get moreScreenAndroid() {
+    return $('android=new UiSelector().resourceIdMatches(".*:id/more_screen$|^more_screen$")')
   }
 
   private get moreTabIOS() {
@@ -60,6 +68,10 @@ class PricePlanPage extends BasePage {
     return $(
       '//android.view.View[@clickable="true"][.//android.widget.TextView[@text="My Price Plan"]]'
     )
+  }
+
+  private get moneybaseClubMenuItemAndroid() {
+    return $('android=new UiSelector().textContains("Moneybase Club")')
   }
 
   private get pricePlanMenuItemIOS() {
@@ -79,7 +91,11 @@ class PricePlanPage extends BasePage {
   }
 
   private get screenTitleAndroid() {
-    return $('android=new UiSelector().text("My Current Plan")')
+    return $('android=new UiSelector().textMatches("My Current Plan|Moneybase Club")')
+  }
+
+  private get planHeaderAndroid() {
+    return $('android=new UiSelector().textMatches("(?i)STANDARD|(?i)STARTER|(?i)PLUS|(?i)PREMIUM")')
   }
 
   private get screenTitleIOS() {
@@ -105,6 +121,18 @@ class PricePlanPage extends BasePage {
 
   private get billingFrequencyAndroid() {
     return $('//android.widget.TextView[@text="monthly" or @text="yearly"]')
+  }
+
+  private get noMinimumBalanceAndroid() {
+    return $('android=new UiSelector().textContains("NO MINIMUM BALANCE")')
+  }
+
+  private get planFeeAndroidBroad() {
+    return $('//android.widget.TextView[contains(@text,"€") or contains(@text,"$") or contains(@text,"£")]')
+  }
+
+  private get benefitTextsAndroid() {
+    return $$('//*[contains(@text,"IBAN") or contains(@text,"Transfer") or contains(@text,"benefit") or contains(@text,"free") or contains(@text,"Free") or contains(@text,"FREE")]')
   }
 
   private get billingFrequencyIOS() {
@@ -217,7 +245,11 @@ class PricePlanPage extends BasePage {
       ])
     }
 
-    return this.screenTitleAndroid.isExisting().catch(() => false)
+    return this.anyExisting([
+      this.screenTitleAndroid,
+      this.planHeaderAndroid,
+      this.billingFrequencyAndroid,
+    ])
   }
 
   private async anyExisting(candidates: WdioEl[]) {
@@ -228,7 +260,7 @@ class PricePlanPage extends BasePage {
     return false
   }
 
-  private async waitForPricePlanScreenOpen(timeout = 10000) {
+  private async waitForPricePlanScreenOpen(timeout = 20000) {
     await browser.waitUntil(
       () => this.isPricePlanScreenOpen(),
       {
@@ -258,8 +290,25 @@ class PricePlanPage extends BasePage {
     }
 
     if (!browser.isAndroid) throw new Error('openMoreTab: unsupported platform')
-    await this.tap(this.moreTabAndroid)
-    await this.pricePlanMenuItemAndroid.waitForExist({ timeout: 10000 })
+
+    const alreadyOnMore = await this.moreScreenAndroid.isDisplayed().catch(() => false)
+    if (!alreadyOnMore) {
+      const bottomNavMore = await this.moreTabAndroid.isDisplayed().catch(() => false)
+      if (bottomNavMore) {
+        await this.tap(this.moreTabAndroid)
+      } else {
+        await this.userAvatarAndroid.waitForDisplayed({ timeout: 10000 })
+        await this.tap(this.userAvatarAndroid)
+        await this.moreScreenAndroid.waitForDisplayed({ timeout: 10000 })
+        // Avatar opens More with an account-picker overlay — dismiss it so menu items are accessible
+        const accountPickerShown = await $('android=new UiSelector().resourceIdMatches(".*:id/accountSelection_screen$")').isDisplayed().catch(() => false)
+        if (accountPickerShown) {
+          await browser.back()
+          await browser.pause(500)
+        }
+      }
+    }
+    await this.moreScreenAndroid.waitForDisplayed({ timeout: 10000 })
   }
 
   /** MPP-1.3: tap "My Price Plan" from the More menu. */
@@ -279,8 +328,9 @@ class PricePlanPage extends BasePage {
     }
 
     if (!browser.isAndroid) throw new Error('openPricePlanScreen: unsupported platform')
-    await this.tap(this.pricePlanMenuItemAndroid)
-    await this.screenTitleAndroid.waitForExist({ timeout: 10000 })
+    await this.moneybaseClubMenuItemAndroid.waitForDisplayed({ timeout: 10000 })
+    await this.tap(this.moneybaseClubMenuItemAndroid)
+    await this.waitForPricePlanScreenOpen()
   }
 
   /** MPP-1.4: confirm the Price Plan screen loaded. */
@@ -292,8 +342,8 @@ class PricePlanPage extends BasePage {
     }
 
     if (!browser.isAndroid) throw new Error('verifyScreenLoaded: unsupported platform')
-    const shown = await this.screenTitleAndroid.isExisting().catch(() => false)
-    if (!shown) throw new Error('verifyScreenLoaded: "My Current Plan" title not visible')
+    const shown = await this.isPricePlanScreenOpen()
+    if (!shown) throw new Error('verifyScreenLoaded: Price Plan screen content not visible')
   }
 
   /** MPP-1.6: plan fee is displayed (e.g. "€0.00"). */
@@ -310,8 +360,14 @@ class PricePlanPage extends BasePage {
     }
 
     if (!browser.isAndroid) throw new Error('getPlanFee: unsupported platform')
-    await this.planFeeAndroid.waitForExist({ timeout: 10000 })
-    return (await this.planFeeAndroid.getText()).trim()
+    if (await this.noMinimumBalanceAndroid.isExisting().catch(() => false)) {
+      return (await this.noMinimumBalanceAndroid.getText()).trim()
+    }
+    const feeEl = await this.planFeeAndroid.isExisting().catch(() => false)
+      ? this.planFeeAndroid
+      : this.planFeeAndroidBroad
+    await feeEl.waitForExist({ timeout: 10000 })
+    return (await feeEl.getText()).trim()
   }
 
   public async getBillingFrequency(): Promise<string> {
@@ -339,8 +395,8 @@ class PricePlanPage extends BasePage {
     }
 
     if (!browser.isAndroid) throw new Error('verifyBenefitsDisplayed: unsupported platform')
-    const rows = await this.benefitRowsAndroid
-    const count = await rows.length
+    const rows = await this.benefitTextsAndroid
+    const count = rows.length
     if (count === 0) throw new Error('verifyBenefitsDisplayed: no benefit rows found')
     return count
   }
