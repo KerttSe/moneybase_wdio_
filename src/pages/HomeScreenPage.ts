@@ -418,6 +418,13 @@ class HomeScreenPage extends BasePage {
     const isIndividual = await this.individualAccountLabelAndroid.isDisplayed().catch(() => false)
     if (isIndividual) return
 
+    // Single-account users (e.g. KER40014) never show account-type badges — if neither
+    // Joint nor Business is visible, we are already in the correct single-account state.
+    const jointShown = await this.jointAccountLabelAndroid.isDisplayed().catch(() => false)
+    const businessShown = await this.businessAccountLabelAndroid.isDisplayed().catch(() => false)
+    if (!jointShown && !businessShown) return
+
+    // Multi-account user: switch to Individual via the account picker
     await this.openAndroidSubAccountsSheet()
 
     const individualByNewDesignShown = await this.individualAccountItemAndroid.isDisplayed().catch(() => false)
@@ -433,16 +440,10 @@ class HomeScreenPage extends BasePage {
     await this.dismissCommonAndroidAlert(5000).catch(() => false)
     await this.dismissGooglePayPopupIfPresentAndroid(12000).catch(() => false)
     await this.ensureHomeLandingAndroid()
-
-    // Single-account users (e.g. KER40014) never show the "Individual" badge on
-    // the home screen. Accept home + no competing account type visible as success.
-    const individualLabelShown = await this.individualAccountLabelAndroid.isDisplayed().catch(() => false)
-    if (individualLabelShown) return
-    const jointShown = await this.jointAccountLabelAndroid.isDisplayed().catch(() => false)
-    const businessShown = await this.businessAccountLabelAndroid.isDisplayed().catch(() => false)
-    if (!jointShown && !businessShown) return
-
     await this.waitForAndroidHomeAccount('Individual')
+    // Tap Home tab to trigger a fresh home screen load after account switch
+    await this.tapHomeBottomNavAndroid().catch(() => {})
+    await this.ensureHomeLandingAndroid()
   }
 
   private async ensureHomeLandingAndroid() {

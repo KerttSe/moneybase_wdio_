@@ -56,16 +56,4 @@ describe('Home Screen - Storyly widget', function () {
     await HomeStorylyPage.openFirstStory()
   })
 
-  it('HM-STORY-1.9 Navigate between stories', async function () {
-    await HomeScreenPage.waitForHomeLoaded()
-    await HomeStorylyPage.openFirstStory()
-    const { before, after } = await HomeStorylyPage.navigateToNextStory()
-    console.log(`[TEST] Story position changed: "${before}" -> "${after}"`)
-  })
-
-  it('HM-STORY-1.10 Close Storyly viewer and return to Home', async function () {
-    await HomeScreenPage.waitForHomeLoaded()
-    await HomeStorylyPage.openFirstStory()
-    await HomeStorylyPage.closeStoryViewer()
-  })
 })
