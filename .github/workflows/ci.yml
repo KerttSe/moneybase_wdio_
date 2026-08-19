@@ -283,13 +283,9 @@ jobs:
         env:
           PLATFORM_INPUT: ${{ github.event.inputs.platform || 'all' }}
         run: |
-          # Lane 1 — primary account only (Joint/Business/BH/Auth specs + home/search/analytics)
+          # Lane 1 — primary account only (Joint/Business/BH/Auth + account-specific data)
           PRIMARY_SPECS=(
-            "src/tests/launch.spec.ts"
             "src/tests/homeSearch.spec.ts"
-            "src/tests/homeSpendAnalytics.spec.ts"
-            "src/tests/homeStoryly.spec.ts"
-            "src/tests/addFundsBankTransferWalletManager.spec.ts"
             "src/tests/assignBusinessCard.spec.ts"
             "src/tests/cardFreezeUnfreeze.joint.spec.ts"
             "src/tests/cardManagement.joint.spec.ts"
@@ -302,6 +298,10 @@ jobs:
             "src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts"
             "src/tests/businessCard.terminate.spec.ts"
             "src/tests/businessCard.relink.spec.ts"
+            "src/tests/bankTransfer.p2p.individual.spec.ts"
+            "src/tests/bankTransfer.sepa.individual.spec.ts"
+            "src/tests/bankTransfer.swift.individual.spec.ts"
+            "src/tests/portfolio.spec.ts"
           )
 
           # Lane 2 — secondary account specs
@@ -317,13 +317,13 @@ jobs:
             "src/tests/onboarding.spec.ts"
           )
 
-          # Lane 2 — Individual-only specs that run with primary account on secondary runner
+          # Lane 2 — account-agnostic Individual specs on secondary runner
           SECONDARY_RUNNER_PRIMARY_SPECS=(
+            "src/tests/launch.spec.ts"
+            "src/tests/homeSpendAnalytics.spec.ts"
+            "src/tests/homeStoryly.spec.ts"
+            "src/tests/addFundsBankTransferWalletManager.spec.ts"
             "src/tests/addbeneficiary.individual.usd.steps.spec.ts"
-            "src/tests/bankTransfer.p2p.individual.spec.ts"
-            "src/tests/bankTransfer.sepa.individual.spec.ts"
-            "src/tests/bankTransfer.swift.individual.spec.ts"
-            "src/tests/portfolio.spec.ts"
             "src/tests/orders.spec.ts"
             "src/tests/priceAlerts.spec.ts"
             "src/tests/pricePlan.spec.ts"
