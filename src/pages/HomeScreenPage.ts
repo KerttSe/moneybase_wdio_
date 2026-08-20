@@ -528,12 +528,9 @@ class HomeScreenPage extends BasePage {
   private async openAndroidSubAccountsSheet() {
     await this.dismissKnownAndroidBlockingPopups().catch(() => {})
 
-    const isOnScreen = async (el: ReturnType<typeof $>) =>
-      await el.isDisplayed().catch(() => false) || await el.isExisting().catch(() => false)
-
-    const alreadyOnMore = await isOnScreen(this.moreRootAndroid)
+    const alreadyOnMore = await this.shown(this.moreRootAndroid)
     if (!alreadyOnMore) {
-      const moreTabShown = await isOnScreen(this.moreTabAndroid)
+      const moreTabShown = await this.shown(this.moreTabAndroid)
       if (moreTabShown) {
         await this.tap(this.moreTabAndroid)
         await this.moreRootAndroid.waitForExist({ timeout: 10000 })
@@ -549,20 +546,20 @@ class HomeScreenPage extends BasePage {
         const oldSheetShown = await this.subAccountsTitleAndroid.isDisplayed().catch(() => false)
         if (oldSheetShown) return true
 
-        const moreShown = await isOnScreen(this.moreRootAndroid)
+        const moreShown = await this.shown(this.moreRootAndroid)
         if (!moreShown) return false
 
-        const accountPickerShown = await isOnScreen(this.moreAccountPickerAndroid)
+        const accountPickerShown = await this.shown(this.moreAccountPickerAndroid)
         if (!accountPickerShown) return false
 
         await this.tap(this.moreAccountPickerAndroid)
         return await browser.waitUntil(
           async () => (
-            await isOnScreen(this.accountSelectionRootAndroid) ||
+            await this.shown(this.accountSelectionRootAndroid) ||
             await this.subAccountsTitleAndroid.isDisplayed().catch(() => false) ||
-            await this.individualAccountItemAndroid.isDisplayed().catch(() => false) ||
-            await this.jointAccountItemAndroid.isDisplayed().catch(() => false) ||
-            await this.businessAccountItemAndroid.isDisplayed().catch(() => false)
+            await this.shown(this.individualAccountItemAndroid) ||
+            await this.shown(this.jointAccountItemAndroid) ||
+            await this.shown(this.businessAccountItemAndroid)
           ),
           { timeout: 5000, interval: 300 }
         ).catch(() => false)

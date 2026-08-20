@@ -17,6 +17,13 @@ type EnsureSingleAccountAndroidParams = {
 }
 
 export default class BasePage {
+  protected async shown(el: WdioEl | WebdriverIO.Element): Promise<boolean> {
+    const e = el as WebdriverIO.Element
+    if (await e.isDisplayed().catch(() => false)) return true
+    if (browser.isAndroid) return await e.isExisting().catch(() => false)
+    return false
+  }
+
   private byIdRx(name: string) {
     if (browser.isAndroid) {
       const rx = `.*:id/${name}$|^${name}$`
@@ -461,23 +468,20 @@ export default class BasePage {
     await userAvatarBtn.waitForExist({ timeout: 20000 })
     await this.tap(userAvatarBtn)
 
-    const isOnScreen = async (el: ReturnType<typeof $>) =>
-      await el.isDisplayed().catch(() => false) || await el.isExisting().catch(() => false)
-
     await browser.waitUntil(
       async () => {
-        if (await isOnScreen(accountSelectionScreen)) return true
+        if (await this.shown(accountSelectionScreen)) return true
         if (await oldSubAccountsTitle.isDisplayed().catch(() => false)) return true
 
-        if (await isOnScreen(moreScreen)) {
+        if (await this.shown(moreScreen)) {
           await accountPickerButton.waitForExist({ timeout: 5000 }).catch(() => {})
-          if (await isOnScreen(accountPickerButton)) {
+          if (await this.shown(accountPickerButton)) {
             await this.tap(accountPickerButton)
           }
         }
 
         return (
-          await isOnScreen(accountSelectionScreen) ||
+          await this.shown(accountSelectionScreen) ||
           await oldSubAccountsTitle.isDisplayed().catch(() => false)
         )
       },
@@ -495,7 +499,7 @@ export default class BasePage {
       ? $(`//*[@content-desc="${accountType}"]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[contains(@text,"${accountType}")]/ancestor::*[@clickable="true"][1]`)
       : legacyByCode
 
-    if (!(await accountByCode.isDisplayed().catch(() => false)) && await accountSearchInput.isDisplayed().catch(() => false)) {
+    if (!(await this.shown(accountByCode)) && await this.shown(accountSearchInput)) {
       await accountSearchInput.setValue(accountCode).catch(async () => {
         await this.tap(accountSearchInput)
         await browser.keys(accountCode)
@@ -503,12 +507,12 @@ export default class BasePage {
       await browser.pause(500)
     }
 
-    if (await accountByCode.isDisplayed().catch(() => false)) {
+    if (await this.shown(accountByCode)) {
       await this.tap(accountByCode)
-    } else if (await legacyByCode.isDisplayed().catch(() => false)) {
+    } else if (await this.shown(legacyByCode)) {
       await this.tap(legacyByCode)
     } else {
-      await legacyByType.waitForDisplayed({ timeout: 15000 })
+      await legacyByType.waitForExist({ timeout: 15000 })
       await this.tap(legacyByType)
     }
 
