@@ -188,7 +188,7 @@ class BusinessCardTerminatePage extends BasePage {
 
   // Enabled only after a user is tapped
   private get selectUserBtnAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/assignBusinessCardUserSelection_button_select$|^assignBusinessCardUserSelection_button_select$")')
+    return $('android=new UiSelector().resourceId("assignBusinessCardUserSelection_button_select")')
   }
 
   private get selectUserBtnIOS() {
@@ -198,7 +198,7 @@ class BusinessCardTerminatePage extends BasePage {
   // ── Assign Card form: Continue button ─────────────────────────────────────
 
   private get continueBtnAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/assignBusinessCard_button_continue$|^assignBusinessCard_button_continue$")')
+    return $('android=new UiSelector().resourceId("assignBusinessCard_button_continue")')
   }
 
   private get continueBtnIOS() {
@@ -240,7 +240,7 @@ class BusinessCardTerminatePage extends BasePage {
   }
 
   private get userSelectionSheetAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/assignBusinessCardUserSelection_screen$|^assignBusinessCardUserSelection_screen$")')
+    return $('android=new UiSelector().resourceId("assignBusinessCardUserSelection_screen")')
   }
 
   private get userSelectionScreenIOS() {

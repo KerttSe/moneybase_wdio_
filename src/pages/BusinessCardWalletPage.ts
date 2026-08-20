@@ -183,7 +183,7 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get selectUserBtnAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/assignBusinessCardUserSelection_button_select$|^assignBusinessCardUserSelection_button_select$")')
+    return $('android=new UiSelector().resourceId("assignBusinessCardUserSelection_button_select")')
   }
 
   private get selectUserBtnIOS() {
@@ -191,7 +191,7 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get userSelectionSheetAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/assignBusinessCardUserSelection_screen$|^assignBusinessCardUserSelection_screen$")')
+    return $('android=new UiSelector().resourceId("assignBusinessCardUserSelection_screen")')
   }
 
   private get userSelectionScreenIOS() {

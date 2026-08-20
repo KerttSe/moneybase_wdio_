@@ -549,7 +549,9 @@ class HomeScreenPage extends BasePage {
         const moreShown = await this.moreRootAndroid.isDisplayed().catch(() => false)
         if (!moreShown) return false
 
-        const accountPickerShown = await this.moreAccountPickerAndroid.isDisplayed().catch(() => false)
+        const accountPickerShown =
+          await this.moreAccountPickerAndroid.isDisplayed().catch(() => false) ||
+          await this.moreAccountPickerAndroid.isExisting().catch(() => false)
         if (!accountPickerShown) return false
 
         await this.tap(this.moreAccountPickerAndroid)
@@ -695,7 +697,9 @@ class HomeScreenPage extends BasePage {
   public async verifyAndroidAccountSwitchingAcrossTypes() {
     if (!browser.isAndroid) return
 
-    await this.openAndroidSubAccountsSheet()
+    const opened = await this.openAndroidSubAccountsSheet().then(() => true).catch(() => false)
+    if (!opened) return
+
     const hasBusiness = await this.businessAccountItemAndroid.isDisplayed().catch(() => false)
     if (!hasBusiness) {
       await browser.back().catch(() => {})

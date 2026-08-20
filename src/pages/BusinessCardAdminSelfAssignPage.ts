@@ -85,7 +85,7 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
   }
 
   private get cardTypeRowAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/assignBusinessCard_button_selectCardType$|^assignBusinessCard_button_selectCardType$")')
+    return $('android=new UiSelector().resourceId("assignBusinessCard_button_selectCardType")')
   }
 
   private get cardTypeRowIOS() {
@@ -104,7 +104,7 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
   }
 
   private get assigneeRowAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/assignBusinessCard_button_selectUser$|^assignBusinessCard_button_selectUser$")')
+    return $('android=new UiSelector().resourceId("assignBusinessCard_button_selectUser")')
   }
 
   private get assigneeRowIOS() {

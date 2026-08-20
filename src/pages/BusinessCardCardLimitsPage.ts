@@ -185,7 +185,7 @@ class BusinessCardCardLimitsPage extends BasePage {
   }
 
   private get selectUserBtnAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/assignBusinessCardUserSelection_button_select$|^assignBusinessCardUserSelection_button_select$")')
+    return $('android=new UiSelector().resourceId("assignBusinessCardUserSelection_button_select")')
   }
 
   private get selectUserBtnIOS() {

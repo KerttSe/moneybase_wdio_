@@ -446,8 +446,11 @@ export default class BasePage {
         if (await oldSubAccountsTitle.isDisplayed().catch(() => false)) return true
 
         if (await moreScreen.isDisplayed().catch(() => false)) {
-          await accountPickerButton.waitForDisplayed({ timeout: 5000 }).catch(() => {})
-          if (await accountPickerButton.isDisplayed().catch(() => false)) {
+          await accountPickerButton.waitForExist({ timeout: 5000 }).catch(() => {})
+          const pickerReady =
+            await accountPickerButton.isDisplayed().catch(() => false) ||
+            await accountPickerButton.isExisting().catch(() => false)
+          if (pickerReady) {
             await this.tap(accountPickerButton)
           }
         }
