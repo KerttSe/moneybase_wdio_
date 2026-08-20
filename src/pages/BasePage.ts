@@ -78,14 +78,6 @@ export default class BasePage {
     return $('//android.widget.TextView[@text="Device Not Synced"]/ancestor::*[android.widget.TextView[@text="OK"]][1]//android.widget.TextView[@text="OK"]/ancestor::*[@clickable="true"][1]')
   }
 
-  private get androidDeviceSecurityScreen() {
-    return $('android=new UiSelector().text("Device Security")')
-  }
-
-  private get androidDeviceSecurityCloseBtn() {
-    return $('//android.widget.TextView[@text="Device Security"]/ancestor::android.view.View[1]/preceding-sibling::android.view.View//android.widget.Button[@clickable="true"] | //android.widget.Button[@clickable="true" and not(@text)]')
-  }
-
   private get androidVerificationSuccessContinueBtn() {
     return this.byIdRx('verificationSuccess_button_continue')
   }
@@ -283,19 +275,6 @@ export default class BasePage {
       }
       await this.androidMoreMenuMovedTooltipTitle.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
       await browser.pause(300)
-      return true
-    }
-
-    const deviceSecurityShown = await this.androidDeviceSecurityScreen.isExisting().catch(() => false)
-    if (deviceSecurityShown) {
-      const closeShown = await this.androidDeviceSecurityCloseBtn.isExisting().catch(() => false)
-      if (closeShown) {
-        await this.androidDeviceSecurityCloseBtn.click().catch(() => {})
-      } else {
-        await browser.back().catch(() => {})
-      }
-      await this.androidDeviceSecurityScreen.waitForExist({ reverse: true, timeout: 7000 }).catch(() => {})
-      await browser.pause(500)
       return true
     }
 
