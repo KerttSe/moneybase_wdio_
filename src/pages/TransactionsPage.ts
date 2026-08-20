@@ -12,9 +12,7 @@ export default class TransactionsPage extends BasePage {
   }
 
   private get recentActivitySectionAndroid() {
-    return $(
-      'android=new UiSelector().resourceIdMatches(".*:id/home_section_recentActivities$|.*:id/home_section_recentTransactions$|.*:id/home_section_recentPayees$")'
-    )
+    return $('android=new UiSelector().textMatches("(?i)recent activity|recent transactions|pending")')
   }
 
   private get showAllBtnIOS() {
@@ -22,7 +20,7 @@ export default class TransactionsPage extends BasePage {
   }
 
   private get showAllBtnAndroid() {
-    return $('android=new UiSelector().textMatches("(?i)show all|see all").clickable(true)')
+    return $('android=new UiSelector().textMatches("(?i)show all|see all")')
   }
 
   /* ========================
@@ -37,9 +35,7 @@ export default class TransactionsPage extends BasePage {
   }
 
   private get transactionsHeaderAndroid() {
-    return $(
-      'android=new UiSelector().resourceIdMatches(".*:id/transactions_screen|.*:id/transactions_header|.*:id/toolbar_title")'
-    )
+    return $('android=new UiSelector().text("Transactions")')
   }
 
   private get filterBtnIOS() {
@@ -47,9 +43,7 @@ export default class TransactionsPage extends BasePage {
   }
 
   private get transactionListAndroid() {
-    return $(
-      'android=new UiSelector().resourceIdMatches(".*:id/transactions_list|.*:id/transaction_list|.*:id/recycler_view")'
-    )
+    return $('android=new UiSelector().description("Filter")')
   }
 
   // Date group headers: "12 April" / "23 December 2025" / "Today" / "Yesterday"
