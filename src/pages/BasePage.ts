@@ -78,6 +78,14 @@ export default class BasePage {
     return $('//android.widget.TextView[@text="Device Not Synced"]/ancestor::*[android.widget.TextView[@text="OK"]][1]//android.widget.TextView[@text="OK"]/ancestor::*[@clickable="true"][1]')
   }
 
+  private get androidDeviceSecurityScreen() {
+    return $('android=new UiSelector().text("Device Security")')
+  }
+
+  private get androidDeviceSecurityCloseBtn() {
+    return $('//android.widget.TextView[@text="Device Security"]/ancestor::android.view.View[1]/preceding-sibling::android.view.View//android.widget.Button[@clickable="true"] | //android.widget.Button[@clickable="true" and not(@text)]')
+  }
+
   private get androidVerificationSuccessContinueBtn() {
     return this.byIdRx('verificationSuccess_button_continue')
   }
@@ -278,6 +286,19 @@ export default class BasePage {
       return true
     }
 
+    const deviceSecurityShown = await this.androidDeviceSecurityScreen.isExisting().catch(() => false)
+    if (deviceSecurityShown) {
+      const closeShown = await this.androidDeviceSecurityCloseBtn.isExisting().catch(() => false)
+      if (closeShown) {
+        await this.androidDeviceSecurityCloseBtn.click().catch(() => {})
+      } else {
+        await browser.back().catch(() => {})
+      }
+      await this.androidDeviceSecurityScreen.waitForExist({ reverse: true, timeout: 7000 }).catch(() => {})
+      await browser.pause(500)
+      return true
+    }
+
     const deviceNotSyncedShown = await this.androidDeviceNotSyncedTitle.isDisplayed().catch(() => false)
     if (deviceNotSyncedShown) {
       const okShown = await this.androidDeviceNotSyncedOkButton.isDisplayed().catch(() => false)
@@ -437,26 +458,26 @@ export default class BasePage {
     const accountSelectionScreen = this.byIdRx('accountSelection_screen')
     const oldSubAccountsTitle = $('android=new UiSelector().text("Sub Accounts")')
 
-    await userAvatarBtn.waitForDisplayed({ timeout: 20000 })
+    await userAvatarBtn.waitForExist({ timeout: 20000 })
     await this.tap(userAvatarBtn)
+
+    const isOnScreen = async (el: ReturnType<typeof $>) =>
+      await el.isDisplayed().catch(() => false) || await el.isExisting().catch(() => false)
 
     await browser.waitUntil(
       async () => {
-        if (await accountSelectionScreen.isDisplayed().catch(() => false)) return true
+        if (await isOnScreen(accountSelectionScreen)) return true
         if (await oldSubAccountsTitle.isDisplayed().catch(() => false)) return true
 
-        if (await moreScreen.isDisplayed().catch(() => false)) {
+        if (await isOnScreen(moreScreen)) {
           await accountPickerButton.waitForExist({ timeout: 5000 }).catch(() => {})
-          const pickerReady =
-            await accountPickerButton.isDisplayed().catch(() => false) ||
-            await accountPickerButton.isExisting().catch(() => false)
-          if (pickerReady) {
+          if (await isOnScreen(accountPickerButton)) {
             await this.tap(accountPickerButton)
           }
         }
 
         return (
-          await accountSelectionScreen.isDisplayed().catch(() => false) ||
+          await isOnScreen(accountSelectionScreen) ||
           await oldSubAccountsTitle.isDisplayed().catch(() => false)
         )
       },
