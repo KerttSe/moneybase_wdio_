@@ -528,9 +528,9 @@ class HomeScreenPage extends BasePage {
   private async openAndroidSubAccountsSheet() {
     await this.dismissKnownAndroidBlockingPopups().catch(() => {})
 
-    const alreadyOnMore = await this.shown(this.moreRootAndroid)
+    const alreadyOnMore = await this.moreRootAndroid.isDisplayed().catch(() => false)
     if (!alreadyOnMore) {
-      const moreTabShown = await this.shown(this.moreTabAndroid)
+      const moreTabShown = await this.moreTabAndroid.isDisplayed().catch(() => false)
       if (moreTabShown) {
         await this.tap(this.moreTabAndroid)
         await this.moreRootAndroid.waitForExist({ timeout: 10000 })
@@ -546,20 +546,20 @@ class HomeScreenPage extends BasePage {
         const oldSheetShown = await this.subAccountsTitleAndroid.isDisplayed().catch(() => false)
         if (oldSheetShown) return true
 
-        const moreShown = await this.shown(this.moreRootAndroid)
+        const moreShown = await this.moreRootAndroid.isDisplayed().catch(() => false)
         if (!moreShown) return false
 
-        const accountPickerShown = await this.shown(this.moreAccountPickerAndroid)
+        const accountPickerShown = await this.moreAccountPickerAndroid.isDisplayed().catch(() => false)
         if (!accountPickerShown) return false
 
         await this.tap(this.moreAccountPickerAndroid)
         return await browser.waitUntil(
           async () => (
-            await this.shown(this.accountSelectionRootAndroid) ||
+            await this.accountSelectionRootAndroid.isDisplayed().catch(() => false) ||
             await this.subAccountsTitleAndroid.isDisplayed().catch(() => false) ||
-            await this.shown(this.individualAccountItemAndroid) ||
-            await this.shown(this.jointAccountItemAndroid) ||
-            await this.shown(this.businessAccountItemAndroid)
+            await this.individualAccountItemAndroid.isDisplayed().catch(() => false) ||
+            await this.jointAccountItemAndroid.isDisplayed().catch(() => false) ||
+            await this.businessAccountItemAndroid.isDisplayed().catch(() => false)
           ),
           { timeout: 5000, interval: 300 }
         ).catch(() => false)
