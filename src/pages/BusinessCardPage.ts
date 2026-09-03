@@ -1,11 +1,14 @@
 import BasePage from './BasePage'
 import { $, $$, browser } from '@wdio/globals'
+import type { ChainablePromiseElement } from 'webdriverio'
 import OtpHelper from '../helpers/otp.helper'
+
+type WdioEl = ChainablePromiseElement
 
 const BUSINESS_CARD_ASSIGNEE_NAMES = (
   process.env.BUSINESS_CARD_ASSIGNEE_NAMES ||
   process.env.BUSINESS_CARD_ASSIGNEE_NAME ||
-  'Marilyn Phillips,Younes Lambert,Kertys Dmytrosi,Dmytri Kerteusz,Dmytro Kertys,Las Vegas'
+  'Johnny Phillips,Maria Bach,Nabi Nabizade,Ian Farrugia,Las Vegas,Marilyn Phillips,Younes Lambert,Kertys Dmytrosi,Dmytri Kerteusz,Dmytro Kertys'
 ).split(',').map((name) => name.trim()).filter(Boolean)
 
 class BusinessCardPage extends BasePage {
@@ -309,7 +312,7 @@ class BusinessCardPage extends BasePage {
   }
 
   private userOptionAndroidByName(name: string) {
-    return $(`(//*[contains(@content-desc,"${name}")]/ancestor-or-self::*[@clickable="true"][1] | //android.widget.TextView[contains(@text,"${name}")]/ancestor::*[@clickable="true"][1])[1]`)
+    return $(`(//android.view.View[@clickable="true" and (.//*[contains(@content-desc,"${name}")] or .//android.widget.TextView[contains(@text,"${name}")])])[1]`)
   }
 
   private get selectUserBtnAndroid() {
@@ -322,6 +325,46 @@ class BusinessCardPage extends BasePage {
 
   private get userCardLimitReachedOkAndroid() {
     return $('//*[@text="OK" or @content-desc="OK"]')
+  }
+
+  private get androidAlertThirdButton() {
+    return $('(//*[@resource-id="android:id/button3"] | //*[contains(@resource-id,"button3")])[1]')
+  }
+
+  private async tapAndroidElementCenter(el: WdioEl) {
+    const location = await el.getLocation()
+    const size = await el.getSize()
+    await browser.execute('mobile: clickGesture', {
+      x: Math.round(location.x + size.width / 2),
+      y: Math.round(location.y + size.height / 2),
+    })
+  }
+
+  private async visibleAndroidAssigneeNames() {
+    const source = await browser.getPageSource().catch(() => '')
+    const names = new Set<string>()
+    const ignored = new Set(['Drag handle', 'Search', 'Select User', 'Select user', 'Select'])
+    for (const match of source.matchAll(/content-desc="([^"]+)"/g)) {
+      const name = match[1].trim()
+      if (!name || ignored.has(name) || !/\s/.test(name)) continue
+      names.add(name)
+    }
+    return [...names]
+  }
+
+  private async dismissAndroidCardLimitIfPresent() {
+    const limitShown =
+      (await this.userCardLimitReachedAndroid.isExisting().catch(() => false)) ||
+      (await this.androidAlertThirdButton.isExisting().catch(() => false))
+    if (!limitShown) return false
+
+    const okBtn = (await this.androidAlertThirdButton.isExisting().catch(() => false))
+      ? this.androidAlertThirdButton
+      : this.userCardLimitReachedOkAndroid
+    await this.tap(okBtn).catch(() => {})
+    await browser.pause(500)
+    await this.userSelectionSheetAndroid.waitForExist({ timeout: 5000 }).catch(() => {})
+    return true
   }
 
   private get continueBtnAndroid() {
@@ -1034,32 +1077,41 @@ class BusinessCardPage extends BasePage {
       })
 
       const blockedAssignees: string[] = []
-      for (const assigneeName of BUSINESS_CARD_ASSIGNEE_NAMES) {
+      const attemptedAssignees: string[] = []
+      const assigneeNames = [...new Set([...BUSINESS_CARD_ASSIGNEE_NAMES, ...(await this.visibleAndroidAssigneeNames())])]
+      for (const assigneeName of assigneeNames) {
         const userOption = this.userOptionAndroidByName(assigneeName)
         if (!(await userOption.isExisting().catch(() => false))) continue
 
+        attemptedAssignees.push(assigneeName)
         this.selectedBusinessCardAssigneeName = assigneeName
         await this.tap(userOption)
         await browser.pause(600)
+        if (
+          (await this.userSelectionSheetAndroid.isExisting().catch(() => false)) &&
+          !(await this.selectUserBtnAndroid.isEnabled().catch(() => false))
+        ) {
+          await this.tapAndroidElementCenter(userOption).catch(() => {})
+          await browser.pause(600)
+        }
 
-        if (await this.userCardLimitReachedAndroid.isExisting().catch(() => false)) {
+        if (await this.dismissAndroidCardLimitIfPresent()) {
           blockedAssignees.push(assigneeName)
-          await this.tap(this.userCardLimitReachedOkAndroid).catch(() => {})
-          await this.userSelectionSheetAndroid.waitForExist({ timeout: 5000 }).catch(() => {})
           continue
         }
 
         if (await this.userSelectionSheetAndroid.isExisting().catch(() => false)) {
-          await browser.waitUntil(
+          const selectEnabled = await browser.waitUntil(
             async () =>
               (await this.selectUserBtnAndroid.isExisting().catch(() => false)) &&
               (await this.selectUserBtnAndroid.isEnabled().catch(() => false)),
             { timeout: 5000, interval: 300, timeoutMsg: `Select button did not become enabled after choosing ${assigneeName}` },
-          )
+          ).then(() => true).catch(() => false)
+          if (!selectEnabled) continue
           await this.tap(this.selectUserBtnAndroid)
         }
 
-        await browser.waitUntil(
+        const selected = await browser.waitUntil(
           async () =>
             !(await this.userSelectionSheetAndroid.isExisting().catch(() => false)) &&
             (
@@ -1067,11 +1119,20 @@ class BusinessCardPage extends BasePage {
               (await this.continueBtnAndroid.isEnabled().catch(() => false))
             ),
           { timeout: 15000, interval: 500, timeoutMsg: `${assigneeName} assignee was not selected on Android` },
-        )
-        return
+        ).then(() => true).catch(() => false)
+        if (selected) return
+
+        if (!(await this.userSelectionSheetAndroid.isExisting().catch(() => false))) {
+          await this.tap(this.cardAssigneeRowAndroid).catch(() => {})
+          await this.userSelectionSheetAndroid.waitForExist({ timeout: 5000 }).catch(() => {})
+        }
       }
 
-      throw new Error(`No available assignee found for physical business card. Blocked by card limit: ${blockedAssignees.join(', ') || 'none'}`)
+      throw new Error(
+        `No available assignee found for physical business card. ` +
+        `Attempted: ${attemptedAssignees.join(', ') || 'none'}. ` +
+        `Blocked by card limit: ${blockedAssignees.join(', ') || 'none'}`
+      )
     }
 
     if (!browser.isIOS) return
