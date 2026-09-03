@@ -1102,17 +1102,35 @@ export default class OnboardingPage extends BasePage {
   }
 
   private async typeIntoSearchInput(searchInput: ChainablePromiseElement, value: string) {
-    await searchInput.waitForExist({ timeout: 10000 })
-    await searchInput.click()
-    await searchInput.clearValue().catch(() => {})
+    let input = searchInput
+    const inputShown = await input.waitForExist({ timeout: 10000 }).then(() => true).catch(() => false)
+
+    if (!inputShown && browser.isAndroid) {
+      const candidates = [
+        this.visibleSearchInput,
+        $('android=new UiSelector().className("android.widget.EditText").focused(true)'),
+        $('android=new UiSelector().className("android.widget.EditText").instance(0)'),
+      ]
+
+      for (const candidate of candidates) {
+        if (await candidate.waitForExist({ timeout: 2000 }).then(() => true).catch(() => false)) {
+          input = candidate
+          break
+        }
+      }
+    }
+
+    await input.waitForExist({ timeout: 10000 })
+    await input.click()
+    await input.clearValue().catch(() => {})
     if (browser.isIOS) {
-      await searchInput.addValue(value).catch(async () => {
-        await searchInput.setValue(value)
+      await input.addValue(value).catch(async () => {
+        await input.setValue(value)
       })
       return
     }
 
-    await searchInput.addValue(value).catch(async () => {
+    await input.addValue(value).catch(async () => {
       await this.typeAndroidShell(value)
     })
   }
@@ -1826,7 +1844,8 @@ export default class OnboardingPage extends BasePage {
     await browser.waitUntil(
       async () => {
         await this.dismissKnownAndroidBlockingPopups().catch(() => {})
-        if (await this.homeRoot.isDisplayed().catch(() => false)) return true
+        if (await this.homeRoot.isDisplayed().catch(() => false)
+          || await this.homeRoot.isExisting().catch(() => false)) return true
         return (
           (await this.passcodeScreen.isDisplayed().catch(() => false)) ||
           (await this.keypadDigit(pin[0]).isDisplayed().catch(() => false))
@@ -1839,7 +1858,8 @@ export default class OnboardingPage extends BasePage {
       }
     )
 
-    if (!(await this.homeRoot.isDisplayed().catch(() => false))) {
+    if (!(await this.homeRoot.isDisplayed().catch(() => false))
+      && !(await this.homeRoot.isExisting().catch(() => false))) {
       for (const digit of pin) {
         const keypadButton = this.keypadDigit(digit)
         await keypadButton.waitForExist({ timeout: 10000 })
@@ -1850,7 +1870,8 @@ export default class OnboardingPage extends BasePage {
     await browser.waitUntil(
       async () => {
         await this.dismissKnownAndroidBlockingPopups().catch(() => {})
-        return this.homeRoot.isDisplayed().catch(() => false)
+        return (await this.homeRoot.isDisplayed().catch(() => false))
+          || (await this.homeRoot.isExisting().catch(() => false))
       },
       {
         timeout: Number(process.env.ONBOARDING_RELOGIN_HOME_TIMEOUT_MS || 45000),

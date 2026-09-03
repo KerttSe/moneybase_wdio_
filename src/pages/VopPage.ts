@@ -9,33 +9,33 @@ class VopPage extends BasePage {
    * ========================= */
 
   private get vopScreenAndroid() {
-    return $('android=new UiSelector().resourceId("verificationOfPayee_screen")')
+    return $('(//*[@resource-id="verificationOfPayee_screen"] | //*[contains(@resource-id,"verificationOfPayee_screen")])[1]')
   }
 
   private get vopScreenAndroidTypo() {
-    return $('android=new UiSelector().resourceId("varificationOfPayee_screen")')
+    return $('(//*[@resource-id="varificationOfPayee_screen"] | //*[contains(@resource-id,"varificationOfPayee_screen")])[1]')
   }
 
   private get vopCloseBtnAndroid() {
-    return $('android=new UiSelector().resourceId("verificationOfPayee_button_close")')
+    return $('(//*[@resource-id="verificationOfPayee_button_close"] | //*[contains(@resource-id,"verificationOfPayee_button_close")] | //*[contains(@content-desc,"verificationOfPayee_button_close")])[1]')
   }
 
   private get vopConfirmBtnAndroid() {
-    return $('android=new UiSelector().resourceId("verificationOfPayee_button_confirm")')
+    return $('(//*[@resource-id="verificationOfPayee_button_confirm"] | //*[contains(@resource-id,"verificationOfPayee_button_confirm")] | //*[contains(@content-desc,"verificationOfPayee_button_confirm")])[1]')
   }
 
   private get vopConfirmBtnAndroidTypo() {
-    return $('android=new UiSelector().resourceId("varificationOfPayee_button_confirm")')
+    return $('(//*[@resource-id="varificationOfPayee_button_confirm"] | //*[contains(@resource-id,"varificationOfPayee_button_confirm")])[1]')
   }
 
   private get vopConfirmBtnAndroidByText() {
-    return $('android=new UiSelector().text("Confirm")')
+    return $('//*[@text="Confirm" or @content-desc="Confirm"]')
   }
 
   private async getVopResultFromSourceAndroid(): Promise<string> {
     const src = await browser.getPageSource()
     for (const result of ['Close Match', 'No Match', 'Match', 'Unavailable'] as VopResult[]) {
-      if (src.includes(`text="${result}"`)) return result
+      if (src.includes(`text="${result}"`) || src.includes(`content-desc="${result}"`)) return result
     }
     throw new Error('VOP result label not found in page source')
   }
@@ -179,7 +179,7 @@ class VopPage extends BasePage {
         await browser.releaseActions().catch(() => {})
 
         const gone = await browser.waitUntil(
-          async () => !(await this.vopScreenAndroid.isExisting().catch(() => true)),
+          async () => !(await this.isVopScreenVisible()),
           { timeout: 5000, interval: 500 }
         ).catch(() => false)
 

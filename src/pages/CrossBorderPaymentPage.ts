@@ -7,15 +7,15 @@ class CrossBorderPaymentPage extends BasePage {
   /* ── ANDROID: payment input screen ── */
 
   private get bankTransferScreenAndroid() {
-    return $('android=new UiSelector().resourceId("bankTransfer_screen")')
+    return $('(//*[@resource-id="bankTransfer_screen"] | //*[contains(@resource-id,"bankTransfer_screen")])[1]')
   }
 
   private get walletSelectorAndroid() {
-    return $('android=new UiSelector().resourceId("bankTransfer_button_walletSelect")')
+    return $('(//*[@resource-id="bankTransfer_button_walletSelect"] | //*[contains(@resource-id,"bankTransfer_button_walletSelect")] | //*[contains(@content-desc,"walletSelect")])[1]')
   }
 
   private get balanceFeeAndroid() {
-    return $('android=new UiSelector().textContains("Balance:")')
+    return $('//*[contains(@text,"Balance:") or contains(@content-desc,"Balance:")]')
   }
 
   private get feeRowAndroid() {
@@ -27,55 +27,55 @@ class CrossBorderPaymentPage extends BasePage {
   }
 
   private get reviewPaymentBtnAndroid() {
-    return $('android=new UiSelector().resourceId("bankTransfer_button_review_payment")')
+    return $('(//*[@resource-id="bankTransfer_button_review_payment"] | //*[contains(@resource-id,"bankTransfer_button_review_payment")] | //*[contains(@content-desc,"Review Payment") or contains(@content-desc,"review_payment")])[1]')
   }
 
   /* ── ANDROID: wallet picker bottom sheet ── */
 
   private get walletSelectionScreenAndroid() {
-    return $('android=new UiSelector().resourceId("walletSelection_screen")')
+    return $('(//*[@resource-id="walletSelection_screen"] | //*[contains(@resource-id,"walletSelection_screen")])[1]')
   }
 
   private walletOptionAndroid(currencyCode: string) {
-    return $(`//android.view.View[@clickable="true" and ./android.widget.TextView[@text="${currencyCode}"]]`)
+    return $(`(//*[contains(@content-desc,"${currencyCode}")] | //android.view.View[@clickable="true" and ./android.widget.TextView[@text="${currencyCode}"]])[1]`)
   }
 
   /* ── ANDROID: review screen ── */
 
   private get reviewScreenAndroid() {
-    return $('android=new UiSelector().resourceId("verificationOfPayee_screen")')
+    return $('(//*[@resource-id="verificationOfPayee_screen"] | //*[contains(@resource-id,"verificationOfPayee_screen")])[1]')
   }
 
   /* ── ANDROID: fee picker bottom sheet ── */
 
   private get feePickerTitleAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/tvTitle")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/tvTitle"] | //*[@resource-id="tvTitle"] | //*[contains(@resource-id,"tvTitle")])[1]')
   }
 
   private get feePickerListAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/rvSwiftOptionsBottomDialogItems")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/rvSwiftOptionsBottomDialogItems"] | //*[contains(@resource-id,"rvSwiftOptionsBottomDialogItems")])[1]')
   }
 
   private feePickerOptionAndroid(title: string) {
-    return $(`android=new UiSelector().resourceId("com.moneybase.qa:id/tvOptionTitle").text("${title}")`)
+    return $(`(//*[contains(@resource-id,"tvOptionTitle") and (@text="${title}" or @content-desc="${title}")] | //*[@text="${title}" or @content-desc="${title}"])[1]`)
   }
 
   /* ── PUBLIC METHODS ── */
 
   public async openToPaymentScreenAndroid(amount: number | string = 11) {
     await BankTransferP2PIndividualPage.openSwiftPaymentInputScreenAndroid(amount)
-    await this.bankTransferScreenAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.bankTransferScreenAndroid.waitForExist({ timeout: 20000 })
     await markBrowserStackStep('Opened cross-border SWIFT payment screen')
   }
 
   public async verifyBankTransferScreenLoaded() {
-    await this.bankTransferScreenAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.bankTransferScreenAndroid.waitForExist({ timeout: 15000 })
   }
 
   public async verifyPayFromWalletCurrency(currency: string) {
     await this.walletSelectorAndroid.waitForExist({ timeout: 10000 })
     const src = await browser.getPageSource()
-    if (!src.includes(`text="${currency}"`)) {
+    if (!src.includes(`text="${currency}"`) && !src.includes(`content-desc="${currency}"`) && !src.includes(`>${currency}<`)) {
       throw new Error(`Wallet selector does not show currency "${currency}"`)
     }
   }
@@ -133,7 +133,7 @@ class CrossBorderPaymentPage extends BasePage {
   public async openWalletPickerAndroid() {
     await this.walletSelectorAndroid.waitForExist({ timeout: 10000 })
     await this.tap(this.walletSelectorAndroid)
-    await this.walletSelectionScreenAndroid.waitForDisplayed({ timeout: 10000 })
+    await this.walletSelectionScreenAndroid.waitForExist({ timeout: 10000 })
     await markBrowserStackStep('Opened wallet picker')
   }
 

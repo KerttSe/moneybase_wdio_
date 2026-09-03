@@ -97,7 +97,9 @@ class AddFundsBankTransferWalletManagerPage extends BasePage {
   }
 
   private walletCurrencyAnchorAndroid(currency: string) {
-    return $(`android=new UiSelector().textContains("${currency}")`)
+    return $(
+      `//*[@text="${currency}" or @content-desc="${currency}" or contains(@text,"${currency}") or contains(@content-desc,"${currency}")]`
+    )
   }
 
   private async elementExists(el: WdioEl, timeout = 2000) {

@@ -8,24 +8,24 @@ type BuyOrderFlowParams = {
   instrumentQuery: string
   initialQuantity: string
   modifiedQuantity: string
+  androidLimitPrice?: string
 }
 
 export default class OrdersPage extends BasePage {
   private byIdAndroid(name: string) {
-    const rx = `.*:id/${name}$|^${name}$`
-    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[@resource-id="${name}"] | //*[contains(@resource-id,"${name}")])[1]`)
   }
 
   private androidText(text: string) {
-    return $(`android=new UiSelector().text("${text}")`)
+    return $(`//*[@text="${text}" or @content-desc="${text}"]`)
   }
 
   private androidTextContains(text: string) {
-    return $(`android=new UiSelector().textContains("${text}")`)
+    return $(`//*[contains(@text,"${text}") or contains(@content-desc,"${text}")]`)
   }
 
   private androidDescContains(text: string) {
-    return $(`android=new UiSelector().descriptionContains("${text}")`)
+    return $(`//*[contains(@content-desc,"${text}") or contains(@text,"${text}")]`)
   }
 
   private iosA11y(id: string) {
@@ -81,7 +81,7 @@ export default class OrdersPage extends BasePage {
   }
 
   private get searchInputAndroidByInstance() {
-    return $('android=new UiSelector().className("android.widget.EditText").instance(1)')
+    return $('(//android.widget.EditText)[2]')
   }
 
   private get searchInputAndroidByHint() {
@@ -124,8 +124,16 @@ export default class OrdersPage extends BasePage {
     return $('//*[(@class="android.widget.Button" or @clickable="true" or @focusable="true") and (contains(@text,"Buy") or contains(@text,"BUY") or contains(@content-desc,"Buy") or contains(@content-desc,"buy"))]')
   }
 
+  private get instrumentSellButtonAndroid() {
+    return $('//*[@resource-id="instrument-landing-page-sell-btn-mobile"]')
+  }
+
   private get instrumentTitleAndroid() {
     return this.androidText('Instrument')
+  }
+
+  private get instrumentHeaderPriceAndroid() {
+    return $('//android.widget.TextView[contains(@text,"Bmw Ag") or contains(@text,"BMW")]/following::android.widget.TextView[starts-with(@text,"€")][1]')
   }
 
   private get newOrderTitleAndroid() {
@@ -150,6 +158,18 @@ export default class OrdersPage extends BasePage {
 
   private get orderTypeDropdownAndroid() {
     return $('//*[starts-with(@resource-id,"example-tel-input-") and .//*[contains(@text,"Market")]]')
+  }
+
+  private get orderTypeLimitDropdownAndroid() {
+    return $('//*[starts-with(@resource-id,"example-tel-input-") and .//*[contains(@text,"Limit")]]')
+  }
+
+  private get limitPriceInputAndroid() {
+    return $('//android.widget.TextView[contains(@text,"Limit Price") or contains(@text,"Price")]/following::android.widget.EditText[1]')
+  }
+
+  private get limitPriceInputAndroidByResourceId() {
+    return $('//*[contains(@resource-id,"price") or contains(@resource-id,"Price")]')
   }
 
   private get validityDropdownAndroid() {
@@ -431,7 +451,7 @@ export default class OrdersPage extends BasePage {
   }
 
   private get activeOrderRowAndroidByInstance() {
-    return $('android=new UiSelector().className("android.view.View").instance(21)')
+    return $('(//android.view.View)[22]')
   }
 
   private get activeOrderRowAndroidByXPath() {
@@ -571,7 +591,7 @@ export default class OrdersPage extends BasePage {
             continue
           }
           if (await resolved.isDisplayed().catch(() => false)) return true
-          if (browser.isIOS && await resolved.isExisting().catch(() => false)) return true
+          if (await resolved.isExisting().catch(() => false)) return true
         }
         return false
       },
@@ -592,7 +612,7 @@ export default class OrdersPage extends BasePage {
         continue
       }
       if (await resolved.isDisplayed().catch(() => false)) return resolved
-      if (browser.isIOS && await resolved.isExisting().catch(() => false)) return resolved
+      if (await resolved.isExisting().catch(() => false)) return resolved
     }
 
     throw new Error(`${label} did not appear`)
@@ -612,24 +632,27 @@ export default class OrdersPage extends BasePage {
   private async tapCenterOnElement(el: WebdriverIO.Element) {
     if (browser.isAndroid) {
       await this.ensureNativeContextAndroid()
-      const loc = await el.getLocation()
-      const size = await el.getSize()
-      const x = Math.round(loc.x + size.width / 2)
-      const y = Math.round(loc.y + size.height / 2)
-
-      await browser.performActions([
-        {
-          type: 'pointer',
-          id: 'finger-android',
-          parameters: { pointerType: 'touch' },
-          actions: [
-            { type: 'pointerMove', duration: 0, x, y },
-            { type: 'pointerDown', button: 0 },
-            { type: 'pause', duration: 100 },
-            { type: 'pointerUp', button: 0 },
-          ],
-        },
-      ])
+      const loc = await el.getLocation().catch(() => null)
+      const size = await el.getSize().catch(() => null)
+      if (loc && size) {
+        const x = Math.round(loc.x + size.width / 2)
+        const y = Math.round(loc.y + size.height / 2)
+        await browser.performActions([
+          {
+            type: 'pointer',
+            id: 'finger-android',
+            parameters: { pointerType: 'touch' },
+            actions: [
+              { type: 'pointerMove', duration: 0, x, y },
+              { type: 'pointerDown', button: 0 },
+              { type: 'pause', duration: 100 },
+              { type: 'pointerUp', button: 0 },
+            ],
+          },
+        ])
+      } else {
+        await el.click().catch(() => {})
+      }
       await browser.pause(350)
       return
     }
@@ -769,6 +792,72 @@ export default class OrdersPage extends BasePage {
         return { found: true, enabled: true, clicked: true }
       }) as Promise<{ found?: boolean; enabled?: boolean; clicked?: boolean }>,
       { found: false, enabled: false, clicked: false }
+    )
+  }
+
+  private async selectLimitOrderTypeViaWebviewAndroid() {
+    return this.withInvestWebviewAndroid(
+      async () => browser.execute(() => {
+        const textOf = (element: Element) => {
+          const inputValue = element instanceof HTMLInputElement ? element.value : ''
+          return `${element.textContent || ''} ${inputValue} ${element.getAttribute('aria-label') || ''}`.trim()
+        }
+        const clickTarget = (element: HTMLElement) => {
+          element.scrollIntoView({ block: 'center', inline: 'center' })
+          element.click()
+        }
+
+        const controls = Array.from(document.querySelectorAll('button,[role="button"],[aria-haspopup],select,input')) as HTMLElement[]
+        const currentType = controls.find((element) => /Market/i.test(textOf(element)))
+        if (currentType) {
+          clickTarget(currentType)
+          return { opened: true, selected: false }
+        }
+
+        const option = Array.from(document.querySelectorAll('button,[role="option"],[role="menuitem"],li,div,span')).find((element) => {
+          return /^Limit$/i.test(textOf(element))
+        }) as HTMLElement | undefined
+
+        if (!option) return { opened: false, selected: false }
+        clickTarget(option)
+        return { opened: false, selected: true }
+      }) as Promise<{ opened?: boolean; selected?: boolean }>,
+      { opened: false, selected: false }
+    )
+  }
+
+  private async setLimitPriceViaWebviewAndroid(price: string) {
+    return this.withInvestWebviewAndroid(
+      async () => browser.execute((value: string) => {
+        const inputs = Array.from(document.querySelectorAll('input')) as HTMLInputElement[]
+        const textOf = (element: Element | null) => element?.textContent?.trim() || ''
+        const byAttr = inputs.find((input) => {
+          const attrs = `${input.id || ''} ${input.name || ''} ${input.placeholder || ''} ${input.getAttribute('aria-label') || ''}`
+          return /price|limit/i.test(attrs) && !/share|quantity/i.test(attrs)
+        })
+        const byLabel = Array.from(document.querySelectorAll('label,div,span,p')).find((element) => {
+          return /^(Limit Price|Price)$/i.test(textOf(element))
+        }) as HTMLElement | undefined
+        const byLabelInput = byLabel?.closest('div')?.querySelector('input') as HTMLInputElement | null
+        const target = byAttr || byLabelInput || (inputs.length > 1 ? inputs[inputs.length - 1] : null)
+
+        if (!target) return { ok: false, value: '', inputCount: inputs.length }
+
+        target.scrollIntoView({ block: 'center', inline: 'center' })
+        target.focus()
+        const descriptor = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')
+        if (descriptor?.set) {
+          descriptor.set.call(target, value)
+        } else {
+          target.value = value
+        }
+        target.dispatchEvent(new Event('input', { bubbles: true }))
+        target.dispatchEvent(new Event('change', { bubbles: true }))
+        target.blur()
+
+        return { ok: target.value === value, value: target.value, inputCount: inputs.length }
+      }, price) as Promise<{ ok?: boolean; value?: string; inputCount?: number }>,
+      { ok: false, value: '', inputCount: 0 }
     )
   }
 
@@ -1005,7 +1094,10 @@ export default class OrdersPage extends BasePage {
         .then(() => true)
         .catch(() => false)
 
-      if (opened) return
+      if (opened) {
+        await this.waitForInstrumentPriceAndroid().catch(() => {})
+        return
+      }
       await browser.pause(500)
     }
 
@@ -1020,11 +1112,98 @@ export default class OrdersPage extends BasePage {
 
   private async openNewBuyOrderAndroid() {
     const alreadyOnOrder = await this.newOrderTitleAndroid.isDisplayed().catch(() => false)
-    if (alreadyOnOrder) return
+    if (alreadyOnOrder) {
+      await this.waitForBuyOrderFormReadyAndroid()
+      return
+    }
 
     await this.waitForAnyDisplayed([this.instrumentBuyButtonAndroid, this.instrumentBuyButtonAndroidFallback], 20000, 'Instrument Buy button (Android)')
     await this.tapFirstDisplayed([this.instrumentBuyButtonAndroid, this.instrumentBuyButtonAndroidFallback], 'Instrument Buy button (Android)')
     await this.waitForAnyDisplayed([this.newOrderTitleAndroid, this.placeBuyOrderButtonAndroid, this.placeBuyOrderButtonAndroidByText], 20000, 'New Order screen (Android)')
+    await this.waitForBuyOrderFormReadyAndroid()
+  }
+
+  private parseMoneyAmount(value: string) {
+    const match = value.replace(/,/g, '').match(/-?\d+(?:\.\d+)?/)
+    return match ? Number(match[0]) : NaN
+  }
+
+  private getInstrumentMarketPriceFromSource(source: string) {
+    const instrumentMatch = source.match(/text="[^"]*(?:Bmw Ag|BMW)[^"]*"[\s\S]{0,2500}?text="€\s*([0-9][0-9,.]*)"/i)
+    if (!instrumentMatch) return NaN
+    return this.parseMoneyAmount(instrumentMatch[1])
+  }
+
+  private isInvestSkeletonSource(source: string) {
+    return /skeleton-/.test(source)
+  }
+
+  private async waitForInstrumentPriceAndroid() {
+    return browser.waitUntil(async () => {
+      await this.ensureNativeContextAndroid()
+      const source = await browser.getPageSource().catch(() => '')
+      if (this.isInvestSkeletonSource(source)) return false
+
+      const parsed = this.getInstrumentMarketPriceFromSource(source)
+      return Number.isFinite(parsed) ? parsed : false
+    }, {
+      timeout: 30000,
+      interval: 1000,
+      timeoutMsg: 'Current instrument price (Android) did not appear',
+    })
+  }
+
+  private async waitForBuyOrderFormReadyAndroid() {
+    await browser.waitUntil(async () => {
+      await this.ensureNativeContextAndroid()
+      const source = await browser.getPageSource().catch(() => '')
+      if (this.isInvestSkeletonSource(source)) return false
+
+      const hasSharesInput = /text="Shares"|resource-id="custom-number-input"/.test(source)
+      const hasOrderTypeInput = /text="Market"|text="Limit"|resource-id="example-tel-input-[^"]*"/.test(source)
+      const hasOrderForm = hasSharesInput && hasOrderTypeInput
+      const hasBlankSkeletonRows = /resource-id="skeleton-ilp-form-group/.test(source)
+
+      return hasOrderForm && !hasBlankSkeletonRows
+    }, {
+      timeout: 30000,
+      interval: 1000,
+      timeoutMsg: 'Buy order form (Android) did not finish loading',
+    })
+  }
+
+  private formatLimitPriceBelowMarket(marketPrice: number) {
+    if (!Number.isFinite(marketPrice) || marketPrice <= 0) {
+      throw new Error(`Invalid Android market price for limit order: ${marketPrice}`)
+    }
+
+    const offset = Number(process.env.ORDERS_ANDROID_LIMIT_PRICE_OFFSET)
+    if (Number.isFinite(offset) && offset > 0) {
+      return Math.max(0.01, Math.floor((marketPrice - offset) * 100) / 100).toFixed(2)
+    }
+
+    const discount = Number(process.env.ORDERS_ANDROID_LIMIT_PRICE_DISCOUNT || '0.9')
+    const safeDiscount = Number.isFinite(discount) && discount > 0 && discount < 1 ? discount : 0.9
+    const belowMarket = marketPrice * safeDiscount
+    const minTickBelow = Math.max(0.01, marketPrice - 0.01)
+    const limitPrice = Math.min(belowMarket, minTickBelow)
+
+    return Math.max(0.01, Math.floor(limitPrice * 100) / 100).toFixed(2)
+  }
+
+  private async readCurrentInstrumentPriceAndroid() {
+    await this.ensureNativeContextAndroid()
+
+    return Number(await this.waitForInstrumentPriceAndroid())
+  }
+
+  private async resolveInitialLimitPriceAndroid(providedLimitPrice?: string) {
+    if (providedLimitPrice) return providedLimitPrice
+
+    const marketPrice = await this.readCurrentInstrumentPriceAndroid()
+    const limitPrice = this.formatLimitPriceBelowMarket(marketPrice)
+    console.log(`[Orders] Android buy limit price set below market: ${limitPrice}`)
+    return limitPrice
   }
 
   private async setQuantityAndroid(quantity: string) {
@@ -1324,7 +1503,63 @@ export default class OrdersPage extends BasePage {
     await browser.pause(500)
   }
 
-  private async placeBuyOrderAndroid(quantity: string) {
+  private async selectLimitOrderTypeAndroid() {
+    await this.ensureNativeContextAndroid()
+
+    const alreadyLimit = await this.orderTypeLimitDropdownAndroid.isDisplayed().catch(() => false)
+    if (alreadyLimit) return
+
+    const webviewOpened = await this.selectLimitOrderTypeViaWebviewAndroid()
+    if (!webviewOpened.opened && !webviewOpened.selected) {
+      await this.waitForAnyDisplayed([this.orderTypeDropdownAndroid], 8000, 'Market order type dropdown (Android)')
+      await this.tapFirstDisplayed([this.orderTypeDropdownAndroid], 'Market order type dropdown (Android)')
+    }
+
+    const sheetShown = await this.waitForAnyDisplayed([this.orderTypeSheetAndroid, this.orderTypeSheetLimitOptionAndroid], 6000, 'Select Order Type sheet (Android)')
+      .then(() => true)
+      .catch(() => false)
+
+    if (sheetShown) {
+      await this.tapFirstDisplayed([this.orderTypeSheetLimitOptionAndroid, this.androidText('Limit')], 'Limit order type option (Android)')
+    } else if (!webviewOpened.selected) {
+      const webviewSelected = await this.selectLimitOrderTypeViaWebviewAndroid()
+      if (!webviewSelected.selected) {
+        await this.tapAndroidNodeFromSource({ text: 'Limit' }).catch(() => false)
+      }
+    }
+
+    await this.waitForAnyDisplayed([this.orderTypeLimitDropdownAndroid, this.androidText('Limit')], 10000, 'Limit order type selected (Android)')
+  }
+
+  private async setLimitPriceAndroid(price: string) {
+    await this.selectLimitOrderTypeAndroid()
+
+    const webviewSet = await this.setLimitPriceViaWebviewAndroid(price)
+    if (webviewSet.ok) {
+      await browser.pause(300)
+      await this.ensureNativeContextAndroid()
+      return
+    }
+
+    const priceCandidates = [this.limitPriceInputAndroidByResourceId, this.limitPriceInputAndroid]
+    await this.waitForAnyDisplayed(priceCandidates, 10000, 'Limit price input (Android)')
+    const priceInput = await this.getFirstDisplayed(priceCandidates, 'Limit price input (Android)')
+
+    await this.tapCenterOnElement(priceInput)
+    await priceInput.clearValue().catch(() => {})
+    await browser.pause(80)
+    await priceInput.setValue(price).catch(async () => {
+      await browser.keys(price)
+    })
+    await browser.hideKeyboard().catch(() => {})
+    await browser.pause(300)
+  }
+
+  private async placeBuyOrderAndroid(quantity: string, limitPrice?: string) {
+    if (limitPrice) {
+      await this.setLimitPriceAndroid(limitPrice)
+    }
+
     await this.setQuantityAndroid(quantity)
 
     const placeCandidates = [this.placeBuyOrderButtonAndroid, this.placeBuyOrderButtonAndroidByText, this.buyActionButtonAndroid]
@@ -1526,6 +1761,19 @@ export default class OrdersPage extends BasePage {
     throw new Error('Order Preview still visible after confirming Buy (Android)')
   }
 
+  private async isInstrumentSellAvailableAndroid(timeout = 2500) {
+    return this.waitForAnyDisplayed([this.instrumentSellButtonAndroid, this.sellTabAndroid], timeout, 'Instrument Sell action (Android)')
+      .then(() => true)
+      .catch(() => false)
+  }
+
+  private async verifyBuyCompletedBySellAvailableAndroid() {
+    const sellAvailable = await this.isInstrumentSellAvailableAndroid(10000)
+    if (!sellAvailable) {
+      throw new Error('Instrument Sell action (Android) did not appear after Buy order')
+    }
+  }
+
   private async isOrderSubmitErrorShownAndroid(timeout = 1200) {
     return this.waitForAnyDisplayed(
       [this.orderSubmitErrorTitleAndroid, this.orderSubmitErrorTextAndroid],
@@ -1577,6 +1825,24 @@ export default class OrdersPage extends BasePage {
     return true
   }
 
+  private async isOrderDetailsShownAndroid(timeout = 2500) {
+    return this.waitForAnyDisplayed(
+      [
+        this.orderDetailsTitleAndroid,
+        this.orderStatusLabelAndroid,
+        this.orderNumberLabelAndroid,
+        this.modifyActionAndroid,
+        this.modifyActionRowAndroid,
+        this.modifyActionContainerAndroid,
+        this.cancelActionAndroid,
+      ],
+      timeout,
+      'Order Details screen (Android)'
+    )
+      .then(() => true)
+      .catch(() => false)
+  }
+
   private async verifyOrderDetailsAndroid(status: 'ACTIVE' | 'CANCELLED', quantity?: string) {
     await this.confirmPreviewBuyAndroidIfShown()
     await this.confirmModifyOrderPreviewAndroidIfShown()
@@ -1584,7 +1850,7 @@ export default class OrdersPage extends BasePage {
 
     if (status === 'ACTIVE') {
       // Required flow parity with iOS: right after preview confirm, open ACTIVE order row.
-      const alreadyOnDetails = await this.orderDetailsTitleAndroid.isDisplayed().catch(() => false)
+      const alreadyOnDetails = await this.isOrderDetailsShownAndroid()
       if (!alreadyOnDetails) {
         await this.openFirstActiveOrderAndroid()
       }
@@ -1635,7 +1901,7 @@ export default class OrdersPage extends BasePage {
     await this.confirmModifyOrderPreviewAndroidIfShown()
     await this.dismissOrderSubmitErrorAndroidIfShown()
 
-    const onDetailsAtStart = await this.orderDetailsTitleAndroid.isDisplayed().catch(() => false)
+    const onDetailsAtStart = await this.isOrderDetailsShownAndroid()
     if (onDetailsAtStart) return
 
     const ordersAnchors = [
@@ -1706,7 +1972,7 @@ export default class OrdersPage extends BasePage {
         await this.confirmModifyOrderPreviewAndroidIfShown()
         if (await this.dismissOrderSubmitErrorAndroidIfShown()) return false
 
-        const onDetails = await this.orderDetailsTitleAndroid.isDisplayed().catch(() => false)
+        const onDetails = await this.isOrderDetailsShownAndroid(1200)
         if (onDetails) return true
 
         const rowVisible = await hasActiveRow(1200)
@@ -1723,7 +1989,7 @@ export default class OrdersPage extends BasePage {
         throw new Error('Active/Recent Orders section (Android) did not appear')
       }
 
-      const onDetailsAfterWait = await this.orderDetailsTitleAndroid.isDisplayed().catch(() => false)
+      const onDetailsAfterWait = await this.isOrderDetailsShownAndroid()
       if (onDetailsAfterWait) return
 
       for (let i = 0; i < 3; i += 1) {
@@ -1767,7 +2033,7 @@ export default class OrdersPage extends BasePage {
       }
     }
 
-    const onDetailsBeforeFinalWait = await this.orderDetailsTitleAndroid.isDisplayed().catch(() => false)
+    const onDetailsBeforeFinalWait = await this.isOrderDetailsShownAndroid()
     if (onDetailsBeforeFinalWait) return
 
     await this.waitForAnyDisplayed(ordersAnchors, 12000, 'Active/Recent Orders section (Android)')
@@ -2488,8 +2754,10 @@ export default class OrdersPage extends BasePage {
     }
 
     await this.openInstrumentFromInvestLocatorAndroid(params.instrumentQuery)
+    const initialLimitPrice = await this.resolveInitialLimitPriceAndroid(params.androidLimitPrice)
     await this.openNewBuyOrderAndroid()
-    await this.placeBuyOrderAndroid(params.initialQuantity)
+    await this.placeBuyOrderAndroid(params.initialQuantity, initialLimitPrice)
+
     await this.verifyOrderDetailsAndroid('ACTIVE', params.initialQuantity)
 
     await this.tapModifyAndroid()
@@ -2499,5 +2767,16 @@ export default class OrdersPage extends BasePage {
     await this.tapCancelAndroid()
     await this.confirmCancelOrderAndroid()
     await this.verifyOrderDetailsAndroid('CANCELLED', params.modifiedQuantity)
+  }
+
+  public async createBuyOrderAndroid(params: BuyOrderFlowParams) {
+    if (!browser.isAndroid) {
+      throw new Error('Buy order flow can only run on Android')
+    }
+
+    await this.openInstrumentFromInvestLocatorAndroid(params.instrumentQuery)
+    await this.openNewBuyOrderAndroid()
+    await this.placeBuyOrderAndroid(params.initialQuantity)
+    await this.verifyBuyCompletedBySellAvailableAndroid()
   }
 }

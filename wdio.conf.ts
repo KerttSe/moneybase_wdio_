@@ -72,7 +72,10 @@ const normalizeTag = (value?: string) => value?.trim().replace(/^\.?\//, '').rep
 const cliSuiteTag = normalizeTag(cliValue('suite'))
 const cliSpecTag = normalizeTag(cliValue('spec') ? basename(cliValue('spec') as string) : undefined)
 
-if (cliValue('suite') === 'smokeSecondary' && !process.env.MB_AUTH_SLOT) {
+if (
+  (cliValue('suite') === 'smokeSecondary' || cliValue('suite') === 'regressionSecondary') &&
+  !process.env.MB_AUTH_SLOT
+) {
   process.env.MB_AUTH_SLOT = 'secondary'
 }
 const browserStackBuildTags = (platform: 'android' | 'ios') => [
@@ -231,6 +234,7 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
     'appium:adbExecTimeout': 120000,
     'appium:appWaitDuration': 120000,
     'appium:appWaitActivity': '*',
+    ...({ 'appium:enforceXPath1': true } as Record<string, unknown>),
     ...browserStackResetOptions,
   },
   {
@@ -334,8 +338,6 @@ const smokeSpecs = [
 ]
 
 const smokeSecondaryAccountSpecsDefault = [
-  './src/tests/addbeneficiary.individual.spec.ts',
-  './src/tests/addfunds.spec.ts',
   './src/tests/cashFunds.spec.ts',
   './src/tests/fxExchange.spec.ts',
   './src/tests/homeAccountSwitch.spec.ts',
@@ -360,13 +362,67 @@ const smokeSecondaryAccountSpecs = envList('BS_SMOKE_SECONDARY_ACCOUNT_SPECS', s
 const smokeSecondaryAccountSpecNames = new Set(smokeSecondaryAccountSpecs.map(spec => basename(spec)))
 const smokePrimaryAccountSpecs = smokeSpecs.filter(spec => !smokeSecondaryAccountSpecNames.has(basename(spec)))
 
+const regressionSecondarySpecs = [
+  // smoke secondary
+  './src/tests/addbeneficiary.individual.spec.ts',
+  './src/tests/cashFunds.spec.ts',
+  './src/tests/fxExchange.spec.ts',
+  './src/tests/homeAccountSwitch.spec.ts',
+  './src/tests/homeScreen.spec.ts',
+  './src/tests/onboarding.spec.ts',
+  './src/tests/physicalcardcreation.spec.ts',
+  './src/tests/watchlist.spec.ts',
+  // regression-only secondary
+  './src/tests/addbeneficiary.individual.usd.steps.spec.ts',
+  './src/tests/authentication.incorrectPasscode.spec.ts',
+  './src/tests/authentication.otpCountdown.spec.ts',
+  './src/tests/authentication.passcodeLockout.spec.ts',
+  './src/tests/fxExchange.regression.spec.ts',
+  './src/tests/homeSpendAnalytics.spec.ts',
+  './src/tests/homeStoryly.spec.ts',
+  './src/tests/launch.spec.ts',
+  './src/tests/pricePlan.spec.ts',
+]
+
+const regressionPrimarySpecs = [
+  // smoke primary
+  './src/tests/addfunds.spec.ts',
+  './src/tests/autoTopUp.spec.ts',
+  './src/tests/bankTransfer.p2p.individual.spec.ts',
+  './src/tests/bankTransfer.sepa.individual.spec.ts',
+  './src/tests/bankTransfer.swift.individual.spec.ts',
+  './src/tests/cardFreezeUnfreeze.joint.spec.ts',
+  './src/tests/homeSearch.spec.ts',
+  './src/tests/orders.spec.ts',
+  './src/tests/portfolio.spec.ts',
+  './src/tests/priceAlerts.spec.ts',
+  // regression-only primary
+  './src/tests/addFundsBankTransferWalletManager.spec.ts',
+  './src/tests/assignBusinessCard.spec.ts',
+  './src/tests/businessCard.adminSelfAssign.spec.ts',
+  './src/tests/businessCard.cardLimits.spec.ts',
+  './src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts',
+  './src/tests/businessCard.noRights.spec.ts',
+  './src/tests/businessCard.relink.spec.ts',
+  './src/tests/businessCard.terminate.spec.ts',
+  './src/tests/businessCard.walletReachOut.spec.ts',
+  './src/tests/cardManagement.joint.spec.ts',
+  './src/tests/crossBorder.swift.retail.spec.ts',
+  './src/tests/orders.regression.spec.ts',
+  './src/tests/salaryStipendPension.spec.ts',
+  './src/tests/transactions.spec.ts',
+  './src/tests/vop.beneficiary.spec.ts',
+  './src/tests/vop.sepa.spec.ts',
+]
+
 const capabilities = (useBrowserStack ? browserStackCapabilities : localCapabilities)
   .filter((capability) => {
     if (!platformFilter) return true
     return String(capability.platformName).toLowerCase() === platformFilter
   })
 
-const autoAuthSlot = cliValue('suite') === 'smokeSecondary' && !process.env.MB_AUTH_SLOT
+const secondaryAccountSuites = new Set(['smokeSecondary', 'regressionSecondary'])
+const autoAuthSlot = secondaryAccountSuites.has(cliValue('suite') ?? '') && !process.env.MB_AUTH_SLOT
   ? 'secondary'
   : undefined
 
@@ -383,6 +439,8 @@ export const config: WebdriverIO.Config = {
     smokePrimary: smokePrimaryAccountSpecs,
     smokeSecondary: smokeSecondaryAccountSpecs,
     smokeWithoutOnboarding: smokeSpecs.filter((spec) => spec !== './src/tests/onboarding.spec.ts'),
+    regressionPrimary: regressionPrimarySpecs,
+    regressionSecondary: regressionSecondarySpecs,
   },
   maxInstances,
   specFileRetries: Number(process.env.SPEC_FILE_RETRIES ?? 1),
@@ -431,8 +489,8 @@ export const config: WebdriverIO.Config = {
   beforeSession: function (_config, capabilities, specs) {
     const authSlot = String(
       process.env.MB_AUTH_SLOT ||
-      (cliSuiteTag === 'smokePrimary' ? 'primary' : '') ||
-      (cliSuiteTag === 'smokeSecondary' ? 'secondary' : ''),
+      (cliSuiteTag === 'smokePrimary' || cliSuiteTag === 'regressionPrimary' ? 'primary' : '') ||
+      (cliSuiteTag === 'smokeSecondary' || cliSuiteTag === 'regressionSecondary' ? 'secondary' : ''),
     )
     if (authSlot === 'primary' || authSlot === 'secondary') {
       process.env.MB_AUTH_SLOT = authSlot

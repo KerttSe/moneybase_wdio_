@@ -59,8 +59,7 @@ export default class PriceAlertsPage extends BasePage {
   }
 
   private byIdAndroid(name: string) {
-    const rx = `.*:id/${name}$|^${name}$`
-    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[@resource-id="${name}"] | //*[contains(@resource-id,"${name}")])[1]`)
   }
 
   private iosA11y(id: string) {
@@ -76,15 +75,15 @@ export default class PriceAlertsPage extends BasePage {
   }
 
   private androidText(text: string) {
-    return $(`android=new UiSelector().text("${text}")`)
+    return $(`//*[@text="${text}" or @content-desc="${text}"]`)
   }
 
   private androidTextContains(text: string) {
-    return $(`android=new UiSelector().textContains("${text}")`)
+    return $(`//*[contains(@text,"${text}") or contains(@content-desc,"${text}")]`)
   }
 
   private androidDescContains(text: string) {
-    return $(`android=new UiSelector().descriptionContains("${text}")`)
+    return $(`//*[contains(@content-desc,"${text}") or contains(@text,"${text}")]`)
   }
 
   private async waitForAnyDisplayed(candidates: Array<WdioEl | WebdriverIO.Element>, timeout = 10000, label = 'element') {
@@ -93,7 +92,7 @@ export default class PriceAlertsPage extends BasePage {
         for (const el of candidates) {
           const resolved = (await el) as WebdriverIO.Element
           if (await resolved.isDisplayed().catch(() => false)) return true
-          if (browser.isIOS && await resolved.isExisting().catch(() => false)) return true
+          if (await resolved.isExisting().catch(() => false)) return true
         }
         return false
       },
@@ -108,8 +107,9 @@ export default class PriceAlertsPage extends BasePage {
   private async tapFirstDisplayed(candidates: Array<WdioEl | WebdriverIO.Element>, label = 'element') {
     for (const el of candidates) {
       const resolved = (await el) as WebdriverIO.Element
-      const visible = await resolved.isDisplayed().catch(() => false) ||
-        (browser.isIOS && await resolved.isExisting().catch(() => false))
+      const visible =
+        await resolved.isDisplayed().catch(() => false) ||
+        await resolved.isExisting().catch(() => false)
       if (visible) {
         await resolved.click()
         return
@@ -122,8 +122,9 @@ export default class PriceAlertsPage extends BasePage {
   private async getFirstDisplayed(candidates: Array<WdioEl | WebdriverIO.Element>, label = 'element') {
     for (const el of candidates) {
       const resolved = (await el) as WebdriverIO.Element
-      const visible = await resolved.isDisplayed().catch(() => false) ||
-        (browser.isIOS && await resolved.isExisting().catch(() => false))
+      const visible =
+        await resolved.isDisplayed().catch(() => false) ||
+        await resolved.isExisting().catch(() => false)
       if (visible) return resolved
     }
 
@@ -131,7 +132,7 @@ export default class PriceAlertsPage extends BasePage {
   }
 
   private get investTabAndroid() {
-    return this.byIdAndroid('navigation_button_invest')
+    return $('(//*[contains(@resource-id,"navigation_button_invest")] | //*[@content-desc="Invest" and @clickable="true"])[1]')
   }
 
   private get investTabIOS() {
@@ -248,7 +249,7 @@ export default class PriceAlertsPage extends BasePage {
   }
 
   private get overviewTabAndroidByResourceId() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/mat-tab-label-0-0$|^mat-tab-label-0-0$")')
+    return $('(//*[@resource-id="mat-tab-label-0-0"] | //*[contains(@resource-id,"mat-tab-label-0-0")])[1]')
   }
 
   private get newTabAndroidByText() {
@@ -256,8 +257,7 @@ export default class PriceAlertsPage extends BasePage {
   }
 
   private get newTabAndroidByResourceId() {
-    // Seen in pageSource: mat-tab-label-0-1
-    return $('android=new UiSelector().resourceIdMatches(".*:id/mat-tab-label-0-1$|^mat-tab-label-0-1$")')
+    return $('(//*[@resource-id="mat-tab-label-0-1"] | //*[contains(@resource-id,"mat-tab-label-0-1")])[1]')
   }
 
   private get historyTabAndroidByText() {
@@ -265,12 +265,11 @@ export default class PriceAlertsPage extends BasePage {
   }
 
   private get historyTabAndroidByResourceId() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/mat-tab-label-0-2$|^mat-tab-label-0-2$")')
+    return $('(//*[@resource-id="mat-tab-label-0-2"] | //*[contains(@resource-id,"mat-tab-label-0-2")])[1]')
   }
 
   private get findInstrumentInputAndroidByClassInstance() {
-    // As provided: new UiSelector().className("android.widget.EditText").instance(1)
-    return $('android=new UiSelector().className("android.widget.EditText").instance(1)')
+    return $('(//android.widget.EditText)[2]')
   }
 
   private get findInstrumentInputAndroidByResourceId() {
@@ -296,7 +295,7 @@ export default class PriceAlertsPage extends BasePage {
   }
 
   private get backBtnAndroidByResourceId() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/.*back.*$|^.*back.*$")')
+    return $('(//*[contains(@resource-id,"back") and @clickable="true"] | //*[@content-desc="Navigate up" or @content-desc="Back"])[1]')
   }
 
   private get findInstrumentInputAndroidByXpathMatTab() {
@@ -334,7 +333,7 @@ export default class PriceAlertsPage extends BasePage {
   }
 
   private get saveBtnAndroidByDesc() {
-    return $('android=new UiSelector().description("Save")')
+    return $('//*[@content-desc="Save" or @text="Save"]')
   }
 
   private get saveBtnAndroidById() {
@@ -360,7 +359,7 @@ export default class PriceAlertsPage extends BasePage {
   }
 
   private get instrumentLandingHeaderActionAndroid() {
-    return $('android=new UiSelector().className("android.widget.ImageButton").instance(0)')
+    return $('(//android.widget.ImageButton)[1]')
   }
 
   private get instrumentLandingFirstChartActionAndroid() {
@@ -460,7 +459,7 @@ export default class PriceAlertsPage extends BasePage {
   }
 
   private get confirmBtnAndroidByIdButton1() {
-    return $('android=new UiSelector().resourceId("android:id/button1")')
+    return $('(//*[@resource-id="android:id/button1"] | //*[@text="Confirm" or @content-desc="Confirm"])[1]')
   }
 
   private async openPriceAlertsAndroid() {
@@ -469,7 +468,7 @@ export default class PriceAlertsPage extends BasePage {
     const alreadyOnAlerts = await this.isOnPriceAlertsScreenAndroid()
     if (alreadyOnAlerts) return
 
-    await this.investTabAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.investTabAndroid.waitForExist({ timeout: 20000 })
     await this.tap(this.investTabAndroid)
 
     const entryCandidates = [
@@ -491,7 +490,7 @@ export default class PriceAlertsPage extends BasePage {
     const alreadyOnAlerts = await this.isOnPriceAlertsScreenAndroid()
     if (alreadyOnAlerts) return
 
-    await this.investTabAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.investTabAndroid.waitForExist({ timeout: 20000 })
     await this.tap(this.investTabAndroid)
     await browser.pause(800)
 

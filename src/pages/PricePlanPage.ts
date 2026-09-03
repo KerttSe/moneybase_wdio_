@@ -45,7 +45,7 @@ class PricePlanPage extends BasePage {
   }
 
   private get moreTabAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/navigation_button_more$|^navigation_button_more$")')
+    return $('(//*[contains(@resource-id,"navigation_button_more")] | //*[contains(@resource-id,"nav_graph_more")] | //*[@content-desc="More"])[1]')
   }
 
   private get userAvatarAndroid() {
@@ -396,7 +396,7 @@ class PricePlanPage extends BasePage {
 
     if (!browser.isAndroid) throw new Error('verifyBenefitsDisplayed: unsupported platform')
     const rows = await this.benefitTextsAndroid
-    const count = rows.length
+    const count = await rows.length
     if (count === 0) throw new Error('verifyBenefitsDisplayed: no benefit rows found')
     return count
   }

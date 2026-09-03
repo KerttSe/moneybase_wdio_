@@ -15,20 +15,19 @@ export default class PortfolioPage extends BasePage {
   }
 
   private byIdAndroid(name: string) {
-    const rx = `.*:id/${name}$|^${name}$`
-    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[@resource-id="${name}"] | //*[contains(@resource-id,"${name}")])[1]`)
   }
 
   private androidText(text: string) {
-    return $(`android=new UiSelector().text("${text}")`)
+    return $(`//*[@text="${text}" or @content-desc="${text}"]`)
   }
 
   private androidTextContains(text: string) {
-    return $(`android=new UiSelector().textContains("${text}")`)
+    return $(`//*[contains(@text,"${text}") or contains(@content-desc,"${text}")]`)
   }
 
   private androidDescContains(text: string) {
-    return $(`android=new UiSelector().descriptionContains("${text}")`)
+    return $(`//*[contains(@content-desc,"${text}") or contains(@text,"${text}")]`)
   }
 
   private get investTabIOS() {
@@ -36,7 +35,7 @@ export default class PortfolioPage extends BasePage {
   }
 
   private get investTabAndroid() {
-    return this.byIdAndroid('navigation_button_invest')
+    return $('(//*[contains(@resource-id,"navigation_button_invest")] | //*[@content-desc="Invest" and @clickable="true"])[1]')
   }
 
   private get portfolioEntryIOS() {
@@ -348,7 +347,7 @@ export default class PortfolioPage extends BasePage {
     if (alreadyOpened) return
 
     const investShown = await this.investTabAndroid
-      .waitForDisplayed({ timeout: 7000 })
+      .waitForExist({ timeout: 7000 })
       .then(() => true)
       .catch(() => false)
 

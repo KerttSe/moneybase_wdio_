@@ -4,7 +4,7 @@ import homeScreenPage from '../pages/HomeScreenPage'
 import OrdersPage from '../pages/OrdersPage'
 import { AUTH } from '../data/credentials'
 
-describe('Orders (iOS/Android)', function () {
+describe('Orders Regression (iOS/Android)', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 800000))
 
   const loginPage = new LoginPage()
@@ -15,7 +15,7 @@ describe('Orders (iOS/Android)', function () {
     await loginPage.loginFlow(AUTH)
   })
 
-  it('creates BMW buy order', async function () {
+  it('creates, modifies, and cancels BMW buy order', async function () {
     if (!browser.isIOS && !browser.isAndroid) {
       this.skip()
       return
@@ -31,10 +31,11 @@ describe('Orders (iOS/Android)', function () {
         modifiedQuantity: '15',
       })
     } else {
-      await orders.createBuyOrderAndroid({
+      await orders.createModifyAndCancelBuyOrderAndroid({
         instrumentQuery: 'BMW',
         initialQuantity: '5',
         modifiedQuantity: '15',
+        androidLimitPrice: process.env.ORDERS_ANDROID_LIMIT_PRICE,
       })
     }
   })

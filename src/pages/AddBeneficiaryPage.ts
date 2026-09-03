@@ -2,11 +2,23 @@ import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
 import OtpHelper from '../helpers/otp.helper'
+import { AUTH } from '../data/credentials'
 
 export default class AddBeneficiaryPage extends BasePage {
+  private getConfiguredOtpPhone() {
+    return (
+      process.env.ADD_BENEFICIARY_OTP_PHONE ||
+      process.env.ADD_BENEFICIARY_LOGIN_OTP_PHONE ||
+      AUTH.otpPhone ||
+      AUTH.phone ||
+      process.env.OTP_PHONE ||
+      process.env.MB_PHONE ||
+      ''
+    )
+  }
+
   private byAndroidResId(id: string) {
-    const rx = `.*:id/${id}$|^${id}$`
-    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[@resource-id="${id}"] | //*[contains(@resource-id,"${id}")])[1]`)
   }
 
   private androidInputByIdLabelOrIndex(id: string, labelXPath: string, index: number) {
@@ -26,23 +38,23 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get businessAccountLabelAndroid() {
-    return $('android=new UiSelector().textContains("Business")')
+    return $('//*[contains(@text,"Business") or contains(@content-desc,"Business")]')
   }
 
   private get singleAccountItemAndroid() {
-    return $('android=new UiSelector().description("Single")')
+    return $('(//*[@content-desc="Single"] | //*[@text="Single"])[1]')
   }
 
   private get singleAccountItemAndroidByText() {
-    return $('android=new UiSelector().text("Single")')
+    return $('//*[@text="Single" or @content-desc="Single"]')
   }
 
   private get individualAccountItemAndroid() {
-    return $('android=new UiSelector().description("Individual")')
+    return $('(//*[@content-desc="Individual"] | //*[@text="Individual"])[1]')
   }
 
   private get individualAccountItemAndroidByText() {
-    return $('android=new UiSelector().text("Individual")')
+    return $('//*[@text="Individual" or @content-desc="Individual"]')
   }
 
   private get homeRootAndroid() {
@@ -50,7 +62,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get homeTabAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_home")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/navigation_button_home"] | //*[contains(@resource-id,"navigation_button_home")] | //*[@content-desc="Home" and @clickable="true"])[1]')
   }
 
   private get homeTabAndroidA11y() {
@@ -62,7 +74,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get cardsRootAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/cards_screen$|^cards_screen$")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/cards_screen"] | //*[contains(@resource-id,"cards_screen")])[1]')
   }
 
   /* =========================
@@ -128,33 +140,33 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get alertBtn3AndroidByUi() {
-    return $('android=new UiSelector().resourceId("android:id/button3")')
+    return $('(//*[@resource-id="android:id/button3"] | //*[contains(@resource-id,"button3")])[1]')
   }
 
   private get alertBtn3AndroidByText() {
-    return $('android=new UiSelector().text("OK")')
+    return $('//*[@text="OK" or @content-desc="OK"]')
   }
 
   private get alertTitleAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/alertTitle")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/alertTitle"] | //*[contains(@resource-id,"alertTitle")])[1]')
   }
 
 
 
   private get somethingWentWrongTitleAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/alertTitle").text("Something went wrong")')
+    return $('(//*[contains(@resource-id,"alertTitle") and (@text="Something went wrong" or @content-desc="Something went wrong")])[1]')
   }
 
   private get somethingWentWrongTitleAndroidContains() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/alertTitle").textContains("Something went wrong")')
+    return $('//*[contains(@text,"Something went wrong") or contains(@content-desc,"Something went wrong")]')
   }
 
   private get tryAgainTextAndroid() {
-    return $('android=new UiSelector().text("Try Again")')
+    return $('//*[@text="Try Again" or @content-desc="Try Again"]')
   }
 
   private get closeSheetAndroid() {
-    return $('android=new UiSelector().description("Close sheet")')
+    return $('(//*[@content-desc="Close sheet"] | //*[@content-desc="Close"])[1]')
   }
 
   private get closeSheetAndroidByXpath() {
@@ -162,15 +174,15 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get googlePayNotNowAndroid() {
-    return $('android=new UiSelector().text("Not Now")')
+    return $('//*[@text="Not Now" or @content-desc="Not Now"]')
   }
 
   private get googlePayScreenAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/clSelectCardGooglePay")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/clSelectCardGooglePay"] | //*[contains(@resource-id,"clSelectCardGooglePay")])[1]')
   }
 
   private get googlePayCloseBtnAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/rightActionView")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/rightActionView"] | //*[contains(@resource-id,"rightActionView")])[1]')
   }
 
   private get infoScreenAndroid() {
@@ -373,7 +385,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get newBtnAndroidByText() {
-    return $('android=new UiSelector().text("New")')
+    return $('//*[@text="New" or @content-desc="New"]')
   }
 
   private get newBtnAndroidByPayId() {
@@ -389,11 +401,11 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get addBeneficiaryBtnAndroidByText() {
-    return $('android=new UiSelector().textMatches("(?i)^Add Beneficiary$")')
+    return $('(//*[@text="Add Beneficiary" or @content-desc="Add Beneficiary"] | //*[contains(@text,"Add Beneficiary") or contains(@content-desc,"Add Beneficiary")])[1]')
   }
 
   private get newTransferTitleAndroid() {
-    return $('android=new UiSelector().text("New Transfer")')
+    return $('//*[@text="New Transfer" or @content-desc="New Transfer"]')
   }
 
   /* =========================
@@ -939,7 +951,9 @@ export default class AddBeneficiaryPage extends BasePage {
 
           const vopShown =
             (await this.vopScreenAndroid.isDisplayed().catch(() => false)) ||
-            (await this.vopScreenAndroidAlt.isDisplayed().catch(() => false))
+            (await this.vopScreenAndroid.isExisting().catch(() => false)) ||
+            (await this.vopScreenAndroidAlt.isDisplayed().catch(() => false)) ||
+            (await this.vopScreenAndroidAlt.isExisting().catch(() => false))
           if (vopShown) return true
 
           // Confirm twice before declaring the address screen gone — Compose can
@@ -1594,7 +1608,9 @@ export default class AddBeneficiaryPage extends BasePage {
 
           const vopShown =
             (await this.vopScreenAndroid.isDisplayed().catch(() => false)) ||
-            (await this.vopScreenAndroidAlt.isDisplayed().catch(() => false))
+            (await this.vopScreenAndroid.isExisting().catch(() => false)) ||
+            (await this.vopScreenAndroidAlt.isDisplayed().catch(() => false)) ||
+            (await this.vopScreenAndroidAlt.isExisting().catch(() => false))
           if (vopShown) {
             console.log('[waitForDetailsTransitionSignalAndroid] ✅ VOP detected')
             return true
@@ -1629,13 +1645,15 @@ export default class AddBeneficiaryPage extends BasePage {
   private async tryCompleteVopAndroid(): Promise<boolean> {
     const vopShown =
       (await this.vopScreenAndroid.isDisplayed().catch(() => false)) ||
-      (await this.vopScreenAndroidAlt.isDisplayed().catch(() => false))
+      (await this.vopScreenAndroid.isExisting().catch(() => false)) ||
+      (await this.vopScreenAndroidAlt.isDisplayed().catch(() => false)) ||
+      (await this.vopScreenAndroidAlt.isExisting().catch(() => false))
 
     if (!vopShown) return false
 
     const vopConfirmCandidates = [this.vopConfirmBtnAndroid, this.vopConfirmBtnAndroidAlt, this.vopConfirmBtnAndroidByText]
     for (const candidate of vopConfirmCandidates) {
-      const shown = await candidate.isDisplayed().catch(() => false)
+      const shown = (await candidate.isDisplayed().catch(() => false)) || (await candidate.isExisting().catch(() => false))
       if (!shown) continue
 
       await this.tap(candidate).catch(async () => {
@@ -1678,11 +1696,13 @@ export default class AddBeneficiaryPage extends BasePage {
 
         const vopShown =
           (await this.vopScreenAndroid.isDisplayed().catch(() => false)) ||
-          (await this.vopScreenAndroidAlt.isDisplayed().catch(() => false))
+          (await this.vopScreenAndroid.isExisting().catch(() => false)) ||
+          (await this.vopScreenAndroidAlt.isDisplayed().catch(() => false)) ||
+          (await this.vopScreenAndroidAlt.isExisting().catch(() => false))
         if (vopShown) return true
 
         for (const candidate of confirmCandidates) {
-          if (await candidate.isDisplayed().catch(() => false)) return true
+          if ((await candidate.isDisplayed().catch(() => false)) || (await candidate.isExisting().catch(() => false))) return true
         }
         return false
       },
@@ -1789,9 +1809,9 @@ export default class AddBeneficiaryPage extends BasePage {
     }
     await this.waitForOtpRateLimitOrResendAndroid()
 
-    const otpPhone = process.env.OTP_PHONE || process.env.MB_PHONE || ''
+    const otpPhone = this.getConfiguredOtpPhone()
     if (!otpPhone) {
-      throw new Error('OTP phone is not configured. Set OTP_PHONE or MB_PHONE')
+      throw new Error('OTP phone is not configured. Set ADD_BENEFICIARY_OTP_PHONE, OTP_PHONE, or MB_PHONE')
     }
 
     const otpPhoneShown = await this.otpPhoneViewAndroid.isDisplayed().catch(() => false)
@@ -2054,7 +2074,10 @@ export default class AddBeneficiaryPage extends BasePage {
         const otpContainerShown = await this.otpContainerAndroid.isDisplayed().catch(() => false)
         if (otpContainerShown) return true
 
-        const vopShown = await this.vopScreenAndroid.isDisplayed().catch(() => false)
+        const vopShown =
+          (await this.vopScreenAndroid.isDisplayed().catch(() => false)) ||
+          (await this.vopScreenAndroid.isExisting().catch(() => false)) ||
+          (await this.vopScreenAndroidAlt.isExisting().catch(() => false))
         if (vopShown) return true
 
         const createConfirmShown = await this.createConfirmBtnAndroidById.isDisplayed().catch(() => false)
@@ -2194,8 +2217,8 @@ export default class AddBeneficiaryPage extends BasePage {
       timeoutMsg: '[AddBeneficiary][iOS] OTP screen did not appear after submitting beneficiary details',
     })
 
-    const otpPhone = process.env.OTP_PHONE || process.env.MB_PHONE || ''
-    if (!otpPhone) throw new Error('OTP phone is not configured. Set OTP_PHONE or MB_PHONE')
+    const otpPhone = this.getConfiguredOtpPhone()
+    if (!otpPhone) throw new Error('OTP phone is not configured. Set ADD_BENEFICIARY_OTP_PHONE, OTP_PHONE, or MB_PHONE')
 
     const beneficiaryOtpTimeoutMs = Math.max(
       90000,

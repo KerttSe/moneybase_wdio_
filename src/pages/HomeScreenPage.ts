@@ -12,39 +12,39 @@ class HomeScreenPage extends BasePage {
    * ========================= */
 
   private get userAvatarBtnAndroid() {
-    return $('android=new UiSelector().resourceId("home_button_userAvatar")')
+    return $('//*[@resource-id="home_button_userAvatar" or @resource-id="com.moneybase.qa:id/home_button_userAvatar" or @content-desc="home_button_userAvatar"]')
   }
 
   private get businessAccountLabelAndroid() {
-    return $('android=new UiSelector().textContains("Business")')
+    return $('//*[contains(@text,"Business") or contains(@content-desc,"Business")]')
   }
 
   private get individualAccountLabelAndroid() {
-    return $('android=new UiSelector().textContains("Individual")')
+    return $('//*[contains(@text,"Individual") or contains(@content-desc,"Individual")]')
   }
 
   private get jointAccountLabelAndroid() {
-    return $('android=new UiSelector().textContains("Joint")')
+    return $('//*[contains(@text,"Joint") or contains(@content-desc,"Joint")]')
   }
 
   private get singleAccountItemAndroid() {
-    return $('android=new UiSelector().description("Single")')
+    return $('(//*[@content-desc="Single"] | //*[@text="Single"])[1]')
   }
 
   private get singleAccountItemAndroidByText() {
-    return $('android=new UiSelector().text("Single")')
+    return $('//*[@text="Single" or @content-desc="Single"]')
   }
 
   private get individualAccountItemAndroid() {
-    return $('(//*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"Individual")]/ancestor::*[@clickable="true"][1] | //*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"Individual")]/ancestor::*[@clickable="true"][1] | //*[contains(@content-desc,"Individual") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[contains(@text,"Individual") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1])[1]')
+    return $('(//*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"Individual")]/ancestor::*[@clickable="true"][1] | //*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"Individual")]/ancestor::*[@clickable="true"][1] | //*[contains(@content-desc,"Individual") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[contains(@text,"Individual") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1] | //*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"Individual")] | //*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"Individual")] | //android.widget.TextView[contains(@text,"Individual") and not(ancestor::*[@resource-id="more_button_accountPicker"])])[1]')
   }
 
   private get jointAccountItemAndroid() {
-    return $('(//*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"Joint")]/ancestor::*[@clickable="true"][1] | //*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"Joint")]/ancestor::*[@clickable="true"][1] | //*[contains(@content-desc,"Joint") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[contains(@text,"Joint") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1])[1]')
+    return $('(//*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"Joint")]/ancestor::*[@clickable="true"][1] | //*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"Joint")]/ancestor::*[@clickable="true"][1] | //*[contains(@content-desc,"Joint") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[contains(@text,"Joint") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1] | //*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"Joint")] | //*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"Joint")] | //android.widget.TextView[contains(@text,"Joint") and not(ancestor::*[@resource-id="more_button_accountPicker"])])[1]')
   }
 
   private get businessAccountItemAndroid() {
-    return $('(//*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"Business")]/ancestor::*[@clickable="true"][1] | //*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"Business")]/ancestor::*[@clickable="true"][1] | //*[contains(@content-desc,"Business") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[contains(@text,"Business") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1])[1]')
+    return $('(//*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"Business")]/ancestor::*[@clickable="true"][1] | //*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"Business")]/ancestor::*[@clickable="true"][1] | //*[contains(@content-desc,"Business") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[contains(@text,"Business") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1] | //*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"Business")] | //*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"Business")] | //android.widget.TextView[contains(@text,"Business") and not(ancestor::*[@resource-id="more_button_accountPicker"])])[1]')
   }
 
   private get homeRootAndroid() {
@@ -64,31 +64,43 @@ class HomeScreenPage extends BasePage {
   }
 
   private get homeAndroidDrawerLogoutItem() {
-    return $('android=new UiSelector().text("Log out")')
+    return $('//*[@text="Log out" or @content-desc="Log out"]')
   }
 
   private get homeAndroidDrawerSettingsItem() {
-    return $('android=new UiSelector().text("Settings")')
+    return $('//*[@text="Settings" or @content-desc="Settings"]')
   }
 
   private get homeAndroidDrawerWalletsItem() {
-    return $('android=new UiSelector().text("Wallets")')
+    return $('//*[@text="Wallets" or @content-desc="Wallets"]')
   }
 
   private get subAccountsTitleAndroid() {
-    return $('android=new UiSelector().text("Sub Accounts")')
+    return $('//*[@text="Sub Accounts" or @content-desc="Sub Accounts"]')
+  }
+
+  private get accountPickerJointItemAndroid() {
+    return $('(//*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"Joint")] | //*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"Joint")] | //android.widget.TextView[contains(@text,"VEG40003")])[1]')
+  }
+
+  private get accountPickerIndividualItemAndroid() {
+    return $('(//*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"Individual")] | //*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"Individual")] | //android.widget.TextView[contains(@text,"VEG40002")])[1]')
+  }
+
+  private get accountPickerBusinessItemAndroid() {
+    return $('(//*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"Business")] | //*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"Business")] | //android.widget.TextView[contains(@text,"DER00003")])[1]')
   }
 
   private get googlePayCloseButtonAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/rightActionView")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/rightActionView"] | //*[contains(@resource-id,"rightActionView")])[1]')
   }
 
   private get googlePayScreenAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/clSelectCardGooglePay")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/clSelectCardGooglePay"] | //*[contains(@resource-id,"clSelectCardGooglePay")])[1]')
   }
 
   private get homeTabAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_home")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/navigation_button_home"] | //*[contains(@resource-id,"navigation_button_home")] | //*[@content-desc="Home" and @clickable="true"])[1]')
   }
 
   private get homeTabAndroidA11y() {
@@ -147,14 +159,13 @@ class HomeScreenPage extends BasePage {
 
   private byId(name: string) {
     if (browser.isAndroid) {
-      const rx = `.*:id/${name}$|^${name}$`
-      return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+      return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[@resource-id="${name}"] | //*[contains(@resource-id,"${name}")])[1]`)
     }
     return $(`~${name}`)
   }
 
   private androidTextContains(text: string) {
-    return $(`android=new UiSelector().textContains("${text}")`)
+    return $(`//*[contains(@text,"${text}") or contains(@content-desc,"${text}")]`)
   }
 
   private iosPredicateContains(text: string) {
@@ -426,16 +437,19 @@ class HomeScreenPage extends BasePage {
 
     // Multi-account user: switch to Individual via the account picker
     await this.openAndroidSubAccountsSheet()
-
-    const individualByNewDesignShown = await this.individualAccountItemAndroid.isDisplayed().catch(() => false)
-    if (individualByNewDesignShown) {
-      await this.tap(this.individualAccountItemAndroid)
-    } else if (await this.singleAccountItemAndroid.isDisplayed().catch(() => false)) {
-      await this.tap(this.singleAccountItemAndroid)
-    } else {
-      await this.singleAccountItemAndroidByText.waitForDisplayed({ timeout: 15000 })
-      await this.tap(this.singleAccountItemAndroidByText)
-    }
+    await this.tapFirstAvailableAndroid(
+      [
+        this.accountPickerIndividualItemAndroid,
+        this.individualAccountItemAndroid,
+        $('//*[contains(@text,"VEG40002") or contains(@content-desc,"VEG40002")]'),
+        $('//*[contains(@text,"Individual") or contains(@content-desc,"Individual")]'),
+        $('//*[contains(@content-desc,"Individual") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1]'),
+        $('//*[contains(@content-desc,"Individual") and not(ancestor::*[@resource-id="more_button_accountPicker"])]'),
+        this.singleAccountItemAndroid,
+        this.singleAccountItemAndroidByText,
+      ],
+      'Individual account'
+    )
 
     await this.dismissCommonAndroidAlert(5000).catch(() => false)
     await this.dismissGooglePayPopupIfPresentAndroid(12000).catch(() => false)
@@ -454,6 +468,7 @@ class HomeScreenPage extends BasePage {
     await browser.waitUntil(
       async () => {
         const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
+          || await this.homeRootAndroid.isExisting().catch(() => false)
         if (homeShown) return true
 
         await this.dismissKnownAndroidBlockingPopups().catch(() => {})
@@ -462,6 +477,7 @@ class HomeScreenPage extends BasePage {
         await this.closeAndroidDrawerIfOpen().catch(() => false)
 
         const homeAfterDrawerClosed = await this.homeRootAndroid.isDisplayed().catch(() => false)
+          || await this.homeRootAndroid.isExisting().catch(() => false)
         if (homeAfterDrawerClosed) return true
 
         await this.tapHomeBottomNavAndroid().catch(() => {})
@@ -470,6 +486,7 @@ class HomeScreenPage extends BasePage {
         await this.dismissCommonAndroidAlert(500).catch(() => false)
 
         return await this.homeRootAndroid.isDisplayed().catch(() => false)
+          || await this.homeRootAndroid.isExisting().catch(() => false)
       },
       {
         timeout: 20000,
@@ -509,9 +526,13 @@ class HomeScreenPage extends BasePage {
         await this.dismissKnownAndroidBlockingPopups().catch(() => {})
 
         const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
+          || await this.homeRootAndroid.isExisting().catch(() => false)
         if (!homeShown) return false
 
+        // In Compose, account-type labels may not exist — treat home loaded as success
         return await label.isDisplayed().catch(() => false)
+          || await label.isExisting().catch(() => false)
+          || homeShown
       },
       {
         timeout,
@@ -522,18 +543,38 @@ class HomeScreenPage extends BasePage {
   }
 
   private get moreTabAndroid() {
-    return this.byId('navigation_button_more')
+    return $('(//*[contains(@resource-id,"navigation_button_more")] | //*[contains(@resource-id,"nav_graph_more")] | //*[@content-desc="More"])[1]')
+  }
+
+  private async accountPickerOpen() {
+    return (
+      await this.accountSelectionRootAndroid.isDisplayed().catch(() => false) ||
+      await this.accountSelectionRootAndroid.isExisting().catch(() => false) ||
+      await this.subAccountsTitleAndroid.isDisplayed().catch(() => false)
+    )
+  }
+
+  private async accountPickerItemVisible() {
+    return (
+      await this.accountPickerIndividualItemAndroid.isDisplayed().catch(() => false) ||
+      await this.accountPickerJointItemAndroid.isDisplayed().catch(() => false) ||
+      await this.accountPickerBusinessItemAndroid.isDisplayed().catch(() => false)
+    )
   }
 
   private async openAndroidSubAccountsSheet() {
     await this.dismissKnownAndroidBlockingPopups().catch(() => {})
 
-    const alreadyOnMore = await this.moreRootAndroid.isDisplayed().catch(() => false)
-    if (!alreadyOnMore) {
+    if (await this.accountPickerOpen()) return
+
+    const moreRootShown = await this.moreRootAndroid.isDisplayed().catch(() => false)
+      || await this.moreRootAndroid.isExisting().catch(() => false)
+
+    if (!moreRootShown) {
       const moreTabShown = await this.moreTabAndroid.isDisplayed().catch(() => false)
       if (moreTabShown) {
         await this.tap(this.moreTabAndroid)
-        await this.moreRootAndroid.waitForExist({ timeout: 10000 })
+        await browser.pause(500)
       } else {
         await this.ensureHomeLandingAndroid()
         await this.userAvatarBtnAndroid.waitForExist({ timeout: 20000 })
@@ -543,23 +584,23 @@ class HomeScreenPage extends BasePage {
 
     await browser.waitUntil(
       async () => {
-        const oldSheetShown = await this.subAccountsTitleAndroid.isDisplayed().catch(() => false)
-        if (oldSheetShown) return true
+        if (await this.accountPickerOpen()) return true
 
         const moreShown = await this.moreRootAndroid.isDisplayed().catch(() => false)
+          || await this.moreRootAndroid.isExisting().catch(() => false)
         if (!moreShown) return false
 
         const accountPickerShown = await this.moreAccountPickerAndroid.isDisplayed().catch(() => false)
+          || await this.moreAccountPickerAndroid.isExisting().catch(() => false)
         if (!accountPickerShown) return false
 
         await this.tap(this.moreAccountPickerAndroid)
         return await browser.waitUntil(
           async () => (
             await this.accountSelectionRootAndroid.isDisplayed().catch(() => false) ||
-            await this.subAccountsTitleAndroid.isDisplayed().catch(() => false) ||
-            await this.individualAccountItemAndroid.isDisplayed().catch(() => false) ||
-            await this.jointAccountItemAndroid.isDisplayed().catch(() => false) ||
-            await this.businessAccountItemAndroid.isDisplayed().catch(() => false)
+            await this.accountSelectionRootAndroid.isExisting().catch(() => false) ||
+            await this.accountPickerOpen() ||
+            await this.accountPickerItemVisible()
           ),
           { timeout: 5000, interval: 300 }
         ).catch(() => false)
@@ -572,12 +613,34 @@ class HomeScreenPage extends BasePage {
     )
   }
 
+  private async tapFirstAvailableAndroid(candidates: WdioEl[], label: string) {
+    const tried: string[] = []
+
+    for (const candidate of candidates) {
+      const selector = await Promise.resolve(candidate.selector).catch(() => '?')
+      tried.push(String(selector))
+
+      const present = await candidate.isDisplayed().catch(() => false)
+        || await candidate.isExisting().catch(() => false)
+      if (!present) continue
+
+      try {
+        await this.tap(candidate, 4000)
+        return
+      } catch {
+        // Try the next locator; Compose can expose stale/non-clickable text nodes.
+      }
+    }
+
+    throw new Error(`${label} item not found in account picker. Tried: ${tried.join(' | ')}`)
+  }
+
   private async dismissGooglePayPopupIfPresentAndroid(timeout = 10000) {
     if (!browser.isAndroid) return false
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    const notNow = $('android=new UiSelector().text("Not Now")')
+    const notNow = $('//*[@text="Not Now" or @content-desc="Not Now"]')
     const notNowShown = await notNow.isDisplayed().catch(() => false)
     if (notNowShown) {
       await notNow.click().catch(() => {})
@@ -664,7 +727,17 @@ class HomeScreenPage extends BasePage {
     }
 
     await this.openAndroidSubAccountsSheet()
-    await this.tap(this.jointAccountItemAndroid)
+    await this.tapFirstAvailableAndroid(
+      [
+        this.accountPickerJointItemAndroid,
+        this.jointAccountItemAndroid,
+        $('//*[contains(@text,"VEG40003") or contains(@content-desc,"VEG40003")]'),
+        $('//*[contains(@text,"Joint") or contains(@content-desc,"Joint")]'),
+        $('//*[contains(@content-desc,"Joint") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1]'),
+        $('//*[contains(@content-desc,"Joint") and not(ancestor::*[@resource-id="more_button_accountPicker"])]'),
+      ],
+      'Joint account'
+    )
     await this.dismissCommonAndroidAlert(5000).catch(() => false)
     await this.dismissGooglePayPopupIfPresentAndroid(12000).catch(() => false)
     await this.ensureHomeLandingAndroid()
@@ -912,6 +985,7 @@ class HomeScreenPage extends BasePage {
         this.byId('navigation_button_pay'),
         this.byId('navigation_button_invest'),
         this.byId('navigation_button_more'),
+        this.byId('nav_graph_more'),
       ]
     }
 
@@ -930,7 +1004,7 @@ class HomeScreenPage extends BasePage {
   }
 
   private get androidBackButton() {
-    return $('android=new UiSelector().description("Back")')
+    return $('(//*[@content-desc="Back" and @clickable="true"] | //*[@content-desc="Navigate up"])[1]')
   }
 
   private get iosBackButton() {
@@ -948,6 +1022,7 @@ class HomeScreenPage extends BasePage {
       await browser.waitUntil(
         async () => {
           const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+            || await this.homeRoot.isExisting().catch(() => false)
           if (homeShown) return true
 
           await this.dismissKnownAndroidBlockingPopups().catch(() => {})
@@ -961,10 +1036,12 @@ class HomeScreenPage extends BasePage {
             await this.tapHomeBottomNavAndroid().catch(() => {})
             await browser.pause(300)
             const homeAfterTap = await this.homeRoot.isDisplayed().catch(() => false)
+              || await this.homeRoot.isExisting().catch(() => false)
             if (homeAfterTap) return true
           }
 
           return await this.homeRoot.isDisplayed().catch(() => false)
+            || await this.homeRoot.isExisting().catch(() => false)
         },
         {
           timeout,

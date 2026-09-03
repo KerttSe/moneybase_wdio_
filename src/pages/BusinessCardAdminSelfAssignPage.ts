@@ -9,11 +9,11 @@ const ADMIN_SELF_ASSIGN_ALERT_MESSAGE = process.env.ADMIN_SELF_ASSIGN_ALERT_MESS
 
 class BusinessCardAdminSelfAssignPage extends BasePage {
   private get userAvatarAndroid() {
-    return $('android=new UiSelector().resourceId("home_button_userAvatar")')
+    return $('(//*[@resource-id="home_button_userAvatar"] | //*[contains(@resource-id,"home_button_userAvatar")])[1]')
   }
 
   private get subAccountsSheetAndroid() {
-    return $('android=new UiSelector().text("Sub Accounts")')
+    return $('//*[@text="Sub Accounts" or @content-desc="Sub Accounts"]')
   }
 
   private get seDeKeItemAndroid() {
@@ -25,7 +25,7 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
   }
 
   private get accountChipAndroid() {
-    return $(`android=new UiSelector().textContains("${BH_ACCOUNT_CODE}")`)
+    return $(`//*[contains(@text,"${BH_ACCOUNT_CODE}") or contains(@content-desc,"${BH_ACCOUNT_CODE}")]`)
   }
 
   private get profilePickerCodeLabelIOS() {
@@ -45,11 +45,11 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
   }
 
   private get cardsTabAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_cards")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/navigation_button_cards"] | //*[contains(@resource-id,"navigation_button_cards")] | //*[@content-desc="Cards" and @clickable="true"])[1]')
   }
 
   private get cardsTabAndroidByA11y() {
-    return $('android=new UiSelector().description("Cards")')
+    return $('(//*[@content-desc="Cards" and @clickable="true"] | //*[contains(@resource-id,"navigation_button_cards")])[1]')
   }
 
   private get cardsTabIOS() {
@@ -57,11 +57,11 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
   }
 
   private get addCardBtnAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/.*add.*Card.*|^.*add.*Card.*")')
+    return $('(//*[contains(@resource-id,"cards_card_addNewCard")] | //*[contains(@resource-id,"addNewCard")] | //*[contains(@resource-id,"addCard")] | //*[contains(@resource-id,"add_card")] | //*[contains(@resource-id,"add_Card")])[1]')
   }
 
   private get addCardBtnAndroidByText() {
-    return $('android=new UiSelector().textMatches("(?i)add( new)? card")')
+    return $('(//*[@text="Add Card" or @content-desc="Add Card"] | //*[@text="Add New Card" or @content-desc="Add New Card"] | //*[contains(@text,"Add") and contains(@text,"Card")])[1]')
   }
 
   private get addCardBtnIOS() {
@@ -85,7 +85,7 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
   }
 
   private get cardTypeRowAndroid() {
-    return $('android=new UiSelector().resourceId("assignBusinessCard_button_selectCardType")')
+    return $('(//*[@resource-id="assignBusinessCard_button_selectCardType"] | //*[contains(@resource-id,"assignBusinessCard_button_selectCardType")])[1]')
   }
 
   private get cardTypeRowIOS() {
@@ -104,7 +104,7 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
   }
 
   private get assigneeRowAndroid() {
-    return $('android=new UiSelector().resourceId("assignBusinessCard_button_selectUser")')
+    return $('(//*[@resource-id="assignBusinessCard_button_selectUser"] | //*[contains(@resource-id,"assignBusinessCard_button_selectUser")])[1]')
   }
 
   private get assigneeRowIOS() {
@@ -115,7 +115,7 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
   }
 
   private get selfUserOptionAndroid() {
-    return $(`android=new UiSelector().description("${BH_SELF_NAME}")`)
+    return $(`(//*[@content-desc="${BH_SELF_NAME}"] | //*[contains(@content-desc,"${BH_SELF_NAME}")])[1]`)
   }
 
   private get selfUserOptionIOS() {
@@ -131,7 +131,7 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
   }
 
   private get adminSelfAssignAlertMessageAndroid() {
-    return $(`android=new UiSelector().text("${ADMIN_SELF_ASSIGN_ALERT_MESSAGE}")`)
+    return $(`//*[@text="${ADMIN_SELF_ASSIGN_ALERT_MESSAGE}" or @content-desc="${ADMIN_SELF_ASSIGN_ALERT_MESSAGE}" or contains(@text,"${ADMIN_SELF_ASSIGN_ALERT_MESSAGE}") or contains(@content-desc,"${ADMIN_SELF_ASSIGN_ALERT_MESSAGE}")]`)
   }
 
   private get adminSelfAssignAlertAndroid() {
@@ -181,6 +181,16 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
     await browser.execute('mobile: tap', {
       x: Math.round(location.x + size.width / 2),
       y: Math.round(location.y + size.height / 2),
+    })
+  }
+
+  private async tapElementCenterAndroid(el: ChainablePromiseElement) {
+    await el.waitForExist({ timeout: 10000 })
+    const location = await el.getLocation()
+    const size = await el.getSize()
+    await browser.execute('mobile: clickGesture', {
+      x: Math.round(location.x + Math.max(size.width / 2, 1)),
+      y: Math.round(location.y + Math.max(size.height / 2, 1)),
     })
   }
 
@@ -360,7 +370,9 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
         return this.addCardBtnAndroidByText
       },
     )
-    await this.tap(addCardBtn)
+    await this.tapElementCenterAndroid(addCardBtn).catch(async () => {
+      await this.tap(addCardBtn)
+    })
   }
 
   public async selectVirtualCardType() {

@@ -3,8 +3,7 @@ import { $, browser } from '@wdio/globals'
 
 class BankTransferP2PIndividualPage extends BasePage {
   private byAndroidResId(id: string) {
-    const rx = `.*:id/${id}$|^${id}$`
-    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[@resource-id="${id}"] | //*[contains(@resource-id,"${id}")])[1]`)
   }
 
   /* =========================
@@ -12,19 +11,19 @@ class BankTransferP2PIndividualPage extends BasePage {
    * ========================= */
 
   private get userAvatarBtnAndroid() {
-    return $('android=new UiSelector().resourceId("home_button_userAvatar")')
+    return this.byAndroidResId('home_button_userAvatar')
   }
 
   private get businessAccountLabelAndroid() {
-    return $('android=new UiSelector().textContains("Business")')
+    return $('//*[contains(@text,"Business") or contains(@content-desc,"Business")]')
   }
 
   private get singleAccountItemAndroid() {
-    return $('android=new UiSelector().description("Single")')
+    return $('(//*[@content-desc="Single"] | //*[@text="Single"])[1]')
   }
 
   private get singleAccountItemAndroidByText() {
-    return $('android=new UiSelector().text("Single")')
+    return $('//*[@text="Single" or @content-desc="Single"]')
   }
 
   private get homeRootAndroid() {
@@ -114,15 +113,15 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get payTabAndroidLegacy() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_bar_item_icon_container").instance(2)')
+    return $('(//android.widget.FrameLayout[@content-desc="Pay"] | //*[@content-desc="Pay" and @clickable="true"])[1]')
   }
 
   private get supportSheetTitleAndroid() {
-    return $('android=new UiSelector().text("Support")')
+    return $('//*[@text="Support" or @content-desc="Support"]')
   }
 
   private get supportSheetCloseAndroid() {
-    return $('android=new UiSelector().description("Close sheet")')
+    return $('(//*[@content-desc="Close sheet"] | //*[@content-desc="Close"])[1]')
   }
 
   private get carlosCatAndroid() {
@@ -130,11 +129,11 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get payInputSearchAndroid() {
-    return $('android=new UiSelector().resourceId("pay_input_search")')
+    return this.byAndroidResId('pay_input_search')
   }
 
   private get payeesFilterContactsAndroid() {
-    return $('android=new UiSelector().resourceId("payees_button_filterContacts")')
+    return this.byAndroidResId('payees_button_filterContacts')
   }
 
   private get firstFriendOnMoneybaseAndroid() {
@@ -142,15 +141,15 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get sepaBeneficiaryContactsAndroid() {
-    return $(`android=new UiSelector().descriptionContains("SEPA")`)
+    return $(`//*[contains(@content-desc,"SEPA") or contains(@text,"SEPA")]`)
   }
 
   private get swiftBeneficiaryContactsAndroid() {
-    return $(`android=new UiSelector().description("${this.swiftBeneficiaryName}")`)
+    return $(`//*[@content-desc="${this.swiftBeneficiaryName}" or contains(@content-desc,"${this.swiftBeneficiaryName}")]`)
   }
 
   private get beneficiaryPayBtnAndroid() {
-    return $('//*[@resource-id="beneficiaryDetails_button_pay"]')
+    return $('//*[contains(@resource-id,"beneficiaryDetails_button_pay") or @content-desc="beneficiaryDetails_button_pay"]')
   }
 
   private get amountP2PAndroid() {
@@ -245,7 +244,7 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get payeesCancelSearchAndroid() {
-    return $('android=new UiSelector().resourceId("payees_button_cancelSearch")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/payees_button_cancelSearch"] | //*[contains(@resource-id,"payees_button_cancelSearch")])[1]')
   }
 
   private async openPayeesContactsAndroid() {
@@ -274,7 +273,7 @@ class BankTransferP2PIndividualPage extends BasePage {
 
   private get reviewPaymentBtnAndroid() {
     return $(
-      'android=new UiSelector().resourceIdMatches(".*:id/(p2p|bankTransfer)_button_review_payment$|^(p2p|bankTransfer)_button_review_payment$")'
+      '(//*[contains(@resource-id,"p2p_button_review_payment")] | //*[contains(@resource-id,"sepa_button_review_payment")] | //*[contains(@resource-id,"bankTransfer_button_review_payment")])[1]'
     )
   }
 
@@ -320,19 +319,23 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get swiftBeneficiaryAndroidByDesc() {
-    return $(`android=new UiSelector().description("${this.swiftBeneficiaryName}")`)
+    return $(`//*[contains(@content-desc,"${this.swiftBeneficiaryName}") or contains(@text,"${this.swiftBeneficiaryName}")]`)
   }
 
   private get swiftBeneficiaryAndroidByXPath() {
-    return $(`//android.view.View[@content-desc="${this.swiftBeneficiaryName}"]`)
+    return $(`//*[contains(@content-desc,"${this.swiftBeneficiaryName}")]/ancestor-or-self::*[@clickable="true"][1]`)
+  }
+
+  private get swiftBeneficiaryAndroidByText() {
+    return $(`//android.widget.TextView[contains(@text,"${this.swiftBeneficiaryName}")]/ancestor::*[@clickable="true"][1]`)
   }
 
   private get slideTextAndroid() {
-    return $('android=new UiSelector().textContains("Slide to make payment")')
+    return $('//*[contains(@text,"Slide to make payment") or contains(@content-desc,"Slide to make payment")]')
   }
 
   private get slideDescAndroid() {
-    return $('android=new UiSelector().descriptionContains("Slide to make payment")')
+    return $('//*[contains(@content-desc,"Slide to make payment") or contains(@text,"Slide to make payment")]')
   }
 
   /* =========================
@@ -633,35 +636,35 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get txDetailsPaymentStatusAndroid() {
-    return $('android=new UiSelector().text("PAYMENT STATUS")')
+    return $('//*[@text="PAYMENT STATUS" or @content-desc="PAYMENT STATUS"]')
   }
 
   private get txDetailsAcceptedByMoneybaseAndroid() {
-    return $('android=new UiSelector().text("Accepted by Moneybase")')
+    return $('//*[@text="Accepted by Moneybase" or @content-desc="Accepted by Moneybase"]')
   }
 
   private get txDetailsProcessedAndroid() {
-    return $('android=new UiSelector().text("Processed")')
+    return $('//*[@text="Processed" or @content-desc="Processed"]')
   }
 
   private get txDetailsSentToBankAndroid() {
-    return $('android=new UiSelector().text("Sent to Bank")')
+    return $('//*[@text="Sent to Bank" or @content-desc="Sent to Bank"]')
   }
 
   private get txDetailsBicSwiftAndroid() {
-    return $('android=new UiSelector().text("BIC/SWIFT")')
+    return $('//*[@text="BIC/SWIFT" or @content-desc="BIC/SWIFT"]')
   }
 
   private get txDetailsSwiftFeeAndroid() {
-    return $('android=new UiSelector().text("SWIFT Fee")')
+    return $('//*[@text="SWIFT Fee" or @content-desc="SWIFT Fee"]')
   }
 
   private get txDetailsFeeAndroid() {
-    return $('android=new UiSelector().textContains("Fee")')
+    return $('//*[contains(@text,"Fee") or contains(@content-desc,"Fee")]')
   }
 
   private get txDetailsSwiftFeeAmountAndroid() {
-    return $('android=new UiSelector().textMatches("^\\$[0-9].*")')
+    return $('//*[starts-with(@text,"$") or starts-with(@content-desc,"$")]')
   }
 
   private get headerBackAndroid() {
@@ -669,7 +672,7 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get headerBackAltAndroid() {
-    return $('android=new UiSelector().description("Back")')
+    return $('(//*[@content-desc="Back" and @clickable="true"] | //*[@content-desc="Navigate up"])[1]')
   }
 
   private get homeTabAndroid() {
@@ -681,17 +684,17 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get homeTabAndroidLegacy() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_bar_item_icon_view").instance(0)')
+    return $('(//*[contains(@resource-id,"navigation_button_home")] | //*[@content-desc="Home" and @clickable="true"])[1]')
   }
 
   private minusAmountHomeAnchorAndroid(amount: number | string) {
     const formatted = Number(amount).toFixed(2)
-    return $(`android=new UiSelector().textContains("- €${formatted}")`)
+    return $(`//*[contains(@text,"- €${formatted}") or contains(@content-desc,"- €${formatted}")]`)
   }
 
   private sentAmountHomeAnchorAndroid(amount: number | string) {
     const formatted = Number(amount).toFixed(2)
-    return $(`android=new UiSelector().textContains("Sent €${formatted}")`)
+    return $(`//*[contains(@text,"Sent €${formatted}") or contains(@content-desc,"Sent €${formatted}")]`)
   }
 
   private minusAmountHomeAnchorIOS(amount: number | string, payeeAnchor?: string) {
@@ -866,6 +869,12 @@ class BankTransferP2PIndividualPage extends BasePage {
       const byXPath = await this.swiftBeneficiaryAndroidByXPath.isDisplayed().catch(() => false)
       if (byXPath) {
         await this.tap(this.swiftBeneficiaryAndroidByXPath)
+        return
+      }
+
+      const byText = await this.swiftBeneficiaryAndroidByText.isDisplayed().catch(() => false)
+      if (byText) {
+        await this.tap(this.swiftBeneficiaryAndroidByText)
         return
       }
 

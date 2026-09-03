@@ -12,8 +12,12 @@ export default class AuthenticationPage extends BasePage {
 
   // ── Passcode screen ──────────────────────────────────────────────────────
 
+  private androidId(id: string) {
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[@resource-id="${id}"] | //*[contains(@resource-id,"${id}")])[1]`)
+  }
+
   private keypadDigitAndroid(d: string) {
-    return $(`android=new UiSelector().resourceId("com.moneybase.qa:id/keypad_text_${d}")`)
+    return this.androidId(`keypad_text_${d}`)
   }
 
   private keypadDigitIOS(d: string) {
@@ -58,13 +62,20 @@ export default class AuthenticationPage extends BasePage {
       )
       return
     }
-    await this.keypadDigitAndroid('1').waitForExist({ timeout })
+    await browser.waitUntil(
+      async () =>
+        (await this.keypadDigitAndroid('1').isExisting().catch(() => false)) ||
+        (await this.androidId('login_screen').isExisting().catch(() => false)) ||
+        (await this.androidId('composeViewRegistrationConfirmPasscode').isExisting().catch(() => false)) ||
+        (await $('//*[contains(@text,"passcode") or contains(@text,"Passcode") or contains(@text,"Welcome back") or contains(@content-desc,"passcode") or contains(@content-desc,"Passcode")]').isExisting().catch(() => false)),
+      { timeout, interval: 500, timeoutMsg: 'Android passcode screen did not appear' },
+    )
   }
 
   // ── Passcode error / lock ────────────────────────────────────────────────
 
   get passcodeErrorAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/tvLoginError")')
+    return this.androidId('tvLoginError')
   }
 
   get passcodeErrorIOS() {
@@ -72,7 +83,7 @@ export default class AuthenticationPage extends BasePage {
   }
 
   get accountLockedAndroid() {
-    return $('android=new UiSelector().textMatches("(?i).*locked.*|.*too many.*|.*suspended.*")')
+    return $('//*[contains(@text,"locked") or contains(@text,"Locked") or contains(@text,"too many") or contains(@text,"Too many") or contains(@text,"suspended") or contains(@text,"Suspended") or contains(@content-desc,"locked") or contains(@content-desc,"too many") or contains(@content-desc,"suspended")]')
   }
 
   get accountLockedIOS() {
@@ -89,11 +100,62 @@ export default class AuthenticationPage extends BasePage {
     return /too many attempts|temporarily locked|locked|blocked|suspended|try again later/i.test(source)
   }
 
+  private get passcodeErrorAndroidCandidates() {
+    return [
+      this.passcodeErrorAndroid,
+      this.androidId('text_wrongPasscode_line1'),
+      this.androidId('text_wrongPasscode_line2'),
+      this.androidId('tvMobileVerificationError'),
+      $('//*[contains(@text,"wrong") or contains(@text,"incorrect") or contains(@text,"invalid") or contains(@text,"remaining") or contains(@text,"attempt") or contains(@text,"too many") or contains(@text,"locked") or contains(@text,"try again") or contains(@text,"contact support") or contains(@content-desc,"wrong") or contains(@content-desc,"incorrect") or contains(@content-desc,"locked")]'),
+    ]
+  }
+
+  private async androidSourceHasPasscodeError() {
+    const source = await browser.getPageSource().catch(() => '')
+    return /wrong|incorrect|invalid|remaining|attempt|too many|temporarily locked|locked|try again|contact support/i.test(source)
+  }
+
+  private async androidSourceHasAccountLocked() {
+    const source = await browser.getPageSource().catch(() => '')
+    return /too many attempts|temporarily locked|locked|blocked|suspended|try again later|contact support/i.test(source)
+  }
+
+  private async firstExisting(candidates: ChainablePromiseElement[]) {
+    for (const candidate of candidates) {
+      if (await candidate.isExisting().catch(() => false)) return candidate
+    }
+    return undefined
+  }
+
+  private async hasAndroidAccountLockedMessage() {
+    const candidates = [
+      this.accountLockedAndroid,
+      this.androidId('text_wrongPasscode_line1'),
+      this.androidId('text_wrongPasscode_line2'),
+      this.androidId('tvMobileVerificationError'),
+    ]
+
+    for (const candidate of candidates) {
+      if (!(await candidate.isExisting().catch(() => false))) continue
+      const text = String(await candidate.getText().catch(() => '')).trim()
+      if (/too many|temporarily locked|locked|blocked|suspended|try again later|contact support/i.test(text)) {
+        return true
+      }
+    }
+
+    return this.androidSourceHasAccountLocked()
+  }
+
   async waitForPasscodeError(timeout = 10000) {
     const el = browser.isIOS ? this.passcodeErrorIOS : this.passcodeErrorAndroid
     if (!browser.isIOS) {
-      await el.waitForExist({ timeout, timeoutMsg: 'Expected passcode error message after wrong PIN' })
-      return el
+      await browser.waitUntil(
+        async () =>
+          Boolean(await this.firstExisting(this.passcodeErrorAndroidCandidates)) ||
+          (await this.androidSourceHasPasscodeError()),
+        { timeout, interval: 500, timeoutMsg: 'Expected passcode error message after wrong PIN' },
+      )
+      return (await this.firstExisting(this.passcodeErrorAndroidCandidates)) || el
     }
 
     await browser.waitUntil(
@@ -111,7 +173,7 @@ export default class AuthenticationPage extends BasePage {
       async () =>
         browser.isIOS
           ? ((await locked.isExisting().catch(() => false)) || (await this.iosSourceHasAccountLocked()))
-          : (await locked.isDisplayed().catch(() => false)),
+          : (await this.hasAndroidAccountLockedMessage()),
       { timeout, interval: 500, timeoutMsg: 'Expected account locked message after repeated wrong passcodes' },
     )
   }
@@ -119,7 +181,7 @@ export default class AuthenticationPage extends BasePage {
   // ── OTP screen ──────────────────────────────────────────────────────────
 
   get otpCountdownAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/tvOtpCountdown|.*:id/tvResendTimer|.*:id/otp_countdown.*")')
+    return $('(//*[contains(@resource-id,"tvOtpCountdown")] | //*[contains(@resource-id,"tvResendTimer")] | //*[contains(@resource-id,"otp_countdown")] | //*[contains(@resource-id,"otpCountdown")])[1]')
   }
 
   get otpCountdownIOS() {
@@ -127,11 +189,18 @@ export default class AuthenticationPage extends BasePage {
   }
 
   get otpResendBtnAndroid() {
-    return $('android=new UiSelector().textMatches("(?i)resend.*")')
+    return this.androidId('otp_resendButton')
   }
 
   get otpResendBtnIOS() {
     return $('~otp_resendButton')
+  }
+
+  private get otpResendBtnAndroidCandidates() {
+    return [
+      this.otpResendBtnAndroid,
+      $('//*[contains(@text,"Resend") or contains(@text,"resend") or contains(@content-desc,"Resend") or contains(@content-desc,"resend")]'),
+    ]
   }
 
   async waitForOtpCountdownShown(timeout = 45000) {
@@ -155,7 +224,8 @@ export default class AuthenticationPage extends BasePage {
     await browser.waitUntil(
       async () => {
         if (await this.otpCountdownAndroid.isDisplayed().catch(() => false)) return true
-        const resendEl = this.otpResendBtnAndroid
+        const resendEl = await this.firstExisting(this.otpResendBtnAndroidCandidates)
+        if (!resendEl) return false
         if (!(await resendEl.isDisplayed().catch(() => false))) return false
         const text = await resendEl.getText().catch(() => '')
         return /\d+/.test(text)
@@ -165,9 +235,10 @@ export default class AuthenticationPage extends BasePage {
   }
 
   async waitForResendEnabled(timeout = 120000) {
-    const resendBtn = browser.isIOS ? this.otpResendBtnIOS : this.otpResendBtnAndroid
     await browser.waitUntil(
       async () => {
+        const resendBtn = browser.isIOS ? this.otpResendBtnIOS : await this.firstExisting(this.otpResendBtnAndroidCandidates)
+        if (!resendBtn) return false
         if (!(await resendBtn.isExisting().catch(() => false))) return false
         const enabled = await resendBtn.getAttribute('enabled').catch(() => 'true')
         const text = await resendBtn.getText().catch(() => '')
@@ -236,7 +307,7 @@ export default class AuthenticationPage extends BasePage {
       }
       return
     }
-    const field = $('android=new UiSelector().resourceId("com.moneybase.qa:id/otp_input")')
+    const field = this.androidId('otp_input')
     if (await field.isExisting().catch(() => false)) {
       await field.setValue('123')
     }
@@ -271,7 +342,7 @@ export default class AuthenticationPage extends BasePage {
   // ── More → Settings → Change Passcode ───────────────────────────────────
 
   private get moreTabAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/navigation_button_more$|^navigation_button_more$")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/navigation_button_more"] | //*[contains(@resource-id,"navigation_button_more")] | //*[@content-desc="More" and @clickable="true"])[1]')
   }
 
   private get moreTabIOS() {
@@ -279,7 +350,7 @@ export default class AuthenticationPage extends BasePage {
   }
 
   private get settingsItemAndroid() {
-    return $('android=new UiSelector().textMatches("(?i)settings")')
+    return $('//*[@text="Settings" or @content-desc="Settings"]')
   }
 
   private get settingsItemIOS() {
@@ -287,7 +358,7 @@ export default class AuthenticationPage extends BasePage {
   }
 
   private get changePasscodeItemAndroid() {
-    return $('android=new UiSelector().textMatches("(?i)change pass(code|word)")')
+    return $('(//*[@text="Change Passcode" or @content-desc="Change Passcode"] | //*[@text="Change Password" or @content-desc="Change Password"] | //*[contains(@text,"Change Pass") or contains(@content-desc,"Change Pass")])[1]')
   }
 
   private get changePasscodeItemIOS() {
@@ -328,7 +399,7 @@ export default class AuthenticationPage extends BasePage {
       async () => {
         const successText = browser.isIOS
           ? $('-ios predicate string:label CONTAINS "changed" OR label CONTAINS "updated" OR label CONTAINS "success"')
-          : $('android=new UiSelector().textMatches("(?i).*changed.*|.*updated.*|.*success.*")')
+          : $('//*[contains(@text,"changed") or contains(@text,"Changed") or contains(@text,"updated") or contains(@text,"Updated") or contains(@text,"success") or contains(@text,"Success") or contains(@content-desc,"changed") or contains(@content-desc,"success")]')
         return successText.isDisplayed().catch(() => false)
       },
       { timeout, interval: 500, timeoutMsg: 'Passcode change success screen was not shown' },
@@ -338,7 +409,7 @@ export default class AuthenticationPage extends BasePage {
   // ── Forgot passcode (before login) ──────────────────────────────────────
 
   private get forgotPasscodeAndroid() {
-    return $('android=new UiSelector().textMatches("(?i)forgot.*|reset.*passcode.*")')
+    return $('(//*[contains(@text,"Forgot") or contains(@text,"forgot") or contains(@text,"Reset") or contains(@content-desc,"Forgot") or contains(@content-desc,"forgot")])[1]')
   }
 
   private get forgotPasscodeIOS() {

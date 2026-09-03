@@ -9,15 +9,15 @@ class BusinessCardNoRightsPage extends BasePage {
   // ── Account switcher ─────────────────────────────────────────────────────
 
   private get userAvatarAndroid() {
-    return $('android=new UiSelector().resourceId("home_button_userAvatar")')
+    return $('(//*[@resource-id="home_button_userAvatar"] | //*[contains(@content-desc,"avatar") or contains(@content-desc,"Avatar")])[1]')
   }
 
   private get subAccountsSheetAndroid() {
-    return $('android=new UiSelector().text("Sub Accounts")')
+    return $('//*[@text="Sub Accounts" or @content-desc="Sub Accounts"]')
   }
 
   private get seDeKeItemAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text,"SeDeKE") or contains(@text,"SED00004")]]')
+    return $(`(//*[contains(@content-desc,"SeDeKE") or contains(@content-desc,"SED00004")] | //android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text,"SeDeKE") or contains(@text,"SED00004")]])[1]`)
   }
 
   private get seDeKeItemIOS() {
@@ -25,7 +25,7 @@ class BusinessCardNoRightsPage extends BasePage {
   }
 
   private get accountChipAndroid() {
-    return $(`android=new UiSelector().textContains("${BH_ACCOUNT_CODE}")`)
+    return $(`(//*[contains(@content-desc,"${BH_ACCOUNT_CODE}")] | //*[contains(@text,"${BH_ACCOUNT_CODE}")])[1]`)
   }
 
   private get profilePickerCodeLabelIOS() {
@@ -94,11 +94,11 @@ class BusinessCardNoRightsPage extends BasePage {
   // ── Cards tab ─────────────────────────────────────────────────────────────
 
   private get cardsTabAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_cards")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/navigation_button_cards"] | //*[@content-desc="Cards" and @resource-id])[1]')
   }
 
   private get cardsTabAndroidByA11y() {
-    return $('android=new UiSelector().description("Cards")')
+    return $('(//*[@content-desc="Cards"] | //*[contains(@resource-id,"navigation_button_cards") and @clickable="true"])[1]')
   }
 
   private get cardsTabIOS() {
@@ -106,11 +106,11 @@ class BusinessCardNoRightsPage extends BasePage {
   }
 
   private get addCardBtnAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/.*add.*Card.*|^.*add.*Card.*")')
+    return $('(//*[contains(@content-desc,"Add New Card") or contains(@content-desc,"Add Card")] | //*[contains(@text,"Add New Card") or contains(@text,"Add Card")])[1]')
   }
 
   private get addCardBtnAndroidByText() {
-    return $('android=new UiSelector().textMatches("(?i)add( new)? card")')
+    return $('(//*[contains(@content-desc,"Add Card")] | //*[contains(@text,"Add Card")])[1]')
   }
 
   private get addCardBtnIOS() {
@@ -136,7 +136,19 @@ class BusinessCardNoRightsPage extends BasePage {
   // ── Assign Card form ──────────────────────────────────────────────────────
 
   private get cardTypeRowAndroid() {
-    return $('android=new UiSelector().resourceId("assignBusinessCard_button_selectCardType")')
+    return $('(//*[@resource-id="assignBusinessCard_button_selectCardType"] | //*[contains(@content-desc,"Card Type") or contains(@content-desc,"Physical Card") or contains(@content-desc,"Virtual Card")])[1]')
+  }
+
+  private get cardTypeRowAndroidByText() {
+    return $('(//*[@content-desc="Card Type"] | //android.widget.TextView[@text="Card Type"]/ancestor::*[@clickable="true"][1])[1]')
+  }
+
+  private get cardTypeRowAndroidByDesc() {
+    return $('//*[contains(@content-desc,"Card Type")]')
+  }
+
+  private get selectedCardTypeRowAndroid() {
+    return $('(//*[contains(@content-desc,"Physical Card") or contains(@content-desc,"Virtual Card")] | //android.widget.TextView[@text="Physical Card" or @text="Virtual Card"]/ancestor::*[@clickable="true"][1])[1]')
   }
 
   private get cardTypeRowIOS() {
@@ -144,7 +156,7 @@ class BusinessCardNoRightsPage extends BasePage {
   }
 
   private get virtualCardOptionAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Virtual Card"]]')
+    return $('(//*[@content-desc="Virtual Card"] | //*[contains(@content-desc,"Virtual Card")] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Virtual Card"]])[1]')
   }
 
   private get virtualCardOptionIOS() {
@@ -152,7 +164,7 @@ class BusinessCardNoRightsPage extends BasePage {
   }
 
   private get changeCardTypeConfirmBtnAndroid() {
-    return $('android=new UiSelector().text("Change")')
+    return $('//*[@text="Change" or @content-desc="Change"]')
   }
 
   private get changeCardTypeConfirmBtnIOS() {
@@ -162,7 +174,7 @@ class BusinessCardNoRightsPage extends BasePage {
   // ── Assignee row ──────────────────────────────────────────────────────────
 
   private get assigneeRowAndroid() {
-    return $('android=new UiSelector().resourceId("assignBusinessCard_button_selectUser")')
+    return $('(//*[@resource-id="assignBusinessCard_button_selectUser"] | //*[contains(@content-desc,"Card Assignee") or contains(@content-desc,"Select User")])[1]')
   }
 
   private get assigneeRowIOS() {
@@ -173,7 +185,7 @@ class BusinessCardNoRightsPage extends BasePage {
   }
 
   private get selfUserOptionAndroid() {
-    return $(`android=new UiSelector().description("${BH_SELF_NAME}")`)
+    return $(`(//*[@content-desc="${BH_SELF_NAME}"] | //*[contains(@content-desc,"${BH_SELF_NAME}")])[1]`)
   }
 
   private get selfUserOptionIOS() {
@@ -183,7 +195,7 @@ class BusinessCardNoRightsPage extends BasePage {
   // ── No-rights popup ───────────────────────────────────────────────────────
 
   private get noRightsMessageAndroid() {
-    return $('android=new UiSelector().textMatches("(?i).*create.*business card.*contact your administrator.*")')
+    return $('//*[contains(@text,"create") and contains(@text,"business card") and contains(@text,"contact your administrator") or contains(@content-desc,"create") and contains(@content-desc,"business card") and contains(@content-desc,"contact your administrator")]')
   }
 
   private get noRightsMessageIOS() {
@@ -196,7 +208,7 @@ class BusinessCardNoRightsPage extends BasePage {
   }
 
   private get alertCloseBtnAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Close"]]')
+    return $('(//*[contains(@content-desc,"Close")] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Close"]])[1]')
   }
 
   private get alertCloseSheetBtnAndroid() {
@@ -217,11 +229,62 @@ class BusinessCardNoRightsPage extends BasePage {
     })
   }
 
+  private async tapElementCenterAndroid(el: ChainablePromiseElement) {
+    await el.waitForExist({ timeout: 5000 })
+    const loc = await el.getLocation().catch(() => null)
+    const size = await el.getSize().catch(() => null)
+    if (loc && size) {
+      await browser.execute('mobile: clickGesture', {
+        x: Math.round(loc.x + size.width / 2),
+        y: Math.round(loc.y + size.height / 2),
+      })
+    } else {
+      await el.click().catch(() => {})
+    }
+  }
+
   private async isNoRightsPopupVisibleIOS() {
     return (
       (await this.noRightsMessageIOS.isExisting().catch(() => false)) ||
       (await this.alertCloseBtnIOS.isExisting().catch(() => false))
     )
+  }
+
+  private async getFirstExisting(candidates: ChainablePromiseElement[], timeout: number, timeoutMsg: string) {
+    await browser.waitUntil(
+      async () => {
+        for (const candidate of candidates) {
+          if (await candidate.isExisting().catch(() => false)) return true
+        }
+        return false
+      },
+      { timeout, interval: 500, timeoutMsg },
+    )
+
+    for (const candidate of candidates) {
+      if (await candidate.isExisting().catch(() => false)) return candidate
+    }
+    throw new Error(timeoutMsg)
+  }
+
+  private async getCardTypeRowAndroid(timeout = 10000) {
+    return this.getFirstExisting(
+      [
+        this.cardTypeRowAndroid,
+        this.cardTypeRowAndroidByText,
+        this.cardTypeRowAndroidByDesc,
+        this.selectedCardTypeRowAndroid,
+      ],
+      timeout,
+      'Card Type row not found on Android',
+    )
+  }
+
+  private async getCardTypeRow(timeout = 10000) {
+    if (browser.isAndroid) return this.getCardTypeRowAndroid(timeout)
+
+    await this.cardTypeRowIOS.waitForExist({ timeout, timeoutMsg: 'Card Type row not found on iOS' })
+    return this.cardTypeRowIOS
   }
 
   // ── Public methods ────────────────────────────────────────────────────────
@@ -303,13 +366,16 @@ class BusinessCardNoRightsPage extends BasePage {
         return this.addCardBtnAndroidByText
       },
     )
-    await this.tap(addCardBtn)
+    await this.tapElementCenterAndroid(addCardBtn)
   }
 
   public async selectVirtualCardType() {
-    const cardTypeRow = browser.isIOS ? this.cardTypeRowIOS : this.cardTypeRowAndroid
-    await cardTypeRow.waitForExist({ timeout: 10000 })
-    await this.tap(cardTypeRow)
+    const cardTypeRow = await this.getCardTypeRow(10000)
+    if (browser.isAndroid) {
+      await this.tapElementCenterAndroid(cardTypeRow)
+    } else {
+      await this.tap(cardTypeRow)
+    }
 
     const confirmBtn = browser.isIOS ? this.changeCardTypeConfirmBtnIOS : this.changeCardTypeConfirmBtnAndroid
     const confirmed = await confirmBtn.waitForExist({ timeout: 3000 }).catch(() => false)
@@ -342,7 +408,7 @@ class BusinessCardNoRightsPage extends BasePage {
 
   public async verifyNoRightsAlertMessage() {
     const message = browser.isIOS ? this.noRightsMessageIOS : this.noRightsMessageAndroid
-    const msg = await message.getText().catch(async () => await message.getAttribute('label').catch(() => ''))
+    const msg = await message.getText().catch(async () => await message.getAttribute('content-desc').catch(() => ''))
     if (!msg) throw new Error('Alert message is empty')
     const normalized = msg.toLowerCase()
     if (!/create.*business card/.test(normalized) || !normalized.includes('contact your administrator')) {

@@ -13,15 +13,15 @@ class BusinessCardTerminatePage extends BasePage {
   // ── Account switcher ─────────────────────────────────────────────────────
 
   private get userAvatarAndroid() {
-    return $('android=new UiSelector().resourceId("home_button_userAvatar")')
+    return $('(//*[@resource-id="home_button_userAvatar"] | //*[contains(@resource-id,"userAvatar")])[1]')
   }
 
   private get subAccountsSheetAndroid() {
-    return $('android=new UiSelector().text("Sub Accounts")')
+    return $('//*[@text="Sub Accounts" or @content-desc="Sub Accounts"]')
   }
 
   private get seDeKeItemAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text,"SeDeKE") or contains(@text,"SED00004")]]')
+    return $('(//*[contains(@content-desc,"SeDeKE") or contains(@content-desc,"SED00004")] | //android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text,"SeDeKE") or contains(@text,"SED00004")]])[1]')
   }
 
   private get seDeKeItemIOS() {
@@ -29,7 +29,7 @@ class BusinessCardTerminatePage extends BasePage {
   }
 
   private get accountChipAndroid() {
-    return $(`android=new UiSelector().textContains("${BH_ACCOUNT_CODE}")`)
+    return $(`(//*[contains(@content-desc,"${BH_ACCOUNT_CODE}")] | //*[contains(@text,"${BH_ACCOUNT_CODE}")])[1]`)
   }
 
   private get profilePickerCodeLabelIOS() {
@@ -107,7 +107,7 @@ class BusinessCardTerminatePage extends BasePage {
   }
 
   private get moreTabAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_more")')
+    return $('(//*[@content-desc="More"] | //*[contains(@resource-id,"navigation_button_more")] | //*[contains(@resource-id,"nav_graph_more")])[1]')
   }
 
   // ── Administration item ──────────────────────────────────────────────────
@@ -117,7 +117,7 @@ class BusinessCardTerminatePage extends BasePage {
   }
 
   private get administrationItemAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Administration"]]')
+    return $('(//*[contains(@content-desc,"Administration")] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Administration"]])[1]')
   }
 
   // ── Manage Cards screen ──────────────────────────────────────────────────
@@ -127,13 +127,13 @@ class BusinessCardTerminatePage extends BasePage {
   }
 
   private get manageCardsTitleAndroid() {
-    return $('android=new UiSelector().text("Manage Cards")')
+    return $('//*[@text="Manage Cards" or @content-desc="Manage Cards"]')
   }
 
   // ── Manage Cards: Assign Card button ─────────────────────────────────────
 
   private get assignCardBtnAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Assign Card"]]')
+    return $('(//*[contains(@content-desc,"Assign Card")] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Assign Card"]])[1]')
   }
 
   private get assignCardBtnIOS() {
@@ -143,7 +143,7 @@ class BusinessCardTerminatePage extends BasePage {
   // ── Assign Card form: Card Type row ──────────────────────────────────────
 
   private get cardTypeRowAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]')
+    return $('(//*[@resource-id="assignBusinessCard_button_selectCardType"] | //*[contains(@content-desc,"Card Type") or contains(@content-desc,"Physical Card") or contains(@content-desc,"Virtual Card")])[1]')
   }
 
   private get cardTypeRowIOS() {
@@ -156,7 +156,7 @@ class BusinessCardTerminatePage extends BasePage {
   // ── Select Card Type sheet: Virtual Card option ───────────────────────────
 
   private get virtualCardOptionAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Virtual Card"]]')
+    return $('(//*[@content-desc="Virtual Card"] | //*[contains(@content-desc,"Virtual Card")] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Virtual Card"]])[1]')
   }
 
   private get virtualCardOptionIOS() {
@@ -166,7 +166,7 @@ class BusinessCardTerminatePage extends BasePage {
   // ── Assign Card form: Assign Card To row ──────────────────────────────────
 
   private get assigneeRowAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]')
+    return $('(//*[contains(@content-desc,"Assign Card To")] | //*[@resource-id="assignBusinessCard_button_selectUser"] | //android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]])[1]')
   }
 
   private get assigneeRowIOS() {
@@ -179,7 +179,7 @@ class BusinessCardTerminatePage extends BasePage {
   // ── Select User sheet ────────────────────────────────────────────────────
 
   private get selfUserOptionAndroid() {
-    return $(`android=new UiSelector().description("${BH_SELF_NAME}")`)
+    return $(`(//*[@content-desc="${BH_SELF_NAME}"] | //*[contains(@content-desc,"${BH_SELF_NAME}")])[1]`)
   }
 
   private get selfUserOptionIOS() {
@@ -188,7 +188,7 @@ class BusinessCardTerminatePage extends BasePage {
 
   // Enabled only after a user is tapped
   private get selectUserBtnAndroid() {
-    return $('android=new UiSelector().resourceId("assignBusinessCardUserSelection_button_select")')
+    return $('(//*[@resource-id="assignBusinessCardUserSelection_button_select"] | //*[contains(@content-desc,"Select") and not(contains(@content-desc,"Select User")) and not(contains(@content-desc,"Select Wallet"))])[1]')
   }
 
   private get selectUserBtnIOS() {
@@ -198,7 +198,7 @@ class BusinessCardTerminatePage extends BasePage {
   // ── Assign Card form: Continue button ─────────────────────────────────────
 
   private get continueBtnAndroid() {
-    return $('android=new UiSelector().resourceId("assignBusinessCard_button_continue")')
+    return $('(//*[@resource-id="assignBusinessCard_button_continue"] | //*[contains(@content-desc,"Continue")])[1]')
   }
 
   private get continueBtnIOS() {
@@ -206,7 +206,7 @@ class BusinessCardTerminatePage extends BasePage {
   }
 
   private get selectWalletTitleAndroid() {
-    return $('android=new UiSelector().text("Select Wallet")')
+    return $('//*[@text="Select Wallet" or @content-desc="Select Wallet"]')
   }
 
   private get walletSelectionFirstWalletAndroid() {
@@ -214,7 +214,7 @@ class BusinessCardTerminatePage extends BasePage {
   }
 
   private get assignCardSubmitBtnAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Assign Card"]]')
+    return $('(//*[contains(@content-desc,"Assign Card")] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Assign Card"]])[1]')
   }
 
   private get selectCardTitleIOS() {
@@ -228,7 +228,7 @@ class BusinessCardTerminatePage extends BasePage {
   // ── Card assigned successfully ────────────────────────────────────────────
 
   private get cardAssignedSuccessAndroid() {
-    return $('android=new UiSelector().text("Card assigned successfully")')
+    return $('//*[@text="Card assigned successfully" or @content-desc="Card assigned successfully" or contains(@content-desc,"assigned successfully")]')
   }
 
   private get cardAssignedSuccessIOS() {
@@ -240,7 +240,7 @@ class BusinessCardTerminatePage extends BasePage {
   }
 
   private get userSelectionSheetAndroid() {
-    return $('android=new UiSelector().resourceId("assignBusinessCardUserSelection_screen")')
+    return $('(//*[@resource-id="assignBusinessCardUserSelection_screen"] | //*[contains(@content-desc,"Select User")])[1]')
   }
 
   private get userSelectionScreenIOS() {
@@ -250,7 +250,7 @@ class BusinessCardTerminatePage extends BasePage {
   // ── Manage Cards tabs ────────────────────────────────────────────────────
 
   private get inactiveTabAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Inactive"]]')
+    return $('(//*[@content-desc="Inactive"] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Inactive"]])[1]')
   }
 
   private get inactiveTabIOS() {
@@ -262,16 +262,18 @@ class BusinessCardTerminatePage extends BasePage {
 
   private get ownVirtualCardAndroid() {
     return $(
-      `//android.view.View[@clickable="true"]` +
+      `(//*[contains(@content-desc,"${BH_SELF_NAME}") and contains(@content-desc,"Virtual") and contains(@content-desc,"ACTIVE")]` +
+      ` | //android.view.View[@clickable="true"]` +
       `[.//android.widget.TextView[contains(@text,"${BH_SELF_NAME}")]]` +
       `[.//android.widget.TextView[contains(@text,"Virtual")]]` +
-      `[.//android.widget.TextView[@text="ACTIVE"]]`,
+      `[.//android.widget.TextView[@text="ACTIVE"]])[1]`,
     )
   }
 
   private get ownVirtualCardsActiveAndroid() {
     return $$(
-      `//android.view.View[@clickable="true"]` +
+      `//*[contains(@content-desc,"${BH_SELF_NAME}") and contains(@content-desc,"Virtual") and contains(@content-desc,"ACTIVE")]` +
+      ` | //android.view.View[@clickable="true"]` +
       `[.//android.widget.TextView[contains(@text,"${BH_SELF_NAME}")]]` +
       `[.//android.widget.TextView[contains(@text,"Virtual")]]` +
       `[.//android.widget.TextView[@text="ACTIVE"]]`,
@@ -280,10 +282,11 @@ class BusinessCardTerminatePage extends BasePage {
 
   private get ownVirtualCardPendingAndroid() {
     return $(
-      `//android.view.View` +
+      `(//*[contains(@content-desc,"${BH_SELF_NAME}") and contains(@content-desc,"Virtual") and contains(@content-desc,"PENDING")]` +
+      ` | //android.view.View` +
       `[.//android.widget.TextView[contains(@text,"${BH_SELF_NAME}")]]` +
       `[.//android.widget.TextView[contains(@text,"Virtual")]]` +
-      `[.//android.widget.TextView[@text="PENDING"]]`,
+      `[.//android.widget.TextView[@text="PENDING"]])[1]`,
     )
   }
 
@@ -321,7 +324,7 @@ class BusinessCardTerminatePage extends BasePage {
   // ── Card Details screen title ─────────────────────────────────────────────
 
   private get cardDetailsTitleAndroid() {
-    return $('android=new UiSelector().text("Card Details")')
+    return $('//*[@text="Card Details" or @content-desc="Card Details"]')
   }
 
   private get cardDetailsTitleIOS() {
@@ -331,11 +334,11 @@ class BusinessCardTerminatePage extends BasePage {
   // ── Freeze / Unfreeze buttons on Card Details ─────────────────────────────
 
   private get freezeBtnAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Freeze"]]')
+    return $('(//*[@content-desc="Freeze"] | //*[contains(@content-desc,"Freeze") and not(contains(@content-desc,"Unfreeze"))])[1]')
   }
 
   private get unfreezeBtnAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Unfreeze"]]')
+    return $('(//*[@content-desc="Unfreeze"] | //*[contains(@content-desc,"Unfreeze")])[1]')
   }
 
   private get freezeBtnIOS() {
@@ -351,11 +354,11 @@ class BusinessCardTerminatePage extends BasePage {
   // or as a row below Recent Activity — both are tried before scrolling
 
   private get terminateBtnAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Terminate"]]')
+    return $('(//*[@content-desc="Terminate"] | //*[contains(@content-desc,"Terminate") and not(contains(@content-desc,"Terminate Card"))] | //android.view.View[@clickable="true"][.//android.view.View[@content-desc="Terminate"]])[1]')
   }
 
   private get terminateRowAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Terminate"]]')
+    return $('(//*[contains(@content-desc,"Terminate")] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Terminate"]])[1]')
   }
 
   private get terminateBtnIOS() {
@@ -370,7 +373,7 @@ class BusinessCardTerminatePage extends BasePage {
   // Button text is "Terminate Card" (not just "Terminate")
 
   private get terminateCardConfirmAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Terminate Card"]]')
+    return $('(//*[contains(@content-desc,"Terminate Card")] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Terminate Card"]])[1]')
   }
 
   private get terminateCardConfirmIOS() {
@@ -380,7 +383,7 @@ class BusinessCardTerminatePage extends BasePage {
   // ── Card terminated success sheet ────────────────────────────────────────
 
   private get cardTerminatedSuccessAndroid() {
-    return $('android=new UiSelector().text("Card terminated")')
+    return $('//*[@text="Card terminated" or @content-desc="Card terminated" or contains(@content-desc,"Card terminated")]')
   }
 
   private get cardTerminatedSuccessIOS() {
@@ -390,7 +393,7 @@ class BusinessCardTerminatePage extends BasePage {
   // ── Back button ───────────────────────────────────────────────────────────
 
   private get backBtnAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Back"]]')
+    return $('(//*[@content-desc="Navigate up" or @content-desc="Back"] | //android.view.View[@clickable="true"][.//android.view.View[@content-desc="Back"]])[1]')
   }
 
   private get backBtnIOS() {
@@ -401,10 +404,11 @@ class BusinessCardTerminatePage extends BasePage {
 
   private get ownVirtualCardInactiveAndroid() {
     return $(
-      `//android.view.View` +
+      `(//*[contains(@content-desc,"${BH_SELF_NAME}") and contains(@content-desc,"Virtual") and contains(@content-desc,"TERMINATED")]` +
+      ` | //android.view.View` +
       `[.//android.widget.TextView[contains(@text,"${BH_SELF_NAME}")]]` +
       `[.//android.widget.TextView[contains(@text,"Virtual")]]` +
-      `[.//android.widget.TextView[@text="TERMINATED"]]`,
+      `[.//android.widget.TextView[@text="TERMINATED"]])[1]`,
     )
   }
 
@@ -580,13 +584,13 @@ class BusinessCardTerminatePage extends BasePage {
     if (await this.manageCardsTitleAndroid.isExisting().catch(() => false)) return
 
     if (!(await this.administrationItemAndroid.isExisting().catch(() => false))) {
-      await this.tap(this.moreTabAndroid)
+      await this.openAndroidMoreMenuFromProfile()
       await browser.pause(500)
     }
 
     await this.administrationItemAndroid.waitForExist({
       timeout: 15000,
-      timeoutMsg: 'Administration item not found while reopening Manage Cards from More tab',
+      timeoutMsg: 'Administration item not found while reopening Manage Cards',
     })
     await this.tap(this.administrationItemAndroid)
     await this.openManageCards()
@@ -646,9 +650,12 @@ class BusinessCardTerminatePage extends BasePage {
 
   public async openAdministration() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
-    const moreTab = browser.isIOS ? this.moreTabIOS : this.moreTabAndroid
-    await moreTab.waitForExist({ timeout: 15000 })
-    await this.tap(moreTab)
+    if (browser.isIOS) {
+      await this.moreTabIOS.waitForExist({ timeout: 15000 })
+      await this.tap(this.moreTabIOS)
+    } else {
+      await this.openAndroidMoreMenuFromProfile()
+    }
     await browser.pause(500)
     const adminItem = browser.isIOS ? this.administrationItemIOS : this.administrationItemAndroid
     await adminItem.waitForExist({ timeout: 15000, timeoutMsg: 'Administration item not found in More section' })

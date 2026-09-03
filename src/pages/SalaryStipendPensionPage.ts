@@ -18,11 +18,11 @@ export default class SalaryStipendPensionPage extends BasePage {
   }
 
   private get sspTileAndroid() {
-    return $('android=new UiSelector().description("addFunds_item_salary")')
+    return $('(//*[@content-desc="addFunds_item_salary"] | //*[contains(@resource-id,"addFunds_item_salary")])[1]')
   }
 
   private get sspTileAndroidByText() {
-    return $('android=new UiSelector().textContains("Salary, Stipend")')
+    return $('//*[contains(@text,"Salary, Stipend") or contains(@content-desc,"Salary, Stipend")]')
   }
 
   /* ========================

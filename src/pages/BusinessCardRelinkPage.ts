@@ -11,15 +11,15 @@ class BusinessCardRelinkPage extends BasePage {
   // ── Account switcher ─────────────────────────────────────────────────────
 
   private get userAvatarAndroid() {
-    return $('android=new UiSelector().resourceId("home_button_userAvatar")')
+    return $('(//*[@resource-id="home_button_userAvatar"] | //*[contains(@resource-id,"userAvatar")])[1]')
   }
 
   private get subAccountsSheetAndroid() {
-    return $('android=new UiSelector().text("Sub Accounts")')
+    return $('//*[@text="Sub Accounts" or @content-desc="Sub Accounts"]')
   }
 
   private get seDeKeItemAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text,"SeDeKE") or contains(@text,"SED00004")]]')
+    return $('(//*[contains(@content-desc,"SeDeKE") or contains(@content-desc,"SED00004")] | //android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text,"SeDeKE") or contains(@text,"SED00004")]])[1]')
   }
 
   private get seDeKeItemIOS() {
@@ -27,7 +27,7 @@ class BusinessCardRelinkPage extends BasePage {
   }
 
   private get accountChipAndroid() {
-    return $(`android=new UiSelector().textContains("${BH_ACCOUNT_CODE}")`)
+    return $(`(//*[contains(@content-desc,"${BH_ACCOUNT_CODE}")] | //*[contains(@text,"${BH_ACCOUNT_CODE}")])[1]`)
   }
 
   private get profilePickerCodeLabelIOS() {
@@ -105,7 +105,7 @@ class BusinessCardRelinkPage extends BasePage {
   }
 
   private get moreTabAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_more")')
+    return $('(//*[@content-desc="More"] | //*[contains(@resource-id,"navigation_button_more")] | //*[contains(@resource-id,"nav_graph_more")])[1]')
   }
 
   // ── Administration item ──────────────────────────────────────────────────
@@ -115,7 +115,7 @@ class BusinessCardRelinkPage extends BasePage {
   }
 
   private get administrationItemAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Administration"]]')
+    return $('(//*[contains(@content-desc,"Administration")] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Administration"]])[1]')
   }
 
   // ── Manage Cards screen ──────────────────────────────────────────────────
@@ -125,13 +125,13 @@ class BusinessCardRelinkPage extends BasePage {
   }
 
   private get manageCardsTitleAndroid() {
-    return $('android=new UiSelector().text("Manage Cards")')
+    return $('//*[@text="Manage Cards" or @content-desc="Manage Cards"]')
   }
 
   // ── Other user's card ─────────────────────────────────────────────────────
 
   private get otherUserCardAndroid() {
-    return $(`//android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text,"${BH_OTHER_USER_NAME}")]]`)
+    return $(`(//*[contains(@content-desc,"${BH_OTHER_USER_NAME}")] | //android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text,"${BH_OTHER_USER_NAME}")]])[1]`)
   }
 
   private get otherUserCardIOS() {
@@ -141,7 +141,7 @@ class BusinessCardRelinkPage extends BasePage {
   // ── Card Details title ────────────────────────────────────────────────────
 
   private get cardDetailsTitleAndroid() {
-    return $('android=new UiSelector().text("Card Details")')
+    return $('//*[@text="Card Details" or @content-desc="Card Details"]')
   }
 
   private get cardDetailsTitleIOS() {
@@ -152,7 +152,7 @@ class BusinessCardRelinkPage extends BasePage {
   // Clickable row that sits directly after the "Spend From" label
 
   private get spendFromRowAndroid() {
-    return $('//android.widget.TextView[@text="Spend From"]/following-sibling::android.view.View[@clickable="true"][1]')
+    return $('(//*[contains(@content-desc,"Spend From")] | //android.widget.TextView[@text="Spend From"]/following-sibling::android.view.View[@clickable="true"][1])[1]')
   }
 
   private get spendFromRowIOS() {
@@ -172,7 +172,7 @@ class BusinessCardRelinkPage extends BasePage {
   // ── Select Wallet sheet ───────────────────────────────────────────────────
 
   private get selectWalletTitleAndroid() {
-    return $('android=new UiSelector().text("Select Wallet")')
+    return $('//*[@text="Select Wallet" or @content-desc="Select Wallet"]')
   }
 
   private get selectWalletTitleIOS() {
@@ -183,7 +183,7 @@ class BusinessCardRelinkPage extends BasePage {
   // Excludes the IBAN line (contains "·") and balance line
   private get walletNameRowsAndroid() {
     return $$(
-      '//android.view.View[@resource-id="businessWalletSelection_screen"]//android.view.View[@scrollable="true"]//android.view.View[@clickable="true"]/android.widget.TextView[1]',
+      '(//*[@resource-id="businessWalletSelection_screen"]//android.view.View[@clickable="true"]/android.widget.TextView[1] | //*[@resource-id="businessWalletSelection_screen"]//android.view.View[@clickable="true"]/*[@content-desc and string-length(@content-desc) > 2 and not(contains(@content-desc,"Navigate")) and not(contains(@content-desc,"Back")) and not(contains(@content-desc,"Close"))])',
     )
   }
 
@@ -198,7 +198,7 @@ class BusinessCardRelinkPage extends BasePage {
   }
 
   private walletRowAndroid(name: string) {
-    return $(`//android.view.View[@clickable="true"][.//android.widget.TextView[@text="${name}"]]`)
+    return $(`(//*[@content-desc="${name}"] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="${name}"]])[1]`)
   }
 
   private walletRowIOS(name: string) {
@@ -245,9 +245,12 @@ class BusinessCardRelinkPage extends BasePage {
 
   public async openAdministration() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
-    const moreTab = browser.isIOS ? this.moreTabIOS : this.moreTabAndroid
-    await moreTab.waitForExist({ timeout: 15000 })
-    await this.tap(moreTab)
+    if (browser.isIOS) {
+      await this.moreTabIOS.waitForExist({ timeout: 15000 })
+      await this.tap(this.moreTabIOS)
+    } else {
+      await this.openAndroidMoreMenuFromProfile()
+    }
     await browser.pause(500)
     const adminItem = browser.isIOS ? this.administrationItemIOS : this.administrationItemAndroid
     await adminItem.waitForExist({ timeout: 15000, timeoutMsg: 'Administration item not found in More section' })
@@ -339,8 +342,10 @@ class BusinessCardRelinkPage extends BasePage {
       const names: string[] = []
       for (const el of nameEls) {
         if (!el) continue
-        const text = await el.getText().catch(() => '')
-        if (text && text !== 'Add New Wallet' && text !== this._currentWallet) names.push(text)
+        const text = (await el.getText().catch(() => ''))
+          || (await el.getAttribute('content-desc').catch(() => ''))
+        const name = text.split('\n')[0].trim()
+        if (name && name !== 'Add New Wallet' && name !== this._currentWallet) names.push(name)
       }
       if (names.length === 0) throw new Error(`No alternative wallet found (current: "${this._currentWallet}")`)
       this._targetWallet = names[Math.floor(Math.random() * names.length)]

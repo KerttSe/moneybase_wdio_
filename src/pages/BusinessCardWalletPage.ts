@@ -10,15 +10,15 @@ class BusinessCardWalletPage extends BasePage {
   // ── Account switcher ─────────────────────────────────────────────────────
 
   private get userAvatarAndroid() {
-    return $('android=new UiSelector().resourceId("home_button_userAvatar")')
+    return $('(//*[@resource-id="home_button_userAvatar"] | //*[contains(@resource-id,"userAvatar")])[1]')
   }
 
   private get subAccountsSheetAndroid() {
-    return $('android=new UiSelector().text("Sub Accounts")')
+    return $('//*[@text="Sub Accounts" or @content-desc="Sub Accounts"]')
   }
 
   private get seDeKeItemAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text,"SeDeKE") or contains(@text,"SED00004")]]')
+    return $('(//*[contains(@content-desc,"SeDeKE") or contains(@content-desc,"SED00004")] | //android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text,"SeDeKE") or contains(@text,"SED00004")]])[1]')
   }
 
   private get seDeKeItemIOS() {
@@ -26,7 +26,7 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get accountChipAndroid() {
-    return $(`android=new UiSelector().textContains("${BH_ACCOUNT_CODE}")`)
+    return $(`(//*[contains(@content-desc,"${BH_ACCOUNT_CODE}")] | //*[contains(@text,"${BH_ACCOUNT_CODE}")])[1]`)
   }
 
   private get profilePickerCodeLabelIOS() {
@@ -94,12 +94,16 @@ class BusinessCardWalletPage extends BasePage {
 
   private async tapElementCenterAndroid(el: ChainablePromiseElement) {
     await el.waitForExist({ timeout: 5000 })
-    const location = await el.getLocation()
-    const size = await el.getSize()
-    await browser.execute('mobile: clickGesture', {
-      x: Math.round(location.x + size.width / 2),
-      y: Math.round(location.y + size.height / 2),
-    })
+    const loc = await el.getLocation().catch(() => null)
+    const size = await el.getSize().catch(() => null)
+    if (loc && size) {
+      await browser.execute('mobile: clickGesture', {
+        x: Math.round(loc.x + size.width / 2),
+        y: Math.round(loc.y + size.height / 2),
+      })
+    } else {
+      await el.click().catch(() => {})
+    }
   }
 
   // ── More tab ─────────────────────────────────────────────────────────────
@@ -109,7 +113,7 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get moreTabAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_more")')
+    return $('(//*[@content-desc="More"] | //*[contains(@resource-id,"navigation_button_more")] | //*[contains(@resource-id,"nav_graph_more")])[1]')
   }
 
   // ── Administration item ──────────────────────────────────────────────────
@@ -119,7 +123,7 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get administrationItemAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Administration"]]')
+    return $('(//*[contains(@content-desc,"Administration")] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Administration"]])[1]')
   }
 
   // ── Manage Cards screen ──────────────────────────────────────────────────
@@ -129,13 +133,13 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get manageCardsTitleAndroid() {
-    return $('android=new UiSelector().text("Manage Cards")')
+    return $('//*[@text="Manage Cards" or @content-desc="Manage Cards"]')
   }
 
   // ── Manage Cards: Assign Card button ─────────────────────────────────────
 
   private get assignCardBtnAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Assign Card"]]')
+    return $('(//*[contains(@content-desc,"Assign Card")] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Assign Card"]])[1]')
   }
 
   private get assignCardBtnIOS() {
@@ -145,7 +149,7 @@ class BusinessCardWalletPage extends BasePage {
   // ── Wallet creation context selectors ────────────────────────────────────
 
   private get cardTypeRowAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]')
+    return $('(//*[@resource-id="assignBusinessCard_button_selectCardType"] | //*[contains(@content-desc,"Card Type") or contains(@content-desc,"Physical Card") or contains(@content-desc,"Virtual Card")])[1]')
   }
 
   private get cardTypeRowIOS() {
@@ -156,7 +160,7 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get virtualCardOptionAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Virtual Card"]]')
+    return $('(//*[@content-desc="Virtual Card"] | //*[contains(@content-desc,"Virtual Card")] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Virtual Card"]])[1]')
   }
 
   private get virtualCardOptionIOS() {
@@ -164,7 +168,7 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get assigneeRowAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]')
+    return $('(//*[contains(@content-desc,"Assign Card To")] | //*[@resource-id="assignBusinessCard_button_selectUser"] | //android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]])[1]')
   }
 
   private get assigneeRowIOS() {
@@ -175,7 +179,7 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get selfUserOptionAndroid() {
-    return $(`android=new UiSelector().description("${BH_SELF_NAME}")`)
+    return $(`(//*[@content-desc="${BH_SELF_NAME}"] | //*[contains(@content-desc,"${BH_SELF_NAME}")])[1]`)
   }
 
   private get selfUserOptionIOS() {
@@ -183,7 +187,7 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get selectUserBtnAndroid() {
-    return $('android=new UiSelector().resourceId("assignBusinessCardUserSelection_button_select")')
+    return $('(//*[@resource-id="assignBusinessCardUserSelection_button_select"] | //*[@content-desc="Select"])[1]')
   }
 
   private get selectUserBtnIOS() {
@@ -191,7 +195,7 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get userSelectionSheetAndroid() {
-    return $('android=new UiSelector().resourceId("assignBusinessCardUserSelection_screen")')
+    return $('(//*[@resource-id="assignBusinessCardUserSelection_screen"] | //*[contains(@content-desc,"Select User")])[1]')
   }
 
   private get userSelectionScreenIOS() {
@@ -199,7 +203,7 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get spendFromRowAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Spend From"]]')
+    return $('(//*[contains(@content-desc,"Spend From")] | //android.view.View[@clickable="true"][.//android.view.View[@content-desc="Spend From"]])[1]')
   }
 
   private get spendFromRowIOS() {
@@ -209,7 +213,7 @@ class BusinessCardWalletPage extends BasePage {
   // ── Select Wallet sheet ──────────────────────────────────────────────────
 
   private get selectWalletTitleAndroid() {
-    return $('android=new UiSelector().text("Select Wallet")')
+    return $('//*[@text="Select Wallet" or @content-desc="Select Wallet"]')
   }
 
   private get selectWalletTitleIOS() {
@@ -219,7 +223,7 @@ class BusinessCardWalletPage extends BasePage {
   // ── Add New Wallet button ─────────────────────────────────────────────────
 
   private get addNewWalletBtnAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Add New Wallet"]]')
+    return $('(//*[@resource-id="businessWalletSelection_button_addNewWallet"] | //*[contains(@resource-id,"businessWalletSelection_button_addNewWallet")] | //*[contains(@content-desc,"Add New Wallet")] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Add New Wallet"]])[1]')
   }
 
   private get addNewWalletBtnIOS() {
@@ -229,7 +233,7 @@ class BusinessCardWalletPage extends BasePage {
   // ── New Wallet form ──────────────────────────────────────────────────────
 
   private get newWalletScreenTitleAndroid() {
-    return $('android=new UiSelector().text("New Wallet")')
+    return $('//*[@text="New Wallet" or @content-desc="New Wallet"]')
   }
 
   private get newWalletScreenTitleIOS() {
@@ -245,7 +249,7 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get addBtnAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Add"]]')
+    return $('(//*[@content-desc="Add"] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Add"]])[1]')
   }
 
   private get addBtnIOS() {
@@ -255,15 +259,15 @@ class BusinessCardWalletPage extends BasePage {
   // ── Add Wallet result dialog ──────────────────────────────────────────────
 
   private get addWalletDialogTitleAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/alertTitle")')
+    return $('//*[@text="Add Wallet" or @content-desc="Add Wallet"]')
   }
 
   private get addWalletDialogMessageAndroid() {
-    return $('android=new UiSelector().resourceId("android:id/message")')
+    return $('//*[contains(@text,"maximum number of wallets") or contains(@content-desc,"maximum number of wallets")]')
   }
 
   private get addWalletDialogOkAndroid() {
-    return $('android=new UiSelector().resourceId("android:id/button1")')
+    return $('(//*[@text="OK" or @content-desc="OK"] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="OK"]])[1]')
   }
 
   // ── Public methods ────────────────────────────────────────────────────────
@@ -290,9 +294,12 @@ class BusinessCardWalletPage extends BasePage {
 
   public async openAdministration() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
-    const moreTab = browser.isIOS ? this.moreTabIOS : this.moreTabAndroid
-    await moreTab.waitForExist({ timeout: 15000 })
-    await this.tap(moreTab)
+    if (browser.isIOS) {
+      await this.moreTabIOS.waitForExist({ timeout: 15000 })
+      await this.tap(this.moreTabIOS)
+    } else {
+      await this.openAndroidMoreMenuFromProfile()
+    }
     await browser.pause(500)
     const adminItem = browser.isIOS ? this.administrationItemIOS : this.administrationItemAndroid
     await adminItem.waitForExist({ timeout: 15000, timeoutMsg: 'Administration item not found in More section' })
@@ -420,7 +427,11 @@ class BusinessCardWalletPage extends BasePage {
   public async tapAddNewWallet() {
     const btn = browser.isIOS ? this.addNewWalletBtnIOS : this.addNewWalletBtnAndroid
     await btn.waitForExist({ timeout: 10000, timeoutMsg: '"Add New Wallet" button not found' })
-    await this.tap(btn)
+    if (browser.isAndroid) {
+      await this.tapElementCenterAndroid(btn)
+    } else {
+      await this.tap(btn)
+    }
   }
 
   public async verifyNewWalletForm() {

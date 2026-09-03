@@ -5,8 +5,7 @@ import { AUTH } from '../data/credentials'
 
 export default class AddFundsPage extends BasePage {
   private byAndroidResId(id: string) {
-    const rx = `.*:id/${id}$|^${id}$`
-    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[@resource-id="${id}"] | //*[contains(@resource-id,"${id}")])[1]`)
   }
 
   /* =========================
@@ -18,15 +17,15 @@ export default class AddFundsPage extends BasePage {
   }
 
   private get businessAccountLabelAndroid() {
-    return $('android=new UiSelector().textContains("Business")')
+    return $('//*[contains(@text,"Business") or contains(@content-desc,"Business")]')
   }
 
   private get singleAccountItemAndroid() {
-    return $('android=new UiSelector().description("Single")')
+    return $('(//*[@content-desc="Single"] | //*[@text="Single"])[1]')
   }
 
   private get singleAccountItemAndroidByText() {
-    return $('android=new UiSelector().text("Single")')
+    return $('//*[@text="Single" or @content-desc="Single"]')
   }
 
   private get homeRootAndroid() {
@@ -34,7 +33,7 @@ export default class AddFundsPage extends BasePage {
   }
 
   private get supportSheetTitleAndroid() {
-    return $('android=new UiSelector().text("Support")')
+    return $('//*[@text="Support" or @content-desc="Support"]')
   }
 
   /* =========================
@@ -228,23 +227,23 @@ private get payProcessingBtnIOS() {
    * ========================= */
 
   private get payProcessingBtnAndroid() {
-    return $('android=new UiSelector().text("Pay Processing")')
+    return $('//*[@text="Pay Processing" or @content-desc="Pay Processing"]')
   }
 
   private get otpInputAndroid() {
-    return $('android=new UiSelector().resourceId("otp")')
+    return $('(//*[@resource-id="otp"] | //*[contains(@resource-id,"otp")])[1]')
   }
 
   private get sendOtpBtnAndroid() {
-    return $('android=new UiSelector().resourceId("sendOtp")')
+    return $('(//*[@resource-id="sendOtp"] | //*[contains(@resource-id,"sendOtp")])[1]')
   }
 
   private get depositSuccessTextAndroid() {
-    return $('android=new UiSelector().textContains("You deposited")')
+    return $('//*[contains(@text,"You deposited") or contains(@content-desc,"You deposited")]')
   }
 
   private get depositErrorTextAndroid() {
-    return $('android=new UiSelector().textContains("Looks like Something went wrong.")')
+    return $('//*[contains(@text,"Something went wrong") or contains(@content-desc,"Something went wrong")]')
   }
 
   private get depositApprovedIOS() {

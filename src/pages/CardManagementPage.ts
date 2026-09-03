@@ -15,7 +15,7 @@ class CardManagementPage extends BasePage {
   }
 
   private get cardsScreenAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/cards_screen$|^cards_screen$")')
+    return $('(//*[@resource-id="cards_screen"] | //*[contains(@resource-id,"cards_screen")])[1]')
   }
 
   private get jointAccountLabelIOS() {
@@ -27,7 +27,9 @@ class CardManagementPage extends BasePage {
   }
 
   private get cardItemsAndroid() {
-    return $$('//android.view.View[@resource-id="cards_screen"]//android.view.View[@clickable="true"][.//android.view.View[@content-desc and @content-desc!="Search"]]')
+    return $$(
+      '(//android.view.View[@resource-id="cards_screen"] | //*[contains(@resource-id,"cards_screen")])//*[@clickable="true" and @content-desc and @content-desc!="Search" and not(contains(@content-desc,"navigation")) and not(contains(@content-desc,"navigate"))]',
+    )
   }
 
   private get selectedCardNameIOS() {
@@ -47,25 +49,27 @@ class CardManagementPage extends BasePage {
   }
 
   private get firstCardItemAndroid() {
-    return $('(//android.view.View[@resource-id="cards_screen"]//android.view.View[@clickable="true"][.//android.view.View[@content-desc and @content-desc!="Search"]])[1]')
+    return $(
+      '((//android.view.View[@resource-id="cards_screen"] | //*[contains(@resource-id,"cards_screen")])//*[@clickable="true" and @content-desc and @content-desc!="Search" and not(contains(@content-desc,"navigation")) and not(contains(@content-desc,"navigate"))])[1]',
+    )
   }
 
   private get viewPinButton() {
     return browser.isIOS
       ? $('~cards_button_viewPin')
-      : $('android=new UiSelector().resourceIdMatches(".*:id/cards_button_viewPin$|^cards_button_viewPin$")')
+      : $('(//*[@resource-id="cards_button_viewPin"] | //*[contains(@resource-id,"cards_button_viewPin")] | //*[@content-desc="View PIN" or @content-desc="View Pin"])[1]')
   }
 
   private get securityButton() {
     return browser.isIOS
       ? $('~cards_button_security')
-      : $('android=new UiSelector().resourceIdMatches(".*:id/cards_button_security$|^cards_button_security$")')
+      : $('(//*[@resource-id="cards_button_security"] | //*[contains(@resource-id,"cards_button_security")] | //*[@content-desc="Security" or @content-desc="Card Security"])[1]')
   }
 
   private get freezeButton() {
     return browser.isIOS
       ? $('~cards_button_freeze')
-      : $('android=new UiSelector().resourceIdMatches(".*:id/cards_button_freeze$|^cards_button_freeze$")')
+      : $('(//*[@resource-id="cards_button_freeze"] | //*[contains(@resource-id,"cards_button_freeze")] | //*[@content-desc="Freeze"])[1]')
   }
 
   private get freezeLabelIOS() {
@@ -81,17 +85,33 @@ class CardManagementPage extends BasePage {
   }
 
   private get freezeTextAndroid() {
-    return $('android=new UiSelector().text("Freeze")')
+    return $('//*[@text="Freeze" or @content-desc="Freeze"]')
   }
 
   private get unfreezeTextAndroid() {
-    return $('android=new UiSelector().text("Unfreeze")')
+    return $('//*[@text="Unfreeze" or @content-desc="Unfreeze"]')
+  }
+
+  private get freezeActionAndroidByText() {
+    return $('//android.widget.TextView[@text="Freeze"]/ancestor::*[@clickable="true"][1]')
+  }
+
+  private get unfreezeActionAndroidByText() {
+    return $('//android.widget.TextView[@text="Unfreeze"]/ancestor::*[@clickable="true"][1]')
+  }
+
+  private get freezeActionAndroidByDesc() {
+    return $('//*[@content-desc="Freeze"]/ancestor-or-self::*[@clickable="true"][1]')
+  }
+
+  private get unfreezeActionAndroidByDesc() {
+    return $('//*[@content-desc="Unfreeze"]/ancestor-or-self::*[@clickable="true"][1]')
   }
 
   private get moreButton() {
     return browser.isIOS
       ? $('~cards_button_more')
-      : $('android=new UiSelector().resourceIdMatches(".*:id/cards_button_more$|^cards_button_more$")')
+      : $('(//*[@resource-id="cards_button_more"] | //*[contains(@resource-id,"cards_button_more")] | //*[@content-desc="More" and not(@resource-id="navigation_button_more")])[1]')
   }
 
   private get firstCardTransactionIOS() {
@@ -99,7 +119,7 @@ class CardManagementPage extends BasePage {
   }
 
   private get firstCardTransactionAndroid() {
-    return $('(//android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text, "€")]])[1]')
+    return $('(//*[@clickable="true" and contains(@content-desc,"€")] | //android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text, "€")]])[1]')
   }
 
   private get transactionDetailsBackButtonIOS() {
@@ -107,7 +127,7 @@ class CardManagementPage extends BasePage {
   }
 
   private get transactionDetailsBackButtonAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/transactionDetails_button_back$|^transactionDetails_button_back$")')
+    return $('(//*[@resource-id="transactionDetails_button_back"] | //*[contains(@resource-id,"transactionDetails_button_back")] | //*[@content-desc="Navigate up" or @content-desc="Back"])[1]')
   }
 
   private get transactionDetailsIconIOS() {
@@ -123,11 +143,11 @@ class CardManagementPage extends BasePage {
   }
 
   private get transactionDetailsHeaderAndroid() {
-    return $('android=new UiSelector().text("Processed")')
+    return $('//*[@text="Processed" or @content-desc="Processed"]')
   }
 
   private get transactionDetailsSectionAndroid() {
-    return $('android=new UiSelector().text("DETAILS")')
+    return $('//*[@text="DETAILS" or @content-desc="DETAILS"]')
   }
 
   private get transactionDetailsCardUsedIOS() {
@@ -135,7 +155,7 @@ class CardManagementPage extends BasePage {
   }
 
   private get transactionDetailsCardUsedAndroid() {
-    return $('android=new UiSelector().text("Card used")')
+    return $('//*[@text="Card used" or @content-desc="Card used"]')
   }
 
   private get transactionDetailsDateTimeIOS() {
@@ -143,7 +163,7 @@ class CardManagementPage extends BasePage {
   }
 
   private get transactionDetailsDateTimeAndroid() {
-    return $('android=new UiSelector().text("Date & Time")')
+    return $('//*[@text="Date & Time" or @content-desc="Date & Time"]')
   }
 
   private get securityNavBarIOS() {
@@ -163,15 +183,15 @@ class CardManagementPage extends BasePage {
   }
 
   private moreMenuOptionAndroid(label: 'Rename Card (Friendly name)' | 'Add New Card') {
-    return $(`android=new UiSelector().text("${label}")`)
+    return $(`(//*[@content-desc="${label}"] | //*[@text="${label}"])[1]`)
   }
 
   private get moreMenuRenameButtonAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/cards_button_renameCard$|^cards_button_renameCard$")')
+    return $('(//*[@resource-id="cards_button_renameCard"] | //*[contains(@resource-id,"cards_button_renameCard")] | //*[contains(@content-desc,"Rename Card")])[1]')
   }
 
   private get moreMenuAddNewCardButtonAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/cards_button_addNewCard$|^cards_button_addNewCard$")')
+    return $('(//*[@resource-id="cards_button_addNewCard"] | //*[contains(@resource-id,"cards_button_addNewCard")] | //*[contains(@content-desc,"Add New Card")])[1]')
   }
 
   private get verificationNavBarIOS() {
@@ -199,11 +219,11 @@ class CardManagementPage extends BasePage {
   }
 
   private get currentPasscodeTitleAndroid() {
-    return $('android=new UiSelector().text("Current Passcode")')
+    return $('//*[@text="Current Passcode" or @content-desc="Current Passcode"]')
   }
 
   private get viewPinPasscodeMessageAndroid() {
-    return $('android=new UiSelector().textContains("Enter your passcode")')
+    return $('//*[contains(@text,"Enter your passcode") or contains(@content-desc,"Enter your passcode")]')
   }
 
   private get viewPinPasscodeMessageIOS() {
@@ -215,7 +235,7 @@ class CardManagementPage extends BasePage {
   }
 
   private passcodeKeyAndroid(digit: string) {
-    return $(`//android.view.View[@clickable="true"][.//android.widget.TextView[@text="${digit}"]]`)
+    return $(`(//*[@content-desc="${digit}"] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="${digit}"]])[1]`)
   }
 
   private get pinNavBarIOS() {
@@ -223,11 +243,11 @@ class CardManagementPage extends BasePage {
   }
 
   private get pinTitleAndroid() {
-    return $('android=new UiSelector().text("PIN")')
+    return $('//*[@text="PIN" or @content-desc="PIN"]')
   }
 
   private get pinScreenAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/pin_screen$|^pin_screen$")')
+    return $('(//*[@resource-id="pin_screen"] | //*[contains(@resource-id,"pin_screen")])[1]')
   }
 
   private get pinBackButtonIOS() {
@@ -239,7 +259,7 @@ class CardManagementPage extends BasePage {
   }
 
   private get cardPinTitleAndroid() {
-    return $('android=new UiSelector().text("Your card PIN")')
+    return $('//*[@text="Your card PIN" or @content-desc="Your card PIN"]')
   }
 
   private get cardPinValueIOS() {
@@ -251,7 +271,7 @@ class CardManagementPage extends BasePage {
   }
 
   private get pinSecurityTimeoutAndroid() {
-    return $('android=new UiSelector().textContains("For your own security")')
+    return $('//*[contains(@text,"For your own security") or contains(@content-desc,"For your own security")]')
   }
 
   private get pinDoneButtonIOS() {
@@ -259,11 +279,11 @@ class CardManagementPage extends BasePage {
   }
 
   private get pinDoneButtonAndroid() {
-    return $('android=new UiSelector().text("Done")')
+    return $('//*[@text="Done" or @content-desc="Done"]')
   }
 
   private get securityTitleAndroid() {
-    return $('android=new UiSelector().text("Card Security")')
+    return $('//*[@text="Card Security" or @content-desc="Card Security"]')
   }
 
   private get securityBackButtonIOS() {
@@ -273,7 +293,7 @@ class CardManagementPage extends BasePage {
   private securityControlLabel(control: CardSecurityControl) {
     return browser.isIOS
       ? $(`-ios predicate string:type == "XCUIElementTypeStaticText" AND (name == "${control}" OR label == "${control}")`)
-      : $(`android=new UiSelector().text("${control}")`)
+      : $(`//*[@text="${control}" or @content-desc="${control}"]`)
   }
 
   private securityControlSwitchIOS(control: CardSecurityControl) {
@@ -325,17 +345,23 @@ class CardManagementPage extends BasePage {
 
   private async isAndroidPinDisplayed() {
     return (
-      (await this.pinTitleAndroid.isDisplayed().catch(() => false)) ||
-      (await this.cardPinTitleAndroid.isDisplayed().catch(() => false)) ||
-      (await this.pinDoneButtonAndroid.isDisplayed().catch(() => false))
+      (await this.pinTitleAndroid.isExisting().catch(() => false)) ||
+      (await this.cardPinTitleAndroid.isExisting().catch(() => false)) ||
+      (await this.pinDoneButtonAndroid.isExisting().catch(() => false))
     )
   }
 
   private async waitForAndroidCardPinValue(timeoutMs = 10000) {
     await browser.waitUntil(async () => {
-      const values = await $$('android=new UiSelector().textMatches("^\\\\d{4}$")')
+      // Try UiSelector textMatches (legacy builds)
+      const values = await (async () => { try { return await $$('android=new UiSelector().textMatches("^\\\\d{4}$")') } catch { return [] } })()
       for (const value of values) {
-        if (await value.isDisplayed().catch(() => false)) return true
+        if (await value.isDisplayed().catch(() => false) || await value.isExisting().catch(() => false)) return true
+      }
+      // Compose fallback: look for 4-digit content-desc
+      const descValues = await (async () => { try { return await $$('//*[string-length(@content-desc) = 4 and translate(@content-desc,"0123456789","") = ""]') } catch { return [] } })()
+      for (const value of descValues) {
+        if (await value.isExisting().catch(() => false)) return true
       }
       return false
     }, {
@@ -365,7 +391,14 @@ class CardManagementPage extends BasePage {
       return
     }
 
-    await this.cardsScreenAndroid.waitForDisplayed({ timeout: 20000 })
+    await browser.waitUntil(
+      async () =>
+        (await this.cardsScreenAndroid.isExisting().catch(() => false)) ||
+        (await this.freezeTextAndroid.isExisting().catch(() => false)) ||
+        (await this.unfreezeTextAndroid.isExisting().catch(() => false)) ||
+        (await this.freezeButton.isExisting().catch(() => false)),
+      { timeout: 20000, interval: 500, timeoutMsg: 'Cards screen did not load on Android' },
+    )
   }
 
   private async ensureActiveCardControlsVisible() {
@@ -379,10 +412,55 @@ class CardManagementPage extends BasePage {
 
     await browser.waitUntil(
       async () =>
-        (await this.freezeTextAndroid.isDisplayed().catch(() => false)) ||
-        (await this.unfreezeTextAndroid.isDisplayed().catch(() => false)),
+        (await this.isFreezeActionVisibleAndroid()) ||
+        (await this.isUnfreezeActionVisibleAndroid()),
       { timeout: 20000, interval: 500, timeoutMsg: 'Freeze/Unfreeze action was not visible on Android' }
     )
+  }
+
+  private async isFreezeActionVisibleAndroid() {
+    return (
+      (await this.freezeButton.isExisting().catch(() => false)) ||
+      (await this.freezeActionAndroidByText.isExisting().catch(() => false)) ||
+      (await this.freezeActionAndroidByDesc.isExisting().catch(() => false)) ||
+      (await this.freezeTextAndroid.isExisting().catch(() => false))
+    )
+  }
+
+  private async isUnfreezeActionVisibleAndroid() {
+    return (
+      (await this.unfreezeActionAndroidByText.isExisting().catch(() => false)) ||
+      (await this.unfreezeActionAndroidByDesc.isExisting().catch(() => false)) ||
+      (await this.unfreezeTextAndroid.isExisting().catch(() => false))
+    )
+  }
+
+  private async tapAndroidCardAction(label: 'Freeze' | 'Unfreeze', waitFor: () => Promise<boolean>, timeoutMsg: string) {
+    const candidates = label === 'Freeze'
+      ? [this.freezeButton, this.freezeActionAndroidByText, this.freezeActionAndroidByDesc, this.freezeTextAndroid]
+      : [this.unfreezeActionAndroidByText, this.unfreezeActionAndroidByDesc, this.unfreezeTextAndroid]
+
+    for (const candidate of candidates) {
+      const displayed = await candidate.isDisplayed().catch(() => false) || await candidate.isExisting().catch(() => false)
+      if (!displayed) continue
+
+      await this.tap(candidate).catch(async () => {
+        const location = await candidate.getLocation().catch(() => null)
+        const size = await candidate.getSize().catch(() => null)
+        if (location && size) {
+          await browser.execute('mobile: clickGesture', {
+            x: Math.round(location.x + size.width / 2),
+            y: Math.round(location.y + size.height / 2),
+          })
+        }
+      })
+
+      const completed = await browser.waitUntil(waitFor, { timeout: 30000, interval: 500 }).catch(() => false)
+      if (completed) return
+    }
+
+    await this.debugSnapshot(`card-management-android-${label.toLowerCase()}-not-completed`)
+    throw new Error(timeoutMsg)
   }
 
   private async ensureSecurityActionVisible() {
@@ -483,7 +561,7 @@ class CardManagementPage extends BasePage {
 
     const alreadyOpen = browser.isIOS
       ? await this.cardsNavBarIOS.isExisting().catch(() => false)
-      : await this.cardsScreenAndroid.isDisplayed().catch(() => false)
+      : (await this.cardsScreenAndroid.isDisplayed().catch(() => false)) || (await this.cardsScreenAndroid.isExisting().catch(() => false))
     if (!alreadyOpen) {
       await this.cardsTab.waitForExist({ timeout: 20000 })
       await this.tap(this.cardsTab)
@@ -931,19 +1009,31 @@ class CardManagementPage extends BasePage {
       return
     }
 
-    const alreadyFrozen = await this.unfreezeTextAndroid.isDisplayed().catch(() => false)
+    const alreadyFrozen = await this.isUnfreezeActionVisibleAndroid()
     if (alreadyFrozen) {
-      await this.tap(this.freezeButton)
-      await this.freezeTextAndroid.waitForDisplayed({ timeout: 20000 })
+      await this.tapAndroidCardAction(
+        'Unfreeze',
+        async () => await this.isFreezeActionVisibleAndroid(),
+        'Freeze action did not appear after unfreezing card on Android'
+      )
     }
 
-    await this.freezeTextAndroid.waitForDisplayed({ timeout: 20000 })
-    await this.tap(this.freezeButton)
-    await this.unfreezeTextAndroid.waitForDisplayed({ timeout: 20000 })
+    await browser.waitUntil(async () => await this.isFreezeActionVisibleAndroid(), {
+      timeout: 20000,
+      interval: 500,
+      timeoutMsg: 'Freeze action was not visible on Android',
+    })
+    await this.tapAndroidCardAction(
+      'Freeze',
+      async () => await this.isUnfreezeActionVisibleAndroid(),
+      'Unfreeze action did not appear after freezing card on Android'
+    )
 
-    await this.tap(this.freezeButton)
-    await this.unfreezeTextAndroid.waitForDisplayed({ reverse: true, timeout: 20000 }).catch(() => {})
-    await this.freezeTextAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.tapAndroidCardAction(
+      'Unfreeze',
+      async () => await this.isFreezeActionVisibleAndroid(),
+      'Freeze action did not appear after unfreezing card on Android'
+    )
   }
 
   public async verifyPrimaryIndicatorDisplayed() {

@@ -12,12 +12,13 @@ class BankTransferSepaIndividualPage extends BasePage {
   private readonly sepaIbanTail = '1350 454'
 
   private byAndroidResId(id: string) {
-    const rx = `.*:id/${id}$|^${id}$`
-    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[@resource-id="${id}"] | //*[contains(@resource-id,"${id}")])[1]`)
   }
 
   private byAndroidResIdMatches(rx: string) {
-    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+    // rx is used as fallback; convert to XPath contains pattern on first segment
+    const first = rx.split('|')[0].replace(/^\.\*:id\//, '').replace(/\$$/, '').replace(/\^/, '')
+    return $(`(//*[contains(@resource-id,"${first}")])[1]`)
   }
 
   private get payTabAndroid() {
@@ -25,7 +26,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get payTabAndroidLegacy() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_bar_item_icon_container").instance(2)')
+    return $('(//*[contains(@resource-id,"navigation_button_pay")] | //*[@content-desc="Pay" and @clickable="true"])[1]')
   }
 
   private get payAddBtnAndroidByDesc() {
@@ -42,11 +43,11 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get newBtnAndroidByText() {
-    return $('android=new UiSelector().text("New")')
+    return $('//*[@text="New" or @content-desc="New"]')
   }
 
   private get newTransferTitleAndroid() {
-    return $('android=new UiSelector().text("New Transfer")')
+    return $('//*[@text="New Transfer" or @content-desc="New Transfer"]')
   }
 
   private get sepaBeneficiaryAndroidByDesc() {
@@ -54,27 +55,27 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get sepaBeneficiaryAndroidByIbanDesc() {
-    return $(`android=new UiSelector().descriptionContains("${this.sepaIbanPrefix}")`)
+    return $(`//*[contains(@content-desc,"${this.sepaIbanPrefix}") or contains(@text,"${this.sepaIbanPrefix}")]`)
   }
 
   private get sepaBeneficiaryAndroidByIbanText() {
-    return $(`android=new UiSelector().textContains("${this.sepaIbanPrefix}")`)
+    return $(`//*[contains(@text,"${this.sepaIbanPrefix}") or contains(@content-desc,"${this.sepaIbanPrefix}")]`)
   }
 
   private get sepaBeneficiaryAndroidByIbanTailDesc() {
-    return $(`android=new UiSelector().descriptionContains("${this.sepaIbanTail}")`)
+    return $(`//*[contains(@content-desc,"${this.sepaIbanTail}") or contains(@text,"${this.sepaIbanTail}")]`)
   }
 
   private get sepaBeneficiaryAndroidByIbanTailText() {
-    return $(`android=new UiSelector().textContains("${this.sepaIbanTail}")`)
+    return $(`//*[contains(@text,"${this.sepaIbanTail}") or contains(@content-desc,"${this.sepaIbanTail}")]`)
   }
 
   private get sepaBeneficiaryAndroidByBankText() {
-    return $(`android=new UiSelector().textContains("${this.sepaBankName}")`)
+    return $(`//*[contains(@text,"${this.sepaBankName}") or contains(@content-desc,"${this.sepaBankName}")]`)
   }
 
   private get beneficiaryPayBtnAndroid() {
-    return $('//*[@resource-id="beneficiaryDetails_button_pay"]')
+    return $('//*[contains(@resource-id,"beneficiaryDetails_button_pay") or @content-desc="beneficiaryDetails_button_pay"]')
   }
 
   private get amountInputAndroidLegacy() {
@@ -153,11 +154,11 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get slideTextAndroid() {
-    return $('android=new UiSelector().textContains("Slide to make payment")')
+    return $('//*[contains(@text,"Slide to make payment") or contains(@content-desc,"Slide to make payment")]')
   }
 
   private get slideDescAndroid() {
-    return $('android=new UiSelector().descriptionContains("Slide to make payment")')
+    return $('//*[contains(@content-desc,"Slide to make payment") or contains(@text,"Slide to make payment")]')
   }
 
   private get txDetailsBackAndroid() {
@@ -169,7 +170,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get headerBackAltAndroid() {
-    return $('android=new UiSelector().description("Back")')
+    return $('(//*[@content-desc="Back" and @clickable="true"] | //*[@content-desc="Navigate up"])[1]')
   }
 
   private get homeTabAndroid() {
@@ -181,7 +182,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get homeTabAndroidLegacy() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_bar_item_icon_view").instance(0)')
+    return $('(//*[contains(@resource-id,"navigation_button_home")] | //*[@content-desc="Home" and @clickable="true"])[1]')
   }
 
   private get homeRootAndroid() {
@@ -455,12 +456,12 @@ class BankTransferSepaIndividualPage extends BasePage {
 
   private minusAmountHomeAnchorAndroid(amount: number | string) {
     const formatted = Number(amount).toFixed(2)
-    return $(`android=new UiSelector().textContains("- €${formatted}")`)
+    return $(`//*[contains(@text,"- €${formatted}") or contains(@content-desc,"- €${formatted}")]`)
   }
 
   private sentAmountHomeAnchorAndroid(amount: number | string) {
     const formatted = Number(amount).toFixed(2)
-    return $(`android=new UiSelector().textContains("Sent €${formatted}")`)
+    return $(`//*[contains(@text,"Sent €${formatted}") or contains(@content-desc,"Sent €${formatted}")]`)
   }
 
   private async tapPayAddAndroidIfShown() {

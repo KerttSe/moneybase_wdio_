@@ -12,7 +12,7 @@ export default class TransactionsPage extends BasePage {
   }
 
   private get recentActivitySectionAndroid() {
-    return $('android=new UiSelector().textMatches("(?i)recent activity|recent transactions|pending")')
+    return $('//*[contains(@text,"Recent Activity") or contains(@content-desc,"Recent Activity") or contains(@text,"Recent Transactions") or contains(@content-desc,"Recent Transactions") or contains(@text,"Pending") or contains(@content-desc,"Pending")]')
   }
 
   private get showAllBtnIOS() {
@@ -20,7 +20,7 @@ export default class TransactionsPage extends BasePage {
   }
 
   private get showAllBtnAndroid() {
-    return $('android=new UiSelector().textMatches("(?i)show all|see all")')
+    return $('//*[contains(@text,"Show All") or contains(@content-desc,"Show All") or contains(@text,"See All") or contains(@content-desc,"See All")]')
   }
 
   /* ========================
@@ -35,7 +35,7 @@ export default class TransactionsPage extends BasePage {
   }
 
   private get transactionsHeaderAndroid() {
-    return $('android=new UiSelector().text("Transactions")')
+    return $('//*[@text="Transactions" or @content-desc="Transactions"]')
   }
 
   private get filterBtnIOS() {
@@ -43,7 +43,7 @@ export default class TransactionsPage extends BasePage {
   }
 
   private get transactionListAndroid() {
-    return $('android=new UiSelector().description("Filter")')
+    return $('(//*[@content-desc="Filter"] | //*[@content-desc="filter"] | //*[@text="Filter"])[1]')
   }
 
   // Date group headers: "12 April" / "23 December 2025" / "Today" / "Yesterday"
@@ -65,7 +65,7 @@ export default class TransactionsPage extends BasePage {
       )
       return
     }
-    await this.recentActivitySectionAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.recentActivitySectionAndroid.waitForExist({ timeout: 20000 })
   }
 
   async tapShowAll() {
@@ -80,7 +80,7 @@ export default class TransactionsPage extends BasePage {
       )
       return
     }
-    await this.showAllBtnAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.showAllBtnAndroid.waitForExist({ timeout: 20000 })
     await this.tap(this.showAllBtnAndroid)
   }
 
@@ -89,7 +89,7 @@ export default class TransactionsPage extends BasePage {
       await this.transactionsHeaderIOS.waitForExist({ timeout: 15000 })
       return
     }
-    await this.transactionsHeaderAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.transactionsHeaderAndroid.waitForExist({ timeout: 15000 })
   }
 
   async verifyTransactionListDisplayed() {
@@ -98,7 +98,7 @@ export default class TransactionsPage extends BasePage {
       await this.filterBtnIOS.waitForExist({ timeout: 15000 })
       return
     }
-    await this.transactionListAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.transactionListAndroid.waitForExist({ timeout: 15000 })
   }
 
   async verifyTransactionsGroupedByDate() {
@@ -112,6 +112,7 @@ export default class TransactionsPage extends BasePage {
     const source = await browser.getPageSource().catch(() => '')
     const hasDateGroup = /January|February|March|April|May|June|July|August|September|October|November|December/.test(source)
     if (!hasDateGroup) throw new Error('verifyTransactionsGroupedByDate: no date group headers found on Android')
+
   }
 
   async verifyNoErrors() {

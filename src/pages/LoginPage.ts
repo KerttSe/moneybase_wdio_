@@ -42,7 +42,29 @@ export class LoginPage extends BasePage {
   get welcomeSkipBtn() { return this.byId(LoginPage.IDS.welcomeSkip) }
   get registerScreen() { return this.byId(LoginPage.IDS.registerScreen) }
 
-  private async dismissAndroidBlockersOnce() {
+  private async waitForWelcomeSkipTransition(timeout = 12000) {
+    await browser.waitUntil(async () => {
+      await browser.switchContext('NATIVE_APP').catch(() => {})
+
+      const skipStillShown = await this.welcomeSkipBtn.isDisplayed().catch(() => false)
+      const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
+      const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+
+      if (browser.isIOS) {
+        const passcodeShown = await this.isIOSPasscodeScreenShown()
+        const otpShown = await this.otpContainerIOS.isExisting().catch(() => false)
+        return !skipStillShown && (registerShown || homeShown || passcodeShown || otpShown)
+      }
+
+      return !skipStillShown && (registerShown || homeShown)
+    }, {
+      timeout,
+      interval: 500,
+      timeoutMsg: 'Welcome Skip was tapped, but the next login/home screen did not appear',
+    })
+  }
+
+  private async dismissAndroidBlockersOnce(alertTimeoutMs = 2500) {
     if (!browser.isAndroid) return
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
@@ -63,7 +85,9 @@ export class LoginPage extends BasePage {
     if (await clickIfVisible(permissionAllowLegacy)) return
     if (await clickIfVisible(permissionAllowText)) return
 
-    await this.dismissCommonAndroidAlert(2500).catch(() => false)
+    if (alertTimeoutMs > 0) {
+      await this.dismissCommonAndroidAlert(alertTimeoutMs).catch(() => false)
+    }
   }
 
   private async dismissPostOtpPopupAndroidOnce() {
@@ -112,6 +136,12 @@ export class LoginPage extends BasePage {
     await browser.pause(300)
   }
 
+  private async isAndroidMainShellShown() {
+    if (!browser.isAndroid) return false
+    const activity = await browser.getCurrentActivity().catch(() => '')
+    return /DashboardActivity/i.test(activity)
+  }
+
   async prepare() {
     if (browser.isIOS) {
       await this.dismissIOSAlerts()
@@ -120,6 +150,7 @@ export class LoginPage extends BasePage {
     // welcome skip (2 ios and android)
     if (await this.welcomeSkipBtn.isExisting().catch(() => false)) {
       await this.welcomeSkipBtn.click()
+      await this.waitForWelcomeSkipTransition().catch(() => {})
     }
 
     if (browser.isIOS) {
@@ -137,6 +168,7 @@ export class LoginPage extends BasePage {
         const skipShown = await this.welcomeSkipBtn.isExisting().catch(() => false)
         if (skipShown) {
           await this.welcomeSkipBtn.click().catch(() => {})
+          await this.waitForWelcomeSkipTransition(10000).catch(() => {})
           return false
         }
         const registerShown = await this.registerScreen.isExisting().catch(() => false)
@@ -158,10 +190,10 @@ export class LoginPage extends BasePage {
     await browser.waitUntil(async () => {
       const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
       const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
-      if (registerShown || homeShown) return true
+      const mainShellShown = await this.isAndroidMainShellShown()
+      if (registerShown || homeShown || mainShellShown) return true
 
-      await this.dismissAndroidBlockersOnce()
-      await this.dismissKnownAndroidBlockingPopups(2).catch(() => false)
+      await this.dismissAndroidBlockersOnce(0)
       return false
     }, {
       timeout: 60000,
@@ -360,9 +392,10 @@ private androidKeypadDigit(d: string) {
       const continueShown = await this.postOtpContinueBtn.isExisting().catch(() => false)
       const homeShown = await this.homeRoot.isExisting().catch(() => false)
       const passcodeShown = await this.isAndroidPasscodeScreenShown()
-      if (otpShown || continueShown || homeShown || passcodeShown) return true
+      const mainShellShown = await this.isAndroidMainShellShown()
+      if (otpShown || continueShown || homeShown || passcodeShown || mainShellShown) return true
 
-      await this.dismissAndroidBlockersOnce()
+      await this.dismissAndroidBlockersOnce(0)
       return false
     }, {
       timeout,
@@ -516,10 +549,11 @@ async waitForOtpScreen() {
       const continueShown = await this.postOtpContinueBtn.isExisting().catch(() => false)
       const popupShown = await this.applePayProposalCloseBtn.isExisting().catch(() => false)
       const homeShown = await this.homeRoot.isExisting().catch(() => false)
+      const mainShellShown = await this.isAndroidMainShellShown()
 
-      if (otpShown || continueShown || popupShown || homeShown) return true
+      if (otpShown || continueShown || popupShown || homeShown || mainShellShown) return true
 
-      await this.dismissAndroidBlockersOnce()
+      await this.dismissAndroidBlockersOnce(0)
       return false
     }, {
       timeout: 40000,
@@ -782,8 +816,10 @@ get payRootAndroid() {
 	        const successVisible = await this.verificationSuccessScreen.isDisplayed().catch(() => false)
 	        const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
 	        const home = await this.homeRoot.isDisplayed().catch(() => false)
+	          || await this.homeRoot.isExisting().catch(() => false)
+	        const mainShellShown = await this.isAndroidMainShellShown()
 	        const passcodeShown = await this.isIOSPasscodeScreenShown()
-	        return Boolean(androidOtpError) || incorrectOtp || continueVisible || successVisible || applePay || home || passcodeShown
+	        return Boolean(androidOtpError) || incorrectOtp || continueVisible || successVisible || applePay || home || mainShellShown || passcodeShown
       } catch (error) {
         const androidOtpError = await this.getAndroidOtpErrorText()
         if (androidOtpError) return true
@@ -830,8 +866,10 @@ async waitForPostOtpNextStep(timeout = 30000) {
 	    const successVisible = await this.verificationSuccessScreen.isDisplayed().catch(() => false)
 	    const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
 	    const home = await this.homeRoot.isDisplayed().catch(() => false)
+	      || await this.homeRoot.isExisting().catch(() => false)
+	    const mainShellShown = await this.isAndroidMainShellShown()
 	    const passcodeShown = await this.isIOSPasscodeScreenShown()
-	    return continueVisible || successVisible || applePay || home || passcodeShown
+	    return continueVisible || successVisible || applePay || home || mainShellShown || passcodeShown
   }, {
     timeout,
     interval: 400,
@@ -858,10 +896,14 @@ async waitForHome(timeout = 30000) {
         await this.dismissPostOtpPopupAndroidOnce()
         await this.dismissKnownAndroidBlockingPopups(2).catch(() => false)
         const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+          || await this.homeRoot.isExisting().catch(() => false)
         if (homeShown) return true
+        if (await this.isAndroidMainShellShown()) return true
 
         if (await this.tapPostOtpContinueIfVisibleAndroid()) {
           return await this.homeRoot.isDisplayed().catch(() => false)
+            || await this.homeRoot.isExisting().catch(() => false)
+            || await this.isAndroidMainShellShown()
         }
 
         const cardsShown = await this.cardsRootAndroid.isDisplayed().catch(() => false)
@@ -870,12 +912,16 @@ async waitForHome(timeout = 30000) {
           await this.tap(this.homeTabAndroid)
           await browser.pause(300)
           const homeAfterTap = await this.homeRoot.isDisplayed().catch(() => false)
+            || await this.homeRoot.isExisting().catch(() => false)
+            || await this.isAndroidMainShellShown()
           if (homeAfterTap) return true
         }
 
         await this.dismissCommonAndroidAlert(3000).catch(() => false)
 
         return await this.homeRoot.isDisplayed().catch(() => false)
+          || await this.homeRoot.isExisting().catch(() => false)
+          || await this.isAndroidMainShellShown()
       },
       {
         timeout,
@@ -976,6 +1022,7 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
   console.log('[LoginPage.loginFlowOnce] Starting with options:', JSON.stringify(options))
   
   const alreadyHome = await this.homeRoot.isDisplayed().catch(() => false)
+    || (browser.isAndroid && await this.homeRoot.isExisting().catch(() => false))
   if (alreadyHome) return
 
   await this.prepare()
@@ -1026,7 +1073,8 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
   if (browser.isAndroid) {
     await this.waitForAndroidLoginNextStepAfterMobile()
 
-    if (await this.homeRoot.isDisplayed().catch(() => false)) return
+    if (await this.homeRoot.isDisplayed().catch(() => false)
+      || await this.homeRoot.isExisting().catch(() => false)) return
 
 	    if (await this.isAndroidPasscodeScreenShown()) {
 	      await this.enterAndroidPinWithRetryIfStillOnPasscode(auth.pin)
@@ -1035,8 +1083,15 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
 	      await browser.waitUntil(async () => {
 	        const androidOtpError = await this.getAndroidOtpErrorText()
 	        if (androidOtpError) return true
+	        const mainShellShown = await this.isAndroidMainShellShown()
+	        if (mainShellShown) return true
 
 	        return await this.otpContainerAndroid.isDisplayed().catch(() => false)
+	          || await this.otpContainerAndroid.isExisting().catch(() => false)
+	          || await this.otpFieldAndroid.isDisplayed().catch(() => false)
+	          || await this.otpFieldAndroid.isExisting().catch(() => false)
+	          || await $('//*[@resource-id="otp_input"]').isExisting().catch(() => false)
+	          || await this.homeRoot.isExisting().catch(() => false)
 	      }, {
 	        timeout: 45000,
 	        interval: 500,
@@ -1044,6 +1099,10 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
 	      })
 
 	      await this.throwAndroidOtpErrorIfPresent()
+
+	      // Compose: passcode may land on home directly (no separate OTP step)
+	      if (await this.homeRoot.isExisting().catch(() => false)
+	        || await this.isAndroidMainShellShown()) return
 	    }
 	  }
 

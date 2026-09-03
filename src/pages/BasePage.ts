@@ -19,14 +19,13 @@ type EnsureSingleAccountAndroidParams = {
 export default class BasePage {
   private byIdRx(name: string) {
     if (browser.isAndroid) {
-      const rx = `.*:id/${name}$|^${name}$`
-      return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+      return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[@resource-id="${name}"] | //*[contains(@resource-id,"${name}")])[1]`)
     }
     return $(`~${name}`)
   }
 
   private get androidAlertBtn3() {
-    return $('android=new UiSelector().resourceId("android:id/button3")')
+    return $('(//*[@resource-id="android:id/button3"] | //*[contains(@resource-id,"button3")])[1]')
   }
 
   private get androidAlertBtn3ById() {
@@ -34,32 +33,32 @@ export default class BasePage {
   }
 
   private get androidAlertBtn3ByText() {
-    return $('android=new UiSelector().text("OK")')
+    return $('//*[@text="OK" or @content-desc="OK"]')
   }
 
 
   private get androidSomethingWentWrongTitle() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/alertTitle").text("Something went wrong")')
+    return $('(//*[contains(@resource-id,"alertTitle") and (@text="Something went wrong" or @content-desc="Something went wrong")] | //*[contains(@text,"Something went wrong") or contains(@content-desc,"Something went wrong")])[1]')
   }
 
   private get androidAlertTitle() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/alertTitle")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/alertTitle"] | //*[contains(@resource-id,"alertTitle")])[1]')
   }
 
   private get androidGooglePayNotNow() {
-    return $('android=new UiSelector().text("Not Now")')
+    return $('//*[@text="Not Now" or @content-desc="Not Now"]')
   }
 
   private get androidGooglePayScreen() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/clSelectCardGooglePay")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/clSelectCardGooglePay"] | //*[contains(@resource-id,"clSelectCardGooglePay")])[1]')
   }
 
   private get androidGooglePayCloseBtn() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/rightActionView")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/rightActionView"] | //*[contains(@resource-id,"rightActionView")])[1]')
   }
 
   private get androidMoreMenuMovedTooltipTitle() {
-    return $('android=new UiSelector().text("More menu has been moved")')
+    return $('//*[@text="More menu has been moved" or @content-desc="More menu has been moved"]')
   }
 
   private get androidMoreMenuMovedTooltipDismiss() {
@@ -67,11 +66,11 @@ export default class BasePage {
   }
 
   private get androidMoreMenuMovedTooltipDismissText() {
-    return $('android=new UiSelector().text("Dismiss")')
+    return $('//*[@text="Dismiss" or @content-desc="Dismiss"]')
   }
 
   private get androidDeviceNotSyncedTitle() {
-    return $('android=new UiSelector().text("Device Not Synced")')
+    return $('//*[@text="Device Not Synced" or @content-desc="Device Not Synced"]')
   }
 
   private get androidDeviceNotSyncedOkButton() {
@@ -87,7 +86,7 @@ export default class BasePage {
   }
 
   private get androidHomeTab() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_home")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/navigation_button_home"] | //*[contains(@resource-id,"navigation_button_home")] | //*[@content-desc="Home" and @clickable="true"])[1]')
   }
 
   private get androidHomeTabA11y() {
@@ -110,6 +109,14 @@ export default class BasePage {
     return this.byIdRx('more_screen')
   }
 
+  private get androidProfileMoreEntry() {
+    return $('(//*[contains(@resource-id,"home_button_userAvatar") or contains(@resource-id,"cards_button_userAvatar") or @content-desc="home_button_userAvatar" or @content-desc="cards_button_userAvatar"])[1]')
+  }
+
+  private get androidAdministrationEntry() {
+    return $('(//*[contains(@content-desc,"Administration")] | //android.widget.TextView[@text="Administration"])[1]')
+  }
+
   private get androidAccountSelectionRoot() {
     return this.byIdRx('accountSelection_screen')
   }
@@ -119,15 +126,15 @@ export default class BasePage {
   }
 
   private get androidDrawerLogoutItem() {
-    return $('android=new UiSelector().text("Log out")')
+    return $('//*[@text="Log out" or @content-desc="Log out"]')
   }
 
   private get androidDrawerSettingsItem() {
-    return $('android=new UiSelector().text("Settings")')
+    return $('//*[@text="Settings" or @content-desc="Settings"]')
   }
 
   private get androidDrawerWalletsItem() {
-    return $('android=new UiSelector().text("Wallets")')
+    return $('//*[@text="Wallets" or @content-desc="Wallets"]')
   }
 
   private async normalizeHomeAfterGooglePayDismiss() {
@@ -361,7 +368,9 @@ export default class BasePage {
     while (Date.now() < deadline) {
       await browser.switchContext('NATIVE_APP').catch(() => {})
 
-      const homeShown = await this.byIdRx('home_screen').isDisplayed().catch(() => false)
+      const homeEl = this.byIdRx('home_screen')
+      const homeShown = await homeEl.isDisplayed().catch(() => false)
+        || await homeEl.isExisting().catch(() => false)
       if (homeShown) return true
 
       await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
@@ -428,34 +437,49 @@ export default class BasePage {
     await this.stabilizeAndroidHomeSurface(20000).catch(() => false)
 
     const homeAccountLabel = $(`//android.widget.TextView[contains(@text,"${accountCode}")]`)
-    const alreadyOnAccount = await homeAccountLabel.isDisplayed().catch(() => false)
+    const alreadyOnAccount =
+      await homeAccountLabel.isDisplayed().catch(() => false) ||
+      await homeAccountLabel.isExisting().catch(() => false)
     if (alreadyOnAccount) return
 
-    const userAvatarBtn = this.byIdRx('home_button_userAvatar')
+    // Compose builds may expose the avatar via content-desc rather than resource-id
+    const userAvatarBtn = $('//*[contains(@resource-id,"home_button_userAvatar") or @content-desc="home_button_userAvatar"]')
     const moreScreen = this.byIdRx('more_screen')
     const accountPickerButton = this.byIdRx('more_button_accountPicker')
     const accountSelectionScreen = this.byIdRx('accountSelection_screen')
-    const oldSubAccountsTitle = $('android=new UiSelector().text("Sub Accounts")')
+    const oldSubAccountsTitle = $('//*[@text="Sub Accounts" or @content-desc="Sub Accounts"]')
 
-    await userAvatarBtn.waitForDisplayed({ timeout: 20000 })
+    await userAvatarBtn.waitForExist({ timeout: 20000 })
     await this.tap(userAvatarBtn)
+
+    const targetAccountText = $(`//android.widget.TextView[contains(@text,"${accountCode}")] | //*[contains(@content-desc,"${accountCode}")]`)
 
     await browser.waitUntil(
       async () => {
-        if (await accountSelectionScreen.isDisplayed().catch(() => false)) return true
+        if (await accountSelectionScreen.isDisplayed().catch(() => false)
+          || await accountSelectionScreen.isExisting().catch(() => false)) return true
         if (await oldSubAccountsTitle.isDisplayed().catch(() => false)) return true
 
-        if (await moreScreen.isDisplayed().catch(() => false)) {
-          await accountPickerButton.waitForDisplayed({ timeout: 5000 }).catch(() => {})
-          if (await accountPickerButton.isDisplayed().catch(() => false)) {
+        // Check more_screen BEFORE anyAccountText — the picker button label contains account
+        // type text (e.g. "DER00003  Business") which would cause anyAccountText to exit early
+        const moreShown = await moreScreen.isDisplayed().catch(() => false)
+          || await moreScreen.isExisting().catch(() => false)
+        if (moreShown) {
+          const pickerShown = await accountPickerButton.isDisplayed().catch(() => false)
+            || await accountPickerButton.isExisting().catch(() => false)
+          if (pickerShown) {
             await this.tap(accountPickerButton)
           }
+          return false
         }
 
-        return (
-          await accountSelectionScreen.isDisplayed().catch(() => false) ||
-          await oldSubAccountsTitle.isDisplayed().catch(() => false)
-        )
+        // Compose fallback: account selection opened without a container resource-id.
+        // Do not use generic account type text here: Home itself contains "Individual"
+        // before the picker has finished opening.
+        if (await targetAccountText.isDisplayed().catch(() => false)
+          || await targetAccountText.isExisting().catch(() => false)) return true
+
+        return false
       },
       {
         timeout: 15000,
@@ -464,12 +488,22 @@ export default class BasePage {
       }
     )
 
-    const accountByCode = $(`//*[@resource-id="accountSelection_screen"]//android.widget.TextView[contains(@text,"${accountCode}")]/ancestor::*[@clickable="true"][1]`)
-    const accountSearchInput = $('//*[@resource-id="accountSelection_screen"]//android.widget.EditText')
+    const accountByCode = $(`//*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[contains(@text,"${accountCode}")]/ancestor::*[@clickable="true"][1]`)
+    const accountSearchInput = $('//*[contains(@resource-id,"accountSelection_screen")]//android.widget.EditText')
     const legacyByCode = $(`//android.widget.TextView[contains(@text,"${accountCode}")]/ancestor::*[@clickable="true"][1]`)
     const legacyByType = accountType
       ? $(`//*[@content-desc="${accountType}"]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[contains(@text,"${accountType}")]/ancestor::*[@clickable="true"][1]`)
       : legacyByCode
+    // Compose fallback: content-desc contains (no clickable ancestor required)
+    const composeByCodeContentDesc = $(`//*[contains(@resource-id,"accountSelection_screen")]//*[contains(@content-desc,"${accountCode}")]`)
+    const composeByTypeContentDesc = accountType
+      ? $(`//*[contains(@resource-id,"accountSelection_screen")]//*[contains(@content-desc,"${accountType}")]`)
+      : composeByCodeContentDesc
+    const composeByCode = $(`//android.widget.TextView[contains(@text,"${accountCode}")]`)
+    const composeByType = accountType
+      ? $(`//android.widget.TextView[contains(@text,"${accountType}")] | //*[@content-desc="${accountType}"]`)
+      : composeByCode
+    const uiSelectorDescCode = $(`//*[contains(@content-desc,"${accountCode}") or contains(@text,"${accountCode}")]`)
 
     if (!(await accountByCode.isDisplayed().catch(() => false)) && await accountSearchInput.isDisplayed().catch(() => false)) {
       await accountSearchInput.setValue(accountCode).catch(async () => {
@@ -483,9 +517,19 @@ export default class BasePage {
       await this.tap(accountByCode)
     } else if (await legacyByCode.isDisplayed().catch(() => false)) {
       await this.tap(legacyByCode)
-    } else {
-      await legacyByType.waitForDisplayed({ timeout: 15000 })
+    } else if (await legacyByType.isExisting().catch(() => false)) {
       await this.tap(legacyByType)
+    } else if (await composeByCodeContentDesc.isExisting().catch(() => false)) {
+      await this.tap(composeByCodeContentDesc)
+    } else if (await composeByTypeContentDesc.isExisting().catch(() => false)) {
+      await this.tap(composeByTypeContentDesc)
+    } else if (await uiSelectorDescCode.isExisting().catch(() => false)) {
+      await this.tap(uiSelectorDescCode)
+    } else if (await composeByCode.isExisting().catch(() => false)) {
+      await this.tap(composeByCode)
+    } else {
+      await composeByType.waitForExist({ timeout: 10000 })
+      await this.tap(composeByType)
     }
 
     await this.dismissCommonAndroidAlert(5000).catch(() => false)
@@ -495,7 +539,17 @@ export default class BasePage {
     await browser.waitUntil(
       async () => {
         await this.dismissKnownAndroidBlockingPopups(2).catch(() => false)
-        return await $(`//android.widget.TextView[contains(@text,"${accountCode}")]`).isDisplayed().catch(() => false)
+        const tv = $(`//android.widget.TextView[contains(@text,"${accountCode}")]`)
+        const cdEl = $(`//*[contains(@content-desc,"${accountCode}")]`)
+        const homeAccountChip = $(
+          `//*[contains(@resource-id,"home_button_userAvatar") and .//android.widget.TextView[contains(@text,"${accountCode}")]]`,
+        )
+        return (
+          await tv.isDisplayed().catch(() => false) ||
+          await tv.isExisting().catch(() => false) ||
+          await cdEl.isExisting().catch(() => false) ||
+          await homeAccountChip.isExisting().catch(() => false)
+        )
       },
       {
         timeout: 30000,
@@ -548,6 +602,12 @@ export default class BasePage {
       const dismissed = await this.dismissKnownAndroidBlockingPopups().catch(() => false)
       if (dismissed) {
         await target.waitForDisplayed({ timeout })
+        await target.click()
+        return
+      }
+      // Jetpack Compose: elements report isDisplayed()=false but are present and clickable
+      const exists = await target.isExisting().catch(() => false)
+      if (exists) {
         await target.click()
         return
       }
@@ -700,5 +760,40 @@ export default class BasePage {
     if (homeRoot) {
       await homeRoot.waitForDisplayed({ timeout: 20000 }).catch(() => {})
     }
+  }
+
+  protected async openAndroidMoreMenuFromProfile() {
+    if (!browser.isAndroid) return
+
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const alreadyOpen =
+      (await this.androidMoreRoot.isDisplayed().catch(() => false)) ||
+      (await this.androidMoreRoot.isExisting().catch(() => false)) ||
+      (await this.androidAdministrationEntry.isDisplayed().catch(() => false)) ||
+      (await this.androidAdministrationEntry.isExisting().catch(() => false))
+    if (alreadyOpen) return
+
+    await this.androidProfileMoreEntry.waitForExist({
+      timeout: 20000,
+      timeoutMsg: 'Profile/More entry was not found on Android',
+    })
+    await this.tap(this.androidProfileMoreEntry).catch(async () => {
+      const location = await this.androidProfileMoreEntry.getLocation()
+      const size = await this.androidProfileMoreEntry.getSize()
+      await browser.execute('mobile: clickGesture', {
+        x: Math.round(location.x + Math.max(size.width / 2, 1)),
+        y: Math.round(location.y + Math.max(size.height / 2, 1)),
+      })
+    })
+
+    await browser.waitUntil(
+      async () =>
+        (await this.androidMoreRoot.isDisplayed().catch(() => false)) ||
+        (await this.androidMoreRoot.isExisting().catch(() => false)) ||
+        (await this.androidAdministrationEntry.isDisplayed().catch(() => false)) ||
+        (await this.androidAdministrationEntry.isExisting().catch(() => false)),
+      { timeout: 15000, interval: 300, timeoutMsg: 'More menu did not open from profile entry on Android' },
+    )
   }
 }

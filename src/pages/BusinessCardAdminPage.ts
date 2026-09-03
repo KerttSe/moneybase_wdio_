@@ -8,15 +8,15 @@ class BusinessCardAdminPage extends BasePage {
   // ── Account switcher ─────────────────────────────────────────────────────
 
   private get userAvatarAndroid() {
-    return $('android=new UiSelector().resourceId("home_button_userAvatar")')
+    return $('(//*[@resource-id="home_button_userAvatar"] | //*[contains(@content-desc,"avatar") or contains(@resource-id,"userAvatar")])[1]')
   }
 
   private get subAccountsSheetAndroid() {
-    return $('android=new UiSelector().text("Sub Accounts")')
+    return $('//*[@text="Sub Accounts" or @content-desc="Sub Accounts"]')
   }
 
   private get seDeKeItemAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text,"SeDeKE") or contains(@text,"SED00004")]]')
+    return $('(//*[contains(@content-desc,"SeDeKE") or contains(@content-desc,"SED00004")] | //android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text,"SeDeKE") or contains(@text,"SED00004")]])[1]')
   }
 
   private get seDeKeItemIOS() {
@@ -24,7 +24,7 @@ class BusinessCardAdminPage extends BasePage {
   }
 
   private get accountChipAndroid() {
-    return $(`android=new UiSelector().textContains("${BH_ACCOUNT_CODE}")`)
+    return $(`(//*[contains(@content-desc,"${BH_ACCOUNT_CODE}")] | //*[contains(@text,"${BH_ACCOUNT_CODE}")])[1]`)
   }
 
   private get profilePickerCodeLabelIOS() {
@@ -102,7 +102,7 @@ class BusinessCardAdminPage extends BasePage {
   }
 
   private get moreTabAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_more")')
+    return $('(//*[@content-desc="More"] | //*[contains(@resource-id,"navigation_button_more")] | //*[contains(@resource-id,"nav_graph_more")])[1]')
   }
 
   // ── Administration item (in More menu) ───────────────────────────────────
@@ -112,7 +112,7 @@ class BusinessCardAdminPage extends BasePage {
   }
 
   private get administrationItemAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Administration"]]')
+    return $('(//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Administration"]] | //android.view.View[contains(@content-desc,"Administration")] | //*[contains(@content-desc,"Administration")])[1]')
   }
 
   // ── Manage Cards screen confirmation ─────────────────────────────────────
@@ -122,7 +122,11 @@ class BusinessCardAdminPage extends BasePage {
   }
 
   private get manageCardsTitleAndroid() {
-    return $('android=new UiSelector().text("Manage Cards")')
+    return $('//*[contains(@text,"Manage Cards") or contains(@content-desc,"Manage Cards")]')
+  }
+
+  private get manageCardsTitleAndroidCompose() {
+    return $('//*[contains(@content-desc,"Manage Cards")]')
   }
 
   // ── Card list items (other user's card) ──────────────────────────────────
@@ -135,7 +139,7 @@ class BusinessCardAdminPage extends BasePage {
 
   private get otherUserCardAndroid() {
     return $(
-      `//android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text,"${BH_OTHER_USER_NAME}")]]`,
+      `(//*[contains(@content-desc,"${BH_OTHER_USER_NAME}")] | //android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text,"${BH_OTHER_USER_NAME}")]])[1]`,
     )
   }
 
@@ -163,11 +167,11 @@ class BusinessCardAdminPage extends BasePage {
   }
 
   private get freezeBtnAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Freeze"]]')
+    return $('(//*[@content-desc="Freeze"] | //*[contains(@content-desc,"Freeze") and not(contains(@content-desc,"Unfreeze"))])[1]')
   }
 
   private get unfreezeBtnAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Unfreeze"]]')
+    return $('(//*[@content-desc="Unfreeze"] | //*[contains(@content-desc,"Unfreeze")])[1]')
   }
 
   // ── State checks ──────────────────────────────────────────────────────────
@@ -240,9 +244,12 @@ class BusinessCardAdminPage extends BasePage {
   public async openAdministration() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    const moreTab = browser.isIOS ? this.moreTabIOS : this.moreTabAndroid
-    await moreTab.waitForExist({ timeout: 15000 })
-    await this.tap(moreTab)
+    if (browser.isIOS) {
+      await this.moreTabIOS.waitForExist({ timeout: 15000 })
+      await this.tap(this.moreTabIOS)
+    } else {
+      await this.openAndroidMoreMenuFromProfile()
+    }
     await browser.pause(500)
 
     const adminItem = browser.isIOS ? this.administrationItemIOS : this.administrationItemAndroid
@@ -263,11 +270,16 @@ class BusinessCardAdminPage extends BasePage {
       return
     }
 
-    await browser.waitUntil(async () => this.manageCardsTitleAndroid.isExisting().catch(() => false), {
-      timeout: 15000,
-      interval: 500,
-      timeoutMsg: 'Manage Cards screen did not open on Android',
-    })
+    await browser.waitUntil(
+      async () =>
+        await this.manageCardsTitleAndroid.isExisting().catch(() => false) ||
+        await this.manageCardsTitleAndroidCompose.isExisting().catch(() => false),
+      {
+        timeout: 15000,
+        interval: 500,
+        timeoutMsg: 'Manage Cards screen did not open on Android',
+      }
+    )
   }
 
   public async openOtherUserCard() {
