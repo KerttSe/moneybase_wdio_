@@ -5,10 +5,12 @@ import BusinessCardPage from '../pages/BusinessCardPage'
 
 /**
  * Step-by-step breakdown of assigning a new Physical business card to the
- * Las Vegas business member. Each it() is a checkpoint in ONE
+ * available business member. Each it() is a checkpoint in ONE
  * continuous session (login + ensureBusinessAccount run once in `before`,
  * not per test). No Spend From step for Physical cards.
  * After Continue, the default card design is confirmed with the "Order" CTA.
+ * Physical cards return to Manage Cards as Pending; freeze/report cleanup is
+ * covered by virtual-card termination flows once a card can become Active.
  */
 describe('Business Cards - Assign Physical card', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
@@ -35,8 +37,8 @@ describe('Business Cards - Assign Physical card', function () {
     await BusinessCardPage.selectPhysicalCardType()
   })
 
-  it('ABC-1.5 Select Las Vegas assignee', async function () {
-    await BusinessCardPage.selectLasVegasAssignee()
+  it('ABC-1.5 Select available assignee', async function () {
+    await BusinessCardPage.selectAvailableAssignee()
   })
 
   it('ABC-1.6 Continue with selected assignee', async function () {
@@ -55,24 +57,7 @@ describe('Business Cards - Assign Physical card', function () {
     await BusinessCardPage.verifySuccessAndClose()
   })
 
-  it('ABC-1.10 Wait for created card details screen', async function () {
-    await BusinessCardPage.waitForCreatedCardReady()
-  })
-
-  it('ABC-1.11 Freeze created card', async function () {
-    await BusinessCardPage.tapFreeze()
-  })
-
-  it('ABC-1.12 Delete created card via report/block', async function () {
-    await BusinessCardPage.tapReport()
-    await BusinessCardPage.verifyCardBlocked()
-  })
-
-  it('ABC-1.13 Return to cards list', async function () {
-    await BusinessCardPage.tapViewMyCards()
-  })
-
-  it('ABC-1.14 Verify created card was removed', async function () {
-    await BusinessCardPage.verifyCardRemoved()
+  it('ABC-1.10 Verify physical card appears as Pending in Manage Cards', async function () {
+    await BusinessCardPage.verifyCreatedPhysicalCardPending()
   })
 })

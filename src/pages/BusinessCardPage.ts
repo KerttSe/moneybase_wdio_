@@ -2,17 +2,25 @@ import BasePage from './BasePage'
 import { $, $$, browser } from '@wdio/globals'
 import OtpHelper from '../helpers/otp.helper'
 
+const BUSINESS_CARD_ASSIGNEE_NAMES = (
+  process.env.BUSINESS_CARD_ASSIGNEE_NAMES ||
+  process.env.BUSINESS_CARD_ASSIGNEE_NAME ||
+  'Marilyn Phillips,Younes Lambert,Kertys Dmytrosi,Dmytri Kerteusz,Dmytro Kertys,Las Vegas'
+).split(',').map((name) => name.trim()).filter(Boolean)
+
 class BusinessCardPage extends BasePage {
+  private selectedBusinessCardAssigneeName = BUSINESS_CARD_ASSIGNEE_NAMES[0] || 'Marilyn Phillips'
+
   /* =========================
    * Cards tab
    * ========================= */
 
   private get cardsTabAndroid() {
-    return $('android=new UiSelector().description("Cards")')
+    return $('(//*[@content-desc="Cards" and @clickable="true"] | //*[contains(@resource-id,"navigation_button_cards")])[1]')
   }
 
   private get cardsTabAndroidById() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_cards")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/navigation_button_cards"] | //*[contains(@resource-id,"navigation_button_cards")])[1]')
   }
 
   private get cardsTabIOS() {
@@ -28,7 +36,7 @@ class BusinessCardPage extends BasePage {
   }
 
   private get homeTabAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_home")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/navigation_button_home"] | //*[contains(@resource-id,"navigation_button_home")] | //*[@content-desc="Home" and @clickable="true"])[1]')
   }
 
   private get homeTabAndroidA11y() {
@@ -44,7 +52,28 @@ class BusinessCardPage extends BasePage {
   }
 
   private get addNewCardButtonAndroid() {
-    return $('//android.widget.TextView[@text="Add New Card"]')
+    return $('(//*[contains(@content-desc,"Add New Card") or contains(@content-desc,"Add Card")] | //android.widget.TextView[@text="Add New Card" or @text="Add Card"])[1]')
+  }
+
+  private get administrationItemAndroid() {
+    return $('(//*[contains(@content-desc,"Administration")] | //android.widget.TextView[@text="Administration"]/ancestor::*[@clickable="true"][1])[1]')
+  }
+
+  private get manageCardsTitleAndroid() {
+    return $('//*[@text="Manage Cards" or @content-desc="Manage Cards"]')
+  }
+
+  private get createdPhysicalPendingCardAndroid() {
+    const assigneeName = this.selectedBusinessCardAssigneeName
+    return $(
+      `((//*[contains(@content-desc,"${assigneeName}") and contains(@content-desc,"Physical")]` +
+      ` | //android.view.View[.//android.widget.TextView[contains(@text,"${assigneeName}")] and .//android.widget.TextView[contains(@text,"Physical")]])` +
+      `[.//*[contains(@text,"PENDING") or contains(@content-desc,"PENDING")]])[1]`
+    )
+  }
+
+  private get assignCardButtonAndroid() {
+    return $('(//*[contains(@content-desc,"Assign Card")] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Assign Card"]])[1]')
   }
 
   private get addNewCardButtonIOS() {
@@ -168,12 +197,20 @@ class BusinessCardPage extends BasePage {
       )
       return
     }
-    await this.tap(this.cardsTabAndroid)
-    const addNewCardReady = await this.addNewCardButtonAndroid.waitForExist({ timeout: 8000 }).catch(() => false)
-    if (addNewCardReady) return
-    // No "Add New Card" — leftover card from a previous run; clean it up first
-    await this.cleanupExistingAndroidBusinessCard()
-    await this.addNewCardButtonAndroid.waitForExist({ timeout: 15000 })
+    await this.openAndroidMoreMenuFromProfile()
+    await this.administrationItemAndroid.waitForExist({
+      timeout: 15000,
+      timeoutMsg: 'Administration item not found in More section',
+    })
+    await this.tap(this.administrationItemAndroid)
+    await browser.waitUntil(
+      async () => await this.manageCardsTitleAndroid.isExisting().catch(() => false),
+      {
+        timeout: 15000,
+        interval: 500,
+        timeoutMsg: 'Manage Cards screen did not load on Android',
+      }
+    )
   }
 
   private async cleanupExistingAndroidBusinessCard() {
@@ -204,7 +241,11 @@ class BusinessCardPage extends BasePage {
       )
       return
     }
-    await this.tap(this.addNewCardButtonAndroid)
+    await this.assignCardButtonAndroid.waitForExist({
+      timeout: 15000,
+      timeoutMsg: 'Assign Card button not found on Manage Cards',
+    })
+    await this.tap(this.assignCardButtonAndroid)
   }
 
   /* =========================
@@ -212,7 +253,7 @@ class BusinessCardPage extends BasePage {
    * ========================= */
 
   private get cardTypeRowAndroid() {
-    return $('android=new UiSelector().resourceId("assignBusinessCard_button_selectCardType")')
+    return $('(//*[@resource-id="assignBusinessCard_button_selectCardType"] | //*[contains(@content-desc,"Card Type") or contains(@content-desc,"Physical Card") or contains(@content-desc,"Virtual Card")])[1]')
   }
 
   private get cardTypeRowIOS() {
@@ -224,7 +265,15 @@ class BusinessCardPage extends BasePage {
   }
 
   private get cardAssigneeRowAndroid() {
-    return $('android=new UiSelector().resourceId("assignBusinessCard_button_selectUser")')
+    return $('(//*[@resource-id="assignBusinessCard_button_selectUser"] | //*[contains(@resource-id,"assignBusinessCard_button_selectUser")] | //*[contains(@content-desc,"Assign Card To") or contains(@content-desc,"Card Assignee") or contains(@content-desc,"Select User")])[1]')
+  }
+
+  private get cardAssigneeSelectedAndroid() {
+    return this.cardAssigneeSelectedAndroidByName(this.selectedBusinessCardAssigneeName)
+  }
+
+  private cardAssigneeSelectedAndroidByName(name: string) {
+    return $(`(//*[@resource-id="assignBusinessCard_button_selectUser" and .//android.widget.TextView[contains(@text,"${name}")]] | //*[contains(@resource-id,"assignBusinessCard_button_selectUser") and .//*[contains(@text,"${name}")]] | //*[contains(@content-desc,"${name}")])[1]`)
   }
 
   private get cardAssigneeRowIOS() {
@@ -251,8 +300,32 @@ class BusinessCardPage extends BasePage {
     return $('-ios predicate string:name == "Las Vegas" OR label == "Las Vegas" OR value == "Las Vegas"')
   }
 
+  private get userSelectionSheetAndroid() {
+    return $('(//*[@resource-id="assignBusinessCardUserSelection_screen"] | //*[contains(@content-desc,"Select User")])[1]')
+  }
+
+  private get lasVegasUserOptionAndroid() {
+    return this.userOptionAndroidByName(this.selectedBusinessCardAssigneeName)
+  }
+
+  private userOptionAndroidByName(name: string) {
+    return $(`(//*[contains(@content-desc,"${name}")]/ancestor-or-self::*[@clickable="true"][1] | //android.widget.TextView[contains(@text,"${name}")]/ancestor::*[@clickable="true"][1])[1]`)
+  }
+
+  private get selectUserBtnAndroid() {
+    return $('(//*[@resource-id="assignBusinessCardUserSelection_button_select"] | //*[contains(@content-desc,"Select") and not(contains(@content-desc,"Select User"))])[1]')
+  }
+
+  private get userCardLimitReachedAndroid() {
+    return $('(//*[contains(@text,"User card limit reached") or contains(@content-desc,"User card limit reached") or contains(@text,"limit reached") or contains(@content-desc,"limit reached")])[1]')
+  }
+
+  private get userCardLimitReachedOkAndroid() {
+    return $('//*[@text="OK" or @content-desc="OK"]')
+  }
+
   private get continueBtnAndroid() {
-    return $('android=new UiSelector().resourceId("assignBusinessCard_button_continue")')
+    return $('(//*[@resource-id="assignBusinessCard_button_continue"] | //*[contains(@content-desc,"Continue")])[1]')
   }
 
   private get continueBtnIOS() {
@@ -264,7 +337,7 @@ class BusinessCardPage extends BasePage {
   }
 
   private get cardDesignOrderBtnAndroid() {
-    return $('android=new UiSelector().resourceId("cardDesignSelection_button_confirm")')
+    return $('(//*[@resource-id="cardDesignSelection_button_confirm"] | //*[contains(@content-desc,"Continue") or contains(@content-desc,"Order") or contains(@content-desc,"Confirm")])[1]')
   }
 
   private get cardDesignOrderBtnIOS() {
@@ -272,7 +345,7 @@ class BusinessCardPage extends BasePage {
   }
 
   private get assignCardSubmitBtnAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Assign Card"]]')
+    return $('(//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Assign Card"]] | //*[contains(@content-desc,"Assign Card")])[1]')
   }
 
   private get assignCardSubmitBtnIOS() {
@@ -284,7 +357,7 @@ class BusinessCardPage extends BasePage {
   }
 
   private get changeCardTypeTitleAndroid() {
-    return $('android=new UiSelector().text("Change card type?")')
+    return $('//*[@text="Change card type?" or @content-desc="Change card type?"]')
   }
 
   private get changeCardTypeTitleIOS() {
@@ -292,7 +365,7 @@ class BusinessCardPage extends BasePage {
   }
 
   private get changeCardTypeConfirmBtnAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Confirm"]]')
+    return $('(//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Confirm"]] | //*[contains(@content-desc,"Confirm")])[1]')
   }
 
   private get changeCardTypeConfirmBtnIOS() {
@@ -304,7 +377,7 @@ class BusinessCardPage extends BasePage {
   }
 
   private get cardTypeSelectionTitleAndroid() {
-    return $('android=new UiSelector().text("Select Card Type")')
+    return $('//*[@text="Select Card Type" or @content-desc="Select Card Type"]')
   }
 
   private get cardTypeSelectionTitleIOS() {
@@ -312,7 +385,7 @@ class BusinessCardPage extends BasePage {
   }
 
   private get physicalCardOptionAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Physical Card"]]')
+    return $('(//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Physical Card"]] | //*[contains(@content-desc,"Physical Card")])[1]')
   }
 
   private get physicalCardOptionIOS() {
@@ -328,7 +401,7 @@ class BusinessCardPage extends BasePage {
   }
 
   private get assigneeAddressTitleAndroid() {
-    return $('android=new UiSelector().textContains("address")')
+    return $('//*[contains(@text,"address") or contains(@text,"Address") or contains(@content-desc,"address") or contains(@content-desc,"Address")]')
   }
 
   private get assigneeAddressTitleIOS() {
@@ -336,7 +409,7 @@ class BusinessCardPage extends BasePage {
   }
 
   private get cardAssignedSuccessTitleAndroid() {
-    return $('android=new UiSelector().textMatches("Card (assigned|added) successfully")')
+    return $('//*[contains(@text,"assigned successfully") or contains(@text,"added successfully") or contains(@content-desc,"assigned successfully") or contains(@content-desc,"added successfully")]')
   }
 
   private get cardAssignedSuccessTitleIOS() {
@@ -344,7 +417,7 @@ class BusinessCardPage extends BasePage {
   }
 
   private get successCloseBtnAndroid() {
-    return $('//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Close"]]')
+    return $('(//android.view.View[@clickable="true"][.//android.widget.TextView[@text="Close"]] | //*[contains(@content-desc,"Close")])[1]')
   }
 
   private get successCloseBtnIOS() {
@@ -372,6 +445,16 @@ class BusinessCardPage extends BasePage {
 
     return (
       (await this.cardTypeSelectionTitleIOS.isExisting().catch(() => false))
+    )
+  }
+
+  private async isAndroidAfterContinueStateVisible() {
+    if (!browser.isAndroid) return false
+
+    return (
+      (await this.cardDesignOrderBtnAndroid.isExisting().catch(() => false)) ||
+      (await this.assigneeAddressTitleAndroid.isExisting().catch(() => false)) ||
+      (await this.assignCardSubmitBtnAndroid.isExisting().catch(() => false))
     )
   }
 
@@ -935,12 +1018,67 @@ class BusinessCardPage extends BasePage {
     await this.continueBtnAndroid.waitForExist({ timeout: 10000 })
   }
 
-  public async selectLasVegasAssignee() {
+  public async selectAvailableAssignee() {
+    if (browser.isAndroid) {
+      await this.cardAssigneeRowAndroid.waitForExist({
+        timeout: 15000,
+        timeoutMsg: 'Assign Card To row not found before selecting a business card assignee',
+      })
+
+      if (await this.cardAssigneeSelectedAndroid.isExisting().catch(() => false)) return
+
+      await this.tap(this.cardAssigneeRowAndroid)
+      await this.userSelectionSheetAndroid.waitForExist({
+        timeout: 15000,
+        timeoutMsg: 'Select User sheet did not open on Android',
+      })
+
+      const blockedAssignees: string[] = []
+      for (const assigneeName of BUSINESS_CARD_ASSIGNEE_NAMES) {
+        const userOption = this.userOptionAndroidByName(assigneeName)
+        if (!(await userOption.isExisting().catch(() => false))) continue
+
+        this.selectedBusinessCardAssigneeName = assigneeName
+        await this.tap(userOption)
+        await browser.pause(600)
+
+        if (await this.userCardLimitReachedAndroid.isExisting().catch(() => false)) {
+          blockedAssignees.push(assigneeName)
+          await this.tap(this.userCardLimitReachedOkAndroid).catch(() => {})
+          await this.userSelectionSheetAndroid.waitForExist({ timeout: 5000 }).catch(() => {})
+          continue
+        }
+
+        if (await this.userSelectionSheetAndroid.isExisting().catch(() => false)) {
+          await browser.waitUntil(
+            async () =>
+              (await this.selectUserBtnAndroid.isExisting().catch(() => false)) &&
+              (await this.selectUserBtnAndroid.isEnabled().catch(() => false)),
+            { timeout: 5000, interval: 300, timeoutMsg: `Select button did not become enabled after choosing ${assigneeName}` },
+          )
+          await this.tap(this.selectUserBtnAndroid)
+        }
+
+        await browser.waitUntil(
+          async () =>
+            !(await this.userSelectionSheetAndroid.isExisting().catch(() => false)) &&
+            (
+              (await this.cardAssigneeSelectedAndroidByName(assigneeName).isExisting().catch(() => false)) ||
+              (await this.continueBtnAndroid.isEnabled().catch(() => false))
+            ),
+          { timeout: 15000, interval: 500, timeoutMsg: `${assigneeName} assignee was not selected on Android` },
+        )
+        return
+      }
+
+      throw new Error(`No available assignee found for physical business card. Blocked by card limit: ${blockedAssignees.join(', ') || 'none'}`)
+    }
+
     if (!browser.isIOS) return
 
     await browser.waitUntil(
       async () => await this.isIOSAssignBusinessCardFormVisible(),
-      { timeout: 10000, interval: 500, timeoutMsg: 'Assign Card form was not visible before selecting Las Vegas assignee on iOS' }
+      { timeout: 10000, interval: 500, timeoutMsg: 'Assign Card form was not visible before selecting business card assignee on iOS' }
     )
 
     if (await this.cardAssigneeLasVegasSelectedIOS.isExisting().catch(() => false)) return
@@ -985,7 +1123,19 @@ class BusinessCardPage extends BasePage {
       )
       return
     }
+    await this.continueBtnAndroid.waitForExist({
+      timeout: 10000,
+      timeoutMsg: 'Continue button did not exist on Android',
+    })
+    await browser.waitUntil(
+      async () => await this.continueBtnAndroid.isEnabled().catch(() => false),
+      { timeout: 10000, interval: 500, timeoutMsg: 'Continue button did not become enabled on Android' },
+    )
     await this.tap(this.continueBtnAndroid)
+    await browser.waitUntil(
+      async () => await this.isAndroidAfterContinueStateVisible(),
+      { timeout: 15000, interval: 500, timeoutMsg: 'Next card creation step did not appear after Continue on Android' },
+    )
   }
 
   public async orderDefaultCardDesign() {
@@ -1112,6 +1262,24 @@ class BusinessCardPage extends BasePage {
     })
   }
 
+  public async verifyCreatedPhysicalCardPending() {
+    if (browser.isIOS) {
+      await this.waitForCreatedCardReady()
+      return
+    }
+
+    await browser.waitUntil(
+      async () =>
+        (await this.manageCardsTitleAndroid.isExisting().catch(() => false)) &&
+        (await this.createdPhysicalPendingCardAndroid.isExisting().catch(() => false)),
+      {
+        timeout: 30000,
+        interval: 1000,
+        timeoutMsg: `Pending physical card for "${this.selectedBusinessCardAssigneeName}" was not visible on Manage Cards`,
+      }
+    )
+  }
+
   private async reopenCardsFromHome() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
@@ -1163,7 +1331,11 @@ class BusinessCardPage extends BasePage {
   }
 
   private get freezeBtnAndroid() {
-    return $('android=new UiSelector().text("Freeze")')
+    return $('(//*[@content-desc="Freeze"] | //*[contains(@content-desc,"Freeze") and not(contains(@content-desc,"Unfreeze"))])[1]')
+  }
+
+  private get freezeBtnAndroidUiSelector() {
+    return $('//*[contains(@content-desc,"Freeze") and not(contains(@content-desc,"Unfreeze"))]')
   }
 
   private get freezeBtnIOS() {
@@ -1175,7 +1347,11 @@ class BusinessCardPage extends BasePage {
   }
 
   private get unfreezeBtnAndroid() {
-    return $('android=new UiSelector().text("Unfreeze")')
+    return $('(//*[@content-desc="Unfreeze"] | //*[contains(@content-desc,"Unfreeze")])[1]')
+  }
+
+  private get unfreezeBtnAndroidUiSelector() {
+    return $('//*[contains(@content-desc,"Unfreeze")]')
   }
 
   private get unfreezeBtnIOS() {
@@ -1187,7 +1363,7 @@ class BusinessCardPage extends BasePage {
   }
 
   private get reportBtnAndroid() {
-    return $('android=new UiSelector().text("Report")')
+    return $('(//*[@content-desc="Report"] | //*[contains(@content-desc,"Report")])[1]')
   }
 
   private get reportBtnIOS() {
@@ -1294,7 +1470,9 @@ class BusinessCardPage extends BasePage {
     await browser.waitUntil(
       async () =>
         (await this.unfreezeBtnAndroid.isDisplayed().catch(() => false)) ||
-        (await this.reportBtnAndroid.isDisplayed().catch(() => false)),
+        (await this.unfreezeBtnAndroid.isExisting().catch(() => false)) ||
+        (await this.reportBtnAndroid.isDisplayed().catch(() => false)) ||
+        (await this.reportBtnAndroid.isExisting().catch(() => false)),
       { timeout: 10000, interval: 500, timeoutMsg: 'Frozen card actions were not displayed' }
     )
   }
@@ -1386,12 +1564,16 @@ class BusinessCardPage extends BasePage {
       return
     }
 
-    const alreadyOnCards = await this.addNewCardButtonAndroid.isDisplayed().catch(() => false)
+    const alreadyOnCards =
+      (await this.addNewCardButtonAndroid.isDisplayed().catch(() => false)) ||
+      (await this.addNewCardButtonAndroid.isExisting().catch(() => false))
     if (alreadyOnCards) return
 
     const shown = await this.viewMyCardsBtnAndroid.waitForExist({ timeout: 15000 }).catch(() => false)
     if (!shown) {
-      const cardsShown = await this.addNewCardButtonAndroid.isDisplayed().catch(() => false)
+      const cardsShown =
+        (await this.addNewCardButtonAndroid.isDisplayed().catch(() => false)) ||
+        (await this.addNewCardButtonAndroid.isExisting().catch(() => false))
       if (cardsShown) return
       await this.viewMyCardsBtnAndroid.waitForExist({ timeout: 1 })
     }
@@ -1459,7 +1641,7 @@ class BusinessCardPage extends BasePage {
    * ========================= */
 
   private get cardBlockedTitleAndroid() {
-    return $('android=new UiSelector().text("Your card has been blocked.")')
+    return $('//*[@text="Your card has been blocked." or @content-desc="Your card has been blocked."]')
   }
 
   private get cardBlockedTitleIOS() {
@@ -1467,11 +1649,11 @@ class BusinessCardPage extends BasePage {
   }
 
   private get blockReportConfirmBtnAndroid() {
-    return $('android=new UiSelector().resourceId("android:id/button1")')
+    return $('(//*[@resource-id="android:id/button1"] | //*[contains(@resource-id,"button1")])[1]')
   }
 
   private get viewMyCardsBtnAndroid() {
-    return $('android=new UiSelector().textMatches("View my Cards|View my cards")')
+    return $('(//*[contains(@content-desc,"View my Cards") or contains(@content-desc,"View my cards")] | //*[contains(@text,"View my Cards") or contains(@text,"View my cards")])[1]')
   }
 
   private get viewMyCardsBtnIOS() {
