@@ -4,8 +4,7 @@ import { $, browser } from '@wdio/globals'
 
 export default class AutoTopUpPage extends BasePage {
   private byAndroidResId(id: string) {
-    const rx = `.*:id/${id}$|^${id}$`
-    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[contains(@resource-id,"${id}")])[1]`)
   }
 
   /* =========================
@@ -13,19 +12,19 @@ export default class AutoTopUpPage extends BasePage {
    * ========================= */
 
   private get userAvatarBtnAndroid() {
-    return $('android=new UiSelector().resourceId("home_button_userAvatar")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/home_button_userAvatar"] | //*[contains(@resource-id,"home_button_userAvatar")])[1]')
   }
 
   private get businessAccountLabelAndroid() {
-    return $('android=new UiSelector().textContains("Business")')
+    return $('//*[contains(@text,"Business") or contains(@content-desc,"Business")]')
   }
 
   private get singleAccountItemAndroid() {
-    return $('android=new UiSelector().description("Single")')
+    return $('(//*[@content-desc="Single"] | //*[@text="Single"])[1]')
   }
 
   private get singleAccountItemAndroidByText() {
-    return $('android=new UiSelector().text("Single")')
+    return $('//*[@text="Single" or @content-desc="Single"]')
   }
 
   private get homeRootAndroid() {
@@ -122,7 +121,7 @@ export default class AutoTopUpPage extends BasePage {
   private get addFundsScreen() {
     if (browser.isAndroid)
       return $(
-        'android=new UiSelector().resourceIdMatches(".*:id/(addFunds_screen|addFunds_card_autoTopUp|addFunds_card_cardTopUp)$|^(addFunds_screen|addFunds_card_autoTopUp|addFunds_card_cardTopUp)$")'
+        '//*[contains(@resource-id,"addFunds_screen") or contains(@resource-id,"addFunds_card_autoTopUp") or contains(@resource-id,"addFunds_card_cardTopUp")]'
       )
     // iOS: anchor to a cell unique to Add Funds screen (addFunds_item_card is accessible=true
     // and only exists here; avoids false-positive on the home "plus" button whose label is "Add Funds")
@@ -155,7 +154,7 @@ export default class AutoTopUpPage extends BasePage {
 
   get autoTopUpListScreen() {
     if (browser.isAndroid)
-      return $('android=new UiSelector().resourceId("autoTopUpList_screen")')
+      return $('(//*[@resource-id="com.moneybase.qa:id/autoTopUpList_screen"] | //*[contains(@resource-id,"autoTopUpList_screen")])[1]')
     return $('-ios predicate string: name == "autoTopUpList_screen" OR name == "Auto Top-Up"')
   }
 
@@ -167,7 +166,7 @@ export default class AutoTopUpPage extends BasePage {
 
   get addNewBtn() {
     if (browser.isAndroid)
-      return $('android=new UiSelector().resourceId("autoTopUpDetails_button_addNew")')
+      return $('(//*[@resource-id="com.moneybase.qa:id/autoTopUpDetails_button_addNew"] | //*[contains(@resource-id,"autoTopUpDetails_button_addNew")])[1]')
     return $('-ios predicate string: name == "autoTopUpDetails_button_addNew" OR label == "Add New" OR name == "Add New"')
   }
 
@@ -185,7 +184,7 @@ export default class AutoTopUpPage extends BasePage {
 
   get autoTopUpDetailsScreen() {
     if (browser.isAndroid)
-      return $('android=new UiSelector().resourceId("autoTopUpDetails_screen")')
+      return $('(//*[@resource-id="com.moneybase.qa:id/autoTopUpDetails_screen"] | //*[contains(@resource-id,"autoTopUpDetails_screen")])[1]')
     return $('-ios predicate string: name == "autoTopUpDetails_screen" OR name == "Auto Top-Up"')
   }
 
@@ -197,24 +196,24 @@ export default class AutoTopUpPage extends BasePage {
 
   get cardPicker() {
     if (browser.isAndroid)
-      return $('android=new UiSelector().resourceId("autoTopUpDetails_button_pickCard")')
+      return $('(//*[@resource-id="com.moneybase.qa:id/autoTopUpDetails_button_pickCard"] | //*[contains(@resource-id,"autoTopUpDetails_button_pickCard")])[1]')
     return $('-ios predicate string: name == "autoTopup_item_cardPicker" OR name == "autoTopUpDetails_picker_card" OR name == "autoTopUpDetails_button_pickCard" OR name CONTAINS[c] "cardPicker" OR name CONTAINS[c] "pickCard"')
   }
 
   get currencyPicker() {
     if (browser.isAndroid)
-      return $('android=new UiSelector().resourceId("autoTopUpDetails_button_pickCurrency")')
+      return $('(//*[@resource-id="com.moneybase.qa:id/autoTopUpDetails_button_pickCurrency"] | //*[contains(@resource-id,"autoTopUpDetails_button_pickCurrency")])[1]')
     return $('-ios predicate string: name == "autoTopup_item_currencyPicker" OR name == "autoTopUpDetails_picker_currency"')
   }
 
   get deleteBtn() {
     if (browser.isAndroid)
-      return $('android=new UiSelector().resourceId("autoTopUpDetails_button_delete")')
+      return $('(//*[@resource-id="com.moneybase.qa:id/autoTopUpDetails_button_delete"] | //*[contains(@resource-id,"autoTopUpDetails_button_delete")])[1]')
     return $('-ios predicate string: name == "autoTopup_button_delete" OR name == "autoTopUpDetails_button_delete"')
   }
 
   private get confirmDeleteBtnAndroidByText() {
-    return $('android=new UiSelector().text("Confirm")')
+    return $('//*[@text="Confirm" or @content-desc="Confirm"]')
   }
 
   private get confirmDeleteBtnAndroidByAlertId() {
@@ -234,15 +233,15 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   private get confirmDeleteBtnAndroidByTextContains() {
-    return $('android=new UiSelector().textContains("Confirm")')
+    return $('//*[contains(@text,"Confirm") or contains(@content-desc,"Confirm")]')
   }
 
   private get confirmDeleteBtnAndroidByDesc() {
-    return $('android=new UiSelector().description("Confirm")')
+    return $('//*[@content-desc="Confirm" or @text="Confirm"]')
   }
 
   private get confirmDeleteBtnAndroidByButton1() {
-    return $('android=new UiSelector().resourceId("android:id/button1")')
+    return $('(//*[@resource-id="android:id/button1"])[1]')
   }
 
   private get confirmDeleteBtnAndroidByButton1Id() {
@@ -255,26 +254,26 @@ export default class AutoTopUpPage extends BasePage {
 
   get saveBtn() {
     if (browser.isAndroid)
-      return $('android=new UiSelector().resourceId("autoTopUpDetails_button_save")')
+      return $('(//*[@resource-id="com.moneybase.qa:id/autoTopUpDetails_button_save"] | //*[contains(@resource-id,"autoTopUpDetails_button_save")])[1]')
     return $('-ios predicate string: name == "autoTopup_button_save" OR name == "autoTopUpDetails_button_save"')
   }
 
   get customAmountInput() {
     if (browser.isAndroid)
-      return $('android=new UiSelector().resourceId("autoTopUpDetails_input_customAmount")')
+      return $('(//*[@resource-id="com.moneybase.qa:id/autoTopUpDetails_input_customAmount"] | //*[contains(@resource-id,"autoTopUpDetails_input_customAmount")])[1]')
     return $('-ios predicate string: name == "autoTopUpDetails_input_customAmount" OR type == "XCUIElementTypeTextField"')
   }
 
   private get customAmountModalScreenAndroid() {
-    return $('android=new UiSelector().resourceId("autoTopUpCustomAmountModal_screen")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/autoTopUpCustomAmountModal_screen"] | //*[contains(@resource-id,"autoTopUpCustomAmountModal_screen")])[1]')
   }
 
   private get customAmountModalInputAndroid() {
-    return $('android=new UiSelector().resourceId("autoTopUpCustomAmountModal_input")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/autoTopUpCustomAmountModal_input"] | //*[contains(@resource-id,"autoTopUpCustomAmountModal_input")])[1]')
   }
 
   private get presetAmount500Android() {
-    return $('android=new UiSelector().description("€500")')
+    return $('//*[@content-desc="€500" or @text="€500"]')
   }
 
   private get addFollowingAmount500Android() {
@@ -284,7 +283,7 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   private get presetAmountOtherAndroid() {
-    return $('android=new UiSelector().description("Other")')
+    return $('//*[@content-desc="Other" or @text="Other"]')
   }
 
   private get thresholdOtherAndroid() {
@@ -294,19 +293,19 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   private get amountEditTextAndroid() {
-    return $('android=new UiSelector().className("android.widget.EditText")')
+    return $('//android.widget.EditText')
   }
 
   get customAmountDoneBtn() {
     if (browser.isAndroid)
       return $(
-        'android=new UiSelector().resourceId("autoTopUpDetails_button_customAmountDone")'
+        '(//*[@resource-id="com.moneybase.qa:id/autoTopUpDetails_button_customAmountDone"] | //*[contains(@resource-id,"autoTopUpDetails_button_customAmountDone")])[1]'
       )
     return $('-ios predicate string: name == "autoTopUpDetails_button_customAmountDone" OR name == "Done" OR label == "Done"')
   }
 
   private get customAmountModalDoneBtnAndroid() {
-    return $('android=new UiSelector().resourceId("autoTopUpCustomAmountModal_button_done")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/autoTopUpCustomAmountModal_button_done"] | //*[contains(@resource-id,"autoTopUpCustomAmountModal_button_done")])[1]')
   }
 
   private get amountOtherBtnIOS() {
@@ -314,7 +313,7 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   private get customAmountDoneBtnAndroidByText() {
-    return $('android=new UiSelector().text("Done")')
+    return $('//*[@text="Done" or @content-desc="Done"]')
   }
 
   /* =========================
@@ -407,7 +406,7 @@ export default class AutoTopUpPage extends BasePage {
     await this.tap(this.cardPicker)
 
     const cardItem = browser.isAndroid
-      ? $(`android=new UiSelector().textContains("${cardLabel}")`)
+      ? $(`//*[contains(@text,"${cardLabel}") or contains(@content-desc,"${cardLabel}")]`)
       : $(`-ios predicate string: label CONTAINS "${cardLabel}" OR name CONTAINS "${cardLabel}"`)
 
     await cardItem.waitForExist({ timeout: 15000 })
@@ -446,7 +445,7 @@ export default class AutoTopUpPage extends BasePage {
       throw new Error(`Currency item "${currency}" not found on iOS after trying multiple selectors`)
     }
 
-    const currencyItem = $(`android=new UiSelector().textContains("${currency}")`)
+    const currencyItem = $(`//*[contains(@text,"${currency}") or contains(@content-desc,"${currency}")]`)
     await currencyItem.waitForExist({ timeout: 15000 })
     await this.tap(currencyItem)
     await browser.pause(300)
@@ -462,7 +461,7 @@ export default class AutoTopUpPage extends BasePage {
 
       if (!inputInitiallyVisible) {
         const anyOtherByDesc = $('//android.view.View[contains(@content-desc,"Other")]')
-        const anyOtherByText = $('android=new UiSelector().text("Other")')
+        const anyOtherByText = $('//*[@text="Other" or @content-desc="Other"]')
 
         const otherCandidates = [
           this.thresholdOtherAndroid,
@@ -845,13 +844,13 @@ export default class AutoTopUpPage extends BasePage {
     const candidates = browser.isAndroid
       ? [
           cardLabel
-            ? $(`android=new UiSelector().resourceId("autoTopUpList_screen").childSelector(new UiSelector().textContains("${cardLabel}"))`)
+            ? $(`//*[contains(@resource-id,"autoTopUpList_screen")]//*[contains(@text,"${cardLabel}") or contains(@content-desc,"${cardLabel}")]`)
             : undefined,
           cardLabel
-            ? $(`android=new UiSelector().descriptionContains("${cardLabel}")`)
+            ? $(`//*[contains(@content-desc,"${cardLabel}") or contains(@text,"${cardLabel}")]`)
             : undefined,
-          $('android=new UiSelector().descriptionContains("Auto Top-Up")'),
-          $('android=new UiSelector().textContains("Auto Top-Up")'),
+          $('//*[contains(@content-desc,"Auto Top-Up") or contains(@text,"Auto Top-Up")]'),
+          $('//*[contains(@text,"Auto Top-Up") or contains(@content-desc,"Auto Top-Up")]'),
           $('(//*[@resource-id="autoTopUpList_screen"]//*[@clickable="true"])[1]'),
         ]
       : [
@@ -907,11 +906,28 @@ export default class AutoTopUpPage extends BasePage {
     currency: string
     amount: number | string
   }) {
+    await this.selectSmokeAutoTopUpCard(options)
+    await this.configureSmokeAutoTopUpAmounts(options)
+    await this.saveSmokeAutoTopUp(options)
+  }
+
+  async selectSmokeAutoTopUpCard(options: {
+    cardLabel: string
+    currency: string
+    amount: number | string
+  }) {
     await this.openFromHome()
     await this.goToAutoTopUpList()
     await this.tapAddNew()
     await this.selectCard(options.cardLabel)
     await this.selectCurrency(options.currency)
+  }
+
+  async configureSmokeAutoTopUpAmounts(options: {
+    cardLabel: string
+    currency: string
+    amount: number | string
+  }) {
 
     if (browser.isAndroid) {
       // Android: threshold → amount
@@ -922,6 +938,13 @@ export default class AutoTopUpPage extends BasePage {
       await this.enterCustomAmount(options.amount)
       await this.selectPreset500IOS()
     }
+  }
+
+  async saveSmokeAutoTopUp(options: {
+    cardLabel: string
+    currency: string
+    amount: number | string
+  }) {
     await this.saveAutoTopUp()
 
     // iOS повертається на Add Funds screen, Android — на Home
