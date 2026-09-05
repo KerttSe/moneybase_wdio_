@@ -44,8 +44,7 @@ export default class OnboardingPage extends BasePage {
   private byId(name: string) {
     if (browser.isIOS) return $(`~${name}`)
 
-    const rx = `.*:id/${name}$|^${name}$`
-    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[contains(@resource-id,"${name}")])[1]`)
   }
 
   private get welcomeSkipBtn() {
@@ -70,7 +69,7 @@ export default class OnboardingPage extends BasePage {
 
   private get countrySearchTap() {
     if (browser.isIOS) return this.byId('countrySelection_search_tap')
-    return $('android=new UiSelector().text("Search")')
+    return $('//*[@text="Search" or @content-desc="Search"]')
   }
 
   private get passcodeScreen() {
@@ -93,7 +92,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get otpInputExact() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/otp_input")')
+    return $('//*[@resource-id="com.moneybase.qa:id/otp_input"]')
   }
 
   private get verificationSuccessScreen() {
@@ -279,7 +278,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get proofOfAddressRoot() {
-    return $('android=new UiSelector().resourceId("ProofOfAddress-root")')
+    return $('//*[contains(@resource-id,"ProofOfAddress-root")]')
   }
 
   private get proofOfAddressWebView() {
@@ -287,7 +286,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get visibleNativeInput() {
-    return $('android=new UiSelector().className("android.widget.EditText")')
+    return $('(//android.widget.EditText)[1]')
   }
 
   private get infoScreen() {
@@ -323,11 +322,11 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get verificationRequiredBackByDesc() {
-    return $('android=new UiSelector().description("Back")')
+    return $('//*[@content-desc="Back" or @text="Back"]')
   }
 
   private get verificationRequiredBackById() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/.*back.*$|^.*back.*$")')
+    return $('//*[contains(@resource-id,"back")]')
   }
 
   private get verificationRequiredCloseBtnIOS() {
@@ -343,7 +342,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get uploadIdentityDocumentAnchor() {
-    return $('android=new UiSelector().text("Upload identity document")')
+    return $('//*[@text="Upload identity document" or @content-desc="Upload identity document"]')
   }
 
   private get homeRoot() {
@@ -352,11 +351,11 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get tryAgainBtn() {
-    return $('android=new UiSelector().text("Try again")')
+    return $('//*[@text="Try again" or @content-desc="Try again"]')
   }
 
   private get somethingWentWrongTitle() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/alertTitle").text("Something went wrong")')
+    return $('//*[@resource-id="com.moneybase.qa:id/alertTitle" and (@text="Something went wrong" or @content-desc="Something went wrong")]')
   }
 
   private get postVerificationContinueBtn() {
@@ -373,17 +372,18 @@ export default class OnboardingPage extends BasePage {
 
   private text(text: string) {
     if (browser.isIOS) return $(`~${text}`)
-    return $(`android=new UiSelector().text("${text}")`)
+    return $(`//*[@text="${text}" or @content-desc="${text}"]`)
   }
 
   private textContains(text: string) {
     if (browser.isIOS) return $(`-ios predicate string:name CONTAINS "${text}" OR label CONTAINS "${text}" OR value CONTAINS "${text}"`)
-    return $(`android=new UiSelector().textContains("${text}")`)
+    return $(`//*[contains(@text,"${text}") or contains(@content-desc,"${text}")]`)
   }
 
   private textMatches(pattern: string) {
     if (browser.isIOS) return $(`-ios predicate string:name MATCHES "${pattern}" OR label MATCHES "${pattern}" OR value MATCHES "${pattern}"`)
-    return $(`android=new UiSelector().textMatches("${pattern}")`)
+    const lower = pattern.replace(/^\(\?i\)\.\*/, '').replace(/\.\*$/, '').toLowerCase()
+    return $(`//*[contains(translate(@text,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),"${lower}") or contains(translate(@content-desc,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),"${lower}")]`)
   }
 
   private contentDesc(label: string) {
@@ -392,19 +392,20 @@ export default class OnboardingPage extends BasePage {
 
   private contentDescMatches(pattern: string) {
     if (browser.isIOS) return $(`-ios predicate string:name MATCHES "${pattern}" OR label MATCHES "${pattern}"`)
-    return $(`android=new UiSelector().descriptionMatches("${pattern}")`)
+    const lower = pattern.replace(/^\(\?i\)\.\*/, '').replace(/\.\*$/, '').toLowerCase()
+    return $(`//*[contains(translate(@content-desc,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),"${lower}") or contains(translate(@text,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),"${lower}")]`)
   }
 
   private contentDescContains(text: string) {
     if (browser.isIOS) return $(`-ios predicate string:name CONTAINS "${text}" OR label CONTAINS "${text}"`)
-    return $(`android=new UiSelector().descriptionContains("${text}")`)
+    return $(`//*[contains(@content-desc,"${text}") or contains(@text,"${text}")]`)
   }
 
   private countryItem(country: string) {
     if (browser.isIOS) {
       return $(`-ios predicate string:name == "countryPicker_item_${country}" OR name == "country_item_${country}"`)
     }
-    return $(`android=new UiSelector().text("${country}")`)
+    return $(`//*[@text="${country}" or @content-desc="${country}"]`)
   }
 
   private countryItemCell(country: string) {
@@ -433,7 +434,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get pickerCancelBtn() {
-    return $('android=new UiSelector().text("Cancel")')
+    return $('//*[@text="Cancel" or @content-desc="Cancel"]')
   }
 
   private get pickerDragHandle() {
@@ -452,16 +453,16 @@ export default class OnboardingPage extends BasePage {
 
   private nativeButtonByText(text: string) {
     if (browser.isIOS) return $(`//XCUIElementTypeButton[@name="${text}" or @label="${text}"]`)
-    return $(`android=new UiSelector().className("android.widget.Button").text("${text}")`)
+    return $(`//android.widget.Button[@text="${text}" or @content-desc="${text}"]`)
   }
 
   private nativeButtonTextContains(text: string) {
     if (browser.isIOS) return $(`//XCUIElementTypeButton[contains(@name, "${text}") or contains(@label, "${text}")]`)
-    return $(`android=new UiSelector().className("android.widget.Button").textContains("${text}")`)
+    return $(`//android.widget.Button[contains(@text,"${text}") or contains(@content-desc,"${text}")]`)
   }
 
   private nativeButtonDescriptionContains(text: string) {
-    return $(`android=new UiSelector().className("android.widget.Button").descriptionContains("${text}")`)
+    return $(`//android.widget.Button[contains(@content-desc,"${text}") or contains(@text,"${text}")]`)
   }
 
   private clickableTextItem(text: string) {
@@ -892,7 +893,7 @@ export default class OnboardingPage extends BasePage {
       }
     }
 
-    const firstClickableText = $('android=new UiSelector().className("android.widget.TextView").clickable(true).instance(0)')
+    const firstClickableText = $('(//android.widget.TextView[@clickable="true"])[1]')
     await firstClickableText.waitForExist({ timeout: 5000 })
     const selectedLabel = await firstClickableText.getText().catch(() => '')
     await this.tapElementCenter(firstClickableText)
@@ -964,10 +965,10 @@ export default class OnboardingPage extends BasePage {
   private async throwIfSomethingWentWrong() {
     if (!browser.isAndroid) return
 
-    const alertTitle = $('android=new UiSelector().resourceId("com.moneybase.qa:id/alertTitle").text("Something went wrong")')
+    const alertTitle = $('//*[@resource-id="com.moneybase.qa:id/alertTitle" and (@text="Something went wrong" or @content-desc="Something went wrong")]')
     if (!(await alertTitle.isDisplayed().catch(() => false))) return
 
-    const message = await $('android=new UiSelector().resourceId("android:id/message")')
+    const message = await $('//*[@resource-id="android:id/message"]')
       .getText()
       .catch(() => 'No alert message')
 
@@ -1072,7 +1073,7 @@ export default class OnboardingPage extends BasePage {
       return
     }
 
-    const searchInput = $('android=new UiSelector().className("android.widget.EditText").instance(0)')
+    const searchInput = $('(//android.widget.EditText)[1]')
     const inputShown = await searchInput.waitForExist({ timeout: 10000 }).catch(() => false)
     if (!inputShown) {
       await this.typeAndroidShell(country)
@@ -1108,8 +1109,8 @@ export default class OnboardingPage extends BasePage {
     if (!inputShown && browser.isAndroid) {
       const candidates = [
         this.visibleSearchInput,
-        $('android=new UiSelector().className("android.widget.EditText").focused(true)'),
-        $('android=new UiSelector().className("android.widget.EditText").instance(0)'),
+        $('//android.widget.EditText[@focused="true"]'),
+        $('(//android.widget.EditText)[1]'),
       ]
 
       for (const candidate of candidates) {
@@ -2072,7 +2073,7 @@ export default class OnboardingPage extends BasePage {
 
     if (!selected) {
       const countryInScrollable = $(
-        `android=new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains("${country}"))`
+        `//*[contains(@text,"${country}") or contains(@content-desc,"${country}")]`
       )
       selected = await this.tapFirstVisible([countryInScrollable, ...countryCandidates()], 5000)
     }
@@ -2446,8 +2447,8 @@ export default class OnboardingPage extends BasePage {
       [
         this.text(fileName),
         this.text(fileNameWithoutExtension),
-        $(`android=new UiSelector().textContains("${fileNameWithoutExtension}")`),
-        $(`android=new UiSelector().descriptionContains("${fileNameWithoutExtension}")`),
+        $(`//*[contains(@text,"${fileNameWithoutExtension}") or contains(@content-desc,"${fileNameWithoutExtension}")]`),
+        $(`//*[contains(@content-desc,"${fileNameWithoutExtension}") or contains(@text,"${fileNameWithoutExtension}")]`),
       ],
       Number(process.env.ONBOARDING_ANDROID_FILE_PICKER_TIMEOUT_MS || 30000)
     )
@@ -2508,29 +2509,42 @@ export default class OnboardingPage extends BasePage {
     }
   }
 
-  async createAccountAndroid(data: OnboardingData = {}) {
-    if (!browser.isAndroid) {
-      throw new Error('Onboarding flow is currently implemented for Android only')
-    }
-
+  async prepareSmokeOnboarding(data: OnboardingData = {}) {
     const generatedPhone = generateUniqueMalteseMobileNumber()
     const pin = data.pin || process.env.ONBOARDING_PIN || '2468'
     const generatedName = randomOnboardingName()
-    this.onboardingSomethingWentWrongRestarts = 0
-
+    if (browser.isAndroid) {
+      this.onboardingSomethingWentWrongRestarts = 0
     console.log(`[Onboarding] Generated phone: ${generatedPhone.otpPhone}`)
-
     await this.prepareStart()
     await this.enterMobile(generatedPhone.local)
+    } else {
+      console.log(`[Onboarding][iOS] Generated phone: ${generatedPhone.otpPhone}`)
+    await loginPage.prepare()
+    await loginPage.selectCountry('Malta')
+    await loginPage.enterMobile(generatedPhone.local)
+    await loginPage.continue()
+    }
+    return { data, generatedPhone, pin, generatedName }
+  }
+
+  async verifySmokeOnboardingMobile(context: Awaited<ReturnType<OnboardingPage['prepareSmokeOnboarding']>>) {
+    const { data, generatedPhone, pin, generatedName } = context
     await this.enterPinTwice(pin)
     await this.completeOtp(generatedPhone.otpPhone)
     await this.continueAfterVerification()
+  }
 
+  async fillSmokeOnboardingPersonalDetails(context: Awaited<ReturnType<OnboardingPage['prepareSmokeOnboarding']>>) {
+    const { data, generatedPhone, pin, generatedName } = context
     await this.fillPersonalDetails({
       firstName: data.firstName || generatedName.firstName,
       lastName: data.lastName || generatedName.lastName,
     })
+  }
 
+  async fillSmokeOnboardingAddress(context: Awaited<ReturnType<OnboardingPage['prepareSmokeOnboarding']>>) {
+    const { data, generatedPhone, pin, generatedName } = context
     await this.fillDetailsAndAddress(
       {
         company: data.company || 'Moneybase QA',
@@ -2545,52 +2559,34 @@ export default class OnboardingPage extends BasePage {
         country: data.country || 'Malta',
       }
     )
+  }
 
+  async finishSmokeOnboarding(context: Awaited<ReturnType<OnboardingPage['prepareSmokeOnboarding']>>) {
+    const { data, generatedPhone, pin, generatedName } = context
     await this.typeEmailAndAcceptTerms(data.email || `test.${generatedPhone.local}@mail.com`)
     saveOnboardedAccount(generatedPhone, pin)
+  }
+
+  async createAccountAndroid(data: OnboardingData = {}) {
+    if (!browser.isAndroid) {
+      throw new Error('Onboarding flow is currently implemented for Android only')
+    }
+    const context = await this.prepareSmokeOnboarding(data)
+    await this.verifySmokeOnboardingMobile(context)
+    await this.fillSmokeOnboardingPersonalDetails(context)
+    await this.fillSmokeOnboardingAddress(context)
+    await this.finishSmokeOnboarding(context)
   }
 
   async createAccountIOS(data: OnboardingData = {}) {
     if (!browser.isIOS) {
       throw new Error('iOS onboarding flow can only run on iOS')
     }
-
-    const generatedPhone = generateUniqueMalteseMobileNumber()
-    const pin = data.pin || process.env.ONBOARDING_PIN || '2468'
-    const generatedName = randomOnboardingName()
-
-    console.log(`[Onboarding][iOS] Generated phone: ${generatedPhone.otpPhone}`)
-
-    await loginPage.prepare()
-    await loginPage.selectCountry('Malta')
-    await loginPage.enterMobile(generatedPhone.local)
-    await loginPage.continue()
-    await this.enterPinTwice(pin)
-    await this.completeOtp(generatedPhone.otpPhone)
-    await this.continueAfterVerification()
-
-    await this.fillPersonalDetails({
-      firstName: data.firstName || generatedName.firstName,
-      lastName: data.lastName || generatedName.lastName,
-    })
-
-    await this.fillDetailsAndAddress(
-      {
-        company: data.company || 'Moneybase QA',
-        occupation: data.occupation || 'QA Automation',
-        previousEmployment: data.previousEmployment || 'QA Automation',
-      },
-      {
-        addressLine1: data.addressLine1 || '19 Republic Street',
-        addressLine2: data.addressLine2 || 'Office 1',
-        city: data.city || 'Valletta',
-        postCode: data.postCode || 'VLT 1090',
-        country: data.country || 'Malta',
-      }
-    )
-
-    await this.typeEmailAndAcceptTerms(data.email || `test.${generatedPhone.local}@mail.com`)
-    saveOnboardedAccount(generatedPhone, pin)
+    const context = await this.prepareSmokeOnboarding(data)
+    await this.verifySmokeOnboardingMobile(context)
+    await this.fillSmokeOnboardingPersonalDetails(context)
+    await this.fillSmokeOnboardingAddress(context)
+    await this.finishSmokeOnboarding(context)
   }
 }
 

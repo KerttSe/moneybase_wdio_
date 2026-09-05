@@ -9,14 +9,14 @@ type WdioEl = ChainablePromiseElement
 class FXExchangePage extends BasePage {
   private get homeExchangeButton() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().resourceId("home_button_exchange")')
+      return $('(//*[@resource-id="com.moneybase.qa:id/home_button_exchange"] | //*[contains(@resource-id,"home_button_exchange")])[1]')
     }
     return $('-ios predicate string:name == "ic_exchange" OR name == "Exchange" OR label == "Exchange"')
   }
 
   private get exchangeSubmitButton() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().text("Exchange")')
+      return $('//*[@text="Exchange" or @content-desc="Exchange"]')
     }
     return $('//XCUIElementTypeButton[@name="Exchange"]')
   }
@@ -24,8 +24,8 @@ class FXExchangePage extends BasePage {
   private get fxExchangeScreenCandidates(): WdioEl[] {
     if (browser.isAndroid) {
       return [
-        $('android=new UiSelector().text("FX Exchange")'),
-        $('android=new UiSelector().description("FX Exchange")'),
+        $('//*[@text="FX Exchange" or @content-desc="FX Exchange"]'),
+        $('//*[@content-desc="FX Exchange" or @text="FX Exchange"]'),
       ]
     }
     return [
@@ -36,7 +36,7 @@ class FXExchangePage extends BasePage {
 
   private get newTabButton() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().text("New")')
+      return $('//*[@text="New" or @content-desc="New"]')
     }
     return $('-ios predicate string: type == "XCUIElementTypeButton" AND (name == "New" OR label == "New")')
   }
@@ -47,7 +47,7 @@ class FXExchangePage extends BasePage {
 
   private get historyTabButton() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().text("History")')
+      return $('//*[@text="History" or @content-desc="History"]')
     }
     return $('-ios predicate string: type == "XCUIElementTypeButton" AND name == "History"')
   }
@@ -55,8 +55,8 @@ class FXExchangePage extends BasePage {
   private get fromWalletCandidates(): WdioEl[] {
     if (browser.isAndroid) {
       return [
-        $('android=new UiSelector().text("From Wallet")'),
-        $('android=new UiSelector().description("From Wallet")'),
+        $('//*[@text="From Wallet" or @content-desc="From Wallet"]'),
+        $('//*[@content-desc="From Wallet" or @text="From Wallet"]'),
       ]
     }
     return [
@@ -67,7 +67,7 @@ class FXExchangePage extends BasePage {
 
   private get fromWalletField() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().text("From Wallet")')
+      return $('//*[@text="From Wallet" or @content-desc="From Wallet"]')
     }
     return $('~From Wallet')
   }
@@ -75,8 +75,8 @@ class FXExchangePage extends BasePage {
   private get toWalletCandidates(): WdioEl[] {
     if (browser.isAndroid) {
       return [
-        $('android=new UiSelector().text("To Wallet")'),
-        $('android=new UiSelector().description("To Wallet")'),
+        $('//*[@text="To Wallet" or @content-desc="To Wallet"]'),
+        $('//*[@content-desc="To Wallet" or @text="To Wallet"]'),
       ]
     }
     return [
@@ -87,14 +87,14 @@ class FXExchangePage extends BasePage {
 
   private get toWalletField() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().text("To Wallet")')
+      return $('//*[@text="To Wallet" or @content-desc="To Wallet"]')
     }
     return $('~To Wallet')
   }
 
   private get activeTypingField() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().className("android.widget.EditText").instance(0)')
+      return $('(//android.widget.EditText)[1]')
     }
     return $(`-ios class chain:**/XCUIElementTypeTextField[\`enabled == 1\`][1]`)
   }
@@ -102,10 +102,10 @@ class FXExchangePage extends BasePage {
   private get eurOptionCandidates(): WdioEl[] {
     if (browser.isAndroid) {
       return [
-        $('android=new UiSelector().textContains("flag-EUR EUR")'),
-        $('android=new UiSelector().text("EUR")'),
-        $('android=new UiSelector().text("EUR Wallet")'),
-        $('android=new UiSelector().description("flag-EUR")'),
+        $('//*[contains(@text,"flag-EUR EUR") or contains(@content-desc,"flag-EUR EUR")]'),
+        $('//*[@text="EUR" or @content-desc="EUR"]'),
+        $('//*[@text="EUR Wallet" or @content-desc="EUR Wallet"]'),
+        $('//*[@content-desc="flag-EUR" or @text="flag-EUR"]'),
       ]
     }
     return [
@@ -116,14 +116,14 @@ class FXExchangePage extends BasePage {
 
   private get eurOption() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().textContains("flag-EUR EUR")')
+      return $('//*[contains(@text,"flag-EUR EUR") or contains(@content-desc,"flag-EUR EUR")]')
     }
     return $('~EUR')
   }
 
   private get eurOptionFallback() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().text("EUR")')
+      return $('//*[@text="EUR" or @content-desc="EUR"]')
     }
     return $(`-ios class chain:**/XCUIElementTypeStaticText[\`name == "EUR"\`]`)
   }
@@ -131,35 +131,35 @@ class FXExchangePage extends BasePage {
 
   private get selectedButton() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().text("selected")')
+      return $('//*[@text="selected" or @content-desc="selected"]')
     }
     return $('~selected')
   }
 
   private get confirmButton() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().text("Confirm")')
+      return $('//*[@text="Confirm" or @content-desc="Confirm"]')
     }
     return $('~Confirm')
   }
 
   private get continueBtn() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().text("Continue")')
+      return $('//*[@text="Continue" or @content-desc="Continue"]')
     }
     return $('~Continue')
   }
 
   private get selectedEurWallet() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().textContains("EUR")')
+      return $('//*[contains(@text,"EUR") or contains(@content-desc,"EUR")]')
     }
     return $('-ios predicate string: name == "flag-EUR EUR" OR label == "flag-EUR EUR"')
   }
 
   private get selectedUsdWallet() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().textContains("USD")')
+      return $('//*[contains(@text,"USD") or contains(@content-desc,"USD")]')
     }
     return $('-ios predicate string: name == "flag-USD USD" OR label == "flag-USD USD"')
   }
@@ -277,10 +277,10 @@ class FXExchangePage extends BasePage {
 
     for (let attempt = 0; attempt <= scrollDirections.length; attempt++) {
       // Prefer exact match; if not found, use partial (space + code)
-      let matches = $$(`android=new UiSelector().textContains("${exactText}")`)
+      let matches = $$(`//*[contains(@text,"${exactText}") or contains(@content-desc,"${exactText}")]`)
       let count = await matches.length
       if (count === 0) {
-        matches = $$(`android=new UiSelector().textContains("${codeText}")`)
+        matches = $$(`//*[contains(@text,"${codeText}") or contains(@content-desc,"${codeText}")]`)
         count = await matches.length
       }
 
@@ -295,7 +295,7 @@ class FXExchangePage extends BasePage {
         await this.confirmSelectionIfShown()
 
         const pickerClosed = await browser.waitUntil(
-          async () => !(await $('android=new UiSelector().className("android.app.AlertDialog")').isExisting().catch(() => false)),
+          async () => !(await $('//android.app.AlertDialog').isExisting().catch(() => false)),
           { timeout: 3000, interval: 300 }
         ).then(() => true).catch(() => false)
 
@@ -363,7 +363,7 @@ class FXExchangePage extends BasePage {
     await browser.dismissAlert().catch(() => {})
     await browser.acceptAlert().catch(() => {})
 
-    const alertOpen = await $('android=new UiSelector().className("android.app.AlertDialog")').isExisting().catch(() => false)
+    const alertOpen = await $('//android.app.AlertDialog').isExisting().catch(() => false)
     if (!alertOpen) return
 
     // Distinguish wallet picker (has search-wallet-input) from app-level alert dialogs
@@ -371,14 +371,14 @@ class FXExchangePage extends BasePage {
 
     if (!isWalletPicker) {
       // App validation alert — dismiss via OK button or hardware back
-      const okBtn = $('android=new UiSelector().text("OK")')
+      const okBtn = $('//*[@text="OK" or @content-desc="OK"]')
       const hasOk = await okBtn.isExisting().catch(() => false)
       if (hasOk) {
         await okBtn.click().catch(() => {})
       } else {
         // Hardware back dismisses the dialog without navigating the WebView router
         // (AlertDialog intercepts back press before the WebView history stack)
-        const anyBtn = $('android=new UiSelector().className("android.widget.Button")')
+        const anyBtn = $('//android.widget.Button')
         const hasBtn = await anyBtn.isExisting().catch(() => false)
         if (hasBtn) await anyBtn.click().catch(() => {})
       }
@@ -404,7 +404,7 @@ class FXExchangePage extends BasePage {
     await browser.releaseActions().catch(() => {})
     await browser.pause(1000)
 
-    const stillOpen = await $('android=new UiSelector().className("android.app.AlertDialog")').isExisting().catch(() => false)
+    const stillOpen = await $('//android.app.AlertDialog').isExisting().catch(() => false)
     if (stillOpen) {
       await markBrowserStackStep('FX wallet picker stayed open after backdrop tap')
     }
@@ -419,24 +419,23 @@ class FXExchangePage extends BasePage {
 
   private get androidBackButtonCandidates(): WdioEl[] {
     return [
-      $('android=new UiSelector().description("Back")'),
-      $('android=new UiSelector().text("Back")'),
-      $('android=new UiSelector().resourceIdMatches(".*:id/back$|^back$")'),
-      $('android=new UiSelector().resourceIdMatches(".*:id/back_button$|^back_button$")'),
-      $('android=new UiSelector().resourceIdMatches(".*:id/toolbar_back$|^toolbar_back$")'),
+      $('//*[@content-desc="Back" or @text="Back"]'),
+      $('(//*[@resource-id="com.moneybase.qa:id/back"] | //*[contains(@resource-id,"back")])[1]'),
+      $('(//*[@resource-id="com.moneybase.qa:id/back_button"] | //*[contains(@resource-id,"back_button")])[1]'),
+      $('(//*[@resource-id="com.moneybase.qa:id/toolbar_back"] | //*[contains(@resource-id,"toolbar_back")])[1]'),
     ]
   }
 
   private get closeBtn() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().text("Close")')
+      return $('//*[@text="Close" or @content-desc="Close"]')
     }
     return $('~Back')
   }
 
   private get exchangedToUsdAnchor() {
     if (browser.isAndroid) {
-      return $('android=new UiSelector().textContains("Exchanged From Eur")')
+      return $('//*[contains(@text,"Exchanged From Eur") or contains(@content-desc,"Exchanged From Eur")]')
     }
     return $('~Exchanged to USD')
   }
@@ -544,7 +543,7 @@ class FXExchangePage extends BasePage {
   }
 
   private async returnToHomeFromFxSuccessAndroid() {
-    const homeRoot = $('android=new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")')
+    const homeRoot = $('(//*[@resource-id="com.moneybase.qa:id/home_screen"] | //*[contains(@resource-id,"home_screen")])[1]')
 
     for (const backButton of this.androidBackButtonCandidates) {
       const visible = await backButton.isDisplayed().catch(() => false)
@@ -627,7 +626,7 @@ class FXExchangePage extends BasePage {
   private async enterFromAmount(amount: number | string) {
     const value = String(amount)
     const inputs = browser.isAndroid
-      ? await $$('android=new UiSelector().className("android.widget.EditText")')
+      ? await $$('//android.widget.EditText')
       : await $$('-ios class chain:**/XCUIElementTypeTextField')
     const candidateInputs: Array<{ el: WebdriverIO.Element; y: number }> = []
 
@@ -679,7 +678,7 @@ class FXExchangePage extends BasePage {
 
   private async getVisibleAmountValues() {
     const inputs = browser.isAndroid
-      ? await $$('android=new UiSelector().className("android.widget.EditText")')
+      ? await $$('//android.widget.EditText')
       : await $$('-ios class chain:**/XCUIElementTypeTextField')
     const values: Array<{ value: string; y: number }> = []
 
@@ -893,7 +892,7 @@ class FXExchangePage extends BasePage {
       // Navigate to home: press system back until home_screen appears
       await browser.waitUntil(
         async () => {
-          const homeShown = await $('android=new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")').isDisplayed().catch(() => false)
+          const homeShown = await $('(//*[@resource-id="com.moneybase.qa:id/home_screen"] | //*[contains(@resource-id,"home_screen")])[1]').isDisplayed().catch(() => false)
           if (homeShown) return true
           await browser.back().catch(() => {})
           return false
@@ -978,7 +977,7 @@ class FXExchangePage extends BasePage {
       return
     }
 
-    const homeVisible = await $('android=new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")')
+    const homeVisible = await $('(//*[@resource-id="com.moneybase.qa:id/home_screen"] | //*[contains(@resource-id,"home_screen")])[1]')
       .isExisting()
       .catch(() => false)
     if (homeVisible) {
@@ -1027,7 +1026,7 @@ class FXExchangePage extends BasePage {
 
     if (selected) return true
 
-    const homeVisible = await $('android=new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")')
+    const homeVisible = await $('(//*[@resource-id="com.moneybase.qa:id/home_screen"] | //*[contains(@resource-id,"home_screen")])[1]')
       .isExisting()
       .catch(() => false)
     if (homeVisible) {
@@ -1035,7 +1034,7 @@ class FXExchangePage extends BasePage {
       return false
     }
 
-    const pickerOpen = await $('android=new UiSelector().className("android.app.AlertDialog")')
+    const pickerOpen = await $('//android.app.AlertDialog')
       .isExisting()
       .catch(() => false)
     if (pickerOpen) {
@@ -1231,8 +1230,8 @@ class FXExchangePage extends BasePage {
         }
         // Secondary: look for explicit error element or text
         const byId = await this.insufficientBalanceErrorAndroid.isExisting().catch(() => false)
-        const byInsufficient = await $('android=new UiSelector().textContains("Insufficient")').isExisting().catch(() => false)
-        const byExceed = await $('android=new UiSelector().textContains("xceed")').isExisting().catch(() => false)
+        const byInsufficient = await $('//*[contains(@text,"Insufficient") or contains(@content-desc,"Insufficient")]').isExisting().catch(() => false)
+        const byExceed = await $('//*[contains(@text,"xceed") or contains(@content-desc,"xceed")]').isExisting().catch(() => false)
         return byId || byInsufficient || byExceed
       },
       { timeout: 20000, interval: 500, timeoutMsg: 'Insufficient balance error did not appear and submit button did not become disabled' }

@@ -7,7 +7,7 @@ type WdioEl = ChainablePromiseElement
 
 class HomeSearchPage extends BasePage {
   private get homeSearchInputAndroid() {
-    return $('android=new UiSelector().resourceId("home_input_search")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/home_input_search"] | //*[contains(@resource-id,"home_input_search")])[1]')
   }
 
   private get homeSearchInputAndroidByXpath() {
@@ -19,7 +19,7 @@ class HomeSearchPage extends BasePage {
   }
 
   private get androidSearchEditText() {
-    return $('android=new UiSelector().className("android.widget.EditText").instance(0)')
+    return $('(//android.widget.EditText)[1]')
   }
 
   private get homeSearchInputCandidates(): WdioEl[] {
@@ -40,9 +40,9 @@ class HomeSearchPage extends BasePage {
   private get homeSearchResultCandidates(): WdioEl[] {
     if (browser.isAndroid) {
       return [
-        $('android=new UiSelector().descriptionContains("Carlos Cat")'),
-        $('android=new UiSelector().textContains("Carlos Cat")'),
-        $('android=new UiSelector().descriptionContains("To Carlos Cat")'),
+        $('//*[contains(@content-desc,"Carlos Cat") or contains(@text,"Carlos Cat")]'),
+        $('//*[contains(@text,"Carlos Cat") or contains(@content-desc,"Carlos Cat")]'),
+        $('//*[contains(@content-desc,"To Carlos Cat") or contains(@text,"To Carlos Cat")]'),
       ]
     }
 
@@ -56,13 +56,13 @@ class HomeSearchPage extends BasePage {
   private get openedRecipientScreenCandidates(): WdioEl[] {
     if (browser.isAndroid) {
       return [
-        $('android=new UiSelector().resourceId("beneficiaryDetails_button_pay")'),
-        $('android=new UiSelector().resourceId("beneficiaryDetails_button_back")'),
+        $('(//*[@resource-id="com.moneybase.qa:id/beneficiaryDetails_button_pay"] | //*[contains(@resource-id,"beneficiaryDetails_button_pay")])[1]'),
+        $('(//*[@resource-id="com.moneybase.qa:id/beneficiaryDetails_button_back"] | //*[contains(@resource-id,"beneficiaryDetails_button_back")])[1]'),
         $('//*[@resource-id="beneficiaryDetails_button_pay"]'),
         $('//*[@resource-id="beneficiaryDetails_button_back"]'),
-        $('android=new UiSelector().textContains("Carlos Cat")'),
-        $('android=new UiSelector().descriptionContains("Carlos Cat")'),
-        $('android=new UiSelector().resourceId("makePayment_input_amount")'),
+        $('//*[contains(@text,"Carlos Cat") or contains(@content-desc,"Carlos Cat")]'),
+        $('//*[contains(@content-desc,"Carlos Cat") or contains(@text,"Carlos Cat")]'),
+        $('(//*[@resource-id="com.moneybase.qa:id/makePayment_input_amount"] | //*[contains(@resource-id,"makePayment_input_amount")])[1]'),
       ]
     }
 

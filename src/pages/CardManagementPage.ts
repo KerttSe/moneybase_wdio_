@@ -307,7 +307,7 @@ class CardManagementPage extends BasePage {
     const labelLocation = await label.getLocation()
     const labelSize = await label.getSize()
     const labelCenterY = labelLocation.y + labelSize.height / 2
-    const switches = await $$('android=new UiSelector().checkable(true).clickable(true)')
+    const switches = await $$('//*[@checkable="true" and @clickable="true"]')
     let best: { element: WebdriverIO.Element; score: number } | undefined
 
     for (const candidate of switches) {
@@ -354,7 +354,7 @@ class CardManagementPage extends BasePage {
   private async waitForAndroidCardPinValue(timeoutMs = 10000) {
     await browser.waitUntil(async () => {
       // Try UiSelector textMatches (legacy builds)
-      const values = await (async () => { try { return await $$('android=new UiSelector().textMatches("^\\\\d{4}$")') } catch { return [] } })()
+      const values = await (async () => { try { return await $$('//*[string-length(@text) = 4 and translate(@text,"0123456789","") = ""]') } catch { return [] } })()
       for (const value of values) {
         if (await value.isDisplayed().catch(() => false) || await value.isExisting().catch(() => false)) return true
       }
@@ -988,6 +988,13 @@ class CardManagementPage extends BasePage {
   }
 
   public async freezeAndUnfreezeActiveCard() {
+    const alreadyFrozen = await this.prepareSmokeCardFreeze()
+    await this.freezeSmokeCard()
+    await this.unfreezeSmokeCard()
+    await this.finishSmokeCardFreeze(alreadyFrozen)
+  }
+
+  public async prepareSmokeCardFreeze() {
     await this.openCardsTab()
 
     if (browser.isIOS) {
@@ -1005,26 +1012,7 @@ class CardManagementPage extends BasePage {
         interval: 500,
         timeoutMsg: 'Freeze action was not visible on iOS',
       })
-      await this.tapIOSCardAction(
-        'Freeze',
-        async () => await this.isUnfreezeActionVisibleIOS(),
-        'Unfreeze action did not appear after freezing card on iOS'
-      )
-
-      await this.tapIOSCardAction(
-        'Unfreeze',
-        async () => await this.isFreezeActionVisibleIOS(),
-        'Freeze action did not appear after unfreezing card on iOS'
-      )
-
-      if (!alreadyFrozen) {
-        await this.tapIOSCardAction(
-          'Freeze',
-          async () => await this.isUnfreezeActionVisibleIOS(),
-          'Unfreeze action did not appear after freezing card on iOS'
-        )
-      }
-      return
+      return alreadyFrozen
     }
 
     const alreadyFrozen = await this.isUnfreezeActionVisibleAndroid()
@@ -1041,17 +1029,49 @@ class CardManagementPage extends BasePage {
       interval: 500,
       timeoutMsg: 'Freeze action was not visible on Android',
     })
+    return alreadyFrozen
+  }
+
+  public async freezeSmokeCard() {
+    if (browser.isIOS) {
+      await this.tapIOSCardAction(
+        'Freeze',
+        async () => await this.isUnfreezeActionVisibleIOS(),
+        'Unfreeze action did not appear after freezing card on iOS'
+      )
+      return
+    }
     await this.tapAndroidCardAction(
       'Freeze',
       async () => await this.isUnfreezeActionVisibleAndroid(),
       'Unfreeze action did not appear after freezing card on Android'
     )
+  }
 
+  public async unfreezeSmokeCard() {
+    if (browser.isIOS) {
+      await this.tapIOSCardAction(
+        'Unfreeze',
+        async () => await this.isFreezeActionVisibleIOS(),
+        'Freeze action did not appear after unfreezing card on iOS'
+      )
+      return
+    }
     await this.tapAndroidCardAction(
       'Unfreeze',
       async () => await this.isFreezeActionVisibleAndroid(),
       'Freeze action did not appear after unfreezing card on Android'
     )
+  }
+
+  public async finishSmokeCardFreeze(alreadyFrozen: boolean) {
+    if (browser.isIOS && !alreadyFrozen) {
+      await this.tapIOSCardAction(
+        'Freeze',
+        async () => await this.isUnfreezeActionVisibleIOS(),
+        'Unfreeze action did not appear after freezing card on iOS'
+      )
+    }
   }
 
   public async verifyPrimaryIndicatorDisplayed() {

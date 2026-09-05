@@ -1177,8 +1177,8 @@ export default class PriceAlertsPage extends BasePage {
       this.bmwSearchResultImageAndroid,
       this.bmw3SearchResultImageAndroid,
       this.firstInvestSearchResultAndroid,
-      $(`android=new UiSelector().className("android.view.View").descriptionContains("${q}")`),
-      $(`android=new UiSelector().className("android.view.View").descriptionContains("${qTitle}")`),
+      $(`//android.view.View[contains(@content-desc,"${q}") or contains(@text,"${q}")]`),
+      $(`//android.view.View[contains(@content-desc,"${qTitle}") or contains(@text,"${qTitle}")]`),
       $(`//android.view.View[contains(@content-desc,"${q}")]`),
       $(`//*[contains(@content-desc,"${q.toUpperCase()}")]`),
     ]
@@ -1270,6 +1270,12 @@ export default class PriceAlertsPage extends BasePage {
 
   public async createPriceAlertAndroid(params: CreatePriceAlertParams) {
     if (!browser.isAndroid) return
+    await this.selectSmokePriceAlertAndroid(params)
+    await this.submitSmokePriceAlertAndroid(params)
+    await this.verifySmokePriceAlertAndroid(params)
+  }
+
+  public async selectSmokePriceAlertAndroid(params: CreatePriceAlertParams) {
 
     // Mirror iOS: Price Alerts → New tab → Find Instrument → select → +1%
     // Do NOT go through invest home search → instrument landing (that path lands on New Order)
@@ -1283,6 +1289,9 @@ export default class PriceAlertsPage extends BasePage {
     // Select the instrument from results
     await this.selectFirstSearchResultAndroid(params.instrumentQuery)
     await browser.pause(800)
+  }
+
+  public async submitSmokePriceAlertAndroid(params: CreatePriceAlertParams) {
 
     // Hard stop — selecting instrument must NOT open New Order
     if (await this.isOnNewOrderScreenAndroid()) {
@@ -1296,6 +1305,9 @@ export default class PriceAlertsPage extends BasePage {
     } else {
       await this.pickPlusOnePercentAndReturnAndroid()
     }
+  }
+
+  public async verifySmokePriceAlertAndroid(params: CreatePriceAlertParams) {
 
     await this.openPriceAlertsAndroid()
     await this.goToOverviewTabAndroid()
@@ -1306,6 +1318,11 @@ export default class PriceAlertsPage extends BasePage {
 
   public async createPriceAlertIOS(params: CreatePriceAlertParams) {
     if (!browser.isIOS) return
+    await this.selectSmokePriceAlertIOS(params)
+    await this.submitSmokePriceAlertIOS(params)
+  }
+
+  public async selectSmokePriceAlertIOS(params: CreatePriceAlertParams) {
 
     await this.openPriceAlertsIOS()
 
@@ -1313,6 +1330,9 @@ export default class PriceAlertsPage extends BasePage {
     await this.goToNewTabIOS()
     await this.typeInstrumentQueryIOS(params.instrumentQuery)
     await this.selectFirstSearchResultIOS(params.instrumentQuery)
+  }
+
+  public async submitSmokePriceAlertIOS(params: CreatePriceAlertParams) {
 
     // iOS stops at the create confirmation. Active rows are not exposed reliably in native XML.
     await this.pickPlusOnePercentAndVerifyCreatedIOS()

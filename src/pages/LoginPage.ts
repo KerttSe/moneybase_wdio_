@@ -23,16 +23,14 @@ export class LoginPage extends BasePage {
 
   private byId(name: string) {
     if (browser.isAndroid) {
-      //  cover і "welcomeToMoneybase_button_skip", and "com.xxx:id/welcomeToMoneybase_button_skip"
-      const rx = `.*:id/${name}$|^${name}$`
-      return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+      return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[contains(@resource-id,"${name}")])[1]`)
     }
     // iOS: accessibility id
     return $(`~${name}`)
   }
 
   private text(text: string) {
-    return $(`android=new UiSelector().text("${text}")`)
+    return $(`//*[@text="${text}" or @content-desc="${text}"]`)
   }
 
   private buttonByText(text: string) {
@@ -71,7 +69,7 @@ export class LoginPage extends BasePage {
 
     const permissionAllow = $('id=com.android.permissioncontroller:id/permission_allow_button')
     const permissionAllowLegacy = $('id=com.android.packageinstaller:id/permission_allow_button')
-    const permissionAllowText = $('android=new UiSelector().textMatches("(?i)allow")')
+    const permissionAllowText = $('//*[contains(@text,"llow") or contains(@content-desc,"llow")]')
 
     const clickIfVisible = async (el: ChainablePromiseElement) => {
       const visible = await el.isDisplayed().catch(() => false)
@@ -217,7 +215,7 @@ get countryCodeBtn() { return this.byId('register_button_countryCode') }
 // Android:  TextView  "Search"
 get countrySearchTap() {
   if (browser.isAndroid) {
-    return $('android=new UiSelector().text("Search")')
+    return $('//*[@text="Search" or @content-desc="Search"]')
   }
   return this.byId('countrySelection_search_tap')
 }
@@ -227,7 +225,7 @@ get countrySearchTap() {
 // Android:  "Malta"
 countryItem(country: string) {
   if (browser.isAndroid) {
-    return $(`android=new UiSelector().text("${country}")`)
+    return $(`//*[@text="${country}" or @content-desc="${country}"]`)
   }
   return this.byId(`country_item_${country}`)
 }
@@ -244,7 +242,7 @@ private async getCountrySearchInput() {
 
   // Android: after taping on "Search" should be appear EditText
   // taking first EditText field on screen, because in this flow only one should be present. If in future there will be more EditText fields on this screen, we need to find more reliable locator for search input.
-  return $('android=new UiSelector().className("android.widget.EditText").instance(0)')
+  return $('(//android.widget.EditText)[1]')
 }
 
 // Android “tank” input: if setValue failing — ADB fallback
@@ -306,14 +304,14 @@ async selectCountry(country: string) {
 
 get mobileInput() {
   if (browser.isAndroid) {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/register_input_mobileNumber$|^register_input_mobileNumber$")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/register_input_mobileNumber"] | //*[contains(@resource-id,"register_input_mobileNumber")])[1]')
   }
   return $('~register_input_mobileNumber')
 }
 
 get continueBtn() {
   if (browser.isAndroid) {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/register_button_continue$|^register_button_continue$")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/register_button_continue"] | //*[contains(@resource-id,"register_button_continue")])[1]')
   }
   return $('~register_button_continue')
 }
@@ -336,7 +334,7 @@ get authLoginNavBar() {
 
 // Android anchor
 get androidAuthLoginRoot() {
-  return $('android=new UiSelector().resourceId("com.moneybase.qa:id/action_bar_root")');
+  return $('//*[@resource-id="com.moneybase.qa:id/action_bar_root"]');
 }
 
 /* ===== iOS ===== */
@@ -363,7 +361,7 @@ private async tapDigitIOS(d: string) {
 /* ===== Aos ===== */
 private androidKeypadDigit(d: string) {
   //  повний resource-id з package
-  return $(`android=new UiSelector().resourceId("com.moneybase.qa:id/keypad_text_${d}")`);
+  return $(`//*[@resource-id="com.moneybase.qa:id/keypad_text_${d}"]`);
 }
 
   private async tapDigitAndroid(d: string) {
@@ -485,20 +483,20 @@ get otpIncorrectCodeIOS() {
 /* ===== Android ===== */
 // Anchor (те, що ти показав)
 get otpContainerAndroid() {
-  return $('android=new UiSelector().resourceId("com.moneybase.qa:id/composeViewRegisterMobile")');
+  return $('//*[@resource-id="com.moneybase.qa:id/composeViewRegisterMobile"]');
 }
 
 // input field 
 get otpFieldAndroid() {
-  return $('android=new UiSelector().resourceId("com.moneybase.qa:id/otp_input")');
+  return $('//*[@resource-id="com.moneybase.qa:id/otp_input"]');
 }
 
 get otpErrorAndroid() {
-  return $('android=new UiSelector().resourceId("com.moneybase.qa:id/tvMobileVerificationError")')
+  return $('//*[@resource-id="com.moneybase.qa:id/tvMobileVerificationError"]')
 }
 
 private get otpErrorTextAndroid() {
-  return $('android=new UiSelector().textMatches("(?i).*(too many|temporarily locked|locked|incorrect|invalid|try again).*")')
+  return $('//*[contains(@text,"too many") or contains(@text,"locked") or contains(@text,"incorrect") or contains(@text,"invalid") or contains(@text,"try again") or contains(@content-desc,"too many") or contains(@content-desc,"locked") or contains(@content-desc,"incorrect") or contains(@content-desc,"invalid") or contains(@content-desc,"try again")]')
 }
 
 private async getAndroidOtpErrorText() {
@@ -754,7 +752,7 @@ async enterOtp(code: string = '123456') {
 
 get applePayProposalCloseBtn() {
   if (browser.isAndroid) {
-    return $('android=new UiSelector().resourceId("googlepayProposal_button_close")')}
+    return $('(//*[@resource-id="com.moneybase.qa:id/googlepayProposal_button_close"] | //*[contains(@resource-id,"googlepayProposal_button_close")])[1]')}
   return $('~applePayProposal_button_close')
 }
 
@@ -788,7 +786,7 @@ get verifyNowText() {
 }
 
 get homeTabAndroid() {
-  return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_home")')
+  return $('//*[@resource-id="com.moneybase.qa:id/navigation_button_home"]')
 }
 
 get homeTabAndroidA11y() {

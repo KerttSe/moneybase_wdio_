@@ -9,27 +9,27 @@ class PhysicalCardCreationPage extends BasePage {
    * ========================= */
 
   private get userAvatarBtnAndroid() {
-    return $('android=new UiSelector().resourceId("home_button_userAvatar")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/home_button_userAvatar"] | //*[contains(@resource-id,"home_button_userAvatar")])[1]')
   }
 
   private get businessAccountLabelAndroid() {
-    return $('android=new UiSelector().textContains("Business")')
+    return $('//*[contains(@text,"Business") or contains(@content-desc,"Business")]')
   }
 
   private get singleAccountItemAndroid() {
-    return $('android=new UiSelector().description("Single")')
+    return $('//*[@content-desc="Single" or @text="Single"]')
   }
 
   private get singleAccountItemAndroidByText() {
-    return $('android=new UiSelector().text("Single")')
+    return $('//*[@text="Single" or @content-desc="Single"]')
   }
 
   private get homeRootAndroid() {
-    return $('android=new UiSelector().resourceId("home_screen")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/home_screen"] | //*[contains(@resource-id,"home_screen")])[1]')
   }
 
   private get cardsRootAndroid() {
-    return $('android=new UiSelector().resourceId("cards_screen")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/cards_screen"] | //*[contains(@resource-id,"cards_screen")])[1]')
   }
 
   private get cardsRootIOS() {
@@ -78,11 +78,11 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get googlePayNotNowAndroid() {
-    return $('android=new UiSelector().text("Not Now")')
+    return $('//*[@text="Not Now" or @content-desc="Not Now"]')
   }
 
   private get googlePayPromoTitleAndroid() {
-    return $('android=new UiSelector().textContains("Google Pay")')
+    return $('//*[contains(@text,"Google Pay") or contains(@content-desc,"Google Pay")]')
   }
 
   public async dismissGooglePayPromoAndroid(timeoutMs = 7000) {
@@ -177,7 +177,7 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get addNewCardBtnAndroid() {
-  return $('android=new UiSelector().resourceId("cards_card_addNewCard")')
+  return $('(//*[@resource-id="com.moneybase.qa:id/cards_card_addNewCard"] | //*[contains(@resource-id,"cards_card_addNewCard")])[1]')
 }
 
   private get addNewCardBtnIOS() {
@@ -197,11 +197,11 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get virtualCardTypeAndroid() {
-    return $('android=new UiSelector().resourceId("cardTypeSelection_card_virtualCard")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/cardTypeSelection_card_virtualCard"] | //*[contains(@resource-id,"cardTypeSelection_card_virtualCard")])[1]')
   }
 
   private get physicalCardTypeAndroid() {
-    return $('android=new UiSelector().resourceId("cardTypeSelection_card_physicalCard")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/cardTypeSelection_card_physicalCard"] | //*[contains(@resource-id,"cardTypeSelection_card_physicalCard")])[1]')
   }
 
   private get physicalCardTypeIOS() {
@@ -221,7 +221,7 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get confirmDesignBtnAndroid() {
-    return $('android=new UiSelector().resourceId("cardDesignSelection_button_confirm")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/cardDesignSelection_button_confirm"] | //*[contains(@resource-id,"cardDesignSelection_button_confirm")])[1]')
   }
 
   private get confirmDesignBtnIOS() {
@@ -229,7 +229,7 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get orderPhysicalCardBtnAndroid() {
-    return $('android=new UiSelector().text("Order")')
+    return $('//*[@text="Order" or @content-desc="Order"]')
   }
 
   private get orderPhysicalCardBtnAndroidByXpath() {
@@ -237,7 +237,7 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get cardDesignScreenAndroid() {
-    return $('android=new UiSelector().resourceId("cardDesignSelection_screen")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/cardDesignSelection_screen"] | //*[contains(@resource-id,"cardDesignSelection_screen")])[1]')
   }
 
   private get otpInputAndroid() {
@@ -245,11 +245,11 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get pinInputAndroidFocused() {
-    return $('android=new UiSelector().className("android.widget.EditText").focused(true)')
+    return $('//android.widget.EditText[@focused="true"]')
   }
 
   private get pinInputAndroidFirst() {
-    return $('android=new UiSelector().className("android.widget.EditText").instance(0)')
+    return $('(//android.widget.EditText)[1]')
   }
 
   private get closeSheetAndroid() {
@@ -261,7 +261,7 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get closeButtonAndroid() {
-    return $('android=new UiSelector().text("Close")')
+    return $('//*[@text="Close" or @content-desc="Close"]')
   }
 
   private get closeButtonParentAndroid() {
@@ -269,15 +269,15 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get viewMyCardsBtnAndroid() {
-    return $('android=new UiSelector().text("View my Cards")')
+    return $('//*[@text="View my Cards" or @content-desc="View my Cards"]')
   }
 
   private get cardAddedSuccessTextAndroid() {
-    return $('android=new UiSelector().text("Card added successfully")')
+    return $('//*[@text="Card added successfully" or @content-desc="Card added successfully"]')
   }
 
   private get confirmAddressBtnAndroid() {
-    return $('android=new UiSelector().text("Confirm Address")')
+    return $('//*[@text="Confirm Address" or @content-desc="Confirm Address"]')
   }
 
   private get confirmAddressBtnIOS() {
@@ -317,7 +317,7 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get freezeButtonAndroid() {
-    return $('android=new UiSelector().resourceId("cards_button_freeze")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/cards_button_freeze"] | //*[contains(@resource-id,"cards_button_freeze")])[1]')
   }
 
   private get freezeButtonIOS() {
@@ -325,11 +325,11 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get freezeTextAndroid() {
-    return $('android=new UiSelector().text("Freeze")')
+    return $('//*[@text="Freeze" or @content-desc="Freeze"]')
   }
 
   private get unfreezeTextAndroid() {
-    return $('android=new UiSelector().text("Unfreeze")')
+    return $('//*[@text="Unfreeze" or @content-desc="Unfreeze"]')
   }
 
   private get physicalCardItemAndroid() {
@@ -377,19 +377,19 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get reportButtonAndroid() {
-    return $('android=new UiSelector().resourceId("cards_button_report")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/cards_button_report"] | //*[contains(@resource-id,"cards_button_report")])[1]')
   }
 
   private get blockButtonAndroid() {
-    return $('android=new UiSelector().textContains("Block")')
+    return $('//*[contains(@text,"Block") or contains(@content-desc,"Block")]')
   }
 
   private get confirmBlockButtonAndroid() {
-    return $('android=new UiSelector().resourceId("android:id/button1")')
+    return $('//*[@resource-id="android:id/button1"]')
   }
 
   private get blockedSuccessTextAndroid() {
-    return $('android=new UiSelector().text("Your card has been blocked.")')
+    return $('//*[@text="Your card has been blocked." or @content-desc="Your card has been blocked."]')
   }
 
   private get otpEntryIOS() {
@@ -410,7 +410,7 @@ class PhysicalCardCreationPage extends BasePage {
 
   private async isSyncIndicatorVisibleAndroid() {
     if (!browser.isAndroid) return false
-    const indicators = await $$('android=new UiSelector().className("android.widget.ProgressBar")')
+    const indicators = await $$('//android.widget.ProgressBar')
     for (const el of indicators) {
       if (await el.isDisplayed().catch(() => false)) return true
     }
@@ -585,9 +585,9 @@ class PhysicalCardCreationPage extends BasePage {
     await browser.switchContext('NATIVE_APP').catch(() => {})
     await browser.waitUntil(
       async () => {
-        const errorDialog = await $('android=new UiSelector().resourceId("com.moneybase.qa:id/alertTitle")').isDisplayed().catch(() => false)
+        const errorDialog = await $('//*[@resource-id="com.moneybase.qa:id/alertTitle"]').isDisplayed().catch(() => false)
         if (errorDialog) {
-          await $('android=new UiSelector().resourceId("android:id/button1")').click().catch(() => {})
+          await $('//*[@resource-id="android:id/button1"]').click().catch(() => {})
           return false
         }
         const closeSheetExists = await this.closeSheetAndroid.isDisplayed().catch(() => false)
@@ -906,7 +906,7 @@ class PhysicalCardCreationPage extends BasePage {
     // Fallback: if report button still not visible — navigate Home → Cards to force UI refresh
     if (!reportShown) {
       console.log('[PhysicalCard] report button not visible, navigating Home → Cards to refresh...')
-      const homeTab = $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_home")')
+      const homeTab = $('//*[@resource-id="com.moneybase.qa:id/navigation_button_home"]')
       const homeTabA11y = $('~Home')
       if (await homeTab.isDisplayed().catch(() => false)) {
         await homeTab.click().catch(() => {})
@@ -947,7 +947,7 @@ class PhysicalCardCreationPage extends BasePage {
     // Fallback: backend/card-state sync can lag; refresh Cards surface via Home tab
     console.log('[PhysicalCard] add new card not visible after deletion, navigating Home → Cards to refresh...')
 
-    const homeTab = $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_button_home")')
+    const homeTab = $('//*[@resource-id="com.moneybase.qa:id/navigation_button_home"]')
     const homeTabA11y = $('~Home')
 
     if (await homeTab.isDisplayed().catch(() => false)) {
@@ -1402,31 +1402,71 @@ class PhysicalCardCreationPage extends BasePage {
 
   /** Full flow — but data must come from spec */
   public async createPhysicalCardAndroid(pin: string, otp: string) {
+    await this.preparePhysicalCardAndroid(pin, otp)
+    await this.enterPhysicalCardDeliveryAndroid(pin, otp)
+    await this.setPhysicalCardPinAndroid(pin, otp)
+    await this.confirmPhysicalCardOtpAndroid(pin, otp)
+    await this.finishPhysicalCardAndroid(pin, otp)
+  }
+
+  public async preparePhysicalCardAndroid(pin: string, otp: string) {
     await this.openCardsTabAndroid()
     await this.cleanupExistingCardAndroid(30000)
     await this.startAddNewCardAndroid()
     await this.choosePhysicalCardTypeAndroid()
     await this.confirmPhysicalCardAndroid()
+  }
+
+  public async enterPhysicalCardDeliveryAndroid(pin: string, otp: string) {
     await this.fillDeliveryAddressAndroid()
     await this.confirmDeliveryAddressAndroid()
+  }
+
+  public async setPhysicalCardPinAndroid(pin: string, otp: string) {
     await this.createPinAndroid(pin)
     await this.reenterPinAndroid(pin)
+  }
+
+  public async confirmPhysicalCardOtpAndroid(pin: string, otp: string) {
     await this.enterOtpAndroid(otp)
     await this.closeCardSheetAndroid()
+  }
+
+  public async finishPhysicalCardAndroid(pin: string, otp: string) {
     await this.reportAndBlockCardAndroid(30000)
   }
 
   public async createPhysicalCardIOS(pin: string, otp: string) {
+    await this.preparePhysicalCardIOS(pin, otp)
+    await this.enterPhysicalCardDeliveryIOS(pin, otp)
+    await this.setPhysicalCardPinIOS(pin, otp)
+    await this.confirmPhysicalCardOtpIOS(pin, otp)
+    await this.finishPhysicalCardIOS(pin, otp)
+  }
+
+  public async preparePhysicalCardIOS(pin: string, otp: string) {
     await this.openCardsTabIOS()
     await this.startAddNewCardIOS()
     await this.choosePhysicalCardTypeIOS()
     await this.confirmDefaultDesignIOS()
+  }
+
+  public async enterPhysicalCardDeliveryIOS(pin: string, otp: string) {
     await this.fillDeliveryAddressIOS()
     await this.confirmDeliveryAddressIOS()
+  }
+
+  public async setPhysicalCardPinIOS(pin: string, otp: string) {
     await this.createPinIOS(pin)
     await this.reenterPinIOS(pin)
+  }
+
+  public async confirmPhysicalCardOtpIOS(pin: string, otp: string) {
     await this.enterOtpIOS(otp)
     await this.closeApplePayProposalIOS()
+  }
+
+  public async finishPhysicalCardIOS(pin: string, otp: string) {
     await this.waitForFreezeReadyIOS(60000)
     await this.freezeButtonIOS.waitForExist({ timeout: 60000 })
     await this.tap(this.freezeButtonIOS)

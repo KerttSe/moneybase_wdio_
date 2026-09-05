@@ -357,16 +357,15 @@ export default class CashFundsPage extends BasePage {
   }
 
   private get investTabAndroidByText() {
-    return this.androidUiSelector('new UiSelector().text("Invest")')
+    return $('//*[@text="Invest" or @content-desc="Invest"]')
   }
 
   private get investTabAndroidByDesc() {
-    return this.androidUiSelector('new UiSelector().description("Invest")')
+    return $('//*[@content-desc="Invest" or @text="Invest"]')
   }
 
   private get discoverAndroidText() {
-    // Docs: -android uiautomator
-    return this.androidUiSelector('new UiSelector().className("android.view.View").instance(13)')
+    return $('(//android.view.View)[14]')
   }
 
   private get discoverAndroidTileByParent() {
@@ -379,7 +378,7 @@ export default class CashFundsPage extends BasePage {
   }
 
   private get discoverHeaderAndroid() {
-    return this.androidUiSelector('new UiSelector().text("Discover")')
+    return $('//*[@text="Discover" or @content-desc="Discover"]')
   }
 
   private get discoverCategoriesHeadingAndroid() {
@@ -407,33 +406,27 @@ export default class CashFundsPage extends BasePage {
   }
 
   private get cashFundsCardAndroidLongUiAutomator() {
-    // Provided: new UiSelector().description("Cash Funds Earn up to 4.87% APY, no fees")
-    return this.androidUiSelector('new UiSelector().description("Cash Funds Earn up to 4.87% APY, no fees")')
+    return $('//*[@content-desc="Cash Funds Earn up to 4.87% APY, no fees" or contains(@content-desc,"Cash Funds Earn up to")]')
   }
 
   private get investScrollContainerAndroid() {
-    // In Invest webview, the main scroll container is exposed as an Android view.
-    return this.androidUiSelector('new UiSelector().resourceId("cc-scroll-container")')
+    return $('//*[@resource-id="cc-scroll-container" or contains(@resource-id,"cc-scroll-container")]')
   }
 
   private get cashFundsCardAndroidDescContainsCashFunds() {
-    return this.androidUiSelector('new UiSelector().descriptionContains("Cash Funds")')
+    return $('//*[contains(@content-desc,"Cash Funds") or contains(@text,"Cash Funds")]')
   }
 
   private get cashFundsCardAndroidTextContainsCashFunds() {
-    return this.androidUiSelector('new UiSelector().textContains("Cash Funds")')
+    return $('//*[contains(@text,"Cash Funds") or contains(@content-desc,"Cash Funds")]')
   }
 
   private get cashFundsCardAndroidScrollIntoViewByDescContainsCashFunds() {
-    return this.androidUiSelector(
-      'new UiScrollable(new UiSelector().resourceId("cc-scroll-container")).scrollIntoView(new UiSelector().descriptionContains("Cash Funds"))'
-    )
+    return $('//*[contains(@content-desc,"Cash Funds") or contains(@text,"Cash Funds")]')
   }
 
   private get cashFundsCardAndroidScrollIntoViewByTextContainsCashFunds() {
-    return this.androidUiSelector(
-      'new UiScrollable(new UiSelector().resourceId("cc-scroll-container")).scrollIntoView(new UiSelector().textContains("Cash Funds"))'
-    )
+    return $('//*[contains(@text,"Cash Funds") or contains(@content-desc,"Cash Funds")]')
   }
 
   private get cashFundsCardAndroidLongXpath() {
@@ -446,11 +439,11 @@ export default class CashFundsPage extends BasePage {
   }
 
   private get cashFundsHeaderAndroid() {
-    return this.androidUiSelector('new UiSelector().text("Cash Funds")')
+    return $('//*[@text="Cash Funds" or @content-desc="Cash Funds"]')
   }
 
   private get usdMoneyMarketFundAndroidByText() {
-    return this.androidUiSelector('new UiSelector().textContains("UBS Money Market Fund")')
+    return $('//*[contains(@text,"UBS Money Market Fund") or contains(@content-desc,"UBS Money Market Fund")]')
   }
 
   private get usdMoneyMarketFundAndroidA11y() {

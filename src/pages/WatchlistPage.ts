@@ -15,20 +15,19 @@ export default class WatchlistPage extends BasePage {
   }
 
   private byIdAndroid(name: string) {
-    const rx = `.*:id/${name}$|^${name}$`
-    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[contains(@resource-id,"${name}")])[1]`)
   }
 
   private androidText(text: string) {
-    return $(`android=new UiSelector().text("${text}")`)
+    return $(`//*[@text="${text}" or @content-desc="${text}"]`)
   }
 
   private androidTextContains(text: string) {
-    return $(`android=new UiSelector().textContains("${text}")`)
+    return $(`//*[contains(@text,"${text}") or contains(@content-desc,"${text}")]`)
   }
 
   private androidDescContains(text: string) {
-    return $(`android=new UiSelector().descriptionContains("${text}")`)
+    return $(`//*[contains(@content-desc,"${text}") or contains(@text,"${text}")]`)
   }
 
   private get investTabIOS() {
@@ -125,8 +124,7 @@ export default class WatchlistPage extends BasePage {
   }
 
   private get instrumentTopRightActionAndroid() {
-    // BrowserStack/Appium XPath2 can fail on complex axes; use UiSelector instance instead.
-    return $('android=new UiSelector().className("android.widget.ImageButton").instance(0)')
+    return $('(//android.widget.ImageButton)[1]')
   }
 
   private async waitForAnyDisplayed(candidates: Array<ReturnType<typeof $>>, timeout = 10000, label = 'element') {

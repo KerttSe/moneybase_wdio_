@@ -12,12 +12,12 @@ class AddFundsBankTransferWalletManagerPage extends BasePage {
   private readonly walletCurrencies = ['EUR', 'USD', 'GBP']
 
   private byAndroidResId(id: string) {
-    const rx = `.*:id/${id}$|^${id}$`
-    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[contains(@resource-id,"${id}")])[1]`)
   }
 
-  private byAndroidResIdMatches(rx: string) {
-    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+  private byAndroidResIdMatches(_rx: string) {
+    // unused — replaced by direct XPath in callers
+    return $('//*[contains(@resource-id,"addFunds")]')
   }
 
   private get addFundsScreenAnchorIOS() {
@@ -27,9 +27,7 @@ class AddFundsBankTransferWalletManagerPage extends BasePage {
   }
 
   private get addFundsScreenAnchorAndroid() {
-    return this.byAndroidResIdMatches(
-      '.*:id/(addFunds_screen|addFunds_card_cardTopUp|addFunds_card_bankTransfer|addFunds_card_autoTopUp)$|^(addFunds_screen|addFunds_card_cardTopUp|addFunds_card_bankTransfer|addFunds_card_autoTopUp)$'
-    )
+    return $('(//*[contains(@resource-id,"addFunds_screen") or contains(@resource-id,"addFunds_card_cardTopUp") or contains(@resource-id,"addFunds_card_bankTransfer") or contains(@resource-id,"addFunds_card_autoTopUp")])[1]')
   }
 
   private get bankTransferTileIOS() {
@@ -40,12 +38,12 @@ class AddFundsBankTransferWalletManagerPage extends BasePage {
 
   private get bankTransferTileAndroid() {
     return $(
-      'android=new UiSelector().descriptionMatches("(?i).*bank.*transfer.*|addFunds_(item|card)_bankTransfer")'
+      '//*[contains(@content-desc,"bank") and contains(@content-desc,"transfer") or contains(@content-desc,"bankTransfer") or contains(@resource-id,"bankTransfer")]'
     )
   }
 
   private get bankTransferTileAndroidByText() {
-    return $('android=new UiSelector().textMatches("(?i).*bank.*transfer.*")')
+    return $('//*[contains(@text,"Bank Transfer") or contains(@content-desc,"Bank Transfer")]')
   }
 
   private get bankTransferScreenAnchorIOS() {
@@ -55,7 +53,7 @@ class AddFundsBankTransferWalletManagerPage extends BasePage {
   }
 
   private get bankTransferScreenAnchorAndroid() {
-    return $('android=new UiSelector().textMatches("(?i).*bank.*transfer.*|.*wallet manager.*")')
+    return $('//*[contains(@text,"Bank Transfer") or contains(@text,"Wallet Manager") or contains(@content-desc,"Bank Transfer") or contains(@content-desc,"Wallet Manager")]')
   }
 
   private get walletManagerEntryIOS() {
@@ -65,11 +63,11 @@ class AddFundsBankTransferWalletManagerPage extends BasePage {
   }
 
   private get walletManagerEntryAndroid() {
-    return $('android=new UiSelector().descriptionMatches("(?i).*wallet manager.*|.*walletManager.*")')
+    return $('//*[contains(@content-desc,"Wallet Manager") or contains(@content-desc,"walletManager") or contains(@resource-id,"walletManager")]')
   }
 
   private get walletManagerEntryAndroidByText() {
-    return $('android=new UiSelector().textMatches("(?i).*wallet manager.*")')
+    return $('//*[contains(@text,"Wallet Manager") or contains(@content-desc,"Wallet Manager")]')
   }
 
   private get walletManagerScreenAnchorIOS() {
@@ -81,7 +79,7 @@ class AddFundsBankTransferWalletManagerPage extends BasePage {
   }
 
   private get walletManagerScreenAnchorAndroid() {
-    return $('android=new UiSelector().textMatches("(?i).*wallet manager.*|.*manage wallet.*")')
+    return $('//*[contains(@text,"Wallet Manager") or contains(@text,"Manage Wallet") or contains(@content-desc,"Wallet Manager") or contains(@content-desc,"Manage Wallet")]')
   }
 
   private walletCurrencyAnchorIOS(currency: string) {

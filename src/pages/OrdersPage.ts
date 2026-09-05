@@ -205,7 +205,7 @@ export default class OrdersPage extends BasePage {
   }
 
   private get previewBuyButtonAndroidUiSelector() {
-    return $('android=new UiSelector().textMatches("(?i)^buy$").clickable(true)')
+    return $('//android.view.View[@clickable="true" and (@text="Buy" or @text="BUY" or @content-desc="Buy" or @content-desc="BUY")]')
   }
 
   private get previewBuyButtonAndroidAnyContainer() {
@@ -217,7 +217,7 @@ export default class OrdersPage extends BasePage {
   }
 
   private get orderPreviewTitleAndroidUiSelector() {
-    return $('android=new UiSelector().textContains("Order Preview")')
+    return $('//*[contains(@text,"Order Preview") or contains(@content-desc,"Order Preview")]')
   }
 
   private get orderPreviewDialogAndroid() {
@@ -225,7 +225,7 @@ export default class OrdersPage extends BasePage {
   }
 
   private get orderPreviewQuantityLabelAndroid() {
-    return $('android=new UiSelector().text("Quantity")')
+    return $('//*[@text="Quantity" or @content-desc="Quantity"]')
   }
 
   private get orderPreviewOrderTypeLabelAndroid() {
@@ -233,7 +233,7 @@ export default class OrdersPage extends BasePage {
   }
 
   private get orderPreviewTradeValueLabelAndroid() {
-    return $('android=new UiSelector().text("Trade Value")')
+    return $('//*[@text="Trade Value" or @content-desc="Trade Value"]')
   }
 
   private get orderSubmitErrorTitleAndroid() {
@@ -2726,10 +2726,20 @@ export default class OrdersPage extends BasePage {
     if (!browser.isIOS) {
       throw new Error('Buy order flow can only run on iOS')
     }
+    await this.createSmokeBuyOrderIOS(params)
+    await this.verifySmokeBuyOrderIOS(params)
+    await this.modifySmokeBuyOrderIOS(params)
+    await this.cancelSmokeBuyOrderIOS(params)
+  }
+
+  public async createSmokeBuyOrderIOS(params: BuyOrderFlowParams) {
 
     await this.openInstrumentFromInvestLocatorIOS(params.instrumentQuery)
     await this.openNewBuyOrderIOS()
     await this.placeBuyOrderIOS(params.initialQuantity)
+  }
+
+  public async verifySmokeBuyOrderIOS(params: BuyOrderFlowParams) {
 
     const orderDetailsOpenedDirectly = await this.orderDetailsTitleIOS.waitForExist({ timeout: 6000 }).then(() => true).catch(() => false)
     if (!orderDetailsOpenedDirectly) {
@@ -2738,10 +2748,16 @@ export default class OrdersPage extends BasePage {
     }
 
     await this.verifyOrderDetailsIOS('ACTIVE', params.initialQuantity)
+  }
+
+  public async modifySmokeBuyOrderIOS(params: BuyOrderFlowParams) {
 
     await this.tapModifyIOS()
     await this.submitModifiedQuantityIOS(params.modifiedQuantity)
     await this.verifyOrderDetailsIOS('ACTIVE', params.modifiedQuantity)
+  }
+
+  public async cancelSmokeBuyOrderIOS(params: BuyOrderFlowParams) {
 
     await this.tapCancelIOS()
     await this.confirmCancelOrderIOS()
@@ -2773,10 +2789,22 @@ export default class OrdersPage extends BasePage {
     if (!browser.isAndroid) {
       throw new Error('Buy order flow can only run on Android')
     }
+    await this.openSmokeBuyOrderAndroid(params)
+    await this.placeSmokeBuyOrderAndroid(params)
+    await this.verifySmokeBuyOrderAndroid(params)
+  }
+
+  public async openSmokeBuyOrderAndroid(params: BuyOrderFlowParams) {
 
     await this.openInstrumentFromInvestLocatorAndroid(params.instrumentQuery)
     await this.openNewBuyOrderAndroid()
+  }
+
+  public async placeSmokeBuyOrderAndroid(params: BuyOrderFlowParams) {
     await this.placeBuyOrderAndroid(params.initialQuantity)
+  }
+
+  public async verifySmokeBuyOrderAndroid(params: BuyOrderFlowParams) {
     await this.verifyBuyCompletedBySellAvailableAndroid()
   }
 }

@@ -501,7 +501,7 @@ export default class AddBeneficiaryPage extends BasePage {
    * ========================= */
 
   private get anotherPersonCardAndroid() {
-    return $('android=new UiSelector().resourceId("beneficiaryTypeSelection_card_anotherPerson")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/beneficiaryTypeSelection_card_anotherPerson"] | //*[contains(@resource-id,"beneficiaryTypeSelection_card_anotherPerson")])[1]')
   }
 
   /* =========================
@@ -509,7 +509,7 @@ export default class AddBeneficiaryPage extends BasePage {
    * ========================= */
 
   private get countryPickerAndroid() {
-    return $('android=new UiSelector().resourceId("addBeneficiaryCountrySelection_picker_country")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/addBeneficiaryCountrySelection_picker_country"] | //*[contains(@resource-id,"addBeneficiaryCountrySelection_picker_country")])[1]')
   }
 
   private get countrySearchInputAndroid() {
@@ -522,7 +522,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get currencyPickerAndroid() {
-    return $('android=new UiSelector().resourceId("addBeneficiaryCountrySelection_picker_currency")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/addBeneficiaryCountrySelection_picker_currency"] | //*[contains(@resource-id,"addBeneficiaryCountrySelection_picker_currency")])[1]')
   }
 
   private get euroOptionAndroid() {
@@ -535,7 +535,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get countryContinueBtnAndroid() {
-    return $('android=new UiSelector().resourceId("addBeneficiaryCountrySelection_button_continue")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/addBeneficiaryCountrySelection_button_continue"] | //*[contains(@resource-id,"addBeneficiaryCountrySelection_button_continue")])[1]')
   }
 
   /* =========================
@@ -544,7 +544,7 @@ export default class AddBeneficiaryPage extends BasePage {
 
   private get detailsContinueBtnAndroid() {
     //  XML: resource-id="addBeneficiaryDetails_button_continue"
-    return $('android=new UiSelector().resourceId("addBeneficiaryDetails_button_continue")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/addBeneficiaryDetails_button_continue"] | //*[contains(@resource-id,"addBeneficiaryDetails_button_continue")])[1]')
   }
 
   private get detailsContinueInnerButtonAndroid() {
@@ -552,87 +552,87 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get otpContainerAndroid() {
-    return $('android=new UiSelector().resourceIdMatches("com.moneybase.qa:id/(composeViewRegisterMobile|composeViewOTP)")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/composeViewRegisterMobile"] | //*[@resource-id="com.moneybase.qa:id/composeViewOTP"])[1]')
   }
 
   private get otpInputAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/otp_input")')
+    return $('//*[@resource-id="com.moneybase.qa:id/otp_input"]')
   }
 
   private get otpPhoneViewAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/otpPhoneView")')
+    return $('//*[@resource-id="com.moneybase.qa:id/otpPhoneView"]')
   }
 
   private get otpContinueBtnAndroid() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/.*continue.*")')
+    return $('//*[contains(@resource-id,"continue")]')
   }
 
   private get otpSubmitBtnAndroidById() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/(.*otp.*(continue|confirm|submit).*)$")')
+    return $('//*[contains(@resource-id,"otp") and (contains(@resource-id,"continue") or contains(@resource-id,"confirm") or contains(@resource-id,"submit"))]')
   }
 
   private get otpSubmitBtnAndroidByText() {
-    return $('android=new UiSelector().textMatches("(?i)^(submit|confirm|continue)( otp| code)?$")')
+    return $('//*[@text="Submit" or @text="Confirm" or @text="Continue" or @text="Submit OTP" or @text="Confirm OTP" or @text="Continue OTP" or @content-desc="Submit" or @content-desc="Confirm" or @content-desc="Continue"]')
   }
 
   private get otpLockedErrorAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/errorText").textContains("temporarily locked")')
+    return $('//*[@resource-id="com.moneybase.qa:id/errorText" and contains(@text,"temporarily locked")]')
   }
 
   private get otpRateLimitedErrorAndroid() {
-    return $('android=new UiSelector().resourceId("com.moneybase.qa:id/errorText").textMatches("(?i).*code was recently sent.*|.*try again later.*")')
+    return $('//*[@resource-id="com.moneybase.qa:id/errorText" and (contains(@text,"recently sent") or contains(@text,"try again later"))]')
   }
 
   private get otpResendBtnAndroidById() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/(.*resend.*|.*send.*code.*)$")')
+    return $('//*[contains(@resource-id,"resend") or (contains(@resource-id,"send") and contains(@resource-id,"code"))]')
   }
 
   private get otpResendBtnAndroidByText() {
-    return $('android=new UiSelector().textMatches("(?i)^(resend|resend code|send new code|request new code|get new code)$")')
+    return $('//*[@text="Resend" or @text="Resend code" or @text="Send new code" or @text="Request new code" or @text="Get new code" or @content-desc="Resend" or @content-desc="Resend code"]')
   }
 
   private get ibanAlreadySavedErrorAndroidByText() {
-    return $('android=new UiSelector().textMatches("(?i).*(beneficiary|iban).*(already|exists|saved|added).*|.*already.*(beneficiary|iban).*")')
+    return $('//*[(contains(@text,"beneficiary") or contains(@text,"iban")) and (contains(@text,"already") or contains(@text,"exists") or contains(@text,"saved") or contains(@text,"added"))]')
   }
 
   private get ibanAlreadySavedErrorAndroidByResId() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/.*(error|message|hint|validation).*").textMatches("(?i).*(already|exists|saved|added).*(beneficiary|iban).*|.*(beneficiary|iban).*(already|exists|saved|added).*")')
+    return $('//*[(contains(@resource-id,"error") or contains(@resource-id,"message") or contains(@resource-id,"hint") or contains(@resource-id,"validation")) and (contains(@text,"already") or contains(@text,"exists") or contains(@text,"saved") or contains(@text,"added"))]')
   }
 
   private get ibanAlreadySavedErrorAndroidBySheetText() {
-    return $('android=new UiSelector().textContains("already saved on your list")')
+    return $('//*[contains(@text,"already saved on your list") or contains(@content-desc,"already saved on your list")]')
   }
 
   private get beneficiaryAddedSuccessAndroidByText() {
-    return $('android=new UiSelector().textMatches("(?i).*added successfully.*|.*adding beneficiary successfully.*|.*beneficiary.*added.*success.*")')
+    return $('//*[contains(@text,"added successfully") or contains(@text,"adding beneficiary successfully") or (contains(@text,"beneficiary") and contains(@text,"success")) or contains(@content-desc,"added successfully")]')
   }
 
   private get createConfirmBtnAndroidById() {
-    return $('android=new UiSelector().resourceIdMatches(".*:id/(.*confirm.*|.*create.*|.*beneficiary.*continue.*)$")')
+    return $('//*[contains(@resource-id,"confirm") or contains(@resource-id,"create") or (contains(@resource-id,"beneficiary") and contains(@resource-id,"continue"))]')
   }
 
   private get createConfirmBtnAndroidByTextConfirm() {
-    return $('android=new UiSelector().textMatches("(?i)confirm|create|continue")')
+    return $('//*[@text="Confirm" or @text="Create" or @text="Continue" or @content-desc="Confirm" or @content-desc="Create" or @content-desc="Continue"]')
   }
 
   private get vopScreenAndroid() {
-    return $('android=new UiSelector().resourceId("varificationOfPayee_screen")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/varificationOfPayee_screen"] | //*[contains(@resource-id,"varificationOfPayee_screen")])[1]')
   }
 
   private get vopScreenAndroidAlt() {
-    return $('android=new UiSelector().resourceId("verificationOfPayee_screen")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/verificationOfPayee_screen"] | //*[contains(@resource-id,"verificationOfPayee_screen")])[1]')
   }
 
   private get vopConfirmBtnAndroid() {
-    return $('android=new UiSelector().resourceId("varificationOfPayee_button_confirm")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/varificationOfPayee_button_confirm"] | //*[contains(@resource-id,"varificationOfPayee_button_confirm")])[1]')
   }
 
   private get vopConfirmBtnAndroidAlt() {
-    return $('android=new UiSelector().resourceId("verificationOfPayee_button_confirm")')
+    return $('(//*[@resource-id="com.moneybase.qa:id/verificationOfPayee_button_confirm"] | //*[contains(@resource-id,"verificationOfPayee_button_confirm")])[1]')
   }
 
   private get vopConfirmBtnAndroidByText() {
-    return $('android=new UiSelector().text("Confirm")')
+    return $('//*[@text="Confirm" or @content-desc="Confirm"]')
   }
 
   private get detailsContinueViewAndroid() {
@@ -692,7 +692,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get bicInputAndroidByResIdRegex() {
-    return $('android=new UiSelector().classNameMatches(".*EditText").resourceIdMatches(".*:id/.*(bic|swift).*")')
+    return $('//android.widget.EditText[contains(@resource-id,"bic") or contains(@resource-id,"swift")]')
   }
 
   private get bicInputIOS() {
@@ -750,16 +750,16 @@ export default class AddBeneficiaryPage extends BasePage {
     const lastTwoGroups = groupedParts.slice(-2).join(' ')
 
     return [
-      $(`android=new UiSelector().textContains("${compact}")`),
-      $(`android=new UiSelector().descriptionContains("${compact}")`),
-      $(`android=new UiSelector().textContains("${grouped}")`),
-      $(`android=new UiSelector().descriptionContains("${grouped}")`),
-      $(`android=new UiSelector().textContains("${tail}")`),
-      $(`android=new UiSelector().descriptionContains("${tail}")`),
-      $(`android=new UiSelector().textContains("${tailGrouped}")`),
-      $(`android=new UiSelector().descriptionContains("${tailGrouped}")`),
-      $(`android=new UiSelector().textContains("${lastTwoGroups}")`),
-      $(`android=new UiSelector().descriptionContains("${lastTwoGroups}")`),
+      $(`//*[contains(@text,"${compact}") or contains(@content-desc,"${compact}")]`),
+      $(`//*[contains(@content-desc,"${compact}") or contains(@text,"${compact}")]`),
+      $(`//*[contains(@text,"${grouped}") or contains(@content-desc,"${grouped}")]`),
+      $(`//*[contains(@content-desc,"${grouped}") or contains(@text,"${grouped}")]`),
+      $(`//*[contains(@text,"${tail}") or contains(@content-desc,"${tail}")]`),
+      $(`//*[contains(@content-desc,"${tail}") or contains(@text,"${tail}")]`),
+      $(`//*[contains(@text,"${tailGrouped}") or contains(@content-desc,"${tailGrouped}")]`),
+      $(`//*[contains(@content-desc,"${tailGrouped}") or contains(@text,"${tailGrouped}")]`),
+      $(`//*[contains(@text,"${lastTwoGroups}") or contains(@content-desc,"${lastTwoGroups}")]`),
+      $(`//*[contains(@content-desc,"${lastTwoGroups}") or contains(@text,"${lastTwoGroups}")]`),
     ]
   }
 
@@ -2313,9 +2313,30 @@ export default class AddBeneficiaryPage extends BasePage {
     bic?: string
     friendName?: string
   }) {
+    await this.selectSmokeBeneficiaryAndroid(params)
+    await this.submitSmokeBeneficiaryDetailsAndroid(params)
+    await this.confirmSmokeBeneficiaryAndroid(params)
+  }
+
+  async selectSmokeBeneficiaryAndroid(params: {
+    name: string
+    surname: string
+    iban: string
+    bic?: string
+    friendName?: string
+  }) {
     await this.startAddBeneficiaryAndroid()
     await this.chooseAnotherPersonAndroid()
     await this.continueFromCountrySelectionAndroid()
+  }
+
+  async submitSmokeBeneficiaryDetailsAndroid(params: {
+    name: string
+    surname: string
+    iban: string
+    bic?: string
+    friendName?: string
+  }) {
 
     await this.fillBeneficiaryDetailsAndroid(params)
     await this.continueFromDetailsAndroid()
@@ -2329,6 +2350,15 @@ export default class AddBeneficiaryPage extends BasePage {
       await this.continueFromDetailsAndroid()
       await this.waitForPostDetailsTransitionAndroid()
     }
+  }
+
+  async confirmSmokeBeneficiaryAndroid(params: {
+    name: string
+    surname: string
+    iban: string
+    bic?: string
+    friendName?: string
+  }) {
 
     // Temporary: extra confirm click disabled to avoid possible double-submit / second OTP request.
     // await this.confirmCreationIfRequiredAndroid()
@@ -2358,13 +2388,43 @@ export default class AddBeneficiaryPage extends BasePage {
     bic?: string
     friendName?: string
   }) {
+    await this.selectSmokeBeneficiaryIOS(params)
+    await this.submitSmokeBeneficiaryDetailsIOS(params)
+    await this.confirmSmokeBeneficiaryIOS(params)
+  }
+
+  async selectSmokeBeneficiaryIOS(params: {
+    name: string
+    surname: string
+    iban: string
+    bic?: string
+    friendName?: string
+  }) {
     await this.startAddBeneficiaryIOS()
     await this.chooseAnotherPersonIOS()
     await this.continueFromCountrySelectionIOS()
+  }
+
+  async submitSmokeBeneficiaryDetailsIOS(params: {
+    name: string
+    surname: string
+    iban: string
+    bic?: string
+    friendName?: string
+  }) {
 
     await this.fillBeneficiaryDetailsIOS(params)
     await this.continueFromDetailsIOS()
     await this.confirmReviewBeneficiaryIOS()
+  }
+
+  async confirmSmokeBeneficiaryIOS(params: {
+    name: string
+    surname: string
+    iban: string
+    bic?: string
+    friendName?: string
+  }) {
     await this.waitForOtpAndSubmitIOS(params.iban)
   }
 
