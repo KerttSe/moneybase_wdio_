@@ -36,6 +36,9 @@ describe('Add Beneficiary - Another person (USD) - step by step', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
   const loginPage = new LoginPage()
   const addBeneficiaryPage = new AddBeneficiaryPage()
+  const useApiLoginOtp = ['1', 'true', 'yes', 'on'].includes(
+    String(process.env.ADD_BENEFICIARY_LOGIN_USE_API_OTP || '').toLowerCase(),
+  )
 
   const accountNumber = getUSAccountNumberForTest()
   const { bic8: bic } = generateUniqueSwiftBic({ countryCode: 'US' })
@@ -48,7 +51,10 @@ describe('Add Beneficiary - Another person (USD) - step by step', function () {
 
   before(async function () {
     if (!browser.isAndroid) this.skip()
-    await loginPage.loginFlow(AUTH)
+    await loginPage.loginFlow(AUTH, {
+      useApiOtp: useApiLoginOtp,
+      otpPhone: process.env.ADD_BENEFICIARY_LOGIN_OTP_PHONE || AUTH.otpPhone,
+    })
   })
 
   it('AB-USD-1.1 Open Pay tab', async function () {

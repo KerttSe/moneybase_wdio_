@@ -646,19 +646,30 @@ async enterOtp(code: string = '123456') {
     const successShown = await this.verificationSuccessScreen.isDisplayed().catch(() => false)
     if (!continueShown && !successShown) return false
 
-    if (continueShown) {
-      await this.postOtpContinueBtn.click().catch(async () => {
-        const loc = await this.postOtpContinueBtn.getLocation()
-        const size = await this.postOtpContinueBtn.getSize()
-        await this.tapAndroidCoordinates(loc.x + size.width / 2, loc.y + size.height / 2)
-      })
-    } else {
-      await this.tapAndroidCoordinates(540, 2266)
-    }
+	    if (continueShown) {
+	      const loc = await this.postOtpContinueBtn.getLocation().catch(() => null)
+	      const size = await this.postOtpContinueBtn.getSize().catch(() => null)
+	      await this.postOtpContinueBtn.click().catch(async () => {
+	        if (loc && size) await this.tapAndroidCoordinates(loc.x + size.width / 2, loc.y + size.height / 2)
+	      })
+	      await browser.pause(500)
+	      if (loc && size && await this.postOtpContinueBtn.isDisplayed().catch(() => false)) {
+	        await this.tapAndroidCoordinates(loc.x + size.width / 2, loc.y + size.height / 2)
+	      }
+	    } else {
+	      await this.tapAndroidCoordinates(540, 2266)
+	    }
 
-	    await browser.pause(800)
-	    return true
-	  }
+		    await browser.waitUntil(
+		      async () =>
+		        !(await this.verificationSuccessScreen.isDisplayed().catch(() => false)) ||
+		        (await this.homeRoot.isDisplayed().catch(() => false)) ||
+		        (await this.homeRoot.isExisting().catch(() => false)) ||
+		        (await this.isAndroidMainShellShown()),
+		      { timeout: 4000, interval: 400, timeoutMsg: 'Android verification success screen did not dismiss after Continue' },
+		    ).catch(() => {})
+		    return true
+		  }
 
 	  private async tapPostOtpContinueIfVisibleIOS() {
 	    if (!browser.isIOS) return false

@@ -254,12 +254,12 @@ private get payProcessingBtnIOS() {
 }
 
 private get cardPickerBtnAndroid() {
-  return $('android=new UiSelector().className("android.widget.TextView").instance(4)')
+  return $('(//*[contains(@text,"•••") or contains(@content-desc,"•••")] | (//android.widget.TextView)[5])[1]')
 }
 
 private get cardAndroid() {
   const last4 = AUTH.cardLastFour ?? '0036'
-  return $(`android=new UiSelector().textContains("${last4}")`)
+  return $(`//*[contains(@text,"${last4}") or contains(@content-desc,"${last4}")]`)
 }
 
 private async smallScrollDownToDepositIOS() {
@@ -355,7 +355,7 @@ if (browser.isAndroid) {
           if (clickedSendOtp) return true
           if (await this.depositSuccessTextAndroid.isDisplayed().catch(() => false)) return true
 
-          const send = $('android=new UiSelector().resourceId("sendOtp")')
+          const send = $('(//*[@resource-id="sendOtp"] | //*[contains(@resource-id,"sendOtp")])[1]')
           if (!(await send.isDisplayed().catch(() => false))) return false
           if (!(await send.isEnabled().catch(() => false))) return false
 

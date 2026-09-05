@@ -317,6 +317,7 @@ const localCapabilities: WebdriverIO.Capabilities[] = [
 ]
 
 const smokeSpecs = [
+  './src/tests/launch.spec.ts',
   './src/tests/addbeneficiary.individual.spec.ts',
   './src/tests/addfunds.spec.ts',
   './src/tests/autoTopUp.spec.ts',
@@ -338,6 +339,8 @@ const smokeSpecs = [
 ]
 
 const smokeSecondaryAccountSpecsDefault = [
+  './src/tests/addbeneficiary.individual.spec.ts',
+  './src/tests/addfunds.spec.ts',
   './src/tests/cashFunds.spec.ts',
   './src/tests/fxExchange.spec.ts',
   './src/tests/homeAccountSwitch.spec.ts',
@@ -361,6 +364,7 @@ const envList = (name: string, fallback: string[]) => {
 const smokeSecondaryAccountSpecs = envList('BS_SMOKE_SECONDARY_ACCOUNT_SPECS', smokeSecondaryAccountSpecsDefault)
 const smokeSecondaryAccountSpecNames = new Set(smokeSecondaryAccountSpecs.map(spec => basename(spec)))
 const smokePrimaryAccountSpecs = smokeSpecs.filter(spec => !smokeSecondaryAccountSpecNames.has(basename(spec)))
+const smokePrimaryAccountSpecNames = new Set(smokePrimaryAccountSpecs.map(spec => basename(spec)))
 
 const regressionSecondarySpecs = [
   // smoke secondary
@@ -414,6 +418,15 @@ const regressionPrimarySpecs = [
   './src/tests/vop.beneficiary.spec.ts',
   './src/tests/vop.sepa.spec.ts',
 ]
+const regressionPrimarySpecNames = new Set(regressionPrimarySpecs.map(spec => basename(spec)))
+const regressionSecondarySpecNames = new Set(regressionSecondarySpecs.map(spec => basename(spec)))
+
+const authSlotForSpec = (specName?: string) => {
+  if (!specName) return ''
+  if (smokePrimaryAccountSpecNames.has(specName) || regressionPrimarySpecNames.has(specName)) return 'primary'
+  if (smokeSecondaryAccountSpecNames.has(specName) || regressionSecondarySpecNames.has(specName)) return 'secondary'
+  return ''
+}
 
 const capabilities = (useBrowserStack ? browserStackCapabilities : localCapabilities)
   .filter((capability) => {
@@ -487,14 +500,15 @@ export const config: WebdriverIO.Config = {
   },
 
   beforeSession: function (_config, capabilities, specs) {
+    const specName = specs.length > 0 ? basename(specs[0]) : 'unknown-spec'
     const authSlot = String(
       process.env.MB_AUTH_SLOT ||
       (cliSuiteTag === 'smokePrimary' || cliSuiteTag === 'regressionPrimary' ? 'primary' : '') ||
-      (cliSuiteTag === 'smokeSecondary' || cliSuiteTag === 'regressionSecondary' ? 'secondary' : ''),
+      (cliSuiteTag === 'smokeSecondary' || cliSuiteTag === 'regressionSecondary' ? 'secondary' : '') ||
+      authSlotForSpec(specName),
     )
     if (authSlot === 'primary' || authSlot === 'secondary') {
       process.env.MB_AUTH_SLOT = authSlot
-      const specName = specs.length > 0 ? basename(specs[0]) : 'unknown-spec'
       console.log(`[WDIO] Auth slot for ${specName}: ${authSlot}`)
     } else {
       delete process.env.MB_AUTH_SLOT

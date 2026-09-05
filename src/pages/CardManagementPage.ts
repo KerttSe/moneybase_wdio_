@@ -418,6 +418,25 @@ class CardManagementPage extends BasePage {
     )
   }
 
+  private async waitForAndroidSelectedCardLoaded(timeoutMs = 15000) {
+    await browser.waitUntil(
+      async () =>
+        (await this.cardsScreenAndroid.isDisplayed().catch(() => false)) &&
+        (
+          (await this.viewPinButton.isExisting().catch(() => false)) ||
+          (await this.securityButton.isExisting().catch(() => false)) ||
+          (await this.moreButton.isExisting().catch(() => false)) ||
+          (await this.isFreezeActionVisibleAndroid()) ||
+          (await this.isUnfreezeActionVisibleAndroid())
+        ),
+      {
+        timeout: timeoutMs,
+        interval: 500,
+        timeoutMsg: 'Selected card details were not visible on Android Cards screen',
+      }
+    )
+  }
+
   private async isFreezeActionVisibleAndroid() {
     return (
       (await this.freezeButton.isExisting().catch(() => false)) ||
@@ -582,8 +601,7 @@ class CardManagementPage extends BasePage {
       return
     }
 
-    const cards = await this.cardItemsAndroid
-    if ((await cards.length) === 0) throw new Error('No existing card items were found on Android Cards screen')
+    await this.waitForAndroidSelectedCardLoaded()
   }
 
   public async verifyCardManagementActionsDisplayed() {
@@ -1044,7 +1062,7 @@ class CardManagementPage extends BasePage {
       return
     }
 
-    await this.firstCardItemAndroid.waitForDisplayed({ timeout: 10000 })
+    await this.waitForAndroidSelectedCardLoaded()
   }
 
   public async verifyPhysicalCardIsPrimary() {
@@ -1062,7 +1080,7 @@ class CardManagementPage extends BasePage {
       return
     }
 
-    await this.firstCardItemAndroid.waitForDisplayed({ timeout: 10000 })
+    await this.waitForAndroidSelectedCardLoaded()
   }
 
   public async closeSecurityIfOpen() {
