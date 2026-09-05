@@ -1,33 +1,46 @@
+import { stopAfterFailedStep } from '../helpers/sequentialSmoke.helper'
 import { browser } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
 import BankTransferP2PIndividualPage from '../pages/BankTransferP2PIndividualPage'
 import { AUTH } from '../data/credentials'
 
-describe('Bank Transfer - Individual - SWIFT', function () {
+describe('Bank Transfer - SWIFT Individual', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
 
   const loginPage = new LoginPage()
 
-  beforeEach(async function () {
+  stopAfterFailedStep()
+
+  before(async function () {
     await loginPage.loginFlow(AUTH)
+    await BankTransferP2PIndividualPage.ensureIndividualAccount()
   })
 
-  it('Send SWIFT by slide (11)', async function () {
-    console.log('[TEST] Starting SWIFT test...')
+  if (browser.isAndroid) {
+    it('SWIFT-1.1 Open payment screen and fill amount (Android)', async function () {
+      await BankTransferP2PIndividualPage.prepareSmokeSwiftAndroid(11)
+    })
 
-    await browser.pause(2000)
+    it('SWIFT-1.2 Submit and verify success (Android)', async function () {
+      await BankTransferP2PIndividualPage.submitSmokeSwiftAndroid(11)
+    })
 
-    if (browser.isAndroid) {
-      console.log('[TEST] Ensuring individual account...')
-      await BankTransferP2PIndividualPage.ensureIndividualAccount()
+    it('SWIFT-1.3 Verify transaction on Home (Android)', async function () {
+      await BankTransferP2PIndividualPage.verifySmokeSwiftAndroid(11)
+    })
+  }
 
-      console.log('[TEST] Sending SWIFT (Android)...')
-      await BankTransferP2PIndividualPage.sendSwiftBySlideAndroid(11)
-    } else {
-      console.log('[TEST] Sending SWIFT (iOS)...')
-      await BankTransferP2PIndividualPage.sendSwiftBySlideIOS(11)
-    }
+  if (browser.isIOS) {
+    it('SWIFT-1.1 Open payment screen and fill amount (iOS)', async function () {
+      await BankTransferP2PIndividualPage.prepareSmokeSwiftIOS(11)
+    })
 
-    console.log('[TEST] SWIFT test completed!')
-  })
+    it('SWIFT-1.2 Submit and verify success (iOS)', async function () {
+      await BankTransferP2PIndividualPage.submitSmokeSwiftIOS(11)
+    })
+
+    it('SWIFT-1.3 Verify transaction on Home (iOS)', async function () {
+      await BankTransferP2PIndividualPage.verifySmokeSwiftIOS(11)
+    })
+  }
 })

@@ -1,3 +1,4 @@
+import { stopAfterFailedStep } from '../helpers/sequentialSmoke.helper'
 import { browser } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
 import { AUTH } from '../data/credentials'
@@ -8,17 +9,17 @@ describe('Home Account Switch', function () {
 
   const loginPage = new LoginPage()
 
-  beforeEach(async function () {
-    if (!(browser.isAndroid || browser.isIOS)) this.skip()
-    if (process.env.MB_AUTH_SLOT !== 'secondary') this.skip()
+  stopAfterFailedStep()
 
+  before(async function () {
+    if (!(browser.isAndroid || browser.isIOS)) return this.skip()
+    if (process.env.MB_AUTH_SLOT !== 'secondary') return this.skip()
     await loginPage.loginFlow(AUTH)
     await HomeScreenPage.waitForHomeLoaded()
   })
 
-  it('switches between available account types', async function () {
-    if (!(browser.isAndroid || browser.isIOS)) this.skip()
-
+  it('HAS-1.1 Switch between available account types', async function () {
+    if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await HomeScreenPage.verifyAccountSwitchingAcrossTypes()
   })
 })

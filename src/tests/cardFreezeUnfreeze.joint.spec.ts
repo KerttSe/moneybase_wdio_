@@ -1,3 +1,4 @@
+import { stopAfterFailedStep } from '../helpers/sequentialSmoke.helper'
 import { browser } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
 import { AUTH } from '../data/credentials'
@@ -9,14 +10,16 @@ describe('Card freeze/unfreeze - Joint account', function () {
 
   const loginPage = new LoginPage()
 
-  beforeEach(async function () {
-    if (!(browser.isAndroid || browser.isIOS)) this.skip()
+  stopAfterFailedStep()
 
+  before(async function () {
+    if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await loginPage.loginFlow(AUTH)
     await HomeScreenPage.ensureJointAccount()
   })
 
-  it('freezes and unfreezes an active physical card', async function () {
+  it('CF-1.1 Freeze and unfreeze active physical card', async function () {
+    if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await CardManagementPage.freezeAndUnfreezeActiveCard()
   })
 })

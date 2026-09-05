@@ -1,3 +1,4 @@
+import { stopAfterFailedStep } from '../helpers/sequentialSmoke.helper'
 import { browser } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
 import homeScreenPage from '../pages/HomeScreenPage'
@@ -11,32 +12,27 @@ describe('Price Alerts (iOS/Android)', function () {
   const home = homeScreenPage
   const priceAlerts = new PriceAlertsPage()
 
+  stopAfterFailedStep()
+
   before(async function () {
     await loginPage.loginFlow(AUTH)
-  })
-
-  it('create price alert (BMW)', async function () {
-    if (!browser.isAndroid && !browser.isIOS) {
-      this.skip()
-      return
-    }
-
     await home.ensureIndividualAccount()
     await home.waitForHomeLoaded()
-
-    if (browser.isAndroid) {
-      await priceAlerts.createPriceAlertAndroid({
-        instrumentQuery: 'BMW',
-        // If UI requires threshold/date, set them here (best-effort filling).
-        // thresholdValue: '100',
-        // dateValue: '01/12/2030',
-      })
-
-      await priceAlerts.deletePriceAlertAndroid('BMW')
-      return
-    }
-
-    // iOS: Search Instrument -> BMW -> +1% -> created confirmation.
-    await priceAlerts.createPriceAlertIOS({ instrumentQuery: 'BMW' })
   })
+
+  if (browser.isAndroid) {
+    it('PA-1.1 Create price alert for BMW (Android)', async function () {
+      await priceAlerts.createPriceAlertAndroid({ instrumentQuery: 'BMW' })
+    })
+
+    it('PA-1.2 Delete price alert for BMW (Android)', async function () {
+      await priceAlerts.deletePriceAlertAndroid('BMW')
+    })
+  }
+
+  if (browser.isIOS) {
+    it('PA-1.1 Create price alert for BMW (iOS)', async function () {
+      await priceAlerts.createPriceAlertIOS({ instrumentQuery: 'BMW' })
+    })
+  }
 })

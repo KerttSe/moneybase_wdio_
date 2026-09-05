@@ -1,3 +1,4 @@
+import { stopAfterFailedStep } from '../helpers/sequentialSmoke.helper'
 import { browser } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
 import homeScreenPage from '../pages/HomeScreenPage'
@@ -11,14 +12,16 @@ describe('Cash Funds (Mobile)', function () {
   const home = homeScreenPage
   const cashFundsPage = new CashFundsPage()
 
+  stopAfterFailedStep()
+
   before(async function () {
     await loginPage.loginFlow(AUTH)
-  })
-
-  it('opens Cash Funds from Invest -> Discover', async function () {
     await home.ensureIndividualAccount()
     await home.waitForHomeLoaded()
+  })
 
+  it('CF-1.1 Open Cash Funds from Invest -> Discover', async function () {
+    if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await cashFundsPage.openCashFunds()
   })
 })

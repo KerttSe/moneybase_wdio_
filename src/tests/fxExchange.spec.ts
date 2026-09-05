@@ -1,3 +1,4 @@
+import { stopAfterFailedStep } from '../helpers/sequentialSmoke.helper'
 import { browser } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
 import { AUTH } from '../data/credentials'
@@ -9,11 +10,14 @@ describe('FX Exchange', function () {
   const loginPage = new LoginPage()
   const fxExchangePage = new FXExchangePage()
 
-  beforeEach(async function () {
+  stopAfterFailedStep()
+
+  before(async function () {
     await loginPage.loginFlow(AUTH)
   })
 
-  it('exchanges from EUR to Dollar wallet and verifies Exchanged to USD on home', async function () {
+  it('FX-1.1 Exchange EUR to USD and verify on Home', async function () {
+    if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await fxExchangePage.exchangeEurToUsdFlow()
   })
 })

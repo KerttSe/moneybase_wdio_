@@ -1,3 +1,4 @@
+import { stopAfterFailedStep } from '../helpers/sequentialSmoke.helper'
 import { browser } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
 import homeScreenPage from '../pages/HomeScreenPage'
@@ -11,24 +12,23 @@ describe('Watchlist (iOS/Android)', function () {
   const home = homeScreenPage
   const watchlist = new WatchlistPage()
 
+  stopAfterFailedStep()
+
   before(async function () {
     await loginPage.loginFlow(AUTH)
-  })
-
-  it('adds instrument to watchlist (from existing list)', async function () {
-    if (!browser.isAndroid && !browser.isIOS) {
-      this.skip()
-      return
-    }
-
     await home.ensureIndividualAccount()
     await home.waitForHomeLoaded()
-
-    if (browser.isAndroid) {
-      await watchlist.addFirstExistingInstrumentToWatchlistAndroid()
-      return
-    }
-
-    await watchlist.addFirstExistingInstrumentToWatchlistIOS()
   })
+
+  if (browser.isAndroid) {
+    it('WL-1.1 Add first existing instrument to watchlist (Android)', async function () {
+      await watchlist.addFirstExistingInstrumentToWatchlistAndroid()
+    })
+  }
+
+  if (browser.isIOS) {
+    it('WL-1.1 Add first existing instrument to watchlist (iOS)', async function () {
+      await watchlist.addFirstExistingInstrumentToWatchlistIOS()
+    })
+  }
 })

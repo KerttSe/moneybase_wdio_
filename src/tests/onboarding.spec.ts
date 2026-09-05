@@ -1,3 +1,4 @@
+import { stopAfterFailedStep } from '../helpers/sequentialSmoke.helper'
 import { browser } from '@wdio/globals'
 import OnboardingPage from '../pages/OnboardingPage'
 
@@ -6,17 +7,17 @@ describe('Onboarding - account creation', function () {
 
   const onboardingPage = new OnboardingPage()
 
-  it('creates a new individual account through mobile verification', async function () {
-    if (browser.isIOS) {
-      await onboardingPage.createAccountIOS()
-      return
-    }
+  stopAfterFailedStep()
 
-    if (browser.isAndroid) {
+  if (browser.isAndroid) {
+    it('OB-1.1 Create new individual account (Android)', async function () {
       await onboardingPage.createAccountAndroid()
-      return
-    }
+    })
+  }
 
-    this.skip()
-  })
+  if (browser.isIOS) {
+    it('OB-1.1 Create new individual account (iOS)', async function () {
+      await onboardingPage.createAccountIOS()
+    })
+  }
 })

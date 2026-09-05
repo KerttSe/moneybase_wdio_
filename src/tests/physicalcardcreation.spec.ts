@@ -1,3 +1,4 @@
+import { stopAfterFailedStep } from '../helpers/sequentialSmoke.helper'
 import { browser } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
 import { AUTH } from '../data/credentials'
@@ -6,6 +7,7 @@ import PhysicalCardCreationPage from '../pages/PhysicalCardCreationPage'
 
 describe('Physical card creation, freezing and deletion - Individual', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 800000))
+
   const loginPage = new LoginPage()
   const cardCreationAuth = {
     ...AUTH,
@@ -16,7 +18,9 @@ describe('Physical card creation, freezing and deletion - Individual', function 
     String(process.env.PHYSICAL_CARD_LOGIN_USE_API_OTP || '').toLowerCase(),
   )
 
-  beforeEach(async function () {
+  stopAfterFailedStep()
+
+  before(async function () {
     await loginPage.loginFlow(cardCreationAuth, {
       useApiOtp: useApiLoginOtp,
       otpPhone: process.env.PHYSICAL_CARD_OTP_PHONE,
@@ -27,15 +31,19 @@ describe('Physical card creation, freezing and deletion - Individual', function 
     }
   })
 
-  it('creates, freezes and deletes a physical card', async function () {
-    if (browser.isAndroid) {
+  if (browser.isAndroid) {
+    it('PC-1.1 Open Cards tab (Android)', async function () {
       await PhysicalCardCreationPage.openCardsTabAndroid()
-      await PhysicalCardCreationPage.createPhysicalCardAndroid('2468', '000000')
-      return
-    }
+    })
 
-    if (browser.isIOS) {
+    it('PC-1.2 Create physical card (Android)', async function () {
+      await PhysicalCardCreationPage.createPhysicalCardAndroid('2468', '000000')
+    })
+  }
+
+  if (browser.isIOS) {
+    it('PC-1.1 Create physical card (iOS)', async function () {
       await PhysicalCardCreationPage.createPhysicalCardIOS('2468', '000000')
-    }
-  })
+    })
+  }
 })
