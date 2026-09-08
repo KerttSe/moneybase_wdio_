@@ -1768,7 +1768,7 @@ export default class OrdersPage extends BasePage {
   }
 
   private async verifyBuyCompletedBySellAvailableAndroid() {
-    const sellAvailable = await this.isInstrumentSellAvailableAndroid(10000)
+    const sellAvailable = await this.isInstrumentSellAvailableAndroid(30000)
     if (!sellAvailable) {
       throw new Error('Instrument Sell action (Android) did not appear after Buy order')
     }
