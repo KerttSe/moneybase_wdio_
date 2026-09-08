@@ -1009,6 +1009,13 @@ class BankTransferP2PIndividualPage extends BasePage {
 
   public async sendP2PBySlideAndroid(amount: number | string = 11) {
     if (!browser.isAndroid) return
+    await this.prepareSmokeP2PAndroid(amount)
+    await this.reviewSmokeP2PAndroid(amount)
+    await this.submitSmokeP2PAndroid(amount)
+    await this.verifySmokeP2PAndroid(amount)
+  }
+
+  public async prepareSmokeP2PAndroid(amount: number | string = 11) {
 
     await this.ensureSingleAccountAndroid()
 
@@ -1026,12 +1033,21 @@ class BankTransferP2PIndividualPage extends BasePage {
     await amountInput.waitForExist({ timeout: 20000 })
     await amountInput.clearValue().catch(() => {})
     await amountInput.setValue(String(amount))
+  }
+
+  public async reviewSmokeP2PAndroid(amount: number | string = 11) {
 
     await this.maybeTapReviewPaymentAndroid()
 
     await this.ensureSliderReadyAndroid()
+  }
+
+  public async submitSmokeP2PAndroid(amount: number | string = 11) {
 
     await this.dragSliderToRightAndroid()
+  }
+
+  public async verifySmokeP2PAndroid(amount: number | string = 11) {
 
     await this.exitToHomeAfterP2PAndroid()
 
@@ -1040,6 +1056,13 @@ class BankTransferP2PIndividualPage extends BasePage {
 
   public async sendP2PBySlideIOS(amount: number | string = 11) {
     if (!browser.isIOS) return
+    await this.prepareSmokeP2PIOS(amount)
+    await this.reviewSmokeP2PIOS(amount)
+    await this.submitSmokeP2PIOS(amount)
+    await this.verifySmokeP2PIOS(amount)
+  }
+
+  public async prepareSmokeP2PIOS(amount: number | string = 11) {
 
     await this.ensureIndividualAccountIOS()
     await browser.pause(700)
@@ -1060,11 +1083,20 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.tap(this.amountP2PIOS)
     await this.amountP2PIOS.clearValue().catch(() => {})
     await this.amountP2PIOS.setValue(String(amount))
+  }
+
+  public async reviewSmokeP2PIOS(amount: number | string = 11) {
 
     await this.maybeTapReviewPaymentIOS()
 
     await this.ensureSliderReadyIOS()
+  }
+
+  public async submitSmokeP2PIOS(amount: number | string = 11) {
     await this.dragSliderToRightIOS()
+  }
+
+  public async verifySmokeP2PIOS(amount: number | string = 11) {
 
     await this.txDetailsCloseIOS.waitForExist({ timeout: 60000 })
 
@@ -1182,17 +1214,35 @@ class BankTransferP2PIndividualPage extends BasePage {
 
   public async sendSwiftBySlideAndroid(amount: number | string = 11) {
     if (!browser.isAndroid) return
+    await this.prepareSmokeSwiftAndroid(amount)
+    await this.submitSmokeSwiftAndroid(amount)
+    await this.verifySmokeSwiftAndroid(amount)
+  }
+
+  public async prepareSmokeSwiftAndroid(amount: number | string = 11) {
 
     await this.openSwiftToReviewPaymentAndroid(amount)
+  }
+
+  public async submitSmokeSwiftAndroid(amount: number | string = 11) {
 
     await this.ensureSliderReadyAndroid()
     await this.dragSliderToRightAndroid()
+  }
+
+  public async verifySmokeSwiftAndroid(amount: number | string = 11) {
 
     await this.verifySwiftSuccessAndroid(amount)
   }
 
   public async sendSwiftBySlideIOS(amount: number | string = 11) {
     if (!browser.isIOS) return
+    await this.prepareSmokeSwiftIOS(amount)
+    await this.submitSmokeSwiftIOS(amount)
+    await this.verifySmokeSwiftIOS(amount)
+  }
+
+  public async prepareSmokeSwiftIOS(amount: number | string = 11) {
 
     await this.ensureIndividualAccountIOS()
     await browser.pause(700)
@@ -1213,11 +1263,17 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.tap(this.amountP2PIOS)
     await this.amountP2PIOS.clearValue().catch(() => {})
     await this.amountP2PIOS.setValue(String(amount))
+  }
+
+  public async submitSmokeSwiftIOS(amount: number | string = 11) {
 
     await this.maybeTapReviewPaymentIOS()
 
     await this.ensureSliderReadyIOS()
     await this.dragSliderToRightIOS()
+  }
+
+  public async verifySmokeSwiftIOS(amount: number | string = 11) {
 
     await this.txDetailsCloseIOS.waitForExist({ timeout: 60000 })
     await this.exitToHomeAfterP2PIOS()

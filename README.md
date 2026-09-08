@@ -130,6 +130,10 @@ BROWSERSTACK=true PLATFORM=android npm run wdio -- --suite smokeWithoutOnboardin
 
 ## Reporting
 
+The 19 smoke specs use named, sequential `it` cases like the regression specs.
+These cases appear individually in BrowserStack Test Observability and Allure.
+See [Smoke Specifications](docs/smoke-specifications.md) for scope and limitations.
+
 `wdio.conf.ts` generates `allure-results` during execution and runs:
 
 ```bash

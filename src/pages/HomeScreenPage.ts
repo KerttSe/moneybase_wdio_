@@ -767,14 +767,18 @@ class HomeScreenPage extends BasePage {
 
   public async verifyAndroidAccountSwitchingAcrossTypes() {
     if (!browser.isAndroid) return
+    if (!(await this.openSmokeBusinessAccountAndroid())) return
+    await this.returnToSmokeIndividualAccountAndroid()
+  }
 
+  public async openSmokeBusinessAccountAndroid() {
     const opened = await this.openAndroidSubAccountsSheet().then(() => true).catch(() => false)
-    if (!opened) return
+    if (!opened) return false
 
     const hasBusiness = await this.businessAccountItemAndroid.isDisplayed().catch(() => false)
     if (!hasBusiness) {
       await browser.back().catch(() => {})
-      return
+      return false
     }
 
     // Switch to Business — stays on More tab
@@ -782,7 +786,10 @@ class HomeScreenPage extends BasePage {
     await this.dismissCommonAndroidAlert(5000).catch(() => false)
     await this.dismissGooglePayPopupIfPresentAndroid(5000).catch(() => false)
     await this.businessAccountLabelAndroid.waitForDisplayed({ timeout: 15000 })
+    return true
+  }
 
+  public async returnToSmokeIndividualAccountAndroid() {
     // Switch back to Individual — stays on More tab
     await this.openAndroidSubAccountsSheet()
     await this.tap(this.individualAccountItemAndroid)
@@ -795,10 +802,22 @@ class HomeScreenPage extends BasePage {
 
     await this.waitForHomeLoaded()
 
+    await this.openSmokeBusinessAccountIOS()
+    await this.openSmokeIndividualAccountIOS()
+    await this.openSmokeJointAccountIOS()
+    await this.openSmokeBusinessAccountIOS()
+  }
+
+  public async openSmokeBusinessAccountIOS() {
     await this.ensureIOSHomeAccount('Business', 'DER00003', this.businessAccountItemIOS)
+  }
+
+  public async openSmokeIndividualAccountIOS() {
     await this.ensureIOSHomeAccount('Individual', 'VEG40002', this.individualAccountItemIOS)
+  }
+
+  public async openSmokeJointAccountIOS() {
     await this.ensureIOSHomeAccount('Joint', 'VEG40003', this.jointAccountItemIOS)
-    await this.ensureIOSHomeAccount('Business', 'DER00003', this.businessAccountItemIOS)
   }
 
   public async verifyAccountSwitchingAcrossTypes() {

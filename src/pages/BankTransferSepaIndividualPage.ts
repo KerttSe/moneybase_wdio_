@@ -858,11 +858,23 @@ class BankTransferSepaIndividualPage extends BasePage {
 
   public async sendSepaBySlideAndroid(amount: number | string = 11) {
     if (!browser.isAndroid) return
+    await this.prepareSmokeSepaAndroid(amount)
+    await this.submitSmokeSepaAndroid(amount)
+    await this.verifySmokeSepaAndroid(amount)
+  }
+
+  public async prepareSmokeSepaAndroid(amount: number | string = 11) {
 
     await this.openSepaToReviewPaymentAndroid(amount)
+  }
+
+  public async submitSmokeSepaAndroid(amount: number | string = 11) {
 
     await this.ensureSliderReadyAndroid()
     await this.dragSliderToRightAndroid()
+  }
+
+  public async verifySmokeSepaAndroid(amount: number | string = 11) {
 
     await this.exitToHomeAfterPaymentAndroid()
     await this.waitForMinusAmountHomeAndroid(amount, 30000)
@@ -870,6 +882,12 @@ class BankTransferSepaIndividualPage extends BasePage {
 
   public async sendSepaBySlideIOS(amount: number | string = 11) {
     if (!browser.isIOS) return
+    await this.prepareSmokeSepaIOS(amount)
+    await this.submitSmokeSepaIOS(amount)
+    await this.verifySmokeSepaIOS(amount)
+  }
+
+  public async prepareSmokeSepaIOS(amount: number | string = 11) {
 
     await this.ensureIndividualAccountIOS()
     await this.payTabIOS.waitForExist({ timeout: 20000 })
@@ -890,11 +908,17 @@ class BankTransferSepaIndividualPage extends BasePage {
     await this.tap(this.amountInputIOS)
     await this.amountInputIOS.clearValue().catch(() => {})
     await this.amountInputIOS.setValue(String(amount))
+  }
+
+  public async submitSmokeSepaIOS(amount: number | string = 11) {
 
     await this.maybeTapReviewPaymentIOS()
 
     await this.ensureSliderReadyIOS()
     await this.dragSliderToRightIOS()
+  }
+
+  public async verifySmokeSepaIOS(amount: number | string = 11) {
 
     await this.txDetailsCloseIOS.waitForExist({ timeout: 60000 })
     await this.exitToHomeAfterPaymentIOS()

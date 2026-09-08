@@ -1,5 +1,10 @@
 # Automation Coverage
 
+For the current smoke suite, use [Smoke Specifications](smoke-specifications.md).
+The historical inventory below predates that review and includes stale smoke
+entries. Current scope, platform differences and acceptance limits are recorded
+in the newer document.
+
 This document syncs the old `Automation Coverage.xlsx` with the current state of the repository. It reflects what is actually implemented in `src/tests` and `src/pages`, not the broader wish-list from the spreadsheet.
 
 ## Implemented In Repo
