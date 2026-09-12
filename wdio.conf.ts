@@ -234,6 +234,7 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
     'appium:adbExecTimeout': 120000,
     'appium:appWaitDuration': 120000,
     'appium:appWaitActivity': '*',
+    'appium:newCommandTimeout': 3600,
     ...({ 'appium:enforceXPath1': true } as Record<string, unknown>),
     ...browserStackResetOptions,
   },
@@ -248,8 +249,8 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
       accessKey: browserStackKey,
       ...browserStackDebugOptions,
       appiumVersion: '2.6.0',
-      deviceName: process.env.BS_IOS_DEVICE || 'iPhone 15',
-      osVersion: process.env.BS_IOS_OS || '17.4',
+      deviceName: process.env.BS_IOS_DEVICE || 'iPhone 16',
+      osVersion: process.env.BS_IOS_OS || '18',
       ...({
         testObservability: true,
         testObservabilityOptions: {
@@ -262,7 +263,7 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
     'appium:app': process.env.BS_APP_IOS,
     'appium:bundleId': process.env.BS_IOS_BUNDLE_ID,
     'appium:autoAcceptAlerts': true,
-    'appium:newCommandTimeout': 300,
+    'appium:newCommandTimeout': 3600,
     'appium:waitForQuiescence': false,
     'appium:nativeWebScreenshot': true,
     'appium:permissions': '{"com.moneybase.quality":{"location":"never","notifications":"NO"}}',
@@ -378,6 +379,7 @@ const regressionSecondarySpecs = [
   './src/tests/watchlist.spec.ts',
   // regression-only secondary
   './src/tests/addbeneficiary.individual.usd.steps.spec.ts',
+  './src/tests/personalDetails.spec.ts',
   './src/tests/authentication.incorrectPasscode.spec.ts',
   './src/tests/authentication.otpCountdown.spec.ts',
   './src/tests/authentication.passcodeLockout.spec.ts',

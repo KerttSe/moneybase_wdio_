@@ -150,7 +150,7 @@ class HomeScreenPage extends BasePage {
   }
 
   private get businessAccountItemIOS() {
-    return $('~switchSubidentity_item_DER00003-0-86004')
+    return $('-ios predicate string:name CONTAINS "Business" OR label CONTAINS "Business" OR name CONTAINS "DER00003" OR label CONTAINS "DER00003"')
   }
 
   private get homeRootIOS() {
@@ -402,6 +402,14 @@ class HomeScreenPage extends BasePage {
     await this.tap(item)
     await this.subAccountsTitleIOS.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
     await browser.pause(300)
+  }
+
+  private async closeIOSSubAccountsSheet() {
+    const opened = await this.subAccountsTitleIOS.isExisting().catch(() => false)
+    if (!opened) return
+
+    await browser.back().catch(() => {})
+    await this.subAccountsTitleIOS.waitForExist({ reverse: true, timeout: 5000 }).catch(() => {})
   }
 
   private async ensureIOSHomeAccount(accountType: 'Business' | 'Individual' | 'Joint', accountCode: string, item: WdioEl) {
@@ -802,18 +810,33 @@ class HomeScreenPage extends BasePage {
 
     await this.waitForHomeLoaded()
 
-    await this.openSmokeBusinessAccountIOS()
-    await this.openSmokeIndividualAccountIOS()
-    await this.openSmokeJointAccountIOS()
-    await this.openSmokeBusinessAccountIOS()
+    const openedBusiness = await this.openSmokeBusinessAccountIOS()
+    if (openedBusiness) await this.openSmokeIndividualAccountIOS()
   }
 
   public async openSmokeBusinessAccountIOS() {
-    await this.ensureIOSHomeAccount('Business', 'DER00003', this.businessAccountItemIOS)
+    await this.waitForHomeLoaded()
+
+    const currentLabel = await this.getIOSAccountCodeLabel().catch(() => '')
+    if (currentLabel.includes('DER00003') && (!currentLabel.includes('•') || currentLabel.includes('Business'))) return true
+
+    const opened = await this.openIOSSubAccountsSheet().then(() => true).catch(() => false)
+    if (!opened) return false
+
+    const hasBusiness = await this.businessAccountItemIOS.waitForExist({ timeout: 5000 }).catch(() => false)
+    if (!hasBusiness) {
+      await this.closeIOSSubAccountsSheet()
+      return false
+    }
+
+    await this.selectIOSSubAccount(this.businessAccountItemIOS)
+    await this.waitForIOSHomeAccount('Business', 'DER00003')
+    return true
   }
 
   public async openSmokeIndividualAccountIOS() {
-    await this.ensureIOSHomeAccount('Individual', 'VEG40002', this.individualAccountItemIOS)
+    const code = AUTH.individualAccountCode ?? 'VEG40002'
+    await this.ensureIOSHomeAccount('Individual', code, this.individualAccountItemIOS)
   }
 
   public async openSmokeJointAccountIOS() {
