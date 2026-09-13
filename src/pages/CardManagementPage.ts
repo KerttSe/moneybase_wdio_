@@ -604,6 +604,64 @@ class CardManagementPage extends BasePage {
     await this.waitForAndroidSelectedCardLoaded()
   }
 
+  public async ensureIndividualAccount() {
+    if (browser.isAndroid) {
+      await this.ensureAndroidIndividualAccount()
+    }
+  }
+
+  public async selectCardByLastFour(lastFour: string) {
+    await this.openCardsTab()
+
+    if (browser.isIOS) {
+      throw new Error('selectCardByLastFour: iOS locator not yet verified against a live device')
+    }
+
+    const cardItem = $(`//android.widget.TextView[contains(@text,"${lastFour}")]/ancestor::android.view.View[@clickable="true"][1]`)
+    await cardItem.waitForExist({ timeout: 15000 })
+    await this.tap(cardItem)
+  }
+
+  private get viewPinButtonOnCardSummaryAndroid() {
+    return $('android=new UiSelector().text("View PIN")')
+  }
+
+  public async viewCardPinForCard(lastFour: string, passcode: string) {
+    await this.selectCardByLastFour(lastFour)
+
+    if (!browser.isAndroid) {
+      throw new Error('viewCardPinForCard: iOS flow not yet verified against a live device')
+    }
+
+    const detailsGateShown = await this.viewPinPasscodeMessageAndroid.isDisplayed().catch(() => false)
+    if (detailsGateShown) {
+      await this.enterAndroidPasscodeDigits(passcode)
+
+      const otpInput = $('android=new UiSelector().resourceId("com.moneybase.qa:id/otp_input")')
+      const otpShown = await otpInput.isDisplayed().catch(() => false)
+      if (otpShown) {
+        await this.type(otpInput, await this.getCardManagementOtp())
+      }
+    }
+
+    await this.viewPinButtonOnCardSummaryAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.tap(this.viewPinButtonOnCardSummaryAndroid)
+
+    await this.verifyViewPinPasscodeGateDisplayed()
+    await this.enterAndroidPasscodeDigits(passcode)
+
+    const pinShown = await this.waitForAndroidPinAfterPasscode(30000)
+    if (!pinShown) {
+      await this.debugSnapshot('view-card-pin-not-opened')
+      throw new Error('Card PIN screen did not open after passcode on Android')
+    }
+
+    await this.cardPinTitleAndroid.waitForDisplayed({ timeout: 10000 })
+    await this.waitForAndroidCardPinValue(10000)
+    await this.pinDoneButtonAndroid.waitForDisplayed({ timeout: 10000 })
+    await this.tap(this.pinDoneButtonAndroid)
+  }
+
   public async verifyCardManagementActionsDisplayed() {
     await this.openCardsTab()
     await this.ensureActiveCardControlsVisible()

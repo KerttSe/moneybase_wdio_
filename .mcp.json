@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "appium-mcp": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["scripts/run-appium-mcp.cjs"]
+    }
+  }
+}
