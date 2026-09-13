@@ -18,6 +18,7 @@ export class LoginPage extends BasePage {
 
   private static readonly IDS = {
     welcomeSkip: 'welcomeToMoneybase_button_skip',
+    welcomeSignIn: 'welcomeToMoneybase_button_signIn',
     registerScreen: 'register_screen',
   } as const
 
@@ -38,27 +39,47 @@ export class LoginPage extends BasePage {
   }
 
   get welcomeSkipBtn() { return this.byId(LoginPage.IDS.welcomeSkip) }
+  get welcomeSignInBtn() { return this.byId(LoginPage.IDS.welcomeSignIn) }
   get registerScreen() { return this.byId(LoginPage.IDS.registerScreen) }
 
-  private async waitForWelcomeSkipTransition(timeout = 12000) {
+  private async tapWelcomeEntryButtonIfShown() {
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const signInBtn = this.welcomeSignInBtn
+    if (await signInBtn.isExisting().catch(() => false)) {
+      await signInBtn.click()
+      return true
+    }
+
+    const skipBtn = this.welcomeSkipBtn
+    if (await skipBtn.isExisting().catch(() => false)) {
+      await skipBtn.click()
+      return true
+    }
+
+    return false
+  }
+
+  private async waitForWelcomeEntryTransition(timeout = 12000) {
     await browser.waitUntil(async () => {
       await browser.switchContext('NATIVE_APP').catch(() => {})
 
       const skipStillShown = await this.welcomeSkipBtn.isDisplayed().catch(() => false)
+      const signInStillShown = await this.welcomeSignInBtn.isDisplayed().catch(() => false)
       const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
-      const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+      const homeShown = await this.isHomeLoaded()
 
       if (browser.isIOS) {
         const passcodeShown = await this.isIOSPasscodeScreenShown()
         const otpShown = await this.otpContainerIOS.isExisting().catch(() => false)
-        return !skipStillShown && (registerShown || homeShown || passcodeShown || otpShown)
+        return !skipStillShown && !signInStillShown && (registerShown || homeShown || passcodeShown || otpShown)
       }
 
-      return !skipStillShown && (registerShown || homeShown)
+      return !skipStillShown && !signInStillShown && (registerShown || homeShown)
     }, {
       timeout,
       interval: 500,
-      timeoutMsg: 'Welcome Skip was tapped, but the next login/home screen did not appear',
+      timeoutMsg: 'Welcome entry button was tapped, but the next login/home screen did not appear',
     })
   }
 
@@ -145,10 +166,9 @@ export class LoginPage extends BasePage {
       await this.dismissIOSAlerts()
     }
 
-    // welcome skip (2 ios and android)
-    if (await this.welcomeSkipBtn.isExisting().catch(() => false)) {
-      await this.welcomeSkipBtn.click()
-      await this.waitForWelcomeSkipTransition().catch(() => {})
+    // Initial welcome screen can expose either the legacy Skip button or the new Sign in entry point.
+    if (await this.tapWelcomeEntryButtonIfShown()) {
+      await this.waitForWelcomeEntryTransition().catch(() => {})
     }
 
     if (browser.isIOS) {
@@ -162,11 +182,9 @@ export class LoginPage extends BasePage {
           await this.debugSnapshot('prepare-ios-loop')
           snapshotTaken = true
         }
-        // welcome skip may appear late on slow BrowserStack devices — retry inside the loop
-        const skipShown = await this.welcomeSkipBtn.isExisting().catch(() => false)
-        if (skipShown) {
-          await this.welcomeSkipBtn.click().catch(() => {})
-          await this.waitForWelcomeSkipTransition(10000).catch(() => {})
+        // welcome entry may appear late on slow BrowserStack devices — retry inside the loop
+        if (await this.tapWelcomeEntryButtonIfShown()) {
+          await this.waitForWelcomeEntryTransition(10000).catch(() => {})
           return false
         }
         const registerShown = await this.registerScreen.isExisting().catch(() => false)
@@ -756,6 +774,53 @@ get applePayProposalCloseBtn() {
   return $('~applePayProposal_button_close')
 }
 
+private get iosHomeTip() {
+  return $('-ios predicate string:name == "TipView" OR name == "More menu moved here" OR label == "More menu moved here"')
+}
+
+private get iosHomeTipCloseBtn() {
+  return $('-ios predicate string:type == "XCUIElementTypeButton" AND (name == "xmark" OR name == "Close" OR label == "Close")')
+}
+
+private async dismissIOSHomeTipIfVisible() {
+  if (!browser.isIOS) return false
+
+  await browser.switchContext('NATIVE_APP').catch(() => {})
+
+  const tipShown = await this.iosHomeTip.isExisting().catch(() => false)
+  if (!tipShown) return false
+
+  const closeShown = await this.iosHomeTipCloseBtn.isExisting().catch(() => false)
+  if (closeShown) {
+    await this.iosHomeTipCloseBtn.click().catch(async () => {
+      const loc = await this.iosHomeTipCloseBtn.getLocation()
+      const size = await this.iosHomeTipCloseBtn.getSize()
+      await this.tapIOSCoordinates(loc.x + size.width / 2, loc.y + size.height / 2)
+    })
+  } else {
+    const size = await browser.getWindowSize()
+    await this.tapIOSCoordinates(size.width * 0.81, size.height * 0.15)
+  }
+
+  await browser.pause(500)
+  return true
+}
+
+private async isHomeLoaded() {
+  const homeDisplayed = await this.homeRoot.isDisplayed().catch(() => false)
+  if (homeDisplayed) return true
+
+  if (browser.isIOS) {
+    const homeExists = await this.homeRoot.isExisting().catch(() => false)
+    if (!homeExists) return false
+
+    await this.dismissIOSHomeTipIfVisible().catch(() => false)
+    return true
+  }
+
+  return (await this.homeRoot.isExisting().catch(() => false)) || (await this.isAndroidMainShellShown())
+}
+
 
 get homeRoot() {
   if (browser.isAndroid) {
@@ -824,8 +889,7 @@ get payRootAndroid() {
 	          (browser.isIOS && await this.postOtpContinueBtnIOSFallback.isDisplayed().catch(() => false))
 	        const successVisible = await this.verificationSuccessScreen.isDisplayed().catch(() => false)
 	        const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
-	        const home = await this.homeRoot.isDisplayed().catch(() => false)
-	          || await this.homeRoot.isExisting().catch(() => false)
+		        const home = await this.isHomeLoaded()
 	        const mainShellShown = await this.isAndroidMainShellShown()
 	        const passcodeShown = await this.isIOSPasscodeScreenShown()
 	        return Boolean(androidOtpError) || incorrectOtp || continueVisible || successVisible || applePay || home || mainShellShown || passcodeShown
@@ -874,8 +938,7 @@ async waitForPostOtpNextStep(timeout = 30000) {
 	      (browser.isIOS && await this.postOtpContinueBtnIOSFallback.isDisplayed().catch(() => false))
 	    const successVisible = await this.verificationSuccessScreen.isDisplayed().catch(() => false)
 	    const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
-	    const home = await this.homeRoot.isDisplayed().catch(() => false)
-	      || await this.homeRoot.isExisting().catch(() => false)
+		    const home = await this.isHomeLoaded()
 	    const mainShellShown = await this.isAndroidMainShellShown()
 	    const passcodeShown = await this.isIOSPasscodeScreenShown()
 	    return continueVisible || successVisible || applePay || home || mainShellShown || passcodeShown
@@ -946,11 +1009,11 @@ async waitForHome(timeout = 30000) {
     await this.dismissIOSAlerts()
     await this.dismissIOSPermissionAlertsIfPresent().catch(() => false)
 
-	    const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+	    const homeShown = await this.isHomeLoaded()
 	    if (homeShown) return true
 
 	    if (await this.tapPostOtpContinueIfVisibleIOS()) {
-	      return await this.homeRoot.isDisplayed().catch(() => false)
+	      return await this.isHomeLoaded()
 	    }
 	
 	    const applePayShown = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
@@ -959,7 +1022,7 @@ async waitForHome(timeout = 30000) {
       await browser.pause(500)
     }
 
-    return this.homeRoot.isDisplayed().catch(() => false)
+    return this.isHomeLoaded()
   }, {
     timeout,
     interval: 500,
@@ -1030,11 +1093,12 @@ private async getLoginOtp(auth: AuthData, options: LoginFlowOptions) {
 private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
   console.log('[LoginPage.loginFlowOnce] Starting with options:', JSON.stringify(options))
   
-  const alreadyHome = await this.homeRoot.isDisplayed().catch(() => false)
-    || (browser.isAndroid && await this.homeRoot.isExisting().catch(() => false))
+  const alreadyHome = await this.isHomeLoaded()
   if (alreadyHome) return
 
   await this.prepare()
+  if (await this.isHomeLoaded()) return
+
   if (browser.isIOS && await this.otpContainerIOS.isExisting().catch(() => false)) {
     await this.enterOtp(await this.getLoginOtp(auth, options))
     await this.tapContinueAfterOtp()
@@ -1061,7 +1125,7 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
       timeoutMsg: 'After iOS passcode: neither Home nor OTP appeared',
     })
 
-    if (await this.homeRoot.isDisplayed().catch(() => false)) return
+    if (await this.isHomeLoaded()) return
 
     await this.enterOtp(await this.getLoginOtp(auth, options))
     await this.tapContinueAfterOtp()
