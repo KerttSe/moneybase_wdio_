@@ -131,12 +131,24 @@ class HomeScreenPage extends BasePage {
     return $('~profilePicker_label_accountCode')
   }
 
+  private get moreTabIOS() {
+    return $('~More')
+  }
+
+  private get moreNavBarIOS() {
+    return $('//XCUIElementTypeNavigationBar[@name="More" or @label="More"]')
+  }
+
+  private get moreAccountPickerIOS() {
+    return $('(//XCUIElementTypeNavigationBar[@name="More" or @label="More"]//XCUIElementTypeButton[not(@name="Camera") and not(@label="Camera") and not(@name="close") and not(@label="close")])[1]')
+  }
+
   private get profilePickerIndividualItemIOS() {
     return $('-ios predicate string:name == "Individual" OR label == "Individual"')
   }
 
   private get subAccountsTitleIOS() {
-    return $('~Sub Accounts')
+    return $('-ios predicate string:name == "Sub Accounts" OR label == "Sub Accounts" OR value == "Sub Accounts"')
   }
 
   private get individualAccountItemIOS() {
@@ -371,30 +383,115 @@ class HomeScreenPage extends BasePage {
     )
   }
 
-  private async openIOSSubAccountsSheet() {
-    await this.waitForHomeLoaded()
-    await this.profilePickerUserNameLabelIOS.waitForExist({ timeout: 20000 })
+  private async isIOSSubAccountsSheetOpen(expectedItem?: WdioEl) {
+    const titleShown = await this.subAccountsTitleIOS.isExisting().catch(() => false)
+    if (titleShown) return true
 
-    const tapAttempts = [
+    if (expectedItem) {
+      const itemShown = await expectedItem.isExisting().catch(() => false)
+      if (itemShown) return true
+    }
+
+    const accountItems = await $$('-ios predicate string:name BEGINSWITH "switchSubidentity_item_" OR label BEGINSWITH "switchSubidentity_item_"')
+    return (await accountItems.length) > 0
+  }
+
+  private async isIOSMoreOpen() {
+    return await this.moreNavBarIOS.isExisting().catch(() => false)
+  }
+
+  private async tapIOSMoreAccountPickerByCoordinate() {
+    const navShown = await this.moreNavBarIOS.isExisting().catch(() => false)
+    if (navShown) {
+      const location = await this.moreNavBarIOS.getLocation()
+      const size = await this.moreNavBarIOS.getSize()
+      await browser.execute('mobile: tap', {
+        x: Math.round(location.x + size.width / 2),
+        y: Math.round(location.y + size.height * 0.8),
+      })
+      return
+    }
+
+    await this.tapScreenPointIOS(0.5, 0.19, 'finger-ios-more-account-picker')
+  }
+
+  private async openIOSMoreMenu() {
+    if (await this.isIOSMoreOpen()) return
+
+    const attempts = [
+      async () => this.tap(this.moreTabIOS),
       async () => this.tap(this.profilePickerUserNameLabelIOS),
       async () => this.tap(this.profilePickerAccountCodeLabelIOS),
-      async () => {
-        const location = await this.profilePickerUserNameLabelIOS.getLocation()
-        const size = await this.profilePickerUserNameLabelIOS.getSize()
-        await browser.execute('mobile: tap', {
-          x: Math.max(24, location.x - 34),
-          y: location.y + Math.round(size.height / 2),
+    ]
+
+    for (const attempt of attempts) {
+      await attempt().catch(() => {})
+      const opened = await browser
+        .waitUntil(async () => this.isIOSMoreOpen(), {
+          timeout: 4000,
+          interval: 250,
         })
-      },
+        .then(() => true)
+        .catch(() => false)
+      if (opened) return
+    }
+
+    await browser.waitUntil(async () => this.isIOSMoreOpen(), {
+      timeout: 10000,
+      interval: 500,
+      timeoutMsg: 'More menu did not open on iOS',
+    })
+  }
+
+  private async openIOSSubAccountsSheet(expectedItem?: WdioEl) {
+    await this.waitForHomeLoaded()
+
+    if (await this.isIOSSubAccountsSheetOpen(expectedItem)) return
+
+    await this.openIOSMoreMenu()
+    await this.dismissIOSMoreMenuTipIfPresent().catch(() => {})
+    // Re-open More menu in case tip dismissal navigated away
+    await this.openIOSMoreMenu().catch(() => {})
+
+    const tapAttempts = [
+      async () => this.tap(this.moreAccountPickerIOS),
+      async () => this.tapIOSMoreAccountPickerByCoordinate(),
     ]
 
     for (const attempt of tapAttempts) {
       await attempt().catch(() => {})
-      const opened = await this.subAccountsTitleIOS.waitForExist({ timeout: 3000 }).catch(() => false)
+      const opened = await browser
+        .waitUntil(async () => this.isIOSSubAccountsSheetOpen(expectedItem), {
+          timeout: 4000,
+          interval: 250,
+        })
+        .then(() => true)
+        .catch(() => false)
       if (opened) return
     }
 
-    await this.subAccountsTitleIOS.waitForExist({ timeout: 15000 })
+    const legacyHomeTapAttempts = [
+      async () => this.tap(this.profilePickerUserNameLabelIOS),
+      async () => this.tap(this.profilePickerAccountCodeLabelIOS),
+    ]
+
+    for (const attempt of legacyHomeTapAttempts) {
+      await attempt().catch(() => {})
+      const opened = await browser
+        .waitUntil(async () => this.isIOSSubAccountsSheetOpen(expectedItem), {
+          timeout: 3000,
+          interval: 250,
+        })
+        .then(() => true)
+        .catch(() => false)
+      if (opened) return
+    }
+
+    await browser.waitUntil(async () => this.isIOSSubAccountsSheetOpen(expectedItem), {
+      timeout: 15000,
+      interval: 500,
+      timeoutMsg: 'Sub Accounts sheet did not open on iOS',
+    })
   }
 
   private async selectIOSSubAccount(item: WdioEl) {
@@ -405,11 +502,16 @@ class HomeScreenPage extends BasePage {
   }
 
   private async closeIOSSubAccountsSheet() {
-    const opened = await this.subAccountsTitleIOS.isExisting().catch(() => false)
+    const opened = await this.isIOSSubAccountsSheetOpen().catch(() => false)
     if (!opened) return
 
     await browser.back().catch(() => {})
-    await this.subAccountsTitleIOS.waitForExist({ reverse: true, timeout: 5000 }).catch(() => {})
+    await browser
+      .waitUntil(async () => !(await this.isIOSSubAccountsSheetOpen()), {
+        timeout: 5000,
+        interval: 250,
+      })
+      .catch(() => {})
   }
 
   private async ensureIOSHomeAccount(accountType: 'Business' | 'Individual' | 'Joint', accountCode: string, item: WdioEl) {
@@ -418,7 +520,7 @@ class HomeScreenPage extends BasePage {
     const currentLabel = await this.getIOSAccountCodeLabel().catch(() => '')
     if (currentLabel.includes(accountCode) && (!currentLabel.includes('•') || currentLabel.includes(accountType))) return
 
-    await this.openIOSSubAccountsSheet()
+    await this.openIOSSubAccountsSheet(item)
     await this.selectIOSSubAccount(item)
     await this.waitForIOSHomeAccount(accountType, accountCode)
   }

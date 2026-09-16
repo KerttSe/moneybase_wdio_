@@ -3,6 +3,7 @@ import { $, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
 import OtpHelper from '../helpers/otp.helper'
 import { AUTH } from '../data/credentials'
+import HomeScreenPage from './HomeScreenPage'
 
 export default class AddBeneficiaryPage extends BasePage {
   private getConfiguredOtpPhone() {
@@ -125,14 +126,7 @@ export default class AddBeneficiaryPage extends BasePage {
   private async ensureIndividualAccountIOS() {
     if (!browser.isIOS) return
 
-    await this.profilePickerUserNameLabelIOS.waitForExist({ timeout: 15000 })
-    await this.tap(this.profilePickerUserNameLabelIOS)
-
-    await this.profilePickerIndividualItemIOS.waitForExist({ timeout: 15000 })
-    await this.tap(this.profilePickerIndividualItemIOS)
-
-    await this.profilePickerIndividualItemIOS.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
-    await browser.pause(300)
+    await HomeScreenPage.ensureIndividualAccount()
   }
 
   private get alertBtn3Android() {

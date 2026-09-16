@@ -1,6 +1,7 @@
 import BasePage from './BasePage'
 import { $, $$, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
+import HomeScreenPage from './HomeScreenPage'
 
 
 class PhysicalCardCreationPage extends BasePage {
@@ -139,14 +140,7 @@ class PhysicalCardCreationPage extends BasePage {
   private async ensureIndividualAccountIOS() {
     if (!browser.isIOS) return
 
-    await this.profilePickerUserNameLabelIOS.waitForExist({ timeout: 15000 })
-    await this.tap(this.profilePickerUserNameLabelIOS)
-
-    await this.profilePickerIndividualItemIOS.waitForExist({ timeout: 15000 })
-    await this.tap(this.profilePickerIndividualItemIOS)
-
-    await this.profilePickerIndividualItemIOS.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
-    await browser.pause(300)
+    await HomeScreenPage.ensureIndividualAccount()
   }
 
   /** PUBLIC: ensure account context = Individual (iOS) / Single (Android) */

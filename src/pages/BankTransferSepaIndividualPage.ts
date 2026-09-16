@@ -1,6 +1,7 @@
 import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
 import BankTransferP2PIndividualPage from './BankTransferP2PIndividualPage'
+import HomeScreenPage from './HomeScreenPage'
 
 class BankTransferSepaIndividualPage extends BasePage {
   private readonly sepaBankName = 'HSBC Bank Malta plc'
@@ -205,6 +206,29 @@ class BankTransferSepaIndividualPage extends BasePage {
     return $('~Pay')
   }
 
+  private get payScreenIOS() {
+    return $(
+      '-ios predicate string:name == "pay_screen_view" OR name == "pay_button_add" OR (type == "XCUIElementTypeNavigationBar" AND name == "Pay") OR (type == "XCUIElementTypeButton" AND name == "New")'
+    )
+  }
+
+  private get contactsPermissionScreenIOS() {
+    return $('-ios predicate string:name == "ic_contacts_permission" OR label == "ic_contacts_permission" OR name == "Enable Contacts" OR label == "Enable Contacts"')
+  }
+
+  private async tapPayTabAndWaitIOS() {
+    await this.payTabIOS.waitForExist({ timeout: 20000 })
+    await browser.waitUntil(
+      async () => {
+        await this.tap(this.payTabIOS).catch(() => {})
+        const onPay = await this.payScreenIOS.isExisting().catch(() => false)
+        const onContacts = await this.contactsPermissionScreenIOS.isExisting().catch(() => false)
+        return onPay || onContacts
+      },
+      { timeout: 25000, interval: 1500 }
+    )
+  }
+
   private get payAddBtnIOS() {
     return $('~pay_button_add')
   }
@@ -252,25 +276,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   private async ensureIndividualAccountIOS() {
     if (!browser.isIOS) return
 
-    const pickerShown = await this.profilePickerUserNameLabelIOS
-      .waitForExist({ timeout: 6000 })
-      .catch(() => false)
-    if (!pickerShown) return
-
-    await this.tap(this.profilePickerUserNameLabelIOS)
-
-    const individualShown = await this.profilePickerIndividualItemIOS
-      .waitForExist({ timeout: 8000 })
-      .catch(() => false)
-    if (!individualShown) return
-
-    await this.tap(this.profilePickerIndividualItemIOS)
-
-    await this.profilePickerIndividualItemIOS
-      .waitForExist({ reverse: true, timeout: 15000 })
-      .catch(() => {})
-    await this.homeRootIOS.waitForExist({ timeout: 30000 }).catch(() => {})
-    await browser.pause(300)
+    await HomeScreenPage.ensureIndividualAccount()
   }
 
   private async ensureSliderReadyIOS() {
@@ -890,11 +896,11 @@ class BankTransferSepaIndividualPage extends BasePage {
   public async prepareSmokeSepaIOS(amount: number | string = 11) {
 
     await this.ensureIndividualAccountIOS()
-    await this.payTabIOS.waitForExist({ timeout: 20000 })
-    await this.tap(this.payTabIOS)
+    await this.tapPayTabAndWaitIOS()
     await browser.pause(2500)
     await this.dismissContactsPermissionIOS()
     await this.dismissContactsPermissionIOS()
+    await this.payScreenIOS.waitForExist({ timeout: 15000 })
 
     await this.payAddBtnIOS.waitForExist({ timeout: 15000 })
     await this.tap(this.payAddBtnIOS)
