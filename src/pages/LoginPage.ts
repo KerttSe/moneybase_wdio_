@@ -774,9 +774,36 @@ get applePayProposalCloseBtn() {
   return $('~applePayProposal_button_close')
 }
 
+private get iosHomeTip() {
+  return $('-ios predicate string:name == "TipView" OR name == "More menu moved here" OR label == "More menu moved here"')
+}
+
+private get iosHomeTipCloseBtn() {
+  return $('-ios predicate string:type == "XCUIElementTypeButton" AND (name == "xmark" OR name == "Close" OR label == "Close")')
+}
+
 private async dismissIOSHomeTipIfVisible() {
+  if (!browser.isIOS) return false
+
   await browser.switchContext('NATIVE_APP').catch(() => {})
-  return this.dismissIOSMoreMenuTipIfPresent()
+
+  const tipShown = await this.iosHomeTip.isExisting().catch(() => false)
+  if (!tipShown) return false
+
+  const closeShown = await this.iosHomeTipCloseBtn.isExisting().catch(() => false)
+  if (closeShown) {
+    await this.iosHomeTipCloseBtn.click().catch(async () => {
+      const loc = await this.iosHomeTipCloseBtn.getLocation()
+      const size = await this.iosHomeTipCloseBtn.getSize()
+      await this.tapIOSCoordinates(loc.x + size.width / 2, loc.y + size.height / 2)
+    })
+  } else {
+    const size = await browser.getWindowSize()
+    await this.tapIOSCoordinates(size.width * 0.81, size.height * 0.15)
+  }
+
+  await browser.pause(500)
+  return true
 }
 
 private async isHomeLoaded() {

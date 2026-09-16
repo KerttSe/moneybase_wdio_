@@ -655,29 +655,6 @@ export default class BasePage {
     await browser.releaseActions().catch(() => {})
   }
 
-  // One-time "More menu moved here" tooltip shown on the More screen after a Capella app update.
-  // Appears over the account picker button, blocking the Sub Accounts sheet from opening.
-  // Safe to call from any iOS context; no-ops on Android or when tooltip is absent.
-  protected async dismissIOSMoreMenuTipIfPresent() {
-    if (!browser.isIOS) return false
-    const tip = $('-ios predicate string:name == "TipView" OR name == "More menu moved here" OR label == "More menu moved here"')
-    const shown = await tip.isExisting().catch(() => false)
-    if (!shown) return false
-    const closeBtn = $('-ios predicate string:type == "XCUIElementTypeButton" AND (name == "xmark" OR name == "Close" OR label == "Close")')
-    const closeBtnShown = await closeBtn.isExisting().catch(() => false)
-    if (closeBtnShown) {
-      await closeBtn.click().catch(async () => {
-        const loc = await closeBtn.getLocation()
-        const sz = await closeBtn.getSize()
-        await this.tapScreenPointIOS((loc.x + sz.width / 2) / (await browser.getWindowRect()).width, (loc.y + sz.height / 2) / (await browser.getWindowRect()).height, 'finger-ios-tip-close')
-      })
-    } else {
-      await this.tapScreenPointIOS(0.81, 0.15, 'finger-ios-tip-close-coord')
-    }
-    await browser.pause(500)
-    return true
-  }
-
   // In-app contacts permission screen (ic_contacts_permission) → Continue → CNContactPickerViewController sheet.
   // Appears on iOS when the Pay screen first tries to access contacts (P2P, SEPA, add-beneficiary flows).
   protected async dismissContactsPermissionIOS() {

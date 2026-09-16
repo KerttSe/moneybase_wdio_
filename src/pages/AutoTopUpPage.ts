@@ -1,7 +1,6 @@
 
 import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
-import HomeScreenPage from './HomeScreenPage'
 
 export default class AutoTopUpPage extends BasePage {
   private byAndroidResId(id: string) {
@@ -47,7 +46,16 @@ export default class AutoTopUpPage extends BasePage {
   private async ensureIndividualAccountIOS() {
     if (!browser.isIOS) return
 
-    await HomeScreenPage.ensureIndividualAccount()
+    await this.profilePickerUserNameLabelIOS.waitForExist({ timeout: 15000 })
+    await this.tap(this.profilePickerUserNameLabelIOS)
+
+    await this.profilePickerIndividualItemIOS.waitForExist({ timeout: 15000 })
+    await this.tap(this.profilePickerIndividualItemIOS)
+
+    await this.profilePickerIndividualItemIOS
+      .waitForExist({ reverse: true, timeout: 15000 })
+      .catch(() => {})
+    await browser.pause(300)
   }
 
   /* =========================
