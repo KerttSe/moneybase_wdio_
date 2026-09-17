@@ -51,6 +51,14 @@ export default class OnboardingPage extends BasePage {
     return this.byId('welcomeToMoneybase_button_skip')
   }
 
+  private get welcomeNextBtn() {
+    return this.byId('welcomeToMoneybase_button_next')
+  }
+
+  private get welcomeGetStartedBtn() {
+    return this.byId('welcomeToMoneybase_button_getStarted')
+  }
+
   private get registerScreen() {
     return this.byId('register_screen')
   }
@@ -1031,10 +1039,28 @@ export default class OnboardingPage extends BasePage {
 
     if (await this.isDisplayed(this.welcomeSkipBtn, 7000)) {
       await this.tap(this.welcomeSkipBtn)
+    } else if (await this.welcomeNextBtn.isExisting().catch(() => false)) {
+      // Compose build: no skip button — tap through carousel slides until welcome screen gone
+      for (let i = 0; i < 6; i++) {
+        const getStartedShown = await this.welcomeGetStartedBtn.isExisting().catch(() => false)
+        if (getStartedShown) {
+          await this.tap(this.welcomeGetStartedBtn)
+          break
+        }
+        const nextShown = await this.welcomeNextBtn.isExisting().catch(() => false)
+        if (!nextShown) break
+        await this.tap(this.welcomeNextBtn)
+        await browser.pause(400)
+      }
     }
 
     await this.throwIfDeviceSecurityBlocked()
-    await this.registerScreen.waitForExist({ timeout: 30000 })
+    await browser.waitUntil(
+      async () =>
+        (await this.registerScreen.isExisting().catch(() => false)) ||
+        (await this.mobileInput.isExisting().catch(() => false)),
+      { timeout: 30000, interval: 500, timeoutMsg: 'register_screen or mobile input did not appear' }
+    )
   }
 
   private async throwIfDeviceSecurityBlocked() {
