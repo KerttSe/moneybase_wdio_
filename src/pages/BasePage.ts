@@ -374,6 +374,13 @@ export default class BasePage {
       if (homeShown) return true
 
       await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
+      // Compose build: home_screen may have no resource-id — treat DashboardActivity as stable home
+      const currentActivityEarly = await browser.getCurrentActivity().catch(() => '')
+      if (/DashboardActivity/i.test(currentActivityEarly)) {
+        const moreVisibleEarly = await this.androidDrawerLogoutItem.isDisplayed().catch(() => false)
+          || await this.androidDrawerSettingsItem.isDisplayed().catch(() => false)
+        if (!moreVisibleEarly) return true
+      }
       await this.dismissCommonAndroidAlert(500).catch(() => false)
 
       const currentActivity = await browser.getCurrentActivity().catch(() => '')
@@ -448,6 +455,10 @@ export default class BasePage {
     const accountPickerButton = this.byIdRx('more_button_accountPicker')
     const accountSelectionScreen = this.byIdRx('accountSelection_screen')
     const oldSubAccountsTitle = $('//*[@text="Sub Accounts" or @content-desc="Sub Accounts"]')
+    // Compose build: More screen opened via profile — no resource-ids; detect by stable menu item
+    const composeMoreIndicator = $('//*[@text="Personal Details" or @content-desc="Personal Details"]')
+    // Compose build: account row shows "CODE  Type" (double-space); tap it to open account selection
+    const composeAccountPickerRow = $('//android.widget.TextView[contains(@text,"  Business") or contains(@text,"  Individual") or contains(@text,"  Corporate") or contains(@text,"  Personal")]/ancestor::*[@clickable="true"][1]')
 
     await userAvatarBtn.waitForExist({ timeout: 20000 })
     await this.tap(userAvatarBtn)
@@ -460,8 +471,11 @@ export default class BasePage {
           || await accountSelectionScreen.isExisting().catch(() => false)) return true
         if (await oldSubAccountsTitle.isDisplayed().catch(() => false)) return true
 
-        // Check more_screen BEFORE anyAccountText — the picker button label contains account
-        // type text (e.g. "DER00003  Business") which would cause anyAccountText to exit early
+        // Account code is unique — safe to check before picker tap logic
+        if (await targetAccountText.isDisplayed().catch(() => false)
+          || await targetAccountText.isExisting().catch(() => false)) return true
+
+        // Check more_screen BEFORE Compose fallback
         const moreShown = await moreScreen.isDisplayed().catch(() => false)
           || await moreScreen.isExisting().catch(() => false)
         if (moreShown) {
@@ -473,11 +487,15 @@ export default class BasePage {
           return false
         }
 
-        // Compose fallback: account selection opened without a container resource-id.
-        // Do not use generic account type text here: Home itself contains "Individual"
-        // before the picker has finished opening.
-        if (await targetAccountText.isDisplayed().catch(() => false)
-          || await targetAccountText.isExisting().catch(() => false)) return true
+        // Compose build: More screen has no resource-id — opened via profile avatar
+        const composeMoreShown = await composeMoreIndicator.isExisting().catch(() => false)
+        if (composeMoreShown) {
+          const pickerRowShown = await composeAccountPickerRow.isExisting().catch(() => false)
+          if (pickerRowShown) {
+            await this.tap(composeAccountPickerRow)
+          }
+          return false
+        }
 
         return false
       },
