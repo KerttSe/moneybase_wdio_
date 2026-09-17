@@ -82,7 +82,7 @@ export default class BasePage {
   }
 
   private get androidDeviceSecurityCloseBtn() {
-    return $('//*[@text="Device Security" or @content-desc="Device Security"]/ancestor::android.view.View//android.widget.Button[@clickable="true"]')
+    return $('//android.widget.Button[@clickable="true"]')
   }
 
   private get androidVerificationSuccessContinueBtn() {
