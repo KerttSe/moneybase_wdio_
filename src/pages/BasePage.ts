@@ -77,6 +77,14 @@ export default class BasePage {
     return $('//android.widget.TextView[@text="Device Not Synced"]/ancestor::*[android.widget.TextView[@text="OK"]][1]//android.widget.TextView[@text="OK"]/ancestor::*[@clickable="true"][1]')
   }
 
+  private get androidDeviceSecurityTitle() {
+    return $('//*[@text="Device Security" or @content-desc="Device Security"]')
+  }
+
+  private get androidDeviceSecurityCloseBtn() {
+    return $('//*[@text="Device Security" or @content-desc="Device Security"]/ancestor::android.view.View//android.widget.Button')
+  }
+
   private get androidVerificationSuccessContinueBtn() {
     return this.byIdRx('verificationSuccess_button_continue')
   }
@@ -294,6 +302,19 @@ export default class BasePage {
         await browser.back().catch(() => {})
       }
       await this.androidDeviceNotSyncedTitle.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+      await browser.pause(300)
+      return true
+    }
+
+    const deviceSecurityShown = await this.androidDeviceSecurityTitle.isDisplayed().catch(() => false)
+    if (deviceSecurityShown) {
+      const closeShown = await this.androidDeviceSecurityCloseBtn.isDisplayed().catch(() => false)
+      if (closeShown) {
+        await this.androidDeviceSecurityCloseBtn.click().catch(() => {})
+      } else {
+        await browser.back().catch(() => {})
+      }
+      await this.androidDeviceSecurityTitle.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
       await browser.pause(300)
       return true
     }
