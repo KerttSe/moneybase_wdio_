@@ -1,225 +1,59 @@
 import BasePage from './BasePage'
 import HomeScreenPage from './HomeScreenPage'
 import { $, browser } from '@wdio/globals'
-import type { ChainablePromiseElement } from 'webdriverio'
-
-type WdioEl = ChainablePromiseElement
 
 class HomeSearchPage extends BasePage {
-  private get homeSearchInputAndroid() {
-    return $('(//*[@resource-id="com.moneybase.qa:id/home_input_search"] | //*[contains(@resource-id,"home_input_search")] | //*[@content-desc="home_input_search"])[1]')
-  }
-
-  private get homeSearchInputAndroidByXpath() {
-    return $('//android.view.View[@resource-id="home_input_search"]')
-  }
-
-  private get homeSearchInputIOS() {
+  private get searchInput() {
+    if (browser.isAndroid) {
+      return $('(//*[@resource-id="com.moneybase.qa:id/home_input_search"] | //*[contains(@resource-id,"home_input_search")] | //*[@content-desc="home_input_search"])[1]')
+    }
     return $('~home_input_search')
   }
 
-  private get androidSearchEditText() {
+  private get androidEditText() {
     return $('(//android.widget.EditText)[1]')
   }
 
-  private get homeSearchInputCandidates(): WdioEl[] {
+  private get searchResult() {
     if (browser.isAndroid) {
-      return [
-        this.homeSearchInputAndroid,
-        this.homeSearchInputAndroidByXpath,
-      ]
+      return $('//*[contains(@content-desc,"Carlos Cat") or contains(@text,"Carlos Cat")]')
     }
-
-    return [
-      this.homeSearchInputIOS,
-      $('-ios class chain:**/XCUIElementTypeSearchField'),
-      $('-ios class chain:**/XCUIElementTypeTextField[`name == "home_input_search"`]'),
-    ]
+    return $('-ios predicate string: label CONTAINS "Carlos Cat" OR name CONTAINS "Carlos Cat"')
   }
 
-  private get homeSearchResultCandidates(): WdioEl[] {
+  private get recipientScreen() {
     if (browser.isAndroid) {
-      return [
-        $('//*[contains(@content-desc,"Carlos Cat") or contains(@text,"Carlos Cat")]'),
-        $('//*[contains(@text,"Carlos Cat") or contains(@content-desc,"Carlos Cat")]'),
-        $('//*[contains(@content-desc,"To Carlos Cat") or contains(@text,"To Carlos Cat")]'),
-      ]
+      return $('(//*[@resource-id="com.moneybase.qa:id/beneficiaryDetails_button_pay"] | //*[contains(@resource-id,"beneficiaryDetails_button_pay")] | //*[@content-desc="beneficiaryDetails_button_pay"])[1]')
     }
-
-    return [
-      $('~To Carlos Cat'),
-      $('~Carlos Cat'),
-      $('-ios predicate string: label CONTAINS "Carlos Cat" OR name CONTAINS "Carlos Cat"'),
-    ]
-  }
-
-  private get openedRecipientScreenCandidates(): WdioEl[] {
-    if (browser.isAndroid) {
-      return [
-        $('(//*[@resource-id="com.moneybase.qa:id/beneficiaryDetails_button_pay"] | //*[contains(@resource-id,"beneficiaryDetails_button_pay")])[1]'),
-        $('(//*[@resource-id="com.moneybase.qa:id/beneficiaryDetails_button_back"] | //*[contains(@resource-id,"beneficiaryDetails_button_back")])[1]'),
-        $('//*[@resource-id="beneficiaryDetails_button_pay"]'),
-        $('//*[@resource-id="beneficiaryDetails_button_back"]'),
-        $('//*[contains(@text,"Carlos Cat") or contains(@content-desc,"Carlos Cat")]'),
-        $('//*[contains(@content-desc,"Carlos Cat") or contains(@text,"Carlos Cat")]'),
-        $('(//*[@resource-id="com.moneybase.qa:id/makePayment_input_amount"] | //*[contains(@resource-id,"makePayment_input_amount")])[1]'),
-      ]
-    }
-
-    return [
-      $('~beneficiaryDetails_button_pay'),
-      $('~BackButton'),
-      $('~Carlos Cat'),
-      $('~pay_item_Carlos Cat'),
-      $('~makePayment_input_amount'),
-      $('-ios predicate string: name == "beneficiaryDetails_button_pay" OR label == "Pay"'),
-      $('-ios predicate string: name CONTAINS "Carlos Cat" OR label CONTAINS "Carlos Cat"'),
-    ]
-  }
-
-  private async isVisibleOrExists(el: WebdriverIO.Element): Promise<boolean> {
-    if (await el.isDisplayed().catch(() => false)) return true
-    if (browser.isIOS && await el.isExisting().catch(() => false)) return true
-    return false
-  }
-
-  private async waitForAnyDisplayed(
-    candidates: Array<WdioEl | WebdriverIO.Element>,
-    timeout = 10000,
-    label = 'element'
-  ) {
-    await browser.waitUntil(
-      async () => {
-        for (const el of candidates) {
-          const resolved = (await el) as WebdriverIO.Element
-          if (await this.isVisibleOrExists(resolved)) return true
-        }
-        return false
-      },
-      {
-        timeout,
-        interval: 500,
-        timeoutMsg: `${label} did not appear`,
-      }
-    )
-  }
-
-  private async getFirstDisplayed(
-    candidates: Array<WdioEl | WebdriverIO.Element>,
-    timeout = 10000,
-    label = 'element'
-  ) {
-    await this.waitForAnyDisplayed(candidates, timeout, label)
-
-    for (const el of candidates) {
-      const resolved = (await el) as WebdriverIO.Element
-      if (await this.isVisibleOrExists(resolved)) return resolved
-    }
-
-    throw new Error(`${label} did not appear`)
-  }
-
-  private async tapFirstDisplayed(
-    candidates: Array<WdioEl | WebdriverIO.Element>,
-    timeout = 10000,
-    label = 'element'
-  ) {
-    const first = await this.getFirstDisplayed(candidates, timeout, label)
-    await first.click()
-  }
-
-  private async scrollUpOnceIOS() {
-    const { width, height } = await browser.getWindowRect()
-    const x = Math.round(width * 0.5)
-    const startY = Math.round(height * 0.3)
-    const endY = Math.round(height * 0.78)
-
-    await browser.performActions([
-      {
-        type: 'pointer',
-        id: 'finger1',
-        parameters: { pointerType: 'touch' },
-        actions: [
-          { type: 'pointerMove', duration: 0, x, y: startY },
-          { type: 'pointerDown', button: 0 },
-          { type: 'pause', duration: 150 },
-          { type: 'pointerMove', duration: 500, x, y: endY },
-          { type: 'pointerUp', button: 0 },
-        ],
-      },
-    ])
-    await browser.releaseActions().catch(() => {})
-    await browser.pause(700)
-  }
-
-  private async ensureSearchInputVisible() {
-    if (!browser.isIOS) {
-      await this.waitForAnyDisplayed(this.homeSearchInputCandidates, 15000, 'Home search input')
-      return
-    }
-
-    for (let attempt = 0; attempt < 4; attempt += 1) {
-      const visible = await this.homeSearchInputCandidates[0].isDisplayed().catch(() => false)
-      if (visible) return
-
-      const anyVisible = await Promise.all(
-        this.homeSearchInputCandidates.map((el) => el.isDisplayed().catch(() => false))
-      )
-      if (anyVisible.some(Boolean)) return
-
-      await this.scrollUpOnceIOS()
-    }
-
-    await this.waitForAnyDisplayed(this.homeSearchInputCandidates, 8000, 'Home search input')
+    return $('~beneficiaryDetails_button_pay')
   }
 
   private async typeIntoSearch(value: string) {
-    const input = await this.getFirstDisplayed(
-      this.homeSearchInputCandidates,
-      15000,
-      'Home search input'
-    )
-
-    await input.click().catch(() => {})
-    await browser.pause(250)
+    const input = await this.searchInput
+    await input.click()
+    await browser.pause(300)
 
     if (browser.isIOS) {
       await input.clearValue().catch(() => {})
-      const typed = await input.setValue(value).then(() => true).catch(() => false)
-      if (!typed) {
-        await browser.execute('mobile: type', { text: value }).catch(() => {})
-      }
+      await input.setValue(value).catch(async () => {
+        await browser.execute('mobile: type', { text: value })
+      })
       return
     }
 
-    const androidInput = await this.getAndroidTypingTarget(input)
-    await androidInput.click().catch(() => {})
-    await androidInput.clearValue().catch(() => {})
-
-    const typedWithElement = await androidInput.addValue(value).then(() => true).catch(() => false)
-    if (typedWithElement) return
-
-    const typedWithSetValue = await androidInput.setValue(value).then(() => true).catch(() => false)
-    if (typedWithSetValue) return
-
-    const safe = value.replace(/ /g, '%s')
-    await browser.execute('mobile: shell', {
-      command: 'input',
-      args: ['text', safe],
-    })
-  }
-
-  private async getAndroidTypingTarget(fallbackInput: WebdriverIO.Element) {
-    if (!browser.isAndroid) return fallbackInput
-
     await browser.pause(350)
+    const editTextVisible = await this.androidEditText.isDisplayed().catch(() => false)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const target: WebdriverIO.Element = (editTextVisible ? await this.androidEditText : input) as any
 
-    const editTextVisible = await this.androidSearchEditText.isDisplayed().catch(() => false)
-    if (editTextVisible) {
-      return this.androidSearchEditText as unknown as WebdriverIO.Element
-    }
-
-    return fallbackInput
+    await target.click().catch(() => {})
+    await target.clearValue().catch(() => {})
+    await target.addValue(value).catch(async () => {
+      await browser.execute('mobile: shell', {
+        command: 'input',
+        args: ['text', value.replace(/ /g, '%s')],
+      })
+    })
   }
 
   public async verifyHomeSearch(query = 'cat') {
@@ -228,11 +62,14 @@ class HomeSearchPage extends BasePage {
     await HomeScreenPage.ensureIndividualAccount()
     await HomeScreenPage.waitForHomeLoaded()
     await this.dismissIOSAlerts()
-    await this.ensureSearchInputVisible()
+
+    await this.searchInput.waitForDisplayed({ timeout: 15000 })
     await this.typeIntoSearch(query)
-    await this.waitForAnyDisplayed(this.homeSearchResultCandidates, 15000, 'Carlos Cat search result')
-    await this.tapFirstDisplayed(this.homeSearchResultCandidates, 10000, 'Carlos Cat search result')
-    await this.waitForAnyDisplayed(this.openedRecipientScreenCandidates, 15000, 'Opened recipient screen')
+
+    await this.searchResult.waitForDisplayed({ timeout: 15000 })
+    await this.searchResult.click()
+
+    await this.recipientScreen.waitForDisplayed({ timeout: 15000 })
   }
 }
 
