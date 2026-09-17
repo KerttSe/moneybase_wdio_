@@ -234,7 +234,7 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
     'appium:adbExecTimeout': 120000,
     'appium:appWaitDuration': 120000,
     'appium:appWaitActivity': '*',
-    'appium:newCommandTimeout': 3600,
+    'appium:newCommandTimeout': 600,
     ...({ 'appium:enforceXPath1': true } as Record<string, unknown>),
     ...browserStackResetOptions,
   },
