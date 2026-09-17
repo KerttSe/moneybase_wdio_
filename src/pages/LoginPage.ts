@@ -224,6 +224,14 @@ export class LoginPage extends BasePage {
       const mainShellShown = await this.isAndroidMainShellShown()
       const activity = await browser.getCurrentActivity().catch(() => '')
       const loginActivityShown = /LoginActivity/i.test(activity)
+
+      if (loginActivityShown) {
+        const deviceSecurityShown = await $('//*[@text="Device Security"]').isExisting().catch(() => false)
+        if (deviceSecurityShown) {
+          throw new Error('BrowserStack device is blocked by Device Security screen (VPN or security policy)')
+        }
+      }
+
       if (registerShown || homeShown || mainShellShown || loginActivityShown) return true
 
       await this.dismissAndroidBlockersOnce(0)
