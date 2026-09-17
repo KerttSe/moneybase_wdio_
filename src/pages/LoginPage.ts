@@ -367,7 +367,7 @@ get authLoginNavBar() {
 
 // Android anchor
 get androidAuthLoginRoot() {
-  return $('//*[@resource-id="com.moneybase.qa:id/action_bar_root"]');
+  return $('(//*[@resource-id="com.moneybase.qa:id/action_bar_root"] | //*[@content-desc="action_bar_root"])[1]')
 }
 
 /* ===== iOS ===== */
@@ -393,8 +393,7 @@ private async tapDigitIOS(d: string) {
 
 /* ===== Aos ===== */
 private androidKeypadDigit(d: string) {
-  //  повний resource-id з package
-  return $(`//*[@resource-id="com.moneybase.qa:id/keypad_text_${d}"]`);
+  return $(`(//*[@resource-id="com.moneybase.qa:id/keypad_text_${d}"] | //*[@content-desc="keypad_text_${d}"])[1]`)
 }
 
   private async tapDigitAndroid(d: string) {
@@ -514,18 +513,16 @@ get otpIncorrectCodeIOS() {
 }
 
 /* ===== Android ===== */
-// Anchor (те, що ти показав)
 get otpContainerAndroid() {
-  return $('//*[@resource-id="com.moneybase.qa:id/composeViewRegisterMobile"]');
+  return this.byId('composeViewRegisterMobile')
 }
 
-// input field 
 get otpFieldAndroid() {
-  return $('//*[@resource-id="com.moneybase.qa:id/otp_input"]');
+  return this.byId('otp_input')
 }
 
 get otpErrorAndroid() {
-  return $('//*[@resource-id="com.moneybase.qa:id/tvMobileVerificationError"]')
+  return this.byId('tvMobileVerificationError')
 }
 
 private get otpErrorTextAndroid() {
@@ -581,8 +578,9 @@ async waitForOtpScreen() {
       const popupShown = await this.applePayProposalCloseBtn.isExisting().catch(() => false)
       const homeShown = await this.homeRoot.isExisting().catch(() => false)
       const mainShellShown = await this.isAndroidMainShellShown()
+      const otpScreenByText = await $('//*[contains(@text,"Mobile verification") or contains(@text,"Verify your phone") or contains(@content-desc,"mobileVerification")]').isExisting().catch(() => false)
 
-      if (otpShown || continueShown || popupShown || homeShown || mainShellShown) return true
+      if (otpShown || continueShown || popupShown || homeShown || mainShellShown || otpScreenByText) return true
 
       await this.dismissAndroidBlockersOnce(0)
       return false
@@ -1155,8 +1153,8 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
 	          || await this.otpContainerAndroid.isExisting().catch(() => false)
 	          || await this.otpFieldAndroid.isDisplayed().catch(() => false)
 	          || await this.otpFieldAndroid.isExisting().catch(() => false)
-	          || await $('//*[@resource-id="otp_input"]').isExisting().catch(() => false)
 	          || await this.homeRoot.isExisting().catch(() => false)
+	          || await $('//*[contains(@text,"Mobile verification") or contains(@text,"Verify your phone") or contains(@content-desc,"mobileVerification")]').isExisting().catch(() => false)
 	      }, {
 	        timeout: 45000,
 	        interval: 500,
