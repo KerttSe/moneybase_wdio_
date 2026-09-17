@@ -12,7 +12,7 @@ class AddFundsBankTransferWalletManagerPage extends BasePage {
   private readonly walletCurrencies = ['EUR', 'USD', 'GBP']
 
   private byAndroidResId(id: string) {
-    return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[contains(@resource-id,"${id}")])[1]`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[contains(@resource-id,"${id}")] | //*[@content-desc="${id}"])[1]`)
   }
 
   private byAndroidResIdMatches(_rx: string) {

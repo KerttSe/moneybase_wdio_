@@ -11,7 +11,7 @@ class PhysicalCardCreationPage extends BasePage {
    * ========================= */
 
   private get userAvatarBtnAndroid() {
-    return $('(//*[@resource-id="com.moneybase.qa:id/home_button_userAvatar"] | //*[contains(@resource-id,"home_button_userAvatar")])[1]')
+    return $('(//*[@resource-id="com.moneybase.qa:id/home_button_userAvatar"] | //*[contains(@resource-id,"home_button_userAvatar")] | //*[@content-desc="home_button_userAvatar"])[1]')
   }
 
   private get businessAccountLabelAndroid() {
@@ -27,11 +27,11 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get homeRootAndroid() {
-    return $('(//*[@resource-id="com.moneybase.qa:id/home_screen"] | //*[contains(@resource-id,"home_screen")])[1]')
+    return $('(//*[@resource-id="com.moneybase.qa:id/home_screen"] | //*[contains(@resource-id,"home_screen")] | //*[@content-desc="home_screen"])[1]')
   }
 
   private get cardsRootAndroid() {
-    return $('(//*[@resource-id="com.moneybase.qa:id/cards_screen"] | //*[contains(@resource-id,"cards_screen")])[1]')
+    return $('(//*[@resource-id="com.moneybase.qa:id/cards_screen"] | //*[contains(@resource-id,"cards_screen")] | //*[@content-desc="cards_screen"])[1]')
   }
 
   private get cardsRootIOS() {

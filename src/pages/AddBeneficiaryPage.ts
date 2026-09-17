@@ -19,7 +19,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private byAndroidResId(id: string) {
-    return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[@resource-id="${id}"] | //*[contains(@resource-id,"${id}")])[1]`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[@resource-id="${id}"] | //*[contains(@resource-id,"${id}")] | //*[@content-desc="${id}"])[1]`)
   }
 
   private androidInputByIdLabelOrIndex(id: string, labelXPath: string, index: number) {

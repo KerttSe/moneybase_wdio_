@@ -22,8 +22,7 @@ class HomeStorylyPage extends BasePage {
   private readonly inferredStorylyMinHeight = 220
 
   private byAndroidResId(id: string) {
-    const rx = `.*:id/${id}$|^${id}$`
-    return $(`android=new UiSelector().resourceIdMatches("${rx}")`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[@resource-id="${id}"] | //*[contains(@resource-id,"${id}")] | //*[@content-desc="${id}"])[1]`)
   }
 
   private get storylyBarIOS() {

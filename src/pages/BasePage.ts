@@ -19,7 +19,7 @@ type EnsureSingleAccountAndroidParams = {
 export default class BasePage {
   private byIdRx(name: string) {
     if (browser.isAndroid) {
-      return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[@resource-id="${name}"] | //*[contains(@resource-id,"${name}")])[1]`)
+      return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[@resource-id="${name}"] | //*[contains(@resource-id,"${name}")] | //*[@content-desc="${name}"])[1]`)
     }
     return $(`~${name}`)
   }

@@ -15,7 +15,7 @@ class CardManagementPage extends BasePage {
   }
 
   private get cardsScreenAndroid() {
-    return $('(//*[@resource-id="cards_screen"] | //*[contains(@resource-id,"cards_screen")])[1]')
+    return $('(//*[@resource-id="cards_screen"] | //*[contains(@resource-id,"cards_screen")] | //*[@content-desc="cards_screen"])[1]')
   }
 
   private get jointAccountLabelIOS() {
@@ -247,7 +247,7 @@ class CardManagementPage extends BasePage {
   }
 
   private get pinScreenAndroid() {
-    return $('(//*[@resource-id="pin_screen"] | //*[contains(@resource-id,"pin_screen")])[1]')
+    return $('(//*[@resource-id="pin_screen"] | //*[contains(@resource-id,"pin_screen")] | //*[@content-desc="pin_screen"])[1]')
   }
 
   private get pinBackButtonIOS() {

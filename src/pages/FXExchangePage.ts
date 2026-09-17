@@ -9,7 +9,7 @@ type WdioEl = ChainablePromiseElement
 class FXExchangePage extends BasePage {
   private get homeExchangeButton() {
     if (browser.isAndroid) {
-      return $('(//*[@resource-id="com.moneybase.qa:id/home_button_exchange"] | //*[contains(@resource-id,"home_button_exchange")])[1]')
+      return $('(//*[@resource-id="com.moneybase.qa:id/home_button_exchange"] | //*[contains(@resource-id,"home_button_exchange")] | //*[@content-desc="home_button_exchange"])[1]')
     }
     return $('-ios predicate string:name == "ic_exchange" OR name == "Exchange" OR label == "Exchange"')
   }

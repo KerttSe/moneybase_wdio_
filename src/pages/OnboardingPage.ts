@@ -44,7 +44,7 @@ export default class OnboardingPage extends BasePage {
   private byId(name: string) {
     if (browser.isIOS) return $(`~${name}`)
 
-    return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[contains(@resource-id,"${name}")])[1]`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[contains(@resource-id,"${name}")] | //*[@content-desc="${name}"])[1]`)
   }
 
   private get welcomeSkipBtn() {

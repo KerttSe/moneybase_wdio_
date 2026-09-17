@@ -15,7 +15,7 @@ export default class PortfolioPage extends BasePage {
   }
 
   private byIdAndroid(name: string) {
-    return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[@resource-id="${name}"] | //*[contains(@resource-id,"${name}")])[1]`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[@resource-id="${name}"] | //*[contains(@resource-id,"${name}")] | //*[@content-desc="${name}"])[1]`)
   }
 
   private androidText(text: string) {
