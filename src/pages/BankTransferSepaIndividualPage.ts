@@ -493,6 +493,18 @@ class BankTransferSepaIndividualPage extends BasePage {
     }
   }
 
+  private async maybeTapBeneficiaryTypeSelectionAndroid() {
+    const typeScreen = $('//*[@resource-id="beneficiaryTypeSelection_screen"]')
+    const shown = await typeScreen.isExisting().catch(() => false)
+    if (!shown) return
+    const anotherPerson = $('//*[@resource-id="beneficiaryTypeSelection_card_anotherPerson"]')
+    const shown2 = await anotherPerson.isExisting().catch(() => false)
+    if (shown2) {
+      await this.tap(anotherPerson)
+      await browser.pause(800)
+    }
+  }
+
   private async scrollBeneficiariesAndroid() {
     const { width, height } = await browser.getWindowRect()
     const x = Math.round(width * 0.5)
@@ -859,6 +871,7 @@ class BankTransferSepaIndividualPage extends BasePage {
     await this.openPayAndNewAndroid()
 
     await this.tapPayAddAndroidIfShown()
+    await this.maybeTapBeneficiaryTypeSelectionAndroid()
     await this.openSepaBeneficiaryAndroid()
 
     await this.beneficiaryPayBtnAndroid.waitForExist({ timeout: 20000 })
