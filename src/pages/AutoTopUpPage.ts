@@ -5,7 +5,7 @@ import HomeScreenPage from './HomeScreenPage'
 
 export default class AutoTopUpPage extends BasePage {
   private byAndroidResId(id: string) {
-    return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[contains(@resource-id,"${id}")])[1]`)
+    return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[contains(@resource-id,"${id}")] | //*[@content-desc="${id}"])[1]`)
   }
 
   /* =========================
@@ -72,25 +72,11 @@ export default class AutoTopUpPage extends BasePage {
       )
     }
 
-    const ready = await browser.waitUntil(isReady, {
+    await browser.waitUntil(isReady, {
       timeout: 30000,
       interval: 500,
-      timeoutMsg: 'Home Add Funds button did not appear before opening Auto Top-Up',
-    }).catch(() => false)
-
-    if (!ready) {
-      console.warn('[AutoTopUp] Add Funds button not visible — relaunching app and retrying')
-      await browser.terminateApp('com.moneybase.qa').catch(() => {})
-      await browser.pause(2000)
-      await browser.activateApp('com.moneybase.qa').catch(() => {})
-      await browser.pause(3000)
-      await this.dismissBlockingAlertAndroid(5000).catch(() => {})
-      await browser.waitUntil(isReady, {
-        timeout: 30000,
-        interval: 500,
-        timeoutMsg: 'Home Add Funds button did not appear after app relaunch',
-      })
-    }
+      timeoutMsg: 'Home Add Funds button did not appear',
+    })
   }
 
   /* =========================
