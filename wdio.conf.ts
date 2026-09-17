@@ -198,7 +198,7 @@ if (useBrowserStack) {
   const needsAndroid = !platformFilter || platformFilter === 'android'
   const needsIos = !platformFilter || platformFilter === 'ios'
   if (needsAndroid) requireEnv('BS_APP_ANDROID')
-  if (needsIos) requireEnv('BS_APP_IOS')
+  if (needsIos && !process.env.BS_APP_IOS) console.warn('[WDIO] BS_APP_IOS not set — using default Lorenzo build')
 }
 
 const browserStackCapabilities: WebdriverIO.Capabilities[] = [
@@ -260,7 +260,7 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
         },
       } as Record<string, unknown>),
     },
-    'appium:app': process.env.BS_APP_IOS,
+    'appium:app': process.env.BS_APP_IOS || 'bs://d3142df66fcd0172ca376867382c6fc296c32475',
     'appium:bundleId': process.env.BS_IOS_BUNDLE_ID,
     'appium:autoAcceptAlerts': true,
     'appium:newCommandTimeout': 3600,
@@ -458,7 +458,7 @@ export const config: WebdriverIO.Config = {
     regressionSecondary: regressionSecondarySpecs,
   },
   maxInstances,
-  specFileRetries: Number(process.env.SPEC_FILE_RETRIES ?? 1),
+  specFileRetries: Number(process.env.SPEC_FILE_RETRIES ?? 0),
   specFileRetriesDelay: 0,
   logLevel: 'info',
   framework: 'mocha',

@@ -1,6 +1,8 @@
 import BasePage from './BasePage'
 import { $, $$, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
+import HomeScreenPage from './HomeScreenPage'
+import OtpHelper from '../helpers/otp.helper'
 
 
 class PhysicalCardCreationPage extends BasePage {
@@ -139,14 +141,7 @@ class PhysicalCardCreationPage extends BasePage {
   private async ensureIndividualAccountIOS() {
     if (!browser.isIOS) return
 
-    await this.profilePickerUserNameLabelIOS.waitForExist({ timeout: 15000 })
-    await this.tap(this.profilePickerUserNameLabelIOS)
-
-    await this.profilePickerIndividualItemIOS.waitForExist({ timeout: 15000 })
-    await this.tap(this.profilePickerIndividualItemIOS)
-
-    await this.profilePickerIndividualItemIOS.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
-    await browser.pause(300)
+    await HomeScreenPage.ensureIndividualAccount()
   }
 
   /** PUBLIC: ensure account context = Individual (iOS) / Single (Android) */
@@ -1461,8 +1456,27 @@ class PhysicalCardCreationPage extends BasePage {
     await this.reenterPinIOS(pin)
   }
 
+  private async getPhysicalCardOtp(fallbackOtp: string) {
+    const explicit = process.env.PHYSICAL_CARD_OTP
+    if (explicit) return explicit.replace(/\D/g, '').slice(0, 6)
+
+    const endpointConfigured = Boolean(String(process.env.OTP_GET_LATEST_URL || process.env.OTP_API_BASE_URL || '').trim())
+    if (!endpointConfigured) return fallbackOtp
+
+    const phone = process.env.PHYSICAL_CARD_OTP_PHONE || process.env.PHYSICAL_CARD_MB_PHONE || ''
+    if (!phone) return fallbackOtp
+
+    return OtpHelper.getLatestOtp({
+      phone,
+      timeoutMs: Number(process.env.PHYSICAL_CARD_OTP_TIMEOUT_MS || process.env.OTP_TIMEOUT_MS || 90000),
+      intervalMs: Number(process.env.PHYSICAL_CARD_OTP_POLL_INTERVAL_MS || process.env.OTP_POLL_INTERVAL_MS || 2000),
+      maxRequests: Number(process.env.PHYSICAL_CARD_OTP_MAX_REQUESTS || 1),
+    })
+  }
+
   public async confirmPhysicalCardOtpIOS(pin: string, otp: string) {
-    await this.enterOtpIOS(otp)
+    const resolvedOtp = await this.getPhysicalCardOtp(otp)
+    await this.enterOtpIOS(resolvedOtp)
     await this.closeApplePayProposalIOS()
   }
 

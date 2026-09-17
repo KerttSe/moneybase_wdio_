@@ -1,5 +1,6 @@
 import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
+import HomeScreenPage from './HomeScreenPage'
 
 class BankTransferP2PIndividualPage extends BasePage {
   private byAndroidResId(id: string) {
@@ -347,7 +348,9 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get payScreenIOS() {
-    return $('-ios predicate string:name == "pay_screen_view" OR name == "pay_button_add"')
+    return $(
+      '-ios predicate string:name == "pay_screen_view" OR name == "pay_button_add" OR (type == "XCUIElementTypeNavigationBar" AND name == "Pay") OR (type == "XCUIElementTypeButton" AND name == "New")'
+    )
   }
 
   private get contactsPermissionScreenIOS() {
@@ -978,25 +981,7 @@ class BankTransferP2PIndividualPage extends BasePage {
   private async ensureIndividualAccountIOS() {
     if (!browser.isIOS) return
 
-    const pickerShown = await this.profilePickerUserNameLabelIOS
-      .waitForExist({ timeout: 6000 })
-      .catch(() => false)
-    if (!pickerShown) return
-
-    await this.tap(this.profilePickerUserNameLabelIOS)
-
-    const individualShown = await this.profilePickerIndividualItemIOS
-      .waitForExist({ timeout: 8000 })
-      .catch(() => false)
-    if (!individualShown) return
-
-    await this.tap(this.profilePickerIndividualItemIOS)
-
-    await this.profilePickerIndividualItemIOS
-      .waitForExist({ reverse: true, timeout: 15000 })
-      .catch(() => {})
-    await this.homeRootIOS.waitForExist({ timeout: 30000 }).catch(() => {})
-    await browser.pause(300)
+    await HomeScreenPage.ensureIndividualAccount()
   }
 
   public async ensureIndividualAccount() {

@@ -19,12 +19,13 @@ export class LoginPage extends BasePage {
   private static readonly IDS = {
     welcomeSkip: 'welcomeToMoneybase_button_skip',
     welcomeSignIn: 'welcomeToMoneybase_button_signIn',
+    welcomeLogIn: 'welcomeToMoneybase_button_logIn',
     registerScreen: 'register_screen',
   } as const
 
   private byId(name: string) {
     if (browser.isAndroid) {
-      return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[contains(@resource-id,"${name}")])[1]`)
+      return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[contains(@resource-id,"${name}")] | //*[@content-desc="${name}"])[1]`)
     }
     // iOS: accessibility id
     return $(`~${name}`)
@@ -40,6 +41,7 @@ export class LoginPage extends BasePage {
 
   get welcomeSkipBtn() { return this.byId(LoginPage.IDS.welcomeSkip) }
   get welcomeSignInBtn() { return this.byId(LoginPage.IDS.welcomeSignIn) }
+  get welcomeLogInBtn() { return this.byId(LoginPage.IDS.welcomeLogIn) }
   get registerScreen() { return this.byId(LoginPage.IDS.registerScreen) }
 
   private async tapWelcomeEntryButtonIfShown() {
@@ -48,6 +50,12 @@ export class LoginPage extends BasePage {
     const signInBtn = this.welcomeSignInBtn
     if (await signInBtn.isExisting().catch(() => false)) {
       await signInBtn.click()
+      return true
+    }
+
+    const logInBtn = this.welcomeLogInBtn
+    if (await logInBtn.isExisting().catch(() => false)) {
+      await logInBtn.click()
       return true
     }
 
@@ -66,6 +74,7 @@ export class LoginPage extends BasePage {
 
       const skipStillShown = await this.welcomeSkipBtn.isDisplayed().catch(() => false)
       const signInStillShown = await this.welcomeSignInBtn.isDisplayed().catch(() => false)
+      const logInStillShown = await this.welcomeLogInBtn.isDisplayed().catch(() => false)
       const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
       const homeShown = await this.isHomeLoaded()
 
@@ -75,7 +84,7 @@ export class LoginPage extends BasePage {
         return !skipStillShown && !signInStillShown && (registerShown || homeShown || passcodeShown || otpShown)
       }
 
-      return !skipStillShown && !signInStillShown && (registerShown || homeShown)
+      return !skipStillShown && !signInStillShown && !logInStillShown && (registerShown || homeShown)
     }, {
       timeout,
       interval: 500,
@@ -178,6 +187,12 @@ export class LoginPage extends BasePage {
       await browser.waitUntil(async () => {
         await this.dismissIOSAlerts()
         await this.dismissIOSPermissionAlertsIfPresent().catch(() => {})
+        // dismiss leftover CNContactPickerViewController sheet from a previous BS session
+        const shareAllBtn = $('-ios predicate string:label BEGINSWITH "Share All" OR name BEGINSWITH "Share All"')
+        if (await shareAllBtn.isExisting().catch(() => false)) {
+          await shareAllBtn.click().catch(async () => { await this.tap(shareAllBtn) })
+          await browser.pause(500)
+        }
         if (!snapshotTaken) {
           await this.debugSnapshot('prepare-ios-loop')
           snapshotTaken = true
@@ -203,11 +218,25 @@ export class LoginPage extends BasePage {
     // Android: wait for Register or Home, dismissing potential permission dialogs/alerts
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
+    let androidSnapshotTaken = false
     await browser.waitUntil(async () => {
       const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
       const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
       const mainShellShown = await this.isAndroidMainShellShown()
       if (registerShown || homeShown || mainShellShown) return true
+
+      if (await this.tapWelcomeEntryButtonIfShown()) {
+        await browser.pause(1500)
+        return false
+      }
+
+      if (!androidSnapshotTaken) {
+        const src = await browser.getPageSource().catch(() => '')
+        const fs = await import('fs')
+        fs.writeFileSync('/tmp/android-prepare-source.xml', src)
+        console.log('[prepare-android-loop] Source saved to /tmp/android-prepare-source.xml')
+        androidSnapshotTaken = true
+      }
 
       await this.dismissAndroidBlockersOnce(0)
       return false
@@ -774,36 +803,9 @@ get applePayProposalCloseBtn() {
   return $('~applePayProposal_button_close')
 }
 
-private get iosHomeTip() {
-  return $('-ios predicate string:name == "TipView" OR name == "More menu moved here" OR label == "More menu moved here"')
-}
-
-private get iosHomeTipCloseBtn() {
-  return $('-ios predicate string:type == "XCUIElementTypeButton" AND (name == "xmark" OR name == "Close" OR label == "Close")')
-}
-
 private async dismissIOSHomeTipIfVisible() {
-  if (!browser.isIOS) return false
-
   await browser.switchContext('NATIVE_APP').catch(() => {})
-
-  const tipShown = await this.iosHomeTip.isExisting().catch(() => false)
-  if (!tipShown) return false
-
-  const closeShown = await this.iosHomeTipCloseBtn.isExisting().catch(() => false)
-  if (closeShown) {
-    await this.iosHomeTipCloseBtn.click().catch(async () => {
-      const loc = await this.iosHomeTipCloseBtn.getLocation()
-      const size = await this.iosHomeTipCloseBtn.getSize()
-      await this.tapIOSCoordinates(loc.x + size.width / 2, loc.y + size.height / 2)
-    })
-  } else {
-    const size = await browser.getWindowSize()
-    await this.tapIOSCoordinates(size.width * 0.81, size.height * 0.15)
-  }
-
-  await browser.pause(500)
-  return true
+  return this.dismissIOSMoreMenuTipIfPresent()
 }
 
 private async isHomeLoaded() {
@@ -813,6 +815,10 @@ private async isHomeLoaded() {
   if (browser.isIOS) {
     const homeExists = await this.homeRoot.isExisting().catch(() => false)
     if (!homeExists) return false
+
+    // Passcode screen may sit on top of home_screen_view in the background accessibility tree
+    const passcodeOnTop = await $('-ios predicate string:type == "XCUIElementTypeOther" AND name == "loginKeyPad_1"').isExisting().catch(() => false)
+    if (passcodeOnTop) return false
 
     await this.dismissIOSHomeTipIfVisible().catch(() => false)
     return true

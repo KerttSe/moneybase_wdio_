@@ -247,9 +247,8 @@ private get payProcessingBtnIOS() {
   }
 
   private get depositApprovedIOS() {
-  const last4 = AUTH.cardLastFour ?? '0036'
   return $(
-    `-ios class chain:**/XCUIElementTypeStaticText[\`name == "Deposit by Card *${last4}"\`][1]`
+    `-ios class chain:**/XCUIElementTypeStaticText[\`name BEGINSWITH "Deposit by Card"\`][1]`
   )
 }
 
@@ -387,13 +386,14 @@ if (browser.isAndroid) {
   
     /* ---------- iOS ---------- */
 if (browser.isIOS) {
-  // 1) open card list
-  await this.openCardListIOS.waitForExist({ timeout: 20000 })
-  await this.tap(this.openCardListIOS)
-
-  // 2) pick needed card
-  await this.cardIOS.waitForExist({ timeout: 20000 })
-  await this.tap(this.cardIOS)
+  // Lorenzo build: card is pre-selected, dropdown arrow (XCUIElementTypeImage[2]) no longer exists.
+  // Only open the card list and pick a card when the dropdown arrow is present.
+  const hasDropdown = await this.openCardListIOS.waitForExist({ timeout: 5000 }).catch(() => false)
+  if (hasDropdown) {
+    await this.tap(this.openCardListIOS)
+    await this.cardIOS.waitForExist({ timeout: 20000 })
+    await this.tap(this.cardIOS)
+  }
 
   // 3) pay processing
   await this.payProcessingBtnIOS.waitForExist({ timeout: 30000 })

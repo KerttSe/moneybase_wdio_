@@ -655,6 +655,29 @@ export default class BasePage {
     await browser.releaseActions().catch(() => {})
   }
 
+  // One-time "More menu moved here" tooltip shown on the More screen after a Capella app update.
+  // Appears over the account picker button, blocking the Sub Accounts sheet from opening.
+  // Safe to call from any iOS context; no-ops on Android or when tooltip is absent.
+  protected async dismissIOSMoreMenuTipIfPresent() {
+    if (!browser.isIOS) return false
+    const tip = $('-ios predicate string:name == "TipView" OR name == "More menu moved here" OR label == "More menu moved here"')
+    const shown = await tip.isExisting().catch(() => false)
+    if (!shown) return false
+    const closeBtn = $('-ios predicate string:type == "XCUIElementTypeButton" AND (name == "xmark" OR name == "Close" OR label == "Close")')
+    const closeBtnShown = await closeBtn.isExisting().catch(() => false)
+    if (closeBtnShown) {
+      await closeBtn.click().catch(async () => {
+        const loc = await closeBtn.getLocation()
+        const sz = await closeBtn.getSize()
+        await this.tapScreenPointIOS((loc.x + sz.width / 2) / (await browser.getWindowRect()).width, (loc.y + sz.height / 2) / (await browser.getWindowRect()).height, 'finger-ios-tip-close')
+      })
+    } else {
+      await this.tapScreenPointIOS(0.81, 0.15, 'finger-ios-tip-close-coord')
+    }
+    await browser.pause(500)
+    return true
+  }
+
   // In-app contacts permission screen (ic_contacts_permission) → Continue → CNContactPickerViewController sheet.
   // Appears on iOS when the Pay screen first tries to access contacts (P2P, SEPA, add-beneficiary flows).
   protected async dismissContactsPermissionIOS() {
@@ -663,9 +686,14 @@ export default class BasePage {
     const shown = await permissionImg.waitForExist({ timeout: 8000 }).then(() => true).catch(() => false)
     if (!shown) return
 
-    console.warn('[iOS] Contacts permission screen detected — tapping Continue by coordinate')
-    // Continue button at ~87% screen height; use coordinate tap — button may be enabled=false
-    await this.tapScreenPointIOS(0.5, 0.87, 'finger-ios-continue-contacts')
+    const continueBtn = $('~Continue')
+    const continueShown = await continueBtn.waitForExist({ timeout: 3000 }).catch(() => false)
+    if (continueShown) {
+      await this.tap(continueBtn).catch(() => {})
+    } else {
+      console.warn('[iOS] Continue btn not found by a11y — coordinate fallback y=0.87')
+      await this.tapScreenPointIOS(0.5, 0.87, 'finger-ios-continue-contacts')
+    }
     await browser.pause(800)
 
     // P2P shows a system contacts permission alert ("Allow While Using App" / "OK") instead of
@@ -682,10 +710,19 @@ export default class BasePage {
       return
     }
 
-    // Dismiss CNContactPickerViewController springboard sheet (runs in separate process — coordinate only).
-    // y=0.92 targets "Share All X Contacts" on iPhone 16 iOS 18.
-    console.warn('[iOS] Tapping y=0.92 to dismiss CNContactPickerViewController sheet')
-    await this.tapScreenPointIOS(0.5, 0.92, 'finger-ios-contacts-sheet')
+    // Dismiss CNContactPickerViewController springboard sheet.
+    // Try element-based tap first; fall back to coordinate if SpringBoard hides it from accessibility tree.
+    const shareAllBtn = $('-ios predicate string:label BEGINSWITH "Share All" OR name BEGINSWITH "Share All"')
+    const [shownViaA11y, pageSource] = await Promise.all([
+      shareAllBtn.waitForExist({ timeout: 3000 }).catch(() => false),
+      browser.getPageSource().catch(() => ''),
+    ])
+    if (shownViaA11y) {
+      await shareAllBtn.click().catch(async () => { await this.tap(shareAllBtn) })
+    } else if ((pageSource as string).includes('bundleId="com.apple.springboard"')) {
+      console.warn('[iOS] Share All sheet (springboard) — coordinate tap y=0.92')
+      await this.tapScreenPointIOS(0.5, 0.92, 'finger-ios-contacts-sheet')
+    }
     await browser.pause(1000)
   }
 
