@@ -218,25 +218,11 @@ export class LoginPage extends BasePage {
     // Android: wait for Register or Home, dismissing potential permission dialogs/alerts
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    let androidSnapshotTaken = false
     await browser.waitUntil(async () => {
       const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
       const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
       const mainShellShown = await this.isAndroidMainShellShown()
       if (registerShown || homeShown || mainShellShown) return true
-
-      if (await this.tapWelcomeEntryButtonIfShown()) {
-        await browser.pause(1500)
-        return false
-      }
-
-      if (!androidSnapshotTaken) {
-        const src = await browser.getPageSource().catch(() => '')
-        const fs = await import('fs')
-        fs.writeFileSync('/tmp/android-prepare-source.xml', src)
-        console.log('[prepare-android-loop] Source saved to /tmp/android-prepare-source.xml')
-        androidSnapshotTaken = true
-      }
 
       await this.dismissAndroidBlockersOnce(0)
       return false
