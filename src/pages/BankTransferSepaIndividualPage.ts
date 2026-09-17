@@ -30,27 +30,6 @@ class BankTransferSepaIndividualPage extends BasePage {
     return $('(//*[contains(@resource-id,"navigation_button_pay")] | //*[@content-desc="Pay" and @clickable="true"])[1]')
   }
 
-  private get payAddBtnAndroidByDesc() {
-    return $('~pay_button_add')
-  }
-
-  private get payAddBtnAndroidById() {
-    return this.byAndroidResId('pay_button_add')
-  }
-
-  private get newBtnAndroid() {
-    // accessibility id: New
-    return $('~New')
-  }
-
-  private get newBtnAndroidByText() {
-    return $('//*[@text="New" or @content-desc="New"]')
-  }
-
-  private get newTransferTitleAndroid() {
-    return $('//*[@text="New Transfer" or @content-desc="New Transfer"]')
-  }
-
   private get sepaBeneficiaryAndroidByDesc() {
     return $(`~${this.sepaBankName}\n${this.sepaIban}`)
   }
@@ -480,31 +459,6 @@ class BankTransferSepaIndividualPage extends BasePage {
     return $(`//*[contains(@text,"Sent €${formatted}") or contains(@content-desc,"Sent €${formatted}")]`)
   }
 
-  private async tapPayAddAndroidIfShown() {
-    const byDesc = await this.payAddBtnAndroidByDesc.waitForExist({ timeout: 1500 }).catch(() => false)
-    if (byDesc) {
-      await this.tap(this.payAddBtnAndroidByDesc)
-      return
-    }
-
-    const byId = await this.payAddBtnAndroidById.waitForExist({ timeout: 1500 }).catch(() => false)
-    if (byId) {
-      await this.tap(this.payAddBtnAndroidById)
-    }
-  }
-
-  private async maybeTapBeneficiaryTypeSelectionAndroid() {
-    const typeScreen = $('//*[@resource-id="beneficiaryTypeSelection_screen"]')
-    const shown = await typeScreen.isExisting().catch(() => false)
-    if (!shown) return
-    const anotherPerson = $('//*[@resource-id="beneficiaryTypeSelection_card_anotherPerson"]')
-    const shown2 = await anotherPerson.isExisting().catch(() => false)
-    if (shown2) {
-      await this.tap(anotherPerson)
-      await browser.pause(800)
-    }
-  }
-
   private async scrollBeneficiariesAndroid() {
     const { width, height } = await browser.getWindowRect()
     const x = Math.round(width * 0.5)
@@ -527,36 +481,6 @@ class BankTransferSepaIndividualPage extends BasePage {
     ])
     await browser.releaseActions().catch(() => {})
     await browser.pause(350)
-  }
-
-  private async openPayAndNewAndroid() {
-    await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
-
-    const payShown = await this.payTabAndroid.waitForExist({ timeout: 12000 }).catch(() => false)
-    if (payShown) {
-      await this.tap(this.payTabAndroid)
-    } else {
-      await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
-      await this.payTabAndroidLegacy.waitForExist({ timeout: 12000 })
-      await this.tap(this.payTabAndroidLegacy)
-    }
-
-    const newTransferAlreadyOpen = await this.newTransferTitleAndroid.isDisplayed().catch(() => false)
-    if (newTransferAlreadyOpen) return
-
-    const newByDescShown = await this.newBtnAndroid.waitForExist({ timeout: 5000 }).catch(() => false)
-    if (newByDescShown) {
-      await this.tap(this.newBtnAndroid)
-      return
-    }
-
-    const newByTextShown = await this.newBtnAndroidByText.waitForExist({ timeout: 5000 }).catch(() => false)
-    if (newByTextShown) {
-      await this.tap(this.newBtnAndroidByText)
-      return
-    }
-
-    await this.newTransferTitleAndroid.waitForExist({ timeout: 5000 }).catch(() => {})
   }
 
   private async openSepaBeneficiaryAndroid() {
@@ -866,12 +790,15 @@ class BankTransferSepaIndividualPage extends BasePage {
 
     await BankTransferP2PIndividualPage.ensureIndividualAccount()
     await this.dismissBlockingAlertAndroid(10000)
-    await this.payTabAndroid.waitForExist({ timeout: 15000 }).catch(() => this.payTabAndroidLegacy.waitForExist({ timeout: 15000 }))
 
-    await this.openPayAndNewAndroid()
+    const payShown = await this.payTabAndroid.waitForExist({ timeout: 12000 }).catch(() => false)
+    if (payShown) {
+      await this.tap(this.payTabAndroid)
+    } else {
+      await this.payTabAndroidLegacy.waitForExist({ timeout: 12000 })
+      await this.tap(this.payTabAndroidLegacy)
+    }
 
-    await this.tapPayAddAndroidIfShown()
-    await this.maybeTapBeneficiaryTypeSelectionAndroid()
     await this.openSepaBeneficiaryAndroid()
 
     await this.beneficiaryPayBtnAndroid.waitForExist({ timeout: 20000 })
