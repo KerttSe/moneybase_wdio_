@@ -7,7 +7,7 @@ type WdioEl = ChainablePromiseElement
 
 class HomeSearchPage extends BasePage {
   private get homeSearchInputAndroid() {
-    return $('(//*[@resource-id="com.moneybase.qa:id/home_input_search"] | //*[contains(@resource-id,"home_input_search")])[1]')
+    return $('(//*[@resource-id="com.moneybase.qa:id/home_input_search"] | //*[contains(@resource-id,"home_input_search")] | //*[@content-desc="home_input_search"])[1]')
   }
 
   private get homeSearchInputAndroidByXpath() {

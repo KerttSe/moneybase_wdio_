@@ -171,7 +171,7 @@ class HomeScreenPage extends BasePage {
 
   private byId(name: string) {
     if (browser.isAndroid) {
-      return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[@resource-id="${name}"] | //*[contains(@resource-id,"${name}")])[1]`)
+      return $(`(//*[@resource-id="com.moneybase.qa:id/${name}"] | //*[@resource-id="${name}"] | //*[contains(@resource-id,"${name}")] | //*[@content-desc="${name}"])[1]`)
     }
     return $(`~${name}`)
   }
@@ -1203,6 +1203,9 @@ class HomeScreenPage extends BasePage {
           const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
             || await this.homeRoot.isExisting().catch(() => false)
           if (homeShown) return true
+
+          const activity = await browser.getCurrentActivity().catch(() => '')
+          if (/DashboardActivity/i.test(activity)) return true
 
           await this.dismissKnownAndroidBlockingPopups().catch(() => {})
           await this.dismissCommonAndroidAlert(500).catch(() => false)
