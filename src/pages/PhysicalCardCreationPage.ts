@@ -376,7 +376,7 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get blockButtonAndroid() {
-    return $('//*[contains(@text,"Block") or contains(@content-desc,"Block")]')
+    return $('//*[contains(@text,"Block") or contains(@text,"BLOCK") or contains(@content-desc,"Block") or contains(@content-desc,"BLOCK")]')
   }
 
   private get confirmBlockButtonAndroid() {
