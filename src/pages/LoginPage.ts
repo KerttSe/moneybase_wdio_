@@ -222,7 +222,9 @@ export class LoginPage extends BasePage {
       const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
       const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
       const mainShellShown = await this.isAndroidMainShellShown()
-      if (registerShown || homeShown || mainShellShown) return true
+      const activity = await browser.getCurrentActivity().catch(() => '')
+      const loginActivityShown = /LoginActivity/i.test(activity)
+      if (registerShown || homeShown || mainShellShown || loginActivityShown) return true
 
       await this.dismissAndroidBlockersOnce(0)
       return false
