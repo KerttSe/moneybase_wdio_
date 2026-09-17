@@ -469,10 +469,6 @@ export default class BasePage {
     const accountPickerButton = this.byIdRx('more_button_accountPicker')
     const accountSelectionScreen = this.byIdRx('accountSelection_screen')
     const oldSubAccountsTitle = $('//*[@text="Sub Accounts" or @content-desc="Sub Accounts"]')
-    // Compose build: More screen has no resource-id — detect by stable menu item
-    const composeMoreIndicator = $('//*[@text="Personal Details" or @content-desc="Personal Details"]')
-    // Compose build: account-picker row is a clickable view containing "  Business"/"  Individual"
-    const composeAccountPickerRow = $('//android.widget.TextView[contains(@text,"  Business") or contains(@text,"  Individual") or contains(@text,"  Corporate") or contains(@text,"  Personal")]/ancestor::*[@clickable="true"][1]')
 
     await userAvatarBtn.waitForExist({ timeout: 20000 })
     await this.tap(userAvatarBtn)
@@ -498,20 +494,11 @@ export default class BasePage {
           return false
         }
 
-        // Account code is unique — safe to check before picker logic (the code won't
-        // appear on More or Home screens unless the account selection is actually open).
+        // Compose fallback: account selection opened without a container resource-id.
+        // Do not use generic account type text here: Home itself contains "Individual"
+        // before the picker has finished opening.
         if (await targetAccountText.isDisplayed().catch(() => false)
           || await targetAccountText.isExisting().catch(() => false)) return true
-
-        // Compose build: More screen detected without resource-id
-        const composeMoreShown = await composeMoreIndicator.isExisting().catch(() => false)
-        if (composeMoreShown) {
-          const pickerRowShown = await composeAccountPickerRow.isExisting().catch(() => false)
-          if (pickerRowShown) {
-            await this.tap(composeAccountPickerRow)
-          }
-          return false
-        }
 
         return false
       },
