@@ -122,7 +122,7 @@ export default class BasePage {
   }
 
   private get androidMoreCloseButton() {
-    return $('~Close')
+    return $('(//*[@content-desc="close"] | //*[@content-desc="Close"] | //*[@content-desc="Navigate up"] | //*[@text="Close"] | //*[contains(@content-desc,"close_button")])[1]')
   }
 
   private get androidDrawerLogoutItem() {
@@ -368,19 +368,7 @@ export default class BasePage {
     while (Date.now() < deadline) {
       await browser.switchContext('NATIVE_APP').catch(() => {})
 
-      const homeEl = this.byIdRx('home_screen')
-      const homeShown = await homeEl.isDisplayed().catch(() => false)
-        || await homeEl.isExisting().catch(() => false)
-      if (homeShown) return true
-
       await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
-      // Compose build: home_screen may have no resource-id — treat DashboardActivity as stable home
-      const currentActivityEarly = await browser.getCurrentActivity().catch(() => '')
-      if (/DashboardActivity/i.test(currentActivityEarly)) {
-        const moreVisibleEarly = await this.androidDrawerLogoutItem.isDisplayed().catch(() => false)
-          || await this.androidDrawerSettingsItem.isDisplayed().catch(() => false)
-        if (!moreVisibleEarly) return true
-      }
       await this.dismissCommonAndroidAlert(500).catch(() => false)
 
       const currentActivity = await browser.getCurrentActivity().catch(() => '')
@@ -408,6 +396,19 @@ export default class BasePage {
         }
         await browser.pause(400)
         continue
+      }
+
+      const homeEl = this.byIdRx('home_screen')
+      const homeShown = await homeEl.isDisplayed().catch(() => false)
+        || await homeEl.isExisting().catch(() => false)
+      if (homeShown) return true
+
+      // Compose build: home_screen may have no resource-id — treat DashboardActivity as stable home
+      const currentActivityEarly = await browser.getCurrentActivity().catch(() => '')
+      if (/DashboardActivity/i.test(currentActivityEarly)) {
+        const moreVisibleEarly = await this.androidDrawerLogoutItem.isDisplayed().catch(() => false)
+          || await this.androidDrawerSettingsItem.isDisplayed().catch(() => false)
+        if (!moreVisibleEarly) return true
       }
 
       const cardsShown = await this.byIdRx('cards_screen').isDisplayed().catch(() => false)
@@ -449,21 +450,20 @@ export default class BasePage {
       await homeAccountLabel.isExisting().catch(() => false)
     if (alreadyOnAccount) return
 
-    // Compose builds may expose the avatar via content-desc rather than resource-id
     const userAvatarBtn = $('//*[contains(@resource-id,"home_button_userAvatar") or @content-desc="home_button_userAvatar"]')
     const moreScreen = this.byIdRx('more_screen')
     const accountPickerButton = this.byIdRx('more_button_accountPicker')
     const accountSelectionScreen = this.byIdRx('accountSelection_screen')
     const oldSubAccountsTitle = $('//*[@text="Sub Accounts" or @content-desc="Sub Accounts"]')
-    // Compose build: More screen opened via profile — no resource-ids; detect by stable menu item
     const composeMoreIndicator = $('//*[@text="Personal Details" or @content-desc="Personal Details"]')
-    // Compose build: account row shows "CODE  Type" (double-space); tap it to open account selection
     const composeAccountPickerRow = $('//android.widget.TextView[contains(@text,"  Business") or contains(@text,"  Individual") or contains(@text,"  Corporate") or contains(@text,"  Personal")]/ancestor::*[@clickable="true"][1]')
+    const targetCurrentAccountRow = accountType
+      ? $(`//android.widget.TextView[contains(@text,"${accountCode}") and contains(@text,"${accountType}")]/ancestor::*[@clickable="true"][1]`)
+      : $(`//android.widget.TextView[contains(@text,"${accountCode}")]/ancestor::*[@clickable="true"][1]`)
+    let targetAlreadySelectedFromMore = false
 
     await userAvatarBtn.waitForExist({ timeout: 20000 })
     await this.tap(userAvatarBtn)
-
-    const targetAccountText = $(`//android.widget.TextView[contains(@text,"${accountCode}")] | //*[contains(@content-desc,"${accountCode}")]`)
 
     await browser.waitUntil(
       async () => {
@@ -471,11 +471,6 @@ export default class BasePage {
           || await accountSelectionScreen.isExisting().catch(() => false)) return true
         if (await oldSubAccountsTitle.isDisplayed().catch(() => false)) return true
 
-        // Account code is unique — safe to check before picker tap logic
-        if (await targetAccountText.isDisplayed().catch(() => false)
-          || await targetAccountText.isExisting().catch(() => false)) return true
-
-        // Check more_screen BEFORE Compose fallback
         const moreShown = await moreScreen.isDisplayed().catch(() => false)
           || await moreScreen.isExisting().catch(() => false)
         if (moreShown) {
@@ -487,9 +482,18 @@ export default class BasePage {
           return false
         }
 
-        // Compose build: More screen has no resource-id — opened via profile avatar
         const composeMoreShown = await composeMoreIndicator.isExisting().catch(() => false)
         if (composeMoreShown) {
+          const currentAccountAlreadyTarget = await targetCurrentAccountRow.isDisplayed().catch(() => false)
+            || await targetCurrentAccountRow.isExisting().catch(() => false)
+          if (currentAccountAlreadyTarget) {
+            targetAlreadySelectedFromMore = true
+            await browser.back().catch(() => {})
+            await browser.pause(400)
+            await this.stabilizeAndroidHomeSurface(10000).catch(() => false)
+            return true
+          }
+
           const pickerRowShown = await composeAccountPickerRow.isExisting().catch(() => false)
           if (pickerRowShown) {
             await this.tap(composeAccountPickerRow)
@@ -506,22 +510,23 @@ export default class BasePage {
       }
     )
 
-    const accountByCode = $(`//*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[contains(@text,"${accountCode}")]/ancestor::*[@clickable="true"][1]`)
+    if (targetAlreadySelectedFromMore && !(await accountSelectionScreen.isExisting().catch(() => false))) return
+
+    const accountByCode = $(`//*[contains(@resource-id,"accountSelection_screen")]//*[contains(@text,"${accountCode}") or contains(@content-desc,"${accountCode}")]/ancestor::*[@clickable="true"][1]`)
     const accountSearchInput = $('//*[contains(@resource-id,"accountSelection_screen")]//android.widget.EditText')
     const legacyByCode = $(`//android.widget.TextView[contains(@text,"${accountCode}")]/ancestor::*[@clickable="true"][1]`)
     const legacyByType = accountType
-      ? $(`//*[@content-desc="${accountType}"]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[contains(@text,"${accountType}")]/ancestor::*[@clickable="true"][1]`)
+      ? $(`//*[contains(@resource-id,"accountSelection_screen")]//*[@content-desc="${accountType}"]/ancestor::*[@clickable="true"][1] | //*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[contains(@text,"${accountType}")]/ancestor::*[@clickable="true"][1]`)
       : legacyByCode
-    // Compose fallback: content-desc contains (no clickable ancestor required)
     const composeByCodeContentDesc = $(`//*[contains(@resource-id,"accountSelection_screen")]//*[contains(@content-desc,"${accountCode}")]`)
     const composeByTypeContentDesc = accountType
       ? $(`//*[contains(@resource-id,"accountSelection_screen")]//*[contains(@content-desc,"${accountType}")]`)
       : composeByCodeContentDesc
-    const composeByCode = $(`//android.widget.TextView[contains(@text,"${accountCode}")]`)
+    const composeByCode = $(`//*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[contains(@text,"${accountCode}")]`)
     const composeByType = accountType
-      ? $(`//android.widget.TextView[contains(@text,"${accountType}")] | //*[@content-desc="${accountType}"]`)
+      ? $(`//*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[contains(@text,"${accountType}")] | //*[contains(@resource-id,"accountSelection_screen")]//*[@content-desc="${accountType}"]`)
       : composeByCode
-    const uiSelectorDescCode = $(`//*[contains(@content-desc,"${accountCode}") or contains(@text,"${accountCode}")]`)
+    const uiSelectorDescCode = $(`//*[contains(@resource-id,"accountSelection_screen")]//*[contains(@content-desc,"${accountCode}") or contains(@text,"${accountCode}")]`)
 
     if (!(await accountByCode.isDisplayed().catch(() => false)) && await accountSearchInput.isDisplayed().catch(() => false)) {
       await accountSearchInput.setValue(accountCode).catch(async () => {
@@ -562,12 +567,18 @@ export default class BasePage {
         const homeAccountChip = $(
           `//*[contains(@resource-id,"home_button_userAvatar") and .//android.widget.TextView[contains(@text,"${accountCode}")]]`,
         )
-        return (
+        if (
           await tv.isDisplayed().catch(() => false) ||
           await tv.isExisting().catch(() => false) ||
           await cdEl.isExisting().catch(() => false) ||
           await homeAccountChip.isExisting().catch(() => false)
-        )
+        ) return true
+
+        // Compose build doesn't render account code as text/content-desc on home.
+        // Accept home_screen visible + picker gone as confirmation the switch succeeded.
+        const homeVisible = await this.byIdRx('home_screen').isExisting().catch(() => false)
+        const pickerGone = !(await this.byIdRx('accountSelection_screen').isExisting().catch(() => false))
+        return homeVisible && pickerGone
       },
       {
         timeout: 30000,
@@ -582,6 +593,16 @@ export default class BasePage {
     if (accountCode) {
       await this.switchAndroidAccountByCode(accountCode, 'Individual')
     }
+  }
+
+  protected async ensureAndroidIndividualHomeReady(stabilizeTimeoutMs = 15000) {
+    if (!browser.isAndroid) return
+
+    await this.ensureAndroidIndividualAccount()
+    await browser.pause(700)
+    await this.dismissKnownAndroidBlockingPopups(3).catch(() => false)
+    await this.dismissCommonAndroidAlert(3000).catch(() => false)
+    await this.stabilizeAndroidHomeSurface(stabilizeTimeoutMs).catch(() => false)
   }
 
   async pause(ms = 1000) {
