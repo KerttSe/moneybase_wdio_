@@ -876,25 +876,17 @@ class HomeScreenPage extends BasePage {
     if (!opened) return false
 
     const hasBusiness = await this.businessAccountItemAndroid.isDisplayed().catch(() => false)
-    if (!hasBusiness) {
-      await browser.back().catch(() => {})
-      return false
-    }
+    await browser.back().catch(() => {})
 
-    await this.tap(this.businessAccountItemAndroid)
-    await this.dismissCommonAndroidAlert(5000).catch(() => false)
-    await this.dismissGooglePayPopupIfPresentAndroid(5000).catch(() => false)
-    await this.stabilizeAndroidHomeSurface(10000).catch(() => false)
-    await this.waitForAndroidHomeAccount('Business')
+    if (!hasBusiness) return false
+
+    await this.switchAndroidAccountByCode('DER00003', 'Business')
     return true
   }
 
   public async returnToSmokeIndividualAccountAndroid() {
-    await this.openAndroidSubAccountsSheet()
-    await this.tap(this.individualAccountItemAndroid)
-    await this.dismissCommonAndroidAlert(5000).catch(() => false)
-    await this.stabilizeAndroidHomeSurface(10000).catch(() => false)
-    await this.waitForAndroidHomeAccount('Individual')
+    const accountCode = AUTH.individualAccountCode ?? 'VEG40002'
+    await this.switchAndroidAccountByCode(accountCode, 'Individual')
   }
 
   public async verifyIOSAccountSwitchingAcrossTypes() {
