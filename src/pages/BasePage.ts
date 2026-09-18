@@ -380,15 +380,18 @@ export default class BasePage {
       }
 
       const moreShown = await this.androidMoreRoot.isDisplayed().catch(() => false)
+        || await this.androidMoreRoot.isExisting().catch(() => false)
       const drawerShown = (
         moreShown ||
         await this.androidAccountSelectionRoot.isDisplayed().catch(() => false) ||
+        await this.androidAccountSelectionRoot.isExisting().catch(() => false) ||
         await this.androidDrawerLogoutItem.isDisplayed().catch(() => false) ||
         await this.androidDrawerSettingsItem.isDisplayed().catch(() => false) ||
         await this.androidDrawerWalletsItem.isDisplayed().catch(() => false)
       )
       if (drawerShown) {
         const closeShown = await this.androidMoreCloseButton.isDisplayed().catch(() => false)
+          || await this.androidMoreCloseButton.isExisting().catch(() => false)
         if (closeShown) {
           await this.androidMoreCloseButton.click().catch(() => {})
         } else {
@@ -408,6 +411,7 @@ export default class BasePage {
       if (/DashboardActivity/i.test(currentActivityEarly)) {
         const moreVisibleEarly = await this.androidDrawerLogoutItem.isDisplayed().catch(() => false)
           || await this.androidDrawerSettingsItem.isDisplayed().catch(() => false)
+          || await this.androidMoreRoot.isExisting().catch(() => false)
         if (!moreVisibleEarly) return true
       }
 
@@ -562,6 +566,20 @@ export default class BasePage {
     await browser.waitUntil(
       async () => {
         await this.dismissKnownAndroidBlockingPopups(2).catch(() => false)
+
+        // If still on More screen, click close/back to navigate to Home
+        const moreStillOpen = await this.androidMoreRoot.isExisting().catch(() => false)
+        if (moreStillOpen) {
+          const closeShown = await this.androidMoreCloseButton.isDisplayed().catch(() => false)
+            || await this.androidMoreCloseButton.isExisting().catch(() => false)
+          if (closeShown) {
+            await this.androidMoreCloseButton.click().catch(() => {})
+          } else {
+            await browser.back().catch(() => {})
+          }
+          await browser.pause(400)
+        }
+
         const tv = $(`//android.widget.TextView[contains(@text,"${accountCode}")]`)
         const cdEl = $(`//*[contains(@content-desc,"${accountCode}")]`)
         const homeAccountChip = $(

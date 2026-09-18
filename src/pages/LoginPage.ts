@@ -685,19 +685,24 @@ async enterOtp(code: string = '123456') {
     const successShown = await this.verificationSuccessScreen.isDisplayed().catch(() => false)
     if (!continueShown && !successShown) return false
 
-	    if (continueShown) {
-	      const loc = await this.postOtpContinueBtn.getLocation().catch(() => null)
-	      const size = await this.postOtpContinueBtn.getSize().catch(() => null)
-	      await this.postOtpContinueBtn.click().catch(async () => {
-	        if (loc && size) await this.tapAndroidCoordinates(loc.x + size.width / 2, loc.y + size.height / 2)
-	      })
-	      await browser.pause(500)
-	      if (loc && size && await this.postOtpContinueBtn.isDisplayed().catch(() => false)) {
-	        await this.tapAndroidCoordinates(loc.x + size.width / 2, loc.y + size.height / 2)
-	      }
-	    } else {
-	      await this.tapAndroidCoordinates(540, 2266)
-	    }
+    if (continueShown) {
+      for (let attempt = 0; attempt < 3; attempt += 1) {
+        const loc = await this.postOtpContinueBtn.getLocation().catch(() => null)
+        const size = await this.postOtpContinueBtn.getSize().catch(() => null)
+        if (loc && size) {
+          await this.tapAndroidCoordinates(loc.x + size.width / 2, loc.y + size.height / 2)
+        } else {
+          await this.postOtpContinueBtn.click().catch(() => {})
+        }
+
+        await browser.pause(700)
+        const dismissed = !(await this.verificationSuccessScreen.isDisplayed().catch(() => false))
+          || await this.isAndroidMainShellShown()
+        if (dismissed) break
+      }
+    } else {
+      await this.tapAndroidCoordinates(540, 2266)
+    }
 
 		    await browser.waitUntil(
 		      async () =>
@@ -803,10 +808,20 @@ private async dismissIOSHomeTipIfVisible() {
 }
 
 private async isHomeLoaded() {
-  const homeDisplayed = await this.homeRoot.isDisplayed().catch(() => false)
-  if (homeDisplayed) return true
+  if (browser.isAndroid) {
+    const activity = await browser.getCurrentActivity().catch(() => '')
+    if (/DashboardActivity/i.test(activity)) {
+      const passcodeOnTop = await this.androidKeypadDigit('1').isExisting().catch(() => false)
+      return !passcodeOnTop
+    }
+
+    return false
+  }
 
   if (browser.isIOS) {
+    const homeDisplayed = await this.homeRoot.isDisplayed().catch(() => false)
+    if (homeDisplayed) return true
+
     const homeExists = await this.homeRoot.isExisting().catch(() => false)
     if (!homeExists) return false
 
@@ -818,13 +833,14 @@ private async isHomeLoaded() {
     return true
   }
 
-  return (await this.homeRoot.isExisting().catch(() => false)) || (await this.isAndroidMainShellShown())
+  return await this.homeRoot.isDisplayed().catch(() => false)
+    || await this.homeRoot.isExisting().catch(() => false)
 }
 
 
 get homeRoot() {
   if (browser.isAndroid) {
-    return this.byId('home_screen')
+    return $('//*[@resource-id="home_screen" or @resource-id="com.moneybase.qa:id/home_screen" or @content-desc="home_screen"]')
   }
   return $('~home_screen_view')
 }

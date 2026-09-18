@@ -333,7 +333,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private async ensureSingleAccountAndroid() {
-    await this.ensureAndroidIndividualAccount()
+    await this.ensureAndroidIndividualHomeReady(15000)
   }
   /* =========================
    * ANDROID: entry point (Pay tab) + Add Beneficiary
@@ -1164,9 +1164,6 @@ export default class AddBeneficiaryPage extends BasePage {
     // Keep the same Android stabilization pattern as Add Funds: loginFlow already
     // waits for Home, then we only normalize account and clear transient alerts.
     await this.ensureSingleAccountAndroid()
-    await browser.pause(700)
-    await this.dismissBlockingAlertAndroid(3000).catch(() => {})
-    await this.stabilizeAndroidHomeSurface(15000).catch(() => false)
 
     const waitForPayTab = async (timeout: number) =>
       browser.waitUntil(

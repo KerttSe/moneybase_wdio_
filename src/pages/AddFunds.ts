@@ -154,11 +154,8 @@ private get payProcessingBtnIOS() {
 
   async openFromHome() {
     if (browser.isAndroid) {
-      await this.ensureSingleAccountAndroid()
-      await browser.pause(700)
-      await this.dismissBlockingAlertAndroid().catch(() => {})
+      await this.ensureAndroidIndividualHomeReady(15000)
       await this.dismissSupportSheetAndroid().catch(() => false)
-      await this.stabilizeAndroidHomeSurface(15000).catch(() => false)
     }
 
     if (browser.isIOS) {
@@ -418,6 +415,6 @@ if (browser.isIOS) {
    * ========================= */
 
   private async ensureSingleAccountAndroid() {
-    await this.ensureAndroidIndividualAccount()
+    await this.ensureAndroidIndividualHomeReady(15000)
   }
 }

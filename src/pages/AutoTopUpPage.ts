@@ -29,7 +29,7 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   private get homeRootAndroid() {
-    return this.byAndroidResId('home_screen')
+    return $('//*[@resource-id="home_screen" or @resource-id="com.moneybase.qa:id/home_screen" or @content-desc="home_screen"]')
   }
 
   /* =========================
@@ -66,6 +66,7 @@ export default class AutoTopUpPage extends BasePage {
 
     const isReady = async () => {
       await this.dismissBlockingAlertAndroid(1000).catch(() => {})
+      await this.stabilizeAndroidHomeSurface(2500).catch(() => false)
       return (
         (await this.homeRootAndroid.isDisplayed().catch(() => false)) &&
         (await this.addFundsBtnAndroid.isDisplayed().catch(() => false))
@@ -305,8 +306,6 @@ export default class AutoTopUpPage extends BasePage {
   async openFromHome() {
     if (browser.isAndroid) {
       await this.ensureSingleAccountAndroid()
-      await browser.pause(700)
-      await this.dismissBlockingAlertAndroid(7000)
 
       const addFundsAlreadyOpen = await this.addFundsScreen.isDisplayed().catch(() => false)
       if (addFundsAlreadyOpen) return
@@ -1011,7 +1010,7 @@ export default class AutoTopUpPage extends BasePage {
    * ========================= */
 
   private async ensureSingleAccountAndroid() {
-    await this.ensureAndroidIndividualAccount()
+    await this.ensureAndroidIndividualHomeReady(15000)
   }
 
   /**

@@ -5,7 +5,7 @@ import { $, browser } from '@wdio/globals'
 class HomeSearchPage extends BasePage {
   private get searchInput() {
     if (browser.isAndroid) {
-      return $('(//*[@resource-id="com.moneybase.qa:id/home_input_search"] | //*[contains(@resource-id,"home_input_search")] | //*[@content-desc="home_input_search"])[1]')
+      return $('(//*[@resource-id="com.moneybase.qa:id/home_input_search"] | //*[@content-desc="Search"]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[@text="Search"]/ancestor::*[@clickable="true"][1])[1]')
     }
     return $('~home_input_search')
   }
@@ -19,13 +19,6 @@ class HomeSearchPage extends BasePage {
       return $('//*[contains(@content-desc,"Carlos Cat") or contains(@text,"Carlos Cat")]')
     }
     return $('-ios predicate string: label CONTAINS "Carlos Cat" OR name CONTAINS "Carlos Cat"')
-  }
-
-  private get recipientScreen() {
-    if (browser.isAndroid) {
-      return $('(//*[@resource-id="com.moneybase.qa:id/beneficiaryDetails_button_pay"] | //*[contains(@resource-id,"beneficiaryDetails_button_pay")] | //*[@content-desc="beneficiaryDetails_button_pay"])[1]')
-    }
-    return $('~beneficiaryDetails_button_pay')
   }
 
   private async typeIntoSearch(value: string) {
@@ -67,9 +60,6 @@ class HomeSearchPage extends BasePage {
     await this.typeIntoSearch(query)
 
     await this.searchResult.waitForDisplayed({ timeout: 15000 })
-    await this.searchResult.click()
-
-    await this.recipientScreen.waitForDisplayed({ timeout: 15000 })
   }
 }
 

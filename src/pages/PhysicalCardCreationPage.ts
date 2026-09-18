@@ -312,7 +312,7 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get freezeButtonAndroid() {
-    return $('(//*[@resource-id="com.moneybase.qa:id/cards_button_freeze"] | //*[contains(@resource-id,"cards_button_freeze")])[1]')
+    return $('(//*[@resource-id="com.moneybase.qa:id/cards_button_freeze"] | //*[contains(@resource-id,"cards_button_freeze")] | //*[@content-desc="cards_button_freeze"])[1]')
   }
 
   private get freezeButtonIOS() {
@@ -372,7 +372,7 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get reportButtonAndroid() {
-    return $('(//*[@resource-id="com.moneybase.qa:id/cards_button_report"] | //*[contains(@resource-id,"cards_button_report")])[1]')
+    return $('(//*[@resource-id="com.moneybase.qa:id/cards_button_report"] | //*[contains(@resource-id,"cards_button_report")] | //*[@content-desc="cards_button_report"])[1]')
   }
 
   private get blockButtonAndroid() {
