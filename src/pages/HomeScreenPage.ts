@@ -48,7 +48,7 @@ class HomeScreenPage extends BasePage {
   }
 
   private get homeRootAndroid() {
-    return this.byId('home_screen')
+    return $('//*[@resource-id="home_screen" or @resource-id="com.moneybase.qa:id/home_screen" or @content-desc="home_screen"]')
   }
 
   private get moreRootAndroid() {
@@ -57,6 +57,14 @@ class HomeScreenPage extends BasePage {
 
   private get moreAccountPickerAndroid() {
     return this.byId('more_button_accountPicker')
+  }
+
+  private get composeMoreIndicatorAndroid() {
+    return $('//*[@text="Personal Details" or @content-desc="Personal Details"]')
+  }
+
+  private get composeAccountPickerRowAndroid() {
+    return $('//android.widget.TextView[contains(@text,"  Business") or contains(@text,"  Individual") or contains(@text,"  Corporate") or contains(@text,"  Personal")]/ancestor::*[@clickable="true"][1]')
   }
 
   private get accountSelectionRootAndroid() {
@@ -560,40 +568,7 @@ class HomeScreenPage extends BasePage {
   }
 
   private async ensureSingleAccountAndroid() {
-    await this.ensureHomeLandingAndroid()
-
-    const isIndividual = await this.individualAccountLabelAndroid.isDisplayed().catch(() => false)
-    if (isIndividual) return
-
-    // Single-account users (e.g. KER40014) never show account-type badges — if neither
-    // Joint nor Business is visible, we are already in the correct single-account state.
-    const jointShown = await this.jointAccountLabelAndroid.isDisplayed().catch(() => false)
-    const businessShown = await this.businessAccountLabelAndroid.isDisplayed().catch(() => false)
-    if (!jointShown && !businessShown) return
-
-    // Multi-account user: switch to Individual via the account picker
-    await this.openAndroidSubAccountsSheet()
-    await this.tapFirstAvailableAndroid(
-      [
-        this.accountPickerIndividualItemAndroid,
-        this.individualAccountItemAndroid,
-        $('//*[contains(@text,"VEG40002") or contains(@content-desc,"VEG40002")]'),
-        $('//*[contains(@text,"Individual") or contains(@content-desc,"Individual")]'),
-        $('//*[contains(@content-desc,"Individual") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1]'),
-        $('//*[contains(@content-desc,"Individual") and not(ancestor::*[@resource-id="more_button_accountPicker"])]'),
-        this.singleAccountItemAndroid,
-        this.singleAccountItemAndroidByText,
-      ],
-      'Individual account'
-    )
-
-    await this.dismissCommonAndroidAlert(5000).catch(() => false)
-    await this.dismissGooglePayPopupIfPresentAndroid(12000).catch(() => false)
-    await this.ensureHomeLandingAndroid()
-    await this.waitForAndroidHomeAccount('Individual')
-    // Tap Home tab to trigger a fresh home screen load after account switch
-    await this.tapHomeBottomNavAndroid().catch(() => {})
-    await this.ensureHomeLandingAndroid()
+    await this.ensureAndroidIndividualHomeReady(15000)
   }
 
   private async ensureHomeLandingAndroid() {
@@ -603,18 +578,14 @@ class HomeScreenPage extends BasePage {
 
     await browser.waitUntil(
       async () => {
-        const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
-          || await this.homeRootAndroid.isExisting().catch(() => false)
-        if (homeShown) return true
-
         await this.dismissKnownAndroidBlockingPopups().catch(() => {})
         await this.dismissCommonAndroidAlert(500).catch(() => false)
 
         await this.closeAndroidDrawerIfOpen().catch(() => false)
 
-        const homeAfterDrawerClosed = await this.homeRootAndroid.isDisplayed().catch(() => false)
+        const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
           || await this.homeRootAndroid.isExisting().catch(() => false)
-        if (homeAfterDrawerClosed) return true
+        if (homeShown) return true
 
         await this.tapHomeBottomNavAndroid().catch(() => {})
 
@@ -683,10 +654,14 @@ class HomeScreenPage extends BasePage {
   }
 
   private async accountPickerOpen() {
+    const composeMoreShown = await this.composeMoreIndicatorAndroid.isDisplayed().catch(() => false)
+      || await this.composeMoreIndicatorAndroid.isExisting().catch(() => false)
+
     return (
       await this.accountSelectionRootAndroid.isDisplayed().catch(() => false) ||
       await this.accountSelectionRootAndroid.isExisting().catch(() => false) ||
-      await this.subAccountsTitleAndroid.isDisplayed().catch(() => false)
+      await this.subAccountsTitleAndroid.isDisplayed().catch(() => false) ||
+      (!composeMoreShown && await this.accountPickerItemVisible())
     )
   }
 
@@ -724,13 +699,24 @@ class HomeScreenPage extends BasePage {
 
         const moreShown = await this.moreRootAndroid.isDisplayed().catch(() => false)
           || await this.moreRootAndroid.isExisting().catch(() => false)
-        if (!moreShown) return false
+        if (moreShown) {
+          const accountPickerShown = await this.moreAccountPickerAndroid.isDisplayed().catch(() => false)
+            || await this.moreAccountPickerAndroid.isExisting().catch(() => false)
+          if (!accountPickerShown) return false
 
-        const accountPickerShown = await this.moreAccountPickerAndroid.isDisplayed().catch(() => false)
-          || await this.moreAccountPickerAndroid.isExisting().catch(() => false)
-        if (!accountPickerShown) return false
+          await this.tap(this.moreAccountPickerAndroid)
+        } else {
+          const composeMoreShown = await this.composeMoreIndicatorAndroid.isDisplayed().catch(() => false)
+            || await this.composeMoreIndicatorAndroid.isExisting().catch(() => false)
+          if (!composeMoreShown) return false
 
-        await this.tap(this.moreAccountPickerAndroid)
+          const composePickerShown = await this.composeAccountPickerRowAndroid.isDisplayed().catch(() => false)
+            || await this.composeAccountPickerRowAndroid.isExisting().catch(() => false)
+          if (!composePickerShown) return false
+
+          await this.tap(this.composeAccountPickerRowAndroid)
+        }
+
         return await browser.waitUntil(
           async () => (
             await this.accountSelectionRootAndroid.isDisplayed().catch(() => false) ||
@@ -855,29 +841,7 @@ class HomeScreenPage extends BasePage {
 
     if (!browser.isAndroid) return
 
-    await this.waitForHomeLoaded()
-    const isJoint = await this.jointAccountLabelAndroid.isDisplayed().catch(() => false)
-    if (isJoint) {
-      await markBrowserStackStep('Switched to Joint')
-      return
-    }
-
-    await this.openAndroidSubAccountsSheet()
-    await this.tapFirstAvailableAndroid(
-      [
-        this.accountPickerJointItemAndroid,
-        this.jointAccountItemAndroid,
-        $('//*[contains(@text,"VEG40003") or contains(@content-desc,"VEG40003")]'),
-        $('//*[contains(@text,"Joint") or contains(@content-desc,"Joint")]'),
-        $('//*[contains(@content-desc,"Joint") and not(ancestor::*[@resource-id="more_button_accountPicker"])]/ancestor::*[@clickable="true"][1]'),
-        $('//*[contains(@content-desc,"Joint") and not(ancestor::*[@resource-id="more_button_accountPicker"])]'),
-      ],
-      'Joint account'
-    )
-    await this.dismissCommonAndroidAlert(5000).catch(() => false)
-    await this.dismissGooglePayPopupIfPresentAndroid(12000).catch(() => false)
-    await this.ensureHomeLandingAndroid()
-    await this.waitForAndroidHomeAccount('Joint')
+    await this.switchAndroidAccountByCode('VEG40003', 'Joint')
     await markBrowserStackStep('Switched to Joint')
   }
 
