@@ -17,9 +17,8 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private byAndroidResIdMatches(rx: string) {
-    // rx is used as fallback; convert to XPath contains pattern on first segment
     const first = rx.split('|')[0].replace(/^\.\*:id\//, '').replace(/\$$/, '').replace(/\^/, '')
-    return $(`(//*[contains(@resource-id,"${first}")])[1]`)
+    return $(`(//*[contains(@resource-id,"${first}")] | //*[@content-desc="${first}"])[1]`)
   }
 
   private get payTabAndroid() {

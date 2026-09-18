@@ -881,20 +881,20 @@ class HomeScreenPage extends BasePage {
       return false
     }
 
-    // Switch to Business — stays on More tab
     await this.tap(this.businessAccountItemAndroid)
     await this.dismissCommonAndroidAlert(5000).catch(() => false)
     await this.dismissGooglePayPopupIfPresentAndroid(5000).catch(() => false)
-    await this.businessAccountLabelAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.stabilizeAndroidHomeSurface(10000).catch(() => false)
+    await this.waitForAndroidHomeAccount('Business')
     return true
   }
 
   public async returnToSmokeIndividualAccountAndroid() {
-    // Switch back to Individual — stays on More tab
     await this.openAndroidSubAccountsSheet()
     await this.tap(this.individualAccountItemAndroid)
     await this.dismissCommonAndroidAlert(5000).catch(() => false)
-    await this.individualAccountLabelAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.stabilizeAndroidHomeSurface(10000).catch(() => false)
+    await this.waitForAndroidHomeAccount('Individual')
   }
 
   public async verifyIOSAccountSwitchingAcrossTypes() {
