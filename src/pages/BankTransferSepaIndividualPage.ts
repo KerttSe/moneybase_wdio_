@@ -483,45 +483,67 @@ class BankTransferSepaIndividualPage extends BasePage {
     await browser.pause(350)
   }
 
+  private get paySearchInputAndroid() {
+    return $('(//*[@resource-id="pay_input_search"] | //*[contains(@resource-id,"pay_input_search")])[1]')
+  }
+
+  private async searchAndSelectSepaBeneficiaryAndroid(): Promise<boolean> {
+    const searchInput = this.paySearchInputAndroid
+    const searchVisible = await searchInput.isDisplayed().catch(() => false)
+    if (!searchVisible) return false
+
+    await this.tap(searchInput)
+    await browser.pause(300)
+
+    const editText = $('(//android.widget.EditText)[1]')
+    const editVisible = await editText.isDisplayed().catch(() => false)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const typingTarget: WebdriverIO.Element = (editVisible ? editText : searchInput) as any
+
+    await typingTarget.clearValue().catch(() => {})
+    await typingTarget.addValue(this.sepaIbanPrefix).catch(async () => {
+      await typingTarget.setValue(this.sepaIbanPrefix)
+    })
+    await browser.pause(800)
+
+    const deadline = Date.now() + 10000
+    while (Date.now() < deadline) {
+      const byIbanDesc = await this.sepaBeneficiaryAndroidByIbanDesc.isDisplayed().catch(() => false)
+      if (byIbanDesc) { await this.tap(this.sepaBeneficiaryAndroidByIbanDesc); return true }
+      const byIbanText = await this.sepaBeneficiaryAndroidByIbanText.isDisplayed().catch(() => false)
+      if (byIbanText) { await this.tap(this.sepaBeneficiaryAndroidByIbanText); return true }
+      const byBank = await this.sepaBeneficiaryAndroidByBankText.isDisplayed().catch(() => false)
+      if (byBank) { await this.tap(this.sepaBeneficiaryAndroidByBankText); return true }
+      await browser.pause(500)
+    }
+    return false
+  }
+
   private async openSepaBeneficiaryAndroid() {
     const deadline = Date.now() + 25000
 
     while (Date.now() < deadline) {
       const byIbanDesc = await this.sepaBeneficiaryAndroidByIbanDesc.isDisplayed().catch(() => false)
-      if (byIbanDesc) {
-        await this.tap(this.sepaBeneficiaryAndroidByIbanDesc)
-        return
-      }
+      if (byIbanDesc) { await this.tap(this.sepaBeneficiaryAndroidByIbanDesc); return }
 
       const byIbanText = await this.sepaBeneficiaryAndroidByIbanText.isDisplayed().catch(() => false)
-      if (byIbanText) {
-        await this.tap(this.sepaBeneficiaryAndroidByIbanText)
-        return
-      }
+      if (byIbanText) { await this.tap(this.sepaBeneficiaryAndroidByIbanText); return }
 
       const byIbanTailDesc = await this.sepaBeneficiaryAndroidByIbanTailDesc.isDisplayed().catch(() => false)
-      if (byIbanTailDesc) {
-        await this.tap(this.sepaBeneficiaryAndroidByIbanTailDesc)
-        return
-      }
+      if (byIbanTailDesc) { await this.tap(this.sepaBeneficiaryAndroidByIbanTailDesc); return }
 
       const byIbanTailText = await this.sepaBeneficiaryAndroidByIbanTailText.isDisplayed().catch(() => false)
-      if (byIbanTailText) {
-        await this.tap(this.sepaBeneficiaryAndroidByIbanTailText)
-        return
-      }
+      if (byIbanTailText) { await this.tap(this.sepaBeneficiaryAndroidByIbanTailText); return }
 
       const byDesc = await this.sepaBeneficiaryAndroidByDesc.isDisplayed().catch(() => false)
-      if (byDesc) {
-        await this.tap(this.sepaBeneficiaryAndroidByDesc)
-        return
-      }
+      if (byDesc) { await this.tap(this.sepaBeneficiaryAndroidByDesc); return }
 
       const byBank = await this.sepaBeneficiaryAndroidByBankText.isDisplayed().catch(() => false)
-      if (byBank) {
-        await this.tap(this.sepaBeneficiaryAndroidByBankText)
-        return
-      }
+      if (byBank) { await this.tap(this.sepaBeneficiaryAndroidByBankText); return }
+
+      // Compose build: IBANs not visible in list — try searching via pay_input_search
+      const found = await this.searchAndSelectSepaBeneficiaryAndroid()
+      if (found) return
 
       await this.scrollBeneficiariesAndroid()
     }
