@@ -875,7 +875,8 @@ class HomeScreenPage extends BasePage {
     const opened = await this.openAndroidSubAccountsSheet().then(() => true).catch(() => false)
     if (!opened) return false
 
-    const hasBusiness = await this.businessAccountItemAndroid.isDisplayed().catch(() => false)
+    const businessByCode = $('(//*[@resource-id="accountSelection_screen"]//*[contains(@text,"DER00003")] | //*[@resource-id="accountSelection_screen"]//*[contains(@content-desc,"DER00003")])[1]')
+    const hasBusiness = await businessByCode.isDisplayed().catch(() => false)
     await browser.back().catch(() => {})
 
     if (!hasBusiness) return false
