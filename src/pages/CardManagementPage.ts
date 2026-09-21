@@ -582,6 +582,7 @@ class CardManagementPage extends BasePage {
       ? await this.cardsNavBarIOS.isExisting().catch(() => false)
       : (await this.cardsScreenAndroid.isDisplayed().catch(() => false)) || (await this.cardsScreenAndroid.isExisting().catch(() => false))
     if (!alreadyOpen) {
+      if (browser.isAndroid) await this.stabilizeAndroidHomeSurface(10000).catch(() => false)
       await this.cardsTab.waitForExist({ timeout: 20000 })
       await this.tap(this.cardsTab)
     }
