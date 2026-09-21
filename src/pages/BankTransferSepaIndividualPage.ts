@@ -16,10 +16,6 @@ class BankTransferSepaIndividualPage extends BasePage {
     return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[@resource-id="${id}"] | //*[contains(@resource-id,"${id}")] | //*[@content-desc="${id}"])[1]`)
   }
 
-  private byAndroidResIdMatches(rx: string) {
-    const first = rx.split('|')[0].replace(/^\.\*:id\//, '').replace(/\$$/, '').replace(/\^/, '')
-    return $(`(//*[contains(@resource-id,"${first}")] | //*[@content-desc="${first}"])[1]`)
-  }
 
   private get payTabAndroid() {
     return this.byAndroidResId('navigation_button_pay')
@@ -90,9 +86,11 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get reviewPaymentBtnAndroid() {
-    // New Compose flows use different prefixes
-    return this.byAndroidResIdMatches(
-      '.*:id/(p2p|sepa|bankTransfer)_button_review_payment$|^(p2p|sepa|bankTransfer)_button_review_payment$'
+    return $(
+      '(//*[contains(@resource-id,"sepa_button_review_payment")]' +
+      ' | //*[contains(@resource-id,"bankTransfer_button_review_payment")]' +
+      ' | //*[contains(@content-desc,"sepa_button_review_payment")]' +
+      ' | //*[contains(@content-desc,"bankTransfer_button_review_payment")])[1]'
     )
   }
 
