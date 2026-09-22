@@ -13,35 +13,35 @@ describe('Orders (iOS/Android)', function () {
   const orders = new OrdersPage()
   const params = { instrumentQuery: 'BMW', initialQuantity: '5', modifiedQuantity: '15' }
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
-  before(async function () {
+  before(smokeStep(async function () {
     await loginPage.loginFlow(AUTH)
     await home.ensureIndividualAccount()
-  })
+  }))
 
-  it('PO-1.1 Wait for Home', async function () {
+  it('PO-1.1 Wait for Home', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await home.waitForHomeLoaded()
-  })
+  }))
 
   if (browser.isIOS) {
-    it('PO-1.2 Find BMW and place buy order (iOS)', async function () {
+    it('PO-1.2 Find BMW and place buy order (iOS)', smokeStep(async function () {
       await orders.createSmokeBuyOrderIOS(params)
-    })
+    }))
   }
 
   if (browser.isAndroid) {
-    it('PO-1.3 Find BMW and open New Buy Order (Android)', async function () {
+    it('PO-1.3 Find BMW and open New Buy Order (Android)', smokeStep(async function () {
       await orders.openSmokeBuyOrderAndroid(params)
-    })
+    }))
 
-    it('PO-1.4 Place BMW buy order (Android)', async function () {
+    it('PO-1.4 Place BMW buy order (Android)', smokeStep(async function () {
       await orders.placeSmokeBuyOrderAndroid(params)
-    })
+    }))
 
-    it('PO-1.5 Verify Sell available after buying (Android)', async function () {
+    it('PO-1.5 Verify Sell available after buying (Android)', smokeStep(async function () {
       await orders.verifySmokeBuyOrderAndroid(params)
-    })
+    }))
   }
 })

@@ -12,31 +12,31 @@ describe('Portfolio (iOS/Android)', function () {
   const home = homeScreenPage
   const portfolio = new PortfolioPage()
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
-  before(async function () {
+  before(smokeStep(async function () {
     await loginPage.loginFlow(AUTH)
     await home.ensureIndividualAccount()
     await home.waitForHomeLoaded()
-  })
+  }))
 
   if (browser.isAndroid) {
-    it('PT-1.1 Open portfolio page from Invest (Android)', async function () {
+    it('PT-1.1 Open portfolio page from Invest (Android)', smokeStep(async function () {
       await portfolio.openPortfolioFromInvestAndroid()
-    })
+    }))
 
-    it('PT-1.2 Open 3.5% Simonds Farsons Cisk 2027 (Android)', async function () {
+    it('PT-1.2 Open 3.5% Simonds Farsons Cisk 2027 (Android)', smokeStep(async function () {
       await portfolio.openSimondsFarsonsBondFromInvestAndroid()
-    })
+    }))
   }
 
   if (browser.isIOS) {
-    it('PT-1.1 Open portfolio page from Invest (iOS)', async function () {
+    it('PT-1.1 Open portfolio page from Invest (iOS)', smokeStep(async function () {
       await portfolio.openPortfolioFromInvestIOS()
-    })
+    }))
 
-    it('PT-1.2 Open 3.5% Simonds Farsons Cisk 2027 (iOS)', async function () {
+    it('PT-1.2 Open 3.5% Simonds Farsons Cisk 2027 (iOS)', smokeStep(async function () {
       await portfolio.openSimondsFarsonsBondFromInvestIOS()
-    })
+    }))
   }
 })

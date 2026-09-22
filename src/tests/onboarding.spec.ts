@@ -7,17 +7,17 @@ describe('Onboarding - account creation', function () {
 
   const onboardingPage = new OnboardingPage()
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
   if (browser.isAndroid) {
-    it('OB-1.1 Create new individual account (Android)', async function () {
+    it('OB-1.1 Create new individual account (Android)', smokeStep(async function () {
       await onboardingPage.createAccountAndroid()
-    })
+    }))
   }
 
   if (browser.isIOS) {
-    it('OB-1.1 Create new individual account (iOS)', async function () {
+    it('OB-1.1 Create new individual account (iOS)', smokeStep(async function () {
       await onboardingPage.createAccountIOS()
-    })
+    }))
   }
 })

@@ -11,16 +11,16 @@ describe('Home Search - Individual', function () {
   const loginPage = new LoginPage()
   const homeSearchPage = new HomeSearchPage()
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
-  before(async function () {
+  before(smokeStep(async function () {
     await loginPage.loginFlow(AUTH)
     await HomeScreenPage.ensureIndividualAccount()
     await HomeScreenPage.waitForHomeLoaded()
-  })
+  }))
 
-  it('SEARCH-1.1 Search "cat" and verify Carlos Cat', async function () {
+  it('SEARCH-1.1 Search "cat" and verify Carlos Cat', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await homeSearchPage.verifyHomeSearch('cat')
-  })
+  }))
 })

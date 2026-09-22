@@ -10,16 +10,16 @@ describe('Card freeze/unfreeze - Joint account', function () {
 
   const loginPage = new LoginPage()
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
-  before(async function () {
+  before(smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await loginPage.loginFlow(AUTH)
     await HomeScreenPage.ensureJointAccount()
-  })
+  }))
 
-  it('CF-1.1 Freeze and unfreeze active physical card', async function () {
+  it('CF-1.1 Freeze and unfreeze active physical card', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await CardManagementPage.freezeAndUnfreezeActiveCard()
-  })
+  }))
 })

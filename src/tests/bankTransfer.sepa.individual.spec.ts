@@ -9,38 +9,38 @@ describe('Bank Transfer - SEPA Individual', function () {
 
   const loginPage = new LoginPage()
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
-  before(async function () {
+  before(smokeStep(async function () {
     await loginPage.loginFlow(AUTH)
     await BankTransferSepaIndividualPage.ensureIndividualAccount()
-  })
+  }))
 
   if (browser.isAndroid) {
-    it('SEPA-1.1 Open payment screen and fill amount (Android)', async function () {
+    it('SEPA-1.1 Open payment screen and fill amount (Android)', smokeStep(async function () {
       await BankTransferSepaIndividualPage.prepareSmokeSepaAndroid(11)
-    })
+    }))
 
-    it('SEPA-1.2 Review and slide to pay (Android)', async function () {
+    it('SEPA-1.2 Review and slide to pay (Android)', smokeStep(async function () {
       await BankTransferSepaIndividualPage.submitSmokeSepaAndroid(11)
-    })
+    }))
 
-    it('SEPA-1.3 Verify transaction on Home (Android)', async function () {
+    it('SEPA-1.3 Verify transaction on Home (Android)', smokeStep(async function () {
       await BankTransferSepaIndividualPage.verifySmokeSepaAndroid(11)
-    })
+    }))
   }
 
   if (browser.isIOS) {
-    it('SEPA-1.1 Open payment screen and fill amount (iOS)', async function () {
+    it('SEPA-1.1 Open payment screen and fill amount (iOS)', smokeStep(async function () {
       await BankTransferSepaIndividualPage.prepareSmokeSepaIOS(11)
-    })
+    }))
 
-    it('SEPA-1.2 Review and slide to pay (iOS)', async function () {
+    it('SEPA-1.2 Review and slide to pay (iOS)', smokeStep(async function () {
       await BankTransferSepaIndividualPage.submitSmokeSepaIOS(11)
-    })
+    }))
 
-    it('SEPA-1.3 Verify transaction on Home (iOS)', async function () {
+    it('SEPA-1.3 Verify transaction on Home (iOS)', smokeStep(async function () {
       await BankTransferSepaIndividualPage.verifySmokeSepaIOS(11)
-    })
+    }))
   }
 })

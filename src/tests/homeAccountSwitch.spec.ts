@@ -9,17 +9,17 @@ describe('Home Account Switch', function () {
 
   const loginPage = new LoginPage()
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
-  before(async function () {
+  before(smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     if (process.env.MB_AUTH_SLOT !== 'secondary') return this.skip()
     await loginPage.loginFlow(AUTH)
     await HomeScreenPage.waitForHomeLoaded()
-  })
+  }))
 
-  it('HAS-1.1 Switch between available account types', async function () {
+  it('HAS-1.1 Switch between available account types', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await HomeScreenPage.verifyAccountSwitchingAcrossTypes()
-  })
+  }))
 })

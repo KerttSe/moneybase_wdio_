@@ -12,27 +12,27 @@ describe('Price Alerts (iOS/Android)', function () {
   const home = homeScreenPage
   const priceAlerts = new PriceAlertsPage()
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
-  before(async function () {
+  before(smokeStep(async function () {
     await loginPage.loginFlow(AUTH)
     await home.ensureIndividualAccount()
     await home.waitForHomeLoaded()
-  })
+  }))
 
   if (browser.isAndroid) {
-    it('PA-1.1 Create price alert for BMW (Android)', async function () {
+    it('PA-1.1 Create price alert for BMW (Android)', smokeStep(async function () {
       await priceAlerts.createPriceAlertAndroid({ instrumentQuery: 'BMW' })
-    })
+    }))
 
-    it('PA-1.2 Delete price alert for BMW (Android)', async function () {
+    it('PA-1.2 Delete price alert for BMW (Android)', smokeStep(async function () {
       await priceAlerts.deletePriceAlertAndroid('BMW')
-    })
+    }))
   }
 
   if (browser.isIOS) {
-    it('PA-1.1 Create price alert for BMW (iOS)', async function () {
+    it('PA-1.1 Create price alert for BMW (iOS)', smokeStep(async function () {
       await priceAlerts.createPriceAlertIOS({ instrumentQuery: 'BMW' })
-    })
+    }))
   }
 })

@@ -12,23 +12,23 @@ describe('Watchlist (iOS/Android)', function () {
   const home = homeScreenPage
   const watchlist = new WatchlistPage()
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
-  before(async function () {
+  before(smokeStep(async function () {
     await loginPage.loginFlow(AUTH)
     await home.ensureIndividualAccount()
     await home.waitForHomeLoaded()
-  })
+  }))
 
   if (browser.isAndroid) {
-    it('WL-1.1 Add first existing instrument to watchlist (Android)', async function () {
+    it('WL-1.1 Add first existing instrument to watchlist (Android)', smokeStep(async function () {
       await watchlist.addFirstExistingInstrumentToWatchlistAndroid()
-    })
+    }))
   }
 
   if (browser.isIOS) {
-    it('WL-1.1 Add first existing instrument to watchlist (iOS)', async function () {
+    it('WL-1.1 Add first existing instrument to watchlist (iOS)', smokeStep(async function () {
       await watchlist.addFirstExistingInstrumentToWatchlistIOS()
-    })
+    }))
   }
 })

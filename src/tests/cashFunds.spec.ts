@@ -12,16 +12,16 @@ describe('Cash Funds (Mobile)', function () {
   const home = homeScreenPage
   const cashFundsPage = new CashFundsPage()
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
-  before(async function () {
+  before(smokeStep(async function () {
     await loginPage.loginFlow(AUTH)
     await home.ensureIndividualAccount()
     await home.waitForHomeLoaded()
-  })
+  }))
 
-  it('CF-1.1 Open Cash Funds from Invest -> Discover', async function () {
+  it('CF-1.1 Open Cash Funds from Invest -> Discover', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await cashFundsPage.openCashFunds()
-  })
+  }))
 })

@@ -11,43 +11,43 @@ describe('Auto Top-Up', function () {
 
   const autoTopUpPage = new AutoTopUpPage()
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
-  before(async function () {
+  before(smokeStep(async function () {
     await loginPage.loginFlow(AUTH)
-  })
+  }))
 
-  it("ATU-1.1 Open Auto Top-Up and select card and wallet", async function () {
+  it("ATU-1.1 Open Auto Top-Up and select card and wallet", smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await autoTopUpPage.selectSmokeAutoTopUpCard({
           cardLabel: '0015',
           currency: 'Euro',
           amount: 1500,
         })
-  })
+  }))
 
-  it("ATU-1.2 Set preset 500 and custom amount 1500", async function () {
+  it("ATU-1.2 Set preset 500 and custom amount 1500", smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await autoTopUpPage.configureSmokeAutoTopUpAmounts({
           cardLabel: '0015',
           currency: 'Euro',
           amount: 1500,
         })
-  })
+  }))
 
-  it("ATU-1.3 Save Auto Top-Up and return to Add Funds or Home", async function () {
+  it("ATU-1.3 Save Auto Top-Up and return to Add Funds or Home", smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await autoTopUpPage.saveSmokeAutoTopUp({
           cardLabel: '0015',
           currency: 'Euro',
           amount: 1500,
         })
-  })
+  }))
 
-  it("ATU-1.4 Find the rule, delete it and verify absence", async function () {
+  it("ATU-1.4 Find the rule, delete it and verify absence", smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await autoTopUpPage.verifyAndDeleteAutoTopUpFromHomeFlow({
           amount: 1500,
         })
-  })
+  }))
 })

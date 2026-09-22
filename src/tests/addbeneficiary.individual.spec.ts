@@ -34,40 +34,40 @@ describe('Add Beneficiary - Another person', function () {
     String(process.env.ADD_BENEFICIARY_LOGIN_USE_API_OTP || '').toLowerCase(),
   )
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
-  before(async function () {
+  before(smokeStep(async function () {
     await loginPage.loginFlow(beneficiaryAuth, {
       useApiOtp: useApiLoginOtp,
       otpPhone: process.env.ADD_BENEFICIARY_LOGIN_OTP_PHONE || beneficiaryAuth.otpPhone,
     })
-  })
+  }))
 
   if (browser.isAndroid) {
-    it('ABS-1.1 Open Add Beneficiary and select Another person (Android)', async function () {
+    it('ABS-1.1 Open Add Beneficiary and select Another person (Android)', smokeStep(async function () {
       await addBeneficiaryPage.selectSmokeBeneficiaryAndroid(beneficiaryParams)
-    })
+    }))
 
-    it('ABS-1.2 Fill beneficiary details and submit (Android)', async function () {
+    it('ABS-1.2 Fill beneficiary details and submit (Android)', smokeStep(async function () {
       await addBeneficiaryPage.submitSmokeBeneficiaryDetailsAndroid(beneficiaryParams)
-    })
+    }))
 
-    it('ABS-1.3 Complete OTP and verify success (Android)', async function () {
+    it('ABS-1.3 Complete OTP and verify success (Android)', smokeStep(async function () {
       await addBeneficiaryPage.confirmSmokeBeneficiaryAndroid(beneficiaryParams)
-    })
+    }))
   }
 
   if (browser.isIOS) {
-    it('ABS-1.1 Open Add Beneficiary and select Another person (iOS)', async function () {
+    it('ABS-1.1 Open Add Beneficiary and select Another person (iOS)', smokeStep(async function () {
       await addBeneficiaryPage.selectSmokeBeneficiaryIOS(beneficiaryParams)
-    })
+    }))
 
-    it('ABS-1.2 Fill beneficiary details and confirm review (iOS)', async function () {
+    it('ABS-1.2 Fill beneficiary details and confirm review (iOS)', smokeStep(async function () {
       await addBeneficiaryPage.submitSmokeBeneficiaryDetailsIOS(beneficiaryParams)
-    })
+    }))
 
-    it('ABS-1.3 Complete OTP and verify success (iOS)', async function () {
+    it('ABS-1.3 Complete OTP and verify success (iOS)', smokeStep(async function () {
       await addBeneficiaryPage.confirmSmokeBeneficiaryIOS(beneficiaryParams)
-    })
+    }))
   }
 })

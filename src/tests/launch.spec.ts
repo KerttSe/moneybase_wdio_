@@ -8,10 +8,10 @@ describe('Matrix - Smoke', function () {
 
   const loginPage = new LoginPage()
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
-  it('LAUNCH-1.1 Login flow and Home Screen verification', async function () {
+  it('LAUNCH-1.1 Login flow and Home Screen verification', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await loginPage.loginFlow(AUTH)
-  })
+  }))
 })

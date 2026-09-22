@@ -18,9 +18,9 @@ describe('Physical card creation, freezing and deletion - Individual', function 
     String(process.env.PHYSICAL_CARD_LOGIN_USE_API_OTP || '').toLowerCase(),
   )
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
-  before(async function () {
+  before(smokeStep(async function () {
     await loginPage.loginFlow(cardCreationAuth, {
       useApiOtp: useApiLoginOtp,
       otpPhone: process.env.PHYSICAL_CARD_OTP_PHONE,
@@ -29,21 +29,21 @@ describe('Physical card creation, freezing and deletion - Individual', function 
       await PhysicalCardCreationPage.dismissGooglePayPromoAndroid()
       await BankTransferP2PIndividualPage.ensureIndividualAccount()
     }
-  })
+  }))
 
   if (browser.isAndroid) {
-    it('PC-1.1 Open Cards tab (Android)', async function () {
+    it('PC-1.1 Open Cards tab (Android)', smokeStep(async function () {
       await PhysicalCardCreationPage.openCardsTabAndroid()
-    })
+    }))
 
-    it('PC-1.2 Create physical card (Android)', async function () {
+    it('PC-1.2 Create physical card (Android)', smokeStep(async function () {
       await PhysicalCardCreationPage.createPhysicalCardAndroid('2468', '000000')
-    })
+    }))
   }
 
   if (browser.isIOS) {
-    it('PC-1.1 Create physical card (iOS)', async function () {
+    it('PC-1.1 Create physical card (iOS)', smokeStep(async function () {
       await PhysicalCardCreationPage.createPhysicalCardIOS('2468', '000000')
-    })
+    }))
   }
 })

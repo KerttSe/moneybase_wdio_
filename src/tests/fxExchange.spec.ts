@@ -10,14 +10,14 @@ describe('FX Exchange', function () {
   const loginPage = new LoginPage()
   const fxExchangePage = new FXExchangePage()
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
-  before(async function () {
+  before(smokeStep(async function () {
     await loginPage.loginFlow(AUTH)
-  })
+  }))
 
-  it('FX-1.1 Exchange EUR to USD and verify on Home', async function () {
+  it('FX-1.1 Exchange EUR to USD and verify on Home', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await fxExchangePage.exchangeEurToUsdFlow()
-  })
+  }))
 })

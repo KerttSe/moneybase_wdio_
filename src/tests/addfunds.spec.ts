@@ -10,29 +10,29 @@ describe('Add Funds', function () {
   const loginPage = new LoginPage()
   const addFundsPage = new AddFundsPage()
 
-  stopAfterFailedStep()
+  const smokeStep = stopAfterFailedStep()
 
-  before(async function () {
+  before(smokeStep(async function () {
     await loginPage.loginFlow(AUTH)
-  })
+  }))
 
-  it('AF-1.1 Open Add Funds from Home', async function () {
+  it('AF-1.1 Open Add Funds from Home', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await addFundsPage.openFromHome()
-  })
+  }))
 
-  it('AF-1.2 Go to card top up', async function () {
+  it('AF-1.2 Go to card top up', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await addFundsPage.goToTopUp()
-  })
+  }))
 
-  it('AF-1.3 Enter amount 11', async function () {
+  it('AF-1.3 Enter amount 11', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await addFundsPage.enterAmount(11)
-  })
+  }))
 
-  it('AF-1.4 Continue to 3DS', async function () {
+  it('AF-1.4 Continue to 3DS', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await addFundsPage.continueTo3DS()
-  })
+  }))
 })
