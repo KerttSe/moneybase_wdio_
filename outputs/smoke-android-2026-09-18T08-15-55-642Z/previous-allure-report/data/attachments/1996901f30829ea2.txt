@@ -1,0 +1,203 @@
+--------- beginning of main
+08-06 16:13:36.439  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786022016
+08-06 16:13:36.439  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-06 16:13:36.439  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-06 16:13:36.439  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29767033
+08-06 16:13:36.439  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29767022
+08-06 16:13:36.439  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-06 16:13:36.439  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-06 16:13:36.440  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-06 16:13:36.440  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-06 16:13:36.440  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-06 16:13:36.496  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-06 16:13:36.498  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-06 16:13:36.505  1437  1437 I LayerHistory: NavigationBar0$_2357#102 Max (can't resolve refresh rate)
+08-06 16:13:36.505  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-06 16:13:36.505  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-06 16:13:36.506  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-06 16:13:36.507  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-06 16:13:36.509  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-06 16:13:36.509  1325  1405 I display : Current VRR MODE is 3
+08-06 16:13:36.509  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-06 16:13:36.509  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-06 16:13:36.509  1325  1405 I display : commit modeset : 1080x2340@60phs
+08-06 16:13:36.516  5014  5068 I appium  : The following attributes will be included to the page source: [text]
+08-06 16:13:36.528  1325  1405 W display : deliverWinConfigData:: commit modeset time (19 ms)
+08-06 16:13:36.530  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-06 16:13:36.530  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 16:13:36.530  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-06 16:13:36.530  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 16:13:36.530  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-06 16:13:36.530  1325  1397 I display : Set Affinity CPU ID : 0
+08-06 16:13:36.530  1325  1397 I display : Set Affinity CPU ID : 1
+08-06 16:13:36.530  1325  1397 I display : Set Affinity CPU ID : 2
+08-06 16:13:36.530  1325  1397 I display : Set Affinity CPU ID : 3
+08-06 16:13:36.530  1325  1397 I display : Set Affinity CPU ID : 4
+08-06 16:13:36.530  1325  1397 I display : Set Affinity CPU ID : 5
+08-06 16:13:36.530  1325  1397 I display : Set Affinity CPU ID : 6
+08-06 16:13:36.530  1325  1397 I display : Set Affinity CPU ID : 7
+08-06 16:13:36.530  1325  1397 I display : Set affinity HWC : 1325
+08-06 16:13:36.530  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-06 16:13:36.530  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-06 16:13:36.530  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-06 16:13:36.530  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-06 16:13:36.532  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+--------- beginning of system
+08-06 16:13:36.541  1726  1771 D SGM:GameManager: identifyForegroundApp. com.moneybase.qa, mCurrentUserId: 0, callerUserId: 0
+08-06 16:13:36.544  1726  1771 D SGM:SemGameManager: isForegroundGame(), ret=false
+08-06 16:13:36.562  5082  5082 I InputMethodService: removeImeSurface
+08-06 16:13:36.562  5082  5082 I InputMethodService: cancelImeSurfaceRemoval: removeCallbacks
+08-06 16:13:36.569  5201  5201 I View    : setRequestedFrameRate frameRate=NaN, this=androidx.compose.ui.platform.AndroidComposeView{32719f6 VFED..... ........ 0,0-1080,2340 aid=1073741829}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 androidx.compose.ui.platform.Api35Impl.setRequestedFrameRate:3822 androidx.compose.ui.platform.AndroidComposeView.dispatchDraw:2114 android.view.View.draw:26345 android.view.View.updateDisplayListIfDirty:25175 
+08-06 16:13:36.570  5201  5201 I View    : setRequestedFrameRate frameRate=NaN, this=android.view.View{1741aad V.ED..... ........ 0,0-0,0}, caller=androidx.compose.ui.platform.Api35Impl.setRequestedFrameRate:3822 androidx.compose.ui.platform.AndroidComposeView.dispatchDraw:2115 android.view.View.draw:26345 android.view.View.updateDisplayListIfDirty:25175 android.view.View.draw:26072 
+08-06 16:13:36.582  1726  1771 D LocalDisplayAdapter: updateActiveModeLocked for d=4633128672291736000, mActiveModeId=2, mActiveSfDisplayMode=DisplayMode{id=1, width=1080, height=2340, xDpi=403.411, yDpi=401.594, peakRefreshRate=60.0, vsyncRate=60.0, appVsyncOffsetNanos=16666667, presentationDeadlineNanos=17666667, supportedHdrTypes=[2, 3, 4], group=0}
+08-06 16:13:36.583  1726  1771 I DisplayDeviceRepository: Display device changed render timings: "Built-in Screen", renderFrameRate=60.000004, presentationDeadlineNanos=17666667, appVsyncOffsetNanos=16666667, frameRateOverrides=[]
+08-06 16:13:36.584  1726  1726 D SGM:GameManager: onDisplayChanged. displyId: 0, state: 2
+08-06 16:13:36.585  1726  1726 D AODManagerService: requestReCalToTSP IsSingleTouchMode = falserequestedReCalToTSP = false / previousDisplayState = ON
+08-06 16:13:36.586  1726  1769 D WindowManager: DeferredDisplayUpdater: partially applying DisplayInfo(1080 x 2340) immediately
+08-06 16:13:36.590  1414  1414 D AudioFlinger: setParameters: filtered dev setParameters keyvalue screen_state=on
+08-06 16:13:36.591  1726  1951 D SGM:FgCheckThread: onLooperPrepared(), msg: MSG_LCD_ON
+08-06 16:13:36.592  1315  1341 D audio_hw_primary: device-adev_set_parameters: enter
+08-06 16:13:36.593  1315  1341 I audio_hw_proxy2: proxy-proxy_set_parameters: set Screen-state 1
+08-06 16:13:36.593  1315  1341 D audio_hw_primary: device-adev_set_parameters: param (screen_state=on)
+08-06 16:13:36.593  1315  1341 I Audio_a2dpsink_hw: adev_set_parameters: kevpairs=[screen_state=on]
+08-06 16:13:36.595  1726  3321 D LiftUpHandler: [LTW] Stopped already.
+08-06 16:13:36.597  2357  2357 D DisplayLifecycle: updateDisplay id = 0
+08-06 16:13:36.599  1437  1437 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-06 16:13:36.599  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_5201#35080 Max (can't resolve refresh rate)
+08-06 16:13:36.599  1437  1437 I LayerHistory: NavigationBar0$_2357#102 Max (can't resolve refresh rate)
+08-06 16:13:36.599  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-06 16:13:36.599  1437  1437 I SurfaceFlinger: Weight ignores NavigationBar0$_2357#102 (type=Max, weight=0.05, seamlessness=Default) 0.00 Hz's 120.00 Hz
+08-06 16:13:36.599  1437  1437 I SurfaceFlinger: scored - choose 120.00 Hz
+08-06 16:13:36.599  2870 12135 I HoneySpace.Memory-Monitor: current state = 2, didTrim = false
+08-06 16:13:36.600  5082  5082 I HBD     : DeX h DeX mode state change in non-main thread 
+08-06 16:13:36.600  5082  5082 I HBD     : DeX h DeX mode state change: 3 
+08-06 16:13:36.600  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-06 16:13:36.602  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-06 16:13:36.602  2870 12135 I HoneySpace.RefreshRateSource: singleFrameMs 16
+08-06 16:13:36.602  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-06 16:13:36.602  1325  1405 I display : Current VRR MODE is 3
+08-06 16:13:36.602  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-06 16:13:36.602  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-06 16:13:36.603  1325  1405 I display : commit modeset : 1080x2340@120hs
+08-06 16:13:36.603  2357  2472 D StackScroller: onDisplayChanged for predraw skip to 2
+08-06 16:13:36.604  1726  4583 D WifiDisplayAdapter: isFitToActiveDisplayLocked : false
+08-06 16:13:36.605  1726  2171 D AS.DesktopModeHelper: onDisplayChanged: #Id=0
+08-06 16:13:36.606  1726  1769 D SurfaceComposerClient: setCornerRadius ## d574dbb com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#35079 cornerRadius=0.000000
+08-06 16:13:36.616   730   730 D io_stats: !@   8,0 r 27313276 521664321 w 8319936 150347580 d 2408858 195223248 f 0 794356 iot 12388012 0 th 0 0 0 pt 0 inp 0 0 175932.694
+08-06 16:13:36.620  1325  1405 W display : deliverWinConfigData:: commit modeset time (17 ms)
+08-06 16:13:36.622  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-06 16:13:36.622  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-06 16:13:36.622  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-06 16:13:36.622  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-06 16:13:36.622  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-06 16:13:36.622  1325  1397 I display : Set Affinity CPU ID : 0
+08-06 16:13:36.622  1325  1397 I display : Set Affinity CPU ID : 1
+08-06 16:13:36.622  1325  1397 I display : Set Affinity CPU ID : 2
+08-06 16:13:36.622  1325  1397 I display : Set Affinity CPU ID : 3
+08-06 16:13:36.622  1325  1397 I display : Set Affinity CPU ID : 4
+08-06 16:13:36.622  1325  1397 I display : Set Affinity CPU ID : 5
+08-06 16:13:36.622  1325  1397 I display : Set Affinity CPU ID : 6
+08-06 16:13:36.622  1325  1397 I display : Set Affinity CPU ID : 7
+08-06 16:13:36.622  1325  1397 I display : Set affinity HWC : 1325
+08-06 16:13:36.622  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-06 16:13:36.622  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-06 16:13:36.622  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-06 16:13:36.623  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-06 16:13:36.624  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-06 16:13:36.625  1726  1771 D LocalDisplayAdapter: updateActiveModeLocked for d=4633128672291736000, mActiveModeId=1, mActiveSfDisplayMode=DisplayMode{id=0, width=1080, height=2340, xDpi=403.411, yDpi=401.594, peakRefreshRate=120.00001, vsyncRate=120.00001, appVsyncOffsetNanos=8333333, presentationDeadlineNanos=9333333, supportedHdrTypes=[2, 3, 4], group=0}
+08-06 16:13:36.628  1726  1771 I DisplayDeviceRepository: Display device changed render timings: "Built-in Screen", renderFrameRate=120.00001, presentationDeadlineNanos=9333333, appVsyncOffsetNanos=8333333, frameRateOverrides=[]
+08-06 16:13:36.631  1726  1726 D SGM:GameManager: onDisplayChanged. displyId: 0, state: 2
+08-06 16:13:36.632  1726  1769 D WindowManager: DeferredDisplayUpdater: partially applying DisplayInfo(1080 x 2340) immediately
+08-06 16:13:36.632  1726  1726 D AODManagerService: requestReCalToTSP IsSingleTouchMode = falserequestedReCalToTSP = false / previousDisplayState = ON
+08-06 16:13:36.632  1726  1951 D SGM:FgCheckThread: onLooperPrepared(), msg: MSG_LCD_ON
+08-06 16:13:36.635  1414  1414 D AudioFlinger: setParameters: filtered dev setParameters keyvalue screen_state=on
+08-06 16:13:36.636  1315  1341 D audio_hw_primary: device-adev_set_parameters: enter
+08-06 16:13:36.636  1726  3321 D LiftUpHandler: [LTW] Stopped already.
+08-06 16:13:36.636  2870 23946 I HoneySpace.RefreshRateSource: singleFrameMs 8
+08-06 16:13:36.636  1315  1341 I audio_hw_proxy2: proxy-proxy_set_parameters: set Screen-state 1
+08-06 16:13:36.636  1315  1341 D audio_hw_primary: device-adev_set_parameters: param (screen_state=on)
+08-06 16:13:36.636  2870 23946 I HoneySpace.Memory-Monitor: current state = 2, didTrim = false
+08-06 16:13:36.638  1315  1341 I Audio_a2dpsink_hw: adev_set_parameters: kevpairs=[screen_state=on]
+08-06 16:13:36.638  5082  5082 I HBD     : DeX h DeX mode state change in non-main thread 
+08-06 16:13:36.638  5082  5082 I HBD     : DeX h DeX mode state change: 3 
+08-06 16:13:36.639  1726  2171 D AS.DesktopModeHelper: onDisplayChanged: #Id=0
+08-06 16:13:36.639  2357  2357 D DisplayLifecycle: updateDisplay id = 0
+08-06 16:13:36.641  2357  2472 D StackScroller: onDisplayChanged for predraw skip to 2
+08-06 16:13:36.641  1726  2873 D WifiDisplayAdapter: isFitToActiveDisplayLocked : false
+08-06 16:13:36.642  5014  5068 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[.//android.widget.TextView[@text="You cannot create your own card"] and .//android.widget.TextView[@text="Please ask another administrator or account owner to create your card."]]' XPath2 query
+08-06 16:13:36.642  5014  5068 I appium  : Found zero matches
+08-06 16:13:36.644  5014  5068 I appium  : AppiumResponse: {"sessionId":"8650aa10-e64e-4472-b618-91a0a6d0a460","value":[]}
+08-06 16:13:36.645  1726  1769 D SurfaceComposerClient: setCornerRadius ## d574dbb com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#35079 cornerRadius=0.000000
+08-06 16:13:36.655  5014  5068 I appium  : channel read: GET /session/8650aa10-e64e-4472-b618-91a0a6d0a460/screenshot
+08-06 16:13:36.657  5014  5068 I appium  : CaptureScreenshot command
+08-06 16:13:36.659  5014  5068 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-06 16:13:36.659  5014  5068 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-06 16:13:36.843  7308  7308 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-06 16:13:36.844  7308  7308 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-06 16:13:36.845  7308  7308 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-06 16:13:36.845  1726  4583 I EDMNativeHelperService: isScreenCaptureEnabled
+08-06 16:13:36.845  1726  4583 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-06 16:13:36.845  7308  7308 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-06 16:13:36.845  7308  7308 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-06 16:13:36.847  1437  1995 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_5201#35080(seamlessTransition:0)
+08-06 16:13:36.847  1437  1995 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-06 16:13:36.847  1437  1995 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-06 16:13:36.847  1437  1995 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-06 16:13:36.849  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-06 16:13:36.850  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_5201#35080 at index 1
+08-06 16:13:36.850  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-06 16:13:36.850  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-06 16:13:36.884  7308  7313 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-06 16:13:36.906  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-06 16:13:36.908  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-06 16:13:36.912  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-06 16:13:36.912  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_5201#35080 Max (can't resolve refresh rate)
+08-06 16:13:36.912  1437  1437 I LayerHistory: NavigationBar0$_2357#102 Max (can't resolve refresh rate)
+08-06 16:13:36.912  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-06 16:13:36.912  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-06 16:13:36.913  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-06 16:13:36.914  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-06 16:13:36.914  1325  1405 I display : Current VRR MODE is 3
+08-06 16:13:36.914  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-06 16:13:36.914  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-06 16:13:36.914  1325  1405 I display : commit modeset : 1080x2340@60phs
+08-06 16:13:36.928  1325  1405 W display : deliverWinConfigData:: commit modeset time (13 ms)
+08-06 16:13:36.929  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-06 16:13:36.929  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 16:13:36.929  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-06 16:13:36.929  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 16:13:36.929  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-06 16:13:36.929  1325  1397 I display : Set Affinity CPU ID : 0
+08-06 16:13:36.929  1325  1397 I display : Set Affinity CPU ID : 1
+08-06 16:13:36.929  1325  1397 I display : Set Affinity CPU ID : 2
+08-06 16:13:36.929  1325  1397 I display : Set Affinity CPU ID : 3
+08-06 16:13:36.929  1325  1397 I display : Set Affinity CPU ID : 4
+08-06 16:13:36.929  1325  1397 I display : Set Affinity CPU ID : 5
+08-06 16:13:36.929  1325  1397 I display : Set Affinity CPU ID : 6
+08-06 16:13:36.929  1325  1397 I display : Set Affinity CPU ID : 7
+08-06 16:13:36.929  1325  1397 I display : Set affinity HWC : 1325
+08-06 16:13:36.929  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-06 16:13:36.929  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-06 16:13:36.929  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-06 16:13:36.929  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-06 16:13:36.930  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-06 16:13:37.100  5014  5068 I appium  : AppiumResponse: {"sessionId":"8650aa10-e64e-4472-b618-91a0a6d0a460","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15fJTV3ffx72TfE0hYkhAIS1gNQgyIyCKbIoiyu1Oxet/2rla962OrrYqtlWKltlarhbogaBHZBQGVRUQIO4Q9BAgkgSwkJGSbLJN5/uDJPAwzCUlmsgz5vF8vXi+vc21nGIFc3+uc3zG…
+08-06 16:13:37.122  5014  5068 I appium  : channel read: GET /session/8650aa10-e64e-4472-b618-91a0a6d0a460/source
+08-06 16:13:37.123  5014  5068 I appium  : Source command
+08-06 16:13:37.123  5014  5068 I appium  : Waiting up to 10000ms for the device to idle
+08-06 16:13:37.209  5014  5068 I appium  : AppiumResponse: {"sessionId":"8650aa10-e64e-4472-b618-91a0a6d0a460","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-06 16:13:37.253 12658 12658 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-06 16:13:37.320  7320  7320 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-06 16:13:37.378 12658 12658 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-06 16:13:37.434  7323  7323 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-06 16:13:37.439  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786022017
+08-06 16:13:37.439  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-06 16:13:37.439  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-06 16:13:37.439  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29767033
+08-06 16:13:37.439  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29767022
+08-06 16:13:37.439  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-06 16:13:37.439  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-06 16:13:37.439  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-06 16:13:37.440  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-06 16:13:37.440  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-06 16:13:37.492 12658 12658 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

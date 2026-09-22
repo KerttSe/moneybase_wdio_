@@ -1,0 +1,209 @@
+--------- beginning of main
+08-10 15:32:45.070 19997 20035 I appium  : FindElements command
+08-10 15:32:45.074 19997 20035 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:32:45.075 19997 20035 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:32:45.100 19997 20035 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:32:45.101 19997 20035 I appium  : Matched 0 elements including possible duplicates
+08-10 15:32:45.102 19997 20035 I appium  : 0 element(s) left after deduplication
+08-10 15:32:45.102 19997 20035 I appium  : Found zero matches
+08-10 15:32:45.109 19997 20035 I appium  : AppiumResponse: {"sessionId":"23ae4adc-2e48-4e05-a2a6-a324fe3075a3","value":[]}
+08-10 15:32:45.161 19997 20035 I appium  : channel read: POST /session/23ae4adc-2e48-4e05-a2a6-a324fe3075a3/elements
+08-10 15:32:45.162 19997 20035 I appium  : FindElements command
+08-10 15:32:45.164 19997 20035 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:32:45.165 19997 20035 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:32:45.192 19997 20035 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:32:45.193 19997 20035 I appium  : Matched 0 elements including possible duplicates
+08-10 15:32:45.193 19997 20035 I appium  : 0 element(s) left after deduplication
+08-10 15:32:45.193 19997 20035 I appium  : Found zero matches
+08-10 15:32:45.196 19997 20035 I appium  : AppiumResponse: {"sessionId":"23ae4adc-2e48-4e05-a2a6-a324fe3075a3","value":[]}
+08-10 15:32:45.224  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786365165
+08-10 15:32:45.225  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-10 15:32:45.225  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-10 15:32:45.225  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29772752
+08-10 15:32:45.225  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29772751
+08-10 15:32:45.225  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-10 15:32:45.225  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-10 15:32:45.226  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-10 15:32:45.226  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-10 15:32:45.226  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-10 15:32:45.246  1437  1437 I SurfaceFlinger: SFWD update time=350871539261203
+08-10 15:32:45.258 19997 20035 I appium  : channel read: POST /session/23ae4adc-2e48-4e05-a2a6-a324fe3075a3/elements
+08-10 15:32:45.262 19997 20035 I appium  : FindElements command
+08-10 15:32:45.266 19997 20035 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:32:45.267 19997 20035 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:32:45.295 19997 20035 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:32:45.297 19997 20035 I appium  : Matched 0 elements including possible duplicates
+08-10 15:32:45.298 19997 20035 I appium  : 0 element(s) left after deduplication
+08-10 15:32:45.298 19997 20035 I appium  : Found zero matches
+08-10 15:32:45.305 19997 20035 I appium  : AppiumResponse: {"sessionId":"23ae4adc-2e48-4e05-a2a6-a324fe3075a3","value":[]}
+08-10 15:32:45.311  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-10 15:32:45.319  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 72876, isSameBssidAndFreq true
+08-10 15:32:45.324  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786365165324 lastDateWindow=1786275667000
+08-10 15:32:45.328  2870  2971 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236038, activityId=2131236053)
+08-10 15:32:45.330  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-10 15:32:45.343  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-10 15:32:45.351  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-10 15:32:45.354 19997 20035 I appium  : channel read: POST /session/23ae4adc-2e48-4e05-a2a6-a324fe3075a3/elements
+08-10 15:32:45.356 19997 20035 I appium  : FindElements command
+08-10 15:32:45.358 19997 20035 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:32:45.358 19997 20035 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:32:45.366  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-10 15:32:45.366  1437  1437 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+08-10 15:32:45.368  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-10 15:32:45.371  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-10 15:32:45.373  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-10 15:32:45.373  1325  9351 I display : Current VRR MODE is 3
+08-10 15:32:45.373  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-10 15:32:45.373  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-10 15:32:45.374  1325  9351 I display : commit modeset : 1080x2340@120hs
+08-10 15:32:45.401  1325  9351 W display : deliverWinConfigData:: commit modeset time (26 ms)
+08-10 15:32:45.405  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-10 15:32:45.405  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-10 15:32:45.405  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-10 15:32:45.405  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-10 15:32:45.405  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-10 15:32:45.405  1325  1397 I display : Set Affinity CPU ID : 0
+08-10 15:32:45.405  1325  1397 I display : Set Affinity CPU ID : 1
+08-10 15:32:45.405  1325  1397 I display : Set Affinity CPU ID : 2
+08-10 15:32:45.405  1325  1397 I display : Set Affinity CPU ID : 3
+08-10 15:32:45.405  1325  1397 I display : Set Affinity CPU ID : 4
+08-10 15:32:45.406  1325  1397 I display : Set Affinity CPU ID : 5
+08-10 15:32:45.406  1325  1397 I display : Set Affinity CPU ID : 6
+08-10 15:32:45.406  1325  1397 I display : Set Affinity CPU ID : 7
+08-10 15:32:45.406  1325  1397 I display : Set affinity HWC : 1325
+08-10 15:32:45.407  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-10 15:32:45.407  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-10 15:32:45.407  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-10 15:32:45.408  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-10 15:32:45.411  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-10 15:32:45.411  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-10 15:32:45.439 19997 20035 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:32:45.441 19997 20035 I appium  : Matched 0 elements including possible duplicates
+08-10 15:32:45.441 19997 20035 I appium  : 0 element(s) left after deduplication
+08-10 15:32:45.442 19997 20035 I appium  : Found zero matches
+08-10 15:32:45.448 19997 20035 I appium  : AppiumResponse: {"sessionId":"23ae4adc-2e48-4e05-a2a6-a324fe3075a3","value":[]}
+08-10 15:32:45.469 19997 20035 I appium  : channel read: POST /session/23ae4adc-2e48-4e05-a2a6-a324fe3075a3/elements
+08-10 15:32:45.472 19997 20035 I appium  : FindElements command
+08-10 15:32:45.475 19997 20035 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:32:45.476 19997 20035 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:32:45.567 19997 20035 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:32:45.568 19997 20035 I appium  : Matched 0 elements including possible duplicates
+08-10 15:32:45.568 19997 20035 I appium  : 0 element(s) left after deduplication
+08-10 15:32:45.568 19997 20035 I appium  : Found zero matches
+08-10 15:32:45.575 19997 20035 I appium  : AppiumResponse: {"sessionId":"23ae4adc-2e48-4e05-a2a6-a324fe3075a3","value":[]}
+08-10 15:32:45.594  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-10 15:32:45.595 19997 20035 I appium  : channel read: POST /session/23ae4adc-2e48-4e05-a2a6-a324fe3075a3/elements
+08-10 15:32:45.596  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-10 15:32:45.597 19997 20035 I appium  : FindElements command
+08-10 15:32:45.598  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-10 15:32:45.598  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-10 15:32:45.599  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-10 15:32:45.601  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-10 15:32:45.601  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-10 15:32:45.601  1325  9351 I display : Current VRR MODE is 3
+08-10 15:32:45.602  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-10 15:32:45.602  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-10 15:32:45.602 19997 20035 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:32:45.602  1325  9351 I display : commit modeset : 1080x2340@60phs
+08-10 15:32:45.602 19997 20035 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:32:45.617  1325  9351 W display : deliverWinConfigData:: commit modeset time (15 ms)
+08-10 15:32:45.619  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-10 15:32:45.619  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-10 15:32:45.619  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-10 15:32:45.619  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-10 15:32:45.619  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-10 15:32:45.619  1325  1397 I display : Set Affinity CPU ID : 0
+08-10 15:32:45.619  1325  1397 I display : Set Affinity CPU ID : 1
+08-10 15:32:45.619  1325  1397 I display : Set Affinity CPU ID : 2
+08-10 15:32:45.619  1325  1397 I display : Set Affinity CPU ID : 3
+08-10 15:32:45.619  1325  1397 I display : Set Affinity CPU ID : 4
+08-10 15:32:45.619  1325  1397 I display : Set Affinity CPU ID : 5
+08-10 15:32:45.619  1325  1397 I display : Set Affinity CPU ID : 6
+08-10 15:32:45.619  1325  1397 I display : Set Affinity CPU ID : 7
+08-10 15:32:45.619  1325  1397 I display : Set affinity HWC : 1325
+08-10 15:32:45.619  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-10 15:32:45.619  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-10 15:32:45.619  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-10 15:32:45.620  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-10 15:32:45.621  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-10 15:32:45.688 19997 20035 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:32:45.690 19997 20035 I appium  : Matched 0 elements including possible duplicates
+08-10 15:32:45.690 19997 20035 I appium  : 0 element(s) left after deduplication
+08-10 15:32:45.691 19997 20035 I appium  : Found zero matches
+08-10 15:32:45.696 19997 20035 I appium  : AppiumResponse: {"sessionId":"23ae4adc-2e48-4e05-a2a6-a324fe3075a3","value":[]}
+08-10 15:32:45.718 19997 20035 I appium  : channel read: POST /session/23ae4adc-2e48-4e05-a2a6-a324fe3075a3/elements
+08-10 15:32:45.720 19997 20035 I appium  : FindElements command
+08-10 15:32:45.722 19997 20035 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:32:45.723 19997 20035 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:32:45.777 19997 20035 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:32:45.778 19997 20035 I appium  : Matched 0 elements including possible duplicates
+08-10 15:32:45.778 19997 20035 I appium  : 0 element(s) left after deduplication
+08-10 15:32:45.778 19997 20035 I appium  : Found zero matches
+08-10 15:32:45.783 19997 20035 I appium  : AppiumResponse: {"sessionId":"23ae4adc-2e48-4e05-a2a6-a324fe3075a3","value":[]}
+08-10 15:32:45.802 19997 20035 I appium  : channel read: POST /session/23ae4adc-2e48-4e05-a2a6-a324fe3075a3/elements
+08-10 15:32:45.803 19997 20035 I appium  : FindElements command
+08-10 15:32:45.805 19997 20035 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:32:45.805 19997 20035 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:32:45.874 19997 20035 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:32:45.874 19997 20035 I appium  : Matched 0 elements including possible duplicates
+08-10 15:32:45.874 19997 20035 I appium  : 0 element(s) left after deduplication
+08-10 15:32:45.874 19997 20035 I appium  : Found zero matches
+08-10 15:32:45.876 19997 20035 I appium  : AppiumResponse: {"sessionId":"23ae4adc-2e48-4e05-a2a6-a324fe3075a3","value":[]}
+08-10 15:32:45.876  5291  5396 V CpEventLog(u0): [P] cp_state: [                 contacts = {contacts=1544, raw_contacts=5259, data=23948, account={secphone(1)=0, google(2)=213, sim(3)=0, sim2(4)=42, agg(5)=0, samsung(6)=0, google(11)=0, google(13)=320, google(15)=1017, google(17)=0, com.microsoft.msa.ltw(19)=0, duo(21)=303, com.microsoft.workaccount.ltw(29)=0, google(38)=0, com.microsoft.workaccount.ltw(42)=0, com.microsoft.workaccount.ltw(44)=0, whatsapp(47)=792, viber(48)=0, telegram(49)=1033, mobileservice(59)=0, viber(64)=1539}, trash=0, trash_acc={}, trash_sync=0, database=contacts2.db} ]
+08-10 15:32:45.876  5291  5396 V CpEventLog(u0): [P] cp_state: [               aggregated = {[13,13,49,47,64]=1, [13,13,49,49,47,47,64]=1, [13,13,49,49,49,47,47,64]=1, [13,15,47,21,64]=1, [13,15,49,47,64]=2, [13,15,49,49,47,47,64]=1, [13,15,49,49,49,47,21,64]=1, [13,21,64]=16, [13,47,21,49,64]=1, [13,47,21,64]=16, [13,47,49,21,64]=1, [13,47,49,64]=3, [13,47,64]=22, [13,49,21,64]=13, [13,49,47,21,64]=33, [13,49,47,64,21]=2, [13,49,47,64]=97, [13,49,49,47,64]=1, [13,49,49,64]=1, [13,49,64,21]=1, [13,49,64]=33, [13,64,21]=1, [13,64]=54, [13]=2, [15,13,49,47,49,64]=1, [15,15,15,15,15,15,4,64]=1, [15,15,4,49,49,49,49,64,47]=1, [15,15,47,47,64]=1, [15,15,49,21,64]=1, [15,15,49,47,64]=3, [15,15,49,49,47,47,21,64]=1, [15,2,49,49,47,47,64]=1, [15,21,64]=31, [15,21]=1, [15,4,49,64]=1, [15,4,64]=1, [15,47,21,49,64]=1, [15,47,21,64]=33, [15,47,49,21,64]=1, [15,47,49,49,64]=1, [15,47,49,64]=16, [15,47,64]=77, [15,49,21,64]=25, [15,49,47,21,64]=69, [15,49,47,64,21]=1, [15,49,47,64]=267, [15,49,49,47,64]=2, [15,49,49,64]=2, [15,49,64,21]=1, [15,49,64]=106, [15,64,21]=1, [15,64]=343, [2,13,15,47,21,64]=1, [2,13,15,49,47,64]=1, [2,13,47,21,64]=1, [2,13,49,47,47,64]=1, [2,13,49,47,64]=1, [2,13,49,49,47,21,64]=1, [2,13,49,49,49,47,64]=1, [2,13,49,49,64]=1, [2,15,15,49,47,47,64]=1, [2,15,15,49,49,49,64]=1, [2,15,21,64]=1, [2,15,49,21,64]=1, [2,15,49,47,64]=1, [2,2,15,49,47,64]=1, [2,2,47,64]=1, [2,2,49,47,21,64]=1, [2,21,64]=6, [2,21]=1, [2,4,47,21,64]=1, [2,47,21,49,64]=1, [2,47,21,64]=8, [2,47,49,21,64]=2, [2,47,49,64]=4, [2,47,64,21]=1, [2,47,64]=29, [2,49,21,64]=3, [2,49,47,21,64]=16, [2,49,47,64]=35, [2,49,64]=22, [2,64]=62, [2]=1, [4,21,47,64]=1, [4,21,64]=1, [4,47,64]=3, [4,49,21,64]=1, [4,49,47,21,64]=2, [4,49,47,64,21]=1, [4,49,47,64]=5, [4,49,64]=3, [4,64]=20, [47,13,64]=1, [47,2,64]=1, [49,13,47,64]=1, [49,13,64]=1, [49,49]=2, [49]=201} ]
+08-10 15:32:45.876  5291  5396 V CpEventLog(u0): [P] cp_state: [                  request = {} ]
+08-10 15:32:45.876  5291  5396 V CpEventLog(u0): [P] cp_state: [                    calls = {types={[100]=570, [1000]=1423, [1150]=7}, database=calllog.db} ]
+08-10 15:32:45.876  5291  5396 V CpEventLog(u0): [P] cp_state: [                  profile = {contacts=0, raw_contacts=0, data=0, account={secphone(1)=0, google(2)=0, sim(3)=0, sim2(4)=0, agg(5)=0, samsung(6)=0, google(10)=0, google(11)=0, google(12)=0, google(13)=0, com.microsoft.msa.ltw(14)=0, duo(15)=0, com.microsoft.workaccount.ltw(19)=0, google(23)=0, com.microsoft.workaccount.ltw(25)=0, com.microsoft.workaccount.ltw(26)=0, whatsapp(27)=0, viber(28)=0, telegram(29)=0, mobileservice(33)=0}, trash=0, trash_acc={}, trash_sync=0, database=profile.db} ]
+08-10 15:32:45.876  5291  5396 V CpEventLog(u0): [P] cp_state: [               sa_profile = {contacts=1, raw_contacts=1, data=2, account={secphone(1)=1, google(2)=0, sim(3)=0, sim2(4)=0, agg(5)=0, samsung(6)=0, google(10)=0, google(11)=0, google(12)=0, google(13)=0, com.microsoft.msa.ltw(14)=0, duo(15)=0, com.microsoft.workaccount.ltw(19)=0, google(23)=0, com.microsoft.workaccount.ltw(25)=0, com.microsoft.workaccount.ltw(26)=0, whatsapp(27)=0, viber(28)=0, telegram(29)=0, mobileservice(33)=0}, trash=0, trash_acc={}, trash_sync=0, database=profile_sa.db} ]
+08-10 15:32:45.876  5291  5396 V CpEventLog(u0): [P] cp_state: [                      etc = {binders=0, country_iso=UA, version=15.6.28, db_version=2000, db_size=18, db_wal_size=2, csc=/, sec_enabled=false, is_roaming=false} ]
+08-10 15:32:45.876  5291  5396 V CpEventLog(u0): [P] cp_state: ------------------------------------------------------------------------------
+08-10 15:32:45.897 19997 20035 I appium  : channel read: POST /session/23ae4adc-2e48-4e05-a2a6-a324fe3075a3/elements
+08-10 15:32:45.899 19997 20035 I appium  : FindElements command
+08-10 15:32:45.903 19997 20035 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:32:45.903 19997 20035 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:32:46.033 19997 20035 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:32:46.034 19997 20035 I appium  : Matched 0 elements including possible duplicates
+08-10 15:32:46.034 19997 20035 I appium  : 0 element(s) left after deduplication
+08-10 15:32:46.035 19997 20035 I appium  : Found zero matches
+08-10 15:32:46.042 19997 20035 I appium  : AppiumResponse: {"sessionId":"23ae4adc-2e48-4e05-a2a6-a324fe3075a3","value":[]}
+08-10 15:32:46.062 19997 20035 I appium  : channel read: GET /session/23ae4adc-2e48-4e05-a2a6-a324fe3075a3/screenshot
+08-10 15:32:46.063 19997 20035 I appium  : CaptureScreenshot command
+08-10 15:32:46.164 22096 22096 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-10 15:32:46.165 22096 22096 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-10 15:32:46.168 22096 22096 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-10 15:32:46.168  1726  3453 I EDMNativeHelperService: isScreenCaptureEnabled
+--------- beginning of system
+08-10 15:32:46.168  1726  3453 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-10 15:32:46.168 22096 22096 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-10 15:32:46.168 22096 22096 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-10 15:32:46.172  1437  1464 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_20053#60811(seamlessTransition:0)
+08-10 15:32:46.172  1437  1464 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_20053#60853(seamlessTransition:0)
+08-10 15:32:46.172  1437  1464 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-10 15:32:46.172  1437  1464 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-10 15:32:46.172  1437  1464 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-10 15:32:46.174  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-10 15:32:46.174  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_20053#60811 at index 1
+08-10 15:32:46.174  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_20053#60853 at index 2
+08-10 15:32:46.174  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 3
+08-10 15:32:46.174  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 4
+08-10 15:32:46.202 22096 22099 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-10 15:32:46.224  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786365166
+08-10 15:32:46.224  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-10 15:32:46.224  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-10 15:32:46.224  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29772752
+08-10 15:32:46.224  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29772751
+08-10 15:32:46.224  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-10 15:32:46.224  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-10 15:32:46.224  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-10 15:32:46.225  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-10 15:32:46.225  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-10 15:32:46.390 19997 20035 I appium  : AppiumResponse: {"sessionId":"23ae4adc-2e48-4e05-a2a6-a324fe3075a3","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N13cFz3YS/67/a+wKJXohCNBAgWkAQpUl2WFDtWbPnFsiXLei6SHD2P75vc55Q717m592VeJpPMZG4mz8/2dWwriiJbsSyZsmVToiopEQALCkEQvRIdu8AC29t5f4BY8mB30bG7B/h+Zjj…
+08-10 15:32:46.427 19997 20035 I appium  : channel read: GET /session/23ae4adc-2e48-4e05-a2a6-a324fe3075a3/source
+08-10 15:32:46.429 19997 20035 I appium  : Source command
+08-10 15:32:46.429 19997 20035 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:32:46.503 19997 20035 I appium  : AppiumResponse: {"sessionId":"23ae4adc-2e48-4e05-a2a6-a324fe3075a3","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-10 15:32:46.550  7530  7530 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-10 15:32:46.605 22100 22100 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-10 15:32:46.659  7530  7530 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-10 15:32:46.717 22103 22103 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-10 15:32:46.774  7530  7530 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

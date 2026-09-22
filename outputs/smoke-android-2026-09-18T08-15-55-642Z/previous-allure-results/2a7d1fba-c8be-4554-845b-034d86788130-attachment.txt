@@ -1,0 +1,228 @@
+--------- beginning of main
+04-29 19:03:11.152 13102 13136 I BugleNetwork: Startup: registering tachyon for phone.
+04-29 19:03:11.152 13102 13154 I RcsProvisioningIdMap: getAvailablePhoneNumbers: accessing uninitialized provisioning identities.
+04-29 19:03:11.152 13102 13154 I RcsProvisioningIdMap: fcex: FULL
+04-29 19:03:11.152 13102 13154 I RcsProvisioningIdMap: 	at dvfj.m(PG:54)
+04-29 19:03:11.152 13102 13154 I RcsProvisioningIdMap: 	at dvmn.n(PG:3)
+04-29 19:03:11.152 13102 13154 I RcsProvisioningIdMap: 	at dvlj.apply(PG:5)
+04-29 19:03:11.152 13102 13154 I RcsProvisioningIdMap: 	at ezxj.apply(PG:17)
+04-29 19:03:11.152 13102 13154 I RcsProvisioningIdMap: 	at fglj.d(PG:3)
+04-29 19:03:11.152 13102 13154 I RcsProvisioningIdMap: 	at fglk.run(PG:47)
+04-29 19:03:11.152 13102 13154 I RcsProvisioningIdMap: 	at egha.run(PG:7)
+04-29 19:03:11.152 13102 13154 I RcsProvisioningIdMap: 	at fctu.run(PG:44)
+04-29 19:03:11.152 13102 13154 I RcsProvisioningIdMap: 	at egjp.run(PG:18)
+04-29 19:03:11.152 13102 13154 I RcsProvisioningIdMap: 	at eggj.run(PG:89)
+04-29 19:03:11.152 13102 13154 I RcsProvisioningIdMap: 	at java.lang.Thread.run(Thread.java:1012)
+04-29 19:03:11.152 13102 13154 I RcsProvisioningIdMap: 	at eghx.run(PG:62)
+04-29 19:03:11.153 13102 13197 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1 [CONTEXT thread_id=98 ]
+04-29 19:03:11.153 13102 13154 I RcsProvisioningIdMap: No phone numbers available.
+04-29 19:03:11.153 13102 13154 I RcsProvisioningIdMap: fcex: FULL
+04-29 19:03:11.153 13102 13154 I RcsProvisioningIdMap: 	at dvfj.m(PG:126)
+04-29 19:03:11.153 13102 13154 I RcsProvisioningIdMap: 	at dvmn.n(PG:3)
+04-29 19:03:11.153 13102 13154 I RcsProvisioningIdMap: 	at dvlj.apply(PG:5)
+04-29 19:03:11.153 13102 13154 I RcsProvisioningIdMap: 	at ezxj.apply(PG:17)
+04-29 19:03:11.153 13102 13154 I RcsProvisioningIdMap: 	at fglj.d(PG:3)
+04-29 19:03:11.153 13102 13154 I RcsProvisioningIdMap: 	at fglk.run(PG:47)
+04-29 19:03:11.153 13102 13154 I RcsProvisioningIdMap: 	at egha.run(PG:7)
+04-29 19:03:11.153 13102 13154 I RcsProvisioningIdMap: 	at fctu.run(PG:44)
+04-29 19:03:11.153 13102 13154 I RcsProvisioningIdMap: 	at egjp.run(PG:18)
+04-29 19:03:11.153 13102 13154 I RcsProvisioningIdMap: 	at eggj.run(PG:89)
+04-29 19:03:11.153 13102 13154 I RcsProvisioningIdMap: 	at java.lang.Thread.run(Thread.java:1012)
+04-29 19:03:11.153 13102 13154 I RcsProvisioningIdMap: 	at eghx.run(PG:62)
+04-29 19:03:11.153 13102 13134 W BugleNetwork: No available phone number to start tachyon for.
+04-29 19:03:11.154 13102 13197 I BugleRcsProvisioning: RcsAvailability configuration availability and enabled status: simId: redacted-pii:sim_id[chars:20,last3:897], SipConnectionType: DUAL_REG, isConfigurationAvailableAndEnabled: false
+04-29 19:03:11.154 13102 13197 I BugleRcsProvisioning: Checking isConfigServerUrlAvailable with simId: redacted-pii:sim_id[chars:20,last3:897], 
+04-29 19:03:11.154 13102 13197 I BugleRcsEngine: getConfigServerUrl with simId: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=98 ]
+04-29 19:03:11.154 13102 13197 I BugleRcsEngine: Using config server URL from cqsa [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=98 ]
+04-29 19:03:11.155 13102 13195 D WM-SystemJobScheduler: Scheduling work ID a24cb241-6831-432e-b9f5-58e997790170Job ID 1433
+04-29 19:03:11.155 13102 13197 I BugleRcsProvisioning: RcsAvailability: Subscription Id: 1, simId: redacted-pii:sim_id[chars:20,last3:897], sipConnectionType: DUAL_REG, isRcsAvailable: false
+04-29 19:03:11.156 13102 13195 D WM-GreedyScheduler: Ignoring {WorkSpec: 0bfe4bfd-ac24-42db-b78c-f30f5b840361}. Requires device idle.
+04-29 19:03:11.156 13102 13195 D WM-GreedyScheduler: Ignoring {WorkSpec: a4ad6c0b-a229-4072-a8f7-fe13a03e2e39}. Requires device idle.
+04-29 19:03:11.156 13102 13195 D WM-GreedyScheduler: Ignoring {WorkSpec: ca636977-d474-4ba1-b880-f0f56cef79fd}. Requires device idle.
+04-29 19:03:11.156 13102 13195 D WM-GreedyScheduler: Ignoring {WorkSpec: 1af83193-1d38-4bf7-b948-b727b02d7ce8}. Requires device idle.
+04-29 19:03:11.156 13102 13195 D WM-GreedyScheduler: Ignoring {WorkSpec: 93f41857-4682-4059-a8be-2646d872c1a5}. Requires device idle.
+04-29 19:03:11.156 13102 13195 D WM-GreedyScheduler: Starting tracking for 10ae1c3f-34d3-45aa-a46c-c20dd65602b4,d3b1326c-b874-4433-98ae-280e6f02e1fb,9faf9acf-ebaf-4ac9-bd3f-7a8c0d78ea9e,9ea6408b-f0b9-44cd-8eb5-85074238b377
+04-29 19:03:11.156 13102 13197 I BugleRcsProvisioning: updateAvailabilityForRcsProvisioningId. SimId: redacted-pii:sim_id[chars:20,last3:897], currentAvailability: 33, newAvailability: 33, hint: NO_HINT
+04-29 19:03:11.157 13102 13191 I BugleRcsProvisioning: scheduleProvisioningForEligibleSims
+04-29 19:03:11.157 13102 13195 I cylu    : scheduleProvisioningForEligibleSims: operationTrigger: 5 bugle trigger event: 4
+04-29 19:03:11.157 13102 13195 I cylu    : scheduleProvisioningForAllEligibleSims: operationTrigger: 5 bugle trigger event: 4
+04-29 19:03:11.157 13102 13197 I BugleRcsProvisioning: RcsProvisioningTrigger: onRcsAvailabilityUpdate : availability is updated to RCS is disabled because the configuration indicates the user or device is permanently banned, lastAvailabilityLocal is null, simId hash = -5164911706270541095, simId = redacted-pii:sim_id[chars:20,last3:897], isPev3Enabled = true
+04-29 19:03:11.157 13102 13196 D WM-GreedyScheduler: Cancelling work ID 9faf9acf-ebaf-4ac9-bd3f-7a8c0d78ea9e
+04-29 19:03:11.158 13102 13136 I cylu    : scheduleProvisioningForRcsProvisioningId: rcsProvisioningId: redacted-pii:sim_id[chars:20,last3:897] operationTrigger: 5 bugle trigger event: 4
+04-29 19:03:11.158 13102 13136 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1 [CONTEXT thread_id=58 ]
+04-29 19:03:11.158 13102 13136 I cylu    : RcsProvisioningTrigger: DR is active, initializing DR provisioning. DUAL_REG
+04-29 19:03:11.158 13102 13195 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1 [CONTEXT thread_id=97 ]
+04-29 19:03:11.159 13102 13196 D WM-SystemJobScheduler: Scheduling work ID 9faf9acf-ebaf-4ac9-bd3f-7a8c0d78ea9eJob ID 1434
+04-29 19:03:11.159 13102 13196 D WM-GreedyScheduler: Ignoring {WorkSpec: 0bfe4bfd-ac24-42db-b78c-f30f5b840361}. Requires device idle.
+04-29 19:03:11.159 13102 13196 D WM-GreedyScheduler: Ignoring {WorkSpec: a4ad6c0b-a229-4072-a8f7-fe13a03e2e39}. Requires device idle.
+04-29 19:03:11.159 13102 13196 D WM-GreedyScheduler: Ignoring {WorkSpec: ca636977-d474-4ba1-b880-f0f56cef79fd}. Requires device idle.
+04-29 19:03:11.159 13102 13196 D WM-GreedyScheduler: Ignoring {WorkSpec: 1af83193-1d38-4bf7-b948-b727b02d7ce8}. Requires device idle.
+04-29 19:03:11.159 13102 13196 D WM-GreedyScheduler: Ignoring {WorkSpec: 93f41857-4682-4059-a8be-2646d872c1a5}. Requires device idle.
+04-29 19:03:11.159 13102 13196 D WM-GreedyScheduler: Starting tracking for 10ae1c3f-34d3-45aa-a46c-c20dd65602b4,d3b1326c-b874-4433-98ae-280e6f02e1fb,9faf9acf-ebaf-4ac9-bd3f-7a8c0d78ea9e,9ea6408b-f0b9-44cd-8eb5-85074238b377
+04-29 19:03:11.161 13102 13136 D WM-GreedyScheduler: Cancelling work ID 9ea6408b-f0b9-44cd-8eb5-85074238b377
+04-29 19:03:11.161 13102 13197 I RcsProvisioningManager: Receive onRcsAvailabilityUpdate, SIM = redacted-pii:sim_id[chars:20,last3:897], availability = RcsAvailability{mAvailability=RCS is disabled because the configuration indicates the user or device is permanently banned}
+04-29 19:03:11.161 13102 13145 I RcsProvisioningManager: AvailabilityObserver.onUpdate : Notify RcsAvailabilityListener cxpq@a7ede5b onRcsAvailabilityUpdate, SIM = redacted-pii:sim_id[chars:20,last3:897], availability = 33
+04-29 19:03:11.161 13102 13145 I RcsProvisioningManager: Cannot notify RcsVerifiedPhoneNumberListener because current availability is DISABLED_BY_CONFIG_VERSION_PERMANENT instead of AVAILABLE.
+04-29 19:03:11.161 13102 13145 I RcsProvisioningManager: AvailabilityObserver.onUpdate : Notify RcsAvailabilityListener ddgm@233456b onRcsAvailabilityUpdate, SIM = redacted-pii:sim_id[chars:20,last3:897], availability = 33
+04-29 19:03:11.161 13102 13145 I BugleTransport: Retrieved RCS available simIds: []
+04-29 19:03:11.161 13102 13147 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: TACHYGRAM.
+04-29 19:03:11.161 13102 13195 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1 [CONTEXT thread_id=97 ]
+04-29 19:03:11.161 13102 13191 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: DUAL_REGISTRATION.
+04-29 19:03:11.161 13102 13147 I RcsClientLib: Service is deprecated skipping connection attempt: RcsEngineLifecycleServiceV2
+04-29 19:03:11.161 13102 13154 I BugleRcsJibe: RcsServiceConnectionException was raised while waiting to connect to RcsEngineLifecycleServiceV2
+04-29 19:03:11.161 13102 13140 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: SINGLE_REGISTRATION.
+04-29 19:03:11.161 13102 13147 I RcsProvisioningManager: CommonRcsProvisioningChangeListenerHandler.notifyListener : Notify RcsProvisioningChangeListener dozb@f3e07d1 onRcsProvisioningChange, SIM = redacted-pii:sim_id[chars:35,last3:97)], available rcs provisioning ids  = 
+04-29 19:03:11.162 13102 13195 I BugleRcsProvisioning: RcsAvailability configuration availability and enabled status: simId: redacted-pii:sim_id[chars:20,last3:897], SipConnectionType: DUAL_REG, isConfigurationAvailableAndEnabled: false
+04-29 19:03:11.162 13102 13195 I BugleRcsProvisioning: Checking isConfigServerUrlAvailable with simId: redacted-pii:sim_id[chars:20,last3:897], 
+04-29 19:03:11.162 13102 13195 I BugleRcsEngine: getConfigServerUrl with simId: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=97 ]
+04-29 19:03:11.162 13102 13195 I BugleRcsEngine: Using config server URL from cqsa [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=97 ]
+04-29 19:03:11.162 13102 13195 I BugleRcsProvisioning: RcsAvailability: Subscription Id: 1, simId: redacted-pii:sim_id[chars:20,last3:897], sipConnectionType: DUAL_REG, isRcsAvailable: false
+04-29 19:03:11.163 13102 13197 I BugleRcsProvisioning: RcsProvisioningTrigger: onRcsAvailabilityUpdate : isPreviousDisabled = true, isCurrentDisabled = false, config[simId:redacted-pii:sim_id[chars:20,last3:897]] = [Type: 0, Version: -1, Validity: -1, Last updated: 1771503150, Remaining validity: 0, Reconfiguration requested: false, Messaging technology: SIMPLE_IM, rcsVolteSingleRegistration: false, Invalid configreason: INVALID_CONFIG_REASON_UNSPECIFIED], hasToken: false, isValidAndUpdated: false
+04-29 19:03:11.163 13102 13195 I BugleRcsProvisioning: updateAvailabilityForRcsProvisioningId. SimId: redacted-pii:sim_id[chars:20,last3:897], currentAvailability: 33, newAvailability: 33, hint: NO_HINT
+04-29 19:03:11.163 13102 13197 I BugleRcsProvisioning: RcsProvisioningTrigger: Schedule KEEP provision when trigger configuration not valid
+04-29 19:03:11.163 13102 13197 I BugleRcsProvisioning: scheduleProvisioningForRcsProvisioningId rcsProvisioningId: redacted-pii:sim_id[chars:35,last3:97)], provisioningTriggerEvent: 0
+04-29 19:03:11.163 13102 13145 I cylu    : scheduleProvisioningForRcsProvisioningId: rcsProvisioningId: redacted-pii:sim_id[chars:20,last3:897] operationTrigger: 6 bugle trigger event: 0
+04-29 19:03:11.163 13102 13145 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1 [CONTEXT thread_id=67 ]
+04-29 19:03:11.163 13102 13145 I cylu    : RcsProvisioningTrigger: DR is active, initializing DR provisioning. DUAL_REG
+04-29 19:03:11.164 13102 13195 I RcsProvisioningWorkMana: Scheduled provisioning task with 0 seconds delay, KEEP policy, trigger is APP_STARTUP, workerId is a8e7775e-868b-4063-b58d-6d6da5536cfe, simId is redacted-pii:sim_id[chars:20,last3:897]
+04-29 19:03:11.164 13102 13191 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1 [CONTEXT thread_id=93 ]
+04-29 19:03:11.164 13102 13155 I RcsProvisioningFlow: EVENT_TYPE_PROVISIONING_TASK_SCHEDULED logging skipped for redacted-pii:sim_id[chars:20,last3:897] because of NOT_ELIGIBLE_CURRENT_EVENT_ALREADY_LOGGED
+04-29 19:03:11.164 13102 13140 I BugleRcsProvisioning: RcsProvisioningTrigger: onRcsAvailabilityUpdate : availability is updated to RCS is disabled because the configuration indicates the user or device is permanently banned, lastAvailabilityLocal is RCS is disabled because the configuration indicates the user or device is permanently banned, simId hash = -5164911706270541095, simId = redacted-pii:sim_id[chars:20,last3:897], isPev3Enabled = true
+04-29 19:03:11.164 13102 13136 D WM-SystemJobScheduler: Scheduling work ID 9ea6408b-f0b9-44cd-8eb5-85074238b377Job ID 1435
+04-29 19:03:11.165 13102 13136 D WM-GreedyScheduler: Ignoring {WorkSpec: 0bfe4bfd-ac24-42db-b78c-f30f5b840361}. Requires device idle.
+04-29 19:03:11.165 13102 13136 D WM-GreedyScheduler: Ignoring {WorkSpec: a4ad6c0b-a229-4072-a8f7-fe13a03e2e39}. Requires device idle.
+04-29 19:03:11.165 13102 13136 D WM-GreedyScheduler: Ignoring {WorkSpec: ca636977-d474-4ba1-b880-f0f56cef79fd}. Requires device idle.
+04-29 19:03:11.165 13102 13136 D WM-GreedyScheduler: Ignoring {WorkSpec: 1af83193-1d38-4bf7-b948-b727b02d7ce8}. Requires device idle.
+04-29 19:03:11.165 13102 13136 D WM-GreedyScheduler: Ignoring {WorkSpec: 93f41857-4682-4059-a8be-2646d872c1a5}. Requires device idle.
+04-29 19:03:11.165 13102 13136 D WM-GreedyScheduler: Starting tracking for 10ae1c3f-34d3-45aa-a46c-c20dd65602b4,d3b1326c-b874-4433-98ae-280e6f02e1fb,9faf9acf-ebaf-4ac9-bd3f-7a8c0d78ea9e,9ea6408b-f0b9-44cd-8eb5-85074238b377
+04-29 19:03:11.167 13102 13191 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1 [CONTEXT thread_id=93 ]
+04-29 19:03:11.167 13102 13136 D WM-WorkConstraintsTrack: NetworkRequestConstraintController send initial capabilities
+04-29 19:03:11.167 13102 13197 D WM-WorkConstraintsTrack: NetworkRequestConstraintController send initial capabilities
+04-29 19:03:11.168 13102 13191 I BugleRcsProvisioning: RcsAvailability configuration availability and enabled status: simId: redacted-pii:sim_id[chars:20,last3:897], SipConnectionType: DUAL_REG, isConfigurationAvailableAndEnabled: false
+04-29 19:03:11.168 13102 13191 I BugleRcsProvisioning: Checking isConfigServerUrlAvailable with simId: redacted-pii:sim_id[chars:20,last3:897], 
+04-29 19:03:11.168 13102 13191 I BugleRcsEngine: getConfigServerUrl with simId: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=93 ]
+04-29 19:03:11.168 13102 13191 I BugleRcsEngine: Using config server URL from cqsa [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=93 ]
+04-29 19:03:11.168 13102 13196 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=9faf9acf-ebaf-4ac9-bd3f-7a8c0d78ea9e, generation=15)
+04-29 19:03:11.168 13102 13197 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=9ea6408b-f0b9-44cd-8eb5-85074238b377, generation=15)
+04-29 19:03:11.169 13102 13191 I BugleRcsProvisioning: RcsAvailability: Subscription Id: 1, simId: redacted-pii:sim_id[chars:20,last3:897], sipConnectionType: DUAL_REG, isRcsAvailable: false
+04-29 19:03:11.170 13102 13191 I BugleRcsProvisioning: updateAvailabilityForRcsProvisioningId. SimId: redacted-pii:sim_id[chars:20,last3:897], currentAvailability: 33, newAvailability: 33, hint: NO_HINT
+04-29 19:03:11.170 13102 13191 I RcsProvisioningWorkMana: Scheduled provisioning task with 0 seconds delay, KEEP policy, trigger is UNDEFINED_TRIGGER_EVENT, workerId is 23160c78-6527-4492-af6c-00f60df2521e, simId is redacted-pii:sim_id[chars:20,last3:897]
+04-29 19:03:11.170 13102 13197 I BugleRcsProvisioning: RcsProvisioningTrigger: onRcsAvailabilityUpdate : availability is updated to RCS is disabled because the configuration indicates the user or device is permanently banned, lastAvailabilityLocal is RCS is disabled because the configuration indicates the user or device is permanently banned, simId hash = -5164911706270541095, simId = redacted-pii:sim_id[chars:20,last3:897], isPev3Enabled = true
+04-29 19:03:11.444  3004  3004 W ThreadPoolForeg: type=1400 audit(0.0:1318): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:03:13.665  6601  6750 I NearbyPresence: (REDACTED) %s verified [==] new request %s equals to the old request
+04-29 19:03:14.629  7014  7128 D TrafficStats: tagSocket(92) with statsTag=0x5a, statsUid=-1
+04-29 19:03:14.814   501  2317 D WifiNl80211Manager: Scan result ready event
+04-29 19:03:14.814   501  2317 D WifiNative: Scan result ready event
+04-29 19:03:14.835  7014  7128 I Datadog : [_dd.sdk_core.default]: Batch 4ddeec97-c889-4818-8cf3-3bf0517d7e2f [27986 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+04-29 19:03:16.081  6601  6601 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+04-29 19:03:16.956 13102 13197 I BugleDataModel: ExecuteActionRunnable: running action FixupMessageStatusOnStartupAction
+04-29 19:03:16.957 13102 13102 I BugleDataModel: ActionExecutorImpl: ACTION_EXECUTE_QUEUED_FixupMessageStatusOnStartupAction
+04-29 19:03:16.957 13102 13102 I BugleDataModel: ActionExecutorImpl: ACTION_EXECUTE_QUEUED_ProcessPendingMessagesAction
+04-29 19:03:16.968 13102 13102 I BugleDataModel: ActionExecutorImpl: ACTION_EXECUTE_QUEUED_SelfParticipantsRefreshAction
+04-29 19:03:16.970 13102 13155 W BugleDataModel: 0 fallback attempts are cancelled or failed, with 8 and APP_RESTART
+04-29 19:03:16.971 13102 13197 I BugleDataModel: FixupMessageStatusOnStartupAction: sendFailedCnt: 0, downloadFailedCnt: 0, partsProcessingFailedCnt: 0
+--------- beginning of system
+04-29 19:03:16.973   501   535 W BroadcastQueue: Exported Denial: sending Intent { act=android.net.conn.CONNECTIVITY_CHANGE flg=0x4200010 (has extras) }, action: android.net.conn.CONNECTIVITY_CHANGE from null (uid=-1) due to receiver ProcessRecord{5ed90d3 13102:com.google.android.apps.messaging/u0a115} (uid 10115) not specifying RECEIVER_EXPORTED
+04-29 19:03:16.976 13102 13197 I BugleDataModel: PendingMessagesProcessor process from FixupMessageStatusOnStartupAction due to process restarts throttled  with delay 0s with queues smsMessagesToSend:0 mmsMessagesToSend:0 rcsMessagesToSend:0 rcsFTMessagesToSend:0 messagesToDownload:0
+04-29 19:03:16.976 13102 13197 I BugleDataModel: Cleared next retry time for channel: sms_send 
+04-29 19:03:16.976 13102 13197 I BugleDataModel: Cleared next retry time for channel: mms_send 
+04-29 19:03:16.976 13102 13197 I BugleDataModel: Cleared next retry time for channel: mms_download 
+04-29 19:03:16.976 13102 13197 I BugleDataModel: Cleared next retry time for channel: rcs_send 
+04-29 19:03:16.976 13102 13197 I BugleDataModel: Cleared next retry time for channel: rcs_ft_upload 
+04-29 19:03:16.977 13102 13197 I BugleDataModel: Cleared next retry time for channel: rcs_ft_download 
+04-29 19:03:16.977 13102 13197 I BugleDataModel: Cleared next retry time for channel: cloud_sync_send 
+04-29 19:03:16.977 13102 13197 I BugleDataModel: Cleared next retry time for channel: cloud_sync_attachment_download 
+04-29 19:03:16.977 13102 13197 I BugleDataModel: ExecuteActionRunnable: finished running action FixupMessageStatusOnStartupAction
+04-29 19:03:16.977 13102 13197 I BugleDataModel: ExecuteActionRunnable: running action ProcessPendingMessagesAction
+04-29 19:03:16.978 13102 13197 I BugleDataModel: PendingMessagesProcessor process from ProcessPendingMessagesAction due to scheduled processing  with delay 0s with queues smsMessagesToSend:0 mmsMessagesToSend:0 rcsMessagesToSend:0 rcsFTMessagesToSend:0 messagesToDownload:0
+04-29 19:03:16.979 13102 13197 I BugleDataModel: ExecuteActionRunnable: finished running action ProcessPendingMessagesAction
+04-29 19:03:16.979 13102 13197 I BugleDataModel: ExecuteActionRunnable: running action SelfParticipantsRefreshAction
+04-29 19:03:16.980 13102 13196 I BugleDataModel: ParticipantRefresh: ContactContentObserver created
+04-29 19:03:16.980 13102 13196 I BugleDataModel: ParticipantFullRefresh: Start participant refresh. refreshMode: SELF_ONLY
+04-29 19:03:16.980 13102 13197 I BugleDataModel: ActionExecutorImpl: ACTION_BACKGROUND_QUEUED_SelfParticipantsRefreshAction
+04-29 19:03:16.980 13102 13197 I BugleDataModel: ExecuteActionRunnable: finished running action SelfParticipantsRefreshAction
+04-29 19:03:16.982 13102 13196 I BugleDataModel: SubscriptionsTracker#refreshSelfParticipantList([1]), with subIdToSimIdMap([])
+04-29 19:03:16.989 13102 13196 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+04-29 19:03:16.989 13102 13196 I Bugle   : SubscriptionUtils.getCanonicalForSelf: self=redacted-pii[12-chars], country=US [CONTEXT sub_id=1 ]
+04-29 19:03:16.990 13102 13196 I Bugle   : CountryCodeDetector: updateSmsNetworkCountry from default subscription network country. detected country: us
+04-29 19:03:16.993 13102 13196 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+04-29 19:03:16.999 13102 13196 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+04-29 19:03:16.999 13102 13196 I Bugle   : SubscriptionUtils.getCanonicalForSelf: self=redacted-pii[12-chars], country=US [CONTEXT sub_id=1 ]
+04-29 19:03:17.002 13102 13196 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+04-29 19:03:17.004 13102 13196 I BugleDataModel: SubscriptionsTracker bindToTrackingMap bound participants: [ParticipantId=1 subId=-1, ParticipantId=2 subId=1]
+04-29 19:03:17.004 13102 13196 I BugleDataModel: set orderedRowIdAndTokenPairs: [rowId=2 subId= 1 token=e0bb402f-c6d7-4cd4-86e5-de19742bf32a, rowId=1 subId= -1 token=1dcac39f-2f8d-405e-b994-967976b13e2f]
+04-29 19:03:17.008   501  1775 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10072; state: DISABLED
+04-29 19:03:17.008   501  1775 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10072; state: DISABLED
+04-29 19:03:17.008   501  1775 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10072; state: DISABLED
+04-29 19:03:17.008   501  1775 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10072; state: ENABLED
+04-29 19:03:17.008 13102 13196 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+04-29 19:03:17.008   501   536 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10072; state: ENABLED
+04-29 19:03:17.009 13102 13196 I Bugle   : SubscriptionUtils.getCanonicalForSelf: self=redacted-pii[12-chars], country=US [CONTEXT sub_id=1 ]
+04-29 19:03:17.009 13102 13102 I BugleDataModel: ActionExecutorImpl: ACTION_EXECUTE_QUEUED_GenericWorkerQueueAction
+04-29 19:03:17.009 13102 13140 I BugleDataModel: ExecuteActionRunnable: running action GenericWorkerQueueAction
+04-29 19:03:17.009 13102 13140 I BugleDataModel: ActionExecutorImpl: ACTION_BACKGROUND_QUEUED_GenericWorkerQueueAction
+04-29 19:03:17.009 13102 13140 I BugleDataModel: ExecuteActionRunnable: finished running action GenericWorkerQueueAction
+04-29 19:03:17.016   295   295 D Zygote  : Forked child process 13228
+04-29 19:03:17.016   501   536 I ActivityManager: Start proc 13228:android.process.acore/u0a72 for content provider {com.android.providers.contacts/com.android.providers.contacts.ContactsProvider2}
+04-29 19:03:17.024 13228 13228 I d.process.acore: Using CollectorTypeCC GC.
+04-29 19:03:17.029 13228 13228 E d.process.acore: Not starting debugger since process cannot load the jdwp agent.
+04-29 19:03:17.035   501  2317 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10072; state: DISABLED
+04-29 19:03:17.035   501  2317 D CompatibilityChangeReporter: Compat change id reported: 273564678; UID 10072; state: DISABLED
+04-29 19:03:17.037 13228 13228 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10072; state: ENABLED
+04-29 19:03:17.044 13228 13228 D nativeloader: Configuring classloader-namespace-shared for other apk /system/priv-app/ContactsProvider/ContactsProvider.apk. target_sdk_version=33, uses_libraries=, library_path=/system/priv-app/ContactsProvider/lib/arm64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.android.providers.contacts:/system/priv-app/ContactsProvider:/system/lib64:/system_ext/lib64
+04-29 19:03:17.050 13228 13228 V GraphicsEnvironment: ANGLE Developer option for 'com.android.providers.contacts' set to: 'default'
+04-29 19:03:17.050 13228 13228 V GraphicsEnvironment: ANGLE GameManagerService for com.android.providers.contacts: false
+04-29 19:03:17.050 13228 13228 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+04-29 19:03:17.051 13228 13228 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+04-29 19:03:17.051 13228 13228 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+04-29 19:03:17.054 13228 13228 D nativeloader: Configuring classloader-namespace-shared for other apk /system/priv-app/UserDictionaryProvider/UserDictionaryProvider.apk. target_sdk_version=33, uses_libraries=, library_path=/system/priv-app/UserDictionaryProvider/lib/arm64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.android.providers.userdictionary:/system/priv-app/UserDictionaryProvider:/system/lib64:/system_ext/lib64
+04-29 19:03:17.079 13228 13228 D nativeloader: Configuring classloader-namespace-shared for other apk /system/priv-app/BlockedNumberProvider/BlockedNumberProvider.apk. target_sdk_version=33, uses_libraries=, library_path=/system/priv-app/BlockedNumberProvider/lib/arm64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user_de/0/com.android.providers.blockednumber:/system/priv-app/BlockedNumberProvider:/system/lib64:/system_ext/lib64
+04-29 19:03:17.083 13228 13228 I ContactsPerf: VoicemailContentProvider.onCreate start
+04-29 19:03:17.086   501  1775 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 10072; state: DISABLED
+04-29 19:03:17.086 13228 13228 I ContactsPerf: VoicemailContentProvider.onCreate finish
+04-29 19:03:17.089 13228 13246 I PhoneAccountHandleMigrationUtils_CallLogDatabaseHelper: updatePhoneAccountHandleMigrationPendingStatus false
+04-29 19:03:17.089 13228 13248 I PhoneAccountHandleMigrationUtils_CallLogDatabaseHelper: updatePhoneAccountHandleMigrationPendingStatus false
+04-29 19:03:17.090 13228 13246 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10072; state: ENABLED
+04-29 19:03:17.095   501  2317 D CountryDetector: The first listener is added
+04-29 19:03:17.096 13228 13228 I ContactsDatabaseHelper: updateUseStrictPhoneNumberComparison: US
+04-29 19:03:17.103 13228 13246 I CallLogProvider: Syncing call composer pics -- source user=0, isShadow=true, forAllUser=false
+04-29 19:03:17.103 13228 13246 I CallLogProvider: Fetching list of Uris to sync
+04-29 19:03:17.104 13228 13250 D ContactsDatabaseHelper: WAL enabled for contacts2.db: true
+04-29 19:03:17.104 13228 13246 I CallLogProvider: Will sync following Uris:[]
+04-29 19:03:17.104 13228 13246 I CallLogProvider: Syncing call composer pics -- got []
+04-29 19:03:17.108 13228 13250 I PhoneAccountHandleMigrationUtils_ContactsDatabaseHelper: updatePhoneAccountHandleMigrationPendingStatus false
+04-29 19:03:17.123 13228 13250 I ContactLocale: AddressBook Labels [[en_US]]: […, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Α, Β, Γ, Δ, Ε, Ζ, Η, Θ, Ι, Κ, Λ, Μ, Ν, Ξ, Ο, Π, Ρ, Σ, Τ, Υ, Φ, Χ, Ψ, Ω, …, А, Б, В, Г, Д, Ђ, Е, Є, Ж, З, И, І, Й, Ј, К, Л, Љ, М, Н, Њ, О, П, Р, С, Т, Ћ, У, Ф, Х, Ц, Ч, Џ, Ш, Щ, Ю, Я, …, א, ב, ג, ד, ה, ו, ז, ח, ט, י, כ, ל, מ, נ, ס, ע, פ, צ, ק, ר, ש, ת, …, ا, ب, ت, ث, ج, ح, خ, د, ذ, ر, ز, س, ش, ص, ض, ط, ظ, ع, غ, ف, ق, ك, ل, م, ن, ه, و, ي, …, ก, ข, ฃ, ค, ฅ, ฆ, ง, จ, ฉ, ช, ซ, ฌ, ญ, ฎ, ฏ, ฐ, ฑ, ฒ, ณ, ด, ต, ถ, ท, ธ, น, บ, ป, ผ, ฝ, พ, ฟ, ภ, ม, ย, ร, ฤ, ล, ฦ, ว, ศ, ษ, ส, ห, ฬ, อ, ฮ, …, ㄱ, ㄴ, ㄷ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ, ㅈ, ㅊ, ㅋ, ㅌ, ㅍ, ㅎ, …, あ, か, さ, た, な, は, ま, や, ら, わ, #, …]
+04-29 19:03:17.127 13228 13250 D ContactsDatabaseHelper: WAL enabled for profile.db: false
+04-29 19:03:17.148 13102 13196 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+04-29 19:03:17.148 13102 13196 I Bugle   : SubscriptionUtils.getCanonicalForSelf: self=redacted-pii[12-chars], country=US [CONTEXT sub_id=1 ]
+04-29 19:03:17.157 13102 13196 I BugleDataModel: ParticipantFullRefresh: Number of participants refreshed: 0
+04-29 19:03:17.157 13102 13196 I BugleDataModel: ActionExecutorImpl: ACTION_RESPONSE_QUEUED_SelfParticipantsRefreshAction
+04-29 19:03:17.158 13228 13250 V ContactsProvider: 0 Dangling Contacts have been cleaned up.
+04-29 19:03:17.158 13102 13196 I BugleJobs: GenericWorkerQueueAction: Bailing early, no work found, no failed work found
+04-29 19:03:17.158 13102 13196 I BugleDataModel: ActionExecutorImpl: ACTION_RESPONSE_QUEUED_GenericWorkerQueueAction
+04-29 19:03:17.161 13102 13144 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+04-29 19:03:17.161   501  1763 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 10120; state: DISABLED
+04-29 19:03:17.161 13102 13144 I Bugle   : SubscriptionUtils.getCanonicalForSelf: self=redacted-pii[12-chars], country=US [CONTEXT sub_id=1 ]
+04-29 19:03:17.162 13102 13144 I BugleSelfIdentity: Phone number for MyIdentity e0bb402f-c6d7-4cd4-86e5-de19742bf32a does not change [CONTEXT sub_id=1 icc_id="redacted-pii[20-chars]" messaging_identity="redacted-pii[12-chars]" rcs_provisioning_id="redacted-pii[0-chars]" ]
+04-29 19:03:17.166 13102 13144 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+04-29 19:03:17.166 13102 13144 I Bugle   : SubscriptionUtils.getCanonicalForSelf: self=redacted-pii[12-chars], country=US [CONTEXT sub_id=1 ]
+04-29 19:03:17.167 13102 13144 I BugleSelfIdentity: Phone number for MyIdentity e0bb402f-c6d7-4cd4-86e5-de19742bf32a does not change [CONTEXT sub_id=1 icc_id="redacted-pii[20-chars]" messaging_identity="redacted-pii[12-chars]" rcs_provisioning_id="redacted-pii[0-chars]" ]
+04-29 19:03:17.172  6601 13009 I NetworkScheduler.Stats: (REDACTED) Task %s/%s started execution. cause:%s exec_start_elapsed_seconds: %s
+04-29 19:03:17.180  6601 10432 I NetworkScheduler.Stats: (REDACTED) Task %s/%s finished executing. cause:%s result: %s elapsed_millis: %s uptime_millis: %s exec_start_elapsed_seconds: %s
+04-29 19:03:17.947  6601  6601 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.time.trustedtime.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+04-29 19:03:19.868  1557  1557 W ThreadPoolForeg: type=1400 audit(0.0:1319): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:03:26.065  1557  1557 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.notifications.capping.api.NotificationsCappingApiService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+04-29 19:03:27.162 13228 13241 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10072; state: ENABLED
+04-29 19:03:28.194 13228 13238 W System  : A resource failed to call AbstractCursor.close. 
+04-29 19:03:28.195 13228 13238 W System  : A resource failed to call AbstractCursor.close. 
+04-29 19:03:28.664   294 13168 W resolv  : SSL_connect write error 0, mark 0xf0067: Try again
+04-29 19:03:28.668   294 13168 W resolv  : TLS Handshake failed
+04-29 19:03:28.669   294 13168 W resolv  : query failed
+04-29 19:03:28.669   294 13168 W resolv  : validateDnsTlsServer returned 0 for 10.0.2.3
+04-29 19:03:28.669   294 13168 W resolv  : Validation failed
+04-29 19:03:28.827   501   635 D ConnectivityService: handleLingerComplete for [100 CELLULAR]
+04-29 19:03:28.827   501   635 I ConnectivityService: Update capabilities for net 100 : -FOREGROUND
+04-29 19:03:32.728  6601  6601 W ThreadPoolForeg: type=1400 audit(0.0:1320): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:03:34.813   501  1763 D WifiNl80211Manager: Scan result ready event
+04-29 19:03:34.813   501  1763 D WifiNative: Scan result ready event
+04-29 19:03:41.448  3004  3004 W ThreadPoolForeg: type=1400 audit(0.0:1321): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms

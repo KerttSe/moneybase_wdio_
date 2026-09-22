@@ -1,0 +1,855 @@
+--------- beginning of main
+06-22 18:15:18.538  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:18.538  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:18.538  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:18.538  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:18.538  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:18.639  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:18.639  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:18.639  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:18.639  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:18.639  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:18.639  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:18.639  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:18.639  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:18.639  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:18.639  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:18.639  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:18.639  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:18.639  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:18.740  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:18.740  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:18.740  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:18.740  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:18.740  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:18.740  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:18.740  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:18.740  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:18.741  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:18.741  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:18.741  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:18.741  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:18.741  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:18.841  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:18.841  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:18.841  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:18.841  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:18.841  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:18.841  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:18.841  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:18.841  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:18.841  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:18.841  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:18.841  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:18.841  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:18.841  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:18.944  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:18.944  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:18.944  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:18.944  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:18.944  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:18.944  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:18.944  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:18.944  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:18.944  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:18.944  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:18.944  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:18.944  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:18.944  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:19.043  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:19.043  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:19.043  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:19.043  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:19.043  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:19.043  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:19.043  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:19.043  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.043  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:19.043  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:19.043  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:19.043  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.043  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:19.145  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:19.145  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:19.145  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:19.145  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:19.145  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:19.145  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:19.145  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:19.145  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.145  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:19.145  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:19.145  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:19.145  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.146  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:19.246  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:19.246  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:19.246  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:19.246  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:19.246  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:19.246  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:19.246  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:19.246  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.246  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:19.246  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:19.246  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:19.246  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.246  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:19.348  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:19.348  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:19.348  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:19.348  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:19.348  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:19.348  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:19.348  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:19.348  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.348  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:19.348  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:19.348  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:19.348  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.348  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:19.450  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:19.450  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:19.450  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:19.450  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:19.450  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:19.450  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:19.450  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:19.450  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.450  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:19.450  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:19.450  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:19.450  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.450  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:19.551  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:19.551  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:19.551  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:19.551  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:19.551  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:19.551  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:19.551  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:19.551  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.551  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:19.551  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:19.551  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:19.551  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.552  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:19.654  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:19.654  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:19.654  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:19.654  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:19.654  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:19.654  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:19.654  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:19.654  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.654  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:19.654  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:19.654  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:19.654  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.654  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:19.755  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:19.755  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:19.755  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:19.755  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:19.755  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:19.755  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:19.755  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:19.755  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.755  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:19.755  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:19.755  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:19.755  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.755  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:19.855  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:19.855  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:19.855  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:19.855  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:19.855  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:19.855  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:19.855  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:19.855  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.855  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:19.855  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:19.855  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:19.855  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.855  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:19.955  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:19.955  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:19.955  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:19.955  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:19.955  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:19.955  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:19.955  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:19.955  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.955  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:19.955  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:19.955  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:19.955  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:19.955  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:20.055  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:20.055  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:20.055  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:20.055  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:20.055  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:20.055  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:20.055  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:20.055  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.055  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:20.055  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:20.055  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:20.055  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.055  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:20.156  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:20.156  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:20.156  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:20.156  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:20.156  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:20.156  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:20.156  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:20.156  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.156  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:20.156  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:20.156  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:20.156  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.156  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:20.257  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:20.257  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:20.257  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:20.257  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:20.257  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:20.257  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:20.257  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:20.257  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.257  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:20.257  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:20.257  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:20.257  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.257  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:20.358  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:20.358  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:20.358  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:20.358  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:20.358  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:20.358  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:20.358  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:20.358  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.358  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:20.358  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:20.358  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:20.358  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.358  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:20.459  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:20.459  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:20.459  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:20.459  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:20.459  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:20.459  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:20.459  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:20.459  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.459  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:20.459  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:20.459  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:20.459  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.459  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:20.561  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:20.561  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:20.561  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:20.561  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:20.561  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:20.561  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:20.561  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:20.561  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.561  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:20.561  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:20.561  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:20.561  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.561  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:20.663  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:20.663  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:20.663  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:20.663  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:20.663  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:20.663  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:20.663  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:20.663  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.663  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:20.663  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:20.663  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:20.663  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.663  7901  7928 W appium  : Empty screenshot returned, dropping frame
+--------- beginning of system
+06-22 18:15:20.762   500  2304 W BatteryExternalStatsWorker: error reading Bluetooth stats: 11
+06-22 18:15:20.762  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:20.762  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:20.762  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:20.762  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:20.762  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:20.762  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:20.762  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:20.762  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.762  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:20.762  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:20.762  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:20.762  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.762  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:20.762   500   685 D TelephonyManager: requestModemActivityInfo: Sending result to app: ModemActivityInfo{ mTimestamp=12600085 mSleepTimeMs=0 mIdleTimeMs=11625169 mActivityStatsTechSpecificInfo=[{mRat=UNKNOWN,mFrequencyRange=UNKNOWN,mTxTimeMs[]=[0, 0, 0, 0, 0],mRxTimeMs=0}]}
+06-22 18:15:20.768   500   533 E system_server: updateValue is called with a value 118953, which is lower than the previous value 119770
+06-22 18:15:20.863  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:20.863  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:20.863  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:20.863  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:20.863  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:20.863  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:20.863  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:20.863  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.863  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:20.863  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:20.863  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:20.863  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.863  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:20.966  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:20.966  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:20.966  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:20.966  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:20.966  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:20.966  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:20.966  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:20.966  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.966  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:20.966  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:20.966  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:20.966  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:20.966  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:21.066  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:21.066  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:21.066  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:21.066  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:21.066  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:21.066  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:21.066  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:21.066  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.066  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:21.066  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:21.066  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:21.066  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.067  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:21.167  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:21.167  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:21.167  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:21.167  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:21.167  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:21.167  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:21.167  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:21.167  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.167  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:21.167  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:21.167  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:21.167  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.167  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:21.268  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:21.268  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:21.268  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:21.268  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:21.268  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:21.268  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:21.268  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:21.268  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.268  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:21.268  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:21.268  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:21.268  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.268  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:21.369  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:21.369  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:21.369  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:21.369  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:21.369  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:21.369  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:21.369  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:21.369  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.369  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:21.369  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:21.369  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:21.369  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.369  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:21.470  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:21.470  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:21.470  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:21.470  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:21.470  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:21.470  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:21.470  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:21.470  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.470  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:21.470  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:21.470  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:21.470  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.471  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:21.570  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:21.570  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:21.570  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:21.570  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:21.570  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:21.570  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:21.570  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:21.570  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.570  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:21.570  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:21.570  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:21.570  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.570  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:21.671  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:21.671  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:21.671  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:21.671  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:21.671  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:21.671  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:21.671  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:21.671  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.671  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:21.671  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:21.671  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:21.671  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.672  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:21.771  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:21.771  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:21.771  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:21.771  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:21.771  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:21.771  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:21.771  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:21.771  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.772  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:21.772  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:21.772  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:21.772  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.772  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:21.871  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:21.871  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:21.871  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:21.871  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:21.871  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:21.871  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:21.871  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:21.871  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.871  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:21.871  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:21.871  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:21.871  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.871  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:21.972  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:21.972  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:21.972  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:21.972  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:21.972  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:21.972  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:21.972  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:21.972  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.972  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:21.972  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:21.972  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:21.972  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:21.972  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:22.073  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:22.073  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:22.073  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:22.073  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:22.073  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:22.073  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:22.073  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:22.073  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.073  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:22.073  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:22.073  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:22.073  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.073  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:22.174  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:22.174  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:22.174  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:22.174  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:22.174  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:22.174  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:22.174  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:22.174  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.174  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:22.174  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:22.174  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:22.174  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.174  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:22.276  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:22.276  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:22.276  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:22.276  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:22.276  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:22.276  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:22.276  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:22.276  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.276  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:22.276  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:22.276  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:22.276  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.276  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:22.378  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:22.378  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:22.378  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:22.378  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:22.378  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:22.378  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:22.378  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:22.378  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.378  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:22.378  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:22.378  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:22.378  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.378  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:22.481  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:22.481  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:22.481  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:22.481  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:22.481  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:22.481  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:22.481  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:22.481  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.481  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:22.481  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:22.481  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:22.481  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.481  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:22.582  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:22.582  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:22.582  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:22.582  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:22.582  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:22.582  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:22.582  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:22.582  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.582  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:22.582  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:22.582  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:22.582  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.582  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:22.683  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:22.683  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:22.683  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:22.683  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:22.683  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:22.683  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:22.683  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:22.683  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.683  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:22.683  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:22.683  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:22.683  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.683  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:22.785  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:22.785  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:22.785  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:22.785  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:22.785  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:22.785  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:22.785  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:22.785  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.785  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:22.785  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:22.785  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:22.785  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.785  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:22.885  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:22.885  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:22.885  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:22.885  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:22.885  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:22.885  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:22.885  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:22.885  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.885  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:22.885  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:22.885  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:22.885  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.885  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:22.986  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:22.986  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:22.986  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:22.986  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:22.986  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:22.986  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:22.986  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:22.986  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.986  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:22.986  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:22.986  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:22.986  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:22.986  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:23.088  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:23.088  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:23.088  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:23.088  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:23.088  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:23.088  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:23.088  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:23.088  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.088  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:23.088  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:23.088  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:23.088  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.088  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:23.188  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:23.188  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:23.188  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:23.188  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:23.188  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:23.188  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:23.188  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:23.188  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.188  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:23.188  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:23.188  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:23.188  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.188  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:23.289  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:23.289  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:23.289  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:23.289  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:23.289  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:23.289  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:23.289  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:23.289  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.289  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:23.289  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:23.289  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:23.289  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.289  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:23.391  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:23.391  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:23.391  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:23.391  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:23.391  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:23.391  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:23.391  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:23.391  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.391  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:23.391  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:23.391  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:23.391  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.391  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:23.491  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:23.491  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:23.491  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:23.491  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:23.491  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:23.491  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:23.491  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:23.491  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.491  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:23.491  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:23.491  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:23.491  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.491  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:23.592  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:23.592  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:23.592  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:23.592  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:23.592  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:23.592  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:23.592  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:23.592  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.592  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:23.592  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:23.592  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:23.592  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.592  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:23.692  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:23.692  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:23.692  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:23.692  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:23.692  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:23.692  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:23.692  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:23.692  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.692  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:23.692  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:23.692  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:23.692  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.692  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:23.794  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:23.794  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:23.794  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:23.794  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:23.794  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:23.794  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:23.794  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:23.794  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.794  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:23.794  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:23.794  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:23.794  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.794  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:23.897  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:23.897  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:23.897  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:23.897  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:23.897  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:23.897  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:23.897  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:23.897  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.897  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:23.897  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:23.897  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:23.897  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.897  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:23.998  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:23.998  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:23.998  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:23.998  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:23.998  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:23.998  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:23.998  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:23.998  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.998  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:23.998  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:23.998  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:23.998  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:23.998  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:24.099  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:24.099  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:24.099  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:24.099  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:24.099  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:24.099  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:24.099  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:24.099  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.099  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:24.099  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:24.099  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:24.099  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.099  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:24.200  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:24.200  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:24.200  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:24.200  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:24.200  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:24.200  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:24.200  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:24.200  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.200  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:24.200  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:24.200  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:24.200  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.200  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:24.303  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:24.303  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:24.303  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:24.303  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:24.303  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:24.303  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:24.303  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:24.303  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.303  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:24.303  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:24.303  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:24.303  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.304  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:24.404  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:24.404  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:24.404  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:24.404  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:24.404  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:24.404  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:24.404  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:24.404  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.404  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:24.404  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:24.404  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:24.404  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.404  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:24.504  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:24.504  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:24.504  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:24.504  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:24.504  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:24.504  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:24.504  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:24.504  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.505  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:24.505  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:24.505  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:24.505  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.505  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:24.604  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:24.604  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:24.604  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:24.604  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:24.604  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:24.604  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:24.604  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:24.604  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.604  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:24.604  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:24.604  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:24.604  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.604  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:24.705  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:24.705  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:24.705  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:24.705  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:24.705  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:24.705  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:24.705  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:24.705  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.705  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:24.705  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:24.705  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:24.705  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.705  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:24.805  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:24.805  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:24.805  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:24.805  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:24.805  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:24.805  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:24.805  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:24.805  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.805  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:24.805  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:24.805  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:24.805  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.805  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:24.905  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:24.905  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:24.905  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:24.905  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:24.905  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:24.905  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:24.905  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:24.905  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.905  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:24.905  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:24.905  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:24.905  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:24.905  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:25.005  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:25.005  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:25.005  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:25.005  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:25.005  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:25.005  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:25.005  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:25.005  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:25.005  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:25.005  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:25.005  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:25.005  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:25.005  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:15:25.105  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:15:25.105  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:15:25.105  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:15:25.105  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:15:25.105  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:15:25.105  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:15:25.105  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:15:25.105  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:25.105  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:15:25.105  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:15:25.105  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:15:25.105  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:15:25.105  7901  7928 W appium  : Empty screenshot returned, dropping frame

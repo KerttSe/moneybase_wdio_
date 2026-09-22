@@ -1,0 +1,338 @@
+--------- beginning of main
+05-27 14:35:40.797  1702  3526 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 64012, isSameBssidAndFreq true
+05-27 14:35:40.803  2741  2846 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236038, activityId=2131236053)
+05-27 14:35:40.817  1414  1599 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+05-27 14:35:40.818  1414  1558 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+05-27 14:35:40.820  1414  1558 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+05-27 14:35:40.831  1414  1414 I LayerHistory: StatusBar$_2356#103 voted NoVote (0.00 Hz)
+05-27 14:35:40.831  1414  1414 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+05-27 14:35:40.832  1414  1414 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+05-27 14:35:40.835  1335  1559 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+05-27 14:35:40.835  1335  1559 I display : Current VRR MODE is 3
+05-27 14:35:40.835  1335  1559 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+05-27 14:35:40.835  1335  1559 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+05-27 14:35:40.835  1335  1559 I display : commit modeset : 1080x2340@120hs
+05-27 14:35:40.853  1335  1559 W display : deliverWinConfigData:: commit modeset time (17 ms)
+05-27 14:35:40.857  1414  1414 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+05-27 14:35:40.857  1414  1414 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-27 14:35:40.857  1335  1421 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+05-27 14:35:40.861  1335  1421 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-27 14:35:40.861  1335  1421 I display : Set m2mMPP capacity(4) for fps(120)
+05-27 14:35:40.861  1335  1421 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-27 14:35:40.861  1335  1421 I display : Set Affinity config for fps(120) : cpuIDs : 255
+05-27 14:35:40.861  1335  1421 I display : Set Affinity CPU ID : 0
+05-27 14:35:40.861  1335  1421 I display : Set Affinity CPU ID : 1
+05-27 14:35:40.861  1335  1421 I display : Set Affinity CPU ID : 2
+05-27 14:35:40.861  1335  1421 I display : Set Affinity CPU ID : 3
+05-27 14:35:40.861  1335  1421 I display : Set Affinity CPU ID : 4
+05-27 14:35:40.861  1335  1421 I display : Set Affinity CPU ID : 5
+05-27 14:35:40.861  1335  1421 I display : Set Affinity CPU ID : 6
+05-27 14:35:40.861  1335  1421 I display : Set Affinity CPU ID : 7
+05-27 14:35:40.861  1335  1421 I display : Set affinity HWC : 1335
+05-27 14:35:40.862  1335  1421 I display : CPU set : Cluster(0), min_clock(0)
+05-27 14:35:40.862  1335  1421 I display : CPU set : Cluster(1), min_clock(0)
+05-27 14:35:40.862  1335  1421 I display : CPU set : Cluster(2), min_clock(0)
+05-27 14:35:40.862  1414  1558 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+--------- beginning of system
+05-27 14:35:40.912   748   748 D io_stats: !@   8,0 r 44033868 850162800 w 14540021 257477976 d 4515136 277698584 f 0 1574333 iot 22618404 0 th 0 0 0 pt 0 inp 0 0 320420.841
+05-27 14:35:41.022  1384  1451 E HeatmapThread: ECT Thread time in milliseconds: 1779881741
+05-27 14:35:41.022  1384  1451 D HeatmapThread: !@ batteryplugType : 0
+05-27 14:35:41.022  1384  1451 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-27 14:35:41.022  1384  1451 D HeatmapThread: !@ Heatmap currtime: 29664695
+05-27 14:35:41.022  1384  1451 D HeatmapThread: !@ Heatmap prevtime: 29664677
+05-27 14:35:41.022  1384  1451 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-27 14:35:41.022  1384  1451 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29651256
+05-27 14:35:41.023  1384  1451 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-27 14:35:41.023  1384  1451 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-27 14:35:41.023  1384  1451 E HeatmapThread: !@ CAM New BSOH: 0
+05-27 14:35:41.068  1414  1599 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+05-27 14:35:41.071  1414  1414 I LayerHistory: StatusBar$_2356#103 voted NoVote (0.00 Hz)
+05-27 14:35:41.071  1414  1414 I SurfaceFlinger: Idle - choose 60.00 Hz
+05-27 14:35:41.071  1414  1414 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+05-27 14:35:41.073  1414  1558 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+05-27 14:35:41.074  1335  1559 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+05-27 14:35:41.074  1335  1559 I display : Current VRR MODE is 3
+05-27 14:35:41.074  1335  1559 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+05-27 14:35:41.074  1335  1559 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+05-27 14:35:41.074  1335  1559 I display : commit modeset : 1080x2340@60phs
+05-27 14:35:41.086  1335  1559 W display : deliverWinConfigData:: commit modeset time (12 ms)
+05-27 14:35:41.087  1335  1421 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+05-27 14:35:41.087  1335  1421 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-27 14:35:41.087  1335  1421 I display : Set m2mMPP capacity(8) for fps(60)
+05-27 14:35:41.087  1335  1421 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-27 14:35:41.087  1335  1421 I display : Set Affinity config for fps(60) : cpuIDs : 255
+05-27 14:35:41.087  1335  1421 I display : Set Affinity CPU ID : 0
+05-27 14:35:41.087  1335  1421 I display : Set Affinity CPU ID : 1
+05-27 14:35:41.087  1335  1421 I display : Set Affinity CPU ID : 2
+05-27 14:35:41.087  1335  1421 I display : Set Affinity CPU ID : 3
+05-27 14:35:41.087  1335  1421 I display : Set Affinity CPU ID : 4
+05-27 14:35:41.087  1335  1421 I display : Set Affinity CPU ID : 5
+05-27 14:35:41.087  1335  1421 I display : Set Affinity CPU ID : 6
+05-27 14:35:41.087  1335  1421 I display : Set Affinity CPU ID : 7
+05-27 14:35:41.087  1335  1421 I display : Set affinity HWC : 1335
+05-27 14:35:41.087  1335  1421 I display : CPU set : Cluster(0), min_clock(0)
+05-27 14:35:41.087  1335  1421 I display : CPU set : Cluster(1), min_clock(0)
+05-27 14:35:41.087  1335  1421 I display : CPU set : Cluster(2), min_clock(0)
+05-27 14:35:41.087  1414  1414 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-27 14:35:41.088  1414  1558 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+05-27 14:35:42.022  1384  1451 E HeatmapThread: ECT Thread time in milliseconds: 1779881742
+05-27 14:35:42.022  1384  1451 D HeatmapThread: !@ batteryplugType : 0
+05-27 14:35:42.022  1384  1451 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-27 14:35:42.022  1384  1451 D HeatmapThread: !@ Heatmap currtime: 29664695
+05-27 14:35:42.022  1384  1451 D HeatmapThread: !@ Heatmap prevtime: 29664677
+05-27 14:35:42.022  1384  1451 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-27 14:35:42.022  1384  1451 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29651256
+05-27 14:35:42.023  1384  1451 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-27 14:35:42.023  1384  1451 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-27 14:35:42.023  1384  1451 E HeatmapThread: !@ CAM New BSOH: 0
+05-27 14:35:42.106 30158 30172 W earchbox:search: userfaultfd: MOVE ioctl seems unsupported: Connection timed out
+05-27 14:35:42.913   748   748 D io_stats: !@   8,0 r 44033903 850163512 w 14540030 257478020 d 4515136 277698584 f 0 1574333 iot 22618448 0 th 0 0 0 pt 0 inp 0 0 320422.842
+05-27 14:35:42.913   748   748 D io_stats: !@ Read_top(KB): earchbox:search(30158) 420 wifi.mobilewips(3371) 292
+05-27 14:35:42.914   748   748 D io_stats: !@ Write_top(KB): kworker/u16:0(27235) 44 ugin:persistent(6931) 8 android.hardwar(1336) 8
+05-27 14:35:43.021  1384  1451 E HeatmapThread: ECT Thread time in milliseconds: 1779881743
+05-27 14:35:43.022  1384  1451 D HeatmapThread: !@ batteryplugType : 0
+05-27 14:35:43.022  1384  1451 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-27 14:35:43.022  1384  1451 D HeatmapThread: !@ Heatmap currtime: 29664695
+05-27 14:35:43.022  1384  1451 D HeatmapThread: !@ Heatmap prevtime: 29664677
+05-27 14:35:43.022  1384  1451 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-27 14:35:43.022  1384  1451 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29651256
+05-27 14:35:43.022  1384  1451 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-27 14:35:43.022  1384  1451 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-27 14:35:43.022  1384  1451 E HeatmapThread: !@ CAM New BSOH: 0
+05-27 14:35:43.820  1702  2137 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+05-27 14:35:43.826  1702  3526 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 64013, isSameBssidAndFreq true
+05-27 14:35:44.022  1384  1451 E HeatmapThread: ECT Thread time in milliseconds: 1779881744
+05-27 14:35:44.022  1384  1451 D HeatmapThread: !@ batteryplugType : 0
+05-27 14:35:44.022  1384  1451 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-27 14:35:44.022  1384  1451 D HeatmapThread: !@ Heatmap currtime: 29664695
+05-27 14:35:44.022  1384  1451 D HeatmapThread: !@ Heatmap prevtime: 29664677
+05-27 14:35:44.022  1384  1451 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-27 14:35:44.022  1384  1451 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29651256
+05-27 14:35:44.023  1384  1451 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-27 14:35:44.023  1384  1451 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-27 14:35:44.023  1384  1451 E HeatmapThread: !@ CAM New BSOH: 0
+05-27 14:35:44.363  1702  3052 I NSLocationMonitor: getGPSUsingApps() called
+05-27 14:35:44.365  3055  3069 I NSLocationManager_FLP: getGPSUsingApps, No change
+05-27 14:35:44.380  4994  4994 I SDHMS:LOAD: type: LoadsFreqs, value: 0:0:0:576000:576000:576000:703480:2515000:576000:6:303:0
+05-27 14:35:44.380  1702  3052 D FreecessHandler: freeze com.moneybase.qa(10562) result : 12
+05-27 14:35:44.915   748   748 D io_stats: !@   8,0 r 44033906 850163532 w 14540030 257478020 d 4515136 277698584 f 0 1574333 iot 22618464 0 th 0 0 0 pt 0 inp 0 0 320424.844
+05-27 14:35:45.022  1384  1451 E HeatmapThread: ECT Thread time in milliseconds: 1779881745
+05-27 14:35:45.022  1384  1451 D HeatmapThread: !@ batteryplugType : 0
+05-27 14:35:45.022  1384  1451 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-27 14:35:45.022  1384  1451 D HeatmapThread: !@ Heatmap currtime: 29664695
+05-27 14:35:45.023  1384  1451 D HeatmapThread: !@ Heatmap prevtime: 29664677
+05-27 14:35:45.023  1384  1451 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-27 14:35:45.023  1384  1451 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29651256
+05-27 14:35:45.023  1384  1451 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-27 14:35:45.023  1384  1451 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-27 14:35:45.023  1384  1451 E HeatmapThread: !@ CAM New BSOH: 0
+05-27 14:35:45.081  1702  2148 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+05-27 14:35:45.085  1702  2148 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+05-27 14:35:45.086  1702  2148 D InetDiagMessage: Destroyed live tcp sockets for uids={10395} in 11ms
+05-27 14:35:45.090  1702  2148 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+05-27 14:35:45.094  1702  2148 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+05-27 14:35:45.095  1702  2148 D InetDiagMessage: Destroyed live tcp sockets for uids={20395} in 9ms
+05-27 14:35:45.447 28824 28909 D com.tiktok.appevents.TTAppEventLogger: Start flush, version 12 reason is TIMER
+05-27 14:35:45.455 28824 28909 D com.tiktok.appevents.TTAppEventStorage: disk read data: TTAppEventPersist{appEvents=[TTAppEvent{eventName='LaunchAPP', timeStamp=Wed May 27 14:32:45 GMT+03:00 2026, propertiesJson='{"type":"auto"}', eventId='1bc32ee5-7631-4dcc-8ed1-95f34a8be38c', uniqueId=1779881565464, tiktokAppIds=[7568780360826372097]}]}
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: Error caused by sdk at com.tiktok.util.HttpRequestUtil
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: Unable to resolve host "analytics.us.tiktok.com": No address associated with hostname
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:156)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:103)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.net.InetAddress.getAllByName(InetAddress.java:1152)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.Dns$1.lookup(Dns.java:41)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.RouteSelector.resetNextInetSocketAddress(RouteSelector.java:178)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.RouteSelector.nextProxy(RouteSelector.java:144)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.RouteSelector.next(RouteSelector.java:86)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.StreamAllocation.findConnection(StreamAllocation.java:176)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.StreamAllocation.findHealthyConnection(StreamAllocation.java:128)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.StreamAllocation.newStream(StreamAllocation.java:97)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.HttpEngine.connect(HttpEngine.java:289)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.HttpEngine.sendRequest(HttpEngine.java:232)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.HttpURLConnectionImpl.execute(HttpURLConnectionImpl.java:465)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.HttpURLConnectionImpl.connect(HttpURLConnectionImpl.java:131)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.DelegatingHttpsURLConnection.connect(DelegatingHttpsURLConnection.java:90)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.HttpsURLConnectionImpl.connect(HttpsURLConnectionImpl.java:30)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.google.firebase.perf.network.InstrURLConnectionBase.connect(:69)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.google.firebase.perf.network.InstrHttpsURLConnection.connect(:58)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.connect(:75)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.doPost(:197)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.doPost(:164)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.doPost(:168)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTRequest.reportAppEvent(:215)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTAppEventLogger.flush(:431)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTAppEventLogger.lambda$new$0$com-tiktok-appevents-TTAppEventLogger(:85)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTAppEventLogger$$ExternalSyntheticLambda14.run(:0)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.FutureTask.runAndReset(FutureTask.java:358)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:349)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.lang.Thread.run(Thread.java:1564)
+05-27 14:35:45.463 28824 28909 E com.tiktok.appevents.TTCrashHandler: 
+05-27 14:35:45.465  1702  2289 D NetdEventListenerService: DNS Requested by 485, 10334(app.source.getcontact), 4(FAIL), isBlocked=true, 0ms
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: Error caused by sdk at com.tiktok.util.HttpRequestUtil
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: Unable to resolve host "analytics.us.tiktok.com": No address associated with hostname
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:156)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:103)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.net.InetAddress.getAllByName(InetAddress.java:1152)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.Dns$1.lookup(Dns.java:41)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.RouteSelector.resetNextInetSocketAddress(RouteSelector.java:178)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.RouteSelector.nextProxy(RouteSelector.java:144)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.RouteSelector.next(RouteSelector.java:86)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.StreamAllocation.findConnection(StreamAllocation.java:176)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.StreamAllocation.findHealthyConnection(StreamAllocation.java:128)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.StreamAllocation.newStream(StreamAllocation.java:97)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.HttpEngine.connect(HttpEngine.java:289)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.HttpEngine.sendRequest(HttpEngine.java:232)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.HttpURLConnectionImpl.execute(HttpURLConnectionImpl.java:465)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.HttpURLConnectionImpl.connect(HttpURLConnectionImpl.java:131)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.DelegatingHttpsURLConnection.connect(DelegatingHttpsURLConnection.java:90)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.HttpsURLConnectionImpl.connect(HttpsURLConnectionImpl.java:30)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.google.firebase.perf.network.InstrURLConnectionBase.connect(:69)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.google.firebase.perf.network.InstrHttpsURLConnection.connect(:58)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.connect(:75)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.doPost(:197)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.doPost(:164)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.doPost(:168)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTRequest.reportAppEvent(:215)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTAppEventLogger.flush(:431)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTAppEventLogger.lambda$new$0$com-tiktok-appevents-TTAppEventLogger(:85)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTAppEventLogger$$ExternalSyntheticLambda14.run(:0)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.FutureTask.runAndReset(FutureTask.java:358)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:349)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.lang.Thread.run(Thread.java:1564)
+05-27 14:35:45.469 28824 28909 E com.tiktok.appevents.TTCrashHandler: 
+05-27 14:35:45.473 28824 28909 D com.tiktok.appevents.TTRequest: Flushed 0 events successfully
+05-27 14:35:45.473 28824 28909 D com.tiktok.appevents.TTRequest: Failed to flush 1 events, will save them to disk
+05-27 14:35:45.473 28824 28909 D com.tiktok.appevents.TTRequest: Failed to flush 1 events in total
+05-27 14:35:45.474 28824 28909 D com.tiktok.appevents.TTAppEventLogger: Failed to send 1 events, will save to disk
+05-27 14:35:45.474 28824 28909 D com.tiktok.appevents.TTAppEventStorage: Tried to persist to disk
+05-27 14:35:45.474 28824 28909 D com.tiktok.appevents.TTAppEventStorage: Saving 1 events to disk
+05-27 14:35:45.475 28824 28909 D com.tiktok.appevents.TTAppEventLogger: END flush, version 12 reason is TIMER
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: Error caused by sdk at com.tiktok.util.HttpRequestUtil
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: Unable to resolve host "analytics.us.tiktok.com": No address associated with hostname
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:124)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:103)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.net.InetAddress.getAllByName(InetAddress.java:1152)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.Dns$1.lookup(Dns.java:41)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.RouteSelector.resetNextInetSocketAddress(RouteSelector.java:178)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.RouteSelector.nextProxy(RouteSelector.java:144)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.RouteSelector.next(RouteSelector.java:86)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.StreamAllocation.findConnection(StreamAllocation.java:176)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.StreamAllocation.findHealthyConnection(StreamAllocation.java:128)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.StreamAllocation.newStream(StreamAllocation.java:97)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.HttpEngine.connect(HttpEngine.java:289)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.HttpEngine.sendRequest(HttpEngine.java:232)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.HttpURLConnectionImpl.execute(HttpURLConnectionImpl.java:465)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.HttpURLConnectionImpl.connect(HttpURLConnectionImpl.java:131)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.DelegatingHttpsURLConnection.connect(DelegatingHttpsURLConnection.java:90)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.HttpsURLConnectionImpl.connect(HttpsURLConnectionImpl.java:30)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.google.firebase.perf.network.InstrURLConnectionBase.connect(:69)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.google.firebase.perf.network.InstrHttpsURLConnection.connect(:58)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.connect(:75)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.doPost(:197)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.doPost(:164)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.doPost(:168)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTRequest.reportMonitorEvent(:349)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTCrashHandler.reportMonitor(:93)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTCrashHandler.initCrashReporter(:70)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTAppEventLogger$$ExternalSyntheticLambda1.run(:0)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.FutureTask.run(FutureTask.java:317)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:348)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.lang.Thread.run(Thread.java:1564)
+05-27 14:35:45.493 28824 28909 E com.tiktok.appevents.TTCrashHandler: 
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: Error caused by sdk at com.tiktok.util.HttpRequestUtil
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: Unable to resolve host "analytics.us.tiktok.com": No address associated with hostname
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:124)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:103)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.net.InetAddress.getAllByName(InetAddress.java:1152)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.Dns$1.lookup(Dns.java:41)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.RouteSelector.resetNextInetSocketAddress(RouteSelector.java:178)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.RouteSelector.nextProxy(RouteSelector.java:144)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.RouteSelector.next(RouteSelector.java:86)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.StreamAllocation.findConnection(StreamAllocation.java:176)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.StreamAllocation.findHealthyConnection(StreamAllocation.java:128)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.StreamAllocation.newStream(StreamAllocation.java:97)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.HttpEngine.connect(HttpEngine.java:289)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.http.HttpEngine.sendRequest(HttpEngine.java:232)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.HttpURLConnectionImpl.execute(HttpURLConnectionImpl.java:465)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.HttpURLConnectionImpl.connect(HttpURLConnectionImpl.java:131)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.DelegatingHttpsURLConnection.connect(DelegatingHttpsURLConnection.java:90)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.android.okhttp.internal.huc.HttpsURLConnectionImpl.connect(HttpsURLConnectionImpl.java:30)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.google.firebase.perf.network.InstrURLConnectionBase.connect(:69)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.google.firebase.perf.network.InstrHttpsURLConnection.connect(:58)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.connect(:75)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.doPost(:197)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.doPost(:164)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.util.HttpRequestUtil.doPost(:168)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTRequest.reportMonitorEvent(:349)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTCrashHandler.reportMonitor(:93)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTCrashHandler.initCrashReporter(:70)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: com.tiktok.appevents.TTAppEventLogger$$ExternalSyntheticLambda1.run(:0)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.FutureTask.run(FutureTask.java:317)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:348)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: java.lang.Thread.run(Thread.java:1564)
+05-27 14:35:45.499 28824 28909 E com.tiktok.appevents.TTCrashHandler: 
+05-27 14:35:46.022  1384  1451 E HeatmapThread: ECT Thread time in milliseconds: 1779881746
+05-27 14:35:46.022  1384  1451 D HeatmapThread: !@ batteryplugType : 0
+05-27 14:35:46.022  1384  1451 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-27 14:35:46.022  1384  1451 D HeatmapThread: !@ Heatmap currtime: 29664695
+05-27 14:35:46.022  1384  1451 D HeatmapThread: !@ Heatmap prevtime: 29664677
+05-27 14:35:46.022  1384  1451 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-27 14:35:46.022  1384  1451 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29651256
+05-27 14:35:46.022  1384  1451 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-27 14:35:46.022  1384  1451 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-27 14:35:46.023  1384  1451 E HeatmapThread: !@ CAM New BSOH: 0
+05-27 14:35:46.458  1702  3052 I NSLocationMonitor: getGPSUsingApps() called
+05-27 14:35:46.459  3055  3069 I NSLocationManager_FLP: getGPSUsingApps, No change
+05-27 14:35:46.479  1702  3052 D FreecessController: FZ : com.samsung.android.game.gamehome(10312) [5582] reason: Bg [cached:X
+05-27 14:35:46.479  1702  3052 D FreecessHandler: freeze com.samsung.android.game.gamehome(10312) result : 0
+05-27 14:35:46.480  1702  3052 W LocationManagerService: onFreezeStateChanged, uid[10312]=true
+05-27 14:35:46.481  1702  3052 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10312 , disable= true
+05-27 14:35:46.481  1702  3052 I PowerManagerService: [PWL] can not change uid =  10312
+05-27 14:35:46.917   748   748 D io_stats: !@ Read_top(KB): earchbox:search(30158) 12 om.moneybase.qa(10498) 8
+05-27 14:35:46.933  1702  2137 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+05-27 14:35:46.942  5499  5499 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.mobstore.service.START xflg=0x4 pkg=com.google.android.gms }
+05-27 14:35:46.946  1702  3526 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 64014, isSameBssidAndFreq true
+05-27 14:35:47.022  1384  1451 E HeatmapThread: ECT Thread time in milliseconds: 1779881747
+05-27 14:35:47.022  1384  1451 D HeatmapThread: !@ batteryplugType : 0
+05-27 14:35:47.022  1384  1451 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-27 14:35:47.022  1384  1451 D HeatmapThread: !@ Heatmap currtime: 29664695
+05-27 14:35:47.023  1384  1451 D HeatmapThread: !@ Heatmap prevtime: 29664677
+05-27 14:35:47.023  1384  1451 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-27 14:35:47.023  1384  1451 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29651256
+05-27 14:35:47.023  1384  1451 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-27 14:35:47.024  1384  1451 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-27 14:35:47.024  1384  1451 E HeatmapThread: !@ CAM New BSOH: 0
+05-27 14:35:47.081  1702  2268 D WifiConnectivityMonitor.NetworkStatsAnalyzer: Backhaul result - RSSI:-48, CE:10, PE:10, TI:13, PTI:13, TW:0, PTW:0, Tx:0, Rx:0, TxS:0, RxS:0, RESULT:true, IC:0, ICT:5, WC:0, WCT:5, R:0, RC:2, IE:0, EC:0
+05-27 14:35:47.941  1702  1766 E Watchdog: !@Sync: 10669 heap(MB): 147 / 179 FD: 1304 [2026-05-27 14:35:47.941]
+05-27 14:35:48.022  1384  1451 E HeatmapThread: ECT Thread time in milliseconds: 1779881748
+05-27 14:35:48.022  1384  1451 D HeatmapThread: !@ batteryplugType : 0
+05-27 14:35:48.022  1384  1451 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-27 14:35:48.022  1384  1451 D HeatmapThread: !@ Heatmap currtime: 29664695
+05-27 14:35:48.023  1384  1451 D HeatmapThread: !@ Heatmap prevtime: 29664677
+05-27 14:35:48.023  1384  1451 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-27 14:35:48.023  1384  1451 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29651256
+05-27 14:35:48.023  1384  1451 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-27 14:35:48.023  1384  1451 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-27 14:35:48.023  1384  1451 E HeatmapThread: !@ CAM New BSOH: 0
+05-27 14:35:48.919   748   748 D io_stats: !@   8,0 r 44033913 850163604 w 14540047 257478276 d 4515136 277698584 f 0 1574333 iot 22618488 0 th 0 0 0 pt 0 inp 0 0 320428.847
+05-27 14:35:49.022  1384  1451 E HeatmapThread: ECT Thread time in milliseconds: 1779881749
+05-27 14:35:49.022  1384  1451 D HeatmapThread: !@ batteryplugType : 0
+05-27 14:35:49.022  1384  1451 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-27 14:35:49.023  1384  1451 D HeatmapThread: !@ Heatmap currtime: 29664695
+05-27 14:35:49.023  1384  1451 D HeatmapThread: !@ Heatmap prevtime: 29664677
+05-27 14:35:49.023  1384  1451 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-27 14:35:49.023  1384  1451 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29651256
+05-27 14:35:49.023  1384  1451 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-27 14:35:49.023  1384  1451 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-27 14:35:49.024  1384  1451 E HeatmapThread: !@ CAM New BSOH: 0

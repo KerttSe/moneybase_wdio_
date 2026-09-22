@@ -1,0 +1,219 @@
+--------- beginning of main
+05-15 18:01:57.970  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:01:57.970  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:01:58.054  1395 23646 W C2BqBuffer: last successful dequeue was 19640233884 us ago, 171726 consecutive failures
+--------- beginning of system
+05-15 18:01:58.727  4516  4516 I SDHMS:LOAD: type: LoadsFreqs, value: 0:0:0:576000:576000:576000:686200:2515000:576000:6:303:0
+05-15 18:01:58.932  3116  3610 I ScanController: onScanResult to scannerId: 2- eventType=0x1a, addressType=1, address=XX:XX:XX:XX:D9:36, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-67, periodicAdvInt=0x0
+05-15 18:01:58.937 25658 25669 I EasySetup[11.1.23.4] : IcControlService.isFoldDeviceFolded() - isFoldDevice: false, isNotFolded: false
+05-15 18:01:58.937 25658 25669 I Peripheral_SmartThingsManager[1.2.95]: parseBlePacketserviceId : 9
+05-15 18:01:58.938 25658 25669 E Peripheral_OCFTvUtil[1.2.95]: not supported version
+05-15 18:01:58.938 25658 25669 E Peripheral_OCFTVManager[1.2.95]: isOCFTVDevice is null
+05-15 18:01:58.939 25658 25669 E IC_DeviceManager[1.2.95]: isValidScanResult(), packet is not valid
+05-15 18:01:58.939 25658 25669 E IC_DeviceManager[1.2.95]: 1. ADV_IDX_PACKET_VER(2): 2 / 2. ADV_IDX_PACKET_SVC_ID(9): 9 / 3. ADV_IDX_PACKET_SS_DISCOVERY(1): 1 / 4. ADV_IDX_PACKET_ASSOCIATED_SVC_ID(2): 2 / 5. MASK_PACKET_FEATURES_SVC_DATA(16): 16 / 6. MASK_PACKET_FEATURES_DEVICE(4): 4 / 7. ADV_IDX_PACKET_IC_VER(1): 1 / 8. MASK_DEVICE_EXTRA_SUPPORT_ACCOUNT_HASH(4): 4
+05-15 18:01:58.939 25658 25669 W IC_Service[1.2.95]: recieved scanResult packet is not valid
+05-15 18:01:58.970  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778857318
+05-15 18:01:58.970  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:01:58.970  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:01:58.970  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647621
+05-15 18:01:58.970  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647616
+05-15 18:01:58.970  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:01:58.970  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:01:58.970  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:01:58.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:01:58.971  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:01:58.977 23664 23664 I wpa_supplicant: Heartbeat 3787
+05-15 18:01:59.082  3116  3610 I ScanController: onScanResult to scannerId: 2- eventType=0x1a, addressType=1, address=XX:XX:XX:XX:D9:36, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-67, periodicAdvInt=0x0
+05-15 18:01:59.085 25658 25669 I EasySetup[11.1.23.4] : IcControlService.isFoldDeviceFolded() - isFoldDevice: false, isNotFolded: false
+05-15 18:01:59.086 25658 25669 I Peripheral_SmartThingsManager[1.2.95]: parseBlePacketserviceId : 9
+05-15 18:01:59.086 25658 25669 E Peripheral_OCFTvUtil[1.2.95]: not supported version
+05-15 18:01:59.087 25658 25669 E Peripheral_OCFTVManager[1.2.95]: isOCFTVDevice is null
+05-15 18:01:59.088 25658 25669 E IC_DeviceManager[1.2.95]: isValidScanResult(), packet is not valid
+05-15 18:01:59.089 25658 25669 E IC_DeviceManager[1.2.95]: 1. ADV_IDX_PACKET_VER(2): 2 / 2. ADV_IDX_PACKET_SVC_ID(9): 9 / 3. ADV_IDX_PACKET_SS_DISCOVERY(1): 1 / 4. ADV_IDX_PACKET_ASSOCIATED_SVC_ID(2): 2 / 5. MASK_PACKET_FEATURES_SVC_DATA(16): 16 / 6. MASK_PACKET_FEATURES_DEVICE(4): 4 / 7. ADV_IDX_PACKET_IC_VER(1): 1 / 8. MASK_DEVICE_EXTRA_SUPPORT_ACCOUNT_HASH(4): 4
+05-15 18:01:59.089 25658 25669 W IC_Service[1.2.95]: recieved scanResult packet is not valid
+05-15 18:01:59.403  1395 23683 W C2BqBuffer: last successful dequeue was 19627001738 us ago, 170897 consecutive failures
+05-15 18:01:59.883   727   727 D io_stats: !@   8,0 r 76028976 1555012533 w 24119188 453131616 d 6999321 477689152 f 0 2511899 iot 37221188 0 th 0 0 0 pt 0 inp 0 0 552441.905
+05-15 18:01:59.969  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778857319
+05-15 18:01:59.969  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:01:59.969  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:01:59.970  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647621
+05-15 18:01:59.970  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647616
+05-15 18:01:59.970  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:01:59.970  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:01:59.970  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:01:59.970  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:01:59.970  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:02:00.015  2431  2955 I DateTimeView: updateAll - getTimeFormat
+05-15 18:02:00.017  2431  2431 D ClockFaceEvents: onTimeTick. callers : com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.refreshTime:19
+05-15 18:02:00.017  2431  2431 D ClockFaceEvents: com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.onTimeChanged:1
+05-15 18:02:00.017  2431  2431 D ClockFaceEvents: com.android.keyguard.KeyguardUpdateMonitor$16.handleMessage:732
+05-15 18:02:00.021  2431  2431 D ClockFaceEvents: onTimeTick. callers : com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.refreshTime:38
+05-15 18:02:00.021  2431  2431 D ClockFaceEvents: com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.onTimeChanged:1
+05-15 18:02:00.021  2431  2431 D ClockFaceEvents: com.android.keyguard.KeyguardUpdateMonitor$16.handleMessage:732
+05-15 18:02:00.022  2431  2431 D FaceWidgetPagesController: onTimeChanged()
+05-15 18:02:00.024  2431  2955 D QSClockBellTower: onReceive(android.intent.action.TIME_TICK) mTimeZoneString:Europe/Kiev
+05-15 18:02:00.033  2431  2431 D QSClockBellTower: He is ready to ring the bell. (((QSClockBellSound - TimeText:18:02, TimeContentDescription:18:02, DateText:Fri, May 15, ShortDateText:Fri, May 15, Demo:false)))
+05-15 18:02:00.036  2431  2431 D QSClock : StatusBar clock=18:02 notifyTimeChanged(QSClockBellSound - TimeText:18:02, TimeContentDescription:18:02, DateText:Fri, May 15, ShortDateText:Fri, May 15, Demo:false) clockVisibleByPolicy=true, clockVisibleByUser=true, visible=true, parent=android.widget.LinearLayout{8ed086e V.E...... ......ID 0,0-97,58 #7f0a069b app:id/left_clock_container} caller=com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.animateShow:52 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.updateStatusBarVisibilitiesInner:230 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.updateStatusBarVisibilities:65 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.disable:71 com.android.systemui.statusbar.CommandQueue$H.handleMessage:2997  
+05-15 18:02:00.037  2431  2431 D QSClockBellTower: Everyone heard the bell. run(currentTime:1778857320031, getTime():Fri May 15 18:02:00 GMT+03:00 2026, getTimeZone():libcore.util.ZoneInfo[mDstSavings=3600000,mUseDst=true,mDelegate=[id="Europe/Kiev",mRawOffset=7200000,mEarliestRawOffset=7324000,transitions=245]])
+05-15 18:02:00.038  1483  1602 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+05-15 18:02:00.046  1760  1760 I EyeComfortSolutionService: action  :  android.intent.action.TIME_TICK
+05-15 18:02:00.050  1483  1640 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+05-15 18:02:00.053  2431  2431 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+05-15 18:02:00.055  1483  1602 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+05-15 18:02:00.066  1483  1483 I LayerHistory: StatusBar$_2431#105 voted NoVote (0.00 Hz)
+05-15 18:02:00.066  1483  1483 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+05-15 18:02:00.067  1483  1483 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+05-15 18:02:00.071  1378  1604 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+05-15 18:02:00.071  1378  1604 I display : Current VRR MODE is 3
+05-15 18:02:00.071  1378  1604 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+05-15 18:02:00.071  1378  1604 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+05-15 18:02:00.072  1378  1604 I display : commit modeset : 1080x2340@120hs
+05-15 18:02:00.106  1378  1604 W display : deliverWinConfigData:: commit modeset time (33 ms)
+05-15 18:02:00.108  1378  1454 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+05-15 18:02:00.108  1378  1454 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-15 18:02:00.108  1378  1454 I display : Set m2mMPP capacity(4) for fps(120)
+05-15 18:02:00.108  1378  1454 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-15 18:02:00.109  1378  1454 I display : Set Affinity config for fps(120) : cpuIDs : 255
+05-15 18:02:00.109  1378  1454 I display : Set Affinity CPU ID : 0
+05-15 18:02:00.109  1378  1454 I display : Set Affinity CPU ID : 1
+05-15 18:02:00.109  1378  1454 I display : Set Affinity CPU ID : 2
+05-15 18:02:00.109  1378  1454 I display : Set Affinity CPU ID : 3
+05-15 18:02:00.109  1378  1454 I display : Set Affinity CPU ID : 4
+05-15 18:02:00.109  1483  1483 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+05-15 18:02:00.109  1378  1454 I display : Set Affinity CPU ID : 5
+05-15 18:02:00.109  1483  1483 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-15 18:02:00.111  1378  1454 I display : Set Affinity CPU ID : 6
+05-15 18:02:00.111  1378  1454 I display : Set Affinity CPU ID : 7
+05-15 18:02:00.111  1378  1454 I display : Set affinity HWC : 1378
+05-15 18:02:00.111  1378  1454 I display : CPU set : Cluster(0), min_clock(0)
+05-15 18:02:00.111  1378  1454 I display : CPU set : Cluster(1), min_clock(0)
+05-15 18:02:00.112  1378  1454 I display : CPU set : Cluster(2), min_clock(0)
+05-15 18:02:00.113  1483  1602 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+05-15 18:02:00.232  1760  2177 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+05-15 18:02:00.242  1760  3742 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 98397, isSameBssidAndFreq true
+05-15 18:02:00.244  1760  2268 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1778857320244 lastDateWindow=1778776401000
+05-15 18:02:00.302  1483  1640 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+05-15 18:02:00.304  1483  1483 I LayerHistory: StatusBar$_2431#105 voted NoVote (0.00 Hz)
+05-15 18:02:00.304  1483  1483 I SurfaceFlinger: Idle - choose 60.00 Hz
+05-15 18:02:00.305  1483  1483 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+05-15 18:02:00.307  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+05-15 18:02:00.307  1378  1604 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+05-15 18:02:00.307  1378  1604 I display : Current VRR MODE is 3
+05-15 18:02:00.307  1378  1604 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+05-15 18:02:00.307  1378  1604 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+05-15 18:02:00.308  1378  1604 I display : commit modeset : 1080x2340@60phs
+05-15 18:02:00.310  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+05-15 18:02:00.339  1378  1604 W display : deliverWinConfigData:: commit modeset time (31 ms)
+05-15 18:02:00.340  1378  1454 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+05-15 18:02:00.340  1378  1454 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-15 18:02:00.340  1378  1454 I display : Set m2mMPP capacity(8) for fps(60)
+05-15 18:02:00.340  1378  1454 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-15 18:02:00.340  1378  1454 I display : Set Affinity config for fps(60) : cpuIDs : 255
+05-15 18:02:00.340  1378  1454 I display : Set Affinity CPU ID : 0
+05-15 18:02:00.340  1378  1454 I display : Set Affinity CPU ID : 1
+05-15 18:02:00.340  1378  1454 I display : Set Affinity CPU ID : 2
+05-15 18:02:00.340  1378  1454 I display : Set Affinity CPU ID : 3
+05-15 18:02:00.340  1378  1454 I display : Set Affinity CPU ID : 4
+05-15 18:02:00.340  1378  1454 I display : Set Affinity CPU ID : 5
+05-15 18:02:00.340  1378  1454 I display : Set Affinity CPU ID : 6
+05-15 18:02:00.340  1378  1454 I display : Set Affinity CPU ID : 7
+05-15 18:02:00.340  1378  1454 I display : Set affinity HWC : 1378
+05-15 18:02:00.340  1378  1454 I display : CPU set : Cluster(0), min_clock(0)
+05-15 18:02:00.340  1378  1454 I display : CPU set : Cluster(1), min_clock(0)
+05-15 18:02:00.340  1378  1454 I display : CPU set : Cluster(2), min_clock(0)
+05-15 18:02:00.341  1483  1483 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-15 18:02:00.342  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+05-15 18:02:00.932  3116  3610 I ScanController: onScanResult to scannerId: 2- eventType=0x1a, addressType=1, address=XX:XX:XX:XX:D9:36, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-74, periodicAdvInt=0x0
+05-15 18:02:00.937 25658 25669 I EasySetup[11.1.23.4] : IcControlService.isFoldDeviceFolded() - isFoldDevice: false, isNotFolded: false
+05-15 18:02:00.937 25658 25669 I Peripheral_SmartThingsManager[1.2.95]: parseBlePacketserviceId : 9
+05-15 18:02:00.938 25658 25669 E Peripheral_OCFTvUtil[1.2.95]: not supported version
+05-15 18:02:00.938 25658 25669 E Peripheral_OCFTVManager[1.2.95]: isOCFTVDevice is null
+05-15 18:02:00.939 25658 25669 E IC_DeviceManager[1.2.95]: isValidScanResult(), packet is not valid
+05-15 18:02:00.939 25658 25669 E IC_DeviceManager[1.2.95]: 1. ADV_IDX_PACKET_VER(2): 2 / 2. ADV_IDX_PACKET_SVC_ID(9): 9 / 3. ADV_IDX_PACKET_SS_DISCOVERY(1): 1 / 4. ADV_IDX_PACKET_ASSOCIATED_SVC_ID(2): 2 / 5. MASK_PACKET_FEATURES_SVC_DATA(16): 16 / 6. MASK_PACKET_FEATURES_DEVICE(4): 4 / 7. ADV_IDX_PACKET_IC_VER(1): 1 / 8. MASK_DEVICE_EXTRA_SUPPORT_ACCOUNT_HASH(4): 4
+05-15 18:02:00.939 25658 25669 W IC_Service[1.2.95]: recieved scanResult packet is not valid
+05-15 18:02:00.970  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778857320
+05-15 18:02:00.970  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:02:00.970  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:02:00.970  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647622
+05-15 18:02:00.970  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647616
+05-15 18:02:00.970  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:02:00.970  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:02:00.971  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:02:00.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:02:00.971  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:02:01.884   727   727 D io_stats: !@ Read_top(KB): loop48(3283) 2560 sung.android.ce(30576) 804 martsuggestions(4425) 660
+05-15 18:02:01.884   727   727 D io_stats: !@ Write_top(KB): loop48(3283) 1792
+05-15 18:02:01.970  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778857321
+05-15 18:02:01.970  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:02:01.970  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:02:01.971  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647622
+05-15 18:02:01.971  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647616
+05-15 18:02:01.971  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:02:01.971  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:02:01.971  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:02:01.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:02:01.971  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:02:02.454  1760  3240 I NSLocationMonitor: getGPSUsingApps() called
+05-15 18:02:02.455  3222 20485 I NSLocationManager_FLP: getGPSUsingApps, No change
+05-15 18:02:02.458  1760  3240 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+05-15 18:02:02.458  1760  3240 W Binder  : java.lang.Throwable
+05-15 18:02:02.458  1760  3240 W Binder  : 	at android.os.BinderProxy.transact(BinderProxy.java:566)
+05-15 18:02:02.458  1760  3240 W Binder  : 	at android.bluetooth.IBluetoothGatt$Stub$Proxy.getAdvertisingSetUids(IBluetoothGatt.java:1678)
+05-15 18:02:02.458  1760  3240 W Binder  : 	at android.bluetooth.BluetoothAdapter.getAdvertisingSetUids(BluetoothAdapter.java:8476)
+05-15 18:02:02.458  1760  3240 W Binder  : 	at android.bluetooth.BluetoothAdapter.getHWUsingApps(BluetoothAdapter.java:1342)
+05-15 18:02:02.458  1760  3240 W Binder  : 	at com.android.server.am.mars.filter.filter.BlueToothConnectedFilter.updateBTUsingPackages(qb/107298205 719bba021a23766ea55cfca52a95efe6af54762d14b63dc60a4b9649f70e67ff:22)
+05-15 18:02:02.458  1760  3240 W Binder  : 	at com.android.server.am.FreecessController.freeze(qb/107298205 719bba021a23766ea55cfca52a95efe6af54762d14b63dc60a4b9649f70e67ff:117)
+05-15 18:02:02.458  1760  3240 W Binder  : 	at com.android.server.am.FreecessHandler$MainHandler.handleLcdOnFreeze(qb/107298205 719bba021a23766ea55cfca52a95efe6af54762d14b63dc60a4b9649f70e67ff:55)
+05-15 18:02:02.458  1760  3240 W Binder  : 	at com.android.server.am.FreecessHandler$MainHandler.handleMessage(qb/107298205 719bba021a23766ea55cfca52a95efe6af54762d14b63dc60a4b9649f70e67ff:793)
+05-15 18:02:02.458  1760  3240 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:110)
+05-15 18:02:02.458  1760  3240 W Binder  : 	at android.os.Looper.loopOnce(Looper.java:273)
+05-15 18:02:02.458  1760  3240 W Binder  : 	at android.os.Looper.loop(Looper.java:363)
+05-15 18:02:02.458  1760  3240 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:85)
+05-15 18:02:02.470  1760  3240 D FreecessHandler: freeze com.azure.authenticator(10463) result : 12
+05-15 18:02:02.638  3116  3610 I ScanController: onScanResult to scannerId: 2- eventType=0x1a, addressType=1, address=XX:XX:XX:XX:D9:36, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-59, periodicAdvInt=0x0
+05-15 18:02:02.641 25658 25669 I EasySetup[11.1.23.4] : IcControlService.isFoldDeviceFolded() - isFoldDevice: false, isNotFolded: false
+05-15 18:02:02.642 25658 25669 I Peripheral_SmartThingsManager[1.2.95]: parseBlePacketserviceId : 9
+05-15 18:02:02.642 25658 25669 E Peripheral_OCFTvUtil[1.2.95]: not supported version
+05-15 18:02:02.642 25658 25669 E Peripheral_OCFTVManager[1.2.95]: isOCFTVDevice is null
+05-15 18:02:02.643 25658 25669 E IC_DeviceManager[1.2.95]: isValidScanResult(), packet is not valid
+05-15 18:02:02.643 25658 25669 E IC_DeviceManager[1.2.95]: 1. ADV_IDX_PACKET_VER(2): 2 / 2. ADV_IDX_PACKET_SVC_ID(9): 9 / 3. ADV_IDX_PACKET_SS_DISCOVERY(1): 1 / 4. ADV_IDX_PACKET_ASSOCIATED_SVC_ID(2): 2 / 5. MASK_PACKET_FEATURES_SVC_DATA(16): 16 / 6. MASK_PACKET_FEATURES_DEVICE(4): 4 / 7. ADV_IDX_PACKET_IC_VER(1): 1 / 8. MASK_DEVICE_EXTRA_SUPPORT_ACCOUNT_HASH(4): 4
+05-15 18:02:02.643 25658 25669 W IC_Service[1.2.95]: recieved scanResult packet is not valid
+05-15 18:02:02.780  3116  3610 I ScanController: onScanResult to scannerId: 2- eventType=0x1a, addressType=1, address=XX:XX:XX:XX:D9:36, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-59, periodicAdvInt=0x0
+05-15 18:02:02.783 25658 25669 I EasySetup[11.1.23.4] : IcControlService.isFoldDeviceFolded() - isFoldDevice: false, isNotFolded: false
+05-15 18:02:02.784 25658 25669 I Peripheral_SmartThingsManager[1.2.95]: parseBlePacketserviceId : 9
+05-15 18:02:02.784 25658 25669 E Peripheral_OCFTvUtil[1.2.95]: not supported version
+05-15 18:02:02.785 25658 25669 E Peripheral_OCFTVManager[1.2.95]: isOCFTVDevice is null
+05-15 18:02:02.786 25658 25669 E IC_DeviceManager[1.2.95]: isValidScanResult(), packet is not valid
+05-15 18:02:02.786 25658 25669 E IC_DeviceManager[1.2.95]: 1. ADV_IDX_PACKET_VER(2): 2 / 2. ADV_IDX_PACKET_SVC_ID(9): 9 / 3. ADV_IDX_PACKET_SS_DISCOVERY(1): 1 / 4. ADV_IDX_PACKET_ASSOCIATED_SVC_ID(2): 2 / 5. MASK_PACKET_FEATURES_SVC_DATA(16): 16 / 6. MASK_PACKET_FEATURES_DEVICE(4): 4 / 7. ADV_IDX_PACKET_IC_VER(1): 1 / 8. MASK_DEVICE_EXTRA_SUPPORT_ACCOUNT_HASH(4): 4
+05-15 18:02:02.786 25658 25669 W IC_Service[1.2.95]: recieved scanResult packet is not valid
+05-15 18:02:02.969  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778857322
+05-15 18:02:02.969  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:02:02.970  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:02:02.970  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647622
+05-15 18:02:02.970  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647616
+05-15 18:02:02.970  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:02:02.970  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:02:02.970  1477  1492 E HeatmapThread: !@Entered the read from path function
+05-15 18:02:02.970  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/extended_heatmap', errno = 13
+05-15 18:02:02.970  1477  1492 E HeatmapThread: !@Extended_heatmap efs Forced Reset
+05-15 18:02:02.970  1477  1492 E HeatmapThread: !@Read Extended_heatmap from efs is: 
+05-15 18:02:02.971  1477  1492 E HeatmapThread: !@Write Extended Heatmap to efs is: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+05-15 18:02:02.971  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/extended_heatmap', errno = 13
+05-15 18:02:02.971  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:02:02.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:02:02.971  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:02:03.111  1395 23646 W C2BqBuffer: last successful dequeue was 19645290458 us ago, 171771 consecutive failures
+05-15 18:02:03.266  1760  2177 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+05-15 18:02:03.275  1760  3742 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 98398, isSameBssidAndFreq true
+05-15 18:02:03.279  1760  2268 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1778857323279 lastDateWindow=1778776401000
+05-15 18:02:03.886   727   727 D io_stats: !@   8,0 r 76028976 1555012533 w 24119203 453131948 d 6999321 477689152 f 0 2511900 iot 37221204 0 th 0 0 0 pt 0 inp 0 0 552445.908
+05-15 18:02:03.970  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778857323
+05-15 18:02:03.970  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:02:03.970  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:02:03.970  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647622
+05-15 18:02:03.970  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647616
+05-15 18:02:03.970  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:02:03.970  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:02:03.971  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:02:03.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:02:03.971  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0

@@ -1,0 +1,202 @@
+--------- beginning of main
+08-11 16:55:00.066  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-11 16:55:00.071  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-11 16:55:00.072  1437  1437 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+08-11 16:55:00.072  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-11 16:55:00.074  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-11 16:55:00.074  1325  9351 I display : Current VRR MODE is 3
+08-11 16:55:00.075  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-11 16:55:00.075  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-11 16:55:00.075  1325  9351 I display : commit modeset : 1080x2340@120hs
+08-11 16:55:00.099  1325  9351 W display : deliverWinConfigData:: commit modeset time (23 ms)
+08-11 16:55:00.100  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-11 16:55:00.100  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 16:55:00.100  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-11 16:55:00.100  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 16:55:00.100  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-11 16:55:00.100  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 16:55:00.100  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 16:55:00.100  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 16:55:00.100  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 16:55:00.100  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 16:55:00.100  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 16:55:00.101  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 16:55:00.101  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 16:55:00.101  1325  1397 I display : Set affinity HWC : 1325
+08-11 16:55:00.101  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 16:55:00.101  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 16:55:00.101  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 16:55:00.101  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-11 16:55:00.101  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-11 16:55:00.102  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+--------- beginning of system
+08-11 16:55:00.103  1178  1178 I wpa_supplicant: Heartbeat 8754
+08-11 16:55:00.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786456500
+08-11 16:55:00.120  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 16:55:00.120  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 16:55:00.120  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774275
+08-11 16:55:00.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774264
+08-11 16:55:00.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 16:55:00.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 16:55:00.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 16:55:00.121  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 16:55:00.121  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 16:55:00.166  1726  2226 I SemWifiServiceDetector: Service det. suspended: T / T / 5411
+08-11 16:55:00.177  4356  4390 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 16:55:00.179  4356  4390 I appium  : AppiumResponse: {"sessionId":"0b1bdd34-acd9-4d16-bb9f-6895c5ff3f1b","value":{"ELEMENT":"00000000-0000-075b-0000-003d00000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-075b-0000-003d00000131"}}
+08-11 16:55:00.189  4356  4390 I appium  : channel read: GET /session/0b1bdd34-acd9-4d16-bb9f-6895c5ff3f1b/element/00000000-0000-075b-0000-003d00000131/text
+08-11 16:55:00.189  4356  4390 I appium  : GetText command
+08-11 16:55:00.310  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-11 16:55:00.311  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-11 16:55:00.316  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-11 16:55:00.317  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-11 16:55:00.317  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-11 16:55:00.317  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-11 16:55:00.319  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-11 16:55:00.319  1325  9351 I display : Current VRR MODE is 3
+08-11 16:55:00.319  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-11 16:55:00.319  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-11 16:55:00.319  1325  9351 I display : commit modeset : 1080x2340@60phs
+08-11 16:55:00.332  1325  9351 W display : deliverWinConfigData:: commit modeset time (12 ms)
+08-11 16:55:00.333  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-11 16:55:00.333  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 16:55:00.333  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-11 16:55:00.333  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 16:55:00.333  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-11 16:55:00.333  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 16:55:00.333  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 16:55:00.333  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 16:55:00.333  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 16:55:00.333  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 16:55:00.333  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 16:55:00.333  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 16:55:00.333  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 16:55:00.333  1325  1397 I display : Set affinity HWC : 1325
+08-11 16:55:00.333  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 16:55:00.333  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 16:55:00.333  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 16:55:00.334  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-11 16:55:00.335  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 16:55:00.649  4356  4390 I appium  : AppiumResponse: {"sessionId":"0b1bdd34-acd9-4d16-bb9f-6895c5ff3f1b","value":"flag-USD USD"}
+08-11 16:55:00.672  4356  4390 I appium  : channel read: GET /session/0b1bdd34-acd9-4d16-bb9f-6895c5ff3f1b/screenshot
+08-11 16:55:00.673  4356  4390 I appium  : CaptureScreenshot command
+08-11 16:55:00.766  7069  7069 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-11 16:55:00.766  7069  7069 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-11 16:55:00.768  7069  7069 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-11 16:55:00.768  1726  3345 I EDMNativeHelperService: isScreenCaptureEnabled
+08-11 16:55:00.768  1726  3345 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-11 16:55:00.768  7069  7069 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-11 16:55:00.768  7069  7069 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-11 16:55:00.771  1437  1915 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_4437#70306(seamlessTransition:0)
+08-11 16:55:00.771  1437  1915 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-11 16:55:00.772  1437  1915 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-11 16:55:00.772  1437  1915 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-11 16:55:00.774  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-11 16:55:00.774  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_4437#70306 at index 1
+08-11 16:55:00.774  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-11 16:55:00.774  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-11 16:55:00.799  7069  7073 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-11 16:55:00.949  4554  5580 I SDHMS:x : SIOP:: AP:357 BAT:335 USB:326 CHG:354 PA:359 CP:354 WIFI:351 BLK:0 SUBBAT:0 LRPTHM:343 SKIN:336 SKINF:330 SKINB:336 LRP:336 LRP2:336 LRF2:330 LRB2:336 AP2:335 CHG2:323 MEM2:333 WIFI2:336 SPK2:313 VAP02:368 VWIFI:360 AVGCUR:265 AVGSYS:357 POWER:1156
+08-11 16:55:00.954  1726  1726 D SemWifiP2pGoPowerSave: GopsReceiver : received : com.samsung.intent.action.CHECK_SIOP_LEVEL
+08-11 16:55:00.954  1726  1726 I SemWifiP2pGoPowerSave: siop_level = -2
+08-11 16:55:00.955  1330  1330 D SensorsFlicker: Als_common::setDelay, handle : 1 time : 10000000ns
+08-11 16:55:00.956  1330  1330 D SensorsFlicker: Als_common::enable, handle : 1, mode : 1, en : 1
+08-11 16:55:00.957  1330  1330 D SensorsFlicker: Als_common::sendCommand, send enable command
+08-11 16:55:00.999  4356  4390 I appium  : AppiumResponse: {"sessionId":"0b1bdd34-acd9-4d16-bb9f-6895c5ff3f1b","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15dNX1nf/x182+kpANCCRhS4AIBAJCUGRJwYpQlYCWVqpS24525rSjZ6bt6cx0frM7Z2YOHbWjnbZTqWsVI2KCggqIiCwSdpFACIEkkD1k3+69vz+Y3Mn33pvkZs83eT7O8cj93O/y+SY…
+08-11 16:55:01.015  1726  2439 D SemContextService: lock : registerCallback
+08-11 16:55:01.016  1726  2439 W CAE     : registerCallback(ContextAwareService.java:188) - [regi 01] Mutex is locked for TEST_FLAT_MOTION
+08-11 16:55:01.016  1726  2439 W CAE     : registerCallback(ContextAwareService.java:195) - [regi 04]  com.samsung.android.contextaware.ContextAwareManager$CaListenerDelegate@eccb7c5
+08-11 16:55:01.016  1726  2439 W CAE     : getListener(ListenerListManager.java:127) - [getListener1]  com.samsung.android.contextaware.ContextAwareManager$CaListenerDelegate@eccb7c5
+08-11 16:55:01.016  1726  2439 W CAE     : getListener(ListenerListManager.java:128) - [getListener2]  com.samsung.android.contextaware.manager.ContextAwareService$Listener@34afe3c
+08-11 16:55:01.017  1726  2439 V CAE     : start(ContextProvider.java:128)
+08-11 16:55:01.017  1726  2439 V CAE     : clear(TestFlatMotionRunner.java:126)
+08-11 16:55:01.017  1726  2439 V CAE     : enable(TestFlatMotionRunner.java:102)
+08-11 16:55:01.018  1726  2122 D SensorService: setSContextDataLocked ints length 2 , byte length 4
+08-11 16:55:01.019  1726  2122 D SensorService: setSContextDataLocked 17b1
+08-11 16:55:01.019  1330  1330 I SensorsHub: SContextSensor::injecet_sensor_data
+08-11 16:55:01.019  1330  1330 D SensorsHub: b1 17 00 00  
+08-11 16:55:01.019  1330  1330 D SensorsHub: inject_scontext_data: New ssp_data_injection_fd(31)
+08-11 16:55:01.019  1330  1330 D SensorsHub: SContext Data Injection return 64
+08-11 16:55:01.020  1726  2439 D CAE     : getFaultDetectionResult(TestFlatMotionRunner.java:139) - true
+08-11 16:55:01.021  1726  2439 I CAE     : notifyCmdProcessResultObserver(ContextProvider.java:627) - CheckResult = 0, Cause = Success
+08-11 16:55:01.024  1726  2439 D CAE     : doCommendProcess(ContextAwareService.java:396) - complete notify the operation result.
+08-11 16:55:01.024  1726  2439 I CAE     : displayUsedCountForService(ContextAwareService.java:460) - totalCnt = 1, serviceCount = 1, subCollectionCount = 0
+08-11 16:55:01.024  1726  2439 D CAE     : showListenerList(ContextAwareService.java:325) - ===== Context Aware Service List =====
+08-11 16:55:01.025  1726  2439 I CAE     : showListenerList(ContextAwareService.java:334) - Listener : com.samsung.android.contextaware.manager.ContextAwareService$Listener@34afe3c, Service : ACTIVITY_TRACKER_CURRENT_INFO(1)
+08-11 16:55:01.025  1726  2439 I CAE     : showListenerList(ContextAwareService.java:334) - Listener : com.samsung.android.contextaware.manager.ContextAwareService$Listener@34afe3c, Service : ACTIVITY_TRACKER_INTERRUPT(1)
+08-11 16:55:01.026  1726  2439 I CAE     : showListenerList(ContextAwareService.java:334) - Listener : com.samsung.android.contextaware.manager.ContextAwareService$Listener@34afe3c, Service : ACTIVITY_TRACKER_BATCH(1)
+08-11 16:55:01.026  1726  2439 I CAE     : showListenerList(ContextAwareService.java:334) - Listener : com.samsung.android.contextaware.manager.ContextAwareService$Listener@34afe3c, Service : PEDOMETER(1)
+08-11 16:55:01.027  1726  2439 I CAE     : showListenerList(ContextAwareService.java:334) - Listener : com.samsung.android.contextaware.manager.ContextAwareService$Listener@34afe3c, Service : SLOCATION_RUNNER(1)
+08-11 16:55:01.027  4356  4390 I appium  : channel read: GET /session/0b1bdd34-acd9-4d16-bb9f-6895c5ff3f1b/source
+08-11 16:55:01.027  1726  2439 I CAE     : showListenerList(ContextAwareService.java:334) - Listener : com.samsung.android.contextaware.manager.ContextAwareService$Listener@34afe3c, Service : FREE_FALL_DETECTION(1)
+08-11 16:55:01.027  1726  2439 I CAE     : showListenerList(ContextAwareService.java:334) - Listener : com.samsung.android.contextaware.manager.ContextAwareService$Listener@34afe3c, Service : TEST_FLAT_MOTION(1)
+08-11 16:55:01.028  1726  2439 I CAE     : showListenerList(ContextAwareService.java:334) - Listener : com.samsung.android.contextaware.manager.ContextAwareService$Listener@34afe3c, Service : ACTIVITY_TRACKER(1)
+08-11 16:55:01.028  4356  4390 I appium  : Source command
+08-11 16:55:01.028  1726  2439 W CAE     : registerCallback(ContextAwareService.java:209) - [regi 02] Mutex is unlocked for TEST_FLAT_MOTION
+08-11 16:55:01.028  1726  2439 E SemContext.CaeProvider: setAttribute() : attribute is null!
+08-11 16:55:01.028  1726  2439 D SemContextService: 	.registerCallback : 6, client= com.sec.android.sdhms
+08-11 16:55:01.028  4356  4390 I appium  : Waiting up to 10000ms for the device to idle
+08-11 16:55:01.028  1726  2439 D SemContextService: unlock : registerCallback
+08-11 16:55:01.031  1726  3345 E SensorService: BigData:Pakage) 5 already enabled. 
+08-11 16:55:01.036  1330  1330 I SensorsHub: batch: handle=5 period=200000000 timeout=0
+08-11 16:55:01.063  1726  3345 E SensorService: BigData:Pakage) 5 already disabled. 
+08-11 16:55:01.064  1330  1330 I SensorsHub: batch: handle=5 period=200000000 timeout=0
+08-11 16:55:01.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786456501
+08-11 16:55:01.120  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 16:55:01.121  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 16:55:01.121  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774275
+08-11 16:55:01.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774264
+08-11 16:55:01.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 16:55:01.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 16:55:01.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 16:55:01.121  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 16:55:01.121  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 16:55:01.143  1330  1330 D SensorsFlicker: Als_common::setDelay, handle : 1 time : 10000000ns
+08-11 16:55:01.147  1330  1330 D SensorsFlicker: Als_common::enable, handle : 1, mode : 1, en : 0
+08-11 16:55:01.148  1330  1330 D SensorsFlicker: Als_common::sendCommand, send disable command
+08-11 16:55:01.227  4356  4390 I appium  : AppiumResponse: {"sessionId":"0b1bdd34-acd9-4d16-bb9f-6895c5ff3f1b","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-11 16:55:01.270  2336  2835 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-11 16:55:01.275 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 16:55:01.284  2357  2492 D MobileSignalTransitionManager: updateSignalTransition
+08-11 16:55:01.291  2870  2971 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Mobile(bundle=Bundle[mParcelledData.dataSize=256])
+08-11 16:55:01.295  2336  2835 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-11 16:55:01.311  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-11 16:55:01.314  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-11 16:55:01.316  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-11 16:55:01.325  1437  1437 I SurfaceFlinger: SFWD update time=399284722264015
+08-11 16:55:01.325  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-11 16:55:01.325  1437  1437 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+08-11 16:55:01.326  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-11 16:55:01.327  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-11 16:55:01.327  1325  9351 I display : Current VRR MODE is 3
+08-11 16:55:01.327  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-11 16:55:01.327  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-11 16:55:01.327  1325  9351 I display : commit modeset : 1080x2340@120hs
+08-11 16:55:01.327  7074  7074 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 16:55:01.331  1726  2156 W DeviceStorageMonitorService: updateBroadcasts(/data) oldLevel:0, newLevel:0, seq:1
+08-11 16:55:01.332  1726  2156 D DeviceStorageMonitorService: Available File Node Number is [13176455]
+08-11 16:55:01.333  1726  2156 W DeviceStorageMonitorService: updateBroadcasts_filenode(/data) fn_oldLevel:0, fn_newLevel:0, seq:1
+08-11 16:55:01.349  1325  9351 W display : deliverWinConfigData:: commit modeset time (21 ms)
+08-11 16:55:01.350  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-11 16:55:01.350  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 16:55:01.350  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-11 16:55:01.350  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 16:55:01.350  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-11 16:55:01.350  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 16:55:01.350  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 16:55:01.350  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 16:55:01.350  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 16:55:01.350  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 16:55:01.350  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 16:55:01.350  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 16:55:01.350  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 16:55:01.350  1325  1397 I display : Set affinity HWC : 1325
+08-11 16:55:01.350  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 16:55:01.350  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 16:55:01.350  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 16:55:01.351  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-11 16:55:01.353  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-11 16:55:01.353  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 16:55:01.371 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 16:55:01.425  7083  7083 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 16:55:01.467 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

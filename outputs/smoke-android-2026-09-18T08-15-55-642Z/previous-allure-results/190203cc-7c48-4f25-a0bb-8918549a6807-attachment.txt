@@ -1,0 +1,283 @@
+--------- beginning of main
+04-30 10:19:58.849 13363 13363 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+04-30 10:19:58.851 13363 13363 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+04-30 10:19:58.851 13363 13363 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+--------- beginning of system
+04-30 10:19:58.868   503  1055 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 10082; state: DISABLED
+04-30 10:19:58.869 13363 13363 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10082; state: ENABLED
+04-30 10:19:58.888 13363 13363 D CompatibilityChangeReporter: Compat change id reported: 210923482; UID 10082; state: ENABLED
+04-30 10:19:58.905 13363 13363 D DocumentsApplication: OverlayManager.setEnabled() result: true
+04-30 10:19:58.905   503  1744 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10131; state: DISABLED
+04-30 10:19:58.905   503  1744 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10131; state: DISABLED
+04-30 10:19:58.905   503  1744 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10131; state: ENABLED
+04-30 10:19:58.905   503   530 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10131; state: ENABLED
+04-30 10:19:58.912   296   296 D Zygote  : Forked child process 13388
+04-30 10:19:58.912   503   530 I ActivityManager: Start proc 13388:com.google.android.apps.docs/u0a131 for content provider {com.google.android.apps.docs/com.google.android.apps.docs.common.storagebackend.StorageBackendContentProvider}
+04-30 10:19:58.921  1540  1540 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+04-30 10:19:58.921  1540  1540 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+04-30 10:19:58.921 13388 13388 I droid.apps.docs: Using CollectorTypeCC GC.
+04-30 10:19:58.927  1251  1251 D PersistedStoragePackageUninstalledReceiver: Received android.intent.action.PACKAGE_FULLY_REMOVED for com.moneybase.qa for u0
+04-30 10:19:58.929 13388 13388 E droid.apps.docs: Not starting debugger since process cannot load the jdwp agent.
+04-30 10:19:58.936   503  1744 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10131; state: DISABLED
+04-30 10:19:58.936   503  1744 D CompatibilityChangeReporter: Compat change id reported: 273564678; UID 10131; state: DISABLED
+04-30 10:19:58.938 13388 13388 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10131; state: ENABLED
+04-30 10:19:58.942   503  1744 I ActivityManager: Killing 11208:com.google.android.partnersetup/u0a118 (adj 945): empty #17
+04-30 10:19:58.944 13388 13388 D nativeloader: Configuring classloader-namespace for other apk /system/framework/org.apache.http.legacy.jar. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/lib/arm64:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/base.apk!/lib/arm64-v8a:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.arm64_v8a.apk!/lib/arm64-v8a:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.en.apk!/lib/arm64-v8a:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.xxhdpi.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.apps.docs
+04-30 10:19:58.945 13388 13388 D nativeloader: Configuring classloader-namespace for other apk /system_ext/framework/androidx.window.extensions.jar. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/lib/arm64:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/base.apk!/lib/arm64-v8a:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.arm64_v8a.apk!/lib/arm64-v8a:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.en.apk!/lib/arm64-v8a:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.xxhdpi.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.apps.docs
+04-30 10:19:58.946   503  1744 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10071; state: DISABLED
+04-30 10:19:58.946   503  1744 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10071; state: DISABLED
+04-30 10:19:58.946 13388 13388 D nativeloader: Configuring classloader-namespace for other apk /system_ext/framework/androidx.window.sidecar.jar. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/lib/arm64:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/base.apk!/lib/arm64-v8a:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.arm64_v8a.apk!/lib/arm64-v8a:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.en.apk!/lib/arm64-v8a:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.xxhdpi.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.apps.docs
+04-30 10:19:58.946   503  1744 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10071; state: DISABLED
+04-30 10:19:58.946   503  1744 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10071; state: ENABLED
+04-30 10:19:58.947   503   530 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10071; state: ENABLED
+04-30 10:19:58.948   503   531 I libprocessgroup: Successfully killed process cgroup uid 10118 pid 11208 in 5ms
+04-30 10:19:58.953   296   296 D Zygote  : Forked child process 13409
+04-30 10:19:58.953   503   530 I ActivityManager: Start proc 13409:android.process.media/u0a71 for broadcast {com.android.providers.downloads/com.android.providers.downloads.DownloadReceiver}
+04-30 10:19:58.955  1447  2565 I MediaProvider: Begin Intent { act=android.intent.action.PACKAGE_FULLY_REMOVED dat=package: flg=0x5000010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService (has extras) }
+04-30 10:19:58.957   503  1734 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10112; state: DISABLED
+04-30 10:19:58.958   296   296 I Zygote  : Process 11208 exited due to signal 9 (Killed)
+04-30 10:19:58.960   503  1734 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10112; state: DISABLED
+04-30 10:19:58.960   503  1734 D CompatibilityChangeReporter: Compat change id reported: 273564678; UID 10112; state: DISABLED
+04-30 10:19:58.968 13409 13409 I d.process.media: Using CollectorTypeCC GC.
+04-30 10:19:58.976 13388 13388 W ziparchive: Unable to open '/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.arm64_v8a.dm': No such file or directory
+04-30 10:19:58.976 13388 13388 W ziparchive: Unable to open '/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.arm64_v8a.dm': No such file or directory
+04-30 10:19:58.976 13388 13388 W droid.apps.docs: Entry not found
+04-30 10:19:58.977 13388 13388 W ziparchive: Unable to open '/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.en.dm': No such file or directory
+04-30 10:19:58.977 13388 13388 W ziparchive: Unable to open '/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.en.dm': No such file or directory
+04-30 10:19:58.977 13388 13388 W droid.apps.docs: Entry not found
+04-30 10:19:58.977 13388 13388 W ziparchive: Unable to open '/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.xxhdpi.dm': No such file or directory
+04-30 10:19:58.977 13388 13388 W ziparchive: Unable to open '/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.xxhdpi.dm': No such file or directory
+04-30 10:19:58.977 13388 13388 W droid.apps.docs: Entry not found
+04-30 10:19:58.977 13388 13388 D nativeloader: Configuring classloader-namespace for other apk /data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/base.apk:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.arm64_v8a.apk:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.en.apk:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.xxhdpi.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/lib/arm64:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/base.apk!/lib/arm64-v8a:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.arm64_v8a.apk!/lib/arm64-v8a:/data/app/~~S6VOyL96UuorzpA8ycjX4Q==/com.google.android.apps.docs-akVRdQ3cr6wn_k6O3zPTXw==/split_config.en.apk!/lib/arm64-v8a:/d
+04-30 10:19:58.978 13409 13409 E d.process.media: Not starting debugger since process cannot load the jdwp agent.
+04-30 10:19:58.980  1160  3566 D TrafficStats: tagSocket(134) with statsTag=0x4000407, statsUid=-1
+04-30 10:19:58.984 13388 13388 W droid.apps.docs: JIT profile information will not be recorded: profile file does not exist.
+04-30 10:19:58.984 13388 13388 W droid.apps.docs: JIT profile information will not be recorded: profile file does not exist.
+04-30 10:19:58.984 13388 13388 W droid.apps.docs: JIT profile information will not be recorded: profile file does not exist.
+04-30 10:19:58.990 13409 13409 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10071; state: ENABLED
+04-30 10:19:58.996 13409 13409 D nativeloader: Configuring classloader-namespace-shared for other apk /system/priv-app/DownloadProvider/DownloadProvider.apk. target_sdk_version=33, uses_libraries=, library_path=/system/priv-app/DownloadProvider/lib/arm64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.android.providers.downloads:/system/priv-app/DownloadProvider:/system/lib64:/system_ext/lib64
+04-30 10:19:58.997  1447  2565 D MediaProvider: Deleted 0 Android/media items belonging to com.moneybase.qa on /data/user/0/com.google.android.providers.media.module/databases/external.db
+04-30 10:19:58.998  1447  2565 D MediaGrants: Removed 0 media_grants for com.moneybase.qa. Reason: Package orphaned
+04-30 10:19:58.999  1447  2565 I MediaProvider: End Intent { act=android.intent.action.PACKAGE_FULLY_REMOVED dat=package: flg=0x5000010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService (has extras) }
+04-30 10:19:59.002 13409 13409 V GraphicsEnvironment: ANGLE Developer option for 'com.android.providers.downloads' set to: 'default'
+04-30 10:19:59.002 13409 13409 V GraphicsEnvironment: ANGLE GameManagerService for com.android.providers.downloads: false
+04-30 10:19:59.002 13409 13409 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+04-30 10:19:59.004 13409 13409 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+04-30 10:19:59.005 13409 13409 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+04-30 10:19:59.006 13388 13388 V GraphicsEnvironment: ANGLE Developer option for 'com.google.android.apps.docs' set to: 'default'
+04-30 10:19:59.006 13388 13388 V GraphicsEnvironment: ANGLE GameManagerService for com.google.android.apps.docs: false
+04-30 10:19:59.006 13388 13388 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+04-30 10:19:59.009 13388 13388 D NetworkSecurityConfig: Using Network Security Config from resource network_security_config debugBuild: false
+04-30 10:19:59.010 13388 13388 D NetworkSecurityConfig: Using Network Security Config from resource network_security_config debugBuild: false
+04-30 10:19:59.014 13409 13409 D nativeloader: Configuring classloader-namespace-shared for other apk /system/priv-app/MtpService/MtpService.apk. target_sdk_version=33, uses_libraries=, library_path=/system/priv-app/MtpService/lib/arm64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.android.mtp:/system/priv-app/MtpService:/system/lib64:/system_ext/lib64
+04-30 10:19:59.082 13409 13409 D nativeloader: Configuring classloader-namespace-shared for other apk /system/priv-app/MediaProviderLegacy/MediaProviderLegacy.apk. target_sdk_version=33, uses_libraries=, library_path=/system/priv-app/MediaProviderLegacy/lib/arm64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.android.providers.media:/system/priv-app/MediaProviderLegacy:/system/lib64:/system_ext/lib64
+04-30 10:19:59.098 13189 13226 I Finsky  : [46] RECEIVER_SINGLE_USER_SETTINGS#logWorkEndAndFinishGoAsync: SUCCESS
+04-30 10:19:59.099   503   956 I ActivityManager: Killing 11258:com.android.chrome/u0a138 (adj 955): empty #17
+04-30 10:19:59.105   503   531 I libprocessgroup: Successfully killed process cgroup uid 10138 pid 11258 in 5ms
+04-30 10:19:59.120   503   956 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 10131; state: DISABLED
+04-30 10:19:59.161   296   296 I Zygote  : Process 11258 exited due to signal 9 (Killed)
+04-30 10:19:59.161   503   619 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10138; state: ENABLED
+04-30 10:19:59.186 13388 13432 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10131; state: ENABLED
+04-30 10:19:59.197 13388 13388 W droid.apps.docs: Method void rrb.c(android.app.Activity) failed lock verification and will run slower.
+04-30 10:19:59.197 13388 13388 W droid.apps.docs: Common causes for lock verification issues are non-optimized dex code
+04-30 10:19:59.197 13388 13388 W droid.apps.docs: and incorrect proguard optimizations.
+04-30 10:19:59.214  1160  1160 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.auth.aang.events.services.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+04-30 10:19:59.216 13388 13443 W CacheStorage: cache doesn't exist
+04-30 10:19:59.221 13388 13430 E DocsApplication: from onCreate Completable for sending summary about blocked SyncRequests
+04-30 10:19:59.221 13388 13430 E DocsApplication: java.lang.IllegalStateException
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at hnl.h(PG:64)
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at kda.a(PG:261)
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at gzx.lambda$onCreate$2(PG:9)
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at gzx.$r8$lambda$M-tqsz8QJK2QrqieVTlg-c3Lhbo(PG:1)
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at gne.run(PG:121)
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at abof.d(PG:13)
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at ablt.e(PG:3)
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at abon$a.run(PG:3)
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at abmd$a.run(PG:10)
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at absc.run(PG:14)
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at absc.call(PG:1)
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:307)
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+04-30 10:19:59.221 13388 13430 E DocsApplication: 	at java.lang.Thread.run(Thread.java:1012)
+04-30 10:19:59.231   503  1734 D ConnectivityService: requestNetwork for uid/pid:10131/13388 activeRequest: null callbackRequest: 363 [NetworkRequest [ REQUEST id=364, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.apps.docs UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+04-30 10:19:59.233   503   620 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=364, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.apps.docs UnderlyingNetworks: Null] ]
+04-30 10:19:59.233   503   620 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=364, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.apps.docs UnderlyingNetworks: Null] ]
+04-30 10:19:59.233   503   620 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=364, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.apps.docs UnderlyingNetworks: Null] ]
+04-30 10:19:59.233   503   620 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=364, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.apps.docs UnderlyingNetworks: Null] ]
+04-30 10:19:59.233   503   627 D ConnectivityService: NetReassign [364 : null → 101] [c 1] [a 0] [i 1]
+04-30 10:19:59.235  1160  4054 I FontLog : (REDACTED) Received query %s, URI %s
+04-30 10:19:59.238  1160  4054 I FontLog : (REDACTED) Query [%s] resolved to %s
+04-30 10:19:59.247  1160  4054 I FontLog : (REDACTED) Fetch %s end status %s
+04-30 10:19:59.248 13388 13467 W DynamiteModule: Local module descriptor class for com.google.android.gms.providerinstaller.dynamite not found.
+04-30 10:19:59.251  1160  4054 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+04-30 10:19:59.252  1160  4054 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+04-30 10:19:59.256 13388 13467 W ProviderInstaller: Failed to load providerinstaller module: No acceptable module com.google.android.gms.providerinstaller.dynamite found. Local version is 0 and remote version is 0.
+04-30 10:19:59.256 13363 13384 I ProvidersCache: Provider returned no roots. Possibly naughty: com.google.android.apps.docs.storage
+04-30 10:19:59.264 13388 13467 D nativeloader: Configuring classloader-namespace for other apk /system/framework/com.android.location.provider.jar. target_sdk_version=37, uses_libraries=ALL, library_path=/data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/lib/arm64:/data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+04-30 10:19:59.267 13388 13467 D nativeloader: Configuring classloader-namespace for other apk /system/framework/com.android.media.remotedisplay.jar. target_sdk_version=37, uses_libraries=ALL, library_path=/data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/lib/arm64:/data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+04-30 10:19:59.267  1160  4054 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+04-30 10:19:59.273 13388 13467 D nativeloader: Configuring classloader-namespace for other apk /data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/base.apk. target_sdk_version=37, uses_libraries=, library_path=/data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/lib/arm64:/data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+04-30 10:19:59.326 13388 13467 V NativeCrypto: Registering com/google/android/gms/org/conscrypt/NativeCrypto's 336 native methods...
+04-30 10:19:59.362   503  2015 E AppOps  : Bad call made by uid 10120. Package "com.google.android.gms" does not belong to uid 10131.
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: Failed to get service from broker. 
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: java.lang.SecurityException: Unknown calling package name 'com.google.android.gms'.
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3011)
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: 	at android.os.Parcel.createException(Parcel.java:2995)
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:2978)
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:2920)
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: 	at bhfb.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):36)
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: 	at bhdc.z(:com.google.android.gms@261233029@26.12.33 (190400-892550550):143)
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: 	at bgjb.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):42)
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: 	at android.os.Handler.handleCallback(Handler.java:942)
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: 	at cvnu.mF(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: 	at cvnu.dispatchMessage(:com.google.android.gms@261233029@26.12.33 (190400-892550550):5)
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: 	at android.os.Looper.loopOnce(Looper.java:201)
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: 	at android.os.Looper.loop(Looper.java:288)
+04-30 10:19:59.364 13388 13473 E GoogleApiManager: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+04-30 10:19:59.367 13388 13473 W GoogleApiManager: Not showing notification since connectionResult is not user-facing: ConnectionResult{statusCode=DEVELOPER_ERROR, resolution=null, message=null, clientMethodKey=null}
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: Failed to register com.google.android.gms.providerinstaller#com.google.android.apps.docs
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: gfpx: 17: 17: API: Phenotype.API is not available on this device. Connection failed with: ConnectionResult{statusCode=DEVELOPER_ERROR, resolution=null, message=null, clientMethodKey=null}
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at gfpz.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):13)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at hfdr.d(:com.google.android.gms@261233029@26.12.33 (190400-892550550):3)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at hfdt.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):130)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at hfgc.execute(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at hfeb.f(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at hfeb.m(:com.google.android.gms@261233029@26.12.33 (190400-892550550):99)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at hfeb.r(:com.google.android.gms@261233029@26.12.33 (190400-892550550):17)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at fxik.hH(:com.google.android.gms@261233029@26.12.33 (190400-892550550):35)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at fjvl.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):12)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at hfgc.execute(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at fjvm.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):18)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at fjwb.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):34)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at fjwd.d(:com.google.android.gms@261233029@26.12.33 (190400-892550550):25)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at bggk.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):9)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at bgiz.q(:com.google.android.gms@261233029@26.12.33 (190400-892550550):48)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at bgiz.d(:com.google.android.gms@261233029@26.12.33 (190400-892550550):10)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at bgiz.g(:com.google.android.gms@261233029@26.12.33 (190400-892550550):191)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at bgiz.onConnectionFailed(:com.google.android.gms@261233029@26.12.33 (190400-892550550):2)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at bgjb.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):70)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at android.os.Handler.handleCallback(Handler.java:942)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at cvnu.mF(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at cvnu.dispatchMessage(:com.google.android.gms@261233029@26.12.33 (190400-892550550):5)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at android.os.Looper.loopOnce(Looper.java:201)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at android.os.Looper.loop(Looper.java:288)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: Caused by: bger: 17: API: Phenotype.API is not available on this device. Connection failed with: ConnectionResult{statusCode=DEVELOPER_ERROR, resolution=null, message=null, clientMethodKey=null}
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at bhco.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):15)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at bggn.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	at bggk.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):5)
+04-30 10:19:59.370 13388 13472 W FlagRegistrar: 	... 12 more
+04-30 10:19:59.377 13388 13474 I gfpl    : Unable to retrieve flag snapshot for com.google.android.gms.providerinstaller#com.google.android.apps.docs, using defaults.
+04-30 10:19:59.385 13388 13467 I ProviderInstaller: Installed default security provider GmsCore_OpenSSL
+04-30 10:19:59.396 13388 13467 W DriveVideoServiceUrlFet: Start up request to Drive Video Service failed.
+04-30 10:19:59.396 13388 13467 E DefaultHttpIssuer: Attempt to close HttpIssuer when no request is executing.
+04-30 10:20:00.024  1450  1820 I AiAiEcho: Predicting[0]: 
+04-30 10:20:00.029  1450  1820 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-30 10:20:00.033  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-30 10:20:00.034  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-30 10:20:00.034  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-30 10:20:00.036   694   694 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-30 10:20:00.043   694   937 D EGL_emulation: app_time_stats: avg=1386.54ms min=75.72ms max=3803.52ms count=3
+04-30 10:20:00.208   503   552 I AppsFilter: interaction: PackageSetting{99ea811 io.appium.uiautomator2.server.test/10175} -> PackageSetting{e58875f com.google.android.apps.docs/10131} BLOCKED
+04-30 10:20:00.208   503   552 I AppsFilter: interaction: PackageSetting{3cb3f77 io.appium.settings/10174} -> PackageSetting{e58875f com.google.android.apps.docs/10131} BLOCKED
+04-30 10:20:00.210   503   575 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10131; state: ENABLED
+04-30 10:20:00.217   503   594 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS | 
+04-30 10:20:00.219   765   765 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+04-30 10:20:00.224   503   528 E system_server: No package ID 7f found for ID 0x7f08046c.
+04-30 10:20:00.224   503   528 E system_server: No package ID 7f found for ID 0x7f140bb8.
+04-30 10:20:00.224   503   528 E system_server: No package ID 7f found for ID 0x7f140bb8.
+04-30 10:20:00.224   503   528 E system_server: No package ID 7f found for ID 0x7f080468.
+04-30 10:20:00.224   503   528 E system_server: No package ID 7f found for ID 0x7f140bb6.
+04-30 10:20:00.224   503   528 E system_server: No package ID 7f found for ID 0x7f140bb6.
+04-30 10:20:00.225   503   528 E system_server: No package ID 7f found for ID 0x7f08046a.
+04-30 10:20:00.226   503   528 E system_server: No package ID 7f found for ID 0x7f140bb7.
+04-30 10:20:00.226   503   528 E system_server: No package ID 7f found for ID 0x7f140bb7.
+04-30 10:20:00.226   503   528 W ShortcutService: Invalid tag 'capability' found at depth 2
+04-30 10:20:00.226   503   528 E ShortcutService: Ignoring excessive intent tag.
+04-30 10:20:00.226   503   528 W ShortcutService: Invalid tag 'parameter' found at depth 4
+04-30 10:20:00.226   503   528 W ShortcutService: Invalid tag 'capability' found at depth 2
+04-30 10:20:00.226   503   528 W ShortcutService: Invalid tag 'slice' found at depth 3
+04-30 10:20:00.226   503   528 W ShortcutService: Invalid tag 'url-template' found at depth 4
+04-30 10:20:00.231   503   503 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.google.android.dialer: DDC.oR@AjU
+04-30 10:20:00.233 13363 13482 I ProvidersCache: Provider returned no roots. Possibly naughty: com.google.android.apps.docs.storage
+04-30 10:20:00.235   694   694 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+04-30 10:20:00.245   765   765 D MediaPlayerList: Name of package changed: com.google.android.apps.docs
+04-30 10:20:00.245   852   852 D CarrierSvcBindHelper: onPackageModified: com.google.android.apps.docs
+04-30 10:20:00.248   852   852 D CarrierSvcBindHelper: No carrier app for: 0
+04-30 10:20:00.251   503   528 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.google.android.apps.docs/com.google.android.apps.docs.drive.widget.suggestion.SuggestionAppWidgetProvider} won't be persisted.
+04-30 10:20:00.251   503   528 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.google.android.apps.docs/com.google.android.apps.docs.drive.widget.CakemixAppWidgetProvider} won't be persisted.
+04-30 10:20:00.253   852   852 D ImsResolver: maybeAddedImsService, packageName: com.google.android.apps.docs
+04-30 10:20:00.255  1251  1818 I PermissionControllerServiceImpl: Updating user sensitive for uid 10131
+04-30 10:20:00.365   988  1654 D EGL_emulation: app_time_stats: avg=618.22ms min=26.86ms max=2227.54ms count=4
+04-30 10:20:02.457  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:1244): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 10:20:07.332   170 13137 I keystore2: keystore2::watchdog: Watchdog thread idle -> terminating. Have a great day.
+04-30 10:20:07.752  1540  1540 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.potokens.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+04-30 10:20:07.752  1540  1540 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.potokens.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+04-30 10:20:07.774 13189 13254 I Finsky  : [67] Initializing the instant apps module.
+04-30 10:20:07.778 13189 13251 I Finsky  : [64] System was updated or GL extensions were already cached.
+04-30 10:20:07.792 13189 13229 I Finsky  : [49] Triggered update for experiment package com.google.android.finsky.stable.
+04-30 10:20:07.802 13189 13257 W Finsky  : [70] PreloadClasses: Unable to load [kotlinx.coroutines.internal.ThreadContextKt$countAll$1, kotlinx.coroutines.internal.ThreadContextKt$findOne$1, kotlinx.coroutines.internal.ThreadContextKt$updateState$1, androidx.compose.runtime.snapshots.SnapshotKt$emptyLambda$1, androidx.compose.runtime.Recomposer$broadcastFrameClock$1, androidx.compose.runtime.Recomposer$recompositionRunner$2$unregisterApplyObserver$1, androidx.compose.ui.platform.AndroidComposeView$keyInputModifier$1, androidx.compose.runtime.SlotTable, androidx.compose.runtime.ComposerImpl, androidx.compose.runtime.SlotReader, androidx.compose.runtime.SlotWriter, androidx.compose.runtime.SlotTableKt, androidx.compose.runtime.ComposableSingletons$CompositionKt$lambda-1$1, androidx.compose.runtime.ComposableSingletons$CompositionKt$lambda-2$1, androidx.compose.ui.platform.ComposableSingletons$Wrapper_androidKt$lambda-1$1, androidx.compose.ui.platform.AndroidComposeView$ViewTreeOwners, androidx.compose.ui.platform.WrappedComposition$setContent$1$1, androidx.compose.runtime.Recomposer$readObserverOf$1, androidx.compose.runtime.Recomposer$writeObserverOf$1, androidx.compose.runtime.KeyInfo, androidx.compose.runtime.GroupInfo, androidx.compose.ui.platform.AndroidCompositionLocals_androidKt$LocalSavedStateRegistryOwner$1, androidx.compose.ui.platform.AndroidCompositionLocals_androidKt$ProvideAndroidCompositionLocals$1$1, androidx.compose.runtime.saveable.SaveableStateRegistryKt$LocalSaveableStateRegistry$1, androidx.compose.material3.TypographyKt$LocalTypography$1, androidx.compose.material.ColorsKt$LocalColors$1, androidx.compose.material.ShapesKt$LocalShapes$1, androidx.compose.material.ContentAlphaKt$LocalContentAlpha$1, androidx.compose.foundation.IndicationKt$LocalIndication$1, androidx.compose.material.ripple.RippleThemeKt$LocalRippleTheme$1, androidx.compose.foundation.text.selection.TextSelectionColorsKt$LocalTextSelectionColors$1, androidx.compose.material.MaterialThemeKt$MaterialTheme$1, androidx.compose.material.TextKt$LocalTextStyle$1, androidx.compose.animation.core.InfiniteTransition$run$2, androidx.compose.animation.core.VectorConvertersKt$FloatToVector$1, androidx.compose.animation.core.VectorConvertersKt$FloatToVector$2, androidx.compose.animation.core.VectorConvertersKt$IntToVector$2, androidx.compose.animation.core.VectorConvertersKt$DpToVector$1, androidx.compose.animation.core.VectorConvertersKt$DpToVector$2, androidx.compose.material.ProgressIndicatorKt$CircularProgressIndicator$endAngle$2, androidx.compose.material.ProgressIndicatorKt$CircularProgressIndicator$startAngle$2, androidx.compose.foundation.ProgressSemanticsKt$progressSemantics$2, androidx.compose.material.MaterialThemeKt$MaterialTheme$2, androidx.compose.ui.platform.AndroidCompositionLocals_androidKt$ProvideAndroidCompositionLocals$4, androidx.compose.runtime.RememberManager, androidx.compose.foundation.IndicationKt$indication$2, androidx.compose.foundation.text.selection.SelectionRegistrarKt$LocalSelectionRegistrar$1, androidx.compose.runtime.saveable.SaverKt$AutoSaver$1, androidx.compose.runtime.saveable.SaverKt$AutoSaver$2, androidx.compose.runtime.snapshots.SnapshotStateList$StateListStateRecord, androidx.compose.material.ButtonKt$Button$2, androidx.compose.material.ElevationOverlayKt$LocalElevationOverlay$1, androidx.compose.material.ElevationOverlayKt$LocalAbsoluteElevation$1, androidx.compose.material.SurfaceKt$Surface$1, androidx.compose.material.TextKt$Text$4, androidx.compose.material.TextKt$ProvideTextStyle$1, androidx.compose.material.SurfaceKt$Surface$2, androidx.compose.material.ButtonKt$Button$3, androidx.compose.foundation.gestures.ScrollableStateKt$rememberScrollableState$1$1, androidx.compose.material.TextKt$Text$3, androidx.compose.material3.TextKt$Text$3, androidx.compose.foundation.layout.BoxWithConstraintsKt$BoxWithConstraints$1$1, androidx.compose.runtime.ComposerImpl$CompositionContextHolder, androidx.compose.runtime.ComposerImpl$CompositionContextImpl, androidx.compose.runtime.Updater$init$1, androidx.compose.runtime.interna
+04-30 10:20:07.831 13189 13229 I Finsky  : [49] Writing flags config, size 1.
+04-30 10:20:07.831 13189 13229 I Finsky  : [49] Started writing experiment flags into file [8uKij9Tp4PZyjSvh8NyLyFvuCv94NONrKvkkdzEKIoQ].
+04-30 10:20:07.832 13189 13229 I Finsky  : [49] Finished writing experiment flags into file [8uKij9Tp4PZyjSvh8NyLyFvuCv94NONrKvkkdzEKIoQ], numFlags=2280.
+04-30 10:20:07.834 13189 13229 I Finsky  : [49] Successfully applied new configurations for package com.google.android.finsky.stable.
+04-30 10:20:07.834 13189 13229 I Finsky  : [49] [EExp] Exporting experiments for package com.google.android.finsky.stable.
+04-30 10:20:07.834 13189 13229 I Finsky  : [49] [EExp] Exporting experiments for namespace com.google.android.finsky.stable.
+04-30 10:20:07.836 13189 13229 I Finsky  : [49] [EExp] Successfully exported experiments for package com.google.android.finsky.stable.
+04-30 10:20:07.836 13189 13229 I Finsky  : [49] Triggered update for experiment package com.google.android.finsky.regular.
+04-30 10:20:07.842 13189 13229 I Finsky  : [49] Regular flags synced
+04-30 10:20:07.844 13189 13229 I Finsky  : [49] Writing flags config, size 1.
+04-30 10:20:07.844 13189 13229 I Finsky  : [49] Started writing experiment flags into file [4dEVOh7DlClE42ly_19Hs7FqnnFOj9O0dm-zzWqGxeo].
+04-30 10:20:07.845 13189 13229 I Finsky  : [49] Finished writing experiment flags into file [4dEVOh7DlClE42ly_19Hs7FqnnFOj9O0dm-zzWqGxeo], numFlags=1993.
+04-30 10:20:07.847 13189 13229 I Finsky  : [49] Successfully applied new configurations for package com.google.android.finsky.regular.
+04-30 10:20:07.847 13189 13229 I Finsky  : [49] [EExp] Exporting experiments for package com.google.android.finsky.regular.
+04-30 10:20:07.847 13189 13229 I Finsky  : [49] [EExp] Exporting experiments for namespace com.google.android.finsky.regular.
+04-30 10:20:07.849 13189 13229 I Finsky  : [49] [EExp] Successfully exported experiments for package com.google.android.finsky.regular.
+04-30 10:20:07.852 13189 13251 I Finsky  : [64] Component class com.google.android.finsky.wearsupport.WearSupportService disabled via PackageManager.
+04-30 10:20:07.852 13189 13251 I Finsky  : [64] Component class com.google.android.finsky.wearsupport.WearChangeListenerService disabled via PackageManager.
+04-30 10:20:08.261 13189 13189 I Finsky  : [2] setup::RES: shouldRecoverRestoredPackages: versionCodeSystem 83042110
+04-30 10:20:08.264 13189 13189 I Finsky  : [2] Detected restoreservicev2://recovery not needed, will not run
+04-30 10:20:08.326 13189 13295 I Finsky  : [97] registerListener
+04-30 10:20:08.326 13189 13295 I Finsky  : [97] DSC: reviveDownloads()
+04-30 10:20:08.327 13189 13295 I Finsky  : [97] Initialized AssetModuleDownloader.
+04-30 10:20:08.344 11114 11142 I Finsky:background: [56] DS: reviveDownloads()
+04-30 10:20:08.361   503  1734 D ConnectivityService: requestNetwork for uid/pid:10112/11114 activeRequest: null callbackRequest: 365 [NetworkRequest [ REQUEST id=366, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+04-30 10:20:08.365   503   620 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=366, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-30 10:20:08.365   503   620 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=366, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-30 10:20:08.365   503   620 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=366, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-30 10:20:08.365   503   620 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=366, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-30 10:20:08.366   503   627 D ConnectivityService: NetReassign [366 : null → 101] [c 1] [a 1] [i 2]
+04-30 10:20:08.366 11114 11152 I Finsky:background: [66] DS: Network is available [NetworkState{connected=true, wifi=true, metered=false, roaming=false}].
+04-30 10:20:08.366 11114 11152 I Finsky:background: [66] DS: Updating downloads for network change
+04-30 10:20:08.367 11114 13502 I Finsky:background: [96] DS: downloadState filtering results: {}
+04-30 10:20:09.246 13363 13363 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10082; state: ENABLED
+04-30 10:20:09.268 13363 13506 I ProvidersCache: Provider returned no roots. Possibly naughty: com.google.android.apps.docs.storage
+04-30 10:20:09.383   503  1734 E AppOps  : Bad call made by uid 10120. Package "com.google.android.gms" does not belong to uid 10131.
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: Failed to get service from broker. 
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: java.lang.SecurityException: Unknown calling package name 'com.google.android.gms'.
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3011)
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: 	at android.os.Parcel.createException(Parcel.java:2995)
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:2978)
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:2920)
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: 	at bhfb.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):36)
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: 	at bhdc.z(:com.google.android.gms@261233029@26.12.33 (190400-892550550):143)
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: 	at bgjb.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):42)
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: 	at android.os.Handler.handleCallback(Handler.java:942)
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: 	at cvnu.mF(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: 	at cvnu.dispatchMessage(:com.google.android.gms@261233029@26.12.33 (190400-892550550):5)
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: 	at android.os.Looper.loopOnce(Looper.java:201)
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: 	at android.os.Looper.loop(Looper.java:288)
+04-30 10:20:09.384 13388 13473 E GoogleApiManager: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+04-30 10:20:09.384 13388 13473 W GoogleApiManager: Not showing notification since connectionResult is not user-facing: ConnectionResult{statusCode=DEVELOPER_ERROR, resolution=null, message=null, clientMethodKey=null}
+04-30 10:20:12.379   503  1744 I ActivityManager: Killing 10922:com.google.android.settings.intelligence/u0a108 (adj 955): empty #17
+04-30 10:20:12.383   503   531 I libprocessgroup: Successfully killed process cgroup uid 10108 pid 10922 in 0ms
+04-30 10:20:12.412   503  1946 W ActivityManager: Scheduling restart of crashed service com.google.android.settings.intelligence/.modules.suggestions.SuggestionService in 1000ms for connection
+04-30 10:20:12.413   296   296 I Zygote  : Process 10922 exited due to signal 9 (Killed)
+04-30 10:20:12.458  1160  1160 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+04-30 10:20:12.477  1160  1160 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.presencemanager.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+04-30 10:20:12.559  1540  1540 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }

@@ -1,0 +1,256 @@
+--------- beginning of main
+07-13 18:34:12.183  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): EnabledState: Transition to check preconditions [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.183  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): transitionTo: destState=CheckPreconditionsState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.183  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): onTransitionRequested EnabledState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.185  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): Enter CheckPreconditionsState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.186  1783 14630 I BugleRcsProvisioning: RcsProvisioningEventReceiver: Received ProvisioningEvent: Update provisioning status
+07-13 18:34:12.189  1783  2260 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.receiver.RcsProvisioningEventReceiver@87b4662
+07-13 18:34:12.195  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:12.196  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): Battery optimization is not required. [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.202  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): transitionViaMessage, srcState=CheckPreconditionsState, destState = ReadyState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.202  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): CheckPreconditionsState: Transition to ready [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.202  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): transitionTo: destState=ReadyState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.202  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): onTransitionRequested CheckPreconditionsState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.205  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): Exit CheckPreconditionsState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.205  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): Exit EnabledState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.205  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:12.205  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): Enter InProgressState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.211  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:12.212  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): Enter ReadyState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.212  1783  1976 W BugleRcsEngine: [42] bemz.x: Unable to send diagnostic log
+07-13 18:34:12.215  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:12.223  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): transitionViaMessage, srcState=ReadyState, destState = RequestWithImsiState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.223  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): ReadyState: Transition to request with imsi [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.224  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): transitionTo: destState=RequestWithImsiState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.224  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): onTransitionRequested ReadyState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.224  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): Exit ReadyState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.224  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:12.224  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): Enter RequestWithImsiState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.227  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:12.228  1783 14632 I BugleRcsEngine: [160] bgfx.z: ProvisioningConsent from user settings: false
+07-13 18:34:12.233  1783  1976 W BugleRcsEngine: [42] bemz.x: Unable to send diagnostic log
+07-13 18:34:12.234  1783 14632 I BugleRcsEngine: [160] bghl.b: Using config server URL from beqz
+07-13 18:34:12.236  1783 14632 I BugleRcsEngine: [160] bgfx.z: ProvisioningConsent from user settings: false
+07-13 18:34:12.256  1783 14632 I BugleRcsEngine: [160] bgfx.z: ProvisioningConsent from user settings: false
+07-13 18:34:12.268  1783 14632 W BugleRcsEngine: [160] bfyb.e: (PEv2-SM-Bugle-257330266): Could not retrieve MSISDN from configuration. Configuration is empty. [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.268  1783 14632 W BugleRcsEngine: [160] bfyb.e: (PEv2-SM-Bugle-257330266): Skipping adding Tachyon identity key to request. Null/empty RCS msisdn from configuration for sim ID: 89860318640220133897. [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.270  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): RequestWithImsiState: event Send config request [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.270  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): InProgressState: event Send config request [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:12.279  1783  1976 W BugleRcsEngine: [42] bemz.x: Unable to send diagnostic log
+07-13 18:34:12.281  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:12.291  1783 14633 W BugleRcsEngine: [161] bemz.x: Unable to send diagnostic log
+07-13 18:34:12.342  1783  1797 W .apps.messaging: Reducing the number of considered missed Gc histogram windows from 189 to 100
+07-13 18:34:12.373  1783 14633 D TrafficStats: tagSocket(85) with statsTag=0x6f7, statsUid=-1
+07-13 18:34:13.336  1783 14633 W BugleRcsEngine: [161] bemz.x: Unable to send diagnostic log
+07-13 18:34:13.336  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): RequestWithImsiState: event HTTP Response [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:13.337  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): InProgressState: event HTTP Response [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:13.337  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:13.338  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): RequestWithImsiState: event HTTP 200 (OK) [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:13.338  1783 14632 W BugleRcsEngine: [160] bfyw.d: Couldn't find cookies
+07-13 18:34:13.339  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): transitionTo: destState=ProcessConfigurationState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:13.339  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): onTransitionRequested RequestWithImsiState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:13.340  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): Exit RequestWithImsiState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:13.340  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:13.340  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): Enter ProcessConfigurationState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:13.351  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:13.351  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): ProcessConfigurationState: event Config document received [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:13.352  1783  1971 W BugleRcsEngine: [39] bemz.x: Unable to send diagnostic log
+07-13 18:34:13.355  1783 14632 I BugleRcsEngine: [160] bfyj.d: Configuration update received. Updating 
+07-13 18:34:13.355  1783 14632 I BugleRcsEngine: from [Type: 0, Version: -1, Validity: -1, Last updated: 1783954970, Remaining validity: 0, Reconfiguration requested: false, Messaging technology: SIMPLE_IM] 
+07-13 18:34:13.355  1783 14632 I BugleRcsEngine: to [Type: 2, Version: -1, Validity: -1, Last updated: 0, Remaining validity: 0, Reconfiguration requested: false, Messaging technology: SIMPLE_IM]
+07-13 18:34:13.355  1783 14632 W BugleRcsEngine: [160] bfyj.d: Received configuration with no token or invalid token during refresh.
+07-13 18:34:13.375  1783 14632 I BugleRcsEngine: [160] bgfx.s: Rcs Configuration was updated
+07-13 18:34:13.375  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:13.375  1783 14632 I BugleRcsEngine: [160] bfyj.d: Provisioning refreshed with partial configuration.
+07-13 18:34:13.380  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:13.381  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:13.382  1783 14632 I BugleRcsEngine: [160] bghl.b: Using config server URL from beqz
+07-13 18:34:13.389  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): transitionTo: destState=ConfiguredState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:13.389  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): onTransitionRequested ProcessConfigurationState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:13.389  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): Exit ProcessConfigurationState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:13.390  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:13.390  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): Exit InProgressState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:13.390  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:13.390  1783  1971 W BugleRcsEngine: [39] bemz.x: Unable to send diagnostic log
+07-13 18:34:13.390  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): Enter ConfiguredState [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:13.396  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:13.396  1783 14632 I BugleRcsEngine: [160] bgck.b: RcsAvailabilityManager: Calculating Rcs Availability
+07-13 18:34:13.399  1783 14632 I BugleRcsEngine: [160] bgfx.B: Bugle is default SMS app: true
+07-13 18:34:13.399  1783 14632 I BugleRcsEngine: [160] bgck.b: Bugle has minimum required RCS permissions: true
+07-13 18:34:13.400  1783 14632 I BugleRcsEngine: [160] bgfx.A: Rcs is enabled from user settings: true
+07-13 18:34:13.400  1783 14632 I BugleRcsEngine: [160] bghl.b: Using config server URL from beqz
+07-13 18:34:13.410  1783 14632 I BugleRcsEngine: [160] bgck.b: Config state is not ACCEPTED, provisioning still in progress
+07-13 18:34:13.411  1783 14632 I BugleRcsEngine: [160] bgck.b: RcsAvailabilityManager: Rcs Availability still CARRIER_SETUP_PENDING (Carrier RCS is not set up)
+07-13 18:34:13.415  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:13.415  1783 14632 I BugleRcsEngine: [160] bfyb.d: (PEv2-SM-Bugle-257330266): Provisioned with invalid config. Invoke failure [6ba6e80e-618a-4023-b15b-c52e4c2fa82e]
+07-13 18:34:13.415  1783 14632 W BugleRcsEngine: [160] bemz.x: Unable to send diagnostic log
+07-13 18:34:13.417  1783 14632 I BugleRcsEngine: [160] bfwp.c: Sending ProvisioningEvent to Bugle [Update provisioning status (11)], redacted-pii:[chars:85]
+07-13 18:34:13.418  1783 14632 I BugleRcsEngine: [160] bhdm.b: EngineBroadcaster: Broadcasting provisioning intent com.google.android.ims.provisioning.engine.provisioningEventAction to Bugle with extras redacted-pii:[chars:243] from source PROVISIONING_EVENT
+07-13 18:34:13.429  1783 14632 I BugleRcsEngine: [160] bgck.b: RcsAvailabilityManager: Calculating Rcs Availability
+07-13 18:34:13.431  1783 14632 I BugleRcsEngine: [160] bgfx.B: Bugle is default SMS app: true
+07-13 18:34:13.432  1783 14632 I BugleRcsEngine: [160] bgck.b: Bugle has minimum required RCS permissions: true
+07-13 18:34:13.433  1783 14632 I BugleRcsEngine: [160] bgfx.A: Rcs is enabled from user settings: true
+07-13 18:34:13.433  1783 14632 I BugleRcsEngine: [160] bghl.b: Using config server URL from beqz
+07-13 18:34:13.436  1783 14631 I BugleRcsProvisioning: RcsProvisioningEventReceiver: Received ProvisioningEvent: Update provisioning status
+07-13 18:34:13.436  1783  2067 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.receiver.RcsProvisioningEventReceiver@22018ea
+07-13 18:34:13.485  1783 14632 I BugleRcsEngine: [160] bgck.b: Config state is not ACCEPTED, provisioning still in progress
+07-13 18:34:13.486  1783 14632 I BugleRcsEngine: [160] bgck.b: RcsAvailabilityManager: Rcs Availability still CARRIER_SETUP_PENDING (Carrier RCS is not set up)
+07-13 18:34:13.495  1783  1975 W BugleRcsEngine: [41] bemz.x: Unable to send diagnostic log
+07-13 18:34:13.496  1783  1975 W BugleRcsEngine: [41] bemz.x: Unable to send diagnostic log
+07-13 18:34:18.129  3325  3325 W ThreadPoolForeg: type=1400 audit(0.0:1654): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+07-13 18:34:22.009   498   507 I system_server: Background young concurrent copying GC freed 310049(22MB) AllocSpace objects, 4(80KB) LOS objects, 48% free, 24MB/47MB, paused 779us,155us total 134.899ms
+07-13 18:34:22.989  1156  1156 W ThreadPoolForeg: type=1400 audit(0.0:1655): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+07-13 18:34:26.970  1156  1892 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+07-13 18:34:26.978  1156 12766 W SystemServiceRegistry: No service published for: wifirtt
+--------- beginning of system
+07-13 18:34:27.508   498   557 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1783956604595
+07-13 18:34:27.517   498   682 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 79 startTime of in progress event=1783956604595
+07-13 18:34:27.521   498   682 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1783956604595
+07-13 18:34:27.526   498   557 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1783956604595
+07-13 18:34:27.539   498   557 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1783956604595
+07-13 18:34:27.543  1156  1892 I ActivityScheduler: nextTriggerTime: 5833603, in 238100ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+07-13 18:34:27.782   498  1418 D WifiNl80211Manager: Scan result ready event
+07-13 18:34:27.783   498  1418 D WifiNative: Scan result ready event
+07-13 18:34:27.796  1156 12766 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+07-13 18:34:27.805  1156  1892 I ActivityScheduler: nextTriggerTime: 5833603, in 237838ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+07-13 18:34:30.141   692   705 I ndroid.systemui: Background concurrent copying GC freed 335275(19MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 583us,191us total 120.434ms
+07-13 18:34:30.262  6795  6834 I Finsky:background: [44] Stats for Executor: bgExecutor wkg@1b79ea4[Running, pool size = 4, active threads = 0, queued tasks = 0, completed tasks = 49]
+07-13 18:34:30.262  6795  6834 I Finsky:background: [44] Stats for Executor: LightweightExecutor wkg@45cb40d[Running, pool size = 3, active threads = 0, queued tasks = 0, completed tasks = 42]
+07-13 18:34:30.263  6795  6834 I Finsky:background: [44] Stats for Executor: BlockingExecutor wkg@962cfc2[Running, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1]
+07-13 18:34:37.137  1462  1462 W ThreadPoolForeg: type=1400 audit(0.0:1656): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+07-13 18:34:43.960   692   928 D EGL_emulation: app_time_stats: avg=43896.56ms min=43896.56ms max=43896.56ms count=1
+07-13 18:34:44.939   692   705 I ndroid.systemui: Background concurrent copying GC freed 333942(18MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 17MB/34MB, paused 147us,62us total 120.158ms
+07-13 18:34:46.695  1462  1462 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.auth.api.phone.service.InternalService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+07-13 18:34:46.695  1462  1462 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.auth.api.phone.service.InternalService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+07-13 18:34:47.841   498   680 D WifiNl80211Manager: Scan result ready event
+07-13 18:34:47.843   498   680 D WifiNative: Scan result ready event
+07-13 18:34:48.145  3325  3325 W ThreadPoolForeg: type=1400 audit(0.0:1657): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+07-13 18:34:52.993  1156  1156 W ThreadPoolForeg: type=1400 audit(0.0:1658): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+07-13 18:35:00.056  1509  1839 I AiAiEcho: Predicting[0]: 
+07-13 18:35:00.058  1509  1839 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+07-13 18:35:00.062  1509  1839 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+07-13 18:35:00.066  1509  1839 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+07-13 18:35:00.069  1509  1839 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+07-13 18:35:00.070   692   928 D EGL_emulation: app_time_stats: avg=16109.55ms min=16109.55ms max=16109.55ms count=1
+07-13 18:35:00.077   692   692 D SsMediaDataProvider: Forwarding Smartspace updates []
+07-13 18:35:01.757  1462  1462 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.api.phone.service.InternalService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+07-13 18:35:03.945   692   928 D EGL_emulation: app_time_stats: avg=3874.65ms min=3874.65ms max=3874.65ms count=1
+07-13 18:35:04.075   692   705 W ndroid.systemui: Suspending all threads took: 6.130ms
+07-13 18:35:04.131   692   705 I ndroid.systemui: Background young concurrent copying GC freed 238234(12MB) AllocSpace objects, 1(20KB) LOS objects, 35% free, 22MB/34MB, paused 294us,6.450ms total 180.875ms
+07-13 18:35:04.797   692   705 I ndroid.systemui: Background concurrent copying GC freed 355444(19MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 17MB/34MB, paused 59us,54us total 127.032ms
+07-13 18:35:07.169  1462  1462 W ThreadPoolForeg: type=1400 audit(0.0:1659): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+07-13 18:35:16.381   498   579 D ActivityManager: freezing 10601 com.google.android.apps.photos
+07-13 18:35:16.422   498   579 D ActivityManager: freezing 10677 com.google.android.apps.docs
+07-13 18:35:18.181  3325  3325 W ThreadPoolForeg: type=1400 audit(0.0:1660): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+07-13 18:35:22.001   498   507 I system_server: Background young concurrent copying GC freed 315687(23MB) AllocSpace objects, 5(100KB) LOS objects, 47% free, 24MB/47MB, paused 404us,196us total 177.767ms
+07-13 18:35:23.009  1156  1156 W ThreadPoolForeg: type=1400 audit(0.0:1661): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+07-13 18:35:23.264   498   579 D ActivityManager: freezing 11056 com.android.remoteprovisioner
+07-13 18:35:23.967   692   928 D EGL_emulation: app_time_stats: avg=20022.14ms min=20022.14ms max=20022.14ms count=1
+07-13 18:35:27.314   316   316 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+07-13 18:35:27.385  1156  1892 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+07-13 18:35:27.392  1156 14537 W SystemServiceRegistry: No service published for: wifirtt
+07-13 18:35:28.194   498  1833 D WifiNl80211Manager: Scan result ready event
+07-13 18:35:28.194   498  1833 D WifiNative: Scan result ready event
+07-13 18:35:28.216  1156 14537 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+07-13 18:35:28.242  1156 14537 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+07-13 18:35:28.335  3325  3343 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+07-13 18:35:28.329  3325  3325 W binder:3325_2: type=1400 audit(0.0:1662): avc: denied { read } for name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=259 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+07-13 18:35:28.336  3325  3343 W libc    : Access denied finding property "service.adb.tls.port"
+07-13 18:35:28.333  3325  3325 W binder:3325_2: type=1400 audit(0.0:1663): avc: denied { read } for name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=51 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+07-13 18:35:28.343  3325  3343 D TrafficStats: tagSocket(95) with statsTag=0x1809, statsUid=-1
+07-13 18:35:28.389  1156  1156 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+07-13 18:35:28.408  1156 14537 W GmsUrlRequestImpl: [https://android.googleapis.com/auth/devicekey] Content-Type header is overwritten.
+07-13 18:35:28.451  1156  3916 D TrafficStats: tagSocket(99) with statsTag=0x4000401, statsUid=10120
+07-13 18:35:28.664  1156 14537 W GLSUser : [AppCertManager] Exception while requesting key: 
+07-13 18:35:28.664  1156 14537 W GLSUser : java.util.concurrent.ExecutionException: daua: Parsing Exception
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at hoag.j(:com.google.android.gms@262532029@26.25.32 (190400-944114241):21)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at hoap.t(:com.google.android.gms@262532029@26.25.32 (190400-944114241):73)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at amil.b(:com.google.android.gms@262532029@26.25.32 (190400-944114241):435)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at amij.a(:com.google.android.gms@262532029@26.25.32 (190400-944114241):67)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at amif.a(:com.google.android.gms@262532029@26.25.32 (190400-944114241):3)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at amih.a(:com.google.android.gms@262532029@26.25.32 (190400-944114241):58)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at amih.b(:com.google.android.gms@262532029@26.25.32 (190400-944114241):21)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at bkfv.m(:com.google.android.gms@262532029@26.25.32 (190400-944114241):13)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at bkgk.f(:com.google.android.gms@262532029@26.25.32 (190400-944114241):10)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at guyv.a(:com.google.android.gms@262532029@26.25.32 (190400-944114241):46)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at guyr.b(:com.google.android.gms@262532029@26.25.32 (190400-944114241):293)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at gwrl.call(:com.google.android.gms@262532029@26.25.32 (190400-944114241):1001)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at bkmu.c(:com.google.android.gms@262532029@26.25.32 (190400-944114241):50)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at bkmu.run(:com.google.android.gms@262532029@26.25.32 (190400-944114241):66)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at bksm.run(:com.google.android.gms@262532029@26.25.32 (190400-944114241):8)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at java.lang.Thread.run(Thread.java:1012)
+07-13 18:35:28.664  1156 14537 W GLSUser : Caused by: daua: Parsing Exception
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at dave.kD(:com.google.android.gms@262532029@26.25.32 (190400-944114241):15)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at hodc.run(:com.google.android.gms@262532029@26.25.32 (190400-944114241):56)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at bkmu.c(:com.google.android.gms@262532029@26.25.32 (190400-944114241):50)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at bkmu.run(:com.google.android.gms@262532029@26.25.32 (190400-944114241):85)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	... 4 more
+07-13 18:35:28.664  1156 14537 W GLSUser : Caused by: jctr: Protocol message end-group tag did not match expected tag.
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at jcvj.a(:com.google.android.gms@262532029@26.25.32 (190400-944114241):57)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at jcuh.i(:com.google.android.gms@262532029@26.25.32 (190400-944114241):437)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at jcsn.s(:com.google.android.gms@262532029@26.25.32 (190400-944114241):26)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at jcqm.f(:com.google.android.gms@262532029@26.25.32 (190400-944114241):7)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at jcqm.c(:com.google.android.gms@262532029@26.25.32 (190400-944114241):1)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at jcqm.o(:com.google.android.gms@262532029@26.25.32 (190400-944114241):1)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at davd.a(:com.google.android.gms@262532029@26.25.32 (190400-944114241):15)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at davi.call(:com.google.android.gms@262532029@26.25.32 (190400-944114241):8)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at bkmu.c(:com.google.android.gms@262532029@26.25.32 (190400-944114241):50)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	at bkmu.run(:com.google.android.gms@262532029@26.25.32 (190400-944114241):66)
+07-13 18:35:28.664  1156 14537 W GLSUser : 	... 4 more
+07-13 18:35:28.665  1156 14537 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+07-13 18:35:28.667  1156 12766 D TrafficStats: tagSocket(128) with statsTag=0x4000609, statsUid=10174
+07-13 18:35:28.689  1156 12766 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+07-13 18:35:28.690  1156 12766 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@262532029@26.25.32 (190400-944114241):204)
+07-13 18:35:28.690  1156 12766 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@262532029@26.25.32 (190400-944114241):4)
+07-13 18:35:28.758  1156 12766 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+07-13 18:35:28.758  1156 12766 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@262532029@26.25.32 (190400-944114241):204)
+07-13 18:35:28.758  1156 12766 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@262532029@26.25.32 (190400-944114241):4)
+07-13 18:35:28.851  1156 14537 W GlsClientGrpc: Voilatile gRPC failure INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header. [CONTEXT service_id=6 ]
+07-13 18:35:28.851  1156 14537 W GlsClientGrpc: jzyr: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+07-13 18:35:28.851  1156 14537 W GlsClientGrpc: 	at bkgk.q(:com.google.android.gms@262532029@26.25.32 (190400-944114241):31)
+07-13 18:35:28.851  1156 14537 W GlsClientGrpc: 	at bkgk.f(:com.google.android.gms@262532029@26.25.32 (190400-944114241):90)
+07-13 18:35:28.851  1156 14537 W GlsClientGrpc: 	at guyv.a(:com.google.android.gms@262532029@26.25.32 (190400-944114241):46)
+07-13 18:35:28.851  1156 14537 W GlsClientGrpc: 	at guyr.b(:com.google.android.gms@262532029@26.25.32 (190400-944114241):293)
+07-13 18:35:28.851  1156 14537 W GlsClientGrpc: 	at gwrl.call(:com.google.android.gms@262532029@26.25.32 (190400-944114241):1001)
+07-13 18:35:28.851  1156 14537 W GlsClientGrpc: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+07-13 18:35:28.851  1156 14537 W GlsClientGrpc: 	at bkmu.c(:com.google.android.gms@262532029@26.25.32 (190400-944114241):50)
+07-13 18:35:28.851  1156 14537 W GlsClientGrpc: 	at bkmu.run(:com.google.android.gms@262532029@26.25.32 (190400-944114241):66)
+07-13 18:35:28.851  1156 14537 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+07-13 18:35:28.851  1156 14537 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+07-13 18:35:28.851  1156 14537 W GlsClientGrpc: 	at bksm.run(:com.google.android.gms@262532029@26.25.32 (190400-944114241):8)
+07-13 18:35:28.851  1156 14537 W GlsClientGrpc: 	at java.lang.Thread.run(Thread.java:1012)
+07-13 18:35:28.853  1156 14537 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+07-13 18:35:28.861  1156  1892 I ActivityScheduler: nextTriggerTime: 5833603, in 176782ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+07-13 18:35:33.443  1156  1156 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+07-13 18:35:35.800   692   705 I ndroid.systemui: Background concurrent copying GC freed 338040(19MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 17MB/34MB, paused 97us,270us total 133.068ms
+07-13 18:35:37.193  1462  1462 W ThreadPoolForeg: type=1400 audit(0.0:1664): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+07-13 18:35:43.968   692   928 D EGL_emulation: app_time_stats: avg=20000.27ms min=20000.27ms max=20000.27ms count=1
+07-13 18:35:48.213  3325  3325 W ThreadPoolForeg: type=1400 audit(0.0:1665): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+07-13 18:35:53.013  1156  1156 W ThreadPoolForeg: type=1400 audit(0.0:1666): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+07-13 18:36:00.056  1509  1839 I AiAiEcho: Predicting[0]: 
+07-13 18:36:00.057  1509  1839 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+07-13 18:36:00.065  1509  1839 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+07-13 18:36:00.066  1509  1839 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+07-13 18:36:00.069  1509  1839 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+07-13 18:36:00.086   692   928 D EGL_emulation: app_time_stats: avg=16117.13ms min=16117.13ms max=16117.13ms count=1
+07-13 18:36:00.092   692   692 D SsMediaDataProvider: Forwarding Smartspace updates []
+07-13 18:36:07.229  1462  1462 W ThreadPoolForeg: type=1400 audit(0.0:1667): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+07-13 18:36:08.227   692   705 I ndroid.systemui: Background concurrent copying GC freed 342938(19MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 17MB/34MB, paused 75us,272us total 124.145ms
+07-13 18:36:18.249  3325  3325 W ThreadPoolForeg: type=1400 audit(0.0:1668): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+07-13 18:36:21.992   498   507 I system_server: Background young concurrent copying GC freed 307706(23MB) AllocSpace objects, 5(100KB) LOS objects, 44% free, 26MB/47MB, paused 291us,164us total 180.557ms
+07-13 18:36:23.045  1156  1156 W ThreadPoolForeg: type=1400 audit(0.0:1669): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+07-13 18:36:27.809  1156  1892 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+07-13 18:36:27.814  1156 14646 W SystemServiceRegistry: No service published for: wifirtt
+07-13 18:36:27.846   692   705 W ndroid.systemui: Suspending all threads took: 12.546ms
+07-13 18:36:27.863   692   705 I ndroid.systemui: Background young concurrent copying GC freed 223820(11MB) AllocSpace objects, 0(0B) LOS objects, 33% free, 22MB/34MB, paused 1.313ms,12.849ms total 71.934ms
+07-13 18:36:28.469   692   705 I ndroid.systemui: Background concurrent copying GC freed 355345(19MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 17MB/34MB, paused 470us,37us total 115.077ms
+07-13 18:36:28.641   498  1418 D WifiNl80211Manager: Scan result ready event
+07-13 18:36:28.641   498  1418 D WifiNative: Scan result ready event
+07-13 18:36:28.659  1156 14646 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+07-13 18:36:28.667  1156  1892 I ActivityScheduler: nextTriggerTime: 5833603, in 116976ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+07-13 18:36:28.897   498   579 D ActivityManager: freezing 9723 com.google.android.webview:webview_service
+07-13 18:36:29.618   498   579 D ActivityManager: freezing 8831 com.google.process.gservices

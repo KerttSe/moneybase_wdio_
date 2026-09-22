@@ -1,0 +1,207 @@
+--------- beginning of system
+08-17 15:30:00.718   747   764 I keystore2: system/security/keystore2/src/security_level.rs:466 - In create_operation. Success to create IKeystoreOperation. 10577, None
+--------- beginning of main
+08-17 15:30:00.719  3987  4044 D KeystoreService: got cipher for [ACCESS_TOKEN_EXPIRY_DATE] decrypt by attempt 1
+08-17 15:30:00.721  3987  4044 D FS.Core.Shared.LogForwarder.WebApi: [KeystoreService] got cipher for [ACCESS_TOKEN_EXPIRY_DATE] decrypt by attempt 1
+08-17 15:30:00.725   748   748 D android.hardware.security.keymint-service: update: ret 0
+08-17 15:30:00.729   748   748 D android.hardware.security.keymint-service: finish: ret 0
+08-17 15:30:00.733  3987  4044 D CommonStorageManager: AccessToken expiry date: Mon Aug 17 15:37:42 GMT+03:00 2026 - now: Mon Aug 17 15:30:00 GMT+03:00 2026 - IsExpired: false
+08-17 15:30:00.733  3987  4044 D FS.Core.Shared.LogForwarder.WebApi: [CommonStorageManager] AccessToken expiry date: Mon Aug 17 15:37:42 GMT+03:00 2026 - now: Mon Aug 17 15:30:00 GMT+03:00 2026 - IsExpired: false
+08-17 15:30:00.733  3987  6749 D MoneybaseAuthenticator: Auth flow: using valid access token
+08-17 15:30:00.734  3987  6749 D FS.Core.Shared.LogForwarder.WebApi: [MoneybaseAuthenticator] Auth flow: using valid access token
+08-17 15:30:00.739  3987  6749 I NotificationManager: com.moneybase.qa: notify(1138, null, Notification(channel=chucker_transactions shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=AUTO_CANCEL|LOCAL_ONLY color=0xff01579b actions=1 vis=PRIVATE semFlags=0x0 semPriority=0 semMissedCount=0)) as user
+08-17 15:30:00.746  1726  2298 D NetdEventListenerService: CSC Feature value: true
+08-17 15:30:00.746  1726  2298 D NetdEventListenerService: CSC Feature value: true
+08-17 15:30:00.746  1726  2298 D NetdEventListenerService: CSC Feature value: true
+08-17 15:30:00.746  1726  2283 D NetdEventListenerService: DNS Requested by 831, 10577(com.moneybase.qa), SUCCESS, 2ms
+08-17 15:30:00.870  1437  1437 I SurfaceFlinger: RequestedLayer [Sprite#2998] hidden!! flag  from(0) --> to(1)
+08-17 15:30:00.879  1437  1437 D SurfaceFlinger: Display 4633128672291736000 HWC layers:
+08-17 15:30:00.879  1437  1437 D SurfaceFlinger:        DEVICE |           17124034609183 | 00002102 | RGBA_8888    |    0.0    0.0 1080.0 2340.0 |    0    0 1080 2340 | com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_3987#122849 (865)
+08-17 15:30:00.879  1437  1437 D SurfaceFlinger:        DEVICE |           21827023804660 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0 2260.0 |    0   80 1080 2340 | InputMethod$_5082#122921 (19)
+08-17 15:30:00.879  1437  1437 D SurfaceFlinger:        DEVICE |           10123237990043 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0   80.0 |    0    0 1080   80 | StatusBar$_2357#104 (271267)
+08-17 15:30:00.879  1437  1437 D SurfaceFlinger:        DEVICE |           10123237990037 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2214 1080 2340 | NavigationBar0$_2357#102 (282769)
+08-17 15:30:00.879  1437  1437 D SurfaceFlinger: 
+08-17 15:30:00.911  1726  1769 I GestureDetector: handleMessage TAP
+08-17 15:30:00.911  1726  1726 I GestureDetector: handleMessage TAP
+08-17 15:30:00.926  2336  2835 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-17 15:30:00.937  2336  2835 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-17 15:30:00.943  2357  2491 D MobileSignalTransitionManager: updateSignalTransition
+08-17 15:30:00.943  1726  3334 D MotionRecognitionService: inject vibrator info = 0.0
+08-17 15:30:00.945  1330  1330 I SensorsHub: SensorBase::injectSensorData: LSM6DSVTR Accelerometer default injection, type=268435461
+08-17 15:30:00.952  1726  1726 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+08-17 15:30:00.957  2870  2971 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Mobile(bundle=Bundle[mParcelledData.dataSize=256])
+08-17 15:30:00.962  1726  1775 E Watchdog: !@Sync: 22399 heap(MB): 197 / 200 FD: 1369 [2026-08-17 15:30:00.961]
+08-17 15:30:00.972  1726  3183 D ActivityManager: unpendingScheduleServiceRestart: u=10312, drop=false
+08-17 15:30:00.974  1726  3181 W FreecessController: getAllRunningPackagePids: Failed to read pid from /sys/fs/cgroup/apps/uid_10312/pid_4966/cgroup.procs
+08-17 15:30:00.977  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|com.moneybase.qa|1138|null|10577
+08-17 15:30:00.978  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.moneybase.qa|1138|null|10577
+08-17 15:30:00.978  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-17 15:30:00.979  1726  3181 D FreecessController: UFZ : com.samsung.android.game.gamehome(10312) [5649] reason: Binder(1)-android.service.notification.INotificatio
+08-17 15:30:00.980  1726  3186 W LocationManagerService: onFreezeStateChanged, uid[10312]=false
+08-17 15:30:00.984  1726  3186 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10312 , disable= false
+08-17 15:30:00.984  1726  3186 I PowerManagerService: [PWL] can not change uid =  10312
+08-17 15:30:00.984  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.moneybase.qa|1138|null|10577
+08-17 15:30:00.993  5649  5649 W GameLauncher: NotificationListener Ignore non game notification: com.moneybase.qa
+08-17 15:30:00.993  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-17 15:30:00.993  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-17 15:30:00.994  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted com.moneybase.qa: 0|com.moneybase.qa|1138|null|10577: 0
+08-17 15:30:00.994  2870  6282 I HoneySpace.NotificationListener: invalid notification: com.moneybase.qa UserHandle{0}: canShowBadge is false
+08-17 15:30:00.994  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1138
+08-17 15:30:00.994  6020  6488 I NotificationPipeline: Processing new notification: 0|com.moneybase.qa|1138|null|10577
+08-17 15:30:00.995  2870 17871 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. com.moneybase.qa/com.moneybase.views.activities.LoginActivity#UserHandle{0}|78744 : 0
+08-17 15:30:00.995  2870 17871 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. com.moneybase.qa/leakcanary.internal.activity.LeakLauncherActivity#UserHandle{0}|78745 : 0
+08-17 15:30:00.997  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-17 15:30:00.997  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-17 15:30:00.998  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-17 15:30:00.999  6020  6488 I NotificationPipeline: Discarding notification: 0|com.moneybase.qa|1138|null|10577
+08-17 15:30:01.000  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-17 15:30:01.002  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-17 15:30:01.002  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-17 15:30:01.002  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-17 15:30:01.004  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-17 15:30:01.004  2357  2357 I AODNotificationManager: updateNotification() 
+08-17 15:30:01.012  2357  3033 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-17 15:30:01.014  2357  3033 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-17 15:30:01.019  2357  2357 I AppIconSolution: return adaptive icon for com.moneybase.qa, isNight = false
+08-17 15:30:01.029  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-17 15:30:01.038  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-17 15:30:01.038  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-17 15:30:01.038  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-17 15:30:01.038  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-17 15:30:01.039  2357  2357 D S.S.N.  : entryViewBound parent :0|com.moneybase.qa|1138|null|10577
+08-17 15:30:01.042  2357  2357 I AppIconSolution: return adaptive icon for com.moneybase.qa, isNight = false
+08-17 15:30:01.046  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-17 15:30:01.048  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-17 15:30:01.048  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-17 15:30:01.048  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-17 15:30:01.048  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-17 15:30:01.049  2357  2357 I AODNotificationManager: updateNotification() 
+08-17 15:30:01.393  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-17 15:30:01.395  1437  1437 I SurfaceFlinger: SFWD update time=672576251923505
+08-17 15:30:01.397  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-17 15:30:01.397  1437  1437 I LayerHistory: InputMethod$_5082#122921 Max (can't resolve refresh rate)
+08-17 15:30:01.397  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_3987#122849 voted ExplicitCategory with category: HighHint
+08-17 15:30:01.397  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-17 15:30:01.398  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-17 15:30:01.402  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-17 15:30:01.403  1325  1406 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-17 15:30:01.403  1325  1406 I display : Current VRR MODE is 3
+08-17 15:30:01.403  1325  1406 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-17 15:30:01.403  1325  1406 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-17 15:30:01.403  1325  1406 I display : commit modeset : 1080x2340@60phs
+08-17 15:30:01.418  1325  1406 W display : deliverWinConfigData:: commit modeset time (15 ms)
+08-17 15:30:01.420  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-17 15:30:01.420  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-17 15:30:01.420  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-17 15:30:01.420  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-17 15:30:01.420  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-17 15:30:01.420  1325  1397 I display : Set Affinity CPU ID : 0
+08-17 15:30:01.420  1325  1397 I display : Set Affinity CPU ID : 1
+08-17 15:30:01.420  1325  1397 I display : Set Affinity CPU ID : 2
+08-17 15:30:01.420  1325  1397 I display : Set Affinity CPU ID : 3
+08-17 15:30:01.420  1325  1397 I display : Set Affinity CPU ID : 4
+08-17 15:30:01.420  1325  1397 I display : Set Affinity CPU ID : 5
+08-17 15:30:01.420  1325  1397 I display : Set Affinity CPU ID : 6
+08-17 15:30:01.420  1325  1397 I display : Set Affinity CPU ID : 7
+08-17 15:30:01.420  1325  1397 I display : Set affinity HWC : 1325
+08-17 15:30:01.421  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-17 15:30:01.421  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-17 15:30:01.421  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-17 15:30:01.421  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-17 15:30:01.421  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-17 15:30:01.478  3987  4082 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+08-17 15:30:01.532  3931  3968 I appium  : AppiumResponse: {"sessionId":"4286929a-8290-4fca-9106-555197b2921a","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1572)\n"}}
+08-17 15:30:01.573 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-17 15:30:01.631  6761  6761 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-17 15:30:01.643  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-17 15:30:01.645  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-17 15:30:01.645  1726  2752 I ImeTracker: system_server:cc8983cd: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false
+08-17 15:30:01.645  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-17 15:30:01.645  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_3987#122849 voted ExplicitCategory with category: HighHint
+08-17 15:30:01.645  1437  1437 I SurfaceFlinger: Touch Boost [late] - choose 120.00 Hz
+08-17 15:30:01.646  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-17 15:30:01.648  1325  1406 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-17 15:30:01.648  1325  1406 I display : Current VRR MODE is 3
+08-17 15:30:01.648  1325  1406 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-17 15:30:01.648  1325  1406 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-17 15:30:01.648  1325  1406 I display : commit modeset : 1080x2340@120hs
+08-17 15:30:01.656  3987  5575 D CardDepositFragment: show animation loading fragment
+08-17 15:30:01.657  3987  5575 D FS.Core.Shared.LogForwarder.WebApi: [CardDepositFragment] show animation loading fragment
+08-17 15:30:01.661  3987  3987 I Dialog  : mIsDeviceDefault = false, mIsSamsungBasicInteraction = false, isMetaDataInActivity = false
+08-17 15:30:01.661  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786969801
+08-17 15:30:01.661  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 15:30:01.661  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 15:30:01.661  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782830
+08-17 15:30:01.661  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782809
+08-17 15:30:01.662  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 15:30:01.662  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 15:30:01.662  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 15:30:01.662  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 15:30:01.662  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 15:30:01.665  3931  3968 I appium  : channel read: POST /session/4286929a-8290-4fca-9106-555197b2921a/element
+08-17 15:30:01.668  3931  3968 I appium  : FindElement command
+08-17 15:30:01.669  1325  1406 W display : deliverWinConfigData:: commit modeset time (20 ms)
+08-17 15:30:01.669  3987  3987 I DecorView: setWindowBackground: isPopOver=false color=0 d=android.graphics.drawable.ColorDrawable@de6db22
+08-17 15:30:01.670  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-17 15:30:01.670  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-17 15:30:01.670  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-17 15:30:01.670  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-17 15:30:01.670  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-17 15:30:01.670  1325  1397 I display : Set Affinity CPU ID : 0
+08-17 15:30:01.670  1325  1397 I display : Set Affinity CPU ID : 1
+08-17 15:30:01.670  1325  1397 I display : Set Affinity CPU ID : 2
+08-17 15:30:01.670  1325  1397 I display : Set Affinity CPU ID : 3
+08-17 15:30:01.670  1325  1397 I display : Set Affinity CPU ID : 4
+08-17 15:30:01.670  1325  1397 I display : Set Affinity CPU ID : 5
+08-17 15:30:01.670  1325  1397 I display : Set Affinity CPU ID : 6
+08-17 15:30:01.670  1325  1397 I display : Set Affinity CPU ID : 7
+08-17 15:30:01.670  1325  1397 I display : Set affinity HWC : 1325
+08-17 15:30:01.670  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-17 15:30:01.670  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-17 15:30:01.670  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-17 15:30:01.670  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-17 15:30:01.672  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-17 15:30:01.672  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-17 15:30:01.672  3931  3968 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("Not Now")'
+08-17 15:30:01.673  3931  3968 I appium  : Waiting up to 10000ms for the device to idle
+08-17 15:30:01.681  3987  3987 I WindowManager: WindowManagerGlobal#addView, ty=2, view=com.android.internal.policy.DecorView{abc0007 V.E...... R.....I. 0,0-0,0}[DashboardActivity], caller=android.view.WindowManagerImpl.addView:158 android.app.Dialog.show:540 androidx.fragment.app.DialogFragment.onStart:988 
+08-17 15:30:01.682  3987  3987 D ViewRootImpl: desktopMode is false
+08-17 15:30:01.683  3987  3987 I ViewRootImpl: dVRR is disabled
+08-17 15:30:01.684  3987  4180 D NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
+08-17 15:30:01.690 17645 17645 I adbd    : adbd service requested 'shell,v2:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''
+08-17 15:30:01.692  1726  2439 D InputTransport: Input channel constructed: 'd31cda8', fd=1145
+08-17 15:30:01.692  1726  2439 D InputTransport: Input channel constructed: 'd31cda8', fd=1148
+08-17 15:30:01.692  1726  2439 D InputTransport: Input channel constructed: 'd31cda8', fd=1160
+08-17 15:30:01.692  1726  2439 D InputTransport: Input channel destroyed: 'd31cda8', fd=1148
+08-17 15:30:01.694  1437  1463 I SurfaceFlinger: id=122923 createSurf, flag=84004, d31cda8 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#122923
+08-17 15:30:01.698  1726  2439 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-17 15:30:01.701  1726  2439 D WindowManager: Changing focus from Window{b84e222 u0 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity} to Window{d31cda8 u0 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity} displayId=0 Callers=com.android.server.wm.WindowManagerService.addWindowInner:565 com.android.server.wm.WindowManagerService.addWindow:1842 com.android.server.wm.Session.addToDisplayAsUser:24 android.view.IWindowSession$Stub.onTransact:757 
+08-17 15:30:01.702  1726  2439 I WindowManager: Cancelling animation restarting=true, leash=Surface(name=Surface(name=d8d51f0 StatusBar)/@0x40e61b0 - animation-leash of insets_animation)/@0x6fa3714
+08-17 15:30:01.702  1726  2439 I WindowManager: Reparenting to original parent: Surface(name=WindowToken{4042d6d type=2000 android.os.BinderProxy@8288b97})/@0x7dc794f, destroy=false, surface=Surface(name=d8d51f0 StatusBar)/@0x40e61b0
+08-17 15:30:01.702  1726  2439 I WindowManager: Reparenting to leash, surface=Surface(name=d8d51f0 StatusBar)/@0x40e61b0, leashParent=Surface(name=WindowToken{4042d6d type=2000 android.os.BinderProxy@8288b97})/@0x7dc794f
+08-17 15:30:01.703  1437  1463 I SurfaceFlinger: id=122924 createSurf, flag=24000, Surface(name=d8d51f0 StatusBar)/@0x40e61b0 - animation-leash of insets_animation#122924
+08-17 15:30:01.708  1726  2439 D WindowManager: makeSurface duration=5 leash=Surface(name=Surface(name=d8d51f0 StatusBar)/@0x40e61b0 - animation-leash of insets_animation)/@0x949efa7
+08-17 15:30:01.709  1726  2439 D InsetsSourceProvider: updateControlForTarget: control=InsetsSourceControl: {be0b0000 mType=statusBars initiallyVisible mSurfacePosition=Point(0, 0) mInsetsHint=Insets{left=0, top=80, right=0, bottom=0}}, target=Window{d31cda8 u0 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity}, from=com.android.server.wm.InsetsStateController.onControlTargetChanged:83 com.android.server.wm.InsetsPolicy.updateBarControlTarget:212 com.android.server.wm.DisplayPolicy.updateSystemBarAttributes:262 com.android.server.wm.WindowManagerService.updateFocusedWindowLocked:372 com.android.server.wm.WindowManagerService.addWindowInner:565 
+08-17 15:30:01.709  1726  2439 D WindowManager: updateSystemBarAttributes: displayId=0, focusedCanBeNavColorWin=false, win=Window{d31cda8 u0 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity}, navColorWin=Window{920da56 u0 InputMethod}, caller=com.android.server.wm.WindowManagerService.updateFocusedWindowLocked:372 com.android.server.wm.WindowManagerService.addWindowInner:565 com.android.server.wm.WindowManagerService.addWindow:1842 
+08-17 15:30:01.710  1726  2439 D WindowManager: updateSystemBarAttributes, bhv=1, apr=16, statusBarAprRegions=[AppearanceRegion{LIGHT_STATUS_BARS bounds=[0,0][1080,2340]}], requestedVisibilities=-9
+08-17 15:30:01.710  1726  2439 V SystemKeyManager: updateFocusedWindow() is called, com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity
+08-17 15:30:01.710  1726  2439 I SystemKeyManager: requested systemKeyInfo size=2 focusedWindow=com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity
+08-17 15:30:01.710  1437  1559 I VSyncReactor: Current= 120, Period= 120, hwcPeriod= 120
+08-17 15:30:01.711  1726  2439 D InputTransport: Input channel destroyed: 'd31cda8', fd=1160
+08-17 15:30:01.712  2357  2357 D NavigationBar: onSystemBarAttributesChanged() -  displayId:0, appearance:16, packageName: com.moneybase.qa (APPEARANCE_LIGHT_NAVIGATION_BARS ), navbarColorManagedByIme:true
+08-17 15:30:01.712  3987  3987 D InputTransport: Input channel constructed: 'd31cda8', fd=359
+08-17 15:30:01.714  3987  3987 I InsetsController: onStateChanged: host=com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity, from=android.view.ViewRootImpl.onInsetsStateChanged:3026, state=InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2340), mDisplayCutout=DisplayCutout{insets=Rect(0, 80 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(511, 0 - 569, 80), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2340 physicalDisplayWidth=1080 physicalDisplayHeight=2340 density={2.8125} cutoutSpec={M 0,0 M 0,7.822222222222222‬‬ a 10.31111111111111‬,10.31111111111111‬ 0 1,0 0,20.62222222222222‬ a 10.31111111111111‬,10.31111111111111‬ 0 1,0 0,-20.62222222222222‬ Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}} sideOverrides={}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=105, center=Point(105, 105)}, RoundedCorner{position=TopRight, radius=105, center=Point(975, 105)}, RoundedCorner{position=BottomRight, radius=105, center=Point(975, 2235)}, RoundedCorner{position=BottomLeft, radius=105, center=Point(105, 2235)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2340), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 80) rotation=0}, mDisplayShape=DisplayShape{ spec=-311912193 displayWidth=1080 displayHeight=2340 physicalPixelDisplaySizeRatio=1.0 rotation=0 offsetX=0 offsetY=0 scale=1.0}, mSources= { InsetsSource: {be0b0000 mType=statusBars mFrame=[0,0][1080,80] mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {be0b0005 mType=mandatorySystemGestures mFrame=[0,0][1080,112] mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {be0b0006 mType=tappableElement mFrame=[0,0][1080,80] mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {c8f80001 mType=navigationBars mFrame=[0,2214][1080,2340] mVisible=true mFlags= mSideHint=BOTTOM mBoundingRects=null}, InsetsSource: {c8f80004 mType=systemGestures mFrame=[0,0][0,0] mVisible=true mFlags= mSideHint=NONE mBoundingRects=null}, InsetsSource: {c8f80005 mType=mandatorySystemGestures mFrame=[0,2214][1080,2340] mVisible=true mFlags= mSideHint=BOTTOM mBoundingRects=null}, InsetsSource: {c8f80006 mType=tappableElement mFrame=[0,2214][1080,2340] mVisible=true mFlags= mSideHint=BOTTOM mBoundingRects=null}, InsetsSource: {c8f80024 mType=systemGestures mFrame=[0,0][0,0] mVisible=true mFlags= mSideHint=NONE mBoundingRects=null}, InsetsSource: {3 mType=ime mFrame=[0,1349][1080,2340] mVisible=true mFlags= mSideHint=BOTTOM mBoundingRects=null}, InsetsSource: {27 mType=displayCutout mFrame=[0,0][1080,80] mVisible=true mFlags= mSideHint=TOP mBoundingRects=null} }
+08-17 15:30:01.715  3987  3987 I VRI[DashboardActivity]@6785534: synced displayState. AttachInfo displayState=2
+08-17 15:30:01.716  1726  1771 D SurfaceComposerClient: setCornerRadius ## b84e222 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#122848 cornerRadius=0.000000
+08-17 15:30:01.719  1437  1437 I SurfaceFlinger: RequestedLayer [d31cda8 com.moneybase.qa/com.moneyba[...]s.dashboard.DashboardActivity#122923] hidden!! flag  from(1) --> to(0)
+08-17 15:30:01.719  1437  1437 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{ImeContainer#15 parentId=122847 relativeParentId=122923 z=1} 1 children}] RelativeParent to LayerHierarchy{RequestedLayerState{d31cda8 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#122923 parentId=122847 z=1} 1 children}
+08-17 15:30:01.719  1437  1437 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{d8d51f0 StatusBar#97 parentId=122924} 1 children}] reparent to LayerHierarchy{RequestedLayerState{Surface(name=d8d51f0 StatusBar)/@0x40e61b0 - animation-leash of insets_animation#122924 parentId=96} 1 children}
+08-17 15:30:01.719  1437  1437 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{Surface(name=d8d51f0 StatusBar)/@0x40e61b0 - animation-leash of insets_animation#122919} no children}] reparent to OffscreenRoot
+08-17 15:30:01.719  1437  1437 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{Surface(name=d8d51f0 StatusBar)/@0x40e61b0 - animation-leash of insets_animation#122919} no children}] RelativeParent to null
+08-17 15:30:01.719  1437  1437 I SurfaceFlinger: [d31cda8 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#122923] attach to parent LayerHierarchy{RequestedLayerState{ActivityRecord{8718709 u0 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity t8211}#122847 parentId=122769} 4 children}
+08-17 15:30:01.719  1437  1437 I SurfaceFlinger: [Surface(name=d8d51f0 StatusBar)/@0x40e61b0 - animation-leash of insets_animation#122924] attach to parent LayerHierarchy{RequestedLayerState{WindowToken{4042d6d type=2000 android.os.BinderProxy@8288b97}#96 parentId=17} 1 children}
+08-17 15:30:01.722  1726  1771 D SurfaceComposerClient: setCornerRadius ## b84e222 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#122848 cornerRadius=0.000000
+08-17 15:30:01.729  1726  1771 D SurfaceComposerClient: setCornerRadius ## b84e222 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#122848 cornerRadius=0.000000
+08-17 15:30:01.730  1726  1771 D SurfaceComposerClient: setCornerRadius ## b84e222 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#122848 cornerRadius=0.000000
+08-17 15:30:01.736  1726  1772 I ImeTracker: system_server:f8598898: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false
+08-17 15:30:01.739  3987  3987 I VRI[DashboardActivity]@6785534: setView = com.android.internal.policy.DecorView@abc0007 IsHRR=false mFlingFrameRateChange=0 TM=true

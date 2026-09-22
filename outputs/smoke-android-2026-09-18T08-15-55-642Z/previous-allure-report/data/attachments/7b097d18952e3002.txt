@@ -1,0 +1,202 @@
+--------- beginning of main
+08-10 15:29:31.008 17437 17481 I appium  : Found zero matches
+08-10 15:29:31.016 17437 17481 I appium  : AppiumResponse: {"sessionId":"165cee34-f004-4b96-8700-ece6b333a6c4","value":[]}
+08-10 15:29:31.044 17437 17481 I appium  : channel read: POST /session/165cee34-f004-4b96-8700-ece6b333a6c4/elements
+08-10 15:29:31.047 17437 17481 I appium  : FindElements command
+08-10 15:29:31.051 17437 17481 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:29:31.052 17437 17481 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:29:31.086 17437 17481 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:29:31.087 17437 17481 I appium  : Matched 0 elements including possible duplicates
+08-10 15:29:31.087 17437 17481 I appium  : 0 element(s) left after deduplication
+08-10 15:29:31.087 17437 17481 I appium  : Found zero matches
+08-10 15:29:31.095 17437 17481 I appium  : AppiumResponse: {"sessionId":"165cee34-f004-4b96-8700-ece6b333a6c4","value":[]}
+08-10 15:29:31.118 17437 17481 I appium  : channel read: POST /session/165cee34-f004-4b96-8700-ece6b333a6c4/elements
+08-10 15:29:31.119 17437 17481 I appium  : FindElements command
+08-10 15:29:31.121 17437 17481 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:29:31.121 17437 17481 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:29:31.148 17437 17481 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:29:31.148 17437 17481 I appium  : Matched 0 elements including possible duplicates
+08-10 15:29:31.149 17437 17481 I appium  : 0 element(s) left after deduplication
+08-10 15:29:31.149 17437 17481 I appium  : Found zero matches
+08-10 15:29:31.151 17437 17481 I appium  : AppiumResponse: {"sessionId":"165cee34-f004-4b96-8700-ece6b333a6c4","value":[]}
+08-10 15:29:31.180 27195 27195 D OpenVPNService: Updating notification with speed data: OpenVPN: Connected
+--------- beginning of system
+08-10 15:29:31.184 27195 27195 I NotificationManager: net.openvpn.openvpn: notify(1642, null, Notification(channel=openvpn_notification_id shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|ONLY_ALERT_ONCE color=0x00000000 actions=2 vis=PUBLIC semFlags=0x0 semPriority=0 semMissedCount=0)) as user
+08-10 15:29:31.189 17437 17481 I appium  : channel read: POST /session/165cee34-f004-4b96-8700-ece6b333a6c4/elements
+08-10 15:29:31.190 17437 17481 I appium  : FindElements command
+08-10 15:29:31.192 17437 17481 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:29:31.192 17437 17481 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:29:31.199 27195 27195 D OpenvpnNotificationService: Notification shown: 1642
+08-10 15:29:31.206  2357  2483 D SecFgsManagerController: onForegroundStateChanged: [dialog:false]:[isForeground:true]:[packageName:net.openvpn.openvpn]:[token:android.os.BinderProxy@f4524ab]:[userId:0]
+08-10 15:29:31.207 27195 27195 D OpenvpnNotificationService: Foreground service started/updated: 1642
+08-10 15:29:31.221 17437 17481 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:29:31.222 17437 17481 I appium  : Matched 0 elements including possible duplicates
+08-10 15:29:31.222 17437 17481 I appium  : 0 element(s) left after deduplication
+08-10 15:29:31.222 17437 17481 I appium  : Found zero matches
+08-10 15:29:31.224  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786364971
+08-10 15:29:31.224  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-10 15:29:31.225 17437 17481 I appium  : AppiumResponse: {"sessionId":"165cee34-f004-4b96-8700-ece6b333a6c4","value":[]}
+08-10 15:29:31.225  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-10 15:29:31.225  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29772749
+08-10 15:29:31.225  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29772721
+08-10 15:29:31.225  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-10 15:29:31.225  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-10 15:29:31.226  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-10 15:29:31.226  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-10 15:29:31.226  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-10 15:29:31.252  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-10 15:29:31.260  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 72812, isSameBssidAndFreq true
+08-10 15:29:31.263  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786364971263 lastDateWindow=1786275667000
+08-10 15:29:31.288 17437 17481 I appium  : channel read: POST /session/165cee34-f004-4b96-8700-ece6b333a6c4/elements
+08-10 15:29:31.290 17437 17481 I appium  : FindElements command
+08-10 15:29:31.293 17437 17481 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:29:31.294 17437 17481 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:29:31.408 17437 17481 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:29:31.408 17437 17481 I appium  : Matched 0 elements including possible duplicates
+08-10 15:29:31.408 17437 17481 I appium  : 0 element(s) left after deduplication
+08-10 15:29:31.408 17437 17481 I appium  : Found zero matches
+08-10 15:29:31.414 17437 17481 I appium  : AppiumResponse: {"sessionId":"165cee34-f004-4b96-8700-ece6b333a6c4","value":[]}
+08-10 15:29:31.419  1726  1726 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+08-10 15:29:31.434  1726  1726 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+08-10 15:29:31.445 17437 17481 I appium  : channel read: POST /session/165cee34-f004-4b96-8700-ece6b333a6c4/elements
+08-10 15:29:31.448 17437 17481 I appium  : FindElements command
+08-10 15:29:31.452 17437 17481 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:29:31.453 17437 17481 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:29:31.457  1726  3183 D ActivityManager: unpendingScheduleServiceRestart: u=10312, drop=false
+08-10 15:29:31.462  1726  3181 W FreecessController: getAllRunningPackagePids: Failed to read pid from /sys/fs/cgroup/apps/uid_10312/pid_4966/cgroup.procs
+08-10 15:29:31.467  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.467  1726  3181 D FreecessController: UFZ : com.samsung.android.game.gamehome(10312) [5649] reason: Binder(1)-android.service.notification.INotificatio
+08-10 15:29:31.469  1726  3186 W LocationManagerService: onFreezeStateChanged, uid[10312]=false
+08-10 15:29:31.471  1726  3186 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10312 , disable= false
+08-10 15:29:31.471  1726  3186 I PowerManagerService: [PWL] can not change uid =  10312
+08-10 15:29:31.473  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.474  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-10 15:29:31.476  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-10 15:29:31.484  6020  6488 I NotificationPipeline: Processing new notification: 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.485  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-10 15:29:31.485  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-10 15:29:31.486  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-10 15:29:31.486  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-10 15:29:31.486  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1642
+08-10 15:29:31.487  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted net.openvpn.openvpn: 0|net.openvpn.openvpn|1642|null|10466: 0
+08-10 15:29:31.488  2870  6282 I HoneySpace.NotificationListener: invalid notification: net.openvpn.openvpn UserHandle{0}: canShowBadge is false
+08-10 15:29:31.490  2870 13340 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. net.openvpn.openvpn/net.openvpn.unified.MainActivity#UserHandle{0}|33979 : 0
+08-10 15:29:31.491  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted net.openvpn.openvpn: 0|net.openvpn.openvpn|1642|null|10466: 0
+08-10 15:29:31.491  2870  6282 I HoneySpace.NotificationListener: invalid notification: net.openvpn.openvpn UserHandle{0}: canShowBadge is false
+08-10 15:29:31.495  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-10 15:29:31.496  6020  6488 I NotificationPipeline: Discarding notification: 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.496  2870 17202 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. net.openvpn.openvpn/net.openvpn.unified.MainActivity#UserHandle{0}|33979 : 0
+08-10 15:29:31.498  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-10 15:29:31.498 17437 17481 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:29:31.498  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.499 17437 17481 I appium  : Matched 0 elements including possible duplicates
+08-10 15:29:31.499 17437 17481 I appium  : 0 element(s) left after deduplication
+08-10 15:29:31.499 17437 17481 I appium  : Found zero matches
+08-10 15:29:31.499  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1642
+08-10 15:29:31.502  6020  6488 I NotificationPipeline: Processing new notification: 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.503  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-10 15:29:31.504  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-10 15:29:31.504 17437 17481 I appium  : AppiumResponse: {"sessionId":"165cee34-f004-4b96-8700-ece6b333a6c4","value":[]}
+08-10 15:29:31.511  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-10 15:29:31.511  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-10 15:29:31.512  6020  6488 I NotificationPipeline: Discarding notification: 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.516  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.520  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.520  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-10 15:29:31.521 17437 17481 I appium  : channel read: POST /session/165cee34-f004-4b96-8700-ece6b333a6c4/elements
+08-10 15:29:31.521 17437 17481 I appium  : FindElements command
+08-10 15:29:31.523 17437 17481 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:29:31.523 17437 17481 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:29:31.526  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.532  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-10 15:29:31.537  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-10 15:29:31.537  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.538  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.541  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-10 15:29:31.541  2357  2357 I AODNotificationManager: updateNotification() 
+08-10 15:29:31.542 17437 17481 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:29:31.542 17437 17481 I appium  : Matched 0 elements including possible duplicates
+08-10 15:29:31.542 17437 17481 I appium  : 0 element(s) left after deduplication
+08-10 15:29:31.542 17437 17481 I appium  : Found zero matches
+08-10 15:29:31.544 17437 17481 I appium  : AppiumResponse: {"sessionId":"165cee34-f004-4b96-8700-ece6b333a6c4","value":[]}
+08-10 15:29:31.573  2357  2357 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+08-10 15:29:31.582 17437 17481 I appium  : channel read: POST /session/165cee34-f004-4b96-8700-ece6b333a6c4/elements
+08-10 15:29:31.583 17437 17481 I appium  : FindElements command
+08-10 15:29:31.584 17437 17481 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:29:31.585 17437 17481 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:29:31.600  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-10 15:29:31.604  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.604  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.604  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.604  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.606  2357  2357 D S.S.N.  : entryViewBound parent :0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.610  2357  2357 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+08-10 15:29:31.617  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-10 15:29:31.621  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-10 15:29:31.621  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.621  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-10 15:29:31.622  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-10 15:29:31.622  2357  2357 I AODNotificationManager: updateNotification() 
+08-10 15:29:31.630 17437 17481 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:29:31.630 17437 17481 I appium  : Matched 0 elements including possible duplicates
+08-10 15:29:31.630 17437 17481 I appium  : 0 element(s) left after deduplication
+08-10 15:29:31.630 17437 17481 I appium  : Found zero matches
+08-10 15:29:31.631 17437 17481 I appium  : AppiumResponse: {"sessionId":"165cee34-f004-4b96-8700-ece6b333a6c4","value":[]}
+08-10 15:29:31.684 17437 17481 I appium  : channel read: POST /session/165cee34-f004-4b96-8700-ece6b333a6c4/elements
+08-10 15:29:31.685 17437 17481 I appium  : FindElements command
+08-10 15:29:31.687 17437 17481 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textMatches("^(Match|Close Match|No Match|Unavailable)$")'
+08-10 15:29:31.687 17437 17481 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:29:31.721 17437 17481 I appium  : Matched 0 elements using selector UiSelector[TEXT_REGEX=^(Match|Close Match|No Match|Unavailable)$]
+08-10 15:29:31.721 17437 17481 I appium  : Matched 0 elements including possible duplicates
+08-10 15:29:31.721 17437 17481 I appium  : 0 element(s) left after deduplication
+08-10 15:29:31.721 17437 17481 I appium  : Found zero matches
+08-10 15:29:31.724 17437 17481 I appium  : AppiumResponse: {"sessionId":"165cee34-f004-4b96-8700-ece6b333a6c4","value":[]}
+08-10 15:29:31.798 17437 17481 I appium  : channel read: GET /session/165cee34-f004-4b96-8700-ece6b333a6c4/screenshot
+08-10 15:29:31.801 17437 17481 I appium  : CaptureScreenshot command
+08-10 15:29:31.956 19586 19586 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-10 15:29:31.957 19586 19586 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-10 15:29:31.959 19586 19586 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-10 15:29:31.959  1726  2480 I EDMNativeHelperService: isScreenCaptureEnabled
+08-10 15:29:31.959  1726  2480 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-10 15:29:31.960 19586 19586 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-10 15:29:31.960 19586 19586 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-10 15:29:31.963  1437  1464 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_17505#60675(seamlessTransition:0)
+08-10 15:29:31.963  1437  1464 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_17505#60717(seamlessTransition:0)
+08-10 15:29:31.963  1437  1464 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-10 15:29:31.963  1437  1464 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-10 15:29:31.964  1437  1464 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-10 15:29:31.966  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-10 15:29:31.966  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_17505#60675 at index 1
+08-10 15:29:31.966  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_17505#60717 at index 2
+08-10 15:29:31.966  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 3
+08-10 15:29:31.966  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 4
+08-10 15:29:31.997 19586 19589 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-10 15:29:32.045  2648  3296 I ScanController: onScanResult to scannerId: 2- eventType=0x1a, addressType=1, address=XX:XX:XX:XX:D9:36, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-70, periodicAdvInt=0x0
+08-10 15:29:32.048 21983 26635 I EasySetup[11.1.23.4] : IcControlService.isFoldDeviceFolded() - isFoldDevice: false, isNotFolded: false
+08-10 15:29:32.048 21983 26635 I Peripheral_SmartThingsManager[1.2.95]: parseBlePacketserviceId : 9
+08-10 15:29:32.048 21983 26635 E Peripheral_OCFTvUtil[1.2.95]: not supported version
+08-10 15:29:32.048 21983 26635 E Peripheral_OCFTVManager[1.2.95]: isOCFTVDevice is null
+08-10 15:29:32.049 21983 26635 E IC_DeviceManager[1.2.95]: isValidScanResult(), packet is not valid
+08-10 15:29:32.049 21983 26635 E IC_DeviceManager[1.2.95]: 1. ADV_IDX_PACKET_VER(2): 2 / 2. ADV_IDX_PACKET_SVC_ID(9): 9 / 3. ADV_IDX_PACKET_SS_DISCOVERY(1): 1 / 4. ADV_IDX_PACKET_ASSOCIATED_SVC_ID(2): 2 / 5. MASK_PACKET_FEATURES_SVC_DATA(16): 16 / 6. MASK_PACKET_FEATURES_DEVICE(4): 4 / 7. ADV_IDX_PACKET_IC_VER(1): 1 / 8. MASK_DEVICE_EXTRA_SUPPORT_ACCOUNT_HASH(4): 4
+08-10 15:29:32.049 21983 26635 W IC_Service[1.2.95]: recieved scanResult packet is not valid
+08-10 15:29:32.190 17437 17481 I appium  : AppiumResponse: {"sessionId":"165cee34-f004-4b96-8700-ece6b333a6c4","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15cFzXfS/4b++N3oBGY993gCQILiABUqJISpQsxYpkW55YtmxF40WSo3H5TeWNs7x6zst7k5pUKqlKvVTGY/s5thVFka1YlkRZsiWLIrWRALhgIQgSK7HvjaXR+3bnDxBNXnQ3FqKB7gt…
+08-10 15:29:32.217 17437 17481 I appium  : channel read: GET /session/165cee34-f004-4b96-8700-ece6b333a6c4/source
+08-10 15:29:32.218 17437 17481 I appium  : Source command
+08-10 15:29:32.219 17437 17481 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:29:32.224  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786364972
+08-10 15:29:32.225  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-10 15:29:32.225  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-10 15:29:32.225  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29772749
+08-10 15:29:32.225  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29772721
+08-10 15:29:32.225  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-10 15:29:32.225  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-10 15:29:32.225  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-10 15:29:32.225  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-10 15:29:32.225  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-10 15:29:32.299 17437 17481 I appium  : AppiumResponse: {"sessionId":"165cee34-f004-4b96-8700-ece6b333a6c4","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-10 15:29:32.347  7530  7530 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-10 15:29:32.376 27195 27217 D LogsManager: No need to flush logs
+08-10 15:29:32.405 19590 19590 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-10 15:29:32.454  7530  7530 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-10 15:29:32.509 19593 19593 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-10 15:29:32.559  7530  7530 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

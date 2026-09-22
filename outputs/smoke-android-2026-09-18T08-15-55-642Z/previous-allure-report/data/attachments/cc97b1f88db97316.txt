@@ -1,0 +1,209 @@
+--------- beginning of main
+08-11 17:51:11.193  8910  9009 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:51:11.244  1726  2226 I SemWifiServiceDetector: Service det. suspended: T / T / 8260
+08-11 17:51:11.348  8910  9009 I appium  : Matched 0 elements using selector UiSelector[CONTAINS_TEXT=flag-EUR EUR, CLASS=android.view.View]
+08-11 17:51:11.348  8910  9009 I appium  : Matched 0 elements including possible duplicates
+08-11 17:51:11.348  8910  9009 I appium  : 0 element(s) left after deduplication
+08-11 17:51:11.348  8910  9009 I appium  : Found zero matches
+08-11 17:51:11.352  8910  9009 I appium  : AppiumResponse: {"sessionId":"b82614ad-4de2-4a97-8ae8-895dea0eb10b","value":[]}
+08-11 17:51:11.371  8910  9009 I appium  : channel read: POST /session/b82614ad-4de2-4a97-8ae8-895dea0eb10b/elements
+08-11 17:51:11.373  8910  9009 I appium  : FindElements command
+08-11 17:51:11.375  8910  9009 I appium  : method: '-android uiautomator', selector: 'new UiSelector().className("android.view.View").textContains("flag-EUR EUR")'
+08-11 17:51:11.375  8910  9009 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:51:11.391 10727 10745 V CpEventLog(u0): [P] cp_state: [                 contacts = {contacts=1544, raw_contacts=5263, data=23965, account={secphone(1)=0, google(2)=213, sim(3)=0, sim2(4)=42, agg(5)=0, samsung(6)=0, google(11)=0, google(13)=320, google(15)=1017, google(17)=0, com.microsoft.msa.ltw(19)=0, duo(21)=306, com.microsoft.workaccount.ltw(29)=0, google(38)=0, com.microsoft.workaccount.ltw(42)=0, com.microsoft.workaccount.ltw(44)=0, whatsapp(47)=793, viber(48)=0, telegram(49)=1033, mobileservice(59)=0, viber(64)=1539}, trash=0, trash_acc={}, trash_sync=0, database=contacts2.db} ]
+08-11 17:51:11.391 10727 10745 V CpEventLog(u0): [P] cp_state: [               aggregated = {[13,13,49,47,64]=1, [13,13,49,49,47,47,64]=1, [13,13,49,49,49,47,47,64]=1, [13,15,47,21,64]=1, [13,15,49,47,64]=2, [13,15,49,49,47,47,64]=1, [13,15,49,49,49,47,21,64]=1, [13,21,64]=16, [13,47,21,49,64]=1, [13,47,21,64]=16, [13,47,49,21,64]=1, [13,47,49,64]=3, [13,47,64]=22, [13,49,21,64,47]=1, [13,49,21,64]=12, [13,49,47,21,64]=33, [13,49,47,64,21]=2, [13,49,47,64]=97, [13,49,49,47,64]=1, [13,49,49,64]=1, [13,49,64,21]=1, [13,49,64]=33, [13,64,21]=1, [13,64]=54, [13]=2, [15,13,49,47,49,64]=1, [15,15,15,15,15,15,4,64]=1, [15,15,4,49,49,49,49,64,47]=1, [15,15,47,47,64]=1, [15,15,49,21,64]=1, [15,15,49,47,64]=3, [15,15,49,49,47,47,21,64]=1, [15,2,49,49,47,47,64]=1, [15,21,64]=31, [15,21]=1, [15,4,49,64]=1, [15,4,64]=1, [15,47,21,49,64]=1, [15,47,21,64]=33, [15,47,49,21,64]=1, [15,47,49,49,64]=1, [15,47,49,64]=16, [15,47,64,21]=1, [15,47,64]=77, [15,49,21,64]=25, [15,49,47,21,64]=69, [15,49,47,64,21]=1, [15,49,47,64]=267, [15,49,49,47,64]=2, [15,49,49,64]=2, [15,49,64,21]=1, [15,49,64]=106, [15,64,21]=1, [15,64]=342, [2,13,15,47,21,64]=1, [2,13,15,49,47,64]=1, [2,13,47,21,64]=1, [2,13,49,47,47,64]=1, [2,13,49,47,64]=1, [2,13,49,49,47,21,64]=1, [2,13,49,49,49,64,21]=1, [2,13,49,49,64]=1, [2,15,15,49,47,47,64]=1, [2,15,15,49,49,49,64]=1, [2,15,21,64]=1, [2,15,49,21,64]=1, [2,15,49,47,64]=1, [2,2,15,49,47,64]=1, [2,2,47,64]=1, [2,2,49,47,21,64]=1, [2,21,64]=6, [2,21]=1, [2,4,47,21,64]=1, [2,47,21,49,64]=1, [2,47,21,64]=8, [2,47,49,21,64]=2, [2,47,49,64]=4, [2,47,64,21]=1, [2,47,64]=29, [2,49,21,64]=3, [2,49,47,21,64]=16, [2,49,47,64]=35, [2,49,64,21]=1, [2,49,64]=21, [2,64]=62, [2]=1, [4,21,47,64]=1, [4,21,64]=1, [4,47,64]=3, [4,49,21,64]=1, [4,49,47,21,64]=2, [4,49,47,64,21]=1, [4,49,47,64]=5, [4,49,64]=3, [4,64]=20, [47,13,64]=1, [47,2,64]=1, [49,13,47,64]=1, [49,13,64]=1, [49,49]=2, [49]=201} ]
+08-11 17:51:11.391 10727 10745 V CpEventLog(u0): [P] cp_state: [                  request = {ALL(0)={avg=39, cnt=5, dur=199, ops={query=5}}, viber(10633)={avg=39, cnt=5, dur=199, ops={query=5}}} ]
+08-11 17:51:11.391 10727 10745 V CpEventLog(u0): [P] cp_state: [                    calls = {types={[100]=568, [1000]=1425, [1150]=7}, database=calllog.db} ]
+08-11 17:51:11.391 10727 10745 V CpEventLog(u0): [P] cp_state: [                  profile = {contacts=0, raw_contacts=0, data=0, account={secphone(1)=0, google(2)=0, sim(3)=0, sim2(4)=0, agg(5)=0, samsung(6)=0, google(10)=0, google(11)=0, google(12)=0, google(13)=0, com.microsoft.msa.ltw(14)=0, duo(15)=0, com.microsoft.workaccount.ltw(19)=0, google(23)=0, com.microsoft.workaccount.ltw(25)=0, com.microsoft.workaccount.ltw(26)=0, whatsapp(27)=0, viber(28)=0, telegram(29)=0, mobileservice(33)=0}, trash=0, trash_acc={}, trash_sync=0, database=profile.db} ]
+08-11 17:51:11.391 10727 10745 V CpEventLog(u0): [P] cp_state: [               sa_profile = {contacts=1, raw_contacts=1, data=2, account={secphone(1)=1, google(2)=0, sim(3)=0, sim2(4)=0, agg(5)=0, samsung(6)=0, google(10)=0, google(11)=0, google(12)=0, google(13)=0, com.microsoft.msa.ltw(14)=0, duo(15)=0, com.microsoft.workaccount.ltw(19)=0, google(23)=0, com.microsoft.workaccount.ltw(25)=0, com.microsoft.workaccount.ltw(26)=0, whatsapp(27)=0, viber(28)=0, telegram(29)=0, mobileservice(33)=0}, trash=0, trash_acc={}, trash_sync=0, database=profile_sa.db} ]
+08-11 17:51:11.391 10727 10745 V CpEventLog(u0): [P] cp_state: [                      etc = {binders=0, country_iso=UA, version=15.6.28, db_version=2000, db_size=18, db_wal_size=2, csc=/, sec_enabled=false, is_roaming=false} ]
+08-11 17:51:11.391 10727 10745 V CpEventLog(u0): [P] cp_state: ------------------------------------------------------------------------------
+08-11 17:51:11.491  8910  9009 I appium  : Matched 0 elements using selector UiSelector[CONTAINS_TEXT=flag-EUR EUR, CLASS=android.view.View]
+08-11 17:51:11.492  8910  9009 I appium  : Matched 0 elements including possible duplicates
+08-11 17:51:11.493  8910  9009 I appium  : 0 element(s) left after deduplication
+08-11 17:51:11.493  8910  9009 I appium  : Found zero matches
+08-11 17:51:11.497  8910  9009 I appium  : AppiumResponse: {"sessionId":"b82614ad-4de2-4a97-8ae8-895dea0eb10b","value":[]}
+08-11 17:51:11.520  8910  9009 I appium  : channel read: POST /session/b82614ad-4de2-4a97-8ae8-895dea0eb10b/elements
+08-11 17:51:11.523  8910  9009 I appium  : FindElements command
+08-11 17:51:11.527  8910  9009 I appium  : method: '-android uiautomator', selector: 'new UiSelector().className("android.view.View").textContains("flag-EUR EUR")'
+08-11 17:51:11.527  8910  9009 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:51:11.843  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-11 17:51:11.844  8910  9009 I appium  : Matched 0 elements using selector UiSelector[CONTAINS_TEXT=flag-EUR EUR, CLASS=android.view.View]
+08-11 17:51:11.845  8910  9009 I appium  : Matched 0 elements including possible duplicates
+08-11 17:51:11.845  8910  9009 I appium  : 0 element(s) left after deduplication
+08-11 17:51:11.846  8910  9009 I appium  : Found zero matches
+08-11 17:51:11.854  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 87989, isSameBssidAndFreq true
+08-11 17:51:11.855  8910  9009 I appium  : AppiumResponse: {"sessionId":"b82614ad-4de2-4a97-8ae8-895dea0eb10b","value":[]}
+08-11 17:51:11.861  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786459871861 lastDateWindow=1786275667000
+08-11 17:51:11.882  8910  9009 I appium  : channel read: POST /session/b82614ad-4de2-4a97-8ae8-895dea0eb10b/elements
+08-11 17:51:11.885  8910  9009 I appium  : FindElements command
+08-11 17:51:11.887  8910  9009 I appium  : method: '-android uiautomator', selector: 'new UiSelector().className("android.view.View").textContains("flag-EUR EUR")'
+08-11 17:51:11.888  8910  9009 I appium  : Waiting up to 10000ms for the device to idle
+--------- beginning of system
+08-11 17:51:11.953  1726  2751 D CustomizedBinderCallsStatsInternal: reportCpuUsage() : 2%
+08-11 17:51:11.954  1726  1780 I BinderCallsStats: Collected cpu time : 0us, collected call count : 0 for 12436909 ms
+08-11 17:51:11.956  1726  2751 D ProcessCpuUsage: [0] 701, {400=14350, 576=16840, 672=5530, 768=3800, 864=5970, 960=3990, 1056=1290, 1152=8030, 1248=120}
+08-11 17:51:11.956  1726  2751 D ProcessCpuUsage: [4] 943, {576=33960, 672=2440, 768=1990, 864=2350, 960=1310, 1056=1700, 1152=1190, 1248=2480, 1344=1070, 1440=1340, 1536=780, 1632=950, 1728=650, 1824=1110, 1920=1530, 2016=1000, 2112=620, 2208=410, 2304=910, 2400=410, 2515=1970}
+08-11 17:51:11.956  1726  2751 D ProcessCpuUsage: [7] 793, {576=47690, 672=420, 768=330, 864=410, 960=1330, 1056=400, 1152=330, 1248=2560, 1344=310, 1440=240, 1536=150, 1632=220, 1728=560, 1824=120, 1920=1170, 2016=690, 2112=380, 2208=670, 2304=510, 2400=240, 2515=290, 2611=500, 2707=230, 2803=440}
+08-11 17:51:12.004  8910  9009 I appium  : Matched 0 elements using selector UiSelector[CONTAINS_TEXT=flag-EUR EUR, CLASS=android.view.View]
+08-11 17:51:12.005  8910  9009 I appium  : Matched 0 elements including possible duplicates
+08-11 17:51:12.005  8910  9009 I appium  : 0 element(s) left after deduplication
+08-11 17:51:12.006  8910  9009 I appium  : Found zero matches
+08-11 17:51:12.011  8910  9009 I appium  : AppiumResponse: {"sessionId":"b82614ad-4de2-4a97-8ae8-895dea0eb10b","value":[]}
+08-11 17:51:12.037  8910  9009 I appium  : channel read: POST /session/b82614ad-4de2-4a97-8ae8-895dea0eb10b/elements
+08-11 17:51:12.040  8910  9009 I appium  : FindElements command
+08-11 17:51:12.044  8910  9009 I appium  : method: '-android uiautomator', selector: 'new UiSelector().className("android.view.View").textContains("flag-EUR EUR")'
+08-11 17:51:12.044  8910  9009 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:51:12.121  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786459872
+08-11 17:51:12.122  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:51:12.122  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:51:12.122  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774331
+08-11 17:51:12.122  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774324
+08-11 17:51:12.122  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:51:12.122  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:51:12.123  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:51:12.123  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:51:12.123  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:51:12.359  8910  9009 I appium  : Matched 0 elements using selector UiSelector[CONTAINS_TEXT=flag-EUR EUR, CLASS=android.view.View]
+08-11 17:51:12.360  8910  9009 I appium  : Matched 0 elements including possible duplicates
+08-11 17:51:12.361  8910  9009 I appium  : 0 element(s) left after deduplication
+08-11 17:51:12.361  8910  9009 I appium  : Found zero matches
+08-11 17:51:12.368  8910  9009 I appium  : AppiumResponse: {"sessionId":"b82614ad-4de2-4a97-8ae8-895dea0eb10b","value":[]}
+08-11 17:51:12.392  8910  9009 I appium  : channel read: POST /session/b82614ad-4de2-4a97-8ae8-895dea0eb10b/elements
+08-11 17:51:12.395  8910  9009 I appium  : FindElements command
+08-11 17:51:12.398  8910  9009 I appium  : method: '-android uiautomator', selector: 'new UiSelector().className("android.view.View").textContains("flag-EUR EUR")'
+08-11 17:51:12.399  8910  9009 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:51:12.703  8910  9009 I appium  : Matched 0 elements using selector UiSelector[CONTAINS_TEXT=flag-EUR EUR, CLASS=android.view.View]
+08-11 17:51:12.704  8910  9009 I appium  : Matched 0 elements including possible duplicates
+08-11 17:51:12.704  8910  9009 I appium  : 0 element(s) left after deduplication
+08-11 17:51:12.704  8910  9009 I appium  : Found zero matches
+08-11 17:51:12.712  8910  9009 I appium  : AppiumResponse: {"sessionId":"b82614ad-4de2-4a97-8ae8-895dea0eb10b","value":[]}
+08-11 17:51:12.735  8910  9009 I appium  : channel read: POST /session/b82614ad-4de2-4a97-8ae8-895dea0eb10b/elements
+08-11 17:51:12.738  8910  9009 I appium  : FindElements command
+08-11 17:51:12.742  8910  9009 I appium  : method: '-android uiautomator', selector: 'new UiSelector().className("android.view.View").textContains("flag-EUR EUR")'
+08-11 17:51:12.743  8910  9009 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:51:13.062  8910  9009 I appium  : Matched 0 elements using selector UiSelector[CONTAINS_TEXT=flag-EUR EUR, CLASS=android.view.View]
+08-11 17:51:13.064  8910  9009 I appium  : Matched 0 elements including possible duplicates
+08-11 17:51:13.065  8910  9009 I appium  : 0 element(s) left after deduplication
+08-11 17:51:13.065  8910  9009 I appium  : Found zero matches
+08-11 17:51:13.074  8910  9009 I appium  : AppiumResponse: {"sessionId":"b82614ad-4de2-4a97-8ae8-895dea0eb10b","value":[]}
+08-11 17:51:13.106  8910  9009 I appium  : channel read: POST /session/b82614ad-4de2-4a97-8ae8-895dea0eb10b/elements
+08-11 17:51:13.109  8910  9009 I appium  : FindElements command
+08-11 17:51:13.112  8910  9009 I appium  : method: '-android uiautomator', selector: 'new UiSelector().className("android.view.View").textContains("flag-EUR EUR")'
+08-11 17:51:13.113  8910  9009 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:51:13.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786459873
+08-11 17:51:13.120  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:51:13.121  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:51:13.121  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774331
+08-11 17:51:13.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774324
+08-11 17:51:13.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:51:13.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:51:13.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:51:13.121  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:51:13.121  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:51:13.189  1178  1178 I wpa_supplicant: Heartbeat 9091
+08-11 17:51:13.419  8910  9009 I appium  : Matched 0 elements using selector UiSelector[CONTAINS_TEXT=flag-EUR EUR, CLASS=android.view.View]
+08-11 17:51:13.420  8910  9009 I appium  : Matched 0 elements including possible duplicates
+08-11 17:51:13.421  8910  9009 I appium  : 0 element(s) left after deduplication
+08-11 17:51:13.421  8910  9009 I appium  : Found zero matches
+08-11 17:51:13.431  8910  9009 I appium  : AppiumResponse: {"sessionId":"b82614ad-4de2-4a97-8ae8-895dea0eb10b","value":[]}
+08-11 17:51:13.459  8910  9009 I appium  : channel read: POST /session/b82614ad-4de2-4a97-8ae8-895dea0eb10b/elements
+08-11 17:51:13.463  8910  9009 I appium  : FindElements command
+08-11 17:51:13.466  8910  9009 I appium  : method: '-android uiautomator', selector: 'new UiSelector().className("android.view.View").textContains("flag-EUR EUR")'
+08-11 17:51:13.467  8910  9009 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:51:13.760  8910  9009 I appium  : Matched 0 elements using selector UiSelector[CONTAINS_TEXT=flag-EUR EUR, CLASS=android.view.View]
+08-11 17:51:13.761  8910  9009 I appium  : Matched 0 elements including possible duplicates
+08-11 17:51:13.762  8910  9009 I appium  : 0 element(s) left after deduplication
+08-11 17:51:13.762  8910  9009 I appium  : Found zero matches
+08-11 17:51:13.769  8910  9009 I appium  : AppiumResponse: {"sessionId":"b82614ad-4de2-4a97-8ae8-895dea0eb10b","value":[]}
+08-11 17:51:13.794  8910  9009 I appium  : channel read: POST /session/b82614ad-4de2-4a97-8ae8-895dea0eb10b/elements
+08-11 17:51:13.798  8910  9009 I appium  : FindElements command
+08-11 17:51:13.801  8910  9009 I appium  : method: '-android uiautomator', selector: 'new UiSelector().className("android.view.View").textContains("flag-EUR EUR")'
+08-11 17:51:13.802  8910  9009 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:51:13.996  8910  9009 I appium  : Matched 0 elements using selector UiSelector[CONTAINS_TEXT=flag-EUR EUR, CLASS=android.view.View]
+08-11 17:51:13.997  8910  9009 I appium  : Matched 0 elements including possible duplicates
+08-11 17:51:13.997  8910  9009 I appium  : 0 element(s) left after deduplication
+08-11 17:51:13.997  8910  9009 I appium  : Found zero matches
+08-11 17:51:14.000  8910  9009 I appium  : AppiumResponse: {"sessionId":"b82614ad-4de2-4a97-8ae8-895dea0eb10b","value":[]}
+08-11 17:51:14.012  8910  9009 I appium  : channel read: POST /session/b82614ad-4de2-4a97-8ae8-895dea0eb10b/elements
+08-11 17:51:14.015  8910  9009 I appium  : FindElements command
+08-11 17:51:14.017  8910  9009 I appium  : method: '-android uiautomator', selector: 'new UiSelector().className("android.view.View").textContains("flag-EUR EUR")'
+08-11 17:51:14.018  8910  9009 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:51:14.121  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786459874
+08-11 17:51:14.121  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:51:14.122  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:51:14.122  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774331
+08-11 17:51:14.122  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774324
+08-11 17:51:14.122  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:51:14.122  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:51:14.122  1421  1425 E HeatmapThread: !@Entered the read from path function
+08-11 17:51:14.123  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/extended_heatmap', errno = 13
+08-11 17:51:14.123  1421  1425 E HeatmapThread: !@Extended_heatmap efs Forced Reset
+08-11 17:51:14.123  1421  1425 E HeatmapThread: !@Read Extended_heatmap from efs is: 
+08-11 17:51:14.124  1421  1425 E HeatmapThread: !@Write Extended Heatmap to efs is: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+08-11 17:51:14.124  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/extended_heatmap', errno = 13
+08-11 17:51:14.125  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:51:14.125  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:51:14.125  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:51:14.166  8910  9009 I appium  : Matched 0 elements using selector UiSelector[CONTAINS_TEXT=flag-EUR EUR, CLASS=android.view.View]
+08-11 17:51:14.167  8910  9009 I appium  : Matched 0 elements including possible duplicates
+08-11 17:51:14.167  8910  9009 I appium  : 0 element(s) left after deduplication
+08-11 17:51:14.168  8910  9009 I appium  : Found zero matches
+08-11 17:51:14.172  8910  9009 I appium  : AppiumResponse: {"sessionId":"b82614ad-4de2-4a97-8ae8-895dea0eb10b","value":[]}
+08-11 17:51:14.188  8910  9009 I appium  : channel read: POST /session/b82614ad-4de2-4a97-8ae8-895dea0eb10b/elements
+08-11 17:51:14.190  8910  9009 I appium  : FindElements command
+08-11 17:51:14.193  8910  9009 I appium  : method: '-android uiautomator', selector: 'new UiSelector().className("android.view.View").textContains("flag-EUR EUR")'
+08-11 17:51:14.194  8910  9009 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:51:14.252  1726  2226 I SemWifiServiceDetector: Service det. resumed: T / T / 8260
+08-11 17:51:14.373   730   730 D io_stats: !@   8,0 r 55826427 1030781102 w 17291135 313293380 d 5082698 366131776 f 0 1591087 iot 25863800 0 th 0 0 0 pt 0 inp 0 0 402657.770
+08-11 17:51:14.374   730   730 D io_stats: !@ Write_top(KB): kworker/u16:4(28284) 652
+08-11 17:51:14.387  8910  9009 I appium  : Matched 0 elements using selector UiSelector[CONTAINS_TEXT=flag-EUR EUR, CLASS=android.view.View]
+08-11 17:51:14.388  8910  9009 I appium  : Matched 0 elements including possible duplicates
+08-11 17:51:14.388  8910  9009 I appium  : 0 element(s) left after deduplication
+08-11 17:51:14.388  8910  9009 I appium  : Found zero matches
+08-11 17:51:14.392  8910  9009 I appium  : AppiumResponse: {"sessionId":"b82614ad-4de2-4a97-8ae8-895dea0eb10b","value":[]}
+08-11 17:51:14.404  8910  9009 I appium  : channel read: GET /session/b82614ad-4de2-4a97-8ae8-895dea0eb10b/screenshot
+08-11 17:51:14.407  8910  9009 I appium  : CaptureScreenshot command
+08-11 17:51:14.410  8910  9009 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-11 17:51:14.410  8910  9009 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-11 17:51:14.878  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-11 17:51:14.885  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 87990, isSameBssidAndFreq true
+08-11 17:51:14.889  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786459874889 lastDateWindow=1786275667000
+08-11 17:51:14.892  1726  2228 I SemWifiLinkQualityMonitor: Link stat: 697 / 450 / 1.00 (5) / 144 / -44.0 || 100.0 : 144.00 / 0.5 : 1.00 / 0.55 : 0.65 / B (B) || 52fc78d72452: 0.259 / 30.920 / N || N N / 0 0 / N 2.0 / N X 0 / 402658285 0 || 2026-08-09 14:41:07  / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0
+08-11 17:51:14.918 12177 12177 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-11 17:51:14.919 12177 12177 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-11 17:51:14.920 12177 12177 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-11 17:51:14.920  1726  4571 I EDMNativeHelperService: isScreenCaptureEnabled
+08-11 17:51:14.923  1726  4571 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-11 17:51:14.923 12177 12177 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-11 17:51:14.924 12177 12177 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-11 17:51:14.928  1437  1682 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_9038#71282(seamlessTransition:0)
+08-11 17:51:14.928  1437  1682 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-11 17:51:14.928  1437  1682 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-11 17:51:14.928  1437  1682 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-11 17:51:14.936  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-11 17:51:14.936  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_9038#71282 at index 1
+08-11 17:51:14.936  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-11 17:51:14.936  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-11 17:51:14.976 12177 12182 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-11 17:51:15.121  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786459875
+08-11 17:51:15.121  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:51:15.121  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:51:15.121  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774331
+08-11 17:51:15.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774324
+08-11 17:51:15.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:51:15.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:51:15.122  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:51:15.122  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:51:15.122  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:51:15.242  8910  9009 I appium  : AppiumResponse: {"sessionId":"b82614ad-4de2-4a97-8ae8-895dea0eb10b","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15VFXnvf/xz2GQGRWEKCo4gYpGFI1xHoiaGDFRY6y9sTEmaZv0drU3Xb1tb2+HX+9te7NW22WbpDdp0yHexKQ1xqgBE2dNjMEJcRYcUUCZFGUGD+f3hz2nbM45eJjZ8H6t1dXs5+zh2YD…
+08-11 17:51:15.272  8910  9009 I appium  : channel read: GET /session/b82614ad-4de2-4a97-8ae8-895dea0eb10b/source
+08-11 17:51:15.272  8910  9009 I appium  : Source command
+08-11 17:51:15.273  8910  9009 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:51:15.349  2336  2835 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-11 17:51:15.531  8910  9009 I appium  : AppiumResponse: {"sessionId":"b82614ad-4de2-4a97-8ae8-895dea0eb10b","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-11 17:51:15.564 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 17:51:15.608 12183 12183 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 17:51:15.647 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 17:51:15.703 12186 12186 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 17:51:15.755 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

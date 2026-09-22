@@ -1,0 +1,202 @@
+--------- beginning of main
+08-05 19:15:58.000  2336  2835 D SatelliteController: updateLastNotifiedNtnModeAndNotify: subId=1 initialized=true lastNotifiedNtnMode=false lastNotifiedNtnModePhone=false currNtnMode=false
+08-05 19:15:58.000  1726  2298 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2357, result: DENIED_SOFT
+08-05 19:15:58.000  1726  2298 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2357, result: DENIED_SOFT
+08-05 19:15:58.000  2684  2903 I RegiMgr-Utils<1>: getPriorityRegiedTask : isPriority  High? true
+08-05 19:15:58.000  2336  2835 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-05 19:15:58.002  2336  2835 D SatelliteController: determineAutoConnectSystemNotification: isNtn.first = false IsNotiToShow = true mIsAutoConnectNotificationShowing = false
+08-05 19:15:58.002  2684  2903 I RegiGvnBase: checkRegiStatus: getState()=IDLE mIsUpdateRegistering=false
+08-05 19:15:58.002  2684  2903 I RegiMgr<1>: getTelephonyCallStatus:
+08-05 19:15:58.002  2357  2357 D GlobalActionsDialogLite: Service changed before actions created
+08-05 19:15:58.003  1726  2602 D SLocation: CellLocationManager - onServiceStateChanged 0
+08-05 19:15:58.006  1726  1726 D SemWifiApServiceImpl: onServiceStateChanged : 0dataNetworkType : 13,isUsingNonTerrestrialNetwork:false
+08-05 19:15:58.006  2684  2684 I VolteServiceModule: onServiceStateChanged({mVoiceRegState=0(IN_SERVICE), mDataRegState=0(IN_SERVICE), mChannelNumber=2900, duplexMode()=1, mCellBandwidths=[20000], mOperatorAlphaLong=Vodafone UA, mOperatorAlphaShort=Vodafone UA, isManualNetworkSelection=false(automatic), getRilVoiceRadioTechnology=14(LTE), getRilDataRadioTechnology=14(LTE), mCssIndicator=unsupported, mNetworkId=*1, mSystemId=*1, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, NonCellular=false, Snap=0, PsOnly=false, SprDisplayRoam=false, OptRadioTech=0, MsimSubmode=0, IsVoiceCallAvailable=true, mIsEmergencyOnly=false, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=PS transportType=WLAN registrationState=UNKNOWN networkRegistrationState=UNKNOWN roamingType=NOT_ROAMING accessNetworkTechnology=IWLAN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=HOME networkRegistrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[VOICE,SMS,VIDEO] cellIdentity=CellIdentityLte:{ mCi=1******35 mPci=72 mTac=5***2 mEarfcn=2900 mBands=[7] mBandwidth=2147483647 mMcc=255 mMnc=01 mAlphaLong=Vodafone UA mAlphaShort=Vodafone UA mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=25501 isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=HOME networkRegistrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[DATA,MMS] cellIdentity=CellIdentityLte:{ mCi=1******35 mPci=72 mTac=5***2 mEarfcn=2900 mBands=[7] mBandwidth=2147483647 mMcc=255 mMnc=01 mAlphaLong=Vodafone UA mAlphaShort=Vodafone UA mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 16 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false mLteAttachResultType = 0 mLteAttachExtraInfo = 0 LteVopsSupportInfo :  mVopsSupport = 2 mEmcBearerSupport = 2 } nrState=**** rRplmn=25501 isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=Vodafone UA, mOperatorAlphaShortRaw=Vodafone UA, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false, mIsUsingNonTerrestrialNetwork=false})
+08-05 19:15:58.006  2684  2684 I VolteServiceModule: mIsLteEpsOnlyAttached(0):false
+08-05 19:15:58.007  1726  2298 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2357, result: DENIED_SOFT
+08-05 19:15:58.007  1726  2158 W NSLocationMonitor: onServiceStateChanged, state=0 / channel=2900
+08-05 19:15:58.007  1726  2158 I NSLocationMonitor: networkType[13]=LTE / nrState=false
+08-05 19:15:58.007  1726  2298 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2357, result: DENIED_SOFT
+08-05 19:15:58.008  2684  2903 I ConfigProvider: query uri:xxxxx
+08-05 19:15:58.008  3189  3247 W NetworkManager_FLP: updateServiceStateChanged, serviceState=0 / isRegistered=true / channel=2900 / networkTypeName=LTE / nr=false
+08-05 19:15:58.008  1726  2298 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2357, result: DENIED_SOFT
+08-05 19:15:58.008  1726  2298 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2357, result: DENIED_SOFT
+08-05 19:15:58.009  3189  3247 I NetworkManager_FLP: Success to update networkStatus, Service=0 / Network=LTE(band=7, ch=2900) / MobileData=false, roaming=false / WIFI=true, conn=true / BT=false, conn=false
+08-05 19:15:58.009  1726  2298 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2357, result: DENIED_SOFT
+08-05 19:15:58.010  2357  2357 D SatelliteModeObserver: service state changed : {mVoiceRegState=0(IN_SERVICE), mDataRegState=0(IN_SERVICE), mChannelNumber=2900, duplexMode()=1, mCellBandwidths=[20000], mOperatorAlphaLong=null, mOperatorAlphaShort=null, isManualNetworkSelection=false(automatic), getRilVoiceRadioTechnology=14(LTE), getRilDataRadioTechnology=14(LTE), mCssIndicator=unsupported, mNetworkId=*1, mSystemId=*1, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, NonCellular=false, Snap=0, PsOnly=false, SprDisplayRoam=false, OptRadioTech=0, MsimSubmode=0, IsVoiceCallAvailable=true, mIsEmergencyOnly=false, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=PS transportType=WLAN registrationState=UNKNOWN networkRegistrationState=UNKNOWN roamingType=NOT_ROAMING accessNetworkTechnology=IWLAN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=HOME networkRegistrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[VOICE,SMS,VIDEO] cellIdentity=null voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=25501 isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=HOME networkRegistrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[DATA,MMS] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 16 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false mLteAttachResultType = 0 mLteAttachExtraInfo = 0 LteVopsSupportInfo :  mVopsSupport = 2 mEmcBearerSupport = 2 } nrState=**** rRplmn=25501 isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=Vodafone UA, mOperatorAlphaShortRaw=Vodafone UA, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false, mIsUsingNonTerrestrialNetwork=false}
+08-05 19:15:58.010  1726  2298 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2357, result: DENIED_SOFT
+08-05 19:15:58.010  2357  2357 D SatelliteModeObserver: isSatelliteNetworksOn(), isUsingTerrestrialNetwork: false
+08-05 19:15:58.011  1726  2214 V SemWifiBackOff.5G: checkAndSetup nrFrequencyRange=0 / prevNrFrequencyRange=0
+08-05 19:15:58.011  2357  2357 D SatelliteModeObserver: isSatelliteNetworksOn(), isUsingTerrestrialNetwork: false
+08-05 19:15:58.011  1726  2214 V SemWifiBackOff.5G: restore back off mode, current: [NONE]
+08-05 19:15:58.015  1726  2298 I LocationAccessPolicy: checkLocationPermission - callingUid: 10321, callingPid: 6555, result: DENIED_SOFT
+08-05 19:15:58.015  2576  3376 I EPDG -- SIM1 [NetController]: getVoPS, vopsSupportInfo=LteVopsSupportInfo :  mVopsSupport = 2 mEmcBearerSupport = 2
+08-05 19:15:58.015  1726  2298 I LocationAccessPolicy: checkLocationPermission - callingUid: 10321, callingPid: 6555, result: DENIED_SOFT
+08-05 19:15:58.016  2576  3376 I EPDG -- SIM1 [NetController]: WWAN Voice Regi: 0 Roaming: 0
+08-05 19:15:58.016  2576  3376 I EPDG -- SIM1 [NetController]: WWAN Data Regi: 0 Rat: 13 Roaming: false
+08-05 19:15:58.016  2684  2684 I TelephonyCallbackForPdnController<1>: emcbsIndication: SUPPORTED, mobileDataNetworkType: 13
+08-05 19:15:58.017  2576  3376 I EPDG -- SIM1 [EpdgSubscription]: getIsAirplaneMode: returning: false
+08-05 19:15:58.018  1726  2158 W NSLocationMonitor: onServiceStateChanged, state=0 / channel=2900
+08-05 19:15:58.018  1726  2158 I NSLocationMonitor: networkType[13]=LTE / nrState=false
+08-05 19:15:58.019  2684  3097 I VolteServiceModule: onServiceStateChanged({mVoiceRegState=0(IN_SERVICE), mDataRegState=0(IN_SERVICE), mChannelNumber=2900, duplexMode()=1, mCellBandwidths=[20000], mOperatorAlphaLong=Vodafone UA, mOperatorAlphaShort=Vodafone UA, isManualNetworkSelection=false(automatic), getRilVoiceRadioTechnology=14(LTE), getRilDataRadioTechnology=14(LTE), mCssIndicator=unsupported, mNetworkId=*1, mSystemId=*1, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, NonCellular=false, Snap=0, PsOnly=false, SprDisplayRoam=false, OptRadioTech=0, MsimSubmode=0, IsVoiceCallAvailable=true, mIsEmergencyOnly=false, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=PS transportType=WLAN registrationState=UNKNOWN networkRegistrationState=UNKNOWN roamingType=NOT_ROAMING accessNetworkTechnology=IWLAN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=HOME networkRegistrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[VOICE,SMS,VIDEO] cellIdentity=CellIdentityLte:{ mCi=1******35 mPci=72 mTac=5***2 mEarfcn=2900 mBands=[7] mBandwidth=2147483647 mMcc=255 mMnc=01 mAlphaLong=Vodafone UA mAlphaShort=Vodafone UA mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=25501 isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=HOME networkRegistrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[DATA,MMS] cellIdentity=CellIdentityLte:{ mCi=1******35 mPci=72 mTac=5***2 mEarfcn=2900 mBands=[7] mBandwidth=2147483647 mMcc=255 mMnc=01 mAlphaLong=Vodafone UA mAlphaShort=Vodafone UA mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 16 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false mLteAttachResultType = 0 mLteAttachExtraInfo = 0 LteVopsSupportInfo :  mVopsSupport = 2 mEmcBearerSupport = 2 } nrState=**** rRplmn=25501 isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=Vodafone UA, mOperatorAlphaShortRaw=Vodafone UA, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false, mIsUsingNonTerrestrialNetwork=false})
+08-05 19:15:58.019  2684  2684 I NetworkUtil: Network Cap check : INTERNET : true
+08-05 19:15:58.019  2684  3097 I VolteServiceModule: mIsLteEpsOnlyAttached(1):false
+08-05 19:15:58.019  2684  2684 I NetworkUtil: isConnected = false isCellularOnly : true
+08-05 19:15:58.020  3189  3247 W NetworkManager_FLP: updateServiceStateChanged, serviceState=0 / isRegistered=true / channel=2900 / networkTypeName=LTE / nr=false
+08-05 19:15:58.020  2684  2684 I TelephonyCallbackForPdnController<1>: onServiceStateChanged: state={mVoiceRegState=0(IN_SERVICE), mDataRegState=0(IN_SERVICE), mChannelNumber=2900, duplexMode()=1, mCellBandwidths=[20000], mOperatorAlphaLong=Vodafone UA, mOperatorAlphaShort=Vodafone UA, isManualNetworkSelection=false(automatic), getRilVoiceRadioTechnology=14(LTE), getRilDataRadioTechnology=14(LTE), mCssIndicator=unsupported, mNetworkId=*1, mSystemId=*1, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, NonCellular=false, Snap=0, PsOnly=false, SprDisplayRoam=false, OptRadioTech=0, MsimSubmode=0, IsVoiceCallAvailable=true, mIsEmergencyOnly=false, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=PS transportType=WLAN registrationState=UNKNOWN networkRegistrationState=UNKNOWN roamingType=NOT_ROAMING accessNetworkTechnology=IWLAN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=HOME networkRegistrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[VOICE,SMS,VIDEO] cellIdentity=CellIdentityLte:{ mCi=1******35 mPci=72 mTac=5***2 mEarfcn=2900 mBands=[7] mBandwidth=2147483647 mMcc=255 mMnc=01 mAlphaLong=Vodafone UA mAlphaShort=Vodafone UA mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=25501 isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=HOME networkRegistrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[DATA,MMS] cellIdentity=CellIdentityLte:{ mCi=1******35 mPci=72 mTac=5***2 mEarfcn=2900 mBands=[7] mBandwidth=2147483647 mMcc=255 mMnc=01 mAlphaLong=Vodafone UA mAlphaShort=Vodafone UA mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 16 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false mLteAttachResultType = 0 mLteAttachExtraInfo = 0 LteVopsSupportInfo :  mVopsSupport = 2 mEmcBearerSupport = 2 } nrState=**** rRplmn=25501 isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=Vodafone UA, mOperatorAlphaShortRaw=Vodafone UA, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false, mIsUsingNonTerrestrialNetwork=false}Changed=
+08-05 19:15:58.021  2684  2684 I PdnController<1>: notifyDataConnectionState
+08-05 19:15:58.021  2684  2684 I PdnController<1>: initialize PendedEPDGWeakSignal flag
+08-05 19:15:58.021  2684  2684 I PdnController<1>: setPendedEPDGWeakSignal
+08-05 19:15:58.021  2684  2684 I PdnController<1>: notifyDataConnectionState: needNotify=false networkType=13 isEpdgConnected=false dataNetType=13=>13 dataRegState=0=>0
+08-05 19:15:58.021  2684  2684 I TelephonyCallbackForPdnController<1>: notifySnapshotState: snapshotState=0 old=0
+08-05 19:15:58.021  2684  2684 I ImsIconManager<1>: onServiceStateChanged: {mVoiceRegState=0(IN_SERVICE), mDataRegState=0(IN_SERVICE), mChannelNumber=2900, duplexMode()=1, mCellBandwidths=[20000], mOperatorAlphaLong=Vodafone UA, mOperatorAlphaShort=Vodafone UA, isManualNetworkSelection=false(automatic), getRilVoiceRadioTechnology=14(LTE), getRilDataRadioTechnology=14(LTE), mCssIndicator=unsupported, mNetworkId=*1, mSystemId=*1, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, NonCellular=false, Snap=0, PsOnly=false, SprDisplayRoam=false, OptRadioTech=0, MsimSubmode=0, IsVoiceCallAvailable=true, mIsEmergencyOnly=false, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=PS transportType=WLAN registrationState=UNKNOWN networkRegistrationState=UNKNOWN roamingType=NOT_ROAMING accessNetworkTechnology=IWLAN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=HOME networkRegistrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[VOICE,SMS,VIDEO] cellIdentity=CellIdentityLte:{ mCi=1******35 mPci=72 mTac=5***2 mEarfcn=2900 mBands=[7] mBandwidth=2147483647 mMcc=255 mMnc=01 mAlphaLong=Vodafone UA mAlphaShort=Vodafone UA mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=25501 isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=HOME networkRegistrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[DATA,MMS] cellIdentity=CellIdentityLte:{ mCi=1******35 mPci=72 mTac=5***2 mEarfcn=2900 mBands=[7] mBandwidth=2147483647 mMcc=255 mMnc=01 mAlphaLong=Vodafone UA mAlphaShort=Vodafone UA mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 16 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false mLteAttachResultType = 0 mLteAttachExtraInfo = 0 LteVopsSupportInfo :  mVopsSupport = 2 mEmcBearerSupport = 2 } nrState=**** rRplmn=25501 isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=Vodafone UA, mOperatorAlphaShortRaw=Vodafone UA, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false, mIsUsingNonTerrestrialNetwork=false}
+08-05 19:15:58.022  2684  2684 E GlobalSettingsRepoBase: globalgcsettings No matched key : separate_vo5g_icon
+08-05 19:15:58.023  2357  2472 D DeviceState: isESIM() :0 : false
+08-05 19:15:58.024  2576  3376 I EPDG -- SIM1 [NetController]: getIsRssiDisabledForProfiling: returning: false
+--------- beginning of system
+08-05 19:15:58.025  1726  2298 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1385 android.content.Context.sendBroadcastMultiplePermissions:2588 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:192 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:185 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:667 
+08-05 19:15:58.025  2576  3376 I EPDG -- [SettingManager]: getVoWifiPreference[1], 1
+08-05 19:15:58.026  2576  3376 I EPDG -- SIM1 [EpdgSubscription]: getIsAirplaneMode: returning: false
+08-05 19:15:58.029  1726  2298 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1418 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:217 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:185 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:667 android.os.Binder.execTransactInternal:1462 
+08-05 19:15:58.033  2357  2472 D DeviceState: isESIM() :1 : false
+08-05 19:15:58.033  2357  2472 D NetworkController.MobileSignalController(1): isPowerOffServiceState,mCurrentState.getVoiceServiceState() = 0,mCurrentState.airplaneMode = false,mCurrentState.canCellularVoiceService() = true,mCurrentState.getMobileDataRegState() = true
+08-05 19:15:58.033  2357  2472 D Tile.AirplaneModeTile:  handleUpdateState mIsWiFiOnlyDevice false isNoSimState false isPowerOffServiceState false mSetting.getValue() 0 isSatelliteModeOn false isChinaDevice false
+08-05 19:15:58.033  2357  2472 D Tile.AirplaneModeTile:  handleUpdateState:  value = false, state = 1
+08-05 19:15:58.034  2684  2903 I ConfigProvider: queryStorage path content://com.samsung.rcs.autoconfigurationprovider/parameter/version#simslot1
+08-05 19:15:58.039  1726  2298 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1418 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:247 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:185 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:667 android.os.Binder.execTransactInternal:1462 
+08-05 19:15:58.039  2576  3376 I EPDG -- SIM1 [EpdgSubscription]: getIsAirplaneMode: returning: false
+08-05 19:15:58.042  1726  2298 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1418 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:270 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:185 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:667 android.os.Binder.execTransactInternal:1462 
+08-05 19:15:58.042  2576  3376 I EPDG -- SIM1 [NetController]: voiceNetType: 13 mActiveVoiceRat: 13
+08-05 19:15:58.042  2576  3376 I EPDG -- SIM1 [EpdgSubscription]: getIsAirplaneMode: returning: false
+08-05 19:15:58.045  2576  3376 I EPDG -- SIM1 [NetController]: onNetworkStatusChanged : mCellularAvailable = true
+08-05 19:15:58.045  2336  2336 D ServiceStateProvider: subId=1
+08-05 19:15:58.046  2684  2903 I RegiGvnRcs: isReadyToRegister: User don't try RCS service yet
+08-05 19:15:58.046  2684  2903 I RegiMgr<1>: [Global GC RCS|IDLE] checkForTryRegister: isReadyToRegister = false
+08-05 19:15:58.046  2684  2903 I GeolocationCon: handleMessage : what = SERVICE_STATE_CHANGED
+08-05 19:15:58.047  2684  2903 I GeolocationCon: matchTimingReqLocation ,match=0, timing=4
+08-05 19:15:58.047  2684  2903 I GeolocationCon: matchTimingReqLocation ,match=0, timing=4
+08-05 19:15:58.047  2684  2903 I GeolocationCon: matchTimingReqLocation ,match=0, timing=4
+08-05 19:15:58.047  2684  2903 I GeolocationCon: profile is null
+08-05 19:15:58.047  2684  2903 I GeolocationCon<1>: onNetworkCountryIsoChanged: mCountryIso = ua, iso = ua
+08-05 19:15:58.048  1726  1726 D SemWifiService: received: android.intent.action.SERVICE_STATE
+08-05 19:15:58.048  2336  2336 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-05 19:15:58.048  2357  2357 D MULTISIM-PROD-REPO: onReceive() - action = android.intent.action.SERVICE_STATE
+08-05 19:15:58.048 19583 19583 D CellBroadcastReceiver: onReceive Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 xflg=0x4 cmp=com.google.android.cellbroadcastreceiver/com.android.cellbroadcastreceiver.CellBroadcastReceiver (has extras) }
+08-05 19:15:58.049  2357  2357 D CarrierTextController: carrierTextForSimState(1)-(order: 0) : Vodafone UA, Vodafone UA
+08-05 19:15:58.049  2357  2357 D CarrierTextController: setCarrierText : Vodafone UA, Vodafone UA allSimsMissing : false anySimReady : true
+08-05 19:15:58.050 19583 19583 D CellBroadcastReceiver: onServiceStateChanged, ss: 0
+08-05 19:15:58.050 19583 19583 D CellBroadcastReceiver: networkOperator: 25501
+08-05 19:15:58.050 19583 19583 D CellBroadcastReceiver: mockmodem is running? = false
+08-05 19:15:58.050  2357  2357 D CarrierTextController: carrierTextForSimState(1)-(order: 0) : Vodafone UA, Vodafone UA
+08-05 19:15:58.050  2357  2357 D CarrierTextController: setCarrierText : Vodafone UA, Vodafone UA allSimsMissing : false anySimReady : true
+08-05 19:15:58.050 19583 19583 D CellBroadcastReceiver: update supported roaming operator as 
+08-05 19:15:58.050  2357  2357 D CarrierTextController: carrierTextForSimState(1)-(order: 0) : Vodafone UA, Vodafone UA
+08-05 19:15:58.050  2357  2357 D CarrierTextController: setCarrierText : Vodafone UA, Vodafone UA allSimsMissing : false anySimReady : true
+08-05 19:15:58.050  2357  2357 D FaceWidgetPagesController: onRefreshCarrierInfo()
+08-05 19:15:58.051  1726  2602 D SLocation: CellLocationManager - onCellLocationChanged 1 / 1
+08-05 19:15:58.052  2336  3373 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2357, result: DENIED_SOFT
+08-05 19:15:58.052  2336  3368 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2357, result: DENIED_SOFT
+08-05 19:15:58.052  2336  3373 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2357, result: DENIED_SOFT
+08-05 19:15:58.052  2336  3368 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2357, result: DENIED_SOFT
+08-05 19:15:58.054  1726  1781 I ActivityManager: Changes in 10291 19 to 11, 0 to 128
+08-05 19:15:58.054  2357  2472 D MULTISIM-PROD-REPO: HANDLE_MSG(2000)
+08-05 19:15:58.056  1726  2480 I ActivityManager: Changes in 10291 11 to 19, 128 to 0
+08-05 19:15:58.057  2336  3373 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2357, result: DENIED_SOFT
+08-05 19:15:58.057  2336  3373 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2357, result: DENIED_SOFT
+08-05 19:15:58.061  2357  2357 D FaceWidgetClockRoamManager: isNetworkRoamingState id=1
+08-05 19:15:58.062  2357  2357 D FaceWidgetClockRoamManager: isNetworkRoamingState false
+08-05 19:15:58.062  2357  2357 D FaceWidgetClockRoamManager: onRefreshCarrierInfo(pre, now): false, false
+08-05 19:15:58.062  2357  2357 D FaceWidgetClockPage: onRefreshCarrierInfo : isChanged false mIsRoaming false
+08-05 19:15:58.063  1726  2480 I Telecom : SamsungTelecomServiceImpl : isInCall - callingPackage : com.android.systemui / callingUser : UserHandle{0} / hasCrossUserAccess : true
+08-05 19:15:58.064  2357  2357 D CarrierTextController: info.location: Keyguard, info.carrierText: Vodafone UA, info.carrierTextShort: Vodafone UA
+08-05 19:15:58.066  2357  2357 D CarrierTextController: info.location: null, info.carrierText: Vodafone UA, info.carrierTextShort: Vodafone UA
+08-05 19:15:58.066  2357  2357 D EmergencyButton: updateEmergencyCallButton : secure
+08-05 19:15:58.072  2336  2336 V PhoneGlobals: handleServiceStateChanged
+08-05 19:15:58.072  2336  2336 D NotificationMgr: updateNetworkSelection, Use Samsung codes instead of AOSP codes
+08-05 19:15:58.072  2336  2336 V PhoneGlobals: subId=-1, mDefaultDataSubId=1, ss roaming=false
+08-05 19:15:58.072  2336  2336 I Telephony: TelecomAccountRegistry$TelecomAccountTelephonyCallback: TelecomAccountRegistry: onServiceStateChanged: newState=0, mServiceState=0
+08-05 19:15:58.074  2336  2336 I Telephony: TelecomAccountRegistry$AccountEntry: isRttCurrentlySupported -- regular acct,, hasVoiceAvailability: true, isRttSupported: true, alwaysAllowWhileRoaming: false, isRoaming: false, isOnWfc: false
+08-05 19:15:58.074  2336  2336 V PhoneGlobals: handleServiceStateChanged
+08-05 19:15:58.074  2336  2336 D NotificationMgr: updateNetworkSelection, Use Samsung codes instead of AOSP codes
+08-05 19:15:58.074  2336  2336 V PhoneGlobals: subId=1, mDefaultDataSubId=1, ss roaming=false
+08-05 19:15:58.075  1726  2480 D PhoneRestrictionPolicy: isOperationAllowed >>> slotNum: 1 function: 1
+08-05 19:15:58.077  1726  2480 I Telecom : SamsungTelecomServiceImpl : isInEmergencyCall - callingPid : 2336 / processName : sts
+08-05 19:15:58.077  1726  2480 I Telecom : TelecomServiceImpl$1: isInEmergencyCall: false: TSI.iIEC@it8
+08-05 19:15:58.078  2336  2336 V PhoneGlobals: updateDataRoamingStatus
+08-05 19:15:58.078  2336  2336 V PhoneGlobals: updateDataRoamingStatus dataAllowed=false, disallowReasons=[DATA_DISABLED], dataIsNowRoaming=false, RoamingNumeric=25501, CallingReason=3
+08-05 19:15:58.087  2357  2357 I SecKeyguardClockPositionAlgorithm: prepareClockContainerHeightChanging:
+08-05 19:15:58.088  2357  2357 I PluginFaceWidgetManager: isEditMode = false
+08-05 19:15:58.088  2357  2357 I NowBarItemManager: getVisibleList isScreenTurnedOn = false / aodShowState false shouldControlScreenOff false visibleList size = 0
+08-05 19:15:58.089  2357  2357 I SecKeyguardClockPositionAlgorithm: prepareClockContainerHeightChanging:
+08-05 19:15:58.090  2357  2357 I PluginFaceWidgetManager: isEditMode = false
+08-05 19:15:58.090  2357  2357 I NowBarItemManager: getVisibleList isScreenTurnedOn = false / aodShowState false shouldControlScreenOff false visibleList size = 0
+08-05 19:15:58.092  2357  2357 W KeyguardSecurityViewFlipper: onMeasure: widthSpec MeasureSpec: EXACTLY 1080 should be AT_MOST
+08-05 19:15:58.092  2357  2357 W KeyguardSecurityViewFlipper: onMeasure: heightSpec MeasureSpec: EXACTLY 2214 should be AT_MOST
+08-05 19:15:58.092  2357  2357 W KeyguardSecurityViewFlipper: onMeasure: widthSpec MeasureSpec: EXACTLY 1080 should be AT_MOST
+08-05 19:15:58.092  2357  2357 W KeyguardSecurityViewFlipper: onMeasure: heightSpec MeasureSpec: EXACTLY 2214 should be AT_MOST
+08-05 19:15:58.093  2357  2357 D ShadeCarrierGroup: handleUpdateCarrierInfo [Vodafone UA] isLatin=false
+08-05 19:15:58.105  2357  2357 I SecKeyguardClockPositionAlgorithm: prepareClockContainerHeightChanging:
+08-05 19:15:58.106  2357  2357 I PluginFaceWidgetManager: isEditMode = false
+08-05 19:15:58.106  2357  2357 I NowBarItemManager: getVisibleList isScreenTurnedOn = false / aodShowState false shouldControlScreenOff false visibleList size = 0
+08-05 19:15:58.108  2357  2357 I SecKeyguardClockPositionAlgorithm: prepareClockContainerHeightChanging:
+08-05 19:15:58.108  2357  2357 I PluginFaceWidgetManager: isEditMode = false
+08-05 19:15:58.108  2357  2357 I NowBarItemManager: getVisibleList isScreenTurnedOn = false / aodShowState false shouldControlScreenOff false visibleList size = 0
+08-05 19:15:58.110  2357  2357 W View    : requestLayout() improperly called by com.android.systemui.qs.SecQSGradationDrawableView{2e5e0f3 V.E...... ......I. 0,0-1080,310 #7f0a0a16 app:id/qs_gradation_view} during layout: running second layout pass
+08-05 19:15:58.110  2357  2357 W View    : requestLayout() improperly called by android.widget.FrameLayout{55d01b0 V.E...... ......I. 0,0-1080,2340 #2} during layout: running second layout pass
+08-05 19:15:58.110  2357  2357 W View    : requestLayout() improperly called by android.widget.FrameLayout{d3d8829 V.E...... ......ID 0,143-1080,2214 #7f0a0a14 app:id/qs_frame} during layout: running second layout pass
+08-05 19:15:58.111  2357  2357 I SecKeyguardClockPositionAlgorithm: prepareClockContainerHeightChanging:
+08-05 19:15:58.111  2357  2357 I PluginFaceWidgetManager: isEditMode = false
+08-05 19:15:58.111  2357  2357 I NowBarItemManager: getVisibleList isScreenTurnedOn = false / aodShowState false shouldControlScreenOff false visibleList size = 0
+08-05 19:15:58.112  2357  2357 I SecKeyguardClockPositionAlgorithm: prepareClockContainerHeightChanging:
+08-05 19:15:58.113  2357  2357 I PluginFaceWidgetManager: isEditMode = false
+08-05 19:15:58.113  2357  2357 I NowBarItemManager: getVisibleList isScreenTurnedOn = false / aodShowState false shouldControlScreenOff false visibleList size = 0
+08-05 19:15:58.864  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1785946558
+08-05 19:15:58.865  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-05 19:15:58.865  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-05 19:15:58.865  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29765775
+08-05 19:15:58.865  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29765750
+08-05 19:15:58.866  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-05 19:15:58.866  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-05 19:15:58.866  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-05 19:15:58.867  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-05 19:15:58.867  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-05 19:15:59.419   730   730 D io_stats: !@   8,0 r 23359824 452975500 w 7118664 132903208 d 2061760 178836224 f 0 660792 iot 10560276 0 th 0 0 0 pt 0 inp 0 0 145261.073
+08-05 19:15:59.865  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1785946559
+08-05 19:15:59.865  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-05 19:15:59.865  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-05 19:15:59.866  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29765775
+08-05 19:15:59.866  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29765750
+08-05 19:15:59.866  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-05 19:15:59.866  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-05 19:15:59.866  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-05 19:15:59.867  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-05 19:15:59.867  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-05 19:16:00.266  1554  1713 D SemNativeCarrierFeature_vendor: getInstance
+08-05 19:16:00.294  2336  2835 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-05 19:16:00.301  1726  2214 D SemCellularStateManager: onSignalStrengthsChanged: mCellularSignalLevel=2
+08-05 19:16:00.865  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1785946560
+08-05 19:16:00.865  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-05 19:16:00.866  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-05 19:16:00.866  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29765776
+08-05 19:16:00.866  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29765750
+08-05 19:16:00.866  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-05 19:16:00.866  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-05 19:16:00.867  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-05 19:16:00.867  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-05 19:16:00.867  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-05 19:16:01.422   730   730 D io_stats: !@   8,0 r 23359824 452975500 w 7118665 132903468 d 2061760 178836224 f 0 660792 iot 10560284 0 th 0 0 0 pt 0 inp 0 0 145263.077
+08-05 19:16:01.423   730   730 D io_stats: !@ Read_top(KB): loop48(3238) 256 loop28(856) 232 m.android.phone(2336) 64
+08-05 19:16:01.423   730   730 D io_stats: !@ Write_top(KB): kworker/u16:0(14907) 260 .sec.imsservice(2684) 8 m.android.phone(2336) 8
+08-05 19:16:01.708  1726  1796 D MARsPolicyManager: triggerAction called!
+08-05 19:16:01.710  1726  1796 I NSLocationMonitor: getGPSUsingApps() called
+08-05 19:16:01.712  3189  3239 I NSLocationManager_FLP: getGPSUsingApps, No change
+08-05 19:16:01.864  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1785946561
+08-05 19:16:01.865  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-05 19:16:01.865  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-05 19:16:01.865  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29765776
+08-05 19:16:01.866  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29765750
+08-05 19:16:01.866  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-05 19:16:01.866  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-05 19:16:01.866  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-05 19:16:01.866  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-05 19:16:01.867  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-05 19:16:02.181 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

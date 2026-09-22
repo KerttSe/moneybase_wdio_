@@ -1,0 +1,202 @@
+--------- beginning of main
+08-06 16:26:43.732  1726  1773 D SurfaceComposerClient: [SEC_SF_EFFECTS] setBackgroundBlurRadius ## Dim Layer for - Task=7498#35497 backgroundBlurRadius=0
+08-06 16:26:43.733  1437  1437 I Layer   : id=35489 Destroyed Dim Layer for - Task=7498#35489
+08-06 16:26:43.733  1437  1437 I Layer   : id=35487 Destroyed com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_14538#35487
+08-06 16:26:43.734  1437  1437 I Layer   : id=35490 Destroyed Surface(name=14ed4a5 InputMethod)/@0x386902b - animation-leash of insets_animation#35490
+08-06 16:26:43.734  1437  1437 I Layer   : id=35484 Destroyed 531f7ba com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#35484
+08-06 16:26:43.734  1437  1437 I Layer   : id=35494 Destroyed Surface(name=531f7ba com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity)/@0xebc412 - animation-leash of window_animation#35494
+08-06 16:26:43.735  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-06 16:26:43.739  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-06 16:26:43.739  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+08-06 16:26:43.739  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+08-06 16:26:43.740  1726  1773 D SurfaceComposerClient: [SEC_SF_EFFECTS] setBackgroundBlurRadius ## Dim Layer for - Task=7498#35497 backgroundBlurRadius=0
+--------- beginning of system
+08-06 16:26:43.740  1726  1772 I WindowManager: Reparenting to original parent: Surface(name=ActivityRecord{155344764 u0 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity t7498})/@0x7b7c5da, destroy=true, surface=Surface(name=9724209 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity)/@0x4b8187d
+08-06 16:26:43.742  1726  1772 D SurfaceComposerClient: setCornerRadius ## e814c46 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#35441 cornerRadius=0.000000
+08-06 16:26:43.744  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-06 16:26:43.745  2357  2357 I AODNotificationManager: updateNotification() 
+08-06 16:26:43.748  1726  1773 D SurfaceComposerClient: [SEC_SF_EFFECTS] setBackgroundBlurRadius ## Dim Layer for - Task=7498#35497 backgroundBlurRadius=0
+08-06 16:26:43.750  2357  3033 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-06 16:26:43.751  2357  3033 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-06 16:26:43.751  1726  1772 D SurfaceComposerClient: [SEC_SF_EFFECTS] setBackgroundBlurRadius ## Dim Layer for - Task=7498#35497 backgroundBlurRadius=0
+08-06 16:26:43.754  1726  1772 D SurfaceComposerClient: setCornerRadius ## e814c46 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#35441 cornerRadius=0.000000
+08-06 16:26:43.756  1437  1437 I SurfaceFlinger: [Display 0 name="Built-in Screen"#49] setFrameRateCategory: Default
+08-06 16:26:43.756  1437  1437 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{Surface(name=9724209 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity)/@0x4b8187d - animation-leash of window_animation#35496 z=1} 1 children}] reparent to OffscreenRoot
+08-06 16:26:43.757  1437  1437 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{Surface(name=9724209 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity)/@0x4b8187d - animation-leash of window_animation#35496 z=1} 1 children}] RelativeParent to null
+08-06 16:26:43.757  1437  1437 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{9724209 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#35491 parentId=35440 z=1} 2 children}] reparent to LayerHierarchy{RequestedLayerState{ActivityRecord{155344764 u0 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity t7498}#35440 parentId=35364} 4 children}
+08-06 16:26:43.758  2357  2357 I AppIconSolution: return adaptive icon for com.moneybase.qa, isNight = false
+08-06 16:26:43.758  1437  1437 I SurfaceFlinger: id=35496 Removed Surface(name=9724209 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity)/@0x4b8187d - animation-leash of window_animation#35496 (227)
+08-06 16:26:43.759  1726  1771 I DisplayDeviceRepository: Display device changed render timings: "Built-in Screen", renderFrameRate=120.00001, presentationDeadlineNanos=9333333, appVsyncOffsetNanos=8333333, frameRateOverrides=[]
+08-06 16:26:43.761  1414 20440 D AudioFlinger: setParameters: filtered dev setParameters keyvalue screen_state=on
+08-06 16:26:43.762  1315  1761 D audio_hw_primary: device-adev_set_parameters: enter
+08-06 16:26:43.762  1315  1761 I audio_hw_proxy2: proxy-proxy_set_parameters: set Screen-state 1
+08-06 16:26:43.762  1315  1761 D audio_hw_primary: device-adev_set_parameters: param (screen_state=on)
+08-06 16:26:43.762  1315  1761 I Audio_a2dpsink_hw: adev_set_parameters: kevpairs=[screen_state=on]
+08-06 16:26:43.764  2357  2472 D StackScroller: onDisplayChanged for predraw skip to 2
+08-06 16:26:43.765  1437  1437 I SurfaceFlinger: destroyed Surface(name=9724209 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity)/@0x4b8187d - animation-leash of window_animation#35496
+08-06 16:26:43.765  1726  4606 D WifiDisplayAdapter: isFitToActiveDisplayLocked : false
+08-06 16:26:43.765  1437  1437 I Layer   : id=35496 Destroyed Surface(name=9724209 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity)/@0x4b8187d - animation-leash of window_animation#35496
+08-06 16:26:43.766  1726  3321 D LiftUpHandler: [LTW] Stopped already.
+08-06 16:26:43.766  1726  1726 D SGM:GameManager: onDisplayChanged. displyId: 0, state: 2
+08-06 16:26:43.767  1726  1726 D AODManagerService: requestReCalToTSP IsSingleTouchMode = falserequestedReCalToTSP = false / previousDisplayState = ON
+08-06 16:26:43.767  1726  1951 D SGM:FgCheckThread: onLooperPrepared(), msg: MSG_LCD_ON
+08-06 16:26:43.768  1726  2171 D AS.DesktopModeHelper: onDisplayChanged: #Id=0
+08-06 16:26:43.769  1726  1772 D SurfaceComposerClient: setCornerRadius ## e814c46 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#35441 cornerRadius=0.000000
+08-06 16:26:43.775  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-06 16:26:43.786  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+08-06 16:26:43.786  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+08-06 16:26:43.786  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+08-06 16:26:43.786  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+08-06 16:26:43.787  2357  2357 D S.S.N.  : entryViewBound parent :0|com.moneybase.qa|1138|null|10569
+08-06 16:26:43.789  2357  2357 I AppIconSolution: return adaptive icon for com.moneybase.qa, isNight = false
+08-06 16:26:43.793  2357  2357 D DisplayLifecycle: updateDisplay id = 0
+08-06 16:26:43.794  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-06 16:26:43.797  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-06 16:26:43.797  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+08-06 16:26:43.797  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+08-06 16:26:43.798  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-06 16:26:43.798  2357  2357 I AODNotificationManager: updateNotification() 
+08-06 16:26:43.890 14538 15888 D AAudio  : AAudioStream_requestStop(s#1) called
+08-06 16:26:43.890 14538 15888 D AAudio  : AAudioStream_close(s#1) called ---------------
+08-06 16:26:43.890 14538 15888 D AudioStreamInternal_Client: release_l(): mServiceStreamHandle = 0x0000006C
+08-06 16:26:43.891 14538 15888 D AAudioStream: setState(s#1) from 10 to 11
+08-06 16:26:43.891  1414 16086 D AAudioServiceStreamBase: run() got COMMAND opcode 4 after 401 loops
+08-06 16:26:43.891  1414 16086 W AAudioServiceStreamBase: stop_l() stream not running, returning early
+08-06 16:26:43.891  1414 16086 D AAudioStream: joinThread() - but has no thread or already join()ed
+08-06 16:26:43.891  1414 16086 D AudioStreamInternal_Service: release_l(): mServiceStreamHandle = 0x0000006B
+08-06 16:26:43.891  1414 16086 D AAudioStream: setState(s#54) from 9 to 11
+08-06 16:26:43.892  1414 16085 D AAudioServiceStreamBase: run() got COMMAND opcode 4 after 3288 loops
+08-06 16:26:43.892  1414 16085 D AAudioServiceEndpointMMAP: close_l() clear mMmapStream
+08-06 16:26:43.892  1414 16085 D AudioFlinger: disconnect: localPortId = 1399
+08-06 16:26:43.896  1414  1611 V APM_AudioPolicyManager: releaseOutput portId 1399
+08-06 16:26:43.896  1414  1611 V APM_AudioPolicyManager: releaseOutput() 733
+08-06 16:26:43.896  1414  1611 V APM_AudioPolicyManager: closeOutput(733)
+08-06 16:26:43.898  1315  1761 D audio_hw_playback: mmap_out-out_set_parameters: enter
+08-06 16:26:43.898  1315  1761 D audio_hw_playback: mmap_out-out_set_parameters: routing = 0x0
+08-06 16:26:43.898  1315  1761 V audio_hw_playback: mmap_out-out_set_parameters: requested to change route to AUDIO_DEVICE_NONE
+08-06 16:26:43.898  1315  1341 D audio_hw_playback: mmap_out-out_update_source_metadata: called
+08-06 16:26:43.901  1414  1611 D AudioFlinger: closing mmapThread 0xb400006fe0d639e8
+08-06 16:26:43.903  1414  1611 D AudioFlinger: mmapThread exit()
+08-06 16:26:43.903  1414  1611 D AudioFlinger: closeOutput_nonvirtual, delete mmap output stream
+08-06 16:26:43.903  1315  1341 I audio_hw_primary: mmap_out-adev_close_output_stream: try to close plyback stream
+08-06 16:26:43.903  1315  1341 I audio_hw_primary: mmap_out-adev_close_output_stream: closed playback stream: io_handle (733)
+08-06 16:26:43.904  1414  1611 V APM_AudioPolicyManager: selectOutputForMusicEffects selected output 13
+08-06 16:26:43.904  1315  1341 V sec_audio_hw: sec_dev_close_audio_stream: enter
+08-06 16:26:43.904  1315  1341 V sec_audio_hw: sec_dev_close_audio_stream: close sec audio stream for handle 733, type 0
+08-06 16:26:43.904  1315  1341 V sec_audio_hw: sec_dev_close_audio_stream: exit
+08-06 16:26:43.905  1414  8291 D NativePermissionController: checkPermission: missing 13 for 10569
+08-06 16:26:43.905  1414  8291 D NativePermissionController: checkPermission: missing 13 for 10569
+08-06 16:26:43.907  1414  1774 D NativePermissionController: checkPermission: missing 13 for 10569
+08-06 16:26:43.907  1414  1774 D NativePermissionController: checkPermission: missing 13 for 10569
+08-06 16:26:43.911  1414 20435 D NativePermissionController: checkPermission: missing 13 for 10143
+08-06 16:26:43.911  1414 20441 D NativePermissionController: checkPermission: missing 13 for 10569
+08-06 16:26:43.912  1414  7946 D NativePermissionController: checkPermission: missing 13 for 10569
+08-06 16:26:43.913  1414  7946 D NativePermissionController: checkPermission: missing 13 for 10569
+08-06 16:26:43.913  1414  1774 D NativePermissionController: checkPermission: missing 13 for 10271
+08-06 16:26:43.914  1414 20435 D NativePermissionController: checkPermission: missing 13 for 10143
+08-06 16:26:43.914  1414 20436 D NativePermissionController: checkPermission: missing 13 for 10569
+08-06 16:26:43.915  1414 20441 D NativePermissionController: checkPermission: missing 13 for 10271
+08-06 16:26:43.916  1414 20435 D NativePermissionController: checkPermission: missing 13 for 10143
+08-06 16:26:43.917  1414  8291 D NativePermissionController: checkPermission: missing 13 for 10271
+08-06 16:26:43.918  1414 20435 D NativePermissionController: checkPermission: missing 13 for 10143
+08-06 16:26:43.918  1414  8291 D NativePermissionController: checkPermission: missing 13 for 10271
+08-06 16:26:43.919  1414 20436 D NativePermissionController: checkPermission: missing 13 for 10271
+08-06 16:26:43.920  1414 20436 D NativePermissionController: checkPermission: missing 13 for 10271
+08-06 16:26:43.921  1414 20435 D NativePermissionController: checkPermission: missing 13 for 10143
+08-06 16:26:43.923  1414 20436 D NativePermissionController: checkPermission: missing 13 for 10271
+08-06 16:26:43.925  1414 20436 D NativePermissionController: checkPermission: missing 13 for 10271
+08-06 16:26:43.925  1414 20435 D NativePermissionController: checkPermission: missing 13 for 10143
+08-06 16:26:43.929  1414 20436 D NativePermissionController: checkPermission: missing 13 for 10143
+08-06 16:26:43.930  1414 20436 D NativePermissionController: checkPermission: missing 13 for 10143
+08-06 16:26:43.977 14412 14464 I appium  : AppiumResponse: {"sessionId":"448c3b55-0203-4e51-a3f0-45d300d67b16","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15dJT1vT/w9+z7kkyWmewgKEVRlFJqERfccF8q2qLWWm/r715rva312l6vXNRWT4/XUuvSunQ5dddbqV0AEUFAUAsoyKaiEJKQfTL7vv3+yJ2HPJlJMklmz/t1Dudknnnmeb4zSYY87/l…
+08-06 16:26:43.997  1414 16085 D AAudioServiceEndpoint: ~AAudioServiceEndpoint() called
+08-06 16:26:43.997  1414 16085 D AAudioServiceStreamBase: run() MMAP exiting after 3289 loops <<<<<<<<<<<<<< COMMANDS
+08-06 16:26:43.998  1414 16086 D AAudioServiceStreamBase: ~AAudioServiceStreamBase() called
+08-06 16:26:43.999  1414 16086 D AAudioStream: setState(s#54) from 11 to 11
+08-06 16:26:43.999  1414 16086 D AAudioStream: setState(s#54) from 11 to 12
+08-06 16:26:43.999  1414 16086 D AudioStreamInternal_Service: ~AudioStreamInternal() 0xb400007040df1170 called
+08-06 16:26:43.999  1414 16086 D AAudioStream: ~AudioStream(s#54) mPlayerBase strongCount = 1
+08-06 16:26:43.999  1414 16086 D audioserver: PlayerBase::~PlayerBase()
+08-06 16:26:43.999  1414 16086 D AAudioServiceEndpoint: ~AAudioServiceEndpoint() called
+08-06 16:26:43.999 14412 14464 I appium  : channel read: GET /session/448c3b55-0203-4e51-a3f0-45d300d67b16/source
+08-06 16:26:43.999  1414 16086 D AAudioServiceStreamBase: run() Shared exiting after 402 loops <<<<<<<<<<<<<< COMMANDS
+08-06 16:26:44.000  1414 20440 D AAudioServiceStreamBase: ~AAudioServiceStreamBase() called
+08-06 16:26:44.000 14412 14464 I appium  : Source command
+08-06 16:26:44.000 14412 14464 I appium  : Waiting up to 10000ms for the device to idle
+08-06 16:26:44.000 14538 15888 D AAudioStream: setState(s#1) from 11 to 11
+08-06 16:26:44.000 14538 15888 D AAudioStream: setState(s#1) from 11 to 12
+08-06 16:26:44.000 14538 15888 D AudioStreamInternal_Client: ~AudioStreamInternal() 0xb40000708adcca20 called
+08-06 16:26:44.000 14538 15888 D AAudioStream: ~AudioStream(s#1) mPlayerBase strongCount = 2
+08-06 16:26:44.000 14538 15888 D AAudio  : AAudioStream_close(s#1) returned 0 ---------
+08-06 16:26:44.005  2357  3083 D SoundCraft.PlayingAudioConditionHandler: onPlaybackConfigChanged : lastStartedPackageName=null, lastStartedUid=-1, newStartedUid=-1, newStartPackageName=null, thread=Thread[RoutineHandlerThread,5,main]
+08-06 16:26:44.006 30099 30153 I MultimediaHelper: (Jelly)(2.2.04) handleAudioPlaybackProcessUpdated() : audio playback processes are updated
+08-06 16:26:44.006 30099 30153 I MultimediaHelper: (Jelly)(2.2.04) handleAudioPlaybackPackageUpdated() : audio playback packages are updated
+08-06 16:26:44.022  1726  1771 D SGM:GameManager: identifyForegroundApp. com.moneybase.qa, mCurrentUserId: 0, callerUserId: 0
+08-06 16:26:44.022  1726  1771 D SGM:SemGameManager: isForegroundGame(), ret=false
+08-06 16:26:44.024  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-06 16:26:44.025  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-06 16:26:44.032  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-06 16:26:44.033  1437  1437 I LayerHistory: Dim Layer for - Task=7498#35497 is animating
+08-06 16:26:44.033  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_14538#35495 Max (can't resolve refresh rate)
+08-06 16:26:44.033  1437  1437 I LayerHistory: NavigationBar0$_2357#102 Max (can't resolve refresh rate)
+08-06 16:26:44.033  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-06 16:26:44.033  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-06 16:26:44.035  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-06 16:26:44.035  1325  1405 I display : Current VRR MODE is 3
+08-06 16:26:44.035  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-06 16:26:44.035  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-06 16:26:44.035  1325  1405 I display : commit modeset : 1080x2340@60phs
+08-06 16:26:44.048  1325  1405 W display : deliverWinConfigData:: commit modeset time (12 ms)
+08-06 16:26:44.049  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-06 16:26:44.049  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 16:26:44.049  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-06 16:26:44.049  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 16:26:44.049  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-06 16:26:44.049  1325  1397 I display : Set Affinity CPU ID : 0
+08-06 16:26:44.049  1325  1397 I display : Set Affinity CPU ID : 1
+08-06 16:26:44.049  1325  1397 I display : Set Affinity CPU ID : 2
+08-06 16:26:44.049  1325  1397 I display : Set Affinity CPU ID : 3
+08-06 16:26:44.049  1325  1397 I display : Set Affinity CPU ID : 4
+08-06 16:26:44.049  1325  1397 I display : Set Affinity CPU ID : 5
+08-06 16:26:44.049  1325  1397 I display : Set Affinity CPU ID : 6
+08-06 16:26:44.049  1325  1397 I display : Set Affinity CPU ID : 7
+08-06 16:26:44.049  1325  1397 I display : Set affinity HWC : 1325
+08-06 16:26:44.049  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-06 16:26:44.049  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-06 16:26:44.049  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-06 16:26:44.049  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-06 16:26:44.050  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-06 16:26:44.166 14412 14464 I appium  : AppiumResponse: {"sessionId":"448c3b55-0203-4e51-a3f0-45d300d67b16","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-06 16:26:44.209 12658 12658 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-06 16:26:44.276 16515 16515 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-06 16:26:44.299  1726  1808 D PowerManagerService: UserActivityStateListenerState: 0
+08-06 16:26:44.325 12658 12658 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-06 16:26:44.376 16519 16519 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-06 16:26:44.407 30099 30153 I MultimediaHelper: (Jelly)(2.2.04) updateMediaRunning() : current media mode is 2
+08-06 16:26:44.407 30099 30153 E MultimediaHelper: (Jelly)(2.2.04) isMusicRunning() : audio playing list is empty
+08-06 16:26:44.408 30099 30150 I ShtCoreImpl: (Jelly)(2.2.04) handleMediaStateUpdated(false)/current internal val : false
+08-06 16:26:44.408 30099 30150 I ShtCoreImpl: (Jelly)(2.2.04) updateRunningCondition() : setting( true ), headtracking( true ), conn( false ), media( false ), wear( true ), screen( true ), audiopath( false ), sensorsupport( true )
+08-06 16:26:44.411  1414 20440 D DlbEffectContext: getParam() received parameter EFFECT_PARAM_ENABLE
+08-06 16:26:44.411  1414 20440 D DlbEffectContext: getParam() received parameter EFFECT_PARAM_ENABLE
+08-06 16:26:44.411  1414 20440 D DlbEffectContext: getParam() received parameter EFFECT_PARAM_ENABLE
+08-06 16:26:44.411  1414 20440 D DlbEffectContext: getParam() received parameter EFFECT_PARAM_ENABLE
+08-06 16:26:44.412  1414 20440 D DlbEffectContext: getParam() received parameter EFFECT_PARAM_ENABLE
+08-06 16:26:44.412  1414 20440 D DlbEffectContext: getParam() received parameter EFFECT_PARAM_PROFILE
+08-06 16:26:44.412  1414 20440 D DlbEffectContext: getParam() received parameter EFFECT_PARAM_PROFILE
+08-06 16:26:44.413  1414 20440 D DlbEffectContext: getParam() received parameter EFFECT_PARAM_PROFILE
+08-06 16:26:44.413  1414 20440 D DlbEffectContext: getParam() received parameter EFFECT_PARAM_PROFILE
+08-06 16:26:44.413  1414 20440 D DlbEffectContext: getParam() received parameter EFFECT_PARAM_PROFILE
+08-06 16:26:44.417  6928  6949 I SAContentProvider: getAudioPathByQuery() : requested path is unknown (-1)
+08-06 16:26:44.417  6928  6949 I SAContentProvider: query() : result is 0
+08-06 16:26:44.425 12658 12658 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''
+08-06 16:26:44.431 30099 30150 I SoundAliveHelper: (Jelly)(2.2.04) getSpatialAudioValueFromSoundAlive() : value from SoundAlive is 0
+08-06 16:26:44.439  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786022804
+08-06 16:26:44.439  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-06 16:26:44.439  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-06 16:26:44.439  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29767046
+08-06 16:26:44.439  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29767022
+08-06 16:26:44.439  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-06 16:26:44.439  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-06 16:26:44.439  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-06 16:26:44.439  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-06 16:26:44.439  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0

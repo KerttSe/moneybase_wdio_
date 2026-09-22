@@ -1,0 +1,202 @@
+--------- beginning of main
+05-11 11:51:21.768  2431  2431 I AppIconSolution: return adaptive icon for com.samsung.android.app.smartcapture, isNight = false
+05-11 11:51:21.786  2431  2431 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+05-11 11:51:21.791  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:21.791  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:21.791  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:21.791  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:21.793  2431  2431 D S.S.N.  : entryViewBound parent :0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:21.795  2431  2431 I AppIconSolution: return adaptive icon for com.samsung.android.app.smartcapture, isNight = false
+05-11 11:51:21.804  2431  2431 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+05-11 11:51:21.806  2431  2431 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+05-11 11:51:21.806  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:21.806  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:21.807  2431  2431 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+05-11 11:51:21.807  2431  2431 I AODNotificationManager: updateNotification() 
+--------- beginning of system
+05-11 11:51:21.947   744  9321 I keystore2: system/security/keystore2/watchdog/src/lib.rs:377 - Watchdog thread idle -> terminating. Have a great day.
+05-11 11:51:21.992  9999  9999 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+05-11 11:51:21.993  9999  9999 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+05-11 11:51:21.993  9999  9999 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+05-11 11:51:21.994  1760  4648 I EDMNativeHelperService: isScreenCaptureEnabled
+05-11 11:51:21.997  1760  2319 D NetdEventListenerService: DNS Requested by 514, 10463(com.azure.authenticator), 4(FAIL), isBlocked=true, 0ms
+05-11 11:51:21.997  1760  4648 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+05-11 11:51:21.998  9999  9999 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+05-11 11:51:21.998  9999  9999 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+05-11 11:51:22.002  1483  1514 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_6897#113929(seamlessTransition:0)
+05-11 11:51:22.002  1483  1514 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2431#105(seamlessTransition:0)
+05-11 11:51:22.002  1483  1514 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2431#102(seamlessTransition:0)
+05-11 11:51:22.002  1483  1514 I SurfaceFlinger: Capture layer list: 	 $_9054#113958(seamlessTransition:0)
+05-11 11:51:22.002  1483  1514 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+05-11 11:51:22.004  1483  1520 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+05-11 11:51:22.004  1483  1520 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_6897#113929 at index 1
+05-11 11:51:22.004  1483  1520 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2431#105 at index 2
+05-11 11:51:22.004  1483  1520 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2431#102 at index 3
+05-11 11:51:22.004  1483  1520 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer $_9054#113958 at index 4
+05-11 11:51:22.046  9999 10008 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+05-11 11:51:22.080  9892  9897 W henticator:auth: userfaultfd: MOVE ioctl seems unsupported: Connection timed out
+05-11 11:51:22.209   727   727 D io_stats: !@   8,0 r 57902085 1195593962 w 17813364 334383400 d 5183540 360635912 f 0 1837865 iot 28000092 0 th 0 0 0 pt 0 inp 0 0 397887.603
+05-11 11:51:22.295  9054  9054 I [SC_ScreenRecorder]_FloatingButtonView: 00:00:48
+05-11 11:51:22.298  9054  9054 I NotificationManager: com.samsung.android.app.smartcapture: notify(1332, null, Notification(channel=CHANNEL_ID_RECORDING_SCREEN shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|ONLY_ALERT_ONCE color=0x00000000 category=navigation groupKey=screen_recorder_group_key vis=PRIVATE semFlags=0x0 semPriority=0 semMissedCount=0)) as user
+05-11 11:51:22.327  1483  1483 D SurfaceFlinger: GPIS:: requestGpisForClientComposition
+05-11 11:51:22.444  1760  2177 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+05-11 11:51:22.448  6723  6866 I appium  : AppiumResponse: {"sessionId":"5f0a92a8-0a1e-4d04-8309-13e4646fef1a","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N13fJXl/T/+11lZJ3uTSSabkBCULRD2BgegVvjVDmvbr/qxttXaVqvVPuqqdVTrbkWlyg4NOyAICYRNgJBJFtn75Kycc35/pLnNnXOyT3Jyktfz8eBR7ute1zkH09yvc13vS2IymUwgIiI…
+05-11 11:51:22.449  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:35 syn=1, rto=0, cwnd=0
+05-11 11:51:22.449  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:36 syn=1, rto=0, cwnd=0
+05-11 11:51:22.449  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:37 syn=1, rto=0, cwnd=0
+05-11 11:51:22.449  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:38 syn=1, rto=0, cwnd=0
+05-11 11:51:22.449  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:39 syn=3, rto=0, cwnd=0
+05-11 11:51:22.450  1760  2268 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1778489482450 lastDateWindow=1778476839000
+05-11 11:51:22.452  1760  3742 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 63242, isSameBssidAndFreq true
+05-11 11:51:22.499  6723  6866 I appium  : channel read: GET /session/5f0a92a8-0a1e-4d04-8309-13e4646fef1a/source
+05-11 11:51:22.500  6723  6866 I appium  : Source command
+05-11 11:51:22.500  6723  6866 I appium  : Waiting up to 10000ms for the device to idle
+05-11 11:51:22.504  1760  1760 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+05-11 11:51:22.516  2431  2431 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:22.519  2896  6741 I HoneySpace.NotificationListener: onNotificationPosted com.samsung.android.app.smartcapture: 0|com.samsung.android.app.smartcapture|1332|null|10229: 0
+05-11 11:51:22.519  2896  6741 I HoneySpace.NotificationListener: invalid notification: com.samsung.android.app.smartcapture UserHandle{0}: canShowBadge is false
+05-11 11:51:22.522  6194  6194 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+05-11 11:51:22.523  6194  6934 I NotificationPipeline: Processing new notification: 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:22.523  6148  6148 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+05-11 11:51:22.523  6148  6148 D NLService: Successfully stored the newly arrived notification identified by 1332
+05-11 11:51:22.524  6194  6934 W BridgeModeModel: Not started, default to bridging
+05-11 11:51:22.525  6194  6934 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+05-11 11:51:22.526  6194  6934 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+05-11 11:51:22.527  6194  6934 I NotificationPipeline: Discarding notification: 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:22.529  2431  2431 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+05-11 11:51:22.530  2431  2431 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+05-11 11:51:22.531  2431  2431 I AODNotificationManager: updateNotification() 
+05-11 11:51:22.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778489482
+05-11 11:51:22.599  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 11:51:22.599  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 11:51:22.599  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641491
+05-11 11:51:22.599  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641486
+05-11 11:51:22.599  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 11:51:22.599  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 11:51:22.600  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 11:51:22.600  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 11:51:22.600  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 11:51:22.662  1760  1948 D ActivityManager: Received BROADCAST intent 0x5a8b73b Key{broadcastIntent pkg=android intent=act=com.android.server.audio.action.CHECK_MUSIC_ACTIVE xflg=0x4 flags=0x4000000 u=0} requestCode=1 sent=0 from uid 1000
+05-11 11:51:22.716  2431  2431 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:22.716  2431  2431 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:22.716  2431  2431 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+05-11 11:51:22.729  2431  2431 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+05-11 11:51:22.729  2431  2431 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+05-11 11:51:22.729  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:22.729  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:22.730  2431  2431 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+05-11 11:51:22.730  2431  2431 I AODNotificationManager: updateNotification() 
+05-11 11:51:22.745  2431  3012 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+05-11 11:51:22.745  2431  3012 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+05-11 11:51:22.749  2431  2431 I AppIconSolution: return adaptive icon for com.samsung.android.app.smartcapture, isNight = false
+05-11 11:51:22.770  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:22.771  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:22.771  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:22.771  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:22.771  2431  2431 D S.S.N.  : entryViewBound parent :0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:22.772  2431  2431 I AppIconSolution: return adaptive icon for com.samsung.android.app.smartcapture, isNight = false
+05-11 11:51:22.777  2431  2431 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+05-11 11:51:22.778  2431  2431 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+05-11 11:51:22.778  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:22.778  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:22.779  2431  2431 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+05-11 11:51:22.779  2431  2431 I AODNotificationManager: updateNotification() 
+05-11 11:51:23.100  6723  6866 I appium  : AppiumResponse: {"sessionId":"5f0a92a8-0a1e-4d04-8309-13e4646fef1a","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+05-11 11:51:23.116  6723  6866 I appium  : channel read: POST /session/5f0a92a8-0a1e-4d04-8309-13e4646fef1a/element
+05-11 11:51:23.116  6723  6866 I appium  : FindElement command
+05-11 11:51:23.116  6723  6866 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceId("com.moneybase.qa:id/clSelectCardGooglePay")'
+05-11 11:51:23.116  6723  6866 I appium  : Waiting up to 10000ms for the device to idle
+05-11 11:51:23.295  9054  9054 I [SC_ScreenRecorder]_FloatingButtonView: 00:00:49
+05-11 11:51:23.298  9054  9054 I NotificationManager: com.samsung.android.app.smartcapture: notify(1332, null, Notification(channel=CHANNEL_ID_RECORDING_SCREEN shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|ONLY_ALERT_ONCE color=0x00000000 category=navigation groupKey=screen_recorder_group_key vis=PRIVATE semFlags=0x0 semPriority=0 semMissedCount=0)) as user
+05-11 11:51:23.311  6723  6866 I appium  : AppiumResponse: {"sessionId":"5f0a92a8-0a1e-4d04-8309-13e4646fef1a","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1564)\n"}}
+05-11 11:51:23.328  1760  1760 D SSRM:CustomFrequencyManagerService: GpisHintRunnable ScreenRecorderEnabled force return
+05-11 11:51:23.328  1483  1483 D SurfaceFlinger: GPIS:: requestGpisForClientComposition
+05-11 11:51:23.331  1483  2048 D NativeSemDvfsManager: acquire:: timeout = 2000 mIsAcquired = 1  mTagName : SurfaceFlinger 
+05-11 11:51:23.332  1388  9998 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 3084886
+05-11 11:51:23.332  1483  2048 E NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::acquire()
+05-11 11:51:23.332  1388  1501 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 3084886  [1483 / 1000]    HINT : SF_GPU_MINLOCK    list : [TIMEOUT / 2000] 
+05-11 11:51:23.411 10012 10012 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+05-11 11:51:23.448  6723  6866 I appium  : channel read: POST /session/5f0a92a8-0a1e-4d04-8309-13e4646fef1a/element
+05-11 11:51:23.450  6723  6866 I appium  : FindElement command
+05-11 11:51:23.453  6723  6866 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceId("com.moneybase.qa:id/clSelectCardGooglePay")'
+05-11 11:51:23.453  6723  6866 I appium  : Waiting up to 10000ms for the device to idle
+05-11 11:51:23.509  1760  1760 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+05-11 11:51:23.524  2431  2431 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:23.529  2431  2431 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+05-11 11:51:23.530  2431  2431 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+05-11 11:51:23.530  2431  2431 I AODNotificationManager: updateNotification() 
+05-11 11:51:23.532  6148  6148 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+05-11 11:51:23.532  6148  6148 D NLService: Successfully stored the newly arrived notification identified by 1332
+05-11 11:51:23.532  6194  6194 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+05-11 11:51:23.533  6194  6934 I NotificationPipeline: Processing new notification: 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:23.534  2896  6741 I HoneySpace.NotificationListener: onNotificationPosted com.samsung.android.app.smartcapture: 0|com.samsung.android.app.smartcapture|1332|null|10229: 0
+05-11 11:51:23.534  2896  6741 I HoneySpace.NotificationListener: invalid notification: com.samsung.android.app.smartcapture UserHandle{0}: canShowBadge is false
+05-11 11:51:23.534  6194  6934 W BridgeModeModel: Not started, default to bridging
+05-11 11:51:23.534  6194  6934 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+05-11 11:51:23.535  6194  6934 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+05-11 11:51:23.536  6194  6934 I NotificationPipeline: Discarding notification: 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:23.571  1760  3240 I NSLocationMonitor: getGPSUsingApps() called
+05-11 11:51:23.572  3222  3249 I NSLocationManager_FLP: getGPSUsingApps, No change
+05-11 11:51:23.584  1760  3240 D FreecessController: FZ : com.samsung.android.game.gamehome(10312) [5676] reason: Bg [cached:X
+05-11 11:51:23.585  1760  3240 D FreecessHandler: freeze com.samsung.android.game.gamehome(10312) result : 0
+05-11 11:51:23.586  1760  3240 W LocationManagerService: onFreezeStateChanged, uid[10312]=true
+05-11 11:51:23.586  1760  3240 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10312 , disable= true
+05-11 11:51:23.586  1760  3240 I PowerManagerService: [PWL] can not change uid =  10312
+05-11 11:51:23.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778489483
+05-11 11:51:23.599  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 11:51:23.599  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 11:51:23.599  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641491
+05-11 11:51:23.599  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641486
+05-11 11:51:23.599  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 11:51:23.599  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 11:51:23.600  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 11:51:23.600  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 11:51:23.600  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 11:51:23.641  9054  9140 I [SC_ScreenRecorder]_FileSystemUtil: getAvailableBytes : 60330770432
+05-11 11:51:23.642  9054  9140 I [SC_ScreenRecorder]_StorageChecker: free space check : 57535 MB
+05-11 11:51:23.655  9054  9140 I [SC_ScreenRecorder]_StorageChecker: file size check : 10 MB
+05-11 11:51:23.725  2431  2431 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:23.726  2431  2431 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:23.726  2431  2431 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+05-11 11:51:23.749  2431  2431 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+05-11 11:51:23.751  2431  2431 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+05-11 11:51:23.752  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:23.752  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:23.754  2431  2431 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+05-11 11:51:23.754  2431  2431 I AODNotificationManager: updateNotification() 
+05-11 11:51:23.770  2431  3012 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+05-11 11:51:23.784  2431  3012 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+05-11 11:51:23.785  2431  2431 I AppIconSolution: return adaptive icon for com.samsung.android.app.smartcapture, isNight = false
+05-11 11:51:23.787  6897  9505 D [REPLICATOR_WORKAROUND]: ReplicatorChange status: Connected
+05-11 11:51:23.787  6897  9505 D FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR_WORKAROUND]] ReplicatorChange status: Connected
+05-11 11:51:23.817  2431  2431 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+05-11 11:51:23.821  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:23.822  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:23.822  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:23.822  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:23.823  2431  2431 D S.S.N.  : entryViewBound parent :0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:23.824  2431  2431 I AppIconSolution: return adaptive icon for com.samsung.android.app.smartcapture, isNight = false
+05-11 11:51:23.834  2431  2431 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+05-11 11:51:23.837  2431  2431 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+05-11 11:51:23.837  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:23.837  2431  2431 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+05-11 11:51:23.838  2431  2431 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+05-11 11:51:23.838  2431  2431 I AODNotificationManager: updateNotification() 
+05-11 11:51:23.862  6897  8419 D [CONTACTS]: getting current database instance to check database is exists before mapping [moneybasecontacts::veg40002-1-7f865398537dbb81]
+05-11 11:51:23.863  6897  8419 D FS.Core.Shared.LogForwarder.WebApi: [[CONTACTS]] getting current database instance to check database is exists before mapping [moneybasecontacts::veg40002-1-7f865398537dbb81]
+05-11 11:51:23.863  6897  8419 D to map [moneybasecontacts::veg40002-1-7f865398537dbb81] document to DTO: getting current database instance 
+05-11 11:51:23.863  6897  8419 D FS.Core.Shared.LogForwarder.WebApi: [to map [moneybasecontacts::veg40002-1-7f865398537dbb81] document to DTO] getting current database instance 
+05-11 11:51:23.863  6897  8419 D [CONTACTS]: Successfully retrieved MoneybasePhoneBookDocumentModel: MoneybasePhoneBookDocumentModel(contacts=[MoneybaseMobilePhoneContactModel(moneybaseAccountCode=cur40076-1, version=13, contactId=117607, status=Approved, mobileNumber=, displayName=, dateLastUsedUTC=null, usageCount=0), MoneybaseMobilePhoneContactModel(moneybaseAccountCode=ker40014-1, version=11, contactId=125640, status=Approved, mobileNumber=, displayName=, dateLastUsedUTC=null, usageCount=0)], owner=veg40002-1, published=true, type=MoneybasePhoneBookDocument, device=7f865398537dbb81)
+05-11 11:51:23.863  6897  8419 D FS.Core.Shared.LogForwarder.WebApi: [[CONTACTS]] Successfully retrieved MoneybasePhoneBookDocumentModel: MoneybasePhoneBookDocumentModel(contacts=[MoneybaseMobilePhoneContactModel(moneybaseAccountCode=cur40076-1, version=13, contactId=117607, status=Approved, mobileNumber=, displayName=, dateLastUsedUTC=null, usageCount=0), MoneybaseMobilePhoneContactModel(moneybaseAccountCode=ker40014-1, version=11, contactId=125640, status=Approved, mobileNumber=, displayName=, dateLastUsedUTC=null, usageCount=0)], owner=veg40002-1, published=true, type=MoneybasePhoneBookDocument, device=7f865398537dbb81)
+05-11 11:51:23.895  6723  6866 I appium  : AppiumResponse: {"sessionId":"5f0a92a8-0a1e-4d04-8309-13e4646fef1a","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1564)\n"}}
+05-11 11:51:23.972 10018 10018 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+05-11 11:51:23.988  6897  8414 D [REPLICATOR]: DocumentReplication Replication Doc ID:  moneybasecontacts::veg40002-1-7f865398537dbb81 type: Pull In: Continuous
+05-11 11:51:23.989  6897  8414 D FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR]] DocumentReplication Replication Doc ID:  moneybasecontacts::veg40002-1-7f865398537dbb81 type: Pull In: Continuous
+05-11 11:51:23.989  6897  8414 D [REPLICATOR_WORKAROUND]: ReplicatorChange status: Connected
+05-11 11:51:23.989  6897  8414 D FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR_WORKAROUND]] ReplicatorChange status: Connected
+05-11 11:51:23.996  6723  6866 I appium  : channel read: POST /session/5f0a92a8-0a1e-4d04-8309-13e4646fef1a/element
+05-11 11:51:23.997  6723  6866 I appium  : FindElement command
+05-11 11:51:24.001  6723  6866 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("Not Now")'
+05-11 11:51:24.003  6723  6866 I appium  : Waiting up to 10000ms for the device to idle
+05-11 11:51:24.004  1760  2266 I SemWifiServiceDetector: Service det. resumed: T / T / 8002
+05-11 11:51:24.028  6763  6763 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.api.phone.service.InternalService.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsInternalApiService }

@@ -1,0 +1,248 @@
+--------- beginning of main
+06-22 18:22:17.449   700   711 I ndroid.systemui: Background concurrent copying GC freed 358131(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 76us,483us total 110.407ms
+--------- beginning of system
+06-22 18:22:21.872   500   533 D KernelCpuUidUserSysTimeReader: Removing uids 99002-99002
+06-22 18:22:21.894   700   957 D EGL_emulation: app_time_stats: avg=20004.52ms min=20004.52ms max=20004.52ms count=1
+06-22 18:22:25.154  5707  5707 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.aang.events.services.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+06-22 18:22:25.597  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1719): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:22:28.843   700   711 I ndroid.systemui: Background concurrent copying GC freed 353977(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 556us,499us total 107.394ms
+06-22 18:22:29.158 15058 15209 I PlayCommon: [106] Preparing logs for uploading
+06-22 18:22:29.164 15058 15209 I PlayCommon: [106] Connecting to server for timestamp: https://play.googleapis.com/play/log/timestamp
+06-22 18:22:29.197 15058 15209 D TrafficStats: tagSocket(102) with statsTag=0xffffffff, statsUid=-1
+06-22 18:22:29.360 15058 15209 W PlayCommon: [106] No account for auth token provided
+06-22 18:22:29.361 15058 15209 I PlayCommon: [106] Connecting to server: https://play.googleapis.com/play/log?format=raw&proto_v2=true
+06-22 18:22:29.423 15058 15209 I PlayCommon: [106] Successfully uploaded logs.
+06-22 18:22:34.240   700   711 I ndroid.systemui: Background concurrent copying GC freed 344285(17MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/32MB, paused 63us,359us total 102.063ms
+06-22 18:22:34.745  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1720): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:22:34.797  5707  5707 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.play.integrity.api.service.IntegrityApiDisplayListenerApiService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiServiceNoInstantApps }
+06-22 18:22:37.996   700   711 I ndroid.systemui: Background concurrent copying GC freed 345198(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 84us,262us total 109.970ms
+06-22 18:22:39.279  1527  1527 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.mdd.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+06-22 18:22:39.595   700   711 I ndroid.systemui: Background concurrent copying GC freed 356434(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 74us,46us total 107.445ms
+06-22 18:22:40.341  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1721): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:22:41.889   700   957 D EGL_emulation: app_time_stats: avg=19995.53ms min=19995.53ms max=19995.53ms count=1
+06-22 18:22:42.077   700   711 I ndroid.systemui: Background concurrent copying GC freed 352163(18MB) AllocSpace objects, 1(20KB) LOS objects, 50% free, 16MB/33MB, paused 616us,73us total 237.160ms
+06-22 18:22:42.280  1527  1527 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.potokens.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+06-22 18:22:45.158   700   711 I ndroid.systemui: Background concurrent copying GC freed 348268(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 112us,45us total 100.195ms
+06-22 18:22:47.509   700   711 I ndroid.systemui: Background concurrent copying GC freed 349867(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 618us,468us total 105.190ms
+06-22 18:22:49.833   700   711 I ndroid.systemui: Background concurrent copying GC freed 346739(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 81us,139us total 111.776ms
+06-22 18:22:50.909  5707  5774 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+06-22 18:22:50.916  5707 15596 W SystemServiceRegistry: No service published for: wifirtt
+06-22 18:22:51.455   500  1024 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782141509230
+06-22 18:22:51.475   500  2312 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 79 startTime of in progress event=1782141509230
+06-22 18:22:51.482   500  1024 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782141509230
+06-22 18:22:51.488   500  1024 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782141509230
+06-22 18:22:51.493   500  1024 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782141509230
+06-22 18:22:51.499  5707  5774 I ActivityScheduler: nextTriggerTime: 13288921, in 238100ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 18:22:51.715   500  1024 D WifiNl80211Manager: Scan result ready event
+06-22 18:22:51.715   500  1024 D WifiNative: Scan result ready event
+06-22 18:22:51.728  5707 15596 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 18:22:51.737  5707  5774 I ActivityScheduler: nextTriggerTime: 13288921, in 237861ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 18:22:52.190   700   711 I ndroid.systemui: Background concurrent copying GC freed 351423(18MB) AllocSpace objects, 1(20KB) LOS objects, 49% free, 16MB/33MB, paused 77us,488us total 115.232ms
+06-22 18:22:55.601  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1722): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:23:00.015   700   711 I ndroid.systemui: Background concurrent copying GC freed 363894(19MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 80us,62us total 123.313ms
+06-22 18:23:00.035  1425  1723 I AiAiEcho: Predicting[0]: 
+06-22 18:23:00.035  1425  1723 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+06-22 18:23:00.037   700   957 D EGL_emulation: app_time_stats: avg=18147.30ms min=18147.30ms max=18147.30ms count=1
+06-22 18:23:00.040  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+06-22 18:23:00.041  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+06-22 18:23:00.042  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+06-22 18:23:00.049   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 18:23:01.895   700   957 D EGL_emulation: app_time_stats: avg=1858.23ms min=1858.23ms max=1858.23ms count=1
+06-22 18:23:04.753  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1723): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:23:04.860   700   711 I ndroid.systemui: Background concurrent copying GC freed 353626(18MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 51us,65us total 103.219ms
+06-22 18:23:06.488   700   711 I ndroid.systemui: Background concurrent copying GC freed 361145(18MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 78us,484us total 117.231ms
+06-22 18:23:10.377  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1724): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:23:11.904   700   711 I ndroid.systemui: Background concurrent copying GC freed 360870(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 81us,70us total 116.211ms
+06-22 18:23:19.032   700   711 I ndroid.systemui: Background concurrent copying GC freed 363812(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 74us,59us total 112.085ms
+06-22 18:23:21.387   700   711 I ndroid.systemui: Background concurrent copying GC freed 351000(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 84us,536us total 100.783ms
+06-22 18:23:25.440  5707  5707 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.clearcut.sampler.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+06-22 18:23:25.641  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1725): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:23:25.655   500   509 I system_server: Background young concurrent copying GC freed 301657(23MB) AllocSpace objects, 4(80KB) LOS objects, 44% free, 28MB/51MB, paused 271us,115us total 127.739ms
+06-22 18:23:28.282   700   711 I ndroid.systemui: Background concurrent copying GC freed 360491(19MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 65us,65us total 110.969ms
+06-22 18:23:30.655   700   711 I ndroid.systemui: Background concurrent copying GC freed 360795(18MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 79us,31us total 100.861ms
+06-22 18:23:33.759   700   711 I ndroid.systemui: Background concurrent copying GC freed 356705(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 78us,31us total 105.539ms
+06-22 18:23:34.765  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1726): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:23:39.728   700   711 I ndroid.systemui: Background concurrent copying GC freed 349630(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 61us,43us total 104.211ms
+06-22 18:23:40.381  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1727): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:23:40.675   315   315 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+06-22 18:23:42.822   700   711 I ndroid.systemui: Background concurrent copying GC freed 348389(18MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 87us,56us total 102.424ms
+06-22 18:23:44.468   700   711 I ndroid.systemui: Background concurrent copying GC freed 362397(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 78us,53us total 111.303ms
+06-22 18:23:47.626   700   711 I ndroid.systemui: Background concurrent copying GC freed 355717(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 17MB/34MB, paused 653us,469us total 117.895ms
+06-22 18:23:51.302  5707  5774 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+06-22 18:23:51.310  5707 14423 W SystemServiceRegistry: No service published for: wifirtt
+06-22 18:23:52.103   500   685 D WifiNl80211Manager: Scan result ready event
+06-22 18:23:52.103   500   685 D WifiNative: Scan result ready event
+06-22 18:23:52.114  5707 14423 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 18:23:52.123  5707  5774 I ActivityScheduler: nextTriggerTime: 13288921, in 177475ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 18:23:53.168   700   711 I ndroid.systemui: Background concurrent copying GC freed 368719(19MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 82us,54us total 113.108ms
+06-22 18:23:55.645  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1728): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:23:59.293   700   711 I ndroid.systemui: Background concurrent copying GC freed 343554(17MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 17MB/34MB, paused 91us,466us total 122.302ms
+06-22 18:24:00.030  1425  1723 I AiAiEcho: Predicting[0]: 
+06-22 18:24:00.031  1425  1723 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+06-22 18:24:00.031   700   957 D EGL_emulation: app_time_stats: avg=58135.68ms min=58135.68ms max=58135.68ms count=1
+06-22 18:24:00.032  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+06-22 18:24:00.033  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+06-22 18:24:00.034  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+06-22 18:24:00.049   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 18:24:00.185   700   711 I ndroid.systemui: Background young concurrent copying GC freed 344892(18MB) AllocSpace objects, 0(0B) LOS objects, 51% free, 16MB/34MB, paused 747us,68us total 143.491ms
+06-22 18:24:01.089   700   711 I ndroid.systemui: Background concurrent copying GC freed 370768(19MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 80us,528us total 115.028ms
+06-22 18:24:04.769  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1729): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:24:05.813   700   711 I ndroid.systemui: Background concurrent copying GC freed 364845(19MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 80us,52us total 110.023ms
+06-22 18:24:10.413  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1730): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:24:14.147   700   711 I ndroid.systemui: Background concurrent copying GC freed 343604(17MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 87us,58us total 107.995ms
+06-22 18:24:17.267   700   711 I ndroid.systemui: Background concurrent copying GC freed 355793(18MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 75us,50us total 111.818ms
+06-22 18:24:21.124   500   685 D WifiNl80211Manager: Scan result ready event
+06-22 18:24:21.124   500   685 D WifiNative: Scan result ready event
+06-22 18:24:21.874   700   711 I ndroid.systemui: Background concurrent copying GC freed 355855(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 75us,283us total 102.123ms
+06-22 18:24:25.649  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1731): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:24:26.545   700   711 I ndroid.systemui: Background concurrent copying GC freed 357860(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 625us,468us total 155.655ms
+06-22 18:24:28.933   700   711 I ndroid.systemui: Background concurrent copying GC freed 358894(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 75us,51us total 111.782ms
+06-22 18:24:31.318   700   711 I ndroid.systemui: Background concurrent copying GC freed 360765(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 211us,52us total 114.934ms
+06-22 18:24:32.917   700   711 I ndroid.systemui: Background concurrent copying GC freed 357076(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 75us,54us total 113.372ms
+06-22 18:24:34.535   700   711 I ndroid.systemui: Background concurrent copying GC freed 367192(19MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 136us,566us total 128.570ms
+06-22 18:24:34.801  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1732): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:24:36.178   700   711 I ndroid.systemui: Background concurrent copying GC freed 350510(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 84us,471us total 122.627ms
+06-22 18:24:40.417  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1733): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:24:41.554   700   711 I ndroid.systemui: Background concurrent copying GC freed 346000(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 80us,487us total 116.625ms
+06-22 18:24:45.498   700   711 I ndroid.systemui: Background concurrent copying GC freed 360053(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 102us,1.813ms total 125.841ms
+06-22 18:24:47.917   700   711 I ndroid.systemui: Background concurrent copying GC freed 359250(18MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 78us,57us total 113.897ms
+06-22 18:24:51.697  5707  5774 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+06-22 18:24:51.714  5707 15596 W SystemServiceRegistry: No service published for: wifirtt
+06-22 18:24:52.524   500  2311 D WifiNl80211Manager: Scan result ready event
+06-22 18:24:52.524   500  2311 D WifiNative: Scan result ready event
+06-22 18:24:52.540  5707 15596 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 18:24:52.598  5707  5727 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+06-22 18:24:52.728  2632  2654 D TrafficStats: tagSocket(76) with statsTag=0x1809, statsUid=-1
+06-22 18:24:52.743  2632  2654 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+06-22 18:24:52.737  2632  2632 W binder:2632_1: type=1400 audit(0.0:1734): avc: denied { read } for name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=259 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+06-22 18:24:52.743  2632  2654 W libc    : Access denied finding property "service.adb.tls.port"
+06-22 18:24:52.737  2632  2632 W binder:2632_1: type=1400 audit(0.0:1735): avc: denied { read } for name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=51 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+06-22 18:24:52.785  5707  5727 W GmsUrlRequestImpl: [https://android.googleapis.com/auth/devicekey] Content-Type header is overwritten.
+06-22 18:24:52.839  5707  5979 D TrafficStats: tagSocket(84) with statsTag=0x4000401, statsUid=10120
+06-22 18:24:53.032  5707  5727 W GLSUser : [AppCertManager] Exception while requesting key: 
+06-22 18:24:53.032  5707  5727 W GLSUser : java.util.concurrent.ExecutionException: cvhs: Parsing Exception
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at hfeb.j(:com.google.android.gms@261233029@26.12.33 (190400-892550550):21)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at hfek.u(:com.google.android.gms@261233029@26.12.33 (190400-892550550):71)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at alqw.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):439)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at alqu.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):67)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at alqu.dispatchTransaction(:com.google.android.gms@261233029@26.12.33 (190400-892550550):16)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at byza.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):72)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at zpv.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):23)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at android.os.Binder.transact(Binder.java:1164)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at clbu.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):10)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at android.os.Binder.transact(Binder.java:1164)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at byzo.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):161)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at android.os.Binder.execTransactInternal(Binder.java:1280)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at android.os.Binder.execTransact(Binder.java:1244)
+06-22 18:24:53.032  5707  5727 W GLSUser : Caused by: cvhs: Parsing Exception
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at cvix.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):15)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at hfgv.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):47)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):92)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at biej.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at java.lang.Thread.run(Thread.java:1012)
+06-22 18:24:53.032  5707  5727 W GLSUser : Caused by: iphx: Protocol message end-group tag did not match expected tag.
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at ipjy.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):62)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at ipiv.l(:com.google.android.gms@261233029@26.12.33 (190400-892550550):60)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at ipgw.s(:com.google.android.gms@261233029@26.12.33 (190400-892550550):19)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at ipeq.f(:com.google.android.gms@261233029@26.12.33 (190400-892550550):5)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at ipeq.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at ipeq.o(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at cviw.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):15)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at cvjb.call(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):73)
+06-22 18:24:53.032  5707  5727 W GLSUser : 	... 4 more
+06-22 18:24:53.033  5707  5727 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+06-22 18:24:53.088  5707  5979 D TrafficStats: tagSocket(109) with statsTag=0xc000609, statsUid=10120
+06-22 18:24:53.252  5707  5979 I cn_CronetUrlRequestContext: destroyNativeStreamLocked org.chromium.net.impl.CronetBidirectionalStream@ff8e346
+06-22 18:24:53.255  5707 15596 W GlsClientGrpc: Voilatile gRPC failure INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header. [CONTEXT service_id=6 ]
+06-22 18:24:53.255  5707 15596 W GlsClientGrpc: jlsp: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+06-22 18:24:53.255  5707 15596 W GlsClientGrpc: 	at gmjf.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):51)
+06-22 18:24:53.255  5707 15596 W GlsClientGrpc: 	at gocc.call(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1001)
+06-22 18:24:53.255  5707 15596 W GlsClientGrpc: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+06-22 18:24:53.255  5707 15596 W GlsClientGrpc: 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+06-22 18:24:53.255  5707 15596 W GlsClientGrpc: 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):73)
+06-22 18:24:53.255  5707 15596 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+06-22 18:24:53.255  5707 15596 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+06-22 18:24:53.255  5707 15596 W GlsClientGrpc: 	at biej.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+06-22 18:24:53.255  5707 15596 W GlsClientGrpc: 	at java.lang.Thread.run(Thread.java:1012)
+06-22 18:24:53.258  5707 15596 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 18:24:53.269  5707  5774 I ActivityScheduler: nextTriggerTime: 13288921, in 116329ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 18:24:55.456   700   711 I ndroid.systemui: Background concurrent copying GC freed 350687(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 305us,56us total 101.560ms
+06-22 18:24:55.653  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1736): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:25:00.021  1425  1723 I AiAiEcho: Predicting[0]: 
+06-22 18:25:00.022  1425  1723 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+06-22 18:25:00.026  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+06-22 18:25:00.027  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+06-22 18:25:00.029  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+06-22 18:25:00.042   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 18:25:00.061   700   957 D EGL_emulation: app_time_stats: avg=60029.64ms min=60029.64ms max=60029.64ms count=1
+06-22 18:25:00.175   700   711 I ndroid.systemui: Background concurrent copying GC freed 354602(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 160us,51us total 204.995ms
+06-22 18:25:01.834   700   711 I ndroid.systemui: Background concurrent copying GC freed 367106(19MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 127us,84us total 129.223ms
+06-22 18:25:01.900   700   957 D EGL_emulation: app_time_stats: avg=1836.26ms min=1836.26ms max=1836.26ms count=1
+06-22 18:25:02.247   789   808 I rkstack.process: Background concurrent copying GC freed 22189(2365KB) AllocSpace objects, 0(0B) LOS objects, 49% free, 2485KB/4970KB, paused 211us,29us total 242.924ms
+06-22 18:25:04.809  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1737): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:25:05.333   700   711 I ndroid.systemui: Background concurrent copying GC freed 356287(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 58us,49us total 108.229ms
+06-22 18:25:07.735   700   711 I ndroid.systemui: Background concurrent copying GC freed 360182(18MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 86us,484us total 114.511ms
+06-22 18:25:10.449  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1738): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:25:11.578   700   711 I ndroid.systemui: Background concurrent copying GC freed 351623(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 489us,43us total 104.380ms
+06-22 18:25:19.790   700   711 I ndroid.systemui: Background concurrent copying GC freed 353697(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 87us,1.074ms total 117.459ms
+06-22 18:25:21.894   700   957 D EGL_emulation: app_time_stats: avg=19993.87ms min=19993.87ms max=19993.87ms count=1
+06-22 18:25:23.076   700   711 I ndroid.systemui: Background concurrent copying GC freed 362053(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 79us,472us total 121.563ms
+06-22 18:25:25.638   500   509 I system_server: Background young concurrent copying GC freed 303407(23MB) AllocSpace objects, 5(100KB) LOS objects, 39% free, 31MB/51MB, paused 445us,185us total 193.716ms
+06-22 18:25:25.681  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1739): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:25:27.012   700   711 I ndroid.systemui: Background concurrent copying GC freed 366438(19MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 78us,57us total 110.313ms
+06-22 18:25:29.087   500   525 I UsageStatsService: User[0] Flushing usage stats to disk
+06-22 18:25:29.377   700   711 I ndroid.systemui: Background concurrent copying GC freed 364333(19MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/32MB, paused 481us,22us total 106.328ms
+06-22 18:25:32.402   700   711 I ndroid.systemui: Background concurrent copying GC freed 342474(17MB) AllocSpace objects, 1(20KB) LOS objects, 49% free, 16MB/33MB, paused 76us,464us total 114.179ms
+06-22 18:25:34.813  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1740): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:25:35.552   700   711 I ndroid.systemui: Background concurrent copying GC freed 364036(19MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/32MB, paused 73us,41us total 145.788ms
+06-22 18:25:40.453  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1741): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:25:40.675   315   315 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+06-22 18:25:41.913   700   957 D EGL_emulation: app_time_stats: avg=20018.81ms min=20018.81ms max=20018.81ms count=1
+06-22 18:25:44.458   700   711 I ndroid.systemui: Background concurrent copying GC freed 336824(17MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 659us,460us total 104.682ms
+06-22 18:25:49.110   700   959 D ControlsListingControllerImpl: Subscribing callback, service count: 0
+06-22 18:25:49.129   700   959 D ControlsListingControllerImpl: Unsubscribing callback
+06-22 18:25:49.179   500  2311 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10120; state: DISABLED
+06-22 18:25:52.111  5707  5774 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+06-22 18:25:52.117  5707 15659 W SystemServiceRegistry: No service published for: wifirtt
+06-22 18:25:52.941   500  2310 D WifiNl80211Manager: Scan result ready event
+06-22 18:25:52.942   500  2310 D WifiNative: Scan result ready event
+06-22 18:25:52.963  5707 15659 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 18:25:52.971  5707  5774 I ActivityScheduler: nextTriggerTime: 13292821, in 60527ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 18:25:53.881   700   711 I ndroid.systemui: Background concurrent copying GC freed 354148(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 561us,1.176ms total 109.089ms
+06-22 18:25:55.685  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1742): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:25:57.786   700   711 I ndroid.systemui: Background concurrent copying GC freed 358445(18MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 82us,382us total 114.441ms
+06-22 18:26:00.049   700   957 D EGL_emulation: app_time_stats: avg=18136.16ms min=18136.16ms max=18136.16ms count=1
+06-22 18:26:00.050  1425  1723 I AiAiEcho: Predicting[0]: 
+06-22 18:26:00.051  1425  1723 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+06-22 18:26:00.054  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+06-22 18:26:00.054  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+06-22 18:26:00.054  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+06-22 18:26:00.057   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 18:26:00.406   700   711 I ndroid.systemui: Background concurrent copying GC freed 375053(19MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/32MB, paused 15.358ms,422us total 316.374ms
+06-22 18:26:01.896   700   957 D EGL_emulation: app_time_stats: avg=1846.56ms min=1846.56ms max=1846.56ms count=1
+06-22 18:26:02.175   700   711 I ndroid.systemui: Background concurrent copying GC freed 355542(18MB) AllocSpace objects, 1(20KB) LOS objects, 49% free, 17MB/34MB, paused 109us,38us total 303.107ms
+06-22 18:26:04.821  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1743): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:26:07.057   700   711 I ndroid.systemui: Background concurrent copying GC freed 371397(19MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 79us,62us total 118.448ms
+06-22 18:26:08.683   700   711 I ndroid.systemui: Background concurrent copying GC freed 362947(18MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 16MB/33MB, paused 125us,54us total 112.144ms
+06-22 18:26:10.489  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1744): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:26:11.090   700   711 I ndroid.systemui: Background concurrent copying GC freed 359790(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 89us,39us total 101.616ms
+06-22 18:26:13.448   700   711 I ndroid.systemui: Background concurrent copying GC freed 352573(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 81us,58us total 108.305ms
+06-22 18:26:15.095   700   711 I ndroid.systemui: Background concurrent copying GC freed 361195(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 17MB/34MB, paused 91us,466us total 124.559ms
+06-22 18:26:15.705   500   509 I system_server: Background young concurrent copying GC freed 299409(23MB) AllocSpace objects, 6(184KB) LOS objects, 43% free, 28MB/51MB, paused 15.418ms,170us total 205.281ms
+06-22 18:26:20.697   700   711 I ndroid.systemui: Background concurrent copying GC freed 375340(19MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 85us,51us total 125.384ms
+06-22 18:26:23.831   700   711 I ndroid.systemui: Background concurrent copying GC freed 355699(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 80us,59us total 107.925ms
+06-22 18:26:25.697  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1745): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:26:29.205   700   711 I ndroid.systemui: Background concurrent copying GC freed 358398(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 84us,486us total 117.932ms
+06-22 18:26:30.053  1408  2258 I PhenotypeProcessReaper: Memory state is: 200
+06-22 18:26:30.829   700   711 I ndroid.systemui: Background concurrent copying GC freed 362403(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 234us,45us total 105.862ms
+06-22 18:26:34.841  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1746): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:26:38.314   700   711 I ndroid.systemui: Background concurrent copying GC freed 353199(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 988us,64us total 109.078ms
+06-22 18:26:40.497  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1747): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:26:41.465   700   711 I ndroid.systemui: Background concurrent copying GC freed 362525(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 83us,58us total 111.840ms
+06-22 18:26:45.327   700   711 I ndroid.systemui: Background concurrent copying GC freed 351961(18MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 17MB/34MB, paused 78us,63us total 120.136ms

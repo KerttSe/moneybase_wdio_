@@ -1,0 +1,246 @@
+--------- beginning of main
+04-30 14:21:00.041  1450  1820 I AiAiEcho: Predicting[0]: 
+04-30 14:21:00.041  1450  1820 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-30 14:21:00.043  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-30 14:21:00.043  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-30 14:21:00.044  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-30 14:21:00.045   694   694 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-30 14:21:03.051   503   512 I system_server: Background young concurrent copying GC freed 297203(22MB) AllocSpace objects, 5(100KB) LOS objects, 39% free, 31MB/51MB, paused 519us,517us total 160.549ms
+--------- beginning of system
+04-30 14:21:10.284   503   584 D ActivityManager: freezing 20370 com.google.android.googlequicksearchbox:search
+04-30 14:21:19.881  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3204): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:21:20.384  1160  1758 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+04-30 14:21:20.393  1160 24569 W SystemServiceRegistry: No service published for: wifirtt
+04-30 14:21:21.211   503   565 D WifiNl80211Manager: Scan result ready event
+04-30 14:21:21.211   503   565 D WifiNative: Scan result ready event
+04-30 14:21:21.228  1160 24569 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-30 14:21:21.233  1160  1758 I ActivityScheduler: nextTriggerTime: 19630146, in 60528ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-30 14:21:21.901  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3205): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:21:24.985  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:3206): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:21:34.818   323   323 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+04-30 14:21:49.893  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3207): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:21:51.905  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3208): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:21:55.021  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:3209): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:21:56.235 17612 17638 I Finsky  : [44] Stats for Executor: LightweightExecutor vlp@7a14906[Running, pool size = 3, active threads = 0, queued tasks = 0, completed tasks = 752]
+04-30 14:21:56.303 17612 17638 I Finsky  : [44] Stats for Executor: BlockingExecutor vlp@4901bc7[Running, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 262]
+04-30 14:21:56.303 17612 17638 I Finsky  : [44] Stats for Executor: bgExecutor vlp@cbca5f4[Running, pool size = 4, active threads = 0, queued tasks = 0, completed tasks = 2798]
+04-30 14:22:00.021  1450  1820 I AiAiEcho: Predicting[0]: 
+04-30 14:22:00.021  1450  1820 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-30 14:22:00.023  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-30 14:22:00.024  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-30 14:22:00.024  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-30 14:22:00.039   694   694 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-30 14:22:00.039   694   937 D EGL_emulation: app_time_stats: avg=60003.30ms min=60003.30ms max=60003.30ms count=1
+04-30 14:22:19.925  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3210): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:22:20.781  1160  1758 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+04-30 14:22:20.784  1160 24548 W SystemServiceRegistry: No service published for: wifirtt
+04-30 14:22:21.340   503  1751 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 79 startTime of in progress event=1777539034285
+04-30 14:22:21.343   503  1751 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1777539034285
+04-30 14:22:21.347   503  1751 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1777539034285
+04-30 14:22:21.352   503   817 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1777539034285
+04-30 14:22:21.355  1160  1758 I ActivityScheduler: nextTriggerTime: 19867839, in 238099ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-30 14:22:21.578   503   817 D WifiNl80211Manager: Scan result ready event
+04-30 14:22:21.579   503   817 D WifiNative: Scan result ready event
+04-30 14:22:21.587  1160 24548 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-30 14:22:21.591  1160  1758 I ActivityScheduler: nextTriggerTime: 19867839, in 237863ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-30 14:22:21.925  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3211): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:22:25.025  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:3212): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:22:27.420   503   584 D ActivityManager: freezing 24245 com.google.android.partnersetup
+04-30 14:22:27.449   503   584 D ActivityManager: freezing 24273 com.google.process.gapps
+04-30 14:22:27.453   503   584 D ActivityManager: freezing 16228 com.google.process.gservices
+04-30 14:22:27.661   503   584 D ActivityManager: freezing 24291 com.android.chrome
+04-30 14:22:31.463   503  1753 D WifiNl80211Manager: Scan result ready event
+04-30 14:22:31.463   503  1753 D WifiNative: Scan result ready event
+04-30 14:22:49.929  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3213): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:22:51.933  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3214): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:22:52.827   694   937 D EGL_emulation: app_time_stats: avg=52787.03ms min=52787.03ms max=52787.03ms count=1
+04-30 14:22:55.057  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:3215): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:23:00.030  1450  1820 I AiAiEcho: Predicting[0]: 
+04-30 14:23:00.030  1450  1820 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-30 14:23:00.032  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-30 14:23:00.033  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-30 14:23:00.033  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-30 14:23:00.035   694   694 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-30 14:23:00.048   694   937 D EGL_emulation: app_time_stats: avg=7220.67ms min=7220.67ms max=7220.67ms count=1
+04-30 14:23:12.817   694   937 D EGL_emulation: app_time_stats: avg=12769.62ms min=12769.62ms max=12769.62ms count=1
+04-30 14:23:19.961  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3216): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:23:21.169  1160  1758 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+04-30 14:23:21.173  1160 24569 W SystemServiceRegistry: No service published for: wifirtt
+04-30 14:23:21.941  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3217): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:23:21.975   503  1751 D WifiNl80211Manager: Scan result ready event
+04-30 14:23:21.975   503  1751 D WifiNative: Scan result ready event
+04-30 14:23:21.984  1160 24569 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-30 14:23:21.989  1160  1758 I ActivityScheduler: nextTriggerTime: 19867839, in 177465ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-30 14:23:25.085  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:3218): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:23:29.065 24318 24335 I Finsky:background: [45] Stats for Executor: bgExecutor vlp@c5a09a9[Running, pool size = 4, active threads = 0, queued tasks = 0, completed tasks = 37]
+04-30 14:23:29.100 24318 24335 I Finsky:background: [45] Stats for Executor: LightweightExecutor vlp@2fdcb2e[Running, pool size = 3, active threads = 0, queued tasks = 0, completed tasks = 6]
+04-30 14:23:29.196 24318 24335 I Finsky:background: [45] Stats for Executor: BlockingExecutor vlp@d8bb6cf[Running, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1]
+04-30 14:23:32.821   694   937 D EGL_emulation: app_time_stats: avg=20003.64ms min=20003.64ms max=20003.64ms count=1
+04-30 14:23:34.818   323   323 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+04-30 14:23:49.969  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3219): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:23:51.941  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3220): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:23:52.817   694   937 D EGL_emulation: app_time_stats: avg=19996.00ms min=19996.00ms max=19996.00ms count=1
+04-30 14:23:55.117  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:3221): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:24:00.026  1450  1820 I AiAiEcho: Predicting[0]: 
+04-30 14:24:00.026  1450  1820 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-30 14:24:00.028  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-30 14:24:00.028  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-30 14:24:00.029  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-30 14:24:00.031   694   694 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-30 14:24:00.033   694   937 D EGL_emulation: app_time_stats: avg=7215.65ms min=7215.65ms max=7215.65ms count=1
+04-30 14:24:20.005  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3222): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:24:21.574  1160  1758 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+04-30 14:24:21.583  1160 24548 W SystemServiceRegistry: No service published for: wifirtt
+04-30 14:24:21.977  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3223): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:24:22.377   503  1753 D WifiNl80211Manager: Scan result ready event
+04-30 14:24:22.377   503  1753 D WifiNative: Scan result ready event
+04-30 14:24:22.388  1160 24548 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-30 14:24:22.395  1160  1758 I ActivityScheduler: nextTriggerTime: 19867839, in 117059ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-30 14:24:25.125  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:3224): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:24:50.009  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3225): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:24:51.985  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3226): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:24:55.157  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:3227): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:25:00.016  1450  1820 I AiAiEcho: Predicting[0]: 
+04-30 14:25:00.017  1450  1820 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-30 14:25:00.019  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-30 14:25:00.019  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-30 14:25:00.020  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-30 14:25:00.030   694   694 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-30 14:25:00.057   694   937 D EGL_emulation: app_time_stats: avg=60024.29ms min=60024.29ms max=60024.29ms count=1
+04-30 14:25:03.023   694   703 I ndroid.systemui: Background young concurrent copying GC freed 310248(16MB) AllocSpace objects, 1(20KB) LOS objects, 45% free, 17MB/32MB, paused 108us,23us total 110.566ms
+04-30 14:25:11.461   503  1751 D WifiNl80211Manager: Scan result ready event
+04-30 14:25:11.461   503  1751 D WifiNative: Scan result ready event
+04-30 14:25:11.721   503  1753 W BatteryExternalStatsWorker: error reading Bluetooth stats: 11
+04-30 14:25:11.728   503  1751 D TelephonyManager: requestModemActivityInfo: Sending result to app: ModemActivityInfo{ mTimestamp=19800111 mSleepTimeMs=0 mIdleTimeMs=17688488 mActivityStatsTechSpecificInfo=[{mRat=UNKNOWN,mFrequencyRange=UNKNOWN,mTxTimeMs[]=[0, 0, 0, 0, 0],mRxTimeMs=0}]}
+04-30 14:25:20.025  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3228): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:25:21.957  1160  1758 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+04-30 14:25:21.971  1160 24548 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-30 14:25:21.980  1540  1540 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.auth.service.START pkg=com.google.android.gms }
+04-30 14:25:21.980  1540  1540 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.auth.service.START pkg=com.google.android.gms }
+04-30 14:25:21.987  1160  2432 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+04-30 14:25:22.005  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3229): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:25:22.021  3778  7831 D TrafficStats: tagSocket(98) with statsTag=0x1809, statsUid=-1
+04-30 14:25:22.036  3778  7831 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+04-30 14:25:22.036  3778  7831 W libc    : Access denied finding property "service.adb.tls.port"
+04-30 14:25:22.033  3778  3778 W binder:3778_7: type=1400 audit(0.0:3230): avc: denied { read } for name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=259 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+04-30 14:25:22.033  3778  3778 W binder:3778_7: type=1400 audit(0.0:3231): avc: denied { read } for name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=51 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+04-30 14:25:22.044  1160  2432 W GmsUrlRequestImpl: [https://android.googleapis.com/auth/devicekey] Content-Type header is overwritten.
+04-30 14:25:22.084  1160  3566 D TrafficStats: tagSocket(88) with statsTag=0x4000401, statsUid=10120
+04-30 14:25:22.183  1160  1169 I .gms.persistent: Background young concurrent copying GC freed 374980(15MB) AllocSpace objects, 28(4976KB) LOS objects, 50% free, 21MB/42MB, paused 99us,18us total 122.050ms
+04-30 14:25:22.183  1160  1169 W .gms.persistent: Reducing the number of considered missed Gc histogram windows from 151 to 100
+04-30 14:25:22.208  1160  2432 W GLSUser : [AppCertManager] Exception while requesting key: 
+04-30 14:25:22.208  1160  2432 W GLSUser : java.util.concurrent.ExecutionException: cvhs: Parsing Exception
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at hfeb.j(:com.google.android.gms@261233029@26.12.33 (190400-892550550):21)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at hfek.u(:com.google.android.gms@261233029@26.12.33 (190400-892550550):71)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at alqw.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):439)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at alqu.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):67)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at alqu.dispatchTransaction(:com.google.android.gms@261233029@26.12.33 (190400-892550550):16)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at byza.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):72)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at zpv.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):23)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at android.os.Binder.transact(Binder.java:1164)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at clbu.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):10)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at android.os.Binder.transact(Binder.java:1164)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at byzo.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):161)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at android.os.Binder.execTransactInternal(Binder.java:1280)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at android.os.Binder.execTransact(Binder.java:1244)
+04-30 14:25:22.208  1160  2432 W GLSUser : Caused by: cvhs: Parsing Exception
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at cvix.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):15)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at hfgv.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):47)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):73)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at biej.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at java.lang.Thread.run(Thread.java:1012)
+04-30 14:25:22.208  1160  2432 W GLSUser : Caused by: iphx: Protocol message end-group tag did not match expected tag.
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at ipjy.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):62)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at ipiv.l(:com.google.android.gms@261233029@26.12.33 (190400-892550550):60)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at ipgw.s(:com.google.android.gms@261233029@26.12.33 (190400-892550550):19)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at ipeq.f(:com.google.android.gms@261233029@26.12.33 (190400-892550550):5)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at ipeq.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at ipeq.o(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at cviw.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):15)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at cvjb.call(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+04-30 14:25:22.208  1160  2432 W GLSUser : 	... 6 more
+04-30 14:25:22.208  1160  2432 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+04-30 14:25:22.265  1160  3566 D TrafficStats: tagSocket(105) with statsTag=0xc000609, statsUid=10120
+04-30 14:25:22.379  1160  3566 I cn_CronetUrlRequestContext: destroyNativeStreamLocked org.chromium.net.impl.CronetBidirectionalStream@cc52bf6
+04-30 14:25:22.380  1160 24548 W GlsClientGrpc: Voilatile gRPC failure INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header. [CONTEXT service_id=6 ]
+04-30 14:25:22.380  1160 24548 W GlsClientGrpc: jlsp: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+04-30 14:25:22.380  1160 24548 W GlsClientGrpc: 	at gmjf.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):51)
+04-30 14:25:22.380  1160 24548 W GlsClientGrpc: 	at gocc.call(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1001)
+04-30 14:25:22.380  1160 24548 W GlsClientGrpc: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+04-30 14:25:22.380  1160 24548 W GlsClientGrpc: 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+04-30 14:25:22.380  1160 24548 W GlsClientGrpc: 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):73)
+04-30 14:25:22.380  1160 24548 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+04-30 14:25:22.380  1160 24548 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+04-30 14:25:22.380  1160 24548 W GlsClientGrpc: 	at biej.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+04-30 14:25:22.380  1160 24548 W GlsClientGrpc: 	at java.lang.Thread.run(Thread.java:1012)
+04-30 14:25:22.381  1160 24548 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-30 14:25:22.383  1160  1758 I ActivityScheduler: nextTriggerTime: 19871342, in 60574ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-30 14:25:25.185  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:3232): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:25:25.770  1160 24569 I NetworkScheduler.Stats: (REDACTED) Task %s/%s started execution. cause:%s exec_start_elapsed_seconds: %s
+04-30 14:25:25.771  1160 24660 I TapAndPay: deviceSupportsHce has detected emulator [CONTEXT service_id=79 ]
+04-30 14:25:25.776  1160 24660 I TapAndPay: NfcAdapter is null while obtaining CardEmulation instance. [CONTEXT service_id=79 ]
+04-30 14:25:25.779  1160 24569 I NetworkScheduler.Stats: (REDACTED) Task %s/%s finished executing. cause:%s result: %s elapsed_millis: %s uptime_millis: %s exec_start_elapsed_seconds: %s
+04-30 14:25:25.789   503   693 D NetworkStatsObservers: Unregistering RequestInfo from pid/uid:503/1000(android) for DataUsageRequest [ requestId=26, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, thresholdInBytes=11779879 ] accessLevel:3
+04-30 14:25:25.789   503   618 D NetworkStatsObservers: Registering observer for RequestInfo from pid/uid:503/1000(android) for DataUsageRequest [ requestId=27, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, thresholdInBytes=11779686 ] accessLevel:3
+04-30 14:25:32.105  3778  3791 W id.gms.unstable: Reducing the number of considered missed Gc histogram windows from 151 to 100
+04-30 14:25:34.422   988  1014 I s.nexuslauncher: oneway function results for code 2 on binder at 0xb400007ac3904460 will be dropped but finished with status UNKNOWN_TRANSACTION
+04-30 14:25:34.819   323   323 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+04-30 14:25:37.038  1540  1540 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.service.START pkg=com.google.android.gms }
+04-30 14:25:41.315   694   940 D ControlsListingControllerImpl: Subscribing callback, service count: 0
+04-30 14:25:41.330   694   940 D ControlsListingControllerImpl: Unsubscribing callback
+04-30 14:25:50.033  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3233): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:25:52.013  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3234): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:25:52.896   694   937 D EGL_emulation: app_time_stats: avg=52838.04ms min=52838.04ms max=52838.04ms count=1
+04-30 14:25:55.193  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:3235): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:26:00.018  1450  1820 I AiAiEcho: Predicting[0]: 
+04-30 14:26:00.019  1450  1820 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-30 14:26:00.020  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-30 14:26:00.021  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-30 14:26:00.022  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-30 14:26:00.031   694   694 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-30 14:26:00.037   694   937 D EGL_emulation: app_time_stats: avg=7140.39ms min=7140.39ms max=7140.39ms count=1
+04-30 14:26:04.019   694   703 I ndroid.systemui: Background young concurrent copying GC freed 246058(12MB) AllocSpace objects, 0(0B) LOS objects, 36% free, 20MB/32MB, paused 5.400ms,9us total 51.999ms
+04-30 14:26:12.883   694   937 D EGL_emulation: app_time_stats: avg=12845.71ms min=12845.71ms max=12845.71ms count=1
+04-30 14:26:20.061  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3236): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:26:21.982  1160  1758 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+04-30 14:26:21.985  1160 24660 W SystemServiceRegistry: No service published for: wifirtt
+04-30 14:26:22.045  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3237): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:26:22.502   503  2015 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 79 startTime of in progress event=1777539034285
+04-30 14:26:22.506   503  2015 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1777539034285
+04-30 14:26:22.511   503  2015 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1777539034285
+04-30 14:26:22.513   503  2015 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1777539034285
+04-30 14:26:22.515  1160  1758 I ActivityScheduler: nextTriggerTime: 20109000, in 238100ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-30 14:26:22.794   503  2015 D WifiNl80211Manager: Scan result ready event
+04-30 14:26:22.794   503  2015 D WifiNative: Scan result ready event
+04-30 14:26:22.807  1160 24660 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-30 14:26:22.813  1160  1758 I ActivityScheduler: nextTriggerTime: 20109000, in 237802ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-30 14:26:25.209  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:3238): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:26:32.893   694   937 D EGL_emulation: app_time_stats: avg=20009.53ms min=20009.53ms max=20009.53ms count=1
+04-30 14:26:48.484   765  1003 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:257 ack_pause: Client already in paused state
+04-30 14:26:48.512   765  1003 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:576 OnCommandComplete: Received command complete with op_code LE_SET_RANDOM_ADDRESS
+04-30 14:26:48.512   765  1003 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:595 OnCommandComplete: update random address : 67:bf:e2:11:55:e1
+04-30 14:26:48.512   765  1003 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:286 resume_registered_clients: Resuming registered clients
+04-30 14:26:50.069  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3239): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:26:52.049  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3240): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:26:52.879   694   937 D EGL_emulation: app_time_stats: avg=19985.81ms min=19985.81ms max=19985.81ms count=1
+04-30 14:26:55.245  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:3241): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:27:00.020  1450  1820 I AiAiEcho: Predicting[0]: 
+04-30 14:27:00.021  1450  1820 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-30 14:27:00.023  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-30 14:27:00.023  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-30 14:27:00.024  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-30 14:27:00.033   694   694 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-30 14:27:00.035   694   937 D EGL_emulation: app_time_stats: avg=7155.72ms min=7155.72ms max=7155.72ms count=1
+04-30 14:27:20.105  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3242): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:27:22.081  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3243): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:27:22.369  1160  1758 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+04-30 14:27:22.373  1160 24569 W SystemServiceRegistry: No service published for: wifirtt
+04-30 14:27:23.178   503  2015 D WifiNl80211Manager: Scan result ready event
+04-30 14:27:23.178   503  2015 D WifiNative: Scan result ready event
+04-30 14:27:23.185  1160 24569 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-30 14:27:23.192  1160  1758 I ActivityScheduler: nextTriggerTime: 20109000, in 177423ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-30 14:27:25.273  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:3244): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms

@@ -1,0 +1,203 @@
+--------- beginning of main
+06-23 15:32:22.193  1265  1278 I FontLog : (REDACTED) Received query %s, URI %s
+06-23 15:32:22.193  1265  1278 I FontLog : (REDACTED) Query [%s] resolved to %s
+06-23 15:32:22.194  1265  1278 I FontLog : (REDACTED) Fetch %s end status %s
+06-23 15:32:22.197  1265  1278 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+06-23 15:32:22.201  1265  1278 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+06-23 15:32:22.203 13984 14130 W android.youtube: ClassLoaderContext classpath size mismatch. expected=15, found=0 (DLC[];PCL[base.apk*1947944633:base.apk!classes2.dex*3363074376:base.apk!classes3.dex*1338959545:base.apk!classes4.dex*2440263476:base.apk!classes5.dex*1923706355:base.apk!classes6.dex*3175291108:base.apk!classes7.dex*3796035266:base.apk!classes8.dex*2666962906:base.apk!classes9.dex*2070953282:base.apk!classes10.dex*2203888622:base.apk!classes11.dex*2561949965:base.apk!classes12.dex*987284249:base.apk!classes13.dex*2715393093:base.apk!classes14.dex*2211608738:base.apk!classes15.dex*1734879872]{PCL[/system/framework/org.apache.http.legacy.jar*365604908]#PCL[/system/framework/com.android.location.provider.jar*3994156536]#PCL[/system/framework/com.android.media.remotedisplay.jar*2114713713]#PCL[/system_ext/framework/androidx.window.extensions.jar*3801209684]#PCL[/system_ext/framework/androidx.window.sidecar.jar*2709203797]} | DLC[];PCL[])
+06-23 15:32:22.218 13984 14144 I FA      : App measurement initialized, version: 174002
+06-23 15:32:22.219 13984 14144 I FA      : To enable debug logging run: adb shell setprop log.tag.FA VERBOSE
+06-23 15:32:22.219 13984 14144 I FA      : To enable faster debug mode event logging run:
+06-23 15:32:22.219 13984 14144 I FA      :   adb shell setprop debug.firebase.analytics.app com.google.android.youtube
+06-23 15:32:22.228  1448  1448 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.measurement.START pkg=com.google.android.gms }
+06-23 15:32:22.228  1448  1448 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.measurement.START pkg=com.google.android.gms }
+06-23 15:32:22.258  1448 14151 D AdvertisingIdClient: AdvertisingIdClient already created.
+06-23 15:32:22.258  1448 14151 D AdvertisingIdClient: AdvertisingIdClient is not bounded. Starting to bind it...
+06-23 15:32:22.261  1448 14151 D AdvertisingIdClient: AdvertisingIdClient is bounded
+06-23 15:32:22.263  1448 14151 I AdvertisingIdClient: shouldSendLog 27955
+06-23 15:32:22.263  1448 14151 I AdvertisingIdClient: GetInfoInternal elapse 5ms
+06-23 15:32:22.712 13984 13984 D CompatibilityChangeReporter: Compat change id reported: 147600208; UID 10141; state: ENABLED
+--------- beginning of system
+06-23 15:32:22.714   540  2203 D CompatibilityChangeReporter: Compat change id reported: 183164979; UID 10141; state: ENABLED
+06-23 15:32:24.391 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-MlkitBarcodeUi.optional_231818100000.dm': No such file or directory
+06-23 15:32:24.391 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-MlkitBarcodeUi.optional_231818100000.dm': No such file or directory
+06-23 15:32:24.392 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000c/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+06-23 15:32:24.392 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000c/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+06-23 15:32:24.392 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+06-23 15:32:24.392 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+06-23 15:32:24.393 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+06-23 15:32:24.393 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+06-23 15:32:24.393 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+06-23 15:32:24.393 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+06-23 15:32:24.395 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000010/dl-VisionOcr.optional_260235100000.dm': No such file or directory
+06-23 15:32:24.395 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000010/dl-VisionOcr.optional_260235100000.dm': No such file or directory
+06-23 15:32:24.401 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000b/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+06-23 15:32:24.401 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000b/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+06-23 15:32:24.403 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/DD26CFCA40A2391A1E3626BBAF83BD500298C9F7/the.dm': No such file or directory
+06-23 15:32:24.403 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/DD26CFCA40A2391A1E3626BBAF83BD500298C9F7/the.dm': No such file or directory
+06-23 15:32:24.403 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+06-23 15:32:24.403 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+06-23 15:32:24.404 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000016/dl-PlayCloudSearch.optional_260235100000.dm': No such file or directory
+06-23 15:32:24.404 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000016/dl-PlayCloudSearch.optional_260235100000.dm': No such file or directory
+06-23 15:32:24.407 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/9B790551AEA6F45286C19831BDC04308DF1AFF9F/the.dm': No such file or directory
+06-23 15:32:24.407 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/9B790551AEA6F45286C19831BDC04308DF1AFF9F/the.dm': No such file or directory
+06-23 15:32:24.408 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000015/dl-Appsearch.optional_260235100400.dm': No such file or directory
+06-23 15:32:24.408 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000015/dl-Appsearch.optional_260235100400.dm': No such file or directory
+06-23 15:32:24.411 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000011/dl-MlkitOcrCommon.optional_260235100400.dm': No such file or directory
+06-23 15:32:24.411 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000011/dl-MlkitOcrCommon.optional_260235100400.dm': No such file or directory
+06-23 15:32:24.412 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/7D5C9405A3D81C422016C0CF22E38A12D08182E8/the.dm': No such file or directory
+06-23 15:32:24.412 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/7D5C9405A3D81C422016C0CF22E38A12D08182E8/the.dm': No such file or directory
+06-23 15:32:24.414 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000013/dl-MlkitBarcodeUi.optional_260235100400.dm': No such file or directory
+06-23 15:32:24.414 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000013/dl-MlkitBarcodeUi.optional_260235100400.dm': No such file or directory
+06-23 15:32:24.417 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/646DA7BE3AF9B756DEFD88CA7189FC9D7C55EC0F/the.dm': No such file or directory
+06-23 15:32:24.417 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/646DA7BE3AF9B756DEFD88CA7189FC9D7C55EC0F/the.dm': No such file or directory
+06-23 15:32:24.418 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/754BEC187BC4F26BBC31300F93DBF9B7506C1861/the.dm': No such file or directory
+06-23 15:32:24.418 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/754BEC187BC4F26BBC31300F93DBF9B7506C1861/the.dm': No such file or directory
+06-23 15:32:24.419 13661 13663 W artd    : Could not get dex checksums for location /data/app/~~VbJOtikKBlttgBEQ9Jd5pw==/com.android.vending-xW2C66DUaxBVkL_Egz9K7w==/base.apk, fd=-1
+06-23 15:32:24.421 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+06-23 15:32:24.421 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+06-23 15:32:25.300  1265  1265 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+06-23 15:32:26.298 13983 14115 I Bugle   : pSIM transferStatus is empty [CONTEXT sub_id=1 ]
+06-23 15:32:26.308   540   656 W ProcessStats: Tracking association SourceState{5392d3 com.google.android.gms/10123 BTop #13288} whose proc state 2 is better than process ProcessState{8330713 com.google.android.gms.persistent/10123 pkg=com.google.android.gms} proc state 4 (143 skipped)
+06-23 15:32:26.308  1265  1265 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.time.trustedtime.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+06-23 15:32:26.310 13983 14115 I RcsAvailabilityCache: Cached availability not found for simId: redacted-pii:sim_id[chars:20,last3:897]
+06-23 15:32:26.323  1265  1265 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.time.trustedtime.singleuserapi.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentSingleUserInternalApiService }
+06-23 15:32:26.323  1265  1265 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.time.trustedtime.singleuserapi.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentSingleUserInternalApiService }
+06-23 15:32:26.327 13983 14013 V ClearcutMetricXmitter: Transmission is done.
+06-23 15:32:26.327 13983 14013 V ClearcutMetricXmitter: Transmission is done.
+06-23 15:32:26.329  1265  1265 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+06-23 15:32:27.319   763   763 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+06-23 15:32:27.325   763   837 D EGL_emulation: app_time_stats: avg=18800.20ms min=18800.20ms max=18800.20ms count=1
+06-23 15:32:30.889   763   763 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+06-23 15:32:31.183   540   620 D ActivityManager: freezing 13983 com.google.android.apps.messaging
+06-23 15:32:32.219   540   620 D ActivityManager: freezing 13984 com.google.android.youtube
+06-23 15:32:32.222   540   620 D ActivityManager: freezing 13937 com.google.process.gservices
+06-23 15:32:33.888   763   763 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+06-23 15:32:34.328 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-MlkitBarcodeUi.optional_231818100000.dm': No such file or directory
+06-23 15:32:34.328 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-MlkitBarcodeUi.optional_231818100000.dm': No such file or directory
+06-23 15:32:34.329 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000c/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+06-23 15:32:34.329 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000c/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+06-23 15:32:34.329 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+06-23 15:32:34.329 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+06-23 15:32:34.329 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+06-23 15:32:34.329 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+06-23 15:32:34.330 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+06-23 15:32:34.330 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+06-23 15:32:34.331 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000010/dl-VisionOcr.optional_260235100000.dm': No such file or directory
+06-23 15:32:34.331 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000010/dl-VisionOcr.optional_260235100000.dm': No such file or directory
+06-23 15:32:34.334 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000b/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+06-23 15:32:34.334 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000b/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+06-23 15:32:34.335 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/DD26CFCA40A2391A1E3626BBAF83BD500298C9F7/the.dm': No such file or directory
+06-23 15:32:34.335 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/DD26CFCA40A2391A1E3626BBAF83BD500298C9F7/the.dm': No such file or directory
+06-23 15:32:34.336 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+06-23 15:32:34.336 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+06-23 15:32:34.336 13661 13730 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000016/dl-PlayCloudSearch.optional_260235100000.dm': No such file or directory
+06-23 15:32:34.336 13661 13730 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000016/dl-PlayCloudSearch.optional_260235100000.dm': No such file or directory
+06-23 15:32:34.338 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/9B790551AEA6F45286C19831BDC04308DF1AFF9F/the.dm': No such file or directory
+06-23 15:32:34.338 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/9B790551AEA6F45286C19831BDC04308DF1AFF9F/the.dm': No such file or directory
+06-23 15:32:34.339 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000015/dl-Appsearch.optional_260235100400.dm': No such file or directory
+06-23 15:32:34.339 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000015/dl-Appsearch.optional_260235100400.dm': No such file or directory
+06-23 15:32:34.340 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000011/dl-MlkitOcrCommon.optional_260235100400.dm': No such file or directory
+06-23 15:32:34.340 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000011/dl-MlkitOcrCommon.optional_260235100400.dm': No such file or directory
+06-23 15:32:34.342 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/7D5C9405A3D81C422016C0CF22E38A12D08182E8/the.dm': No such file or directory
+06-23 15:32:34.342 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/7D5C9405A3D81C422016C0CF22E38A12D08182E8/the.dm': No such file or directory
+06-23 15:32:34.343 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000013/dl-MlkitBarcodeUi.optional_260235100400.dm': No such file or directory
+06-23 15:32:34.343 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000013/dl-MlkitBarcodeUi.optional_260235100400.dm': No such file or directory
+06-23 15:32:34.344 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/646DA7BE3AF9B756DEFD88CA7189FC9D7C55EC0F/the.dm': No such file or directory
+06-23 15:32:34.344 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/646DA7BE3AF9B756DEFD88CA7189FC9D7C55EC0F/the.dm': No such file or directory
+06-23 15:32:34.346 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/754BEC187BC4F26BBC31300F93DBF9B7506C1861/the.dm': No such file or directory
+06-23 15:32:34.346 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/754BEC187BC4F26BBC31300F93DBF9B7506C1861/the.dm': No such file or directory
+06-23 15:32:34.346 13661 13663 W artd    : Could not get dex checksums for location /data/app/~~VbJOtikKBlttgBEQ9Jd5pw==/com.android.vending-xW2C66DUaxBVkL_Egz9K7w==/base.apk, fd=-1
+06-23 15:32:34.348 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+06-23 15:32:34.348 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+06-23 15:32:36.905   763   763 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+06-23 15:32:37.325   763   763 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+06-23 15:32:37.726  1497  2391 I dkpg    : (REDACTED) Probing voice interaction service recovery for condition(%s).
+06-23 15:32:37.736  1497  2391 I dkpg    : (REDACTED) Skipping voice interaction service recovery(%s) for condition(%s).
+06-23 15:32:37.736  1497  2391 I dkpg    : (REDACTED) Skipping voice interaction service recovery(%s) for condition(%s).
+06-23 15:32:39.921   763   763 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+06-23 15:32:41.411  1265  1265 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.time.trustedtime.singleuserapi.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentSingleUserInternalApiService }
+06-23 15:32:41.413   540   656 W ProcessStats: Tracking association SourceState{5392d3 com.google.android.gms/10123 BTop #13302} whose proc state 2 is better than process ProcessState{8330713 com.google.android.gms.persistent/10123 pkg=com.google.android.gms} proc state 4 (15 skipped)
+06-23 15:32:43.176   763   827 D ControlsListingControllerImpl: Subscribing callback, service count: 0
+06-23 15:32:43.188   763   827 D ControlsListingControllerImpl: Unsubscribing callback
+06-23 15:32:44.349 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-MlkitBarcodeUi.optional_231818100000.dm': No such file or directory
+06-23 15:32:44.349 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-MlkitBarcodeUi.optional_231818100000.dm': No such file or directory
+06-23 15:32:44.350 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000c/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+06-23 15:32:44.350 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000c/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+06-23 15:32:44.350 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+06-23 15:32:44.351 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+06-23 15:32:44.351 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+06-23 15:32:44.351 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+06-23 15:32:44.352 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+06-23 15:32:44.352 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+06-23 15:32:44.353 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000010/dl-VisionOcr.optional_260235100000.dm': No such file or directory
+06-23 15:32:44.353 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000010/dl-VisionOcr.optional_260235100000.dm': No such file or directory
+06-23 15:32:44.356 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000b/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+06-23 15:32:44.356 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000b/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+06-23 15:32:44.357 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/DD26CFCA40A2391A1E3626BBAF83BD500298C9F7/the.dm': No such file or directory
+06-23 15:32:44.357 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/DD26CFCA40A2391A1E3626BBAF83BD500298C9F7/the.dm': No such file or directory
+06-23 15:32:44.357 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+06-23 15:32:44.357 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+06-23 15:32:44.359 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000016/dl-PlayCloudSearch.optional_260235100000.dm': No such file or directory
+06-23 15:32:44.359 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000016/dl-PlayCloudSearch.optional_260235100000.dm': No such file or directory
+06-23 15:32:44.360 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/9B790551AEA6F45286C19831BDC04308DF1AFF9F/the.dm': No such file or directory
+06-23 15:32:44.360 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/9B790551AEA6F45286C19831BDC04308DF1AFF9F/the.dm': No such file or directory
+06-23 15:32:44.361 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000015/dl-Appsearch.optional_260235100400.dm': No such file or directory
+06-23 15:32:44.361 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000015/dl-Appsearch.optional_260235100400.dm': No such file or directory
+06-23 15:32:44.363 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000011/dl-MlkitOcrCommon.optional_260235100400.dm': No such file or directory
+06-23 15:32:44.363 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000011/dl-MlkitOcrCommon.optional_260235100400.dm': No such file or directory
+06-23 15:32:44.364 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/7D5C9405A3D81C422016C0CF22E38A12D08182E8/the.dm': No such file or directory
+06-23 15:32:44.364 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/7D5C9405A3D81C422016C0CF22E38A12D08182E8/the.dm': No such file or directory
+06-23 15:32:44.365 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000013/dl-MlkitBarcodeUi.optional_260235100400.dm': No such file or directory
+06-23 15:32:44.365 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000013/dl-MlkitBarcodeUi.optional_260235100400.dm': No such file or directory
+06-23 15:32:44.366 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/646DA7BE3AF9B756DEFD88CA7189FC9D7C55EC0F/the.dm': No such file or directory
+06-23 15:32:44.366 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/646DA7BE3AF9B756DEFD88CA7189FC9D7C55EC0F/the.dm': No such file or directory
+06-23 15:32:44.367 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/754BEC187BC4F26BBC31300F93DBF9B7506C1861/the.dm': No such file or directory
+06-23 15:32:44.367 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/754BEC187BC4F26BBC31300F93DBF9B7506C1861/the.dm': No such file or directory
+06-23 15:32:44.368 13661 13663 W artd    : Could not get dex checksums for location /data/app/~~VbJOtikKBlttgBEQ9Jd5pw==/com.android.vending-xW2C66DUaxBVkL_Egz9K7w==/base.apk, fd=-1
+06-23 15:32:44.369 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+06-23 15:32:44.369 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+06-23 15:32:45.923   763   763 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+06-23 15:32:47.332   763   763 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+06-23 15:32:47.340   763   837 D EGL_emulation: app_time_stats: avg=20014.46ms min=20014.46ms max=20014.46ms count=1
+06-23 15:32:48.942   763   763 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+06-23 15:32:51.939   763   763 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+06-23 15:32:52.280   540  2203 W ProcessStats: Tracking association SourceState{5392d3 com.google.android.gms/10123 BTop #13304} whose proc state 2 is better than process ProcessState{8330713 com.google.android.gms.persistent/10123 pkg=com.google.android.gms} proc state 4 (3 skipped)
+06-23 15:32:54.347 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-MlkitBarcodeUi.optional_231818100000.dm': No such file or directory
+06-23 15:32:54.347 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-MlkitBarcodeUi.optional_231818100000.dm': No such file or directory
+06-23 15:32:54.349 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000c/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+06-23 15:32:54.349 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000c/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+06-23 15:32:54.349 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+06-23 15:32:54.350 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+06-23 15:32:54.350 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+06-23 15:32:54.350 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+06-23 15:32:54.351 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+06-23 15:32:54.351 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+06-23 15:32:54.352 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000010/dl-VisionOcr.optional_260235100000.dm': No such file or directory
+06-23 15:32:54.352 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000010/dl-VisionOcr.optional_260235100000.dm': No such file or directory
+06-23 15:32:54.356 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000b/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+06-23 15:32:54.356 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000b/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+06-23 15:32:54.358 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/DD26CFCA40A2391A1E3626BBAF83BD500298C9F7/the.dm': No such file or directory
+06-23 15:32:54.358 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/DD26CFCA40A2391A1E3626BBAF83BD500298C9F7/the.dm': No such file or directory
+06-23 15:32:54.359 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+06-23 15:32:54.359 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+06-23 15:32:54.360 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000016/dl-PlayCloudSearch.optional_260235100000.dm': No such file or directory
+06-23 15:32:54.360 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000016/dl-PlayCloudSearch.optional_260235100000.dm': No such file or directory
+06-23 15:32:54.362 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/9B790551AEA6F45286C19831BDC04308DF1AFF9F/the.dm': No such file or directory
+06-23 15:32:54.362 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/9B790551AEA6F45286C19831BDC04308DF1AFF9F/the.dm': No such file or directory
+06-23 15:32:54.363 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000015/dl-Appsearch.optional_260235100400.dm': No such file or directory
+06-23 15:32:54.363 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000015/dl-Appsearch.optional_260235100400.dm': No such file or directory
+06-23 15:32:54.364 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000011/dl-MlkitOcrCommon.optional_260235100400.dm': No such file or directory
+06-23 15:32:54.364 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000011/dl-MlkitOcrCommon.optional_260235100400.dm': No such file or directory
+06-23 15:32:54.366 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/7D5C9405A3D81C422016C0CF22E38A12D08182E8/the.dm': No such file or directory
+06-23 15:32:54.366 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/7D5C9405A3D81C422016C0CF22E38A12D08182E8/the.dm': No such file or directory
+06-23 15:32:54.367 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000013/dl-MlkitBarcodeUi.optional_260235100400.dm': No such file or directory
+06-23 15:32:54.367 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000013/dl-MlkitBarcodeUi.optional_260235100400.dm': No such file or directory
+06-23 15:32:54.369 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/646DA7BE3AF9B756DEFD88CA7189FC9D7C55EC0F/the.dm': No such file or directory
+06-23 15:32:54.369 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/646DA7BE3AF9B756DEFD88CA7189FC9D7C55EC0F/the.dm': No such file or directory
+06-23 15:32:54.370 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/754BEC187BC4F26BBC31300F93DBF9B7506C1861/the.dm': No such file or directory
+06-23 15:32:54.370 13661 13663 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/754BEC187BC4F26BBC31300F93DBF9B7506C1861/the.dm': No such file or directory
+06-23 15:32:54.371 13661 13663 W artd    : Could not get dex checksums for location /data/app/~~VbJOtikKBlttgBEQ9Jd5pw==/com.android.vending-xW2C66DUaxBVkL_Egz9K7w==/base.apk, fd=-1
+06-23 15:32:54.375 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+06-23 15:32:54.375 13661 13663 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+06-23 15:32:57.325   763   763 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled

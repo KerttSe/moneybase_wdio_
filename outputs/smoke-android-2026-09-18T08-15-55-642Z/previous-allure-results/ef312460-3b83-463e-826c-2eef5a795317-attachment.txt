@@ -1,0 +1,202 @@
+--------- beginning of main
+05-11 11:32:55.921  5245  5245 I HBD     : h [EditorInputType]setPrivateImeOptionsToTable privateImeOptions ( null )
+05-11 11:32:55.921  5245  5245 I HBD     : b incognitoMode : false 
+05-11 11:32:55.922  5245  5245 I HBD     : h getDefaultInputRange : UNKNOWN 
+05-11 11:32:55.922  5245  5245 I HBD     : h getDefaultInputRange : UNKNOWN 
+05-11 11:32:55.922  5245  5245 I HBD     : h getDefaultInputRange : UNKNOWN 
+05-11 11:32:55.922  5245  5245 I HBD     : g [AiWriter] isChildBlockCase:
+05-11 11:32:55.932 32222  3202 I SamsungAccount: [AccountManagerProvider] isChildAccount
+05-11 11:32:55.935 32222  3202 I SamsungAccount: [AccountManagerProvider] Calling package : android.honeyboard.
+05-11 11:32:55.941 32222  3202 I SamsungAccount: [SignatureInfoDbHelper] searchOnUser(fromDb) - [10/lfgff][android.honeyboard.][64/3291d] => matched
+05-11 11:32:55.941 32222  3202 I SamsungAccount: [AccountManagerProvider] This is the access of the allowed application
+05-11 11:32:55.941 32222  3202 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+05-11 11:32:55.947 32222  3202 I SamsungAccount: [TPMU]  SIMState     :SIM_STATE_READY
+05-11 11:32:55.947 32222  3202 I SamsungAccount: [CountryCodeUtil] isChinaCountryCode : false
+05-11 11:32:55.955  2410  2957 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+05-11 11:32:55.964 32222  3202 I SamsungAccount: [TPMU] getMccFromUsim
+05-11 11:32:55.964 32222  3202 I SamsungAccount: [MccManager] saveMccToPreference Start
+05-11 11:32:55.964 32222  3202 I SamsungAccount: [MccManager] saveMccToPreference, mcc is same with previous mcc
+05-11 11:32:55.968 32222  3202 I SamsungAccount: [ChildAccountSupportedListManager] getSupportedListFromLocal from cache
+05-11 11:32:55.969 32222  3202 E SamsungAccount: [FamilyGroupUtil] getCountryCodeListWithRegionMcc - no country code with region mcc
+05-11 11:32:55.969 32222  3202 I SamsungAccount: [FamilyGroupUtil] isSupportFamilyService: false
+05-11 11:32:55.969 32222  3202 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+05-11 11:32:55.970 32222  3202 I SamsungAccount: [AccountManagerProvider] makeResultBundle - resultCode : 1
+05-11 11:32:55.975  5245  5245 I HBD     : c update cached prediction status : true 
+05-11 11:32:55.976  5245  5245 I HBD     : h getDefaultInputRange : UNKNOWN 
+05-11 11:32:55.976  5245  5245 I HBD     : a currentState : 0 
+05-11 11:32:55.976  5245  5245 I HBD     : a [UpdatePolicy] [post] a: 0 cl: 65537 kit: [1/0] vt: 0 ir: 2 
+05-11 11:32:55.978  5245  5245 I HBD     : a [NRIC] resetNoResponseState 
+05-11 11:32:55.978  5245  5245 I HBD     : c update cached prediction status : true 
+05-11 11:32:55.979  5245  5245 W HBD     : d switchToDefaultBoard : ai_writing is not bound 
+05-11 11:32:55.979  5245  5245 I HBD     : HoneyBoardService [PF_OP][onStartInput]  58 ms 
+05-11 11:32:55.979  5245  5245 I HBD     : HoneyBoardService onStartInputView : restarting=true, client=com.moneybase.qa, pid=18242 
+05-11 11:32:55.980  5245  5245 I HBD     : h [EditorInputType]setPrivateImeOptionsToTable privateImeOptions ( null )
+05-11 11:32:55.980  5245  5245 I HBD     : b incognitoMode : false 
+05-11 11:32:55.980  5245  6059 I SemDvfsHyPerManager: acquire hyper - SKBD_RE_ENTER_SHOW/5245@1, type = -999
+05-11 11:32:55.980  5245  5245 I HBD     : h getDefaultInputRange : UNKNOWN 
+05-11 11:32:55.980  5245  5245 I HBD     : h getDefaultInputRange : UNKNOWN 
+05-11 11:32:55.980  5245  5245 I HBD     : h getDefaultInputRange : UNKNOWN 
+05-11 11:32:55.980  5245  5245 I HBD     : g [AiWriter] isChildBlockCase:
+05-11 11:32:55.981 32222  3202 I SamsungAccount: [AccountManagerProvider] isChildAccount
+05-11 11:32:55.981  1388  1501 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 13762882  [5245 / 1]    HINT : KBD_APP_RE_ENTER_VIEW    list : [TIMEOUT / 400] 
+05-11 11:32:55.981 32222  3202 I SamsungAccount: [AccountManagerProvider] Calling package : android.honeyboard.
+05-11 11:32:55.983 32222  3202 I SamsungAccount: [SignatureInfoDbHelper] searchOnUser(fromDb) - [10/lfgff][android.honeyboard.][64/3291d] => matched
+05-11 11:32:55.983 32222  3202 I SamsungAccount: [AccountManagerProvider] This is the access of the allowed application
+05-11 11:32:55.983 32222  3202 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+05-11 11:32:55.984 32222  3202 I SamsungAccount: [TPMU]  SIMState     :SIM_STATE_READY
+05-11 11:32:55.984 32222  3202 I SamsungAccount: [CountryCodeUtil] isChinaCountryCode : false
+05-11 11:32:55.985 32222  3202 I SamsungAccount: [TPMU] getMccFromUsim
+05-11 11:32:55.985 32222  3202 I SamsungAccount: [MccManager] saveMccToPreference Start
+05-11 11:32:55.985 32222  3202 I SamsungAccount: [MccManager] saveMccToPreference, mcc is same with previous mcc
+05-11 11:32:55.986 32222  3202 I SamsungAccount: [ChildAccountSupportedListManager] getSupportedListFromLocal from cache
+05-11 11:32:55.986 32222  3202 E SamsungAccount: [FamilyGroupUtil] getCountryCodeListWithRegionMcc - no country code with region mcc
+05-11 11:32:55.986 32222  3202 I SamsungAccount: [FamilyGroupUtil] isSupportFamilyService: false
+05-11 11:32:55.986 32222  3202 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+05-11 11:32:55.986 32222  3202 I SamsungAccount: [AccountManagerProvider] makeResultBundle - resultCode : 1
+05-11 11:32:55.986  5245  5245 I HBD     : HoneyBoardService onStartInputViewInternal: inputType=0x2, imeOptions=0x6, initialSelStart=2, initialSelEnd=2 
+05-11 11:32:55.986  5245  5245 I HBD     : f applyThemesPolicy 
+05-11 11:32:55.986  5245  5245 I HBD     : e mIsGalaxyTheme = false mIsDexDesktopDisplay : false IsRequiredDarkTypeTheme = false night mode : false mIsEnabledHighContrast = false mIsOpenThemeForHoneyBoardInstalled = false mIsWallpaperThemeInstalled = true mIsThemeParkTheme = false
+05-11 11:32:55.987  5245  5245 I HBD     : f ThemeIndex By PolicyInternal theme index :  285212672 Light
+05-11 11:32:55.987  5245  5245 I HBD     : f update KeyboardTheme themeIndex : 0x 11000000  theme :  Light
+05-11 11:32:55.987  5245  5245 I HBD     : a set Theme convertedIndex : 2 
+05-11 11:32:55.987  5245  5245 I HBD     : a onThemeChanged: currTheme = 2, nextTheme = 2 
+05-11 11:32:55.987  5245  5245 I HBD     : e onUpdate: mThemeStyle = 2 
+05-11 11:32:55.987  5245  5245 I HBD     : c updatePredictionStatus : 1, editorOpt 
+05-11 11:32:55.987  5245  5245 I HBD     : c updateForEditorClass isPredictionOn = false 
+05-11 11:32:55.987  5245  6149 I HBD     : o0 EBD tb start :1 
+05-11 11:32:55.988  5245  6149 I HBD     : a [SKE_LM] disableTags : id:uk_UA
+05-11 11:32:55.988  5245  6149 I HBD     : a [SKE_LM] disableTags : id:ru_RU
+05-11 11:32:55.988  5245  6149 I HBD     : a [SKE_LM] enable notTaggedWith:id:uk_UA, id:ru_RU, emoji
+05-11 11:32:55.988  5245  6149 I HBD     : a [SKE_LM] enable notTaggedWith:emoji, zh, yue_HK, nan_TW
+05-11 11:32:55.988  5245  6149 I HBD     : o0 EBD tb end :1 
+05-11 11:32:55.989  5245  5245 I HBD     : n1 [SCV] (6) 1 1 1 1 1 1 
+05-11 11:32:55.989  5245  5245 I HBD     : o0 EBD ssu f 1 
+05-11 11:32:55.989  5245  5245 I HBD     : a [UpdatePolicy] [post] a: 1 cl: 65537 kit: [1/0] vt: 0 ir: 2 
+--------- beginning of system
+05-11 11:32:55.989  1760  3171 D KNOX_MDM_SettingsProvider: isChangeAllowed() : name = enabled_input_methods
+05-11 11:32:55.989  1760  3171 D KNOX_MDM_SettingsProvider: edmUri: content://com.sec.knox.provider/RestrictionPolicy3
+05-11 11:32:55.989  1760  3171 D KNOX_MDM_SettingsProvider: projectionArgs: isSettingsChangesAllowed
+05-11 11:32:55.989  1760  3171 D KNOX_MDM_SettingsProvider: selectionArgs: false
+05-11 11:32:55.989  1760  3171 D KNOX_MDM_SettingsProvider: selectionArgs: 10200
+05-11 11:32:55.989  1760  3171 D SecContentProvider: query(), uri = 17 selection = isSettingsChangesAllowed
+05-11 11:32:55.989  1760  3171 D SecContentProvider: called from android.uid.honeyboard:10200
+05-11 11:32:55.990  1760  3171 D RestrictionPolicy: isSettingsChangesAllowedAsUser, userId 0 : true
+05-11 11:32:55.990  1760  3171 D KNOX_MDM_SettingsProvider: ret = 1
+05-11 11:32:55.990  5245  5245 I HBD     : c update cached prediction status : true 
+05-11 11:32:55.990  1760  4846 D KNOX_MDM_SettingsProvider: isChangeAllowed() : name = default_input_method
+05-11 11:32:55.990  1760  4846 D KNOX_MDM_SettingsProvider: edmUri: content://com.sec.knox.provider/RestrictionPolicy3
+05-11 11:32:55.990  1760  4846 D KNOX_MDM_SettingsProvider: projectionArgs: isSettingsChangesAllowed
+05-11 11:32:55.990  1760  4846 D KNOX_MDM_SettingsProvider: selectionArgs: false
+05-11 11:32:55.990  1760  4846 D KNOX_MDM_SettingsProvider: selectionArgs: 10200
+05-11 11:32:55.990  1760  4846 D SecContentProvider: query(), uri = 17 selection = isSettingsChangesAllowed
+05-11 11:32:55.990  1760  4846 D SecContentProvider: called from android.uid.honeyboard:10200
+05-11 11:32:55.990  1760  4846 D RestrictionPolicy: isSettingsChangesAllowedAsUser, userId 0 : true
+05-11 11:32:55.990  1760  4846 D KNOX_MDM_SettingsProvider: ret = 1
+05-11 11:32:55.990  5245 14207 I HBD     : u updated Sub Types. English 
+05-11 11:32:55.991  1760  3171 D SecContentProvider: query(), uri = 15 selection = isClipboardAllowedAsUser
+05-11 11:32:55.991  1760  3171 D SecContentProvider: called from android.uid.honeyboard:10200
+05-11 11:32:55.991  1760  3171 D RestrictionPolicy: isClipboardAllowed : true
+05-11 11:32:55.991  1760  3171 D SecContentProvider: SemKnoxPolicyContract.RestrictionPolicy.CLIPBOARD_ALLOWED_AS_USER return = true
+05-11 11:32:55.992  5245 20845 I HBD     : b InputMethodSubtype is set as local:en_US 
+05-11 11:32:55.992  5245  5245 I HBD     : b updateConfig: [LanguageItem] English / [KeyboardViewTypeItem] 0 / [KeyboardInputTypeItem] mainType(1), subType(0) / [CurrentLanguageInputTypeItem] mainType(0), subType(0) / [KeyboardInputRangeItem] 2 / [SelectedLanguageItem] 3 / [NumberOnlyInputTypeItem] true / [NumberInputClassItem] true / [DigitEditorItem] true / [NumberKeyFirstLineItem] true / [SpaceRowStyleCmItem] true /  
+05-11 11:32:55.992  5245  5245 I HBD     : b updateConfig: [SpaceRowStylePeriodItem] true / [SpaceRowStyleEmailURLPeriodItem] true / [SpaceRowStyleEmailURLDotComItem] true / [SpaceRowStyleEmailURLPeriodItem] true / [SpaceRowStyleEmailURLDotComItem] true / [SpaceRowStyleJapaneseArrowItem] true / [SpaceRowStyleJapanesePeriodItem] true / [TouchAndHoldSpaceBarTypeItem] cursor_control / [UseContinuousInputItem] true / [VoiceInputTypeItem] 2 / [DensityItem] 2.625 /  
+05-11 11:32:55.992  5245  5245 I HBD     : b updateConfig: [DisplayWidthItem] 1080 / [DisplayHeightItem] 2134 / [MainTextLabelItem] 1 / [LanguageSwitchingUsingKeyItem] true / [PredictionStatusItem] true / [EditorEnterActionItem] -1 /  
+05-11 11:32:55.992  5245  5245 I HBD     : c update cached prediction status : true 
+05-11 11:32:55.992  5245  5245 I HBD     : b updateMultiTapTimeValue 
+05-11 11:32:55.992  5245  5245 I HBD     : b getMultiTapTimeoutValue 
+05-11 11:32:55.992  5245  5245 I HBD     : b getSingleVowelMultiTapTimeoutValue 
+05-11 11:32:55.992  5245  5245 I HBD     : a [AiWriter] determineTranslateLanguage
+05-11 11:32:55.992  5245  5245 I HBD     : a [AiWriter] chat translation null isTranslationClosed : false lang : en restarting : true hash : -1971625766 is from translation : false
+05-11 11:32:55.992  5245 20846 I HBD     : a [HBIC] requestCursorUpdates 2 
+05-11 11:32:55.993  1760  1760 I InputMethodManagerService: subtype state: oldSubtype = android.view.inputmethod.InputMethodSubtype@10001 newSubtype = android.view.inputmethod.InputMethodSubtype@10001 force = false, intent received : false
+05-11 11:32:55.993  5245 20846 I HBD     : a requestCursorUpdates returned  true ,  1
+05-11 11:32:55.993  5245  5245 I HBD     : MultiModalSwitcher onStartInputView 
+05-11 11:32:55.994  5245  5245 I HBD     : HoneyBoardService [PF_OP][onStartInputView]  15 ms 
+05-11 11:32:55.994  5245  5245 I HBD     : a IIFO[r:7b1db0a960][type:finish] 
+05-11 11:32:55.995  5245  5245 W HBD     : f4 Engine Sync Finished by onStartInputView, check InputKey timing 
+05-11 11:32:55.996  5245  5245 I HBD     : n1 [SCV] (6) 1 1 1 1 1 1 
+05-11 11:32:55.996  5245  5245 I HBD     : o0 EBD si S 1 
+05-11 11:32:55.996 32222  3202 I SamsungAccount: [AccountManagerProvider] isChildAccount
+05-11 11:32:55.997 32222  3202 I SamsungAccount: [AccountManagerProvider] Calling package : android.honeyboard.
+05-11 11:32:55.999 32222  3202 I SamsungAccount: [SignatureInfoDbHelper] searchOnUser(fromDb) - [10/lfgff][android.honeyboard.][64/3291d] => matched
+05-11 11:32:55.999 32222  3202 I SamsungAccount: [AccountManagerProvider] This is the access of the allowed application
+05-11 11:32:55.999 32222  3202 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+05-11 11:32:56.000 32222  3202 I SamsungAccount: [TPMU]  SIMState     :SIM_STATE_READY
+05-11 11:32:56.000 32222  3202 I SamsungAccount: [CountryCodeUtil] isChinaCountryCode : false
+05-11 11:32:56.000 32222  3202 I SamsungAccount: [TPMU] getMccFromUsim
+05-11 11:32:56.000 32222  3202 I SamsungAccount: [MccManager] saveMccToPreference Start
+05-11 11:32:56.001 32222  3202 I SamsungAccount: [MccManager] saveMccToPreference, mcc is same with previous mcc
+05-11 11:32:56.001 32222  3202 I SamsungAccount: [ChildAccountSupportedListManager] getSupportedListFromLocal from cache
+05-11 11:32:56.001 32222  3202 E SamsungAccount: [FamilyGroupUtil] getCountryCodeListWithRegionMcc - no country code with region mcc
+05-11 11:32:56.001 32222  3202 I SamsungAccount: [FamilyGroupUtil] isSupportFamilyService: false
+05-11 11:32:56.001 32222  3202 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+05-11 11:32:56.001 32222  3202 I SamsungAccount: [AccountManagerProvider] makeResultBundle - resultCode : 1
+05-11 11:32:56.001  5245 14207 I HBD     : g [AiWriter] updateChildAccountInfo reset
+05-11 11:32:56.001  5245 14207 I HBD     : g [AiWriter] setCurrentCc resetCcAndLegalAge
+05-11 11:32:56.169 18137 18199 I appium  : channel read: POST /session/9a7ae468-d556-4f1a-a996-80aa95d104cb/element
+05-11 11:32:56.170 18137 18199 I appium  : FindElement command
+05-11 11:32:56.171 18137 18199 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceId("com.moneybase.qa:id/otp_input")'
+05-11 11:32:56.171 18137 18199 I appium  : Waiting up to 10000ms for the device to idle
+05-11 11:32:56.383  1388 20844 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 13762882
+05-11 11:32:56.515  1760  2299 D WifiConnectivityMonitor: start WCM Poll.
+05-11 11:32:56.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778488376
+05-11 11:32:56.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 11:32:56.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 11:32:56.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641472
+05-11 11:32:56.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641456
+05-11 11:32:56.601  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 11:32:56.601  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 11:32:56.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 11:32:56.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 11:32:56.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 11:32:56.794 18137 18199 I QueryController: Matched selector: UiSelector[RESOURCE_ID=com.moneybase.qa:id/otp_input] <<==>> [android.view.accessibility.AccessibilityNodeInfo@70e06; boundsInParent: Rect(0, 0 - 836, 168); boundsInScreen: Rect(122, 602 - 958, 770); boundsInWindow: Rect(122, 602 - 958, 770); packageName: com.moneybase.qa; className: android.widget.EditText; text: 84; error: null; maxTextLength: 6; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: com.moneybase.qa:id/otp_input; uniqueId: null; checkable: false; checked: false; focusable: true; focused: true; selected: false; clickable: true; longClickable: true; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_CLEAR_FOCUS - null, AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_CLICK - null, AccessibilityAction: ACTION_LONG_CLICK - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_NEXT_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_SET_SELECTION - null, AccessibilityAction: ACTION_SET_TEXT - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null, AccessibilityAction: ACTION_IME_ENTER - Enter]; isTextSelectable: true]
+05-11 11:32:56.800 18137 18199 I appium  : AppiumResponse: {"sessionId":"9a7ae468-d556-4f1a-a996-80aa95d104cb","value":{"ELEMENT":"00000000-0000-0084-ffff-ffff000001c2","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0084-ffff-ffff000001c2"}}
+05-11 11:32:56.820 18137 18199 I appium  : channel read: GET /session/9a7ae468-d556-4f1a-a996-80aa95d104cb/element/00000000-0000-0084-ffff-ffff000001c2/attribute/text
+05-11 11:32:56.825 18137 18199 I appium  : GetElementAttribute command
+05-11 11:32:56.829 18137 18199 I QueryController: Matched selector: UiSelector[RESOURCE_ID=com.moneybase.qa:id/otp_input] <<==>> [android.view.accessibility.AccessibilityNodeInfo@70e06; boundsInParent: Rect(0, 0 - 836, 168); boundsInScreen: Rect(122, 602 - 958, 770); boundsInWindow: Rect(122, 602 - 958, 770); packageName: com.moneybase.qa; className: android.widget.EditText; text: 84; error: null; maxTextLength: 6; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: com.moneybase.qa:id/otp_input; uniqueId: null; checkable: false; checked: false; focusable: true; focused: true; selected: false; clickable: true; longClickable: true; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_CLEAR_FOCUS - null, AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_CLICK - null, AccessibilityAction: ACTION_LONG_CLICK - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_NEXT_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_SET_SELECTION - null, AccessibilityAction: ACTION_SET_TEXT - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null, AccessibilityAction: ACTION_IME_ENTER - Enter]; isTextSelectable: true]
+05-11 11:32:56.837 18137 18199 I QueryController: Matched selector: UiSelector[RESOURCE_ID=com.moneybase.qa:id/otp_input] <<==>> [android.view.accessibility.AccessibilityNodeInfo@70e06; boundsInParent: Rect(0, 0 - 836, 168); boundsInScreen: Rect(122, 602 - 958, 770); boundsInWindow: Rect(122, 602 - 958, 770); packageName: com.moneybase.qa; className: android.widget.EditText; text: 84; error: null; maxTextLength: 6; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: com.moneybase.qa:id/otp_input; uniqueId: null; checkable: false; checked: false; focusable: true; focused: true; selected: false; clickable: true; longClickable: true; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_CLEAR_FOCUS - null, AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_CLICK - null, AccessibilityAction: ACTION_LONG_CLICK - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_NEXT_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_SET_SELECTION - null, AccessibilityAction: ACTION_SET_TEXT - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null, AccessibilityAction: ACTION_IME_ENTER - Enter]; isTextSelectable: true]
+05-11 11:32:56.841 18137 18199 I appium  : AppiumResponse: {"sessionId":"9a7ae468-d556-4f1a-a996-80aa95d104cb","value":"84"}
+05-11 11:32:56.875 18137 18199 I appium  : channel read: GET /session/9a7ae468-d556-4f1a-a996-80aa95d104cb/screenshot
+05-11 11:32:56.878 18137 18199 I appium  : CaptureScreenshot command
+05-11 11:32:56.882 18137 18199 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+05-11 11:32:56.893 18137 18199 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+05-11 11:32:57.083   727   727 D io_stats: !@   8,0 r 57648882 1190011366 w 17748399 332989676 d 5161735 359337548 f 0 1833193 iot 27879268 0 th 0 0 0 pt 0 inp 0 0 396782.476
+05-11 11:32:57.288  1483  1483 I SurfaceFlinger: SFWD update time=396782681549563
+05-11 11:32:57.360 20847 20847 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+05-11 11:32:57.360 20847 20847 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+05-11 11:32:57.360 20847 20847 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+05-11 11:32:57.360  1760  4846 I EDMNativeHelperService: isScreenCaptureEnabled
+05-11 11:32:57.361  1760  4846 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+05-11 11:32:57.361 20847 20847 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+05-11 11:32:57.361 20847 20847 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+05-11 11:32:57.363  1483  1712 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_18242#112660(seamlessTransition:0)
+05-11 11:32:57.363  1483  1712 I SurfaceFlinger: Capture layer list: 	 InputMethod$_5245#112761(seamlessTransition:0)
+05-11 11:32:57.363  1483  1712 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2431#105(seamlessTransition:0)
+05-11 11:32:57.363  1483  1712 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2431#102(seamlessTransition:0)
+05-11 11:32:57.363  1483  1712 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+05-11 11:32:57.366  1483  1520 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+05-11 11:32:57.366  1483  1520 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_18242#112660 at index 1
+05-11 11:32:57.366  1483  1520 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer InputMethod$_5245#112761 at index 2
+05-11 11:32:57.366  1483  1520 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2431#105 at index 3
+05-11 11:32:57.366  1483  1520 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2431#102 at index 4
+05-11 11:32:57.397 20847 20852 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+05-11 11:32:57.419  1760  2266 I SemWifiServiceDetector: Service det. resumed: T / T / 8002
+05-11 11:32:57.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778488377
+05-11 11:32:57.599  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 11:32:57.599  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 11:32:57.599  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641472
+05-11 11:32:57.599  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641456
+05-11 11:32:57.599  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 11:32:57.599  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 11:32:57.599  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 11:32:57.599  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 11:32:57.599  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 11:32:57.639 18137 18199 I appium  : AppiumResponse: {"sessionId":"9a7ae468-d556-4f1a-a996-80aa95d104cb","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N13eFVlvvbxe6eRSgskEHoPTVqoEpAqIDKggAVEcRzHMh4LHvQ4wyvOOCLOYBkFR0Ecio3eexcwVCkGCB0SAgmEkB4CyX7/4LAPK3unl52VfD/XxXXNelb7LYYds+79FIvVarUKAAAAAAD…
+05-11 11:32:57.663 18137 18199 I appium  : channel read: GET /session/9a7ae468-d556-4f1a-a996-80aa95d104cb/source
+05-11 11:32:57.664 18137 18199 I appium  : Source command
+05-11 11:32:57.664 18137 18199 I appium  : Waiting up to 10000ms for the device to idle
+05-11 11:32:57.922 18137 18199 I appium  : AppiumResponse: {"sessionId":"9a7ae468-d556-4f1a-a996-80aa95d104cb","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+05-11 11:32:58.017 20856 20856 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+05-11 11:32:58.026  1760  4846 I ImeTracker: system_server:7435473: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false
+05-11 11:32:58.105 20859 20859 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+05-11 11:32:58.115  1760  4846 I ImeTracker: system_server:91669771: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false

@@ -1,0 +1,202 @@
+--------- beginning of main
+08-11 17:24:01.094  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 17:24:01.094  1325  1397 I display : Set affinity HWC : 1325
+08-11 17:24:01.094  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 17:24:01.094  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 17:24:01.094  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 17:24:01.095  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-11 17:24:01.096  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+--------- beginning of system
+08-11 17:24:01.098  4554  5580 I SDHMS:x : SIOP:: AP:363 BAT:339 USB:328 CHG:359 PA:366 CP:361 WIFI:356 BLK:0 SUBBAT:0 LRPTHM:347 SKIN:339 SKINF:332 SKINB:339 LRP:339 LRP2:339 LRF2:332 LRB2:339 AP2:338 CHG2:326 MEM2:336 WIFI2:339 SPK2:316 VAP02:369 VWIFI:360 AVGCUR:0 AVGSYS:392 POWER:0
+08-11 17:24:01.099 21910 21951 I appium  : Took 0ms to retrieve 0 matches for '//*[@resource-id="insufficient-balance-error"]' XPath2 query
+08-11 17:24:01.101 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.utils.ElementLocationHelpers.findElement(ElementLocationHelpers.java:153)\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:60)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1572)\n"}}
+08-11 17:24:01.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786458241
+08-11 17:24:01.120  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:24:01.121  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:24:01.121  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774304
+08-11 17:24:01.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774294
+08-11 17:24:01.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:24:01.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:24:01.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:24:01.121  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:24:01.121  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:24:01.169 21910 21951 I appium  : channel read: POST /session/603cf96a-0138-431e-947d-4bd30573b37e/elements
+08-11 17:24:01.170 21910 21951 I appium  : FindElements command
+08-11 17:24:01.171 21910 21951 I appium  : method: 'xpath', selector: '//*[@resource-id="insufficient-balance-error"]'
+08-11 17:24:01.172 21910 21951 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:24:01.174 21910 21951 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:24:01.249 21910 21951 I appium  : Took 0ms to retrieve 0 matches for '//*[@resource-id="insufficient-balance-error"]' XPath2 query
+08-11 17:24:01.249 21910 21951 I appium  : Found zero matches
+08-11 17:24:01.250 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":[]}
+08-11 17:24:01.258 21910 21951 I appium  : channel read: GET /session/603cf96a-0138-431e-947d-4bd30573b37e/screenshot
+08-11 17:24:01.258 21910 21951 I appium  : CaptureScreenshot command
+08-11 17:24:01.259 21910 21951 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-11 17:24:01.259 21910 21951 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-11 17:24:01.313 21972 21972 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{b516f62 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:24:01.321  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-11 17:24:01.323  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-11 17:24:01.327  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-11 17:24:01.337  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_21972#70874 Max (can't resolve refresh rate)
+08-11 17:24:01.337  1437  1437 I SurfaceFlinger: scored - choose 120.00 Hz
+08-11 17:24:01.337  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-11 17:24:01.339  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-11 17:24:01.339  1325  9351 I display : Current VRR MODE is 3
+08-11 17:24:01.339  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-11 17:24:01.339  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-11 17:24:01.339  1325  9351 I display : commit modeset : 1080x2340@120hs
+08-11 17:24:01.360  1325  9351 W display : deliverWinConfigData:: commit modeset time (20 ms)
+08-11 17:24:01.361  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-11 17:24:01.361  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 17:24:01.361  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-11 17:24:01.361  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 17:24:01.361  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-11 17:24:01.361  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 17:24:01.361  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 17:24:01.361  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 17:24:01.361  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 17:24:01.361  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 17:24:01.361  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 17:24:01.361  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 17:24:01.361  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 17:24:01.361  1325  1397 I display : Set affinity HWC : 1325
+08-11 17:24:01.361  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 17:24:01.361  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 17:24:01.361  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 17:24:01.362  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-11 17:24:01.363  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 17:24:01.438 24309 24309 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-11 17:24:01.439 24309 24309 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-11 17:24:01.439 24309 24309 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-11 17:24:01.439  1726  2752 I EDMNativeHelperService: isScreenCaptureEnabled
+08-11 17:24:01.441  1726  2752 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-11 17:24:01.441 24309 24309 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-11 17:24:01.441 24309 24309 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-11 17:24:01.442  1437  1915 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_21972#70874(seamlessTransition:0)
+08-11 17:24:01.442  1437  1915 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-11 17:24:01.442  1437  1915 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-11 17:24:01.442  1437  1915 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-11 17:24:01.444  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-11 17:24:01.444  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_21972#70874 at index 1
+08-11 17:24:01.444  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-11 17:24:01.445  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-11 17:24:01.466 24309 24324 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-11 17:24:01.572  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-11 17:24:01.573  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-11 17:24:01.574  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_21972#70874 Max (can't resolve refresh rate)
+08-11 17:24:01.574  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-11 17:24:01.574  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-11 17:24:01.577  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-11 17:24:01.577  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-11 17:24:01.577  1325  9351 I display : Current VRR MODE is 3
+08-11 17:24:01.577  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-11 17:24:01.577  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-11 17:24:01.577  1325  9351 I display : commit modeset : 1080x2340@60phs
+08-11 17:24:01.593  1325  9351 W display : deliverWinConfigData:: commit modeset time (15 ms)
+08-11 17:24:01.594  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-11 17:24:01.594  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 17:24:01.594  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-11 17:24:01.594  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 17:24:01.594  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-11 17:24:01.594  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 17:24:01.594  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 17:24:01.594  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 17:24:01.594  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 17:24:01.594  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 17:24:01.594  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 17:24:01.594  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 17:24:01.594  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 17:24:01.594  1325  1397 I display : Set affinity HWC : 1325
+08-11 17:24:01.594  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 17:24:01.594  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 17:24:01.594  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 17:24:01.594  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 17:24:01.595  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-11 17:24:01.619  1178  1178 I wpa_supplicant: Heartbeat 8928
+08-11 17:24:01.660 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15XFZl/v/xNwiCCAriCm6opGlaoiYuuWvuudXklKkzTdavKZ2yHBvbbLEpy6WmyWrK0XrYommmKe6ZKS7hruAGAq6Iiqyy3b8//HKPh/sGbnYOvJ6Ph4+Zc53tuoWQ8z7X9bmcLBaLRQA…
+08-11 17:24:01.674 21910 21951 I appium  : channel read: POST /session/603cf96a-0138-431e-947d-4bd30573b37e/element
+08-11 17:24:01.675 21910 21951 I appium  : FindElement command
+08-11 17:24:01.676 21910 21951 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textContains("Insufficient")'
+08-11 17:24:01.676 21910 21951 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:24:01.705 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1572)\n"}}
+08-11 17:24:01.715 21910 21951 I appium  : channel read: GET /session/603cf96a-0138-431e-947d-4bd30573b37e/source
+08-11 17:24:01.716 21910 21951 I appium  : Source command
+08-11 17:24:01.716 21910 21951 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:24:01.772 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-11 17:24:01.781 21910 21951 I appium  : channel read: POST /session/603cf96a-0138-431e-947d-4bd30573b37e/elements
+08-11 17:24:01.781 21910 21951 I appium  : FindElements command
+08-11 17:24:01.781 21910 21951 I appium  : method: '-android uiautomator', selector: 'new UiSelector().textContains("Insufficient")'
+08-11 17:24:01.782 21910 21951 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:24:01.812 21910 21951 I appium  : Matched 0 elements using selector UiSelector[CONTAINS_TEXT=Insufficient]
+08-11 17:24:01.812 21910 21951 I appium  : Matched 0 elements including possible duplicates
+08-11 17:24:01.812 21910 21951 I appium  : 0 element(s) left after deduplication
+08-11 17:24:01.812 21910 21951 I appium  : Found zero matches
+08-11 17:24:01.812 21972 21972 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{b516f62 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:24:01.813 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":[]}
+08-11 17:24:01.818  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-11 17:24:01.818  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-11 17:24:01.819  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_21972#70874 Max (can't resolve refresh rate)
+08-11 17:24:01.819  1437  1437 I SurfaceFlinger: scored - choose 120.00 Hz
+08-11 17:24:01.820  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-11 17:24:01.820  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-11 17:24:01.820  1325  9351 I display : Current VRR MODE is 3
+08-11 17:24:01.820  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-11 17:24:01.821  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-11 17:24:01.821  1325  9351 I display : commit modeset : 1080x2340@120hs
+08-11 17:24:01.844  1325  9351 W display : deliverWinConfigData:: commit modeset time (23 ms)
+08-11 17:24:01.845  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-11 17:24:01.845  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 17:24:01.845  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-11 17:24:01.845  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 17:24:01.845  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-11 17:24:01.845  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 17:24:01.845  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 17:24:01.845  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 17:24:01.845  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 17:24:01.845  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 17:24:01.845  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 17:24:01.845  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 17:24:01.845  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 17:24:01.845  1325  1397 I display : Set affinity HWC : 1325
+08-11 17:24:01.845  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 17:24:01.845  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 17:24:01.845  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 17:24:01.845  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-11 17:24:01.845  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-11 17:24:01.846  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 17:24:01.849 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 17:24:01.885   730   730 D io_stats: !@   8,0 r 55699261 1028931178 w 17244576 312303536 d 5067884 365255020 f 0 1587919 iot 25785488 0 th 0 0 0 pt 0 inp 0 0 401025.282
+08-11 17:24:01.904 24338 24338 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 17:24:01.949 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 17:24:02.004 24341 24341 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 17:24:02.053 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''
+08-11 17:24:02.069  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-11 17:24:02.072  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_21972#70874 Max (can't resolve refresh rate)
+08-11 17:24:02.072  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-11 17:24:02.073  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-11 17:24:02.074  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-11 17:24:02.077  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-11 17:24:02.077  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-11 17:24:02.077  1325  9351 I display : Current VRR MODE is 3
+08-11 17:24:02.077  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-11 17:24:02.078  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-11 17:24:02.078  1325  9351 I display : commit modeset : 1080x2340@60phs
+08-11 17:24:02.093  1325  9351 W display : deliverWinConfigData:: commit modeset time (15 ms)
+08-11 17:24:02.095  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-11 17:24:02.095  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 17:24:02.095  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-11 17:24:02.095  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 17:24:02.095  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-11 17:24:02.095  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 17:24:02.095  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 17:24:02.095  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 17:24:02.095  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 17:24:02.095  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 17:24:02.095  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 17:24:02.095  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 17:24:02.095  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 17:24:02.095  1325  1397 I display : Set affinity HWC : 1325
+08-11 17:24:02.095  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 17:24:02.095  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 17:24:02.095  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 17:24:02.095  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 17:24:02.095  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60

@@ -1,0 +1,202 @@
+--------- beginning of main
+08-11 12:46:30.750  2648  3296 I ScanController: onScanResult to scannerId: 1- eventType=0x1a, addressType=1, address=XX:XX:XX:XX:D9:36, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-72, periodicAdvInt=0x0
+08-11 12:46:30.756 17447 17457 I EasySetup[11.1.23.4] : IcControlService.isFoldDeviceFolded() - isFoldDevice: false, isNotFolded: false
+08-11 12:46:30.762 17447 17457 I Peripheral_SmartThingsManager[1.2.95]: parseBlePacketserviceId : 9
+08-11 12:46:30.763 17447 17457 E Peripheral_OCFTvUtil[1.2.95]: not supported version
+08-11 12:46:30.763 17447 17457 E Peripheral_OCFTVManager[1.2.95]: isOCFTVDevice is null
+08-11 12:46:30.766 17447 17457 E IC_DeviceManager[1.2.95]: isValidScanResult(), packet is not valid
+08-11 12:46:30.766 17447 17457 E IC_DeviceManager[1.2.95]: 1. ADV_IDX_PACKET_VER(2): 2 / 2. ADV_IDX_PACKET_SVC_ID(9): 9 / 3. ADV_IDX_PACKET_SS_DISCOVERY(1): 1 / 4. ADV_IDX_PACKET_ASSOCIATED_SVC_ID(2): 2 / 5. MASK_PACKET_FEATURES_SVC_DATA(16): 16 / 6. MASK_PACKET_FEATURES_DEVICE(4): 4 / 7. ADV_IDX_PACKET_IC_VER(1): 1 / 8. MASK_DEVICE_EXTRA_SUPPORT_ACCOUNT_HASH(4): 4
+08-11 12:46:30.767 17447 17457 W IC_Service[1.2.95]: recieved scanResult packet is not valid
+08-11 12:46:30.778  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786441590
+08-11 12:46:30.778  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 12:46:30.779  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 12:46:30.779  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774026
+08-11 12:46:30.779  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774024
+08-11 12:46:30.779  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 12:46:30.779  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 12:46:30.779  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 12:46:30.779  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 12:46:30.779  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 12:46:30.787 23214 23342 I appium  : Found zero matches
+08-11 12:46:30.793 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:30.816 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:30.818 23214 23342 I appium  : FindElements command
+08-11 12:46:30.820 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:30.821 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:30.868 23214 23342 I appium  : Found zero matches
+08-11 12:46:30.873 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:30.895 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:30.897 23214 23342 I appium  : FindElements command
+08-11 12:46:30.900 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:30.901 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:30.970 23214 23342 I appium  : Found zero matches
+08-11 12:46:30.974 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:30.998 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:31.000 23214 23342 I appium  : FindElements command
+08-11 12:46:31.003 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:31.004 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:31.049 21635 21658 D LogsManager: No need to flush logs
+08-11 12:46:31.090 23214 23342 I appium  : Found zero matches
+08-11 12:46:31.096 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:31.117 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:31.119 23214 23342 I appium  : FindElements command
+08-11 12:46:31.122 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:31.123 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:31.168 23214 23342 I appium  : Found zero matches
+08-11 12:46:31.175 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:31.199 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:31.202 23214 23342 I appium  : FindElements command
+08-11 12:46:31.205 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:31.206 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:31.269 23214 23342 I appium  : Found zero matches
+08-11 12:46:31.274 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:31.292 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:31.294 23214 23342 I appium  : FindElements command
+08-11 12:46:31.296 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:31.296 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:31.346 23214 23342 I appium  : Found zero matches
+08-11 12:46:31.350 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:31.365 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:31.368 23214 23342 I appium  : FindElements command
+08-11 12:46:31.371 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:31.371 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:31.417 23214 23342 I appium  : Found zero matches
+08-11 12:46:31.420 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:31.446 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:31.449 23214 23342 I appium  : FindElements command
+08-11 12:46:31.452 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:31.453 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:31.523 23214 23342 I appium  : Found zero matches
+08-11 12:46:31.526 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:31.552 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:31.554 23214 23342 I appium  : FindElements command
+08-11 12:46:31.557 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:31.557 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:31.605 23214 23342 I appium  : Found zero matches
+08-11 12:46:31.607 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:31.631 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:31.633 23214 23342 I appium  : FindElements command
+08-11 12:46:31.635 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:31.637 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:31.685 23214 23342 I appium  : Found zero matches
+08-11 12:46:31.687 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:31.716 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:31.718 23214 23342 I appium  : FindElements command
+08-11 12:46:31.720 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:31.721 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:31.756 23214 23342 I appium  : Found zero matches
+08-11 12:46:31.762 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:31.778  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786441591
+08-11 12:46:31.778  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 12:46:31.779  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 12:46:31.779  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774026
+08-11 12:46:31.779  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774024
+08-11 12:46:31.779  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 12:46:31.779  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 12:46:31.779  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 12:46:31.779  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 12:46:31.779  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 12:46:31.818 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:31.820 23214 23342 I appium  : FindElements command
+08-11 12:46:31.823 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:31.824 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:31.910  1726  2226 I SemWifiServiceDetector: Service det. resumed: T / T / 31512
+08-11 12:46:31.921 23214 23342 I appium  : Found zero matches
+08-11 12:46:31.927 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:31.950 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:31.953 23214 23342 I appium  : FindElements command
+08-11 12:46:31.955 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:31.956 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+--------- beginning of system
+08-11 12:46:31.983   730   730 D io_stats: !@   8,0 r 54331702 1005106201 w 16767402 303088688 d 4909308 356034376 f 0 1551483 iot 25028252 0 th 0 0 0 pt 0 inp 0 0 386735.722
+08-11 12:46:31.983   730   730 D io_stats: !@ Read_top(KB): earchbox:search(25639) 1836 c.android.sdhms(4554) 672 .gms.persistent(6607) 4
+08-11 12:46:31.983   730   730 D io_stats: !@ Write_top(KB): kworker/u16:3(22354) 712 f2fs_ckpt-254:5(2890) 120 sait.sohservice(23998) 20
+08-11 12:46:31.987 23214 23342 I appium  : Found zero matches
+08-11 12:46:31.992 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:32.014 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:32.015 23214 23342 I appium  : FindElements command
+08-11 12:46:32.017 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:32.017 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:32.060  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-11 12:46:32.067  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 82957, isSameBssidAndFreq true
+08-11 12:46:32.069  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786441592069 lastDateWindow=1786275667000
+08-11 12:46:32.072  1726  2228 I SemWifiLinkQualityMonitor: Link stat: 671 / 92 / 1.00 (21) / 144 / -48.0 || 100.0 : 144.00 / 0.5 : 1.00 / 0.55 : 0.14 / G (G) || 52fc78d72452: 0.139 / 57.556 / N || N N / 0 0 / N 2.0 / N X 0 / 386735807 0 || 2026-08-09 14:41:07  / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0
+08-11 12:46:32.078  1556  1556 I CNSS    : cnss_open_log_file: directory /data/vendor/log/wifi/ created
+08-11 12:46:32.078 23214 23342 I appium  : Found zero matches
+08-11 12:46:32.081 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:32.118 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:32.121 23214 23342 I appium  : FindElements command
+08-11 12:46:32.123 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:32.124 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:32.189 23214 23342 I appium  : Found zero matches
+08-11 12:46:32.194 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:32.217 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:32.219 23214 23342 I appium  : FindElements command
+08-11 12:46:32.222 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:32.222 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:32.260 23214 23342 I appium  : Found zero matches
+08-11 12:46:32.263 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:32.319 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:32.321 23214 23342 I appium  : FindElements command
+08-11 12:46:32.322 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:32.322 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:32.376 23214 23342 I appium  : Found zero matches
+08-11 12:46:32.384 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:32.418 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:32.421 23214 23342 I appium  : FindElements command
+08-11 12:46:32.424 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:32.425 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:32.463 23214 23342 I appium  : Found zero matches
+08-11 12:46:32.468 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:32.520 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:32.523 23214 23342 I appium  : FindElements command
+08-11 12:46:32.526 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:32.526 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:32.561 23214 23342 I appium  : Found zero matches
+08-11 12:46:32.566 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:32.620 23214 23342 I appium  : channel read: POST /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/elements
+08-11 12:46:32.622 23214 23342 I appium  : FindElements command
+08-11 12:46:32.626 23214 23342 I appium  : method: 'accessibility id', selector: 'Cards'
+08-11 12:46:32.627 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:32.673 23214 23342 I appium  : Found zero matches
+08-11 12:46:32.679 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":[]}
+08-11 12:46:32.720 23214 23342 I appium  : channel read: GET /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/screenshot
+08-11 12:46:32.722 23214 23342 I appium  : CaptureScreenshot command
+08-11 12:46:32.778  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786441592
+08-11 12:46:32.778  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 12:46:32.778  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 12:46:32.778  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774026
+08-11 12:46:32.778  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774024
+08-11 12:46:32.778  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 12:46:32.778  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 12:46:32.779  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 12:46:32.779  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 12:46:32.779  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 12:46:32.866 25841 25841 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-11 12:46:32.867 25841 25841 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-11 12:46:32.869 25841 25841 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-11 12:46:32.869  1726  1749 I EDMNativeHelperService: isScreenCaptureEnabled
+08-11 12:46:32.869  1726  1749 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-11 12:46:32.869 25841 25841 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-11 12:46:32.869 25841 25841 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-11 12:46:32.877  1437  1915 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_23360#67185(seamlessTransition:0)
+08-11 12:46:32.877  1437  1915 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_23360#67223(seamlessTransition:0)
+08-11 12:46:32.877  1437  1915 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-11 12:46:32.877  1437  1915 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-11 12:46:32.878  1437  1915 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-11 12:46:32.880  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-11 12:46:32.880  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_23360#67185 at index 1
+08-11 12:46:32.880  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_23360#67223 at index 2
+08-11 12:46:32.880  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 3
+08-11 12:46:32.881  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 4
+08-11 12:46:32.907 25841 25844 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-11 12:46:33.115 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15eFtnnTb++2iXLcm2vG/xGsdxnN2J42xNGko3aCml05cBytBhmSHQls7COwMDlGWA98dQYFooUChlKU3bhC7QJW2TZqFeYyeOHe/7vkheJFu79PvDSI0iOd4ky7Lvz3X1anR0dM7Xli3…
+08-11 12:46:33.137 23214 23342 I appium  : channel read: GET /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/source
+08-11 12:46:33.138 23214 23342 I appium  : Source command
+08-11 12:46:33.138 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:46:33.191 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-11 12:46:33.224 13277 13277 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 12:46:33.270 25845 25845 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 12:46:33.313 13277 13277 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 12:46:33.376 25848 25848 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 12:46:33.427 13277 13277 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

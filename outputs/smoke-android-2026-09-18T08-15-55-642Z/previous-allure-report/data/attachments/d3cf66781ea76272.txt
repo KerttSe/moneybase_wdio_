@@ -1,0 +1,214 @@
+--------- beginning of main
+08-05 16:52:11.922 19946 20029 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Brian Vindo")'
+08-05 16:52:11.923 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:11.959 19786 20036 E cfdf    : Failed request url: https://chat.google.com/webchannel/events_encoded?VER=8&RID=rpc&SID=4UI1FueMkYqznDdnAR-b2Q&CI=0&AID=7&TYPE=xmlhttp&t=1
+08-05 16:52:11.961 19786 20036 E cfdf    : Http request has failed with attached cause.
+08-05 16:52:11.961 19786 20036 E cfdf    : java.util.concurrent.CancellationException: Task was cancelled.
+08-05 16:52:11.961 19786 20036 E cfdf    : 	at cbhr.g(PG:31)
+08-05 16:52:11.961 19786 20036 E cfdf    : 	at cbhr.get(PG:375)
+08-05 16:52:11.961 19786 20036 E cfdf    : 	at cbhr$f.get(PG:1)
+08-05 16:52:11.961 19786 20036 E cfdf    : 	at a.z(PG:2)
+08-05 16:52:11.961 19786 20036 E cfdf    : 	at cbjs.run(PG:32)
+08-05 16:52:11.961 19786 20036 E cfdf    : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+08-05 16:52:11.961 19786 20036 E cfdf    : 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+08-05 16:52:11.961 19786 20036 E cfdf    : 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+08-05 16:52:11.961 19786 20036 E cfdf    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-05 16:52:11.961 19786 20036 E cfdf    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-05 16:52:11.961 19786 20036 E cfdf    : 	at java.lang.Thread.run(Thread.java:1572)
+08-05 16:52:11.999 19946 20029 I appium  : Matched 0 elements using selector UiSelector[DESCRIPTION=Brian Vindo]
+08-05 16:52:11.999 19946 20029 I appium  : Matched 0 elements including possible duplicates
+08-05 16:52:12.000 19946 20029 I appium  : 0 element(s) left after deduplication
+08-05 16:52:12.000 19946 20029 I appium  : Found zero matches
+08-05 16:52:12.005 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:52:12.034 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:52:12.035 19946 20029 I appium  : FindElements command
+08-05 16:52:12.038 19946 20029 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Brian Vindo")'
+08-05 16:52:12.038 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:12.098 19946 20029 I appium  : Matched 0 elements using selector UiSelector[DESCRIPTION=Brian Vindo]
+08-05 16:52:12.098 19946 20029 I appium  : Matched 0 elements including possible duplicates
+08-05 16:52:12.098 19946 20029 I appium  : 0 element(s) left after deduplication
+08-05 16:52:12.098 19946 20029 I appium  : Found zero matches
+08-05 16:52:12.100 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:52:12.123 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:52:12.125 19946 20029 I appium  : FindElements command
+08-05 16:52:12.128 19946 20029 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Brian Vindo")'
+08-05 16:52:12.129 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:12.199 19946 20029 I appium  : Matched 0 elements using selector UiSelector[DESCRIPTION=Brian Vindo]
+08-05 16:52:12.200 19946 20029 I appium  : Matched 0 elements including possible duplicates
+08-05 16:52:12.200 19946 20029 I appium  : 0 element(s) left after deduplication
+08-05 16:52:12.201 19946 20029 I appium  : Found zero matches
+08-05 16:52:12.206 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:52:12.232 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:52:12.236 19946 20029 I appium  : FindElements command
+08-05 16:52:12.239 19946 20029 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Brian Vindo")'
+08-05 16:52:12.239 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:12.314 19946 20029 I appium  : Matched 0 elements using selector UiSelector[DESCRIPTION=Brian Vindo]
+08-05 16:52:12.315 19946 20029 I appium  : Matched 0 elements including possible duplicates
+08-05 16:52:12.316 19946 20029 I appium  : 0 element(s) left after deduplication
+08-05 16:52:12.316 19946 20029 I appium  : Found zero matches
+08-05 16:52:12.323 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:52:12.326  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-05 16:52:12.334  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 25997, isSameBssidAndFreq true
+08-05 16:52:12.335  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:22 syn=2, rto=0, cwnd=0
+08-05 16:52:12.335  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:23 syn=2, rto=0, cwnd=0
+08-05 16:52:12.335  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:24 syn=0, rto=0, cwnd=2
+08-05 16:52:12.335  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:25 syn=0, rto=0, cwnd=2
+08-05 16:52:12.335  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:26 syn=0, rto=0, cwnd=2
+08-05 16:52:12.335  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:27 syn=0, rto=0, cwnd=2
+08-05 16:52:12.336  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1785937932336 lastDateWindow=1785781227000
+08-05 16:52:12.350 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:52:12.353 19946 20029 I appium  : FindElements command
+08-05 16:52:12.356 19946 20029 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Brian Vindo")'
+08-05 16:52:12.357 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:12.432 19946 20029 I appium  : Matched 0 elements using selector UiSelector[DESCRIPTION=Brian Vindo]
+08-05 16:52:12.432 19946 20029 I appium  : Matched 0 elements including possible duplicates
+08-05 16:52:12.433 19946 20029 I appium  : 0 element(s) left after deduplication
+08-05 16:52:12.433 19946 20029 I appium  : Found zero matches
+08-05 16:52:12.438 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:52:12.460 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:52:12.461 19946 20029 I appium  : FindElements command
+08-05 16:52:12.464 19946 20029 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Brian Vindo")'
+08-05 16:52:12.465 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:12.565 19946 20029 I appium  : Matched 0 elements using selector UiSelector[DESCRIPTION=Brian Vindo]
+08-05 16:52:12.566 19946 20029 I appium  : Matched 0 elements including possible duplicates
+08-05 16:52:12.566 19946 20029 I appium  : 0 element(s) left after deduplication
+08-05 16:52:12.567 19946 20029 I appium  : Found zero matches
+08-05 16:52:12.574 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:52:12.603 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:52:12.605 19946 20029 I appium  : FindElements command
+08-05 16:52:12.608 19946 20029 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Brian Vindo")'
+08-05 16:52:12.609 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:12.682 19946 20029 I appium  : Matched 0 elements using selector UiSelector[DESCRIPTION=Brian Vindo]
+08-05 16:52:12.682 19946 20029 I appium  : Matched 0 elements including possible duplicates
+08-05 16:52:12.682 19946 20029 I appium  : 0 element(s) left after deduplication
+08-05 16:52:12.682 19946 20029 I appium  : Found zero matches
+08-05 16:52:12.687 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:52:12.715 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:52:12.717 19946 20029 I appium  : FindElements command
+08-05 16:52:12.719 19946 20029 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Brian Vindo")'
+08-05 16:52:12.720 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:12.816 19946 20029 I appium  : Matched 0 elements using selector UiSelector[DESCRIPTION=Brian Vindo]
+08-05 16:52:12.817 19946 20029 I appium  : Matched 0 elements including possible duplicates
+08-05 16:52:12.818 19946 20029 I appium  : 0 element(s) left after deduplication
+08-05 16:52:12.818 19946 20029 I appium  : Found zero matches
+08-05 16:52:12.824 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:52:12.853 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:52:12.856 19946 20029 I appium  : FindElements command
+08-05 16:52:12.859 19946 20029 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Brian Vindo")'
+08-05 16:52:12.860 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:12.862  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1785937932
+08-05 16:52:12.863  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-05 16:52:12.863  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-05 16:52:12.863  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29765632
+08-05 16:52:12.863  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29765630
+08-05 16:52:12.863  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-05 16:52:12.863  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-05 16:52:12.863  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-05 16:52:12.863  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-05 16:52:12.863  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-05 16:52:12.948 19946 20029 I appium  : Matched 0 elements using selector UiSelector[DESCRIPTION=Brian Vindo]
+08-05 16:52:12.949 19946 20029 I appium  : Matched 0 elements including possible duplicates
+08-05 16:52:12.949 19946 20029 I appium  : 0 element(s) left after deduplication
+08-05 16:52:12.950 19946 20029 I appium  : Found zero matches
+08-05 16:52:12.957 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:52:12.992 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:52:12.994 19946 20029 I appium  : FindElements command
+08-05 16:52:12.997 19946 20029 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Brian Vindo")'
+08-05 16:52:12.998 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:13.070 19946 20029 I appium  : Matched 0 elements using selector UiSelector[DESCRIPTION=Brian Vindo]
+08-05 16:52:13.071 19946 20029 I appium  : Matched 0 elements including possible duplicates
+08-05 16:52:13.072 19946 20029 I appium  : 0 element(s) left after deduplication
+08-05 16:52:13.072 19946 20029 I appium  : Found zero matches
+08-05 16:52:13.080 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:52:13.108 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:52:13.110 19946 20029 I appium  : FindElements command
+08-05 16:52:13.113 19946 20029 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Brian Vindo")'
+08-05 16:52:13.113 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:13.178 19946 20029 I appium  : Matched 0 elements using selector UiSelector[DESCRIPTION=Brian Vindo]
+08-05 16:52:13.178 19946 20029 I appium  : Matched 0 elements including possible duplicates
+08-05 16:52:13.178 19946 20029 I appium  : 0 element(s) left after deduplication
+08-05 16:52:13.179 19946 20029 I appium  : Found zero matches
+08-05 16:52:13.183 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:52:13.213 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:52:13.215 19946 20029 I appium  : FindElements command
+08-05 16:52:13.217 19946 20029 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Brian Vindo")'
+08-05 16:52:13.218 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:13.313 19946 20029 I appium  : Matched 0 elements using selector UiSelector[DESCRIPTION=Brian Vindo]
+08-05 16:52:13.313 19946 20029 I appium  : Matched 0 elements including possible duplicates
+08-05 16:52:13.314 19946 20029 I appium  : 0 element(s) left after deduplication
+08-05 16:52:13.314 19946 20029 I appium  : Found zero matches
+08-05 16:52:13.319 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:52:13.340 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:52:13.341 19946 20029 I appium  : FindElements command
+08-05 16:52:13.343 19946 20029 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Brian Vindo")'
+08-05 16:52:13.343 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+--------- beginning of system
+08-05 16:52:13.351   730   730 D io_stats: !@ Write_top(KB): ugin:persistent(6020) 8
+08-05 16:52:13.414 19946 20029 I appium  : Matched 0 elements using selector UiSelector[DESCRIPTION=Brian Vindo]
+08-05 16:52:13.415 19946 20029 I appium  : Matched 0 elements including possible duplicates
+08-05 16:52:13.415 19946 20029 I appium  : 0 element(s) left after deduplication
+08-05 16:52:13.415 19946 20029 I appium  : Found zero matches
+08-05 16:52:13.418 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:52:13.443 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:52:13.446 19946 20029 I appium  : FindElements command
+08-05 16:52:13.451 19946 20029 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Brian Vindo")'
+08-05 16:52:13.451 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:13.555 19946 20029 I appium  : Matched 0 elements using selector UiSelector[DESCRIPTION=Brian Vindo]
+08-05 16:52:13.556 19946 20029 I appium  : Matched 0 elements including possible duplicates
+08-05 16:52:13.557 19946 20029 I appium  : 0 element(s) left after deduplication
+08-05 16:52:13.557 19946 20029 I appium  : Found zero matches
+08-05 16:52:13.562 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:52:13.595 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:52:13.598 19946 20029 I appium  : FindElements command
+08-05 16:52:13.601 19946 20029 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Brian Vindo")'
+08-05 16:52:13.601 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:13.726 19946 20029 I appium  : Matched 0 elements using selector UiSelector[DESCRIPTION=Brian Vindo]
+08-05 16:52:13.726 19946 20029 I appium  : Matched 0 elements including possible duplicates
+08-05 16:52:13.727 19946 20029 I appium  : 0 element(s) left after deduplication
+08-05 16:52:13.727 19946 20029 I appium  : Found zero matches
+08-05 16:52:13.735 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:52:13.772 19946 20029 I appium  : channel read: GET /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/screenshot
+08-05 16:52:13.776 19946 20029 I appium  : CaptureScreenshot command
+08-05 16:52:13.780 19946 20029 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-05 16:52:13.780 19946 20029 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-05 16:52:13.862  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1785937933
+08-05 16:52:13.862  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-05 16:52:13.863  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-05 16:52:13.863  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29765632
+08-05 16:52:13.863  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29765630
+08-05 16:52:13.863  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-05 16:52:13.863  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-05 16:52:13.863  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-05 16:52:13.863  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-05 16:52:13.863  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-05 16:52:13.917 22141 22141 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-05 16:52:13.918 22141 22141 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-05 16:52:13.920 22141 22141 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-05 16:52:13.920  1726  4608 I EDMNativeHelperService: isScreenCaptureEnabled
+08-05 16:52:13.921  1726  4608 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-05 16:52:13.921 22141 22141 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-05 16:52:13.921 22141 22141 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-05 16:52:13.926  1437  1464 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_20061#27506(seamlessTransition:0)
+08-05 16:52:13.926  1437  1464 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_20061#27551(seamlessTransition:0)
+08-05 16:52:13.926  1437  1464 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-05 16:52:13.926  1437  1464 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-05 16:52:13.927  1437  1464 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-05 16:52:13.929  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-05 16:52:13.929  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_20061#27506 at index 1
+08-05 16:52:13.929  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_20061#27551 at index 2
+08-05 16:52:13.929  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 3
+08-05 16:52:13.929  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 4
+08-05 16:52:13.954 22141 22161 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-05 16:52:14.199 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N1pbFznefbxa3YOOUNyOORw3ymK2q3FojYvsd20hpsVTowaaVrANdAgdtEl/V4gKJAAwdumKFqkdZJ+aBo4jRvXsZ04VmRLXiRR+y6RlEiKu8jhTg6HQ868H1ROOJwhxX14xP/vk/mcM+f…
+08-05 16:52:14.248 19946 20029 I appium  : channel read: GET /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/source
+08-05 16:52:14.249 19946 20029 I appium  : Source command
+08-05 16:52:14.249 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:14.291  1437  1437 I SurfaceFlinger: SFWD update time=136635945960347
+08-05 16:52:14.306  1326  1393 E BatteryDump: !@new_battery_dump : 4362,308,1300,2054,100,345,336,364,345,0,348,345,0,Full,NO_CHARGING,Additional,Good,PDIC,0,Normal,0,0,9180,0x18000,0x10010000,0x0,0,0,0000,0000,ffff0700,0,0,0,0,679,4339,10000,990,0,
+08-05 16:52:14.314  1326  1326 I android.hardware.health@2.1-service-samsung: updateLrpSysfs: write: 346
+08-05 16:52:14.380 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-05 16:52:14.428 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-05 16:52:14.485 22162 22162 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-05 16:52:14.524 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-05 16:52:14.574 22165 22165 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-05 16:52:14.616 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

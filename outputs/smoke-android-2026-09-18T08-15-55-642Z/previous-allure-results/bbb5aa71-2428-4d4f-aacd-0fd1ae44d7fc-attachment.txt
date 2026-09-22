@@ -1,0 +1,249 @@
+--------- beginning of main
+04-30 18:06:28.803 31653 31687 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=857c8bb2-4d46-4627-81bc-ed0ab06aa120, generation=17)
+04-30 18:06:28.803 31653 31687 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=0af9396e-ae60-448c-9d98-0c7a4d64dcc2, generation=0)
+04-30 18:06:28.803 31653 31687 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=dc0177ba-6320-48cc-a91c-cf4b49939a01, generation=1)
+04-30 18:06:28.803 31653 31682 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=bf4e63cf-a6bb-453c-9971-b5fed3988dd0, generation=1)
+04-30 18:06:28.803 31653 31682 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=3615e9ab-b11f-40ba-8166-40721816f5c5, generation=29)
+04-30 18:06:28.803 31653 31682 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=79341a52-a233-46d0-b048-00e9208dae0b, generation=0)
+04-30 18:06:28.803 31653 31682 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=13b84d48-a8d9-4e5c-ac61-e9afbcaf725c, generation=1)
+04-30 18:06:28.803 31653 31682 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=6aecf6ec-d8db-4755-b358-a314a838cf71, generation=0)
+04-30 18:06:28.810 31653 31697 D WM-WorkConstraintsTrack: NetworkRequestConstraintController onCapabilitiesChanged callback
+04-30 18:06:28.810 31653 31697 D WM-WorkConstraintsTrack: Not dispatching constraint state yet: isBlocked=null, capabilitiesInitialized=true
+04-30 18:06:28.811 31653 31697 D WM-WorkConstraintsTrack: NetworkRequestConstraintController onBlockedStatusChanged callback false
+04-30 18:06:28.813 31653 31687 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=db7f161f-f51a-447b-8d34-6b033f213848, generation=59)
+04-30 18:06:28.813 31653 31687 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=abf2e1e9-83b7-4831-979c-9efb6d2d45de, generation=1)
+04-30 18:06:28.814 31653 31687 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=f289fdb1-4d26-47d1-b15c-c7127f8d53d7, generation=1)
+04-30 18:06:28.814 31653 31687 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=1aea02e3-1cfc-48dc-a76c-b55ecb951146, generation=1)
+04-30 18:06:28.814 31653 31687 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=95c0ff80-e1c8-4e55-90be-6fdbc284d084, generation=1)
+04-30 18:06:28.814 31653 31687 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=a038f402-a5fa-4434-bf28-777ec7590988, generation=29)
+04-30 18:06:28.815 31653 31687 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=a6ec83d5-e239-4242-a4f6-fdf156b93c38, generation=0)
+04-30 18:06:28.815 31653 31687 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=742645dd-e6e6-40db-be14-005b7ee9eb8c, generation=17)
+04-30 18:06:28.815 31653 31687 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=2ef3a28a-4aaa-4737-870a-d12f95a02e68, generation=35)
+04-30 18:06:28.830 31653 31685 I csoi    : #entry Received background refresh worker run
+04-30 18:06:28.834 31653 31685 I csbo    : #entry Starting PCP background refresh worker...
+--------- beginning of system
+04-30 18:06:28.838   503  1175 D CompatibilityChangeReporter: Compat change id reported: 171306433; UID 10121; state: ENABLED
+04-30 18:06:28.838   503  1175 D CompatibilityChangeReporter: Compat change id reported: 226439802; UID 10121; state: DISABLED
+04-30 18:06:28.838   503  1175 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10121; state: ENABLED
+04-30 18:06:28.848  1540 22598 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=AMBIENT_ASSISTANT serviceId=32
+04-30 18:06:28.866  1540  1540 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+04-30 18:06:28.866  1540  1540 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+04-30 18:06:28.870 31653 31684 I cruw    : (REDACTED) remove request for trigger key: %s, isClientInitiated: %s
+04-30 18:06:28.874 31653 31684 I crww    : (REDACTED) #remove: subTriggerId=%s
+04-30 18:06:28.877 31653 31675 I dvsy    : Building Device Properties.
+04-30 18:06:28.881 31653 31684 I eigf    : (REDACTED) GLVM. isRobinUser: %b
+04-30 18:06:28.881 31653 31684 I zta     : (REDACTED) #shouldMigrate(): allowMobileLocaleSettingsDataMigration = %b,
+04-30 18:06:28.884 31653 31682 W eaxy    : Couldn't calculate ClientInstanceId, no account name
+04-30 18:06:28.884  1540 22600 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=null serviceId=30
+04-30 18:06:28.894 31653 31688 W eihs    : Hotword. Hotword settings PDS is not populated - defaulting to DECLINED.
+04-30 18:06:28.914   503  1692 D IntervalStats: Unable to parse usage stats packages: [247, 248, 249, 251]
+04-30 18:06:28.914  1540  8814 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+04-30 18:06:28.916   503  1692 D ConnectivityService: requestNetwork for uid/pid:10121/31653 activeRequest: null callbackRequest: 552 [NetworkRequest [ REQUEST id=553, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10121 RequestorUid: 10121 RequestorPkg: com.google.android.googlequicksearchbox UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+04-30 18:06:28.918  1540  8814 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+04-30 18:06:28.922   503   627 D ConnectivityService: NetReassign [553 : null → 103] [c 0] [a 0] [i 1]
+04-30 18:06:28.922 31653 31697 I aomd    : #onAvailable()
+04-30 18:06:28.922   503   620 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=553, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10121 RequestorUid: 10121 RequestorPkg: com.google.android.googlequicksearchbox UnderlyingNetworks: Null] ]
+04-30 18:06:28.922   503   620 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=553, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10121 RequestorUid: 10121 RequestorPkg: com.google.android.googlequicksearchbox UnderlyingNetworks: Null] ]
+04-30 18:06:28.922   503   620 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=553, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10121 RequestorUid: 10121 RequestorPkg: com.google.android.googlequicksearchbox UnderlyingNetworks: Null] ]
+04-30 18:06:28.922   503   620 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=553, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10121 RequestorUid: 10121 RequestorPkg: com.google.android.googlequicksearchbox UnderlyingNetworks: Null] ]
+04-30 18:06:28.941 31653 31684 I axjl    : Live eligibility: Not available yet.
+04-30 18:06:28.943 31653 31684 I apuw    : OptInSetting is UNKNOWN or UNRECOGNIZED [CONTEXT ratelimit_period="10 SECONDS" ]
+04-30 18:06:28.946 31653 31684 I akzu    : Device not matched [CONTEXT ratelimit_period="10 SECONDS" ]
+04-30 18:06:28.957 31653 31684 I anyh    : Returning COHORT_NOT_DETERMINED for signed out user.
+04-30 18:06:28.962 31653 31684 I anyh    : Returning COHORT_NOT_DETERMINED for signed out user.
+04-30 18:06:28.969 31653 31685 I amfd    : Robin eligibility : Account is Pseudonymous type.
+04-30 18:06:28.970 31653 31685 I amfd    : User became ineligible due to one of checks failed on client
+04-30 18:06:28.974 31653 31684 I also    : Fast track disabled
+04-30 18:06:28.974 31653 31684 I anpz    : Samsung fast track experience disabled (not Samsung device).
+04-30 18:06:28.974 31653 31684 I also    : Samsung fast track enrollment disabled, not enrolling
+04-30 18:06:28.974 31653 31684 I anpu    : Gemini Default Device banner disabled (cache is empty).
+04-30 18:06:28.974 31653 31684 I also    : Gemini default device banner disabled, not enrolling
+04-30 18:06:28.974 31653 31684 I altb    : (REDACTED) Writing %s cross-process flag values: %s
+04-30 18:06:28.991 31653 31685 I bixn    : (REDACTED) getInitialSimplifiedOobeViaDeeplinkUser: %b
+04-30 18:06:28.991 31653 31685 I apuw    : (REDACTED) isDeeplinkEnabled %s, isInitialSimplifiedOobeViaDeeplinkUser %s
+04-30 18:06:28.991 31653 31685 I apuw    : #getOobeStatus: BeforeOobe [CONTEXT ratelimit_period="10 SECONDS" ]
+04-30 18:06:28.996 31653 31685 I ahck    : (REDACTED) FCF System FeatureName to check: %s
+04-30 18:06:28.996 31653 31684 I bixn    : (REDACTED) getInitialSimplifiedOobeViaDeeplinkUser: %b
+04-30 18:06:28.996 31653 31684 I apuw    : (REDACTED) isDeeplinkEnabled %s, isInitialSimplifiedOobeViaDeeplinkUser %s
+04-30 18:06:28.996 31653 31684 I bixn    : (REDACTED) getInitialSimplifiedOobeViaDeeplinkUser: %b
+04-30 18:06:28.996 31653 31684 I apuw    : (REDACTED) isDeeplinkEnabled %s, isInitialSimplifiedOobeViaDeeplinkUser %s
+04-30 18:06:29.000 31653 31685 I ahck    : (REDACTED) FCF: Device model check status : %s
+04-30 18:06:29.000 31653 31685 I ahjr    : #isGeminiDefaultSystemFeatureEnabled: false
+04-30 18:06:29.000 31653 31685 I amfd    : (REDACTED) Robin eligibility : Robin is ineligible failure reasons: %s
+04-30 18:06:29.000 31653 31685 I axjl    : Live eligibility: Not eligible for Robin
+04-30 18:06:29.000 31653 31684 I dpqg    : (REDACTED) isAppDefaultAssistant setting: %s
+04-30 18:06:29.000 31653 31684 I dpqg    : (REDACTED) isAppDefaultAssistant defaultComponentName: %s
+04-30 18:06:29.002 31653 31684 I csmu    : Using default weather temperature preference
+04-30 18:06:29.011  1160  1160 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.clearcut.sampler.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+04-30 18:06:29.079 31653 31680 D HttpFlagsLoader: Found application exporting HTTP flags: com.google.android.gms
+04-30 18:06:29.079 31653 31680 D HttpFlagsLoader: HTTP flags file path: /data/user_de/0/com.google.android.gms/app_httpflags/flags.binarypb
+04-30 18:06:29.083 31653 31680 I HttpFlagsLoader: HTTP flags log line (API): Using live production flag values from Google
+04-30 18:06:29.091 31653 31680 W earchbox:search: ClassLoaderContext classpath size mismatch. expected=16, found=0 (DLC[];PCL[base.apk*3998213184:base.apk!classes2.dex*2568681366:base.apk!classes3.dex*1730570048:base.apk!classes4.dex*1036139242:base.apk!classes5.dex*2534712458:base.apk!classes6.dex*2448980980:base.apk!classes7.dex*2947346070:base.apk!classes8.dex*3284835690:base.apk!classes9.dex*2250458589:base.apk!classes10.dex*2333641574:base.apk!classes11.dex*2222711256:base.apk!classes12.dex*2282949538:base.apk!classes13.dex*3159118057:base.apk!classes14.dex*985945042:base.apk!classes15.dex*1477446538:base.apk!classes16.dex*1815678600]{PCL[/system/framework/org.apache.http.legacy.jar*1601893743]#PCL[/system/framework/com.android.location.provider.jar*989331188]#PCL[/system/framework/com.android.media.remotedisplay.jar*373201995]#PCL[/system_ext/framework/androidx.window.extensions.jar*2205133122]#PCL[/system_ext/framework/androidx.window.sidecar.jar*2932832050]} | DLC[];PCL[])
+04-30 18:06:29.094 31653 31680 I DynamiteModule: Considering local module com.google.android.gms.cronet_dynamite:0 and remote module com.google.android.gms.cronet_dynamite:4711
+04-30 18:06:29.094 31653 31680 I DynamiteModule: Selected remote version of com.google.android.gms.cronet_dynamite, version >= 4711
+04-30 18:06:29.094 31653 31680 V DynamiteModule: Dynamite loader version >= 2, using loadModule2NoCrashUtils
+04-30 18:06:29.105 31653 31680 W System  : ClassLoader referenced unknown path: 
+04-30 18:06:29.105 31653 31680 D nativeloader: Configuring classloader-namespace for other apk . target_sdk_version=37, uses_libraries=, library_path=/data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/lib/arm64:/data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+04-30 18:06:29.114 31653 31680 W earchbox:search: ClassLoaderContext classpath size mismatch. expected=16, found=12 (DLC[];PCL[base.apk*3998213184:base.apk!classes2.dex*2568681366:base.apk!classes3.dex*1730570048:base.apk!classes4.dex*1036139242:base.apk!classes5.dex*2534712458:base.apk!classes6.dex*2448980980:base.apk!classes7.dex*2947346070:base.apk!classes8.dex*3284835690:base.apk!classes9.dex*2250458589:base.apk!classes10.dex*2333641574:base.apk!classes11.dex*2222711256:base.apk!classes12.dex*2282949538:base.apk!classes13.dex*3159118057:base.apk!classes14.dex*985945042:base.apk!classes15.dex*1477446538:base.apk!classes16.dex*1815678600]{PCL[/system/framework/org.apache.http.legacy.jar*1601893743]#PCL[/system/framework/com.android.location.provider.jar*989331188]#PCL[/system/framework/com.android.media.remotedisplay.jar*373201995]#PCL[/system_ext/framework/androidx.window.extensions.jar*2205133122]#PCL[/system_ext/framework/androidx.window.sidecar.jar*2932832050]} | DLC[];PCL[/data/app/~~FIbF5fbq_bhrD5JPxr8b4Q==/com.google.android.googlequicksearchbox-yve87Q7-HSzWpw3JJBELVQ==/base.apk*1685935900:/data/app/~~FIbF5fbq_bhrD5JPxr8b4Q==/com.google.android.googlequicksearchbox-yve87Q7-HSzWpw3JJBELVQ==/base.apk!classes2.dex*4141236445:/data/app/~~FIbF5fbq_bhrD5JPxr8b4Q==/com.google.android.googlequicksearchbox-yve87Q7-HSzWpw3JJBELVQ==/base.apk!classes3.dex*25658469:/data/app/~~FIbF5fbq_bhrD5JPxr8b4Q==/com.google.android.googlequicksearchbox-yve87Q7-HSzWpw3JJBELVQ==/base.apk!classes4.dex*3749406026:/data/app/~~FIbF5fbq_bhrD5JPxr8b4Q==/com.google.android.googlequicksearchbox-yve87Q7-HSzWpw3JJBELVQ==/base.apk!classes5.dex*1569028861:/data/app/~~FIbF5fbq_bhrD5JPxr8b4Q==/com.google.android.googlequicksearchbox-yve87Q7-HSzWpw3JJBELVQ==/base.apk!classes6.dex*656029256:/data/app/~~FIbF5fbq_bhrD5JPxr8b4Q==/com.google.android.googlequicksearchbox-yve87Q7-HSzWpw3JJBELVQ==/base.apk!classes7.dex*601515567:/data/app/~~FIbF5fbq_bhrD5JPxr8b4Q==/com.google.android.googlequicksearchbox-yve87Q7-HSzWpw3JJBELVQ==/base.apk!classes8.dex*1189599876:/data/app/~~FIbF5fbq_bhrD5JPxr8b4Q==/com.google.android.googlequicksearchbox-yve87Q7-HSzWpw3JJBELVQ==/base.apk!classes9.dex*2983978645:/data/app/~~FIbF5fbq_bhrD5JPxr8b4Q==/com.google.android.googlequicksearchbox-yve87Q7-HSzWpw3JJBELVQ==/base.apk!classes10.dex*3048127330:/data/app/~~FIbF5fbq_bhrD5JPxr8b4Q==/com.google.android.googlequicksearchbox-yve87Q7-HSzWpw3JJBELVQ==/base.apk!classes11.dex*2704473885:/data/app/~~FIbF5fbq_bhrD5JPxr8b4Q==/com.google.android.googlequicksearchbox-yve87Q7-HSzWpw3JJBELVQ==/base.apk!classes12.dex*1835529516]{PCL[/system/framework/org.apache.http.legacy.jar*1601893743]#PCL[/system_ext/framework/androidx.window.extensions.jar*2205133122]#PCL[/system_ext/framework/androidx.window.sidecar.jar*2932832050]})
+04-30 18:06:29.153  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:4646): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 18:06:29.159  1160  1160 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+04-30 18:06:29.165 31653 31680 D nativeloader: Configuring classloader-namespace for other apk . target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/split_CronetDynamite_installtime.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand
+04-30 18:06:29.171 31653 31702 I HttpFlagsLoader: HTTP flags log line (Impl): Using live production flag values from Google
+04-30 18:06:29.174   503  1692 D ConnectivityService: requestNetwork for uid/pid:10121/31653 activeRequest: null callbackRequest: 554 [NetworkRequest [ REQUEST id=555, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10121 RequestorUid: 10121 RequestorPkg: com.google.android.googlequicksearchbox UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+04-30 18:06:29.175   503   620 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=555, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10121 RequestorUid: 10121 RequestorPkg: com.google.android.googlequicksearchbox UnderlyingNetworks: Null] ]
+04-30 18:06:29.175   503   620 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=555, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10121 RequestorUid: 10121 RequestorPkg: com.google.android.googlequicksearchbox UnderlyingNetworks: Null] ]
+04-30 18:06:29.175   503   620 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=555, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10121 RequestorUid: 10121 RequestorPkg: com.google.android.googlequicksearchbox UnderlyingNetworks: Null] ]
+04-30 18:06:29.175   503   620 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=555, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10121 RequestorUid: 10121 RequestorPkg: com.google.android.googlequicksearchbox UnderlyingNetworks: Null] ]
+04-30 18:06:29.175   503   627 D ConnectivityService: NetReassign [555 : null → 103] [c 0] [a 0] [i 1]
+04-30 18:06:29.177   503   627 D ConnectivityService: NetReassign [no changes] [c 0] [a 0] [i 1]
+04-30 18:06:29.180 31653 31680 I cn_CronetLibraryLoader: Cronet version: 146.0.7680.144, arch: aarch64
+04-30 18:06:29.187 31653 31706 W chromium: [0430/180629.186733:WARNING:components/cronet/url_request_context_config.cc:767] Unrecognized Cronet experimental option "enable_telemetry" with params "true
+04-30 18:06:29.187 31653 31706 W chromium: 
+04-30 18:06:29.385 31653 31706 I cn_CronetUrlRequestContext: destroyNativeStreamLocked org.chromium.net.impl.CronetBidirectionalStream@155d533
+04-30 18:06:29.400 31653 31684 I cruw    : (REDACTED) remove request for trigger key: %s, isClientInitiated: %s
+04-30 18:06:29.402 31653 31685 I crww    : (REDACTED) #maybeCreateTimeTrigger: time trigger= %s with start time=%d, stop time=%d in seconds.
+04-30 18:06:29.406 31653 31685 I cruw    : (REDACTED) remove request for trigger key: %s, isClientInitiated: %s
+04-30 18:06:29.407 31653 31685 I crww    : (REDACTED) #remove: subTriggerId=%s
+04-30 18:06:29.410 31653 31685 I crww    : (REDACTED) #maybeCreateTimeTrigger: time trigger= %s with start time=%d, stop time=%d in seconds.
+04-30 18:06:30.637  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:4647): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 18:06:32.780   503  1948 D WifiNl80211Manager: Scan result ready event
+04-30 18:06:32.780   503  1948 D WifiNative: Scan result ready event
+04-30 18:06:33.649  1540  1540 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.onboardingconsent.api.ConsentManagerApiService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+04-30 18:06:34.165  1160  1160 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+04-30 18:06:34.989  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:4648): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 18:06:35.146 31653 31665 V ClearcutMetricXmitter: Transmission is done.
+04-30 18:06:35.146 31653 31665 V ClearcutMetricXmitter: Transmission is done.
+04-30 18:06:43.389  1540  1540 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.mobstore.service.START pkg=com.google.android.gms }
+04-30 18:06:43.650  1540  1540 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.audit.service.START pkg=com.google.android.gms }
+04-30 18:06:43.955  1540  1540 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+04-30 18:06:44.017  1160  1160 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.clearcut.sampler.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+04-30 18:06:52.033  1160  1758 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+04-30 18:06:52.048  1160 31545 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-30 18:06:52.058  1540  1540 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.auth.service.START pkg=com.google.android.gms }
+04-30 18:06:52.058  1540  1540 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.auth.service.START pkg=com.google.android.gms }
+04-30 18:06:52.069  1160  2432 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+04-30 18:06:52.116  3778  4272 D TrafficStats: tagSocket(98) with statsTag=0x1809, statsUid=-1
+04-30 18:06:52.131  3778  4272 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+04-30 18:06:52.131  3778  4272 W libc    : Access denied finding property "service.adb.tls.port"
+04-30 18:06:52.129  3778  3778 W binder:3778_6: type=1400 audit(0.0:4649): avc: denied { read } for name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=259 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+04-30 18:06:52.129  3778  3778 W binder:3778_6: type=1400 audit(0.0:4650): avc: denied { read } for name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=51 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+04-30 18:06:52.138  1160  1160 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+04-30 18:06:52.141  1160  2432 W GmsUrlRequestImpl: [https://android.googleapis.com/auth/devicekey] Content-Type header is overwritten.
+04-30 18:06:52.164  1160  3566 D TrafficStats: tagSocket(166) with statsTag=0x4000401, statsUid=10120
+04-30 18:06:52.290  1160  2432 W GLSUser : [AppCertManager] Exception while requesting key: 
+04-30 18:06:52.290  1160  2432 W GLSUser : java.util.concurrent.ExecutionException: cvhs: Parsing Exception
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at hfeb.j(:com.google.android.gms@261233029@26.12.33 (190400-892550550):21)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at hfek.u(:com.google.android.gms@261233029@26.12.33 (190400-892550550):71)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at alqw.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):439)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at alqu.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):67)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at alqu.dispatchTransaction(:com.google.android.gms@261233029@26.12.33 (190400-892550550):16)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at byza.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):72)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at zpv.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):23)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at android.os.Binder.transact(Binder.java:1164)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at clbu.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):10)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at android.os.Binder.transact(Binder.java:1164)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at byzo.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):161)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at android.os.Binder.execTransactInternal(Binder.java:1280)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at android.os.Binder.execTransact(Binder.java:1244)
+04-30 18:06:52.290  1160  2432 W GLSUser : Caused by: cvhs: Parsing Exception
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at cvix.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):15)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at hfgv.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):47)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):92)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at biej.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at java.lang.Thread.run(Thread.java:1012)
+04-30 18:06:52.290  1160  2432 W GLSUser : Caused by: iphx: Protocol message end-group tag did not match expected tag.
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at ipjy.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):62)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at ipiv.l(:com.google.android.gms@261233029@26.12.33 (190400-892550550):60)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at ipgw.s(:com.google.android.gms@261233029@26.12.33 (190400-892550550):19)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at ipeq.f(:com.google.android.gms@261233029@26.12.33 (190400-892550550):5)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at ipeq.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at ipeq.o(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at cviw.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):15)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at cvjb.call(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):73)
+04-30 18:06:52.290  1160  2432 W GLSUser : 	... 4 more
+04-30 18:06:52.290  1160  2432 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+04-30 18:06:52.310  1160  3566 D TrafficStats: tagSocket(170) with statsTag=0xc000609, statsUid=10120
+04-30 18:06:52.430  1160  3566 I cn_CronetUrlRequestContext: destroyNativeStreamLocked org.chromium.net.impl.CronetBidirectionalStream@d5eff21
+04-30 18:06:52.431  1160 31545 W GlsClientGrpc: Voilatile gRPC failure INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header. [CONTEXT service_id=6 ]
+04-30 18:06:52.431  1160 31545 W GlsClientGrpc: jlsp: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+04-30 18:06:52.431  1160 31545 W GlsClientGrpc: 	at gmjf.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):51)
+04-30 18:06:52.431  1160 31545 W GlsClientGrpc: 	at gocc.call(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1001)
+04-30 18:06:52.431  1160 31545 W GlsClientGrpc: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+04-30 18:06:52.431  1160 31545 W GlsClientGrpc: 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+04-30 18:06:52.431  1160 31545 W GlsClientGrpc: 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):73)
+04-30 18:06:52.431  1160 31545 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+04-30 18:06:52.431  1160 31545 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+04-30 18:06:52.431  1160 31545 W GlsClientGrpc: 	at biej.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+04-30 18:06:52.431  1160 31545 W GlsClientGrpc: 	at java.lang.Thread.run(Thread.java:1012)
+04-30 18:06:52.431  1160 31545 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-30 18:06:52.598   503  1948 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 79 startTime of in progress event=1777539034285
+04-30 18:06:52.601   503  1948 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1777539034285
+04-30 18:06:52.603   503  1948 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1777539034285
+04-30 18:06:52.605   503  1175 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1777539034285
+04-30 18:06:52.606  1160  1758 I ActivityScheduler: nextTriggerTime: 33339091, in 238100ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-30 18:06:57.146  1160  1160 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+04-30 18:06:58.150 31653 31674 I dtll    : Scheduling one-off OpaEnabledBroadcastWorker now
+04-30 18:06:58.261   694   703 I ndroid.systemui: Background young concurrent copying GC freed 223164(11MB) AllocSpace objects, 0(0B) LOS objects, 31% free, 22MB/32MB, paused 2.367ms,66us total 186.265ms
+04-30 18:06:58.300 31653 31675 D WM-SystemJobScheduler: Scheduling work ID eb94f9ee-2f6e-414b-9a40-ed233e6c371aJob ID 796
+04-30 18:06:58.337 31653 31675 D WM-GreedyScheduler: Ignoring {WorkSpec: 76cfc59c-5a23-4bbd-8074-685fc166958d}. Requires device idle.
+04-30 18:06:58.338 31653 31675 D WM-GreedyScheduler: Starting work for eb94f9ee-2f6e-414b-9a40-ed233e6c371a
+04-30 18:06:58.339 31653 31675 D WM-GreedyScheduler: Starting tracking for a6ec83d5-e239-4242-a4f6-fdf156b93c38,2ef3a28a-4aaa-4737-870a-d12f95a02e68,db7f161f-f51a-447b-8d34-6b033f213848,95c0ff80-e1c8-4e55-90be-6fdbc284d084,13b84d48-a8d9-4e5c-ac61-e9afbcaf725c,857c8bb2-4d46-4627-81bc-ed0ab06aa120,f289fdb1-4d26-47d1-b15c-c7127f8d53d7,1aea02e3-1cfc-48dc-a76c-b55ecb951146,dc0177ba-6320-48cc-a91c-cf4b49939a01,8b06e494-e355-46f3-a19e-635ef5d10ace,0af9396e-ae60-448c-9d98-0c7a4d64dcc2,79341a52-a233-46d0-b048-00e9208dae0b,abf2e1e9-83b7-4831-979c-9efb6d2d45de,6aecf6ec-d8db-4755-b358-a314a838cf71,a038f402-a5fa-4434-bf28-777ec7590988,3615e9ab-b11f-40ba-8166-40721816f5c5,742645dd-e6e6-40db-be14-005b7ee9eb8c,bf4e63cf-a6bb-453c-9971-b5fed3988dd0
+04-30 18:06:58.343 31653 31653 D WM-SystemJobService: onStartJob for WorkGenerationalId(workSpecId=eb94f9ee-2f6e-414b-9a40-ed233e6c371a, generation=0)
+04-30 18:06:58.346 31653 31675 D WM-Processor: oul: processing WorkGenerationalId(workSpecId=eb94f9ee-2f6e-414b-9a40-ed233e6c371a, generation=0)
+04-30 18:06:58.346 31653 31675 D WM-Processor: Work WorkGenerationalId(workSpecId=eb94f9ee-2f6e-414b-9a40-ed233e6c371a, generation=0) is already enqueued for processing
+04-30 18:06:58.358 31653 31653 D WM-WorkerWrapper: Starting work for com.google.apps.tiktok.contrib.work.TikTokListenableWorker
+04-30 18:06:58.369 31653 31687 I dtln    : Broadcasting OPA enabled
+04-30 18:06:58.377 31653 31687 I dtln    : Broadcasting OPA enabled to Pixel launcher
+04-30 18:06:58.381   503   529 W BroadcastQueue: Background execution not allowed: receiving Intent { act=com.google.android.systemui.OPA_ENABLED flg=0x10000010 (has extras) } to com.google.android.apps.nexuslauncher/.qsb.OPAStatusReceiver
+04-30 18:06:58.382 31653 31687 I dtln    : Broadcasting OPA user enabled
+04-30 18:06:58.433 31653 31675 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=eb94f9ee-2f6e-414b-9a40-ed233e6c371a, tags={ com.google.apps.tiktok.contrib.work.TikTokListenableWorker,TikTokWorker#com.google.android.libraries.search.assistant.launcher.OpaEnabledBroadcastWorker } ]
+04-30 18:06:58.438 31653 31653 D WM-Processor: oul eb94f9ee-2f6e-414b-9a40-ed233e6c371a executed; reschedule = false
+04-30 18:06:58.439 31653 31653 D WM-SystemJobService: eb94f9ee-2f6e-414b-9a40-ed233e6c371a executed on JobScheduler
+04-30 18:06:58.447 31653 31674 D WM-GreedyScheduler: Cancelling work ID eb94f9ee-2f6e-414b-9a40-ed233e6c371a
+04-30 18:06:58.452 31653 31674 D WM-GreedyScheduler: Ignoring {WorkSpec: 76cfc59c-5a23-4bbd-8074-685fc166958d}. Requires device idle.
+04-30 18:06:58.452 31653 31674 D WM-GreedyScheduler: Starting tracking for a6ec83d5-e239-4242-a4f6-fdf156b93c38,2ef3a28a-4aaa-4737-870a-d12f95a02e68,db7f161f-f51a-447b-8d34-6b033f213848,95c0ff80-e1c8-4e55-90be-6fdbc284d084,13b84d48-a8d9-4e5c-ac61-e9afbcaf725c,857c8bb2-4d46-4627-81bc-ed0ab06aa120,f289fdb1-4d26-47d1-b15c-c7127f8d53d7,1aea02e3-1cfc-48dc-a76c-b55ecb951146,dc0177ba-6320-48cc-a91c-cf4b49939a01,8b06e494-e355-46f3-a19e-635ef5d10ace,0af9396e-ae60-448c-9d98-0c7a4d64dcc2,79341a52-a233-46d0-b048-00e9208dae0b,abf2e1e9-83b7-4831-979c-9efb6d2d45de,6aecf6ec-d8db-4755-b358-a314a838cf71,a038f402-a5fa-4434-bf28-777ec7590988,3615e9ab-b11f-40ba-8166-40721816f5c5,742645dd-e6e6-40db-be14-005b7ee9eb8c,bf4e63cf-a6bb-453c-9971-b5fed3988dd0
+04-30 18:06:58.457   694   694 I OpaEnabledReceiver: Dispatching OPA eligble = true; AGSA = true; OPA enabled = true
+04-30 18:06:58.470   694   694 I OpaEnabledReceiver: Dispatching OPA eligble = true; AGSA = true; OPA enabled = true
+04-30 18:06:58.823   694   703 I ndroid.systemui: Background concurrent copying GC freed 322157(17MB) AllocSpace objects, 0(0B) LOS objects, 50% free, 17MB/34MB, paused 56us,58us total 126.285ms
+04-30 18:06:59.169  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:4651): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 18:07:00.031  1450  1820 I AiAiEcho: Predicting[0]: 
+04-30 18:07:00.032  1450  1820 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-30 18:07:00.049  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-30 18:07:00.050  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-30 18:07:00.050  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-30 18:07:00.057   694   694 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-30 18:07:00.073   694   937 D EGL_emulation: app_time_stats: avg=58709.29ms min=58709.29ms max=58709.29ms count=1
+04-30 18:07:00.657  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:4652): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 18:07:04.993  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:4653): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 18:07:07.121  1540  1540 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.service.START pkg=com.google.android.gms }
+04-30 18:07:15.472   694   703 I ndroid.systemui: Background young concurrent copying GC freed 258437(13MB) AllocSpace objects, 0(0B) LOS objects, 36% free, 22MB/34MB, paused 2.294ms,203us total 128.608ms
+04-30 18:07:29.022  1160  1160 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.clearcut.sampler.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+04-30 18:07:29.063 31653 31665 V ClearcutMetricXmitter: Transmission is done.
+04-30 18:07:29.205  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:4654): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 18:07:30.693  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:4655): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 18:07:35.025  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:4656): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 18:07:35.093   323   323 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+04-30 18:07:44.081  1160  1160 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.clearcut.sampler.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+04-30 18:07:52.051  1160  1758 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+04-30 18:07:52.054  1160 31715 W SystemServiceRegistry: No service published for: wifirtt
+04-30 18:07:52.859   503  1948 D WifiNl80211Manager: Scan result ready event
+04-30 18:07:52.859   503  1948 D WifiNative: Scan result ready event
+04-30 18:07:52.867  1160 31715 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-30 18:07:52.870  1160  1758 I ActivityScheduler: nextTriggerTime: 33339091, in 177836ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-30 18:07:59.221  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:4657): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 18:07:59.784   694   703 I ndroid.systemui: Background concurrent copying GC freed 302925(16MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 38us,66us total 154.181ms
+04-30 18:08:00.050  1450  1820 I AiAiEcho: Predicting[0]: 
+04-30 18:08:00.051  1450  1820 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-30 18:08:00.057  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-30 18:08:00.059  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-30 18:08:00.062  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-30 18:08:00.074   694   694 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-30 18:08:00.104   694   937 D EGL_emulation: app_time_stats: avg=60031.17ms min=60031.17ms max=60031.17ms count=1
+04-30 18:08:00.709  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:4658): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 18:08:01.379   694   937 D EGL_emulation: app_time_stats: avg=1274.74ms min=1274.74ms max=1274.74ms count=1

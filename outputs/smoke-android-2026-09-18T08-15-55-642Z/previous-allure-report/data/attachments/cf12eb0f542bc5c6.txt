@@ -1,0 +1,202 @@
+--------- beginning of main
+08-17 16:52:12.662  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 16:52:12.662  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782912
+08-17 16:52:12.662  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782899
+08-17 16:52:12.662  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 16:52:12.662  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 16:52:12.663  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 16:52:12.663  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 16:52:12.663  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 16:52:12.665  5759  5788 I appium  : AppiumResponse: {"sessionId":"7a19cbac-ebb0-42ba-92c1-8371a5ce9191","value":[]}
+08-17 16:52:12.689  5759  5788 I appium  : channel read: POST /session/7a19cbac-ebb0-42ba-92c1-8371a5ce9191/elements
+08-17 16:52:12.693  5759  5788 I appium  : FindElements command
+08-17 16:52:12.698  5759  5788 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("+1%")'
+08-17 16:52:12.699  5759  5788 I appium  : Waiting up to 10000ms for the device to idle
+--------- beginning of system
+08-17 16:52:12.703   730   730 D io_stats: !@ Write_top(KB): om.moneybase.qa(5808) 12 ugin:persistent(6020) 8
+08-17 16:52:12.914  5759  5788 I appium  : Matched 0 elements using selector UiSelector[TEXT=+1%]
+08-17 16:52:12.915  5759  5788 I appium  : Matched 0 elements including possible duplicates
+08-17 16:52:12.915  5759  5788 I appium  : 0 element(s) left after deduplication
+08-17 16:52:12.916  5759  5788 I appium  : Found zero matches
+08-17 16:52:12.924  5759  5788 I appium  : AppiumResponse: {"sessionId":"7a19cbac-ebb0-42ba-92c1-8371a5ce9191","value":[]}
+08-17 16:52:12.957  5759  5788 I appium  : channel read: POST /session/7a19cbac-ebb0-42ba-92c1-8371a5ce9191/elements
+08-17 16:52:12.961  5759  5788 I appium  : FindElements command
+08-17 16:52:12.966  5759  5788 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("+1%")'
+08-17 16:52:12.966  5759  5788 I appium  : Waiting up to 10000ms for the device to idle
+08-17 16:52:12.969  2550 18163 D IpClient/wlan0: interfaceLinkStateChanged: ifindex 32 up
+08-17 16:52:13.049  5808  5808 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{c0a2436 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0555 app:id/moneybaseInvestWebView aid=1073741830}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-17 16:52:13.115  5759  5788 I appium  : Matched 0 elements using selector UiSelector[TEXT=+1%]
+08-17 16:52:13.116  5759  5788 I appium  : Matched 0 elements including possible duplicates
+08-17 16:52:13.116  5759  5788 I appium  : 0 element(s) left after deduplication
+08-17 16:52:13.117  5759  5788 I appium  : Found zero matches
+08-17 16:52:13.125  5759  5788 I appium  : AppiumResponse: {"sessionId":"7a19cbac-ebb0-42ba-92c1-8371a5ce9191","value":[]}
+08-17 16:52:13.151  5759  5788 I appium  : channel read: POST /session/7a19cbac-ebb0-42ba-92c1-8371a5ce9191/elements
+08-17 16:52:13.155  5759  5788 I appium  : FindElements command
+08-17 16:52:13.158  5759  5788 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("+1%")'
+08-17 16:52:13.159  5759  5788 I appium  : Waiting up to 10000ms for the device to idle
+08-17 16:52:13.396  5759  5788 I appium  : Matched 0 elements using selector UiSelector[TEXT=+1%]
+08-17 16:52:13.397  5759  5788 I appium  : Matched 0 elements including possible duplicates
+08-17 16:52:13.398  5759  5788 I appium  : 0 element(s) left after deduplication
+08-17 16:52:13.398  5759  5788 I appium  : Found zero matches
+08-17 16:52:13.406  5759  5788 I appium  : AppiumResponse: {"sessionId":"7a19cbac-ebb0-42ba-92c1-8371a5ce9191","value":[]}
+08-17 16:52:13.432  5759  5788 I appium  : channel read: POST /session/7a19cbac-ebb0-42ba-92c1-8371a5ce9191/elements
+08-17 16:52:13.436  5759  5788 I appium  : FindElements command
+08-17 16:52:13.441  5759  5788 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("+1%")'
+08-17 16:52:13.441  5759  5788 I appium  : Waiting up to 10000ms for the device to idle
+08-17 16:52:13.452  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-17 16:52:13.460  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 144034, isSameBssidAndFreq true
+08-17 16:52:13.462  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:15 syn=1, rto=0, cwnd=0
+08-17 16:52:13.462  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:16 syn=1, rto=0, cwnd=0
+08-17 16:52:13.462  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:17 syn=1, rto=0, cwnd=0
+08-17 16:52:13.462  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:18 syn=1, rto=0, cwnd=0
+08-17 16:52:13.462  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:19 syn=1, rto=0, cwnd=0
+08-17 16:52:13.465  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786974733465 lastDateWindow=1786958119000
+08-17 16:52:13.548  5808  5808 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{c0a2436 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0555 app:id/moneybaseInvestWebView aid=1073741830}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-17 16:52:13.576  5759  5788 I appium  : Matched 0 elements using selector UiSelector[TEXT=+1%]
+08-17 16:52:13.576  5759  5788 I appium  : Matched 0 elements including possible duplicates
+08-17 16:52:13.577  5759  5788 I appium  : 0 element(s) left after deduplication
+08-17 16:52:13.577  5759  5788 I appium  : Found zero matches
+08-17 16:52:13.583  5759  5788 I appium  : AppiumResponse: {"sessionId":"7a19cbac-ebb0-42ba-92c1-8371a5ce9191","value":[]}
+08-17 16:52:13.608  5759  5788 I appium  : channel read: POST /session/7a19cbac-ebb0-42ba-92c1-8371a5ce9191/elements
+08-17 16:52:13.610  5759  5788 I appium  : FindElements command
+08-17 16:52:13.613  5759  5788 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("+1%")'
+08-17 16:52:13.614  5759  5788 I appium  : Waiting up to 10000ms for the device to idle
+08-17 16:52:13.661  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786974733
+08-17 16:52:13.661  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 16:52:13.662  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 16:52:13.662  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782912
+08-17 16:52:13.662  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782899
+08-17 16:52:13.662  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 16:52:13.662  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 16:52:13.662  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 16:52:13.662  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 16:52:13.662  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 16:52:13.753  5759  5788 I appium  : Matched 0 elements using selector UiSelector[TEXT=+1%]
+08-17 16:52:13.754  5759  5788 I appium  : Matched 0 elements including possible duplicates
+08-17 16:52:13.754  5759  5788 I appium  : 0 element(s) left after deduplication
+08-17 16:52:13.755  5759  5788 I appium  : Found zero matches
+08-17 16:52:13.762  5759  5788 I appium  : AppiumResponse: {"sessionId":"7a19cbac-ebb0-42ba-92c1-8371a5ce9191","value":[]}
+08-17 16:52:13.791  5759  5788 I appium  : channel read: POST /session/7a19cbac-ebb0-42ba-92c1-8371a5ce9191/elements
+08-17 16:52:13.794  5759  5788 I appium  : FindElements command
+08-17 16:52:13.799  5759  5788 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("+1%")'
+08-17 16:52:13.799  5759  5788 I appium  : Waiting up to 10000ms for the device to idle
+08-17 16:52:13.844  1556  1556 I CNSS    : cnss_open_log_file: directory /data/vendor/log/wifi/ created
+08-17 16:52:13.864  5759  5788 I appium  : Matched 0 elements using selector UiSelector[TEXT=+1%]
+08-17 16:52:13.864  5759  5788 I appium  : Matched 0 elements including possible duplicates
+08-17 16:52:13.864  5759  5788 I appium  : 0 element(s) left after deduplication
+08-17 16:52:13.865  5759  5788 I appium  : Found zero matches
+08-17 16:52:13.868  5759  5788 I appium  : AppiumResponse: {"sessionId":"7a19cbac-ebb0-42ba-92c1-8371a5ce9191","value":[]}
+08-17 16:52:13.887  5759  5788 I appium  : channel read: POST /session/7a19cbac-ebb0-42ba-92c1-8371a5ce9191/elements
+08-17 16:52:13.889  5759  5788 I appium  : FindElements command
+08-17 16:52:13.890  5759  5788 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("+1%")'
+08-17 16:52:13.891  5759  5788 I appium  : Waiting up to 10000ms for the device to idle
+08-17 16:52:13.933  5759  5788 I appium  : Matched 0 elements using selector UiSelector[TEXT=+1%]
+08-17 16:52:13.933  5759  5788 I appium  : Matched 0 elements including possible duplicates
+08-17 16:52:13.933  5759  5788 I appium  : 0 element(s) left after deduplication
+08-17 16:52:13.934  5759  5788 I appium  : Found zero matches
+08-17 16:52:13.937  5759  5788 I appium  : AppiumResponse: {"sessionId":"7a19cbac-ebb0-42ba-92c1-8371a5ce9191","value":[]}
+08-17 16:52:13.954  5759  5788 I appium  : channel read: POST /session/7a19cbac-ebb0-42ba-92c1-8371a5ce9191/elements
+08-17 16:52:13.956  5759  5788 I appium  : FindElements command
+08-17 16:52:13.958  5759  5788 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("+1%")'
+08-17 16:52:13.958  5759  5788 I appium  : Waiting up to 10000ms for the device to idle
+08-17 16:52:14.000  1726  8663 D WifiConnectivityMonitor.DnsThread:  [|209]
+08-17 16:52:14.001  1726  2260 D WifiConnectivityMonitor.NetworkStatsAnalyzer: DNS resultType : 0, responseTime : 209
+08-17 16:52:14.001  1726  2254 D OpenNetworkQos[4.00]: updateBssidLatestDnsResultType - result: 0
+08-17 16:52:14.002  1726  2254 D OpenNetworkQos[4.00]: updateBssidNoInternet: mBssidNoInternet = false
+08-17 16:52:14.003  1726  2254 D OpenNetworkQos[4.00]: getOpenNetworkQosNoInternetStatus: false
+08-17 16:52:14.003  1726  2254 D OpenNetworkQos[4.00]: getOpenNetworkQosScores: 26 26 26 
+08-17 16:52:14.004  1726  2254 D KNOX_MDM_SettingsProvider: isChangeAllowed() : name = wifi_wcm_qos_sharing_score_summary
+08-17 16:52:14.004  1726  2254 I WifiProfileShare: network QoS data was changed (internet), updateQoSData networkType: true, qosData: false
+08-17 16:52:14.005  1726  3221 V WifiProfileShare.Caster: update wips network, size: 0
+08-17 16:52:14.006  1726  3221 D WifiProfileShare: nearby scanning settings run
+08-17 16:52:14.006  1726  3221 D WifiProfileShare: network score provider settings enabled
+08-17 16:52:14.007  1726  3221 D OpenNetworkQos[4.00]: getOpenNetworkQosScores: 26 26 26 
+08-17 16:52:14.008  1726  3221 D OpenNetworkQos[4.00]: getOpenNetworkQosNoInternetStatus: false
+08-17 16:52:14.008  1726  3221 I WifiProfileShare.Caster: current network type: 0, score: [26, 26, 26]
+08-17 16:52:14.008  1726  3221 V WifiProfileShare.Caster: captive portal configuration was set
+08-17 16:52:14.008  1726  3221 V WifiProfileShare.Cache: update network score 28:ee:52:**:**:d7
+08-17 16:52:14.008  1726  3221 D WifiProfileShare.ScanMatcher: getMcfDataList size:2
+08-17 16:52:14.009  1726  3221 I WifiProfileShare.Caster: qos data was updated , before:type:QOS, pBssid:12:2a:ff, qosData:f9 after:type:QOS, pBssid:12:2a:ff, qosData:f9
+08-17 16:52:14.009 12222  6920 I .gms.persistent: Explicit concurrent mark compact GC freed 15MB AllocSpace bytes, 27(1536KB) LOS objects, 60% free, 30MB/78MB, paused 342us,4.367ms total 248.463ms
+08-17 16:52:14.018  1726  3221 I [MCFSDK_android_1.3.7026]_4_McfCasterImpl: isNetworkEnabled - type : 1 ret : true
+08-17 16:52:14.018  1726  3221 D WifiProfileShare.McfCast: -ME--- mIsNetworkEnabled :true
+08-17 16:52:14.018  1726  3221 D WifiProfileShare.McfCast: updateQoSData ignored, same contents
+08-17 16:52:14.018  1726  3221 D WifiProfileShare.MCF: success update QosData !
+08-17 16:52:14.018  1726  3221 I [MCFSDK_android_1.3.7026]_4_McfCasterImpl: isNetworkEnabled - type : 1 ret : true
+08-17 16:52:14.018  1726  3221 D WifiProfileShare.McfCast: -ME--- mIsNetworkEnabled :true
+08-17 16:52:14.019  1726  3221 D WifiProfileShare.McfCast: -ME--- updatePasswordDate pwdData size:2
+08-17 16:52:14.024  5759  5788 I appium  : Matched 0 elements using selector UiSelector[TEXT=+1%]
+08-17 16:52:14.024  5759  5788 I appium  : Matched 0 elements including possible duplicates
+08-17 16:52:14.024  5759  5788 I appium  : 0 element(s) left after deduplication
+08-17 16:52:14.025  5759  5788 I appium  : Found zero matches
+08-17 16:52:14.028  5759  5788 I appium  : AppiumResponse: {"sessionId":"7a19cbac-ebb0-42ba-92c1-8371a5ce9191","value":[]}
+08-17 16:52:14.045  5808  5808 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{c0a2436 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0555 app:id/moneybaseInvestWebView aid=1073741830}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-17 16:52:14.046  5759  5788 I appium  : channel read: POST /session/7a19cbac-ebb0-42ba-92c1-8371a5ce9191/elements
+08-17 16:52:14.048  5759  5788 I appium  : FindElements command
+08-17 16:52:14.050  5759  5788 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("+1%")'
+08-17 16:52:14.050  5759  5788 I appium  : Waiting up to 10000ms for the device to idle
+08-17 16:52:14.119  5759  5788 I appium  : Matched 0 elements using selector UiSelector[TEXT=+1%]
+08-17 16:52:14.119  5759  5788 I appium  : Matched 0 elements including possible duplicates
+08-17 16:52:14.119  5759  5788 I appium  : 0 element(s) left after deduplication
+08-17 16:52:14.119  5759  5788 I appium  : Found zero matches
+08-17 16:52:14.120  5759  5788 I appium  : AppiumResponse: {"sessionId":"7a19cbac-ebb0-42ba-92c1-8371a5ce9191","value":[]}
+08-17 16:52:14.138  5759  5788 I appium  : channel read: POST /session/7a19cbac-ebb0-42ba-92c1-8371a5ce9191/elements
+08-17 16:52:14.140  5759  5788 I appium  : FindElements command
+08-17 16:52:14.142  5759  5788 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("+1%")'
+08-17 16:52:14.143  5759  5788 I appium  : Waiting up to 10000ms for the device to idle
+08-17 16:52:14.276 18155 18155 I wpa_supplicant: Heartbeat 1659
+08-17 16:52:14.276  5759  5788 I appium  : Matched 0 elements using selector UiSelector[TEXT=+1%]
+08-17 16:52:14.278  5759  5788 I appium  : Matched 0 elements including possible duplicates
+08-17 16:52:14.278  5759  5788 I appium  : 0 element(s) left after deduplication
+08-17 16:52:14.279  5759  5788 I appium  : Found zero matches
+08-17 16:52:14.285  5759  5788 I appium  : AppiumResponse: {"sessionId":"7a19cbac-ebb0-42ba-92c1-8371a5ce9191","value":[]}
+08-17 16:52:14.303  5759  5788 I appium  : channel read: GET /session/7a19cbac-ebb0-42ba-92c1-8371a5ce9191/screenshot
+08-17 16:52:14.305  5759  5788 I appium  : CaptureScreenshot command
+08-17 16:52:14.308  5759  5788 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-17 16:52:14.309  5759  5788 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-17 16:52:14.498  8671  8671 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-17 16:52:14.499  8671  8671 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-17 16:52:14.499  8671  8671 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-17 16:52:14.499  1726  4581 I EDMNativeHelperService: isScreenCaptureEnabled
+08-17 16:52:14.499  1726  4581 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-17 16:52:14.500  8671  8671 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-17 16:52:14.501  8671  8671 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-17 16:52:14.503  1437  1464 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_5808#125396(seamlessTransition:0)
+08-17 16:52:14.503  1437  1464 I SurfaceFlinger: Capture layer list: 	 InputMethod$_5082#125441(seamlessTransition:0)
+08-17 16:52:14.503  1437  1464 I SurfaceFlinger: Capture layer list: 	 PopupWindow:1869633$_5808#125440(seamlessTransition:0)
+08-17 16:52:14.503  1437  1464 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-17 16:52:14.503  1437  1464 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-17 16:52:14.503  1437  1464 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-17 16:52:14.504  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-17 16:52:14.504  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_5808#125396 at index 1
+08-17 16:52:14.505  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer InputMethod$_5082#125441 at index 2
+08-17 16:52:14.505  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer PopupWindow:1869633$_5808#125440 at index 3
+08-17 16:52:14.505  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 4
+08-17 16:52:14.505  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 5
+08-17 16:52:14.531  8671  8676 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-17 16:52:14.544  5808  5808 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{c0a2436 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0555 app:id/moneybaseInvestWebView aid=1073741830}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-17 16:52:14.662  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786974734
+08-17 16:52:14.662  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 16:52:14.662  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 16:52:14.662  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782912
+08-17 16:52:14.662  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782899
+08-17 16:52:14.662  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 16:52:14.662  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 16:52:14.663  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 16:52:14.663  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 16:52:14.663  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 16:52:14.703   730   730 D io_stats: !@   8,0 r 90799861 1657457792 w 27598519 501933200 d 8024211 557378864 f 0 2560160 iot 41913868 0 th 0 0 0 pt 0 inp 0 0 677509.560
+08-17 16:52:14.781  5759  5788 I appium  : AppiumResponse: {"sessionId":"7a19cbac-ebb0-42ba-92c1-8371a5ce9191","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15VJXXvf/xD4cZREGGoKICzjgTjGicxVkTNWpCmjRN0jFpa7LaX9K0zdD21pu2aa826b1ZTW7a3CTVJnGMxjjgkBgFhzjFGQURBxAQZJTp/P6wnPpwDnCYeeD9WsvVPPs8wz4Fkf05e3+…
+08-17 16:52:14.809  5759  5788 I appium  : channel read: GET /session/7a19cbac-ebb0-42ba-92c1-8371a5ce9191/source
+08-17 16:52:14.809  5759  5788 I appium  : Source command
+08-17 16:52:14.809  5759  5788 I appium  : Waiting up to 10000ms for the device to idle
+08-17 16:52:14.919  5759  5788 I appium  : AppiumResponse: {"sessionId":"7a19cbac-ebb0-42ba-92c1-8371a5ce9191","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-17 16:52:14.956 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-17 16:52:15.017  8677  8677 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-17 16:52:15.032  1726  2298 I ImeTracker: system_server:2c531fc9: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false
+08-17 16:52:15.047  5808  5808 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{c0a2436 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0555 app:id/moneybaseInvestWebView aid=1073741830}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-17 16:52:15.063 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-17 16:52:15.119  8680  8680 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-17 16:52:15.128  1726  2298 I ImeTracker: system_server:ff0e8cd4: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false
+08-17 16:52:15.177 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''
+08-17 16:52:15.209 26920 26958 D LogsManager: No need to flush logs

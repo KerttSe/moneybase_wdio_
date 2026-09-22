@@ -1,0 +1,202 @@
+--------- beginning of main
+08-11 13:37:18.149 29868 29970 I appium  : The following attributes will be included to the page source: [text, clickable]
+08-11 13:37:18.154 29868 29878 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+--------- beginning of system
+08-11 13:37:18.188   730   730 D io_stats: !@   8,0 r 54548180 1008778337 w 16834454 304446988 d 4931862 357695284 f 0 1556015 iot 25157824 0 th 0 0 0 pt 0 inp 0 0 389781.927
+08-11 13:37:18.204 29868 29970 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]' XPath2 query
+08-11 13:37:18.204 29868 29970 I appium  : Found zero matches
+08-11 13:37:18.204 29868 29970 I appium  : AppiumResponse: {"sessionId":"68e3e07c-7627-449d-a877-a3355099bbed","value":[]}
+08-11 13:37:18.246 29868 29970 I appium  : channel read: POST /session/68e3e07c-7627-449d-a877-a3355099bbed/elements
+08-11 13:37:18.246 29868 29970 I appium  : FindElements command
+08-11 13:37:18.247 29868 29970 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]'
+08-11 13:37:18.248 29868 29970 I appium  : Waiting up to 10000ms for the device to idle
+08-11 13:37:18.249 29868 29970 I appium  : The following attributes will be included to the page source: [text, clickable]
+08-11 13:37:18.298  1557  1702 D BufferPoolAccessor2.0: bufferpool2 0xb4000077af488568 : 0(0 size) total buffers - 0(0 size) used buffers - 3/5 (recycle/alloc) - 2/5 (fetch/transfer)
+08-11 13:37:18.298  1557  1702 D BufferPoolAccessor2.0: bufferpool2 0xb4000077af491968 : 0(0 size) total buffers - 0(0 size) used buffers - 51/55 (recycle/alloc) - 4/55 (fetch/transfer)
+08-11 13:37:18.300  1557  1702 D BufferPoolAccessor2.0: bufferpool2 0xb4000077af48cd18 : 0(0 size) total buffers - 0(0 size) used buffers - 19/22 (recycle/alloc) - 3/22 (fetch/transfer)
+08-11 13:37:18.301  1557  1702 D BufferPoolAccessor2.0: evictor expired: 6, evicted: 3
+08-11 13:37:18.320 29868 29970 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]' XPath2 query
+08-11 13:37:18.321 29868 29970 I appium  : Found zero matches
+08-11 13:37:18.322 29868 29970 I appium  : AppiumResponse: {"sessionId":"68e3e07c-7627-449d-a877-a3355099bbed","value":[]}
+08-11 13:37:18.347 29868 29970 I appium  : channel read: POST /session/68e3e07c-7627-449d-a877-a3355099bbed/elements
+08-11 13:37:18.348 29868 29970 I appium  : FindElements command
+08-11 13:37:18.349 29868 29970 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]'
+08-11 13:37:18.349 29868 29970 I appium  : Waiting up to 10000ms for the device to idle
+08-11 13:37:18.351 29868 29970 I appium  : The following attributes will be included to the page source: [text, clickable]
+08-11 13:37:18.389 29868 29970 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]' XPath2 query
+08-11 13:37:18.389 29868 29970 I appium  : Found zero matches
+08-11 13:37:18.390 29868 29970 I appium  : AppiumResponse: {"sessionId":"68e3e07c-7627-449d-a877-a3355099bbed","value":[]}
+08-11 13:37:18.430 32540 32752 D BufferPoolAccessor2.0: bufferpool2 0x71badef5c8 : 0(0 size) total buffers - 0(0 size) used buffers - 1/6 (recycle/alloc) - 5/24 (fetch/transfer)
+08-11 13:37:18.430 32540 32752 D BufferPoolAccessor2.0: bufferpool2 0x71badfaec8 : 0(0 size) total buffers - 0(0 size) used buffers - 1/6 (recycle/alloc) - 13/57 (fetch/transfer)
+08-11 13:37:18.430 32540 32752 D BufferPoolAccessor2.0: bufferpool2 0x71badfbca8 : 0(0 size) total buffers - 0(0 size) used buffers - 1/6 (recycle/alloc) - 5/7 (fetch/transfer)
+08-11 13:37:18.430 32540 32752 D BufferPoolAccessor2.0: evictor expired: 3, evicted: 3
+08-11 13:37:18.448 29868 29970 I appium  : channel read: POST /session/68e3e07c-7627-449d-a877-a3355099bbed/elements
+08-11 13:37:18.448 29868 29970 I appium  : FindElements command
+08-11 13:37:18.449 29868 29970 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]'
+08-11 13:37:18.449 29868 29970 I appium  : Waiting up to 10000ms for the device to idle
+08-11 13:37:18.450 29868 29970 I appium  : The following attributes will be included to the page source: [text, clickable]
+08-11 13:37:18.457 29868 29878 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-11 13:37:18.503 29868 29970 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]' XPath2 query
+08-11 13:37:18.503 29868 29970 I appium  : Found zero matches
+08-11 13:37:18.504 29868 29970 I appium  : AppiumResponse: {"sessionId":"68e3e07c-7627-449d-a877-a3355099bbed","value":[]}
+08-11 13:37:18.554  1726  2261 D WifiConnectivityMonitor: called startWcmPoll but already Ongoing
+08-11 13:37:18.554  1726  2261 D SemWifiRssiBasePoller: RSSI_BASE_STOP
+08-11 13:37:18.557 29868 29970 I appium  : channel read: POST /session/68e3e07c-7627-449d-a877-a3355099bbed/elements
+08-11 13:37:18.558 29868 29970 I appium  : FindElements command
+08-11 13:37:18.559 29868 29970 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]'
+08-11 13:37:18.559 29868 29970 I appium  : Waiting up to 10000ms for the device to idle
+08-11 13:37:18.561 29868 29970 I appium  : The following attributes will be included to the page source: [text, clickable]
+08-11 13:37:18.575  1726  2283 D NetdEventListenerService: DNS Requested by 499, 10347(com.viber.voip), SUCCESS, 51ms
+08-11 13:37:18.576 30071 30071 I View    : setRequestedFrameRate frameRate=NaN, this=androidx.compose.ui.platform.AndroidComposeView{1028309 VFED..... .F...... 0,0-1080,2340 aid=1073741834}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 androidx.compose.ui.platform.Api35Impl.setRequestedFrameRate:3822 androidx.compose.ui.platform.AndroidComposeView.dispatchDraw:2114 android.view.View.draw:26345 android.view.View.updateDisplayListIfDirty:25175 
+08-11 13:37:18.576 30071 30071 I View    : setRequestedFrameRate frameRate=NaN, this=android.view.View{99980c4 V.ED..... ........ 0,0-0,0}, caller=androidx.compose.ui.platform.Api35Impl.setRequestedFrameRate:3822 androidx.compose.ui.platform.AndroidComposeView.dispatchDraw:2115 android.view.View.draw:26345 android.view.View.updateDisplayListIfDirty:25175 android.view.ViewGroup.recreateChildDisplayList:4794 
+08-11 13:37:18.589   747 32444 I keystore2: system/security/keystore2/watchdog/src/lib.rs:377 - Watchdog thread idle -> terminating. Have a great day.
+08-11 13:37:18.634 29868 29970 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]' XPath2 query
+08-11 13:37:18.634 29868 29970 I appium  : Found zero matches
+08-11 13:37:18.635 29868 29970 I appium  : AppiumResponse: {"sessionId":"68e3e07c-7627-449d-a877-a3355099bbed","value":[]}
+08-11 13:37:18.647 29868 29970 I appium  : channel read: POST /session/68e3e07c-7627-449d-a877-a3355099bbed/elements
+08-11 13:37:18.648 29868 29970 I appium  : FindElements command
+08-11 13:37:18.649 29868 29970 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]'
+08-11 13:37:18.649 29868 29970 I appium  : Waiting up to 10000ms for the device to idle
+08-11 13:37:18.650 29868 29970 I appium  : The following attributes will be included to the page source: [text, clickable]
+08-11 13:37:18.721 29868 29970 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]' XPath2 query
+08-11 13:37:18.721 29868 29970 I appium  : Found zero matches
+08-11 13:37:18.723 29868 29970 I appium  : AppiumResponse: {"sessionId":"68e3e07c-7627-449d-a877-a3355099bbed","value":[]}
+08-11 13:37:18.748 29868 29970 I appium  : channel read: POST /session/68e3e07c-7627-449d-a877-a3355099bbed/elements
+08-11 13:37:18.749 29868 29970 I appium  : FindElements command
+08-11 13:37:18.751 29868 29970 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]'
+08-11 13:37:18.751 29868 29970 I appium  : Waiting up to 10000ms for the device to idle
+08-11 13:37:18.753 29868 29970 I appium  : The following attributes will be included to the page source: [text, clickable]
+08-11 13:37:18.778  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786444638
+08-11 13:37:18.778  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 13:37:18.779  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 13:37:18.779  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774077
+08-11 13:37:18.779  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774054
+08-11 13:37:18.779  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 13:37:18.779  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 13:37:18.780  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 13:37:18.780  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 13:37:18.780  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 13:37:18.795  1726  2147 D InetDiagMessage: Destroyed 2 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+08-11 13:37:18.800  1726  2147 D InetDiagMessage: Destroyed 4 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+08-11 13:37:18.801  1726  2147 D InetDiagMessage: Destroyed live tcp sockets for uids={10347} in 19ms
+08-11 13:37:18.803  1726  2147 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+08-11 13:37:18.806  1726  2147 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+08-11 13:37:18.806  1726  2147 D InetDiagMessage: Destroyed live tcp sockets for uids={20347} in 6ms
+08-11 13:37:18.837 29868 29970 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]' XPath2 query
+08-11 13:37:18.838 29868 29970 I appium  : Found zero matches
+08-11 13:37:18.839 29868 29970 I appium  : AppiumResponse: {"sessionId":"68e3e07c-7627-449d-a877-a3355099bbed","value":[]}
+08-11 13:37:18.860 29868 29970 I appium  : channel read: POST /session/68e3e07c-7627-449d-a877-a3355099bbed/elements
+08-11 13:37:18.861 29868 29970 I appium  : FindElements command
+08-11 13:37:18.861  6607  6607 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.libs.gmscorelogger.service.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+08-11 13:37:18.863 29868 29970 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]'
+08-11 13:37:18.864 29868 29970 I appium  : Waiting up to 10000ms for the device to idle
+08-11 13:37:18.869 29868 29970 I appium  : The following attributes will be included to the page source: [text, clickable]
+08-11 13:37:18.875 29868 29878 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-11 13:37:18.925 29868 29970 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]' XPath2 query
+08-11 13:37:18.926 29868 29970 I appium  : Found zero matches
+08-11 13:37:18.926 29868 29970 I appium  : AppiumResponse: {"sessionId":"68e3e07c-7627-449d-a877-a3355099bbed","value":[]}
+08-11 13:37:18.950 29868 29970 I appium  : channel read: POST /session/68e3e07c-7627-449d-a877-a3355099bbed/elements
+08-11 13:37:18.950 29868 29970 I appium  : FindElements command
+08-11 13:37:18.951 29868 29970 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]'
+08-11 13:37:18.951 29868 29970 I appium  : Waiting up to 10000ms for the device to idle
+08-11 13:37:18.953 29868 29970 I appium  : The following attributes will be included to the page source: [text, clickable]
+08-11 13:37:19.004 29868 29970 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]' XPath2 query
+08-11 13:37:19.005 29868 29970 I appium  : Found zero matches
+08-11 13:37:19.006 29868 29970 I appium  : AppiumResponse: {"sessionId":"68e3e07c-7627-449d-a877-a3355099bbed","value":[]}
+08-11 13:37:19.019  4554  5580 I SDHMS:x : SIOP:: AP:376 BAT:329 USB:317 CHG:365 PA:378 CP:368 WIFI:360 BLK:0 SUBBAT:0 LRPTHM:340 SKIN:334 SKINF:325 SKINB:334 LRP:334 LRP2:334 LRF2:325 LRB2:334 AP2:333 CHG2:316 MEM2:331 WIFI2:334 SPK2:305 VAP02:364 VWIFI:349 AVGCUR:264 AVGSYS:523 POWER:1151
+08-11 13:37:19.049 29868 29970 I appium  : channel read: POST /session/68e3e07c-7627-449d-a877-a3355099bbed/elements
+08-11 13:37:19.049 29868 29970 I appium  : FindElements command
+08-11 13:37:19.050 29868 29970 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]'
+08-11 13:37:19.050 29868 29970 I appium  : Waiting up to 10000ms for the device to idle
+08-11 13:37:19.053 29868 29970 I appium  : The following attributes will be included to the page source: [text, clickable]
+08-11 13:37:19.074 30071 30071 I View    : setRequestedFrameRate frameRate=NaN, this=androidx.compose.ui.platform.AndroidComposeView{1028309 VFED..... .F...... 0,0-1080,2340 aid=1073741834}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 androidx.compose.ui.platform.Api35Impl.setRequestedFrameRate:3822 androidx.compose.ui.platform.AndroidComposeView.dispatchDraw:2114 android.view.View.draw:26345 android.view.View.updateDisplayListIfDirty:25175 
+08-11 13:37:19.075 30071 30071 I View    : setRequestedFrameRate frameRate=NaN, this=android.view.View{99980c4 V.ED..... ........ 0,0-0,0}, caller=androidx.compose.ui.platform.Api35Impl.setRequestedFrameRate:3822 androidx.compose.ui.platform.AndroidComposeView.dispatchDraw:2115 android.view.View.draw:26345 android.view.View.updateDisplayListIfDirty:25175 android.view.ViewGroup.recreateChildDisplayList:4794 
+08-11 13:37:19.114 29868 29970 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]' XPath2 query
+08-11 13:37:19.114 29868 29970 I appium  : Found zero matches
+08-11 13:37:19.115 29868 29970 I appium  : AppiumResponse: {"sessionId":"68e3e07c-7627-449d-a877-a3355099bbed","value":[]}
+08-11 13:37:19.147 29868 29970 I appium  : channel read: POST /session/68e3e07c-7627-449d-a877-a3355099bbed/elements
+08-11 13:37:19.148 29868 29970 I appium  : FindElements command
+08-11 13:37:19.149 29868 29970 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]'
+08-11 13:37:19.149 29868 29970 I appium  : Waiting up to 10000ms for the device to idle
+08-11 13:37:19.150 29868 29970 I appium  : The following attributes will be included to the page source: [text, clickable]
+08-11 13:37:19.155 29868 29878 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-11 13:37:19.170  1726  4575 D CustomizedBinderCallsStatsInternal: reportCpuUsage() : 2%
+08-11 13:37:19.171  1726  1780 I BinderCallsStats: Collected cpu time : 0us, collected call count : 0 for 18737143 ms
+08-11 13:37:19.173  1726  4575 D ProcessCpuUsage: [0] 746, {400=9970, 576=18970, 672=4990, 768=6190, 864=4930, 960=2290, 1056=1330, 1152=9900, 1248=150, 1728=1270}
+08-11 13:37:19.173  1726  4575 D ProcessCpuUsage: [4] 890, {576=39600, 672=2210, 768=2020, 864=1830, 960=1090, 1056=1010, 1152=670, 1248=710, 1344=710, 1440=970, 1536=690, 1632=720, 1728=600, 1824=550, 1920=760, 2016=730, 2112=610, 2208=430, 2304=540, 2400=370, 2515=3370}
+08-11 13:37:19.173  1726  4575 D ProcessCpuUsage: [7] 670, {576=55720, 672=200, 768=110, 864=140, 960=550, 1152=100, 1248=220, 1344=110, 1728=320, 1920=260, 2016=360, 2112=130, 2208=180, 2304=140, 2515=480, 2611=240, 2707=160, 2803=480}
+08-11 13:37:19.183 29868 29970 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]' XPath2 query
+08-11 13:37:19.183 29868 29970 I appium  : Found zero matches
+08-11 13:37:19.184 29868 29970 I appium  : AppiumResponse: {"sessionId":"68e3e07c-7627-449d-a877-a3355099bbed","value":[]}
+08-11 13:37:19.245 29868 29970 I appium  : channel read: POST /session/68e3e07c-7627-449d-a877-a3355099bbed/elements
+08-11 13:37:19.246 29868 29970 I appium  : FindElements command
+08-11 13:37:19.247 29868 29970 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]'
+08-11 13:37:19.247 29868 29970 I appium  : Waiting up to 10000ms for the device to idle
+08-11 13:37:19.248 29868 29970 I appium  : The following attributes will be included to the page source: [text, clickable]
+08-11 13:37:19.298 29868 29970 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]' XPath2 query
+08-11 13:37:19.298 29868 29970 I appium  : Found zero matches
+08-11 13:37:19.299 29868 29970 I appium  : AppiumResponse: {"sessionId":"68e3e07c-7627-449d-a877-a3355099bbed","value":[]}
+08-11 13:37:19.327  1726  1899 D ActivityManager: freezing 32539 com.samsung.sait.sohservice
+08-11 13:37:19.346 29868 29970 I appium  : channel read: POST /session/68e3e07c-7627-449d-a877-a3355099bbed/elements
+08-11 13:37:19.346 29868 29970 I appium  : FindElements command
+08-11 13:37:19.347 29868 29970 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]'
+08-11 13:37:19.347 29868 29970 I appium  : Waiting up to 10000ms for the device to idle
+08-11 13:37:19.348 29868 29970 I appium  : The following attributes will be included to the page source: [text, clickable]
+08-11 13:37:19.383 29868 29970 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true" and (.//android.widget.TextView[@text="Originator Fee"] or .//android.widget.TextView[@text="Shared Fee"])]' XPath2 query
+08-11 13:37:19.384 29868 29970 I appium  : Found zero matches
+08-11 13:37:19.385 29868 29970 I appium  : AppiumResponse: {"sessionId":"68e3e07c-7627-449d-a877-a3355099bbed","value":[]}
+08-11 13:37:19.506 29868 29970 I appium  : channel read: GET /session/68e3e07c-7627-449d-a877-a3355099bbed/screenshot
+08-11 13:37:19.506 29868 29970 I appium  : CaptureScreenshot command
+08-11 13:37:19.508 29868 29970 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-11 13:37:19.508 29868 29970 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-11 13:37:19.577 30071 30071 I View    : setRequestedFrameRate frameRate=NaN, this=androidx.compose.ui.platform.AndroidComposeView{1028309 VFED..... .F...... 0,0-1080,2340 aid=1073741834}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 androidx.compose.ui.platform.Api35Impl.setRequestedFrameRate:3822 androidx.compose.ui.platform.AndroidComposeView.dispatchDraw:2114 android.view.View.draw:26345 android.view.View.updateDisplayListIfDirty:25175 
+08-11 13:37:19.577 30071 30071 I View    : setRequestedFrameRate frameRate=NaN, this=android.view.View{99980c4 V.ED..... ........ 0,0-0,0}, caller=androidx.compose.ui.platform.Api35Impl.setRequestedFrameRate:3822 androidx.compose.ui.platform.AndroidComposeView.dispatchDraw:2115 android.view.View.draw:26345 android.view.View.updateDisplayListIfDirty:25175 android.view.ViewGroup.recreateChildDisplayList:4794 
+08-11 13:37:19.720   793   793 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-11 13:37:19.720   793   793 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-11 13:37:19.721   793   793 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-11 13:37:19.721  1726  4576 I EDMNativeHelperService: isScreenCaptureEnabled
+08-11 13:37:19.729  1726  4576 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-11 13:37:19.729   793   793 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-11 13:37:19.730   793   793 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-11 13:37:19.735  1437  1682 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_30071#67706(seamlessTransition:0)
+08-11 13:37:19.735  1437  1682 I SurfaceFlinger: Capture layer list: 	 InputMethod$_5082#67741(seamlessTransition:0)
+08-11 13:37:19.735  1437  1682 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-11 13:37:19.735  1437  1682 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-11 13:37:19.735  1437  1682 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-11 13:37:19.738  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-11 13:37:19.738  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_30071#67706 at index 1
+08-11 13:37:19.738  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer InputMethod$_5082#67741 at index 2
+08-11 13:37:19.738  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 3
+08-11 13:37:19.738  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 4
+08-11 13:37:19.778  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786444639
+08-11 13:37:19.778  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 13:37:19.778  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 13:37:19.778  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774077
+08-11 13:37:19.778  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774054
+08-11 13:37:19.778  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 13:37:19.779  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 13:37:19.779  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 13:37:19.779  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 13:37:19.779  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 13:37:19.795   793   798 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-11 13:37:19.912  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-11 13:37:19.914  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 83960, isSameBssidAndFreq true
+08-11 13:37:19.915  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786444639915 lastDateWindow=1786275667000
+08-11 13:37:19.916  1726  2228 I SemWifiLinkQualityMonitor: Link stat: 698 / 66 / 1.00 (18) / 117 / -50.0 || 100.0 : 117.00 / 0.5 : 1.00 / 0.55 : 0.09 / G (G) || 52fc78d72452: 0.148 / 54.092 / N || N N / 0 0 / N 2.0 / N X 0 / 389783653 0 || 2026-08-09 14:41:07  / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0
+08-11 13:37:20.051 29868 29970 I appium  : AppiumResponse: {"sessionId":"68e3e07c-7627-449d-a877-a3355099bbed","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N13WNv3vS/wt7YEiCUwIJbN8mTYxnvFceJ4JI7tpGnTNF1pmtympz3tveeenpO26UjatDejKydNE2e0aWbjeI/Ee9uAjW2GjQ3YDLFBSGiv+wdBRhYYAQIh/H49j5/H+uo3PhJC6PfWdwh…
+08-11 13:37:20.076 30071 30071 I View    : setRequestedFrameRate frameRate=NaN, this=androidx.compose.ui.platform.AndroidComposeView{1028309 VFED..... .F...... 0,0-1080,2340 aid=1073741834}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 androidx.compose.ui.platform.Api35Impl.setRequestedFrameRate:3822 androidx.compose.ui.platform.AndroidComposeView.dispatchDraw:2114 android.view.View.draw:26345 android.view.View.updateDisplayListIfDirty:25175 
+08-11 13:37:20.076 30071 30071 I View    : setRequestedFrameRate frameRate=NaN, this=android.view.View{99980c4 V.ED..... ........ 0,0-0,0}, caller=androidx.compose.ui.platform.Api35Impl.setRequestedFrameRate:3822 androidx.compose.ui.platform.AndroidComposeView.dispatchDraw:2115 android.view.View.draw:26345 android.view.View.updateDisplayListIfDirty:25175 android.view.ViewGroup.recreateChildDisplayList:4794 
+08-11 13:37:20.078 29868 29970 I appium  : channel read: GET /session/68e3e07c-7627-449d-a877-a3355099bbed/source
+08-11 13:37:20.079 29868 29970 I appium  : Source command
+08-11 13:37:20.079 29868 29970 I appium  : Waiting up to 10000ms for the device to idle
+08-11 13:37:20.123 29868 29970 I appium  : AppiumResponse: {"sessionId":"68e3e07c-7627-449d-a877-a3355099bbed","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-11 13:37:20.166 13277 13277 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 13:37:20.189   730   730 D io_stats: !@   8,0 r 54548465 1008785085 w 16834810 304448516 d 4932121 357731076 f 0 1556054 iot 25158160 0 th 0 0 0 pt 0 inp 0 0 389783.929
+08-11 13:37:20.190   730   730 D io_stats: !@ Read_top(KB): loop48(3238) 3336 screencap(793) 1744 loop27(855) 988
+08-11 13:37:20.190   730   730 D io_stats: !@ Write_top(KB): f2fs_ckpt-254:5(2890) 468 com.viber.voip(32540) 52 .gms.persistent(6607) 20
+08-11 13:37:20.220   799   799 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 13:37:20.233  1726  4576 I ImeTracker: system_server:feb23159: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false
+08-11 13:37:20.267 13277 13277 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 13:37:20.322   803   803 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 13:37:20.334  1726  4606 I ImeTracker: system_server:d2d1005: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false
+08-11 13:37:20.381 13277 13277 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

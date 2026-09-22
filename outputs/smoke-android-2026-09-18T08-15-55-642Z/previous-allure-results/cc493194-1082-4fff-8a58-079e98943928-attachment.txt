@@ -1,0 +1,207 @@
+--------- beginning of main
+06-26 15:27:31.191  1426  1468 D SurfaceComposerClient: setCornerRadius ## ee04ca1 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#24192 cornerRadius=0.000000
+06-26 15:27:31.192 25581 25706 I SamsungAccount: [SignatureInfoDbHelper] searchOnUser(fromDb) - [10/lfgff][android.honeyboard.][64/3291d] => matched
+06-26 15:27:31.192 25581 25706 I SamsungAccount: [AccountManagerProvider] This is the access of the allowed application
+06-26 15:27:31.194 25581 25706 I SamsungAccount: [TelephonyManagerUtil] getMccFromUsim
+06-26 15:27:31.194 25581 25706 I SamsungAccount: [MccManager] saveMccToPreference Start
+06-26 15:27:31.194 25581 25706 I SamsungAccount: [MccManager] saveMccToPreference, mcc is same with previous mcc
+06-26 15:27:31.194 25581 25706 I SamsungAccount: [ChildAccountSupportedListManager] getSupportedListFromLocal from cache
+06-26 15:27:31.194 25581 25706 E SamsungAccount: [FamilyGroupUtil] getCountryCodeListWithRegionMcc - no country code with region mcc
+06-26 15:27:31.194 25581 25706 I SamsungAccount: [FamilyGroupUtil] isSupportFamilyService: false
+06-26 15:27:31.194 25581 25706 I SamsungAccount: [B2cAccountMethodExecutor] makeResultBundle - resultCode : 1
+06-26 15:27:31.196  3979  3979 I HBD     : c needOff = true , isForceOff = false, isNullInputClass : true 
+06-26 15:27:31.196  3979  3979 I HBD     : c update cached prediction status : false 
+06-26 15:27:31.196  3979  3979 I HBD     : h getDefaultInputRange : UNKNOWN 
+06-26 15:27:31.196  3979  3979 I HBD     : a currentState : 0 
+06-26 15:27:31.196  3979  3979 I HBD     : a [UpdatePolicy] [post] a: 0 cl: 65537 kit: [0/0] vt: 0 ir: 1 
+06-26 15:27:31.196  3979  3979 I HBD     : a [NRIC] resetNoResponseState 
+06-26 15:27:31.196  3979  3979 I HBD     : c needOff = true , isForceOff = false, isNullInputClass : true 
+06-26 15:27:31.196  3979  3979 I HBD     : c update cached prediction status : false 
+06-26 15:27:31.196  3979  3979 I HBD     : b [AiWriter] setContact : com.moneybase.qa
+06-26 15:27:31.197  3979  3979 I HBD     : HoneyBoardService [PF_OP][onStartInput]  9 ms 
+--------- beginning of system
+06-26 15:27:31.200  1426  1426 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+06-26 15:27:31.203  1127  1127 I SurfaceFlinger: RequestedLayer [Surface(name=9416c2b InputMethod)/@0[...]tion-leash of insets_animation#24278] hidden!! flag  from(1) --> to(0)
+06-26 15:27:31.203  1127  1127 E SurfaceFlinger: alpha changed 1.000 -> 0.000 - Surface(name=9416c2b InputMethod)/@0x3f95221 - animation-leash of insets_animation#24278
+06-26 15:27:31.203  1127  1127 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{ImeContainer#15 parentId=24191 relativeParentId=24192 z=1} 1 children}] RelativeParent to LayerHierarchy{RequestedLayerState{ee04ca1 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#24192 parentId=24191} 2 children}
+06-26 15:27:31.203  1127  1127 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{Surface(name=9416c2b InputMethod)/@0x3f95221 - animation-leash of insets_animation#24275} 1 children}] reparent to OffscreenRoot
+06-26 15:27:31.203  1127  1127 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{Surface(name=9416c2b InputMethod)/@0x3f95221 - animation-leash of insets_animation#24275} 1 children}] RelativeParent to null
+06-26 15:27:31.203  1127  1127 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{9416c2b InputMethod#14969 parentId=24278} no children}] reparent to LayerHierarchy{RequestedLayerState{Surface(name=9416c2b InputMethod)/@0x3f95221 - animation-leash of insets_animation#24278 parentId=14968} 1 children}
+06-26 15:27:31.203  1127  1127 I SurfaceFlinger: [Surface(name=9416c2b InputMethod)/@0x3f95221 - animation-leash of insets_animation#24278] attach to parent LayerHierarchy{RequestedLayerState{WindowToken{2fec4b type=2011 android.os.Binder@97bb91a}#14968 parentId=15} 1 children}
+06-26 15:27:31.204 29796 29948 I appium  : AppiumResponse: {"sessionId":"590684eb-e74f-448a-8893-f3f818ab404f","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N1pcFTXnf7xpxft+4YWELIkBEJI7CAW2xhw7Lg8XpLYwXFw4ozjKSexJ1MzmXmT1NRMeTIzqUlqJokrqXhskkychcTEhHiJDcYsYROrLBAgJLEI7fuuVqu7/y/4q0OrW2u3lou+nyqXq8/…
+06-26 15:27:31.204  1426  2748 D ActivityManager: unpendingScheduleServiceRestart: u=10312, drop=false
+06-26 15:27:31.205  1127  1175 I SurfaceFlinger: id=24275 Removed Surface(name=9416c2b InputMethod)/@0x3f95221 - animation-leash of insets_animation#24275 (187)
+06-26 15:27:31.205  1426  2746 D FreecessController: UFZ : com.samsung.android.game.gamehome(10312) [4856] reason: Binder(1)-android.service.notification.INotificatio
+06-26 15:27:31.205  1877  1877 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.206  1426  2751 W LocationManagerService: onFreezeStateChanged, uid[10312]=false
+06-26 15:27:31.206  1426  2751 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10312 , disable= false
+06-26 15:27:31.206  1426  2751 I PowerManagerService: [PWL] can not change uid =  10312
+06-26 15:27:31.206  2345  5709 I HoneySpace.NotificationListener: onNotificationPosted net.openvpn.openvpn: 0|net.openvpn.openvpn|1642|null|10466: 0
+06-26 15:27:31.206  2345  5709 I HoneySpace.NotificationListener: invalid notification: net.openvpn.openvpn UserHandle{0}: canShowBadge is false
+06-26 15:27:31.207  2345 29497 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. net.openvpn.openvpn/net.openvpn.unified.MainActivity#UserHandle{0}|33979 : 0
+06-26 15:27:31.207  1426  1426 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+06-26 15:27:31.208  1877  1877 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.208  1877  1877 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+06-26 15:27:31.208  3979  3979 I InputMethodService: scheduleImeSurfaceRemoval: removeImeSurface is posted.
+06-26 15:27:31.208  5425  5425 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+06-26 15:27:31.209  5425  6443 I NotificationPipeline: Processing new notification: 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.209  5425  6443 W BridgeModeModel: Not started, default to bridging
+06-26 15:27:31.209  5425  6443 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+06-26 15:27:31.209  5425  6443 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+06-26 15:27:31.209  5425  6443 I NotificationPipeline: Discarding notification: 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.210  1877  1877 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.212  1127  1127 I SurfaceFlinger: destroyed Surface(name=9416c2b InputMethod)/@0x3f95221 - animation-leash of insets_animation#24275
+06-26 15:27:31.212  1877  1877 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.212  2345  5709 I HoneySpace.NotificationListener: onNotificationPosted net.openvpn.openvpn: 0|net.openvpn.openvpn|1642|null|10466: 0
+06-26 15:27:31.212  2345  5709 I HoneySpace.NotificationListener: invalid notification: net.openvpn.openvpn UserHandle{0}: canShowBadge is false
+06-26 15:27:31.212  1127  1127 I Layer   : id=24275 Destroyed Surface(name=9416c2b InputMethod)/@0x3f95221 - animation-leash of insets_animation#24275
+06-26 15:27:31.213  1877  1877 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.213  1877  1877 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+06-26 15:27:31.213  2345  7609 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. net.openvpn.openvpn/net.openvpn.unified.MainActivity#UserHandle{0}|33979 : 0
+06-26 15:27:31.214  1877  1877 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.214  5416  5416 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+06-26 15:27:31.215  5425  5425 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+06-26 15:27:31.215  5416  5416 D NLService: Successfully stored the newly arrived notification identified by 1642
+06-26 15:27:31.215  5425  6443 I NotificationPipeline: Processing new notification: 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.215  5425  6443 W BridgeModeModel: Not started, default to bridging
+06-26 15:27:31.215  5425  6443 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+06-26 15:27:31.216  5425  6443 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+06-26 15:27:31.216  1877  1877 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+06-26 15:27:31.216  5425  6443 I NotificationPipeline: Discarding notification: 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.217  1877  1877 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+06-26 15:27:31.217  1877  1877 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.217  1877  1877 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.218  5416  5416 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+06-26 15:27:31.218  1877  1877 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+06-26 15:27:31.218  1877  1877 I AODNotificationManager: updateNotification() 
+06-26 15:27:31.218  5416  5416 D NLService: Successfully stored the newly arrived notification identified by 1642
+06-26 15:27:31.227 29989 29989 I VRI[DashboardActivity]@c984ecc: call setFrameRateCategory for touch hint category=no preference, reason=boost timeout, vri=VRI[DashboardActivity]@c984ecc
+06-26 15:27:31.228  1127  1127 I SurfaceFlinger: [com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_29989#24193] setFrameRateCategory: NoPreference
+06-26 15:27:31.229  1877  1877 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+06-26 15:27:31.233  1877  1877 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+06-26 15:27:31.234 29796 29948 I appium  : channel read: GET /session/590684eb-e74f-448a-8893-f3f818ab404f/source
+06-26 15:27:31.234 29796 29948 I appium  : Source command
+06-26 15:27:31.234 29796 29948 I appium  : Waiting up to 10000ms for the device to idle
+06-26 15:27:31.235  1877  1877 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.235  1877  1877 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.235  1877  1877 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.235  1877  1877 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.236  1877  1877 D S.S.N.  : entryViewBound parent :0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.237  1877  1877 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+06-26 15:27:31.241  1877  1877 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+06-26 15:27:31.243  1877  1877 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+06-26 15:27:31.243  1877  1877 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.243  1877  1877 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+06-26 15:27:31.243  1877  1877 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+06-26 15:27:31.243  1877  1877 I AODNotificationManager: updateNotification() 
+06-26 15:27:31.351  2345  2471 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Mobile(bundle=Bundle[mParcelledData.dataSize=256])
+06-26 15:27:31.607  1127  1328 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+06-26 15:27:31.609  1127  1127 I LayerHistory: StatusBar$_1877#99 voted NoVote (0.00 Hz)
+06-26 15:27:31.609  1127  1127 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_29989#24193 Max (can't resolve refresh rate)
+06-26 15:27:31.609  1127  1127 I SurfaceFlinger: Idle - choose 60.00 Hz
+06-26 15:27:31.610  1127  1127 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+06-26 15:27:31.610  1127  1285 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+06-26 15:27:31.612  1027 11313 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+06-26 15:27:31.612  1027 11313 I display : Current VRR MODE is 3
+06-26 15:27:31.612  1027 11313 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+06-26 15:27:31.612  1027 11313 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+06-26 15:27:31.612  1027 11313 I display : commit modeset : 1080x2340@60phs
+06-26 15:27:31.628  1027 11313 W display : deliverWinConfigData:: commit modeset time (16 ms)
+06-26 15:27:31.630  1027  1106 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+06-26 15:27:31.630  1027  1106 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+06-26 15:27:31.630  1027  1106 I display : Set m2mMPP capacity(8) for fps(60)
+06-26 15:27:31.630  1027  1106 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+06-26 15:27:31.630  1027  1106 I display : Set Affinity config for fps(60) : cpuIDs : 255
+06-26 15:27:31.630  1027  1106 I display : Set Affinity CPU ID : 0
+06-26 15:27:31.630  1027  1106 I display : Set Affinity CPU ID : 1
+06-26 15:27:31.630  1027  1106 I display : Set Affinity CPU ID : 2
+06-26 15:27:31.630  1027  1106 I display : Set Affinity CPU ID : 3
+06-26 15:27:31.630  1027  1106 I display : Set Affinity CPU ID : 4
+06-26 15:27:31.630  1027  1106 I display : Set Affinity CPU ID : 5
+06-26 15:27:31.630  1027  1106 I display : Set Affinity CPU ID : 6
+06-26 15:27:31.630  1027  1106 I display : Set Affinity CPU ID : 7
+06-26 15:27:31.630  1027  1106 I display : Set affinity HWC : 1027
+06-26 15:27:31.630  1027  1106 I display : CPU set : Cluster(0), min_clock(0)
+06-26 15:27:31.630  1027  1106 I display : CPU set : Cluster(1), min_clock(0)
+06-26 15:27:31.630  1027  1106 I display : CPU set : Cluster(2), min_clock(0)
+06-26 15:27:31.630  1127  1127 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+06-26 15:27:31.632  1127  1285 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+06-26 15:27:31.646   745   745 D io_stats: !@   8,0 r 16728828 326141587 w 4976903 96847856 d 1672532 156617344 f 0 515581 iot 8202280 0 th 0 0 0 pt 0 inp 0 0 111104.857
+06-26 15:27:31.690  1426  1467 D SGM:GameManager: identifyForegroundApp. com.moneybase.qa, mCurrentUserId: 0, callerUserId: 0
+06-26 15:27:31.690  1426  1467 D SGM:SemGameManager: isForegroundGame(), ret=false
+06-26 15:27:31.709  3979  3979 I InputMethodService: removeImeSurface
+06-26 15:27:31.709  3979  3979 I InputMethodService: cancelImeSurfaceRemoval: removeCallbacks
+06-26 15:27:31.755  1118  1119 E HeatmapThread: ECT Thread time in milliseconds: 1782476851
+06-26 15:27:31.755  1118  1119 D HeatmapThread: !@ batteryplugType : 0
+06-26 15:27:31.755  1118  1119 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+06-26 15:27:31.755  1118  1119 D HeatmapThread: !@ Heatmap currtime: 29707947
+06-26 15:27:31.755  1118  1119 D HeatmapThread: !@ Heatmap prevtime: 29707925
+06-26 15:27:31.755  1118  1119 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+06-26 15:27:31.755  1118  1119 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29703974
+06-26 15:27:31.756  1118  1119 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+06-26 15:27:31.756  1118  1119 E HeatmapThread: !@ CAM Could not access BSOH EFS
+06-26 15:27:31.756  1118  1119 E HeatmapThread: !@ CAM New BSOH: 0
+06-26 15:27:31.829  1426  1609 D InputReader: Btn_touch(4): value=1 when=111105.039516
+06-26 15:27:31.829  1426  1609 I InputReader: Touch event's action is 0x0 (id=5, t=0) [pCnt=1, s=0.22564 ] when=111105.039516
+06-26 15:27:31.831  1426  1608 I InputDispatcher: Delivering touch to (1877): action: 0x4, f=0x0, d=0, '3317e71', t=1 
+06-26 15:27:31.831  1127  1328 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+06-26 15:27:31.832  1426  1608 I InputDispatcher: Delivering touch to (29989): action: 0x0, f=0x0, d=0, 'ee04ca1', t=1 
+06-26 15:27:31.832  1426  1465 I GestureDetector: obtain mCurrentDownEvent. id: 1015740996 caller: com.android.server.wm.SystemGesturesPointerEventListener.onPointerEvent:17 com.android.server.wm.PointerEventDispatcher.onInputEvent:51 android.view.InputEventReceiver.dispatchInputEvent:392 
+06-26 15:27:31.832  1426  1465 I GestureDetector: obtain mCurrentDownEvent. id: 1015740996 caller: com.android.server.wm.SystemPerformancePointerEventListener.onPointerEvent:13 com.android.server.wm.PointerEventDispatcher.onInputEvent:51 android.view.InputEventReceiver.dispatchInputEvent:392 
+06-26 15:27:31.833  1127  1285 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+06-26 15:27:31.833 29989 29989 I VRI[DashboardActivity]@c984ecc: ViewPostIme pointer 0
+06-26 15:27:31.833  3950  3950 I SemDvfsHyPerManager: acquire hyper - TABoost/3950@29, type = -999
+06-26 15:27:31.834  1048  1133 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 7918239  [3950 / 29]    HINT :      list : [TABoost / 1] [TIMEOUT / 1500] 
+06-26 15:27:31.836 29989 29989 I VRI[DashboardActivity]@c984ecc: call setFrameRateCategory for touch hint category=high hint, reason=touch, vri=VRI[DashboardActivity]@c984ecc
+06-26 15:27:31.837  1127  1127 I SurfaceFlinger: RequestedLayer [Sprite#5227] hidden!! flag  from(1) --> to(0)
+06-26 15:27:31.837  1127  1127 I SurfaceFlinger: [com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_29989#24193] setFrameRateCategory: HighHint
+06-26 15:27:31.838  1127  1127 I LayerHistory: [BBQ] Sprite#5227#5229 is infrequent
+06-26 15:27:31.838  1127  1127 I LayerHistory: StatusBar$_1877#99 voted NoVote (0.00 Hz)
+06-26 15:27:31.838  1127  1127 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_29989#24193 voted ExplicitCategory with category: HighHint
+06-26 15:27:31.838  1127  1127 I SurfaceFlinger: Touch Boost - choose 120.00 Hz
+06-26 15:27:31.838  1127  1127 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+06-26 15:27:31.839 29796 29948 I appium  : AppiumResponse: {"sessionId":"590684eb-e74f-448a-8893-f3f818ab404f","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+06-26 15:27:31.840  1027 11313 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+06-26 15:27:31.840  1027 11313 I display : Current VRR MODE is 3
+06-26 15:27:31.840  1027 11313 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+06-26 15:27:31.840  1027 11313 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+06-26 15:27:31.840  1027 11313 I display : commit modeset : 1080x2340@120hs
+06-26 15:27:31.842  1426  1465 I GestureDetector: obtain mCurrentMotionEventRaw. action: 2 id: 367799498
+06-26 15:27:31.843  1426  1465 I GestureDetector: obtain mCurrentMotionEventRaw. action: 2 id: 367799498
+06-26 15:27:31.861  1027 11313 W display : deliverWinConfigData:: commit modeset time (21 ms)
+06-26 15:27:31.862  1027  1106 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+06-26 15:27:31.862  1027  1106 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+06-26 15:27:31.862  1027  1106 I display : Set m2mMPP capacity(4) for fps(120)
+06-26 15:27:31.862  1027  1106 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+06-26 15:27:31.862  1027  1106 I display : Set Affinity config for fps(120) : cpuIDs : 255
+06-26 15:27:31.862  1027  1106 I display : Set Affinity CPU ID : 0
+06-26 15:27:31.862  1027  1106 I display : Set Affinity CPU ID : 1
+06-26 15:27:31.862  1027  1106 I display : Set Affinity CPU ID : 2
+06-26 15:27:31.862  1027  1106 I display : Set Affinity CPU ID : 3
+06-26 15:27:31.862  1027  1106 I display : Set Affinity CPU ID : 4
+06-26 15:27:31.862  1027  1106 I display : Set Affinity CPU ID : 5
+06-26 15:27:31.862  1027  1106 I display : Set Affinity CPU ID : 6
+06-26 15:27:31.862  1027  1106 I display : Set Affinity CPU ID : 7
+06-26 15:27:31.862  1027  1106 I display : Set affinity HWC : 1027
+06-26 15:27:31.862  1027  1106 I display : CPU set : Cluster(0), min_clock(0)
+06-26 15:27:31.862  1027  1106 I display : CPU set : Cluster(1), min_clock(0)
+06-26 15:27:31.862  1027  1106 I display : CPU set : Cluster(2), min_clock(0)
+06-26 15:27:31.862  1127  1285 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+06-26 15:27:31.863  1127  1127 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+06-26 15:27:31.863  1127  1127 D SurfaceFlinger: Display 4633128672291736000 HWC layers:
+06-26 15:27:31.863  1127  1127 D SurfaceFlinger:        DEVICE |          128801774239771 | 00002102 | RGBA_8888    |    0.0    0.0 1080.0 2340.0 |    0    0 1080 2340 | com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_29989#24193 (589)
+06-26 15:27:31.863  1127  1127 D SurfaceFlinger:        DEVICE |            8061653625228 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0   80.0 |    0    0 1080   80 | StatusBar$_1877#99 (48319)
+06-26 15:27:31.863  1127  1127 D SurfaceFlinger:        DEVICE |            8061653625222 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2214 1080 2340 | NavigationBar0$_1877#95 (70541)
+06-26 15:27:31.863  1127  1127 D SurfaceFlinger:        DEVICE |            6124623364780 | 00000100 | RGBA_8888    |    0.0    0.0   63.0   63.0 |  751  747  814  810 | [BBQ] Sprite#5227#5229 (1547)
+06-26 15:27:31.863  1127  1127 D SurfaceFlinger: 
+06-26 15:27:31.863  1127  1127 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+06-26 15:27:31.874 14907 14907 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+06-26 15:27:31.916  1426  1609 D InputReader: Btn_touch(4): value=0 when=111105.126331
+06-26 15:27:31.916  1426  1609 I InputReader: Touch event's action is 0x1 (id=5, t=0) [pCnt=1, s=] when=111105.126331
+06-26 15:27:31.916  1426  1608 I InputDispatcher: Delivering touch to (29989): action: 0x1, f=0x0, d=0, 'ee04ca1', t=1 
+06-26 15:27:31.917 29989 29989 I VRI[DashboardActivity]@c984ecc: ViewPostIme pointer 1
+06-26 15:27:31.920 32588 32588 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+06-26 15:27:31.937  1127  1285 I VSyncReactor: Current= 120, Period= 120, hwcPeriod= 120
+06-26 15:27:31.949 14907 14907 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+06-26 15:27:31.993 32591 32591 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+06-26 15:27:32.029 14907 14907 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

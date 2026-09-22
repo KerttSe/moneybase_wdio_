@@ -1,0 +1,210 @@
+--------- beginning of main
+04-30 11:42:01.139 18045 19350 I FS.Core.Shared.LogForwarder.WebApi: [NETWORK REQUEST] method: DELETE, API call: https://stgapi.moneybase.com/notification/v1/deviceregistration/ (dcde19e4-f3f5-4804-a169-38d7eb2faf7f), headers: ["x-mb-reqid": "dcde19e4-f3f5-4804-a169-38d7eb2faf7f", "x-mb-fdi": "49222b7308c6c521", "x-mb-fpi": "1777537945394.NnCbrV", "x-mb-dt": "Android google sdk_gphone64_arm64 (13)", "application-id": "7cce1295-6809-428f-97c6-9486a2bcaafa", "client-public-id": "676F4446-6827-4A30-A213-70250DFAC314", "client-secret-key": "nWgBIXqsUrH8ts6EXqkk", "sub-application-name": "moneybase", "Authorization": "Bearer Cn77qCPr"], tookMs: 701ms
+04-30 11:42:01.140 18045 19350 I NETWORK RESPONSE: 🟢 statusCode: 200, method: DELETE, request: https://stgapi.moneybase.com/notification/v1/deviceregistration/, headers: ["date": "Thu, 30 Apr 2026 08:42:01 GMT", "content-type": "application/json; charset=utf-8", "content-length": "45", "cf-ray": "9f45402bd9e1ecb4-WAW", "cf-cache-status": "DYNAMIC", "server": "cloudflare", "strict-transport-security": "max-age=31536000; includeSubDomains"], tookMs: 701ms
+04-30 11:42:01.140 18045 19350 I FS.Core.Shared.LogForwarder.WebApi: [NETWORK RESPONSE] 🟢 statusCode: 200, method: DELETE, request: https://stgapi.moneybase.com/notification/v1/deviceregistration/, headers: ["date": "Thu, 30 Apr 2026 08:42:01 GMT", "content-type": "application/json; charset=utf-8", "content-length": "45", "cf-ray": "9f45402bd9e1ecb4-WAW", "cf-cache-status": "DYNAMIC", "server": "cloudflare", "strict-transport-security": "max-age=31536000; includeSubDomains"], tookMs: 701ms
+04-30 11:42:01.140 18045 19350 D FibonacciInterceptor: Response code 200 is in localRetryErrorCodes: false
+04-30 11:42:01.140 18045 19350 D FS.Core.Shared.LogForwarder.WebApi: [FibonacciInterceptor] Response code 200 is in localRetryErrorCodes: false
+04-30 11:42:01.200 18045 19400 D AccountStorageManager: updateExternalReference(String) to  from externalReference veg40002-1
+04-30 11:42:01.200 18045 19400 D FS.Core.Shared.LogForwarder.WebApi: [AccountStorageManager] updateExternalReference(String) to  from externalReference veg40002-1
+04-30 11:42:01.204 18045 19400 D AccountStorageManager: externalReference = 
+04-30 11:42:01.204 18045 19400 D FS.Core.Shared.LogForwarder.WebApi: [AccountStorageManager] externalReference = 
+04-30 11:42:01.307 18045 18149 D EGL_emulation: app_time_stats: avg=99.27ms min=26.24ms max=249.39ms count=10
+04-30 11:42:01.332 18045 19350 I [FRAUDRISK]: Generated new custom x-mb-reqid (was absent)
+04-30 11:42:01.333 18045 19350 I FS.Core.Shared.LogForwarder.WebApi: [[FRAUDRISK]] Generated new custom x-mb-reqid (was absent)
+04-30 11:42:01.333 18045 19350 D PermissionRepositoryImpl: Permission android.permission.ACCESS_FINE_LOCATION has been granted: true
+04-30 11:42:01.333 18045 19350 D PermissionRepositoryImpl: Permission android.permission.ACCESS_COARSE_LOCATION has been granted: true
+04-30 11:42:01.333 18045 19350 I LocationRepository: does permission LOCATION granted?: true
+04-30 11:42:01.333 18045 19350 I FS.Core.Shared.LogForwarder.WebApi: [LocationRepository] does permission LOCATION granted?: true
+04-30 11:42:01.344 18045 19362 D KeystoreService: got cipher for [REQUEST_ID_CACHE_EXPIRY] decrypt by attempt 1
+04-30 11:42:01.355 18045 19362 D FS.Core.Shared.LogForwarder.WebApi: [KeystoreService] got cipher for [REQUEST_ID_CACHE_EXPIRY] decrypt by attempt 1
+04-30 11:42:01.370 18045 19362 D KeystoreService: got cipher for [REQUEST_ID_CACHE] decrypt by attempt 1
+04-30 11:42:01.370 18045 19362 D FS.Core.Shared.LogForwarder.WebApi: [KeystoreService] got cipher for [REQUEST_ID_CACHE] decrypt by attempt 1
+04-30 11:42:01.370 18045 19350 I [FRAUDRISK]: Returning requestId from cache
+04-30 11:42:01.371 18045 19350 I FS.Core.Shared.LogForwarder.WebApi: [[FRAUDRISK]] Returning requestId from cache
+04-30 11:42:01.371 18045 19350 I [FRAUDRISK]: x-mb-fpi is being added to header
+04-30 11:42:01.371 18045 19350 I FS.Core.Shared.LogForwarder.WebApi: [[FRAUDRISK]] x-mb-fpi is being added to header
+04-30 11:42:01.372 18045 19350 D HeaderWriter: Auth flow: starting recovering access token with isRefreshTokenCall: false
+04-30 11:42:01.372 18045 19350 D FS.Core.Shared.LogForwarder.WebApi: [HeaderWriter] Auth flow: starting recovering access token with isRefreshTokenCall: false
+04-30 11:42:01.373 18045 19362 D KeystoreService: got cipher for [REFRESH_TOKEN] decrypt by attempt 1
+04-30 11:42:01.373 18045 19362 D FS.Core.Shared.LogForwarder.WebApi: [KeystoreService] got cipher for [REFRESH_TOKEN] decrypt by attempt 1
+04-30 11:42:01.385 18045 19400 D KeystoreService: got cipher for [ACCESS_TOKEN_EXPIRY_DATE] decrypt by attempt 1
+04-30 11:42:01.385 18045 19400 D FS.Core.Shared.LogForwarder.WebApi: [KeystoreService] got cipher for [ACCESS_TOKEN_EXPIRY_DATE] decrypt by attempt 1
+04-30 11:42:01.387 18045 19400 D CommonStorageManager: AccessToken expiry date: Thu Apr 30 11:42:55 GMT+03:00 2026 - now: Thu Apr 30 11:42:01 GMT+03:00 2026 - IsExpired: false
+04-30 11:42:01.387 18045 19400 D FS.Core.Shared.LogForwarder.WebApi: [CommonStorageManager] AccessToken expiry date: Thu Apr 30 11:42:55 GMT+03:00 2026 - now: Thu Apr 30 11:42:01 GMT+03:00 2026 - IsExpired: false
+04-30 11:42:01.387 18045 19350 D MoneybaseAuthenticator: Auth flow: using valid access token
+04-30 11:42:01.388 18045 19350 D FS.Core.Shared.LogForwarder.WebApi: [MoneybaseAuthenticator] Auth flow: using valid access token
+04-30 11:42:01.400  1450  1891 W AiAiEcho: SmartspaceNotificationPredictor no parser can handle this notification or notification is invalid
+04-30 11:42:01.401  1539  1539 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+04-30 11:42:01.401  1539  1539 D NLService: Successfully stored the newly arrived notification identified by 1138
+04-30 11:42:01.447 18045 18054 I om.moneybase.qa: Background young concurrent copying GC freed 424004(16MB) AllocSpace objects, 56(2156KB) LOS objects, 27% free, 47MB/65MB, paused 111us,24us total 109.925ms
+04-30 11:42:01.604  1539  1539 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+04-30 11:42:01.605  1539  1539 D NLService: Successfully stored the newly arrived notification identified by 1138
+04-30 11:42:01.605  1450  1891 W AiAiEcho: SmartspaceNotificationPredictor no parser can handle this notification or notification is invalid
+04-30 11:42:01.619   694   940 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+04-30 11:42:01.621   694   940 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+04-30 11:42:01.669 18045 18149 D EGL_emulation: app_time_stats: avg=145.34ms min=67.57ms max=382.14ms count=10
+04-30 11:42:01.736   694   937 D EGL_emulation: app_time_stats: avg=37.10ms min=1.10ms max=111.08ms count=17
+04-30 11:42:01.937   694   940 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+04-30 11:42:01.938   694   940 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+04-30 11:42:02.090 18045 19350 I NETWORK REQUEST: method: DELETE, API call: https://stgapi.moneybase.com/Authentication/v1/Sessions (1e9a762b-ed14-4e9c-afbc-8fe123b6ae82), headers: ["x-mb-reqid": "1e9a762b-ed14-4e9c-afbc-8fe123b6ae82", "x-mb-fdi": "49222b7308c6c521", "x-mb-fpi": "1777537945394.NnCbrV", "x-mb-dt": "Android google sdk_gphone64_arm64 (13)", "application-id": "7cce1295-6809-428f-97c6-9486a2bcaafa", "client-public-id": "676F4446-6827-4A30-A213-70250DFAC314", "client-secret-key": "nWgBIXqsUrH8ts6EXqkk", "sub-application-name": "moneybase", "Authorization": "Bearer Cn77qCPr"], tookMs: 701ms
+04-30 11:42:02.091 18045 19350 I FS.Core.Shared.LogForwarder.WebApi: [NETWORK REQUEST] method: DELETE, API call: https://stgapi.moneybase.com/Authentication/v1/Sessions (1e9a762b-ed14-4e9c-afbc-8fe123b6ae82), headers: ["x-mb-reqid": "1e9a762b-ed14-4e9c-afbc-8fe123b6ae82", "x-mb-fdi": "49222b7308c6c521", "x-mb-fpi": "1777537945394.NnCbrV", "x-mb-dt": "Android google sdk_gphone64_arm64 (13)", "application-id": "7cce1295-6809-428f-97c6-9486a2bcaafa", "client-public-id": "676F4446-6827-4A30-A213-70250DFAC314", "client-secret-key": "nWgBIXqsUrH8ts6EXqkk", "sub-application-name": "moneybase", "Authorization": "Bearer Cn77qCPr"], tookMs: 701ms
+04-30 11:42:02.091 18045 19350 I NETWORK RESPONSE: 🟢 statusCode: 200, method: DELETE, request: https://stgapi.moneybase.com/Authentication/v1/Sessions, headers: ["date": "Thu, 30 Apr 2026 08:42:02 GMT", "content-length": "0", "cf-ray": "9f4540320cd6ecb4-WAW", "cf-cache-status": "DYNAMIC", "server": "cloudflare", "strict-transport-security": "max-age=31536000; includeSubDomains", "x-response-time-ms": "161"], tookMs: 701ms
+04-30 11:42:02.091 18045 19350 I FS.Core.Shared.LogForwarder.WebApi: [NETWORK RESPONSE] 🟢 statusCode: 200, method: DELETE, request: https://stgapi.moneybase.com/Authentication/v1/Sessions, headers: ["date": "Thu, 30 Apr 2026 08:42:02 GMT", "content-length": "0", "cf-ray": "9f4540320cd6ecb4-WAW", "cf-cache-status": "DYNAMIC", "server": "cloudflare", "strict-transport-security": "max-age=31536000; includeSubDomains", "x-response-time-ms": "161"], tookMs: 701ms
+04-30 11:42:02.092 18045 19350 D FibonacciInterceptor: Response code 200 is in localRetryErrorCodes: false
+04-30 11:42:02.092 18045 19350 D FS.Core.Shared.LogForwarder.WebApi: [FibonacciInterceptor] Response code 200 is in localRetryErrorCodes: false
+04-30 11:42:02.129 18045 19400 I [ACCESS_TOKEN]: Stopping access token worker
+04-30 11:42:02.129 18045 19400 I FS.Core.Shared.LogForwarder.WebApi: [[ACCESS_TOKEN]] Stopping access token worker
+04-30 11:42:02.185   694   937 D EGL_emulation: app_time_stats: avg=317.59ms min=254.00ms max=414.82ms count=4
+04-30 11:42:02.277 18045 18045 I [REFERRAL]: logout referral system. All account related cache will be clear
+04-30 11:42:02.277 18045 18045 I FS.Core.Shared.LogForwarder.WebApi: [[REFERRAL]] logout referral system. All account related cache will be clear
+04-30 11:42:02.285 18045 19400 W System  : Ignoring header Authorization because its value was null.
+04-30 11:42:02.340  1539  1539 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+04-30 11:42:02.343  1539  1539 D NLService: Successfully stored the newly arrived notification identified by 1138
+04-30 11:42:02.344  1450  1891 W AiAiEcho: SmartspaceNotificationPredictor no parser can handle this notification or notification is invalid
+04-30 11:42:02.349 18045 19400 D TrafficStats: tagSocket(149) with statsTag=0xffffffff, statsUid=-1
+04-30 11:42:02.409   694   940 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+04-30 11:42:02.410   694   940 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+04-30 11:42:02.422 18045 18149 D EGL_emulation: app_time_stats: avg=98.30ms min=32.07ms max=188.11ms count=10
+04-30 11:42:02.787 18045 18149 D EGL_emulation: app_time_stats: avg=111.73ms min=74.93ms max=197.57ms count=10
+04-30 11:42:03.012 18045 18045 I [REFERRAL]: updating the inviting user referral code storage cache by [null]
+04-30 11:42:03.013 18045 18045 I FS.Core.Shared.LogForwarder.WebApi: [[REFERRAL]] updating the inviting user referral code storage cache by [null]
+04-30 11:42:03.022 18045 18045 I AuthenticationLogoutViewModel: Onboarding logout flow  calling resetStorageForLogout
+04-30 11:42:03.025 18045 18045 I FS.Core.Shared.LogForwarder.WebApi: [AuthenticationLogoutViewModel] Onboarding logout flow  calling resetStorageForLogout
+04-30 11:42:03.033 18045 19400 I MoneybaseAuthenticator: updating applicationId by the new value: [7cce1295-6809-428f-97c6-9486a2bcaafa]
+04-30 11:42:03.034 18045 19400 I FS.Core.Shared.LogForwarder.WebApi: [MoneybaseAuthenticator] updating applicationId by the new value: [7cce1295-6809-428f-97c6-9486a2bcaafa]
+04-30 11:42:03.034 18045 19400 D AuthenticationDatasource: resetStorageForLogout
+04-30 11:42:03.034 18045 19400 D FS.Core.Shared.LogForwarder.WebApi: [AuthenticationDatasource] resetStorageForLogout
+04-30 11:42:03.039 18045 19400 D KeystoreService: got cipher for [AUTHENTICATION_STATE] encrypt by attempt 1
+04-30 11:42:03.039 18045 19400 D FS.Core.Shared.LogForwarder.WebApi: [KeystoreService] got cipher for [AUTHENTICATION_STATE] encrypt by attempt 1
+04-30 11:42:03.040 18045 19400 I AuthenticationDatasource: applicationId set to empty into accountStorageManager during logout
+04-30 11:42:03.041 18045 19400 I FS.Core.Shared.LogForwarder.WebApi: [AuthenticationDatasource] applicationId set to empty into accountStorageManager during logout
+04-30 11:42:03.049 18045 19362 I [ACCESS_TOKEN]: reset access token to empty string
+04-30 11:42:03.050 18045 19362 I FS.Core.Shared.LogForwarder.WebApi: [[ACCESS_TOKEN]] reset access token to empty string
+04-30 11:42:03.134 18045 19362 D AccountStorageManager: deviceRegistrationRequired = null
+04-30 11:42:03.135 18045 19362 D FS.Core.Shared.LogForwarder.WebApi: [AccountStorageManager] deviceRegistrationRequired = null
+04-30 11:42:03.167 18045 19391 I AccountStorageManager: Fingerprint was enabled? true
+04-30 11:42:03.167 18045 19391 I FS.Core.Shared.LogForwarder.WebApi: [AccountStorageManager] Fingerprint was enabled? true
+04-30 11:42:03.168 18045 19391 D AccountStorageManager: externalReference = 
+04-30 11:42:03.168 18045 19391 D FS.Core.Shared.LogForwarder.WebApi: [AccountStorageManager] externalReference = 
+04-30 11:42:03.174 18045 19391 D KeystoreService: got cipher for [IDENTITY_ID] encrypt by attempt 1
+04-30 11:42:03.174 18045 19391 D FS.Core.Shared.LogForwarder.WebApi: [KeystoreService] got cipher for [IDENTITY_ID] encrypt by attempt 1
+04-30 11:42:03.193 18045 19391 D KeystoreService: got cipher for [SUB_IDENTITY_ID] encrypt by attempt 1
+04-30 11:42:03.194 18045 19391 D FS.Core.Shared.LogForwarder.WebApi: [KeystoreService] got cipher for [SUB_IDENTITY_ID] encrypt by attempt 1
+04-30 11:42:03.198 18045 19391 I CommonStorageManager: update cached mobile number by new value, hash: [0]
+04-30 11:42:03.198 18045 19391 I FS.Core.Shared.LogForwarder.WebApi: [CommonStorageManager] update cached mobile number by new value, hash: [0]
+04-30 11:42:03.225 18045 19391 I CommonStorageManager: update cached Account Type by new value, hash: []
+04-30 11:42:03.226 18045 19391 I FS.Core.Shared.LogForwarder.WebApi: [CommonStorageManager] update cached Account Type by new value, hash: []
+04-30 11:42:03.277 18045 19381 D AccountStorageManager: applicantStatus = Approved
+04-30 11:42:03.279 18045 19381 D FS.Core.Shared.LogForwarder.WebApi: [AccountStorageManager] applicantStatus = Approved
+04-30 11:42:03.280 18045 19381 D AccountStorageManager: subIdentitySwitched = true
+04-30 11:42:03.280 18045 19381 D FS.Core.Shared.LogForwarder.WebApi: [AccountStorageManager] subIdentitySwitched = true
+04-30 11:42:03.288 18045 19389 I AccountStorageManager: firstSyncRunCompleted = false (set false)
+04-30 11:42:03.288 18045 19389 I FS.Core.Shared.LogForwarder.WebApi: [AccountStorageManager] firstSyncRunCompleted = false (set false)
+04-30 11:42:03.451 18045 19400 D [NEWS_BUBBLE]: update hidden news bubbles cache by []
+04-30 11:42:03.451 18045 19400 D FS.Core.Shared.LogForwarder.WebApi: [[NEWS_BUBBLE]] update hidden news bubbles cache by []
+04-30 11:42:03.482 18045 18149 D EGL_emulation: app_time_stats: avg=77.87ms min=26.20ms max=130.67ms count=12
+04-30 11:42:03.632 18045 19400 D CommonStorageManager: All RSA keys cleared (legacy + per-subidentity).
+04-30 11:42:03.632 18045 19400 D FS.Core.Shared.LogForwarder.WebApi: [CommonStorageManager] All RSA keys cleared (legacy + per-subidentity).
+04-30 11:42:03.719 18045 18045 D [REPLICATOR]: Dispose Couchbase Sync replicator
+04-30 11:42:03.720 18045 18045 D FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR]] Dispose Couchbase Sync replicator
+04-30 11:42:03.722 18045 19400 I SystemPrefsManager: Clearing session
+04-30 11:42:03.722 18045 19400 I FS.Core.Shared.LogForwarder.WebApi: [SystemPrefsManager] Clearing session
+04-30 11:42:03.764 18045 18045 D MoneybaseAuthenticator: Auth flow: isForceLogoutInProgress updated to false
+04-30 11:42:03.766 18045 18045 D FS.Core.Shared.LogForwarder.WebApi: [MoneybaseAuthenticator] Auth flow: isForceLogoutInProgress updated to false
+04-30 11:42:03.766 18045 18045 I [AUTH]  : clear claims cache
+04-30 11:42:03.766 18045 18045 I FS.Core.Shared.LogForwarder.WebApi: [[AUTH]] clear claims cache
+04-30 11:42:03.768 18045 19391 D AnimationExt: hide animation loading fragment
+04-30 11:42:03.774 18045 19391 D FS.Core.Shared.LogForwarder.WebApi: [AnimationExt] hide animation loading fragment
+04-30 11:42:03.782 18045 18045 I SplashFragment: moveToNextScreen() called from observeIsLogoutCompleted. Called for a total of 1 times.
+04-30 11:42:03.783 18045 18045 I FS.Core.Shared.LogForwarder.WebApi: [SplashFragment] moveToNextScreen() called from observeIsLogoutCompleted. Called for a total of 1 times.
+04-30 11:42:03.783 18045 18045 D SplashFragment: Current destination: 2131363727
+04-30 11:42:03.783 18045 18045 D FS.Core.Shared.LogForwarder.WebApi: [SplashFragment] Current destination: 2131363727
+04-30 11:42:03.789 18045 18149 D EGL_emulation: app_time_stats: avg=82.76ms min=66.59ms max=114.52ms count=12
+04-30 11:42:03.824 18045 19382 D KeystoreService: got cipher for [PASSCODE] decrypt by attempt 1
+04-30 11:42:03.825 18045 19382 D FS.Core.Shared.LogForwarder.WebApi: [KeystoreService] got cipher for [PASSCODE] decrypt by attempt 1
+--------- beginning of system
+04-30 11:42:03.829   170   179 E keystore2: keystore2::error: In KeystoreOperation::finish
+04-30 11:42:03.829   170   179 E keystore2: 
+04-30 11:42:03.829   170   179 E keystore2: Caused by:
+04-30 11:42:03.829   170   179 E keystore2:     0: In finish: KeyMint::finish failed.
+04-30 11:42:03.829   170   179 E keystore2:     1: Error::Km(ErrorCode(-30))
+04-30 11:42:03.855   503   831 D CoreBackPreview: Window{988b5c u0 com.moneybase.qa/com.moneybase.views.activities.LoginActivity}: Setting back callback null
+04-30 11:42:03.906   503   831 W InputManager-JNI: Input channel object '988b5c com.moneybase.qa/com.moneybase.views.activities.LoginActivity (client)' was disposed without first being removed with the input manager!
+04-30 11:42:03.912 18045 18045 D LeakCanary: Watching instance of androidx.compose.ui.platform.ComposeView (com.moneybase.foundationui.animationLoading.AnimationLoadingFragment received Fragment#onDestroyView() callback (references to its views should be cleared to prevent leaks)) with key 7119b7ab-a577-4151-af05-eb59402e495a
+04-30 11:42:03.912 18045 18045 D LeakCanary: Watching instance of androidx.lifecycle.SavedStateHandlesVM (androidx.lifecycle.SavedStateHandlesVM received ViewModel#onCleared() callback) with key fabb93ad-a664-4142-90dd-ba3b35dfeee7
+04-30 11:42:03.912 18045 18045 D LeakCanary: Watching instance of leakcanary.internal.ViewModelClearedWatcher (leakcanary.internal.ViewModelClearedWatcher received ViewModel#onCleared() callback) with key b21b7150-750c-412b-8bea-7b8a98cbe471
+04-30 11:42:03.912 18045 18045 D LeakCanary: Watching instance of androidx.loader.app.LoaderManagerImpl$LoaderViewModel (androidx.loader.app.LoaderManagerImpl$LoaderViewModel received ViewModel#onCleared() callback) with key 15a631f2-ff6c-4428-a243-ec7f386f6699
+04-30 11:42:03.912 18045 18045 D LeakCanary: Watching instance of com.moneybase.foundationui.animationLoading.AnimationLoadingFragment (com.moneybase.foundationui.animationLoading.AnimationLoadingFragment received Fragment#onDestroy() callback) with key 81b697fa-a465-4706-ae17-c735ad10dc8a
+04-30 11:42:03.913   503   521 V WindowManager: Unknown focus tokens, dropping reportFocusChanged
+04-30 11:42:03.916 18045 19400 D KeystoreService: got cipher for [PASSCODE] decrypt by attempt 1
+04-30 11:42:03.916 18045 19400 D FS.Core.Shared.LogForwarder.WebApi: [KeystoreService] got cipher for [PASSCODE] decrypt by attempt 1
+04-30 11:42:03.916   170   179 E keystore2: keystore2::error: In KeystoreOperation::finish
+04-30 11:42:03.916   170   179 E keystore2: 
+04-30 11:42:03.916   170   179 E keystore2: Caused by:
+04-30 11:42:03.916   170   179 E keystore2:     0: In finish: KeyMint::finish failed.
+04-30 11:42:03.916   170   179 E keystore2:     1: Error::Km(ErrorCode(-30))
+04-30 11:42:03.943   694   937 D EGL_emulation: app_time_stats: avg=585.45ms min=53.96ms max=1467.72ms count=3
+04-30 11:42:04.163  1400  1400 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():2159 
+04-30 11:42:04.164  1400  1400 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 0, locked = false
+04-30 11:42:04.164  1400  1400 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1434 onStartInput(EditorInfo{EditorInfo{packageName=com.moneybase.qa, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=-1, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+04-30 11:42:04.164  1400  1400 I AndroidIME: LatinIMEBase.updateInputViewCoverNavigation():312 Update input view padding, isNavbarOverInputWindow=false, bottom inset=126
+04-30 11:42:04.164  1400  1400 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 1, locked = false
+04-30 11:42:04.194   694   937 D EGL_emulation: app_time_stats: avg=337.62ms min=10.45ms max=1944.86ms count=7
+04-30 11:42:04.231  1160  3566 D TrafficStats: tagSocket(137) with statsTag=0x4000407, statsUid=-1
+04-30 11:42:04.233 18045 18045 I TextInputLayout: EditText added is not a TextInputEditText. Please switch to using that class instead.
+04-30 11:42:04.255 18045 18045 W DataBinding: Setting the fragment as the LifecycleOwner might cause memory leaks because views lives shorter than the Fragment. Consider using Fragment's view lifecycle
+04-30 11:42:04.273 18045 18045 W DataBinding: Setting the fragment as the LifecycleOwner might cause memory leaks because views lives shorter than the Fragment. Consider using Fragment's view lifecycle
+04-30 11:42:04.282 18045 18045 D [EDGE_TO_EDGE]: applying WindowSystemBarsInsets listener for register_screen
+04-30 11:42:04.283 18045 18045 D FS.Core.Shared.LogForwarder.WebApi: [[EDGE_TO_EDGE]] applying WindowSystemBarsInsets listener for register_screen
+04-30 11:42:04.291 18045 18045 D LeakCanary: Watching instance of androidx.compose.ui.platform.ComposeView (com.moneybase.views.splash.SplashFragment received Fragment#onDestroyView() callback (references to its views should be cleared to prevent leaks)) with key 24c5ec33-d4ca-4025-9ca2-e18cb34dd027
+04-30 11:42:04.291 18045 18045 D LeakCanary: Watching instance of androidx.navigation.fragment.FragmentNavigator$ClearEntryStateViewModel (androidx.navigation.fragment.FragmentNavigator$ClearEntryStateViewModel received ViewModel#onCleared() callback) with key f9350c8a-b1ee-4ed5-9a35-238afd2ada66
+04-30 11:42:04.291 18045 18045 D LeakCanary: Watching instance of androidx.lifecycle.SavedStateHandlesVM (androidx.lifecycle.SavedStateHandlesVM received ViewModel#onCleared() callback) with key 73fa5d6a-61cd-4612-9fa6-8ba6cb91c202
+04-30 11:42:04.291 18045 18045 D LeakCanary: Watching instance of leakcanary.internal.ViewModelClearedWatcher (leakcanary.internal.ViewModelClearedWatcher received ViewModel#onCleared() callback) with key 6fbd6a9a-bfc7-45bf-a01b-8822274066a4
+04-30 11:42:04.291 18045 18045 D LeakCanary: Watching instance of com.moneybase.views.splash.SplashViewModel (com.moneybase.views.splash.SplashViewModel received ViewModel#onCleared() callback) with key f53b70c0-691d-40b8-ad5d-c5d08fe8b51e
+04-30 11:42:04.291 18045 18045 D LeakCanary: Watching instance of androidx.loader.app.LoaderManagerImpl$LoaderViewModel (androidx.loader.app.LoaderManagerImpl$LoaderViewModel received ViewModel#onCleared() callback) with key 4125c01c-8d32-4fc4-a5e9-2dc10c7cfcaa
+04-30 11:42:04.292 18045 18045 D LeakCanary: Watching instance of com.moneybase.views.splash.SplashFragment (com.moneybase.views.splash.SplashFragment received Fragment#onDestroy() callback) with key 3f22098d-c708-4d32-a2a1-a511765a1fcc
+04-30 11:42:04.329 18045 18045 D [EDGE_TO_EDGE]: set vertical insets from WindowInsetsListener of register_screen
+04-30 11:42:04.330 18045 18045 D FS.Core.Shared.LogForwarder.WebApi: [[EDGE_TO_EDGE]] set vertical insets from WindowInsetsListener of register_screen
+04-30 11:42:04.333  1400  1400 W AndroidSpellCheckerService: AndroidSpellCheckerService.initialize():72 initialize...
+04-30 11:42:04.335  1400  1400 I ShortcutsDataManager: ShortcutsDataManager.onContentChanged():72 onContentChanged()
+04-30 11:42:04.335  1400  1400 I ContactsDataManager: ContactsDataManager.onContentChanged():153 onContentChanged()
+04-30 11:42:04.336  1400  1400 W AndroidSpellCheckerService: AndroidSpellCheckerService.initialize():82 initialize...done
+04-30 11:42:04.340  1400  3761 I AndroidSpellCheckerService: AndroidSpellCheckerService.createSession():138 com.google.android.keyboard.client.delight5.LanguageIdentifier@6d651aa is created
+04-30 11:42:04.494 18045 18045 I AssistStructure: Flattened final assist data: 3584 bytes, containing 1 windows, 24 views
+04-30 11:42:04.496   503  1947 D AutofillSession: createPendingIntent for request 36
+04-30 11:42:04.496   503  1947 D ContentCapturePerUserService: Notified activity assist data for activity: Token{a8aa089 ActivityRecord{ce6488e u0 com.moneybase.qa/com.moneybase.views.activities.LoginActivity} t47}} without a session Id
+04-30 11:42:04.508 18045 18149 D EGL_emulation: app_time_stats: avg=103.59ms min=24.25ms max=279.21ms count=9
+04-30 11:42:04.765  1400  3761 I tflite  : Replacing 131 out of 337 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 66 partitions for subgraph 0.
+04-30 11:42:04.789 18045 18115 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+04-30 11:42:04.795 18045 18115 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+04-30 11:42:04.795  1400  3761 I tflite  : Replacing 18 out of 53 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 13 partitions for subgraph 0.
+04-30 11:42:04.809 18045 18115 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+04-30 11:42:04.820  1400  3761 I tflite  : Replacing 41 out of 87 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 21 partitions for subgraph 0.
+04-30 11:42:04.827 18045 18115 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+04-30 11:42:04.834 18045 18115 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+04-30 11:42:04.934 18045 18115 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+04-30 11:42:04.939 18045 18115 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+04-30 11:42:04.940 18045 18115 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+04-30 11:42:04.955 18045 18115 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+04-30 11:42:05.212   694   937 D EGL_emulation: app_time_stats: avg=12.33ms min=0.48ms max=34.27ms count=38
+04-30 11:42:05.240 18045 19384 D [RECENT_TRANSACTIONS]: emit offline requests in quantity: 0
+04-30 11:42:05.240 18045 19384 D FS.Core.Shared.LogForwarder.WebApi: [[RECENT_TRANSACTIONS]] emit offline requests in quantity: 0
+04-30 11:42:05.381  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:2182): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 11:42:05.916 18045 18149 D EGL_emulation: app_time_stats: avg=146.10ms min=8.07ms max=1149.69ms count=9
+04-30 11:42:06.855 18002 18030 I appium  : READER_IDLE: closing the channel
+04-30 11:42:08.918 18045 18115 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+04-30 11:42:08.918 18045 18115 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+04-30 11:42:09.292 18045 18115 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+04-30 11:42:09.789  1540  1540 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.measurement.START pkg=com.google.android.gms }
+04-30 11:42:11.573 18045 18126 D TrafficStats: tagSocket(124) with statsTag=0x57, statsUid=-1
+04-30 11:42:11.575 18045 18126 D TrafficStats: tagSocket(124) with statsTag=0x57, statsUid=-1
+04-30 11:42:11.753 18045 18126 I Datadog : [_dd.sdk_core.default]: Batch ea3bd17c-4af6-4e99-b497-2edb971c36ef [13071 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+04-30 11:42:11.855 18045 18126 I Datadog : [_dd.sdk_core.default]: Batch b906c8ab-895d-4bd7-89c6-f58f29eb728c [195921 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+04-30 11:42:11.901   503   514 W System  : A resource failed to call HardwareBuffer.close. 
+04-30 11:42:11.902   503   514 W System  : A resource failed to call HardwareBuffer.close. 
+04-30 11:42:11.902   503   514 W System  : A resource failed to call HardwareBuffer.close. 
+04-30 11:42:13.929   170 19349 I keystore2: keystore2::watchdog: Watchdog thread idle -> terminating. Have a great day.
+04-30 11:42:14.761  1160  1160 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.presencemanager.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+04-30 11:42:14.763  1160  1160 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+04-30 11:42:19.089  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:2183): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 11:42:19.149  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:2184): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms

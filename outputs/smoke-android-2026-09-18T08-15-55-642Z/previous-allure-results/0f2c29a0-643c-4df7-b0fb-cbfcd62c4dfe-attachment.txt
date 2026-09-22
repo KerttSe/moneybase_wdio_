@@ -1,0 +1,201 @@
+--------- beginning of main
+04-13 16:40:46.061  7257  7313 I appium  : Waiting up to 10000ms for the device to idle
+04-13 16:40:46.077  7257  7313 I appium  : Caching 2 found elements
+04-13 16:40:46.078  7257  7313 I appium  : Cached 2 elements
+04-13 16:40:46.079  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":[{"ELEMENT":"00000000-0000-0023-0000-024e000000f1","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0023-0000-024e000000f1"},{"ELEMENT":"00000000-0000-0023-0000-01be000000f1","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0023-000…
+04-13 16:40:46.082  7257  7313 I appium  : channel read: POST /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element
+04-13 16:40:46.082  7257  7313 I appium  : FindElement command
+04-13 16:40:46.082  7257  7313 I appium  : method: 'xpath', selector: '//android.view.View[contains(@content-desc,"BMW")]'
+04-13 16:40:46.083  7257  7313 I appium  : Waiting up to 10000ms for the device to idle
+04-13 16:40:46.084  7257  7313 I appium  : The following attributes will be included to the page source: [content-desc]
+04-13 16:40:46.115  7257  7313 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[contains(@content-desc,"BMW")]' XPath2 query
+04-13 16:40:46.117  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.utils.ElementLocationHelpers.findElement(ElementLocationHelpers.java:153)\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:60)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1012)\n"}}
+04-13 16:40:46.122  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-024e000000f1/attribute/displayed
+04-13 16:40:46.123  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.127  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.130  7257  7313 I appium  : channel read: POST /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element
+04-13 16:40:46.131  7257  7313 I appium  : FindElement command
+04-13 16:40:46.132  7257  7313 I appium  : method: 'xpath', selector: '//*[contains(@content-desc,"BMW")]'
+04-13 16:40:46.132  7257  7313 I appium  : Waiting up to 10000ms for the device to idle
+04-13 16:40:46.133  7257  7313 I appium  : The following attributes will be included to the page source: [content-desc]
+04-13 16:40:46.147  7257  7265 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+04-13 16:40:46.172  7257  7313 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@content-desc,"BMW")]' XPath2 query
+04-13 16:40:46.173  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.utils.ElementLocationHelpers.findElement(ElementLocationHelpers.java:153)\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:60)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1012)\n"}}
+04-13 16:40:46.177  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-024e000000f1/text
+04-13 16:40:46.177  7257  7313 I appium  : GetText command
+04-13 16:40:46.180  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"Price Alerts"}
+04-13 16:40:46.183  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-01be000000f1/attribute/displayed
+04-13 16:40:46.184  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.186  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.190  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-01be000000f1/text
+04-13 16:40:46.190  7257  7313 I appium  : GetText command
+04-13 16:40:46.192  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":""}
+04-13 16:40:46.196  7257  7313 I appium  : channel read: POST /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/elements
+04-13 16:40:46.197  7257  7313 I appium  : FindElements command
+04-13 16:40:46.197  7257  7313 I appium  : method: 'class name', selector: 'android.view.View'
+04-13 16:40:46.198  7257  7313 I appium  : Waiting up to 10000ms for the device to idle
+04-13 16:40:46.216  7257  7313 I appium  : Caching 24 found elements
+04-13 16:40:46.219  7257  7313 I appium  : Cached 24 elements
+04-13 16:40:46.220  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":[{"ELEMENT":"00000000-0000-0023-0000-00f2000000f0","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0023-0000-00f2000000f0"},{"ELEMENT":"00000000-0000-0023-ffff-ffff000000f0","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0023-fff…
+04-13 16:40:46.236  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-00f2000000f0/attribute/displayed
+04-13 16:40:46.236  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.239  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.243  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-00f2000000f0/attribute/content-desc
+04-13 16:40:46.243  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.251  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.256  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-ffff-ffff000000f0/attribute/displayed
+04-13 16:40:46.256  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.259  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.263  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-ffff-ffff000000f0/attribute/content-desc
+04-13 16:40:46.263  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.266  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.269  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-024d000000f1/attribute/displayed
+04-13 16:40:46.269  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.272  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.275  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-024d000000f1/attribute/content-desc
+04-13 16:40:46.275  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.278  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.281  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0149000000f1/attribute/displayed
+04-13 16:40:46.281  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.284  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.287  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0149000000f1/attribute/content-desc
+04-13 16:40:46.287  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.301  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.310  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-010b000000f1/attribute/displayed
+04-13 16:40:46.310  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.316  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.322  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-010b000000f1/attribute/content-desc
+04-13 16:40:46.323  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.326  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.330  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0260000000f1/attribute/displayed
+04-13 16:40:46.330  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.333  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.336  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0260000000f1/attribute/content-desc
+04-13 16:40:46.336  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.339  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.341  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0263000000f1/attribute/displayed
+04-13 16:40:46.342  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.344  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.347  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0263000000f1/attribute/content-desc
+04-13 16:40:46.348  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.350  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.353  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0261000000f1/attribute/displayed
+04-13 16:40:46.354  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.356  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.359  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0261000000f1/attribute/content-desc
+04-13 16:40:46.360  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.363  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.366  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-026d000000f1/attribute/displayed
+04-13 16:40:46.366  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.368  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.371  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-026d000000f1/attribute/content-desc
+04-13 16:40:46.372  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.374  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.377  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-027b000000f1/attribute/displayed
+04-13 16:40:46.377  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.380  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.383  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-027b000000f1/attribute/content-desc
+04-13 16:40:46.384  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.386  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.389  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0281000000f1/attribute/displayed
+04-13 16:40:46.389  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.392  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.394  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0281000000f1/attribute/content-desc
+04-13 16:40:46.395  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.397  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.400  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0284000000f1/attribute/displayed
+04-13 16:40:46.401  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.403  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.406  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0284000000f1/attribute/content-desc
+04-13 16:40:46.406  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.409  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.412  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0345000000f1/attribute/displayed
+04-13 16:40:46.412  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.415  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.418  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0345000000f1/attribute/content-desc
+04-13 16:40:46.419  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.421  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.424  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-034a000000f1/attribute/displayed
+04-13 16:40:46.424  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.427  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.430  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-034a000000f1/attribute/content-desc
+04-13 16:40:46.431  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.433  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.436  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0348000000f1/attribute/displayed
+04-13 16:40:46.437  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.439  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.443  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0348000000f1/attribute/content-desc
+04-13 16:40:46.443  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.446  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.450  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-027a000000f1/attribute/displayed
+04-13 16:40:46.450  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.454  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.457  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-027a000000f1/attribute/content-desc
+04-13 16:40:46.457  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.459  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.462  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0275000000f1/attribute/displayed
+04-13 16:40:46.463  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.466  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.469  7325  7412 D EGL_emulation: app_time_stats: avg=499.27ms min=498.42ms max=500.95ms count=3
+04-13 16:40:46.469  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0275000000f1/attribute/content-desc
+04-13 16:40:46.470  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.477  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.483  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-025b000000f1/attribute/displayed
+04-13 16:40:46.483  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.506  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.510  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-025b000000f1/attribute/content-desc
+04-13 16:40:46.511  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.514  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.517  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-024a000000f1/attribute/displayed
+04-13 16:40:46.518  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.523  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.527  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-024a000000f1/attribute/content-desc
+04-13 16:40:46.528  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.530  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.533  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0093000000f1/attribute/displayed
+04-13 16:40:46.534  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.536  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.540  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0093000000f1/attribute/content-desc
+04-13 16:40:46.540  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.543  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.545  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0218000000f1/attribute/displayed
+04-13 16:40:46.546  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.548  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.552  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0218000000f1/attribute/content-desc
+04-13 16:40:46.552  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.554  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.557  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-01c5000000f1/attribute/displayed
+04-13 16:40:46.557  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.560  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.564  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-01c5000000f1/attribute/content-desc
+04-13 16:40:46.565  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.567  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.570  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0013000000f1/attribute/displayed
+04-13 16:40:46.571  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.574  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.577  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-0000-0013000000f1/attribute/content-desc
+04-13 16:40:46.578  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.581  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.584  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-ffff-ffff000000f3/attribute/displayed
+04-13 16:40:46.585  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.587  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"true"}
+04-13 16:40:46.591  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/element/00000000-0000-0023-ffff-ffff000000f3/attribute/content-desc
+04-13 16:40:46.591  7257  7313 I appium  : GetElementAttribute command
+04-13 16:40:46.594  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":null}
+04-13 16:40:46.597  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/source
+04-13 16:40:46.598  7257  7313 I appium  : Source command
+04-13 16:40:46.598  7257  7313 I appium  : Waiting up to 10000ms for the device to idle
+04-13 16:40:46.639  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2205\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+04-13 16:40:46.660  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/screenshot
+04-13 16:40:46.660  7257  7313 I appium  : CaptureScreenshot command
+04-13 16:40:46.662  7257  7313 W tomator2.server: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (blocked, reflection, allowed)
+04-13 16:40:46.663  7257  7313 W tomator2.server: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (blocked, reflection, allowed)
+04-13 16:40:46.903  8084  8084 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+04-13 16:40:46.903  8084  8084 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+04-13 16:40:46.930   160   160 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+04-13 16:40:46.930  8084  8089 I Gralloc4: mapper 4.x is not supported
+04-13 16:40:47.083  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAlgCAYAAABtGofVAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15eJTV3f/xzwwJIQTZQkgIwSRFwipF0SaiIhotIkuRTVGUtIosFcMltKVP+/zUaq8uVgstrmgJVmURwQKyWHCXJi0gimgIIMSEbBAQkJCQZOb3R56ZZjKTZLLMZE7yfl1XZObMfd/nJBk…
+04-13 16:40:47.093  7257  7313 I appium  : channel read: GET /session/3459d838-a2fd-42f9-8ce0-3f10e687c06a/source
+04-13 16:40:47.094  7257  7313 I appium  : Source command
+04-13 16:40:47.094  7257  7313 I appium  : Waiting up to 10000ms for the device to idle
+04-13 16:40:47.138  7257  7313 I appium  : AppiumResponse: {"sessionId":"3459d838-a2fd-42f9-8ce0-3f10e687c06a","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2205\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…

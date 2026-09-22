@@ -1,0 +1,202 @@
+--------- beginning of main
+04-29 19:16:15.752   501   628 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=326, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-29 19:16:15.752   501   628 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=326, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-29 19:16:15.752   501   628 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=326, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-29 19:16:15.755 13566 13596 I Finsky:background: [67] IQ: start evaluating install requests.
+04-29 19:16:15.755 13566 13596 I Finsky:background: [67] IQ: no jobs active. Skipping
+04-29 19:16:15.758 13566 13592 D HttpFlagsLoader: Not loading HTTP flags because they are disabled in the manifest
+04-29 19:16:15.759 13566 13609 I Finsky:background: [80] IQ: Pruning inactive install requests
+04-29 19:16:15.763   501  1768 D ConnectivityService: requestNetwork for uid/pid:10112/13566 activeRequest: null callbackRequest: 327 [NetworkRequest [ REQUEST id=328, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+04-29 19:16:15.764   501   628 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=328, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-29 19:16:15.764   501   628 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=328, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-29 19:16:15.765   501   635 D ConnectivityService: NetReassign [328 : null → 103] [c 0] [a 0] [i 1]
+04-29 19:16:15.765   501   628 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=328, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-29 19:16:15.765   501   628 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=328, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-29 19:16:15.767   501   635 D ConnectivityService: NetReassign [no changes] [c 1] [a 0] [i 1]
+04-29 19:16:15.768 13566 13596 I Finsky:background: [67] IQ: 0 scheduled install statuses found to proceed. 
+04-29 19:16:15.786 13566 13592 I cn_CronetLibraryLoader: Cronet version: 147.0.7727.49, arch: aarch64
+04-29 19:16:15.787 13566 13592 I Finsky:background: [63] CronetEngine is present. Using Cronet for the networking stack.
+04-29 19:16:15.793 13566 13600 I Finsky:background: [71] SCH: Canceling job 3-484
+04-29 19:16:15.793 13566 13600 I Finsky:background: [71] WM::SCH: Logging work end for 3-484
+04-29 19:16:15.793 13566 13596 I Finsky:background: [67] SCH: Scheduling phonesky job Id: 3-486, CT: 1777472419964, Constraints: [{ L: 0, D: 86400000, C: CHARGING_REQUIRED, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-29 19:16:15.796 13566 13597 I Finsky:background: [68] SCH: Scheduling 1 system job(s)
+04-29 19:16:15.796 13566 13597 I Finsky:background: [68] SCH: Scheduling system job Id: 10914, L: 0, D: 79444168, C: true, I: true, N: 2
+04-29 19:16:15.801 13566 13594 W SQLiteLog: (28) double-quoted string literal: "play-pass"
+04-29 19:16:15.802 13566 13600 I Finsky:background: [71] SCH: Canceling job 3-485
+04-29 19:16:15.802 13566 13600 I Finsky:background: [71] WM::SCH: Logging work end for 3-485
+04-29 19:16:15.802 13566 13592 I Finsky:background: [63] SCH: no pending jobs to schedule.
+04-29 19:16:15.803 13566 13594 E Finsky:background: [65] [Counters] attempted to use a non-positive increment for: 5114
+04-29 19:16:15.803 13566 13594 E Finsky:background: [65] [Counters] attempted to use a non-positive increment for: 5129
+04-29 19:16:15.803 13566 13594 E Finsky:background: [65] [Counters] attempted to use a non-positive increment for: 5115
+04-29 19:16:15.804 13566 13594 E Finsky:background: [65] [Counters] attempted to use a non-positive increment for: 5116
+04-29 19:16:15.804 13566 13594 E Finsky:background: [65] [Counters] attempted to use a non-positive increment for: 5118
+04-29 19:16:15.804 13566 13594 E Finsky:background: [65] [Counters] attempted to use a non-positive increment for: 5119
+04-29 19:16:15.808 13566 13587 I Finsky:background: [58] SCH: Received scheduling request: Id: 47-30, Constraints: [{ L: 0, D: 172800000, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+04-29 19:16:15.809 13566 13600 I Finsky:background: [71] SCH: Canceling job 3-486
+04-29 19:16:15.809 13566 13600 I Finsky:background: [71] WM::SCH: Logging work end for 3-486
+04-29 19:16:15.809 13566 13596 I Finsky:background: [67] SCH: no pending jobs to schedule.
+04-29 19:16:15.813 13566 13609 I Finsky:background: [80] IQ: Creating job 487, for (REQ_CHARGING, REQ_DEVICE_IDLE, REQ_GEARHEAD_PROJECTION_OFF, NETWORK=UNMETERED, PROVISIONING_STATE=PROVISIONED, BACKUP_MANAGER_STATE=BACKUP_READY)
+04-29 19:16:15.815 13566 13609 I Finsky:background: [80] IQ: Creating job 488, for (REQ_DEVICE_IDLE, REQ_GEARHEAD_PROJECTION_OFF, MIN_BATTERY=20, SHOULD_APPLY_BUDGET=true, NETWORK=UNMETERED, PROVISIONING_STATE=PROVISIONED, BACKUP_MANAGER_STATE=BACKUP_READY, TIME=[2026-04-29T22:00:00Z-2026-04-30T01:00:00Z])
+04-29 19:16:15.815 13566 13609 I Finsky:background: [80] IQ: Creating job 489, for (REQ_CHARGING, REQ_DEVICE_IDLE, REQ_GEARHEAD_PROJECTION_OFF, NETWORK=UNMETERED, PROVISIONING_STATE=PROVISIONED, BACKUP_MANAGER_STATE=BACKUP_READY, PROCESS_IMPORTANCE_THRESHOLD=125)
+04-29 19:16:15.815 13566 13609 I Finsky:background: [80] IQ: Bulk scheduling created jobs
+04-29 19:16:15.815 13566 13609 I Finsky:background: [80] SCH: Received scheduling request: Id: 3-487, Constraints: [{ L: 0, D: 86400000, C: CHARGING_REQUIRED, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-29 19:16:15.818 13566 13587 D WM-PackageManagerHelper: Skipping component enablement for androidx.work.impl.background.systemjob.SystemJobService
+04-29 19:16:15.818 13566 13587 D WM-Schedulers: Created SystemJobScheduler and enabled SystemJobService
+04-29 19:16:15.820 13566 13592 D WM-ForceStopRunnable: Is default app process = true
+04-29 19:16:15.820 13566 13592 D WM-ForceStopRunnable: Performing cleanup operations.
+04-29 19:16:15.829 13566 13609 I Finsky:background: [80] SCH: Received scheduling request: Id: 3-488, Constraints: [{ L: 20624185, D: 31424185, C: CHARGING_NONE, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-29 19:16:15.829 13566 13609 I Finsky:background: [80] SCH: Received scheduling request: Id: 3-489, Constraints: [{ L: 0, D: 86400000, C: CHARGING_REQUIRED, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-29 19:16:15.832 13566 13594 I Finsky:background: [65] SSM: Start staged session task with 0 tracked staged sessions
+04-29 19:16:15.845 13566 13592 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 10112; state: ENABLED
+04-29 19:16:15.856 13566 13592 D WM-PackageManagerHelper: Skipping component enablement for androidx.work.impl.background.systemalarm.RescheduleReceiver
+04-29 19:16:15.874 13566 13612 D TrafficStats: tagSocket(87) with statsTag=0xffffffff, statsUid=-1
+04-29 19:16:15.874 13566 13608 D TrafficStats: tagSocket(96) with statsTag=0xffffffff, statsUid=-1
+04-29 19:16:16.022 13566 13590 I Finsky:background: [61] WM::SCH: Logging work initialize for 47-30
+04-29 19:16:16.026 13566 13590 I Finsky:background: [61] WM::SCH: Logging work initialize for 3-487
+04-29 19:16:16.026 13566 13590 I Finsky:background: [61] WM::SCH: Logging work initialize for 3-488
+04-29 19:16:16.026 13566 13590 I Finsky:background: [61] WM::SCH: Logging work initialize for 3-489
+04-29 19:16:16.029 13566 13597 I Finsky:background: [68] SCH: Scheduling phonesky job Id: 47-30, CT: 1777479375808, Constraints: [{ L: 0, D: 172800000, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }, { L: 0, D: 0, C: CHARGING_NONE, I: IDLE_NONE, N: NET_NONE, B: BATTERY_ANY }]
+04-29 19:16:16.032 13566 13592 I Finsky:background: [63] SCH: Scheduling 2 system job(s)
+04-29 19:16:16.032 13566 13592 I Finsky:background: [63] SCH: Scheduling system job Id: 10915, L: 0, D: 172799776, C: false, I: false, N: 1
+04-29 19:16:16.034 13566 13592 I Finsky:background: [63] SCH: Scheduling expedited system job 10916
+04-29 19:16:16.035 13566 13566 I Finsky:background: [2] SCH: job service start with id 10915.
+04-29 19:16:16.035 13566 13566 I Finsky:background: [2] SCH: job service start with id 10916.
+04-29 19:16:16.037 13566 13600 I Finsky:background: [71] SCH: Satisfied jobs for 10915 are: 47-30
+04-29 19:16:16.038 13566 13598 I Finsky:background: [69] SCH: Job 47-30 starting
+04-29 19:16:16.038 13566 13566 I Finsky:background: [2] WM::SCH: Logging work start for 47-30
+04-29 19:16:16.038 13566 13566 I Finsky:background: [2] [AUC]: Finished flush job
+04-29 19:16:16.038 13566 13597 I Finsky:background: [68] SCH: Scheduling phonesky job Id: 3-487, CT: 1777479375815, Constraints: [{ L: 0, D: 86400000, C: CHARGING_REQUIRED, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-29 19:16:16.038 13566 13566 I Finsky:background: [2] SCH: jobFinished: 47-30. TimeElapsed: 0ms.
+04-29 19:16:16.038 13566 13597 I Finsky:background: [68] SCH: Scheduling phonesky job Id: 3-488, CT: 1777479375829, Constraints: [{ L: 20624185, D: 31424185, C: CHARGING_NONE, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-29 19:16:16.038 13566 13597 I Finsky:background: [68] SCH: Scheduling phonesky job Id: 3-489, CT: 1777479375829, Constraints: [{ L: 0, D: 86400000, C: CHARGING_REQUIRED, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-29 19:16:16.038 13566 13566 I Finsky:background: [2] WM::SCH: Logging work end for 47-30
+04-29 19:16:16.041 13566 13588 I Finsky:background: [59] SCH: jobFinished: 47-15. TimeElapsed: 305ms.
+04-29 19:16:16.041 13566 13588 I Finsky:background: [59] WM::SCH: Logging work end for 47-15
+04-29 19:16:16.043 13566 13597 I Finsky:background: [68] SCH: Scheduling 0 system job(s)
+04-29 19:16:16.046 13566 13600 I Finsky:background: [71] SCH: Attempting to reschedule job: Id: 47-15, Constraints: [{ L: 3600000, D: 20843931, C: CHARGING_NONE, I: IDLE_REQUIRED, N: NET_NONE, B: BATTERY_ANY }]
+04-29 19:16:16.047 13566 13592 I Finsky:background: [63] SCH: no pending jobs to schedule.
+04-29 19:16:16.047 13566 13598 I Finsky:background: [69] SCH: job service finished with id 10916.
+04-29 19:16:16.049 13566 13596 I Finsky:background: [67] SCH: no pending jobs to schedule.
+04-29 19:16:16.049 13566 13598 I Finsky:background: [69] SCH: job service finished with id 10915.
+04-29 19:16:16.050 13566 13597 I Finsky:background: [68] SCH: no pending jobs to schedule.
+04-29 19:16:16.050 13566 13598 I Finsky:background: [69] SCH: job service finished with id 10910.
+04-29 19:16:16.081 13566 13585 I Finsky:background: [56] WM::SCH: Logging work initialize for 47-15
+04-29 19:16:16.084 13566 13594 I Finsky:background: [65] SCH: Scheduling phonesky job Id: 47-15, CT: 1777479376046, Constraints: [{ L: 3600000, D: 20843931, C: CHARGING_NONE, I: IDLE_REQUIRED, N: NET_NONE, B: BATTERY_ANY }]
+04-29 19:16:16.085 13566 13597 I Finsky:background: [68] SCH: Scheduling 1 system job(s)
+04-29 19:16:16.085 13566 13597 I Finsky:background: [68] SCH: Scheduling system job Id: 10920, L: 3599961, D: 20843892, C: false, I: true, N: 0
+04-29 19:16:20.212  1557  1557 W ThreadPoolForeg: type=1400 audit(0.0:1405): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:16:22.167   316   316 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+04-29 19:16:22.702 13566 13591 I Finsky:background: [62] playLoggingServerUrl: https://play.googleapis.com/play/log
+04-29 19:16:22.702 13566 13591 I Finsky:background: [62] playLoggingServerTimestampUrl: https://play.googleapis.com/play/log/timestamp
+04-29 19:16:22.704 13566 13591 E JavaBinder: !!! FAILED BINDER TRANSACTION !!!  (parcel size = 588)
+--------- beginning of system
+04-29 19:16:22.704 13566 13591 I ActivityThread: Removing dead content provider:android.content.ContentProviderProxy@c9692bc
+04-29 19:16:22.707   501   683 I ActivityManager: Process com.google.process.gservices (pid 10075) early provider death
+04-29 19:16:22.707   501   683 I ActivityManager: Process com.google.process.gservices (pid 10075) has died: cch+35 CEM 
+04-29 19:16:22.713   501   537 I libprocessgroup: Successfully killed process cgroup uid 10120 pid 10075 in 5ms
+04-29 19:16:22.732   501   683 V ActivityManager: Got obituary of 10075:com.google.process.gservices
+04-29 19:16:22.733   295   295 I Zygote  : Process 10075 exited due to signal 9 (Killed)
+04-29 19:16:33.076  6601  6601 W ThreadPoolForeg: type=1400 audit(0.0:1406): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:16:37.757   702   944 D EGL_emulation: app_time_stats: avg=37717.62ms min=37717.62ms max=37717.62ms count=1
+04-29 19:16:41.748  3004  3004 W ThreadPoolForeg: type=1400 audit(0.0:1407): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:16:50.216  1557  1557 W ThreadPoolForeg: type=1400 audit(0.0:1408): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:16:57.743  6601  6708 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+04-29 19:16:57.752  6601 13297 W SystemServiceRegistry: No service published for: wifirtt
+04-29 19:16:57.764   702   944 D EGL_emulation: app_time_stats: avg=20007.41ms min=20007.41ms max=20007.41ms count=1
+04-29 19:16:58.581   501  1042 D WifiNl80211Manager: Scan result ready event
+04-29 19:16:58.581   501  1042 D WifiNative: Scan result ready event
+04-29 19:16:58.598  6601 13297 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-29 19:16:58.604  6601  6708 I ActivityScheduler: nextTriggerTime: 10248180, in 116999ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-29 19:17:00.022  1449  1757 I AiAiEcho: Predicting[0]: 
+04-29 19:17:00.023  1449  1757 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-29 19:17:00.024  1449  1757 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-29 19:17:00.025  1449  1757 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-29 19:17:00.026  1449  1757 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-29 19:17:00.040   702   702 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-29 19:17:00.041   702   944 D EGL_emulation: app_time_stats: avg=2276.92ms min=2276.92ms max=2276.92ms count=1
+04-29 19:17:03.084  6601  6601 W ThreadPoolForeg: type=1400 audit(0.0:1409): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:17:11.784  3004  3004 W ThreadPoolForeg: type=1400 audit(0.0:1410): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:17:15.629 13566 13584 I Finsky:background: [55] Stats for Executor: bgExecutor vlp@674f433[Running, pool size = 4, active threads = 0, queued tasks = 0, completed tasks = 63]
+04-29 19:17:15.646 13566 13584 I Finsky:background: [55] Stats for Executor: LightweightExecutor vlp@4a5b3f0[Running, pool size = 3, active threads = 0, queued tasks = 0, completed tasks = 6]
+04-29 19:17:15.697 13566 13584 I Finsky:background: [55] Stats for Executor: BlockingExecutor vlp@300ed69[Running, pool size = 2, active threads = 0, queued tasks = 0, completed tasks = 6]
+04-29 19:17:17.763   702   944 D EGL_emulation: app_time_stats: avg=17721.93ms min=17721.93ms max=17721.93ms count=1
+04-29 19:17:20.232  1557  1557 W ThreadPoolForeg: type=1400 audit(0.0:1411): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:17:22.746 13566 13640 I PlayCommon: [102] Preparing logs for uploading
+04-29 19:17:22.751   501  1042 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10120; state: DISABLED
+04-29 19:17:22.751   501  1042 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10120; state: DISABLED
+04-29 19:17:22.751   501  1042 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10120; state: DISABLED
+04-29 19:17:22.752   501  1042 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10120; state: ENABLED
+04-29 19:17:22.752   501   536 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10120; state: ENABLED
+04-29 19:17:22.774   295   295 D Zygote  : Forked child process 13661
+04-29 19:17:22.775   501   536 I ActivityManager: Start proc 13661:com.google.process.gservices/u0a120 for content provider {com.google.android.gsf/com.google.android.gsf.gservices.GservicesProvider}
+04-29 19:17:22.782 13661 13661 I ocess.gservices: Using CollectorTypeCC GC.
+04-29 19:17:22.793 13661 13661 E ocess.gservices: Not starting debugger since process cannot load the jdwp agent.
+04-29 19:17:22.801   501  1042 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10120; state: DISABLED
+04-29 19:17:22.801   501  1042 D CompatibilityChangeReporter: Compat change id reported: 273564678; UID 10120; state: DISABLED
+04-29 19:17:22.804 13661 13661 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10120; state: ENABLED
+04-29 19:17:22.810 13661 13661 D nativeloader: Configuring classloader-namespace-shared for other apk /system/framework/org.apache.http.legacy.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/system_ext/priv-app/GoogleServicesFramework/lib/arm64:/system_ext/priv-app/GoogleServicesFramework/GoogleServicesFramework.apk!/lib/arm64-v8a:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gsf:/system_ext/priv-app/GoogleServicesFramework:/system/lib64:/system_ext/lib64
+04-29 19:17:22.812 13661 13661 D nativeloader: Configuring classloader-namespace-shared for other apk /system_ext/priv-app/GoogleServicesFramework/GoogleServicesFramework.apk. target_sdk_version=33, uses_libraries=, library_path=/system_ext/priv-app/GoogleServicesFramework/lib/arm64:/system_ext/priv-app/GoogleServicesFramework/GoogleServicesFramework.apk!/lib/arm64-v8a:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gsf:/system_ext/priv-app/GoogleServicesFramework:/system/lib64:/system_ext/lib64
+04-29 19:17:22.824 13661 13661 V GraphicsEnvironment: ANGLE Developer option for 'com.google.android.gsf' set to: 'default'
+04-29 19:17:22.824 13661 13661 V GraphicsEnvironment: ANGLE GameManagerService for com.google.android.gsf: false
+04-29 19:17:22.824 13661 13661 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+04-29 19:17:22.825 13661 13661 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+04-29 19:17:22.825 13661 13661 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+04-29 19:17:22.831 13661 13661 I GservicesProvider: Gservices pushing to system: true; secure/global: true
+04-29 19:17:22.833   501  1042 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.gservices.START pkg=com.google.android.gms } U=0: not found
+04-29 19:17:22.834   501  1042 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@e8ca962
+04-29 19:17:22.834 13661 13677 E GmsClient: unable to connect to service: com.google.android.gms.gservices.START on com.google.android.gms
+04-29 19:17:22.879 13566 13640 I PlayCommon: [102] Connecting to server for timestamp: https://play.googleapis.com/play/log/timestamp
+04-29 19:17:22.918 13566 13640 D TrafficStats: tagSocket(108) with statsTag=0xffffffff, statsUid=-1
+04-29 19:17:23.078 13566 13640 W PlayCommon: [102] No account for auth token provided
+04-29 19:17:23.078 13566 13640 I PlayCommon: [102] Connecting to server: https://play.googleapis.com/play/log?format=raw&proto_v2=true
+04-29 19:17:23.146 13566 13640 I PlayCommon: [102] Successfully uploaded logs.
+04-29 19:17:33.116  6601  6601 W ThreadPoolForeg: type=1400 audit(0.0:1412): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:17:37.767   702   944 D EGL_emulation: app_time_stats: avg=20003.88ms min=20003.88ms max=20003.88ms count=1
+04-29 19:17:41.788  3004  3004 W ThreadPoolForeg: type=1400 audit(0.0:1413): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:17:50.236  1557  1557 W ThreadPoolForeg: type=1400 audit(0.0:1414): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:17:58.149  6601  6708 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+04-29 19:17:58.156  6601 13463 W SystemServiceRegistry: No service published for: wifirtt
+04-29 19:17:58.953   501   981 D WifiNl80211Manager: Scan result ready event
+04-29 19:17:58.953   501   981 D WifiNative: Scan result ready event
+04-29 19:17:58.973  6601 13463 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-29 19:17:58.982  6601  6708 I ActivityScheduler: nextTriggerTime: 10252101, in 60542ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-29 19:18:00.026  1449  1757 I AiAiEcho: Predicting[0]: 
+04-29 19:18:00.026  1449  1757 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-29 19:18:00.030  1449  1757 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-29 19:18:00.031  1449  1757 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-29 19:18:00.033  1449  1757 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-29 19:18:00.037   702   702 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-29 19:18:00.043   702   944 D EGL_emulation: app_time_stats: avg=22275.72ms min=22275.72ms max=22275.72ms count=1
+04-29 19:18:03.120  6601  6601 W ThreadPoolForeg: type=1400 audit(0.0:1415): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:18:11.792  3004  3004 W ThreadPoolForeg: type=1400 audit(0.0:1416): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:18:20.256  1557  1557 W ThreadPoolForeg: type=1400 audit(0.0:1417): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:18:22.166   316   316 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+04-29 19:18:33.152  6601  6601 W ThreadPoolForeg: type=1400 audit(0.0:1418): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:18:33.899   702   950 D ControlsListingControllerImpl: Subscribing callback, service count: 0
+04-29 19:18:33.913   702   950 D ControlsListingControllerImpl: Unsubscribing callback
+04-29 19:18:34.135   501  1772 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10120; state: DISABLED
+04-29 19:18:41.796  3004  3004 W ThreadPoolForeg: type=1400 audit(0.0:1419): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:18:50.260  1557  1557 W ThreadPoolForeg: type=1400 audit(0.0:1420): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-29 19:18:54.851   501  1772 D WifiNl80211Manager: Scan result ready event
+04-29 19:18:54.851   501  1772 D WifiNative: Scan result ready event
+04-29 19:18:58.536  6601  6708 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+04-29 19:18:58.551  6601 13297 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-29 19:18:59.051   501   981 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1777469399996
+04-29 19:18:59.059   501   981 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1777469399996
+04-29 19:18:59.063   501   981 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 79 startTime of in progress event=1777469400158
+04-29 19:18:59.065   501   981 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1777469399996
+04-29 19:18:59.067  6601  6708 I ActivityScheduler: nextTriggerTime: 10489744, in 238100ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-29 19:19:00.032  1449  1757 I AiAiEcho: Predicting[0]: 
+04-29 19:19:00.032  1449  1757 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-29 19:19:00.033  1449  1757 I AiAiEcho: Predicting[0]: 
+04-29 19:19:00.033  1449  1757 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-29 19:19:00.036   702   944 D EGL_emulation: app_time_stats: avg=59991.97ms min=59991.97ms max=59991.97ms count=1
+04-29 19:19:00.037  1449  1757 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-29 19:19:00.038  1449  1757 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-29 19:19:00.038  1449  1757 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-29 19:19:00.039  1449  1757 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-29 19:19:00.039  1449  1757 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-29 19:19:00.039  1449  1757 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-29 19:19:00.048   702   702 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-29 19:19:00.048   702   702 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-29 19:19:03.160  6601  6601 W ThreadPoolForeg: type=1400 audit(0.0:1421): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms

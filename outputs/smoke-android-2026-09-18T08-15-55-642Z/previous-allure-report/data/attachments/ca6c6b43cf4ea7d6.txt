@@ -1,0 +1,202 @@
+--------- beginning of main
+08-17 16:19:29.675  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:15 syn=1, rto=0, cwnd=0
+08-17 16:19:29.675  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:16 syn=1, rto=0, cwnd=0
+08-17 16:19:29.675  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:17 syn=1, rto=0, cwnd=0
+08-17 16:19:29.675  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:18 syn=1, rto=0, cwnd=0
+08-17 16:19:29.675  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:19 syn=1, rto=0, cwnd=0
+08-17 16:19:29.678  4934  4995 I appium  : AppiumResponse: {"sessionId":"f9c269da-d052-45cc-b8d0-d5a923b4e08b","value":"false"}
+08-17 16:19:29.680  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786972769679 lastDateWindow=1786958119000
+08-17 16:19:29.684  2870  2971 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236038, activityId=2131236043)
+08-17 16:19:29.686  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-17 16:19:29.695  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-17 16:19:29.704  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-17 16:19:29.715  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-17 16:19:29.715  1437  1437 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+08-17 16:19:29.716  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-17 16:19:29.719  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-17 16:19:29.719  1325  9351 I display : Current VRR MODE is 3
+08-17 16:19:29.719  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-17 16:19:29.719  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-17 16:19:29.719  1325  9351 I display : commit modeset : 1080x2340@120hs
+08-17 16:19:29.731  4934  4995 I appium  : channel read: GET /session/f9c269da-d052-45cc-b8d0-d5a923b4e08b/element/00000000-0000-145e-0000-03f50000020d/attribute/enabled
+08-17 16:19:29.734  4934  4995 I appium  : GetElementAttribute command
+08-17 16:19:29.737  1325  9351 W display : deliverWinConfigData:: commit modeset time (17 ms)
+08-17 16:19:29.738  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-17 16:19:29.738  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-17 16:19:29.738  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-17 16:19:29.738  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-17 16:19:29.738  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-17 16:19:29.738  1325  1397 I display : Set Affinity CPU ID : 0
+08-17 16:19:29.738  1325  1397 I display : Set Affinity CPU ID : 1
+08-17 16:19:29.738  1325  1397 I display : Set Affinity CPU ID : 2
+08-17 16:19:29.738  1325  1397 I display : Set Affinity CPU ID : 3
+08-17 16:19:29.738  1325  1397 I display : Set Affinity CPU ID : 4
+08-17 16:19:29.738  1325  1397 I display : Set Affinity CPU ID : 5
+08-17 16:19:29.738  1325  1397 I display : Set Affinity CPU ID : 6
+08-17 16:19:29.738  1325  1397 I display : Set Affinity CPU ID : 7
+08-17 16:19:29.738  1325  1397 I display : Set affinity HWC : 1325
+08-17 16:19:29.738  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-17 16:19:29.738  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-17 16:19:29.738  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-17 16:19:29.739  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-17 16:19:29.741  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-17 16:19:29.741  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-17 16:19:29.753  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:29.768  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:29.771  4934  4995 I appium  : AppiumResponse: {"sessionId":"f9c269da-d052-45cc-b8d0-d5a923b4e08b","value":"false"}
+08-17 16:19:29.828  1726  3186 I NSLocationMonitor: getGPSUsingApps() called
+08-17 16:19:29.829  3189  3239 I NSLocationManager_FLP: getGPSUsingApps, No change
+08-17 16:19:29.830  4934  4995 I appium  : channel read: GET /session/f9c269da-d052-45cc-b8d0-d5a923b4e08b/element/00000000-0000-145e-0000-03f50000020d/attribute/enabled
+08-17 16:19:29.833  4934  4995 I appium  : GetElementAttribute command
+08-17 16:19:29.848  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+--------- beginning of system
+08-17 16:19:29.862  1726  3186 D FreecessController: FZ : com.samsung.android.game.gamehome(10312) [5649] reason: Bg [cached:X
+08-17 16:19:29.862  1726  3186 D FreecessHandler: freeze com.samsung.android.game.gamehome(10312) result : 0
+08-17 16:19:29.864  1726  3186 W LocationManagerService: onFreezeStateChanged, uid[10312]=true
+08-17 16:19:29.865  1726  3186 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10312 , disable= true
+08-17 16:19:29.865  1726  3186 I PowerManagerService: [PWL] can not change uid =  10312
+08-17 16:19:29.870  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:29.874  4934  4995 I appium  : AppiumResponse: {"sessionId":"f9c269da-d052-45cc-b8d0-d5a923b4e08b","value":"false"}
+08-17 16:19:29.934  4934  4995 I appium  : channel read: GET /session/f9c269da-d052-45cc-b8d0-d5a923b4e08b/element/00000000-0000-145e-0000-03f50000020d/attribute/enabled
+08-17 16:19:29.937  4934  4995 I appium  : GetElementAttribute command
+08-17 16:19:29.946  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-17 16:19:29.949  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-17 16:19:29.949  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-17 16:19:29.949  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-17 16:19:29.951  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-17 16:19:29.953  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:29.954  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-17 16:19:29.954  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-17 16:19:29.954  1325  9351 I display : Current VRR MODE is 3
+08-17 16:19:29.954  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-17 16:19:29.954  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-17 16:19:29.955  1325  9351 I display : commit modeset : 1080x2340@60phs
+08-17 16:19:29.969  1325  9351 W display : deliverWinConfigData:: commit modeset time (14 ms)
+08-17 16:19:29.971  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-17 16:19:29.971  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-17 16:19:29.971  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-17 16:19:29.971  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-17 16:19:29.971  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-17 16:19:29.971  1325  1397 I display : Set Affinity CPU ID : 0
+08-17 16:19:29.971  1325  1397 I display : Set Affinity CPU ID : 1
+08-17 16:19:29.971  1325  1397 I display : Set Affinity CPU ID : 2
+08-17 16:19:29.971  1325  1397 I display : Set Affinity CPU ID : 3
+08-17 16:19:29.971  1325  1397 I display : Set Affinity CPU ID : 4
+08-17 16:19:29.971  1325  1397 I display : Set Affinity CPU ID : 5
+08-17 16:19:29.971  1325  1397 I display : Set Affinity CPU ID : 6
+08-17 16:19:29.971  1325  1397 I display : Set Affinity CPU ID : 7
+08-17 16:19:29.971  1325  1397 I display : Set affinity HWC : 1325
+08-17 16:19:29.971  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-17 16:19:29.971  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-17 16:19:29.971  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-17 16:19:29.972  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-17 16:19:29.972  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-17 16:19:29.974  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:29.978  4934  4995 I appium  : AppiumResponse: {"sessionId":"f9c269da-d052-45cc-b8d0-d5a923b4e08b","value":"false"}
+08-17 16:19:30.029  4934  4995 I appium  : channel read: GET /session/f9c269da-d052-45cc-b8d0-d5a923b4e08b/element/00000000-0000-145e-0000-03f50000020d/attribute/enabled
+08-17 16:19:30.032  4934  4995 I appium  : GetElementAttribute command
+08-17 16:19:30.045  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:30.058  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:30.062  4934  4995 I appium  : AppiumResponse: {"sessionId":"f9c269da-d052-45cc-b8d0-d5a923b4e08b","value":"false"}
+08-17 16:19:30.122  1726  8672 D WifiConnectivityMonitor.DnsThread:  [|214]
+08-17 16:19:30.124  1726  2260 D WifiConnectivityMonitor.NetworkStatsAnalyzer: DNS resultType : 0, responseTime : 214
+08-17 16:19:30.129  4934  4995 I appium  : channel read: GET /session/f9c269da-d052-45cc-b8d0-d5a923b4e08b/element/00000000-0000-145e-0000-03f50000020d/attribute/enabled
+08-17 16:19:30.131  1726  2254 D OpenNetworkQos[4.00]: updateBssidLatestDnsResultType - result: 0
+08-17 16:19:30.132  4934  4995 I appium  : GetElementAttribute command
+08-17 16:19:30.133  1726  2254 D OpenNetworkQos[4.00]: updateBssidNoInternet: mBssidNoInternet = false
+08-17 16:19:30.135  1726  2254 D OpenNetworkQos[4.00]: getOpenNetworkQosNoInternetStatus: false
+08-17 16:19:30.135  1726  2254 D OpenNetworkQos[4.00]: getOpenNetworkQosScores: 26 26 26 
+08-17 16:19:30.136  1726  2254 D KNOX_MDM_SettingsProvider: isChangeAllowed() : name = wifi_wcm_qos_sharing_score_summary
+08-17 16:19:30.137  1726  2254 I WifiProfileShare: network QoS data was changed (internet), updateQoSData networkType: true, qosData: false
+08-17 16:19:30.138  1726  3221 V WifiProfileShare.Caster: update wips network, size: 0
+08-17 16:19:30.138  1726  3221 D WifiProfileShare: nearby scanning settings run
+08-17 16:19:30.139  1726  3221 D WifiProfileShare: network score provider settings enabled
+08-17 16:19:30.139  1726  3221 D OpenNetworkQos[4.00]: getOpenNetworkQosScores: 26 26 26 
+08-17 16:19:30.139  1726  3221 D OpenNetworkQos[4.00]: getOpenNetworkQosNoInternetStatus: false
+08-17 16:19:30.139  1726  3221 I WifiProfileShare.Caster: current network type: 0, score: [26, 26, 26]
+08-17 16:19:30.139  1726  3221 V WifiProfileShare.Caster: captive portal configuration was set
+08-17 16:19:30.140  1726  3221 V WifiProfileShare.Cache: update network score 28:ee:52:**:**:d7
+08-17 16:19:30.141  1726  3221 D WifiProfileShare.ScanMatcher: getMcfDataList size:2
+08-17 16:19:30.141  1726  3221 I WifiProfileShare.Caster: qos data was updated , before:type:QOS, pBssid:12:2a:ff, qosData:f9 after:type:QOS, pBssid:12:2a:ff, qosData:f9
+08-17 16:19:30.143  1726  3221 I [MCFSDK_android_1.3.7026]_4_McfCasterImpl: isNetworkEnabled - type : 1 ret : true
+08-17 16:19:30.143  1726  3221 D WifiProfileShare.McfCast: -ME--- mIsNetworkEnabled :true
+08-17 16:19:30.143  1726  3221 D WifiProfileShare.McfCast: updateQoSData ignored, same contents
+08-17 16:19:30.143  1726  3221 D WifiProfileShare.MCF: success update QosData !
+08-17 16:19:30.145  1726  3221 I [MCFSDK_android_1.3.7026]_4_McfCasterImpl: isNetworkEnabled - type : 1 ret : true
+08-17 16:19:30.146  1726  3221 D WifiProfileShare.McfCast: -ME--- mIsNetworkEnabled :true
+08-17 16:19:30.146  1726  3221 D WifiProfileShare.McfCast: -ME--- updatePasswordDate pwdData size:2
+08-17 16:19:30.150  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:30.169  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:30.174  4934  4995 I appium  : AppiumResponse: {"sessionId":"f9c269da-d052-45cc-b8d0-d5a923b4e08b","value":"false"}
+08-17 16:19:30.230  4934  4995 I appium  : channel read: GET /session/f9c269da-d052-45cc-b8d0-d5a923b4e08b/element/00000000-0000-145e-0000-03f50000020d/attribute/enabled
+08-17 16:19:30.233  4934  4995 I appium  : GetElementAttribute command
+08-17 16:19:30.253  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:30.273  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:30.277  4934  4995 I appium  : AppiumResponse: {"sessionId":"f9c269da-d052-45cc-b8d0-d5a923b4e08b","value":"false"}
+08-17 16:19:30.331  4934  4995 I appium  : channel read: GET /session/f9c269da-d052-45cc-b8d0-d5a923b4e08b/element/00000000-0000-145e-0000-03f50000020d/attribute/enabled
+08-17 16:19:30.335  4934  4995 I appium  : GetElementAttribute command
+08-17 16:19:30.351  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:30.368  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:30.371  4934  4995 I appium  : AppiumResponse: {"sessionId":"f9c269da-d052-45cc-b8d0-d5a923b4e08b","value":"false"}
+08-17 16:19:30.434  4934  4995 I appium  : channel read: GET /session/f9c269da-d052-45cc-b8d0-d5a923b4e08b/element/00000000-0000-145e-0000-03f50000020d/attribute/enabled
+08-17 16:19:30.435   730   730 D io_stats: !@ Write_top(KB): kworker/u16:3(30261) 96
+08-17 16:19:30.438  4934  4995 I appium  : GetElementAttribute command
+08-17 16:19:30.449  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:30.462  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:30.465  4934  4995 I appium  : AppiumResponse: {"sessionId":"f9c269da-d052-45cc-b8d0-d5a923b4e08b","value":"false"}
+08-17 16:19:30.533  4934  4995 I appium  : channel read: GET /session/f9c269da-d052-45cc-b8d0-d5a923b4e08b/element/00000000-0000-145e-0000-03f50000020d/attribute/enabled
+08-17 16:19:30.536  4934  4995 I appium  : GetElementAttribute command
+08-17 16:19:30.553  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:30.572  4934  4995 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@8b635; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2075 - 1027, 2201); boundsInWindow: Rect(53, 2075 - 1027, 2201); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 16:19:30.576  4934  4995 I appium  : AppiumResponse: {"sessionId":"f9c269da-d052-45cc-b8d0-d5a923b4e08b","value":"false"}
+08-17 16:19:30.662  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786972770
+08-17 16:19:30.662  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 16:19:30.662  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 16:19:30.662  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782879
+08-17 16:19:30.662  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782869
+08-17 16:19:30.662  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 16:19:30.662  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 16:19:30.663  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 16:19:30.663  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 16:19:30.663  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 16:19:30.681  4934  4995 I appium  : channel read: GET /session/f9c269da-d052-45cc-b8d0-d5a923b4e08b/screenshot
+08-17 16:19:30.685  4934  4995 I appium  : CaptureScreenshot command
+08-17 16:19:30.689  4934  4995 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-17 16:19:30.690  4934  4995 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-17 16:19:31.294  8679  8679 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-17 16:19:31.295  8679  8679 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-17 16:19:31.295  8679  8679 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-17 16:19:31.295  1726  3243 I EDMNativeHelperService: isScreenCaptureEnabled
+08-17 16:19:31.295  1726  3243 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-17 16:19:31.295  8679  8679 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-17 16:19:31.296  8679  8679 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-17 16:19:31.298  1437  1463 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_5022#123872(seamlessTransition:0)
+08-17 16:19:31.298  1437  1463 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-17 16:19:31.298  1437  1463 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-17 16:19:31.298  1437  1463 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-17 16:19:31.302  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-17 16:19:31.302  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_5022#123872 at index 1
+08-17 16:19:31.302  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-17 16:19:31.303  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-17 16:19:31.350  8679  8684 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-17 16:19:31.562  4554  4554 I SDHMS:LOAD: type: LoadsFreqs, value: 38:0:0:612479:2208000:576000:700800:2112000:576000:18:303:0
+08-17 16:19:31.570  4934  4995 I appium  : AppiumResponse: {"sessionId":"f9c269da-d052-45cc-b8d0-d5a923b4e08b","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15eBX1of/xz8m+J2QDEkICJGGTLUQ2EQRREaUiArVV62OX219pLW3tplavy20pVr1asWptqYJVq+yyK4IVkTVAIIYlkUA2kpCE7OvJ+f1Bcy6TBbKfTPJ+PY/P4/c7c2a+M1nIfOa7WGw…
+08-17 16:19:31.589  4934  4995 I appium  : channel read: GET /session/f9c269da-d052-45cc-b8d0-d5a923b4e08b/source
+08-17 16:19:31.590  4934  4995 I appium  : Source command
+08-17 16:19:31.590  4934  4995 I appium  : Waiting up to 10000ms for the device to idle
+08-17 16:19:31.661  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786972771
+08-17 16:19:31.661  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 16:19:31.662  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 16:19:31.662  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782879
+08-17 16:19:31.662  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782869
+08-17 16:19:31.662  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 16:19:31.662  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 16:19:31.662  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 16:19:31.663  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 16:19:31.663  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 16:19:31.727  4934  4995 I appium  : AppiumResponse: {"sessionId":"f9c269da-d052-45cc-b8d0-d5a923b4e08b","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-17 16:19:31.750 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-17 16:19:31.802  8685  8685 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-17 16:19:31.842 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-17 16:19:31.894  8688  8688 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-17 16:19:31.944 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

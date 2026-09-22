@@ -1,0 +1,468 @@
+--------- beginning of system
+06-22 18:12:05.981   500  2304 V UiAutomationManager: UiAutomation service owner died
+06-22 18:12:05.993   500   500 D BatterySaverPolicy: accessibility changed to false, updating policy.
+--------- beginning of main
+06-22 18:12:05.997   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 18:12:05.997   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 18:12:05.997   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 18:12:07.424  7947  8038 I Datadog : [_dd.sdk_core.default]: Batch 230942ec-4936-49c5-a448-7cffcc81c7f7 [1042 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+06-22 18:12:10.033  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1642): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:12:23.539   500   673 D androidtc: Initializing SystemTextClassifier, type = System
+06-22 18:12:23.566  1425  1425 I AiAiTextClassifier: onCreateTextClassificationSession = TextClassificationSessionId {f652784c-0a2a-4a56-90ad-adecf5ea83a8}
+06-22 18:12:23.580   700   700 I ClipboardListener: Clipboard overlay suppressed.
+06-22 18:12:23.581  1425  1910 I AiAiTranslate: C2T - not in a conversation
+06-22 18:12:23.591  1425  2187 I AiAiTextClassifier: Initialize textClassifierLib, privileged changed = [true], TC null = [false]
+06-22 18:12:23.611  1425  2187 I AiAiTextClassifier: GenerateLinks did not find valid links, returning empty result
+06-22 18:12:23.624  1425  2275 I AiAiTextClassifier: GenerateLinks did not find valid links, returning empty result
+06-22 18:12:23.624  1425  2275 I AiAiTextClassifier: Initialize textClassifierLib, privileged changed = [true], TC null = [false]
+06-22 18:12:23.627   700   700 I ClipboardListener: Clipboard overlay suppressed.
+06-22 18:12:23.631  1425  2275 I AiAiTextClassifier: GenerateLinks did not find valid links, returning empty result
+06-22 18:12:25.321  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1643): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:12:27.531  7947  8038 I Datadog : [_dd.sdk_core.default]: Batch 842ffdb1-053a-4ff7-985e-d3a240b2fddb [1042 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+06-22 18:12:34.285  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1644): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:12:40.041  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1645): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:12:40.954  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T15:12:40.952Z] Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 18:12:40.954  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T15:12:40.953Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 18:12:40.954  7947  7947 I chromium: [INFO:CONSOLE:1] "ERROR:", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:12:40.954  7947  7947 I chromium: [INFO:CONSOLE:1] "SignalR: Unable to start SignalR hub connection. Max retries is reached.", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:12:40.954  7947  7947 I chromium: [INFO:CONSOLE:1] "Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:12:40.954  7947  7947 I chromium: [INFO:CONSOLE:1] "console.groupEnd", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:12:40.956  7947  7947 I [INVEST]: webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 18:12:40.958  7947  7947 I FS.Core.Shared.LogForwarder.WebApi: [[INVEST]] webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 18:12:47.617  5707  5774 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+06-22 18:12:47.620  5707 14242 W SystemServiceRegistry: No service published for: wifirtt
+06-22 18:12:48.420   500  2304 D WifiNl80211Manager: Scan result ready event
+06-22 18:12:48.420   500  2304 D WifiNative: Scan result ready event
+06-22 18:12:48.432  5707 14242 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 18:12:48.436  5707  5774 I ActivityScheduler: nextTriggerTime: 12564886, in 117127ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 18:12:55.329  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1646): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:12:58.664  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T15:12:58.663Z] Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 18:12:58.664  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T15:12:58.664Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 18:12:58.665  7947  7947 I chromium: [INFO:CONSOLE:1] "ERROR:", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:12:58.665  7947  7947 I chromium: [INFO:CONSOLE:1] "SignalR: Unable to start SignalR hub connection. Max retries is reached.", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:12:58.665  7947  7947 I chromium: [INFO:CONSOLE:1] "Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:12:58.665  7947  7947 I chromium: [INFO:CONSOLE:1] "console.groupEnd", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:12:58.666  7947  7947 I [INVEST]: webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 18:12:58.668  7947  7947 I FS.Core.Shared.LogForwarder.WebApi: [[INVEST]] webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 18:13:00.026  1425  1723 I AiAiEcho: Predicting[0]: 
+06-22 18:13:00.027  1425  1723 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+06-22 18:13:00.037  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+06-22 18:13:00.038  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+06-22 18:13:00.039  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+06-22 18:13:00.043   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 18:13:00.051   700   957 D EGL_emulation: app_time_stats: avg=60012.74ms min=60012.74ms max=60012.74ms count=1
+06-22 18:13:01.789   700   957 D EGL_emulation: app_time_stats: avg=1736.24ms min=1736.24ms max=1736.24ms count=1
+06-22 18:13:04.293  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1647): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:13:07.630  7947  8038 I Datadog : [_dd.sdk_core.default]: Batch e7b32ae9-4c63-485f-8588-c5068158bfb6 [1042 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+06-22 18:13:10.049  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1648): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:13:21.804   700   957 D EGL_emulation: app_time_stats: avg=20014.44ms min=20014.44ms max=20014.44ms count=1
+06-22 18:13:25.341  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1649): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:13:27.751  7947  8038 I Datadog : [_dd.sdk_core.default]: Batch 48f11625-6003-418b-a18a-b0a6c88d8e05 [1042 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+06-22 18:13:34.321  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1650): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:13:40.057  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1651): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:13:40.670   315   315 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+06-22 18:13:40.958  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T15:13:40.957Z] Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 18:13:40.958  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T15:13:40.957Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 18:13:40.958  7947  7947 I chromium: [INFO:CONSOLE:1] "ERROR:", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:13:40.958  7947  7947 I chromium: [INFO:CONSOLE:1] "SignalR: Unable to start SignalR hub connection. Max retries is reached.", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:13:40.958  7947  7947 I chromium: [INFO:CONSOLE:1] "Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:13:40.958  7947  7947 I chromium: [INFO:CONSOLE:1] "console.groupEnd", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:13:40.960  7947  7947 I [INVEST]: webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 18:13:40.963  7947  7947 I FS.Core.Shared.LogForwarder.WebApi: [[INVEST]] webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 18:13:41.106   500  2310 D WifiNl80211Manager: Scan result ready event
+06-22 18:13:41.106   500  2310 D WifiNative: Scan result ready event
+06-22 18:13:41.797   700   957 D EGL_emulation: app_time_stats: avg=19993.55ms min=19993.55ms max=19993.55ms count=1
+06-22 18:13:48.001  5707  5774 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+06-22 18:13:48.020  5707 14242 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 18:13:48.023  5707  5774 I ActivityScheduler: nextTriggerTime: 12568326, in 60980ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 18:13:55.349  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1652): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:13:58.634  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T15:13:58.633Z] Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 18:13:58.634  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T15:13:58.634Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 18:13:58.635  7947  7947 I [INVEST]: webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 18:13:58.637  7947  7947 I FS.Core.Shared.LogForwarder.WebApi: [[INVEST]] webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 18:13:58.637  7947  7947 I chromium: [INFO:CONSOLE:1] "ERROR:", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:13:58.637  7947  7947 I chromium: [INFO:CONSOLE:1] "SignalR: Unable to start SignalR hub connection. Max retries is reached.", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:13:58.637  7947  7947 I chromium: [INFO:CONSOLE:1] "Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:13:58.637  7947  7947 I chromium: [INFO:CONSOLE:1] "console.groupEnd", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:14:00.025   700   957 D EGL_emulation: app_time_stats: avg=18228.18ms min=18228.18ms max=18228.18ms count=1
+06-22 18:14:00.028  1425  1723 I AiAiEcho: Predicting[0]: 
+06-22 18:14:00.028  1425  1723 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+06-22 18:14:00.029  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+06-22 18:14:00.029  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+06-22 18:14:00.030  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+06-22 18:14:00.039   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 18:14:01.805   700   957 D EGL_emulation: app_time_stats: avg=1779.59ms min=1779.59ms max=1779.59ms count=1
+06-22 18:14:04.329  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1653): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:14:07.850  7947  8038 I Datadog : [_dd.sdk_core.default]: Batch 19099375-33e6-4bc8-899b-2c13f55e3490 [1042 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+06-22 18:14:10.085  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1654): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:14:25.385  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1655): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:14:27.936  7947  8038 I Datadog : [_dd.sdk_core.default]: Batch 331a55a5-d57f-4143-a670-96a52dfe2ad6 [1042 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+06-22 18:14:34.349  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1656): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:14:40.093  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1657): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:14:40.989  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T15:14:40.986Z] Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 18:14:40.989  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T15:14:40.988Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 18:14:40.989  7947  7947 I chromium: [INFO:CONSOLE:1] "ERROR:", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:14:40.989  7947  7947 I chromium: [INFO:CONSOLE:1] "SignalR: Unable to start SignalR hub connection. Max retries is reached.", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:14:40.989  7947  7947 I chromium: [INFO:CONSOLE:1] "Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:14:40.989  7947  7947 I chromium: [INFO:CONSOLE:1] "console.groupEnd", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 18:14:40.991  7947  7947 I [INVEST]: webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 18:14:40.994  7947  7947 I FS.Core.Shared.LogForwarder.WebApi: [[INVEST]] webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 18:14:48.028  5707  5774 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+06-22 18:14:48.033  5707 14148 W SystemServiceRegistry: No service published for: wifirtt
+06-22 18:14:48.562   500  2310 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782131819776
+06-22 18:14:48.565   500  2304 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 79 startTime of in progress event=1782131819776
+06-22 18:14:48.567   500  2310 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782131819776
+06-22 18:14:48.569   500   942 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782131819776
+06-22 18:14:48.570   500  2304 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782131819776
+06-22 18:14:48.573  5707  5774 I ActivityScheduler: nextTriggerTime: 12805996, in 238100ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 18:14:48.837   500  2304 D WifiNl80211Manager: Scan result ready event
+06-22 18:14:48.837   500  2304 D WifiNative: Scan result ready event
+06-22 18:14:48.845  5707 14148 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 18:14:48.877  5707  5728 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+06-22 18:14:48.915  2632  5692 D TrafficStats: tagSocket(76) with statsTag=0x1809, statsUid=-1
+06-22 18:14:48.920  7901  7925 D TrafficStats: tagSocket(5) with statsTag=0xffffffff, statsUid=-1
+06-22 18:14:48.920  2632  5692 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+06-22 18:14:48.920  2632  5692 W libc    : Access denied finding property "service.adb.tls.port"
+06-22 18:14:48.913  2632  2632 W binder:2632_8: type=1400 audit(0.0:1658): avc: denied { read } for name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=259 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+06-22 18:14:48.913  2632  2632 W binder:2632_8: type=1400 audit(0.0:1659): avc: denied { read } for name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=51 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+06-22 18:14:48.927  5707  5728 W GmsUrlRequestImpl: [https://android.googleapis.com/auth/devicekey] Content-Type header is overwritten.
+06-22 18:14:48.965  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:48.965  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:48.965  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:48.965  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:48.965  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:48.965  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:48.965  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:48.965  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:48.966  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:48.966  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:48.966  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:48.966  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:48.967  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:48.969  5707  5979 D TrafficStats: tagSocket(64) with statsTag=0x4000401, statsUid=10120
+06-22 18:14:49.061  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:49.061  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:49.061  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:49.061  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:49.061  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:49.061  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:49.061  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:49.061  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.061  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:49.061  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:49.061  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:49.061  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.061  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:49.102  5707  5728 W GLSUser : [AppCertManager] Exception while requesting key: 
+06-22 18:14:49.102  5707  5728 W GLSUser : java.util.concurrent.ExecutionException: cvhs: Parsing Exception
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at hfeb.j(:com.google.android.gms@261233029@26.12.33 (190400-892550550):21)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at hfek.u(:com.google.android.gms@261233029@26.12.33 (190400-892550550):71)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at alqw.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):439)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at alqu.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):67)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at alqu.dispatchTransaction(:com.google.android.gms@261233029@26.12.33 (190400-892550550):16)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at byza.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):72)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at zpv.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):23)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at android.os.Binder.transact(Binder.java:1164)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at clbu.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):10)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at android.os.Binder.transact(Binder.java:1164)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at byzo.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):161)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at android.os.Binder.execTransactInternal(Binder.java:1280)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at android.os.Binder.execTransact(Binder.java:1244)
+06-22 18:14:49.102  5707  5728 W GLSUser : Caused by: cvhs: Parsing Exception
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at cvix.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):15)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at hfgv.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):47)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):92)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at biej.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at java.lang.Thread.run(Thread.java:1012)
+06-22 18:14:49.102  5707  5728 W GLSUser : Caused by: iphx: Protocol message end-group tag did not match expected tag.
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at ipjy.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):62)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at ipiv.l(:com.google.android.gms@261233029@26.12.33 (190400-892550550):60)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at ipgw.s(:com.google.android.gms@261233029@26.12.33 (190400-892550550):19)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at ipeq.f(:com.google.android.gms@261233029@26.12.33 (190400-892550550):5)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at ipeq.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at ipeq.o(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at cviw.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):15)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at cvjb.call(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):73)
+06-22 18:14:49.102  5707  5728 W GLSUser : 	... 4 more
+06-22 18:14:49.108  5707  5728 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+06-22 18:14:49.157  5707  5979 D TrafficStats: tagSocket(75) with statsTag=0xc000609, statsUid=10120
+06-22 18:14:49.160  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:49.160  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:49.160  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:49.160  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:49.160  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:49.160  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:49.160  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:49.160  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.160  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:49.160  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:49.160  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:49.160  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.160  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:49.261  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:49.261  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:49.261  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:49.261  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:49.261  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:49.261  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:49.261  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:49.261  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.261  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:49.261  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:49.261  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:49.261  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.261  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:49.280  5707  5979 I cn_CronetUrlRequestContext: destroyNativeStreamLocked org.chromium.net.impl.CronetBidirectionalStream@e2e4480
+06-22 18:14:49.281  5707 14148 W GlsClientGrpc: Voilatile gRPC failure INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header. [CONTEXT service_id=6 ]
+06-22 18:14:49.281  5707 14148 W GlsClientGrpc: jlsp: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+06-22 18:14:49.281  5707 14148 W GlsClientGrpc: 	at gmjf.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):51)
+06-22 18:14:49.281  5707 14148 W GlsClientGrpc: 	at gocc.call(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1001)
+06-22 18:14:49.281  5707 14148 W GlsClientGrpc: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+06-22 18:14:49.281  5707 14148 W GlsClientGrpc: 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+06-22 18:14:49.281  5707 14148 W GlsClientGrpc: 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):73)
+06-22 18:14:49.281  5707 14148 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+06-22 18:14:49.281  5707 14148 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+06-22 18:14:49.281  5707 14148 W GlsClientGrpc: 	at biej.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+06-22 18:14:49.281  5707 14148 W GlsClientGrpc: 	at java.lang.Thread.run(Thread.java:1012)
+06-22 18:14:49.281  5707 14148 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 18:14:49.284  5707  5774 I ActivityScheduler: nextTriggerTime: 12805996, in 237389ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 18:14:49.364  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:49.364  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:49.364  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:49.364  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:49.364  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:49.364  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:49.364  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:49.364  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.364  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:49.364  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:49.364  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:49.364  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.364  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:49.466  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:49.466  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:49.466  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:49.466  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:49.466  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:49.466  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:49.466  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:49.466  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.467  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:49.467  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:49.467  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:49.467  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.467  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:49.567  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:49.567  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:49.567  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:49.567  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:49.567  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:49.567  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:49.567  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:49.567  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.567  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:49.567  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:49.567  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:49.567  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.567  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:49.668  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:49.668  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:49.668  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:49.668  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:49.668  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:49.668  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:49.668  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:49.668  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.668  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:49.668  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:49.668  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:49.668  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.669  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:49.769  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:49.769  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:49.769  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:49.769  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:49.769  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:49.769  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:49.769  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:49.769  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.770  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:49.770  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:49.770  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:49.770  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.770  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:49.869  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:49.869  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:49.869  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:49.869  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:49.869  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:49.869  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:49.869  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:49.869  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.869  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:49.869  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:49.869  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:49.869  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.869  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:49.969  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:49.969  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:49.969  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:49.969  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:49.969  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:49.969  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:49.969  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:49.969  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.969  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:49.969  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:49.969  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:49.969  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:49.969  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:50.069  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:50.069  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:50.069  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:50.069  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:50.069  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:50.069  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:50.069  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:50.069  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.070  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:50.070  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:50.070  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:50.070  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.070  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:50.169  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:50.169  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:50.169  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:50.169  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:50.169  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:50.169  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:50.169  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:50.169  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.170  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:50.170  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:50.170  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:50.170  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.170  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:50.270  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:50.270  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:50.270  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:50.270  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:50.270  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:50.270  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:50.270  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:50.270  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.270  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:50.270  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:50.270  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:50.270  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.270  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:50.370  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:50.370  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:50.370  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:50.370  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:50.370  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:50.370  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:50.370  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:50.370  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.370  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:50.370  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:50.370  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:50.370  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.370  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:50.470  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:50.470  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:50.470  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:50.470  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:50.470  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:50.470  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:50.470  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:50.470  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.470  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:50.470  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:50.470  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:50.470  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.470  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:50.571  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:50.571  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:50.571  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:50.571  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:50.571  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:50.571  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:50.571  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:50.571  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.571  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:50.571  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:50.571  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:50.571  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.571  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:50.672  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:50.672  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:50.672  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:50.672  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:50.672  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:50.672  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:50.672  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:50.672  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.672  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:50.672  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:50.672  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:50.672  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.672  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:50.773  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:50.773  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:50.773  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:50.773  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:50.773  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:50.773  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:50.773  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:50.773  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.773  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:50.773  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:50.773  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:50.773  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.773  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:50.874  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:50.874  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:50.874  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:50.874  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:50.874  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:50.874  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:50.874  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:50.874  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.874  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:50.874  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:50.874  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:50.874  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.874  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:50.974  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:50.974  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:50.974  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:50.974  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:50.974  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:50.974  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:50.974  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:50.974  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.974  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:50.974  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:50.974  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:50.974  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:50.974  7901  7928 W appium  : Empty screenshot returned, dropping frame
+06-22 18:14:51.075  7901  7928 E UiAutomation: Error while taking screenshot!
+06-22 18:14:51.075  7901  7928 E UiAutomation: android.os.DeadObjectException
+06-22 18:14:51.075  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transactNative(Native Method)
+06-22 18:14:51.075  7901  7928 E UiAutomation: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+06-22 18:14:51.075  7901  7928 E UiAutomation: 	at android.app.IUiAutomationConnection$Stub$Proxy.takeScreenshot(IUiAutomationConnection.java:524)
+06-22 18:14:51.075  7901  7928 E UiAutomation: 	at android.app.UiAutomation.takeScreenshot(UiAutomation.java:1046)
+06-22 18:14:51.075  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:120)
+06-22 18:14:51.075  7901  7928 E UiAutomation: 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:51.075  7901  7928 E appium  : Error getting screenshot: 
+06-22 18:14:51.075  7901  7928 E appium  : io.appium.uiautomator2.common.exceptions.TakeScreenshotException: Could not take screenshot: UiAutomation returned null
+06-22 18:14:51.075  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.getScreenshot(MjpegScreenshotStream.java:122)
+06-22 18:14:51.075  7901  7928 E appium  : 	at io.appium.uiautomator2.server.mjpeg.MjpegScreenshotStream.run(MjpegScreenshotStream.java:77)
+06-22 18:14:51.076  7901  7928 W appium  : Empty screenshot returned, dropping frame

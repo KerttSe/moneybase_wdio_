@@ -1,0 +1,204 @@
+--------- beginning of main
+08-12 10:09:13.242 13838 13976 I VRI[DashboardActivity]@5e40077: mWNT: t=0xb40000703ae4ae50 mBlastBufferQueue=0xb40000707b075a30 fn= 1432 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-12 10:09:13.248  1337 17036 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 12920987
+08-12 10:09:13.251 13838 13977 I VRI[DashboardActivity]@5e40077: mWNT: t=0xb40000703ae93a10 mBlastBufferQueue=0xb40000707b075a30 fn= 1433 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-12 10:09:13.259 13838 13976 I VRI[DashboardActivity]@5e40077: mWNT: t=0xb40000703ae74750 mBlastBufferQueue=0xb40000707b075a30 fn= 1434 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+--------- beginning of system
+08-12 10:09:13.261   730   730 D io_stats: !@   8,0 r 60027066 1103916110 w 18392866 332715304 d 5379421 382535348 f 0 1701387 iot 27517320 0 th 0 0 0 pt 0 inp 0 0 420471.777
+08-12 10:09:13.262   730   730 D io_stats: !@ Read_top(KB): screencap(16998) 12724 loop27(855) 1052 system_server(1726) 168
+08-12 10:09:13.262   730   730 D io_stats: !@ Write_top(KB): kworker/u16:10(28238) 344 kworker/u16:8(10553) 16 soft.appmanager(13362) 16
+08-12 10:09:13.268 13838 13977 I VRI[DashboardActivity]@5e40077: mWNT: t=0xb40000703ae3cc90 mBlastBufferQueue=0xb40000707b075a30 fn= 1435 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-12 10:09:13.278 13838 13976 I VRI[DashboardActivity]@5e40077: mWNT: t=0xb40000703adf8a50 mBlastBufferQueue=0xb40000707b075a30 fn= 1436 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-12 10:09:13.284 13838 13977 I VRI[DashboardActivity]@5e40077: mWNT: t=0xb40000703ae81790 mBlastBufferQueue=0xb40000707b075a30 fn= 1437 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-12 10:09:13.293 13838 13976 I VRI[DashboardActivity]@5e40077: mWNT: t=0xb40000703adf8f90 mBlastBufferQueue=0xb40000707b075a30 fn= 1438 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-12 10:09:13.303 13838 13977 I VRI[DashboardActivity]@5e40077: mWNT: t=0xb40000703ae8fb10 mBlastBufferQueue=0xb40000707b075a30 fn= 1439 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-12 10:09:13.311 13838 13838 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{bcaf08f VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-12 10:09:13.312 13838 13976 I VRI[DashboardActivity]@5e40077: mWNT: t=0xb40000703ae75c50 mBlastBufferQueue=0xb40000707b075a30 fn= 1440 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-12 10:09:13.319 13838 13838 I InsetsController: cancelAnimation: types=ime, animType=0, host=com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity, from=android.view.InsetsController.notifyFinished:2006 android.view.InsetsAnimationControlImpl.applyChangeInsets:335 android.view.InsetsController.lambda$new$3:957 
+08-12 10:09:13.319 13838 13838 I ImeTracker: com.moneybase.qa:872bcf4: onShown
+08-12 10:09:13.322 13838 13977 I VRI[DashboardActivity]@5e40077: mWNT: t=0xb40000703ae3ad10 mBlastBufferQueue=0xb40000707b075a30 fn= 1441 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-12 10:09:13.575  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-12 10:09:13.579  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-12 10:09:13.583  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-12 10:09:13.584  1437  1437 I LayerHistory: InputMethod$_5082#78922 Max (can't resolve refresh rate)
+08-12 10:09:13.584  1437  1437 I LayerHistory: NavigationBar0$_2357#102 Max (can't resolve refresh rate)
+08-12 10:09:13.584  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_13838#78879 voted ExplicitCategory with category: HighHint
+08-12 10:09:13.584  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-12 10:09:13.585  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-12 10:09:13.587  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-12 10:09:13.587  1325  1405 I display : Current VRR MODE is 3
+08-12 10:09:13.587  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-12 10:09:13.587  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-12 10:09:13.587  1325  1405 I display : commit modeset : 1080x2340@60phs
+08-12 10:09:13.607  1325  1405 W display : deliverWinConfigData:: commit modeset time (19 ms)
+08-12 10:09:13.608  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-12 10:09:13.609  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-12 10:09:13.609  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-12 10:09:13.609  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-12 10:09:13.609  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-12 10:09:13.609  1325  1397 I display : Set Affinity CPU ID : 0
+08-12 10:09:13.609  1325  1397 I display : Set Affinity CPU ID : 1
+08-12 10:09:13.609  1325  1397 I display : Set Affinity CPU ID : 2
+08-12 10:09:13.609  1325  1397 I display : Set Affinity CPU ID : 3
+08-12 10:09:13.609  1325  1397 I display : Set Affinity CPU ID : 4
+08-12 10:09:13.609  1325  1397 I display : Set Affinity CPU ID : 5
+08-12 10:09:13.609  1325  1397 I display : Set Affinity CPU ID : 6
+08-12 10:09:13.609  1325  1397 I display : Set Affinity CPU ID : 7
+08-12 10:09:13.609  1325  1397 I display : Set affinity HWC : 1325
+08-12 10:09:13.609  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-12 10:09:13.610  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-12 10:09:13.610  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-12 10:09:13.610  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-12 10:09:13.610  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-12 10:09:13.611  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-12 10:09:13.708 13838 13838 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{bcaf08f VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-12 10:09:13.716  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-12 10:09:13.724  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-12 10:09:13.734  1437  1437 I LayerHistory: InputMethod$_5082#78922 Max (can't resolve refresh rate)
+08-12 10:09:13.734  1437  1437 I LayerHistory: NavigationBar0$_2357#102 Max (can't resolve refresh rate)
+08-12 10:09:13.734  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_13838#78879 voted ExplicitCategory with category: HighHint
+08-12 10:09:13.734  1437  1437 I SurfaceFlinger: HRR ignores InputMethod$_5082#78922 (type=Max, weight=0.97, seamlessness=Default) 0.00 Hz's 120.00 Hz
+08-12 10:09:13.734  1437  1437 I SurfaceFlinger: HRR ignores NavigationBar0$_2357#102 (type=Max, weight=0.05, seamlessness=Default) 0.00 Hz's 120.00 Hz
+08-12 10:09:13.734  1437  1437 I SurfaceFlinger: Touch Boost [late] - choose 120.00 Hz
+08-12 10:09:13.735  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-12 10:09:13.737  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-12 10:09:13.737  1325  1405 I display : Current VRR MODE is 3
+08-12 10:09:13.737  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-12 10:09:13.737  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-12 10:09:13.738  1325  1405 I display : commit modeset : 1080x2340@120hs
+08-12 10:09:13.758  1325  1405 W display : deliverWinConfigData:: commit modeset time (19 ms)
+08-12 10:09:13.759  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-12 10:09:13.759  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-12 10:09:13.759  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-12 10:09:13.759  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-12 10:09:13.759  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-12 10:09:13.759  1325  1397 I display : Set Affinity CPU ID : 0
+08-12 10:09:13.759  1325  1397 I display : Set Affinity CPU ID : 1
+08-12 10:09:13.759  1325  1397 I display : Set Affinity CPU ID : 2
+08-12 10:09:13.759  1325  1397 I display : Set Affinity CPU ID : 3
+08-12 10:09:13.759  1325  1397 I display : Set Affinity CPU ID : 4
+08-12 10:09:13.759  1325  1397 I display : Set Affinity CPU ID : 5
+08-12 10:09:13.759  1325  1397 I display : Set Affinity CPU ID : 6
+08-12 10:09:13.759  1325  1397 I display : Set Affinity CPU ID : 7
+08-12 10:09:13.759  1325  1397 I display : Set affinity HWC : 1325
+08-12 10:09:13.759  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-12 10:09:13.759  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-12 10:09:13.759  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-12 10:09:13.760  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-12 10:09:13.761  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-12 10:09:13.810 13838 13838 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{bcaf08f VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-12 10:09:14.003  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786518554
+08-12 10:09:14.003  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-12 10:09:14.004  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-12 10:09:14.004  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29775309
+08-12 10:09:14.004  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29775283
+08-12 10:09:14.005  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-12 10:09:14.005  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-12 10:09:14.006  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-12 10:09:14.006  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-12 10:09:14.006  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-12 10:09:14.072  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-12 10:09:14.076  1437  1437 I LayerHistory: InputMethod$_5082#78922 Max (can't resolve refresh rate)
+08-12 10:09:14.076  1437  1437 I LayerHistory: NavigationBar0$_2357#102 Max (can't resolve refresh rate)
+08-12 10:09:14.076  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_13838#78879 voted ExplicitCategory with category: HighHint
+08-12 10:09:14.076  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-12 10:09:14.076  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-12 10:09:14.078  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-12 10:09:14.078  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-12 10:09:14.078  1325  1405 I display : Current VRR MODE is 3
+08-12 10:09:14.078  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-12 10:09:14.078  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-12 10:09:14.079  1325  1405 I display : commit modeset : 1080x2340@60phs
+08-12 10:09:14.107  1325  1405 W display : deliverWinConfigData:: commit modeset time (28 ms)
+08-12 10:09:14.109  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-12 10:09:14.109  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-12 10:09:14.109  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-12 10:09:14.109  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-12 10:09:14.109  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-12 10:09:14.109  1325  1397 I display : Set Affinity CPU ID : 0
+08-12 10:09:14.109  1325  1397 I display : Set Affinity CPU ID : 1
+08-12 10:09:14.109  1325  1397 I display : Set Affinity CPU ID : 2
+08-12 10:09:14.110  1325  1397 I display : Set Affinity CPU ID : 3
+08-12 10:09:14.110  1325  1397 I display : Set Affinity CPU ID : 4
+08-12 10:09:14.110  1325  1397 I display : Set Affinity CPU ID : 5
+08-12 10:09:14.110  1325  1397 I display : Set Affinity CPU ID : 6
+08-12 10:09:14.110  1325  1397 I display : Set Affinity CPU ID : 7
+08-12 10:09:14.110  1325  1397 I display : Set affinity HWC : 1325
+08-12 10:09:14.110  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-12 10:09:14.110  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-12 10:09:14.110  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-12 10:09:14.110  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-12 10:09:14.111  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-12 10:09:14.141  1337 17019 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 10504265
+08-12 10:09:14.327 13838 13838 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{bcaf08f VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-12 10:09:14.338  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-12 10:09:14.340  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-12 10:09:14.340  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-12 10:09:14.350  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_13838#78879 voted ExplicitCategory with category: HighHint
+08-12 10:09:14.350  1437  1437 I SurfaceFlinger: Touch Boost [late] - choose 120.00 Hz
+08-12 10:09:14.350  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-12 10:09:14.352  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-12 10:09:14.352  1325  1405 I display : Current VRR MODE is 3
+08-12 10:09:14.352  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-12 10:09:14.352  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-12 10:09:14.352  1325  1405 I display : commit modeset : 1080x2340@120hs
+08-12 10:09:14.373  1325  1405 W display : deliverWinConfigData:: commit modeset time (21 ms)
+08-12 10:09:14.374  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-12 10:09:14.374  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-12 10:09:14.374  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-12 10:09:14.374  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-12 10:09:14.374  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-12 10:09:14.374  1325  1397 I display : Set Affinity CPU ID : 0
+08-12 10:09:14.374  1325  1397 I display : Set Affinity CPU ID : 1
+08-12 10:09:14.374  1325  1397 I display : Set Affinity CPU ID : 2
+08-12 10:09:14.374  1325  1397 I display : Set Affinity CPU ID : 3
+08-12 10:09:14.374  1325  1397 I display : Set Affinity CPU ID : 4
+08-12 10:09:14.374  1325  1397 I display : Set Affinity CPU ID : 5
+08-12 10:09:14.374  1325  1397 I display : Set Affinity CPU ID : 6
+08-12 10:09:14.374  1325  1397 I display : Set Affinity CPU ID : 7
+08-12 10:09:14.374  1325  1397 I display : Set affinity HWC : 1325
+08-12 10:09:14.374  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-12 10:09:14.375  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-12 10:09:14.375  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-12 10:09:14.375  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-12 10:09:14.375  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-12 10:09:14.382 13521 13813 I appium  : AppiumResponse: {"sessionId":"a37fe1df-7135-45c6-8905-c339a06bddfa","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-12 10:09:14.430 12724 12724 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-12 10:09:14.487 17077 17077 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-12 10:09:14.502  1726  4575 I ImeTracker: system_server:284e238a: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false
+08-12 10:09:14.544 12724 12724 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-12 10:09:14.589  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-12 10:09:14.591  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-12 10:09:14.600  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-12 10:09:14.600  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_13838#78879 voted ExplicitCategory with category: HighHint
+08-12 10:09:14.600  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-12 10:09:14.601  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-12 10:09:14.603  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-12 10:09:14.603  1325  1405 I display : Current VRR MODE is 3
+08-12 10:09:14.603  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-12 10:09:14.603  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-12 10:09:14.603  1325  1405 I display : commit modeset : 1080x2340@60phs
+08-12 10:09:14.605 17080 17080 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-12 10:09:14.617  1726  4575 I ImeTracker: system_server:440b8e2c: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false
+08-12 10:09:14.623  1325  1405 W display : deliverWinConfigData:: commit modeset time (20 ms)
+08-12 10:09:14.624  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-12 10:09:14.625  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-12 10:09:14.625  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-12 10:09:14.625  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-12 10:09:14.625  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-12 10:09:14.625  1325  1397 I display : Set Affinity CPU ID : 0
+08-12 10:09:14.625  1325  1397 I display : Set Affinity CPU ID : 1
+08-12 10:09:14.625  1325  1397 I display : Set Affinity CPU ID : 2
+08-12 10:09:14.625  1325  1397 I display : Set Affinity CPU ID : 3
+08-12 10:09:14.625  1325  1397 I display : Set Affinity CPU ID : 4
+08-12 10:09:14.625  1325  1397 I display : Set Affinity CPU ID : 5
+08-12 10:09:14.625  1325  1397 I display : Set Affinity CPU ID : 6
+08-12 10:09:14.625  1325  1397 I display : Set Affinity CPU ID : 7
+08-12 10:09:14.625  1325  1397 I display : Set affinity HWC : 1325
+08-12 10:09:14.625  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-12 10:09:14.625  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-12 10:09:14.625  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-12 10:09:14.625  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-12 10:09:14.625  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-12 10:09:14.626  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-12 10:09:14.664 12724 12724 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

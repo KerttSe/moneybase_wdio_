@@ -1,0 +1,202 @@
+--------- beginning of main
+08-06 15:32:57.443  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-06 15:32:57.447  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-06 15:32:57.450  1437  1437 I LayerHistory: NotificationShade$_2357#34860 Max (can't resolve refresh rate)
+08-06 15:32:57.450  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-06 15:32:57.451  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-06 15:32:57.452  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-06 15:32:57.454  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-06 15:32:57.455  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-06 15:32:57.455  1325  1405 I display : Current VRR MODE is 3
+08-06 15:32:57.455  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-06 15:32:57.455  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-06 15:32:57.456  1325  1405 I display : commit modeset : 1080x2340@60phs
+08-06 15:32:57.471  1325  1405 W display : deliverWinConfigData:: commit modeset time (15 ms)
+08-06 15:32:57.473  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-06 15:32:57.473  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 15:32:57.473  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-06 15:32:57.473  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 15:32:57.473  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-06 15:32:57.473  1325  1397 I display : Set Affinity CPU ID : 0
+08-06 15:32:57.473  1325  1397 I display : Set Affinity CPU ID : 1
+08-06 15:32:57.473  1325  1397 I display : Set Affinity CPU ID : 2
+08-06 15:32:57.473  1325  1397 I display : Set Affinity CPU ID : 3
+08-06 15:32:57.473  1325  1397 I display : Set Affinity CPU ID : 4
+08-06 15:32:57.473  1325  1397 I display : Set Affinity CPU ID : 5
+08-06 15:32:57.473  1325  1397 I display : Set Affinity CPU ID : 6
+08-06 15:32:57.473  1325  1397 I display : Set Affinity CPU ID : 7
+08-06 15:32:57.473  1325  1397 I display : Set affinity HWC : 1325
+08-06 15:32:57.473  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-06 15:32:57.473  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-06 15:32:57.473  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-06 15:32:57.474  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-06 15:32:57.474  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-06 15:32:58.425  1326  1393 E BatteryDump: !@new_battery_dump : 4210,1254,1500,2054,78,336,343,353,336,0,333,330,0,Charging,NO_CHARGING,Normal,Good,PDIC,0,Normal,0,0,9180,0x18000,0x10010000,0x0,0,0,0000,0000,ffff0700,0,0,0,0,680,4097,7789,990,0,
+08-06 15:32:58.433  1326  1326 I android.hardware.health@2.1-service-samsung: updateLrpSysfs: write: 333
+--------- beginning of system
+08-06 15:32:58.435  1726  1868 D [SS]BattFunctions: [sendRemainingChargingTimeChangedIntent]remainingChargingTime:2506 ,mLastRemainingChargingTime:2517
+08-06 15:32:58.439  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786019578
+08-06 15:32:58.439  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-06 15:32:58.439  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-06 15:32:58.439  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29766992
+08-06 15:32:58.439  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29766992
+08-06 15:32:58.439  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-06 15:32:58.439  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-06 15:32:58.440  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-06 15:32:58.440  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-06 15:32:58.440  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-06 15:32:58.446  2357  2357 I AODBatteryManager: updateBatteryData: ACTION_BATTERY_CHANGED: false, isSleepModeChanged:false ,isRemainingTimeChanged: true, isUSBRestriction: false
+08-06 15:32:58.446  2357  2357 I ChargingInfoManager: updateChargingInfo: newState = AOD ChargingInfo [mState=BATTERY_AND_REMAIN_TIME, mIsCharging=true, mIsPlugged=true, mIsFullyCharged=false, mIsBatteryProtectMode=false, mBetteryLevel=78, mBetteryProtectModeType0, mIsSlowChargingfalse], oldState = AOD ChargingInfo [mState=BATTERY_AND_REMAIN_TIME, mIsCharging=true, mIsPlugged=true, mIsFullyCharged=false, mIsBatteryProtectMode=false, mBetteryLevel=78, mBetteryProtectModeType0, mIsSlowChargingfalse]
+08-06 15:32:58.446  2357  2357 D PowerUI : Remaining charging time : 2506
+08-06 15:32:58.446  2357  2357 D PowerUI : Charging time is changed, check charging notification
+08-06 15:32:58.448  2357  2357 D PowerUI.Notification: showChargingNotice - Battery Level : 78 -> 78, Charging Type : 11 -> 11, Charging Time : 2517 -> 2506, Maximum protection : false -> false, Maximum threshold : 80 -> 80
+08-06 15:32:58.455  2357  2357 I NotificationManager: com.android.systemui: notify(2131364006, charging_state, Notification(channel=CHR shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|ONLY_ALERT_ONCE color=0x00000000 category=sys groupKey=CHARGING vis=PUBLIC semFlags=0x0 semPriority=0 semMissedCount=0)) as user
+08-06 15:32:58.473  1726  4575 W PermissionService: getPermissionFlags: Unknown user -1
+08-06 15:32:58.473  1726  4575 W PermissionService: getPermissionFlags: Unknown user -1
+08-06 15:32:58.694  1726  1726 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+08-06 15:32:58.718  1726  3181 W FreecessController: getAllRunningPackagePids: Failed to read pid from /sys/fs/cgroup/apps/uid_10312/pid_4966/cgroup.procs
+08-06 15:32:58.718  1726  3183 D ActivityManager: unpendingScheduleServiceRestart: u=10312, drop=false
+08-06 15:32:58.733  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-06 15:32:58.733  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 2131364006
+08-06 15:32:58.735  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-06 15:32:58.735  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-06 15:32:58.737  6020  6488 I NotificationPipeline: Processing new notification: -1|com.android.systemui|2131364006|charging_state|10048
+08-06 15:32:58.739  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted com.android.systemui: -1|com.android.systemui|2131364006|charging_state|10048: 0
+08-06 15:32:58.739  2870  6282 I HoneySpace.NotificationListener: invalid notification: com.android.systemui UserHandle{-1}: canShowBadge is false
+08-06 15:32:58.739  1726  3181 D FreecessController: UFZ : com.samsung.android.game.gamehome(10312) [5649] reason: Binder(1)-android.service.notification.INotificatio
+08-06 15:32:58.739  1726  3186 W LocationManagerService: onFreezeStateChanged, uid[10312]=false
+08-06 15:32:58.741  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-06 15:32:58.741  1726  3186 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10312 , disable= false
+08-06 15:32:58.742  1726  3186 I PowerManagerService: [PWL] can not change uid =  10312
+08-06 15:32:58.742  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-06 15:32:58.742  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-06 15:32:58.743  2357  2357 I AODNotificationManager: updateNotification() 
+08-06 15:32:58.743  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-06 15:32:58.743  6020  6488 I NotificationPipeline: Discarding notification: -1|com.android.systemui|2131364006|charging_state|10048
+08-06 15:32:58.752  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-06 15:32:58.755  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-06 15:32:58.767  1437  1437 I LayerHistory: NotificationShade$_2357#34860 Max (can't resolve refresh rate)
+08-06 15:32:58.767  1437  1437 I SurfaceFlinger: scored - choose 120.00 Hz
+08-06 15:32:58.768  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-06 15:32:58.769  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForClientComposition
+08-06 15:32:58.773  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-06 15:32:58.773  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-06 15:32:58.773  1325  1405 I display : Current VRR MODE is 3
+08-06 15:32:58.774  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-06 15:32:58.774  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-06 15:32:58.774  1325  1405 I display : commit modeset : 1080x2340@120hs
+08-06 15:32:58.789  1325  1405 W display : deliverWinConfigData:: commit modeset time (14 ms)
+08-06 15:32:58.790  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-06 15:32:58.790  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-06 15:32:58.790  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-06 15:32:58.790  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-06 15:32:58.790  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-06 15:32:58.790  1325  1397 I display : Set Affinity CPU ID : 0
+08-06 15:32:58.790  1325  1397 I display : Set Affinity CPU ID : 1
+08-06 15:32:58.790  1325  1397 I display : Set Affinity CPU ID : 2
+08-06 15:32:58.790  1325  1397 I display : Set Affinity CPU ID : 3
+08-06 15:32:58.790  1325  1397 I display : Set Affinity CPU ID : 4
+08-06 15:32:58.790  1325  1397 I display : Set Affinity CPU ID : 5
+08-06 15:32:58.790  1325  1397 I display : Set Affinity CPU ID : 6
+08-06 15:32:58.790  1325  1397 I display : Set Affinity CPU ID : 7
+08-06 15:32:58.790  1325  1397 I display : Set affinity HWC : 1325
+08-06 15:32:58.791  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-06 15:32:58.791  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-06 15:32:58.791  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-06 15:32:58.791  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-06 15:32:58.792  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-06 15:32:58.890  2648  3040 W bluetooth: system/gd/hci/le_address_manager.cc:337 pause_registered_clients: pause_registered_clients
+08-06 15:32:58.891  2648  3040 W bluetooth: system/gd/hci/le_scanning_manager.cc:1811 OnPause: OnPause
+08-06 15:32:58.891  2648  3040 W bluetooth: system/gd/hci/le_scanning_manager.cc:768 stop_scan: stop_scan
+08-06 15:32:58.891  2648  3040 W bluetooth: system/gd/hci/acl_manager/le_impl.h:1562 OnPause: le_impl :: AckPause
+08-06 15:32:58.895  2648  3040 W bluetooth: system/gd/hci/le_address_manager.cc:370 ack_pause: Client already in paused state
+08-06 15:32:58.895  2648  3040 W bluetooth: system/gd/hci/le_address_manager.cc:374 ack_pause: Wait all clients paused, return
+08-06 15:32:58.895  2648  3040 W bluetooth: system/gd/hci/le_address_manager.cc:370 ack_pause: Client already in paused state
+08-06 15:32:58.895  2648  3040 W bluetooth: system/gd/hci/le_address_manager.cc:370 ack_pause: Client already in paused state
+08-06 15:32:58.895  2648  3040 I bluetooth: system/gd/hci/le_address_manager.cc:581 GetNextPrivateAddressIntervalRange: client=LeAddressManager, nonwake=7m17s, wake=14m43s
+08-06 15:32:58.911  2648  3040 I bluetooth: system/gd/hci/le_address_manager.cc:816 OnCommandComplete: Received command complete with op_code LE_SET_RANDOM_ADDRESS(0x2005)
+08-06 15:32:58.911  2648  3040 I bluetooth: system/gd/hci/le_address_manager.cc:836 OnCommandComplete: update random address : xx:xx:xx:xx:a3:22
+08-06 15:32:58.911  2648  3040 I bluetooth: system/gd/hci/le_address_manager.cc:397 resume_registered_clients: Resuming registered clients
+08-06 15:32:58.911  2648  3040 W bluetooth: system/gd/hci/le_scanning_manager.cc:1825 OnResume: OnResume
+08-06 15:32:58.911  2648  3040 W bluetooth: system/gd/hci/le_scanning_manager.cc:1828 OnResume: scan_on_resume_
+08-06 15:32:58.911  2648  3040 W bluetooth: system/gd/hci/le_scanning_manager.cc:1834 OnResume: configure_scan_on_resume
+08-06 15:32:58.911  2648  3040 I bluetooth: system/gd/hci/le_scanning_manager.cc:765 stop_scan: Scanning already stopped, return!
+08-06 15:32:58.911  2648  3040 W bluetooth: system/gd/hci/le_scanning_manager.cc:732 start_scan: start_scan
+08-06 15:32:58.911  2648  3040 W bluetooth: system/gd/hci/acl_manager/le_impl.h:1583 OnResume: le_impl :: AckResume
+08-06 15:32:58.919  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=-1|com.android.systemui|2131364006|charging_state|10048
+08-06 15:32:58.921  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. -1|com.android.systemui|2131364006|charging_state|10048
+08-06 15:32:58.921  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-06 15:32:58.937  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-06 15:32:58.941  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-06 15:32:58.942  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 -1|com.android.systemui|2131364006|charging_state|10048
+08-06 15:32:58.942  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 -1|com.android.systemui|2131364006|charging_state|10048
+08-06 15:32:58.943  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-06 15:32:58.948  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-06 15:32:58.949  2357  2357 I AODNotificationManager: updateNotification() 
+08-06 15:32:58.956  2357  3033 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-06 15:32:58.958  2357  3033 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-06 15:32:58.964  2357  2357 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-06 15:32:58.977  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-06 15:32:58.979  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-06 15:32:58.980  1437  1559 I VSyncReactor: Current= 120, Period= 120, hwcPeriod= 120
+08-06 15:32:59.005  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 -1|com.android.systemui|2131364006|charging_state|10048
+08-06 15:32:59.005  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 -1|com.android.systemui|2131364006|charging_state|10048
+08-06 15:32:59.005  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 -1|com.android.systemui|2131364006|charging_state|10048
+08-06 15:32:59.005  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 -1|com.android.systemui|2131364006|charging_state|10048
+08-06 15:32:59.009  2357  2357 D S.S.N.  : entryViewBound parent :-1|com.android.systemui|2131364006|charging_state|10048
+08-06 15:32:59.012  2357  2357 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-06 15:32:59.015  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-06 15:32:59.016  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-06 15:32:59.016  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 -1|com.android.systemui|2131364006|charging_state|10048
+08-06 15:32:59.016  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 -1|com.android.systemui|2131364006|charging_state|10048
+08-06 15:32:59.017  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-06 15:32:59.018  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-06 15:32:59.018  2357  2357 I AODNotificationManager: updateNotification() 
+08-06 15:32:59.208   730   730 D io_stats: !@   8,0 r 27175713 519219756 w 8271126 149486936 d 2394150 194495952 f 0 790201 iot 12303260 0 th 0 0 0 pt 0 inp 0 0 173495.287
+08-06 15:32:59.209   730   730 D io_stats: !@ Write_top(KB): kworker/u16:1(18362) 328 soft.appmanager(16996) 16 android.hardwar(1326) 8
+08-06 15:32:59.275  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-06 15:32:59.278  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-06 15:32:59.281  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-06 15:32:59.282  1437  1437 I LayerHistory: NotificationShade$_2357#34860 Max (can't resolve refresh rate)
+08-06 15:32:59.282  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-06 15:32:59.283  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-06 15:32:59.283  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForClientComposition
+08-06 15:32:59.286  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-06 15:32:59.286  1325  1405 I display : Current VRR MODE is 3
+08-06 15:32:59.286  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-06 15:32:59.286  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-06 15:32:59.286  1325  1405 I display : commit modeset : 1080x2340@60phs
+08-06 15:32:59.306  1325  1405 W display : deliverWinConfigData:: commit modeset time (19 ms)
+08-06 15:32:59.308  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-06 15:32:59.308  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 15:32:59.308  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-06 15:32:59.308  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 15:32:59.308  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-06 15:32:59.308  1325  1397 I display : Set Affinity CPU ID : 0
+08-06 15:32:59.308  1325  1397 I display : Set Affinity CPU ID : 1
+08-06 15:32:59.308  1325  1397 I display : Set Affinity CPU ID : 2
+08-06 15:32:59.308  1325  1397 I display : Set Affinity CPU ID : 3
+08-06 15:32:59.308  1325  1397 I display : Set Affinity CPU ID : 4
+08-06 15:32:59.308  1325  1397 I display : Set Affinity CPU ID : 5
+08-06 15:32:59.308  1325  1397 I display : Set Affinity CPU ID : 6
+08-06 15:32:59.308  1325  1397 I display : Set Affinity CPU ID : 7
+08-06 15:32:59.308  1325  1397 I display : Set affinity HWC : 1325
+08-06 15:32:59.308  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-06 15:32:59.308  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-06 15:32:59.308  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-06 15:32:59.309  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-06 15:32:59.310  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-06 15:32:59.439  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786019579
+08-06 15:32:59.440  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-06 15:32:59.440  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-06 15:32:59.440  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29766992
+08-06 15:32:59.440  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29766992
+08-06 15:32:59.440  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-06 15:32:59.440  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-06 15:32:59.441  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-06 15:32:59.442  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-06 15:32:59.442  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-06 15:32:59.552 12658 12658 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''
+08-06 15:32:59.614  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-06 15:32:59.623  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 34180, isSameBssidAndFreq true
+08-06 15:32:59.623  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:22 syn=2, rto=0, cwnd=0

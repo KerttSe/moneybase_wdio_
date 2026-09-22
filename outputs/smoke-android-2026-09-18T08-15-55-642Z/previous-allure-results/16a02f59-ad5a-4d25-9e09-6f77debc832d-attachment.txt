@@ -1,0 +1,206 @@
+--------- beginning of main
+08-05 16:52:59.943  2991  2991 D OpenvpnNotificationService: Foreground service started/updated: 1642
+08-05 16:52:59.949 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:52:59.950 19946 20029 I appium  : FindElements command
+08-05 16:52:59.951 19946 20029 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]'
+08-05 16:52:59.951 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:52:59.952 19946 20029 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 16:53:00.011  2357  2896 I DateTimeView: updateAll - getTimeFormat
+--------- beginning of system
+08-05 16:53:00.021  1726  1726 I EyeComfortSolutionService: action  :  android.intent.action.TIME_TICK
+08-05 16:53:00.027  2357  2896 D QSClockBellTower: onReceive(android.intent.action.TIME_TICK) mTimeZoneString:Europe/Kiev
+08-05 16:53:00.029  2357  2357 D QSClockBellTower: He is ready to ring the bell. (((QSClockBellSound - TimeText:16:53, TimeContentDescription:16:53, DateText:Wed, August 5, ShortDateText:Wed, Aug 5, Demo:false)))
+08-05 16:53:00.032  2357  2357 D QSClock : StatusBar clock=16:53 notifyTimeChanged(QSClockBellSound - TimeText:16:53, TimeContentDescription:16:53, DateText:Wed, August 5, ShortDateText:Wed, Aug 5, Demo:false) clockVisibleByPolicy=true, clockVisibleByUser=true, visible=true, parent=android.widget.LinearLayout{afef6bc V.E...... ......ID 0,0-97,58 #7f0a069b app:id/left_clock_container} caller=com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.animateShow:52 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.updateStatusBarVisibilitiesInner:230 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.updateStatusBarVisibilities:65 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.disable:71 com.android.systemui.statusbar.CommandQueue$H.handleMessage:2997  
+08-05 16:53:00.034  2357  2357 D QSClockBellTower: Everyone heard the bell. run(currentTime:1785937980027, getTime():Wed Aug 05 16:53:00 GMT+03:00 2026, getTimeZone():libcore.util.ZoneInfo[mDstSavings=3600000,mUseDst=true,mDelegate=[id="Europe/Kiev",mRawOffset=7200000,mEarliestRawOffset=7324000,transitions=245]])
+08-05 16:53:00.035  2357  2357 D ClockFaceEvents: onTimeTick. callers : com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.refreshTime:19
+08-05 16:53:00.035  2357  2357 D ClockFaceEvents: com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.onTimeChanged:1
+08-05 16:53:00.035  2357  2357 D ClockFaceEvents: com.android.keyguard.KeyguardUpdateMonitor$16.handleMessage:732
+08-05 16:53:00.036  2357  2357 D ClockFaceEvents: onTimeTick. callers : com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.refreshTime:38
+08-05 16:53:00.036  2357  2357 D ClockFaceEvents: com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.onTimeChanged:1
+08-05 16:53:00.036  2357  2357 D ClockFaceEvents: com.android.keyguard.KeyguardUpdateMonitor$16.handleMessage:732
+08-05 16:53:00.036  2357  2357 D FaceWidgetPagesController: onTimeChanged()
+08-05 16:53:00.041  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-05 16:53:00.051  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-05 16:53:00.057  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-05 16:53:00.059  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-05 16:53:00.062  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-05 16:53:00.062  1437  1437 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+08-05 16:53:00.063  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-05 16:53:00.066  1325  1325 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-05 16:53:00.066  1325  1325 I display : Current VRR MODE is 3
+08-05 16:53:00.066  1325  1325 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-05 16:53:00.066  1325  1325 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-05 16:53:00.067  1325  1325 I display : commit modeset : 1080x2340@120hs
+08-05 16:53:00.079 19946 20029 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]' XPath2 query
+08-05 16:53:00.079 19946 20029 I appium  : Found zero matches
+08-05 16:53:00.080 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:53:00.091  1325  1325 W display : deliverWinConfigData:: commit modeset time (23 ms)
+08-05 16:53:00.092  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-05 16:53:00.092  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-05 16:53:00.092  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-05 16:53:00.092  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-05 16:53:00.092  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-05 16:53:00.092  1325  1397 I display : Set Affinity CPU ID : 0
+08-05 16:53:00.092  1325  1397 I display : Set Affinity CPU ID : 1
+08-05 16:53:00.092  1325  1397 I display : Set Affinity CPU ID : 2
+08-05 16:53:00.092  1325  1397 I display : Set Affinity CPU ID : 3
+08-05 16:53:00.092  1325  1397 I display : Set Affinity CPU ID : 4
+08-05 16:53:00.092  1325  1397 I display : Set Affinity CPU ID : 5
+08-05 16:53:00.092  1325  1397 I display : Set Affinity CPU ID : 6
+08-05 16:53:00.092  1325  1397 I display : Set Affinity CPU ID : 7
+08-05 16:53:00.093  1325  1397 I display : Set affinity HWC : 1325
+08-05 16:53:00.093  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-05 16:53:00.093  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-05 16:53:00.093  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-05 16:53:00.094  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-05 16:53:00.096  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-05 16:53:00.096  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-05 16:53:00.102 19946 20029 I appium  : channel read: POST /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/elements
+08-05 16:53:00.102 19946 20029 I appium  : FindElements command
+08-05 16:53:00.103 19946 20029 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]'
+08-05 16:53:00.103 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:53:00.157  1726  1726 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+08-05 16:53:00.176  1726  1726 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+08-05 16:53:00.188  1726  3183 D ActivityManager: unpendingScheduleServiceRestart: u=10312, drop=false
+08-05 16:53:00.190  1726  3181 W FreecessController: getAllRunningPackagePids: Failed to read pid from /sys/fs/cgroup/apps/uid_10312/pid_4966/cgroup.procs
+08-05 16:53:00.192  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.196  1726  3181 D FreecessController: UFZ : com.samsung.android.game.gamehome(10312) [5649] reason: Binder(1)-android.service.notification.INotificatio
+08-05 16:53:00.196  1726  3186 W LocationManagerService: onFreezeStateChanged, uid[10312]=false
+08-05 16:53:00.197  1726  3186 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10312 , disable= false
+08-05 16:53:00.197  1726  3186 I PowerManagerService: [PWL] can not change uid =  10312
+08-05 16:53:00.200  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.200  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-05 16:53:00.202  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-05 16:53:00.203  6020  6488 I NotificationPipeline: Processing new notification: 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.205  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-05 16:53:00.205  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-05 16:53:00.208  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted net.openvpn.openvpn: 0|net.openvpn.openvpn|1642|null|10466: 0
+08-05 16:53:00.208  2870  6282 I HoneySpace.NotificationListener: invalid notification: net.openvpn.openvpn UserHandle{0}: canShowBadge is false
+08-05 16:53:00.210  2870 13794 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. net.openvpn.openvpn/net.openvpn.unified.MainActivity#UserHandle{0}|33979 : 0
+08-05 16:53:00.210  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-05 16:53:00.211  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-05 16:53:00.211  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1642
+08-05 16:53:00.212  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-05 16:53:00.214  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-05 16:53:00.214  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted net.openvpn.openvpn: 0|net.openvpn.openvpn|1642|null|10466: 0
+08-05 16:53:00.214  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1642
+08-05 16:53:00.214  2870  6282 I HoneySpace.NotificationListener: invalid notification: net.openvpn.openvpn UserHandle{0}: canShowBadge is false
+08-05 16:53:00.216  2870 13795 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. net.openvpn.openvpn/net.openvpn.unified.MainActivity#UserHandle{0}|33979 : 0
+08-05 16:53:00.217  6020  6488 I NotificationPipeline: Discarding notification: 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.217  6020  6488 I NotificationPipeline: Processing new notification: 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.219  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-05 16:53:00.219  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-05 16:53:00.220  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-05 16:53:00.221  6020  6488 I NotificationPipeline: Discarding notification: 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.225  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.228  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.229  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.230  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-05 16:53:00.233  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.242  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-05 16:53:00.248  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-05 16:53:00.249  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.249  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.252  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-05 16:53:00.253  2357  2357 I AODNotificationManager: updateNotification() 
+08-05 16:53:00.282  2357  2357 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+08-05 16:53:00.300  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-05 16:53:00.304  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.304  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.304  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.304  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.305  2357  2357 D S.S.N.  : entryViewBound parent :0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.307  2357  2357 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+08-05 16:53:00.308  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-05 16:53:00.310  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-05 16:53:00.314  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-05 16:53:00.316  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-05 16:53:00.317  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-05 16:53:00.317  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-05 16:53:00.317  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-05 16:53:00.317  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.317  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 16:53:00.317  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-05 16:53:00.318  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-05 16:53:00.318  2357  2357 I AODNotificationManager: updateNotification() 
+08-05 16:53:00.319  1325  1325 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-05 16:53:00.319  1325  1325 I display : Current VRR MODE is 3
+08-05 16:53:00.319  1325  1325 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-05 16:53:00.319  1325  1325 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-05 16:53:00.319  1325  1325 I display : commit modeset : 1080x2340@60phs
+08-05 16:53:00.332  1325  1325 W display : deliverWinConfigData:: commit modeset time (13 ms)
+08-05 16:53:00.333  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-05 16:53:00.333  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-05 16:53:00.333  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-05 16:53:00.333  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-05 16:53:00.333  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-05 16:53:00.333  1325  1397 I display : Set Affinity CPU ID : 0
+08-05 16:53:00.333  1325  1397 I display : Set Affinity CPU ID : 1
+08-05 16:53:00.333  1325  1397 I display : Set Affinity CPU ID : 2
+08-05 16:53:00.333  1325  1397 I display : Set Affinity CPU ID : 3
+08-05 16:53:00.333  1325  1397 I display : Set Affinity CPU ID : 4
+08-05 16:53:00.333  1325  1397 I display : Set Affinity CPU ID : 5
+08-05 16:53:00.333  1325  1397 I display : Set Affinity CPU ID : 6
+08-05 16:53:00.333  1325  1397 I display : Set Affinity CPU ID : 7
+08-05 16:53:00.334  1325  1397 I display : Set affinity HWC : 1325
+08-05 16:53:00.334  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-05 16:53:00.334  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-05 16:53:00.334  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-05 16:53:00.334  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-05 16:53:00.334  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-05 16:53:00.640 19946 20029 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 16:53:00.795  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-05 16:53:00.805  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 26013, isSameBssidAndFreq true
+08-05 16:53:00.807  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:22 syn=2, rto=0, cwnd=0
+08-05 16:53:00.807  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:23 syn=2, rto=0, cwnd=0
+08-05 16:53:00.807  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:24 syn=0, rto=0, cwnd=2
+08-05 16:53:00.807  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:25 syn=0, rto=0, cwnd=2
+08-05 16:53:00.807  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:26 syn=0, rto=0, cwnd=2
+08-05 16:53:00.808  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:27 syn=0, rto=0, cwnd=2
+08-05 16:53:00.809  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1785937980809 lastDateWindow=1785781227000
+08-05 16:53:00.817 19946 20029 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]' XPath2 query
+08-05 16:53:00.817 19946 20029 I appium  : Found zero matches
+08-05 16:53:00.818 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":[]}
+08-05 16:53:00.835 19946 20029 I appium  : channel read: GET /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/screenshot
+08-05 16:53:00.835 19946 20029 I appium  : CaptureScreenshot command
+08-05 16:53:00.862  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1785937980
+08-05 16:53:00.862  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-05 16:53:00.862  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-05 16:53:00.863  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29765633
+08-05 16:53:00.863  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29765630
+08-05 16:53:00.863  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-05 16:53:00.863  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-05 16:53:00.863  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-05 16:53:00.863  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-05 16:53:00.863  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-05 16:53:00.932 22351 22351 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-05 16:53:00.933 22351 22351 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-05 16:53:00.934 22351 22351 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-05 16:53:00.934  1726  4572 I EDMNativeHelperService: isScreenCaptureEnabled
+08-05 16:53:00.934  1726  4572 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-05 16:53:00.934 22351 22351 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-05 16:53:00.934 22351 22351 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-05 16:53:00.937  1437  1995 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_20061#27506(seamlessTransition:0)
+08-05 16:53:00.937  1437  1995 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_20061#27551(seamlessTransition:0)
+08-05 16:53:00.937  1437  1995 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-05 16:53:00.937  1437  1995 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-05 16:53:00.937  1437  1995 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-05 16:53:00.938  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-05 16:53:00.938  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_20061#27506 at index 1
+08-05 16:53:00.939  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_20061#27551 at index 2
+08-05 16:53:00.939  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 3
+08-05 16:53:00.939  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 4
+08-05 16:53:00.958 22351 22355 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-05 16:53:01.156 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N1pcFvnefbxCztBAiRBkOC+SxQlUZK1r97kbK7rbOPEUzdNO+N6ppnYnS7p985kOpPMZN40nU47aZ2kH5pmnMa169hOvMS2ZMva952kRFHcxX0FQJDA+0ElQhAgxR085P/3SXjOwTk3SEo…
+08-05 16:53:01.191 19946 20029 I appium  : channel read: GET /session/cc1d1c96-6c47-4c3b-9603-98e1ee39fc50/source
+08-05 16:53:01.192 19946 20029 I appium  : Source command
+08-05 16:53:01.192 19946 20029 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:53:01.328 19946 20029 I appium  : AppiumResponse: {"sessionId":"cc1d1c96-6c47-4c3b-9603-98e1ee39fc50","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-05 16:53:01.374 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-05 16:53:01.396   730   730 D io_stats: !@   8,0 r 22984815 446698528 w 6904207 129444868 d 2000015 175008900 f 0 644335 iot 10252644 0 th 0 0 0 pt 0 inp 0 0 136683.051
+08-05 16:53:01.396   730   730 D io_stats: !@ Read_top(KB): ndroid.systemui(2357) 4
+08-05 16:53:01.396   730   730 D io_stats: !@ Write_top(KB): kworker/u16:1(1296) 1316 ugin:persistent(6020) 8
+08-05 16:53:01.434 22356 22356 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-05 16:53:01.491 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-05 16:53:01.543 22359 22359 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-05 16:53:01.596 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

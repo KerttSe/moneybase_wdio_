@@ -1,0 +1,210 @@
+--------- beginning of main
+05-04 16:03:30.124  6787  6802 I OpenGLRenderer: Davey! duration=2187ms; Flags=0, FrameTimelineVsyncId=608409, IntendedVsync=4100784583843, Vsync=4101884583799, InputEventId=0, HandleInputStart=4101895957538, AnimationStart=4101895961247, PerformTraversalsStart=4101915764538, DrawStart=4101921956330, FrameDeadline=4102401250445, FrameInterval=4101895702330, FrameStartTime=16666666, SyncQueued=4101927650122, SyncStart=4101945353747, IssueDrawCommandsStart=4101945451288, SwapBuffers=4102410940080, FrameCompleted=4102989291705, DequeueBufferDuration=27645041, QueueBufferDuration=937667, GpuCompleted=4102989291705, SwapBuffersCompleted=4102673477330, DisplayPresentTime=0, CommandSubmissionCompleted=4102410940080, 
+05-04 16:03:30.200  6787  6880 D EGL_emulation: app_time_stats: avg=671.27ms min=642.11ms max=700.44ms count=2
+05-04 16:03:30.223  6787  6787 I Choreographer: Skipped 37 frames!  The application may be doing too much work on its main thread.
+05-04 16:03:30.671  6787  6802 I OpenGLRenderer: Davey! duration=992ms; Flags=0, FrameTimelineVsyncId=608419, IntendedVsync=4101917917131, Vsync=4101951250463, InputEventId=0, HandleInputStart=4101962803538, AnimationStart=4101962805872, PerformTraversalsStart=4101966733080, DrawStart=4101966802288, FrameDeadline=4103017917087, FrameInterval=4101962790997, FrameStartTime=16666666, SyncQueued=4101967651830, SyncStart=4102677645747, IssueDrawCommandsStart=4102677745414, SwapBuffers=4103206113872, FrameCompleted=4103620822664, DequeueBufferDuration=11583, QueueBufferDuration=385042, GpuCompleted=4103620822664, SwapBuffersCompleted=4103315703164, DisplayPresentTime=0, CommandSubmissionCompleted=4103206113872, 
+05-04 16:03:30.708  6787  9792 D [NEWS_BUBBLE]: update hidden news bubbles cache by []
+05-04 16:03:30.722  6787  9792 D FS.Core.Shared.LogForwarder.WebApi: [[NEWS_BUBBLE]] update hidden news bubbles cache by []
+05-04 16:03:31.516  6787  6802 I OpenGLRenderer: Davey! duration=1584ms; Flags=0, FrameTimelineVsyncId=608430, IntendedVsync=4101984583795, Vsync=4102667917101, InputEventId=0, HandleInputStart=4102682718664, AnimationStart=4102682720664, PerformTraversalsStart=4102748663539, DrawStart=4102748919330, FrameDeadline=4103651250395, FrameInterval=4102682153080, FrameStartTime=16666666, SyncQueued=4102757472789, SyncStart=4103315879247, IssueDrawCommandsStart=4103316142039, SwapBuffers=4103784647789, FrameCompleted=4104127415789, DequeueBufferDuration=10542, QueueBufferDuration=2878250, GpuCompleted=4104127415789, SwapBuffersCompleted=4103788586872, DisplayPresentTime=0, CommandSubmissionCompleted=4103784647789, 
+05-04 16:03:31.532  6787  6787 I Choreographer: Skipped 47 frames!  The application may be doing too much work on its main thread.
+--------- beginning of system
+05-04 16:03:31.612   171  9768 W keystore2: keystore2::watchdog: ### Keystore Watchdog report - BEGIN ###
+05-04 16:03:31.612   171  9768 W keystore2: keystore2::watchdog: When extracting from a bug report, please include this header
+05-04 16:03:31.612   171  9768 W keystore2: keystore2::watchdog: and all 3 records below.
+05-04 16:03:31.613   171  9768 W keystore2: keystore2::watchdog: ThreadId(20) IKeystoreService::deleteKey Pending: 505.16975ms Overdue 5.17325ms
+05-04 16:03:31.613   171  9768 W keystore2: keystore2::watchdog: ThreadId(20) LegacyImporter::with_try_import Pending: 505.244042ms Overdue 5.244625ms
+05-04 16:03:31.613   171  9768 W keystore2: keystore2::watchdog: ThreadId(20) KeystoreDB::unbind_key Pending: 505.250001ms Overdue 5.250375ms
+05-04 16:03:31.613   171  9768 W keystore2: keystore2::watchdog: ### Keystore Watchdog report - END ###
+05-04 16:03:31.696  6787  6802 I OpenGLRenderer: Davey! duration=1510ms; Flags=0, FrameTimelineVsyncId=608453, IntendedVsync=4102717917099, Vsync=4103334583741, InputEventId=0, HandleInputStart=4103343584914, AnimationStart=4103343591206, PerformTraversalsStart=4103359175414, DrawStart=4103359343039, FrameDeadline=4104151250375, FrameInterval=4103337825956, FrameStartTime=16666666, SyncQueued=4103386687997, SyncStart=4103789463331, IssueDrawCommandsStart=4103789654206, SwapBuffers=4104124302914, FrameCompleted=4104631679206, DequeueBufferDuration=466047250, QueueBufferDuration=40040667, GpuCompleted=4104151906914, SwapBuffersCompleted=4104631679206, DisplayPresentTime=0, CommandSubmissionCompleted=4104124302914, 
+05-04 16:03:31.699  6787  6880 D EGL_emulation: app_time_stats: avg=343.98ms min=182.37ms max=472.86ms count=3
+05-04 16:03:31.944  6787  9785 D CommonStorageManager: All RSA keys cleared (legacy + per-subidentity).
+05-04 16:03:31.973  6787  9785 D FS.Core.Shared.LogForwarder.WebApi: [CommonStorageManager] All RSA keys cleared (legacy + per-subidentity).
+05-04 16:03:32.232  6787  6802 I OpenGLRenderer: Davey! duration=1044ms; Flags=0, FrameTimelineVsyncId=608475, IntendedVsync=4103401250405, Vsync=4103817917055, InputEventId=0, HandleInputStart=4103821637081, AnimationStart=4103821638997, PerformTraversalsStart=4103822288789, DrawStart=4103827912331, FrameDeadline=4104184583707, FrameInterval=4103821627706, FrameStartTime=16666666, SyncQueued=4103830237997, SyncStart=4104632840081, IssueDrawCommandsStart=4104635486498, SwapBuffers=4104801259081, FrameCompleted=4105248558123, DequeueBufferDuration=5500, QueueBufferDuration=610708, GpuCompleted=4105248558123, SwapBuffersCompleted=4104842081040, DisplayPresentTime=0, CommandSubmissionCompleted=4104801259081, 
+05-04 16:03:32.882  6787  6802 I OpenGLRenderer: Davey! duration=1716ms; Flags=0, FrameTimelineVsyncId=608495, IntendedVsync=4103851250387, Vsync=4104634583689, InputEventId=0, HandleInputStart=4104647655623, AnimationStart=4104647658373, PerformTraversalsStart=4104655234290, DrawStart=4104655869873, FrameDeadline=4105267916997, FrameInterval=4104647001415, FrameStartTime=16666666, SyncQueued=4104667400206, SyncStart=4104842206873, IssueDrawCommandsStart=4104842441498, SwapBuffers=4105347092665, FrameCompleted=4105742330582, DequeueBufferDuration=13042, QueueBufferDuration=14070000, GpuCompleted=4105742330582, SwapBuffersCompleted=4105362042457, DisplayPresentTime=0, CommandSubmissionCompleted=4105347092665, 
+05-04 16:03:32.888  6787  6880 D EGL_emulation: app_time_stats: avg=594.72ms min=548.04ms max=641.39ms count=2
+05-04 16:03:32.909  6787  6787 D [REPLICATOR]: Dispose Couchbase Sync replicator
+05-04 16:03:32.960  6787  6787 D FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR]] Dispose Couchbase Sync replicator
+05-04 16:03:32.962  6787  6787 I Choreographer: Skipped 42 frames!  The application may be doing too much work on its main thread.
+05-04 16:03:32.984  6787  9785 I SystemPrefsManager: Clearing session
+05-04 16:03:32.993  6787  9785 I FS.Core.Shared.LogForwarder.WebApi: [SystemPrefsManager] Clearing session
+05-04 16:03:33.744  6787  6802 I OpenGLRenderer: Davey! duration=1171ms; Flags=0, FrameTimelineVsyncId=608515, IntendedVsync=4104667917021, Vsync=4104851250347, InputEventId=0, HandleInputStart=4104865714706, AnimationStart=4104865719081, PerformTraversalsStart=4104867149956, DrawStart=4104867258498, FrameDeadline=4105767916977, FrameInterval=4104865698581, FrameStartTime=16666666, SyncQueued=4104879433456, SyncStart=4105364433998, IssueDrawCommandsStart=4105364610707, SwapBuffers=4105764917998, FrameCompleted=4106324761915, DequeueBufferDuration=14167, QueueBufferDuration=325291, GpuCompleted=4106324761915, SwapBuffersCompleted=4106003481207, DisplayPresentTime=0, CommandSubmissionCompleted=4105764917998, 
+05-04 16:03:33.750  6787  6787 I Choreographer: Skipped 43 frames!  The application may be doing too much work on its main thread.
+05-04 16:03:33.946  6787  6880 D EGL_emulation: app_time_stats: avg=263.80ms min=200.65ms max=326.96ms count=2
+05-04 16:03:33.953  6787  6802 I OpenGLRenderer: Davey! duration=1342ms; Flags=0, FrameTimelineVsyncId=608526, IntendedVsync=4104884583679, Vsync=4105351250327, InputEventId=0, HandleInputStart=4105366077498, AnimationStart=4105366080790, PerformTraversalsStart=4105367581707, DrawStart=4105367671165, FrameDeadline=4106351250287, FrameInterval=4105366064665, FrameStartTime=16666666, SyncQueued=4105369288040, SyncStart=4106003578457, IssueDrawCommandsStart=4106021715457, SwapBuffers=4106329524707, FrameCompleted=4106861232916, DequeueBufferDuration=530245875, QueueBufferDuration=255083, GpuCompleted=4106861232916, SwapBuffersCompleted=4106860921582, DisplayPresentTime=0, CommandSubmissionCompleted=4106329524707, 
+05-04 16:03:34.183  6787  6787 D MoneybaseAuthenticator: Auth flow: isForceLogoutInProgress updated to false
+05-04 16:03:34.195  6787  6787 D FS.Core.Shared.LogForwarder.WebApi: [MoneybaseAuthenticator] Auth flow: isForceLogoutInProgress updated to false
+05-04 16:03:34.195  6787  6787 I [AUTH]  : clear claims cache
+05-04 16:03:34.196  6787  6787 I FS.Core.Shared.LogForwarder.WebApi: [[AUTH]] clear claims cache
+05-04 16:03:34.321  6787  6787 I SplashFragment: moveToNextScreen() called from observeIsLogoutCompleted. Called for a total of 1 times.
+05-04 16:03:34.323  6787  6787 I FS.Core.Shared.LogForwarder.WebApi: [SplashFragment] moveToNextScreen() called from observeIsLogoutCompleted. Called for a total of 1 times.
+05-04 16:03:34.332  6787  6787 D SplashFragment: Current destination: 2131363727
+05-04 16:03:34.337  6787  6787 D FS.Core.Shared.LogForwarder.WebApi: [SplashFragment] Current destination: 2131363727
+05-04 16:03:34.338  6787  6787 I Choreographer: Skipped 35 frames!  The application may be doing too much work on its main thread.
+05-04 16:03:34.450  6787  9785 D KeystoreService: got cipher for [PASSCODE] decrypt by attempt 1
+05-04 16:03:34.451  6787  9785 D FS.Core.Shared.LogForwarder.WebApi: [KeystoreService] got cipher for [PASSCODE] decrypt by attempt 1
+05-04 16:03:34.452   171  7227 E keystore2: keystore2::error: In KeystoreOperation::finish
+05-04 16:03:34.452   171  7227 E keystore2: 
+05-04 16:03:34.452   171  7227 E keystore2: Caused by:
+05-04 16:03:34.452   171  7227 E keystore2:     0: In finish: KeyMint::finish failed.
+05-04 16:03:34.452   171  7227 E keystore2:     1: Error::Km(ErrorCode(-30))
+05-04 16:03:34.640  6787  6802 I OpenGLRenderer: Davey! duration=1192ms; Flags=0, FrameTimelineVsyncId=608553, IntendedVsync=4105367916993, Vsync=4106067916965, InputEventId=0, HandleInputStart=4106077421665, AnimationStart=4106077425540, PerformTraversalsStart=4106078799332, DrawStart=4106078932415, FrameDeadline=4106884583599, FrameInterval=4106077308790, FrameStartTime=16666666, SyncQueued=4106119033124, SyncStart=4106861183082, IssueDrawCommandsStart=4106861368541, SwapBuffers=4106871870291, FrameCompleted=4107302921624, DequeueBufferDuration=7573959, QueueBufferDuration=4791958, GpuCompleted=4107302921624, SwapBuffersCompleted=4107069080791, DisplayPresentTime=0, CommandSubmissionCompleted=4106871870291, 
+05-04 16:03:34.689  1554  1554 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.service.START pkg=com.google.android.gms }
+05-04 16:03:34.702  6787  9751 D KeystoreService: got cipher for [PASSCODE] decrypt by attempt 1
+05-04 16:03:34.708  6787  9751 D FS.Core.Shared.LogForwarder.WebApi: [KeystoreService] got cipher for [PASSCODE] decrypt by attempt 1
+05-04 16:03:34.709   171  7227 E keystore2: keystore2::error: In KeystoreOperation::finish
+05-04 16:03:34.709   171  7227 E keystore2: 
+05-04 16:03:34.709   171  7227 E keystore2: Caused by:
+05-04 16:03:34.709   171  7227 E keystore2:     0: In finish: KeyMint::finish failed.
+05-04 16:03:34.709   171  7227 E keystore2:     1: Error::Km(ErrorCode(-30))
+05-04 16:03:34.871  6787  6802 I OpenGLRenderer: Davey! duration=1419ms; Flags=0, FrameTimelineVsyncId=608583, IntendedVsync=4106134583629, Vsync=4106851250224, InputEventId=0, HandleInputStart=4106864978082, AnimationStart=4106864980124, PerformTraversalsStart=4106865873291, DrawStart=4106865958582, FrameDeadline=4107334583581, FrameInterval=4106864636457, FrameStartTime=16666665, SyncQueued=4106867959749, SyncStart=4107069238207, IssueDrawCommandsStart=4107069404541, SwapBuffers=4107301375916, FrameCompleted=4107755452874, DequeueBufferDuration=444705875, QueueBufferDuration=7894583, GpuCompleted=4107753302708, SwapBuffersCompleted=4107755452874, DisplayPresentTime=0, CommandSubmissionCompleted=4107301375916, 
+05-04 16:03:35.304  1166  4068 D TrafficStats: tagSocket(96) with statsTag=0x4000407, statsUid=-1
+05-04 16:03:35.499  6787  6802 I OpenGLRenderer: Davey! duration=1149ms; Flags=0, FrameTimelineVsyncId=608598, IntendedVsync=4106867916933, Vsync=4107451250243, InputEventId=0, HandleInputStart=4107457412999, AnimationStart=4107457416999, PerformTraversalsStart=4107458451499, DrawStart=4107458594791, FrameDeadline=4107784583465, FrameInterval=4107452688916, FrameStartTime=16666666, SyncQueued=4107461799249, SyncStart=4107757448958, IssueDrawCommandsStart=4107757687541, SwapBuffers=4107986386749, FrameCompleted=4108312852375, DequeueBufferDuration=6916, QueueBufferDuration=5678958, GpuCompleted=4108312852375, SwapBuffersCompleted=4108001795916, DisplayPresentTime=0, CommandSubmissionCompleted=4107986386749, 
+05-04 16:03:35.500  6787  6880 D EGL_emulation: app_time_stats: avg=367.02ms min=241.57ms max=613.15ms count=3
+05-04 16:03:35.896  6787  6787 I Choreographer: Skipped 57 frames!  The application may be doing too much work on its main thread.
+05-04 16:03:36.111  6787  6802 I OpenGLRenderer: Davey! duration=1345ms; Flags=0, FrameTimelineVsyncId=608619, IntendedVsync=4107467916909, Vsync=4107751250231, InputEventId=0, HandleInputStart=4107760684749, AnimationStart=4107760687249, PerformTraversalsStart=4107761515124, DrawStart=4107761646874, FrameDeadline=4108334583541, FrameInterval=4107760670291, FrameStartTime=16666666, SyncQueued=4107783037833, SyncStart=4108001999291, IssueDrawCommandsStart=4108002143541, SwapBuffers=4108473074208, FrameCompleted=4109032647667, DequeueBufferDuration=14583, QueueBufferDuration=140679000, GpuCompleted=4109032647667, SwapBuffersCompleted=4108615093416, DisplayPresentTime=0, CommandSubmissionCompleted=4108473074208, 
+05-04 16:03:36.769  6787  6880 D EGL_emulation: app_time_stats: avg=627.15ms min=602.30ms max=652.01ms count=2
+05-04 16:03:36.791  6787  6802 I OpenGLRenderer: Davey! duration=1237ms; Flags=0, FrameTimelineVsyncId=608626, IntendedVsync=4107767916897, Vsync=4108034583553, InputEventId=0, HandleInputStart=4108035437541, AnimationStart=4108035440541, PerformTraversalsStart=4108038381583, DrawStart=4108038481791, FrameDeadline=4109051250179, FrameInterval=4108035425791, FrameStartTime=16666666, SyncQueued=4108043969666, SyncStart=4108665925625, IssueDrawCommandsStart=4108686343208, SwapBuffers=4109207619250, FrameCompleted=4109627123625, DequeueBufferDuration=15071291, QueueBufferDuration=1281000, GpuCompleted=4109627123625, SwapBuffersCompleted=4109232479042, DisplayPresentTime=0, CommandSubmissionCompleted=4109207619250, 
+05-04 16:03:36.872  3022  3041 W id.gms.unstable: Reducing the number of considered missed Gc histogram windows from 121 to 100
+05-04 16:03:37.268  6787  6802 I OpenGLRenderer: Davey! duration=2012ms; Flags=0, FrameTimelineVsyncId=608636, IntendedVsync=4108051250219, Vsync=4109001250181, InputEventId=0, HandleInputStart=4109011658583, AnimationStart=4109011667417, PerformTraversalsStart=4109037267750, DrawStart=4109037711958, FrameDeadline=4109651250155, FrameInterval=4109010763875, FrameStartTime=16666666, SyncQueued=4109061471625, SyncStart=4109232679708, IssueDrawCommandsStart=4109232899792, SwapBuffers=4109640732375, FrameCompleted=4110234832376, DequeueBufferDuration=19510125, QueueBufferDuration=2014333, GpuCompleted=4110234832376, SwapBuffersCompleted=4109904455542, DisplayPresentTime=0, CommandSubmissionCompleted=4109640732375, 
+05-04 16:03:37.352  6787  6787 I TextInputLayout: EditText added is not a TextInputEditText. Please switch to using that class instead.
+05-04 16:03:37.397  6787  6787 W DataBinding: Setting the fragment as the LifecycleOwner might cause memory leaks because views lives shorter than the Fragment. Consider using Fragment's view lifecycle
+05-04 16:03:37.432  6787  6787 W DataBinding: Setting the fragment as the LifecycleOwner might cause memory leaks because views lives shorter than the Fragment. Consider using Fragment's view lifecycle
+05-04 16:03:37.469  6787  6787 D [EDGE_TO_EDGE]: applying WindowSystemBarsInsets listener for register_screen
+05-04 16:03:37.475  6787  6787 D FS.Core.Shared.LogForwarder.WebApi: [[EDGE_TO_EDGE]] applying WindowSystemBarsInsets listener for register_screen
+05-04 16:03:37.528  6787  6787 D LeakCanary: Watching instance of androidx.compose.ui.platform.ComposeView (com.moneybase.views.splash.SplashFragment received Fragment#onDestroyView() callback (references to its views should be cleared to prevent leaks)) with key a53462ad-c519-48d5-a43e-9569e2b5838a
+05-04 16:03:37.529  6787  6787 D LeakCanary: Watching instance of androidx.navigation.fragment.FragmentNavigator$ClearEntryStateViewModel (androidx.navigation.fragment.FragmentNavigator$ClearEntryStateViewModel received ViewModel#onCleared() callback) with key f5f0b6e3-e22e-4da7-b9d4-0453bb86081f
+05-04 16:03:37.529  6787  6787 D LeakCanary: Watching instance of androidx.lifecycle.SavedStateHandlesVM (androidx.lifecycle.SavedStateHandlesVM received ViewModel#onCleared() callback) with key 6fb7ca66-56dd-453d-b486-93f809c80c17
+05-04 16:03:37.529  6787  6787 D LeakCanary: Watching instance of leakcanary.internal.ViewModelClearedWatcher (leakcanary.internal.ViewModelClearedWatcher received ViewModel#onCleared() callback) with key 39d7ab40-cd1c-4ec0-8af1-919a94217773
+05-04 16:03:37.529  6787  6787 D LeakCanary: Watching instance of com.moneybase.views.splash.SplashViewModel (com.moneybase.views.splash.SplashViewModel received ViewModel#onCleared() callback) with key e1a22038-12a0-4e34-8cee-7212a5a66ef0
+05-04 16:03:37.529  6787  6787 D LeakCanary: Watching instance of androidx.loader.app.LoaderManagerImpl$LoaderViewModel (androidx.loader.app.LoaderManagerImpl$LoaderViewModel received ViewModel#onCleared() callback) with key 154052a6-8c11-4f64-8f5e-d9432f527b65
+05-04 16:03:37.531  1395  1395 W AndroidSpellCheckerService: AndroidSpellCheckerService.initialize():72 initialize...
+05-04 16:03:37.531  1395  1395 I ShortcutsDataManager: ShortcutsDataManager.onContentChanged():72 onContentChanged()
+05-04 16:03:37.532  6787  6787 D LeakCanary: Watching instance of com.moneybase.views.splash.SplashFragment (com.moneybase.views.splash.SplashFragment received Fragment#onDestroy() callback) with key 142a07f8-bac5-4a30-a6d6-47846436bf2a
+05-04 16:03:37.548  1395  1395 I ContactsDataManager: ContactsDataManager.onContentChanged():153 onContentChanged()
+05-04 16:03:37.552  1395  1395 W AndroidSpellCheckerService: AndroidSpellCheckerService.initialize():82 initialize...done
+05-04 16:03:37.553  6787  6787 I Choreographer: Skipped 98 frames!  The application may be doing too much work on its main thread.
+05-04 16:03:37.564  1395  2738 I AndroidSpellCheckerService: AndroidSpellCheckerService.createSession():138 com.google.android.keyboard.client.delight5.LanguageIdentifier@fb61ec5 is created
+05-04 16:03:37.593  6787  6787 D [EDGE_TO_EDGE]: set vertical insets from WindowInsetsListener of register_screen
+05-04 16:03:37.594  6787  6787 D FS.Core.Shared.LogForwarder.WebApi: [[EDGE_TO_EDGE]] set vertical insets from WindowInsetsListener of register_screen
+05-04 16:03:37.928  6787  6802 I OpenGLRenderer: Davey! duration=1820ms; Flags=0, FrameTimelineVsyncId=608669, IntendedVsync=4109034583513, Vsync=4110667916781, InputEventId=0, HandleInputStart=4110668964376, AnimationStart=4110668969001, PerformTraversalsStart=4110669521834, DrawStart=4110741312376, FrameDeadline=4110267916797, FrameInterval=4110668462209, FrameStartTime=16666666, SyncQueued=4110745792001, SyncStart=4110745906792, IssueDrawCommandsStart=4110746835667, SwapBuffers=4110778208126, FrameCompleted=4110855326876, DequeueBufferDuration=6333, QueueBufferDuration=326834, GpuCompleted=4110855326876, SwapBuffersCompleted=4110792845792, DisplayPresentTime=0, CommandSubmissionCompleted=4110778208126, 
+05-04 16:03:38.038  6787  6787 I AssistStructure: Flattened final assist data: 3584 bytes, containing 1 windows, 24 views
+05-04 16:03:38.046   502  1935 D AutofillSession: createPendingIntent for request 11
+05-04 16:03:38.048   502  1935 D ContentCapturePerUserService: Notified activity assist data for activity: Token{8f5a72 ActivityRecord{b34c340 u0 com.moneybase.qa/com.moneybase.views.activities.LoginActivity} t51}} without a session Id
+05-04 16:03:38.202  6787  6880 D EGL_emulation: app_time_stats: avg=412.55ms min=78.05ms max=885.57ms count=3
+05-04 16:03:38.833  1395  2738 I tflite  : Replacing 131 out of 337 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 66 partitions for subgraph 0.
+05-04 16:03:38.881  1395  2738 I tflite  : Replacing 18 out of 53 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 13 partitions for subgraph 0.
+05-04 16:03:38.912  1395  2738 I tflite  : Replacing 41 out of 87 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 21 partitions for subgraph 0.
+05-04 16:03:39.214  6787  6880 D EGL_emulation: app_time_stats: avg=307.91ms min=81.80ms max=700.30ms count=3
+05-04 16:03:42.534  6787  6843 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+05-04 16:03:45.213   171  9768 I keystore2: keystore2::watchdog: Watchdog thread idle -> terminating. Have a great day.
+05-04 16:03:45.428  6787  6859 I Datadog : [_dd.sdk_core.default]: Batch eeccf7be-f71c-4b80-8602-09e77816a1b2 [24174 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+05-04 16:03:48.073  3022  3022 W ThreadPoolForeg: type=1400 audit(0.0:916): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:03:56.481  1166  1166 W ThreadPoolForeg: type=1400 audit(0.0:917): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:03:57.490   502   511 I system_server: Background concurrent copying GC freed 376125(22MB) AllocSpace objects, 31(844KB) LOS objects, 46% free, 27MB/51MB, paused 250us,196us total 392.902ms
+05-04 16:03:59.273  1554  1554 W ThreadPoolForeg: type=1400 audit(0.0:918): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:04:00.065  1421  2034 I AiAiEcho: Predicting[0]: 
+05-04 16:04:00.067  1421  2034 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+05-04 16:04:00.084  1421  2034 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+05-04 16:04:00.085  1421  2034 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+05-04 16:04:00.090  1421  2034 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+05-04 16:04:00.107   699   934 D EGL_emulation: app_time_stats: avg=19339.34ms min=783.95ms max=37894.73ms count=2
+05-04 16:04:00.115   699   699 D SsMediaDataProvider: Forwarding Smartspace updates []
+05-04 16:04:05.558  6787  6859 I Datadog : [_dd.sdk_core.default]: Batch dac1e0b9-a742-4549-b71a-aab1498fb8e5 [1768 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+05-04 16:04:17.211  1166  2145 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+05-04 16:04:17.217  1166  9686 W SystemServiceRegistry: No service published for: wifirtt
+05-04 16:04:18.040   502   516 D WifiNl80211Manager: Scan result ready event
+05-04 16:04:18.040   502   516 D WifiNative: Scan result ready event
+05-04 16:04:18.076  1166  9686 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+05-04 16:04:18.087  1166  2145 I ActivityScheduler: nextTriggerTime: 4268092, in 116891ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+05-04 16:04:18.105  3022  3022 W ThreadPoolForeg: type=1400 audit(0.0:919): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:04:26.485  1166  1166 W ThreadPoolForeg: type=1400 audit(0.0:920): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:04:29.301  1554  1554 W ThreadPoolForeg: type=1400 audit(0.0:921): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:04:35.192   699   934 D EGL_emulation: app_time_stats: avg=35081.72ms min=35081.72ms max=35081.72ms count=1
+05-04 16:04:42.716   502   516 D WifiNl80211Manager: Scan result ready event
+05-04 16:04:42.721   502   516 D WifiNative: Scan result ready event
+05-04 16:04:43.545   502   517 W Looper  : Slow dispatch took 197ms android.fg h=android.os.Handler c=com.android.server.Watchdog$HandlerChecker@3197480 m=0
+05-04 16:04:45.188   502   517 W Looper  : Slow dispatch took 340ms android.fg h=android.os.Handler c=com.android.server.NetworkManagementService$NetdUnsolicitedEventListener$$ExternalSyntheticLambda3@ccf9e77 m=0
+05-04 16:04:48.125  3022  3022 W ThreadPoolForeg: type=1400 audit(0.0:922): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:04:55.275   699   934 D EGL_emulation: app_time_stats: avg=20082.05ms min=20082.05ms max=20082.05ms count=1
+05-04 16:04:56.509  1166  1166 W ThreadPoolForeg: type=1400 audit(0.0:923): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:04:57.260   502   511 I system_server: Background young concurrent copying GC freed 312639(23MB) AllocSpace objects, 5(100KB) LOS objects, 45% free, 27MB/51MB, paused 496us,107us total 175.903ms
+05-04 16:04:59.321  1554  1554 W ThreadPoolForeg: type=1400 audit(0.0:924): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:05:00.102  1421  2034 I AiAiEcho: Predicting[0]: 
+05-04 16:05:00.103  1421  2034 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+05-04 16:05:00.120   699   934 D EGL_emulation: app_time_stats: avg=4844.27ms min=4844.27ms max=4844.27ms count=1
+05-04 16:05:00.123  1421  2034 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+05-04 16:05:00.132  1421  2034 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+05-04 16:05:00.134  1421  2034 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+05-04 16:05:00.145   699   699 D SsMediaDataProvider: Forwarding Smartspace updates []
+05-04 16:05:15.215   699   934 D EGL_emulation: app_time_stats: avg=15094.52ms min=15094.52ms max=15094.52ms count=1
+05-04 16:05:17.613  1166  2145 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+05-04 16:05:17.632  1166  9793 W SystemServiceRegistry: No service published for: wifirtt
+05-04 16:05:17.751   822   833 I m.android.phone: Background young concurrent copying GC freed 83813(3279KB) AllocSpace objects, 0(0B) LOS objects, 49% free, 3471KB/6876KB, paused 279us,50us total 105.152ms
+05-04 16:05:18.157  3022  3022 W ThreadPoolForeg: type=1400 audit(0.0:925): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:05:18.455   502  1908 D WifiNl80211Manager: Scan result ready event
+05-04 16:05:18.455   502  1908 D WifiNative: Scan result ready event
+05-04 16:05:18.479  1166  9793 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+05-04 16:05:18.492  1166  2145 I ActivityScheduler: nextTriggerTime: 4272126, in 60519ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+05-04 16:05:22.242   318   318 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+05-04 16:05:26.541  1166  1166 W ThreadPoolForeg: type=1400 audit(0.0:926): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:05:29.337  1554  1554 W ThreadPoolForeg: type=1400 audit(0.0:927): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:05:35.216   699   934 D EGL_emulation: app_time_stats: avg=20001.42ms min=20001.42ms max=20001.42ms count=1
+05-04 16:05:36.813   699   948 D ControlsListingControllerImpl: Subscribing callback, service count: 0
+05-04 16:05:36.820   699   948 D ControlsListingControllerImpl: Unsubscribing callback
+05-04 16:05:36.913   502   516 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10120; state: DISABLED
+05-04 16:05:48.169  3022  3022 W ThreadPoolForeg: type=1400 audit(0.0:928): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:05:56.573  1166  1166 W ThreadPoolForeg: type=1400 audit(0.0:929): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:05:57.226   502   511 I system_server: Background young concurrent copying GC freed 299952(23MB) AllocSpace objects, 5(100KB) LOS objects, 43% free, 28MB/51MB, paused 2.853ms,168us total 160.834ms
+05-04 16:05:59.369  1554  1554 W ThreadPoolForeg: type=1400 audit(0.0:930): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:06:00.110  1421  2034 I AiAiEcho: Predicting[0]: 
+05-04 16:06:00.111  1421  2034 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+05-04 16:06:00.118  1421  2034 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+05-04 16:06:00.128  1421  2034 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+05-04 16:06:00.129   699   934 D EGL_emulation: app_time_stats: avg=24912.53ms min=24912.53ms max=24912.53ms count=1
+05-04 16:06:00.131  1421  2034 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+05-04 16:06:00.148   699   699 D SsMediaDataProvider: Forwarding Smartspace updates []
+05-04 16:06:18.046  1166  2145 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+05-04 16:06:18.052  1166  9686 W SystemServiceRegistry: No service published for: wifirtt
+05-04 16:06:18.177  3022  3022 W ThreadPoolForeg: type=1400 audit(0.0:931): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:06:18.644   502  1911 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1777899771340
+05-04 16:06:18.652   502  1911 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1777899771340
+05-04 16:06:18.656   502   516 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1777899771340
+05-04 16:06:18.662   502  1911 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 79 startTime of in progress event=1777899771340
+05-04 16:06:18.668  1166  2145 I ActivityScheduler: nextTriggerTime: 4509882, in 238099ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+05-04 16:06:18.871   502  1911 D WifiNl80211Manager: Scan result ready event
+05-04 16:06:18.872   502  1911 D WifiNative: Scan result ready event
+05-04 16:06:18.895  1166  9686 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+05-04 16:06:18.906  1166  2145 I ActivityScheduler: nextTriggerTime: 4509882, in 237862ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+05-04 16:06:26.585  1166  1166 W ThreadPoolForeg: type=1400 audit(0.0:932): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:06:29.405  1554  1554 W ThreadPoolForeg: type=1400 audit(0.0:933): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:06:48.201  3022  3022 W ThreadPoolForeg: type=1400 audit(0.0:934): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:06:56.617  1166  1166 W ThreadPoolForeg: type=1400 audit(0.0:935): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:06:57.217   502   511 I system_server: Background young concurrent copying GC freed 309697(23MB) AllocSpace objects, 5(100KB) LOS objects, 42% free, 29MB/51MB, paused 2.359ms,91us total 167.659ms
+05-04 16:06:57.442   502   583 D ActivityManager: freezing 9395 com.google.android.partnersetup
+05-04 16:06:57.496   502   583 D ActivityManager: freezing 9431 com.google.process.gapps
+05-04 16:06:57.502   502   583 D ActivityManager: freezing 9449 com.android.chrome
+05-04 16:06:59.429  1554  1554 W ThreadPoolForeg: type=1400 audit(0.0:936): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:07:00.218  1421  2034 I AiAiEcho: Predicting[0]: 
+05-04 16:07:00.220  1421  2034 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+05-04 16:07:00.229  1421  2034 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+05-04 16:07:00.232  1421  2034 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+05-04 16:07:00.234  1421  2034 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+05-04 16:07:00.260   699   699 D SsMediaDataProvider: Forwarding Smartspace updates []
+05-04 16:07:00.282   699   934 D EGL_emulation: app_time_stats: avg=60151.53ms min=60151.53ms max=60151.53ms count=1
+05-04 16:07:18.237  3022  3022 W ThreadPoolForeg: type=1400 audit(0.0:937): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:07:18.449  1166  2145 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+05-04 16:07:18.459  1166  9793 W SystemServiceRegistry: No service published for: wifirtt
+05-04 16:07:19.268   502  1935 D WifiNl80211Manager: Scan result ready event
+05-04 16:07:19.268   502  1935 D WifiNative: Scan result ready event
+05-04 16:07:19.287  1166  9793 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+05-04 16:07:19.301  1166  2145 I ActivityScheduler: nextTriggerTime: 4509882, in 177467ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+05-04 16:07:22.244   318   318 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+05-04 16:07:22.710   502  1935 D WifiNl80211Manager: Scan result ready event
+05-04 16:07:22.710   502  1935 D WifiNative: Scan result ready event
+05-04 16:07:26.649  1166  1166 W ThreadPoolForeg: type=1400 audit(0.0:938): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:07:29.481  1554  1554 W ThreadPoolForeg: type=1400 audit(0.0:939): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-04 16:07:35.211   699   934 D EGL_emulation: app_time_stats: avg=34929.22ms min=34929.22ms max=34929.22ms count=1
+05-04 16:07:42.692   776  1022 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:257 ack_pause: Client already in paused state
+05-04 16:07:42.710   776  1022 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:576 OnCommandComplete: Received command complete with op_code LE_SET_RANDOM_ADDRESS
+05-04 16:07:42.710   776  1022 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:595 OnCommandComplete: update random address : 7a:6a:a2:a5:78:f5
+05-04 16:07:42.712   776  1022 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:286 resume_registered_clients: Resuming registered clients

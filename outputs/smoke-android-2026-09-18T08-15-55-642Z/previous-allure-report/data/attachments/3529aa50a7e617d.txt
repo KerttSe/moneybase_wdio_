@@ -1,0 +1,211 @@
+--------- beginning of main
+08-11 17:37:31.538  1325  1397 I display : Set affinity HWC : 1325
+08-11 17:37:31.539  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 17:37:31.539  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 17:37:31.539  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 17:37:31.539  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-11 17:37:31.539  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-11 17:37:31.539  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 17:37:31.627  1726  1920 D InputReader: Btn_touch(4): value=1 when=401835.024302
+08-11 17:37:31.627  1726  1920 I InputReader: Touch event's action is 0x0 (id=5, t=0) [pCnt=1, s=0.157 ] when=401835.024302
+08-11 17:37:31.628  1726  1919 I InputDispatcher: Delivering touch to (2357): action: 0x4, f=0x0, d=0, 'c0cc01f', t=1 
+08-11 17:37:31.629  1726  1919 I InputDispatcher: Delivering touch to (28976): action: 0x0, f=0x0, d=0, 'bf633cd', t=1 
+08-11 17:37:31.629  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-11 17:37:31.629 28976 28976 I VRI[DashboardActivity]@52ff425: ViewPostIme pointer 0
+--------- beginning of system
+08-11 17:37:31.629  1726  1919 D PowerManagerService: [api] userActivityFromNative : touch displayId=0 eventTime=401835024
+08-11 17:37:31.629  1726  1769 I GestureDetector: obtain mCurrentDownEvent. id: 904843939 caller: com.android.server.wm.SystemGesturesPointerEventListener.onPointerEvent:17 com.android.server.wm.PointerEventDispatcher.onInputEvent:51 android.view.InputEventReceiver.dispatchInputEvent:392 
+08-11 17:37:31.629  1726  1769 I GestureDetector: obtain mCurrentDownEvent. id: 904843939 caller: com.android.server.wm.SystemPerformancePointerEventListener.onPointerEvent:13 com.android.server.wm.PointerEventDispatcher.onInputEvent:51 android.view.InputEventReceiver.dispatchInputEvent:392 
+08-11 17:37:31.630  4554  4554 I SemDvfsHyPerManager: acquire hyper - TABoost/4554@29, type = -999
+08-11 17:37:31.631  1337  1439 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 10504265  [4554 / 29]    HINT :      list : [TABoost / 1] [TIMEOUT / 1500] 
+08-11 17:37:31.635  1726  1769 I GestureDetector: obtain mCurrentMotionEventRaw. action: 2 id: 153131330
+08-11 17:37:31.635  1726  1769 I GestureDetector: obtain mCurrentMotionEventRaw. action: 2 id: 153131330
+08-11 17:37:31.638  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-11 17:37:31.638  1437  1437 I SurfaceFlinger: RequestedLayer [Sprite#120] hidden!! flag  from(1) --> to(0)
+08-11 17:37:31.639  1437  1437 I LayerHistory: [BBQ] Sprite#120#121 is infrequent
+08-11 17:37:31.639  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_28976#71012 voted ExplicitCategory with category: HighHint
+08-11 17:37:31.639  1437  1437 I SurfaceFlinger: Touch Boost - choose 120.00 Hz
+08-11 17:37:31.639  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-11 17:37:31.641  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-11 17:37:31.641  1325  9351 I display : Current VRR MODE is 3
+08-11 17:37:31.641  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-11 17:37:31.641  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-11 17:37:31.641  1325  9351 I display : commit modeset : 1080x2340@120hs
+08-11 17:37:31.654  1325  9351 W display : deliverWinConfigData:: commit modeset time (13 ms)
+08-11 17:37:31.655  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-11 17:37:31.655  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 17:37:31.655  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-11 17:37:31.655  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 17:37:31.655  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-11 17:37:31.655  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 17:37:31.655  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 17:37:31.655  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 17:37:31.655  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 17:37:31.655  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 17:37:31.655  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 17:37:31.655  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 17:37:31.655  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 17:37:31.655  1325  1397 I display : Set affinity HWC : 1325
+08-11 17:37:31.655  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 17:37:31.655  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 17:37:31.655  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 17:37:31.655  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-11 17:37:31.656  1437  1437 D SurfaceFlinger: Display 4633128672291736000 HWC layers:
+08-11 17:37:31.656  1437  1437 D SurfaceFlinger:        DEVICE |          124450972368925 | 00002102 | RGBA_8888    |    0.0    0.0 1080.0 2340.0 |    0    0 1080 2340 | com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_28976#71012 (2315)
+08-11 17:37:31.656  1437  1437 D SurfaceFlinger:        DEVICE |           10123237958349 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0   80.0 |    0    0 1080   80 | StatusBar$_2357#104 (159742)
+08-11 17:37:31.656  1437  1437 D SurfaceFlinger:        DEVICE |           10123237958351 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2214 1080 2340 | NavigationBar0$_2357#102 (179154)
+08-11 17:37:31.656  1437  1437 D SurfaceFlinger:        DEVICE |            7413113552909 | 00000100 | RGBA_8888    |    0.0    0.0   63.0   63.0 |  811 1490  874 1553 | [BBQ] Sprite#120#121 (3429)
+08-11 17:37:31.656  1437  1437 D SurfaceFlinger: 
+08-11 17:37:31.656  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 17:37:31.680  1437  1559 I VSyncReactor: Current= 120, Period= 120, hwcPeriod= 120
+08-11 17:37:31.691 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.698 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.707 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.715 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.724 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.732 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.734  1726  1920 D InputReader: Btn_touch(4): value=0 when=401835.131004
+08-11 17:37:31.734  1726  1920 I InputReader: Touch event's action is 0x1 (id=5, t=0) [pCnt=1, s=] when=401835.131004
+08-11 17:37:31.735  1726  1919 I InputDispatcher: Delivering touch to (28976): action: 0x1, f=0x0, d=0, 'bf633cd', t=1 
+08-11 17:37:31.735 28976 28976 I VRI[DashboardActivity]@52ff425: ViewPostIme pointer 1
+08-11 17:37:31.736  1726  1726 I SemDvfsHyPerManager: acquire hyper - GESTURE_DETECTED_HRR/1726@32, type = -999
+08-11 17:37:31.736  4554  4554 I SemDvfsHyPerManager: acquire hyper - TABoost/4554@29, type = -999
+08-11 17:37:31.737  1726  1726 I SemDvfsHyPerManager: acquire hyper - SMOOTH_SCROLL/1726@24, type = -999
+08-11 17:37:31.737  1726  1726 I SemDvfsHyPerManager: acquire hyper - GESTURE_DETECTED_HRR/1726@32, type = -999
+08-11 17:37:31.737  1337  1439 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 10504265  [4554 / 29]    HINT :      list : [TABoost / 1] [TIMEOUT / 1500] 
+08-11 17:37:31.737  1337  1439 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 1546193  [1726 / 32]    HINT : GESTURE_DETECTED_HRR    list : [TIMEOUT / 2003] 
+08-11 17:37:31.737  1337  1439 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 1546193  [1726 / 32]    HINT : GESTURE_DETECTED_HRR    list : [TIMEOUT / 2003] 
+08-11 17:37:31.740 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.748 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.756 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.764 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.772 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.781 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.789 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.798 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.806 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.814 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.822 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.831 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.839 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.847 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.876  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-11 17:37:31.879  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 87719, isSameBssidAndFreq true
+08-11 17:37:31.880  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786459051880 lastDateWindow=1786275667000
+08-11 17:37:31.881 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.889 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.897 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.906 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.914 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.922 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.931 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.939 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.947 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.954  1437  1437 I SurfaceFlinger: RequestedLayer [Sprite#120] hidden!! flag  from(0) --> to(1)
+08-11 17:37:31.956 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.957  1437  1437 D SurfaceFlinger: Display 4633128672291736000 HWC layers:
+08-11 17:37:31.957  1437  1437 D SurfaceFlinger:        DEVICE |          124450972368924 | 00002102 | RGBA_8888    |    0.0    0.0 1080.0 2340.0 |    0    0 1080 2340 | com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_28976#71012 (2344)
+08-11 17:37:31.957  1437  1437 D SurfaceFlinger:        DEVICE |           10123237958349 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0   80.0 |    0    0 1080   80 | StatusBar$_2357#104 (159742)
+08-11 17:37:31.957  1437  1437 D SurfaceFlinger:        DEVICE |           10123237958351 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2214 1080 2340 | NavigationBar0$_2357#102 (179154)
+08-11 17:37:31.957  1437  1437 D SurfaceFlinger: 
+08-11 17:37:31.964 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.972 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.981 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.989 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:31.997 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:32.006 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:32.014 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:32.031 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:32.047 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:32.064 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:32.089 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:32.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786459052
+08-11 17:37:32.121  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:37:32.121  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:37:32.121  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774317
+08-11 17:37:32.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774294
+08-11 17:37:32.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:37:32.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:37:32.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:37:32.121  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:37:32.121  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:37:32.123 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:32.190 28976 28976 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{2d79128 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 17:37:32.405  1178  1178 I wpa_supplicant: Heartbeat 9009
+08-11 17:37:32.444  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-11 17:37:32.446  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_28976#71012 voted ExplicitCategory with category: HighHint
+08-11 17:37:32.446  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-11 17:37:32.446  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-11 17:37:32.447  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-11 17:37:32.448  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-11 17:37:32.448  1325  9351 I display : Current VRR MODE is 3
+08-11 17:37:32.448  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-11 17:37:32.448  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-11 17:37:32.448  1325  9351 I display : commit modeset : 1080x2340@60phs
+08-11 17:37:32.462  1325  9351 W display : deliverWinConfigData:: commit modeset time (14 ms)
+08-11 17:37:32.463  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-11 17:37:32.463  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 17:37:32.463  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-11 17:37:32.463  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 17:37:32.463  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-11 17:37:32.463  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 17:37:32.463  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 17:37:32.463  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 17:37:32.463  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 17:37:32.463  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 17:37:32.463  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 17:37:32.463  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 17:37:32.463  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 17:37:32.463  1325  1397 I display : Set affinity HWC : 1325
+08-11 17:37:32.463  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 17:37:32.463  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 17:37:32.463  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 17:37:32.464  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 17:37:32.464  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-11 17:37:32.543 28763 28958 I appium  : Matched 0 elements using selector UiSelector[CONTAINS_TEXT=flag-USD USD]
+08-11 17:37:32.543 28763 28958 I appium  : Matched 0 elements including possible duplicates
+08-11 17:37:32.543 28763 28958 I appium  : 0 element(s) left after deduplication
+08-11 17:37:32.543 28763 28958 I appium  : Found zero matches
+08-11 17:37:32.544 28763 28958 I appium  : AppiumResponse: {"sessionId":"15f23b4e-ab44-496d-ad42-0eda2beb3c1c","value":[]}
+08-11 17:37:32.559 28763 28958 I appium  : channel read: GET /session/15f23b4e-ab44-496d-ad42-0eda2beb3c1c/screenshot
+08-11 17:37:32.560 28763 28958 I appium  : CaptureScreenshot command
+08-11 17:37:32.706 32322 32322 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-11 17:37:32.707 32322 32322 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-11 17:37:32.707 32322 32322 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-11 17:37:32.707  1726  4568 I EDMNativeHelperService: isScreenCaptureEnabled
+08-11 17:37:32.707  1726  4568 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-11 17:37:32.707 32322 32322 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-11 17:37:32.708 32322 32322 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-11 17:37:32.709  1437  1464 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_28976#71012(seamlessTransition:0)
+08-11 17:37:32.709  1437  1464 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-11 17:37:32.709  1437  1464 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-11 17:37:32.709  1437  1464 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-11 17:37:32.711  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-11 17:37:32.711  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_28976#71012 at index 1
+08-11 17:37:32.711  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-11 17:37:32.711  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-11 17:37:32.732 32322 32332 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-11 17:37:32.915 28763 28958 I appium  : AppiumResponse: {"sessionId":"15f23b4e-ab44-496d-ad42-0eda2beb3c1c","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N13dFTnnf/xz6iAKkUNEEU0iWoEAtObZMAFsAFjQtaOCbbj2NmcJM7JJtlsyi+7SdbnJDkkjrM4cYqJjQvGGLAExnSbXoQooghEU0MNBOplNL8/iCa6mpE0o36l9+ucnPg+c8tzkRC6n/s…
+08-11 17:37:32.941 28763 28958 I appium  : channel read: GET /session/15f23b4e-ab44-496d-ad42-0eda2beb3c1c/source
+08-11 17:37:32.943 28763 28958 I appium  : Source command
+08-11 17:37:32.943 28763 28958 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:37:33.089 28763 28958 I appium  : AppiumResponse: {"sessionId":"15f23b4e-ab44-496d-ad42-0eda2beb3c1c","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-11 17:37:33.121  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786459053
+08-11 17:37:33.121  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:37:33.121  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:37:33.121  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774317
+08-11 17:37:33.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774294
+08-11 17:37:33.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:37:33.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:37:33.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:37:33.121  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:37:33.121  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:37:33.124   730   730 D io_stats: !@   8,0 r 55756814 1029907242 w 17263823 312753972 d 5074104 365600588 f 0 1589082 iot 25821912 0 th 0 0 0 pt 0 inp 0 0 401836.521
+08-11 17:37:33.124   730   730 D io_stats: !@ Read_top(KB): screencap(32322) 732 system_server(1726) 40
+08-11 17:37:33.124   730   730 D io_stats: !@ Write_top(KB): om.moneybase.qa(28976) 12
+08-11 17:37:33.134 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 17:37:33.178 32335 32335 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 17:37:33.218 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 17:37:33.237  1337 32231 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 10504265
+08-11 17:37:33.262 32338 32338 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 17:37:33.324 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

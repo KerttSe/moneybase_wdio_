@@ -1,0 +1,202 @@
+--------- beginning of main
+08-11 18:23:05.440  2870  6282 I HoneySpace.NotificationListener: invalid notification: net.openvpn.openvpn UserHandle{0}: canShowBadge is false
+08-11 18:23:05.441  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-11 18:23:05.441  2870 29693 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. net.openvpn.openvpn/net.openvpn.unified.MainActivity#UserHandle{0}|33979 : 0
+08-11 18:23:05.445  6020  6488 I NotificationPipeline: Processing new notification: 0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.445  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-11 18:23:05.446  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1642
+08-11 18:23:05.447  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-11 18:23:05.447  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-11 18:23:05.449  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-11 18:23:05.451  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-11 18:23:05.452  6020  6488 I NotificationPipeline: Discarding notification: 0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.452  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.452  6020  6488 I NotificationPipeline: Processing new notification: 0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.452  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-11 18:23:05.453  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1642
+08-11 18:23:05.453  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-11 18:23:05.453  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-11 18:23:05.453  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.454  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-11 18:23:05.454  6020  6488 I NotificationPipeline: Discarding notification: 0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.456  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.472  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-11 18:23:05.476  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-11 18:23:05.477  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.477  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.480  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-11 18:23:05.480  2357  2357 I AODNotificationManager: updateNotification() 
+08-11 18:23:05.507  2357  2357 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+08-11 18:23:05.518  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-11 18:23:05.521  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.521  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.521  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.521  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.523  2357  2357 D S.S.N.  : entryViewBound parent :0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.523  2357  2357 D S.S.N.  : entryViewBound parent :0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.525  2357  2357 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+08-11 18:23:05.533  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-11 18:23:05.536  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-11 18:23:05.536  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.536  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-11 18:23:05.537  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-11 18:23:05.537  2357  2357 I AODNotificationManager: updateNotification() 
+08-11 18:23:05.611 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":"flag-GBP GBP"}
+08-11 18:23:05.633 11269 11382 I appium  : channel read: POST /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/element
+08-11 18:23:05.634 11269 11382 I appium  : FindElement command
+08-11 18:23:05.635 11269 11382 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 18:23:05.636 11269 11382 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:23:05.638 11269 11382 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 18:23:05.860 11269 11382 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 18:23:05.861 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":{"ELEMENT":"00000000-0000-08a1-0000-003d00000134","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-08a1-0000-003d00000134"}}
+08-11 18:23:05.874 11269 11382 I appium  : channel read: GET /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/element/00000000-0000-08a1-0000-003d00000134/text
+08-11 18:23:05.874 11269 11382 I appium  : GetText command
+08-11 18:23:05.883 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":"flag-GBP GBP"}
+08-11 18:23:06.105 11269 11382 I appium  : channel read: POST /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/element
+08-11 18:23:06.106 11269 11382 I appium  : FindElement command
+08-11 18:23:06.107 11269 11382 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 18:23:06.108 11269 11382 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:23:06.110 11269 11382 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 18:23:06.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786461786
+08-11 18:23:06.121  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 18:23:06.121  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 18:23:06.121  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774363
+08-11 18:23:06.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774354
+08-11 18:23:06.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 18:23:06.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 18:23:06.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 18:23:06.121  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 18:23:06.121  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 18:23:06.122 11269 11280 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-11 18:23:06.374 11269 11382 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 18:23:06.376 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":{"ELEMENT":"00000000-0000-08a1-0000-003d00000134","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-08a1-0000-003d00000134"}}
+08-11 18:23:06.380  1182  1187 I wifi.mobilewips: Background concurrent mark compact GC freed 10MB AllocSpace bytes, 715(13MB) LOS objects, 84% free, 4600KB/28MB, paused 188us,763us total 158.523ms
+08-11 18:23:06.380  1182  1187 W wifi.mobilewips: Reducing the number of considered missed Gc histogram windows from 268 to 100
+08-11 18:23:06.387 11269 11382 I appium  : channel read: GET /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/element/00000000-0000-08a1-0000-003d00000134/text
+08-11 18:23:06.387 11269 11382 I appium  : GetText command
+08-11 18:23:06.392 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":"flag-GBP GBP"}
+08-11 18:23:06.603 11269 11382 I appium  : channel read: POST /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/element
+08-11 18:23:06.604 11269 11382 I appium  : FindElement command
+08-11 18:23:06.604 11269 11382 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 18:23:06.605 11269 11382 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:23:06.606 11269 11382 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 18:23:06.792 11269 11382 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 18:23:06.794 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":{"ELEMENT":"00000000-0000-08a1-0000-003d00000134","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-08a1-0000-003d00000134"}}
+08-11 18:23:06.815 11269 11382 I appium  : channel read: GET /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/element/00000000-0000-08a1-0000-003d00000134/text
+08-11 18:23:06.815 11269 11382 I appium  : GetText command
+08-11 18:23:06.822 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":"flag-GBP GBP"}
+08-11 18:23:07.102 11269 11382 I appium  : channel read: POST /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/element
+08-11 18:23:07.103 11269 11382 I appium  : FindElement command
+08-11 18:23:07.105 11269 11382 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 18:23:07.105 11269 11382 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:23:07.110 11269 11382 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 18:23:07.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786461787
+08-11 18:23:07.120  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 18:23:07.120  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 18:23:07.121  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774363
+08-11 18:23:07.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774354
+08-11 18:23:07.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 18:23:07.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 18:23:07.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 18:23:07.121  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 18:23:07.121  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+--------- beginning of system
+08-11 18:23:07.141   730   730 D io_stats: !@   8,0 r 56127630 1036387610 w 17390209 315235232 d 5115849 367971392 f 0 1598545 iot 26007216 0 th 0 0 0 pt 0 inp 0 0 404570.539
+08-11 18:23:07.214 11269 11382 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 18:23:07.215 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":{"ELEMENT":"00000000-0000-08a1-0000-003d00000134","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-08a1-0000-003d00000134"}}
+08-11 18:23:07.229 11269 11382 I appium  : channel read: GET /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/element/00000000-0000-08a1-0000-003d00000134/text
+08-11 18:23:07.229 11269 11382 I appium  : GetText command
+08-11 18:23:07.235 11516 11527 D InputTransport: Input channel destroyed: 'ClientS', fd=205
+08-11 18:23:07.235 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":"flag-GBP GBP"}
+08-11 18:23:07.238 11516 11527 D InputTransport: Input channel destroyed: 'ClientS', fd=218
+08-11 18:23:07.238 11516 11527 D InputTransport: Input channel destroyed: 'ClientS', fd=526
+08-11 18:23:07.238 11516 11568 I Datadog : [_dd.sdk_core.default]: Batch 0ad415ed-e130-4a05-95ab-c237ea34f531 [1901 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+08-11 18:23:07.239 11516 11527 D InputTransport: Input channel destroyed: 'ClientS', fd=441
+08-11 18:23:07.239 11516 11527 D InputTransport: Input channel destroyed: 'ClientS', fd=232
+08-11 18:23:07.240 11516 11527 D InputTransport: Input channel destroyed: 'ClientS', fd=501
+08-11 18:23:07.240 11516 11527 D InputTransport: Input channel destroyed: 'ClientS', fd=435
+08-11 18:23:07.501  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-11 18:23:07.511  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 88576, isSameBssidAndFreq true
+08-11 18:23:07.518  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786461787518 lastDateWindow=1786275667000
+08-11 18:23:07.522  1726  2228 I SemWifiLinkQualityMonitor: Link stat: 495 / 55 / 1.00 (4) / 144 / -50.0 || 100.0 : 144.00 / 0.5 : 1.00 / 0.55 : 0.11 / G (G) || 52fc78d72452: 0.137 / 58.584 / N || N N / 0 0 / N 2.0 / N X 0 / 404570913 0 || 2026-08-09 14:41:07  / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0
+08-11 18:23:07.605 11269 11382 I appium  : channel read: POST /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/element
+08-11 18:23:07.606 11269 11382 I appium  : FindElement command
+08-11 18:23:07.607 11269 11382 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 18:23:07.608 11269 11382 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:23:07.609 11269 11382 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 18:23:07.868 11269 11382 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 18:23:07.870 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":{"ELEMENT":"00000000-0000-08a1-0000-003d00000134","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-08a1-0000-003d00000134"}}
+08-11 18:23:07.885 11269 11382 I appium  : channel read: GET /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/element/00000000-0000-08a1-0000-003d00000134/text
+08-11 18:23:07.885 11269 11382 I appium  : GetText command
+08-11 18:23:07.891 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":"flag-GBP GBP"}
+08-11 18:23:08.100 11269 11382 I appium  : channel read: POST /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/element
+08-11 18:23:08.101 11269 11382 I appium  : FindElement command
+08-11 18:23:08.102 11269 11382 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 18:23:08.102 11269 11382 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:23:08.104 11269 11382 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 18:23:08.121  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786461788
+08-11 18:23:08.121  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 18:23:08.121  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 18:23:08.121  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774363
+08-11 18:23:08.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774354
+08-11 18:23:08.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 18:23:08.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 18:23:08.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 18:23:08.121  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 18:23:08.121  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 18:23:08.433 11269 11382 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 18:23:08.435 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":{"ELEMENT":"00000000-0000-08a1-0000-003d00000134","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-08a1-0000-003d00000134"}}
+08-11 18:23:08.449 11269 11382 I appium  : channel read: GET /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/element/00000000-0000-08a1-0000-003d00000134/text
+08-11 18:23:08.450 11269 11382 I appium  : GetText command
+08-11 18:23:08.461 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":"flag-GBP GBP"}
+08-11 18:23:08.602 11269 11382 I appium  : channel read: POST /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/element
+08-11 18:23:08.602 11269 11382 I appium  : FindElement command
+08-11 18:23:08.604 11269 11382 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 18:23:08.604 11269 11382 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:23:08.606 11269 11382 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 18:23:08.775 11269 11382 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 18:23:08.776 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":{"ELEMENT":"00000000-0000-08a1-0000-003d00000134","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-08a1-0000-003d00000134"}}
+08-11 18:23:08.788 11269 11382 I appium  : channel read: GET /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/element/00000000-0000-08a1-0000-003d00000134/text
+08-11 18:23:08.789 11269 11382 I appium  : GetText command
+08-11 18:23:08.795 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":"flag-GBP GBP"}
+08-11 18:23:09.122  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786461789
+08-11 18:23:09.122  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 18:23:09.123  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 18:23:09.123  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774363
+08-11 18:23:09.123  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774354
+08-11 18:23:09.123  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 18:23:09.123  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 18:23:09.123  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 18:23:09.123  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 18:23:09.124  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 18:23:09.144   730   730 D io_stats: !@ Read_top(KB): loop48(3238) 5632 system_server(1726) 68 wifi.mobilewips(1182) 40
+08-11 18:23:09.144   730   730 D io_stats: !@ Write_top(KB): kworker/u16:4(22227) 772 ugin:persistent(6020) 8
+08-11 18:23:09.158 11269 11382 I appium  : channel read: GET /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/screenshot
+08-11 18:23:09.160 11269 11382 I appium  : CaptureScreenshot command
+08-11 18:23:09.296 14379 14379 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-11 18:23:09.297 14379 14379 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-11 18:23:09.298 14379 14379 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-11 18:23:09.299  1726  3345 I EDMNativeHelperService: isScreenCaptureEnabled
+08-11 18:23:09.299  1726  3345 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-11 18:23:09.299 14379 14379 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-11 18:23:09.299 14379 14379 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-11 18:23:09.302  1437  1995 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_11516#72427(seamlessTransition:0)
+08-11 18:23:09.302  1437  1995 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-11 18:23:09.302  1437  1995 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-11 18:23:09.302  1437  1995 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-11 18:23:09.305  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-11 18:23:09.305  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_11516#72427 at index 1
+08-11 18:23:09.305  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-11 18:23:09.305  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-11 18:23:09.332 14379 14382 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-11 18:23:09.541 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N13eFzlnf7/e0Zt1LvVi4vkXiQ32bjEBoIxNgFjAiSBDSxJSFk27F757SZb2JLNpkI25UsSSCWAQzDYYIMNBhtsbMvGTbZcVFzUrGL1MqMyM78/hAaPRr2NRn6/rosLz5kz5zwjjaQ593y…
+08-11 18:23:09.567 11269 11382 I appium  : channel read: GET /session/963b8b03-f5bd-4a84-a1f5-2e0c771bf091/source
+08-11 18:23:09.568 11269 11382 I appium  : Source command
+08-11 18:23:09.568 11269 11382 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:23:09.790 11269 11382 I appium  : AppiumResponse: {"sessionId":"963b8b03-f5bd-4a84-a1f5-2e0c771bf091","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-11 18:23:09.831 31212 31212 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 18:23:09.848  4554  4554 I SDHMS:LOAD: type: LoadsFreqs, value: 35:1:0:688119:2803000:576000:956919:2515000:576000:12:303:0
+08-11 18:23:09.879 14383 14383 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 18:23:09.919 31212 31212 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 18:23:09.961 14386 14386 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 18:23:10.001 31212 31212 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

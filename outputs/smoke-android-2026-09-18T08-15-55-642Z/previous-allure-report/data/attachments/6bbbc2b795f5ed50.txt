@@ -1,0 +1,202 @@
+--------- beginning of main
+08-17 16:39:07.513  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-17 16:39:07.513  2870 17363 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. net.openvpn.openvpn/net.openvpn.unified.MainActivity#UserHandle{0}|33979 : 0
+08-17 16:39:07.515  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-17 16:39:07.516  6020  6488 I NotificationPipeline: Processing new notification: 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.516  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.518  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-17 16:39:07.519  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-17 16:39:07.524  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-17 16:39:07.524  6020  6488 I NotificationPipeline: Discarding notification: 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.525  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-17 16:39:07.526  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-17 16:39:07.526  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1642
+08-17 16:39:07.528  6020  6488 I NotificationPipeline: Processing new notification: 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.529  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-17 16:39:07.529  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-17 16:39:07.530  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-17 16:39:07.530  6020  6488 I NotificationPipeline: Discarding notification: 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.531  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-17 16:39:07.531  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1642
+08-17 16:39:07.532  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted net.openvpn.openvpn: 0|net.openvpn.openvpn|1642|null|10466: 0
+08-17 16:39:07.532  2870  6282 I HoneySpace.NotificationListener: invalid notification: net.openvpn.openvpn UserHandle{0}: canShowBadge is false
+08-17 16:39:07.534  2870 11812 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. net.openvpn.openvpn/net.openvpn.unified.MainActivity#UserHandle{0}|33979 : 0
+08-17 16:39:07.537  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-17 16:39:07.542  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-17 16:39:07.543  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.543  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.546  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.549  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.549  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-17 16:39:07.554  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.555  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-17 16:39:07.556  2357  2357 I AODNotificationManager: updateNotification() 
+08-17 16:39:07.566  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-17 16:39:07.571  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-17 16:39:07.572  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.572  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.574  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-17 16:39:07.575  2357  2357 I AODNotificationManager: updateNotification() 
+08-17 16:39:07.575 27498 27557 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+08-17 16:39:07.576 27498 27557 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+08-17 16:39:07.607  2357  2357 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+08-17 16:39:07.620  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-17 16:39:07.624  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.624  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.624  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.624  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.626  2357  2357 D S.S.N.  : entryViewBound parent :0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.626  2357  2357 D S.S.N.  : entryViewBound parent :0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.628  2357  2357 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+08-17 16:39:07.634  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-17 16:39:07.638  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-17 16:39:07.638  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.638  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-17 16:39:07.638  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-17 16:39:07.638  2357  2357 I AODNotificationManager: updateNotification() 
+08-17 16:39:07.649 27498 27557 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+08-17 16:39:07.651 27498 27557 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+08-17 16:39:07.661  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786973947
+08-17 16:39:07.662  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 16:39:07.662  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 16:39:07.662  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782899
+08-17 16:39:07.662  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782869
+08-17 16:39:07.662  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 16:39:07.662  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 16:39:07.662  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 16:39:07.662  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 16:39:07.662  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+--------- beginning of system
+08-17 16:39:07.725   730   730 D io_stats: !@   8,0 r 90736409 1656282156 w 27568410 501427260 d 8015235 556991828 f 0 2557977 iot 41871172 0 th 0 0 0 pt 0 inp 0 0 676722.581
+08-17 16:39:07.726   730   730 D io_stats: !@ Read_top(KB): .android.as.oss(28187) 13536 .gms.persistent(12222) 1852 gle.android.gms(17374) 356
+08-17 16:39:07.726   730   730 D io_stats: !@ Write_top(KB): kworker/u16:1(26821) 1052 f2fs_ckpt-254:5(2890) 156 .gms.persistent(12222) 40
+08-17 16:39:07.741 27498 27557 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+08-17 16:39:07.885  1726  1726 W RemoteAugmentedAutofillService: PendingAutofillRequest timed out (5000ms) for RemoteAugmentedAutofillService[com.samsung.android.smartsuggestions/.extservice.services.AugmentedAutofillService]
+08-17 16:39:07.889 26442 26442 I [PASS][SPAF]AutofillService: onDestroy: Cancelling service scope
+08-17 16:39:07.892  1726  1726 I ActivityManager: Changes in 10217 6 to 10, 128 to 0
+08-17 16:39:07.892  1726  1726 I ActivityManager: Changes in 10131 6 to 10, 128 to 0
+08-17 16:39:07.892  1726  1726 I ActivityManager: Changes in 5278 6 to 10, 128 to 0
+08-17 16:39:07.906 26457 26457 I [PASS][CMN]DrawableCache: trimMemory: TRIM_MEMORY_BACKGROUND - trimming to 12288KB
+08-17 16:39:07.910 26442 26442 I [PASS][CMN]DrawableCache: clearData: clearing cache (current size=0KB)
+08-17 16:39:07.926 26505 26505 I [AUTHFW][PASS]AuthFwApp: otlv40
+08-17 16:39:08.408  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-17 16:39:08.438  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-17 16:39:08.448  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 143775, isSameBssidAndFreq true
+08-17 16:39:08.450  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:15 syn=1, rto=0, cwnd=0
+08-17 16:39:08.450  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:16 syn=1, rto=0, cwnd=0
+08-17 16:39:08.450  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:17 syn=1, rto=0, cwnd=0
+08-17 16:39:08.450  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:18 syn=1, rto=0, cwnd=0
+08-17 16:39:08.450  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:19 syn=1, rto=0, cwnd=0
+08-17 16:39:08.452  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786973948452 lastDateWindow=1786958119000
+08-17 16:39:08.454  1726  2228 I SemWifiLinkQualityMonitor: Link stat: 771 / 391 / 1.16 (22) / 78 / -46.0 || 100.0 : 78.00 / G (B) || 52fc78d72452: 0.249 / 32.174 / N || N N / 3 0 / N 2.0 / Y X 0 / 676723306 0 || 2026-08-17 12:15:19  / 0: 0 1 1 1 1 1 / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0
+08-17 16:39:08.457  1326  1393 E BatteryDump: !@new_battery_dump : 4364,250,1800,2054,100,352,337,377,352,0,352,356,0,Full,NO_CHARGING,Additional,Good,PDIC,0,Normal,0,0,5400,0x10000,0x10000,0x0,0,0,0000,0000,ffff0700,0,0,0,0,690,4346,10000,988,0,
+08-17 16:39:08.467  1326  1326 I android.hardware.health@2.1-service-samsung: updateLrpSysfs: write: 352
+08-17 16:39:08.661  1726  2156 W DeviceStorageMonitorService: updateBroadcasts(/data) oldLevel:0, newLevel:0, seq:1
+08-17 16:39:08.662  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786973948
+08-17 16:39:08.662  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 16:39:08.662  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 16:39:08.662  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782899
+08-17 16:39:08.662  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782869
+08-17 16:39:08.663  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 16:39:08.663  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 16:39:08.663  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 16:39:08.663  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 16:39:08.664  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 16:39:08.665  1726  2156 D DeviceStorageMonitorService: Available File Node Number is [13169750]
+08-17 16:39:08.665  1726  2156 W DeviceStorageMonitorService: updateBroadcasts_filenode(/data) fn_oldLevel:0, fn_newLevel:0, seq:1
+08-17 16:39:09.016  1726  1780 I ActivityManager: Changes in 10118 5 to 15, 144 to 0
+08-17 16:39:09.448  1726  3186 I NSLocationMonitor: getGPSUsingApps() called
+08-17 16:39:09.453  3189  9248 I NSLocationManager_FLP: getGPSUsingApps, No change
+08-17 16:39:09.481  1726  3186 D FreecessHandler: freeze org.telegram.messenger(10339) result : 2
+08-17 16:39:09.662  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786973949
+08-17 16:39:09.663  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 16:39:09.663  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 16:39:09.663  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782899
+08-17 16:39:09.663  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782869
+08-17 16:39:09.663  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 16:39:09.663  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 16:39:09.666  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 16:39:09.666  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 16:39:09.666  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 16:39:09.729   730   730 D io_stats: !@   8,0 r 90736411 1656282168 w 27568418 501427292 d 8015235 556991828 f 0 2557978 iot 41871212 0 th 0 0 0 pt 0 inp 0 0 676724.585
+08-17 16:39:10.160 27498 27525 I TRuntime.CctTransportBackend: Status Code: 200
+08-17 16:39:10.197 27498 27498 D LeakCanary: Watching instance of com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService (com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService received Service#onDestroy() callback) with key b37872ec-c95d-4534-932f-293bdb8dcdb2
+08-17 16:39:10.600 27427 27461 I appium  : READER_IDLE: closing the channel
+08-17 16:39:10.630 27427 27462 I appium  : READER_IDLE: closing the channel
+08-17 16:39:10.661  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786973950
+08-17 16:39:10.661  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 16:39:10.661  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 16:39:10.662  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782899
+08-17 16:39:10.662  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782869
+08-17 16:39:10.662  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 16:39:10.662  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 16:39:10.663  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 16:39:10.663  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 16:39:10.663  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 16:39:10.669 27427 27464 I appium  : READER_IDLE: closing the channel
+08-17 16:39:10.758  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-17 16:39:10.958 27427 27465 I appium  : channel read: GET /session/e9da1df9-bf56-48da-ac6e-8b8ec4323dba/screenshot
+08-17 16:39:10.959 27427 27465 I appium  : CaptureScreenshot command
+08-17 16:39:10.963 27427 27465 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-17 16:39:10.964 27427 27465 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-17 16:39:11.110 28218 28218 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-17 16:39:11.111 28218 28218 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-17 16:39:11.112 28218 28218 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-17 16:39:11.112  1726  4582 I EDMNativeHelperService: isScreenCaptureEnabled
+08-17 16:39:11.113  1726  4582 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-17 16:39:11.113 28218 28218 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-17 16:39:11.113 28218 28218 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-17 16:39:11.115  1437  1915 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.activities.LoginActivity$_27498#124934(seamlessTransition:0)
+08-17 16:39:11.115  1437  1915 I SurfaceFlinger: Capture layer list: 	 InputMethod$_5082#124965(seamlessTransition:0)
+08-17 16:39:11.115  1437  1915 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-17 16:39:11.115  1437  1915 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-17 16:39:11.116  1437  1915 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-17 16:39:11.117  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-17 16:39:11.117  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.activities.LoginActivity$_27498#124934 at index 1
+08-17 16:39:11.117  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer InputMethod$_5082#124965 at index 2
+08-17 16:39:11.117  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 3
+08-17 16:39:11.117  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 4
+08-17 16:39:11.141 28218 28223 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-17 16:39:11.355 27427 27465 I appium  : AppiumResponse: {"sessionId":"e9da1df9-bf56-48da-ac6e-8b8ec4323dba","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15WFNn+j/+dxIg7IRV9k0WFTcQFXFBrXbUutJq99p2ptOO007bq8vs37aztJ8u07HLx36cznSzi51xww1Frda6gAsoSlEWQVYB2SEJhCS/Pxjy4yQBghCS4Pt1XV7tec72BHJCzn2e575…
+08-17 16:39:11.381 27427 27465 I appium  : channel read: GET /session/e9da1df9-bf56-48da-ac6e-8b8ec4323dba/source
+08-17 16:39:11.381 27427 27465 I appium  : Source command
+08-17 16:39:11.381 27427 27465 I appium  : Waiting up to 10000ms for the device to idle
+08-17 16:39:11.470  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-17 16:39:11.481  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:15 syn=1, rto=0, cwnd=0
+08-17 16:39:11.481  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 143776, isSameBssidAndFreq true
+08-17 16:39:11.481  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:16 syn=1, rto=0, cwnd=0
+08-17 16:39:11.482  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:17 syn=1, rto=0, cwnd=0
+08-17 16:39:11.482  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:18 syn=1, rto=0, cwnd=0
+08-17 16:39:11.482  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:19 syn=1, rto=0, cwnd=0
+08-17 16:39:11.485  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786973951485 lastDateWindow=1786958119000
+08-17 16:39:11.491 27427 27465 I appium  : AppiumResponse: {"sessionId":"e9da1df9-bf56-48da-ac6e-8b8ec4323dba","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-17 16:39:11.497  4724  4724 I [MCFDs]_CopyPasteLocal: remove - timeout
+08-17 16:39:11.499  4724  4724 I [MCFDs]_CopyPasteLocal: remove - localClip
+08-17 16:39:11.504  4724  4724 W [MCFDs]_CommunicationManager: updateContext - ignore - Bluetooth is off
+08-17 16:39:11.533 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-17 16:39:11.590 28224 28224 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-17 16:39:11.601  1726  4582 I ImeTracker: system_server:9b7c1d7d: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false
+08-17 16:39:11.639 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-17 16:39:11.640  1726  2147 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+08-17 16:39:11.646  1726  2147 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+08-17 16:39:11.646  1726  2147 D InetDiagMessage: Destroyed live tcp sockets for uids={10257} in 14ms
+08-17 16:39:11.651  1726  2147 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+08-17 16:39:11.653  1726  2147 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+08-17 16:39:11.653  1726  2147 D InetDiagMessage: Destroyed live tcp sockets for uids={20257} in 6ms
+08-17 16:39:11.661  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786973951
+08-17 16:39:11.661  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 16:39:11.662  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 16:39:11.662  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782899
+08-17 16:39:11.662  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782869
+08-17 16:39:11.662  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 16:39:11.662  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 16:39:11.662  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 16:39:11.662  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 16:39:11.662  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 16:39:11.700 28227 28227 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-17 16:39:11.710  1726  4582 I ImeTracker: system_server:7a4dfd28: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false
+08-17 16:39:11.724  1437  1437 I SurfaceFlinger: SFWD update time=676726581046552
+08-17 16:39:11.730   730   730 D io_stats: !@   8,0 r 90736449 1656282940 w 27568437 501428248 d 8015235 556991828 f 0 2557981 iot 41871276 0 th 0 0 0 pt 0 inp 0 0 676726.586
+08-17 16:39:11.731   730   730 D io_stats: !@ Read_top(KB): g.android.mcfds(4724) 772 system_server(1726) 12
+08-17 16:39:11.731   730   730 D io_stats: !@ Write_top(KB): kworker/u16:3(30261) 900 om.moneybase.qa(27498) 44 system_server(1726) 12
+08-17 16:39:11.756 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

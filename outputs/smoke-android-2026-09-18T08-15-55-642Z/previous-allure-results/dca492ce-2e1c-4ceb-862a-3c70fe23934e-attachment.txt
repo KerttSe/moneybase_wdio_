@@ -1,0 +1,202 @@
+--------- beginning of main
+08-05 17:07:12.836  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-05 17:07:12.844  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 26294, isSameBssidAndFreq true
+08-05 17:07:12.847  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:22 syn=2, rto=0, cwnd=0
+08-05 17:07:12.848  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:23 syn=2, rto=0, cwnd=0
+08-05 17:07:12.849  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:24 syn=0, rto=0, cwnd=2
+08-05 17:07:12.850  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:25 syn=0, rto=0, cwnd=2
+08-05 17:07:12.850  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:26 syn=0, rto=0, cwnd=2
+08-05 17:07:12.850  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:27 syn=0, rto=0, cwnd=2
+08-05 17:07:12.853  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1785938832853 lastDateWindow=1785781227000
+--------- beginning of system
+08-05 17:07:12.855  1726  3183 D ActivityManager: unpendingScheduleServiceRestart: u=10312, drop=false
+08-05 17:07:12.858  1726  3181 W FreecessController: getAllRunningPackagePids: Failed to read pid from /sys/fs/cgroup/apps/uid_10312/pid_4966/cgroup.procs
+08-05 17:07:12.862  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1785938832
+08-05 17:07:12.863  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-05 17:07:12.863  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-05 17:07:12.863  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29765647
+08-05 17:07:12.863  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29765630
+08-05 17:07:12.863  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-05 17:07:12.863  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-05 17:07:12.863  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-05 17:07:12.863  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-05 17:07:12.863  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-05 17:07:12.864 31952 31992 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]' XPath2 query
+08-05 17:07:12.864 31952 31992 I appium  : Found zero matches
+08-05 17:07:12.864  1726  3181 D FreecessController: UFZ : com.samsung.android.game.gamehome(10312) [5649] reason: Binder(1)-android.service.notification.INotificatio
+08-05 17:07:12.866  1726  3186 W LocationManagerService: onFreezeStateChanged, uid[10312]=false
+08-05 17:07:12.866  1726  3186 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10312 , disable= false
+08-05 17:07:12.866  1726  3186 I PowerManagerService: [PWL] can not change uid =  10312
+08-05 17:07:12.866 31952 31992 I appium  : AppiumResponse: {"sessionId":"23577015-26f3-463a-8334-6cef79cc8e63","value":[]}
+08-05 17:07:12.871  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted net.openvpn.openvpn: 0|net.openvpn.openvpn|1642|null|10466: 0
+08-05 17:07:12.871  2870  6282 I HoneySpace.NotificationListener: invalid notification: net.openvpn.openvpn UserHandle{0}: canShowBadge is false
+08-05 17:07:12.870  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-05 17:07:12.872  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1642
+08-05 17:07:12.872  2870 31805 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. net.openvpn.openvpn/net.openvpn.unified.MainActivity#UserHandle{0}|33979 : 0
+08-05 17:07:12.878  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-05 17:07:12.881  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-05 17:07:12.881  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1642
+08-05 17:07:12.882  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.885  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.885  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-05 17:07:12.887  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-05 17:07:12.890  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.892  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-05 17:07:12.892  6020  6488 I NotificationPipeline: Processing new notification: 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.893  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted net.openvpn.openvpn: 0|net.openvpn.openvpn|1642|null|10466: 0
+08-05 17:07:12.894  2870  6282 I HoneySpace.NotificationListener: invalid notification: net.openvpn.openvpn UserHandle{0}: canShowBadge is false
+08-05 17:07:12.895  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-05 17:07:12.895  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-05 17:07:12.897  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-05 17:07:12.897  6020  6488 I NotificationPipeline: Discarding notification: 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.897  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.899  6020  6488 I NotificationPipeline: Processing new notification: 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.899  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.899  2870 31803 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. net.openvpn.openvpn/net.openvpn.unified.MainActivity#UserHandle{0}|33979 : 0
+08-05 17:07:12.899  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-05 17:07:12.899  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-05 17:07:12.899  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-05 17:07:12.900  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-05 17:07:12.900  6020  6488 I NotificationPipeline: Discarding notification: 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.903  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.907  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-05 17:07:12.910  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-05 17:07:12.911  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.911  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.912  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-05 17:07:12.912  2357  2357 I AODNotificationManager: updateNotification() 
+08-05 17:07:12.918 31952 31992 I appium  : channel read: POST /session/23577015-26f3-463a-8334-6cef79cc8e63/elements
+08-05 17:07:12.920 31952 31992 I appium  : FindElements command
+08-05 17:07:12.923 31952 31992 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]'
+08-05 17:07:12.923 31952 31992 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:07:12.925 31952 31992 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:07:12.937  2357  2357 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+08-05 17:07:12.944  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-05 17:07:12.948  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.948  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.948  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.948  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.950  2357  2357 D S.S.N.  : entryViewBound parent :0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.952  2357  2357 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+08-05 17:07:12.955 31952 31992 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]' XPath2 query
+08-05 17:07:12.955 31952 31992 I appium  : Found zero matches
+08-05 17:07:12.956 31952 31992 I appium  : AppiumResponse: {"sessionId":"23577015-26f3-463a-8334-6cef79cc8e63","value":[]}
+08-05 17:07:12.959  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-05 17:07:12.962  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-05 17:07:12.963  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.963  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-05 17:07:12.963  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-05 17:07:12.963  2357  2357 I AODNotificationManager: updateNotification() 
+08-05 17:07:13.018 31952 31992 I appium  : channel read: POST /session/23577015-26f3-463a-8334-6cef79cc8e63/elements
+08-05 17:07:13.018 31952 31992 I appium  : FindElements command
+08-05 17:07:13.019 31952 31992 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]'
+08-05 17:07:13.020 31952 31992 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:07:13.022 31952 31992 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:07:13.048 31952 31992 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]' XPath2 query
+08-05 17:07:13.048 31952 31992 I appium  : Found zero matches
+08-05 17:07:13.050 31952 31992 I appium  : AppiumResponse: {"sessionId":"23577015-26f3-463a-8334-6cef79cc8e63","value":[]}
+08-05 17:07:13.119 31952 31992 I appium  : channel read: POST /session/23577015-26f3-463a-8334-6cef79cc8e63/elements
+08-05 17:07:13.120 31952 31992 I appium  : FindElements command
+08-05 17:07:13.121 31952 31992 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]'
+08-05 17:07:13.121 31952 31992 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:07:13.124 31952 31992 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:07:13.153 31952 31992 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]' XPath2 query
+08-05 17:07:13.153 31952 31992 I appium  : Found zero matches
+08-05 17:07:13.155 31952 31992 I appium  : AppiumResponse: {"sessionId":"23577015-26f3-463a-8334-6cef79cc8e63","value":[]}
+08-05 17:07:13.219 31952 31992 I appium  : channel read: POST /session/23577015-26f3-463a-8334-6cef79cc8e63/elements
+08-05 17:07:13.220 31952 31992 I appium  : FindElements command
+08-05 17:07:13.222 31952 31992 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]'
+08-05 17:07:13.222 31952 31992 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:07:13.225 31952 31992 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:07:13.259 31952 31992 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]' XPath2 query
+08-05 17:07:13.259 31952 31992 I appium  : Found zero matches
+08-05 17:07:13.260 31952 31992 I appium  : AppiumResponse: {"sessionId":"23577015-26f3-463a-8334-6cef79cc8e63","value":[]}
+08-05 17:07:13.316 31952 31992 I appium  : channel read: POST /session/23577015-26f3-463a-8334-6cef79cc8e63/elements
+08-05 17:07:13.317 31952 31992 I appium  : FindElements command
+08-05 17:07:13.318 31952 31992 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]'
+08-05 17:07:13.319 31952 31992 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:07:13.321 31952 31992 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:07:13.328 31952 31956 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-05 17:07:13.354 31952 31992 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]' XPath2 query
+08-05 17:07:13.354 31952 31992 I appium  : Found zero matches
+08-05 17:07:13.356 31952 31992 I appium  : AppiumResponse: {"sessionId":"23577015-26f3-463a-8334-6cef79cc8e63","value":[]}
+08-05 17:07:13.435 31952 31992 I appium  : channel read: POST /session/23577015-26f3-463a-8334-6cef79cc8e63/elements
+08-05 17:07:13.435 31952 31992 I appium  : FindElements command
+08-05 17:07:13.436 31952 31992 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]'
+08-05 17:07:13.436 31952 31992 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:07:13.437 31952 31992 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:07:13.463 31952 31992 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]' XPath2 query
+08-05 17:07:13.463 31952 31992 I appium  : Found zero matches
+08-05 17:07:13.464 31952 31992 I appium  : AppiumResponse: {"sessionId":"23577015-26f3-463a-8334-6cef79cc8e63","value":[]}
+08-05 17:07:13.519 31952 31992 I appium  : channel read: POST /session/23577015-26f3-463a-8334-6cef79cc8e63/elements
+08-05 17:07:13.520 31952 31992 I appium  : FindElements command
+08-05 17:07:13.521 31952 31992 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]'
+08-05 17:07:13.522 31952 31992 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:07:13.525 31952 31992 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:07:13.560 31952 31992 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]' XPath2 query
+08-05 17:07:13.560 31952 31992 I appium  : Found zero matches
+08-05 17:07:13.562 31952 31992 I appium  : AppiumResponse: {"sessionId":"23577015-26f3-463a-8334-6cef79cc8e63","value":[]}
+08-05 17:07:13.608  1726  3186 I NSLocationMonitor: getGPSUsingApps() called
+08-05 17:07:13.610  3189  8919 I NSLocationManager_FLP: getGPSUsingApps, No change
+08-05 17:07:13.617 31952 31992 I appium  : channel read: POST /session/23577015-26f3-463a-8334-6cef79cc8e63/elements
+08-05 17:07:13.617 31952 31992 I appium  : FindElements command
+08-05 17:07:13.619 31952 31992 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]'
+08-05 17:07:13.619 31952 31992 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:07:13.621 31952 31992 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:07:13.632  1726  3186 D FreecessHandler: freeze net.buddy.prj4(10570) result : 18
+08-05 17:07:13.661 31952 31992 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]' XPath2 query
+08-05 17:07:13.662 31952 31992 I appium  : Found zero matches
+08-05 17:07:13.663 31952 31992 I appium  : AppiumResponse: {"sessionId":"23577015-26f3-463a-8334-6cef79cc8e63","value":[]}
+08-05 17:07:13.719 31952 31992 I appium  : channel read: POST /session/23577015-26f3-463a-8334-6cef79cc8e63/elements
+08-05 17:07:13.719 31952 31992 I appium  : FindElements command
+08-05 17:07:13.721 31952 31992 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]'
+08-05 17:07:13.721 31952 31992 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:07:13.724 31952 31992 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:07:13.770 31952 31992 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Card Type"]]' XPath2 query
+08-05 17:07:13.770 31952 31992 I appium  : Found zero matches
+08-05 17:07:13.771 31952 31992 I appium  : AppiumResponse: {"sessionId":"23577015-26f3-463a-8334-6cef79cc8e63","value":[]}
+08-05 17:07:13.823 31952 31992 I appium  : channel read: GET /session/23577015-26f3-463a-8334-6cef79cc8e63/screenshot
+08-05 17:07:13.824 31952 31992 I appium  : CaptureScreenshot command
+08-05 17:07:13.863  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1785938833
+08-05 17:07:13.863  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-05 17:07:13.863  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-05 17:07:13.863  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29765647
+08-05 17:07:13.863  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29765630
+08-05 17:07:13.863  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-05 17:07:13.863  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-05 17:07:13.864  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-05 17:07:13.864  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-05 17:07:13.864  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-05 17:07:13.909  4554  4554 I SDHMS:LOAD: type: LoadsFreqs, value: 23:0:0:576000:576000:576000:1061760:2304000:576000:6:303:0
+08-05 17:07:13.964  3304  3304 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-05 17:07:13.965  3304  3304 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-05 17:07:13.967  3304  3304 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-05 17:07:13.967  1726  2494 I EDMNativeHelperService: isScreenCaptureEnabled
+08-05 17:07:13.967  1726  2494 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-05 17:07:13.967  3304  3304 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-05 17:07:13.967  3304  3304 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-05 17:07:13.973  1437  1682 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_32013#28069(seamlessTransition:0)
+08-05 17:07:13.973  1437  1682 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_32013#28087(seamlessTransition:0)
+08-05 17:07:13.973  1437  1682 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_32013#28092(seamlessTransition:0)
+08-05 17:07:13.973  1437  1682 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-05 17:07:13.973  1437  1682 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-05 17:07:13.973  1437  1682 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-05 17:07:13.975  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-05 17:07:13.976  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_32013#28069 at index 1
+08-05 17:07:13.976  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_32013#28087 at index 2
+08-05 17:07:13.976  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_32013#28092 at index 3
+08-05 17:07:13.976  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 4
+08-05 17:07:13.976  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 5
+08-05 17:07:14.002  3304  3311 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-05 17:07:14.199   730   730 D io_stats: !@   8,0 r 23042939 447527560 w 6948202 130046804 d 2012477 175656560 f 0 648164 iot 10298108 0 th 0 0 0 pt 0 inp 0 0 137535.854
+08-05 17:07:14.199   730   730 D io_stats: !@ Write_top(KB): ugin:persistent(6020) 8 android.hardwar(1326) 8
+08-05 17:07:14.204 31952 31992 I appium  : AppiumResponse: {"sessionId":"23577015-26f3-463a-8334-6cef79cc8e63","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N3pb2T3fe/5T+37yuK+qUl2N7VZFmRZkTuynCsltnVj+2IeXEwA/wX3wQABRv/BAHeAAPNkgPsoNw8GAS4CZyaB4y2OrNzYlmy11FGrW93qbpJNNru5b7XvVWcetKvEYnGvIouHfL8Awa5…
+08-05 17:07:14.231 31952 31992 I appium  : channel read: GET /session/23577015-26f3-463a-8334-6cef79cc8e63/source
+08-05 17:07:14.231 31952 31992 I appium  : Source command
+08-05 17:07:14.232 31952 31992 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:07:14.267 31952 31992 I appium  : AppiumResponse: {"sessionId":"23577015-26f3-463a-8334-6cef79cc8e63","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-05 17:07:14.306 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-05 17:07:14.371  3312  3312 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-05 17:07:14.416 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-05 17:07:14.476  3315  3315 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-05 17:07:14.525 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

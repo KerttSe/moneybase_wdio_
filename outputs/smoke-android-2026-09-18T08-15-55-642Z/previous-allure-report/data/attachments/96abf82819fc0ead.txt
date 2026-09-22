@@ -1,0 +1,274 @@
+--------- beginning of main
+05-11 15:15:52.736  2896  3026 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236038, activityId=2131236043)
+05-11 15:15:52.739  1483  1602 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+05-11 15:15:52.753  1483  1640 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+05-11 15:15:52.757  1483  1483 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+05-11 15:15:52.757  1483  1483 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+05-11 15:15:52.760  1378  1604 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+05-11 15:15:52.760  1378  1604 I display : Current VRR MODE is 3
+05-11 15:15:52.760  1378  1604 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+05-11 15:15:52.760  1378  1604 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+05-11 15:15:52.760  1378  1604 I display : commit modeset : 1080x2340@120hs
+05-11 15:15:52.779  1378  1604 W display : deliverWinConfigData:: commit modeset time (18 ms)
+05-11 15:15:52.782  1378  1454 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+05-11 15:15:52.783  1378  1454 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-11 15:15:52.783  1483  1483 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+05-11 15:15:52.783  1483  1483 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-11 15:15:52.787  1378  1454 I display : Set m2mMPP capacity(4) for fps(120)
+05-11 15:15:52.787  1378  1454 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-11 15:15:52.787  1378  1454 I display : Set Affinity config for fps(120) : cpuIDs : 255
+05-11 15:15:52.787  1378  1454 I display : Set Affinity CPU ID : 0
+05-11 15:15:52.787  1378  1454 I display : Set Affinity CPU ID : 1
+05-11 15:15:52.787  1378  1454 I display : Set Affinity CPU ID : 2
+05-11 15:15:52.787  1378  1454 I display : Set Affinity CPU ID : 3
+05-11 15:15:52.788  1378  1454 I display : Set Affinity CPU ID : 4
+05-11 15:15:52.788  1378  1454 I display : Set Affinity CPU ID : 5
+05-11 15:15:52.788  1378  1454 I display : Set Affinity CPU ID : 6
+05-11 15:15:52.788  1378  1454 I display : Set Affinity CPU ID : 7
+05-11 15:15:52.788  1378  1454 I display : Set affinity HWC : 1378
+05-11 15:15:52.788  1378  1454 I display : CPU set : Cluster(0), min_clock(0)
+05-11 15:15:52.788  1378  1454 I display : CPU set : Cluster(1), min_clock(0)
+05-11 15:15:52.788  1378  1454 I display : CPU set : Cluster(2), min_clock(0)
+05-11 15:15:52.788  1483  1602 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+05-11 15:15:53.006  1483  1640 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+05-11 15:15:53.008  1483  1483 I LayerHistory: StatusBar$_2431#105 voted NoVote (0.00 Hz)
+05-11 15:15:53.008  1483  1483 I SurfaceFlinger: Idle - choose 60.00 Hz
+05-11 15:15:53.009  1483  1483 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+05-11 15:15:53.010  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+05-11 15:15:53.013  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+05-11 15:15:53.014  1378  1604 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+05-11 15:15:53.014  1378  1604 I display : Current VRR MODE is 3
+05-11 15:15:53.014  1378  1604 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+05-11 15:15:53.014  1378  1604 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+05-11 15:15:53.014  1378  1604 I display : commit modeset : 1080x2340@60phs
+05-11 15:15:53.030  1378  1604 W display : deliverWinConfigData:: commit modeset time (15 ms)
+05-11 15:15:53.031  1378  1454 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+05-11 15:15:53.031  1378  1454 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-11 15:15:53.031  1378  1454 I display : Set m2mMPP capacity(8) for fps(60)
+05-11 15:15:53.031  1378  1454 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-11 15:15:53.031  1378  1454 I display : Set Affinity config for fps(60) : cpuIDs : 255
+05-11 15:15:53.031  1378  1454 I display : Set Affinity CPU ID : 0
+05-11 15:15:53.031  1378  1454 I display : Set Affinity CPU ID : 1
+05-11 15:15:53.031  1378  1454 I display : Set Affinity CPU ID : 2
+05-11 15:15:53.031  1378  1454 I display : Set Affinity CPU ID : 3
+05-11 15:15:53.031  1378  1454 I display : Set Affinity CPU ID : 4
+05-11 15:15:53.031  1378  1454 I display : Set Affinity CPU ID : 5
+05-11 15:15:53.031  1378  1454 I display : Set Affinity CPU ID : 6
+05-11 15:15:53.031  1378  1454 I display : Set Affinity CPU ID : 7
+05-11 15:15:53.031  1378  1454 I display : Set affinity HWC : 1378
+05-11 15:15:53.031  1378  1454 I display : CPU set : Cluster(0), min_clock(0)
+05-11 15:15:53.031  1378  1454 I display : CPU set : Cluster(1), min_clock(0)
+05-11 15:15:53.031  1378  1454 I display : CPU set : Cluster(2), min_clock(0)
+05-11 15:15:53.032  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+05-11 15:15:53.032  1483  1483 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-11 15:15:53.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778501753
+05-11 15:15:53.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 15:15:53.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 15:15:53.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641695
+05-11 15:15:53.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641666
+05-11 15:15:53.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 15:15:53.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 15:15:53.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 15:15:53.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 15:15:53.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+--------- beginning of system
+05-11 15:15:53.809   727   727 D io_stats: !@   8,0 r 58337233 1203324010 w 18003781 337963836 d 5242984 364182404 f 0 1855696 iot 28293624 0 th 0 0 0 pt 0 inp 0 0 410159.202
+05-11 15:15:54.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778501754
+05-11 15:15:54.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 15:15:54.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 15:15:54.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641695
+05-11 15:15:54.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641666
+05-11 15:15:54.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 15:15:54.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 15:15:54.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 15:15:54.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 15:15:54.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 15:15:54.808  1760  2319 D NetdEventListenerService: DNS Requested by 514, 10345(ua.com.rozetka.shop), 4(FAIL), isBlocked=true, 0ms
+05-11 15:15:55.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778501755
+05-11 15:15:55.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 15:15:55.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 15:15:55.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641695
+05-11 15:15:55.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641666
+05-11 15:15:55.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 15:15:55.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 15:15:55.600  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 15:15:55.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 15:15:55.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 15:15:55.756  1760  2177 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+05-11 15:15:55.763  1760  3742 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 67290, isSameBssidAndFreq true
+05-11 15:15:55.766  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:35 syn=1, rto=0, cwnd=0
+05-11 15:15:55.766  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:36 syn=1, rto=0, cwnd=0
+05-11 15:15:55.766  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:37 syn=1, rto=0, cwnd=0
+05-11 15:15:55.766  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:38 syn=1, rto=0, cwnd=0
+05-11 15:15:55.767  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:39 syn=3, rto=0, cwnd=0
+05-11 15:15:55.768  1760  2268 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1778501755768 lastDateWindow=1778476839000
+05-11 15:15:55.768  2896  3026 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236038, activityId=2131236053)
+05-11 15:15:55.773  1483  1602 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+05-11 15:15:55.789  1483  1640 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+05-11 15:15:55.797  1483  1602 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+05-11 15:15:55.809  1483  1483 I LayerHistory: StatusBar$_2431#105 voted NoVote (0.00 Hz)
+05-11 15:15:55.809  1483  1483 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+05-11 15:15:55.810   727   727 D io_stats: !@ Write_top(KB): kworker/u16:3(23355) 192 soft.appmanager(8857) 16 appmanager:auth(19603) 16
+05-11 15:15:55.810  1483  1483 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+05-11 15:15:55.814  1483  1602 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+05-11 15:15:55.815  1378  1604 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+05-11 15:15:55.815  1378  1604 I display : Current VRR MODE is 3
+05-11 15:15:55.815  1378  1604 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+05-11 15:15:55.815  1378  1604 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+05-11 15:15:55.816  1378  1604 I display : commit modeset : 1080x2340@120hs
+05-11 15:15:55.830  1378  1604 W display : deliverWinConfigData:: commit modeset time (13 ms)
+05-11 15:15:55.834  1378  1454 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+05-11 15:15:55.834  1483  1483 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+05-11 15:15:55.835  1483  1483 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-11 15:15:55.839  1378  1454 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-11 15:15:55.839  1378  1454 I display : Set m2mMPP capacity(4) for fps(120)
+05-11 15:15:55.840  1378  1454 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-11 15:15:55.840  1378  1454 I display : Set Affinity config for fps(120) : cpuIDs : 255
+05-11 15:15:55.840  1378  1454 I display : Set Affinity CPU ID : 0
+05-11 15:15:55.840  1378  1454 I display : Set Affinity CPU ID : 1
+05-11 15:15:55.840  1378  1454 I display : Set Affinity CPU ID : 2
+05-11 15:15:55.840  1378  1454 I display : Set Affinity CPU ID : 3
+05-11 15:15:55.840  1378  1454 I display : Set Affinity CPU ID : 4
+05-11 15:15:55.840  1378  1454 I display : Set Affinity CPU ID : 5
+05-11 15:15:55.840  1378  1454 I display : Set Affinity CPU ID : 6
+05-11 15:15:55.840  1378  1454 I display : Set Affinity CPU ID : 7
+05-11 15:15:55.840  1378  1454 I display : Set affinity HWC : 1378
+05-11 15:15:55.840  1378  1454 I display : CPU set : Cluster(0), min_clock(0)
+05-11 15:15:55.840  1378  1454 I display : CPU set : Cluster(1), min_clock(0)
+05-11 15:15:55.840  1378  1454 I display : CPU set : Cluster(2), min_clock(0)
+05-11 15:15:55.841  1483  1602 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+05-11 15:15:56.041  1483  1640 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+05-11 15:15:56.044  1483  1483 I LayerHistory: StatusBar$_2431#105 voted NoVote (0.00 Hz)
+05-11 15:15:56.044  1483  1483 I SurfaceFlinger: Idle - choose 60.00 Hz
+05-11 15:15:56.044  1483  1483 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+05-11 15:15:56.046  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+05-11 15:15:56.047  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+05-11 15:15:56.047  1378  1604 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+05-11 15:15:56.047  1378  1604 I display : Current VRR MODE is 3
+05-11 15:15:56.047  1378  1604 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+05-11 15:15:56.047  1378  1604 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+05-11 15:15:56.048  1378  1604 I display : commit modeset : 1080x2340@60phs
+05-11 15:15:56.063  1378  1604 W display : deliverWinConfigData:: commit modeset time (15 ms)
+05-11 15:15:56.065  1378  1454 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+05-11 15:15:56.065  1378  1454 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-11 15:15:56.065  1378  1454 I display : Set m2mMPP capacity(8) for fps(60)
+05-11 15:15:56.065  1378  1454 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-11 15:15:56.065  1378  1454 I display : Set Affinity config for fps(60) : cpuIDs : 255
+05-11 15:15:56.065  1378  1454 I display : Set Affinity CPU ID : 0
+05-11 15:15:56.065  1378  1454 I display : Set Affinity CPU ID : 1
+05-11 15:15:56.065  1378  1454 I display : Set Affinity CPU ID : 2
+05-11 15:15:56.065  1378  1454 I display : Set Affinity CPU ID : 3
+05-11 15:15:56.065  1378  1454 I display : Set Affinity CPU ID : 4
+05-11 15:15:56.065  1378  1454 I display : Set Affinity CPU ID : 5
+05-11 15:15:56.065  1378  1454 I display : Set Affinity CPU ID : 6
+05-11 15:15:56.065  1378  1454 I display : Set Affinity CPU ID : 7
+05-11 15:15:56.065  1378  1454 I display : Set affinity HWC : 1378
+05-11 15:15:56.065  1378  1454 I display : CPU set : Cluster(0), min_clock(0)
+05-11 15:15:56.065  1378  1454 I display : CPU set : Cluster(1), min_clock(0)
+05-11 15:15:56.065  1378  1454 I display : CPU set : Cluster(2), min_clock(0)
+05-11 15:15:56.065  1483  1483 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-11 15:15:56.065  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+05-11 15:15:56.497  1379  1396 E BatteryDump: !@new_battery_dump : 4337,-25,1800,2054,100,275,267,287,275,0,280,270,0,Full,NO_CHARGING,None,Good,PDIC,0,Normal,0,0,9180,0x10000,0x10000,0x0,0,0,0000,0000,ffff0700,0,0,0,0,604,4338,10000,990,0,
+05-11 15:15:56.507  1379  1379 I android.hardware.health@2.1-service-samsung: updateLrpSysfs: write: 280
+05-11 15:15:56.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778501756
+05-11 15:15:56.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 15:15:56.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 15:15:56.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641695
+05-11 15:15:56.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641666
+05-11 15:15:56.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 15:15:56.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 15:15:56.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 15:15:56.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 15:15:56.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 15:15:56.771 16341 16341 I wpa_supplicant: Heartbeat 4110
+05-11 15:15:56.983  1760  2319 D NetdEventListenerService: DNS Requested by 514, 10387(com.whatsapp), 4(FAIL), isBlocked=true, 0ms
+05-11 15:15:56.988 22529 22693 E msys    : E[N mns:TigonMNS]_LogError(280)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+05-11 15:15:56.996 22529 22693 E msys    : E[N mns:TigonMNS]_LogError(280)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+05-11 15:15:56.996  1760  2319 D NetdEventListenerService: DNS Requested by 514, 10387(com.whatsapp), 4(FAIL), isBlocked=true, 0ms
+05-11 15:15:57.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778501757
+05-11 15:15:57.599  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 15:15:57.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 15:15:57.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641695
+05-11 15:15:57.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641666
+05-11 15:15:57.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 15:15:57.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 15:15:57.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 15:15:57.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 15:15:57.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 15:15:57.812   727   727 D io_stats: !@   8,0 r 58337243 1203324526 w 18003783 337963844 d 5242984 364182404 f 0 1855696 iot 28293648 0 th 0 0 0 pt 0 inp 0 0 410163.205
+05-11 15:15:58.406  5682  5711 W dmwj    : (REDACTED) Error reading proc %s
+05-11 15:15:58.406  5682  5711 W dmwj    : java.io.FileNotFoundException: /proc/5682/dmabuf_rss: open failed: ENOENT (No such file or directory)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at libcore.io.IoBridge.open(IoBridge.java:574)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at java.io.FileInputStream.<init>(FileInputStream.java:179)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at fdoj.a(PG:10)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at dngs.f(PG:43)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at dngs.b(PG:200)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at dngj.apply(PG:19)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at fetl.c(PG:3)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at fetn.run(PG:47)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:348)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at dmwg.run(PG:12)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at java.lang.Thread.run(Thread.java:1564)
+05-11 15:15:58.406  5682  5711 W dmwj    : Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at libcore.io.Linux.open(Native Method)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:574)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:574)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:9904)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	at libcore.io.IoBridge.open(IoBridge.java:560)
+05-11 15:15:58.406  5682  5711 W dmwj    : 	... 14 more
+05-11 15:15:58.408  5682  5711 W dmwj    : (REDACTED) Error reading proc %s
+05-11 15:15:58.408  5682  5711 W dmwj    : java.io.FileNotFoundException: /proc/5682/dmabuf_rss_hwm: open failed: ENOENT (No such file or directory)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at libcore.io.IoBridge.open(IoBridge.java:574)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at java.io.FileInputStream.<init>(FileInputStream.java:179)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at fdoj.a(PG:10)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at dngs.f(PG:43)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at dngs.b(PG:214)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at dngj.apply(PG:19)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at fetl.c(PG:3)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at fetn.run(PG:47)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:348)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at dmwg.run(PG:12)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at java.lang.Thread.run(Thread.java:1564)
+05-11 15:15:58.408  5682  5711 W dmwj    : Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at libcore.io.Linux.open(Native Method)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:574)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:574)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:9904)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	at libcore.io.IoBridge.open(IoBridge.java:560)
+05-11 15:15:58.408  5682  5711 W dmwj    : 	... 14 more
+05-11 15:15:58.410  5682  5711 W dmwj    : (REDACTED) Error reading proc %s
+05-11 15:15:58.410  5682  5711 W dmwj    : java.io.FileNotFoundException: /proc/5682/dmabuf_pss: open failed: ENOENT (No such file or directory)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at libcore.io.IoBridge.open(IoBridge.java:574)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at java.io.FileInputStream.<init>(FileInputStream.java:179)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at fdoj.a(PG:10)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at dngs.f(PG:43)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at dngs.b(PG:228)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at dngj.apply(PG:19)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at fetl.c(PG:3)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at fetn.run(PG:47)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:348)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at dmwg.run(PG:12)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at java.lang.Thread.run(Thread.java:1564)
+05-11 15:15:58.410  5682  5711 W dmwj    : Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at libcore.io.Linux.open(Native Method)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:574)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:574)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:9904)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	at libcore.io.IoBridge.open(IoBridge.java:560)
+05-11 15:15:58.410  5682  5711 W dmwj    : 	... 14 more
+05-11 15:15:58.453  5682  5843 V ClearcutMetricXmitter: Transmission is done.

@@ -1,0 +1,214 @@
+--------- beginning of main
+05-11 12:40:59.909  4152  4166 I SamsungAccount: [MccManager] saveMccToPreference Start
+05-11 12:40:59.909  4152  4166 I SamsungAccount: [MccManager] saveMccToPreference, mcc is same with previous mcc
+05-11 12:40:59.909  4152  4166 I SamsungAccount: [ChildAccountSupportedListManager] getSupportedListFromLocal from cache
+05-11 12:40:59.909  4152  4166 E SamsungAccount: [FamilyGroupUtil] getCountryCodeListWithRegionMcc - no country code with region mcc
+05-11 12:40:59.909  4152  4166 I SamsungAccount: [FamilyGroupUtil] isSupportFamilyService: false
+05-11 12:40:59.909  4152  4166 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+05-11 12:40:59.909  4152  4166 I SamsungAccount: [AccountManagerProvider] makeResultBundle - resultCode : 1
+05-11 12:40:59.910  5245  5245 I HBD     : c update cached prediction status : true 
+05-11 12:40:59.910  5245  5245 I HBD     : h getDefaultInputRange : UNKNOWN 
+05-11 12:40:59.910  5245  5245 I HBD     : a currentState : 0 
+05-11 12:40:59.911  5245  5245 I HBD     : a [UpdatePolicy] [post] a: 0 cl: 65537 kit: [0/0] vt: 0 ir: 1 
+05-11 12:40:59.911  5245  5245 I HBD     : a [NRIC] resetNoResponseState 
+05-11 12:40:59.911  5245  5245 I HBD     : c update cached prediction status : true 
+05-11 12:40:59.911  5245  5245 I HBD     : b [AiWriter] setContact : com.moneybase.qa
+05-11 12:40:59.911  5245  5245 I HBD     : HoneyBoardService [PF_OP][onStartInput]  19 ms 
+05-11 12:40:59.912  5245  5245 I InputMethodService: scheduleImeSurfaceRemoval: removeImeSurface is posted.
+05-11 12:40:59.913  1483  1483 I SurfaceFlinger: destroyed Surface(name=e3ad87b InputMethod)/@0x40edef1 - animation-leash of insets_animation#115091
+05-11 12:40:59.914  1483  1483 I Layer   : id=115091 Destroyed Surface(name=e3ad87b InputMethod)/@0x40edef1 - animation-leash of insets_animation#115091
+05-11 12:40:59.988  1483  1483 E SurfaceFlinger: alpha changed 0.000 -> 0.000 - Surface(name=a000e3 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity)/@0xca24ad1 - animation-leash of window_animation#115092
+05-11 12:40:59.991  1483  1483 D SurfaceFlinger: Display 4633128672291736000 HWC layers:
+05-11 12:40:59.991  1483  1483 D SurfaceFlinger:        DEVICE |            2551210573844 | 00002102 | RGBA_8888    |    0.0    0.0 1080.0 2340.0 |    0    0 1080 2340 | com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_594#114891 (1376)
+05-11 12:40:59.991  1483  1483 D SurfaceFlinger:        DEVICE |           10441065542350 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0   80.0 |    0    0 1080   80 | StatusBar$_2431#105 (139008)
+05-11 12:40:59.991  1483  1483 D SurfaceFlinger:        DEVICE |           10441065542355 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2214 1080 2340 | NavigationBar0$_2431#102 (320992)
+05-11 12:40:59.991  1483  1483 D SurfaceFlinger: 
+--------- beginning of system
+05-11 12:40:59.995  1760  4846 D CustomizedBinderCallsStatsInternal: reportCpuUsage() : 3%
+05-11 12:40:59.995  1760  1820 I BinderCallsStats: Collected cpu time : 0us, collected call count : 0 for 38524868 ms
+05-11 12:40:59.997  1760  4846 D ProcessCpuUsage: [0] 680, {400=17350, 576=14990, 672=7220, 768=4040, 864=3570, 960=3430, 1056=980, 1152=8050, 1248=110, 1728=180}
+05-11 12:40:59.997  1760  4846 D ProcessCpuUsage: [4] 934, {576=29780, 672=4410, 768=1740, 864=2000, 960=1500, 1056=1800, 1152=3020, 1248=1840, 1344=2720, 1440=2340, 1536=1860, 1632=1630, 1728=1210, 1824=750, 1920=860, 2016=450, 2112=280, 2208=230, 2304=220, 2515=1390}
+05-11 12:40:59.997  1760  4846 D ProcessCpuUsage: [7] 679, {576=51740, 672=650, 768=450, 864=280, 960=1000, 1056=130, 1152=2200, 1248=660, 1344=680, 1440=130, 1536=130, 1632=110, 1728=430, 1824=100, 1920=380, 2016=180, 2112=190, 2208=180, 2707=100, 2803=180}
+05-11 12:41:00.000  1760  1760 I EyeComfortSolutionService: action  :  android.intent.action.TIME_TICK
+05-11 12:41:00.001  2431  2955 I DateTimeView: updateAll - getTimeFormat
+05-11 12:41:00.001  2431  2955 D QSClockBellTower: onReceive(android.intent.action.TIME_TICK) mTimeZoneString:Europe/Kiev
+05-11 12:41:00.001  1760  1760 I EyeComfortSolutionService: action  :  android.intent.action.TIME_TICK
+05-11 12:41:00.001  2431  2431 D ClockFaceEvents: onTimeTick. callers : com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.refreshTime:19
+05-11 12:41:00.001  2431  2431 D ClockFaceEvents: com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.onTimeChanged:1
+05-11 12:41:00.001  2431  2431 D ClockFaceEvents: com.android.keyguard.KeyguardUpdateMonitor$16.handleMessage:732
+05-11 12:41:00.002  2431  2431 D ClockFaceEvents: onTimeTick. callers : com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.refreshTime:38
+05-11 12:41:00.002  2431  2431 D ClockFaceEvents: com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.onTimeChanged:1
+05-11 12:41:00.002  2431  2431 D ClockFaceEvents: com.android.keyguard.KeyguardUpdateMonitor$16.handleMessage:732
+05-11 12:41:00.002  2431  2431 D FaceWidgetPagesController: onTimeChanged()
+05-11 12:41:00.002  2431  2431 D QSClockBellTower: He is ready to ring the bell. (((QSClockBellSound - TimeText:12:41, TimeContentDescription:12:41, DateText:Mon, May 11, ShortDateText:Mon, May 11, Demo:false)))
+05-11 12:41:00.002  2431  2955 I DateTimeView: updateAll - getTimeFormat
+05-11 12:41:00.003  2431  2955 D QSClockBellTower: onReceive(android.intent.action.TIME_TICK) mTimeZoneString:Europe/Kiev
+05-11 12:41:00.004  2431  2431 D QSClock : StatusBar clock=12:41 notifyTimeChanged(QSClockBellSound - TimeText:12:41, TimeContentDescription:12:41, DateText:Mon, May 11, ShortDateText:Mon, May 11, Demo:false) clockVisibleByPolicy=true, clockVisibleByUser=true, visible=true, parent=android.widget.LinearLayout{8ed086e V.E...... ......ID 0,0-97,58 #7f0a069b app:id/left_clock_container} caller=com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.animateShow:52 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.updateStatusBarVisibilitiesInner:230 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.updateStatusBarVisibilities:65 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.disable:71 com.android.systemui.statusbar.CommandQueue$H.handleMessage:2997  
+05-11 12:41:00.004  2431  2431 D QSClockBellTower: Everyone heard the bell. run(currentTime:1778492460002, getTime():Mon May 11 12:41:00 GMT+03:00 2026, getTimeZone():libcore.util.ZoneInfo[mDstSavings=3600000,mUseDst=true,mDelegate=[id="Europe/Kiev",mRawOffset=7200000,mEarliestRawOffset=7324000,transitions=245]])
+05-11 12:41:00.007  2431  2431 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+05-11 12:41:00.008  2431  2431 D QSClockBellTower: He is ready to ring the bell. (((QSClockBellSound - TimeText:12:41, TimeContentDescription:12:41, DateText:Mon, May 11, ShortDateText:Mon, May 11, Demo:false)))
+05-11 12:41:00.008  2431  2431 D QSClock : StatusBar clock=12:41 notifyTimeChanged(QSClockBellSound - TimeText:12:41, TimeContentDescription:12:41, DateText:Mon, May 11, ShortDateText:Mon, May 11, Demo:false) clockVisibleByPolicy=true, clockVisibleByUser=true, visible=true, parent=android.widget.LinearLayout{8ed086e V.E...... ......ID 0,0-97,58 #7f0a069b app:id/left_clock_container} caller=com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.animateShow:52 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.updateStatusBarVisibilitiesInner:230 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.updateStatusBarVisibilities:65 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.disable:71 com.android.systemui.statusbar.CommandQueue$H.handleMessage:2997  
+05-11 12:41:00.008  2431  2431 D QSClockBellTower: Everyone heard the bell. run(currentTime:1778492460007, getTime():Mon May 11 12:41:00 GMT+03:00 2026, getTimeZone():libcore.util.ZoneInfo[mDstSavings=3600000,mUseDst=true,mDelegate=[id="Europe/Kiev",mRawOffset=7200000,mEarliestRawOffset=7324000,transitions=245]])
+05-11 12:41:00.008  2431  2431 D ClockFaceEvents: onTimeTick. callers : com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.refreshTime:19
+05-11 12:41:00.008  2431  2431 D ClockFaceEvents: com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.onTimeChanged:1
+05-11 12:41:00.008  2431  2431 D ClockFaceEvents: com.android.keyguard.KeyguardUpdateMonitor$16.handleMessage:732
+05-11 12:41:00.009  2431  2431 D ClockFaceEvents: onTimeTick. callers : com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.refreshTime:38
+05-11 12:41:00.009  2431  2431 D ClockFaceEvents: com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.onTimeChanged:1
+05-11 12:41:00.009  2431  2431 D ClockFaceEvents: com.android.keyguard.KeyguardUpdateMonitor$16.handleMessage:732
+05-11 12:41:00.009  2431  2431 D FaceWidgetPagesController: onTimeChanged()
+05-11 12:41:00.015  2431  2431 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+05-11 12:41:00.022  3116  3610 I ScanController: onScanResult to scannerId: 2- eventType=0x1a, addressType=1, address=XX:XX:XX:XX:D9:36, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-78, periodicAdvInt=0x0
+05-11 12:41:00.024 23042 23060 I EasySetup[11.1.23.4] : IcControlService.isFoldDeviceFolded() - isFoldDevice: false, isNotFolded: false
+05-11 12:41:00.024 23042 23060 I Peripheral_SmartThingsManager[1.2.95]: parseBlePacketserviceId : 9
+05-11 12:41:00.024 23042 23060 E Peripheral_OCFTvUtil[1.2.95]: not supported version
+05-11 12:41:00.024 23042 23060 E Peripheral_OCFTVManager[1.2.95]: isOCFTVDevice is null
+05-11 12:41:00.024 23042 23060 E IC_DeviceManager[1.2.95]: isValidScanResult(), packet is not valid
+05-11 12:41:00.024 23042 23060 E IC_DeviceManager[1.2.95]: 1. ADV_IDX_PACKET_VER(2): 2 / 2. ADV_IDX_PACKET_SVC_ID(9): 9 / 3. ADV_IDX_PACKET_SS_DISCOVERY(1): 1 / 4. ADV_IDX_PACKET_ASSOCIATED_SVC_ID(2): 2 / 5. MASK_PACKET_FEATURES_SVC_DATA(16): 16 / 6. MASK_PACKET_FEATURES_DEVICE(4): 4 / 7. ADV_IDX_PACKET_IC_VER(1): 1 / 8. MASK_DEVICE_EXTRA_SUPPORT_ACCOUNT_HASH(4): 4
+05-11 12:41:00.024 23042 23060 W IC_Service[1.2.95]: recieved scanResult packet is not valid
+05-11 12:41:00.181  1760  1815 I WindowManager: Reparenting to original parent: Surface(name=ActivityRecord{250325490 u0 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity t4300})/@0x6454dd1, destroy=true, surface=Surface(name=a000e3 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity)/@0xca24ad1
+05-11 12:41:00.185  1760  1815 E WindowManager: win=Window{a000e3 u0 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity EXITING} destroySurfaces: appStopped=false cleanupOnResume=false win.mWindowRemovalAllowed=true win.mRemoveOnExit=true win.mViewVisibility=0 caller=com.android.server.wm.WindowState.onExitAnimationDone:224 com.android.server.wm.WindowState.onAnimationFinished:161 com.android.server.wm.WindowContainer$$ExternalSyntheticLambda8.onAnimationFinished:3 com.android.server.wm.SurfaceAnimator$$ExternalSyntheticLambda0.onAnimationFinished:69 com.android.server.wm.LocalAnimationAdapter$$ExternalSyntheticLambda0.run:10 android.os.Handler.handleCallback:995 android.os.Handler.dispatchMessage:103 
+05-11 12:41:00.187  1760  1815 D SurfaceComposerClient: setCornerRadius ## 4722986 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#114890 cornerRadius=0.000000
+05-11 12:41:00.188  1760  1815 D SurfaceComposerClient: setCornerRadius ## 4722986 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#114890 cornerRadius=0.000000
+05-11 12:41:00.189  1483  1483 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_594#115089} no children}] reparent to OffscreenRoot
+05-11 12:41:00.189  1483  1483 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_594#115089} no children}] RelativeParent to null
+05-11 12:41:00.196  1760  1815 D SurfaceComposerClient: setCornerRadius ## 4722986 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#114890 cornerRadius=0.000000
+05-11 12:41:00.197  1483  1483 I SurfaceFlinger: [Display 0 name="Built-in Screen"#49] setFrameRateCategory: Default
+05-11 12:41:00.197  1483  1483 I SurfaceFlinger: RequestedLayer [com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_594#115089] hidden!! flag  from(0) --> to(1)
+05-11 12:41:00.197  1483  1483 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{a000e3 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#115086 z=1} no children}] reparent to OffscreenRoot
+05-11 12:41:00.197  1483  1483 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{a000e3 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#115086 z=1} no children}] RelativeParent to null
+05-11 12:41:00.197  1483  1483 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{Surface(name=a000e3 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity)/@0xca24ad1 - animation-leash of window_animation#115092 z=1} no children}] reparent to OffscreenRoot
+05-11 12:41:00.197  1483  1483 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{Surface(name=a000e3 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity)/@0xca24ad1 - animation-leash of window_animation#115092 z=1} no children}] RelativeParent to null
+05-11 12:41:00.199  1483  1483 I SurfaceFlinger: id=115089 Removed com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_594#115089 (229)
+05-11 12:41:00.199  1483  1483 I SurfaceFlinger: id=115092 Removed Surface(name=a000e3 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity)/@0xca24ad1 - animation-leash of window_animation#115092 (229)
+05-11 12:41:00.199  1483  1483 I SurfaceFlinger: id=115086 Removed a000e3 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#115086 (229)
+05-11 12:41:00.201  1760  1814 I DisplayDeviceRepository: Display device changed render timings: "Built-in Screen", renderFrameRate=120.00001, presentationDeadlineNanos=9333333, appVsyncOffsetNanos=8333333, frameRateOverrides=[]
+05-11 12:41:00.205  1483  1483 I SurfaceFlinger: destroyed a000e3 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#115086
+05-11 12:41:00.205  1483  1483 I SurfaceFlinger: destroyed Surface(name=a000e3 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity)/@0xca24ad1 - animation-leash of window_animation#115092
+05-11 12:41:00.205  1483  1483 I SurfaceFlinger: destroyed com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_594#115089
+05-11 12:41:00.206  1483  1483 I Layer   : id=115086 Destroyed a000e3 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#115086
+05-11 12:41:00.206  1483  1483 I Layer   : id=115092 Destroyed Surface(name=a000e3 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity)/@0xca24ad1 - animation-leash of window_animation#115092
+05-11 12:41:00.207  1483  1483 I Layer   : id=115089 Destroyed com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_594#115089
+05-11 12:41:00.207  2431  2431 D DisplayLifecycle: updateDisplay id = 0
+05-11 12:41:00.207  1760  4846 D WifiDisplayAdapter: isFitToActiveDisplayLocked : false
+05-11 12:41:00.209  1760  1815 D SurfaceComposerClient: setCornerRadius ## 4722986 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity#114890 cornerRadius=0.000000
+05-11 12:41:00.217  2431  2552 D StackScroller: onDisplayChanged for predraw skip to 2
+05-11 12:41:00.395  1760  1814 D SGM:GameManager: identifyForegroundApp. com.moneybase.qa, mCurrentUserId: 0, callerUserId: 0
+05-11 12:41:00.396  1760  1814 D SGM:SemGameManager: isForegroundGame(), ret=false
+05-11 12:41:00.412  5245  5245 I InputMethodService: removeImeSurface
+05-11 12:41:00.412  5245  5245 I InputMethodService: cancelImeSurfaceRemoval: removeCallbacks
+05-11 12:41:00.468  1760  2177 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+05-11 12:41:00.478  1760  3742 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 64225, isSameBssidAndFreq true
+05-11 12:41:00.482  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:35 syn=1, rto=0, cwnd=0
+05-11 12:41:00.483  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:36 syn=1, rto=0, cwnd=0
+05-11 12:41:00.483  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:37 syn=1, rto=0, cwnd=0
+05-11 12:41:00.483  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:38 syn=1, rto=0, cwnd=0
+05-11 12:41:00.483  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:39 syn=3, rto=0, cwnd=0
+05-11 12:41:00.485  1760  2268 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1778492460485 lastDateWindow=1778476839000
+05-11 12:41:00.487  1760  2268 I SemWifiLinkQualityMonitor: Link stat: 1105 / 351 / 1.25 (25) / 78 / -57.0 || 100.0 : 78.00 / B (B) || 1c1ceca82412: 0.208 / 38.447 / N || N N / 0 0 / N 2.0 / N X 0 / 400865873 0 || 2026-05-11 08:20:39  / 0: 0 1 1 1 1 3 / 0: 0 0 0 0 0 0 / 1: 0 0 0 0 0 0
+05-11 12:41:00.541  1760  2529 D NetdEventListenerService: CSC Feature value: true
+05-11 12:41:00.542  1760  2529 D NetdEventListenerService: CSC Feature value: true
+05-11 12:41:00.543  1760  2319 D NetdEventListenerService: DNS Requested by 514, 10463(com.azure.authenticator), 4(FAIL), isBlocked=true, 0ms
+05-11 12:41:00.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778492460
+05-11 12:41:00.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 12:41:00.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 12:41:00.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641541
+05-11 12:41:00.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641516
+05-11 12:41:00.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 12:41:00.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 12:41:00.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 12:41:00.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 12:41:00.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 12:41:00.659  1483  1640 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+05-11 12:41:00.660  1483  1483 I LayerHistory: StatusBar$_2431#105 voted NoVote (0.00 Hz)
+05-11 12:41:00.660  1483  1483 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_594#114891 Max (can't resolve refresh rate)
+05-11 12:41:00.661  1483  1483 I SurfaceFlinger: Idle - choose 60.00 Hz
+05-11 12:41:00.661  1483  1483 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+05-11 12:41:00.662  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+05-11 12:41:00.663  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+05-11 12:41:00.664  1378  1604 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+05-11 12:41:00.664  1378  1604 I display : Current VRR MODE is 1
+05-11 12:41:00.664  1378  1604 I display : setActiveConfigWithConstraints:: HFR match - config: 4, base: 4, try: 0
+05-11 12:41:00.664  1378  1604 I display : setActiveConfigWithConstraints::update 1080x2340@60hs
+05-11 12:41:00.664  1378  1604 I display : commit modeset : 1080x2340@60hs
+05-11 12:41:00.676   513   573 I appium  : AppiumResponse: {"sessionId":"1d8dfd56-7caa-48e3-a3b8-7d3b8a3fff0f","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1564)\n"}}
+05-11 12:41:00.680  1378  1604 W display : deliverWinConfigData:: commit modeset time (15 ms)
+05-11 12:41:00.681  1378  1454 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+05-11 12:41:00.681  1378  1454 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-11 12:41:00.681  1378  1454 I display : Set m2mMPP capacity(8) for fps(60)
+05-11 12:41:00.681  1378  1454 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-11 12:41:00.681  1378  1454 I display : Set Affinity config for fps(60) : cpuIDs : 255
+05-11 12:41:00.681  1378  1454 I display : Set Affinity CPU ID : 0
+05-11 12:41:00.681  1378  1454 I display : Set Affinity CPU ID : 1
+05-11 12:41:00.681  1378  1454 I display : Set Affinity CPU ID : 2
+05-11 12:41:00.681  1378  1454 I display : Set Affinity CPU ID : 3
+05-11 12:41:00.681  1378  1454 I display : Set Affinity CPU ID : 4
+05-11 12:41:00.681  1378  1454 I display : Set Affinity CPU ID : 5
+05-11 12:41:00.681  1378  1454 I display : Set Affinity CPU ID : 6
+05-11 12:41:00.681  1378  1454 I display : Set Affinity CPU ID : 7
+05-11 12:41:00.681  1378  1454 I display : Set affinity HWC : 1378
+05-11 12:41:00.681  1483  1483 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+05-11 12:41:00.681  1483  1483 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-11 12:41:00.681  1378  1454 I display : CPU set : Cluster(0), min_clock(0)
+05-11 12:41:00.681  1378  1454 I display : CPU set : Cluster(1), min_clock(0)
+05-11 12:41:00.682  1378  1454 I display : CPU set : Cluster(2), min_clock(0)
+05-11 12:41:00.683  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+05-11 12:41:00.688   513   573 I appium  : channel read: GET /session/1d8dfd56-7caa-48e3-a3b8-7d3b8a3fff0f/source
+05-11 12:41:00.690   513   573 I appium  : Source command
+05-11 12:41:00.691   513   573 I appium  : Waiting up to 10000ms for the device to idle
+05-11 12:41:00.776   513   573 I appium  : AppiumResponse: {"sessionId":"1d8dfd56-7caa-48e3-a3b8-7d3b8a3fff0f","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+05-11 12:41:00.788   513   573 I appium  : channel read: POST /session/1d8dfd56-7caa-48e3-a3b8-7d3b8a3fff0f/element
+05-11 12:41:00.789   513   573 I appium  : FindElement command
+05-11 12:41:00.790   513   573 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("Try Again")'
+05-11 12:41:00.791   513   573 I appium  : Waiting up to 10000ms for the device to idle
+05-11 12:41:00.822   513   573 I appium  : AppiumResponse: {"sessionId":"1d8dfd56-7caa-48e3-a3b8-7d3b8a3fff0f","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1564)\n"}}
+05-11 12:41:00.902  5496  5496 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+05-11 12:41:00.917  1483  1640 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+05-11 12:41:00.917  1483  1602 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+05-11 12:41:00.923  1483  1483 I LayerHistory: StatusBar$_2431#105 voted NoVote (0.00 Hz)
+05-11 12:41:00.923  1483  1483 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_594#114891 Max (can't resolve refresh rate)
+05-11 12:41:00.923  1483  1483 I SurfaceFlinger: scored - choose 120.00 Hz
+05-11 12:41:00.923  1483  1483 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+05-11 12:41:00.924  1378  1604 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+05-11 12:41:00.924  1378  1604 I display : Current VRR MODE is 1
+05-11 12:41:00.924  1378  1604 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 0
+05-11 12:41:00.924  1378  1604 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+05-11 12:41:00.924   513   573 I appium  : channel read: POST /session/1d8dfd56-7caa-48e3-a3b8-7d3b8a3fff0f/element
+05-11 12:41:00.924  1378  1604 I display : commit modeset : 1080x2340@120hs
+05-11 12:41:00.925   513   573 I appium  : FindElement command
+05-11 12:41:00.926   513   573 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("Try Again")'
+05-11 12:41:00.926   513   573 I appium  : Waiting up to 10000ms for the device to idle
+05-11 12:41:00.946  1378  1604 W display : deliverWinConfigData:: commit modeset time (22 ms)
+05-11 12:41:00.947  1378  1454 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+05-11 12:41:00.948  1378  1454 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-11 12:41:00.948  1378  1454 I display : Set m2mMPP capacity(4) for fps(120)
+05-11 12:41:00.948  1378  1454 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-11 12:41:00.948  1378  1454 I display : Set Affinity config for fps(120) : cpuIDs : 255
+05-11 12:41:00.948  1378  1454 I display : Set Affinity CPU ID : 0
+05-11 12:41:00.948  1378  1454 I display : Set Affinity CPU ID : 1
+05-11 12:41:00.948  1378  1454 I display : Set Affinity CPU ID : 2
+05-11 12:41:00.948  1378  1454 I display : Set Affinity CPU ID : 3
+05-11 12:41:00.948  1378  1454 I display : Set Affinity CPU ID : 4
+05-11 12:41:00.948  1378  1454 I display : Set Affinity CPU ID : 5
+05-11 12:41:00.948  1378  1454 I display : Set Affinity CPU ID : 6
+05-11 12:41:00.948  1378  1454 I display : Set Affinity CPU ID : 7
+05-11 12:41:00.948  1378  1454 I display : Set affinity HWC : 1378
+05-11 12:41:00.948  1378  1454 I display : CPU set : Cluster(0), min_clock(0)
+05-11 12:41:00.948  1378  1454 I display : CPU set : Cluster(1), min_clock(0)
+05-11 12:41:00.948  1378  1454 I display : CPU set : Cluster(2), min_clock(0)
+05-11 12:41:00.948  1483  1483 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-11 12:41:00.948  1483  1602 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+05-11 12:41:00.952  1388  5479 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 10330814
+05-11 12:41:00.965   727   727 D io_stats: !@   8,0 r 58033678 1198293422 w 17884448 335830172 d 5207899 362153064 f 0 1843276 iot 28106236 0 th 0 0 0 pt 0 inp 0 0 400866.358
+05-11 12:41:00.982   513   573 I appium  : AppiumResponse: {"sessionId":"1d8dfd56-7caa-48e3-a3b8-7d3b8a3fff0f","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1564)\n"}}
+05-11 12:41:01.068  5505  5505 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+05-11 12:41:01.089   513   573 I appium  : channel read: POST /session/1d8dfd56-7caa-48e3-a3b8-7d3b8a3fff0f/element
+05-11 12:41:01.091   513   573 I appium  : FindElement command
+05-11 12:41:01.093   513   573 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Close sheet")'
+05-11 12:41:01.094   513   573 I appium  : Waiting up to 10000ms for the device to idle
+05-11 12:41:01.150   513   573 I appium  : AppiumResponse: {"sessionId":"1d8dfd56-7caa-48e3-a3b8-7d3b8a3fff0f","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1564)\n"}}
+05-11 12:41:01.173  1483  1640 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+05-11 12:41:01.175  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+05-11 12:41:01.175  1483  1483 I LayerHistory: StatusBar$_2431#105 voted NoVote (0.00 Hz)
+05-11 12:41:01.175  1483  1483 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_594#114891 Max (can't resolve refresh rate)
+05-11 12:41:01.175  1483  1483 I SurfaceFlinger: Idle - choose 60.00 Hz
+05-11 12:41:01.175  1483  1483 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4

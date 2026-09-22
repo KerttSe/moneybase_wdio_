@@ -1,0 +1,208 @@
+--------- beginning of main
+08-06 16:15:49.497 10021 10021 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-06 16:15:49.498 10021 10021 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-06 16:15:49.498  1726  2439 I EDMNativeHelperService: isScreenCaptureEnabled
+--------- beginning of system
+08-06 16:15:49.498  1726  2439 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-06 16:15:49.498 10021 10021 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-06 16:15:49.498 10021 10021 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-06 16:15:49.501  1437  1915 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_7960#35208(seamlessTransition:0)
+08-06 16:15:49.502  1437  1915 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_7960#35228(seamlessTransition:0)
+08-06 16:15:49.502  1437  1915 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-06 16:15:49.502  1437  1915 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-06 16:15:49.502  1437  1915 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-06 16:15:49.503  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-06 16:15:49.503  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_7960#35208 at index 1
+08-06 16:15:49.503  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_7960#35228 at index 2
+08-06 16:15:49.503  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 3
+08-06 16:15:49.504  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 4
+08-06 16:15:49.518  9952  9981 D WM-Processor: tnn: processing WorkGenerationalId(workSpecId=4ab4e4f5-e1d0-4e35-b82e-052aec932a47, generation=0)
+08-06 16:15:49.520  9952  9975 D MddListenableWorkerFactory: createWorker for class: com.google.android.apps.messaging.shared.datamodel.workqueue.WorkQueueWorkerShim
+08-06 16:15:49.521  9952  9952 D WM-WorkerWrapper: Starting work for com.google.android.apps.messaging.shared.datamodel.workqueue.WorkQueueWorkerShim
+08-06 16:15:49.526  9952  9981 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=4ab4e4f5-e1d0-4e35-b82e-052aec932a47, class=com.google.android.apps.messaging.shared.datamodel.workqueue.WorkQueueWorkerShim, tags={ com.google.android.apps.messaging.shared.datamodel.workqueue.WorkQueueWorkerShim,data_upgrade- } ]
+08-06 16:15:49.528  9952  9952 D WM-Processor: tnn 4ab4e4f5-e1d0-4e35-b82e-052aec932a47 executed; reschedule = false
+08-06 16:15:49.528  9952  9974 D WM-PackageManagerHelper: Skipping component enablement for androidx.work.impl.background.systemalarm.RescheduleReceiver
+08-06 16:15:49.529  9952  9981 D WM-GreedyScheduler: Cancelling work ID 4ab4e4f5-e1d0-4e35-b82e-052aec932a47
+08-06 16:15:49.531 10021 10026 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-06 16:15:49.537  9952  9981 D WM-GreedyScheduler: Ignoring {WorkSpec: 0630dfa8-ed78-42dc-8732-81b29290a926}. Requires ContentUri triggers.
+08-06 16:15:49.537  9952  9981 D WM-GreedyScheduler: Ignoring {WorkSpec: 9d87c917-4e70-4a6f-bbd8-0c6b0e397477}. Requires device idle.
+08-06 16:15:49.537  9952  9981 D WM-GreedyScheduler: Ignoring {WorkSpec: db58db63-e03b-4b6a-b316-ab31b9bf56c8}. Requires device idle.
+08-06 16:15:49.537  9952  9981 D WM-GreedyScheduler: Ignoring {WorkSpec: f891db85-1759-427f-8f0c-f0921f589f1d}. Requires ContentUri triggers.
+08-06 16:15:49.634  1726  2208 I ChimeraPolicyHandler: onPsiMonitorTriggered() - psiLevel: 0
+08-06 16:15:49.635  1726  2208 I ChimeraAggressivePolicyHandler: executePolicy() - triggerSource: TRIGGER_SOURCE_PSI_MEM_MONITOR
+08-06 16:15:49.636  1726  2208 I ChimeraAggressivePolicyHandler: available memory: 2033016, free memory target: 1843200, quit chimera
+08-06 16:15:49.707  7895  7926 I appium  : AppiumResponse: {"sessionId":"53f86fea-f928-499e-afdc-3c5875649acb","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15VFv3nT/8t3aEFkBC7ItZjMEYOzZe8BYnzp44aTpJkzPTTtfpmifTnnZOn7bn19NpO+fMzPnlnKY96aSd6dMkXdJmUqdN4jjN0qTYcTBgjG3wxmLAxuwSaEO79PxBueYiAcIIJMH7dU5…
+08-06 16:15:49.729  7895  7926 I appium  : channel read: GET /session/53f86fea-f928-499e-afdc-3c5875649acb/source
+08-06 16:15:49.729  7895  7926 I appium  : Source command
+08-06 16:15:49.730  7895  7926 I appium  : Waiting up to 10000ms for the device to idle
+08-06 16:15:49.734  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-06 16:15:49.736  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-06 16:15:49.737  1726  3186 I NSLocationMonitor: getGPSUsingApps() called
+08-06 16:15:49.737  3189 11130 I NSLocationManager_FLP: getGPSUsingApps, No change
+08-06 16:15:49.742  1726  3186 D FreecessHandler: freeze org.telegram.messenger(10339) result : 2
+08-06 16:15:49.742  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_7960#35228 voted ExplicitCategory with category: HighHint
+08-06 16:15:49.742  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-06 16:15:49.742  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-06 16:15:49.742  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-06 16:15:49.743  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-06 16:15:49.743  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-06 16:15:49.743  1325  1405 I display : Current VRR MODE is 3
+08-06 16:15:49.743  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-06 16:15:49.743  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-06 16:15:49.743  1325  1405 I display : commit modeset : 1080x2340@60phs
+08-06 16:15:49.758  1325  1405 W display : deliverWinConfigData:: commit modeset time (14 ms)
+08-06 16:15:49.759  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-06 16:15:49.759  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 16:15:49.759  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-06 16:15:49.759  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 16:15:49.759  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-06 16:15:49.759  1325  1397 I display : Set Affinity CPU ID : 0
+08-06 16:15:49.759  1325  1397 I display : Set Affinity CPU ID : 1
+08-06 16:15:49.759  1325  1397 I display : Set Affinity CPU ID : 2
+08-06 16:15:49.759  1325  1397 I display : Set Affinity CPU ID : 3
+08-06 16:15:49.759  1325  1397 I display : Set Affinity CPU ID : 4
+08-06 16:15:49.759  1325  1397 I display : Set Affinity CPU ID : 5
+08-06 16:15:49.759  1325  1397 I display : Set Affinity CPU ID : 6
+08-06 16:15:49.759  1325  1397 I display : Set Affinity CPU ID : 7
+08-06 16:15:49.759  1325  1397 I display : Set affinity HWC : 1325
+08-06 16:15:49.759  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-06 16:15:49.759  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-06 16:15:49.759  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-06 16:15:49.759  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-06 16:15:49.760  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-06 16:15:49.760  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-06 16:15:49.775  7895  7926 I appium  : AppiumResponse: {"sessionId":"53f86fea-f928-499e-afdc-3c5875649acb","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-06 16:15:49.794  1726  2254 D WifiConnectivityMonitor: Stop WCM Poll. cnt : 5
+08-06 16:15:49.795  1726  2254 I WifiConnectivityMonitor: LinkQualityMonitorCallback was not registered yet
+08-06 16:15:49.814 12658 12658 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-06 16:15:49.860 10034 10034 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-06 16:15:49.902 12658 12658 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-06 16:15:49.920  7960  9434 D AAudio  : AAudioStream_requestStop(s#1) called
+08-06 16:15:49.923  7960  9640 D AudioStreamInternalPlay_Client: callbackLoop() exiting, result = 192, isActive() = 1 <<<<<<<<<<<<<<
+08-06 16:15:49.924  1414  9636 D AAudioServiceStreamBase: run() got COMMAND opcode 7 after 398 loops
+08-06 16:15:49.924  7960  9434 D AAudioStream: joinThread_l() pthread_join succeeded
+08-06 16:15:49.924  7960  9434 D IsochronousClockModel: stop(nanos = 176066003762339) max lateness = 1950 micros, DSP stalled 0 times
+08-06 16:15:49.924  7960  9434 D AAudioStream: setState(s#1) from 4 to 9
+08-06 16:15:49.925  1414  9636 D AAudioServiceStreamBase: run() got COMMAND opcode 2 after 399 loops
+08-06 16:15:49.925  1414  9627 D AAudioServiceStreamBase: run() got COMMAND opcode 11 after 3285 loops
+08-06 16:15:49.927  1726  2751 E AppOps  : attributionTag  not declared in manifest of com.moneybase.qa
+08-06 16:15:49.928  1726  2751 E AppOps  : attributionTag  not declared in manifest of com.moneybase.qa
+08-06 16:15:49.930  1414  1611 V APM_AudioPolicyManager: stopOutput portId 1388
+08-06 16:15:49.930  1414  1611 V APM_AudioPolicyManager: stopOutput() output 709, stream 3, session 8209
+08-06 16:15:49.930  1315  1761 V audio_hw_playback: mmap_out-out_stop: entered
+08-06 16:15:49.930  1414  1611 V APM_AudioPolicyManager: setBeaconMute(1) mBeaconMuteRefCount=6 mBeaconPlayingRefCount=0
+08-06 16:15:49.930  1726  1920 D InputReader: Btn_touch(4): value=1 when=176066.008948
+08-06 16:15:49.930  1726  1920 I InputReader: Touch event's action is 0x0 (id=5, t=0) [pCnt=1, s=0.33268 ] when=176066.008948
+08-06 16:15:49.930  1315  1761 I audio_hw_proxy2: mmap_out-proxy_stop_playback_stream: stop Device
+08-06 16:15:49.930  1315  1761 I audio_hw_playback: mmap_out-out_stop: transited to Idle
+08-06 16:15:49.930  1315  1761 V audio_hw_playback: mmap_out-out_stop: exit
+08-06 16:15:49.931  1414  1611 V APM_AudioPolicyManager: getNewOutputDevices selected devices {AUDIO_DEVICE_OUT_SPEAKER, @:}
+08-06 16:15:49.931  1726  1919 I InputDispatcher: Delivering touch to (2357): action: 0x4, f=0x0, d=0, 'c0cc01f', t=1 
+08-06 16:15:49.931  1414  1611 V APM_AudioPolicyManager: setOutputDevices caller checkStrategyRoute[[portId:1386][io:709, mmap_no_irq_out]] device {AUDIO_DEVICE_OUT_SPEAKER, @:} delayMs 0
+08-06 16:15:49.931  1726  1919 I InputDispatcher: Delivering touch to (7960): action: 0x0, f=0x0, d=0, 'c497091', t=1 
+08-06 16:15:49.931  1437  1601 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-06 16:15:49.932  1315  1761 V audio_hw_primary_odm: set_soundbooster_aaudio_volume: set SB AAudio Volume 0 0
+08-06 16:15:49.932  7960  7960 I VRI[DashboardActivity]@429df10: ViewPostIme pointer 0
+08-06 16:15:49.932  1315  1761 E audio_hw_playback: mmap_out-out_set_volume: Don't support volume control for this stream
+08-06 16:15:49.932  1726  1769 I GestureDetector: obtain mCurrentDownEvent. id: 792634019 caller: com.android.server.wm.SystemGesturesPointerEventListener.onPointerEvent:17 com.android.server.wm.PointerEventDispatcher.onInputEvent:51 android.view.InputEventReceiver.dispatchInputEvent:392 
+08-06 16:15:49.932  1414  9619 D AAudioServiceEndpointMMAP: onVolumeChanged() volume = 0.000000
+08-06 16:15:49.932  1414  1611 V APM_AudioPolicyManager: setOutputDevices caller checkStrategyRoute[[portId:1386][io:709, mmap_no_irq_out]] setting same device {AUDIO_DEVICE_OUT_SPEAKER, @:} or null device, force=0, patch handle=1389
+08-06 16:15:49.932  1315  1341 D audio_hw_playback: mmap_out-out_update_source_metadata: called
+08-06 16:15:49.932  1726  1769 I GestureDetector: obtain mCurrentDownEvent. id: 792634019 caller: com.android.server.wm.SystemPerformancePointerEventListener.onPointerEvent:13 com.android.server.wm.PointerEventDispatcher.onInputEvent:51 android.view.InputEventReceiver.dispatchInputEvent:392 
+08-06 16:15:49.933  1414  1611 V APM_AudioPolicyManager: getNewOutputDevices selected devices AUDIO_DEVICE_NONE
+08-06 16:15:49.933  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_7960#35228 voted ExplicitCategory with category: HighHint
+08-06 16:15:49.933  1437  1437 I SurfaceFlinger: Touch Boost - choose 120.00 Hz
+08-06 16:15:49.933  1414  1611 V APM_AudioPolicyManager: setOutputDevices caller stopSource[[portId:1386][io:709, mmap_no_irq_out]] device AUDIO_DEVICE_NONE delayMs 0
+08-06 16:15:49.933  1414  9638 D AudioStreamInternal_Service: onEventFromServer - AAUDIO_SERVICE_EVENT_VOLUME 0.000000
+08-06 16:15:49.933  1414  9638 D AudioStreamInternalPlay_Service: doSetVolume() mStreamVolume * duckAndMuteVolume = 0.000000 * 1.000000 = 0.000000
+08-06 16:15:49.933  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-06 16:15:49.934  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-06 16:15:49.934  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-06 16:15:49.934  1325  1405 I display : Current VRR MODE is 3
+08-06 16:15:49.934  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-06 16:15:49.934  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-06 16:15:49.934  1325  1405 I display : commit modeset : 1080x2340@120hs
+08-06 16:15:49.935  4554  4554 I SemDvfsHyPerManager: acquire hyper - TABoost/4554@29, type = -999
+08-06 16:15:49.935  1414  9627 D AAudioServiceEndpointMMAP: stopClient(1388): returning 0
+08-06 16:15:49.935  1337  1439 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 10504265  [4554 / 29]    HINT :      list : [TABoost / 1] [TIMEOUT / 1500] 
+08-06 16:15:49.936  1414  1611 V APM_AudioPolicyManager: setOutputDevices caller stopSource[[portId:1386][io:709, mmap_no_irq_out]] setting same device AUDIO_DEVICE_NONE or null device, force=0, patch handle=1389
+08-06 16:15:49.937  1414  9638 D AAudioServiceEndpointPlay: callbackLoop() exiting, enabled = 0, state = 4, result = 96 <<<<<<<<<<<<< MIXER
+08-06 16:15:49.937  1414  9627 D AAudioServiceStreamBase: run() got COMMAND opcode 7 after 3287 loops
+08-06 16:15:49.937  1414  9636 D AAudioStream: joinThread_l() pthread_join succeeded
+08-06 16:15:49.937  1414  9636 D AudioStreamInternal_Service: stopCallback_l() skipped, isDataCallbackSet() = 0, isActive() = 1, getState()  = 4
+08-06 16:15:49.938  1414  1611 V APM_AudioPolicyManager: selectOutputForMusicEffects selected output 13
+08-06 16:15:49.939  1726  1769 I GestureDetector: obtain mCurrentMotionEventRaw. action: 2 id: 97787313
+08-06 16:15:49.939  1726  1769 I GestureDetector: obtain mCurrentMotionEventRaw. action: 2 id: 97787313
+08-06 16:15:49.939  1414  1610 D AudioFlinger: setParameters: filtered dev setParameters keyvalue l_stream_music_active=false
+08-06 16:15:49.939  1315  1341 V sec_audio_hw: sec_dev_set_parameters : l_stream_music_active=false
+08-06 16:15:49.939  1315  1341 D audio_hw_primary: device-adev_set_parameters: enter
+08-06 16:15:49.939  1315  1341 D audio_hw_primary: device-adev_set_parameters: param (l_stream_music_active=false)
+08-06 16:15:49.940  1315  1341 I AudioSAEffectOffload: effect_update_by_hal updateType:200000 OFFLOAD_EFFECT_ALL
+08-06 16:15:49.940  1315  1341 D AudioSAEffectOffload: update offload effect: VM,0,0,0,0,2,0,0
+08-06 16:15:49.940  1315  1341 D AudioSAEffectOffload: update offload effect: VM reset mixer with all 0
+08-06 16:15:49.940  1315  1341 I Audio_a2dpsink_hw: adev_set_parameters: kevpairs=[l_stream_music_active=false]
+08-06 16:15:49.941  1414  1611 V APM_AudioPolicyManager: releaseOutput portId 1388
+08-06 16:15:49.941  1414  1611 V APM_AudioPolicyManager: releaseOutput() 709
+08-06 16:15:49.942  1414  1478 V APM_AudioPolicyManager: canBeSpatializedInt check can be spatialized devices[AUDIO_DEVICE_OUT_SPEAKER, @:]
+08-06 16:15:49.943  1726  2171 I AS.SpatializerHelper: onRoutingUpdated: can spatialize media 5.1:true on device:AudioDeviceAttributes: role:output type:speaker addr: name: profiles:[] descriptors:[]
+08-06 16:15:49.943  1726  2171 I AS.SpatializerHelper: setDispatchAvailableState(true) no dispatch: mState:STATE_DISABLED_AVAILABLE
+08-06 16:15:49.943  1726  2171 I AS.SpatializerHelper: Disabling Spatial Audio since disabled for media device:AudioDeviceAttributes: role:output type:speaker addr: name: profiles:[] descriptors:[]
+08-06 16:15:49.943  1414  9636 D AudioStreamInternalPlay_Service: prepareBuffersForStop() hardwareLatencyNanos = 42930
+08-06 16:15:49.943  1726  2171 I AS.SpatializerHelper: setDispatchFeatureEnabledState(false) no dispatch: mState:STATE_DISABLED_AVAILABLE src:onRoutingUpdated
+08-06 16:15:49.943  1414  9636 D IsochronousClockModel: stop(nanos = 176066022283511) max lateness = 1579 micros, DSP stalled 0 times
+08-06 16:15:49.943  1414  9636 D AAudioStream: setState(s#51) from 4 to 9
+08-06 16:15:49.943  1414  1478 V APM_AudioPolicyManager: canBeSpatializedInt check can be spatialized devices[AUDIO_DEVICE_OUT_SPEAKER, @:]
+08-06 16:15:49.943  1414  9627 D AAudioServiceStreamBase: run() got COMMAND opcode 2 after 3288 loops
+08-06 16:15:49.943  1414  9627 D AAudioServiceEndpointMMAP: stopClient(1387): returning 0
+08-06 16:15:49.943  1414  9627 D AAudioServiceEndpointMMAP: stopStream(0): called stopClient(1387=mPortHandle), returning 0
+08-06 16:15:49.943  1726  2171 I AS.SpatializerHelper: onRoutingUpdated: can spatialize media 5.1:true on device:AudioDeviceAttributes: role:output type:speaker addr: name: profiles:[] descriptors:[]
+08-06 16:15:49.943  1726  2171 I AS.SpatializerHelper: setDispatchAvailableState(true) no dispatch: mState:STATE_DISABLED_AVAILABLE
+08-06 16:15:49.943  1726  2171 I AS.SpatializerHelper: Disabling Spatial Audio since disabled for media device:AudioDeviceAttributes: role:output type:speaker addr: name: profiles:[] descriptors:[]
+08-06 16:15:49.943  1726  2171 I AS.SpatializerHelper: setDispatchFeatureEnabledState(false) no dispatch: mState:STATE_DISABLED_AVAILABLE src:onRoutingUpdated
+08-06 16:15:49.944  7960  9434 D AudioStreamInternal_Client: onEventFromServer - got AAUDIO_SERVICE_EVENT_STOPPED
+08-06 16:15:49.944  7960  9434 D AAudioStream: setState(s#1) from 9 to 10
+08-06 16:15:49.945  2357  3083 D SoundCraft.PlayingAudioConditionHandler: onPlaybackConfigChanged : lastStartedPackageName=com.moneybase.qa, lastStartedUid=10569, newStartedUid=-1, newStartPackageName=null, thread=Thread[RoutineHandlerThread,5,main]
+08-06 16:15:49.945 30099 30153 I MultimediaHelper: (Jelly)(2.2.04) handleAudioPlaybackProcessUpdated() : audio playback processes are updated
+08-06 16:15:49.945 30099 30153 I MultimediaHelper: (Jelly)(2.2.04) handleAudioPlaybackPackageUpdated() : audio playback packages are updated
+08-06 16:15:49.946  1726  2200 D MediaRouterService: onAudioPlayerActiveStateChanged: uid=10569, active=false, delaying
+08-06 16:15:49.946  1726  1726 D MediaSessionService: Audio playback is changed, config=AudioPlaybackConfiguration piid:9783 deviceIds:[3] type:AAudio u/pid:10569/7960 state:stopped attr:AudioAttributes: usage=USAGE_MEDIA content=CONTENT_TYPE_UNKNOWN source=DEFAULT flags=0x0 tags= bundle=null sessionId:-1 mutedState:none  FormatInfo{isSpatialized=false, channelMask=0x0, sampleRate=0}, removed=false
+08-06 16:15:49.946  1726  1726 D MediaSessionStack: updateMediaButtonSessionIfNeeded, callers=com.android.server.media.AudioPlayerStateMonitor$MessageHandler.handleMessage:19 android.os.Handler.dispatchMessage:110 
+08-06 16:15:49.946  1726  1726 D MediaSessionStack: updateMediaButtonSessionIfNeeded, skipping uid=10569
+08-06 16:15:49.946  1726  1726 D MediaSessionStack: updateMediaButtonSessionIfNeeded, skipping uid=10048
+08-06 16:15:49.946  1726  1726 D MediaSessionStack: updateMediaButtonSessionIfNeeded, skipping uid=10271
+08-06 16:15:49.958  1325  1405 W display : deliverWinConfigData:: commit modeset time (23 ms)
+08-06 16:15:49.959  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-06 16:15:49.959  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-06 16:15:49.959  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-06 16:15:49.959  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-06 16:15:49.959  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-06 16:15:49.959  1325  1397 I display : Set Affinity CPU ID : 0
+08-06 16:15:49.959  1325  1397 I display : Set Affinity CPU ID : 1
+08-06 16:15:49.959  1325  1397 I display : Set Affinity CPU ID : 2
+08-06 16:15:49.959  1325  1397 I display : Set Affinity CPU ID : 3
+08-06 16:15:49.959  1325  1397 I display : Set Affinity CPU ID : 4
+08-06 16:15:49.959  1325  1397 I display : Set Affinity CPU ID : 5
+08-06 16:15:49.959  1325  1397 I display : Set Affinity CPU ID : 6
+08-06 16:15:49.959  1325  1397 I display : Set Affinity CPU ID : 7
+08-06 16:15:49.959  1325  1397 I display : Set affinity HWC : 1325
+08-06 16:15:49.959  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-06 16:15:49.959  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-06 16:15:49.959  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-06 16:15:49.959  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-06 16:15:49.960  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-06 16:15:49.960  1437  1437 I SurfaceFlinger: RequestedLayer [Sprite#118] hidden!! flag  from(1) --> to(0)
+08-06 16:15:49.964 10037 10037 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-06 16:15:49.967  1437  1437 D SurfaceFlinger: Display 4633128672291736000 HWC layers:
+08-06 16:15:49.967  1437  1437 D SurfaceFlinger:        DEVICE |           34187939676189 | 00002102 | RGBA_8888    |    0.0    0.0 1080.0 2340.0 |    0    0 1080 2340 | com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_7960#35208 (495)
+08-06 16:15:49.967  1437  1437 D SurfaceFlinger:        DEVICE |           34187939676200 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0 2340.0 |    0    0 1080 2340 | com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_7960#35228 (67)
+08-06 16:15:49.967  1437  1437 D SurfaceFlinger:        DEVICE |           10123237935137 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0   80.0 |    0    0 1080   80 | StatusBar$_2357#104 (67757)
+08-06 16:15:49.967  1437  1437 D SurfaceFlinger:        DEVICE |           10123237935135 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2214 1080 2340 | NavigationBar0$_2357#102 (93293)
+08-06 16:15:49.967  1437  1437 D SurfaceFlinger:        DEVICE |            7413113552908 | 00000100 | RGBA_8888    |    0.0    0.0   63.0   63.0 |  765 1545  828 1608 | [BBQ] Sprite#118#119 (2469)
+08-06 16:15:49.967  1437  1437 D SurfaceFlinger: 
+08-06 16:15:50.026 12658 12658 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''
+08-06 16:15:50.037  1726  1920 D InputReader: Btn_touch(4): value=0 when=176066.116393
+08-06 16:15:50.037  1726  1920 I InputReader: Touch event's action is 0x1 (id=5, t=0) [pCnt=1, s=] when=176066.116393
+08-06 16:15:50.038  1726  1919 I InputDispatcher: Delivering touch to (7960): action: 0x1, f=0x0, d=0, 'c497091', t=1 
+08-06 16:15:50.038  7960  7960 I VRI[DashboardActivity]@429df10: ViewPostIme pointer 1
+08-06 16:15:50.039  4554  4554 I SemDvfsHyPerManager: acquire hyper - TABoost/4554@29, type = -999
+08-06 16:15:50.040  1337  1439 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 10504265  [4554 / 29]    HINT :      list : [TABoost / 1] [TIMEOUT / 1500] 

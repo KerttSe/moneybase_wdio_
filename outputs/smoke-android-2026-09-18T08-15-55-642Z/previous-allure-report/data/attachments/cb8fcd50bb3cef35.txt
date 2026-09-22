@@ -1,0 +1,202 @@
+--------- beginning of main
+08-12 12:05:06.896 25373 25416 I appium  : channel read: GET /session/38670410-b53a-4e9f-b84d-4ba4e9f1d943/element/00000000-0000-0a38-0000-004d00000131/text
+08-12 12:05:06.896 25373 25416 I appium  : GetText command
+08-12 12:05:06.906 25373 25416 I appium  : AppiumResponse: {"sessionId":"38670410-b53a-4e9f-b84d-4ba4e9f1d943","value":"flag-DKK DKK"}
+08-12 12:05:06.913  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-12 12:05:06.913  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-12 12:05:06.920  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-12 12:05:06.920  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-12 12:05:06.920  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-12 12:05:06.920  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-12 12:05:06.921  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-12 12:05:06.921  1325  1405 I display : Current VRR MODE is 3
+08-12 12:05:06.921  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-12 12:05:06.921  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-12 12:05:06.921  1325  1405 I display : commit modeset : 1080x2340@60phs
+08-12 12:05:06.936  1325  1405 W display : deliverWinConfigData:: commit modeset time (14 ms)
+08-12 12:05:06.936  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-12 12:05:06.937  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-12 12:05:06.937  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-12 12:05:06.937  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-12 12:05:06.937  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-12 12:05:06.937  1325  1397 I display : Set Affinity CPU ID : 0
+08-12 12:05:06.937  1325  1397 I display : Set Affinity CPU ID : 1
+08-12 12:05:06.937  1325  1397 I display : Set Affinity CPU ID : 2
+08-12 12:05:06.937  1325  1397 I display : Set Affinity CPU ID : 3
+08-12 12:05:06.937  1325  1397 I display : Set Affinity CPU ID : 4
+08-12 12:05:06.937  1325  1397 I display : Set Affinity CPU ID : 5
+08-12 12:05:06.937  1325  1397 I display : Set Affinity CPU ID : 6
+08-12 12:05:06.937  1325  1397 I display : Set Affinity CPU ID : 7
+08-12 12:05:06.937  1325  1397 I display : Set affinity HWC : 1325
+08-12 12:05:06.937  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-12 12:05:06.937  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-12 12:05:06.937  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-12 12:05:06.937  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-12 12:05:06.937  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-12 12:05:07.130  1726  2283 D NetdEventListenerService: DNS Requested by 552, 10260(com.google.android.gsf,...), SUCCESS, 125ms
+08-12 12:05:07.206  9576 30718 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+08-12 12:05:07.216  9576 30718 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@262932035@26.29.32 (260400-956293556):204)
+08-12 12:05:07.216  9576 30718 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@262932035@26.29.32 (260400-956293556):4)
+08-12 12:05:07.279 25373 25416 I appium  : channel read: POST /session/38670410-b53a-4e9f-b84d-4ba4e9f1d943/element
+08-12 12:05:07.280 25373 25416 I appium  : FindElement command
+08-12 12:05:07.281 25373 25416 I appium  : method: 'xpath', selector: '//*[@resource-id="toWalletSelect"]'
+08-12 12:05:07.281 25373 25416 I appium  : Waiting up to 10000ms for the device to idle
+08-12 12:05:07.284 25373 25416 I appium  : The following attributes will be included to the page source: [resource-id]
+08-12 12:05:07.393  9576 30718 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+08-12 12:05:07.394  9576 30718 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@262932035@26.29.32 (260400-956293556):204)
+08-12 12:05:07.394  9576 30718 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@262932035@26.29.32 (260400-956293556):4)
+08-12 12:05:07.418 25373 25416 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="toWalletSelect"]' XPath2 query
+08-12 12:05:07.421 25373 25416 I appium  : AppiumResponse: {"sessionId":"38670410-b53a-4e9f-b84d-4ba4e9f1d943","value":{"ELEMENT":"00000000-0000-0a38-0000-004d00000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0a38-0000-004d00000131"}}
+08-12 12:05:07.438 25373 25416 I appium  : channel read: GET /session/38670410-b53a-4e9f-b84d-4ba4e9f1d943/element/00000000-0000-0a38-0000-004d00000131/text
+08-12 12:05:07.439 25373 25416 I appium  : GetText command
+08-12 12:05:07.446 25373 25416 I appium  : AppiumResponse: {"sessionId":"38670410-b53a-4e9f-b84d-4ba4e9f1d943","value":"flag-DKK DKK"}
+08-12 12:05:07.451 25373 25416 I appium  : channel read: GET /session/38670410-b53a-4e9f-b84d-4ba4e9f1d943/screenshot
+08-12 12:05:07.452 25373 25416 I appium  : CaptureScreenshot command
+08-12 12:05:07.576  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786525507
+08-12 12:05:07.576  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-12 12:05:07.576  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-12 12:05:07.577  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29775425
+08-12 12:05:07.577  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29775403
+08-12 12:05:07.577  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-12 12:05:07.577  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-12 12:05:07.578  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-12 12:05:07.578  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-12 12:05:07.578  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-12 12:05:07.584 30740 30740 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-12 12:05:07.585 30740 30740 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-12 12:05:07.585 30740 30740 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-12 12:05:07.585  1726  3243 I EDMNativeHelperService: isScreenCaptureEnabled
+--------- beginning of system
+08-12 12:05:07.586  1726  3243 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-12 12:05:07.586 30740 30740 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-12 12:05:07.586 30740 30740 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-12 12:05:07.587  1437  1463 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_25440#81153(seamlessTransition:0)
+08-12 12:05:07.587  1437  1463 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-12 12:05:07.587  1437  1463 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-12 12:05:07.587  1437  1463 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-12 12:05:07.589  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-12 12:05:07.589  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_25440#81153 at index 1
+08-12 12:05:07.589  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-12 12:05:07.589  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-12 12:05:07.610 30740 30744 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-12 12:05:07.648  2870  2971 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Mobile(bundle=Bundle[mParcelledData.dataSize=256])
+08-12 12:05:07.656  1726  2205 D BackgroundInstallControlService: Package event received: 0
+08-12 12:05:07.660  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-12 12:05:07.662  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-12 12:05:07.662  1437  1437 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+08-12 12:05:07.662  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-12 12:05:07.663  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-12 12:05:07.663  1325  1405 I display : Current VRR MODE is 3
+08-12 12:05:07.663  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-12 12:05:07.663  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-12 12:05:07.664  1325  1405 I display : commit modeset : 1080x2340@120hs
+08-12 12:05:07.686  1325  1405 W display : deliverWinConfigData:: commit modeset time (22 ms)
+08-12 12:05:07.687  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-12 12:05:07.687  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-12 12:05:07.687  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-12 12:05:07.687  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-12 12:05:07.687  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-12 12:05:07.687  1325  1397 I display : Set Affinity CPU ID : 0
+08-12 12:05:07.687  1325  1397 I display : Set Affinity CPU ID : 1
+08-12 12:05:07.687  1325  1397 I display : Set Affinity CPU ID : 2
+08-12 12:05:07.687  1325  1397 I display : Set Affinity CPU ID : 3
+08-12 12:05:07.687  1325  1397 I display : Set Affinity CPU ID : 4
+08-12 12:05:07.687  1325  1397 I display : Set Affinity CPU ID : 5
+08-12 12:05:07.687  1325  1397 I display : Set Affinity CPU ID : 6
+08-12 12:05:07.687  1325  1397 I display : Set Affinity CPU ID : 7
+08-12 12:05:07.687  1325  1397 I display : Set affinity HWC : 1325
+08-12 12:05:07.687  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-12 12:05:07.687  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-12 12:05:07.687  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-12 12:05:07.687  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-12 12:05:07.688  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-12 12:05:07.711  1726  1788 W libprocessgroup: SetCgroup::ExecuteForProcess: failed to open /dev/cpuctl/foreground-boost/cgroup.procs: No such file or directory
+08-12 12:05:07.717  1726  2205 D BackgroundInstallControlService: Package event received: 0
+08-12 12:05:07.736  1726  2205 D BackgroundInstallControlService: Package event received: 0
+08-12 12:05:07.797 25373 25416 I appium  : AppiumResponse: {"sessionId":"38670410-b53a-4e9f-b84d-4ba4e9f1d943","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15fNTVvf/xd0KWISEhCSQsAUKAgIIB2STIoiC7GwIutCLSesVeb4WfYr1YXEq12KoVrNcr1aoFe6nKLoigIHWBAAIaFklYkpCwhBhCQvZkMr8/uDM335lJmOz5Jq/n48FD58x3OQNDmPO…
+08-12 12:05:07.820 25373 25416 I appium  : channel read: GET /session/38670410-b53a-4e9f-b84d-4ba4e9f1d943/source
+08-12 12:05:07.822 25373 25416 I appium  : Source command
+08-12 12:05:07.822 25373 25416 I appium  : Waiting up to 10000ms for the device to idle
+08-12 12:05:07.825  9576 10393 I DCU_RequestGen: No upload eligible contacts for incremental upload [CONTEXT service_id=135 ]
+08-12 12:05:07.912  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-12 12:05:07.913  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-12 12:05:07.920  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-12 12:05:07.920  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-12 12:05:07.924  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-12 12:05:07.924  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-12 12:05:07.925  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-12 12:05:07.925  1325  1405 I display : Current VRR MODE is 3
+08-12 12:05:07.925  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-12 12:05:07.925  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-12 12:05:07.925  1325  1405 I display : commit modeset : 1080x2340@60phs
+08-12 12:05:07.930  1326  1326 I android.hardware.health@2.1-service-samsung: updateLrpSysfs: write: 334
+08-12 12:05:07.933  1726  3186 I NSLocationMonitor: getGPSUsingApps() called
+08-12 12:05:07.932  1726  1921 D [SS]BattFunctions: [sendRemainingChargingTimeChangedIntent]remainingChargingTime:2654 ,mLastRemainingChargingTime:2661
+08-12 12:05:07.935 25373 25416 I appium  : AppiumResponse: {"sessionId":"38670410-b53a-4e9f-b84d-4ba4e9f1d943","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-12 12:05:07.935  3189  3223 I NSLocationManager_FLP: getGPSUsingApps, No change
+08-12 12:05:07.936  1325  1405 W display : deliverWinConfigData:: commit modeset time (11 ms)
+08-12 12:05:07.937  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-12 12:05:07.937  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-12 12:05:07.937  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-12 12:05:07.937  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-12 12:05:07.937  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-12 12:05:07.937  1325  1397 I display : Set Affinity CPU ID : 0
+08-12 12:05:07.937  1325  1397 I display : Set Affinity CPU ID : 1
+08-12 12:05:07.937  1325  1397 I display : Set Affinity CPU ID : 2
+08-12 12:05:07.937  1325  1397 I display : Set Affinity CPU ID : 3
+08-12 12:05:07.937  1325  1397 I display : Set Affinity CPU ID : 4
+08-12 12:05:07.937  1325  1397 I display : Set Affinity CPU ID : 5
+08-12 12:05:07.937  1325  1397 I display : Set Affinity CPU ID : 6
+08-12 12:05:07.937  1325  1397 I display : Set Affinity CPU ID : 7
+08-12 12:05:07.937  1325  1397 I display : Set affinity HWC : 1325
+08-12 12:05:07.937  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-12 12:05:07.937  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-12 12:05:07.937  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-12 12:05:07.937  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-12 12:05:07.937  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-12 12:05:07.938  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-12 12:05:07.946  2357  2357 I AODBatteryManager: updateBatteryData: ACTION_BATTERY_CHANGED: false, isSleepModeChanged:false ,isRemainingTimeChanged: true, isUSBRestriction: false
+08-12 12:05:07.947  2357  2357 I ChargingInfoManager: updateChargingInfo: newState = AOD ChargingInfo [mState=BATTERY_AND_REMAIN_TIME, mIsCharging=true, mIsPlugged=true, mIsFullyCharged=false, mIsBatteryProtectMode=false, mBetteryLevel=74, mBetteryProtectModeType0, mIsSlowChargingfalse], oldState = AOD ChargingInfo [mState=BATTERY_AND_REMAIN_TIME, mIsCharging=true, mIsPlugged=true, mIsFullyCharged=false, mIsBatteryProtectMode=false, mBetteryLevel=74, mBetteryProtectModeType0, mIsSlowChargingfalse]
+08-12 12:05:07.948  2357  2357 D PowerUI : Remaining charging time : 2654
+08-12 12:05:07.948  2357  2357 D PowerUI : Charging time is changed, check charging notification
+08-12 12:05:07.950  2357  2357 D PowerUI.Notification: showChargingNotice - Battery Level : 74 -> 74, Charging Type : 11 -> 11, Charging Time : 2661 -> 2654, Maximum protection : false -> false, Maximum threshold : 80 -> 80
+08-12 12:05:07.953  2357  2357 I NotificationManager: com.android.systemui: notify(2131364006, charging_state, Notification(channel=CHR shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|ONLY_ALERT_ONCE color=0x00000000 category=sys groupKey=CHARGING vis=PUBLIC semFlags=0x0 semPriority=0 semMissedCount=0)) as user
+08-12 12:05:07.957  1726  3243 W PermissionService: getPermissionFlags: Unknown user -1
+08-12 12:05:07.957  1726  3243 W PermissionService: getPermissionFlags: Unknown user -1
+08-12 12:05:07.959  1726  3186 D FreecessController: FZ : com.samsung.android.game.gamehome(10312) [5649] reason: Bg [cached:X
+08-12 12:05:07.959  1726  3186 D FreecessHandler: freeze com.samsung.android.game.gamehome(10312) result : 0
+08-12 12:05:07.959  9576 30723 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+08-12 12:05:07.960  9576 30723 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@262932035@26.29.32 (260400-956293556):204)
+08-12 12:05:07.960  9576 30723 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@262932035@26.29.32 (260400-956293556):4)
+08-12 12:05:07.960  1726  3186 W LocationManagerService: onFreezeStateChanged, uid[10312]=true
+08-12 12:05:07.960  1726  3186 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10312 , disable= true
+08-12 12:05:07.960  1726  3186 I PowerManagerService: [PWL] can not change uid =  10312
+08-12 12:05:07.967  1326  1393 E BatteryDump: !@new_battery_dump : 4135,517,1700,2054,74,331,325,370,331,0,333,343,0,Charging,NO_CHARGING,Normal,Good,PDIC,0,Normal,0,0,9180,0x18000,0x10010000,0x0,0,0,0000,0000,ffff0700,0,0,0,0,685,4063,7399,990,0,
+08-12 12:05:07.978 17815 17815 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-12 12:05:08.032 30759 30759 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-12 12:05:08.083 17815 17815 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-12 12:05:08.106  9576 30723 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+08-12 12:05:08.107  9576 30723 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@262932035@26.29.32 (260400-956293556):204)
+08-12 12:05:08.107  9576 30723 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@262932035@26.29.32 (260400-956293556):4)
+08-12 12:05:08.142 30762 30762 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-12 12:05:08.175  1726  1726 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+08-12 12:05:08.191  1726  3183 D ActivityManager: unpendingScheduleServiceRestart: u=10312, drop=false
+08-12 12:05:08.192  1726  3181 W FreecessController: getAllRunningPackagePids: Failed to read pid from /sys/fs/cgroup/apps/uid_10312/pid_4966/cgroup.procs
+08-12 12:05:08.195  1726  3186 W LocationManagerService: onFreezeStateChanged, uid[10312]=false
+08-12 12:05:08.197 17815 17815 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''
+08-12 12:05:08.196  1726  3186 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10312 , disable= false
+08-12 12:05:08.198  1726  3186 I PowerManagerService: [PWL] can not change uid =  10312
+08-12 12:05:08.198  1726  3181 D FreecessController: UFZ : com.samsung.android.game.gamehome(10312) [5649] reason: Binder(1)-android.service.notification.INotificatio
+08-12 12:05:08.204  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-12 12:05:08.205  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-12 12:05:08.206  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted com.android.systemui: -1|com.android.systemui|2131364006|charging_state|10048: 0
+08-12 12:05:08.206  2870  6282 I HoneySpace.NotificationListener: invalid notification: com.android.systemui UserHandle{-1}: canShowBadge is false
+08-12 12:05:08.206  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 2131364006
+08-12 12:05:08.206  6020  6488 I NotificationPipeline: Processing new notification: -1|com.android.systemui|2131364006|charging_state|10048
+08-12 12:05:08.206  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-12 12:05:08.207  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-12 12:05:08.207  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-12 12:05:08.207  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-12 12:05:08.208  2357  2357 I AODNotificationManager: updateNotification() 
+08-12 12:05:08.208  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-12 12:05:08.209  6020  6488 I NotificationPipeline: Discarding notification: -1|com.android.systemui|2131364006|charging_state|10048

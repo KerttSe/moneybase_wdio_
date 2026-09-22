@@ -1,0 +1,217 @@
+--------- beginning of main
+08-14 17:08:45.489  1726  2298 I WindowManager: Relayout hash=5872add, pid=0, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=resize} layoutInDisplayCutoutMode=shortEdges ty=BASE_APPLICATION wanim=0x1030317
+08-14 17:08:45.489  1726  2298 I WindowManager:   fl=81810900
+08-14 17:08:45.489  1726  2298 I WindowManager:   pfl=10008040
+08-14 17:08:45.489  1726  2298 I WindowManager:   vsysui=10
+08-14 17:08:45.489  1726  2298 I WindowManager:   apr=10
+08-14 17:08:45.489  1726  2298 I WindowManager:   bhv=1
+08-14 17:08:45.489  1726  2298 I WindowManager:   fitSides=0
+08-14 17:08:45.489  1726  2298 I WindowManager:   frameRateBoostOnTouch=true
+08-14 17:08:45.489  1726  2298 I WindowManager:   dvrrWindowFrameRateHint=true naviIconColor=0}
+08-14 17:08:45.492  2357  2357 D SystemUIService: SYSUI_RAM_OPTIMIZATION onTrimMemory=20
+08-14 17:08:45.493  5082  5082 I HBD     : a [NRIC] resetNoResponseState 
+08-14 17:08:45.493  5082  5082 I HBD     : c needOff = true , isForceOff = false, isNullInputClass : true 
+08-14 17:08:45.493  5082  5082 I HBD     : c update cached prediction status : false 
+08-14 17:08:45.493  5082  5082 I HBD     : b [AiWriter] setContact : net.openvpn.openvpn
+08-14 17:08:45.493  5082  5082 I HBD     : a [AiWriter] setContact : net.openvpn.openvpn
+08-14 17:08:45.493  1726  2298 I WindowManager: Relayout Window{e891e9a u0 Splash Screen net.openvpn.openvpn}: viewVisibility=8 req=1080x2340 ty=3 d0
+08-14 17:08:45.493  1726  2298 D SurfaceComposerClient: setCornerRadius ## 5872add net.openvpn.openvpn/net.openvpn.unified.MainActivity#97162 cornerRadius=0.000000
+08-14 17:08:45.493  1726  2298 D SurfaceComposerClient: setCornerRadius ## e891e9a Splash Screen net.openvpn.openvpn#97155 cornerRadius=0.000000
+08-14 17:08:45.493  1726  2298 D SurfaceComposerClient: setCornerRadius ## 5872add net.openvpn.openvpn/net.openvpn.unified.MainActivity#97162 cornerRadius=0.000000
+08-14 17:08:45.494  1726  2298 I WindowManager: Relayout hash=e891e9a, pid=2357, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=pan} layoutInDisplayCutoutMode=shortEdges ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030306
+08-14 17:08:45.494  1726  2298 I WindowManager:   fl=81030118
+08-14 17:08:45.494  1726  2298 I WindowManager:   pfl=10000010
+08-14 17:08:45.494  1726  2298 I WindowManager:   apr=18
+08-14 17:08:45.494  1726  2298 I WindowManager:   bhv=1
+08-14 17:08:45.494  1726  2298 I WindowManager:   fitSides=0
+08-14 17:08:45.494  1726  2298 I WindowManager:   frameRateBoostOnTouch=true
+08-14 17:08:45.494  1726  2298 I WindowManager:   dvrrWindowFrameRateHint=true naviIconColor=0}
+08-14 17:08:45.494  1726  1772 D SurfaceComposerClient: setCornerRadius ## e891e9a Splash Screen net.openvpn.openvpn#97155 cornerRadius=0.000000
+08-14 17:08:45.494  1726  1772 D SurfaceComposerClient: setCornerRadius ## 5872add net.openvpn.openvpn/net.openvpn.unified.MainActivity#97162 cornerRadius=0.000000
+08-14 17:08:45.494  5082  5082 I HBD     : o0 EBD si S 0 
+08-14 17:08:45.494  5082  5082 I HBD     : r updateContactDBLanguage : 65537 
+08-14 17:08:45.494  5082  5082 I HBD     : g isCoverDisplay : false, cached selected json info : SelectedLanguageInfo(languageVersion=4.2, currentLanguageOrder=0, selectedLanguageList=[SelectedLanguage(id=4456448, isUsed=true, engName=Ukrainian, inputType=qwerty, activeOptionList=[auto_spacing], bilingualId=-1), SelectedLanguage(id=65537, isUsed=true, engName=English, inputType=qwerty, activeOptionList=[auto_replace, auto_spacing, writing_assistant, prediction], bilingualId=-1), SelectedLanguage(id=3342336, isUsed=true, engName=Russian, inputType=qwerty, activeOptionList=[auto_spacing], bilingualId=-1)]) 
+08-14 17:08:45.494  5082  5082 I HBD     : g updateSelectedLanguageCache is succeeded. English 
+08-14 17:08:45.495  5082  5082 I HBD     : l writeToFile path : /data/user/0/com.samsung.android.honeyboard/files/selected.json 
+08-14 17:08:45.495  5082  5082 I HBD     : l writeToFile json : {"version":"4.2","currentLanguageOrder":1,"selected":[{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Ukrainian","id":4456448,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_replace","auto_spacing","writing_assistant","prediction"],"bilingualId":-1,"engName":"English","id":65537,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Russian","id":3342336,"inputType":"qwerty","isUsed":true}]} 
+08-14 17:08:45.495  2357  2452 I VRI[openvpn]@5404ef7: onActiveControlsChanged, removed=false, mAdded=true, caller=android.view.ViewRootImpl.handleInsetsControlChanged:3002 android.view.ViewRootImpl.relayoutWindow:11629 android.view.ViewRootImpl.performTraversals:4804 android.view.ViewRootImpl.doTraversal:3924 android.view.ViewRootImpl$TraversalRunnable.run:12903 
+08-14 17:08:45.496  5082  5082 I HBD     : l writeToFile complete 
+08-14 17:08:45.496  5082  5082 I HBD     : g isCoverDisplay : false, cached selected json info : SelectedLanguageInfo(languageVersion=4.2, currentLanguageOrder=1, selectedLanguageList=[SelectedLanguage(id=4456448, isUsed=true, engName=Ukrainian, inputType=qwerty, activeOptionList=[auto_spacing], bilingualId=-1), SelectedLanguage(id=65537, isUsed=true, engName=English, inputType=qwerty, activeOptionList=[auto_replace, auto_spacing, writing_assistant, prediction], bilingualId=-1), SelectedLanguage(id=3342336, isUsed=true, engName=Russian, inputType=qwerty, activeOptionList=[auto_spacing], bilingualId=-1)]) 
+08-14 17:08:45.496  2357  2452 I VRI[openvpn]@5404ef7: Relayout returned: old=(0,0,1080,2340) new=(0,0,1080,2340) relayoutAsync=false req=(1080,2340)8 dur=3 res=0x2 s={false 0x0} ch=true seqId=0
+08-14 17:08:45.496  5082  5082 I HBD     : n updateActionOptionFromPreference isCover = false 
+08-14 17:08:45.496  5082  5082 I HBD     : n before lang.activeOptionList =  [auto_replace, auto_spacing, writing_assistant, prediction] 
+08-14 17:08:45.496  2357  2452 D VRI[openvpn]@5404ef7: Not drawing due to not visible. Reason=View.GONE
+08-14 17:08:45.497  2357  2452 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda16@a89dfd0
+--------- beginning of system
+08-14 17:08:45.497  1726  2298 D CoreBackPreview: Window{e891e9a u0 Splash Screen net.openvpn.openvpn}: Setting back callback null
+08-14 17:08:45.497 15279 15309 D OpenVPNService: Updating notification with speed data: OpenVPN: Connected
+08-14 17:08:45.497  5082  5082 I HBD     : n after lang.activeOptionList = [auto_replace, auto_spacing, writing_assistant, prediction] 
+08-14 17:08:45.497  5082 15256 I HBD     : l Write selected lang for DE  
+08-14 17:08:45.498  5082 15256 I HBD     : l writeToFile path : /data/user_de/0/com.samsung.android.honeyboard/files/selected.json 
+08-14 17:08:45.498  5082 15256 I HBD     : l writeToFile json : {"version":"4.2","currentLanguageOrder":1,"selected":[{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Ukrainian","id":4456448,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_replace","auto_spacing","writing_assistant","prediction"],"bilingualId":-1,"engName":"English","id":65537,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Russian","id":3342336,"inputType":"qwerty","isUsed":true}]} 
+08-14 17:08:45.498 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-14 17:08:45.498 15279 15309 I NotificationManager: net.openvpn.openvpn: notify(1642, null, Notification(channel=openvpn_notification_id shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|ONLY_ALERT_ONCE color=0x00000000 actions=2 vis=PUBLIC semFlags=0x0 semPriority=0 semMissedCount=0)) as user
+08-14 17:08:45.498  5082  5082 I HBD     : l writeToFile path : /data/user/0/com.samsung.android.honeyboard/files/selected.json 
+08-14 17:08:45.498  5082  5082 I HBD     : l writeToFile json : {"version":"4.2","currentLanguageOrder":1,"selected":[{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Ukrainian","id":4456448,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_replace","auto_spacing","writing_assistant","prediction"],"bilingualId":-1,"engName":"English","id":65537,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Russian","id":3342336,"inputType":"qwerty","isUsed":true}]} 
+08-14 17:08:45.498  5082 15256 I HBD     : l writeToFile complete 
+08-14 17:08:45.499  5082  5082 I HBD     : l writeToFile complete 
+08-14 17:08:45.499  2357  2357 D CentralSurfaces: SYSUI_RAM_OPTIMIZATION onTrimMemory=20
+08-14 17:08:45.499  5082  5082 I HBD     : m normal : updateLanguage : English 
+08-14 17:08:45.499  5082  5082 I HBD     : g isCoverDisplay : false, cached selected json info : SelectedLanguageInfo(languageVersion=4.2, currentLanguageOrder=1, selectedLanguageList=[SelectedLanguage(id=4456448, isUsed=true, engName=Ukrainian, inputType=qwerty, activeOptionList=[auto_spacing], bilingualId=-1), SelectedLanguage(id=65537, isUsed=true, engName=English, inputType=qwerty, activeOptionList=[auto_replace, auto_spacing, writing_assistant, prediction], bilingualId=-1), SelectedLanguage(id=3342336, isUsed=true, engName=Russian, inputType=qwerty, activeOptionList=[auto_spacing], bilingualId=-1)]) 
+08-14 17:08:45.499  5082  5082 I HBD     : g isCoverDisplay : false, cached selected json info : SelectedLanguageInfo(languageVersion=4.2, currentLanguageOrder=1, selectedLanguageList=[SelectedLanguage(id=4456448, isUsed=true, engName=Ukrainian, inputType=qwerty, activeOptionList=[auto_spacing], bilingualId=-1), SelectedLanguage(id=65537, isUsed=true, engName=English, inputType=qwerty, activeOptionList=[auto_replace, auto_spacing, writing_assistant, prediction], bilingualId=-1), SelectedLanguage(id=3342336, isUsed=true, engName=Russian, inputType=qwerty, activeOptionList=[auto_spacing], bilingualId=-1)]) 
+08-14 17:08:45.499  5082  5082 I HBD     : n updateActionOptionFromPreference isCover = false 
+08-14 17:08:45.499  5082  5082 I HBD     : n before lang.activeOptionList =  [auto_replace, auto_spacing, writing_assistant, prediction] 
+08-14 17:08:45.500  5082  5082 I HBD     : n after lang.activeOptionList = [auto_replace, auto_spacing, writing_assistant, prediction] 
+08-14 17:08:45.500  5082  5082 I HBD     : l writeToFile path : /data/user/0/com.samsung.android.honeyboard/files/selected.json 
+08-14 17:08:45.500  5082  5082 I HBD     : l writeToFile json : {"version":"4.2","currentLanguageOrder":1,"selected":[{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Ukrainian","id":4456448,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_replace","auto_spacing","writing_assistant","prediction"],"bilingualId":-1,"engName":"English","id":65537,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Russian","id":3342336,"inputType":"qwerty","isUsed":true}]} 
+08-14 17:08:45.500  1437  1437 I SurfaceFlinger: [Display 0 name="Built-in Screen"#49] setFrameRateCategory: Default
+08-14 17:08:45.500  1437  1437 I SurfaceFlinger: RequestedLayer [Splash Screen net.openvpn.openvpn$_2357#97156] hidden!! flag  from(0) --> to(1)
+08-14 17:08:45.500  1437  1437 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{Surface(name=e891e9a Splash Screen net.openvpn.openvpn)/@0xc6cbfae - animation-leash of starting_reveal#97168} 1 children}] reparent to OffscreenRoot
+08-14 17:08:45.500  1437  1437 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{Surface(name=e891e9a Splash Screen net.openvpn.openvpn)/@0xc6cbfae - animation-leash of starting_reveal#97168} 1 children}] RelativeParent to null
+08-14 17:08:45.500  1437  1437 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{e891e9a Splash Screen net.openvpn.openvpn#97155 parentId=97154 z=2147483647} 1 children}] reparent to LayerHierarchy{RequestedLayerState{ActivityRecord{9802210 u0 net.openvpn.openvpn/net.openvpn.unified.MainActivity t8027}#97154 parentId=97153} 4 children}
+08-14 17:08:45.501  5082 15257 I HBD     : l Write selected lang for DE  
+08-14 17:08:45.501  5082 15257 I HBD     : l writeToFile path : /data/user_de/0/com.samsung.android.honeyboard/files/selected.json 
+08-14 17:08:45.501  5082 15257 I HBD     : l writeToFile json : {"version":"4.2","currentLanguageOrder":1,"selected":[{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Ukrainian","id":4456448,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_replace","auto_spacing","writing_assistant","prediction"],"bilingualId":-1,"engName":"English","id":65537,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Russian","id":3342336,"inputType":"qwerty","isUsed":true}]} 
+08-14 17:08:45.501  5082  5082 I HBD     : l writeToFile complete 
+08-14 17:08:45.501  5082  5082 I HBD     : m normal : updateLanguage : English 
+08-14 17:08:45.501  5082  5082 I HBD     : g isCoverDisplay : false, cached selected json info : SelectedLanguageInfo(languageVersion=4.2, currentLanguageOrder=1, selectedLanguageList=[SelectedLanguage(id=4456448, isUsed=true, engName=Ukrainian, inputType=qwerty, activeOptionList=[auto_spacing], bilingualId=-1), SelectedLanguage(id=65537, isUsed=true, engName=English, inputType=qwerty, activeOptionList=[auto_replace, auto_spacing, writing_assistant, prediction], bilingualId=-1), SelectedLanguage(id=3342336, isUsed=true, engName=Russian, inputType=qwerty, activeOptionList=[auto_spacing], bilingualId=-1)]) 
+08-14 17:08:45.501  5082 15259 I HBD     : l Write selected lang for DE  
+08-14 17:08:45.501  5082  5082 I HBD     : g isCoverDisplay : false, cached selected json info : SelectedLanguageInfo(languageVersion=4.2, currentLanguageOrder=1, selectedLanguageList=[SelectedLanguage(id=4456448, isUsed=true, engName=Ukrainian, inputType=qwerty, activeOptionList=[auto_spacing], bilingualId=-1), SelectedLanguage(id=65537, isUsed=true, engName=English, inputType=qwerty, activeOptionList=[auto_replace, auto_spacing, writing_assistant, prediction], bilingualId=-1), SelectedLanguage(id=3342336, isUsed=true, engName=Russian, inputType=qwerty, activeOptionList=[auto_spacing], bilingualId=-1)]) 
+08-14 17:08:45.501  5082  5082 I HBD     : g updateSelectedLanguageCache is succeeded. English 
+08-14 17:08:45.501  5082 15259 I HBD     : l writeToFile path : /data/user_de/0/com.samsung.android.honeyboard/files/selected.json 
+08-14 17:08:45.501  5082 15259 I HBD     : l writeToFile json : {"version":"4.2","currentLanguageOrder":1,"selected":[{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Ukrainian","id":4456448,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_replace","auto_spacing","writing_assistant","prediction"],"bilingualId":-1,"engName":"English","id":65537,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Russian","id":3342336,"inputType":"qwerty","isUsed":true}]} 
+08-14 17:08:45.501  5082  5082 I HBD     : l writeToFile path : /data/user/0/com.samsung.android.honeyboard/files/selected.json 
+08-14 17:08:45.501  5082  5082 I HBD     : l writeToFile json : {"version":"4.2","currentLanguageOrder":1,"selected":[{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Ukrainian","id":4456448,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_replace","auto_spacing","writing_assistant","prediction"],"bilingualId":-1,"engName":"English","id":65537,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Russian","id":3342336,"inputType":"qwerty","isUsed":true}]} 
+08-14 17:08:45.502  5082  5082 I HBD     : l writeToFile complete 
+08-14 17:08:45.502  5082  5082 I HBD     : o0 EBD ssu s 0 
+08-14 17:08:45.502  5082  5082 I HBD     : c updatePredictionStatus : 6, editorOpt 
+08-14 17:08:45.502  5082 15260 I HBD     : l Write selected lang for DE  
+08-14 17:08:45.503  1437  1437 I SurfaceFlinger: id=97168 Removed Surface(name=e891e9a Splash Screen net.openvpn.openvpn)/@0xc6cbfae - animation-leash of starting_reveal#97168 (218)
+08-14 17:08:45.503  5082 15257 I HBD     : l writeToFile complete 
+08-14 17:08:45.503  2357  2452 I VRI[openvpn]@5404ef7: dispatchDetachedFromWindow
+08-14 17:08:45.503  5082 15260 I HBD     : l writeToFile path : /data/user_de/0/com.samsung.android.honeyboard/files/selected.json 
+08-14 17:08:45.503  5082 15260 I HBD     : l writeToFile json : {"version":"4.2","currentLanguageOrder":1,"selected":[{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Ukrainian","id":4456448,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_replace","auto_spacing","writing_assistant","prediction"],"bilingualId":-1,"engName":"English","id":65537,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Russian","id":3342336,"inputType":"qwerty","isUsed":true}]} 
+08-14 17:08:45.503  1726  3243 D WindowManager: Starting window removed Window{e891e9a u0 Splash Screen net.openvpn.openvpn}
+08-14 17:08:45.503  1726  3243 D InputTransport: Input channel destroyed: 'e891e9a', fd=1002
+08-14 17:08:45.503  2357  2511 D HWUI    : CacheManager::trimMemory(20)
+08-14 17:08:45.503  1726  3243 V WindowManager: Remove Window{e891e9a u0 Splash Screen net.openvpn.openvpn}: mSurfaceControl=Surface(name=Splash Screen net.openvpn.openvpn$_2357)/@0x36f1da4 mAnimatingExit=false mRemoveOnExit=false mHasSurface=true surfaceShowing=false animating=false app-animation=false callers=com.android.server.wm.Session.remove:16 android.view.IWindowSession$Stub.onTransact:804 com.android.server.wm.Session.onTransact:1 android.os.Binder.execTransactInternal:1462 android.os.Binder.execTransact:1401 <bottom of call stack> 
+08-14 17:08:45.504  1726  3243 D SurfaceComposerClient: setCornerRadius ## 5872add net.openvpn.openvpn/net.openvpn.unified.MainActivity#97162 cornerRadius=0.000000
+08-14 17:08:45.504  1726  3243 D WindowManager: updateSystemBarAttributes: displayId=0, focusedCanBeNavColorWin=false, win=Window{5872add u0 net.openvpn.openvpn/net.openvpn.unified.MainActivity}, navColorWin=Window{5872add u0 net.openvpn.openvpn/net.openvpn.unified.MainActivity}, caller=com.android.server.wm.DisplayPolicy.finishPostLayoutPolicyLw:17 com.android.server.wm.RootWindowContainer.applySurfaceChangesTransaction$1:195 com.android.server.wm.RootWindowContainer.performSurfacePlacementNoTrace:59 
+08-14 17:08:45.504  1726  3243 D WindowManager: updateSystemBarAttributes, bhv=1, apr=16, statusBarAprRegions=[AppearanceRegion{ bounds=[0,0][1080,2340]}], requestedVisibilities=-9
+08-14 17:08:45.504  1726  3243 D SurfaceComposerClient: setCornerRadius ## 5872add net.openvpn.openvpn/net.openvpn.unified.MainActivity#97162 cornerRadius=0.000000
+08-14 17:08:45.505  2357  2452 D InputTransport: Input channel destroyed: 'e891e9a', fd=711
+08-14 17:08:45.507  5082 15260 I HBD     : l writeToFile complete 
+08-14 17:08:45.508  1437  1437 I SurfaceFlinger: destroyed Surface(name=e891e9a Splash Screen net.openvpn.openvpn)/@0xc6cbfae - animation-leash of starting_reveal#97168
+08-14 17:08:45.510  1437  1437 I Layer   : id=97168 Destroyed Surface(name=e891e9a Splash Screen net.openvpn.openvpn)/@0xc6cbfae - animation-leash of starting_reveal#97168
+08-14 17:08:45.514  2357  2357 D SamsungLightBarControlHelper: updateStatusBar (WHITE icon) numStacks:1, StatusBarMode:MODE_TRANSPARENT, lightBarBounds:[], StatusBarState:SHADE, packageName:, isWhiteKeyguardStatusBar:false
+08-14 17:08:45.514  2357  2357 D SamsungLightBarControlHelper: onStatusBarAppearanceChanged() -  sbModeChanged:false, statusBarMode:0, barState:MODE_TRANSPARENT, isKeyguardShowing:false, navbarColorManagedByIme:false, (AppearanceRegion{ bounds=[0,0][1080,2340]}, )
+08-14 17:08:45.515  5082  5082 I HBD     : g isCoverDisplay : false, cached selected json info : SelectedLanguageInfo(languageVersion=4.2, currentLanguageOrder=1, selectedLanguageList=[SelectedLanguage(id=4456448, isUsed=true, engName=Ukrainian, inputType=qwerty, activeOptionList=[auto_spacing], bilingualId=-1), SelectedLanguage(id=65537, isUsed=true, engName=English, inputType=qwerty, activeOptionList=[auto_replace, auto_spacing, writing_assistant, prediction], bilingualId=-1), SelectedLanguage(id=3342336, isUsed=true, engName=Russian, inputType=qwerty, activeOptionList=[auto_spacing], bilingualId=-1)]) 
+08-14 17:08:45.515  5082  5082 I HBD     : g updateSelectedLanguageCache is succeeded. English 
+08-14 17:08:45.515  1726  1771 I DisplayDeviceRepository: Display device changed render timings: "Built-in Screen", renderFrameRate=120.00001, presentationDeadlineNanos=9333333, appVsyncOffsetNanos=8333333, frameRateOverrides=[]
+08-14 17:08:45.515 15279 15309 D OpenvpnNotificationService: Notification shown: 1642
+08-14 17:08:45.515  5082  5082 I HBD     : l writeToFile path : /data/user/0/com.samsung.android.honeyboard/files/selected.json 
+08-14 17:08:45.515  5082  5082 I HBD     : l writeToFile json : {"version":"4.2","currentLanguageOrder":1,"selected":[{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Ukrainian","id":4456448,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_replace","auto_spacing","writing_assistant","prediction"],"bilingualId":-1,"engName":"English","id":65537,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Russian","id":3342336,"inputType":"qwerty","isUsed":true}]} 
+08-14 17:08:45.516  1726  2298 D KNOX_MDM_SettingsProvider: isChangeAllowed() : name = enabled_input_methods
+08-14 17:08:45.516  1726  2298 D KNOX_MDM_SettingsProvider: edmUri: content://com.sec.knox.provider/RestrictionPolicy3
+08-14 17:08:45.516  1726  2298 D KNOX_MDM_SettingsProvider: projectionArgs: isSettingsChangesAllowed
+08-14 17:08:45.516  1726  2298 D KNOX_MDM_SettingsProvider: selectionArgs: false
+08-14 17:08:45.516  1726  2298 D KNOX_MDM_SettingsProvider: selectionArgs: 10200
+08-14 17:08:45.516  1726  2298 D SecContentProvider: query(), uri = 17 selection = isSettingsChangesAllowed
+08-14 17:08:45.516  1726  2298 D SecContentProvider: called from android.uid.honeyboard:10200
+08-14 17:08:45.516  1726  2298 D RestrictionPolicy: isSettingsChangesAllowedAsUser, userId 0 : true
+08-14 17:08:45.516  1726  2298 D KNOX_MDM_SettingsProvider: ret = 1
+08-14 17:08:45.516  1726  2298 D SettingsProvider: PUT_ret(/secure/enabled_input_methods), callingPackage:com.samsung.android.honeyboard
+08-14 17:08:45.518  1726  2298 D KNOX_MDM_SettingsProvider: isChangeAllowed() : name = default_input_method
+08-14 17:08:45.518  1726  2298 D KNOX_MDM_SettingsProvider: edmUri: content://com.sec.knox.provider/RestrictionPolicy3
+08-14 17:08:45.518  1726  2298 D KNOX_MDM_SettingsProvider: projectionArgs: isSettingsChangesAllowed
+08-14 17:08:45.518  1726  2298 D KNOX_MDM_SettingsProvider: selectionArgs: false
+08-14 17:08:45.518  1726  2298 D KNOX_MDM_SettingsProvider: selectionArgs: 10200
+08-14 17:08:45.518  1726  2298 D SecContentProvider: query(), uri = 17 selection = isSettingsChangesAllowed
+08-14 17:08:45.518  1726  2298 D SecContentProvider: called from android.uid.honeyboard:10200
+08-14 17:08:45.518  1726  2298 D RestrictionPolicy: isSettingsChangesAllowedAsUser, userId 0 : true
+08-14 17:08:45.518  1726  2298 D KNOX_MDM_SettingsProvider: ret = 1
+08-14 17:08:45.519  5082 24513 I HBD     : u updated Sub Types. English 
+08-14 17:08:45.519 15279 15309 D OpenvpnNotificationService: Foreground service started/updated: 1642
+08-14 17:08:45.521  2357  6535 D SecFgsManagerController: onForegroundStateChanged: [dialog:false]:[isForeground:true]:[packageName:net.openvpn.openvpn]:[token:android.os.BinderProxy@9bdec3c]:[userId:0]
+08-14 17:08:45.524  5082  5082 I HBD     : l writeToFile complete 
+08-14 17:08:45.525  2357  2472 D StackScroller: onDisplayChanged for predraw skip to 2
+08-14 17:08:45.525  1726  2298 D WifiDisplayAdapter: isFitToActiveDisplayLocked : false
+08-14 17:08:45.525  2357  2357 D DisplayLifecycle: updateDisplay id = 0
+08-14 17:08:45.525  5082  5082 I HBD     : a [UpdatePolicy] [post] a: 31 cl: 65537 kit: [0/0] vt: 0 ir: 1 
+08-14 17:08:45.525  1437  1437 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{ImeContainer#15 parentId=97154 relativeParentId=97162 z=1} 1 children}] RelativeParent to LayerHierarchy{RequestedLayerState{5872add net.openvpn.openvpn/net.openvpn.unified.MainActivity#97162 parentId=97154} 2 children}
+08-14 17:08:45.525  1437  1437 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{e891e9a Splash Screen net.openvpn.openvpn#97155 z=2147483647} 1 children}] reparent to OffscreenRoot
+08-14 17:08:45.525  1437  1437 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{e891e9a Splash Screen net.openvpn.openvpn#97155 z=2147483647} 1 children}] RelativeParent to null
+08-14 17:08:45.525  1437  1437 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{Splash Screen net.openvpn.openvpn$_2357#97156} no children}] reparent to OffscreenRoot
+08-14 17:08:45.525  1437  1437 I SurfaceFlinger: [LayerHierarchy{RequestedLayerState{Splash Screen net.openvpn.openvpn$_2357#97156} no children}] RelativeParent to null
+08-14 17:08:45.525  5082  5082 I HBD     : HoneyBoardService [PF_OP][onStartInput]  63 ms 
+08-14 17:08:45.526  5082  5082 I InputMethodService: scheduleImeSurfaceRemoval: removeImeSurface is posted.
+08-14 17:08:45.527  1437  1437 I SurfaceFlinger: id=97155 Removed e891e9a Splash Screen net.openvpn.openvpn#97155 (217)
+08-14 17:08:45.527  1437  1437 I SurfaceFlinger: id=97156 Removed Splash Screen net.openvpn.openvpn$_2357#97156 (217)
+08-14 17:08:45.528  1726  1944 I InputMethodManagerService: subtype state: oldSubtype = android.view.inputmethod.InputMethodSubtype@440000 newSubtype = android.view.inputmethod.InputMethodSubtype@440000 force = false, intent received : false
+08-14 17:08:45.528  1726  1944 D InputMethodManagerService: updateInputMethodsFromSettingsLocked: id=com.samsung.android.honeyboard/.service.HoneyBoardService
+08-14 17:08:45.530  5082 15262 I HBD     : b InputMethodSubtype is set as local:en_US 
+08-14 17:08:45.533  1437  1437 I SurfaceFlinger: destroyed e891e9a Splash Screen net.openvpn.openvpn#97155
+08-14 17:08:45.533  1437  1437 I SurfaceFlinger: destroyed Splash Screen net.openvpn.openvpn$_2357#97156
+08-14 17:08:45.535  1437  1437 I Layer   : id=97155 Destroyed e891e9a Splash Screen net.openvpn.openvpn#97155
+08-14 17:08:45.535  1437  1437 I Layer   : id=97156 Destroyed Splash Screen net.openvpn.openvpn$_2357#97156
+08-14 17:08:45.539  1337 15202 I HYPER-HAL: [ResourceManager.cpp]removeResource(): [CPULittleMinFreq] RemoveResource Request ID : 1525151
+08-14 17:08:45.539 31065 31075 I erkz    : (REDACTED) HDM. appOpsListener %s %s
+08-14 17:08:45.540 31065 31075 I erkz    : (REDACTED) HDM. Ignoring irrelevant audio permission changes for package %s
+08-14 17:08:45.541  1337 15202 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 1525151
+08-14 17:08:45.542  5082 15259 E AtomicFile: Failed to rename /data/user_de/0/com.samsung.android.honeyboard/files/selected.json.new to /data/user_de/0/com.samsung.android.honeyboard/files/selected.json
+08-14 17:08:45.542  5082 15259 I HBD     : l writeToFile complete 
+08-14 17:08:45.543  5082 15263 I HBD     : l Write selected lang for DE  
+08-14 17:08:45.543  5082 15263 I HBD     : l writeToFile path : /data/user_de/0/com.samsung.android.honeyboard/files/selected.json 
+08-14 17:08:45.543  5082 15263 I HBD     : l writeToFile json : {"version":"4.2","currentLanguageOrder":1,"selected":[{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Ukrainian","id":4456448,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_replace","auto_spacing","writing_assistant","prediction"],"bilingualId":-1,"engName":"English","id":65537,"inputType":"qwerty","isUsed":true},{"activeOptionList":["auto_spacing"],"bilingualId":-1,"engName":"Russian","id":3342336,"inputType":"qwerty","isUsed":true}]} 
+08-14 17:08:45.544  1726  1772 D SurfaceComposerClient: setCornerRadius ## 5872add net.openvpn.openvpn/net.openvpn.unified.MainActivity#97162 cornerRadius=0.000000
+08-14 17:08:45.544  5082 15263 I HBD     : l writeToFile complete 
+08-14 17:08:45.548  1726  2298 D KNOX_MDM_SettingsProvider: isChangeAllowed() : name = enabled_input_methods
+08-14 17:08:45.548  1726  2298 D KNOX_MDM_SettingsProvider: edmUri: content://com.sec.knox.provider/RestrictionPolicy3
+08-14 17:08:45.548  1726  2298 D KNOX_MDM_SettingsProvider: projectionArgs: isSettingsChangesAllowed
+08-14 17:08:45.548  1726  2298 D KNOX_MDM_SettingsProvider: selectionArgs: false
+08-14 17:08:45.548  1726  2298 D KNOX_MDM_SettingsProvider: selectionArgs: 10200
+08-14 17:08:45.548  1726  2298 D SecContentProvider: query(), uri = 17 selection = isSettingsChangesAllowed
+08-14 17:08:45.548  1726  2298 D SecContentProvider: called from android.uid.honeyboard:10200
+08-14 17:08:45.548  1726  2298 D RestrictionPolicy: isSettingsChangesAllowedAsUser, userId 0 : true
+08-14 17:08:45.548  1726  2298 D KNOX_MDM_SettingsProvider: ret = 1
+08-14 17:08:45.550  1726  3243 D KNOX_MDM_SettingsProvider: isChangeAllowed() : name = default_input_method
+08-14 17:08:45.550  1726  3243 D KNOX_MDM_SettingsProvider: edmUri: content://com.sec.knox.provider/RestrictionPolicy3
+08-14 17:08:45.550  1726  3243 D KNOX_MDM_SettingsProvider: projectionArgs: isSettingsChangesAllowed
+08-14 17:08:45.550  1726  3243 D KNOX_MDM_SettingsProvider: selectionArgs: false
+08-14 17:08:45.550  1726  3243 D KNOX_MDM_SettingsProvider: selectionArgs: 10200
+08-14 17:08:45.550  1726  3243 D SecContentProvider: query(), uri = 17 selection = isSettingsChangesAllowed
+08-14 17:08:45.550  1726  3243 D SecContentProvider: called from android.uid.honeyboard:10200
+08-14 17:08:45.550  1726  3243 D RestrictionPolicy: isSettingsChangesAllowedAsUser, userId 0 : true
+08-14 17:08:45.550  1726  3243 D KNOX_MDM_SettingsProvider: ret = 1
+08-14 17:08:45.552  5082 24513 I HBD     : u updated Sub Types. English 
+08-14 17:08:45.552 15258 15258 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-14 17:08:45.555  5082 15265 I HBD     : b InputMethodSubtype is set as local:en_US 
+08-14 17:08:45.556  1726  2159 D MdnieScenarioControlService:  packageName : net.openvpn.openvpn    className : net.openvpn.unified.MainActivity
+08-14 17:08:45.556  1726  2159 V MdnieScenarioControlService: setUIMode from UI function(3)
+08-14 17:08:45.587  5082 13909 I HBD     : a [SKE_SPECIFIC] specific model[net.openvpn.openvpn] loaded, 57286485 ns
+08-14 17:08:45.590 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''
+08-14 17:08:45.598  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-14 17:08:45.606  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 113430, isSameBssidAndFreq true
+08-14 17:08:45.613  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786716525613 lastDateWindow=1786464242000
+08-14 17:08:45.614  1726  2228 I SemWifiLinkQualityMonitor: Link stat: 528 / 50 / 1.00 (9) / 144 / -50.0 || 100.0 : 144.00 / 0.5 : 1.00 / 0.55 : 0.09 / G (G) || 52fc78d72452: 0.135 / 59.221 / N || N N / 0 0 / N 2.0 / N X 0 / 541798003 0 || 2026-08-11 19:04:02  / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0
+08-14 17:08:45.634  2357  2357 D QSClock : onDarkChanged tint=WHITE
+08-14 17:08:45.634  1726  1944 D InputMethodManagerService: isImeSwitcherDisabledPackage : false
+08-14 17:08:45.634  1726  1944 D InputMethodManagerService: shouldShowImeSwitcherLocked : checking vis : 3
+08-14 17:08:45.635  1726  1726 I InputMethodManagerService: subtype state: oldSubtype = android.view.inputmethod.InputMethodSubtype@440000 newSubtype = android.view.inputmethod.InputMethodSubtype@10001 force = false, intent received : false
+08-14 17:08:45.635  1726  1726 D KNOX_MDM_SettingsProvider: isChangeAllowed() : name = input_methods_subtype_history
+08-14 17:08:45.635  1726  1726 D SettingsProvider: PUT_ret(/secure/input_methods_subtype_history), callingPackage:android
+08-14 17:08:45.635  1726  1726 D KNOX_MDM_SettingsProvider: isChangeAllowed() : name = selected_input_method_subtype
+08-14 17:08:45.635  1726  1726 D SettingsProvider: PUT_ret(/secure/selected_input_method_subtype), callingPackage:android
+08-14 17:08:45.635  1726  1726 D KeyboardLayoutManager: InputMethodSubtype changed: userId=0 subtypeHandle=InputMethodSubtypeHandle{mHandle=com.samsung.android.honeyboard/.service.HoneyBoardService:subtype:65537}
+08-14 17:08:45.636  1726  1726 V InputMethodManagerService: IME window vis: 0 active: 0 visible: 0 displayId: 0
+08-14 17:08:45.636  1726  1726 D InputMethodManagerService: isImeSwitcherDisabledPackage : false
+08-14 17:08:45.638  1726  1726 W LoadedApk: Slow system_server main thread handled for com.sec.android.inputmethod.Subtype took 104 ms, Receiver = com.android.server.inputmethod.InputMethodManagerService$DemoResetReceiver@d7065a
+08-14 17:08:45.640  1726  1920 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+08-14 17:08:45.640  1726  1726 W Looper  : Slow dispatch took 104ms main app=system_server main=true group=FOREGROUND h=android.app.ActivityThread$H c=android.app.LoadedApk$ReceiverDispatcher$Args$$ExternalSyntheticLambda0@425ef35 m=0
+08-14 17:08:45.640  1726  1920 D KeyboardLayoutManager: Overlay KLD=com.android.inputdevices/com.android.inputdevices.InputDeviceReceiver/keyboard_layout_english_us, dev=InputDeviceIdentifier: vendorId: 0, productId: 0, descriptor: 0fa9d3d0d40f7f5b316320876742e00ad5eb1ba9
+08-14 17:08:45.641  1726  1726 I InputMethodManagerService: subtype state: oldSubtype = android.view.inputmethod.InputMethodSubtype@10001 newSubtype = android.view.inputmethod.InputMethodSubtype@10001 force = false, intent received : false
+08-14 17:08:45.642  1726  1944 I InputMethodManagerService: subtype state: oldSubtype = android.view.inputmethod.InputMethodSubtype@10001 newSubtype = android.view.inputmethod.InputMethodSubtype@10001 force = false, intent received : false
+08-14 17:08:45.642  1726  1944 D InputMethodManagerService: updateInputMethodsFromSettingsLocked: id=com.samsung.android.honeyboard/.service.HoneyBoardService
+08-14 17:08:45.643  1726  1944 D InputMethodManagerService: isImeSwitcherDisabledPackage : false
+08-14 17:08:45.644  1726  1944 D InputMethodManagerService: shouldShowImeSwitcherLocked : checking vis : 3
+08-14 17:08:45.644  1726  1726 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true

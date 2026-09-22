@@ -1,0 +1,202 @@
+--------- beginning of main
+08-06 18:59:52.750 24739 24739 D OpenvpnNotificationService: Foreground service started/updated: 1642
+08-06 18:59:52.751  2357  3463 D SecFgsManagerController: onForegroundStateChanged: [dialog:false]:[isForeground:true]:[packageName:net.openvpn.openvpn]:[token:android.os.BinderProxy@7de164b]:[userId:0]
+--------- beginning of system
+08-06 18:59:52.959  1726  1726 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+08-06 18:59:52.978  1726  1726 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+08-06 18:59:52.999  1726  3181 W FreecessController: getAllRunningPackagePids: Failed to read pid from /sys/fs/cgroup/apps/uid_10312/pid_4966/cgroup.procs
+08-06 18:59:53.006  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted net.openvpn.openvpn: 0|net.openvpn.openvpn|1642|null|10466: 0
+08-06 18:59:53.006  2870  6282 I HoneySpace.NotificationListener: invalid notification: net.openvpn.openvpn UserHandle{0}: canShowBadge is false
+08-06 18:59:53.008  1726  3183 D ActivityManager: unpendingScheduleServiceRestart: u=10312, drop=false
+08-06 18:59:53.010  2870  6058 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. net.openvpn.openvpn/net.openvpn.unified.MainActivity#UserHandle{0}|33979 : 0
+08-06 18:59:53.012  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-06 18:59:53.013  6020  6488 I NotificationPipeline: Processing new notification: 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.015  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-06 18:59:53.015  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted net.openvpn.openvpn: 0|net.openvpn.openvpn|1642|null|10466: 0
+08-06 18:59:53.015  2870  6282 I HoneySpace.NotificationListener: invalid notification: net.openvpn.openvpn UserHandle{0}: canShowBadge is false
+08-06 18:59:53.015  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1642
+08-06 18:59:53.018  1726  3186 W LocationManagerService: onFreezeStateChanged, uid[10312]=false
+08-06 18:59:53.018  1726  3181 D FreecessController: UFZ : com.samsung.android.game.gamehome(10312) [5649] reason: Binder(1)-android.service.notification.INotificatio
+08-06 18:59:53.018  1726  3186 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10312 , disable= false
+08-06 18:59:53.018  1726  3186 I PowerManagerService: [PWL] can not change uid =  10312
+08-06 18:59:53.018  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.021  2870  6058 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. net.openvpn.openvpn/net.openvpn.unified.MainActivity#UserHandle{0}|33979 : 0
+08-06 18:59:53.021  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-06 18:59:53.022  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.022  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-06 18:59:53.022  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-06 18:59:53.023  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-06 18:59:53.023  6020  6488 I NotificationPipeline: Discarding notification: 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.025  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.026  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-06 18:59:53.027  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.028  6020  6488 I NotificationPipeline: Processing new notification: 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.028  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.028  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-06 18:59:53.028  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-06 18:59:53.028  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1642
+08-06 18:59:53.029  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-06 18:59:53.029  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-06 18:59:53.030  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-06 18:59:53.030  6020  6488 I NotificationPipeline: Discarding notification: 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.030  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.046  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-06 18:59:53.051  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-06 18:59:53.052  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.052  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.055  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-06 18:59:53.056  2357  2357 I AODNotificationManager: updateNotification() 
+08-06 18:59:53.089  2357  2357 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+08-06 18:59:53.108  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-06 18:59:53.112  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.112  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.112  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.112  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.114  2357  2357 D S.S.N.  : entryViewBound parent :0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.116  2357  2357 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+08-06 18:59:53.123  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-06 18:59:53.126  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-06 18:59:53.127  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.127  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-06 18:59:53.127  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-06 18:59:53.127  2357  2357 I AODNotificationManager: updateNotification() 
+08-06 18:59:53.439  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786031993
+08-06 18:59:53.439  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-06 18:59:53.440  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-06 18:59:53.440  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29767199
+08-06 18:59:53.440  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29767172
+08-06 18:59:53.440  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-06 18:59:53.440  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-06 18:59:53.441  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-06 18:59:53.441  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-06 18:59:53.441  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-06 18:59:53.475  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-06 18:59:53.482  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 38241, isSameBssidAndFreq true
+08-06 18:59:53.484  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:22 syn=2, rto=0, cwnd=0
+08-06 18:59:53.484  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:23 syn=2, rto=0, cwnd=0
+08-06 18:59:53.485  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:24 syn=0, rto=0, cwnd=2
+08-06 18:59:53.485  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:25 syn=0, rto=0, cwnd=2
+08-06 18:59:53.485  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:26 syn=0, rto=0, cwnd=2
+08-06 18:59:53.485  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:27 syn=0, rto=0, cwnd=2
+08-06 18:59:53.488  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786031993488 lastDateWindow=1785781227000
+08-06 18:59:53.495  2357  2472 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+08-06 18:59:53.496  2870  2971 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236038, activityId=2131236042)
+08-06 18:59:53.517  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-06 18:59:53.524  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-06 18:59:53.531  1437  1437 I SurfaceFlinger: SFWD update time=185909610017456
+08-06 18:59:53.535  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-06 18:59:53.535  1437  1437 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+08-06 18:59:53.536  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-06 18:59:53.541  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-06 18:59:53.541  1325  9351 I display : Current VRR MODE is 3
+08-06 18:59:53.541  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-06 18:59:53.541  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-06 18:59:53.542  1325  9351 I display : commit modeset : 1080x2340@120hs
+08-06 18:59:53.556  1325  9351 W display : deliverWinConfigData:: commit modeset time (14 ms)
+08-06 18:59:53.561  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-06 18:59:53.562  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-06 18:59:53.571  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-06 18:59:53.572  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-06 18:59:53.572  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-06 18:59:53.572  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-06 18:59:53.572  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-06 18:59:53.572  1325  1397 I display : Set Affinity CPU ID : 0
+08-06 18:59:53.572  1325  1397 I display : Set Affinity CPU ID : 1
+08-06 18:59:53.572  1325  1397 I display : Set Affinity CPU ID : 2
+08-06 18:59:53.572  1325  1397 I display : Set Affinity CPU ID : 3
+08-06 18:59:53.572  1325  1397 I display : Set Affinity CPU ID : 4
+08-06 18:59:53.572  1325  1397 I display : Set Affinity CPU ID : 5
+08-06 18:59:53.572  1325  1397 I display : Set Affinity CPU ID : 6
+08-06 18:59:53.572  1325  1397 I display : Set Affinity CPU ID : 7
+08-06 18:59:53.572  1325  1397 I display : Set affinity HWC : 1325
+08-06 18:59:53.572  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-06 18:59:53.572  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-06 18:59:53.572  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-06 18:59:53.574  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-06 18:59:53.768  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-06 18:59:53.771  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-06 18:59:53.772  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-06 18:59:53.774  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-06 18:59:53.774  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-06 18:59:53.775  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-06 18:59:53.778  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-06 18:59:53.778  1325  9351 I display : Current VRR MODE is 3
+08-06 18:59:53.778  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-06 18:59:53.778  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-06 18:59:53.778  1325  9351 I display : commit modeset : 1080x2340@60phs
+08-06 18:59:53.793   730   730 D io_stats: !@   8,0 r 27648034 527959105 w 8465105 152908008 d 2453386 197829648 f 0 807079 iot 12635184 0 th 0 0 0 pt 0 inp 0 0 185909.871
+08-06 18:59:53.797  1325  9351 W display : deliverWinConfigData:: commit modeset time (18 ms)
+08-06 18:59:53.798  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-06 18:59:53.798  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 18:59:53.798  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-06 18:59:53.798  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 18:59:53.798  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-06 18:59:53.798  1325  1397 I display : Set Affinity CPU ID : 0
+08-06 18:59:53.798  1325  1397 I display : Set Affinity CPU ID : 1
+08-06 18:59:53.798  1325  1397 I display : Set Affinity CPU ID : 2
+08-06 18:59:53.798  1325  1397 I display : Set Affinity CPU ID : 3
+08-06 18:59:53.798  1325  1397 I display : Set Affinity CPU ID : 4
+08-06 18:59:53.798  1325  1397 I display : Set Affinity CPU ID : 5
+08-06 18:59:53.798  1325  1397 I display : Set Affinity CPU ID : 6
+08-06 18:59:53.798  1325  1397 I display : Set Affinity CPU ID : 7
+08-06 18:59:53.799  1325  1397 I display : Set affinity HWC : 1325
+08-06 18:59:53.799  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-06 18:59:53.799  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-06 18:59:53.799  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-06 18:59:53.799  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-06 18:59:53.801  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-06 18:59:54.349  1326  1393 E BatteryDump: !@new_battery_dump : 4344,2,1400,2054,100,314,319,320,314,0,311,302,0,Full,NO_CHARGING,None,Good,PDIC,0,Normal,0,0,5400,0x18000,0x10010000,0x0,0,0,0000,0000,ffff0700,0,0,0,0,680,4344,10000,983,0,
+08-06 18:59:54.363  1326  1326 I android.hardware.health@2.1-service-samsung: updateLrpSysfs: write: 311
+08-06 18:59:54.439  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786031994
+08-06 18:59:54.439  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-06 18:59:54.439  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-06 18:59:54.439  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29767199
+08-06 18:59:54.439  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29767172
+08-06 18:59:54.440  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-06 18:59:54.440  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-06 18:59:54.440  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-06 18:59:54.440  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-06 18:59:54.440  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-06 18:59:54.824  2357  2472 D Tile.CustomTile: handleSetListening  true  initialized=true  isTileReady=true  getTileSpec() = custom(com.samsung.android.mydevice/.quicksettings.MyDeviceTileService)
+08-06 18:59:54.861  2357  2472 D Tile.CustomTile: handleSetListening  false  initialized=true  isTileReady=true  getTileSpec() = custom(com.samsung.android.mydevice/.quicksettings.MyDeviceTileService)
+08-06 18:59:54.862  2357  2472 D TileLifecycleManager: onStopListening ComponentInfo{com.samsung.android.mydevice/com.samsung.android.mydevice.quicksettings.MyDeviceTileService}
+08-06 18:59:54.862  2357  2472 D Tile.CustomTile: handleSetListening  true  initialized=true  isTileReady=true  getTileSpec() = custom(com.samsung.android.smartmirroring/.tile.SmartMirroringTile)
+08-06 18:59:54.863  2357  2357 D SecQSCommonTileView: handleStateChanged state.spec = custom(com.samsung.android.mydevice/.quicksettings.MyDeviceTileService), parent = LargeTileView{@b366202, #7f0a0df0, app:id/tile_label V, label = @b366202, #7f0a0df0, app:id/tile_label V, iconFrame = @7908713 V, icon = @d637d50 V, common = @f6aeb49}, labelContainer = @224460f, #7f0a0661, app:id/label_group V, label = @b366202, #7f0a0df0, app:id/tile_label V, iconFrame = @7908713 V, icon = @d637d50 V, common = @f6aeb49
+08-06 18:59:54.866  2357  2472 D Tile.CustomTile: handleSetListening  true  initialized=true  isTileReady=true  getTileSpec() = custom(com.samsung.android.app.routines/.LifestyleModeTile)
+08-06 18:59:54.872  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-06 18:59:54.878  2357  2357 D SecQSCommonTileView: handleStateChanged state.spec = custom(com.samsung.android.mydevice/.quicksettings.MyDeviceTileService), parent = LargeTileView{@b366202, #7f0a0df0, app:id/tile_label V, label = @b366202, #7f0a0df0, app:id/tile_label V, iconFrame = @7908713 V, icon = @d637d50 V, common = @f6aeb49}, labelContainer = @224460f, #7f0a0661, app:id/label_group V, label = @b366202, #7f0a0df0, app:id/tile_label V, iconFrame = @7908713 V, icon = @d637d50 V, common = @f6aeb49
+08-06 18:59:54.880  2357  2357 D SecQSCommonTileView: handleStateChanged state.spec = custom(com.samsung.android.smartmirroring/.tile.SmartMirroringTile), parent = LargeTileView{@2a80d89, #7f0a0df0, app:id/tile_label V, label = @2a80d89, #7f0a0df0, app:id/tile_label V, iconFrame = @6a3b18e V, icon = @5a00daf V, common = @dab55bc}, labelContainer = @a5fb370, #7f0a0661, app:id/label_group V, label = @2a80d89, #7f0a0df0, app:id/tile_label V, iconFrame = @6a3b18e V, icon = @5a00daf V, common = @dab55bc
+08-06 18:59:54.890  2357  2472 D Tile.CustomTile: handleSetListening  false  initialized=true  isTileReady=true  getTileSpec() = custom(com.samsung.android.smartmirroring/.tile.SmartMirroringTile)
+08-06 18:59:54.890  2357  2472 D TileLifecycleManager: onStopListening ComponentInfo{com.samsung.android.smartmirroring/com.samsung.android.smartmirroring.tile.SmartMirroringTile}
+08-06 18:59:54.891  2357  2472 D Tile.CustomTile: handleSetListening  false  initialized=true  isTileReady=true  getTileSpec() = custom(com.samsung.android.app.routines/.LifestyleModeTile)
+08-06 18:59:54.891  2357  2472 D TileLifecycleManager: onStopListening ComponentInfo{com.samsung.android.app.routines/com.samsung.android.app.routines.LifestyleModeTile}
+08-06 18:59:54.896  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-06 18:59:54.900  2357  2357 D SecQSCommonTileView: handleStateChanged state.spec = custom(com.samsung.android.app.routines/.LifestyleModeTile), parent = LargeTileView{@17af945, #7f0a0df0, app:id/tile_label V, label = @17af945, #7f0a0df0, app:id/tile_label V, iconFrame = @9ad589a V, icon = @e9d5cb V, common = @8b611a8}, labelContainer = @c0bb6e9, #7f0a0661, app:id/label_group V, label = @17af945, #7f0a0df0, app:id/tile_label V, iconFrame = @9ad589a V, icon = @e9d5cb V, common = @8b611a8
+08-06 18:59:54.900  2357  2357 D SecQSCommonTileView: handleStateChanged state.spec = custom(com.samsung.android.smartmirroring/.tile.SmartMirroringTile), parent = LargeTileView{@2a80d89, #7f0a0df0, app:id/tile_label V, label = @2a80d89, #7f0a0df0, app:id/tile_label V, iconFrame = @6a3b18e V, icon = @5a00daf V, common = @dab55bc}, labelContainer = @a5fb370, #7f0a0661, app:id/label_group V, label = @2a80d89, #7f0a0df0, app:id/tile_label V, iconFrame = @6a3b18e V, icon = @5a00daf V, common = @dab55bc
+08-06 18:59:54.901  2357  2357 D SecQSCommonTileView: handleStateChanged state.spec = custom(com.samsung.android.app.routines/.LifestyleModeTile), parent = LargeTileView{@17af945, #7f0a0df0, app:id/tile_label V, label = @17af945, #7f0a0df0, app:id/tile_label V, iconFrame = @9ad589a V, icon = @e9d5cb V, common = @8b611a8}, labelContainer = @c0bb6e9, #7f0a0661, app:id/label_group V, label = @17af945, #7f0a0df0, app:id/tile_label V, iconFrame = @9ad589a V, icon = @e9d5cb V, common = @8b611a8
+08-06 18:59:54.987 25540 25540 I wpa_supplicant: Heartbeat 1794
+08-06 18:59:55.440  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786031995
+08-06 18:59:55.440  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-06 18:59:55.440  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-06 18:59:55.440  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29767199
+08-06 18:59:55.441  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29767172
+08-06 18:59:55.441  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-06 18:59:55.441  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-06 18:59:55.442  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-06 18:59:55.442  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-06 18:59:55.442  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-06 18:59:55.794   730   730 D io_stats: !@   8,0 r 27648057 527959401 w 8465107 152908016 d 2453386 197829648 f 0 807079 iot 12635244 0 th 0 0 0 pt 0 inp 0 0 185911.873
+08-06 18:59:55.795   730   730 D io_stats: !@ Read_top(KB): ndroid.systemui(2357) 292 kworker/0:2H(6009) 4
+08-06 18:59:55.795   730   730 D io_stats: !@ Write_top(KB): kworker/u16:0(4748) 132 ugin:persistent(6020) 8 android.hardwar(1326) 8
+08-06 18:59:56.439  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786031996
+08-06 18:59:56.439  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-06 18:59:56.439  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-06 18:59:56.440  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29767199
+08-06 18:59:56.440  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29767172
+08-06 18:59:56.440  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-06 18:59:56.440  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-06 18:59:56.440  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-06 18:59:56.440  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-06 18:59:56.440  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-06 18:59:56.442 12658 12658 I adbd    : adbd service requested 'shell,v2:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''
+08-06 18:59:56.511  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL

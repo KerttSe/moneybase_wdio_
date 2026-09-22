@@ -1,0 +1,202 @@
+--------- beginning of main
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1019 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1017 CPU cluster # mismatch: Power Profile # 2 actual # 4
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1017 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1013 CPU cluster # mismatch: Power Profile # 2 actual # 4
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1013 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1010 CPU cluster # mismatch: Power Profile # 2 actual # 4
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1010 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1003 CPU cluster # mismatch: Power Profile # 2 actual # 4
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1003 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1002 CPU cluster # mismatch: Power Profile # 2 actual # 4
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1002 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1002 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1002 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1002 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1001 CPU cluster # mismatch: Power Profile # 2 actual # 4
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1001 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1001 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1001 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1000 CPU cluster # mismatch: Power Profile # 2 actual # 4
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1000 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1000 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 1000 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 0 CPU cluster # mismatch: Power Profile # 2 actual # 4
+04-27 10:00:00.044   540   554 W CpuPowerCalculator: UID 0 CPU freq # mismatch: Power Profile # 2 actual # 8
+04-27 10:00:00.045  1343  1397 D EGL_emulation: app_time_stats: avg=8616.81ms min=8616.81ms max=8616.81ms count=1
+04-27 10:00:00.047  1343  1343 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+04-27 10:00:00.054 10943 10951 W ndroid.settings: Reducing the number of considered missed Gc histogram windows from 360 to 100
+04-27 10:00:00.155 10943  3621 W DataProcessor: shouldShowBatteryAttributionList(): 0.1
+04-27 10:00:00.155 10943  3621 W BatteryUsageDataLoader: getBatteryEntryList() returns null or empty content
+04-27 10:00:00.155 10943  3621 D BatteryUsageDataLoader: getBatteryUsageStats() in 127/ms
+04-27 10:00:00.160 10943  3621 D DatabaseUtils: insert() data into database with isFullChargeStart:false
+04-27 10:00:00.160 10943  3621 D DatabaseUtils: sendBatteryEntryData() size=1 in 5/ms
+04-27 10:00:00.161 10943  6849 D AppUsageDataLoader: loadAppUsageDataSafely() in the AsyncTask
+04-27 10:00:00.161 10943  6849 D BatteryUsageContentProvider: getQueryUserId from uri: content://com.android.settings.battery.usage.provider/appUsageLatestTimestamp?userid=0
+04-27 10:00:00.162 10943  6849 D BatteryUsageContentProvider: query app usage latest timestamp 1777273200161 for user 0 in 1/ms
+04-27 10:00:00.165 10943  6849 D DatabaseUtils: getAppUsageStartTimestampOfUser() userId=0 latestTimestamp=Apr 24, 2026, 21:58:06 in 4/ms
+04-27 10:00:00.168 10943  6849 D DataProcessor: getAppUsageEventsForUser(): 0 from 1777057086861 to 1777273200161 in 3/ms
+04-27 10:00:00.168 10943  6849 D DataProcessor: getAppUsageEvents() for all unlocked users in 7/ms
+04-27 10:00:00.168 10943  6849 W DataProcessor: Read 0 relevant events (61 total) from UsageStatsManager
+04-27 10:00:00.168 10943  6849 W AppUsageDataLoader: loadAppUsageData() returns null or empty content
+04-27 10:00:01.385  1343  1343 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+04-27 10:00:01.806  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:01.807  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:01.807  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+04-27 10:00:01.807  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+04-27 10:00:01.808  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+04-27 10:00:01.808  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+04-27 10:00:01.809  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000058/dl-PlayCloudSearch.optional_261464100000.dm': No such file or directory
+04-27 10:00:01.809  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000058/dl-PlayCloudSearch.optional_261464100000.dm': No such file or directory
+04-27 10:00:01.809  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+04-27 10:00:01.809  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+04-27 10:00:01.810  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000059/dl-MlkitOcrCommon.optional_261464100400.dm': No such file or directory
+04-27 10:00:01.810  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000059/dl-MlkitOcrCommon.optional_261464100400.dm': No such file or directory
+04-27 10:00:01.812  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000009/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+04-27 10:00:01.812  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000009/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+04-27 10:00:01.813  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+04-27 10:00:01.813  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+04-27 10:00:01.814  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:01.814  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+04-27 10:00:01.814  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+04-27 10:00:01.815  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:01.815  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:01.815  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:01.816  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~ZPuhfh7ltntmSTXV09u0sQ==/com.google.android.gms-FDBEN0Vac69_Pv22zo1u-g==/base.apk, fd=-1
+04-27 10:00:01.816  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:01.816  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:01.818  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005c/dl-MlkitBarcodeUi.optional_261464100400.dm': No such file or directory
+04-27 10:00:01.818  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005c/dl-MlkitBarcodeUi.optional_261464100400.dm': No such file or directory
+04-27 10:00:01.818  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:01.819  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005a/dl-VisionOcr.optional_261464100000.dm': No such file or directory
+04-27 10:00:01.819  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005a/dl-VisionOcr.optional_261464100000.dm': No such file or directory
+04-27 10:00:01.820  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~ZPuhfh7ltntmSTXV09u0sQ==/com.google.android.gms-FDBEN0Vac69_Pv22zo1u-g==/base.apk, fd=-1
+04-27 10:00:01.820  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:01.821  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005b/dl-Appsearch.optional_261464100400.dm': No such file or directory
+04-27 10:00:01.821  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005b/dl-Appsearch.optional_261464100400.dm': No such file or directory
+04-27 10:00:01.822  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:01.823  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+04-27 10:00:01.823  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+04-27 10:00:01.823  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:01.823  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:01.824  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:01.824  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:01.825  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:01.825  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~ZPuhfh7ltntmSTXV09u0sQ==/com.google.android.gms-FDBEN0Vac69_Pv22zo1u-g==/base.apk, fd=-1
+04-27 10:00:01.825  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~ZPuhfh7ltntmSTXV09u0sQ==/com.google.android.gms-FDBEN0Vac69_Pv22zo1u-g==/base.apk, fd=-1
+04-27 10:00:01.827  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:01.829  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:01.829  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~ZPuhfh7ltntmSTXV09u0sQ==/com.google.android.gms-FDBEN0Vac69_Pv22zo1u-g==/base.apk, fd=-1
+04-27 10:00:01.830  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~W3i221IpBN7M8ax3-cqQRg==/com.android.vending-xKm5jg-o0SYY1LcrBsytrQ==/base.apk, fd=-1
+--------- beginning of system
+04-27 10:00:06.725   540   554 W BatteryExternalStatsWorker: error reading Bluetooth stats: 11
+04-27 10:00:06.726   540   746 D TelephonyManager: requestModemActivityInfo: Sending result to app: ModemActivityInfo{ mTimestamp=235800585 mSleepTimeMs=0 mIdleTimeMs=234388132 mActivityStatsTechSpecificInfo=[{mRat=UNKNOWN,mFrequencyRange=UNKNOWN,mTxTimeMs[]=[0, 0, 0, 0, 0],mRxTimeMs=0}]}
+04-27 10:00:10.040   540   611 I ActivityManager: Killing 10223:com.google.android.permissioncontroller/u0a185 (adj 985): empty #17
+04-27 10:00:10.050   540   569 I libprocessgroup: Successfully killed process cgroup uid 10185 pid 10223 in 2ms
+04-27 10:00:10.070  6738  6748 W System  : A resource failed to call AbstractCursor.close. 
+04-27 10:00:10.071  6738  6748 W System  : A resource failed to call AbstractCursor.close. 
+04-27 10:00:10.083   352   352 I Zygote  : Process 10223 exited due to signal 9 (Killed)
+04-27 10:00:10.084   540   557 D DisplayManagerService: Drop pending events for gone uid 10185
+04-27 10:00:11.380  1343  1343 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+04-27 10:00:11.416  1343  1397 D EGL_emulation: app_time_stats: avg=11370.40ms min=11370.40ms max=11370.40ms count=1
+04-27 10:00:11.816  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:11.817  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:11.817  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+04-27 10:00:11.817  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+04-27 10:00:11.818  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+04-27 10:00:11.818  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+04-27 10:00:11.819  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000058/dl-PlayCloudSearch.optional_261464100000.dm': No such file or directory
+04-27 10:00:11.819  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000058/dl-PlayCloudSearch.optional_261464100000.dm': No such file or directory
+04-27 10:00:11.819  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+04-27 10:00:11.819  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+04-27 10:00:11.820  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000059/dl-MlkitOcrCommon.optional_261464100400.dm': No such file or directory
+04-27 10:00:11.820  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000059/dl-MlkitOcrCommon.optional_261464100400.dm': No such file or directory
+04-27 10:00:11.821  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000009/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+04-27 10:00:11.821  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000009/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+04-27 10:00:11.822  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+04-27 10:00:11.822  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+04-27 10:00:11.823  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:11.823  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+04-27 10:00:11.823  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+04-27 10:00:11.823  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:11.824  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:11.824  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:11.825  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~ZPuhfh7ltntmSTXV09u0sQ==/com.google.android.gms-FDBEN0Vac69_Pv22zo1u-g==/base.apk, fd=-1
+04-27 10:00:11.825  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:11.825  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:11.826  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005c/dl-MlkitBarcodeUi.optional_261464100400.dm': No such file or directory
+04-27 10:00:11.826  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005c/dl-MlkitBarcodeUi.optional_261464100400.dm': No such file or directory
+04-27 10:00:11.827  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:11.828  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005a/dl-VisionOcr.optional_261464100000.dm': No such file or directory
+04-27 10:00:11.828  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005a/dl-VisionOcr.optional_261464100000.dm': No such file or directory
+04-27 10:00:11.829  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~ZPuhfh7ltntmSTXV09u0sQ==/com.google.android.gms-FDBEN0Vac69_Pv22zo1u-g==/base.apk, fd=-1
+04-27 10:00:11.829  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:11.830  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005b/dl-Appsearch.optional_261464100400.dm': No such file or directory
+04-27 10:00:11.830  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005b/dl-Appsearch.optional_261464100400.dm': No such file or directory
+04-27 10:00:11.830  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:11.831  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+04-27 10:00:11.831  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+04-27 10:00:11.832  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:11.832  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:11.832  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:11.833  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:11.833  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:11.834  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~ZPuhfh7ltntmSTXV09u0sQ==/com.google.android.gms-FDBEN0Vac69_Pv22zo1u-g==/base.apk, fd=-1
+04-27 10:00:11.834  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~ZPuhfh7ltntmSTXV09u0sQ==/com.google.android.gms-FDBEN0Vac69_Pv22zo1u-g==/base.apk, fd=-1
+04-27 10:00:11.836  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:11.837  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:11.838  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~ZPuhfh7ltntmSTXV09u0sQ==/com.google.android.gms-FDBEN0Vac69_Pv22zo1u-g==/base.apk, fd=-1
+04-27 10:00:11.838  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~W3i221IpBN7M8ax3-cqQRg==/com.android.vending-xKm5jg-o0SYY1LcrBsytrQ==/base.apk, fd=-1
+04-27 10:00:13.614   540  3274 D WifiNl80211Manager: Scan result ready event
+04-27 10:00:13.614   540  3274 D WifiNative: Scan result ready event
+04-27 10:00:20.078   540   618 D ActivityManager: freezing 10943 com.android.settings
+04-27 10:00:20.082   540   618 D ActivityManager: freezing 6738 android.process.acore
+04-27 10:00:21.386  1343  1343 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+04-27 10:00:21.821  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:21.821  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:21.822  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+04-27 10:00:21.822  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+04-27 10:00:21.822  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+04-27 10:00:21.822  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+04-27 10:00:21.823  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000058/dl-PlayCloudSearch.optional_261464100000.dm': No such file or directory
+04-27 10:00:21.823  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000058/dl-PlayCloudSearch.optional_261464100000.dm': No such file or directory
+04-27 10:00:21.823  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+04-27 10:00:21.823  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+04-27 10:00:21.824  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000059/dl-MlkitOcrCommon.optional_261464100400.dm': No such file or directory
+04-27 10:00:21.824  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000059/dl-MlkitOcrCommon.optional_261464100400.dm': No such file or directory
+04-27 10:00:21.826  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000009/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+04-27 10:00:21.826  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000009/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+04-27 10:00:21.828  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+04-27 10:00:21.828  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+04-27 10:00:21.829  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:21.829  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+04-27 10:00:21.829  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+04-27 10:00:21.829  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:21.830  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:21.831  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:21.832  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~ZPuhfh7ltntmSTXV09u0sQ==/com.google.android.gms-FDBEN0Vac69_Pv22zo1u-g==/base.apk, fd=-1
+04-27 10:00:21.832  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:21.833  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:21.834  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005c/dl-MlkitBarcodeUi.optional_261464100400.dm': No such file or directory
+04-27 10:00:21.834  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005c/dl-MlkitBarcodeUi.optional_261464100400.dm': No such file or directory
+04-27 10:00:21.835  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:21.836  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005a/dl-VisionOcr.optional_261464100000.dm': No such file or directory
+04-27 10:00:21.836  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005a/dl-VisionOcr.optional_261464100000.dm': No such file or directory
+04-27 10:00:21.836  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~ZPuhfh7ltntmSTXV09u0sQ==/com.google.android.gms-FDBEN0Vac69_Pv22zo1u-g==/base.apk, fd=-1
+04-27 10:00:21.837  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:21.838  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005b/dl-Appsearch.optional_261464100400.dm': No such file or directory
+04-27 10:00:21.838  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000005b/dl-Appsearch.optional_261464100400.dm': No such file or directory
+04-27 10:00:21.838  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:21.839  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+04-27 10:00:21.839  2283  2283 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+04-27 10:00:21.840  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:21.840  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:21.840  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:21.841  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~YHAAdo24AihN_maLAklEXw==/com.google.android.gms-mgkBTzz4lbvRXyDosdEj1w==/base.apk, fd=-1
+04-27 10:00:21.841  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:21.842  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~ZPuhfh7ltntmSTXV09u0sQ==/com.google.android.gms-FDBEN0Vac69_Pv22zo1u-g==/base.apk, fd=-1
+04-27 10:00:21.842  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~ZPuhfh7ltntmSTXV09u0sQ==/com.google.android.gms-FDBEN0Vac69_Pv22zo1u-g==/base.apk, fd=-1
+04-27 10:00:21.844  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:21.845  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-27 10:00:21.845  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~ZPuhfh7ltntmSTXV09u0sQ==/com.google.android.gms-FDBEN0Vac69_Pv22zo1u-g==/base.apk, fd=-1
+04-27 10:00:21.846  2283  2283 W artd    : Could not get dex checksums for location /data/app/~~W3i221IpBN7M8ax3-cqQRg==/com.android.vending-xKm5jg-o0SYY1LcrBsytrQ==/base.apk, fd=-1

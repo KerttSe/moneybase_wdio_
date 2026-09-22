@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppiumAUT>
+  <XCUIElementTypeApplication type="XCUIElementTypeApplication" name="moneybase stg" label="moneybase stg" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="" processId="2100" bundleId="com.moneybase.quality">
+    <XCUIElementTypeWindow type="XCUIElementTypeWindow" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+            <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+                  <XCUIElementTypeNavigationBar type="XCUIElementTypeNavigationBar" name="Wallet Manager" enabled="true" visible="true" accessible="false" x="0" y="53" width="393" height="45" index="0" traits="">
+                    <XCUIElementTypeButton type="XCUIElementTypeButton" name="Add Funds" label="Add Funds" enabled="true" visible="true" accessible="true" x="0" y="53" width="112" height="45" index="0" traits="Button"/>
+                    <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Wallet Manager" name="Wallet Manager" label="Wallet Manager" enabled="true" visible="true" accessible="true" x="134" y="65" width="125" height="21" index="1" traits="Header"/>
+                    <XCUIElementTypeButton type="XCUIElementTypeButton" enabled="true" visible="true" accessible="true" x="338" y="53" width="47" height="45" index="2" traits="Button"/>
+                  </XCUIElementTypeNavigationBar>
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="1" traits="">
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+                      <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+                        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+                          <XCUIElementTypeTable type="XCUIElementTypeTable" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+                            <XCUIElementTypeCell type="XCUIElementTypeCell" enabled="true" visible="true" accessible="true" x="16" y="132" width="361" height="66" index="0" traits="Button">
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="EUR" name="EUR" label="EUR" enabled="true" visible="true" accessible="true" x="72" y="151" width="40" height="29" index="0" traits="StaticText"/>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Euro" name="Euro" label="Euro" enabled="true" visible="true" accessible="true" x="128" y="155" width="94" height="21" index="1" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="132" width="361" height="66" index="2" traits="">
+                                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="132" width="361" height="66" index="0" traits=""/>
+                              </XCUIElementTypeOther>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="€72,354.35" name="€72,354.35" label="€72,354.35" enabled="true" visible="true" accessible="true" x="238" y="155" width="91" height="21" index="3" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="24" y="196" width="327" height="2" index="4" traits=""/>
+                              <XCUIElementTypeImage type="XCUIElementTypeImage" name="chevron.right" label="Forward" enabled="true" visible="true" accessible="false" x="343" y="157" width="12" height="16" index="5" traits="Image"/>
+                            </XCUIElementTypeCell>
+                            <XCUIElementTypeCell type="XCUIElementTypeCell" enabled="true" visible="true" accessible="true" x="16" y="197" width="361" height="66" index="1" traits="Button">
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="GBP" name="GBP" label="GBP" enabled="true" visible="true" accessible="true" x="72" y="216" width="40" height="29" index="0" traits="StaticText"/>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="British Pound" name="British Pound" label="British Pound" enabled="true" visible="true" accessible="true" x="128" y="220" width="139" height="21" index="1" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="197" width="361" height="66" index="2" traits="">
+                                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="197" width="361" height="66" index="0" traits=""/>
+                              </XCUIElementTypeOther>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="£0.00" name="£0.00" label="£0.00" enabled="true" visible="true" accessible="true" x="283" y="220" width="46" height="21" index="3" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="24" y="261" width="327" height="2" index="4" traits=""/>
+                              <XCUIElementTypeImage type="XCUIElementTypeImage" name="chevron.right" label="Forward" enabled="true" visible="true" accessible="false" x="343" y="222" width="12" height="16" index="5" traits="Image"/>
+                            </XCUIElementTypeCell>
+                            <XCUIElementTypeCell type="XCUIElementTypeCell" enabled="true" visible="true" accessible="true" x="16" y="262" width="361" height="66" index="2" traits="Button">
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="USD" name="USD" label="USD" enabled="true" visible="true" accessible="true" x="72" y="281" width="40" height="29" index="0" traits="StaticText"/>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="US Dollar" name="US Dollar" label="US Dollar" enabled="true" visible="true" accessible="true" x="128" y="275" width="106" height="21" index="1" traits="StaticText"/>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Dollar wallet" name="Dollar wallet" label="Dollar wallet" enabled="true" visible="true" accessible="true" x="128" y="297" width="106" height="19" index="2" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="262" width="361" height="66" index="3" traits="">
+                                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="262" width="361" height="66" index="0" traits=""/>
+                              </XCUIElementTypeOther>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="$7,383.95" name="$7,383.95" label="$7,383.95" enabled="true" visible="true" accessible="true" x="249" y="285" width="80" height="21" index="4" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="24" y="326" width="327" height="2" index="5" traits=""/>
+                              <XCUIElementTypeImage type="XCUIElementTypeImage" name="chevron.right" label="Forward" enabled="true" visible="true" accessible="false" x="343" y="287" width="12" height="16" index="6" traits="Image"/>
+                            </XCUIElementTypeCell>
+                            <XCUIElementTypeCell type="XCUIElementTypeCell" enabled="true" visible="true" accessible="true" x="16" y="327" width="361" height="66" index="3" traits="Button">
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="CHF" name="CHF" label="CHF" enabled="true" visible="true" accessible="true" x="72" y="346" width="40" height="29" index="0" traits="StaticText"/>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Swiss Franc" name="Swiss Franc" label="Swiss Franc" enabled="true" visible="true" accessible="true" x="128" y="350" width="102" height="21" index="1" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="327" width="361" height="66" index="2" traits="">
+                                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="327" width="361" height="66" index="0" traits=""/>
+                              </XCUIElementTypeOther>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="CHF 20.00" name="CHF 20.00" label="CHF 20.00" enabled="true" visible="true" accessible="true" x="245" y="350" width="84" height="21" index="3" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="24" y="391" width="327" height="2" index="4" traits=""/>
+                              <XCUIElementTypeImage type="XCUIElementTypeImage" name="chevron.right" label="Forward" enabled="true" visible="true" accessible="false" x="343" y="352" width="12" height="16" index="5" traits="Image"/>
+                            </XCUIElementTypeCell>
+                            <XCUIElementTypeCell type="XCUIElementTypeCell" enabled="true" visible="true" accessible="true" x="16" y="392" width="361" height="66" index="4" traits="Button">
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="CAD" name="CAD" label="CAD" enabled="true" visible="true" accessible="true" x="72" y="411" width="40" height="29" index="0" traits="StaticText"/>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Canadian Dollar" name="Canadian Dollar" label="Canadian Dollar" enabled="true" visible="true" accessible="true" x="128" y="405" width="104" height="21" index="1" traits="StaticText"/>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Canadian Wallet" name="Canadian Wallet" label="Canadian Wallet" enabled="true" visible="true" accessible="true" x="128" y="427" width="104" height="19" index="2" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="392" width="361" height="66" index="3" traits="">
+                                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="392" width="361" height="66" index="0" traits=""/>
+                              </XCUIElementTypeOther>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="$2,906.99" name="$2,906.99" label="$2,906.99" enabled="true" visible="true" accessible="true" x="247" y="415" width="82" height="21" index="4" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="24" y="456" width="327" height="2" index="5" traits=""/>
+                              <XCUIElementTypeImage type="XCUIElementTypeImage" name="chevron.right" label="Forward" enabled="true" visible="true" accessible="false" x="343" y="417" width="12" height="16" index="6" traits="Image"/>
+                            </XCUIElementTypeCell>
+                            <XCUIElementTypeCell type="XCUIElementTypeCell" enabled="true" visible="true" accessible="true" x="16" y="457" width="361" height="66" index="5" traits="Button">
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="AUD" name="AUD" label="AUD" enabled="true" visible="true" accessible="true" x="72" y="476" width="40" height="29" index="0" traits="StaticText"/>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Australian Dollar" name="Australian Dollar" label="Australian Dollar" enabled="true" visible="true" accessible="true" x="128" y="480" width="129" height="21" index="1" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="457" width="361" height="66" index="2" traits="">
+                                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="457" width="361" height="66" index="0" traits=""/>
+                              </XCUIElementTypeOther>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="$30.83" name="$30.83" label="$30.83" enabled="true" visible="true" accessible="true" x="272" y="480" width="57" height="21" index="3" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="24" y="521" width="327" height="2" index="4" traits=""/>
+                              <XCUIElementTypeImage type="XCUIElementTypeImage" name="chevron.right" label="Forward" enabled="true" visible="true" accessible="false" x="343" y="482" width="12" height="16" index="5" traits="Image"/>
+                            </XCUIElementTypeCell>
+                            <XCUIElementTypeCell type="XCUIElementTypeCell" enabled="true" visible="true" accessible="true" x="16" y="522" width="361" height="66" index="6" traits="Button">
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="NZD" name="NZD" label="NZD" enabled="true" visible="true" accessible="true" x="72" y="541" width="40" height="29" index="0" traits="StaticText"/>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="New Zealand Dollar" name="New Zealand Dollar" label="New Zealand Dollar" enabled="true" visible="true" accessible="true" x="127" y="545" width="133" height="21" index="1" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="522" width="361" height="66" index="2" traits="">
+                                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="522" width="361" height="66" index="0" traits=""/>
+                              </XCUIElementTypeOther>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="$20.01" name="$20.01" label="$20.01" enabled="true" visible="true" accessible="true" x="275" y="545" width="55" height="21" index="3" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="24" y="586" width="327" height="2" index="4" traits=""/>
+                              <XCUIElementTypeImage type="XCUIElementTypeImage" name="chevron.right" label="Forward" enabled="true" visible="true" accessible="false" x="343" y="547" width="12" height="16" index="5" traits="Image"/>
+                            </XCUIElementTypeCell>
+                            <XCUIElementTypeCell type="XCUIElementTypeCell" enabled="true" visible="true" accessible="true" x="16" y="587" width="361" height="66" index="7" traits="Button">
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="PLN" name="PLN" label="PLN" enabled="true" visible="true" accessible="true" x="72" y="606" width="40" height="29" index="0" traits="StaticText"/>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Polish Zloty" name="Polish Zloty" label="Polish Zloty" enabled="true" visible="true" accessible="true" x="128" y="610" width="123" height="21" index="1" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="587" width="361" height="66" index="2" traits="">
+                                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="587" width="361" height="66" index="0" traits=""/>
+                              </XCUIElementTypeOther>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="zł 84.13" name="zł 84.13" label="zł 84.13" enabled="true" visible="true" accessible="true" x="267" y="610" width="62" height="21" index="3" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="24" y="651" width="327" height="2" index="4" traits=""/>
+                              <XCUIElementTypeImage type="XCUIElementTypeImage" name="chevron.right" label="Forward" enabled="true" visible="true" accessible="false" x="343" y="612" width="12" height="16" index="5" traits="Image"/>
+                            </XCUIElementTypeCell>
+                            <XCUIElementTypeCell type="XCUIElementTypeCell" enabled="true" visible="true" accessible="true" x="16" y="652" width="361" height="66" index="8" traits="Button">
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="SEK" name="SEK" label="SEK" enabled="true" visible="true" accessible="true" x="72" y="671" width="40" height="29" index="0" traits="StaticText"/>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Swedish Krona" name="Swedish Krona" label="Swedish Krona" enabled="true" visible="true" accessible="true" x="128" y="675" width="115" height="21" index="1" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="652" width="361" height="66" index="2" traits="">
+                                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="652" width="361" height="66" index="0" traits=""/>
+                              </XCUIElementTypeOther>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="kr 243.11" name="kr 243.11" label="kr 243.11" enabled="true" visible="true" accessible="true" x="258" y="675" width="71" height="21" index="3" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="24" y="716" width="327" height="2" index="4" traits=""/>
+                              <XCUIElementTypeImage type="XCUIElementTypeImage" name="chevron.right" label="Forward" enabled="true" visible="true" accessible="false" x="343" y="677" width="12" height="16" index="5" traits="Image"/>
+                            </XCUIElementTypeCell>
+                            <XCUIElementTypeCell type="XCUIElementTypeCell" enabled="true" visible="true" accessible="true" x="16" y="717" width="361" height="66" index="9" traits="Button">
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="NOK" name="NOK" label="NOK" enabled="true" visible="true" accessible="true" x="72" y="736" width="40" height="29" index="0" traits="StaticText"/>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Norwegian Krone" name="Norwegian Krone" label="Norwegian Krone" enabled="true" visible="true" accessible="true" x="128" y="740" width="112" height="21" index="1" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="717" width="361" height="66" index="2" traits="">
+                                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="717" width="361" height="66" index="0" traits=""/>
+                              </XCUIElementTypeOther>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="kr 242.18" name="kr 242.18" label="kr 242.18" enabled="true" visible="true" accessible="true" x="255" y="740" width="74" height="21" index="3" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="24" y="781" width="327" height="2" index="4" traits=""/>
+                              <XCUIElementTypeImage type="XCUIElementTypeImage" name="chevron.right" label="Forward" enabled="true" visible="true" accessible="false" x="343" y="742" width="12" height="16" index="5" traits="Image"/>
+                            </XCUIElementTypeCell>
+                            <XCUIElementTypeCell type="XCUIElementTypeCell" enabled="true" visible="false" accessible="true" x="16" y="782" width="361" height="66" index="10" traits="Button">
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="HKD" name="HKD" label="HKD" enabled="true" visible="false" accessible="true" x="72" y="801" width="40" height="29" index="0" traits="StaticText"/>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Hong Kong Dollar" name="Hong Kong Dollar" label="Hong Kong Dollar" enabled="true" visible="false" accessible="true" x="128" y="805" width="99" height="21" index="1" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="16" y="782" width="361" height="66" index="2" traits="">
+                                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="16" y="782" width="361" height="66" index="0" traits=""/>
+                              </XCUIElementTypeOther>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="HK$170.63" name="HK$170.63" label="HK$170.63" enabled="true" visible="false" accessible="true" x="242" y="805" width="87" height="21" index="3" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="24" y="846" width="327" height="2" index="4" traits=""/>
+                              <XCUIElementTypeImage type="XCUIElementTypeImage" name="chevron.right" label="Forward" enabled="true" visible="false" accessible="false" x="343" y="807" width="12" height="16" index="5" traits="Image"/>
+                            </XCUIElementTypeCell>
+                            <XCUIElementTypeCell type="XCUIElementTypeCell" enabled="true" visible="false" accessible="true" x="16" y="847" width="361" height="66" index="11" traits="Button">
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="DKK" name="DKK" label="DKK" enabled="true" visible="false" accessible="true" x="72" y="866" width="40" height="29" index="0" traits="StaticText"/>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Danish Krone" name="Danish Krone" label="Danish Krone" enabled="true" visible="false" accessible="true" x="128" y="870" width="112" height="21" index="1" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="16" y="847" width="361" height="66" index="2" traits="">
+                                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="16" y="847" width="361" height="66" index="0" traits=""/>
+                              </XCUIElementTypeOther>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="kr 145.55" name="kr 145.55" label="kr 145.55" enabled="true" visible="false" accessible="true" x="255" y="870" width="74" height="21" index="3" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="24" y="911" width="327" height="2" index="4" traits=""/>
+                              <XCUIElementTypeImage type="XCUIElementTypeImage" name="chevron.right" label="Forward" enabled="true" visible="false" accessible="false" x="343" y="872" width="12" height="16" index="5" traits="Image"/>
+                            </XCUIElementTypeCell>
+                            <XCUIElementTypeCell type="XCUIElementTypeCell" enabled="true" visible="false" accessible="true" x="16" y="912" width="361" height="66" index="12" traits="Button">
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="ZAR" name="ZAR" label="ZAR" enabled="true" visible="false" accessible="true" x="72" y="931" width="40" height="29" index="0" traits="StaticText"/>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="South African Rand" name="South African Rand" label="South African Rand" enabled="true" visible="false" accessible="true" x="128" y="935" width="115" height="21" index="1" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="16" y="912" width="361" height="66" index="2" traits="">
+                                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="16" y="912" width="361" height="66" index="0" traits=""/>
+                              </XCUIElementTypeOther>
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="R 405.79" name="R 405.79" label="R 405.79" enabled="true" visible="false" accessible="true" x="258" y="935" width="72" height="21" index="3" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="24" y="976" width="327" height="2" index="4" traits=""/>
+                              <XCUIElementTypeImage type="XCUIElementTypeImage" name="chevron.right" label="Forward" enabled="true" visible="false" accessible="false" x="343" y="937" width="12" height="16" index="5" traits="Image"/>
+                            </XCUIElementTypeCell>
+                          </XCUIElementTypeTable>
+                          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="752" width="393" height="100" index="1" traits="">
+                            <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="760" width="361" height="50" index="0" traits="">
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="760" width="361" height="50" index="0" traits="">
+                                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="760" width="361" height="50" index="0" traits="">
+                                  <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="760" width="361" height="50" index="0" traits="">
+                                    <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="760" width="361" height="50" index="0" traits="">
+                                      <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="123" y="775" width="147" height="21" index="0" traits="">
+                                        <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Create New Wallet" name="Create New Wallet" label="Create New Wallet" enabled="true" visible="true" accessible="true" x="123" y="775" width="147" height="21" index="0" traits="StaticText"/>
+                                      </XCUIElementTypeOther>
+                                    </XCUIElementTypeOther>
+                                  </XCUIElementTypeOther>
+                                </XCUIElementTypeOther>
+                              </XCUIElementTypeOther>
+                            </XCUIElementTypeOther>
+                          </XCUIElementTypeOther>
+                        </XCUIElementTypeOther>
+                      </XCUIElementTypeOther>
+                    </XCUIElementTypeOther>
+                  </XCUIElementTypeOther>
+                </XCUIElementTypeOther>
+              </XCUIElementTypeOther>
+            </XCUIElementTypeOther>
+          </XCUIElementTypeOther>
+        </XCUIElementTypeOther>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeWindow>
+    <XCUIElementTypeWindow type="XCUIElementTypeWindow" enabled="true" visible="false" accessible="false" x="0" y="0" width="393" height="852" index="1" traits="">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="0" width="393" height="852" index="0" traits=""/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="852" width="393" height="233" index="1" traits=""/>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeWindow>
+  </XCUIElementTypeApplication>
+</AppiumAUT>

@@ -1,0 +1,202 @@
+--------- beginning of main
+05-11 16:44:01.103  1378  1461 W display : deliverWinConfigData:: commit modeset time (21 ms)
+05-11 16:44:01.104  1378  1454 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+05-11 16:44:01.104  1378  1454 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-11 16:44:01.104  1378  1454 I display : Set m2mMPP capacity(4) for fps(120)
+05-11 16:44:01.104  1378  1454 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-11 16:44:01.104  1378  1454 I display : Set Affinity config for fps(120) : cpuIDs : 255
+05-11 16:44:01.104  1378  1454 I display : Set Affinity CPU ID : 0
+05-11 16:44:01.104  1378  1454 I display : Set Affinity CPU ID : 1
+05-11 16:44:01.104  1378  1454 I display : Set Affinity CPU ID : 2
+05-11 16:44:01.104  1378  1454 I display : Set Affinity CPU ID : 3
+05-11 16:44:01.104  1378  1454 I display : Set Affinity CPU ID : 4
+05-11 16:44:01.104  1378  1454 I display : Set Affinity CPU ID : 5
+05-11 16:44:01.104  1378  1454 I display : Set Affinity CPU ID : 6
+05-11 16:44:01.104  1378  1454 I display : Set Affinity CPU ID : 7
+05-11 16:44:01.104  1378  1454 I display : Set affinity HWC : 1378
+05-11 16:44:01.104  1378  1454 I display : CPU set : Cluster(0), min_clock(0)
+05-11 16:44:01.104  1378  1454 I display : CPU set : Cluster(1), min_clock(0)
+05-11 16:44:01.104  1378  1454 I display : CPU set : Cluster(2), min_clock(0)
+05-11 16:44:01.105  1483  1483 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+05-11 16:44:01.105  1483  1483 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-11 16:44:01.106  1483  1602 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+05-11 16:44:01.319  1483  1640 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+05-11 16:44:01.322  1483  1483 I LayerHistory: com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity$_2896#118252 Max (can't resolve refresh rate)
+05-11 16:44:01.322  1483  1483 I SurfaceFlinger: Idle - choose 60.00 Hz
+05-11 16:44:01.322  1483  1483 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+05-11 16:44:01.324  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+05-11 16:44:01.325  1378  1461 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+05-11 16:44:01.325  1378  1461 I display : Current VRR MODE is 3
+05-11 16:44:01.325  1378  1461 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+05-11 16:44:01.325  1378  1461 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+05-11 16:44:01.325  1378  1461 I display : commit modeset : 1080x2340@60phs
+--------- beginning of system
+05-11 16:44:01.343 16341 16341 I wpa_supplicant: Heartbeat 4638
+05-11 16:44:01.353  1378  1461 W display : deliverWinConfigData:: commit modeset time (28 ms)
+05-11 16:44:01.355  1378  1454 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+05-11 16:44:01.355  1378  1454 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-11 16:44:01.355  1378  1454 I display : Set m2mMPP capacity(8) for fps(60)
+05-11 16:44:01.355  1378  1454 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-11 16:44:01.355  1378  1454 I display : Set Affinity config for fps(60) : cpuIDs : 255
+05-11 16:44:01.355  1378  1454 I display : Set Affinity CPU ID : 0
+05-11 16:44:01.355  1378  1454 I display : Set Affinity CPU ID : 1
+05-11 16:44:01.355  1378  1454 I display : Set Affinity CPU ID : 2
+05-11 16:44:01.355  1378  1454 I display : Set Affinity CPU ID : 3
+05-11 16:44:01.355  1378  1454 I display : Set Affinity CPU ID : 4
+05-11 16:44:01.355  1378  1454 I display : Set Affinity CPU ID : 5
+05-11 16:44:01.355  1378  1454 I display : Set Affinity CPU ID : 6
+05-11 16:44:01.355  1378  1454 I display : Set Affinity CPU ID : 7
+05-11 16:44:01.355  1378  1454 I display : Set affinity HWC : 1378
+05-11 16:44:01.355  1378  1454 I display : CPU set : Cluster(0), min_clock(0)
+05-11 16:44:01.355  1378  1454 I display : CPU set : Cluster(1), min_clock(0)
+05-11 16:44:01.355  1378  1454 I display : CPU set : Cluster(2), min_clock(0)
+05-11 16:44:01.355  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+05-11 16:44:01.356  1483  1483 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-11 16:44:01.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507041
+05-11 16:44:01.599  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:44:01.599  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:44:01.599  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641784
+05-11 16:44:01.599  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641756
+05-11 16:44:01.599  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:44:01.599  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:44:01.600  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:44:01.600  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:44:01.600  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:44:01.986  1760  2177 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+05-11 16:44:01.995  1760  3742 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 69035, isSameBssidAndFreq true
+05-11 16:44:01.999  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:35 syn=1, rto=0, cwnd=0
+05-11 16:44:01.999  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:36 syn=1, rto=0, cwnd=0
+05-11 16:44:01.999  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:37 syn=1, rto=0, cwnd=0
+05-11 16:44:01.999  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:38 syn=1, rto=0, cwnd=0
+05-11 16:44:01.999  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:39 syn=3, rto=0, cwnd=0
+05-11 16:44:02.000  2896  3026 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236038, activityId=2131236053)
+05-11 16:44:02.000  1760  2268 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1778507042000 lastDateWindow=1778476839000
+05-11 16:44:02.001  1483  1602 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+05-11 16:44:02.010  1483  1640 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+05-11 16:44:02.019  1483  1602 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+05-11 16:44:02.029  1483  1483 I LayerHistory: StatusBar$_2431#105 voted NoVote (0.00 Hz)
+05-11 16:44:02.030  1483  1483 I LayerHistory: com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity$_2896#118252 Max (can't resolve refresh rate)
+05-11 16:44:02.030  1483  1483 I SurfaceFlinger: scored - choose 120.00 Hz
+05-11 16:44:02.030  1483  1483 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+05-11 16:44:02.033  1378  1461 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+05-11 16:44:02.033  1378  1461 I display : Current VRR MODE is 3
+05-11 16:44:02.033  1378  1461 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+05-11 16:44:02.033  1378  1461 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+05-11 16:44:02.033  1378  1461 I display : commit modeset : 1080x2340@120hs
+05-11 16:44:02.052  1378  1461 W display : deliverWinConfigData:: commit modeset time (19 ms)
+05-11 16:44:02.054  1378  1454 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+05-11 16:44:02.054  1378  1454 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-11 16:44:02.054  1378  1454 I display : Set m2mMPP capacity(4) for fps(120)
+05-11 16:44:02.054  1378  1454 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-11 16:44:02.054  1378  1454 I display : Set Affinity config for fps(120) : cpuIDs : 255
+05-11 16:44:02.054  1378  1454 I display : Set Affinity CPU ID : 0
+05-11 16:44:02.054  1378  1454 I display : Set Affinity CPU ID : 1
+05-11 16:44:02.054  1378  1454 I display : Set Affinity CPU ID : 2
+05-11 16:44:02.054  1378  1454 I display : Set Affinity CPU ID : 3
+05-11 16:44:02.054  1378  1454 I display : Set Affinity CPU ID : 4
+05-11 16:44:02.054  1378  1454 I display : Set Affinity CPU ID : 5
+05-11 16:44:02.054  1378  1454 I display : Set Affinity CPU ID : 6
+05-11 16:44:02.054  1378  1454 I display : Set Affinity CPU ID : 7
+05-11 16:44:02.054  1378  1454 I display : Set affinity HWC : 1378
+05-11 16:44:02.054  1378  1454 I display : CPU set : Cluster(0), min_clock(0)
+05-11 16:44:02.054  1378  1454 I display : CPU set : Cluster(1), min_clock(0)
+05-11 16:44:02.054  1378  1454 I display : CPU set : Cluster(2), min_clock(0)
+05-11 16:44:02.055  1483  1602 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+05-11 16:44:02.055  1483  1483 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-11 16:44:02.262  1483  1640 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+05-11 16:44:02.264  1483  1483 I LayerHistory: StatusBar$_2431#105 voted NoVote (0.00 Hz)
+05-11 16:44:02.264  1483  1483 I LayerHistory: com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity$_2896#118252 Max (can't resolve refresh rate)
+05-11 16:44:02.264  1483  1483 I SurfaceFlinger: Idle - choose 60.00 Hz
+05-11 16:44:02.265  1483  1483 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+05-11 16:44:02.267  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+05-11 16:44:02.269  1378  1461 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+05-11 16:44:02.269  1378  1461 I display : Current VRR MODE is 3
+05-11 16:44:02.269  1378  1461 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+05-11 16:44:02.269  1378  1461 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+05-11 16:44:02.269  1378  1461 I display : commit modeset : 1080x2340@60phs
+05-11 16:44:02.286  1378  1461 W display : deliverWinConfigData:: commit modeset time (16 ms)
+05-11 16:44:02.287  1378  1454 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+05-11 16:44:02.287  1378  1454 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-11 16:44:02.287  1378  1454 I display : Set m2mMPP capacity(8) for fps(60)
+05-11 16:44:02.287  1378  1454 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-11 16:44:02.287  1378  1454 I display : Set Affinity config for fps(60) : cpuIDs : 255
+05-11 16:44:02.287  1378  1454 I display : Set Affinity CPU ID : 0
+05-11 16:44:02.287  1378  1454 I display : Set Affinity CPU ID : 1
+05-11 16:44:02.287  1378  1454 I display : Set Affinity CPU ID : 2
+05-11 16:44:02.287  1378  1454 I display : Set Affinity CPU ID : 3
+05-11 16:44:02.287  1378  1454 I display : Set Affinity CPU ID : 4
+05-11 16:44:02.287  1378  1454 I display : Set Affinity CPU ID : 5
+05-11 16:44:02.287  1378  1454 I display : Set Affinity CPU ID : 6
+05-11 16:44:02.287  1378  1454 I display : Set Affinity CPU ID : 7
+05-11 16:44:02.287  1378  1454 I display : Set affinity HWC : 1378
+05-11 16:44:02.288  1378  1454 I display : CPU set : Cluster(0), min_clock(0)
+05-11 16:44:02.288  1378  1454 I display : CPU set : Cluster(1), min_clock(0)
+05-11 16:44:02.288  1378  1454 I display : CPU set : Cluster(2), min_clock(0)
+05-11 16:44:02.288  1483  1483 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+05-11 16:44:02.288  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+05-11 16:44:02.288  1483  1483 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-11 16:44:02.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507042
+05-11 16:44:02.599  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:44:02.599  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:44:02.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641784
+05-11 16:44:02.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641756
+05-11 16:44:02.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:44:02.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:44:02.600  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:44:02.600  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:44:02.600  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:44:03.403  2410  2957 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+05-11 16:44:03.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507043
+05-11 16:44:03.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:44:03.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:44:03.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641784
+05-11 16:44:03.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641756
+05-11 16:44:03.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:44:03.601  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:44:03.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:44:03.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:44:03.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:44:04.354   727   727 D io_stats: !@   8,0 r 58635440 1209009986 w 18158815 340816492 d 5293988 367520328 f 0 1868268 iot 28502400 0 th 0 0 0 pt 0 inp 0 0 415449.747
+05-11 16:44:04.355   727   727 D io_stats: !@ Write_top(KB): soft.appmanager(10927) 16
+05-11 16:44:04.456  1760  2246 D BackgroundInstallControlService: Package event received: 0
+05-11 16:44:04.467  1760  2528 D ActivityManager: sync unfroze 19257 com.skms.android.agent:remote for 6
+05-11 16:44:04.471  1760 18670 D PerProcessNandswap$NandswapHandler: nandswap start for non-activity com.samsung.android.carkey(pid 19908) action:6 adj:100 type:2
+05-11 16:44:04.476  1760  1895 W ProcessStats: Tracking association SourceState{5afdc9c com.samsung.android.carkey/10395 Service #1056177} whose proc state 8 is better than process ProcessState{bc72ce3 com.skms.android.agent:remote/1000 pkg=com.skms.android.agent} proc state 15 (0 skipped)
+05-11 16:44:04.485  6763  6763 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+05-11 16:44:04.485  6763  6763 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+05-11 16:44:04.491  6763  6966 E Icing   : Failed to remove thing with error code :error uri not found
+05-11 16:44:04.491  6763  6966 E Icing   : Failed to remove thing with error code :error uri not found
+05-11 16:44:04.496  1760 18670 D PerProcessNandswap$NandswapHandler: nandswap end for non-activity com.samsung.android.carkey(pid 19908) ret:18186829824 adj:100
+05-11 16:44:04.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507044
+05-11 16:44:04.599  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:44:04.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:44:04.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641784
+05-11 16:44:04.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641756
+05-11 16:44:04.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:44:04.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:44:04.600  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:44:04.600  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:44:04.600  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:44:05.020  1760  2177 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+05-11 16:44:05.028  1760  3742 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 69036, isSameBssidAndFreq true
+05-11 16:44:05.028  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:35 syn=1, rto=0, cwnd=0
+05-11 16:44:05.029  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:36 syn=1, rto=0, cwnd=0
+05-11 16:44:05.029  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:37 syn=1, rto=0, cwnd=0
+05-11 16:44:05.029  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:38 syn=1, rto=0, cwnd=0
+05-11 16:44:05.029  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:39 syn=3, rto=0, cwnd=0
+05-11 16:44:05.030  1760  2268 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1778507045030 lastDateWindow=1778476839000
+05-11 16:44:05.560  1760  2197 W DeviceStorageMonitorService: updateBroadcasts(/data) oldLevel:0, newLevel:0, seq:1
+05-11 16:44:05.562  1760  2197 D DeviceStorageMonitorService: Available File Node Number is [13116854]
+05-11 16:44:05.562  1760  2197 W DeviceStorageMonitorService: updateBroadcasts_filenode(/data) fn_oldLevel:0, fn_newLevel:0, seq:1
+05-11 16:44:05.584  6763  6966 E Icing   : Failed to remove thing with error code :error uri not found
+05-11 16:44:05.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507045
+05-11 16:44:05.599  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:44:05.599  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:44:05.599  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641784
+05-11 16:44:05.599  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641756
+05-11 16:44:05.599  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:44:05.599  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:44:05.599  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:44:05.599  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:44:05.599  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:44:05.627  1483  1602 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60

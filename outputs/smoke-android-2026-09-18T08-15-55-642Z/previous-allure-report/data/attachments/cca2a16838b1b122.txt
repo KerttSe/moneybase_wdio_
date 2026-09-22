@@ -1,0 +1,202 @@
+--------- beginning of main
+08-11 17:36:40.615  1325  9351 I display : commit modeset : 1080x2340@60phs
+08-11 17:36:40.628  1325  9351 W display : deliverWinConfigData:: commit modeset time (13 ms)
+08-11 17:36:40.630  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-11 17:36:40.630  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 17:36:40.630  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-11 17:36:40.630  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 17:36:40.630  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-11 17:36:40.630  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 17:36:40.630  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 17:36:40.630  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 17:36:40.630  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 17:36:40.630  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 17:36:40.630  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 17:36:40.630  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 17:36:40.630  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 17:36:40.630  1325  1397 I display : Set affinity HWC : 1325
+08-11 17:36:40.630  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 17:36:40.630  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 17:36:40.630  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 17:36:40.631  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-11 17:36:40.631  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 17:36:40.674 28763 28958 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 17:36:40.676 28763 28958 I appium  : AppiumResponse: {"sessionId":"15f23b4e-ab44-496d-ad42-0eda2beb3c1c","value":{"ELEMENT":"00000000-0000-07df-0000-005300000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-07df-0000-005300000131"}}
+08-11 17:36:40.690 28763 28958 I appium  : channel read: GET /session/15f23b4e-ab44-496d-ad42-0eda2beb3c1c/element/00000000-0000-07df-0000-005300000131/text
+08-11 17:36:40.691 28763 28958 I appium  : GetText command
+08-11 17:36:40.699 28763 28958 I appium  : AppiumResponse: {"sessionId":"15f23b4e-ab44-496d-ad42-0eda2beb3c1c","value":"flag-USD USD"}
+08-11 17:36:40.868 28763 28958 I appium  : channel read: POST /session/15f23b4e-ab44-496d-ad42-0eda2beb3c1c/element
+08-11 17:36:40.869 28763 28958 I appium  : FindElement command
+08-11 17:36:40.871 28763 28958 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 17:36:40.871 28763 28958 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:36:40.875 28763 28958 I appium  : The following attributes will be included to the page source: [resource-id]
+--------- beginning of system
+08-11 17:36:41.056   730   730 D io_stats: !@   8,0 r 55756137 1029898490 w 17263723 312745352 d 5074104 365600588 f 0 1589076 iot 25821080 0 th 0 0 0 pt 0 inp 0 0 401784.453
+08-11 17:36:41.057   730   730 D io_stats: !@ Read_top(KB): com.viber.voip(26429) 16
+08-11 17:36:41.057   730   730 D io_stats: !@ Write_top(KB): com.viber.voip(26429) 24 kworker/u16:3(23297) 12 inkedin.android(27549) 4
+08-11 17:36:41.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786459001
+08-11 17:36:41.121  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:36:41.121  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:36:41.121  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774316
+08-11 17:36:41.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774294
+08-11 17:36:41.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:36:41.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:36:41.122  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:36:41.122  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:36:41.122  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:36:41.185 28763 28958 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 17:36:41.186 28763 28958 I appium  : AppiumResponse: {"sessionId":"15f23b4e-ab44-496d-ad42-0eda2beb3c1c","value":{"ELEMENT":"00000000-0000-07df-0000-005300000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-07df-0000-005300000131"}}
+08-11 17:36:41.200 28763 28958 I appium  : channel read: GET /session/15f23b4e-ab44-496d-ad42-0eda2beb3c1c/element/00000000-0000-07df-0000-005300000131/text
+08-11 17:36:41.201 28763 28958 I appium  : GetText command
+08-11 17:36:41.208 28763 28958 I appium  : AppiumResponse: {"sessionId":"15f23b4e-ab44-496d-ad42-0eda2beb3c1c","value":"flag-USD USD"}
+08-11 17:36:41.370 28763 28958 I appium  : channel read: POST /session/15f23b4e-ab44-496d-ad42-0eda2beb3c1c/element
+08-11 17:36:41.371 28763 28958 I appium  : FindElement command
+08-11 17:36:41.373 28763 28958 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 17:36:41.373 28763 28958 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:36:41.376 28763 28958 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:36:41.544 28763 28958 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 17:36:41.546 28763 28958 I appium  : AppiumResponse: {"sessionId":"15f23b4e-ab44-496d-ad42-0eda2beb3c1c","value":{"ELEMENT":"00000000-0000-07df-0000-005300000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-07df-0000-005300000131"}}
+08-11 17:36:41.559 28763 28958 I appium  : channel read: GET /session/15f23b4e-ab44-496d-ad42-0eda2beb3c1c/element/00000000-0000-07df-0000-005300000131/text
+08-11 17:36:41.559 28763 28958 I appium  : GetText command
+08-11 17:36:41.563 28763 28958 I appium  : AppiumResponse: {"sessionId":"15f23b4e-ab44-496d-ad42-0eda2beb3c1c","value":"flag-USD USD"}
+08-11 17:36:41.874 28763 28958 I appium  : channel read: POST /session/15f23b4e-ab44-496d-ad42-0eda2beb3c1c/element
+08-11 17:36:41.875 28763 28958 I appium  : FindElement command
+08-11 17:36:41.876 28763 28958 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 17:36:41.876 28763 28958 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:36:41.879 28763 28958 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:36:42.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786459002
+08-11 17:36:42.120  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:36:42.120  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:36:42.121  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774316
+08-11 17:36:42.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774294
+08-11 17:36:42.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:36:42.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:36:42.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:36:42.121  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:36:42.121  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:36:42.150 28763 28958 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 17:36:42.151 28763 28958 I appium  : AppiumResponse: {"sessionId":"15f23b4e-ab44-496d-ad42-0eda2beb3c1c","value":{"ELEMENT":"00000000-0000-07df-0000-005300000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-07df-0000-005300000131"}}
+08-11 17:36:42.164 28763 28958 I appium  : channel read: GET /session/15f23b4e-ab44-496d-ad42-0eda2beb3c1c/element/00000000-0000-07df-0000-005300000131/text
+08-11 17:36:42.164 28763 28958 I appium  : GetText command
+08-11 17:36:42.175 28763 28958 I appium  : AppiumResponse: {"sessionId":"15f23b4e-ab44-496d-ad42-0eda2beb3c1c","value":"flag-USD USD"}
+08-11 17:36:42.359  1178  1178 I wpa_supplicant: Heartbeat 9004
+08-11 17:36:42.366 28763 28958 I appium  : channel read: POST /session/15f23b4e-ab44-496d-ad42-0eda2beb3c1c/element
+08-11 17:36:42.366 28763 28958 I appium  : FindElement command
+08-11 17:36:42.367 28763 28958 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 17:36:42.367 28763 28958 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:36:42.369 28763 28958 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:36:42.694 28763 28958 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 17:36:42.695 28763 28958 I appium  : AppiumResponse: {"sessionId":"15f23b4e-ab44-496d-ad42-0eda2beb3c1c","value":{"ELEMENT":"00000000-0000-07df-0000-005300000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-07df-0000-005300000131"}}
+08-11 17:36:42.709 28763 28958 I appium  : channel read: GET /session/15f23b4e-ab44-496d-ad42-0eda2beb3c1c/element/00000000-0000-07df-0000-005300000131/text
+08-11 17:36:42.710 28763 28958 I appium  : GetText command
+08-11 17:36:42.720 28763 28958 I appium  : AppiumResponse: {"sessionId":"15f23b4e-ab44-496d-ad42-0eda2beb3c1c","value":"flag-USD USD"}
+08-11 17:36:42.874 28763 28958 I appium  : channel read: GET /session/15f23b4e-ab44-496d-ad42-0eda2beb3c1c/screenshot
+08-11 17:36:42.875 28763 28958 I appium  : CaptureScreenshot command
+08-11 17:36:43.045 31831 31831 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-11 17:36:43.045 31831 31831 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-11 17:36:43.045 31831 31831 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-11 17:36:43.045  1726  1863 I EDMNativeHelperService: isScreenCaptureEnabled
+08-11 17:36:43.046  1726  1863 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-11 17:36:43.046 31831 31831 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-11 17:36:43.046 31831 31831 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-11 17:36:43.048  1437  1682 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_28976#71012(seamlessTransition:0)
+08-11 17:36:43.048  1437  1682 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-11 17:36:43.048  1437  1682 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-11 17:36:43.048  1437  1682 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-11 17:36:43.051  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-11 17:36:43.051  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_28976#71012 at index 1
+08-11 17:36:43.051  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-11 17:36:43.051  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-11 17:36:43.058   730   730 D io_stats: !@   8,0 r 55756167 1029898650 w 17263728 312746024 d 5074104 365600588 f 0 1589076 iot 25821144 0 th 0 0 0 pt 0 inp 0 0 401786.455
+08-11 17:36:43.073 31831 31834 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-11 17:36:43.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786459003
+08-11 17:36:43.120  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:36:43.120  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:36:43.120  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774316
+08-11 17:36:43.120  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774294
+08-11 17:36:43.120  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:36:43.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:36:43.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:36:43.121  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:36:43.121  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:36:43.256 28763 28958 I appium  : AppiumResponse: {"sessionId":"15f23b4e-ab44-496d-ad42-0eda2beb3c1c","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15VFXnvf/xz2EQEBBlCoKCExiHiKIxzgPRTJpBo9ZebYxJmia9XW3T29vp1/be9nbIWm2XbZo2adMhJjGjcQpojLNRo1FxxAFHZDBMgsyDh/P7w3LK5hzgHOYN79daWfE8e3q2oLI/+3m…
+08-11 17:36:43.284 28763 28958 I appium  : channel read: GET /session/15f23b4e-ab44-496d-ad42-0eda2beb3c1c/source
+08-11 17:36:43.287 28763 28958 I appium  : Source command
+08-11 17:36:43.287 28763 28958 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:36:43.331  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-11 17:36:43.337  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 87703, isSameBssidAndFreq true
+08-11 17:36:43.340  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786459003340 lastDateWindow=1786275667000
+08-11 17:36:43.341  2357  2472 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+08-11 17:36:43.346  2870  2971 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236038, activityId=2131236042)
+08-11 17:36:43.353  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-11 17:36:43.373  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-11 17:36:43.378  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-11 17:36:43.386  1437  1437 I SurfaceFlinger: SFWD update time=401786783800734
+08-11 17:36:43.390  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-11 17:36:43.390  1437  1437 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+08-11 17:36:43.391  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-11 17:36:43.393  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-11 17:36:43.393  1325  9351 I display : Current VRR MODE is 3
+08-11 17:36:43.393  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-11 17:36:43.393  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-11 17:36:43.393  1325  9351 I display : commit modeset : 1080x2340@120hs
+08-11 17:36:43.411  1325  9351 W display : deliverWinConfigData:: commit modeset time (17 ms)
+08-11 17:36:43.413  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-11 17:36:43.413  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 17:36:43.413  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-11 17:36:43.413  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 17:36:43.413  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-11 17:36:43.413  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 17:36:43.413  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 17:36:43.413  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 17:36:43.413  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 17:36:43.413  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 17:36:43.413  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 17:36:43.413  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 17:36:43.414  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 17:36:43.414  1325  1397 I display : Set affinity HWC : 1325
+08-11 17:36:43.414  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 17:36:43.414  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 17:36:43.414  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 17:36:43.415  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-11 17:36:43.417  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-11 17:36:43.417  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 17:36:43.499 28976 29028 I Datadog : [_dd.sdk_core.default]: Batch 1f96e6c2-45a7-4052-976f-b8c99dc76664 [3897 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+08-11 17:36:43.515 28763 28958 I appium  : AppiumResponse: {"sessionId":"15f23b4e-ab44-496d-ad42-0eda2beb3c1c","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-11 17:36:43.563 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 17:36:43.616 31844 31844 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 17:36:43.624  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-11 17:36:43.626  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-11 17:36:43.627  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-11 17:36:43.627  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-11 17:36:43.628  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-11 17:36:43.630  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-11 17:36:43.630  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-11 17:36:43.630  1325  9351 I display : Current VRR MODE is 3
+08-11 17:36:43.630  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-11 17:36:43.630  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-11 17:36:43.631  1325  9351 I display : commit modeset : 1080x2340@60phs
+08-11 17:36:43.645  1325  9351 W display : deliverWinConfigData:: commit modeset time (14 ms)
+08-11 17:36:43.646  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-11 17:36:43.646  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 17:36:43.646  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-11 17:36:43.646  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 17:36:43.646  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-11 17:36:43.646  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 17:36:43.646  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 17:36:43.646  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 17:36:43.646  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 17:36:43.646  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 17:36:43.646  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 17:36:43.646  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 17:36:43.646  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 17:36:43.646  1325  1397 I display : Set affinity HWC : 1325
+08-11 17:36:43.646  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 17:36:43.646  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 17:36:43.646  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 17:36:43.646  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 17:36:43.647  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-11 17:36:43.649 28976 29028 I Datadog : [_dd.sdk_core.default]: Batch f099463a-19af-4170-b5d8-efc3d601e6b3 [1949 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+08-11 17:36:43.664 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 17:36:43.719 31853 31853 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 17:36:43.767 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

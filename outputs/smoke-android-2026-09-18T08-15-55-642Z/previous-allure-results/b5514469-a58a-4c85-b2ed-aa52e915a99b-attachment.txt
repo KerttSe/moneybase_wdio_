@@ -1,0 +1,202 @@
+--------- beginning of main
+08-17 14:46:41.159  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-17 14:46:41.160  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-17 14:46:41.160  2357  2357 I AODNotificationManager: updateNotification() 
+08-17 14:46:41.258  2336  2835 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-17 14:46:41.605  1726  2283 D NetdEventListenerService: DNS Requested by 831, 10387(com.whatsapp), 4(FAIL), isBlocked=true, 0ms
+08-17 14:46:41.616  6256  6512 E msys    : E[N mns:TigonMNS]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-17 14:46:41.629  6256  6512 E msys    : E[N mns:TigonMNS]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-17 14:46:41.629  1726  2283 D NetdEventListenerService: DNS Requested by 831, 10387(com.whatsapp), 4(FAIL), isBlocked=true, 0ms
+08-17 14:46:41.662  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786967201
+08-17 14:46:41.662  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 14:46:41.662  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 14:46:41.662  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782786
+08-17 14:46:41.662  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782779
+08-17 14:46:41.662  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 14:46:41.662  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 14:46:41.663  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 14:46:41.663  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 14:46:41.663  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+--------- beginning of system
+08-17 14:46:42.436  1726  2156 W DeviceStorageMonitorService: updateBroadcasts(/data) oldLevel:0, newLevel:0, seq:1
+08-17 14:46:42.439  1726  2156 D DeviceStorageMonitorService: Available File Node Number is [13169551]
+08-17 14:46:42.439  1726  2156 W DeviceStorageMonitorService: updateBroadcasts_filenode(/data) fn_oldLevel:0, fn_newLevel:0, seq:1
+08-17 14:46:42.662  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786967202
+08-17 14:46:42.663  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 14:46:42.663  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 14:46:42.663  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782786
+08-17 14:46:42.663  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782779
+08-17 14:46:42.663  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 14:46:42.663  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 14:46:42.664  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 14:46:42.664  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 14:46:42.664  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 14:46:42.855  1726  1899 D ActivityManager: freezing 7361 com.skms.android.agent:remote
+08-17 14:46:42.918  1726  2182 D UsbStatsMonitor: 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 132418136703002
+08-17 14:46:42.925   730   730 D io_stats: !@   8,0 r 90313433 1648838936 w 27374175 498545180 d 7952996 553565200 f 0 2542932 iot 41599704 0 th 0 0 0 pt 0 inp 0 0 669977.781
+08-17 14:46:42.926   730   730 D io_stats: !@ Read_top(KB): openvpn_service(26920) 32
+08-17 14:46:42.926   730   730 D io_stats: !@ Write_top(KB): kworker/u16:0(12878) 16 ugin:persistent(6020) 8
+08-17 14:46:43.406  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-17 14:46:43.413  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 141554, isSameBssidAndFreq true
+08-17 14:46:43.416  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:15 syn=1, rto=0, cwnd=0
+08-17 14:46:43.417  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:16 syn=1, rto=0, cwnd=0
+08-17 14:46:43.417  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:17 syn=1, rto=0, cwnd=0
+08-17 14:46:43.417  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:18 syn=1, rto=0, cwnd=0
+08-17 14:46:43.417  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:19 syn=1, rto=0, cwnd=0
+08-17 14:46:43.419  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786967203419 lastDateWindow=1786958119000
+08-17 14:46:43.662  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786967203
+08-17 14:46:43.662  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 14:46:43.663  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 14:46:43.663  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782786
+08-17 14:46:43.663  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782779
+08-17 14:46:43.663  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 14:46:43.663  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 14:46:43.664  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 14:46:43.664  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 14:46:43.664  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 14:46:43.818  2336  2835 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-17 14:46:43.828  1726  2214 D SemCellularStateManager: onSignalStrengthsChanged: mCellularSignalLevel=3
+08-17 14:46:44.413 26920 26958 D LogsManager: No need to flush logs
+08-17 14:46:44.662  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786967204
+08-17 14:46:44.662  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 14:46:44.663  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 14:46:44.663  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782786
+08-17 14:46:44.663  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782779
+08-17 14:46:44.663  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 14:46:44.663  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 14:46:44.663  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 14:46:44.664  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 14:46:44.664  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 14:46:45.662  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786967205
+08-17 14:46:45.663  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 14:46:45.663  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 14:46:45.663  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782786
+08-17 14:46:45.663  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782779
+08-17 14:46:45.663  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 14:46:45.664  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 14:46:45.664  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 14:46:45.665  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 14:46:45.665  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 14:46:46.241  1326  1393 E BatteryDump: !@new_battery_dump : 4337,-17,1800,2054,100,291,297,295,291,0,292,279,0,Full,NO_CHARGING,None,Good,PDIC,0,Normal,0,0,9164,0x10000,0x10000,0x0,0,0,0000,0000,ffff0700,0,0,0,0,690,4338,10000,990,0,
+08-17 14:46:46.246 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''
+08-17 14:46:46.256  1326  1326 I android.hardware.health@2.1-service-samsung: updateLrpSysfs: write: 292
+08-17 14:46:46.367  2336  2835 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-17 14:46:46.372  2357  2475 D MobileSignalTransitionManager: updateSignalTransition
+08-17 14:46:46.374  2336  2835 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-17 14:46:46.374  2870  2971 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Mobile(bundle=Bundle[mParcelledData.dataSize=256])
+08-17 14:46:46.378  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-17 14:46:46.378  1726  2214 D SemCellularStateManager: onSignalStrengthsChanged: mCellularSignalLevel=2
+08-17 14:46:46.393  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-17 14:46:46.400  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-17 14:46:46.409  1437  1437 I SurfaceFlinger: SFWD update time=669981265367450
+08-17 14:46:46.412  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-17 14:46:46.412  1437  1437 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+08-17 14:46:46.413  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-17 14:46:46.417  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-17 14:46:46.418  1325  1406 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-17 14:46:46.418  1325  1406 I display : Current VRR MODE is 3
+08-17 14:46:46.418  1325  1406 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-17 14:46:46.418  1325  1406 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-17 14:46:46.418  1325  1406 I display : commit modeset : 1080x2340@120hs
+08-17 14:46:46.433  1325  1406 W display : deliverWinConfigData:: commit modeset time (14 ms)
+08-17 14:46:46.434  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-17 14:46:46.434  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-17 14:46:46.434  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-17 14:46:46.434  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-17 14:46:46.434  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-17 14:46:46.434  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-17 14:46:46.434  1325  1397 I display : Set Affinity CPU ID : 0
+08-17 14:46:46.434  1325  1397 I display : Set Affinity CPU ID : 1
+08-17 14:46:46.434  1325  1397 I display : Set Affinity CPU ID : 2
+08-17 14:46:46.434  1325  1397 I display : Set Affinity CPU ID : 3
+08-17 14:46:46.434  1325  1397 I display : Set Affinity CPU ID : 4
+08-17 14:46:46.434  1325  1397 I display : Set Affinity CPU ID : 5
+08-17 14:46:46.434  1325  1397 I display : Set Affinity CPU ID : 6
+08-17 14:46:46.434  1325  1397 I display : Set Affinity CPU ID : 7
+08-17 14:46:46.434  1325  1397 I display : Set affinity HWC : 1325
+08-17 14:46:46.435  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-17 14:46:46.435  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-17 14:46:46.435  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-17 14:46:46.436  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-17 14:46:46.437  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-17 14:46:46.437  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-17 14:46:46.439  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 141555, isSameBssidAndFreq true
+08-17 14:46:46.440  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:15 syn=1, rto=0, cwnd=0
+08-17 14:46:46.440  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:16 syn=1, rto=0, cwnd=0
+08-17 14:46:46.440  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:17 syn=1, rto=0, cwnd=0
+08-17 14:46:46.440  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:18 syn=1, rto=0, cwnd=0
+08-17 14:46:46.440  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:19 syn=1, rto=0, cwnd=0
+08-17 14:46:46.442  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786967206442 lastDateWindow=1786958119000
+08-17 14:46:46.443  2870  2971 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236038, activityId=2131236043)
+08-17 14:46:46.466  1437  1559 I VSyncReactor: Current= 120, Period= 120, hwcPeriod= 120
+08-17 14:46:46.661  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786967206
+08-17 14:46:46.661  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 14:46:46.661  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 14:46:46.661  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782786
+08-17 14:46:46.661  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782779
+08-17 14:46:46.661  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 14:46:46.661  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 14:46:46.662  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 14:46:46.662  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 14:46:46.662  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 14:46:46.706  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-17 14:46:46.708  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-17 14:46:46.708  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-17 14:46:46.708  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-17 14:46:46.710  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-17 14:46:46.710  1325  1406 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-17 14:46:46.710  1325  1406 I display : Current VRR MODE is 3
+08-17 14:46:46.710  1325  1406 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-17 14:46:46.710  1325  1406 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-17 14:46:46.711  1325  1406 I display : commit modeset : 1080x2340@60phs
+08-17 14:46:46.724  1325  1406 W display : deliverWinConfigData:: commit modeset time (13 ms)
+08-17 14:46:46.725  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-17 14:46:46.725  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-17 14:46:46.725  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-17 14:46:46.725  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-17 14:46:46.725  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-17 14:46:46.725  1325  1397 I display : Set Affinity CPU ID : 0
+08-17 14:46:46.725  1325  1397 I display : Set Affinity CPU ID : 1
+08-17 14:46:46.725  1325  1397 I display : Set Affinity CPU ID : 2
+08-17 14:46:46.725  1325  1397 I display : Set Affinity CPU ID : 3
+08-17 14:46:46.725  1325  1397 I display : Set Affinity CPU ID : 4
+08-17 14:46:46.725  1325  1397 I display : Set Affinity CPU ID : 5
+08-17 14:46:46.725  1325  1397 I display : Set Affinity CPU ID : 6
+08-17 14:46:46.725  1325  1397 I display : Set Affinity CPU ID : 7
+08-17 14:46:46.725  1325  1397 I display : Set affinity HWC : 1325
+08-17 14:46:46.725  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-17 14:46:46.725  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-17 14:46:46.725  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-17 14:46:46.725  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-17 14:46:46.725  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-17 14:46:46.930   730   730 D io_stats: !@   8,0 r 90313433 1648838936 w 27374181 498545468 d 7952996 553565200 f 0 2542932 iot 41599716 0 th 0 0 0 pt 0 inp 0 0 669981.786
+08-17 14:46:46.931   730   730 D io_stats: !@ Write_top(KB): kworker/u16:0(12878) 280 android.hardwar(1326) 8
+08-17 14:46:47.066  1726  3186 I NSLocationMonitor: getGPSUsingApps() called
+08-17 14:46:47.068  3189  9248 I NSLocationManager_FLP: getGPSUsingApps, No change
+08-17 14:46:47.100  1726  3186 D FreecessController: FZ : com.samsung.android.game.gamehome(10312) [5649] reason: Bg [cached:X
+08-17 14:46:47.100  1726  3186 D FreecessHandler: freeze com.samsung.android.game.gamehome(10312) result : 0
+08-17 14:46:47.102  1726  3186 W LocationManagerService: onFreezeStateChanged, uid[10312]=true
+08-17 14:46:47.102  1726  3186 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10312 , disable= true
+08-17 14:46:47.103  1726  3186 I PowerManagerService: [PWL] can not change uid =  10312
+08-17 14:46:47.662  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786967207
+08-17 14:46:47.663  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 14:46:47.663  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 14:46:47.663  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782786
+08-17 14:46:47.663  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782779
+08-17 14:46:47.664  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 14:46:47.664  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 14:46:47.664  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 14:46:47.664  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 14:46:47.664  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 14:46:48.117 18155 18155 I wpa_supplicant: Heartbeat 907
+08-17 14:46:48.661  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786967208
+08-17 14:46:48.662  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 14:46:48.662  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 14:46:48.662  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782786
+08-17 14:46:48.662  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782779
+08-17 14:46:48.662  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 14:46:48.662  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 14:46:48.663  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 14:46:48.663  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 14:46:48.663  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 14:46:49.323 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

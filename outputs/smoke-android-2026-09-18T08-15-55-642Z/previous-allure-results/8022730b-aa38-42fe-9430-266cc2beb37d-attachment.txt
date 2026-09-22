@@ -1,0 +1,278 @@
+--------- beginning of main
+08-05 19:17:23.468 22054 22330 D CCodecBuffers: [c2.android.aac.decoder#966:1D-Input.Impl[N]] codec released a buffer owned by client (index 2)
+08-05 19:17:23.469 22054 22309 V NuMediaExtractor: NuMediaExtractor constructor
+08-05 19:17:23.469 22054 22309 V NuMediaExtractor: setDataSource fd=242 (/data/app/~~2KaN-dgB03fx8hOHa3BusA==/com.viber.voip-VVkby6rGRqlxUpg4CHAeDA==/base.apk), offset=157071328, length=2304
+08-05 19:17:23.474 22054 22133 I DynamiteModule: Considering local module com.google.android.gms.ads.dynamite:0 and remote module com.google.android.gms.ads.dynamite:261710500
+08-05 19:17:23.474 22054 22133 I DynamiteModule: Selected remote version of com.google.android.gms.ads.dynamite, version >= 261710500
+08-05 19:17:23.474 22054 22133 V DynamiteModule: Dynamite loader version >= 2, using loadModule2NoCrashUtils
+08-05 19:17:23.476  2357  3033 W Paint   : The elegant text height cannot be turned off.
+08-05 19:17:23.479  1516  1674 I MediaExtractorFactory: Created an extractor 'SAACExtractor' with confidence 0.70
+08-05 19:17:23.480 22054 22309 V NuMediaExtractor: track of type 'audio/mp4a-latm' does not publish bitrate
+08-05 19:17:23.485 20614 20614 I adbd    : Remote process closed the socket (on MSG_PEEK)
+08-05 19:17:23.485  1306  1306 I Zygote  : Process 19974 exited due to signal 9 (Killed)
+08-05 19:17:23.486  1726  2147 D ConnectivityService:  Removing from current network [271 WIFI|VPN], leaving 141 requests.
+08-05 19:17:23.486  1726  1783 I libprocessgroup: Removed cgroup /sys/fs/cgroup/apps/uid_10279/pid_19974
+--------- beginning of system
+08-05 19:17:23.485  1726  4574 I ActivityManager: Process com.google.android.apps.maps (pid 19974) has died: cch+65 CEM (248,2860)
+08-05 19:17:23.488 30313 30313 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.semanticlocation.service.START_ODLH xflg=0x4 pkg=com.google.android.gms }
+08-05 19:17:23.490 22054 22309 D MediaCodecList: codecHandlesFormat: no format, so no extra checks
+08-05 19:17:23.494 21091 21091 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.semanticlocationhistory.service.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsApiService }
+08-05 19:17:23.499 22054 22368 I CCodec  : state->set(ALLOCATING)
+08-05 19:17:23.499 22054 22368 I CCodec  : allocate(c2.android.aac.decoder)
+08-05 19:17:23.499 22054 22368 D CCodec  : allocate(c2.android.aac.decoder)
+08-05 19:17:23.504 22054 22368 I CCodec  : setting up 'default' as default (vendor) store
+08-05 19:17:23.506 22054 22368 I CCodec  : Created component [c2.android.aac.decoder] for [c2.android.aac.decoder]
+08-05 19:17:23.507 22054 22368 I CCodec  : [c2.android.aac.decoder] state->set(ALLOCATED)
+08-05 19:17:23.507 22054 22368 D CCodecConfig: read media type: audio/mp4a-latm
+08-05 19:17:23.510 22054 22368 D ReflectedParamUpdater: extent() != 1 for single value type: algo.buffers.max-count.values
+08-05 19:17:23.510 22054 22368 D ReflectedParamUpdater: extent() != 1 for single value type: output.subscribed-indices.values
+08-05 19:17:23.510 22054 22368 D ReflectedParamUpdater: extent() != 1 for single value type: input.buffers.allocator-ids.values
+08-05 19:17:23.510 22054 22368 D ReflectedParamUpdater: extent() != 1 for single value type: output.buffers.allocator-ids.values
+08-05 19:17:23.510 22054 22368 D ReflectedParamUpdater: extent() != 1 for single value type: algo.buffers.allocator-ids.values
+08-05 19:17:23.511 22054 22368 D ReflectedParamUpdater: extent() != 1 for single value type: output.buffers.pool-ids.values
+08-05 19:17:23.511 22054 22368 D ReflectedParamUpdater: extent() != 1 for single value type: algo.buffers.pool-ids.values
+08-05 19:17:23.515 22054 22368 I CCodec  : [c2.android.aac.decoder] config->initialize() : 0
+08-05 19:17:23.515 22054 22368 I CCodecConfig: query failed after returning 21 values (BAD_INDEX)
+08-05 19:17:23.515 22054 22368 D CCodecConfig: c2 config diff is Dict {
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::u32 coded.aac-packaging.value = 0
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::u32 coded.bitrate.value = 64000
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::u32 coded.pl.level = 0
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::u32 coded.pl.profile = 8192
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::i32 coding.drc.album-mode.value = 0
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::float coding.drc.attenuation-factor.value = 1
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::float coding.drc.boost-factor.value = 1
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::i32 coding.drc.compression-mode.value = 3
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::i32 coding.drc.effect-type.value = 3
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::float coding.drc.encoded-level.value = 0.25
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::float coding.drc.reference-level.value = -16
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::u32 input.buffers.max-size.value = 8192
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::u32 input.delay.value = 0
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   string input.media-type.value = "audio/mp4a-latm"
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::u32 output.delay.value = 2
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::float output.drc.output-loudness.value = 0.25
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::u32 output.large-frame.max-size = 0
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::u32 output.large-frame.threshold-size = 0
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   string output.media-type.value = "audio/raw"
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::u32 raw.channel-count.value = 1
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::u32 raw.channel-mask.value = 0
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::u32 raw.max-channel-count.value = 8
+08-05 19:17:23.515 22054 22368 D CCodecConfig:   c2::u32 raw.sample-rate.value = 44100
+08-05 19:17:23.515 22054 22368 D CCodecConfig: }
+08-05 19:17:23.516 22054 22368 I CCodec  : [c2.android.aac.decoder] config->queryConfiguration()
+08-05 19:17:23.516 22054 22368 I CCodec  : [c2.android.aac.decoder] mCallback->onComponentAllocated() IN
+08-05 19:17:23.516 22054 22368 I CCodec  : [c2.android.aac.decoder] mCallback->onComponentAllocated() OUT
+08-05 19:17:23.517 22054 22309 E MediaCodec: Media Quality Service not found.
+08-05 19:17:23.518 22054 22368 D CCodec  : [c2.android.aac.decoder] buffers are bound to CCodec for this session
+08-05 19:17:23.518 22054 22368 I CCodec  : appPid(22054) width(0) height(0)
+08-05 19:17:23.518 22054 22368 D CCodecConfig: no c2 equivalents for durationUs
+08-05 19:17:23.518 22054 22368 D CCodecConfig: no c2 equivalents for track-id
+08-05 19:17:23.518 22054 22368 D CCodecConfig: no c2 equivalents for bits-per-sample
+08-05 19:17:23.518 22054 22368 D CCodecConfig: no c2 equivalents for flags
+08-05 19:17:23.518 22054 22368 D CCodecConfig: c2 config diff is   c2::u32 raw.sample-rate.value = 16000
+08-05 19:17:23.519 22054 22368 W Codec2Client: query -- param skipped: index = 1107298332.
+08-05 19:17:23.519 22054 22368 D CCodec  : client requested max input size 7375, which is smaller than what component recommended (8192); overriding with component recommendation.
+08-05 19:17:23.519 22054 22368 W CCodec  : This behavior is subject to change. It is recommended that app developers double check whether the requested max input size is in reasonable range.
+08-05 19:17:23.519 22054 22368 D CCodec  : encoding statistics level = 0
+08-05 19:17:23.520 22054 22368 D CCodec  : setup formats input: AMessage(what = 0x00000000) = {
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t aac-drc-album-mode = 0
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t aac-drc-boost-level = 127
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t aac-drc-cut-level = 127
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t aac-drc-effect-type = 3
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t aac-encoded-target-level = -1
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t aac-max-output-channel_count = 8
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t aac-target-ref-level = 64
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t bitrate = 64000
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t channel-count = 1
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t channel-mask = 0
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t level = 0
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t max-input-size = 8192
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t max-output-channel-count = 8
+08-05 19:17:23.520 22054 22368 D CCodec  :   string mime = "audio/mp4a-latm"
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t profile = 2
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t sample-rate = 16000
+08-05 19:17:23.520 22054 22368 D CCodec  : }
+08-05 19:17:23.520 22054 22368 D CCodec  : setup formats output: AMessage(what = 0x00000000) = {
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t aac-drc-album-mode = 0
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t aac-drc-boost-level = 127
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t aac-drc-cut-level = 127
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t aac-drc-effect-type = 3
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t aac-drc-output-loudness = -1
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t aac-encoded-target-level = -1
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t aac-max-output-channel_count = 8
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t aac-target-ref-level = 64
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t buffer-batch-max-output-size = 0
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t buffer-batch-threshold-output-size = 0
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t channel-count = 1
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t channel-mask = 0
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t max-output-channel-count = 8
+08-05 19:17:23.520 22054 22368 D CCodec  :   string mime = "audio/raw"
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t sample-rate = 16000
+08-05 19:17:23.520 22054 22368 D CCodec  :   int32_t android._config-pcm-encoding = 2
+08-05 19:17:23.520 22054 22368 D CCodec  : }
+08-05 19:17:23.520 22054 22368 I CCodecConfig: query failed after returning 21 values (BAD_INDEX)
+08-05 19:17:23.520 22054 22368 E com.viber.voip: Failed to query component interface for required system resources: 6
+08-05 19:17:23.521  1726  4574 D SehCodecSolutionService: updateMediaStatisticsData: (action=1@1986621044;category=4@1986621044;label=1634951523@1986621044)
+08-05 19:17:23.521  1726  4574 D CodecSolution_MediaStatisticsData: MediaStatisticsData: action=1@1986621044;category=4@1986621044;label=1634951523@1986621044
+08-05 19:17:23.521  1726  4574 D CodecSolution_MediaStatisticsData: Category.valueOf: 4
+08-05 19:17:23.521  1726  4574 D CodecSolution_MediaStatisticsData: Action.valueOf: 1
+08-05 19:17:23.521  1726  4574 D CodecSolution_MediaStatisticsData: Label.valueOf: 0x61736163
+08-05 19:17:23.521  1726  4574 D CodecSolution_MediaStatisticsData: category: ADEC
+08-05 19:17:23.521  1726  4574 D CodecSolution_MediaStatisticsData: action: INSTANTIATE
+08-05 19:17:23.521  1726  4574 D CodecSolution_MediaStatisticsData: label: ANDROID_SW_AAC
+08-05 19:17:23.521  1726  1726 D SehCodecSolutionService: handleMessage : 900
+08-05 19:17:23.521 22054 22368 I CCodec  : [c2.android.aac.decoder] state->set(STARTING)
+08-05 19:17:23.521  1726  1726 D SehCodecSolutionService: event : ADEC
+08-05 19:17:23.521  1726  1726 D CodecSolution_Logging: dma : true, feature: ADEC, extra: ANDROID_SW_AAC, value: -1
+08-05 19:17:23.521  1726  1726 D CodecSolution_Logging: insert diagmon log
+08-05 19:17:23.521  1726  1726 D CodecSolution_Logging: permission granted
+08-05 19:17:23.522  1726  1726 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1335 vendor.samsung.frameworks.codecsolution.Logging.insertDiagmonLog:14 vendor.samsung.frameworks.codecsolution.Logging.insertLog:6 vendor.samsung.frameworks.codecsolution.Logging.insertLog:1 vendor.samsung.frameworks.codecsolution.SehCodecSolutionService$1.handleMessage:24 
+08-05 19:17:23.523  4550  4550 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.startService:2068 android.content.ContextWrapper.startService:872 android.content.ContextWrapper.startService:872 com.sec.android.diagmonagent.sa.receiver.CFLogReceiver.onReceive:56 android.app.ActivityThread.handleReceiver:5663 
+08-05 19:17:23.528 22054 22330 D CCodecBuffers: [c2.android.aac.decoder#966:1D-Input.Impl[N]] codec released a buffer owned by client (index 2)
+08-05 19:17:23.529 22054 22368 W Codec2Client: query -- param skipped: index = 1342179345.
+08-05 19:17:23.529  1726  2873 E system_server: No package ID 7f found for resource ID 0x7f1901bd.
+08-05 19:17:23.529 22054 22368 W Codec2Client: query -- param skipped: index = 2415921170.
+08-05 19:17:23.529 22054 22368 W Codec2Client: query -- param skipped: index = 1610614798.
+08-05 19:17:23.529  1726  2873 W LocaleConfig: The resource file pointed to by the given resource ID isn't found.
+08-05 19:17:23.532  2870 20274 I SearchableManager: getCandidateSearchable: takes 817.723320ms
+08-05 19:17:23.533  1726  1780 W ActivityManager: Rescheduling restart of crashed service com.samsung.android.rubin.app/com.samsung.android.rubin.controller.services.KeepAliveService in 19653ms for mem-pressure-event
+08-05 19:17:23.536 22054 22368 D CCodecBufferChannel: [c2.android.aac.decoder#541] Created input block pool with allocatorID 16 => poolID 19 - OK (0)
+08-05 19:17:23.538 22054 22368 I CCodecBufferChannel: [c2.android.aac.decoder#541] Created output block pool with allocatorID 16 => poolID 2054 - OK
+08-05 19:17:23.538 22054 22368 D CCodecBufferChannel: [c2.android.aac.decoder#541] Configured output block pool ids 2054 => OK
+08-05 19:17:23.538  1557 29484 E Codec2-ComponentInterface: We have a failed config
+08-05 19:17:23.539 22054 22368 I CCodec  : [c2.android.aac.decoder] state->set(RUNNING)
+08-05 19:17:23.539 22054 22368 I CCodecBufferChannel: [c2.android.aac.decoder#541] 4 initial input buffers available
+08-05 19:17:23.540  1557 22375 D SimpleC2Component: Using output block pool with poolID 2054 => got 2054 - 0
+08-05 19:17:23.540  1516  1674 I SAACExtractor: SAACSource::read() ERROR_END_OF_STREAM
+08-05 19:17:23.542 22054 22309 V NuMediaExtractor: selectTrack, track[0]: audio/mp4a-latm
+08-05 19:17:23.544  2357  2357 I AppIconSolution: return adaptive icon for com.viber.voip, isNight = false
+08-05 19:17:23.545  1516  1674 I SAACExtractor: SAACSource::read() ERROR_END_OF_STREAM
+08-05 19:17:23.549  1557 22375 I C2SoftAacDec: Reconfiguring decoder: 0->16000 Hz, 0->1 channels
+08-05 19:17:23.557  2357  2357 I AppIconSolution: return adaptive icon for com.viber.voip, isNight = false
+08-05 19:17:23.557 22054 22133 D [AppHarbrSDK]: ----------------------- Initializing AppHarbr SDK -----------------------
+08-05 19:17:23.558   730   730 D io_stats: !@   8,0 r 23516246 456738536 w 7138197 133052588 d 2065658 178938160 f 0 662598 iot 10585432 0 th 0 0 0 pt 0 inp 0 0 145345.213
+08-05 19:17:23.558   730   730 D io_stats: !@ MemInfo(KB): total 7470312 free 227728 avail 2961324 actv(f) 706572 inactv(f) 1622884 dirty 1904 wb 0 anonpg 1332528 slab 626168
+08-05 19:17:23.558 22054 22368 D CCodecConfig: c2 config diff is   c2::u32 raw.channel-mask.value = 4
+08-05 19:17:23.559 22054 22368 D CCodecBuffers: [c2.android.aac.decoder#541:Output[N]] popFromStashAndRegister: at 0us, output format changed to AMessage(what = 0x00000000) = {
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   int32_t aac-drc-album-mode = 0
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   int32_t aac-drc-boost-level = 127
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   int32_t aac-drc-cut-level = 127
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   int32_t aac-drc-effect-type = 3
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   int32_t aac-drc-output-loudness = -1
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   int32_t aac-encoded-target-level = -1
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   int32_t aac-max-output-channel_count = 8
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   int32_t aac-target-ref-level = 64
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   int32_t buffer-batch-max-output-size = 0
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   int32_t buffer-batch-threshold-output-size = 0
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   int32_t channel-count = 1
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   int32_t channel-mask = 4
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   int32_t max-output-channel-count = 8
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   string mime = "audio/raw"
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   int32_t sample-rate = 16000
+08-05 19:17:23.559 22054 22368 D CCodecBuffers:   int32_t android._config-pcm-encoding = 2
+08-05 19:17:23.559 22054 22368 D CCodecBuffers: }
+08-05 19:17:23.582  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.viber.voip|151|community_message|10347
+08-05 19:17:23.582  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.viber.voip|151|community_message|10347
+08-05 19:17:23.582  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.viber.voip|151|community_message|10347
+08-05 19:17:23.582  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.viber.voip|151|community_message|10347
+08-05 19:17:23.584 22054 22368 I CCodec  : [c2.android.aac.decoder] state->set(STOPPING)
+08-05 19:17:23.584 22054 22368 D CCodecBufferChannel: [c2.android.aac.decoder#541] MediaCodec discarded an unknown buffer
+08-05 19:17:23.584 22054 22368 D CCodecBufferChannel: [c2.android.aac.decoder#541] MediaCodec discarded an unknown buffer
+08-05 19:17:23.584 22054 22368 D CCodecBufferChannel: [c2.android.aac.decoder#541] MediaCodec discarded an unknown buffer
+08-05 19:17:23.584 22054 22368 I CCodec  : [stop][3275] surface -> component
+08-05 19:17:23.585 22054 22368 I CCodec  : [c2.android.aac.decoder] state->set(ALLOCATED)
+08-05 19:17:23.585 22054 22368 I CCodec  : [c2.android.aac.decoder] state->set(RELEASING)
+08-05 19:17:23.586  2357  2357 D S.S.N.  : entryViewBound parent :0|com.viber.voip|151|community_message|10347
+08-05 19:17:23.588  2357  2357 I AppIconSolution: return adaptive icon for com.viber.voip, isNight = false
+08-05 19:17:23.591 22054 22381 I CCodec  : [release][3409] surface -> component
+08-05 19:17:23.591 22054 22381 I CCodec  : [c2.android.aac.decoder] state->set(RELEASED)
+08-05 19:17:23.592 22054 22368 I MediaCodec: Codec shutdown complete
+08-05 19:17:23.592 22054 22381 I Codec2Client: Component destructing
+08-05 19:17:23.592 22054 22381 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+08-05 19:17:23.592  1557  1711 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+08-05 19:17:23.593  1557  1711 D BufferPoolAccessor2.0: Destruction - bufferpool2 0xb4000077af48aa68 cached: 0/0M, 0/0% in use; allocs: 0, 0% recycled; transfers: 0, 0% unfetched
+08-05 19:17:23.594 22054 22309 I CCodecBufferChannel: CCodecBufferChannel destructing c2.android.aac.decoder#541
+08-05 19:17:23.594 22054 22309 V NuMediaExtractor: NuMediaExtractor destructor
+08-05 19:17:23.595  1516  1674 E SoundExtractorParserFactory: createExtractor() failed to create extractor
+08-05 19:17:23.596 22054 22309 V NuMediaExtractor: NuMediaExtractor constructor
+08-05 19:17:23.596 22054 22309 V NuMediaExtractor: setDataSource fd=243 (/data/app/~~2KaN-dgB03fx8hOHa3BusA==/com.viber.voip-VVkby6rGRqlxUpg4CHAeDA==/base.apk), offset=157074700, length=9601
+08-05 19:17:23.604  2357  2357 D PluginActionManager: startListening
+08-05 19:17:23.605  2357  2496 D PluginActionManager: queryAll com.android.systemui.action.PLUGIN_NOTIFICATION_MENU_ROW
+08-05 19:17:23.605  2357  2496 D PluginActionManager: Found 0 plugins
+08-05 19:17:23.607  1516  1674 I MediaExtractorFactory: Created an extractor 'SAACExtractor' with confidence 0.70
+08-05 19:17:23.610  2357  2357 I View    : setRequestedFrameRate frameRate=-2.0, this=StatusBarIconView(slot='com.viber.voip/0x97' alpha=1.0 icon=StatusBarIcon(icon=Icon(typ=RESOURCE pkg=com.viber.voip id=0x7f08192f) visible user=0 num=1 ) visibleState=ICON iconColor=#ff7260f1 staticDrawableColor=#ff7260f1 decorColor=#ff1b6cf7 animationStartColor=#0 currentSetColor=#ff7260f1 notification=StatusBarNotification(pkg=com.viber.voip user=UserHandle{0} id=151 tag=community_message key=0|com.viber.voip|151|community_message|10347: Notification(channel=smart shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=SHOW_LIGHTS|AUTO_CANCEL color=0xff7360f2 category=msg vis=PRIVATE semFlags=0x0 semPriority=0 semMissedCount=0))), caller=com.android.systemui.statusbar.StatusBarIconView.onAttachedToWindow:6 android.view.View.dispatchAttachedToWindow:24320 android.view.ViewGroup.addViewInner:5582 android.view.ViewGroup.addView:5358 com.android.systemui.statusbar.phone.LegacyNotificationIconAreaControllerImpl.updateIconsForLayout:468 
+08-05 19:17:23.610  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-05 19:17:23.613 22054 22309 V NuMediaExtractor: track of type 'audio/mp4a-latm' does not publish bitrate
+08-05 19:17:23.616  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 11
+08-05 19:17:23.618 22054 22054 D ConnectivityManager: StackLog: [android.net.ConnectivityManager.sendRequestForNetwork(ConnectivityManager.java:4744)] [android.net.ConnectivityManager.registerDefaultNetworkCallbackForUid(ConnectivityManager.java:5469)] [android.net.ConnectivityManager.registerDefaultNetworkCallback(ConnectivityManager.java:5436)] [WV.po1.e(chromium-SystemWebViewGoogle6432.aab-stable-787118103:37)] [WV.po1.a(chromium-SystemWebViewGoogle6432.aab-stable-787118103:1)] [org.chromium.android_webview.AwContentsLifecycleNotifier.onFirstWebViewCreated(chromium-SystemWebViewGoogle6432.aab-stable-787118103:19)] [J.N.JJ(Native Method)] [org.chromium.android_webview.AwContents.<init>(chromium-SystemWebViewGoogle6432.aab-stable-787118103:616)] [com.android.webview.chromium.t.run(chromium-SystemWebViewGoogle6432.aab-stable-787118103:387)] [WV.b53.run(chromium-SystemWebViewGoogle6432.aab-stable-787118103:13)] [org.chromium.base.task.PostTask.e(chromium-SystemWebViewGoogle6432.aab-stable-787118103:18)] [WV.c53.a(chromium-SystemWebViewGoogle6432.aab-stable-787118103:18)] [com.android.webview.chromium.WebViewChromiumFactoryProvider.a(chromium-SystemWebViewGoogle6432.aab-stable-787118103:3)] [com.android.webview.chromium.WebViewChromium.init(chromium-SystemWebViewGoogle6432.aab-stable-787118103:155)] [android.webkit.WebView.<init>(WebView.java:447)] [android.webkit.WebView.<init>(WebView.java:367)] [android.webkit.WebView.<init>(WebView.java:349)] [android.webkit.WebView.<init>(WebView.java:336)] [android.webkit.WebView.<init>(WebView.java:326)] [com.google.android.gms.ads.internal.webview.ai.<init>(:com.google.android.gms.policy_ads_fdr_dynamite@261710502@261710500017.901674994.901674994:1)] [com.google.android.gms.ads.internal.webview.u.cr(:com.google.android.gms.policy_ads_fdr_dynamite@261710502@261710500017.901674994.901674994:58)] [com.google.android.gms.ads.internal.webview.w.a(:com.google.android.gms.policy_ads_fdr_dynamite@261710502@261710500017.901674994.901674994:65)] [com.google.android.gms.ads.internal.js.k.<init>(:com.google.android.gms.policy_ads_fdr_dynamite@261710502@261710500017.901674994.901674994:36)] [com.google.android.gms.ads.internal.js.r.run(:com.google.android.gms.policy_ads_fdr_dynamite@261710502@261710500017.901674994.901674994:23)]
+08-05 19:17:23.619  2357  2357 I AODNotificationManager: updateNotification() 
+08-05 19:17:23.619  2357  2357 D PluginAODManager: onNotificationInfoUpdated() 11
+08-05 19:17:23.619  2357  2357 D PluginAODManager: onNotificationInfoUpdated() 0|com.google.android.gm|1627096676|gig:-324110222:PRIORITY_INBOX_ALL_MAIL|10281
+08-05 19:17:23.619  2357  2357 D PluginAODManager: onNotificationInfoUpdated() 0|com.google.android.gm|0|gig:-1746446011:CLASSIC_INBOX_ALL_MAIL|10281
+08-05 19:17:23.619  2357  2357 D PluginAODManager: onNotificationInfoUpdated() 0|com.moneybase.qa|1138|null|10569
+08-05 19:17:23.619  2357  2357 D PluginAODManager: onNotificationInfoUpdated() 0|ua.com.rozetka.shop|0|0|ua.com.rozetka.shop|g:Aggregate_NormalNotificationSection|10345|0|ua.com.rozetka.shop|g:Aggregate_NormalNotificationSection
+08-05 19:17:23.619  2357  2357 D PluginAODManager: onNotificationInfoUpdated() 0|com.google.android.apps.messaging|2|com.google.android.apps.messaging:incoming_message:196|10261
+08-05 19:17:23.619  2357  2357 D PluginAODManager: onNotificationInfoUpdated() 0|com.djinnico.djinni|0|FCM-Notification:131284095|10027
+08-05 19:17:23.619  2357  2357 D PluginAODManager: onNotificationInfoUpdated() 0|net.buddy.prj4|4469|null|10570
+08-05 19:17:23.619  2357  2357 D PluginAODManager: onNotificationInfoUpdated() -1|android|27|null|1000
+08-05 19:17:23.619  2357  2357 D PluginAODManager: onNotificationInfoUpdated() 0|com.samsung.android.app.smartcapture|5755|null|10229
+08-05 19:17:23.619  2357  2357 D PluginAODManager: onNotificationInfoUpdated() 0|net.openvpn.openvpn|1642|null|10466
+08-05 19:17:23.619  2357  2357 D PluginAODManager: onNotificationInfoUpdated() 0|com.viber.voip|151|community_message|10347
+08-05 19:17:23.619  2357  2357 I AODNotificationManager: updateVisibleNotifications: 11
+08-05 19:17:23.620  2357  2357 I SecKeyguardClockPositionAlgorithm: prepareClockContainerHeightChanging:
+08-05 19:17:23.620  2357  2357 I PluginFaceWidgetManager: isEditMode = false
+08-05 19:17:23.620  2357  2357 I NowBarItemManager: getVisibleList isScreenTurnedOn = false / aodShowState false shouldControlScreenOff false visibleList size = 0
+08-05 19:17:23.620  2357  2357 I SecKeyguardClockPositionAlgorithm: prepareClockContainerHeightChanging:
+08-05 19:17:23.621  2357  2357 I PluginFaceWidgetManager: isEditMode = false
+08-05 19:17:23.621  2357  2357 I NowBarItemManager: getVisibleList isScreenTurnedOn = false / aodShowState false shouldControlScreenOff false visibleList size = 0
+08-05 19:17:23.621  1726  2873 D ConnectivityService: requestNetwork for uid/pid:10347/22054 activeRequest: null callbackRequest: 17396 [NetworkRequest [ TRACK_DEFAULT id=17397, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10347 RequestorUid: 10347 RequestorPkg: com.viber.voip UnderlyingNetworks: Null] ], NetworkRequest [ REQUEST id=17398, [ Transports: SATELLITE Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10347 RequestorUid: 10347 RequestorPkg: com.viber.voip UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647 isUidTracked: false declaredMethods: AVAIL|LOST|NC|LP
+08-05 19:17:23.622 22054 22133 D [AppHarbrSDK]: ------------------ AppHarbr SDK Initialization done! --------------------
+08-05 19:17:23.623  1726  2147 D ConnectivityService:    accepting network in place of null for NetworkRequest [ TRACK_DEFAULT id=17397, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10347 RequestorUid: 10347 RequestorPkg: com.viber.voip UnderlyingNetworks: Null] ]
+08-05 19:17:23.625 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''
+08-05 19:17:23.629 22054 22326 I CCodec  : [c2.android.aac.decoder] state->set(STOPPING)
+08-05 19:17:23.630 22054 22326 D CCodecBufferChannel: [c2.android.aac.decoder#966] MediaCodec discarded an unknown buffer
+08-05 19:17:23.630 22054 22309 D MediaCodecList: codecHandlesFormat: no format, so no extra checks
+08-05 19:17:23.631  1726  2147 D ConnectivityService: Rematched networks [computed 1ms] [applied 6ms] [issued 2]
+08-05 19:17:23.631  1726  2147 D ConnectivityService: NetworkReassignment :
+08-05 19:17:23.631  1726  2147 D ConnectivityService:   17397 : null → 271
+08-05 19:17:23.631 22054 22326 D CCodecBufferChannel: [c2.android.aac.decoder#966] MediaCodec discarded an unknown buffer
+08-05 19:17:23.632 22054 22326 D CCodecBufferChannel: [c2.android.aac.decoder#966] MediaCodec discarded an unknown buffer
+08-05 19:17:23.632 22054 22326 I CCodec  : [stop][3275] surface -> component
+08-05 19:17:23.635 22054 22326 I CCodec  : [c2.android.aac.decoder] state->set(ALLOCATED)
+08-05 19:17:23.635 22054 22054 D ConnectivityManager: StackLog: [android.net.ConnectivityManager.sendRequestForNetwork(ConnectivityManager.java:4744)] [android.net.ConnectivityManager.sendRequestForNetwork(ConnectivityManager.java:4912)] [android.net.ConnectivityManager.registerNetworkCallback(ConnectivityManager.java:5329)] [WV.po1.e(chromium-SystemWebViewGoogle6432.aab-stable-787118103:86)] [WV.po1.a(chromium-SystemWebViewGoogle6432.aab-stable-787118103:1)] [org.chromium.android_webview.AwContentsLifecycleNotifier.onFirstWebViewCreated(chromium-SystemWebViewGoogle6432.aab-stable-787118103:19)] [J.N.JJ(Native Method)] [org.chromium.android_webview.AwContents.<init>(chromium-SystemWebViewGoogle6432.aab-stable-787118103:616)] [com.android.webview.chromium.t.run(chromium-SystemWebViewGoogle6432.aab-stable-787118103:387)] [WV.b53.run(chromium-SystemWebViewGoogle6432.aab-stable-787118103:13)] [org.chromium.base.task.PostTask.e(chromium-SystemWebViewGoogle6432.aab-stable-787118103:18)] [WV.c53.a(chromium-SystemWebViewGoogle6432.aab-stable-787118103:18)] [com.android.webview.chromium.WebViewChromiumFactoryProvider.a(chromium-SystemWebViewGoogle6432.aab-stable-787118103:3)] [com.android.webview.chromium.WebViewChromium.init(chromium-SystemWebViewGoogle6432.aab-stable-787118103:155)] [android.webkit.WebView.<init>(WebView.java:447)] [android.webkit.WebView.<init>(WebView.java:367)] [android.webkit.WebView.<init>(WebView.java:349)] [android.webkit.WebView.<init>(WebView.java:336)] [android.webkit.WebView.<init>(WebView.java:326)] [com.google.android.gms.ads.internal.webview.ai.<init>(:com.google.android.gms.policy_ads_fdr_dynamite@261710502@261710500017.901674994.901674994:1)] [com.google.android.gms.ads.internal.webview.u.cr(:com.google.android.gms.policy_ads_fdr_dynamite@261710502@261710500017.901674994.901674994:58)] [com.google.android.gms.ads.internal.webview.w.a(:com.google.android.gms.policy_ads_fdr_dynamite@261710502@261710500017.901674994.901674994:65)] [com.google.android.gms.ads.internal.js.k.<init>(:com.google.android.gms.policy_ads_fdr_dynamite@261710502@261710500017.901674994.901674994:36)] [com.google.android.gms.ads.internal.js.r.run(:com.google.android.gms.policy_ads_fdr_dynamite@261710502@261710500017.901674994.901674994:23)]
+08-05 19:17:23.635 22054 22326 I CCodec  : [c2.android.aac.decoder] state->set(RELEASING)
+08-05 19:17:23.643  1726  2147 D ConnectivityService: Rematched networks [computed 0ms] [applied 3ms] [issued 1]
+08-05 19:17:23.643  1726  2147 D ConnectivityService: NetworkReassignment : no changes
+08-05 19:17:23.661 22054 22388 I CCodec  : [release][3409] surface -> component
+08-05 19:17:23.662 22054 22388 I CCodec  : [c2.android.aac.decoder] state->set(RELEASED)
+08-05 19:17:23.664 22054 22326 I MediaCodec: Codec shutdown complete
+08-05 19:17:23.664 22054 22388 I Codec2Client: Component destructing
+08-05 19:17:23.664 22054 22388 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+08-05 19:17:23.665  1557 29484 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+08-05 19:17:23.665  1557 29484 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+08-05 19:17:23.665 22054 22305 I CCodecBufferChannel: CCodecBufferChannel destructing c2.android.aac.decoder#966
+08-05 19:17:23.666 22054 22305 V NuMediaExtractor: NuMediaExtractor destructor
+08-05 19:17:23.666  1557 29484 D BufferPoolAccessor2.0: Destruction - bufferpool2 0xb4000077af4a09e8 cached: 0/0M, 0/0% in use; allocs: 0, 0% recycled; transfers: 0, 0% unfetched
+08-05 19:17:23.667  1516  1674 E SoundExtractorParserFactory: createExtractor() failed to create extractor
+08-05 19:17:23.667 22054 22305 V NuMediaExtractor: NuMediaExtractor constructor
+08-05 19:17:23.667 22054 22305 V NuMediaExtractor: setDataSource fd=244 (/data/app/~~2KaN-dgB03fx8hOHa3BusA==/com.viber.voip-VVkby6rGRqlxUpg4CHAeDA==/base.apk), offset=157051256, length=9409
+08-05 19:17:23.671  1516  1674 I MediaExtractorFactory: Created an extractor 'SAACExtractor' with confidence 0.70
+08-05 19:17:23.673 22054 22386 I CCodec  : state->set(ALLOCATING)
+08-05 19:17:23.673 22054 22305 V NuMediaExtractor: track of type 'audio/mp4a-latm' does not publish bitrate
+08-05 19:17:23.673 22054 22386 I CCodec  : allocate(c2.android.aac.decoder)
+08-05 19:17:23.673 22054 22386 D CCodec  : allocate(c2.android.aac.decoder)
+08-05 19:17:23.675 22054 22305 D MediaCodecList: codecHandlesFormat: no format, so no extra checks
+08-05 19:17:23.676 22054 22386 I CCodec  : setting up 'default' as default (vendor) store
+08-05 19:17:23.678 22054 22386 I CCodec  : Created component [c2.android.aac.decoder] for [c2.android.aac.decoder]
+08-05 19:17:23.679 22054 22386 I CCodec  : [c2.android.aac.decoder] state->set(ALLOCATED)
+08-05 19:17:23.679 22054 22386 D CCodecConfig: read media type: audio/mp4a-latm
+08-05 19:17:23.682 22054 22386 D ReflectedParamUpdater: extent() != 1 for single value type: algo.buffers.max-count.values
+08-05 19:17:23.682 22054 22386 D ReflectedParamUpdater: extent() != 1 for single value type: output.subscribed-indices.values
+08-05 19:17:23.682 22054 22386 D ReflectedParamUpdater: extent() != 1 for single value type: input.buffers.allocator-ids.values
+08-05 19:17:23.683 22054 22386 D ReflectedParamUpdater: extent() != 1 for single value type: output.buffers.allocator-ids.values
+08-05 19:17:23.683 22054 22386 D ReflectedParamUpdater: extent() != 1 for single value type: algo.buffers.allocator-ids.values
+08-05 19:17:23.683 22054 22386 D ReflectedParamUpdater: extent() != 1 for single value type: output.buffers.pool-ids.values
+08-05 19:17:23.683 22054 22391 I CCodec  : state->set(ALLOCATING)
+08-05 19:17:23.683 22054 22391 I CCodec  : allocate(c2.android.aac.decoder)
+08-05 19:17:23.683 22054 22391 D CCodec  : allocate(c2.android.aac.decoder)
+08-05 19:17:23.683 22054 22386 D ReflectedParamUpdater: extent() != 1 for single value type: algo.buffers.pool-ids.values
+08-05 19:17:23.699 22054 22391 I CCodec  : setting up 'default' as default (vendor) store

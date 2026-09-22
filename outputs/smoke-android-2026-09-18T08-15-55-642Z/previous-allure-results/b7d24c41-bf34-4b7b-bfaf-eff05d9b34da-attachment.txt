@@ -1,0 +1,202 @@
+--------- beginning of main
+05-15 18:09:14.452  2774  2774 I RegiMgr-Handler<1>: onPreciseDataConnectionStateChanged
+--------- beginning of system
+05-15 18:09:14.453  1760  4847 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1418 android.content.Context.sendBroadcastMultiplePermissions:2534 android.content.Context.sendBroadcastMultiplePermissions:2522 com.android.server.TelephonyRegistry.broadcastDataConnectionStateChanged:95 com.android.server.TelephonyRegistry.notifyDataConnectionForSubscriber:114 
+05-15 18:09:14.457 25478 25478 W earchbox:search: Failed to find entry 'classes.dex': Entry not found
+05-15 18:09:14.457 25478 25478 W earchbox:search: Failed to find entry 'classes.dex': Entry not found
+05-15 18:09:14.457  1360  1360 D Zygote  : Forked child process 25522
+05-15 18:09:14.458 25478 25478 W earchbox:search: Failed to find entry 'classes.dex': Entry not found
+05-15 18:09:14.458 25478 25478 W earchbox:search: Failed to find entry 'classes.dex': Entry not found
+05-15 18:09:14.458  2410  2410 V SimultaneousCallingTracker: Received EVENT 101
+05-15 18:09:14.458  2410  2410 D SimultaneousCallingTracker: Ignoring updatePhoneMapAndSimultaneousCallSupportMap since device is not DSDA capable.
+05-15 18:09:14.458  1760  1822 I ActivityManager: Start proc 25522:com.samsung.android.dqagent/1000 for broadcast {com.samsung.android.dqagent/com.samsung.android.dqagent.receiver.DQADataReceiver}
+05-15 18:09:14.458  1760  1822 I ActivityManager: ProcessObserver broadcast disabled
+05-15 18:09:14.458 25478 25478 D nativeloader: Configuring clns-10 for other apk /data/app/~~T7RQYi1Nf55OzzLFzxQP9Q==/com.google.android.googlequicksearchbox-ik9Ew-Pz_OJCYpt49Y9DvQ==/base.apk:/data/app/~~T7RQYi1Nf55OzzLFzxQP9Q==/com.google.android.googlequicksearchbox-ik9Ew-Pz_OJCYpt49Y9DvQ==/split_config.xxhdpi.apk:/data/app/~~T7RQYi1Nf55OzzLFzxQP9Q==/com.google.android.googlequicksearchbox-ik9Ew-Pz_OJCYpt49Y9DvQ==/split_lens_ondevice_engine_feature_module.apk:/data/app/~~T7RQYi1Nf55OzzLFzxQP9Q==/com.google.android.googlequicksearchbox-ik9Ew-Pz_OJCYpt49Y9DvQ==/split_lens_ondevice_engine_play_ml_module.apk:/data/app/~~T7RQYi1Nf55OzzLFzxQP9Q==/com.google.android.googlequicksearchbox-ik9Ew-Pz_OJCYpt49Y9DvQ==/split_tclib_native_feature_module.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~T7RQYi1Nf55OzzLFzxQP9Q==/com.google.android.googlequicksearchbox-ik9Ew-Pz_OJCYpt49Y9DvQ==/lib/arm64:/data/app/~~T7RQYi1Nf55OzzLFzxQP9Q==/com.google.android.googlequicksearchbox-ik9Ew-Pz_OJCYpt49Y9DvQ==/base.apk!/lib/arm64-v8a:/data/app/~~T7RQYi1Nf55O
+05-15 18:09:14.461  2410  2410 D SatelliteController: registerForSatelliteModemStateChanged: add Listeners for ModemState
+05-15 18:09:14.461  2410  2410 E SatelliteController: registerForSatelliteModemStateChanged: mSatelliteSessionController is not initialized yet
+05-15 18:09:14.467  2410  2957 D SatelliteController: isCarrierRoamingNtnEligible: satellite access is not allowed
+05-15 18:09:14.467  2410  2957 D SatelliteController: evaluateCarrierRoamingNtnEligibilityChange: isCarrierRoamingNtnEligible=false
+05-15 18:09:14.467  2410  2957 E SatelliteController: notifyNtnEligibility: mSatellitePhone is null
+05-15 18:09:14.467  2410  2957 V SatelliteController: getWwanIsInService: return false
+05-15 18:09:14.468  2410  2957 D SatelliteController: updateLastNotifiedNtnModeAndNotify: subId=1 initialized=true lastNotifiedNtnMode=false lastNotifiedNtnModePhone=false currNtnMode=false
+05-15 18:09:14.468  1760  4615 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2431, result: DENIED_SOFT
+05-15 18:09:14.468  2410  2957 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+05-15 18:09:14.468  1760  4615 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2431, result: DENIED_SOFT
+05-15 18:09:14.469  1760  4615 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2431, result: DENIED_SOFT
+05-15 18:09:14.469  1760  4615 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2431, result: DENIED_SOFT
+05-15 18:09:14.469  1760  4615 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2431, result: DENIED_SOFT
+05-15 18:09:14.469  1760  4615 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2431, result: DENIED_SOFT
+05-15 18:09:14.469  1760  4615 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2431, result: DENIED_SOFT
+05-15 18:09:14.469  1760  4615 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2431, result: DENIED_SOFT
+05-15 18:09:14.469  1760  2677 D SLocation: CellLocationManager - onServiceStateChanged 1
+05-15 18:09:14.469  1760  4615 I LocationAccessPolicy: checkLocationPermission - callingUid: 10321, callingPid: 7106, result: DENIED_SOFT
+05-15 18:09:14.469  1760  4615 I LocationAccessPolicy: checkLocationPermission - callingUid: 10321, callingPid: 7106, result: DENIED_SOFT
+05-15 18:09:14.469  1760  4615 I LocationAccessPolicy: checkLocationPermission - callingUid: 10080, callingPid: 18742, result: DENIED_SOFT
+05-15 18:09:14.469  1760  4615 I LocationAccessPolicy: checkLocationPermission - callingUid: 10080, callingPid: 18742, result: DENIED_SOFT
+05-15 18:09:14.469  2431  2431 D GlobalActionsDialogLite: Service changed before actions created
+05-15 18:09:14.469  1760  4615 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1385 android.content.Context.sendBroadcastMultiplePermissions:2588 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:192 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:185 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:667 
+05-15 18:09:14.470  1760  2199 W NSLocationMonitor: onServiceStateChanged, state=1 / channel=2147483647
+05-15 18:09:14.470  1760  2199 I NSLocationMonitor: networkType[0]=UNKNOWN / nrState=false
+05-15 18:09:14.470  2774  2774 I ImsIconManager<1>: onServiceStateChanged: {mVoiceRegState=1(OUT_OF_SERVICE), mDataRegState=1(OUT_OF_SERVICE), mChannelNumber=2147483647, duplexMode()=0, mCellBandwidths=[], mOperatorAlphaLong=, mOperatorAlphaShort=, isManualNetworkSelection=false(automatic), getRilVoiceRadioTechnology=14(LTE), getRilDataRadioTechnology=0(Unknown), mCssIndicator=unsupported, mNetworkId=*1, mSystemId=*1, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, NonCellular=false, Snap=0, PsOnly=false, SprDisplayRoam=false, OptRadioTech=0, MsimSubmode=0, IsVoiceCallAvailable=false, mIsEmergencyOnly=true, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=PS transportType=WLAN registrationState=UNKNOWN networkRegistrationState=UNKNOWN roamingType=NOT_ROAMING accessNetworkTechnology=IWLAN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=DENIED networkRegistrationState=DENIED roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=true availableServices=[EMERGENCY] cellIdentity=CellIdentityLte:{ mCi=0 mPci=59 mTac=6***4 mEarfcn=2147483647 mBands=[] mBandwidth=2147483647 mMcc=null mMnc=null mAlphaLong= mAlphaShort= mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING networkRegistrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 16 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false mLteAttachResultType = 0 mLteAttachExtraInfo = 0 null } nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=, mOperatorAlphaShortRaw=, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false, mIsUsingNonTerrestrialNetwork=false}
+05-15 18:09:14.470  1760  2199 W NSLocationMonitor: onServiceStateChanged, state=1 / channel=2147483647
+05-15 18:09:14.470  1760  2199 I NSLocationMonitor: networkType[0]=UNKNOWN / nrState=false
+05-15 18:09:14.470  2774  2774 E GlobalSettingsRepoBase: globalgcsettings No matched key : separate_vo5g_icon
+05-15 18:09:14.470  2410  2957 D SatelliteController: determineAutoConnectSystemNotification: isNtn.first = false IsNotiToShow = true mIsAutoConnectNotificationShowing = false
+05-15 18:09:14.470  1760  4615 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1418 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:217 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:185 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:667 android.os.Binder.execTransactInternal:1462 
+05-15 18:09:14.471  1760  4615 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1418 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:247 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:185 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:667 android.os.Binder.execTransactInternal:1462 
+05-15 18:09:14.471  2774  3174 I VolteServiceModule: onServiceStateChanged({mVoiceRegState=1(OUT_OF_SERVICE), mDataRegState=1(OUT_OF_SERVICE), mChannelNumber=2147483647, duplexMode()=0, mCellBandwidths=[], mOperatorAlphaLong=, mOperatorAlphaShort=, isManualNetworkSelection=false(automatic), getRilVoiceRadioTechnology=14(LTE), getRilDataRadioTechnology=0(Unknown), mCssIndicator=unsupported, mNetworkId=*1, mSystemId=*1, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, NonCellular=false, Snap=0, PsOnly=false, SprDisplayRoam=false, OptRadioTech=0, MsimSubmode=0, IsVoiceCallAvailable=false, mIsEmergencyOnly=true, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=PS transportType=WLAN registrationState=UNKNOWN networkRegistrationState=UNKNOWN roamingType=NOT_ROAMING accessNetworkTechnology=IWLAN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=DENIED networkRegistrationState=DENIED roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=true availableServices=[EMERGENCY] cellIdentity=CellIdentityLte:{ mCi=0 mPci=59 mTac=6***4 mEarfcn=2147483647 mBands=[] mBandwidth=2147483647 mMcc=null mMnc=null mAlphaLong= mAlphaShort= mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING networkRegistrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 16 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false mLteAttachResultType = 0 mLteAttachExtraInfo = 0 null } nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=, mOperatorAlphaShortRaw=, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false, mIsUsingNonTerrestrialNetwork=false})
+05-15 18:09:14.471  2774  3174 I VolteServiceModule: mIsLteEpsOnlyAttached(1):false
+05-15 18:09:14.471  3222  3294 W NetworkManager_FLP: updateServiceStateChanged, serviceState=1 / isRegistered=true / channel=2147483647 / networkTypeName=UNKNOWN / nr=false
+05-15 18:09:14.471  1760  4615 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1418 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:270 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:185 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:667 android.os.Binder.execTransactInternal:1462 
+05-15 18:09:14.471  2431  2566 D MobileIconViewModel: [] (1/1) connected=false dataConnected=false dataType=DefaultIcon(iconGroup=IconGroup(Unknown)) networkType=UNKNOWN simCard=ETC
+05-15 18:09:14.471  1760  1760 D SemWifiService: onServiceStateChanged : state - 1, dataNetworkType : 0
+05-15 18:09:14.471  1760  1760 D SemWifiApServiceImpl: onServiceStateChanged : 1dataNetworkType : 0,isUsingNonTerrestrialNetwork:false
+05-15 18:09:14.472  2774  2774 I TelephonyCallbackForPdnController<1>: emcbsIndication: NOT_SUPPORTED, mobileDataNetworkType: 0
+05-15 18:09:14.472 25478 25478 V GraphicsEnvironment: Currently set values for:
+05-15 18:09:14.472 25478 25478 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+05-15 18:09:14.472 25478 25478 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+05-15 18:09:14.472 25478 25478 V GraphicsEnvironment: com.google.android.googlequicksearchbox is not listed in per-application setting
+05-15 18:09:14.472 25478 25478 V GraphicsEnvironment: ANGLE allowlist from config: 
+05-15 18:09:14.472 25478 25478 V GraphicsEnvironment: com.google.android.googlequicksearchbox is not listed in ANGLE allowlist or settings, returning default
+05-15 18:09:14.473  2410  2410 V PhoneGlobals: handleServiceStateChanged
+05-15 18:09:14.473  2410  2410 D NotificationMgr: updateNetworkSelection, Use Samsung codes instead of AOSP codes
+05-15 18:09:14.473  2410  2410 V PhoneGlobals: subId=1, mDefaultDataSubId=1, ss roaming=false
+05-15 18:09:14.473  2682  3496 I EPDG -- SIM1 [NetController]: getVoPS, dataRegState=1, not available
+05-15 18:09:14.473  2682  3496 I EPDG -- SIM1 [NetController]: WWAN Voice Regi: 1 Roaming: 0
+05-15 18:09:14.473  2682  3496 I EPDG -- SIM1 [NetController]: WWAN Data Regi: 1 Rat: 0 Roaming: false
+05-15 18:09:14.473  2682  3496 I EPDG -- SIM1 [EpdgSubscription]: getIsAirplaneMode: returning: false
+05-15 18:09:14.473 25522 25522 I android.dqagent: Using CollectorTypeCMC GC.
+05-15 18:09:14.474  1760  4847 D PhoneRestrictionPolicy: isOperationAllowed >>> slotNum: 1 function: 1
+05-15 18:09:14.475  2431  2431 D SatelliteModeObserver: service state changed : {mVoiceRegState=1(OUT_OF_SERVICE), mDataRegState=1(OUT_OF_SERVICE), mChannelNumber=2147483647, duplexMode()=0, mCellBandwidths=[], mOperatorAlphaLong=null, mOperatorAlphaShort=null, isManualNetworkSelection=false(automatic), getRilVoiceRadioTechnology=14(LTE), getRilDataRadioTechnology=0(Unknown), mCssIndicator=unsupported, mNetworkId=*1, mSystemId=*1, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, NonCellular=false, Snap=0, PsOnly=false, SprDisplayRoam=false, OptRadioTech=0, MsimSubmode=0, IsVoiceCallAvailable=false, mIsEmergencyOnly=true, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=PS transportType=WLAN registrationState=UNKNOWN networkRegistrationState=UNKNOWN roamingType=NOT_ROAMING accessNetworkTechnology=IWLAN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=DENIED networkRegistrationState=DENIED roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=true availableServices=[EMERGENCY] cellIdentity=null voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING networkRegistrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 16 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false mLteAttachResultType = 0 mLteAttachExtraInfo = 0 null } nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=, mOperatorAlphaShortRaw=, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false, mIsUsingNonTerrestrialNetwork=false}
+05-15 18:09:14.475  2431  2431 D SatelliteModeObserver: isSatelliteNetworksOn(), isUsingTerrestrialNetwork: false
+05-15 18:09:14.475  2774  2774 I NetworkUtil: Network Cap check : INTERNET : true
+05-15 18:09:14.475  2431  2431 D SatelliteModeObserver: isSatelliteNetworksOn(), isUsingTerrestrialNetwork: false
+05-15 18:09:14.475  2774  2774 I NetworkUtil: isConnected = false isCellularOnly : true
+05-15 18:09:14.476  2774  2774 I TelephonyCallbackForPdnController<1>: onServiceStateChanged: state={mVoiceRegState=1(OUT_OF_SERVICE), mDataRegState=1(OUT_OF_SERVICE), mChannelNumber=2147483647, duplexMode()=0, mCellBandwidths=[], mOperatorAlphaLong=, mOperatorAlphaShort=, isManualNetworkSelection=false(automatic), getRilVoiceRadioTechnology=14(LTE), getRilDataRadioTechnology=0(Unknown), mCssIndicator=unsupported, mNetworkId=*1, mSystemId=*1, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, NonCellular=false, Snap=0, PsOnly=false, SprDisplayRoam=false, OptRadioTech=0, MsimSubmode=0, IsVoiceCallAvailable=false, mIsEmergencyOnly=true, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=PS transportType=WLAN registrationState=UNKNOWN networkRegistrationState=UNKNOWN roamingType=NOT_ROAMING accessNetworkTechnology=IWLAN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=DENIED networkRegistrationState=DENIED roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=true availableServices=[EMERGENCY] cellIdentity=CellIdentityLte:{ mCi=0 mPci=59 mTac=6***4 mEarfcn=2147483647 mBands=[] mBandwidth=2147483647 mMcc=null mMnc=null mAlphaLong= mAlphaShort= mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING networkRegistrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 16 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false mLteAttachResultType = 0 mLteAttachExtraInfo = 0 null } nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=, mOperatorAlphaShortRaw=, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false, mIsUsingNonTerrestrialNetwork=false}Changed=
+05-15 18:09:14.476  2774  2774 I PdnController<1>: notifyDataConnectionState
+05-15 18:09:14.476  2774  2774 I PdnController<1>: notifyDataConnectionState: needNotify=false networkType=0 isEpdgConnected=false dataNetType=0=>0 dataRegState=1=>1
+05-15 18:09:14.476  2774  2774 I TelephonyCallbackForPdnController<1>: notifySnapshotState: snapshotState=0 old=0
+05-15 18:09:14.476  2774  2962 I GeolocationCon: handleMessage : what = SERVICE_STATE_CHANGED
+05-15 18:09:14.476  2774  2962 I GeolocationCon: matchTimingReqLocation ,match=0, timing=4
+05-15 18:09:14.476  2774  2962 I GeolocationCon: matchTimingReqLocation ,match=0, timing=4
+05-15 18:09:14.476  2774  2962 I GeolocationCon: matchTimingReqLocation ,match=0, timing=4
+05-15 18:09:14.476  2774  2962 I GeolocationCon: profile is null
+05-15 18:09:14.476  2774  2962 I GeolocationCon<1>: getLastAccessedNetworkCountryIso: Not accessed yet
+05-15 18:09:14.477  2774  2774 I VolteServiceModule: onServiceStateChanged({mVoiceRegState=1(OUT_OF_SERVICE), mDataRegState=1(OUT_OF_SERVICE), mChannelNumber=2147483647, duplexMode()=0, mCellBandwidths=[], mOperatorAlphaLong=, mOperatorAlphaShort=, isManualNetworkSelection=false(automatic), getRilVoiceRadioTechnology=14(LTE), getRilDataRadioTechnology=0(Unknown), mCssIndicator=unsupported, mNetworkId=*1, mSystemId=*1, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, NonCellular=false, Snap=0, PsOnly=false, SprDisplayRoam=false, OptRadioTech=0, MsimSubmode=0, IsVoiceCallAvailable=false, mIsEmergencyOnly=true, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=PS transportType=WLAN registrationState=UNKNOWN networkRegistrationState=UNKNOWN roamingType=NOT_ROAMING accessNetworkTechnology=IWLAN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=DENIED networkRegistrationState=DENIED roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=true availableServices=[EMERGENCY] cellIdentity=CellIdentityLte:{ mCi=0 mPci=59 mTac=6***4 mEarfcn=2147483647 mBands=[] mBandwidth=2147483647 mMcc=null mMnc=null mAlphaLong= mAlphaShort= mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING networkRegistrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 16 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false mLteAttachResultType = 0 mLteAttachExtraInfo = 0 null } nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=, mOperatorAlphaShortRaw=, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false, mIsUsingNonTerrestrialNetwork=false})
+05-15 18:09:14.477  3222  3294 W NetworkManager_FLP: updateServiceStateChanged, serviceState=1 / isRegistered=true / channel=2147483647 / networkTypeName=UNKNOWN / nr=false
+05-15 18:09:14.478  2774  2774 I VolteServiceModule: mIsLteEpsOnlyAttached(0):false
+05-15 18:09:14.478  2682  3496 I EPDG -- SIM1 [NetController]: getIsRssiDisabledForProfiling: returning: true
+05-15 18:09:14.478  1760  1760 D SemWifiService: received: android.intent.action.SERVICE_STATE
+05-15 18:09:14.478  2682  3496 I EPDG -- [SettingManager]: getVoWifiPreference[1], 1
+05-15 18:09:14.478  2682  3496 I EPDG -- SIM1 [EpdgSubscription]: getIsAirplaneMode: returning: false
+05-15 18:09:14.480  2410  3479 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2431, result: DENIED_SOFT
+05-15 18:09:14.480  2410  3479 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2431, result: DENIED_SOFT
+05-15 18:09:14.480  1760  2254 W SemWifiBackOff.Fcc: service state is STATE_OUT_OF_SERVICE telephony country iso: ua
+05-15 18:09:14.480 25057 25057 D CellBroadcastReceiver: onReceive Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 xflg=0x4 cmp=com.google.android.cellbroadcastreceiver/com.android.cellbroadcastreceiver.CellBroadcastReceiver (has extras) }
+05-15 18:09:14.480  2682  3496 I EPDG -- SIM1 [EpdgSubscription]: getIsAirplaneMode: returning: false
+05-15 18:09:14.480  2410  3479 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2431, result: DENIED_SOFT
+05-15 18:09:14.480  2410  3479 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2431, result: DENIED_SOFT
+05-15 18:09:14.480  2431  2431 D MULTISIM-PROD-REPO: onReceive() - action = android.intent.action.SERVICE_STATE
+05-15 18:09:14.481  1760  1821 I ActivityManager: Changes in 10291 19 to 11, 0 to 128
+05-15 18:09:14.481  2431  2431 D CarrierTextController: carrierTextForSimState(1)-(order: 0) : Emergency calls only, Emergency calls only
+05-15 18:09:14.482  2431  2431 D CarrierTextController: setCarrierText : Emergency calls only, Emergency calls only allSimsMissing : false anySimReady : false
+05-15 18:09:14.482  2431  2431 D CarrierTextController: carrierTextForSimState(1)-(order: 0) : Emergency calls only, Emergency calls only
+05-15 18:09:14.482  2431  2431 D CarrierTextController: setCarrierText : Emergency calls only, Emergency calls only allSimsMissing : false anySimReady : false
+05-15 18:09:14.482  2431  2431 D CarrierTextController: carrierTextForSimState(1)-(order: 0) : Emergency calls only, Emergency calls only
+05-15 18:09:14.482 25057 25057 D CellBroadcastReceiver: onServiceStateChanged, ss: 1
+05-15 18:09:14.482  2431  2431 D CarrierTextController: setCarrierText : Emergency calls only, Emergency calls only allSimsMissing : false anySimReady : false
+05-15 18:09:14.482  2431  2431 D FaceWidgetPagesController: onRefreshCarrierInfo()
+05-15 18:09:14.482 25057 25057 D CellBroadcastReceiver: networkOperator: 
+05-15 18:09:14.483 25057 25057 D CellBroadcastReceiver: networkOperator on emergency mode: 255 for the country code: ua
+05-15 18:09:14.483 25057 25057 D CellBroadcastReceiver: roamingNetworks: [XXX]
+05-15 18:09:14.483  2410  2410 V PhoneGlobals: updateDataRoamingStatus
+05-15 18:09:14.483  1760  2254 V SemWifiBackOff.5G: checkAndSetup nrFrequencyRange=0 / prevNrFrequencyRange=0
+05-15 18:09:14.483  1760  2254 V SemWifiBackOff.5G: restore back off mode, current: [NONE]
+05-15 18:09:14.483 25057 25057 D CellBroadcastReceiver: update supported roaming operator as 
+05-15 18:09:14.484  2410  2410 V PhoneGlobals: updateDataRoamingStatus dataAllowed=false, disallowReasons=[SERVICE_OPTION_NOT_SUPPORTED, NOT_IN_SERVICE, DATA_DISABLED], dataIsNowRoaming=false, RoamingNumeric=null, CallingReason=3
+05-15 18:09:14.484  2410  2410 V PhoneGlobals: handleServiceStateChanged
+05-15 18:09:14.484  2410  2410 D NotificationMgr: updateNetworkSelection, Use Samsung codes instead of AOSP codes
+05-15 18:09:14.484  2410  2410 V PhoneGlobals: subId=-1, mDefaultDataSubId=1, ss roaming=false
+05-15 18:09:14.484  2682  3496 I EPDG -- SIM1 [NetController]: voiceNetType: 13 mActiveVoiceRat: 13
+05-15 18:09:14.484  2682  3496 I EPDG -- SIM1 [EpdgSubscription]: getIsAirplaneMode: returning: false
+05-15 18:09:14.484  2431  2552 D DeviceState: isESIM() :0 : false
+05-15 18:09:14.485  1760  4847 I ActivityManager: Changes in 10291 11 to 19, 128 to 0
+05-15 18:09:14.485  2410  3479 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2431, result: DENIED_SOFT
+05-15 18:09:14.485  2410  3479 I LocationAccessPolicy: checkLocationPermission - callingUid: 10048, callingPid: 2431, result: DENIED_SOFT
+05-15 18:09:14.486  2431  2431 D FaceWidgetClockRoamManager: isNetworkRoamingState id=1
+05-15 18:09:14.486  2431  2431 D FaceWidgetClockRoamManager: isNetworkRoamingState false
+05-15 18:09:14.486  2431  2431 D FaceWidgetClockRoamManager: onRefreshCarrierInfo(pre, now): false, false
+05-15 18:09:14.486  2431  2431 D FaceWidgetClockPage: onRefreshCarrierInfo : isChanged false mIsRoaming false
+05-15 18:09:14.486  2682  3496 I EPDG -- SIM1 [NetController]: onNetworkStatusChanged : mCellularAvailable = false
+05-15 18:09:14.486  2431  2552 D DeviceState: isESIM() :1 : false
+05-15 18:09:14.487  2431  2552 D NetworkController.MobileSignalController(1): isPowerOffServiceState,mCurrentState.getVoiceServiceState() = 1,mCurrentState.airplaneMode = false,mCurrentState.canCellularVoiceService() = true,mCurrentState.getMobileDataRegState() = false
+05-15 18:09:14.487  2431  2552 D Tile.AirplaneModeTile:  handleUpdateState mIsWiFiOnlyDevice false isNoSimState false isPowerOffServiceState false mSetting.getValue() 0 isSatelliteModeOn false isChinaDevice false
+05-15 18:09:14.487  2431  2552 D Tile.AirplaneModeTile:  handleUpdateState:  value = false, state = 1
+05-15 18:09:14.487  1760  4615 I Telecom : SamsungTelecomServiceImpl : isInCall - callingPackage : com.android.systemui / callingUser : UserHandle{0} / hasCrossUserAccess : true
+05-15 18:09:14.488  2431  2431 D CarrierTextController: info.location: Keyguard, info.carrierText: Emergency calls only, info.carrierTextShort: Emergency calls only
+05-15 18:09:14.488  1760  1828 W libprocessgroup: SetCgroup::ExecuteForProcess: failed to open /dev/cpuctl/foreground-boost/cgroup.procs: No such file or directory
+05-15 18:09:14.488  2431  2431 D CarrierTextController: info.location: null, info.carrierText: Emergency calls only, info.carrierTextShort: Emergency calls only
+05-15 18:09:14.488  2431  2431 D ShadeCarrierGroup: handleUpdateCarrierInfo [Emergency calls only] isLatin=false
+05-15 18:09:14.489  2410  2410 I Telephony: TelecomAccountRegistry$TelecomAccountTelephonyCallback: TelecomAccountRegistry: onServiceStateChanged: newState=1, mServiceState=1
+05-15 18:09:14.490  2431  2552 D MULTISIM-PROD-REPO: HANDLE_MSG(2000)
+05-15 18:09:14.491  2410  2410 I Telephony: TelecomAccountRegistry$AccountEntry: isRttCurrentlySupported -- regular acct,, hasVoiceAvailability: false, isRttSupported: true, alwaysAllowWhileRoaming: false, isRoaming: false, isOnWfc: false
+05-15 18:09:14.497  2431  2431 W View    : requestLayout() improperly called by com.android.systemui.qs.SecQSGradationDrawableView{4da3418 V.E...... ......ID 0,0-1080,310 #7f0a0a16 app:id/qs_gradation_view} during layout: running second layout pass
+05-15 18:09:14.497  2431  2431 W View    : requestLayout() improperly called by android.widget.FrameLayout{f57ae71 V.E...... ......I. 0,0-1080,2340 #2} during layout: running second layout pass
+05-15 18:09:14.497  2431  2431 W View    : requestLayout() improperly called by android.widget.FrameLayout{be1e456 V.E...... ......ID 0,143-1080,2214 #7f0a0a14 app:id/qs_frame} during layout: running second layout pass
+05-15 18:09:14.498  2431  2431 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+05-15 18:09:14.500 25478 25478 D ProcessLifecycleG3: androidx.startup is not available, initializing using ProcessLifecycleOwnerInitializer instead.
+05-15 18:09:14.502 25489 25489 I FirebaseApp: Device unlocked: initializing all Firebase APIs for app [DEFAULT]
+05-15 18:09:14.506 25489 25489 I FirebaseInitProvider: FirebaseApp initialization successful
+05-15 18:09:14.507 25477 25477 I CapsuleProvider_1.0.29: onCreate
+05-15 18:09:14.509  1760  4615 D PackageManager: setEnabledSetting : userId = 0 packageName = com.samsung.cmh cmp = androidx.work.impl.background.systemjob.SystemJobService newState = 1 callingPackage = com.samsung.cmh
+05-15 18:09:14.509  1760  4615 D ApplicationPolicy: getApplicationStateEnabled : pkg = com.samsung.cmh userId : 0
+05-15 18:09:14.510  1760  4615 D ApplicationPolicy: getApplicationComponentState : pkg = com.samsung.cmh userId : 0
+05-15 18:09:14.512 25489 25489 I CMHProvider: [#CMH#] onCreate 
+05-15 18:09:14.512 25489 25489 I DatabaseManager: [#CMH#] DatabaseManager ctor 
+05-15 18:09:14.512 25489 25539 E ashmem  : Pinning is deprecated since Android Q. Please use trim or other methods.
+05-15 18:09:14.516 25489 25489 I CMHApplication: [#CMH#] CMH started with context  com.samsung.cmh.core.CMHApplication@1b633c9
+05-15 18:09:14.518 25489 25489 I Controller: [#CMH#] Controller Construct 
+05-15 18:09:14.518 25489 25489 I SamsungAnalytics605079: Tracker start:6.05.079
+05-15 18:09:14.518 25489 25489 I SALoggerUtils: [#CMH#] After SA logging initialization completed  
+05-15 18:09:14.518 25489 25489 I CMHApplication: [#CMH#] Controller is ready, now starting CMH Core Init 
+05-15 18:09:14.522 25489 25558 I Initializer: [#CMH#] CMH initialization starts 
+05-15 18:09:14.522 25489 25558 I DatabaseManager: [#CMH#] DatabaseVersion : 1008
+05-15 18:09:14.523 25489 25557 I CloudUtils: [#CMH#] KEY_MAX_CLOUD_RETRY_LIMIT Reset not required ,statusfalse 
+05-15 18:09:14.523  1760  4847 I ActivityManager: Changes in 5004 19 to 8, 0 to 128
+05-15 18:09:14.529 25489 25489 I CMHJobService: [#CMH#] onStartJob Called at May 15,2026 18:09:14 
+05-15 18:09:14.530 25489 25558 W SQLiteLog: (28) walIndexRecover: rc 0, nPage 644, mxFrame 10, /data/user/0/com.samsung.cmh/databases/cmh.db-wal
+05-15 18:09:14.530 25478 25478 I dvct    : Scheduling one-off OpaEnabledBroadcastWorker in 30 seconds
+05-15 18:09:14.531 25489 25489 I CMHJobService: [#CMH#] Battery Percentage is:  1.0, High Temp: 65536
+05-15 18:09:14.531  3116  3610 I ScanController: onScanResult to scannerId: 2- eventType=0x1a, addressType=1, address=XX:XX:XX:XX:D9:36, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-64, periodicAdvInt=0x0
+05-15 18:09:14.532 25489 25489 I CMHJobService: [#CMH#] Screen is turned off , status :   true  /  return canProcess = false
+05-15 18:09:14.534 25658 25669 I EasySetup[11.1.23.4] : IcControlService.isFoldDeviceFolded() - isFoldDevice: false, isNotFolded: false
+05-15 18:09:14.534 25658 25669 I Peripheral_SmartThingsManager[1.2.95]: parseBlePacketserviceId : 9
+05-15 18:09:14.534 25658 25669 E Peripheral_OCFTvUtil[1.2.95]: not supported version
+05-15 18:09:14.534 25658 25669 E Peripheral_OCFTVManager[1.2.95]: isOCFTVDevice is null
+05-15 18:09:14.535   745   745 W keymint_tee: [WRN]begin req PARAMS: A32, BM2, PD64, 
+05-15 18:09:14.535 25478 25478 I enos    : SslGuard completed installation.
+05-15 18:09:14.536   745   745 D android.hardware.security.keymint-service: begin: ret 0
+05-15 18:09:14.536   744 15878 I keystore2: system/security/keystore2/src/security_level.rs:466 - In create_operation. Success to create IKeystoreOperation. 1000, None
+05-15 18:09:14.536 25658 25669 E IC_DeviceManager[1.2.95]: isValidScanResult(), packet is not valid
+05-15 18:09:14.536 25658 25669 E IC_DeviceManager[1.2.95]: 1. ADV_IDX_PACKET_VER(2): 2 / 2. ADV_IDX_PACKET_SVC_ID(9): 9 / 3. ADV_IDX_PACKET_SS_DISCOVERY(1): 1 / 4. ADV_IDX_PACKET_ASSOCIATED_SVC_ID(2): 2 / 5. MASK_PACKET_FEATURES_SVC_DATA(16): 16 / 6. MASK_PACKET_FEATURES_DEVICE(4): 4 / 7. ADV_IDX_PACKET_IC_VER(1): 1 / 8. MASK_DEVICE_EXTRA_SUPPORT_ACCOUNT_HASH(4): 4
+05-15 18:09:14.536 25658 25669 W IC_Service[1.2.95]: recieved scanResult packet is not valid
+05-15 18:09:14.537 25489 25489 I CMHJobService: [#CMH#] Battery Mode (Protection) :  0 / CurrentBatteryLevel : 1.0 
+05-15 18:09:14.537 25489 25489 I CMHJobService: [#CMH#] Battery Mode (NORMAL or BASIC) :  95%  
+05-15 18:09:14.537 25489 25489 I CMHJobService: [#CMH#] Battery level basis :  0.95 
+05-15 18:09:14.537 25489 25489 I CMHJobService: [#CMH#] Battery isBatteryLevelAvailable ==> true 
+05-15 18:09:14.538   745   745 D android.hardware.security.keymint-service: update: ret 0
+05-15 18:09:14.538 25489 25557 I NetworkUtils: [#CMH#] getIsCloudEnabled()  
+05-15 18:09:14.539  1760  4768 I ActivityManager: Changes in 5004 8 to 10, 128 to 0
+05-15 18:09:14.543 25489 25558 I DatabaseManager: [#CMH#] createTables  
+05-15 18:09:14.545  2410  2546 D Am      : Broadcasting: Intent { act=com.sec.intent.action.CP_CHAN_INFO flg=0x1000000 (has extras) }
+05-15 18:09:14.545  1575  1747 D SemNativeCarrierFeature_vendor: getInstance
+05-15 18:09:14.545 25489 25558 I DatabaseManager: [#CMH#] DB init done ReadOnly:  false
+05-15 18:09:14.545 25489 25558 I DatabaseManager: [#CMH#] Database initialize complete 
+05-15 18:09:14.546 25489 25558 I Controller: [#CMH#] ServicesSetValue =  2130706302
+05-15 18:09:14.547 25489 25489 I CMHApplication: [#CMH#] Block to verify, Change Trim Memory Level: 40 
+05-15 18:09:14.550  1760  3367 W ParceledListSlice: Element #77 is 33268 bytes.
+05-15 18:09:14.552 25489 25558 I Utils   : [#CMH#]  Check Q Upgrade done false 
+05-15 18:09:14.553   745   745 D android.hardware.security.keymint-service: finish: ret 0
+05-15 18:09:14.554  2410  2592 D Am      : Broadcast completed: result=0
+05-15 18:09:14.555 25489 25558 I SystemBroadcastReceiver: [#CMH#]  in initialize SystemBroadcastReceiver 
+05-15 18:09:14.556  1575  1747 D SemNativeCarrierFeature_vendor: getInstance

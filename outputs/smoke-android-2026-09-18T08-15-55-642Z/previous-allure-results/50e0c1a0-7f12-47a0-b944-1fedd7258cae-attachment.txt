@@ -1,0 +1,233 @@
+--------- beginning of main
+08-11 17:05:55.392  9242  9361 I appium  : method: 'xpath', selector: '//*[@resource-id="insufficient-balance-error"]'
+08-11 17:05:55.392  9242  9361 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:05:55.393  9242  9361 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:05:55.400  9242  9257 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-11 17:05:55.434  9242  9361 I appium  : Took 0ms to retrieve 0 matches for '//*[@resource-id="insufficient-balance-error"]' XPath2 query
+08-11 17:05:55.434  9242  9361 I appium  : Found zero matches
+08-11 17:05:55.435  9242  9361 I appium  : AppiumResponse: {"sessionId":"ac76e8ea-80f0-4583-b173-bc92769c3aa6","value":[]}
+08-11 17:05:55.450  9242  9361 I appium  : channel read: POST /session/ac76e8ea-80f0-4583-b173-bc92769c3aa6/elements
+08-11 17:05:55.451  9242  9361 I appium  : FindElements command
+08-11 17:05:55.451  9242  9361 I appium  : method: 'xpath', selector: '//*[@resource-id="insufficient-balance-error"]'
+08-11 17:05:55.451  9242  9361 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:05:55.452  9242  9361 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:05:55.465  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-11 17:05:55.466  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-11 17:05:55.472  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-11 17:05:55.472  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_9424#70436 voted ExplicitCategory with category: HighHint
+08-11 17:05:55.472  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-11 17:05:55.473  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-11 17:05:55.473  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-11 17:05:55.473  1325  9351 I display : Current VRR MODE is 3
+08-11 17:05:55.473  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-11 17:05:55.473  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-11 17:05:55.473  1325  9351 I display : commit modeset : 1080x2340@60phs
+08-11 17:05:55.485  9242  9361 I appium  : Took 0ms to retrieve 0 matches for '//*[@resource-id="insufficient-balance-error"]' XPath2 query
+08-11 17:05:55.485  9242  9361 I appium  : Found zero matches
+08-11 17:05:55.486  9242  9361 I appium  : AppiumResponse: {"sessionId":"ac76e8ea-80f0-4583-b173-bc92769c3aa6","value":[]}
+08-11 17:05:55.489  1325  9351 W display : deliverWinConfigData:: commit modeset time (15 ms)
+08-11 17:05:55.489  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-11 17:05:55.489  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 17:05:55.489  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-11 17:05:55.489  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 17:05:55.489  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-11 17:05:55.489  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 17:05:55.489  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 17:05:55.489  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 17:05:55.489  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 17:05:55.489  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 17:05:55.489  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 17:05:55.489  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 17:05:55.489  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 17:05:55.489  1325  1397 I display : Set affinity HWC : 1325
+08-11 17:05:55.489  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 17:05:55.489  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 17:05:55.489  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 17:05:55.489  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-11 17:05:55.489  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-11 17:05:55.489  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 17:05:55.499  9242  9361 I appium  : channel read: POST /session/ac76e8ea-80f0-4583-b173-bc92769c3aa6/elements
+08-11 17:05:55.499  9242  9361 I appium  : FindElements command
+08-11 17:05:55.500  9242  9361 I appium  : method: 'xpath', selector: '//*[@resource-id="insufficient-balance-error"]'
+08-11 17:05:55.500  9242  9361 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:05:55.501  9242  9361 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:05:55.512  9424  9489 I Datadog : [_dd.sdk_core.default]: Batch ead8054a-e566-45db-81d2-c0103def1c76 [4871 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+08-11 17:05:55.532  9242  9361 I appium  : Took 0ms to retrieve 0 matches for '//*[@resource-id="insufficient-balance-error"]' XPath2 query
+08-11 17:05:55.532  9242  9361 I appium  : Found zero matches
+08-11 17:05:55.532  9242  9361 I appium  : AppiumResponse: {"sessionId":"ac76e8ea-80f0-4583-b173-bc92769c3aa6","value":[]}
+08-11 17:05:55.542  9242  9361 I appium  : channel read: POST /session/ac76e8ea-80f0-4583-b173-bc92769c3aa6/elements
+08-11 17:05:55.542  9242  9361 I appium  : FindElements command
+08-11 17:05:55.543  9242  9361 I appium  : method: 'xpath', selector: '//*[@resource-id="insufficient-balance-error"]'
+08-11 17:05:55.543  9242  9361 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:05:55.543  9242  9361 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:05:55.580  9242  9361 I appium  : Took 0ms to retrieve 0 matches for '//*[@resource-id="insufficient-balance-error"]' XPath2 query
+08-11 17:05:55.580  9242  9361 I appium  : Found zero matches
+08-11 17:05:55.581  9242  9361 I appium  : AppiumResponse: {"sessionId":"ac76e8ea-80f0-4583-b173-bc92769c3aa6","value":[]}
+08-11 17:05:55.593  9242  9361 I appium  : channel read: POST /session/ac76e8ea-80f0-4583-b173-bc92769c3aa6/elements
+08-11 17:05:55.593  9242  9361 I appium  : FindElements command
+08-11 17:05:55.594  9242  9361 I appium  : method: 'xpath', selector: '//*[@resource-id="insufficient-balance-error"]'
+08-11 17:05:55.594  9242  9361 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:05:55.595  9242  9361 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:05:55.637  9242  9361 I appium  : Took 0ms to retrieve 0 matches for '//*[@resource-id="insufficient-balance-error"]' XPath2 query
+08-11 17:05:55.637  9242  9361 I appium  : Found zero matches
+08-11 17:05:55.638  9242  9361 I appium  : AppiumResponse: {"sessionId":"ac76e8ea-80f0-4583-b173-bc92769c3aa6","value":[]}
+08-11 17:05:55.649  9242  9361 I appium  : channel read: POST /session/ac76e8ea-80f0-4583-b173-bc92769c3aa6/elements
+08-11 17:05:55.649  9242  9361 I appium  : FindElements command
+08-11 17:05:55.649  9242  9361 I appium  : method: 'xpath', selector: '//*[@resource-id="insufficient-balance-error"]'
+08-11 17:05:55.649  9242  9361 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:05:55.650  9242  9361 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:05:55.664  1726  1920 D InputReader: Btn_touch(4): value=1 when=399939.061534
+08-11 17:05:55.664  1726  1920 I InputReader: Touch event's action is 0x0 (id=5, t=0) [pCnt=1, s=0.132 ] when=399939.061534
+08-11 17:05:55.665  1726  1919 I InputDispatcher: Delivering touch to (2357): action: 0x4, f=0x0, d=0, 'c0cc01f', t=1 
+08-11 17:05:55.666  1726  1919 I InputDispatcher: Delivering touch to (9424): action: 0x0, f=0x0, d=0, '706d3c1', t=1 
+08-11 17:05:55.666  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-11 17:05:55.667  9424  9424 I VRI[DashboardActivity]@5e40077: ViewPostIme pointer 0
+08-11 17:05:55.667  4554  4554 I SemDvfsHyPerManager: acquire hyper - TABoost/4554@29, type = -999
+08-11 17:05:55.668  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-11 17:05:55.668  1337  1439 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 10504265  [4554 / 29]    HINT :      list : [TABoost / 1] [TIMEOUT / 1500] 
+08-11 17:05:55.668  1726  1769 I GestureDetector: obtain mCurrentDownEvent. id: 834049289 caller: com.android.server.wm.SystemGesturesPointerEventListener.onPointerEvent:17 com.android.server.wm.PointerEventDispatcher.onInputEvent:51 android.view.InputEventReceiver.dispatchInputEvent:392 
+08-11 17:05:55.669  1726  1769 I GestureDetector: obtain mCurrentDownEvent. id: 834049289 caller: com.android.server.wm.SystemPerformancePointerEventListener.onPointerEvent:13 com.android.server.wm.PointerEventDispatcher.onInputEvent:51 android.view.InputEventReceiver.dispatchInputEvent:392 
+08-11 17:05:55.672  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-11 17:05:55.673  1726  1769 I GestureDetector: obtain mCurrentMotionEventRaw. action: 2 id: 689599822
+08-11 17:05:55.673  1726  1769 I GestureDetector: obtain mCurrentMotionEventRaw. action: 2 id: 689599822
+08-11 17:05:55.681  1437  1437 I SurfaceFlinger: RequestedLayer [Sprite#120] hidden!! flag  from(1) --> to(0)
+08-11 17:05:55.682  1437  1437 I LayerHistory: [BBQ] Sprite#120#121 is infrequent
+08-11 17:05:55.683  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_9424#70436 voted ExplicitCategory with category: HighHint
+08-11 17:05:55.683  1437  1437 I SurfaceFlinger: Touch Boost - choose 120.00 Hz
+08-11 17:05:55.683  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-11 17:05:55.684  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-11 17:05:55.684  1325  9351 I display : Current VRR MODE is 3
+08-11 17:05:55.684  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-11 17:05:55.684  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-11 17:05:55.684  1325  9351 I display : commit modeset : 1080x2340@120hs
+08-11 17:05:55.692  9242  9361 I appium  : Took 0ms to retrieve 0 matches for '//*[@resource-id="insufficient-balance-error"]' XPath2 query
+08-11 17:05:55.692  9242  9361 I appium  : Found zero matches
+08-11 17:05:55.693  9242  9361 I appium  : AppiumResponse: {"sessionId":"ac76e8ea-80f0-4583-b173-bc92769c3aa6","value":[]}
+08-11 17:05:55.705  1325  9351 W display : deliverWinConfigData:: commit modeset time (20 ms)
+08-11 17:05:55.706  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-11 17:05:55.706  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 17:05:55.706  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-11 17:05:55.706  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 17:05:55.706  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-11 17:05:55.706  1437  1437 D SurfaceFlinger: Display 4633128672291736000 HWC layers:
+08-11 17:05:55.706  1437  1437 D SurfaceFlinger:        DEVICE |           40475771797535 | 00002102 | RGBA_8888    |    0.0    0.0 1080.0 2340.0 |    0    0 1080 2340 | com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_9424#70436 (1489)
+08-11 17:05:55.706  1437  1437 D SurfaceFlinger:        DEVICE |           10123237958349 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0   80.0 |    0    0 1080   80 | StatusBar$_2357#104 (158546)
+08-11 17:05:55.706  1437  1437 D SurfaceFlinger:        DEVICE |           10123237958348 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2214 1080 2340 | NavigationBar0$_2357#102 (178075)
+08-11 17:05:55.706  1437  1437 D SurfaceFlinger:        DEVICE |            7413113552910 | 00000100 | RGBA_8888    |    0.0    0.0   63.0   63.0 |  487  791  550  854 | [BBQ] Sprite#120#121 (3414)
+08-11 17:05:55.706  1437  1437 D SurfaceFlinger: 
+08-11 17:05:55.707  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 17:05:55.707  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 17:05:55.707  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 17:05:55.707  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 17:05:55.707  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 17:05:55.707  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 17:05:55.707  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 17:05:55.707  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 17:05:55.707  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 17:05:55.707  1325  1397 I display : Set affinity HWC : 1325
+08-11 17:05:55.707  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 17:05:55.707  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 17:05:55.707  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 17:05:55.707  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-11 17:05:55.734  1726  1920 D InputReader: Btn_touch(4): value=0 when=399939.131886
+08-11 17:05:55.735  1726  1920 I InputReader: Touch event's action is 0x1 (id=5, t=0) [pCnt=1, s=] when=399939.131886
+08-11 17:05:55.735  1726  1919 I InputDispatcher: Delivering touch to (9424): action: 0x1, f=0x0, d=0, '706d3c1', t=1 
+08-11 17:05:55.736  9424  9424 I VRI[DashboardActivity]@5e40077: ViewPostIme pointer 1
+08-11 17:05:55.762  9242  9361 I appium  : channel read: GET /session/ac76e8ea-80f0-4583-b173-bc92769c3aa6/screenshot
+08-11 17:05:55.763  9242  9361 I appium  : CaptureScreenshot command
+08-11 17:05:55.764  9242  9361 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-11 17:05:55.765  9242  9361 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-11 17:05:55.909 11955 11955 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-11 17:05:55.909 11955 11955 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-11 17:05:55.909 11955 11955 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-11 17:05:55.911  1726  2298 I EDMNativeHelperService: isScreenCaptureEnabled
+--------- beginning of system
+08-11 17:05:55.913  1726  2298 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-11 17:05:55.913 11955 11955 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-11 17:05:55.913 11955 11955 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-11 17:05:55.914  1437  1463 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_9424#70436(seamlessTransition:0)
+08-11 17:05:55.914  1437  1463 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-11 17:05:55.914  1437  1463 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-11 17:05:55.914  1437  1463 I SurfaceFlinger: Capture layer list: 	 [BBQ] Sprite#120#121(seamlessTransition:0)
+08-11 17:05:55.914  1437  1463 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-11 17:05:55.915  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-11 17:05:55.916  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_9424#70436 at index 1
+08-11 17:05:55.917  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-11 17:05:55.917  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-11 17:05:55.949 11955 11960 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-11 17:05:55.955  1437  1437 I SurfaceFlinger: RequestedLayer [Sprite#120] hidden!! flag  from(0) --> to(1)
+08-11 17:05:55.957  1437  1437 D SurfaceFlinger: Display 4633128672291736000 HWC layers:
+08-11 17:05:55.957  1437  1437 D SurfaceFlinger:        DEVICE |           40475771797535 | 00002102 | RGBA_8888    |    0.0    0.0 1080.0 2340.0 |    0    0 1080 2340 | com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_9424#70436 (1489)
+08-11 17:05:55.957  1437  1437 D SurfaceFlinger:        DEVICE |           10123237958349 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0   80.0 |    0    0 1080   80 | StatusBar$_2357#104 (158546)
+08-11 17:05:55.957  1437  1437 D SurfaceFlinger:        DEVICE |           10123237958348 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2214 1080 2340 | NavigationBar0$_2357#102 (178075)
+08-11 17:05:55.957  1437  1437 D SurfaceFlinger: 
+08-11 17:05:55.959  1726  3186 I NSLocationMonitor: getGPSUsingApps() called
+08-11 17:05:55.960  3189  3239 I NSLocationManager_FLP: getGPSUsingApps, No change
+08-11 17:05:55.961  1726  3186 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+08-11 17:05:55.961  1726  3186 W Binder  : java.lang.Throwable
+08-11 17:05:55.961  1726  3186 W Binder  : 	at android.os.BinderProxy.transact(BinderProxy.java:566)
+08-11 17:05:55.961  1726  3186 W Binder  : 	at android.bluetooth.IBluetoothGatt$Stub$Proxy.getAdvertisingSetUids(IBluetoothGatt.java:1678)
+08-11 17:05:55.961  1726  3186 W Binder  : 	at android.bluetooth.BluetoothAdapter.getAdvertisingSetUids(BluetoothAdapter.java:8476)
+08-11 17:05:55.961  1726  3186 W Binder  : 	at android.bluetooth.BluetoothAdapter.getHWUsingApps(BluetoothAdapter.java:1342)
+08-11 17:05:55.961  1726  3186 W Binder  : 	at com.android.server.am.mars.filter.filter.BlueToothConnectedFilter.updateBTUsingPackages(qb/108618625 1dbdc7c42b97017812c523c8375a66339e81a4b956756dd1c4d66894670cb629:22)
+08-11 17:05:55.961  1726  3186 W Binder  : 	at com.android.server.am.FreecessController.freeze(qb/108618625 1dbdc7c42b97017812c523c8375a66339e81a4b956756dd1c4d66894670cb629:117)
+08-11 17:05:55.961  1726  3186 W Binder  : 	at com.android.server.am.FreecessHandler$MainHandler.handleLcdOnFreeze(qb/108618625 1dbdc7c42b97017812c523c8375a66339e81a4b956756dd1c4d66894670cb629:55)
+08-11 17:05:55.961  1726  3186 W Binder  : 	at com.android.server.am.FreecessHandler$MainHandler.handleMessage(qb/108618625 1dbdc7c42b97017812c523c8375a66339e81a4b956756dd1c4d66894670cb629:793)
+08-11 17:05:55.961  1726  3186 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:110)
+08-11 17:05:55.961  1726  3186 W Binder  : 	at android.os.Looper.loopOnce(Looper.java:273)
+08-11 17:05:55.961  1726  3186 W Binder  : 	at android.os.Looper.loop(Looper.java:363)
+08-11 17:05:55.961  1726  3186 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:85)
+08-11 17:05:55.965  1726  3186 D FreecessHandler: freeze org.telegram.messenger(10339) result : 2
+08-11 17:05:55.968  1726  1769 I GestureDetector: handleMessage TAP
+08-11 17:05:55.969  1726  1726 I GestureDetector: handleMessage TAP
+08-11 17:05:56.080  1726  1920 D InputReader: Btn_touch(4): value=1 when=399939.477917
+08-11 17:05:56.081  1726  1920 I InputReader: Touch event's action is 0x0 (id=5, t=0) [pCnt=1, s=0.133 ] when=399939.477917
+08-11 17:05:56.082  1726  1919 I InputDispatcher: Delivering touch to (2357): action: 0x4, f=0x0, d=0, 'c0cc01f', t=1 
+08-11 17:05:56.082  1726  1919 I InputDispatcher: Delivering touch to (9424): action: 0x0, f=0x0, d=0, '706d3c1', t=1 
+08-11 17:05:56.082  9424  9424 I VRI[DashboardActivity]@5e40077: ViewPostIme pointer 0
+08-11 17:05:56.082  1726  1919 D PowerManagerService: [api] userActivityFromNative : touch displayId=0 eventTime=399939477
+08-11 17:05:56.082  1726  1769 I GestureDetector: obtain mCurrentDownEvent. id: 878279321 caller: com.android.server.wm.SystemGesturesPointerEventListener.onPointerEvent:17 com.android.server.wm.PointerEventDispatcher.onInputEvent:51 android.view.InputEventReceiver.dispatchInputEvent:392 
+08-11 17:05:56.083  1726  1769 I GestureDetector: obtain mCurrentDownEvent. id: 878279321 caller: com.android.server.wm.SystemPerformancePointerEventListener.onPointerEvent:13 com.android.server.wm.PointerEventDispatcher.onInputEvent:51 android.view.InputEventReceiver.dispatchInputEvent:392 
+08-11 17:05:56.084  4554  4554 I SemDvfsHyPerManager: acquire hyper - TABoost/4554@29, type = -999
+08-11 17:05:56.084  1337  1439 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 10504265  [4554 / 29]    HINT :      list : [TABoost / 1] [TIMEOUT / 1500] 
+08-11 17:05:56.089  1437  1437 I SurfaceFlinger: RequestedLayer [Sprite#120] hidden!! flag  from(1) --> to(0)
+08-11 17:05:56.092  1437  1437 D SurfaceFlinger: Display 4633128672291736000 HWC layers:
+08-11 17:05:56.092  1437  1437 D SurfaceFlinger:        DEVICE |           40475771797535 | 00002102 | RGBA_8888    |    0.0    0.0 1080.0 2340.0 |    0    0 1080 2340 | com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_9424#70436 (1489)
+08-11 17:05:56.092  1437  1437 D SurfaceFlinger:        DEVICE |           10123237958349 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0   80.0 |    0    0 1080   80 | StatusBar$_2357#104 (158546)
+08-11 17:05:56.092  1437  1437 D SurfaceFlinger:        DEVICE |           10123237958348 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2214 1080 2340 | NavigationBar0$_2357#102 (178075)
+08-11 17:05:56.092  1437  1437 D SurfaceFlinger:        DEVICE |            7413113552909 | 00000100 | RGBA_8888    |    0.0    0.0   63.0   63.0 |  472  748  535  811 | [BBQ] Sprite#120#121 (3415)
+08-11 17:05:56.092  1437  1437 D SurfaceFlinger: 
+08-11 17:05:56.119  1726  1769 I GestureDetector: obtain mCurrentMotionEventRaw. action: 2 id: 1033750515
+08-11 17:05:56.120  1726  1769 I GestureDetector: obtain mCurrentMotionEventRaw. action: 2 id: 1033750515
+08-11 17:05:56.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786457156
+08-11 17:05:56.120  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:05:56.120  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:05:56.120  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774285
+08-11 17:05:56.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774264
+08-11 17:05:56.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:05:56.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:05:56.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:05:56.121  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:05:56.121  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:05:56.151  1726  1920 D InputReader: Btn_touch(4): value=0 when=399939.548724
+08-11 17:05:56.151  1726  1920 I InputReader: Touch event's action is 0x1 (id=5, t=0) [pCnt=1, s=] when=399939.548724
+08-11 17:05:56.152  1726  1919 I InputDispatcher: Delivering touch to (9424): action: 0x1, f=0x0, d=0, '706d3c1', t=1 
+08-11 17:05:56.153  9424  9424 I VRI[DashboardActivity]@5e40077: ViewPostIme pointer 1
+08-11 17:05:56.153  9242  9361 I appium  : AppiumResponse: {"sessionId":"ac76e8ea-80f0-4583-b173-bc92769c3aa6","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15XJV13v/xNwiCKAriCm6opGlqoSauuaem5VaTU2bONFl3U/pr87axzRabNpeapmWmGq3bFs0lzci1TXEJdwU3QFADREVWgcP5/eHNub3OOeA57Be8no+Hj5nre23fI4Rc7+v7/Xw9rFa…
+08-11 17:05:56.183  9242  9361 I appium  : channel read: GET /session/ac76e8ea-80f0-4583-b173-bc92769c3aa6/source
+08-11 17:05:56.184  9242  9361 I appium  : Source command
+08-11 17:05:56.184  9242  9361 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:05:56.235  9242  9361 I appium  : AppiumResponse: {"sessionId":"ac76e8ea-80f0-4583-b173-bc92769c3aa6","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-11 17:05:56.265 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 17:05:56.315 11961 11961 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 17:05:56.348 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 17:05:56.372  1437  1437 I SurfaceFlinger: RequestedLayer [Sprite#120] hidden!! flag  from(0) --> to(1)
+08-11 17:05:56.375  1437  1437 D SurfaceFlinger: Display 4633128672291736000 HWC layers:
+08-11 17:05:56.375  1437  1437 D SurfaceFlinger:        DEVICE |           40475771797535 | 00002102 | RGBA_8888    |    0.0    0.0 1080.0 2340.0 |    0    0 1080 2340 | com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_9424#70436 (1489)
+08-11 17:05:56.375  1437  1437 D SurfaceFlinger:        DEVICE |           10123237958349 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0   80.0 |    0    0 1080   80 | StatusBar$_2357#104 (158546)
+08-11 17:05:56.375  1437  1437 D SurfaceFlinger:        DEVICE |           10123237958348 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2214 1080 2340 | NavigationBar0$_2357#102 (178075)
+08-11 17:05:56.375  1437  1437 D SurfaceFlinger: 
+08-11 17:05:56.382  1726  1769 I GestureDetector: handleMessage TAP
+08-11 17:05:56.383  1726  1726 I GestureDetector: handleMessage TAP
+08-11 17:05:56.395 11964 11964 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 17:05:56.432 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

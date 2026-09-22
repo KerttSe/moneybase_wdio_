@@ -1,0 +1,201 @@
+--------- beginning of main
+04-13 17:17:57.631 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.utils.ElementLocationHelpers.findElement(ElementLocationHelpers.java:153)\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:60)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1012)\n"}}
+04-13 17:17:57.638 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-ffff-ffff000000f8/attribute/displayed
+04-13 17:17:57.640 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.645 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:57.651 15036 15069 I appium  : channel read: POST /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element
+04-13 17:17:57.652 15036 15069 I appium  : FindElement command
+04-13 17:17:57.653 15036 15069 I appium  : method: 'xpath', selector: '//*[contains(@content-desc,"BMW")]'
+04-13 17:17:57.653 15036 15069 I appium  : Waiting up to 10000ms for the device to idle
+04-13 17:17:57.654 15036 15069 I appium  : The following attributes will be included to the page source: [content-desc]
+04-13 17:17:57.684 15036 15069 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@content-desc,"BMW")]' XPath2 query
+04-13 17:17:57.685 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.utils.ElementLocationHelpers.findElement(ElementLocationHelpers.java:153)\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:60)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1012)\n"}}
+04-13 17:17:57.690 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-ffff-ffff000000f8/attribute/content-desc
+04-13 17:17:57.690 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.694 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:57.699 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0251000000f9/attribute/displayed
+04-13 17:17:57.700 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.703 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:57.708 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0251000000f9/attribute/content-desc
+04-13 17:17:57.708 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.712 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:57.716 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0021000000f9/attribute/displayed
+04-13 17:17:57.716 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.771 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:57.777 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0021000000f9/attribute/content-desc
+04-13 17:17:57.778 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.781 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:57.787 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0038000000f9/attribute/displayed
+04-13 17:17:57.788 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.792 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:57.805 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0038000000f9/attribute/content-desc
+04-13 17:17:57.806 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.810 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:57.815 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0270000000f9/attribute/displayed
+04-13 17:17:57.815 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.819 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:57.824 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0270000000f9/attribute/content-desc
+04-13 17:17:57.824 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.827 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:57.831 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0258000000f9/attribute/displayed
+04-13 17:17:57.832 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.835 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:57.841 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0258000000f9/attribute/content-desc
+04-13 17:17:57.841 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.844 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:57.849 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0253000000f9/attribute/displayed
+04-13 17:17:57.850 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.852 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:57.857 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0253000000f9/attribute/content-desc
+04-13 17:17:57.858 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.861 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:57.872 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0252000000f9/attribute/displayed
+04-13 17:17:57.873 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.877 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:57.883 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0252000000f9/attribute/content-desc
+04-13 17:17:57.884 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.887 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:57.892 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0295000000f9/attribute/displayed
+04-13 17:17:57.892 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.895 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:57.900 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0295000000f9/attribute/content-desc
+04-13 17:17:57.900 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.904 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:57.911 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0292000000f9/attribute/displayed
+04-13 17:17:57.911 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.917 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:57.922 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0292000000f9/attribute/content-desc
+04-13 17:17:57.923 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.927 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:57.932 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0298000000f9/attribute/displayed
+04-13 17:17:57.932 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.936 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:57.941 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0298000000f9/attribute/content-desc
+04-13 17:17:57.942 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.945 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:57.950 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0361000000f9/attribute/displayed
+04-13 17:17:57.951 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.954 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:57.958 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0361000000f9/attribute/content-desc
+04-13 17:17:57.958 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.962 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:57.967 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0362000000f9/attribute/displayed
+04-13 17:17:57.969 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.973 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:57.978 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0362000000f9/attribute/content-desc
+04-13 17:17:57.979 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.982 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:57.988 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0360000000f9/attribute/displayed
+04-13 17:17:57.989 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:57.993 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:57.997 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0360000000f9/attribute/content-desc
+04-13 17:17:57.998 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.002 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:58.007 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-029b000000f9/attribute/displayed
+04-13 17:17:58.007 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.010 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:58.015 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-029b000000f9/attribute/content-desc
+04-13 17:17:58.015 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.019 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:58.025 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-029d000000f9/attribute/displayed
+04-13 17:17:58.026 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.029 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:58.034 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-029d000000f9/attribute/content-desc
+04-13 17:17:58.034 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.037 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:58.041 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0267000000f9/attribute/displayed
+04-13 17:17:58.042 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.045 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:58.049 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0267000000f9/attribute/content-desc
+04-13 17:17:58.050 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.053 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:58.057 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0269000000f9/attribute/displayed
+04-13 17:17:58.058 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.061 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:58.064 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0269000000f9/attribute/content-desc
+04-13 17:17:58.065 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.070 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:58.088 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-01e1000000f9/attribute/displayed
+04-13 17:17:58.089 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.093 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:58.101 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-01e1000000f9/attribute/content-desc
+04-13 17:17:58.105 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.117 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:58.124 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0147000000f9/attribute/displayed
+04-13 17:17:58.125 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.128 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:58.132 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0147000000f9/attribute/content-desc
+04-13 17:17:58.132 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.136 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:58.140 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-019c000000f9/attribute/displayed
+04-13 17:17:58.140 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.144 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:58.148 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-019c000000f9/attribute/content-desc
+04-13 17:17:58.149 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.152 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:58.157 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0209000000f9/attribute/displayed
+04-13 17:17:58.158 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.161 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:58.166 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-0000-0209000000f9/attribute/content-desc
+04-13 17:17:58.167 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.172 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:58.177 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-ffff-ffff000000fb/attribute/displayed
+04-13 17:17:58.178 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.181 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"true"}
+04-13 17:17:58.186 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/element/00000000-0000-00ad-ffff-ffff000000fb/attribute/content-desc
+04-13 17:17:58.186 15036 15069 I appium  : GetElementAttribute command
+04-13 17:17:58.189 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":null}
+04-13 17:17:58.193 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/source
+04-13 17:17:58.194 15036 15069 I appium  : Source command
+04-13 17:17:58.194 15036 15069 I appium  : Waiting up to 10000ms for the device to idle
+04-13 17:17:58.249 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2205\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+04-13 17:17:58.274 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/screenshot
+04-13 17:17:58.275 15036 15069 I appium  : CaptureScreenshot command
+04-13 17:17:58.277 15036 15069 W tomator2.server: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (blocked, reflection, allowed)
+04-13 17:17:58.278 15036 15069 W tomator2.server: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (blocked, reflection, allowed)
+04-13 17:17:58.539 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000035/dl-MlkitOcrCommon.optional_260931100400.dm': No such file or directory
+04-13 17:17:58.539 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000035/dl-MlkitOcrCommon.optional_260931100400.dm': No such file or directory
+04-13 17:17:58.542 15432 15436 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-13 17:17:58.543 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+04-13 17:17:58.543 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+04-13 17:17:58.544 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+04-13 17:17:58.544 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+04-13 17:17:58.545 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+04-13 17:17:58.545 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+04-13 17:17:58.555 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000009/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+04-13 17:17:58.556 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000009/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+04-13 17:17:58.558 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+04-13 17:17:58.558 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+04-13 17:17:58.562 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+04-13 17:17:58.562 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+04-13 17:17:58.563 15432 15436 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-13 17:17:58.563 15432 15436 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-13 17:17:58.565 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000038/dl-Appsearch.optional_260931100400.dm': No such file or directory
+04-13 17:17:58.565 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000038/dl-Appsearch.optional_260931100400.dm': No such file or directory
+04-13 17:17:58.569 15432 15436 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-13 17:17:58.570 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000039/dl-MlkitBarcodeUi.optional_260931100400.dm': No such file or directory
+04-13 17:17:58.570 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000039/dl-MlkitBarcodeUi.optional_260931100400.dm': No such file or directory
+04-13 17:17:58.576 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000037/dl-PlayCloudSearch.optional_260931100000.dm': No such file or directory
+04-13 17:17:58.576 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000037/dl-PlayCloudSearch.optional_260931100000.dm': No such file or directory
+04-13 17:17:58.578 15432 15436 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-13 17:17:58.580 15432 15436 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/1E73DDD364D745715765FBA57AC8818D80CF9089/the.dm': No such file or directory
+04-13 17:17:58.580 15432 15436 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/1E73DDD364D745715765FBA57AC8818D80CF9089/the.dm': No such file or directory
+04-13 17:17:58.581 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+04-13 17:17:58.581 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+04-13 17:17:58.582 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000036/dl-VisionOcr.optional_260931100000.dm': No such file or directory
+04-13 17:17:58.582 15432 15436 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000036/dl-VisionOcr.optional_260931100000.dm': No such file or directory
+04-13 17:17:58.589 15081 15171 D EGL_emulation: app_time_stats: avg=509.75ms min=500.44ms max=519.06ms count=2
+04-13 17:17:58.604 15432 15436 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-13 17:17:58.608 15432 15435 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-13 17:17:58.609 15432 15435 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-13 17:17:58.610 15432 15435 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+04-13 17:17:58.611 15432 15435 W artd    : Could not get dex checksums for location /data/app/~~W3i221IpBN7M8ax3-cqQRg==/com.android.vending-xKm5jg-o0SYY1LcrBsytrQ==/base.apk, fd=-1
+04-13 17:17:58.611 15798 15798 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+04-13 17:17:58.612 15798 15798 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+04-13 17:17:58.673   160   160 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+04-13 17:17:58.673 15798 15805 I Gralloc4: mapper 4.x is not supported
+04-13 17:17:58.798 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAlgCAYAAABtGofVAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15dNTV/f/xV4aEEBZZQhZCYoJAwqoo2ARUQCMiihRkURAlrQtLVThCe+hpf3Wj3y6KhRZpLVrAoiwiUEAWv6AigkkFBBENAcSYkA0S9ixkmd8f+c6YyUz2mSQ3eT7Oic7c+Xw+9yaZo/m…
+04-13 17:17:58.819 15036 15069 I appium  : channel read: GET /session/4a9dc1cc-cc5a-42d8-86ea-052d14d407db/source
+04-13 17:17:58.831 15036 15069 I appium  : Source command
+04-13 17:17:58.835 15036 15069 I appium  : Waiting up to 10000ms for the device to idle
+04-13 17:17:58.924 15036 15069 I appium  : AppiumResponse: {"sessionId":"4a9dc1cc-cc5a-42d8-86ea-052d14d407db","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2205\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…

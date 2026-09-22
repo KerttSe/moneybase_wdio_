@@ -1,0 +1,271 @@
+--------- beginning of main
+08-14 17:18:38.857 20674 20703 I VRI[]@705a9ea: mWNT: t=0xb40000703aeaec10 mBlastBufferQueue=0xb40000707ae13430 fn= 475 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$10.onFrameDraw:6536 android.view.ViewRootImpl$4.onFrameDraw:2489 android.view.ThreadedRenderer$1.onFrameDraw:718 
+08-14 17:18:38.864  1726  1747 I WindowManager: Relayout Window{fff5054 u0 com.samsung.android.app.smartcapture}: viewVisibility=0 req=1226x772 ty=2036 d0
+08-14 17:18:38.864 20674 20674 I BLASTBufferQueue_Java: update, w= 1226 h= 772 mName = VRI[]@705a9ea mNativeObject= 0xb40000707ae13430 sc.mNativeObject= 0xb40000709ade3c50 format= -3 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3574 android.view.ViewRootImpl.relayoutWindow:11685 android.view.ViewRootImpl.performTraversals:4804 android.view.ViewRootImpl.doTraversal:3924 android.view.ViewRootImpl$TraversalRunnable.run:12903 android.view.Choreographer$CallbackRecord.run:1901 
+08-14 17:18:38.864  1726  1747 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.864 20674 20674 I VRI[]@705a9ea: Relayout returned: old=(-20,617,1206,1389) new=(-20,617,1206,1389) relayoutAsync=true req=(1226,772)0 dur=1 res=0x0 s={true 0xb40000717aea9830} ch=false seqId=1
+08-14 17:18:38.864  1726  1747 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.865 20674 20674 I VRI[]@705a9ea: registerCallbackForPendingTransactions
+08-14 17:18:38.865  1726  1747 I WindowManager: Relayout hash=fff5054, pid=0, syncId=-1: mAttrs={(-20,537)(1226xwrap) gr=TOP START CENTER sim={adjust=pan} ty=SCREENSHOT fmt=TRANSLUCENT receive insets ignoring z-order
+08-14 17:18:38.865  1726  1747 I WindowManager:   fl=1000288
+08-14 17:18:38.865  1726  1747 I WindowManager:   pfl=10000040
+08-14 17:18:38.865  1726  1747 I WindowManager:   bhv=1
+08-14 17:18:38.865  1726  1747 I WindowManager:   fitTypes=207
+08-14 17:18:38.865  1726  1747 I WindowManager:   fitIgnoreVis
+08-14 17:18:38.865  1726  1747 I WindowManager:   frameRateBoostOnTouch=true
+08-14 17:18:38.865  1726  1747 I WindowManager:   dvrrWindowFrameRateHint=true naviIconColor=0
+08-14 17:18:38.865  1726  1747 I WindowManager:   sfl=80020000}
+08-14 17:18:38.865 20674 20702 I VRI[]@705a9ea: mWNT: t=0xb40000703aea6e10 mBlastBufferQueue=0xb40000707ae13430 fn= 476 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$10.onFrameDraw:6536 android.view.ViewRootImpl$4.onFrameDraw:2489 android.view.ThreadedRenderer$1.onFrameDraw:718 
+08-14 17:18:38.872  1726  2298 I WindowManager: Relayout Window{fff5054 u0 com.samsung.android.app.smartcapture}: viewVisibility=0 req=1226x772 ty=2036 d0
+08-14 17:18:38.872 20674 20674 I BLASTBufferQueue_Java: update, w= 1226 h= 772 mName = VRI[]@705a9ea mNativeObject= 0xb40000707ae13430 sc.mNativeObject= 0xb40000709ade3c50 format= -3 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3574 android.view.ViewRootImpl.relayoutWindow:11685 android.view.ViewRootImpl.performTraversals:4804 android.view.ViewRootImpl.doTraversal:3924 android.view.ViewRootImpl$TraversalRunnable.run:12903 android.view.Choreographer$CallbackRecord.run:1901 
+08-14 17:18:38.872 20674 20674 I VRI[]@705a9ea: Relayout returned: old=(-20,617,1206,1389) new=(-20,617,1206,1389) relayoutAsync=true req=(1226,772)0 dur=0 res=0x0 s={true 0xb40000717aea9830} ch=false seqId=1
+08-14 17:18:38.872  1726  2298 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.872  1726  2298 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.872 20674 20674 I VRI[]@705a9ea: registerCallbackForPendingTransactions
+08-14 17:18:38.872  1726  2298 I WindowManager: Relayout hash=fff5054, pid=0, syncId=-1: mAttrs={(-20,537)(1226xwrap) gr=TOP START CENTER sim={adjust=pan} ty=SCREENSHOT fmt=TRANSLUCENT receive insets ignoring z-order
+08-14 17:18:38.872  1726  2298 I WindowManager:   fl=1000288
+08-14 17:18:38.872  1726  2298 I WindowManager:   pfl=10000040
+08-14 17:18:38.872  1726  2298 I WindowManager:   bhv=1
+08-14 17:18:38.872  1726  2298 I WindowManager:   fitTypes=207
+08-14 17:18:38.872  1726  2298 I WindowManager:   fitIgnoreVis
+08-14 17:18:38.872  1726  2298 I WindowManager:   frameRateBoostOnTouch=true
+08-14 17:18:38.872  1726  2298 I WindowManager:   dvrrWindowFrameRateHint=true naviIconColor=0
+08-14 17:18:38.872  1726  2298 I WindowManager:   sfl=80020000}
+08-14 17:18:38.873 20674 20703 I VRI[]@705a9ea: mWNT: t=0xb40000703aea92d0 mBlastBufferQueue=0xb40000707ae13430 fn= 477 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$10.onFrameDraw:6536 android.view.ViewRootImpl$4.onFrameDraw:2489 android.view.ThreadedRenderer$1.onFrameDraw:718 
+08-14 17:18:38.881 20674 20674 I BLASTBufferQueue_Java: update, w= 1226 h= 772 mName = VRI[]@705a9ea mNativeObject= 0xb40000707ae13430 sc.mNativeObject= 0xb40000709ade3c50 format= -3 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3574 android.view.ViewRootImpl.relayoutWindow:11685 android.view.ViewRootImpl.performTraversals:4804 android.view.ViewRootImpl.doTraversal:3924 android.view.ViewRootImpl$TraversalRunnable.run:12903 android.view.Choreographer$CallbackRecord.run:1901 
+08-14 17:18:38.881  1726  1747 I WindowManager: Relayout Window{fff5054 u0 com.samsung.android.app.smartcapture}: viewVisibility=0 req=1226x772 ty=2036 d0
+08-14 17:18:38.881 20674 20674 I VRI[]@705a9ea: Relayout returned: old=(-20,617,1206,1389) new=(-19,616,1207,1388) relayoutAsync=true req=(1226,772)0 dur=0 res=0x0 s={true 0xb40000717aea9830} ch=false seqId=1
+08-14 17:18:38.881  1726  1747 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.881 20674 20674 I VRI[]@705a9ea: registerCallbackForPendingTransactions
+08-14 17:18:38.882  1726  1747 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.882 20674 20702 I VRI[]@705a9ea: mWNT: t=0xb40000703aea1310 mBlastBufferQueue=0xb40000707ae13430 fn= 478 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$10.onFrameDraw:6536 android.view.ViewRootImpl$4.onFrameDraw:2489 android.view.ThreadedRenderer$1.onFrameDraw:718 
+08-14 17:18:38.884  1726  1747 I WindowManager: Relayout hash=fff5054, pid=0, syncId=-1: mAttrs={(-19,536)(1226xwrap) gr=TOP START CENTER sim={adjust=pan} ty=SCREENSHOT fmt=TRANSLUCENT receive insets ignoring z-order
+08-14 17:18:38.884  1726  1747 I WindowManager:   fl=1000288
+08-14 17:18:38.884  1726  1747 I WindowManager:   pfl=10000040
+08-14 17:18:38.884  1726  1747 I WindowManager:   bhv=1
+08-14 17:18:38.884  1726  1747 I WindowManager:   fitTypes=207
+08-14 17:18:38.884  1726  1747 I WindowManager:   fitIgnoreVis
+08-14 17:18:38.884  1726  1747 I WindowManager:   frameRateBoostOnTouch=true
+08-14 17:18:38.884  1726  1747 I WindowManager:   dvrrWindowFrameRateHint=true naviIconColor=0
+08-14 17:18:38.884  1726  1747 I WindowManager:   sfl=80020000}
+08-14 17:18:38.889  1726  2298 I WindowManager: Relayout Window{fff5054 u0 com.samsung.android.app.smartcapture}: viewVisibility=0 req=1226x772 ty=2036 d0
+08-14 17:18:38.889 20674 20674 I BLASTBufferQueue_Java: update, w= 1226 h= 772 mName = VRI[]@705a9ea mNativeObject= 0xb40000707ae13430 sc.mNativeObject= 0xb40000709ade3c50 format= -3 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3574 android.view.ViewRootImpl.relayoutWindow:11685 android.view.ViewRootImpl.performTraversals:4804 android.view.ViewRootImpl.doTraversal:3924 android.view.ViewRootImpl$TraversalRunnable.run:12903 android.view.Choreographer$CallbackRecord.run:1901 
+08-14 17:18:38.889 20674 20674 I VRI[]@705a9ea: Relayout returned: old=(-19,616,1207,1388) new=(-19,616,1207,1388) relayoutAsync=true req=(1226,772)0 dur=0 res=0x0 s={true 0xb40000717aea9830} ch=false seqId=1
+08-14 17:18:38.889  1726  2298 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.889  1726  2298 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.889 20674 20674 I VRI[]@705a9ea: registerCallbackForPendingTransactions
+08-14 17:18:38.890  1726  2298 I WindowManager: Relayout hash=fff5054, pid=0, syncId=-1: mAttrs={(-19,536)(1226xwrap) gr=TOP START CENTER sim={adjust=pan} ty=SCREENSHOT fmt=TRANSLUCENT receive insets ignoring z-order
+08-14 17:18:38.890  1726  2298 I WindowManager:   fl=1000288
+08-14 17:18:38.890  1726  2298 I WindowManager:   pfl=10000040
+08-14 17:18:38.890  1726  2298 I WindowManager:   bhv=1
+08-14 17:18:38.890  1726  2298 I WindowManager:   fitTypes=207
+08-14 17:18:38.890  1726  2298 I WindowManager:   fitIgnoreVis
+08-14 17:18:38.890  1726  2298 I WindowManager:   frameRateBoostOnTouch=true
+08-14 17:18:38.890  1726  2298 I WindowManager:   dvrrWindowFrameRateHint=true naviIconColor=0
+08-14 17:18:38.890  1726  2298 I WindowManager:   sfl=80020000}
+08-14 17:18:38.890 20674 20703 I VRI[]@705a9ea: mWNT: t=0xb40000703aea7a50 mBlastBufferQueue=0xb40000707ae13430 fn= 479 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$10.onFrameDraw:6536 android.view.ViewRootImpl$4.onFrameDraw:2489 android.view.ThreadedRenderer$1.onFrameDraw:718 
+08-14 17:18:38.905  1726  1747 I WindowManager: Relayout Window{fff5054 u0 com.samsung.android.app.smartcapture}: viewVisibility=0 req=1226x772 ty=2036 d0
+08-14 17:18:38.905 20674 20674 I BLASTBufferQueue_Java: update, w= 1226 h= 772 mName = VRI[]@705a9ea mNativeObject= 0xb40000707ae13430 sc.mNativeObject= 0xb40000709ade3c50 format= -3 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3574 android.view.ViewRootImpl.relayoutWindow:11685 android.view.ViewRootImpl.performTraversals:4804 android.view.ViewRootImpl.doTraversal:3924 android.view.ViewRootImpl$TraversalRunnable.run:12903 android.view.Choreographer$CallbackRecord.run:1901 
+08-14 17:18:38.905 20674 20674 I VRI[]@705a9ea: Relayout returned: old=(-19,616,1207,1388) new=(-22,612,1204,1384) relayoutAsync=true req=(1226,772)0 dur=0 res=0x0 s={true 0xb40000717aea9830} ch=false seqId=1
+08-14 17:18:38.905  1726  1747 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.906 20674 20674 I VRI[]@705a9ea: registerCallbackForPendingTransactions
+08-14 17:18:38.906  1726  1747 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.906  1726  1747 I WindowManager: Relayout hash=fff5054, pid=0, syncId=-1: mAttrs={(-22,532)(1226xwrap) gr=TOP START CENTER sim={adjust=pan} ty=SCREENSHOT fmt=TRANSLUCENT receive insets ignoring z-order
+08-14 17:18:38.906  1726  1747 I WindowManager:   fl=1000288
+08-14 17:18:38.906  1726  1747 I WindowManager:   pfl=10000040
+08-14 17:18:38.906  1726  1747 I WindowManager:   bhv=1
+08-14 17:18:38.906  1726  1747 I WindowManager:   fitTypes=207
+08-14 17:18:38.906  1726  1747 I WindowManager:   fitIgnoreVis
+08-14 17:18:38.906  1726  1747 I WindowManager:   frameRateBoostOnTouch=true
+08-14 17:18:38.906  1726  1747 I WindowManager:   dvrrWindowFrameRateHint=true naviIconColor=0
+08-14 17:18:38.906  1726  1747 I WindowManager:   sfl=80020000}
+08-14 17:18:38.907 20674 20702 I VRI[]@705a9ea: mWNT: t=0xb40000703aeab410 mBlastBufferQueue=0xb40000707ae13430 fn= 480 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$10.onFrameDraw:6536 android.view.ViewRootImpl$4.onFrameDraw:2489 android.view.ThreadedRenderer$1.onFrameDraw:718 
+08-14 17:18:38.913  1726  1747 I WindowManager: Relayout Window{fff5054 u0 com.samsung.android.app.smartcapture}: viewVisibility=0 req=1226x772 ty=2036 d0
+08-14 17:18:38.913 20674 20674 I BLASTBufferQueue_Java: update, w= 1226 h= 772 mName = VRI[]@705a9ea mNativeObject= 0xb40000707ae13430 sc.mNativeObject= 0xb40000709ade3c50 format= -3 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3574 android.view.ViewRootImpl.relayoutWindow:11685 android.view.ViewRootImpl.performTraversals:4804 android.view.ViewRootImpl.doTraversal:3924 android.view.ViewRootImpl$TraversalRunnable.run:12903 android.view.Choreographer$CallbackRecord.run:1901 
+08-14 17:18:38.913 20674 20674 I VRI[]@705a9ea: Relayout returned: old=(-22,612,1204,1384) new=(-22,609,1204,1381) relayoutAsync=true req=(1226,772)0 dur=0 res=0x0 s={true 0xb40000717aea9830} ch=false seqId=1
+08-14 17:18:38.913  1726  1747 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.914  1726  1747 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.914 20674 20674 I VRI[]@705a9ea: registerCallbackForPendingTransactions
+08-14 17:18:38.914  1726  1747 I WindowManager: Relayout hash=fff5054, pid=0, syncId=-1: mAttrs={(-22,529)(1226xwrap) gr=TOP START CENTER sim={adjust=pan} ty=SCREENSHOT fmt=TRANSLUCENT receive insets ignoring z-order
+08-14 17:18:38.914  1726  1747 I WindowManager:   fl=1000288
+08-14 17:18:38.914  1726  1747 I WindowManager:   pfl=10000040
+08-14 17:18:38.914  1726  1747 I WindowManager:   bhv=1
+08-14 17:18:38.914  1726  1747 I WindowManager:   fitTypes=207
+08-14 17:18:38.914  1726  1747 I WindowManager:   fitIgnoreVis
+08-14 17:18:38.914  1726  1747 I WindowManager:   frameRateBoostOnTouch=true
+08-14 17:18:38.914  1726  1747 I WindowManager:   dvrrWindowFrameRateHint=true naviIconColor=0
+08-14 17:18:38.914  1726  1747 I WindowManager:   sfl=80020000}
+08-14 17:18:38.915 20674 20703 I VRI[]@705a9ea: mWNT: t=0xb40000703aeac750 mBlastBufferQueue=0xb40000707ae13430 fn= 481 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$10.onFrameDraw:6536 android.view.ViewRootImpl$4.onFrameDraw:2489 android.view.ThreadedRenderer$1.onFrameDraw:718 
+08-14 17:18:38.923  1726  1747 I WindowManager: Relayout Window{fff5054 u0 com.samsung.android.app.smartcapture}: viewVisibility=0 req=1226x772 ty=2036 d0
+08-14 17:18:38.923  1726  1747 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.923 20674 20674 I BLASTBufferQueue_Java: update, w= 1226 h= 772 mName = VRI[]@705a9ea mNativeObject= 0xb40000707ae13430 sc.mNativeObject= 0xb40000709ade3c50 format= -3 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3574 android.view.ViewRootImpl.relayoutWindow:11685 android.view.ViewRootImpl.performTraversals:4804 android.view.ViewRootImpl.doTraversal:3924 android.view.ViewRootImpl$TraversalRunnable.run:12903 android.view.Choreographer$CallbackRecord.run:1901 
+08-14 17:18:38.923 20674 20674 I VRI[]@705a9ea: Relayout returned: old=(-22,609,1204,1381) new=(-19,608,1207,1380) relayoutAsync=true req=(1226,772)0 dur=1 res=0x0 s={true 0xb40000717aea9830} ch=false seqId=1
+08-14 17:18:38.923  1726  1747 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.924  1726  1747 I WindowManager: Relayout hash=fff5054, pid=0, syncId=-1: mAttrs={(-19,528)(1226xwrap) gr=TOP START CENTER sim={adjust=pan} ty=SCREENSHOT fmt=TRANSLUCENT receive insets ignoring z-order
+08-14 17:18:38.924  1726  1747 I WindowManager:   fl=1000288
+08-14 17:18:38.924  1726  1747 I WindowManager:   pfl=10000040
+08-14 17:18:38.924  1726  1747 I WindowManager:   bhv=1
+08-14 17:18:38.924  1726  1747 I WindowManager:   fitTypes=207
+08-14 17:18:38.924  1726  1747 I WindowManager:   fitIgnoreVis
+08-14 17:18:38.924  1726  1747 I WindowManager:   frameRateBoostOnTouch=true
+08-14 17:18:38.924  1726  1747 I WindowManager:   dvrrWindowFrameRateHint=true naviIconColor=0
+08-14 17:18:38.924  1726  1747 I WindowManager:   sfl=80020000}
+08-14 17:18:38.926  1726  1920 D InputReader: Btn_touch(4): value=0 when=542391.317738
+08-14 17:18:38.926  1726  1920 I InputReader: Touch event's action is 0x1 (id=5, t=0) [pCnt=1, s=] when=542391.317738
+08-14 17:18:38.926  1726  1919 I InputDispatcher: Delivering touch to (20674): action: 0x1, f=0x0, d=0, 'fff5054', t=1 +(19,-616)
+08-14 17:18:38.927  1726  1726 I SemDvfsHyPerManager: acquire hyper - GESTURE_DETECTED_HRR/1726@32, type = -999
+08-14 17:18:38.927  1726  1726 I SemDvfsHyPerManager: acquire hyper - GESTURE_DETECTED_HRR/1726@32, type = -999
+08-14 17:18:38.928 20674 20674 I VRI[]@705a9ea: registerCallbackForPendingTransactions
+08-14 17:18:38.928 20674 20702 I VRI[]@705a9ea: mWNT: t=0xb40000703aead390 mBlastBufferQueue=0xb40000707ae13430 fn= 482 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$10.onFrameDraw:6536 android.view.ViewRootImpl$4.onFrameDraw:2489 android.view.ThreadedRenderer$1.onFrameDraw:718 
+08-14 17:18:38.928 20674 20674 I VRI[]@705a9ea: ViewPostIme pointer 1
+08-14 17:18:38.929  1337  1439 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 1546193  [1726 / 32]    HINT : GESTURE_DETECTED_HRR    list : [TIMEOUT / 308] 
+08-14 17:18:38.931  1726  1747 I WindowManager: Relayout Window{fff5054 u0 com.samsung.android.app.smartcapture}: viewVisibility=0 req=1226x772 ty=2036 d0
+08-14 17:18:38.931  1726  1747 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.931  1726  1747 D SurfaceComposerClient: setCornerRadius ## 4fad398 com.moneybase.qa/com.moneybase.views.activities.LoginActivity#97476 cornerRadius=0.000000
+08-14 17:18:38.931 20674 20674 I BLASTBufferQueue_Java: update, w= 1226 h= 772 mName = VRI[]@705a9ea mNativeObject= 0xb40000707ae13430 sc.mNativeObject= 0xb40000709ade3c50 format= -3 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3574 android.view.ViewRootImpl.relayoutWindow:11685 android.view.ViewRootImpl.performTraversals:4804 android.view.ViewRootImpl.doTraversal:3924 android.view.ViewRootImpl$TraversalRunnable.run:12903 android.view.Choreographer$CallbackRecord.run:1901 
+08-14 17:18:38.931  1337  1439 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 1546193  [1726 / 32]    HINT : GESTURE_DETECTED_HRR    list : [TIMEOUT / 308] 
+08-14 17:18:38.932 20674 20674 I VRI[]@705a9ea: Relayout returned: old=(-19,608,1207,1380) new=(-18,608,1208,1380) relayoutAsync=true req=(1226,772)0 dur=0 res=0x0 s={true 0xb40000717aea9830} ch=false seqId=1
+08-14 17:18:38.932  1726  1747 I WindowManager: Relayout hash=fff5054, pid=0, syncId=-1: mAttrs={(-18,528)(1226xwrap) gr=TOP START CENTER sim={adjust=pan} ty=SCREENSHOT fmt=TRANSLUCENT receive insets ignoring z-order
+08-14 17:18:38.932  1726  1747 I WindowManager:   fl=1000288
+08-14 17:18:38.932  1726  1747 I WindowManager:   pfl=10000040
+08-14 17:18:38.932  1726  1747 I WindowManager:   bhv=1
+08-14 17:18:38.932  1726  1747 I WindowManager:   fitTypes=207
+08-14 17:18:38.932  1726  1747 I WindowManager:   fitIgnoreVis
+08-14 17:18:38.932  1726  1747 I WindowManager:   frameRateBoostOnTouch=true
+08-14 17:18:38.932  1726  1747 I WindowManager:   dvrrWindowFrameRateHint=true naviIconColor=0
+08-14 17:18:38.932  1726  1747 I WindowManager:   sfl=80020000}
+08-14 17:18:38.933 20674 20674 I VRI[]@705a9ea: registerCallbackForPendingTransactions
+08-14 17:18:38.933 20674 20703 I VRI[]@705a9ea: mWNT: t=0xb40000703aeaf150 mBlastBufferQueue=0xb40000707ae13430 fn= 483 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$10.onFrameDraw:6536 android.view.ViewRootImpl$4.onFrameDraw:2489 android.view.ThreadedRenderer$1.onFrameDraw:718 
+--------- beginning of system
+08-14 17:18:38.949  1726  1771 W AccessibilityWindowsPopulator: Windows change within in 2 frames continuously over 500 ms and notify windows changed immediately
+08-14 17:18:38.985 31411 31411 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.measurement.START xflg=0x4 pkg=com.google.android.gms }
+08-14 17:18:39.047  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForClientComposition
+08-14 17:18:39.059  1437  2030 D NativeSemDvfsManager: acquire:: timeout = 2000 mIsAcquired = 1  mTagName : SurfaceFlinger 
+08-14 17:18:39.059  1437  2030 E NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::acquire()
+08-14 17:18:39.060  1337  1439 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 2971703  [1437 / 1000]    HINT : SF_GPU_MINLOCK    list : [TIMEOUT / 2000] 
+08-14 17:18:39.125  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786717119
+08-14 17:18:39.125  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-14 17:18:39.126  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-14 17:18:39.126  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29778618
+08-14 17:18:39.126  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29778613
+08-14 17:18:39.126  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-14 17:18:39.126  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-14 17:18:39.126  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-14 17:18:39.126  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-14 17:18:39.126  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-14 17:18:39.146  1437  1437 I SurfaceFlinger: RequestedLayer [Sprite#2992] hidden!! flag  from(0) --> to(1)
+08-14 17:18:39.149  1437  1437 D SurfaceFlinger: Display 4633128672291736000 HWC layers:
+08-14 17:18:39.149  1437  1437 D SurfaceFlinger:        DEVICE |           97968204021762 | 00002102 | RGBA_8888    |    0.0    0.0 1080.0 2340.0 |    0    0 1080 2340 | com.moneybase.qa/com.moneybase.views.activities.LoginActivity$_22810#97477 (5409)
+08-14 17:18:39.149  1437  1437 D SurfaceFlinger:        DEVICE |           10123237975499 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0   80.0 |    0    0 1080   80 | StatusBar$_2357#104 (213594)
+08-14 17:18:39.149  1437  1437 D SurfaceFlinger:        DEVICE |           10123237975489 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2214 1080 2340 | NavigationBar0$_2357#102 (235808)
+08-14 17:18:39.149  1437  1437 D SurfaceFlinger:        DEVICE |           88794153880260 | 00002100 | RGBA_8888    |   18.0    0.0 1098.0  772.0 |    0  608 1080 1380 | $_20674#97559 (483)
+08-14 17:18:39.149  1437  1437 D SurfaceFlinger: 
+08-14 17:18:39.188 22810 22810 I VRI[LoginActivity]@e4878a0: call setFrameRateCategory for touch hint category=no preference, reason=boost timeout, vri=VRI[LoginActivity]@e4878a0
+08-14 17:18:39.196  1437  1437 I SurfaceFlinger: [com.moneybase.qa/com.moneybase.views.activities.LoginActivity$_22810#97477] setFrameRateCategory: NoPreference
+08-14 17:18:39.241  1337 24463 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 1546193
+08-14 17:18:39.253 20674 20674 I [SC_ScreenRecorder]_FloatingButtonView: 00:00:05
+08-14 17:18:39.254 20674 20674 I NotificationManager: com.samsung.android.app.smartcapture: notify(1332, null, Notification(channel=CHANNEL_ID_RECORDING_SCREEN shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|ONLY_ALERT_ONCE color=0x00000000 category=navigation groupKey=screen_recorder_group_key vis=PRIVATE semFlags=0x0 semPriority=0 semMissedCount=0)) as user
+08-14 17:18:39.281  1350 24350 I ExynosC2H264EncComponent: [onUpdateC2Work] got SYNC FRAME
+08-14 17:18:39.305  1557  1702 D BufferPoolAccessor2.0: evictor expired: 1, evicted: 0
+08-14 17:18:39.378  1726  1743 I system_server: Background concurrent mark compact GC freed 48MB AllocSpace bytes, 95(2132KB) LOS objects, 24% free, 150MB/198MB, paused 1.858ms,13.190ms total 567.166ms
+08-14 17:18:39.380  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.380  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.380  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.381  1726  1744 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+08-14 17:18:39.412  1726  1745 W System  : A resource failed to call HardwareBuffer.close. 
+08-14 17:18:39.480  1726  1726 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+08-14 17:18:39.498  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-14 17:18:39.504  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 113626, isSameBssidAndFreq true
+08-14 17:18:39.504  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786717119504 lastDateWindow=1786464242000
+08-14 17:18:39.505  1726  2228 I SemWifiLinkQualityMonitor: Link stat: 2149 / 538 / 1.05 (1428) / 104 / -58.0 || 100.0 : 104.00 / 0.5 : 0.95 / 0.55 : 0.25 / G (G) || 52fc78d72452: 0.173 / 46.251 / N || N N / 0 0 / N 2.0 / N X 0 / 542391896 0 || 2026-08-11 19:04:02  / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0
+08-14 17:18:39.510  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-14 17:18:39.512  6020  6488 I NotificationPipeline: Processing new notification: 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:18:39.513  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted com.samsung.android.app.smartcapture: 0|com.samsung.android.app.smartcapture|1332|null|10229: 0
+08-14 17:18:39.513  2870  6282 I HoneySpace.NotificationListener: invalid notification: com.samsung.android.app.smartcapture UserHandle{0}: canShowBadge is false
+08-14 17:18:39.513  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-14 17:18:39.513  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-14 17:18:39.513  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-14 17:18:39.514  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-14 17:18:39.514  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1332
+08-14 17:18:39.514  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:18:39.514  6020  6488 I NotificationPipeline: Discarding notification: 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:18:39.516  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-14 17:18:39.516  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.samsung.android.app.smartcapture|0|0|com.samsung.android.app.smartcapture|g:Aggregate_NormalNotificationSection|10229|0|com.samsung.android.app.smartcapture|g:Aggregate_NormalNotificationSection
+08-14 17:18:39.517  1437  1437 I LayerHistory: $_20674#97559 voted ExplicitCategory with category: HighHint
+08-14 17:18:39.517  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-14 17:18:39.517  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-14 17:18:39.519  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-14 17:18:39.521  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-14 17:18:39.521  1325  1406 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-14 17:18:39.521  1325  1406 I display : Current VRR MODE is 3
+08-14 17:18:39.521  1325  1406 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-14 17:18:39.521  1325  1406 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-14 17:18:39.521  1325  1406 I display : commit modeset : 1080x2340@60phs
+08-14 17:18:39.524  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-14 17:18:39.526  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-14 17:18:39.526  2357  2357 I AODNotificationManager: updateNotification() 
+08-14 17:18:39.537  1325  1406 W display : deliverWinConfigData:: commit modeset time (16 ms)
+08-14 17:18:39.539  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-14 17:18:39.539  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-14 17:18:39.539  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-14 17:18:39.539  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-14 17:18:39.539  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-14 17:18:39.539  1325  1397 I display : Set Affinity CPU ID : 0
+08-14 17:18:39.539  1325  1397 I display : Set Affinity CPU ID : 1
+08-14 17:18:39.539  1325  1397 I display : Set Affinity CPU ID : 2
+08-14 17:18:39.539  1325  1397 I display : Set Affinity CPU ID : 3
+08-14 17:18:39.539  1325  1397 I display : Set Affinity CPU ID : 4
+08-14 17:18:39.539  1325  1397 I display : Set Affinity CPU ID : 5
+08-14 17:18:39.539  1325  1397 I display : Set Affinity CPU ID : 6
+08-14 17:18:39.539  1325  1397 I display : Set Affinity CPU ID : 7
+08-14 17:18:39.539  1325  1397 I display : Set affinity HWC : 1325
+08-14 17:18:39.539  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-14 17:18:39.539  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-14 17:18:39.539  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-14 17:18:39.539  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-14 17:18:39.540  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-14 17:18:39.573  1556  1556 I CNSS    : cnss_open_log_file: directory /data/vendor/log/wifi/ created
+08-14 17:18:39.715  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:18:39.716  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:18:39.716  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-14 17:18:39.729  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-14 17:18:39.733  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 17:18:39.734  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:18:39.734  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:18:39.737  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-14 17:18:39.737  2357  2357 I AODNotificationManager: updateNotification() 
+08-14 17:18:39.750  2357  3033 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-14 17:18:39.753  2357  3033 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-14 17:18:39.764  2357  2357 I AppIconSolution: return adaptive icon for com.samsung.android.app.smartcapture, isNight = false
+08-14 17:18:39.792  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 17:18:39.797  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:18:39.797  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:18:39.797  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:18:39.797  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:18:39.798  2357  2357 D S.S.N.  : entryViewBound parent :0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:18:39.801  2357  2357 I AppIconSolution: return adaptive icon for com.samsung.android.app.smartcapture, isNight = false
+08-14 17:18:39.809  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-14 17:18:39.813  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 17:18:39.813  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:18:39.813  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:18:39.814  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-14 17:18:39.814  2357  2357 I AODNotificationManager: updateNotification() 
+08-14 17:18:39.883 22570 22720 I appium  : AppiumResponse: {"sessionId":"ad57c311-8328-43ec-8275-15e48ee4c55a","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1572)\n"}}
+08-14 17:18:39.922 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-14 17:18:39.984 24476 24476 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-14 17:18:40.026 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

@@ -1,0 +1,3 @@
+Action: Authenticate the configured test account
+Expected: Login flow reaches Home or reuses an existing Home session. OTP and prompts depend on session state.
+Actual error: After OTP: Continue/Home/ApplePay/passcode did not appear

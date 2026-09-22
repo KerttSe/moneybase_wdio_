@@ -1,0 +1,202 @@
+--------- beginning of main
+08-17 18:03:52.587 18242 18302 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")'
+08-17 18:03:52.588 18242 18302 I appium  : Waiting up to 10000ms for the device to idle
+08-17 18:03:52.661  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786979032
+08-17 18:03:52.661  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 18:03:52.662  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 18:03:52.662  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782983
+08-17 18:03:52.662  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782959
+08-17 18:03:52.662  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 18:03:52.662  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 18:03:52.662  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 18:03:52.663  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 18:03:52.663  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 18:03:52.692 18242 18302 I appium  : Matched 0 elements using selector UiSelector[RESOURCE_ID_REGEX=.*:id/home_screen$|^home_screen$]
+08-17 18:03:52.693 18242 18302 I appium  : Matched 0 elements including possible duplicates
+08-17 18:03:52.693 18242 18302 I appium  : 0 element(s) left after deduplication
+08-17 18:03:52.694 18242 18302 I appium  : Found zero matches
+08-17 18:03:52.700 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":[]}
+08-17 18:03:52.723 18242 18302 I appium  : channel read: POST /session/1fa2dcee-4a19-4925-84ca-531624978cd3/elements
+08-17 18:03:52.726 18242 18302 I appium  : FindElements command
+08-17 18:03:52.730 18242 18302 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")'
+08-17 18:03:52.732 18242 18302 I appium  : Waiting up to 10000ms for the device to idle
+08-17 18:03:52.748  1726  1944 I ImeTracker: com.moneybase.qa:e8192b04: setFinished at PHASE_CLIENT_ANIMATION_CANCEL with STATUS_TIMEOUT
+08-17 18:03:52.769  1726  2226 I SemWifiServiceDetector: NSD results: [0, 1, 1, 0, 1, 0, 2, -1, 0] Traff. type 1 Thr 0
+08-17 18:03:52.774  1726  2233 D SemWifiOptimizer: enable=1 state=0x10 prev=0x00 new=0x10 force=0 mode=2
+08-17 18:03:52.791  2648  3341 I bt_shim_scanner: system/main/shim/le_scanning_manager.cc:151 Scan: in shim layer stopped
+08-17 18:03:52.792  2648  3040 W bluetooth: system/gd/hci/le_scanning_manager.cc:716 scan: address_manager_registered_
+08-17 18:03:52.792  2648  3040 W bluetooth: system/gd/hci/le_scanning_manager.cc:768 stop_scan: stop_scan
+08-17 18:03:52.792  2648  3040 I bluetooth: system/gd/hci/le_address_manager.cc:278 unregister_client: Client unregistered
+08-17 18:03:52.792  2648  3040 I bluetooth: system/gd/hci/le_address_manager.cc:293 unregister_client: Cancelled address rotation alarm
+08-17 18:03:52.795  2648  3341 I bt_shim_scanner: system/main/shim/le_scanning_manager.cc:335 SetScanParameters: in shim layer, scannerId1m=1, scannerIdCoded=0
+08-17 18:03:52.795  2648  3341 W bt_shim_scanner: system/main/shim/le_scanning_manager.cc:365 SetScanParameters: Set scan params scan_int_1m : 275.625, scan_win_1m : 30, Duty : 10.88% | scan_int_coded : 0, scan_win_coded : 0, Duty : nan%
+08-17 18:03:52.795  2648  3341 I bt_shim_scanner: system/main/shim/le_scanning_manager.cc:151 Scan: in shim layer started
+08-17 18:03:52.795  2648  3040 I bluetooth: system/gd/hci/le_scanning_manager.cc:765 stop_scan: Scanning already stopped, return!
+08-17 18:03:52.796  2648  3040 W bluetooth: system/gd/hci/le_scanning_manager.cc:732 start_scan: start_scan
+08-17 18:03:52.796  2648  3040 W bluetooth: system/gd/hci/le_scanning_manager.cc:735 start_scan: Register address manager
+08-17 18:03:52.796  2648  3040 I bluetooth: system/gd/hci/le_address_manager.cc:581 GetNextPrivateAddressIntervalRange: client=LeAddressManager, nonwake=7m10s, wake=14m13s
+08-17 18:03:52.796  2648  3040 I bluetooth: system/gd/hci/le_address_manager.cc:259 register_client: Scheduled address rotation for first client registered
+08-17 18:03:52.796  2648  3040 I bluetooth: system/gd/hci/le_address_manager.cc:263 register_client: Client registered
+08-17 18:03:52.833 18242 18302 I appium  : Matched 0 elements using selector UiSelector[RESOURCE_ID_REGEX=.*:id/home_screen$|^home_screen$]
+08-17 18:03:52.834 18242 18302 I appium  : Matched 0 elements including possible duplicates
+08-17 18:03:52.834 18242 18302 I appium  : 0 element(s) left after deduplication
+08-17 18:03:52.834 18242 18302 I appium  : Found zero matches
+08-17 18:03:52.840 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":[]}
+08-17 18:03:52.862 18242 18302 I appium  : channel read: POST /session/1fa2dcee-4a19-4925-84ca-531624978cd3/elements
+08-17 18:03:52.864 18242 18302 I appium  : FindElements command
+08-17 18:03:52.868 18242 18302 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")'
+08-17 18:03:52.868 18242 18302 I appium  : Waiting up to 10000ms for the device to idle
+08-17 18:03:52.953 18242 18302 I appium  : Matched 0 elements using selector UiSelector[RESOURCE_ID_REGEX=.*:id/home_screen$|^home_screen$]
+08-17 18:03:52.954 18242 18302 I appium  : Matched 0 elements including possible duplicates
+08-17 18:03:52.954 18242 18302 I appium  : 0 element(s) left after deduplication
+08-17 18:03:52.954 18242 18302 I appium  : Found zero matches
+08-17 18:03:52.963 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":[]}
+08-17 18:03:52.989 18242 18302 I appium  : channel read: POST /session/1fa2dcee-4a19-4925-84ca-531624978cd3/elements
+08-17 18:03:52.993 18242 18302 I appium  : FindElements command
+08-17 18:03:52.997 18242 18302 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")'
+08-17 18:03:52.998 18242 18302 I appium  : Waiting up to 10000ms for the device to idle
+08-17 18:03:53.072 18242 18302 I appium  : Matched 0 elements using selector UiSelector[RESOURCE_ID_REGEX=.*:id/home_screen$|^home_screen$]
+08-17 18:03:53.072 18242 18302 I appium  : Matched 0 elements including possible duplicates
+08-17 18:03:53.073 18242 18302 I appium  : 0 element(s) left after deduplication
+08-17 18:03:53.073 18242 18302 I appium  : Found zero matches
+08-17 18:03:53.080 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":[]}
+08-17 18:03:53.104 18242 18302 I appium  : channel read: POST /session/1fa2dcee-4a19-4925-84ca-531624978cd3/elements
+08-17 18:03:53.107 18242 18302 I appium  : FindElements command
+08-17 18:03:53.110 18242 18302 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")'
+08-17 18:03:53.111 18242 18302 I appium  : Waiting up to 10000ms for the device to idle
+08-17 18:03:53.220 18242 18302 I appium  : Matched 0 elements using selector UiSelector[RESOURCE_ID_REGEX=.*:id/home_screen$|^home_screen$]
+08-17 18:03:53.222 18242 18302 I appium  : Matched 0 elements including possible duplicates
+08-17 18:03:53.222 18242 18302 I appium  : 0 element(s) left after deduplication
+08-17 18:03:53.222 18242 18302 I appium  : Found zero matches
+08-17 18:03:53.228 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":[]}
+08-17 18:03:53.250 18242 18302 I appium  : channel read: POST /session/1fa2dcee-4a19-4925-84ca-531624978cd3/elements
+08-17 18:03:53.254 18242 18302 I appium  : FindElements command
+08-17 18:03:53.258 18242 18302 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")'
+08-17 18:03:53.259 18242 18302 I appium  : Waiting up to 10000ms for the device to idle
+08-17 18:03:53.332 18242 18302 I appium  : Matched 0 elements using selector UiSelector[RESOURCE_ID_REGEX=.*:id/home_screen$|^home_screen$]
+08-17 18:03:53.332 18242 18302 I appium  : Matched 0 elements including possible duplicates
+08-17 18:03:53.333 18242 18302 I appium  : 0 element(s) left after deduplication
+08-17 18:03:53.333 18242 18302 I appium  : Found zero matches
+08-17 18:03:53.338 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":[]}
+08-17 18:03:53.364 18242 18302 I appium  : channel read: POST /session/1fa2dcee-4a19-4925-84ca-531624978cd3/elements
+08-17 18:03:53.366 18242 18302 I appium  : FindElements command
+08-17 18:03:53.370 18242 18302 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")'
+08-17 18:03:53.370 18242 18302 I appium  : Waiting up to 10000ms for the device to idle
+08-17 18:03:53.445 18242 18302 I appium  : Matched 0 elements using selector UiSelector[RESOURCE_ID_REGEX=.*:id/home_screen$|^home_screen$]
+08-17 18:03:53.446 18242 18302 I appium  : Matched 0 elements including possible duplicates
+08-17 18:03:53.447 18242 18302 I appium  : 0 element(s) left after deduplication
+08-17 18:03:53.448 18242 18302 I appium  : Found zero matches
+08-17 18:03:53.453 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":[]}
+08-17 18:03:53.473 18242 18302 I appium  : channel read: POST /session/1fa2dcee-4a19-4925-84ca-531624978cd3/elements
+08-17 18:03:53.476 18242 18302 I appium  : FindElements command
+08-17 18:03:53.480 18242 18302 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceIdMatches(".*:id/home_screen$|^home_screen$")'
+08-17 18:03:53.480 18242 18302 I appium  : Waiting up to 10000ms for the device to idle
+08-17 18:03:53.584 18242 18302 I appium  : Matched 0 elements using selector UiSelector[RESOURCE_ID_REGEX=.*:id/home_screen$|^home_screen$]
+08-17 18:03:53.585 18242 18302 I appium  : Matched 0 elements including possible duplicates
+08-17 18:03:53.585 18242 18302 I appium  : 0 element(s) left after deduplication
+08-17 18:03:53.585 18242 18302 I appium  : Found zero matches
+08-17 18:03:53.590 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":[]}
+08-17 18:03:53.604 18242 18302 I appium  : channel read: POST /session/1fa2dcee-4a19-4925-84ca-531624978cd3/element
+08-17 18:03:53.606 18242 18302 I appium  : FindElement command
+08-17 18:03:53.609 18242 18302 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("FX Exchange")'
+08-17 18:03:53.610 18242 18302 I appium  : Waiting up to 10000ms for the device to idle
+08-17 18:03:53.661  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786979033
+08-17 18:03:53.661  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 18:03:53.661  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 18:03:53.661  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782983
+08-17 18:03:53.661  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782959
+08-17 18:03:53.661  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 18:03:53.661  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 18:03:53.662  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 18:03:53.662  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 18:03:53.662  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 18:03:53.692 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1572)\n"}}
+08-17 18:03:53.710 18242 18302 I appium  : channel read: POST /session/1fa2dcee-4a19-4925-84ca-531624978cd3/element
+08-17 18:03:53.712 18242 18302 I appium  : FindElement command
+08-17 18:03:53.715 18242 18302 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("FX Exchange")'
+08-17 18:03:53.715 18242 18302 I appium  : Waiting up to 10000ms for the device to idle
+08-17 18:03:53.760 18242 18302 I QueryController: Matched selector: UiSelector[TEXT=FX Exchange] <<==>> [android.view.accessibility.AccessibilityNodeInfo@5a3ba; boundsInParent: Rect(53, 11 - 352, 35); boundsInScreen: Rect(139, 187 - 924, 250); boundsInWindow: Rect(139, 187 - 924, 250); packageName: com.moneybase.qa; className: android.widget.TextView; text: FX Exchange; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: ; containerTitle: null; viewIdResName: null; uniqueId: 1319; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: false; visible: true; actions: [AccessibilityAction: ACTION_SHOW_ON_SCREEN - null, AccessibilityAction: ACTION_CONTEXT_CLICK - null, AccessibilityAction: ACTION_NEXT_HTML_ELEMENT - null, AccessibilityAction: ACTION_PREVIOUS_HTML_ELEMENT - null, AccessibilityAction: ACTION_NEXT_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 18:03:53.767 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":{"ELEMENT":"00000000-0000-16b1-0000-052700000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-16b1-0000-052700000131"}}
+08-17 18:03:53.792 18242 18302 I appium  : channel read: GET /session/1fa2dcee-4a19-4925-84ca-531624978cd3/element/00000000-0000-16b1-0000-052700000131/attribute/displayed
+08-17 18:03:53.794 18242 18302 I appium  : GetElementAttribute command
+08-17 18:03:53.806 18242 18302 I QueryController: Matched selector: UiSelector[TEXT=FX Exchange] <<==>> [android.view.accessibility.AccessibilityNodeInfo@5a3ba; boundsInParent: Rect(53, 11 - 352, 35); boundsInScreen: Rect(139, 187 - 924, 250); boundsInWindow: Rect(139, 187 - 924, 250); packageName: com.moneybase.qa; className: android.widget.TextView; text: FX Exchange; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: ; containerTitle: null; viewIdResName: null; uniqueId: 1319; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: false; visible: true; actions: [AccessibilityAction: ACTION_SHOW_ON_SCREEN - null, AccessibilityAction: ACTION_CONTEXT_CLICK - null, AccessibilityAction: ACTION_NEXT_HTML_ELEMENT - null, AccessibilityAction: ACTION_PREVIOUS_HTML_ELEMENT - null, AccessibilityAction: ACTION_NEXT_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 18:03:53.807 18242 18302 D UiObject: Waiting 0ms for UiSelector[TEXT=FX Exchange].
+08-17 18:03:53.827 18242 18302 I QueryController: Matched selector: UiSelector[TEXT=FX Exchange] <<==>> [android.view.accessibility.AccessibilityNodeInfo@5a3ba; boundsInParent: Rect(53, 11 - 352, 35); boundsInScreen: Rect(139, 187 - 924, 250); boundsInWindow: Rect(139, 187 - 924, 250); packageName: com.moneybase.qa; className: android.widget.TextView; text: FX Exchange; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: ; containerTitle: null; viewIdResName: null; uniqueId: 1319; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: false; visible: true; actions: [AccessibilityAction: ACTION_SHOW_ON_SCREEN - null, AccessibilityAction: ACTION_CONTEXT_CLICK - null, AccessibilityAction: ACTION_NEXT_HTML_ELEMENT - null, AccessibilityAction: ACTION_PREVIOUS_HTML_ELEMENT - null, AccessibilityAction: ACTION_NEXT_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 18:03:53.835 18242 18302 I QueryController: Matched selector: UiSelector[TEXT=FX Exchange] <<==>> [android.view.accessibility.AccessibilityNodeInfo@5a3ba; boundsInParent: Rect(53, 11 - 352, 35); boundsInScreen: Rect(139, 187 - 924, 250); boundsInWindow: Rect(139, 187 - 924, 250); packageName: com.moneybase.qa; className: android.widget.TextView; text: FX Exchange; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: ; containerTitle: null; viewIdResName: null; uniqueId: 1319; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: false; visible: true; actions: [AccessibilityAction: ACTION_SHOW_ON_SCREEN - null, AccessibilityAction: ACTION_CONTEXT_CLICK - null, AccessibilityAction: ACTION_NEXT_HTML_ELEMENT - null, AccessibilityAction: ACTION_PREVIOUS_HTML_ELEMENT - null, AccessibilityAction: ACTION_NEXT_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+08-17 18:03:53.838 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":"true"}
+08-17 18:03:53.854 18242 18302 I appium  : channel read: POST /session/1fa2dcee-4a19-4925-84ca-531624978cd3/element
+08-17 18:03:53.857 18242 18302 I appium  : FindElement command
+08-17 18:03:53.860 18242 18302 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Back")'
+08-17 18:03:53.861 18242 18302 I appium  : Waiting up to 10000ms for the device to idle
+08-17 18:03:53.952 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1572)\n"}}
+--------- beginning of system
+08-17 18:03:53.953   730   730 D io_stats: !@ Read_top(KB): martsuggestions(4416) 468 loop48(3238) 256
+08-17 18:03:53.953   730   730 D io_stats: !@ Write_top(KB): martsuggestions(4416) 60
+08-17 18:03:53.979 18242 18302 I appium  : channel read: POST /session/1fa2dcee-4a19-4925-84ca-531624978cd3/element
+08-17 18:03:53.983 18242 18302 I appium  : FindElement command
+08-17 18:03:53.988 18242 18302 I appium  : method: '-android uiautomator', selector: 'new UiSelector().description("Back")'
+08-17 18:03:53.989 18242 18302 I appium  : Waiting up to 10000ms for the device to idle
+08-17 18:03:54.091  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-17 18:03:54.096  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 145450, isSameBssidAndFreq true
+08-17 18:03:54.097  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:15 syn=1, rto=0, cwnd=0
+08-17 18:03:54.097  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:16 syn=1, rto=0, cwnd=0
+08-17 18:03:54.097  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:17 syn=1, rto=0, cwnd=0
+08-17 18:03:54.097  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:18 syn=1, rto=0, cwnd=0
+08-17 18:03:54.098  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-17 12:15:19 syn=1, rto=0, cwnd=0
+08-17 18:03:54.099  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786979034099 lastDateWindow=1786958119000
+08-17 18:03:54.101  1726  2228 I SemWifiLinkQualityMonitor: Link stat: 998 / 130 / 1.00 (23) / 78 / -44.0 || 100.0 : 78.00 / G (B) || 52fc78d72452: 0.185 / 43.162 / N || N V / 3 0 / N 2.0 / Y X 0 / 681808953 0 || 2026-08-17 12:15:19  / 0: 0 1 1 1 1 1 / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0
+08-17 18:03:54.104 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1572)\n"}}
+08-17 18:03:54.124  1726  1793 D BatteryExternalStatsWorker: update stats : procstate-change (10)
+08-17 18:03:54.125  1726  1793 D BatteryExternalStatsWorker: Fetch WiFi data
+08-17 18:03:54.126  1726  1793 D BatteryExternalStatsWorker: Update Rail Energy data
+08-17 18:03:54.128 18242 18302 I appium  : channel read: GET /session/1fa2dcee-4a19-4925-84ca-531624978cd3/source
+08-17 18:03:54.131 18242 18302 I appium  : Source command
+08-17 18:03:54.132 18242 18302 I appium  : Waiting up to 10000ms for the device to idle
+08-17 18:03:54.146  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-17 18:03:54.148  1726  1793 D BatteryExternalStatsWorker: mStats lock released
+08-17 18:03:54.181  1726  1793 D BatteryExternalStatsWorker: Update wifi state
+08-17 18:03:54.182  1726  1793 D BatteryExternalStatsWorker: done updateExternalStatsLocked
+08-17 18:03:54.266 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-17 18:03:54.305 18242 18302 I appium  : channel read: GET /session/1fa2dcee-4a19-4925-84ca-531624978cd3/screenshot
+08-17 18:03:54.306 18242 18302 I appium  : CaptureScreenshot command
+08-17 18:03:54.308 18242 18302 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-17 18:03:54.308 18242 18302 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-17 18:03:54.455 20272 20272 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-17 18:03:54.455 20272 20272 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-17 18:03:54.457 20272 20272 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-17 18:03:54.458  1726  1749 I EDMNativeHelperService: isScreenCaptureEnabled
+08-17 18:03:54.464  1726  1749 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-17 18:03:54.464 20272 20272 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-17 18:03:54.464 20272 20272 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-17 18:03:54.467  1437  1995 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_18323#126476(seamlessTransition:0)
+08-17 18:03:54.467  1437  1995 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-17 18:03:54.467  1437  1995 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-17 18:03:54.467  1437  1995 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-17 18:03:54.470  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-17 18:03:54.470  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_18323#126476 at index 1
+08-17 18:03:54.470  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-17 18:03:54.470  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-17 18:03:54.503 20272 20277 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-17 18:03:54.661  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786979034
+08-17 18:03:54.661  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 18:03:54.662  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 18:03:54.662  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782983
+08-17 18:03:54.662  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782959
+08-17 18:03:54.662  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 18:03:54.662  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 18:03:54.662  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 18:03:54.663  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 18:03:54.663  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 18:03:54.725 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15eFXVvf/xT+YBEhICARIgBAijoASQgAwioICgTFK5iorXW7S2ys+hFi+1llaxrVZA24r0qhW9aEVllHmwIoQZwhimBAiEJCQhc0hycn5/pDmXnXOSnMzZ4f16Hp7Hvc4e1jYhZH/2Wt/…
+08-17 18:03:54.753 18242 18302 I appium  : channel read: GET /session/1fa2dcee-4a19-4925-84ca-531624978cd3/source
+08-17 18:03:54.753 18242 18302 I appium  : Source command
+08-17 18:03:54.754 18242 18302 I appium  : Waiting up to 10000ms for the device to idle
+08-17 18:03:54.766  1726  2182 D UsbStatsMonitor: 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 132418136703002
+08-17 18:03:54.840 18242 18302 I appium  : AppiumResponse: {"sessionId":"1fa2dcee-4a19-4925-84ca-531624978cd3","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-17 18:03:54.886 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-17 18:03:54.920 20278 20278 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-17 18:03:54.962 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-17 18:03:55.024 20281 20281 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-17 18:03:55.075  1326  1393 E BatteryDump: !@new_battery_dump : 4343,5,1800,2054,100,350,330,375,350,0,356,354,0,Full,NO_CHARGING,None,Good,PDIC,0,Normal,0,0,5400,0x10000,0x10000,0x0,0,0,0000,0000,ffff0700,0,0,0,0,690,4345,9976,988,0,
+08-17 18:03:55.077  1326  1326 I android.hardware.health@2.1-service-samsung: updateLrpSysfs: write: 351
+08-17 18:03:55.079 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

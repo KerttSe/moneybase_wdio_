@@ -1,0 +1,329 @@
+--------- beginning of main
+04-30 11:08:48.225  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:1580): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 11:08:49.214 15095 15188 D EGL_emulation: app_time_stats: avg=15.17ms min=7.12ms max=22.40ms count=34
+04-30 11:08:50.258 15095 15188 D EGL_emulation: app_time_stats: avg=16.46ms min=7.34ms max=29.16ms count=31
+04-30 11:08:50.732   694   703 I ndroid.systemui: Background young concurrent copying GC freed 254655(13MB) AllocSpace objects, 0(0B) LOS objects, 38% free, 20MB/32MB, paused 254us,591us total 127.740ms
+04-30 11:08:51.291 15095 15188 D EGL_emulation: app_time_stats: avg=23.24ms min=8.81ms max=68.95ms count=26
+04-30 11:08:52.330 15095 15188 D EGL_emulation: app_time_stats: avg=14.86ms min=6.01ms max=26.37ms count=34
+04-30 11:08:53.341 15095 15188 D EGL_emulation: app_time_stats: avg=15.46ms min=1.45ms max=30.55ms count=29
+04-30 11:08:54.361 15095 15188 D EGL_emulation: app_time_stats: avg=15.75ms min=7.02ms max=26.50ms count=33
+04-30 11:08:55.402 15095 15188 D EGL_emulation: app_time_stats: avg=14.77ms min=8.12ms max=19.74ms count=36
+04-30 11:08:56.436 15095 15188 D EGL_emulation: app_time_stats: avg=14.83ms min=1.24ms max=31.72ms count=36
+04-30 11:08:57.480 15095 15188 D EGL_emulation: app_time_stats: avg=15.28ms min=7.73ms max=29.10ms count=35
+04-30 11:08:58.482 15095 15188 D EGL_emulation: app_time_stats: avg=15.02ms min=8.93ms max=23.59ms count=35
+04-30 11:08:59.489 15095 15188 D EGL_emulation: app_time_stats: avg=20.36ms min=1.21ms max=82.88ms count=30
+04-30 11:09:00.048  1450  1820 I AiAiEcho: Predicting[0]: 
+04-30 11:09:00.049  1450  1820 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-30 11:09:00.050  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-30 11:09:00.053  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-30 11:09:00.062   694   937 D EGL_emulation: app_time_stats: avg=19080.67ms min=19080.67ms max=19080.67ms count=1
+04-30 11:09:00.062  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-30 11:09:00.079   694   694 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-30 11:09:00.490 15095 15188 D EGL_emulation: app_time_stats: avg=17.13ms min=7.29ms max=62.49ms count=32
+04-30 11:09:01.514 15095 15188 D EGL_emulation: app_time_stats: avg=14.24ms min=8.34ms max=20.69ms count=35
+04-30 11:09:02.013   503   512 I system_server: Background young concurrent copying GC freed 295907(22MB) AllocSpace objects, 4(80KB) LOS objects, 41% free, 30MB/51MB, paused 387us,25us total 129.157ms
+04-30 11:09:02.562 15095 15188 D EGL_emulation: app_time_stats: avg=21.43ms min=1.61ms max=58.88ms count=28
+04-30 11:09:03.597 15095 15188 D EGL_emulation: app_time_stats: avg=17.73ms min=7.77ms max=41.00ms count=30
+04-30 11:09:04.245  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:1581): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 11:09:04.633 15095 15188 D EGL_emulation: app_time_stats: avg=15.72ms min=6.64ms max=27.62ms count=35
+04-30 11:09:05.640 15095 15188 D EGL_emulation: app_time_stats: avg=14.42ms min=6.79ms max=21.79ms count=34
+04-30 11:09:06.650 15095 15188 D EGL_emulation: app_time_stats: avg=15.21ms min=1.80ms max=35.90ms count=34
+04-30 11:09:07.663 15095 15188 D EGL_emulation: app_time_stats: avg=14.18ms min=1.19ms max=22.24ms count=35
+04-30 11:09:08.705 15095 15188 D EGL_emulation: app_time_stats: avg=15.43ms min=1.68ms max=29.53ms count=35
+04-30 11:09:09.729 15095 15188 D EGL_emulation: app_time_stats: avg=15.41ms min=7.64ms max=23.84ms count=34
+04-30 11:09:10.739 15095 15188 D EGL_emulation: app_time_stats: avg=15.88ms min=7.41ms max=27.09ms count=34
+04-30 11:09:11.751 15095 15188 D EGL_emulation: app_time_stats: avg=14.74ms min=6.96ms max=28.33ms count=36
+04-30 11:09:11.889 15095 15105 I om.moneybase.qa: Background young concurrent copying GC freed 317356(15MB) AllocSpace objects, 0(0B) LOS objects, 47% free, 17MB/32MB, paused 61us,11us total 100.800ms
+04-30 11:09:12.349   694   703 I ndroid.systemui: Background young concurrent copying GC freed 240045(12MB) AllocSpace objects, 0(0B) LOS objects, 37% free, 19MB/31MB, paused 6.687ms,207us total 21.945ms
+04-30 11:09:12.756 15095 15188 D EGL_emulation: app_time_stats: avg=14.08ms min=1.40ms max=32.20ms count=36
+04-30 11:09:13.757 15095 15188 D EGL_emulation: app_time_stats: avg=13.27ms min=1.22ms max=21.61ms count=35
+04-30 11:09:14.784 15095 15188 D EGL_emulation: app_time_stats: avg=15.61ms min=6.97ms max=33.15ms count=35
+04-30 11:09:15.811 15095 15188 D EGL_emulation: app_time_stats: avg=15.28ms min=1.11ms max=28.51ms count=35
+04-30 11:09:16.849 15095 15188 D EGL_emulation: app_time_stats: avg=14.96ms min=6.60ms max=33.14ms count=36
+04-30 11:09:17.861 15095 15188 D EGL_emulation: app_time_stats: avg=14.92ms min=6.74ms max=26.75ms count=35
+04-30 11:09:18.049  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:1582): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 11:09:18.245  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:1583): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 11:09:18.895 15095 15188 D EGL_emulation: app_time_stats: avg=15.76ms min=7.55ms max=33.32ms count=35
+04-30 11:09:19.900 15095 15188 D EGL_emulation: app_time_stats: avg=15.70ms min=8.30ms max=30.31ms count=34
+04-30 11:09:20.933 15095 15188 D EGL_emulation: app_time_stats: avg=16.03ms min=7.52ms max=29.32ms count=34
+04-30 11:09:21.971 15095 15188 D EGL_emulation: app_time_stats: avg=14.27ms min=1.42ms max=21.97ms count=36
+04-30 11:09:22.979 15095 15188 D EGL_emulation: app_time_stats: avg=13.14ms min=1.58ms max=21.63ms count=37
+04-30 11:09:23.199   694   703 I ndroid.systemui: Background young concurrent copying GC freed 285146(14MB) AllocSpace objects, 0(0B) LOS objects, 46% free, 16MB/31MB, paused 10.619ms,139us total 19.692ms
+04-30 11:09:24.016 15095 15188 D EGL_emulation: app_time_stats: avg=13.86ms min=1.22ms max=22.70ms count=35
+04-30 11:09:25.041 15095 15188 D EGL_emulation: app_time_stats: avg=14.92ms min=5.28ms max=32.26ms count=36
+04-30 11:09:26.054 15095 15188 D EGL_emulation: app_time_stats: avg=14.63ms min=0.97ms max=30.59ms count=35
+04-30 11:09:26.175   323   323 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+04-30 11:09:26.446   694   703 I ndroid.systemui: Background young concurrent copying GC freed 268436(14MB) AllocSpace objects, 0(0B) LOS objects, 43% free, 17MB/31MB, paused 9.275ms,7us total 18.011ms
+04-30 11:09:27.100 15095 15188 D EGL_emulation: app_time_stats: avg=15.81ms min=1.08ms max=34.82ms count=35
+04-30 11:09:28.137 15095 15188 D EGL_emulation: app_time_stats: avg=16.61ms min=1.19ms max=46.61ms count=32
+04-30 11:09:29.166 15095 15188 D EGL_emulation: app_time_stats: avg=16.90ms min=8.09ms max=35.36ms count=34
+04-30 11:09:30.189 15095 15188 D EGL_emulation: app_time_stats: avg=15.63ms min=7.70ms max=23.39ms count=34
+04-30 11:09:31.230 15095 15188 D EGL_emulation: app_time_stats: avg=15.23ms min=1.85ms max=33.87ms count=35
+04-30 11:09:32.245 15095 15188 D EGL_emulation: app_time_stats: avg=15.05ms min=1.06ms max=28.38ms count=35
+04-30 11:09:33.298 15095 15188 D EGL_emulation: app_time_stats: avg=14.19ms min=8.66ms max=27.62ms count=38
+04-30 11:09:34.257  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:1584): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 11:09:34.311 15095 15188 D EGL_emulation: app_time_stats: avg=14.10ms min=1.62ms max=22.39ms count=36
+04-30 11:09:34.360  1160  1758 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+04-30 11:09:34.383  1160 15928 W SystemServiceRegistry: No service published for: wifirtt
+04-30 11:09:35.199   503  1736 D WifiNl80211Manager: Scan result ready event
+04-30 11:09:35.201   503  1736 D WifiNative: Scan result ready event
+04-30 11:09:35.209  1160 15928 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-30 11:09:35.219  1540  1540 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.auth.service.START pkg=com.google.android.gms }
+04-30 11:09:35.219  1540  1540 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.auth.service.START pkg=com.google.android.gms }
+04-30 11:09:35.269  1160  1174 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+04-30 11:09:35.338 15095 15188 D EGL_emulation: app_time_stats: avg=15.25ms min=7.36ms max=27.16ms count=35
+04-30 11:09:35.366  3778  3796 D TrafficStats: tagSocket(98) with statsTag=0x1809, statsUid=-1
+04-30 11:09:35.371 15043 15070 D TrafficStats: tagSocket(5) with statsTag=0xffffffff, statsUid=-1
+04-30 11:09:35.394  3778  3796 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+04-30 11:09:35.389  3778  3778 W binder:3778_2: type=1400 audit(0.0:1585): avc: denied { read } for name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=259 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+04-30 11:09:35.389  3778  3778 W binder:3778_2: type=1400 audit(0.0:1586): avc: denied { read } for name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=51 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+04-30 11:09:35.394  3778  3796 W libc    : Access denied finding property "service.adb.tls.port"
+04-30 11:09:35.409  1160  1174 W GmsUrlRequestImpl: [https://android.googleapis.com/auth/devicekey] Content-Type header is overwritten.
+04-30 11:09:35.463  1160  3566 D TrafficStats: tagSocket(90) with statsTag=0x4000401, statsUid=10120
+04-30 11:09:35.730  1160  1174 W GLSUser : [AppCertManager] Exception while requesting key: 
+04-30 11:09:35.730  1160  1174 W GLSUser : java.util.concurrent.ExecutionException: cvhs: Parse Proto Exception with response code 400
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at hfeb.j(:com.google.android.gms@261233029@26.12.33 (190400-892550550):21)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at hfek.u(:com.google.android.gms@261233029@26.12.33 (190400-892550550):71)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at alqw.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):439)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at alqu.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):67)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at alqu.dispatchTransaction(:com.google.android.gms@261233029@26.12.33 (190400-892550550):16)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at byza.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):72)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at zpv.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):23)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at android.os.Binder.transact(Binder.java:1164)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at clbu.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):10)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at android.os.Binder.transact(Binder.java:1164)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at byzo.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):161)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at android.os.Binder.execTransactInternal(Binder.java:1280)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at android.os.Binder.execTransact(Binder.java:1244)
+04-30 11:09:35.730  1160  1174 W GLSUser : Caused by: cvhs: Parse Proto Exception with response code 400
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at cvja.e(:com.google.android.gms@261233029@26.12.33 (190400-892550550):82)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at cvlq.d(:com.google.android.gms@261233029@26.12.33 (190400-892550550):18)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at cvmh.onSucceeded(:com.google.android.gms@261233029@26.12.33 (190400-892550550):9)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at m1.nr.onSucceeded(:com.google.android.gms.dynamite_cronetdynamite@261233029@26.12.33 (190400-0):3)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at m1.mk.run(:com.google.android.gms.dynamite_cronetdynamite@261233029@26.12.33 (190400-0):21)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at m1.me.run(:com.google.android.gms.dynamite_cronetdynamite@261233029@26.12.33 (190400-0):31)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):73)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at biej.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at java.lang.Thread.run(Thread.java:1012)
+04-30 11:09:35.730  1160  1174 W GLSUser : Caused by: iphx: Protocol message contained an invalid tag (zero).
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at ipeu.k(:com.google.android.gms@261233029@26.12.33 (190400-892550550):43)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at ipiv.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):397)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at ipiv.i(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at iphb.y(:com.google.android.gms@261233029@26.12.33 (190400-892550550):23)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at ipgw.g(:com.google.android.gms@261233029@26.12.33 (190400-892550550):3)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at ipeq.e(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at ipeq.r(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at cviw.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):16)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at cvja.h(:com.google.android.gms@261233029@26.12.33 (190400-892550550):83)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	at cvja.e(:com.google.android.gms@261233029@26.12.33 (190400-892550550):19)
+04-30 11:09:35.730  1160  1174 W GLSUser : 	... 11 more
+04-30 11:09:35.730  1160  1174 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+04-30 11:09:35.743 15043 15071 I appium  : Screenshot broadcast client opened a connection 127.0.0.1:56378
+04-30 11:09:35.791  1160  3566 D TrafficStats: tagSocket(120) with statsTag=0xc000609, statsUid=10120
+04-30 11:09:35.880 15022 15037 W System  : A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.
+04-30 11:09:35.880 15022 15037 W System  : java.lang.Throwable: Explicit termination method 'HardwareBuffer.close' not called
+04-30 11:09:35.880 15022 15037 W System  : 	at dalvik.system.CloseGuard.openWithCallSite(CloseGuard.java:288)
+04-30 11:09:35.880 15022 15037 W System  : 	at dalvik.system.CloseGuard.open(CloseGuard.java:257)
+04-30 11:09:35.880 15022 15037 W System  : 	at android.hardware.HardwareBuffer.<init>(HardwareBuffer.java:272)
+04-30 11:09:35.880 15022 15037 W System  : A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.
+04-30 11:09:35.880 15022 15037 W System  : java.lang.Throwable: Explicit termination method 'HardwareBuffer.close' not called
+04-30 11:09:35.880 15022 15037 W System  : 	at dalvik.system.CloseGuard.openWithCallSite(CloseGuard.java:288)
+04-30 11:09:35.880 15022 15037 W System  : 	at dalvik.system.CloseGuard.open(CloseGuard.java:257)
+04-30 11:09:35.880 15022 15037 W System  : 	at android.hardware.HardwareBuffer.<init>(HardwareBuffer.java:272)
+04-30 11:09:35.931  1160  3566 I cn_CronetUrlRequestContext: destroyNativeStreamLocked org.chromium.net.impl.CronetBidirectionalStream@91e326a
+04-30 11:09:35.932  1160 15928 W GlsClientGrpc: Voilatile gRPC failure INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header. [CONTEXT service_id=6 ]
+04-30 11:09:35.932  1160 15928 W GlsClientGrpc: jlsp: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+04-30 11:09:35.932  1160 15928 W GlsClientGrpc: 	at gmjf.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):51)
+04-30 11:09:35.932  1160 15928 W GlsClientGrpc: 	at gocc.call(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1001)
+04-30 11:09:35.932  1160 15928 W GlsClientGrpc: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+04-30 11:09:35.932  1160 15928 W GlsClientGrpc: 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+04-30 11:09:35.932  1160 15928 W GlsClientGrpc: 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):73)
+04-30 11:09:35.932  1160 15928 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+04-30 11:09:35.932  1160 15928 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+04-30 11:09:35.932  1160 15928 W GlsClientGrpc: 	at biej.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+04-30 11:09:35.932  1160 15928 W GlsClientGrpc: 	at java.lang.Thread.run(Thread.java:1012)
+04-30 11:09:35.933  1160 15928 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-30 11:09:35.942  1160  1758 I ActivityScheduler: nextTriggerTime: 8240985, in 176658ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-30 11:09:35.942 15043 15071 I appium  : Screenshot broadcast client opened a connection 127.0.0.1:56378
+04-30 11:09:36.043 15043 15071 W appium  : Client socket connection not writable. Closing... java.net.SocketException: Broken pipe
+04-30 11:09:36.347 15095 15188 D EGL_emulation: app_time_stats: avg=17.50ms min=1.72ms max=45.49ms count=30
+04-30 11:09:37.356 15095 15188 D EGL_emulation: app_time_stats: avg=17.38ms min=10.91ms max=30.30ms count=30
+04-30 11:09:38.396 15095 15188 D EGL_emulation: app_time_stats: avg=32.51ms min=6.83ms max=252.14ms count=21
+04-30 11:09:39.428 15095 15188 D EGL_emulation: app_time_stats: avg=18.43ms min=12.02ms max=31.17ms count=31
+04-30 11:09:40.479 15095 15188 D EGL_emulation: app_time_stats: avg=16.57ms min=8.50ms max=30.55ms count=33
+04-30 11:09:41.492 15095 15188 D EGL_emulation: app_time_stats: avg=17.65ms min=1.33ms max=35.74ms count=31
+04-30 11:09:42.498 15095 15188 D EGL_emulation: app_time_stats: avg=15.50ms min=1.35ms max=31.13ms count=35
+04-30 11:09:43.539 15095 15188 D EGL_emulation: app_time_stats: avg=15.30ms min=7.70ms max=32.25ms count=35
+04-30 11:09:44.569 15095 15188 D EGL_emulation: app_time_stats: avg=16.65ms min=6.50ms max=33.95ms count=34
+04-30 11:09:45.527  3778  3791 W id.gms.unstable: Reducing the number of considered missed Gc histogram windows from 115 to 100
+04-30 11:09:45.586 15095 15188 D EGL_emulation: app_time_stats: avg=15.20ms min=4.15ms max=29.63ms count=35
+04-30 11:09:46.589 15095 15188 D EGL_emulation: app_time_stats: avg=16.18ms min=6.87ms max=28.44ms count=32
+04-30 11:09:47.591 15095 15188 D EGL_emulation: app_time_stats: avg=17.01ms min=9.72ms max=25.45ms count=31
+04-30 11:09:48.057  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:1587): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 11:09:48.249  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:1588): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 11:09:48.593 15095 15188 D EGL_emulation: app_time_stats: avg=15.96ms min=7.61ms max=31.44ms count=32
+04-30 11:09:49.638 15095 15188 D EGL_emulation: app_time_stats: avg=15.93ms min=7.19ms max=32.12ms count=34
+04-30 11:09:49.733   694   703 I ndroid.systemui: Background young concurrent copying GC freed 240231(12MB) AllocSpace objects, 0(0B) LOS objects, 37% free, 19MB/31MB, paused 7.438ms,11us total 21.813ms
+04-30 11:09:50.238  1540  1540 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.service.START pkg=com.google.android.gms }
+04-30 11:09:50.662 15095 15188 D EGL_emulation: app_time_stats: avg=20.65ms min=11.40ms max=45.73ms count=29
+04-30 11:09:51.063   694   703 I ndroid.systemui: Background young concurrent copying GC freed 228110(11MB) AllocSpace objects, 0(0B) LOS objects, 37% free, 19MB/31MB, paused 37us,10us total 117.432ms
+04-30 11:09:51.700 15095 15188 D EGL_emulation: app_time_stats: avg=25.37ms min=2.57ms max=88.69ms count=25
+04-30 11:09:52.737 15095 15188 D EGL_emulation: app_time_stats: avg=18.54ms min=8.87ms max=34.89ms count=30
+04-30 11:09:53.770 15095 15188 D EGL_emulation: app_time_stats: avg=15.64ms min=7.16ms max=25.51ms count=34
+04-30 11:09:54.813 15095 15188 D EGL_emulation: app_time_stats: avg=17.94ms min=10.15ms max=50.02ms count=30
+04-30 11:09:55.867 15095 15188 D EGL_emulation: app_time_stats: avg=20.22ms min=10.84ms max=32.00ms count=28
+04-30 11:09:56.886 15095 15188 D EGL_emulation: app_time_stats: avg=18.99ms min=8.91ms max=34.42ms count=29
+04-30 11:09:57.899 15095 15188 D EGL_emulation: app_time_stats: avg=22.88ms min=1.38ms max=119.29ms count=25
+04-30 11:09:58.953 15095 15188 D EGL_emulation: app_time_stats: avg=20.36ms min=1.41ms max=55.10ms count=30
+04-30 11:09:59.984 15095 15188 D EGL_emulation: app_time_stats: avg=20.83ms min=8.62ms max=46.58ms count=27
+04-30 11:10:00.049  1450  1820 I AiAiEcho: Predicting[0]: 
+04-30 11:10:00.049  1450  1820 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-30 11:10:00.050  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-30 11:10:00.051  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-30 11:10:00.055  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-30 11:10:00.078   694   694 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-30 11:10:00.091   694   937 D EGL_emulation: app_time_stats: avg=60029.79ms min=60029.79ms max=60029.79ms count=1
+--------- beginning of system
+04-30 11:10:00.143   503   584 D ActivityManager: freezing 853 com.android.settings
+04-30 11:10:00.987 15095 15188 D EGL_emulation: app_time_stats: avg=23.23ms min=1.95ms max=70.73ms count=25
+04-30 11:10:02.017   503   512 I system_server: Background young concurrent copying GC freed 287604(22MB) AllocSpace objects, 5(100KB) LOS objects, 37% free, 32MB/51MB, paused 198us,36us total 151.513ms
+04-30 11:10:02.023 15095 15188 D EGL_emulation: app_time_stats: avg=19.74ms min=3.69ms max=39.95ms count=28
+04-30 11:10:03.053 15095 15188 D EGL_emulation: app_time_stats: avg=16.50ms min=7.51ms max=31.53ms count=34
+04-30 11:10:04.056 15095 15188 D EGL_emulation: app_time_stats: avg=18.40ms min=1.13ms max=39.76ms count=28
+04-30 11:10:04.261  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:1589): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 11:10:05.108 15095 15188 D EGL_emulation: app_time_stats: avg=17.85ms min=1.44ms max=40.68ms count=30
+04-30 11:10:05.118   503   817 D ActivityManager: sync unfroze 15616 com.google.android.googlequicksearchbox:search
+04-30 11:10:05.132 15616 15616 I fedd    : (REDACTED) Created gRPC endpoint for service %s
+04-30 11:10:05.249  2034  2851 W dlfc    : (REDACTED) Error reading proc %s
+04-30 11:10:05.249  2034  2851 W dlfc    : java.io.FileNotFoundException: /proc/2034/dmabuf_rss: open failed: ENOENT (No such file or directory)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at libcore.io.IoBridge.open(IoBridge.java:574)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at java.io.FileInputStream.<init>(FileInputStream.java:160)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at fbhu.a(PG:10)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at dlpo.f(PG:43)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at dlpo.b(PG:194)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at dlpf.apply(PG:19)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at fcnd.c(PG:3)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at fcnf.run(PG:47)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:463)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:307)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at dlez.run(PG:12)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at java.lang.Thread.run(Thread.java:1012)
+04-30 11:10:05.249  2034  2851 W dlfc    : Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at libcore.io.Linux.open(Native Method)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:7810)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at libcore.io.IoBridge.open(IoBridge.java:560)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	... 14 more
+04-30 11:10:05.249  2034  2851 W dlfc    : (REDACTED) Error reading proc %s
+04-30 11:10:05.249  2034  2851 W dlfc    : java.io.FileNotFoundException: /proc/2034/dmabuf_rss_hwm: open failed: ENOENT (No such file or directory)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at libcore.io.IoBridge.open(IoBridge.java:574)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at java.io.FileInputStream.<init>(FileInputStream.java:160)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at fbhu.a(PG:10)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at dlpo.f(PG:43)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at dlpo.b(PG:208)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at dlpf.apply(PG:19)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at fcnd.c(PG:3)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at fcnf.run(PG:47)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:463)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:307)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at dlez.run(PG:12)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at java.lang.Thread.run(Thread.java:1012)
+04-30 11:10:05.249  2034  2851 W dlfc    : Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at libcore.io.Linux.open(Native Method)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:7810)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	at libcore.io.IoBridge.open(IoBridge.java:560)
+04-30 11:10:05.249  2034  2851 W dlfc    : 	... 14 more
+04-30 11:10:05.250  2034  2851 W dlfc    : (REDACTED) Error reading proc %s
+04-30 11:10:05.250  2034  2851 W dlfc    : java.io.FileNotFoundException: /proc/2034/dmabuf_pss: open failed: ENOENT (No such file or directory)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at libcore.io.IoBridge.open(IoBridge.java:574)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at java.io.FileInputStream.<init>(FileInputStream.java:160)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at fbhu.a(PG:10)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at dlpo.f(PG:43)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at dlpo.b(PG:222)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at dlpf.apply(PG:19)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at fcnd.c(PG:3)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at fcnf.run(PG:47)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:463)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:307)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at dlez.run(PG:12)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at java.lang.Thread.run(Thread.java:1012)
+04-30 11:10:05.250  2034  2851 W dlfc    : Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at libcore.io.Linux.open(Native Method)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:7810)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	at libcore.io.IoBridge.open(IoBridge.java:560)
+04-30 11:10:05.250  2034  2851 W dlfc    : 	... 14 more
+04-30 11:10:05.376  2034  7211 V ClearcutMetricXmitter: Transmission is done.
+04-30 11:10:06.109 15095 15188 D EGL_emulation: app_time_stats: avg=28.95ms min=10.99ms max=174.25ms count=21
+04-30 11:10:07.114 15095 15188 D EGL_emulation: app_time_stats: avg=15.51ms min=1.12ms max=37.68ms count=30
+04-30 11:10:08.155 15095 15188 D EGL_emulation: app_time_stats: avg=16.08ms min=1.26ms max=23.59ms count=32
+04-30 11:10:09.182 15095 15188 D EGL_emulation: app_time_stats: avg=16.41ms min=2.02ms max=38.92ms count=33
+04-30 11:10:10.095   503   584 D ActivityManager: freezing 15411 com.google.android.settings.intelligence
+04-30 11:10:10.231 15095 15188 D EGL_emulation: app_time_stats: avg=15.93ms min=1.43ms max=31.03ms count=33
+04-30 11:10:11.234 15095 15188 D EGL_emulation: app_time_stats: avg=17.70ms min=1.42ms max=57.73ms count=31
+04-30 11:10:11.580   694   703 I ndroid.systemui: Background young concurrent copying GC freed 288137(15MB) AllocSpace objects, 1(20KB) LOS objects, 46% free, 17MB/32MB, paused 6.883ms,7us total 19.503ms
+04-30 11:10:12.270 15095 15188 D EGL_emulation: app_time_stats: avg=19.36ms min=1.83ms max=47.99ms count=31
+04-30 11:10:12.941   694   703 I ndroid.systemui: Background young concurrent copying GC freed 281184(14MB) AllocSpace objects, 0(0B) LOS objects, 44% free, 18MB/32MB, paused 7.089ms,7us total 30.137ms
+04-30 11:10:13.283 15095 15188 D EGL_emulation: app_time_stats: avg=15.98ms min=7.00ms max=36.28ms count=33
+04-30 11:10:14.304 15095 15188 D EGL_emulation: app_time_stats: avg=15.72ms min=1.09ms max=30.08ms count=34
+04-30 11:10:15.306 15095 15188 D EGL_emulation: app_time_stats: avg=18.44ms min=9.16ms max=34.35ms count=29
+04-30 11:10:16.316 15095 15188 D EGL_emulation: app_time_stats: avg=20.40ms min=9.00ms max=47.30ms count=27
+04-30 11:10:17.366 15095 15188 D EGL_emulation: app_time_stats: avg=16.48ms min=1.65ms max=29.25ms count=31
+04-30 11:10:18.073  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:1590): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 11:10:18.273  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:1591): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 11:10:18.395 15095 15188 D EGL_emulation: app_time_stats: avg=15.98ms min=1.51ms max=33.38ms count=32
+04-30 11:10:19.436 15095 15188 D EGL_emulation: app_time_stats: avg=15.97ms min=1.43ms max=29.56ms count=33
+04-30 11:10:20.456 15095 15188 D EGL_emulation: app_time_stats: avg=19.35ms min=4.61ms max=45.98ms count=25
+04-30 11:10:21.472 15095 15188 D EGL_emulation: app_time_stats: avg=16.57ms min=8.09ms max=34.11ms count=33
+04-30 11:10:22.022 15095 15105 I om.moneybase.qa: Background young concurrent copying GC freed 335975(16MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/32MB, paused 23.240ms,21us total 139.098ms
+04-30 11:10:22.506 15095 15188 D EGL_emulation: app_time_stats: avg=20.79ms min=9.46ms max=52.21ms count=29
+04-30 11:10:23.545 15095 15188 D EGL_emulation: app_time_stats: avg=14.53ms min=1.31ms max=32.07ms count=37
+04-30 11:10:24.547 15095 15188 D EGL_emulation: app_time_stats: avg=16.68ms min=6.89ms max=78.44ms count=32
+04-30 11:10:25.562 15095 15188 D EGL_emulation: app_time_stats: avg=14.23ms min=1.41ms max=28.25ms count=36
+04-30 11:10:26.562 15095 15188 D EGL_emulation: app_time_stats: avg=14.27ms min=6.71ms max=22.40ms count=35
+04-30 11:10:27.569 15095 15188 D EGL_emulation: app_time_stats: avg=14.17ms min=6.63ms max=22.48ms count=34
+04-30 11:10:28.579 15095 15188 D EGL_emulation: app_time_stats: avg=14.05ms min=0.91ms max=27.82ms count=36
+04-30 11:10:29.596 15095 15188 D EGL_emulation: app_time_stats: avg=15.28ms min=6.94ms max=30.05ms count=34
+04-30 11:10:30.612 15095 15188 D EGL_emulation: app_time_stats: avg=14.97ms min=7.27ms max=20.77ms count=34
+04-30 11:10:31.616 15095 15188 D EGL_emulation: app_time_stats: avg=15.07ms min=7.35ms max=23.13ms count=35
+04-30 11:10:32.628 15095 15188 D EGL_emulation: app_time_stats: avg=16.78ms min=1.73ms max=55.46ms count=32
+04-30 11:10:33.667 15095 15188 D EGL_emulation: app_time_stats: avg=14.50ms min=1.14ms max=27.86ms count=37
+04-30 11:10:34.277  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:1592): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 11:10:34.701 15095 15188 D EGL_emulation: app_time_stats: avg=13.80ms min=1.38ms max=30.23ms count=38
+04-30 11:10:34.772  1160  1758 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+04-30 11:10:34.779  1160 16060 W SystemServiceRegistry: No service published for: wifirtt
+04-30 11:10:35.598   503  1750 D WifiNl80211Manager: Scan result ready event
+04-30 11:10:35.598   503  1750 D WifiNative: Scan result ready event
+04-30 11:10:35.606  1160 16060 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-30 11:10:35.615  1160  1758 I ActivityScheduler: nextTriggerTime: 8240985, in 116985ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-30 11:10:35.716 15095 15188 D EGL_emulation: app_time_stats: avg=14.33ms min=1.84ms max=31.01ms count=35
+04-30 11:10:36.747 15095 15188 D EGL_emulation: app_time_stats: avg=14.49ms min=1.04ms max=28.64ms count=36
+04-30 11:10:37.802 15095 15188 D EGL_emulation: app_time_stats: avg=14.67ms min=1.22ms max=26.66ms count=36
+04-30 11:10:38.819 15095 15188 D EGL_emulation: app_time_stats: avg=14.75ms min=6.76ms max=25.02ms count=35
+04-30 11:10:39.867 15095 15188 D EGL_emulation: app_time_stats: avg=14.94ms min=1.39ms max=35.09ms count=36
+04-30 11:10:40.879 15095 15188 D EGL_emulation: app_time_stats: avg=15.50ms min=1.24ms max=30.64ms count=34
+04-30 11:10:41.042   694   937 D EGL_emulation: app_time_stats: avg=40950.77ms min=40950.77ms max=40950.77ms count=1
+04-30 11:10:41.912 15095 15188 D EGL_emulation: app_time_stats: avg=15.69ms min=7.62ms max=30.10ms count=35
+04-30 11:10:42.918 15095 15188 D EGL_emulation: app_time_stats: avg=15.28ms min=10.83ms max=20.09ms count=35
+04-30 11:10:43.920 15095 15188 D EGL_emulation: app_time_stats: avg=13.74ms min=7.29ms max=20.22ms count=35
+04-30 11:10:44.947 15095 15188 D EGL_emulation: app_time_stats: avg=14.63ms min=6.47ms max=27.35ms count=38
+04-30 11:10:45.972 15095 15188 D EGL_emulation: app_time_stats: avg=14.85ms min=1.72ms max=29.83ms count=34

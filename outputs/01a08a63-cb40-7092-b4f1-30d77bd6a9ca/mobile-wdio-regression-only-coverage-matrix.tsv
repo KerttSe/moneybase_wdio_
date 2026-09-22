@@ -1,0 +1,170 @@
+ID	Feature / Journey	Scenario Group	iOS Sim	iOS Real (B_S)	Android Emu	Android Real(B_S)	Level	Priority	Status	Notes
+AB-USD-1.1	Beneficiary	Open Pay tab	N/A	N/A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/addbeneficiary.individual.usd.steps.spec.ts
+AB-USD-1.2	Beneficiary	Tap New Transfer / Add button	N/A	N/A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/addbeneficiary.individual.usd.steps.spec.ts
+AB-USD-1.3	Beneficiary	Tap Add Beneficiary	N/A	N/A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/addbeneficiary.individual.usd.steps.spec.ts
+AB-USD-1.4	Beneficiary	Select beneficiary type	N/A	N/A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/addbeneficiary.individual.usd.steps.spec.ts
+AB-USD-1.5	Beneficiary	Select country for SWIFT payment	N/A	N/A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/addbeneficiary.individual.usd.steps.spec.ts
+AB-USD-1.6	Beneficiary	Select USD wallet / currency	N/A	N/A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/addbeneficiary.individual.usd.steps.spec.ts
+AB-USD-1.7	Beneficiary	Enter beneficiary name	N/A	N/A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/addbeneficiary.individual.usd.steps.spec.ts
+AB-USD-1.8	Beneficiary	Enter account number	N/A	N/A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/addbeneficiary.individual.usd.steps.spec.ts
+AB-USD-1.9	Beneficiary	Enter BIC/SWIFT code and continue	N/A	N/A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/addbeneficiary.individual.usd.steps.spec.ts
+AB-USD-1.10	Beneficiary	Enter beneficiary address and continue	N/A	N/A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/addbeneficiary.individual.usd.steps.spec.ts
+AB-USD-1.11	Beneficiary	Confirm OTP and verify beneficiary created successfully	N/A	N/A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/addbeneficiary.individual.usd.steps.spec.ts
+PD-1.1	Personal Details	Wait for Home	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/personalDetails.spec.ts
+PD-1.2	Personal Details	Navigate More → Settings → Personal Details	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/personalDetails.spec.ts
+PD-1.3	Personal Details	Personal Details screen is visible (TC1535)	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/personalDetails.spec.ts
+PD-1.4	Personal Details	First name field is displayed (TC1536)	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/personalDetails.spec.ts
+PD-1.5	Personal Details	Last name field is displayed (TC1537)	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/personalDetails.spec.ts
+PD-1.6	Personal Details	Email field is displayed (TC1538)	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/personalDetails.spec.ts
+PD-1.7	Personal Details	Address field is displayed (TC1539)	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/personalDetails.spec.ts
+PD-1.8	Personal Details	Edit first name (TC1540)	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/personalDetails.spec.ts
+PD-1.9	Personal Details	Edit last name (TC1541)	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/personalDetails.spec.ts
+PD-1.10	Personal Details	Save changes (TC1542)	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/personalDetails.spec.ts
+PD-1.11	Personal Details	Verify first name saved (TC1543)	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/personalDetails.spec.ts
+PD-1.12	Personal Details	Verify last name saved (TC1544)	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/personalDetails.spec.ts
+AUTH-1.1	Authentication	Incorrect passcode — error message is shown	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/authentication.incorrectPasscode.spec.ts
+AUTH-1.3	Authentication	OTP countdown is shown and Resend becomes active (TC204)	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/authentication.otpCountdown.spec.ts
+AUTH-1.2	Authentication	App locks after 3 invalid passcode attempts (TC200)	A	A	A	A	UI	P0	Automated	Secondary; regression only; ./src/tests/authentication.passcodeLockout.spec.ts
+FX-1.1	FX Exchange	Exchange screen loads and exchange form is visible	A	A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/fxExchange.regression.spec.ts
+FX-1.2	FX Exchange	GBP (zero balance): insufficient-balance error shown and exchange button disabled	A	A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/fxExchange.regression.spec.ts
+FX-1.3	FX Exchange	From wallet selector shows available balance	A	A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/fxExchange.regression.spec.ts
+FX-1.4	FX Exchange	Swap button reverses from/to wallets — EUR→USD becomes USD→EUR	A	A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/fxExchange.regression.spec.ts
+FX-1.5	FX Exchange	EUR → GBP: exchange rate is calculated and displayed in to-amount field	A	A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/fxExchange.regression.spec.ts
+FX-1.6	FX Exchange	EUR → CHF: to-amount recalculates when destination wallet changes	A	A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/fxExchange.regression.spec.ts
+FX-1.7	FX Exchange	Complete EUR exchange	A	A	A	A	E2E	P0	Automated	Secondary; regression only; ./src/tests/fxExchange.regression.spec.ts
+HS-SA-1.1	Home	Login and land on Home screen	A	A	A	A	UI	P0	Automated	Secondary; regression only; ./src/tests/homeSpendAnalytics.spec.ts
+HS-SA-1.2	Home	Spend Analytics section is visible	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/homeSpendAnalytics.spec.ts
+HS-SA-1.3	Home	Validate current month spend	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/homeSpendAnalytics.spec.ts
+HS-SA-1.4	Home	Validate previous month spend	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/homeSpendAnalytics.spec.ts
+HS-SA-1.5	Home	Open Spend Analytics details	A	A	A	A	UI	P0	Automated	Secondary; regression only; ./src/tests/homeSpendAnalytics.spec.ts
+HS-SA-1.6	Home	Validate category breakdown	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/homeSpendAnalytics.spec.ts
+HS-SA-1.7	Home	Change Spend Analytics period	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/homeSpendAnalytics.spec.ts
+HM-STORY-1.1	Home	Login and land on Home screen	A	A	A	A	UI	P0	Automated	Secondary; regression only; ./src/tests/homeStoryly.spec.ts
+HM-STORY-1.2	Home	Verify Storyly widget is visible	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/homeStoryly.spec.ts
+HM-STORY-1.3	Home	Wait for Storyly widget on Home	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/homeStoryly.spec.ts
+HM-STORY-1.4	Home	Verify Storyly widget position	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/homeStoryly.spec.ts
+HM-STORY-1.5	Home	Verify Storyly widget does not overlap other sections	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/homeStoryly.spec.ts
+HM-STORY-1.6	Home	Verify Home screen layout remains stable	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/homeStoryly.spec.ts
+HM-STORY-1.7	Home	Verify Storyly content loads successfully	A	A	A	A	UI	P0	Automated	Secondary; regression only; ./src/tests/homeStoryly.spec.ts
+HM-STORY-1.8	Home	Open Storyly content	A	A	A	A	UI	P0	Automated	Secondary; regression only; ./src/tests/homeStoryly.spec.ts
+MPP-1.1	My Price Plan	Login and land on Home screen	A	A	A	A	UI	P0	Automated	Secondary; regression only; ./src/tests/pricePlan.spec.ts
+MPP-1.2	My Price Plan	Open More tab	A	A	A	A	UI	P0	Automated	Secondary; regression only; ./src/tests/pricePlan.spec.ts
+MPP-1.3	My Price Plan	Select Price Plan option	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/pricePlan.spec.ts
+MPP-1.4	My Price Plan	Verify Price Plan page loads successfully	A	A	A	A	UI	P0	Automated	Secondary; regression only; ./src/tests/pricePlan.spec.ts
+MPP-1.6	My Price Plan	Verify plan fee displayed	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/pricePlan.spec.ts
+MPP-1.9	My Price Plan	Verify included benefits displayed	A	A	A	A	UI	P1	Automated	Secondary; regression only; ./src/tests/pricePlan.spec.ts
+AFBT-2.1	Add Funds	Open Home screen	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/addFundsBankTransferWalletManager.spec.ts
+AFBT-2.2	Add Funds	Open Add Funds	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/addFundsBankTransferWalletManager.spec.ts
+AFBT-2.3	Add Funds	Select Bank Transfer option	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/addFundsBankTransferWalletManager.spec.ts
+AFBT-2.4	Add Funds	Open Wallet Manager from Bank Transfer screen	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/addFundsBankTransferWalletManager.spec.ts
+AFBT-2.5	Add Funds	Verify Wallet Manager screen loads successfully	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/addFundsBankTransferWalletManager.spec.ts
+AFBT-2.6	Add Funds	Verify all available wallets are displayed	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/addFundsBankTransferWalletManager.spec.ts
+AFBT-2.7	Add Funds	Verify wallet currency is displayed correctly	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/addFundsBankTransferWalletManager.spec.ts
+AFBT-2.8	Add Funds	Verify wallet balance is displayed	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/addFundsBankTransferWalletManager.spec.ts
+AFBT-2.9	Add Funds	Verify wallet identifier is displayed	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/addFundsBankTransferWalletManager.spec.ts
+AFBT-2.10	Add Funds	Verify Wallet Manager screen remains stable	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/addFundsBankTransferWalletManager.spec.ts
+ABC-1.1	Business Cards	Open Cards tab	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/assignBusinessCard.spec.ts
+ABC-1.2	Business Cards	Tap Add New Card	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/assignBusinessCard.spec.ts
+ABC-1.3	Business Cards	Open Card Type selection and confirm change	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/assignBusinessCard.spec.ts
+ABC-1.4	Business Cards	Select Physical Card type	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/assignBusinessCard.spec.ts
+ABC-1.5	Business Cards	Select available assignee	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/assignBusinessCard.spec.ts
+ABC-1.6	Business Cards	Continue with selected assignee	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/assignBusinessCard.spec.ts
+ABC-1.7	Business Cards	Order default card design	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/assignBusinessCard.spec.ts
+ABC-1.8	Business Cards	Confirm assignee address and submit	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/assignBusinessCard.spec.ts
+ABC-1.9	Business Cards	Verify success modal and close	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/assignBusinessCard.spec.ts
+ABC-1.10	Business Cards	Verify physical card appears as Pending in Manage Cards	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/assignBusinessCard.spec.ts
+BCAS-1.1	Business Cards	Open Cards tab	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.adminSelfAssign.spec.ts
+BCAS-1.2	Business Cards	Tap Add Card	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.adminSelfAssign.spec.ts
+BCAS-1.3	Business Cards	Verify admin self-assign blocked popup appears	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.adminSelfAssign.spec.ts
+BCCL-1.1	Business Cards	Open Manage Cards	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.cardLimits.spec.ts
+BCCL-1.2	Business Cards	Tap Assign Card	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.cardLimits.spec.ts
+BCCL-1.3	Business Cards	Select Virtual Card type	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.cardLimits.spec.ts
+BCCL-1.4	Business Cards	Select Self as assignee	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.cardLimits.spec.ts
+BCCL-1.5	Business Cards	Verify	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.cardLimits.spec.ts
+BCCL-2.1	Business Cards	Dismiss limit popup and return to Assign Card form	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.cardLimits.spec.ts
+BCCL-2.2	Business Cards	Select Physical Card type	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.cardLimits.spec.ts
+BCCL-2.3	Business Cards	Select Self as assignee	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.cardLimits.spec.ts
+BCCL-2.4	Business Cards	Verify	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.cardLimits.spec.ts
+BCF-1.1	Business Cards	Open More → Administration (TC1738/TC1739)	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts
+BCF-1.2	Business Cards	Verify Manage Cards screen is displayed	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts
+BCF-1.4	Business Cards	Freeze the card (TC1738)	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts
+BCF-1.5	Business Cards	Verify card is frozen — Unfreeze button visible	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts
+BCF-1.6	Business Cards	Unfreeze the card (TC1739)	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts
+BCF-1.7	Business Cards	Verify card is active again — Freeze button visible	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts
+BCNR-1.1	Business Cards	Open Cards tab	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.noRights.spec.ts
+BCNR-1.2	Business Cards	Tap Add Card	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.noRights.spec.ts
+BCNR-1.3	Business Cards	Verify no-rights blocked alert appears	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.noRights.spec.ts
+BCNR-1.4	Business Cards	Verify alert message content	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.noRights.spec.ts
+BCR-3.1	Business Cards	Open More → Administration (TC1742/TC1743/TC1744)	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.relink.spec.ts
+BCR-3.2	Business Cards	Verify Manage Cards screen is displayed	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.relink.spec.ts
+BCR-3.4	Business Cards	Tap Spend From row to open Select Wallet sheet	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.relink.spec.ts
+BCR-3.5	Business Cards	Verify Select Wallet sheet is displayed	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.relink.spec.ts
+BCR-3.6	Business Cards	Select a random wallet that is not the currently assigned one	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.relink.spec.ts
+BCR-3.7	Business Cards	Verify Spend From on Card Details updated to the new wallet	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.relink.spec.ts
+BCT-2.1	Business Cards	Open More → Administration (TC1740/TC1741)	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.terminate.spec.ts
+BCT-2.2	Business Cards	Verify Manage Cards screen is displayed	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.terminate.spec.ts
+BCT-2.3	Business Cards	Tap Assign Card button	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.terminate.spec.ts
+BCT-2.4	Business Cards	Select Virtual Card type	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.terminate.spec.ts
+BCT-2.6	Business Cards	Tap Continue to create the virtual card	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.terminate.spec.ts
+BCT-2.7	Business Cards	Verify card assigned successfully	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.terminate.spec.ts
+BCT-2.8	Business Cards	Close success sheet and return to Manage Cards	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.terminate.spec.ts
+BCT-2.9	Business Cards	Open own virtual card once it becomes Active (wait from Pending)	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.terminate.spec.ts
+BCT-2.10	Business Cards	Freeze the virtual card (required before termination)	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.terminate.spec.ts
+BCT-2.11	Business Cards	Terminate the virtual card (TC1740)	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.terminate.spec.ts
+BCT-2.12	Business Cards	Verify terminated card appears in Inactive tab (TC1741)	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.terminate.spec.ts
+BCW-1.1	Business Cards	Open More → Administration (TC1717/TC1718/TC1719)	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.walletReachOut.spec.ts
+BCW-1.2	Business Cards	Verify Manage Cards screen is displayed	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.walletReachOut.spec.ts
+BCW-1.3	Business Cards	Tap Assign Card button	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.walletReachOut.spec.ts
+BCW-1.4	Business Cards	Select Virtual Card type	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.walletReachOut.spec.ts
+BCW-1.6	Business Cards	Open Select Wallet from Spend From	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.walletReachOut.spec.ts
+BCW-1.7	Business Cards	Verify Select Wallet sheet is displayed	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.walletReachOut.spec.ts
+BCW-1.8	Business Cards	Tap Add New Wallet	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.walletReachOut.spec.ts
+BCW-1.9	Business Cards	Verify New Wallet form is displayed	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.walletReachOut.spec.ts
+BCW-1.11	Business Cards	Tap Add to submit	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.walletReachOut.spec.ts
+BCW-1.12	Business Cards	Verify	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.walletReachOut.spec.ts
+BCW-1.13	Business Cards	Verify dialog message indicates plan wallet limit reached	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/businessCard.walletReachOut.spec.ts
+CARD-1.1	Card Management	Verify card management actions are displayed for an existing card	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/cardManagement.joint.spec.ts
+CARD-1.3	Card Management	Open Card Security settings	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/cardManagement.joint.spec.ts
+CARD-1.4	Card Management	View Card Transactions	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/cardManagement.joint.spec.ts
+CARD-1.5	Card Management	Re-enable card feature	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/cardManagement.joint.spec.ts
+CARD-1.6	Card Management	Verify physical card is primary	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/cardManagement.joint.spec.ts
+CB-1.1	Cross-Border Payment	Bank transfer screen is displayed	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/crossBorder.swift.retail.spec.ts
+CB-1.2	Cross-Border Payment	CB-1.2 	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/crossBorder.swift.retail.spec.ts
+CB-1.3	Cross-Border Payment	Balance and fee are displayed	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/crossBorder.swift.retail.spec.ts
+CB-1.4	Cross-Border Payment	Fee row is displayed with default option	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/crossBorder.swift.retail.spec.ts
+CB-1.5	Cross-Border Payment	Fee picker bottom sheet is shown with both options	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/crossBorder.swift.retail.spec.ts
+CB-1.6	Cross-Border Payment	Selecting Shared Fee splits cost between parties	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/crossBorder.swift.retail.spec.ts
+CB-1.7	Cross-Border Payment	Review Payment button is present	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/crossBorder.swift.retail.spec.ts
+CB-1.8	Cross-Border Payment	(TC2422) Switching source wallet recalculates balance and fee	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/crossBorder.swift.retail.spec.ts
+CB-1.9	Cross-Border Payment	(TC2421) Review Payment screen shows SWIFT payment details	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/crossBorder.swift.retail.spec.ts
+CB-1.10	Cross-Border Payment	(TC505) Complete SWIFT payment and verify success	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/crossBorder.swift.retail.spec.ts
+orders.regression-1	Orders Regression (iOS/Android)	creates, modifies, and cancels BMW buy order	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/orders.regression.spec.ts
+SSP-1.1	Add Funds	Open Add Funds from home	A	A	A	A	UI	P0	Automated	Primary; regression only; ./src/tests/salaryStipendPension.spec.ts
+SSP-1.2	Add Funds	Select Salary, Stipend or Pension tile	A	A	A	A	UI	P1	Automated	Primary; regression only; ./src/tests/salaryStipendPension.spec.ts
+SSP-1.3	Add Funds	Select full salary preference	A	A	A	A	UI	P1	Automated	Primary; regression only; ./src/tests/salaryStipendPension.spec.ts
+SSP-1.4	Add Funds	Tap Next	A	A	A	A	UI	P1	Automated	Primary; regression only; ./src/tests/salaryStipendPension.spec.ts
+SSP-1.5	Add Funds	Verify instruction screen shows IBAN, BIC and Bank Name fields	A	A	A	A	UI	P1	Automated	Primary; regression only; ./src/tests/salaryStipendPension.spec.ts
+TX-1.1	Transactions	Login and land on Home screen	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+TX-1.2	Transactions	Verify Recent Activity section is visible	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+TX-1.3	Transactions	Tap Show All from Recent Activity	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+TX-1.4	Transactions	Verify navigation to Transactions screen	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+TX-1.5	Transactions	Verify Transactions header is displayed	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+TX-1.6	Transactions	Verify transaction list is displayed	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+TX-1.7	Transactions	Verify transactions are grouped by date	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+TX-1.8	Transactions	Verify no loading or navigation errors occur	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+TX-2.1	Transactions	Switch to Business identity and land on Home screen	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+TX-2.2	Transactions	Verify Recent Activity section is visible	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+TX-2.3	Transactions	Tap Show All from Recent Activity	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+TX-2.4	Transactions	Verify navigation to Transactions screen	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+TX-2.5	Transactions	Verify Transactions header is displayed	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+TX-2.6	Transactions	Verify transaction list is displayed	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+TX-2.7	Transactions	Verify transactions are grouped by date	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+TX-2.8	Transactions	Verify no loading or navigation errors occur	A	A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/transactions.spec.ts
+VOP-2.1	Verification of Payee	VOP screen is displayed after submitting beneficiary details	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/vop.beneficiary.spec.ts
+VOP-2.2	Verification of Payee	VOP screen shows the passed first name	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/vop.beneficiary.spec.ts
+VOP-2.3	Verification of Payee	VOP screen shows the passed last name	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/vop.beneficiary.spec.ts
+VOP-2.4	Verification of Payee	VOP close button is present	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/vop.beneficiary.spec.ts
+VOP-2.5	Verification of Payee	Close VOP sheet	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/vop.beneficiary.spec.ts
+VOP-1.1	Verification of Payee	VOP sheet is displayed after Review Payment	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/vop.sepa.spec.ts
+VOP-1.2	Verification of Payee	VOP close button is present	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/vop.sepa.spec.ts
+VOP-1.3	Verification of Payee	Close VOP sheet	N/A	N/A	A	A	E2E	P0	Automated	Primary; regression only; ./src/tests/vop.sepa.spec.ts

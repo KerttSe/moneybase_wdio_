@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppiumAUT>
+  <XCUIElementTypeApplication type="XCUIElementTypeApplication" name="moneybase stg" label="moneybase stg" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="" processId="11728" bundleId="com.moneybase.quality">
+    <XCUIElementTypeWindow type="XCUIElementTypeWindow" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+            <XCUIElementTypeNavigationBar type="XCUIElementTypeNavigationBar" name="Verification" enabled="true" visible="true" accessible="false" x="0" y="53" width="393" height="45" index="0" traits="">
+              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Verification" name="Verification" label="Verification" enabled="true" visible="true" accessible="true" x="151" y="65" width="91" height="21" index="0" traits="Header"/>
+              <XCUIElementTypeButton type="XCUIElementTypeButton" name="QuestionMark" label="QuestionMark" enabled="true" visible="true" accessible="true" x="346" y="53" width="39" height="45" index="1" traits="Button"/>
+              <XCUIElementTypeProgressIndicator type="XCUIElementTypeProgressIndicator" value="0%" name="Progress" label="Progress" enabled="true" visible="false" accessible="true" x="0" y="87" width="393" height="26" index="2" traits="UpdatesFrequently"/>
+            </XCUIElementTypeNavigationBar>
+            <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="1" traits="">
+              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="113" width="361" height="59" index="0" traits="">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Enter the 6-digit code that was sent to" name="Enter the 6-digit code that was sent to" label="Enter the 6-digit code that was sent to" enabled="true" visible="true" accessible="true" x="50" y="113" width="293" height="22" index="0" traits="StaticText"/>
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="+356 9901 1190" name="+356 9901 1190" label="+356 9901 1190" enabled="true" visible="true" accessible="true" x="129" y="150" width="135" height="22" index="1" traits="StaticText"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" name="otp_input" enabled="true" visible="true" accessible="false" x="20" y="231" width="353" height="101" index="1" traits="">
+                      <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="20" y="231" width="353" height="101" index="0" traits=""/>
+                      <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="26" y="231" width="341" height="101" index="1" traits="">
+                        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="26" y="251" width="51" height="61" index="0" traits="">
+                          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="26" y="251" width="51" height="61" index="0" traits="">
+                            <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="26" y="251" width="51" height="61" index="0" traits="">
+                              <XCUIElementTypeTextField type="XCUIElementTypeTextField" name="OTP_entry_0" label="" enabled="true" visible="true" accessible="true" x="26" y="251" width="51" height="61" index="0" placeholderValue="" traits=""/>
+                            </XCUIElementTypeOther>
+                          </XCUIElementTypeOther>
+                        </XCUIElementTypeOther>
+                        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="84" y="251" width="51" height="61" index="1" traits="">
+                          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="84" y="251" width="51" height="61" index="0" traits="">
+                            <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="84" y="251" width="51" height="61" index="0" traits="">
+                              <XCUIElementTypeTextField type="XCUIElementTypeTextField" name="OTP_entry_1" label="" enabled="true" visible="true" accessible="true" x="84" y="251" width="51" height="61" index="0" placeholderValue="" traits=""/>
+                            </XCUIElementTypeOther>
+                          </XCUIElementTypeOther>
+                        </XCUIElementTypeOther>
+                        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="142" y="251" width="51" height="61" index="2" traits="">
+                          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="142" y="251" width="51" height="61" index="0" traits="">
+                            <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="142" y="251" width="51" height="61" index="0" traits="">
+                              <XCUIElementTypeTextField type="XCUIElementTypeTextField" name="OTP_entry_2" label="" enabled="true" visible="true" accessible="true" x="142" y="251" width="51" height="61" index="0" placeholderValue="" traits=""/>
+                            </XCUIElementTypeOther>
+                          </XCUIElementTypeOther>
+                        </XCUIElementTypeOther>
+                        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="200" y="251" width="51" height="61" index="3" traits="">
+                          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="200" y="251" width="51" height="61" index="0" traits="">
+                            <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="200" y="251" width="51" height="61" index="0" traits="">
+                              <XCUIElementTypeTextField type="XCUIElementTypeTextField" name="OTP_entry_3" label="" enabled="true" visible="true" accessible="true" x="200" y="251" width="51" height="61" index="0" placeholderValue="" traits=""/>
+                            </XCUIElementTypeOther>
+                          </XCUIElementTypeOther>
+                        </XCUIElementTypeOther>
+                        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="258" y="251" width="51" height="61" index="4" traits="">
+                          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="258" y="251" width="51" height="61" index="0" traits="">
+                            <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="258" y="251" width="51" height="61" index="0" traits="">
+                              <XCUIElementTypeTextField type="XCUIElementTypeTextField" name="OTP_entry_4" label="" enabled="true" visible="true" accessible="true" x="258" y="251" width="51" height="61" index="0" placeholderValue="" traits=""/>
+                            </XCUIElementTypeOther>
+                          </XCUIElementTypeOther>
+                        </XCUIElementTypeOther>
+                        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="316" y="251" width="51" height="61" index="5" traits="">
+                          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="316" y="251" width="51" height="61" index="0" traits="">
+                            <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="316" y="251" width="51" height="61" index="0" traits="">
+                              <XCUIElementTypeTextField type="XCUIElementTypeTextField" name="OTP_entry_5" label="" enabled="true" visible="true" accessible="true" x="316" y="251" width="51" height="61" index="0" placeholderValue="" traits=""/>
+                            </XCUIElementTypeOther>
+                          </XCUIElementTypeOther>
+                        </XCUIElementTypeOther>
+                      </XCUIElementTypeOther>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="20" y="487" width="353" height="50" index="2" traits="">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="You can resend your code if it does not arrive in 00:50" name="You can resend your code if it does not arrive in 00:50" label="You can resend your code if it does not arrive in 00:50" enabled="true" visible="true" accessible="true" x="20" y="487" width="353" height="50" index="0" traits="StaticText"/>
+                    </XCUIElementTypeOther>
+                  </XCUIElementTypeOther>
+                </XCUIElementTypeOther>
+              </XCUIElementTypeOther>
+            </XCUIElementTypeOther>
+          </XCUIElementTypeOther>
+        </XCUIElementTypeOther>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeWindow>
+    <XCUIElementTypeWindow type="XCUIElementTypeWindow" enabled="true" visible="false" accessible="false" x="0" y="0" width="393" height="852" index="1" traits="">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="0" width="393" height="852" index="0" traits=""/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="561" width="393" height="291" index="1" traits="">
+          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="561" width="393" height="233" index="0" traits=""/>
+        </XCUIElementTypeOther>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeWindow>
+    <XCUIElementTypeWindow type="XCUIElementTypeWindow" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="2" traits="">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="393" height="852" index="0" traits="">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="561" width="393" height="291" index="0" traits="">
+          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="561" width="393" height="233" index="0" traits="">
+            <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="561" width="393" height="291" index="0" traits="">
+              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="561" width="393" height="291" index="0" traits="">
+                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="561" width="393" height="291" index="0" traits=""/>
+              </XCUIElementTypeOther>
+            </XCUIElementTypeOther>
+          </XCUIElementTypeOther>
+          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="561" width="393" height="233" index="1" traits="">
+            <XCUIElementTypeKeyboard type="XCUIElementTypeKeyboard" enabled="true" visible="true" accessible="false" x="0" y="561" width="393" height="233" index="0" traits="">
+              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="561" width="393" height="233" index="0" traits="">
+                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="561" width="393" height="233" index="0" traits="">
+                  <XCUIElementTypeKey type="XCUIElementTypeKey" name="1" label="1" enabled="true" visible="true" accessible="true" x="0" y="561" width="130" height="54" index="0" traits="KeyboardKey, PlaysSound"/>
+                  <XCUIElementTypeKey type="XCUIElementTypeKey" name="2" label="2" enabled="true" visible="true" accessible="true" x="128" y="561" width="136" height="54" index="1" traits="KeyboardKey, PlaysSound"/>
+                  <XCUIElementTypeKey type="XCUIElementTypeKey" name="3" label="3" enabled="true" visible="true" accessible="true" x="262" y="561" width="131" height="54" index="2" traits="KeyboardKey, PlaysSound"/>
+                  <XCUIElementTypeKey type="XCUIElementTypeKey" name="4" label="4" enabled="true" visible="true" accessible="true" x="0" y="615" width="130" height="54" index="3" traits="KeyboardKey, PlaysSound"/>
+                  <XCUIElementTypeKey type="XCUIElementTypeKey" name="5" label="5" enabled="true" visible="true" accessible="true" x="128" y="615" width="136" height="54" index="4" traits="KeyboardKey, PlaysSound"/>
+                  <XCUIElementTypeKey type="XCUIElementTypeKey" name="6" label="6" enabled="true" visible="true" accessible="true" x="262" y="615" width="131" height="54" index="5" traits="KeyboardKey, PlaysSound"/>
+                  <XCUIElementTypeKey type="XCUIElementTypeKey" name="7" label="7" enabled="true" visible="true" accessible="true" x="0" y="669" width="130" height="54" index="6" traits="KeyboardKey, PlaysSound"/>
+                  <XCUIElementTypeKey type="XCUIElementTypeKey" name="8" label="8" enabled="true" visible="true" accessible="true" x="128" y="669" width="136" height="54" index="7" traits="KeyboardKey, PlaysSound"/>
+                  <XCUIElementTypeKey type="XCUIElementTypeKey" name="9" label="9" enabled="true" visible="true" accessible="true" x="262" y="669" width="131" height="54" index="8" traits="KeyboardKey, PlaysSound"/>
+                  <XCUIElementTypeKey type="XCUIElementTypeKey" enabled="true" visible="true" accessible="false" x="-2" y="723" width="133" height="54" index="9" traits="KeyboardKey, PlaysSound"/>
+                  <XCUIElementTypeKey type="XCUIElementTypeKey" name="0" label="0" enabled="true" visible="true" accessible="true" x="128" y="723" width="136" height="54" index="10" traits="KeyboardKey, PlaysSound"/>
+                  <XCUIElementTypeKey type="XCUIElementTypeKey" name="Delete" label="Delete" enabled="true" visible="true" accessible="true" x="262" y="723" width="131" height="54" index="11" traits="KeyboardKey, PlaysSound"/>
+                </XCUIElementTypeOther>
+              </XCUIElementTypeOther>
+            </XCUIElementTypeKeyboard>
+          </XCUIElementTypeOther>
+          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="true" x="0" y="561" width="393" height="291" index="2" traits="">
+            <XCUIElementTypeButton type="XCUIElementTypeButton" name="dictation" label="Dictate" enabled="false" visible="true" accessible="false" x="316" y="783" width="69" height="70" index="0" traits="KeyboardKey, NotEnabled, Button">
+              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" enabled="true" visible="false" accessible="false" x="316" y="783" width="1" height="1" index="0" traits="StaticText"/>
+            </XCUIElementTypeButton>
+          </XCUIElementTypeOther>
+        </XCUIElementTypeOther>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeWindow>
+  </XCUIElementTypeApplication>
+</AppiumAUT>

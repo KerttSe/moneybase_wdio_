@@ -1,0 +1,254 @@
+--------- beginning of main
+06-22 17:28:32.651  5707 12870 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 17:28:32.655  5707  5774 I ActivityScheduler: nextTriggerTime: 9909853, in 117875ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 17:28:33.053  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1362): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:28:38.701  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1363): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:28:40.890   700   957 D EGL_emulation: app_time_stats: avg=19989.32ms min=19989.32ms max=19989.32ms count=1
+06-22 17:28:40.946  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:28:40.946Z] Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:28:40.947  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:28:40.946Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:28:40.947  7947  7947 I [INVEST]: webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:28:40.948  7947  7947 I FS.Core.Shared.LogForwarder.WebApi: [[INVEST]] webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:28:40.948  7947  7947 I chromium: [INFO:CONSOLE:1] "ERROR:", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:28:40.948  7947  7947 I chromium: [INFO:CONSOLE:1] "SignalR: Unable to start SignalR hub connection. Max retries is reached.", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:28:40.948  7947  7947 I chromium: [INFO:CONSOLE:1] "Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:28:40.948  7947  7947 I chromium: [INFO:CONSOLE:1] "console.groupEnd", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:28:54.005  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1364): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:28:57.833  7947  8038 I Datadog : [_dd.sdk_core.default]: Batch 6d58f804-e9d1-4266-9c31-6a613543f37a [1042 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+06-22 17:28:58.627  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:28:58.626Z] Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:28:58.627  7947  7947 I [INVEST]: webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:28:58.629  7947  7947 I FS.Core.Shared.LogForwarder.WebApi: [[INVEST]] webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:28:58.629  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:28:58.628Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:28:58.629  7947  7947 I chromium: [INFO:CONSOLE:1] "ERROR:", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:28:58.629  7947  7947 I chromium: [INFO:CONSOLE:1] "SignalR: Unable to start SignalR hub connection. Max retries is reached.", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:28:58.629  7947  7947 I chromium: [INFO:CONSOLE:1] "Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:28:58.629  7947  7947 I chromium: [INFO:CONSOLE:1] "console.groupEnd", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:29:00.030  1425  1723 I AiAiEcho: Predicting[0]: 
+06-22 17:29:00.030  1425  1723 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+06-22 17:29:00.034  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+06-22 17:29:00.035  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+06-22 17:29:00.037   700   957 D EGL_emulation: app_time_stats: avg=19146.46ms min=19146.46ms max=19146.46ms count=1
+06-22 17:29:00.039  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+06-22 17:29:00.044   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 17:29:03.057  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1365): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:29:08.733  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1366): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:29:17.906  7947  8038 I Datadog : [_dd.sdk_core.default]: Batch fd41f30f-34b3-4085-a4b9-655f2903fb74 [1042 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+06-22 17:29:24.033  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1367): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:29:32.658  5707  5774 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+06-22 17:29:32.661  5707 12729 W SystemServiceRegistry: No service published for: wifirtt
+06-22 17:29:33.089  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1368): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:29:33.453   500  2262 D WifiNl80211Manager: Scan result ready event
+06-22 17:29:33.453   500  2262 D WifiNative: Scan result ready event
+06-22 17:29:33.464  5707 12729 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 17:29:33.483  5707  5971 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+06-22 17:29:33.520  2632  3071 D TrafficStats: tagSocket(76) with statsTag=0x1809, statsUid=-1
+06-22 17:29:33.522  7901  7925 D TrafficStats: tagSocket(5) with statsTag=0xffffffff, statsUid=-1
+06-22 17:29:33.524  2632  3071 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+06-22 17:29:33.517  2632  2632 W binder:2632_4: type=1400 audit(0.0:1369): avc: denied { read } for name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=259 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+06-22 17:29:33.517  2632  2632 W binder:2632_4: type=1400 audit(0.0:1370): avc: denied { read } for name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=51 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+06-22 17:29:33.524  2632  3071 W libc    : Access denied finding property "service.adb.tls.port"
+06-22 17:29:33.529  5707  5971 W GmsUrlRequestImpl: [https://android.googleapis.com/auth/devicekey] Content-Type header is overwritten.
+06-22 17:29:33.553  5707  5979 D TrafficStats: tagSocket(80) with statsTag=0x4000401, statsUid=10120
+06-22 17:29:33.652  5707  5971 W GLSUser : [AppCertManager] Exception while requesting key: 
+06-22 17:29:33.652  5707  5971 W GLSUser : java.util.concurrent.ExecutionException: cvhs: Parsing Exception
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at hfeb.j(:com.google.android.gms@261233029@26.12.33 (190400-892550550):21)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at hfek.u(:com.google.android.gms@261233029@26.12.33 (190400-892550550):71)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at alqw.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):439)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at alqu.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):67)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at alqu.dispatchTransaction(:com.google.android.gms@261233029@26.12.33 (190400-892550550):16)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at byza.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):72)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at zpv.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):23)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at android.os.Binder.transact(Binder.java:1164)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at clbu.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):10)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at android.os.Binder.transact(Binder.java:1164)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at byzo.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):161)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at android.os.Binder.execTransactInternal(Binder.java:1280)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at android.os.Binder.execTransact(Binder.java:1244)
+06-22 17:29:33.652  5707  5971 W GLSUser : Caused by: cvhs: Parsing Exception
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at cvix.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):15)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at hfgv.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):47)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):92)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at biej.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at java.lang.Thread.run(Thread.java:1012)
+06-22 17:29:33.652  5707  5971 W GLSUser : Caused by: iphx: Protocol message end-group tag did not match expected tag.
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at ipjy.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):62)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at ipiv.l(:com.google.android.gms@261233029@26.12.33 (190400-892550550):60)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at ipgw.s(:com.google.android.gms@261233029@26.12.33 (190400-892550550):19)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at ipeq.f(:com.google.android.gms@261233029@26.12.33 (190400-892550550):5)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at ipeq.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at ipeq.o(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at cviw.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):15)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at cvjb.call(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):73)
+06-22 17:29:33.652  5707  5971 W GLSUser : 	... 4 more
+06-22 17:29:33.652  5707  5971 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+06-22 17:29:33.679  5707  5979 D TrafficStats: tagSocket(83) with statsTag=0xc000609, statsUid=10120
+06-22 17:29:33.771  5707  5979 I cn_CronetUrlRequestContext: destroyNativeStreamLocked org.chromium.net.impl.CronetBidirectionalStream@66caf30
+06-22 17:29:33.772  5707 12729 W GlsClientGrpc: Voilatile gRPC failure INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header. [CONTEXT service_id=6 ]
+06-22 17:29:33.772  5707 12729 W GlsClientGrpc: jlsp: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+06-22 17:29:33.772  5707 12729 W GlsClientGrpc: 	at gmjf.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):51)
+06-22 17:29:33.772  5707 12729 W GlsClientGrpc: 	at gocc.call(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1001)
+06-22 17:29:33.772  5707 12729 W GlsClientGrpc: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+06-22 17:29:33.772  5707 12729 W GlsClientGrpc: 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+06-22 17:29:33.772  5707 12729 W GlsClientGrpc: 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):73)
+06-22 17:29:33.772  5707 12729 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+06-22 17:29:33.772  5707 12729 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+06-22 17:29:33.772  5707 12729 W GlsClientGrpc: 	at biej.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+06-22 17:29:33.772  5707 12729 W GlsClientGrpc: 	at java.lang.Thread.run(Thread.java:1012)
+06-22 17:29:33.773  5707 12729 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 17:29:33.776  5707  5774 I ActivityScheduler: nextTriggerTime: 9913349, in 60250ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 17:29:33.788  7901  7928 I appium  : Screenshot broadcast client opened a connection 127.0.0.1:35266
+06-22 17:29:33.917  7852  7897 W System  : A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.
+06-22 17:29:33.917  7852  7897 W System  : java.lang.Throwable: Explicit termination method 'HardwareBuffer.close' not called
+06-22 17:29:33.917  7852  7897 W System  : 	at dalvik.system.CloseGuard.openWithCallSite(CloseGuard.java:288)
+06-22 17:29:33.917  7852  7897 W System  : 	at dalvik.system.CloseGuard.open(CloseGuard.java:257)
+06-22 17:29:33.917  7852  7897 W System  : 	at android.hardware.HardwareBuffer.<init>(HardwareBuffer.java:272)
+06-22 17:29:33.917  7852  7897 W System  : A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.
+06-22 17:29:33.917  7852  7897 W System  : java.lang.Throwable: Explicit termination method 'HardwareBuffer.close' not called
+06-22 17:29:33.917  7852  7897 W System  : 	at dalvik.system.CloseGuard.openWithCallSite(CloseGuard.java:288)
+06-22 17:29:33.917  7852  7897 W System  : 	at dalvik.system.CloseGuard.open(CloseGuard.java:257)
+06-22 17:29:33.917  7852  7897 W System  : 	at android.hardware.HardwareBuffer.<init>(HardwareBuffer.java:272)
+06-22 17:29:33.936  7901  7928 I appium  : Screenshot broadcast client opened a connection 127.0.0.1:35266
+06-22 17:29:34.037  7901  7928 W appium  : Client socket connection not writable. Closing... java.net.SocketException: Broken pipe
+06-22 17:29:38.741  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1371): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:29:40.650   315   315 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+06-22 17:29:40.946  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:29:40.945Z] Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:29:40.946  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:29:40.946Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:29:40.947  7947  7947 I chromium: [INFO:CONSOLE:1] "ERROR:", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:29:40.947  7947  7947 I chromium: [INFO:CONSOLE:1] "SignalR: Unable to start SignalR hub connection. Max retries is reached.", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:29:40.947  7947  7947 I chromium: [INFO:CONSOLE:1] "Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:29:40.947  7947  7947 I chromium: [INFO:CONSOLE:1] "console.groupEnd", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:29:40.947  7947  7947 I [INVEST]: webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:29:40.950  7947  7947 I FS.Core.Shared.LogForwarder.WebApi: [[INVEST]] webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:29:54.041  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1372): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:29:58.021  7947  8038 I Datadog : [_dd.sdk_core.default]: Batch b3b208d4-87c3-4d4b-8d65-62d19d79e7a1 [1042 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+06-22 17:29:58.641  7947  7947 I [INVEST]: webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:29:58.643  7947  7947 I FS.Core.Shared.LogForwarder.WebApi: [[INVEST]] webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:29:58.643  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:29:58.642Z] Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:29:58.643  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:29:58.642Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:29:58.643  7947  7947 I chromium: [INFO:CONSOLE:1] "ERROR:", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:29:58.644  7947  7947 I chromium: [INFO:CONSOLE:1] "SignalR: Unable to start SignalR hub connection. Max retries is reached.", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:29:58.644  7947  7947 I chromium: [INFO:CONSOLE:1] "Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:29:58.644  7947  7947 I chromium: [INFO:CONSOLE:1] "console.groupEnd", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:30:00.028  1425  1723 I AiAiEcho: Predicting[0]: 
+06-22 17:30:00.028  1425  1723 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+06-22 17:30:00.030   700   957 D EGL_emulation: app_time_stats: avg=29996.51ms min=866.52ms max=59126.50ms count=2
+06-22 17:30:00.031  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+06-22 17:30:00.034  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+06-22 17:30:00.037  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+06-22 17:30:00.040   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 17:30:03.093  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1373): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:30:08.773  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1374): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:30:18.140  7947  8038 I Datadog : [_dd.sdk_core.default]: Batch 8e9a5bd1-eda1-47fb-95a4-fa926da07e53 [1042 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+06-22 17:30:24.049  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1375): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:30:33.041  5707  5774 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+06-22 17:30:33.049  5707 13000 W SystemServiceRegistry: No service published for: wifirtt
+06-22 17:30:33.129  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1376): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+--------- beginning of system
+06-22 17:30:33.610   500  1024 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782131819776
+06-22 17:30:33.614   500  1024 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 79 startTime of in progress event=1782131819776
+06-22 17:30:33.616   500  1024 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782131819776
+06-22 17:30:33.619   500  2286 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782131819776
+06-22 17:30:33.621   500  1024 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782131819776
+06-22 17:30:33.624  5707  5774 I ActivityScheduler: nextTriggerTime: 10151047, in 238100ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 17:30:33.852   500  2286 D WifiNl80211Manager: Scan result ready event
+06-22 17:30:33.852   500  2286 D WifiNative: Scan result ready event
+06-22 17:30:33.862  5707 13000 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 17:30:33.867  5707  5774 I ActivityScheduler: nextTriggerTime: 10151047, in 237857ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 17:30:38.777  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1377): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:30:40.954  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:30:40.954Z] Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:30:40.955  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:30:40.954Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:30:40.955  7947  7947 I chromium: [INFO:CONSOLE:1] "ERROR:", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:30:40.955  7947  7947 I chromium: [INFO:CONSOLE:1] "SignalR: Unable to start SignalR hub connection. Max retries is reached.", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:30:40.955  7947  7947 I chromium: [INFO:CONSOLE:1] "Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:30:40.955  7947  7947 I chromium: [INFO:CONSOLE:1] "console.groupEnd", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:30:40.956  7947  7947 I [INVEST]: webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:30:40.958  7947  7947 I FS.Core.Shared.LogForwarder.WebApi: [[INVEST]] webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:30:54.053  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1378): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:30:55.036   500   580 D ActivityManager: freezing 10069 com.google.android.youtube
+06-22 17:30:55.071   500   580 D ActivityManager: freezing 7774 com.google.process.gservices
+06-22 17:30:58.272  7947  8038 I Datadog : [_dd.sdk_core.default]: Batch 5d2145b1-670e-433e-be26-6daf8fc86bce [1042 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+06-22 17:30:58.664  7947  7947 I [INVEST]: webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:30:58.665  7947  7947 I FS.Core.Shared.LogForwarder.WebApi: [[INVEST]] webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:30:58.667  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:30:58.665Z] Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:30:58.667  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:30:58.666Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:30:58.667  7947  7947 I chromium: [INFO:CONSOLE:1] "ERROR:", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:30:58.667  7947  7947 I chromium: [INFO:CONSOLE:1] "SignalR: Unable to start SignalR hub connection. Max retries is reached.", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:30:58.667  7947  7947 I chromium: [INFO:CONSOLE:1] "Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:30:58.668  7947  7947 I chromium: [INFO:CONSOLE:1] "console.groupEnd", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:31:00.025  1425  1723 I AiAiEcho: Predicting[0]: 
+06-22 17:31:00.026  1425  1723 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+06-22 17:31:00.027  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+06-22 17:31:00.028  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+06-22 17:31:00.028  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+06-22 17:31:00.039   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 17:31:00.044   700   957 D EGL_emulation: app_time_stats: avg=60013.51ms min=60013.51ms max=60013.51ms count=1
+06-22 17:31:01.052   500  2262 D WifiNl80211Manager: Scan result ready event
+06-22 17:31:01.052   500  2262 D WifiNative: Scan result ready event
+06-22 17:31:03.133  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1379): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:31:08.809  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1380): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:31:16.433  5707 13000 I AlarmManager: setExactAndAllowWhileIdle [name: GCM_HB_ALARM type: 2 triggerAtMillis: 11335756]
+06-22 17:31:16.435  5707 13000 I AlarmManager: setExactAndAllowWhileIdle [name: GCM_HB_ALARM type: 2 triggerAtMillis: 11335758]
+06-22 17:31:18.366  7947  8038 I Datadog : [_dd.sdk_core.default]: Batch c6093231-2d06-45c9-9fcb-baf060343528 [1042 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+06-22 17:31:20.938   700   957 D EGL_emulation: app_time_stats: avg=10446.98ms min=893.01ms max=20000.94ms count=2
+06-22 17:31:24.085  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1381): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:31:33.149  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1382): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:31:33.448  5707  5774 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+06-22 17:31:33.456  5707 13054 W SystemServiceRegistry: No service published for: wifirtt
+06-22 17:31:34.271   500  2262 D WifiNl80211Manager: Scan result ready event
+06-22 17:31:34.271   500  2262 D WifiNative: Scan result ready event
+06-22 17:31:34.281  5707 13054 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 17:31:34.285  5707  5774 I ActivityScheduler: nextTriggerTime: 10151047, in 177439ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 17:31:38.817  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1383): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:31:40.653   315   315 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+06-22 17:31:40.963  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:31:40.961Z] Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:31:40.963  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:31:40.962Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:31:40.963  7947  7947 I chromium: [INFO:CONSOLE:1] "ERROR:", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:31:40.963  7947  7947 I chromium: [INFO:CONSOLE:1] "SignalR: Unable to start SignalR hub connection. Max retries is reached.", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:31:40.963  7947  7947 I chromium: [INFO:CONSOLE:1] "Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:31:40.964  7947  7947 I chromium: [INFO:CONSOLE:1] "console.groupEnd", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:31:40.966  7947  7947 I [INVEST]: webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:31:40.967  7947  7947 I FS.Core.Shared.LogForwarder.WebApi: [[INVEST]] webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:31:40.969   700   957 D EGL_emulation: app_time_stats: avg=20030.76ms min=20030.76ms max=20030.76ms count=1
+06-22 17:31:54.085  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1384): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:31:58.417  7947  8038 D TrafficStats: tagSocket(112) with statsTag=0x5f, statsUid=-1
+06-22 17:31:58.576  7947  8038 I Datadog : [_dd.sdk_core.default]: Batch 9e8da7e3-1795-42ec-926c-2c17fc28538a [1042 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+06-22 17:31:58.622  7947  7947 I [INVEST]: webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:31:58.622  7947  7947 I FS.Core.Shared.LogForwarder.WebApi: [[INVEST]] webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:31:58.622  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:31:58.622Z] Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:31:58.623  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:31:58.622Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:31:58.623  7947  7947 I chromium: [INFO:CONSOLE:1] "ERROR:", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:31:58.623  7947  7947 I chromium: [INFO:CONSOLE:1] "SignalR: Unable to start SignalR hub connection. Max retries is reached.", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:31:58.623  7947  7947 I chromium: [INFO:CONSOLE:1] "Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:31:58.624  7947  7947 I chromium: [INFO:CONSOLE:1] "console.groupEnd", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:32:00.027   700   957 D EGL_emulation: app_time_stats: avg=19058.35ms min=19058.35ms max=19058.35ms count=1
+06-22 17:32:00.031  1425  1723 I AiAiEcho: Predicting[0]: 
+06-22 17:32:00.031  1425  1723 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+06-22 17:32:00.033  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+06-22 17:32:00.033  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+06-22 17:32:00.033  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+06-22 17:32:00.067   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 17:32:03.149  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1385): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:32:08.849  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1386): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:32:18.650  7947  8038 I Datadog : [_dd.sdk_core.default]: Batch 22e824f3-fdfb-4f98-a71e-b7679ecb90f3 [1042 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+06-22 17:32:24.117  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1387): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:32:33.185  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1388): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:32:33.840  5707  5774 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+06-22 17:32:33.844  5707 13055 W SystemServiceRegistry: No service published for: wifirtt
+06-22 17:32:34.637   500   942 D WifiNl80211Manager: Scan result ready event
+06-22 17:32:34.637   500   942 D WifiNative: Scan result ready event
+06-22 17:32:34.646  5707 13055 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 17:32:34.651  5707  5774 I ActivityScheduler: nextTriggerTime: 10151047, in 117073ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 17:32:38.849  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1389): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 17:32:40.964  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:32:40.963Z] Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:32:40.964  7947  7947 I chromium: [INFO:CONSOLE:1] "[2026-06-22T14:32:40.964Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/vendor.f89efd8c65cc631b.js (1)
+06-22 17:32:40.965  7947  7947 I [INVEST]: webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:32:40.972  7947  7947 I FS.Core.Shared.LogForwarder.WebApi: [[INVEST]] webView received http error [not handled in native]: NativeWebViewRawError(requestedUrl=https://stgapi.moneybase.com/cctapi/v1/signalr/priceHub/negotiate?negotiateVersion=1, description=, code=401)
+06-22 17:32:40.972  7947  7947 I chromium: [INFO:CONSOLE:1] "ERROR:", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:32:40.972  7947  7947 I chromium: [INFO:CONSOLE:1] "SignalR: Unable to start SignalR hub connection. Max retries is reached.", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:32:40.972  7947  7947 I chromium: [INFO:CONSOLE:1] "Error: Failed to complete negotiation with the server: Error: : Status code '401'", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)
+06-22 17:32:40.972  7947  7947 I chromium: [INFO:CONSOLE:1] "console.groupEnd", source: https://stglive.moneybase.com/main.2fd442fd699c3b30.js (1)

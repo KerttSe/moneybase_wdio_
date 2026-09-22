@@ -1,0 +1,215 @@
+--------- beginning of main
+08-06 14:35:21.153  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-06 14:35:21.153  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 14:35:21.153  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-06 14:35:21.153  1325  1397 I display : Set Affinity CPU ID : 0
+08-06 14:35:21.153  1325  1397 I display : Set Affinity CPU ID : 1
+08-06 14:35:21.153  1325  1397 I display : Set Affinity CPU ID : 2
+08-06 14:35:21.153  1325  1397 I display : Set Affinity CPU ID : 3
+08-06 14:35:21.153  1325  1397 I display : Set Affinity CPU ID : 4
+08-06 14:35:21.153  1325  1397 I display : Set Affinity CPU ID : 5
+08-06 14:35:21.153  1325  1397 I display : Set Affinity CPU ID : 6
+08-06 14:35:21.153  1325  1397 I display : Set Affinity CPU ID : 7
+08-06 14:35:21.153  1325  1397 I display : Set affinity HWC : 1325
+08-06 14:35:21.154  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-06 14:35:21.154  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-06 14:35:21.154  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-06 14:35:21.154  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-06 14:35:21.155  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-06 14:35:21.155  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-06 14:35:21.191  1726  3186 I NSLocationMonitor: getGPSUsingApps() called
+08-06 14:35:21.194  3189 11130 I NSLocationManager_FLP: getGPSUsingApps, No change
+08-06 14:35:21.198  1726  2261 D WifiConnectivityMonitor: start WCM Poll.
+08-06 14:35:21.213  1726  3186 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+08-06 14:35:21.213  1726  3186 W Binder  : java.lang.Throwable
+08-06 14:35:21.213  1726  3186 W Binder  : 	at android.os.BinderProxy.transact(BinderProxy.java:566)
+08-06 14:35:21.213  1726  3186 W Binder  : 	at android.bluetooth.IBluetoothGatt$Stub$Proxy.getAdvertisingSetUids(IBluetoothGatt.java:1678)
+08-06 14:35:21.213  1726  3186 W Binder  : 	at android.bluetooth.BluetoothAdapter.getAdvertisingSetUids(BluetoothAdapter.java:8476)
+08-06 14:35:21.213  1726  3186 W Binder  : 	at android.bluetooth.BluetoothAdapter.getHWUsingApps(BluetoothAdapter.java:1342)
+08-06 14:35:21.213  1726  3186 W Binder  : 	at com.android.server.am.mars.filter.filter.BlueToothConnectedFilter.updateBTUsingPackages(qb/108618625 1dbdc7c42b97017812c523c8375a66339e81a4b956756dd1c4d66894670cb629:22)
+08-06 14:35:21.213  1726  3186 W Binder  : 	at com.android.server.am.FreecessController.freeze(qb/108618625 1dbdc7c42b97017812c523c8375a66339e81a4b956756dd1c4d66894670cb629:117)
+08-06 14:35:21.213  1726  3186 W Binder  : 	at com.android.server.am.FreecessHandler$MainHandler.handleLcdOnFreeze(qb/108618625 1dbdc7c42b97017812c523c8375a66339e81a4b956756dd1c4d66894670cb629:55)
+08-06 14:35:21.213  1726  3186 W Binder  : 	at com.android.server.am.FreecessHandler$MainHandler.handleMessage(qb/108618625 1dbdc7c42b97017812c523c8375a66339e81a4b956756dd1c4d66894670cb629:793)
+08-06 14:35:21.213  1726  3186 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:110)
+08-06 14:35:21.213  1726  3186 W Binder  : 	at android.os.Looper.loopOnce(Looper.java:273)
+08-06 14:35:21.213  1726  3186 W Binder  : 	at android.os.Looper.loop(Looper.java:363)
+08-06 14:35:21.213  1726  3186 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:85)
+--------- beginning of system
+08-06 14:35:21.226  4554  5580 I SDHMS:x : SIOP:: AP:375 BAT:355 USB:352 CHG:385 PA:379 CP:375 WIFI:370 BLK:0 SUBBAT:0 LRPTHM:360 SKIN:354 SKINF:342 SKINB:354 LRP:354 LRP2:354 LRF2:342 LRB2:354 AP2:353 CHG2:336 MEM2:350 WIFI2:354 SPK2:324 VAP02:383 VWIFI:371 AVGCUR:1340 AVGSYS:306 POWER:5263
+08-06 14:35:21.244  1726  3186 D FreecessController: FZ : com.samsung.android.game.gamehome(10312) [5649] reason: Bg [cached:X
+08-06 14:35:21.244  1726  3186 D FreecessHandler: freeze com.samsung.android.game.gamehome(10312) result : 0
+08-06 14:35:21.245  1726  3186 W LocationManagerService: onFreezeStateChanged, uid[10312]=true
+08-06 14:35:21.245  1726  3186 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10312 , disable= true
+08-06 14:35:21.245  1726  3186 I PowerManagerService: [PWL] can not change uid =  10312
+08-06 14:35:21.439  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786016121
+08-06 14:35:21.439  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-06 14:35:21.439  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-06 14:35:21.440  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29766935
+08-06 14:35:21.440  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29766932
+08-06 14:35:21.440  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-06 14:35:21.440  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-06 14:35:21.440  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-06 14:35:21.440  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-06 14:35:21.440  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-06 14:35:21.503 17208 17508 I QueryController: Matched selector: UiSelector[RESOURCE_ID=com.moneybase.qa:id/tvMobileVerificationError] <<==>> [android.view.accessibility.AccessibilityNodeInfo@2c3f9; boundsInParent: Rect(0, 0 - 955, 45); boundsInScreen: Rect(63, 844 - 1018, 889); boundsInWindow: Rect(63, 844 - 1018, 889); packageName: com.moneybase.qa; className: android.widget.TextView; text: Too many attempts. Your account has been temporarily locked.; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: com.moneybase.qa:id/tvMobileVerificationError; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_NEXT_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_SET_SELECTION - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]; isTextSelectable: false]
+08-06 14:35:21.512 17208 17508 I appium  : AppiumResponse: {"sessionId":"57e02251-5c21-400a-a018-67d8bc0574c4","value":{"ELEMENT":"00000000-0000-025c-ffff-ffff0000009d","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-025c-ffff-ffff0000009d"}}
+08-06 14:35:21.546 17208 17508 I appium  : channel read: GET /session/57e02251-5c21-400a-a018-67d8bc0574c4/element/00000000-0000-025c-ffff-ffff0000009d/attribute/displayed
+08-06 14:35:21.550 17208 17508 I appium  : GetElementAttribute command
+08-06 14:35:21.564 17208 17508 I QueryController: Matched selector: UiSelector[RESOURCE_ID=com.moneybase.qa:id/tvMobileVerificationError] <<==>> [android.view.accessibility.AccessibilityNodeInfo@2c3f9; boundsInParent: Rect(0, 0 - 955, 45); boundsInScreen: Rect(63, 844 - 1018, 889); boundsInWindow: Rect(63, 844 - 1018, 889); packageName: com.moneybase.qa; className: android.widget.TextView; text: Too many attempts. Your account has been temporarily locked.; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: com.moneybase.qa:id/tvMobileVerificationError; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_NEXT_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_SET_SELECTION - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]; isTextSelectable: false]
+08-06 14:35:21.565 17208 17508 D UiObject: Waiting 0ms for UiSelector[RESOURCE_ID=com.moneybase.qa:id/tvMobileVerificationError].
+08-06 14:35:21.574 17208 17508 I QueryController: Matched selector: UiSelector[RESOURCE_ID=com.moneybase.qa:id/tvMobileVerificationError] <<==>> [android.view.accessibility.AccessibilityNodeInfo@2c3f9; boundsInParent: Rect(0, 0 - 955, 45); boundsInScreen: Rect(63, 844 - 1018, 889); boundsInWindow: Rect(63, 844 - 1018, 889); packageName: com.moneybase.qa; className: android.widget.TextView; text: Too many attempts. Your account has been temporarily locked.; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: com.moneybase.qa:id/tvMobileVerificationError; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_NEXT_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_SET_SELECTION - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]; isTextSelectable: false]
+08-06 14:35:21.586 17208 17508 I QueryController: Matched selector: UiSelector[RESOURCE_ID=com.moneybase.qa:id/tvMobileVerificationError] <<==>> [android.view.accessibility.AccessibilityNodeInfo@2c3f9; boundsInParent: Rect(0, 0 - 955, 45); boundsInScreen: Rect(63, 844 - 1018, 889); boundsInWindow: Rect(63, 844 - 1018, 889); packageName: com.moneybase.qa; className: android.widget.TextView; text: Too many attempts. Your account has been temporarily locked.; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: com.moneybase.qa:id/tvMobileVerificationError; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_NEXT_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_SET_SELECTION - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]; isTextSelectable: false]
+08-06 14:35:21.590 17208 17508 I appium  : AppiumResponse: {"sessionId":"57e02251-5c21-400a-a018-67d8bc0574c4","value":"true"}
+08-06 14:35:21.608 17208 17508 I appium  : channel read: GET /session/57e02251-5c21-400a-a018-67d8bc0574c4/element/00000000-0000-025c-ffff-ffff0000009d/text
+08-06 14:35:21.611 17208 17508 I appium  : GetText command
+08-06 14:35:21.622 17208 17508 I QueryController: Matched selector: UiSelector[RESOURCE_ID=com.moneybase.qa:id/tvMobileVerificationError] <<==>> [android.view.accessibility.AccessibilityNodeInfo@2c3f9; boundsInParent: Rect(0, 0 - 955, 45); boundsInScreen: Rect(63, 844 - 1018, 889); boundsInWindow: Rect(63, 844 - 1018, 889); packageName: com.moneybase.qa; className: android.widget.TextView; text: Too many attempts. Your account has been temporarily locked.; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: com.moneybase.qa:id/tvMobileVerificationError; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_NEXT_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_SET_SELECTION - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]; isTextSelectable: false]
+08-06 14:35:21.630 17208 17508 I QueryController: Matched selector: UiSelector[RESOURCE_ID=com.moneybase.qa:id/tvMobileVerificationError] <<==>> [android.view.accessibility.AccessibilityNodeInfo@2c3f9; boundsInParent: Rect(0, 0 - 955, 45); boundsInScreen: Rect(63, 844 - 1018, 889); boundsInWindow: Rect(63, 844 - 1018, 889); packageName: com.moneybase.qa; className: android.widget.TextView; text: Too many attempts. Your account has been temporarily locked.; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: com.moneybase.qa:id/tvMobileVerificationError; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_NEXT_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY - null, AccessibilityAction: ACTION_SET_SELECTION - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]; isTextSelectable: false]
+08-06 14:35:21.633 17208 17508 I appium  : AppiumResponse: {"sessionId":"57e02251-5c21-400a-a018-67d8bc0574c4","value":"Too many attempts. Your account has been temporarily locked."}
+08-06 14:35:21.678 17208 17508 I appium  : channel read: GET /session/57e02251-5c21-400a-a018-67d8bc0574c4/screenshot
+08-06 14:35:21.678 17208 17508 I appium  : CaptureScreenshot command
+08-06 14:35:21.678 17208 17508 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-06 14:35:21.678 17208 17508 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-06 14:35:21.726  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-06 14:35:21.734  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 33043, isSameBssidAndFreq true
+08-06 14:35:21.736  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:22 syn=2, rto=0, cwnd=0
+08-06 14:35:21.736  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:23 syn=2, rto=0, cwnd=0
+08-06 14:35:21.736  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:24 syn=0, rto=0, cwnd=2
+08-06 14:35:21.737  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:25 syn=0, rto=0, cwnd=2
+08-06 14:35:21.737  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:26 syn=0, rto=0, cwnd=2
+08-06 14:35:21.737  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:27 syn=0, rto=0, cwnd=2
+08-06 14:35:21.738  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786016121738 lastDateWindow=1785781227000
+08-06 14:35:21.740  2870  2971 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236038, activityId=2131236053)
+08-06 14:35:21.758  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-06 14:35:21.759  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-06 14:35:21.761  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.activities.LoginActivity$_17564#34460 Max (can't resolve refresh rate)
+08-06 14:35:21.761  1437  1437 I SurfaceFlinger: scored - choose 120.00 Hz
+08-06 14:35:21.762  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-06 14:35:21.763  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-06 14:35:21.763  1325  1405 I display : Current VRR MODE is 3
+08-06 14:35:21.763  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-06 14:35:21.763  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-06 14:35:21.763  1325  1405 I display : commit modeset : 1080x2340@120hs
+08-06 14:35:21.786  1325  1405 W display : deliverWinConfigData:: commit modeset time (22 ms)
+08-06 14:35:21.787  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-06 14:35:21.787  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-06 14:35:21.787  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-06 14:35:21.787  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-06 14:35:21.787  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-06 14:35:21.787  1325  1397 I display : Set Affinity CPU ID : 0
+08-06 14:35:21.787  1325  1397 I display : Set Affinity CPU ID : 1
+08-06 14:35:21.787  1325  1397 I display : Set Affinity CPU ID : 2
+08-06 14:35:21.787  1325  1397 I display : Set Affinity CPU ID : 3
+08-06 14:35:21.787  1325  1397 I display : Set Affinity CPU ID : 4
+08-06 14:35:21.787  1325  1397 I display : Set Affinity CPU ID : 5
+08-06 14:35:21.787  1325  1397 I display : Set Affinity CPU ID : 6
+08-06 14:35:21.788  1325  1397 I display : Set Affinity CPU ID : 7
+08-06 14:35:21.788  1325  1397 I display : Set affinity HWC : 1325
+08-06 14:35:21.788  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-06 14:35:21.788  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-06 14:35:21.788  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-06 14:35:21.788  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-06 14:35:21.789  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-06 14:35:22.126  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-06 14:35:22.128  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-06 14:35:22.128  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.activities.LoginActivity$_17564#34460 Max (can't resolve refresh rate)
+08-06 14:35:22.128  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-06 14:35:22.129  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-06 14:35:22.130  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-06 14:35:22.131  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-06 14:35:22.132  1325  1405 I display : Current VRR MODE is 3
+08-06 14:35:22.132  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-06 14:35:22.132  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-06 14:35:22.132  1325  1405 I display : commit modeset : 1080x2340@60phs
+08-06 14:35:22.144  1325  1405 W display : deliverWinConfigData:: commit modeset time (11 ms)
+08-06 14:35:22.145  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-06 14:35:22.145  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 14:35:22.145  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-06 14:35:22.145  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-06 14:35:22.145  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-06 14:35:22.145  1325  1397 I display : Set Affinity CPU ID : 0
+08-06 14:35:22.145  1325  1397 I display : Set Affinity CPU ID : 1
+08-06 14:35:22.145  1325  1397 I display : Set Affinity CPU ID : 2
+08-06 14:35:22.145  1325  1397 I display : Set Affinity CPU ID : 3
+08-06 14:35:22.145  1325  1397 I display : Set Affinity CPU ID : 4
+08-06 14:35:22.145  1325  1397 I display : Set Affinity CPU ID : 5
+08-06 14:35:22.145  1325  1397 I display : Set Affinity CPU ID : 6
+08-06 14:35:22.145  1325  1397 I display : Set Affinity CPU ID : 7
+08-06 14:35:22.146  1325  1397 I display : Set affinity HWC : 1325
+08-06 14:35:22.146  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-06 14:35:22.146  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-06 14:35:22.146  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-06 14:35:22.146  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-06 14:35:22.147  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-06 14:35:22.163  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-06 14:35:22.381 18961 18961 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-06 14:35:22.382 18961 18961 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-06 14:35:22.383 18961 18961 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-06 14:35:22.385  1726  2480 I EDMNativeHelperService: isScreenCaptureEnabled
+08-06 14:35:22.388  1726  2480 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-06 14:35:22.389 18961 18961 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-06 14:35:22.389 18961 18961 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-06 14:35:22.393  1437  1463 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.activities.LoginActivity$_17564#34460(seamlessTransition:0)
+08-06 14:35:22.393  1437  1463 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-06 14:35:22.393  1437  1463 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-06 14:35:22.393  1437  1463 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-06 14:35:22.394  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-06 14:35:22.396  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.activities.LoginActivity$_17564#34460 at index 1
+08-06 14:35:22.396  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-06 14:35:22.396  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-06 14:35:22.402   730   730 D io_stats: !@   8,0 r 26975915 515659012 w 8206546 148549104 d 2373540 193359440 f 0 784533 iot 12176236 0 th 0 0 0 pt 0 inp 0 0 170038.480
+08-06 14:35:22.402   730   730 D io_stats: !@ Read_top(KB): screencap(18961) 5176 ugin:persistent(6020) 384 system_server(1726) 372
+08-06 14:35:22.402   730   730 D io_stats: !@ Write_top(KB): sait.sohservice(3105) 32 ugin:persistent(6020) 8 android.hardwar(1326) 8
+08-06 14:35:22.439  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786016122
+08-06 14:35:22.439  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-06 14:35:22.439  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-06 14:35:22.439  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29766935
+08-06 14:35:22.439  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29766932
+08-06 14:35:22.439  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-06 14:35:22.439  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-06 14:35:22.439  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-06 14:35:22.439  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-06 14:35:22.439  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-06 14:35:22.443  2336  2835 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-06 14:35:22.459 18961 18980 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-06 14:35:22.687 17208 17508 I appium  : AppiumResponse: {"sessionId":"57e02251-5c21-400a-a018-67d8bc0574c4","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N13fFRV3j/wz0x6Iz2EkEZCQgstBAgQOiidhI6gYgH72nX1URfd1dVVHxurq2BBRcrSQhEjIB2SQCgJYBrpvdfJpMzM7w9+mYebmSSTzGQK+bxfr7z0nnvvOedmmMnc7z3ne0QKhUIBIiI…
+08-06 14:35:22.714 17208 17508 I appium  : channel read: GET /session/57e02251-5c21-400a-a018-67d8bc0574c4/source
+08-06 14:35:22.714 17208 17508 I appium  : Source command
+08-06 14:35:22.715 17208 17508 I appium  : Waiting up to 10000ms for the device to idle
+08-06 14:35:22.755 17208 17508 I appium  : AppiumResponse: {"sessionId":"57e02251-5c21-400a-a018-67d8bc0574c4","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-06 14:35:22.784 12658 12658 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-06 14:35:22.837 18981 18981 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-06 14:35:22.880 12658 12658 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-06 14:35:22.890  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-06 14:35:22.893  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-06 14:35:22.894  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-06 14:35:22.904  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-06 14:35:22.904  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.activities.LoginActivity$_17564#34460 Max (can't resolve refresh rate)
+08-06 14:35:22.904  1437  1437 I SurfaceFlinger: scored - choose 120.00 Hz
+08-06 14:35:22.905  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-06 14:35:22.906  1325  1405 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-06 14:35:22.907  1325  1405 I display : Current VRR MODE is 3
+08-06 14:35:22.907  1325  1405 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-06 14:35:22.907  1325  1405 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-06 14:35:22.907  1325  1405 I display : commit modeset : 1080x2340@120hs
+08-06 14:35:22.928  1325  1405 W display : deliverWinConfigData:: commit modeset time (20 ms)
+08-06 14:35:22.929  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-06 14:35:22.929  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-06 14:35:22.929  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-06 14:35:22.929  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-06 14:35:22.929  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-06 14:35:22.929  1325  1397 I display : Set Affinity CPU ID : 0
+08-06 14:35:22.929  1325  1397 I display : Set Affinity CPU ID : 1
+08-06 14:35:22.929  1325  1397 I display : Set Affinity CPU ID : 2
+08-06 14:35:22.929  1325  1397 I display : Set Affinity CPU ID : 3
+08-06 14:35:22.929  1325  1397 I display : Set Affinity CPU ID : 4
+08-06 14:35:22.929  1325  1397 I display : Set Affinity CPU ID : 5
+08-06 14:35:22.930  1325  1397 I display : Set Affinity CPU ID : 6
+08-06 14:35:22.930  1325  1397 I display : Set Affinity CPU ID : 7
+08-06 14:35:22.930  1325  1397 I display : Set affinity HWC : 1325
+08-06 14:35:22.930  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-06 14:35:22.930  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-06 14:35:22.930  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-06 14:35:22.930  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-06 14:35:22.931  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-06 14:35:22.944 18984 18984 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-06 14:35:22.989 12658 12658 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

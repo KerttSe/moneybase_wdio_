@@ -1,0 +1,215 @@
+--------- beginning of main
+08-05 17:19:57.858  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-05 17:19:57.858  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-05 17:19:57.859  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-05 17:19:57.859  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-05 17:19:57.859  1325  1397 I display : Set Affinity CPU ID : 0
+08-05 17:19:57.859  1325  1397 I display : Set Affinity CPU ID : 1
+08-05 17:19:57.859  1325  1397 I display : Set Affinity CPU ID : 2
+08-05 17:19:57.859  1325  1397 I display : Set Affinity CPU ID : 3
+08-05 17:19:57.859  1325  1397 I display : Set Affinity CPU ID : 4
+08-05 17:19:57.859  1325  1397 I display : Set Affinity CPU ID : 5
+08-05 17:19:57.860  1325  1397 I display : Set Affinity CPU ID : 6
+08-05 17:19:57.860  1325  1397 I display : Set Affinity CPU ID : 7
+08-05 17:19:57.860  1325  1397 I display : Set affinity HWC : 1325
+08-05 17:19:57.862  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-05 17:19:57.862  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-05 17:19:57.862  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-05 17:19:57.863  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-05 17:19:57.863  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1785939597
+08-05 17:19:57.863  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-05 17:19:57.863  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-05 17:19:57.863  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29765659
+08-05 17:19:57.863  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29765630
+08-05 17:19:57.863  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-05 17:19:57.863  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-05 17:19:57.863 11919 12011 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]' XPath2 query
+08-05 17:19:57.863  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-05 17:19:57.864 11919 12011 I appium  : Found zero matches
+08-05 17:19:57.864  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-05 17:19:57.864  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-05 17:19:57.864  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-05 17:19:57.864  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-05 17:19:57.865 11919 12011 I appium  : AppiumResponse: {"sessionId":"cadb4864-288e-4df9-8651-ff395073d192","value":[]}
+--------- beginning of system
+08-05 17:19:57.878  4554  5580 I SDHMS:x : SIOP:: AP:383 BAT:357 USB:344 CHG:376 PA:385 CP:378 WIFI:376 BLK:0 SUBBAT:0 LRPTHM:364 SKIN:353 SKINF:346 SKINB:353 LRP:353 LRP2:353 LRF2:346 LRB2:353 AP2:352 CHG2:340 MEM2:350 WIFI2:353 SPK2:331 VAP02:386 VWIFI:379 AVGCUR:3 AVGSYS:392 POWER:13
+08-05 17:19:57.888 11919 12011 I appium  : channel read: POST /session/cadb4864-288e-4df9-8651-ff395073d192/elements
+08-05 17:19:57.892 11919 12011 I appium  : FindElements command
+08-05 17:19:57.895 11919 12011 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]'
+08-05 17:19:57.895 11919 12011 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:19:57.898 11919 12011 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:19:57.969 11919 12011 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]' XPath2 query
+08-05 17:19:57.969 11919 12011 I appium  : Found zero matches
+08-05 17:19:57.970 11919 12011 I appium  : AppiumResponse: {"sessionId":"cadb4864-288e-4df9-8651-ff395073d192","value":[]}
+08-05 17:19:57.994 11919 12011 I appium  : channel read: POST /session/cadb4864-288e-4df9-8651-ff395073d192/elements
+08-05 17:19:57.994 11919 12011 I appium  : FindElements command
+08-05 17:19:57.995 11919 12011 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]'
+08-05 17:19:57.995 11919 12011 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:19:57.997 11919 12011 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:19:58.070 11919 12011 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]' XPath2 query
+08-05 17:19:58.070 11919 12011 I appium  : Found zero matches
+08-05 17:19:58.071 11919 12011 I appium  : AppiumResponse: {"sessionId":"cadb4864-288e-4df9-8651-ff395073d192","value":[]}
+08-05 17:19:58.072  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-05 17:19:58.074  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-05 17:19:58.074  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-05 17:19:58.074  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-05 17:19:58.075  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-05 17:19:58.075  1325  1325 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-05 17:19:58.075  1325  1325 I display : Current VRR MODE is 3
+08-05 17:19:58.075  1325  1325 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-05 17:19:58.075  1325  1325 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-05 17:19:58.075  1325  1325 I display : commit modeset : 1080x2340@60phs
+08-05 17:19:58.090 11919 12011 I appium  : channel read: POST /session/cadb4864-288e-4df9-8651-ff395073d192/elements
+08-05 17:19:58.090  1325  1325 W display : deliverWinConfigData:: commit modeset time (14 ms)
+08-05 17:19:58.090 11919 12011 I appium  : FindElements command
+08-05 17:19:58.091  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-05 17:19:58.091  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-05 17:19:58.091  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-05 17:19:58.091  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-05 17:19:58.091  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-05 17:19:58.091  1325  1397 I display : Set Affinity CPU ID : 0
+08-05 17:19:58.091  1325  1397 I display : Set Affinity CPU ID : 1
+08-05 17:19:58.091  1325  1397 I display : Set Affinity CPU ID : 2
+08-05 17:19:58.091  1325  1397 I display : Set Affinity CPU ID : 3
+08-05 17:19:58.091  1325  1397 I display : Set Affinity CPU ID : 4
+08-05 17:19:58.091  1325  1397 I display : Set Affinity CPU ID : 5
+08-05 17:19:58.091  1325  1397 I display : Set Affinity CPU ID : 6
+08-05 17:19:58.091  1325  1397 I display : Set Affinity CPU ID : 7
+08-05 17:19:58.091  1325  1397 I display : Set affinity HWC : 1325
+08-05 17:19:58.091  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-05 17:19:58.091  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-05 17:19:58.091  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-05 17:19:58.091 11919 12011 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]'
+08-05 17:19:58.091  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-05 17:19:58.091  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-05 17:19:58.091 11919 12011 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:19:58.093 11919 12011 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:19:58.156 11919 12011 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]' XPath2 query
+08-05 17:19:58.156 11919 12011 I appium  : Found zero matches
+08-05 17:19:58.157 11919 12011 I appium  : AppiumResponse: {"sessionId":"cadb4864-288e-4df9-8651-ff395073d192","value":[]}
+08-05 17:19:58.178 11919 12011 I appium  : channel read: POST /session/cadb4864-288e-4df9-8651-ff395073d192/elements
+08-05 17:19:58.178 11919 12011 I appium  : FindElements command
+08-05 17:19:58.179 11919 12011 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]'
+08-05 17:19:58.179 11919 12011 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:19:58.181 11919 12011 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:19:58.188 11919 11926 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-05 17:19:58.252 11919 12011 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]' XPath2 query
+08-05 17:19:58.252 11919 12011 I appium  : Found zero matches
+08-05 17:19:58.253 11919 12011 I appium  : AppiumResponse: {"sessionId":"cadb4864-288e-4df9-8651-ff395073d192","value":[]}
+08-05 17:19:58.279 11919 12011 I appium  : channel read: POST /session/cadb4864-288e-4df9-8651-ff395073d192/elements
+08-05 17:19:58.280 11919 12011 I appium  : FindElements command
+08-05 17:19:58.282 11919 12011 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]'
+08-05 17:19:58.283 11919 12011 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:19:58.284 11919 12011 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:19:58.355 11919 12011 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]' XPath2 query
+08-05 17:19:58.355 11919 12011 I appium  : Found zero matches
+08-05 17:19:58.356 11919 12011 I appium  : AppiumResponse: {"sessionId":"cadb4864-288e-4df9-8651-ff395073d192","value":[]}
+08-05 17:19:58.379 11919 12011 I appium  : channel read: POST /session/cadb4864-288e-4df9-8651-ff395073d192/elements
+08-05 17:19:58.379 11919 12011 I appium  : FindElements command
+08-05 17:19:58.380 11919 12011 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]'
+08-05 17:19:58.381 11919 12011 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:19:58.383 11919 12011 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:19:58.460 11919 12011 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]' XPath2 query
+08-05 17:19:58.460 11919 12011 I appium  : Found zero matches
+08-05 17:19:58.462 11919 12011 I appium  : AppiumResponse: {"sessionId":"cadb4864-288e-4df9-8651-ff395073d192","value":[]}
+08-05 17:19:58.486 11919 12011 I appium  : channel read: POST /session/cadb4864-288e-4df9-8651-ff395073d192/elements
+08-05 17:19:58.487 11919 12011 I appium  : FindElements command
+08-05 17:19:58.488 11919 12011 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]'
+08-05 17:19:58.488 11919 12011 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:19:58.490 11919 12011 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:19:58.566 11919 12011 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]' XPath2 query
+08-05 17:19:58.566 11919 12011 I appium  : Found zero matches
+08-05 17:19:58.568 11919 12011 I appium  : AppiumResponse: {"sessionId":"cadb4864-288e-4df9-8651-ff395073d192","value":[]}
+08-05 17:19:58.582 11919 12011 I appium  : channel read: POST /session/cadb4864-288e-4df9-8651-ff395073d192/elements
+08-05 17:19:58.582 11919 12011 I appium  : FindElements command
+08-05 17:19:58.582 11919 12011 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]'
+08-05 17:19:58.583 11919 12011 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:19:58.584 11919 12011 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:19:58.597  3012  3012 I wpa_supplicant: Heartbeat 6627
+08-05 17:19:58.671 11919 12011 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]' XPath2 query
+08-05 17:19:58.671 11919 12011 I appium  : Found zero matches
+08-05 17:19:58.673 11919 12011 I appium  : AppiumResponse: {"sessionId":"cadb4864-288e-4df9-8651-ff395073d192","value":[]}
+08-05 17:19:58.685 11919 12011 I appium  : channel read: POST /session/cadb4864-288e-4df9-8651-ff395073d192/elements
+08-05 17:19:58.685 11919 12011 I appium  : FindElements command
+08-05 17:19:58.686 11919 12011 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]'
+08-05 17:19:58.686 11919 12011 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:19:58.687 11919 12011 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:19:58.748 11919 12011 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]' XPath2 query
+08-05 17:19:58.748 11919 12011 I appium  : Found zero matches
+08-05 17:19:58.750 11919 12011 I appium  : AppiumResponse: {"sessionId":"cadb4864-288e-4df9-8651-ff395073d192","value":[]}
+08-05 17:19:58.763 11919 12011 I appium  : channel read: POST /session/cadb4864-288e-4df9-8651-ff395073d192/elements
+08-05 17:19:58.764 11919 12011 I appium  : FindElements command
+08-05 17:19:58.765 11919 12011 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]'
+08-05 17:19:58.765 11919 12011 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:19:58.767 11919 12011 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:19:58.772 11919 11926 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-05 17:19:58.829 11919 12011 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]' XPath2 query
+08-05 17:19:58.829 11919 12011 I appium  : Found zero matches
+08-05 17:19:58.830 11919 12011 I appium  : AppiumResponse: {"sessionId":"cadb4864-288e-4df9-8651-ff395073d192","value":[]}
+08-05 17:19:58.852 11919 12011 I appium  : channel read: POST /session/cadb4864-288e-4df9-8651-ff395073d192/elements
+08-05 17:19:58.852 11919 12011 I appium  : FindElements command
+08-05 17:19:58.853 11919 12011 I appium  : method: 'xpath', selector: '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]'
+08-05 17:19:58.853 11919 12011 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:19:58.854 11919 12011 I appium  : The following attributes will be included to the page source: [clickable, content-desc]
+08-05 17:19:58.862  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1785939598
+08-05 17:19:58.863  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-05 17:19:58.863  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-05 17:19:58.863  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29765659
+08-05 17:19:58.863  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29765630
+08-05 17:19:58.863  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-05 17:19:58.863  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-05 17:19:58.863  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-05 17:19:58.863  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-05 17:19:58.863  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-05 17:19:58.901 11919 12011 I appium  : Took 0ms to retrieve 0 matches for '//android.view.View[@clickable="true"][.//android.view.View[@content-desc="Assign Card To"]]' XPath2 query
+08-05 17:19:58.901 11919 12011 I appium  : Found zero matches
+08-05 17:19:58.902 11919 12011 I appium  : AppiumResponse: {"sessionId":"cadb4864-288e-4df9-8651-ff395073d192","value":[]}
+08-05 17:19:58.954 11919 12011 I appium  : channel read: GET /session/cadb4864-288e-4df9-8651-ff395073d192/screenshot
+08-05 17:19:58.954 11919 12011 I appium  : CaptureScreenshot command
+08-05 17:19:59.082 14470 14470 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-05 17:19:59.082 14470 14470 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-05 17:19:59.082 14470 14470 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-05 17:19:59.082  1726  1747 I EDMNativeHelperService: isScreenCaptureEnabled
+08-05 17:19:59.083  1726  1747 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-05 17:19:59.083 14470 14470 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-05 17:19:59.083 14470 14470 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-05 17:19:59.086  1437  1915 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_12047#28431(seamlessTransition:0)
+08-05 17:19:59.086  1437  1915 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_12047#28449(seamlessTransition:0)
+08-05 17:19:59.086  1437  1915 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-05 17:19:59.086  1437  1915 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-05 17:19:59.086  1437  1915 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-05 17:19:59.087  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-05 17:19:59.087  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_12047#28431 at index 1
+08-05 17:19:59.087  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_12047#28449 at index 2
+08-05 17:19:59.087  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 3
+08-05 17:19:59.087  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 4
+08-05 17:19:59.107 14470 14474 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-05 17:19:59.126   730   730 D io_stats: !@   8,0 r 23139303 448805520 w 6985230 130643820 d 2024208 176539644 f 0 650695 iot 10350156 0 th 0 0 0 pt 0 inp 0 0 138300.781
+08-05 17:19:59.127   730   730 D io_stats: !@ Read_top(KB): me:notification(5649) 4
+08-05 17:19:59.127   730   730 D io_stats: !@ Write_top(KB): kworker/u16:2(26519) 12 ugin:persistent(6020) 8
+08-05 17:19:59.284 11919 12011 I appium  : AppiumResponse: {"sessionId":"cadb4864-288e-4df9-8651-ff395073d192","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N1pbGPnefbxi7tIkZKohdr3WTQjzdizb/bYcZbGMOIssGPUTdMCroEGsYsu6fcCQYEECN42RdGirZP0Q9PAaZy4jp1kYseZTGLPvnl2zWg00miXqJWSuEjk+2EqRhQpjXbqSP/fF4MPD8+…
+08-05 17:19:59.318 11919 12011 I appium  : channel read: GET /session/cadb4864-288e-4df9-8651-ff395073d192/source
+08-05 17:19:59.319 11919 12011 I appium  : Source command
+08-05 17:19:59.319 11919 12011 I appium  : Waiting up to 10000ms for the device to idle
+08-05 17:19:59.419 11919 12011 I appium  : AppiumResponse: {"sessionId":"cadb4864-288e-4df9-8651-ff395073d192","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-05 17:19:59.455 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-05 17:19:59.511 14475 14475 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-05 17:19:59.569 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-05 17:19:59.620 14478 14478 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-05 17:19:59.684 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''
+08-05 17:19:59.734  1726  3186 I NSLocationMonitor: getGPSUsingApps() called
+08-05 17:19:59.735  3189  8919 I NSLocationManager_FLP: getGPSUsingApps, No change
+08-05 17:19:59.740  1726  3186 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+08-05 17:19:59.740  1726  3186 W Binder  : java.lang.Throwable
+08-05 17:19:59.740  1726  3186 W Binder  : 	at android.os.BinderProxy.transact(BinderProxy.java:566)
+08-05 17:19:59.740  1726  3186 W Binder  : 	at android.bluetooth.IBluetoothGatt$Stub$Proxy.getAdvertisingSetUids(IBluetoothGatt.java:1678)
+08-05 17:19:59.740  1726  3186 W Binder  : 	at android.bluetooth.BluetoothAdapter.getAdvertisingSetUids(BluetoothAdapter.java:8476)
+08-05 17:19:59.740  1726  3186 W Binder  : 	at android.bluetooth.BluetoothAdapter.getHWUsingApps(BluetoothAdapter.java:1342)
+08-05 17:19:59.740  1726  3186 W Binder  : 	at com.android.server.am.mars.filter.filter.BlueToothConnectedFilter.updateBTUsingPackages(qb/108618625 1dbdc7c42b97017812c523c8375a66339e81a4b956756dd1c4d66894670cb629:22)
+08-05 17:19:59.740  1726  3186 W Binder  : 	at com.android.server.am.FreecessController.freeze(qb/108618625 1dbdc7c42b97017812c523c8375a66339e81a4b956756dd1c4d66894670cb629:117)
+08-05 17:19:59.740  1726  3186 W Binder  : 	at com.android.server.am.FreecessHandler$MainHandler.handleLcdOnFreeze(qb/108618625 1dbdc7c42b97017812c523c8375a66339e81a4b956756dd1c4d66894670cb629:55)
+08-05 17:19:59.740  1726  3186 W Binder  : 	at com.android.server.am.FreecessHandler$MainHandler.handleMessage(qb/108618625 1dbdc7c42b97017812c523c8375a66339e81a4b956756dd1c4d66894670cb629:793)
+08-05 17:19:59.740  1726  3186 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:110)
+08-05 17:19:59.740  1726  3186 W Binder  : 	at android.os.Looper.loopOnce(Looper.java:273)
+08-05 17:19:59.740  1726  3186 W Binder  : 	at android.os.Looper.loop(Looper.java:363)
+08-05 17:19:59.740  1726  3186 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:85)

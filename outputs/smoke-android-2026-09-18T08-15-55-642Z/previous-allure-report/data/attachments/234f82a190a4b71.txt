@@ -1,0 +1,206 @@
+--------- beginning of main
+08-14 16:12:59.870  6705  6732 D WM-GreedyScheduler: Ignoring {WorkSpec: 3f9668f5-e1f9-4448-803b-46c8a1a49b7f}. Requires device idle.
+08-14 16:12:59.870  6705  6732 D WM-GreedyScheduler: Ignoring {WorkSpec: 38d83f43-65a8-40fb-b31f-41ce619d90e3}. Requires ContentUri triggers.
+--------- beginning of system
+08-14 16:12:59.880   730   730 D io_stats: !@   8,0 r 72413894 1326826921 w 22015780 396670688 d 6432908 452751288 f 0 2043976 iot 33345604 0 th 0 0 0 pt 0 inp 0 0 538452.271
+08-14 16:13:00.008  2357  2357 D ClockFaceEvents: onTimeTick. callers : com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.refreshTime:19
+08-14 16:13:00.008  2357  2357 D ClockFaceEvents: com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.onTimeChanged:1
+08-14 16:13:00.008  2357  2357 D ClockFaceEvents: com.android.keyguard.KeyguardUpdateMonitor$16.handleMessage:732
+08-14 16:13:00.008  2357  2357 D ClockFaceEvents: onTimeTick. callers : com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.refreshTime:38
+08-14 16:13:00.008  2357  2357 D ClockFaceEvents: com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.onTimeChanged:1
+08-14 16:13:00.008  2357  2357 D ClockFaceEvents: com.android.keyguard.KeyguardUpdateMonitor$16.handleMessage:732
+08-14 16:13:00.008  2357  2357 D FaceWidgetPagesController: onTimeChanged()
+08-14 16:13:00.008  1726  1726 I EyeComfortSolutionService: action  :  android.intent.action.TIME_TICK
+08-14 16:13:00.009  2357  2896 I DateTimeView: updateAll - getTimeFormat
+08-14 16:13:00.009  2357  2896 D QSClockBellTower: onReceive(android.intent.action.TIME_TICK) mTimeZoneString:Europe/Kiev
+08-14 16:13:00.010  2357  2357 D QSClockBellTower: He is ready to ring the bell. (((QSClockBellSound - TimeText:16:13, TimeContentDescription:16:13, DateText:Fri, August 14, ShortDateText:Fri, Aug 14, Demo:false)))
+08-14 16:13:00.010  2357  2357 D QSClock : StatusBar clock=16:13 notifyTimeChanged(QSClockBellSound - TimeText:16:13, TimeContentDescription:16:13, DateText:Fri, August 14, ShortDateText:Fri, Aug 14, Demo:false) clockVisibleByPolicy=true, clockVisibleByUser=true, visible=true, parent=android.widget.LinearLayout{afef6bc V.E...... ......ID 0,0-97,58 #7f0a069b app:id/left_clock_container} caller=com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.animateShow:52 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.updateStatusBarVisibilitiesInner:230 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.updateStatusBarVisibilities:65 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.disable:71 com.android.systemui.statusbar.CommandQueue$H.handleMessage:2997  
+08-14 16:13:00.010  2357  2357 D QSClockBellTower: Everyone heard the bell. run(currentTime:1786713180010, getTime():Fri Aug 14 16:13:00 GMT+03:00 2026, getTimeZone():libcore.util.ZoneInfo[mDstSavings=3600000,mUseDst=true,mDelegate=[id="Europe/Kiev",mRawOffset=7200000,mEarliestRawOffset=7324000,transitions=245]])
+08-14 16:13:00.017  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 16:13:00.020  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-14 16:13:00.021  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-14 16:13:00.023  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-14 16:13:00.023  1437  1437 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+08-14 16:13:00.023  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-14 16:13:00.023  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForClientComposition
+08-14 16:13:00.024  1325  1406 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-14 16:13:00.024  1325  1406 I display : Current VRR MODE is 3
+08-14 16:13:00.024  1325  1406 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-14 16:13:00.024  1325  1406 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-14 16:13:00.024  1325  1406 I display : commit modeset : 1080x2340@120hs
+08-14 16:13:00.048  1325  1406 W display : deliverWinConfigData:: commit modeset time (23 ms)
+08-14 16:13:00.048  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-14 16:13:00.049  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-14 16:13:00.049  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-14 16:13:00.049  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-14 16:13:00.049  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-14 16:13:00.049  1325  1397 I display : Set Affinity CPU ID : 0
+08-14 16:13:00.049  1325  1397 I display : Set Affinity CPU ID : 1
+08-14 16:13:00.049  1325  1397 I display : Set Affinity CPU ID : 2
+08-14 16:13:00.049  1325  1397 I display : Set Affinity CPU ID : 3
+08-14 16:13:00.049  1325  1397 I display : Set Affinity CPU ID : 4
+08-14 16:13:00.049  1325  1397 I display : Set Affinity CPU ID : 5
+08-14 16:13:00.049  1325  1397 I display : Set Affinity CPU ID : 6
+08-14 16:13:00.049  1325  1397 I display : Set Affinity CPU ID : 7
+08-14 16:13:00.049  1325  1397 I display : Set affinity HWC : 1325
+08-14 16:13:00.049  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-14 16:13:00.049  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-14 16:13:00.049  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-14 16:13:00.049  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-14 16:13:00.049  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-14 16:13:00.061  6705  6726 D WM-GreedyScheduler: Ignoring {WorkSpec: 2091487a-493d-43e8-8684-551e98c74328}. Requires ContentUri triggers.
+08-14 16:13:00.061  6705  6726 D WM-GreedyScheduler: Ignoring {WorkSpec: 9d87c917-4e70-4a6f-bbd8-0c6b0e397477}. Requires device idle.
+08-14 16:13:00.061  6705  6726 D WM-GreedyScheduler: Ignoring {WorkSpec: 3f9668f5-e1f9-4448-803b-46c8a1a49b7f}. Requires device idle.
+08-14 16:13:00.061  6705  6726 D WM-GreedyScheduler: Ignoring {WorkSpec: 38d83f43-65a8-40fb-b31f-41ce619d90e3}. Requires ContentUri triggers.
+08-14 16:13:00.061  6705  6726 D WM-GreedyScheduler: Starting work for bad3d0b3-c39a-4852-8f16-93f25d1b7463
+08-14 16:13:00.063  6705  6732 D WM-Processor: uad: processing WorkGenerationalId(workSpecId=bad3d0b3-c39a-4852-8f16-93f25d1b7463, generation=0)
+08-14 16:13:00.065  6705  6726 D MddListenableWorkerFactory: createWorker for class: com.google.android.apps.messaging.shared.datamodel.workqueue.WorkQueueWorkerShim
+08-14 16:13:00.066  6705  6705 D WM-WorkerWrapper: Starting work for com.google.android.apps.messaging.shared.datamodel.workqueue.WorkQueueWorkerShim
+08-14 16:13:00.089  6705  6725 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=bad3d0b3-c39a-4852-8f16-93f25d1b7463, class=com.google.android.apps.messaging.shared.datamodel.workqueue.WorkQueueWorkerShim, tags={ com.google.android.apps.messaging.shared.datamodel.workqueue.WorkQueueWorkerShim,data_upgrade- } ]
+08-14 16:13:00.091  6705  6705 D WM-Processor: uad bad3d0b3-c39a-4852-8f16-93f25d1b7463 executed; reschedule = false
+08-14 16:13:00.091  6705  6733 D WM-PackageManagerHelper: Skipping component enablement for androidx.work.impl.background.systemalarm.RescheduleReceiver
+08-14 16:13:00.096  6705  6725 D WM-GreedyScheduler: Cancelling work ID bad3d0b3-c39a-4852-8f16-93f25d1b7463
+08-14 16:13:00.116  6705  6725 D WM-GreedyScheduler: Ignoring {WorkSpec: 2091487a-493d-43e8-8684-551e98c74328}. Requires ContentUri triggers.
+08-14 16:13:00.117  6705  6725 D WM-GreedyScheduler: Ignoring {WorkSpec: 9d87c917-4e70-4a6f-bbd8-0c6b0e397477}. Requires device idle.
+08-14 16:13:00.117  6705  6725 D WM-GreedyScheduler: Ignoring {WorkSpec: 3f9668f5-e1f9-4448-803b-46c8a1a49b7f}. Requires device idle.
+08-14 16:13:00.117  6705  6725 D WM-GreedyScheduler: Ignoring {WorkSpec: 38d83f43-65a8-40fb-b31f-41ce619d90e3}. Requires ContentUri triggers.
+08-14 16:13:00.125  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786713180
+08-14 16:13:00.126  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-14 16:13:00.126  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-14 16:13:00.126  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29778553
+08-14 16:13:00.126  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29778523
+08-14 16:13:00.126  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-14 16:13:00.126  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-14 16:13:00.127  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-14 16:13:00.127  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-14 16:13:00.127  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-14 16:13:00.273  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-14 16:13:00.277  1437  1437 I SurfaceFlinger: SFWD update time=538452669079248
+08-14 16:13:00.278  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-14 16:13:00.278  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-14 16:13:00.279  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-14 16:13:00.282  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-14 16:13:00.283  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-14 16:13:00.285  1325  1406 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-14 16:13:00.285  1325  1406 I display : Current VRR MODE is 3
+08-14 16:13:00.285  1325  1406 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-14 16:13:00.285  1325  1406 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-14 16:13:00.286  1325  1406 I display : commit modeset : 1080x2340@60phs
+08-14 16:13:00.307  1325  1406 W display : deliverWinConfigData:: commit modeset time (21 ms)
+08-14 16:13:00.309  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-14 16:13:00.309  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-14 16:13:00.309  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-14 16:13:00.309  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-14 16:13:00.309  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-14 16:13:00.309  1325  1397 I display : Set Affinity CPU ID : 0
+08-14 16:13:00.309  1325  1397 I display : Set Affinity CPU ID : 1
+08-14 16:13:00.309  1325  1397 I display : Set Affinity CPU ID : 2
+08-14 16:13:00.309  1325  1397 I display : Set Affinity CPU ID : 3
+08-14 16:13:00.309  1325  1397 I display : Set Affinity CPU ID : 4
+08-14 16:13:00.309  1325  1397 I display : Set Affinity CPU ID : 5
+08-14 16:13:00.309  1325  1397 I display : Set Affinity CPU ID : 6
+08-14 16:13:00.309  1325  1397 I display : Set Affinity CPU ID : 7
+08-14 16:13:00.309  1325  1397 I display : Set affinity HWC : 1325
+08-14 16:13:00.309  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-14 16:13:00.309  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-14 16:13:00.309  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-14 16:13:00.310  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-14 16:13:00.311  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-14 16:13:00.642  1726  1775 E Watchdog: !@Sync: 17932 heap(MB): 182 / 186 FD: 1354 [2026-08-14 16:13:00.642]
+08-14 16:13:00.692  1726  1899 D ActivityManager: freezing 4353 com.skms.android.agent:remote
+08-14 16:13:01.003  2870  3724 I HoneySpace.LiveIconSupplier: time tick - 19, CLOCK, 16:13 - 16:12, view: #22ff030, parent: WorkspaceCellLayout#e627a2e
+08-14 16:13:01.005  2870 28160 I HoneySpace.LiveIconSupplier: time tick - 71, CLOCK, 16:13 - 16:12, view: #20f638c, parent: ApplistCellLayout#4a622ea
+08-14 16:13:01.008  2870  3724 I LauncherActivityInfo: Trying to load live icon for com.sec.android.app.clockpackage
+08-14 16:13:01.013  2870  3724 I ApplicationPackageManager: package : com.sec.android.app.clockpackage, useAppIconResources : false
+08-14 16:13:01.013  2870  3724 I LiveIconUtil: getLiveIcon was called in ClockPackage
+08-14 16:13:01.014  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-14 16:13:01.014  2870  3724 I LiveIconUtil: getLiveIcon res = com.sec.android.app.clockpackage
+08-14 16:13:01.017  2870  3724 I LiveIconUtil: stdIconSize : 126 , targetIconSize : 152
+08-14 16:13:01.017  2870  3724 I LiveIconUtil: iconDpi : 640 , mTargetIconDpi : 420
+08-14 16:13:01.066  2870  3724 E AppIconSolution: Couldn't get theme package resources, package is null
+08-14 16:13:01.066  2870  3724 I AppIconSolution: load= live icon for com.sec.android.app.clockpackage, from overlay = false
+08-14 16:13:01.066  2870  3724 I LauncherActivityInfo: packageName: com.sec.android.app.clockpackage, useThemeIcon: false, height: 288, width: 288, density: 640
+08-14 16:13:01.069  2870  3724 I HoneySpace.LiveIconSupplier: updateIcon - 19, CLOCK, true - 16:13, view: #22ff030, parent: WorkspaceCellLayout#e627a2e
+08-14 16:13:01.069  2870 28160 I HoneySpace.LiveIconSupplier: updateIcon - 71, CLOCK, true - 16:13, view: #20f638c, parent: ApplistCellLayout#4a622ea
+08-14 16:13:01.085  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-14 16:13:01.091  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-14 16:13:01.105  1437  1437 I LayerHistory: com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity$_2870#95855 Max (can't resolve refresh rate)
+08-14 16:13:01.106  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-14 16:13:01.106  1437  1437 I SurfaceFlinger: scored - choose 120.00 Hz
+08-14 16:13:01.108  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-14 16:13:01.110  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForClientComposition
+08-14 16:13:01.110  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-14 16:13:01.115  1325  1406 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-14 16:13:01.115  1325  1406 I display : Current VRR MODE is 3
+08-14 16:13:01.115  1325  1406 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-14 16:13:01.115  1325  1406 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-14 16:13:01.115  1325  1406 I display : commit modeset : 1080x2340@120hs
+08-14 16:13:01.126  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786713181
+08-14 16:13:01.126  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-14 16:13:01.126  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-14 16:13:01.126  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29778553
+08-14 16:13:01.127  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29778523
+08-14 16:13:01.127  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-14 16:13:01.127  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-14 16:13:01.127  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-14 16:13:01.127  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-14 16:13:01.127  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-14 16:13:01.141  1325  1406 W display : deliverWinConfigData:: commit modeset time (25 ms)
+08-14 16:13:01.142  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-14 16:13:01.142  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-14 16:13:01.142  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-14 16:13:01.142  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-14 16:13:01.142  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-14 16:13:01.142  1325  1397 I display : Set Affinity CPU ID : 0
+08-14 16:13:01.142  1325  1397 I display : Set Affinity CPU ID : 1
+08-14 16:13:01.142  1325  1397 I display : Set Affinity CPU ID : 2
+08-14 16:13:01.142  1325  1397 I display : Set Affinity CPU ID : 3
+08-14 16:13:01.142  1325  1397 I display : Set Affinity CPU ID : 4
+08-14 16:13:01.142  1325  1397 I display : Set Affinity CPU ID : 5
+08-14 16:13:01.142  1325  1397 I display : Set Affinity CPU ID : 6
+08-14 16:13:01.142  1325  1397 I display : Set Affinity CPU ID : 7
+08-14 16:13:01.142  1325  1397 I display : Set affinity HWC : 1325
+08-14 16:13:01.143  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-14 16:13:01.143  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-14 16:13:01.143  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-14 16:13:01.143  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-14 16:13:01.144  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-14 16:13:01.339  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-14 16:13:01.343  1437  1437 I LayerHistory: com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity$_2870#95855 Max (can't resolve refresh rate)
+08-14 16:13:01.343  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-14 16:13:01.343  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-14 16:13:01.346  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-14 16:13:01.348  1325  1406 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-14 16:13:01.348  1325  1406 I display : Current VRR MODE is 3
+08-14 16:13:01.348  1325  1406 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-14 16:13:01.348  1325  1406 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-14 16:13:01.348  1325  1406 I display : commit modeset : 1080x2340@60phs
+08-14 16:13:01.366  1325  1406 W display : deliverWinConfigData:: commit modeset time (17 ms)
+08-14 16:13:01.367  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-14 16:13:01.367  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-14 16:13:01.367  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-14 16:13:01.367  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-14 16:13:01.367  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-14 16:13:01.367  1325  1397 I display : Set Affinity CPU ID : 0
+08-14 16:13:01.367  1325  1397 I display : Set Affinity CPU ID : 1
+08-14 16:13:01.367  1325  1397 I display : Set Affinity CPU ID : 2
+08-14 16:13:01.367  1325  1397 I display : Set Affinity CPU ID : 3
+08-14 16:13:01.367  1325  1397 I display : Set Affinity CPU ID : 4
+08-14 16:13:01.368  1325  1397 I display : Set Affinity CPU ID : 5
+08-14 16:13:01.368  1325  1397 I display : Set Affinity CPU ID : 6
+08-14 16:13:01.368  1325  1397 I display : Set Affinity CPU ID : 7
+08-14 16:13:01.368  1325  1397 I display : Set affinity HWC : 1325
+08-14 16:13:01.368  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-14 16:13:01.368  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-14 16:13:01.368  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-14 16:13:01.368  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-14 16:13:01.369  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-14 16:13:01.823 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-14 16:13:01.881   730   730 D io_stats: !@   8,0 r 72413932 1326827109 w 22015786 396670888 d 6432908 452751288 f 0 2043976 iot 33345668 0 th 0 0 0 pt 0 inp 0 0 538454.272
+08-14 16:13:01.881   730   730 D io_stats: !@ Read_top(KB): s.messaging:rcs(27353) 3048 loop48(3238) 2304 .apps.messaging(6705) 360
+08-14 16:13:01.881   730   730 D io_stats: !@ Write_top(KB): .apps.messaging(6705) 364 kworker/u16:5(20541) 200 .gms.persistent(14376) 8
+08-14 16:13:01.903  6788  6788 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-14 16:13:01.948 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-14 16:13:02.006  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-14 16:13:02.012  6791  6791 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-14 16:13:02.059 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

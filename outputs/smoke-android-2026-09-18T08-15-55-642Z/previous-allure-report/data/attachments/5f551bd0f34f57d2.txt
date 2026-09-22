@@ -1,0 +1,293 @@
+--------- beginning of main
+08-14 18:02:25.049 15915 15955 I appium  : FindElement command
+08-14 18:02:25.052 15915 15955 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceIdMatches(".*:id/verificationSuccess_button_continue$|^verificationSuccess_button_continue$")'
+08-14 18:02:25.053 15915 15955 I appium  : Waiting up to 10000ms for the device to idle
+08-14 18:02:25.126  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786719745
+08-14 18:02:25.126  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-14 18:02:25.126  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-14 18:02:25.126  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29778662
+08-14 18:02:25.126  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29778643
+08-14 18:02:25.126  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-14 18:02:25.126  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-14 18:02:25.127  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-14 18:02:25.127  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-14 18:02:25.127  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-14 18:02:25.254 15915 15955 I appium  : AppiumResponse: {"sessionId":"2049fdf1-775f-432a-a0c7-0903380eff2a","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1572)\n"}}
+08-14 18:02:25.282 15915 15955 I appium  : channel read: POST /session/2049fdf1-775f-432a-a0c7-0903380eff2a/element
+08-14 18:02:25.285 15915 15955 I appium  : FindElement command
+08-14 18:02:25.287 15915 15955 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceIdMatches(".*:id/verificationSuccess_screen$|^verificationSuccess_screen$")'
+08-14 18:02:25.288 15915 15955 I appium  : Waiting up to 10000ms for the device to idle
+08-14 18:02:25.540 15915 15955 I appium  : AppiumResponse: {"sessionId":"2049fdf1-775f-432a-a0c7-0903380eff2a","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1572)\n"}}
+08-14 18:02:25.563 15915 15955 I appium  : channel read: POST /session/2049fdf1-775f-432a-a0c7-0903380eff2a/element
+08-14 18:02:25.566 15915 15955 I appium  : FindElement command
+08-14 18:02:25.569 15915 15955 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceIdMatches(".*:id/verificationSuccess_screen$|^verificationSuccess_screen$")'
+08-14 18:02:25.570 15915 15955 I appium  : Waiting up to 10000ms for the device to idle
+--------- beginning of system
+08-14 18:02:25.760 15979 16120 I NotificationManager: com.moneybase.qa: notify(1138, null, Notification(channel=chucker_transactions shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=AUTO_CANCEL|LOCAL_ONLY color=0xff01579b actions=1 vis=PRIVATE semFlags=0x0 semPriority=0 semMissedCount=0)) as user
+08-14 18:02:25.765 15979 16120 I NETWORK RESPONSE: 🔴 <-- HTTP FAILED: timeout
+08-14 18:02:25.766 15979 16120 I FS.Core.Shared.LogForwarder.WebApi: [NETWORK RESPONSE] 🔴 <-- HTTP FAILED: timeout
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: Exception caught due to connectivity issue, will attempt to retry if possible
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: java.net.SocketTimeoutException: timeout
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http2.Http2Stream$StreamTimeout.newTimeoutException(Http2Stream.kt:731)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http2.Http2Stream$StreamTimeout.exitAndThrowIfTimedOut(Http2Stream.kt:739)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http2.Http2Stream.takeHeaders(Http2Stream.kt:159)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http2.Http2ExchangeCodec.readResponseHeaders(Http2ExchangeCodec.kt:105)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.connection.Exchange.readResponseHeaders(Exchange.kt:117)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.CallServerInterceptor.intercept(CallServerInterceptor.kt:97)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.kt:34)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.kt:101)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.kt:85)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.kt:74)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at com.chuckerteam.chucker.api.ChuckerInterceptor.intercept(ChuckerInterceptor.kt:114)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at com.growapp.fsMoneybasePciAndroidSdk.utils.HttpLoggingInterceptor.intercept(HttpLoggingInterceptor.kt:122)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at com.moneybase.fsmoneybaseandroidcommon.connectivity.interceptor.FibonacciRetryInterceptor.executeRequestSafe(FibonacciRetryInterceptor.kt:124)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at com.moneybase.fsmoneybaseandroidcommon.connectivity.interceptor.FibonacciRetryInterceptor.intercept(FibonacciRetryInterceptor.kt:41)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at com.moneybase.networking.interceptor.TimeoutInterceptor.intercept(TimeoutInterceptor.kt:56)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at com.moneybase.fsmoneybaseandroidcommon.auth.AuthorizationInterceptor.intercept(AuthorizationInterceptor.kt:99)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at com.moneybase.fsmoneybaseandroidcommon.connectivity.interceptor.NoConnectionInterceptor.intercept(NoConnectionInterceptor.kt:19)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at com.moneybase.fsmoneybaseandroidcommon.connectivity.interceptor.DeviceDataInterceptor$intercept$1.invokeSuspend(DeviceDataInterceptor.kt:60)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at kotlinx.coroutines.BuildersKt.runBlocking(dex-id-5eee372cb062a580ac59c350ff103e266031b083:1)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at kotlinx.coroutines.BuildersKt.runBlocking$default(dex-id-5eee372cb062a580ac59c350ff103e266031b083:1)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at com.moneybase.fsmoneybaseandroidcommon.connectivity.interceptor.DeviceDataInterceptor.intercept(DeviceDataInterceptor.kt:35)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at com.moneybase.networking.interceptor.HeaderInterceptor.intercept(HeaderInterceptor.kt:41)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.connection.RealCall.getResponseWithInterceptorChain$okhttp(RealCall.kt:226)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at okhttp3.internal.connection.RealCall$AsyncCall.run(RealCall.kt:574)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-14 18:02:25.767 15979 16120 E FibonacciInterceptor: 	at java.lang.Thread.run(Thread.java:1572)
+08-14 18:02:25.768 15979 16120 I Datadog : [_dd.sdk_core.default]: Requested to forward error log to RUM, but RUM feature is not registered.
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: [FibonacciInterceptor] Exception caught due to connectivity issue, will attempt to retry if possible
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: java.net.SocketTimeoutException: timeout
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http2.Http2Stream$StreamTimeout.newTimeoutException(Http2Stream.kt:731)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http2.Http2Stream$StreamTimeout.exitAndThrowIfTimedOut(Http2Stream.kt:739)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http2.Http2Stream.takeHeaders(Http2Stream.kt:159)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http2.Http2ExchangeCodec.readResponseHeaders(Http2ExchangeCodec.kt:105)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.connection.Exchange.readResponseHeaders(Exchange.kt:117)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.CallServerInterceptor.intercept(CallServerInterceptor.kt:97)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.kt:34)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.kt:101)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.kt:85)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.kt:74)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at com.chuckerteam.chucker.api.ChuckerInterceptor.intercept(ChuckerInterceptor.kt:114)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at com.growapp.fsMoneybasePciAndroidSdk.utils.HttpLoggingInterceptor.intercept(HttpLoggingInterceptor.kt:122)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at com.moneybase.fsmoneybaseandroidcommon.connectivity.interceptor.FibonacciRetryInterceptor.executeRequestSafe(FibonacciRetryInterceptor.kt:124)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at com.moneybase.fsmoneybaseandroidcommon.connectivity.interceptor.FibonacciRetryInterceptor.intercept(FibonacciRetryInterceptor.kt:41)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at com.moneybase.networking.interceptor.TimeoutInterceptor.intercept(TimeoutInterceptor.kt:56)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at com.moneybase.fsmoneybaseandroidcommon.auth.AuthorizationInterceptor.intercept(AuthorizationInterceptor.kt:99)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at com.moneybase.fsmoneybaseandroidcommon.connectivity.interceptor.NoConnectionInterceptor.intercept(NoConnectionInterceptor.kt:19)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at com.moneybase.fsmoneybaseandroidcommon.connectivity.interceptor.DeviceDataInterceptor$intercept$1.invokeSuspend(DeviceDataInterceptor.kt:60)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at kotlinx.coroutines.BuildersKt.runBlocking(dex-id-5eee372cb062a580ac59c350ff103e266031b083:1)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at kotlinx.coroutines.BuildersKt.runBlocking$default(dex-id-5eee372cb062a580ac59c350ff103e266031b083:1)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at com.moneybase.fsmoneybaseandroidcommon.connectivity.interceptor.DeviceDataInterceptor.intercept(DeviceDataInterceptor.kt:35)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at com.moneybase.networking.interceptor.HeaderInterceptor.intercept(HeaderInterceptor.kt:41)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:126)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.connection.RealCall.getResponseWithInterceptorChain$okhttp(RealCall.kt:226)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at okhttp3.internal.connection.RealCall$AsyncCall.run(RealCall.kt:574)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-14 18:02:25.768 15979 16120 E FS.Core.Shared.LogForwarder.WebApi: 	at java.lang.Thread.run(Thread.java:1572)
+08-14 18:02:25.769 15979 16120 D FibonacciInterceptor: Response code 900 is in autoRetryErrorCodes: false
+08-14 18:02:25.769 15979 16120 D FS.Core.Shared.LogForwarder.WebApi: [FibonacciInterceptor] Response code 900 is in autoRetryErrorCodes: false
+08-14 18:02:25.769 15979 16120 D FibonacciInterceptor: Response code 900 is in localRetryErrorCodes: true
+08-14 18:02:25.770 15979 16120 D FS.Core.Shared.LogForwarder.WebApi: [FibonacciInterceptor] Response code 900 is in localRetryErrorCodes: true
+08-14 18:02:25.770 15979 16120 D FibonacciInterceptor: Request method is GET: true
+08-14 18:02:25.770 15979 16120 D FS.Core.Shared.LogForwarder.WebApi: [FibonacciInterceptor] Request method is GET: true
+08-14 18:02:25.770 15979 16120 D FibonacciInterceptor: Evaluating retry for response code 900: AutoRetry=false, LocalRetry=true, ShouldRetry=true
+08-14 18:02:25.770 15979 16120 D FS.Core.Shared.LogForwarder.WebApi: [FibonacciInterceptor] Evaluating retry for response code 900: AutoRetry=false, LocalRetry=true, ShouldRetry=true
+08-14 18:02:25.770 15979 16120 D FibonacciInterceptor: Response code 900 is in autoRetryErrorCodes: false
+08-14 18:02:25.770 15979 16120 D FS.Core.Shared.LogForwarder.WebApi: [FibonacciInterceptor] Response code 900 is in autoRetryErrorCodes: false
+08-14 18:02:25.770 15979 16120 D FibonacciInterceptor: Response code 900 is in localRetryErrorCodes: true
+08-14 18:02:25.770 15979 16120 D FS.Core.Shared.LogForwarder.WebApi: [FibonacciInterceptor] Response code 900 is in localRetryErrorCodes: true
+08-14 18:02:25.770 15979 16120 I FibonacciInterceptor: Attempting to retry the failed API call: Method: GET; isAutoRetryError: false; isLocalTimeout: true;
+08-14 18:02:25.771 15979 16120 I FS.Core.Shared.LogForwarder.WebApi: [FibonacciInterceptor] Attempting to retry the failed API call: Method: GET; isAutoRetryError: false; isLocalTimeout: true;
+08-14 18:02:25.773 15979 16120 I NotificationManager: com.moneybase.qa: notify(1138, null, Notification(channel=chucker_transactions shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=AUTO_CANCEL|LOCAL_ONLY color=0xff01579b actions=1 vis=PRIVATE semFlags=0x0 semPriority=0 semMissedCount=0)) as user
+08-14 18:02:25.783  1726  2283 D NetdEventListenerService: DNS Requested by 650, 10577(com.moneybase.qa), SUCCESS, 2ms
+08-14 18:02:25.792 15915 15955 I appium  : AppiumResponse: {"sessionId":"2049fdf1-775f-432a-a0c7-0903380eff2a","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1572)\n"}}
+08-14 18:02:25.805 15915 15955 I appium  : channel read: GET /session/2049fdf1-775f-432a-a0c7-0903380eff2a/screenshot
+08-14 18:02:25.807 15915 15955 I appium  : CaptureScreenshot command
+08-14 18:02:25.810 15915 15955 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-14 18:02:25.811 15915 15955 I tomator2.server: hiddenapi: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (runtime_flags=0, domain=platform, api=blocked) from Lio/appium/uiautomator2/utils/ReflectionUtils; (domain=app, TargetSdkVersion=34) using reflection: allowed
+08-14 18:02:25.977  1726  1726 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+08-14 18:02:25.990  1726  1726 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+08-14 18:02:25.999  1726  2226 I SemWifiServiceDetector: Service det. suspended: T / T / 20202
+08-14 18:02:26.009  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.010  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.010  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-14 18:02:26.012  5649  5649 W GameLauncher: NotificationListener Ignore non game notification: com.moneybase.qa
+08-14 18:02:26.014  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.015  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-14 18:02:26.031  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-14 18:02:26.035  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 18:02:26.035  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-14 18:02:26.035  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.035  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.037  6020  6488 I NotificationPipeline: Processing new notification: 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.037  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-14 18:02:26.037  2357  2357 I AODNotificationManager: updateNotification() 
+08-14 18:02:26.038  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-14 18:02:26.038  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-14 18:02:26.038  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-14 18:02:26.038  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1138
+08-14 18:02:26.039  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-14 18:02:26.041  6020  6488 I NotificationPipeline: Discarding notification: 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.045  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted com.moneybase.qa: 0|com.moneybase.qa|1138|null|10577: 0
+08-14 18:02:26.046  2870  6282 I HoneySpace.NotificationListener: invalid notification: com.moneybase.qa UserHandle{0}: canShowBadge is false
+08-14 18:02:26.047  2870 32175 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. com.moneybase.qa/com.moneybase.views.activities.LoginActivity#UserHandle{0}|78744 : 0
+08-14 18:02:26.047  2870 32175 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. com.moneybase.qa/leakcanary.internal.activity.LeakLauncherActivity#UserHandle{0}|78745 : 0
+08-14 18:02:26.049   730   730 D io_stats: !@   8,0 r 72989886 1337333105 w 22231998 400562928 d 6498864 456602680 f 0 2061845 iot 33699500 0 th 0 0 0 pt 0 inp 0 0 545018.441
+08-14 18:02:26.050   730   730 D io_stats: !@ Read_top(KB): .apps.messaging(18751) 6288 screencap(18982) 2716 .gms.persistent(14376) 168
+08-14 18:02:26.050   730   730 D io_stats: !@ Write_top(KB): kworker/u16:1(24309) 1460 .apps.messaging(18751) 824 soft.appmanager(22573) 16
+08-14 18:02:26.051  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.052  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.052  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-14 18:02:26.053  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-14 18:02:26.053  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1138
+08-14 18:02:26.054  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted com.moneybase.qa: 0|com.moneybase.qa|1138|null|10577: 0
+08-14 18:02:26.054  2870  6282 I HoneySpace.NotificationListener: invalid notification: com.moneybase.qa UserHandle{0}: canShowBadge is false
+08-14 18:02:26.055  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.055  2870 26291 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. com.moneybase.qa/com.moneybase.views.activities.LoginActivity#UserHandle{0}|78744 : 0
+08-14 18:02:26.055  2870 26291 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. com.moneybase.qa/leakcanary.internal.activity.LeakLauncherActivity#UserHandle{0}|78745 : 0
+08-14 18:02:26.055  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-14 18:02:26.057  6020  6488 I NotificationPipeline: Processing new notification: 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.058  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-14 18:02:26.058  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-14 18:02:26.059  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-14 18:02:26.061  6020  6488 I NotificationPipeline: Discarding notification: 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.083  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-14 18:02:26.087  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 18:02:26.087  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.087  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.089  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-14 18:02:26.089  2357  2357 I AODNotificationManager: updateNotification() 
+08-14 18:02:26.098  2357  3033 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-14 18:02:26.101  2357  3033 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-14 18:02:26.106  2357  2357 I AppIconSolution: return adaptive icon for com.moneybase.qa, isNight = false
+08-14 18:02:26.111  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 18:02:26.118  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.118  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.118  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.118  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.119  2357  2357 D S.S.N.  : entryViewBound parent :0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.119  2357  2357 D S.S.N.  : entryViewBound parent :0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.120  2357  2357 I AppIconSolution: return adaptive icon for com.moneybase.qa, isNight = false
+08-14 18:02:26.126  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786719746
+08-14 18:02:26.126  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-14 18:02:26.126  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-14 18:02:26.126  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-14 18:02:26.126  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29778662
+08-14 18:02:26.126  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29778643
+08-14 18:02:26.126  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-14 18:02:26.126  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-14 18:02:26.127  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-14 18:02:26.127  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-14 18:02:26.127  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-14 18:02:26.129  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 18:02:26.130  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.130  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10577
+08-14 18:02:26.131  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-14 18:02:26.131  2357  2357 I AODNotificationManager: updateNotification() 
+08-14 18:02:26.547 18982 18982 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-14 18:02:26.547 18982 18982 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-14 18:02:26.548 18982 18982 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-14 18:02:26.550  1726  2528 I EDMNativeHelperService: isScreenCaptureEnabled
+08-14 18:02:26.553  1726  2528 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-14 18:02:26.553 18982 18982 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-14 18:02:26.554 18982 18982 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-14 18:02:26.561  1437  1464 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_15979#98116(seamlessTransition:0)
+08-14 18:02:26.561  1437  1464 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-14 18:02:26.561  1437  1464 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-14 18:02:26.562  1437  1464 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-14 18:02:26.567  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-14 18:02:26.571  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_15979#98116 at index 1
+08-14 18:02:26.571  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-14 18:02:26.572  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-14 18:02:26.641 18982 18991 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-14 18:02:26.891 15915 15955 I appium  : AppiumResponse: {"sessionId":"2049fdf1-775f-432a-a0c7-0903380eff2a","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N13dFtnfif870UHCTawd1LsKmzqktVsS7ZsSa4TT81kyiY7c1I22eqsu51J3iSbvO9uJnUmyWRmZ+xxPB5ZXbZkNauQqiyi2HvvAIkO3PcPihBBAOwkCr+fc+Yc4cHFvQ8sEqP7xfP8foJ…
+08-14 18:02:26.909 15915 15955 I appium  : channel read: POST /session/2049fdf1-775f-432a-a0c7-0903380eff2a/element
+08-14 18:02:26.909 15915 15955 I appium  : FindElement command
+08-14 18:02:26.910 15915 15955 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceId("com.moneybase.qa:id/clSelectCardGooglePay")'
+08-14 18:02:26.910 15915 15955 I appium  : Waiting up to 10000ms for the device to idle
+08-14 18:02:26.959 15915 15955 I appium  : AppiumResponse: {"sessionId":"2049fdf1-775f-432a-a0c7-0903380eff2a","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1572)\n"}}
+08-14 18:02:26.973 15915 15955 I appium  : channel read: GET /session/2049fdf1-775f-432a-a0c7-0903380eff2a/source
+08-14 18:02:26.974 15915 15955 I appium  : Source command
+08-14 18:02:26.974 15915 15955 I appium  : Waiting up to 10000ms for the device to idle
+08-14 18:02:27.032  1726  3186 I NSLocationMonitor: getGPSUsingApps() called
+08-14 18:02:27.033  3189  3239 I NSLocationManager_FLP: getGPSUsingApps, No change
+08-14 18:02:27.050  1726  3186 D MARs:ActiveTrafficFilter: filter : com.moneybase.dev(0)
+08-14 18:02:27.050  1726  3186 D FreecessHandler: freeze com.moneybase.dev(10340) result : 8
+08-14 18:02:27.124 15915 15955 I appium  : AppiumResponse: {"sessionId":"2049fdf1-775f-432a-a0c7-0903380eff2a","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-14 18:02:27.126  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786719747
+08-14 18:02:27.126  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-14 18:02:27.126  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-14 18:02:27.126  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29778662
+08-14 18:02:27.126  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29778643
+08-14 18:02:27.126  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-14 18:02:27.126  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-14 18:02:27.126  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-14 18:02:27.126  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-14 18:02:27.127  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-14 18:02:27.136 15915 15955 I appium  : channel read: POST /session/2049fdf1-775f-432a-a0c7-0903380eff2a/element
+08-14 18:02:27.136 15915 15955 I appium  : FindElement command
+08-14 18:02:27.137 15915 15955 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceId("com.moneybase.qa:id/clSelectCardGooglePay")'
+08-14 18:02:27.137 15915 15955 I appium  : Waiting up to 10000ms for the device to idle
+08-14 18:02:27.147  1726  3186 I NSLocationMonitor: getGPSUsingApps() called
+08-14 18:02:27.148  3189  3239 I NSLocationManager_FLP: getGPSUsingApps, No change
+08-14 18:02:27.163  1726  3186 D MARs:ActiveTrafficFilter: filter : com.samsung.android.game.gamehome(0)
+08-14 18:02:27.164  1726  3186 D FreecessHandler: freeze com.samsung.android.game.gamehome(10312) result : 8
+08-14 18:02:27.193 15915 15955 I appium  : AppiumResponse: {"sessionId":"2049fdf1-775f-432a-a0c7-0903380eff2a","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1572)\n"}}
+08-14 18:02:27.207  2336  2835 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-14 18:02:27.227 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-14 18:02:27.276 18992 18992 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-14 18:02:27.301 15915 15955 I appium  : channel read: POST /session/2049fdf1-775f-432a-a0c7-0903380eff2a/element
+08-14 18:02:27.301 15915 15955 I appium  : FindElement command
+08-14 18:02:27.303 15915 15955 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("Not Now")'
+08-14 18:02:27.303 15915 15955 I appium  : Waiting up to 10000ms for the device to idle
+08-14 18:02:27.415 15915 15955 I appium  : AppiumResponse: {"sessionId":"2049fdf1-775f-432a-a0c7-0903380eff2a","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1572)\n"}}
+08-14 18:02:27.461 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-14 18:02:27.465 14376 14376 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.PersistentApiService }
+08-14 18:02:27.529 18995 18995 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-14 18:02:27.560 15915 15955 I appium  : channel read: POST /session/2049fdf1-775f-432a-a0c7-0903380eff2a/element
+08-14 18:02:27.565 15915 15955 I appium  : FindElement command
+08-14 18:02:27.563  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-14 18:02:27.569 15915 15955 I appium  : method: '-android uiautomator', selector: 'new UiSelector().text("Not Now")'
+08-14 18:02:27.570 15915 15955 I appium  : Waiting up to 10000ms for the device to idle
+08-14 18:02:27.577  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 114491, isSameBssidAndFreq true
+08-14 18:02:27.579  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786719747579 lastDateWindow=1786464242000
+08-14 18:02:27.588 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

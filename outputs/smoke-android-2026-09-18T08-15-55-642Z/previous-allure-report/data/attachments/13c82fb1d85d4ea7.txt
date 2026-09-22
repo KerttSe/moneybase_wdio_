@@ -1,0 +1,301 @@
+--------- beginning of main
+07-31 11:46:27.279  5858  6545 I NotificationPipeline: Processing new notification: 0|com.moneybase.qa|1138|null|10569
+07-31 11:46:27.279  5798  5798 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+07-31 11:46:27.279  4929  4929 W GameLauncher: NotificationListener Ignore non game notification: com.moneybase.qa
+07-31 11:46:27.279  5858  6545 W BridgeModeModel: Not started, default to bridging
+07-31 11:46:27.280  5858  6545 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+07-31 11:46:27.280  5798  5798 D NLService: Successfully stored the newly arrived notification identified by 1138
+07-31 11:46:27.280  5858  6545 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+07-31 11:46:27.281  5858  6545 I NotificationPipeline: Discarding notification: 0|com.moneybase.qa|1138|null|10569
+07-31 11:46:27.281  1870  1870 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|com.moneybase.qa|1138|null|10569
+07-31 11:46:27.282  1870  1870 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.moneybase.qa|1138|null|10569
+07-31 11:46:27.282  1870  1870 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+07-31 11:46:27.285  1870  1870 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.moneybase.qa|1138|null|10569
+07-31 11:46:27.304  1870  1870 D PluginActionManager: stopListening
+07-31 11:46:27.304  1870  1870 D PluginActionManager: startListening
+07-31 11:46:27.305  1870  2000 D PluginActionManager: queryAll com.android.systemui.action.PLUGIN_NOTIFICATION_MENU_ROW
+07-31 11:46:27.307  1870  2000 D PluginActionManager: Found 0 plugins
+07-31 11:46:27.307  1870  1870 I View    : setRequestedFrameRate frameRate=-2.0, this=StatusBarIconView(slot='com.moneybase.qa/0x472' alpha=1.0 icon=StatusBarIcon(icon=Icon(typ=RESOURCE pkg=com.moneybase.qa id=0x7f080128) visible user=0 ) visibleState=ICON iconColor=#ff252528 staticDrawableColor=#ff01579b decorColor=#ff1b6cf7 animationStartColor=#0 currentSetColor=#ff252528 notification=StatusBarNotification(pkg=com.moneybase.qa user=UserHandle{0} id=1138 tag=null key=0|com.moneybase.qa|1138|null|10569: Notification(channel=chucker_transactions shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=AUTO_CANCEL|LOCAL_ONLY color=0xff01579b actions=1 vis=PRIVATE semFlags=0x0 semPriority=0 semMissedCount=0))), caller=com.android.systemui.statusbar.StatusBarIconView.onAttachedToWindow:6 android.view.View.dispatchAttachedToWindow:24320 android.view.ViewGroup.addViewInner:5582 android.view.ViewGroup.addView:5358 android.view.ViewGroup.addView:5298 
+07-31 11:46:27.310  1870  1870 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+07-31 11:46:27.312  1870  1870 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+07-31 11:46:27.313  1870  1870 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+07-31 11:46:27.313  1870  1870 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+07-31 11:46:27.314  1870  1870 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+07-31 11:46:27.314  1870  1870 I AODNotificationManager: updateNotification() 
+07-31 11:46:27.321  1870  2323 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+07-31 11:46:27.324  1870  2323 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+07-31 11:46:27.341  1870  1870 I AppIconSolution: return adaptive icon for com.moneybase.qa, isNight = false
+07-31 11:46:27.362  1870  1870 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+07-31 11:46:27.377  1870  1870 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+07-31 11:46:27.377  1870  1870 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+07-31 11:46:27.377  1870  1870 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+07-31 11:46:27.377  1870  1870 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+07-31 11:46:27.378  1870  1870 D S.S.N.  : entryViewBound parent :0|com.moneybase.qa|1138|null|10569
+07-31 11:46:27.380  1870  1870 I AppIconSolution: return adaptive icon for com.moneybase.qa, isNight = false
+07-31 11:46:27.384  1870  1870 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+07-31 11:46:27.386  1870  1870 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+07-31 11:46:27.386  1870  1870 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+07-31 11:46:27.386  1870  1870 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.moneybase.qa|1138|null|10569
+07-31 11:46:27.387  1870  1870 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+07-31 11:46:27.387  1870  1870 I AODNotificationManager: updateNotification() 
+--------- beginning of system
+07-31 11:46:27.922   739   739 D io_stats: !@   8,0 r 65649112 1243935255 w 19292995 322692096 d 5482702 381169120 f 0 2006867 iot 28866388 0 th 0 0 0 pt 0 inp 0 0 460287.742
+07-31 11:46:28.066  1105  1126 E HeatmapThread: ECT Thread time in milliseconds: 1785487588
+07-31 11:46:28.066  1105  1126 D HeatmapThread: !@ batteryplugType : 0
+07-31 11:46:28.066  1105  1126 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+07-31 11:46:28.066  1105  1126 D HeatmapThread: !@ Heatmap currtime: 29758126
+07-31 11:46:28.066  1105  1126 D HeatmapThread: !@ Heatmap prevtime: 29758101
+07-31 11:46:28.066  1105  1126 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+07-31 11:46:28.067  1105  1126 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29739448
+07-31 11:46:28.067  1105  1126 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+07-31 11:46:28.067  1105  1126 E HeatmapThread: !@ CAM Could not access BSOH EFS
+07-31 11:46:28.067  1105  1126 E HeatmapThread: !@ CAM New BSOH: 0
+07-31 11:46:28.169  1018  1053 E BatteryDump: !@new_battery_dump : 4010,1527,1700,2054,53,333,334,359,333,0,332,331,0,Charging,NO_CHARGING,Normal,Good,PDIC,0,Normal,0,0,9180,0x18000,0x10010000,0x0,0,0,0000,0000,ffff0700,0,0,0,0,675,3859,5252,980,0,
+07-31 11:46:28.179  1018  1018 I android.hardware.health@2.1-service-samsung: updateLrpSysfs: write: 332
+07-31 11:46:28.181  1414  2023 D [SS]BattFunctions: [sendRemainingChargingTimeChangedIntent]remainingChargingTime:4623 ,mLastRemainingChargingTime:4634
+07-31 11:46:28.190  1870  1870 D PowerUI : Remaining charging time : 4623
+07-31 11:46:28.190  1870  1870 D PowerUI : Charging time is changed, check charging notification
+07-31 11:46:28.190  1870  1870 D PowerUI.Notification: showChargingNotice - User swipe charging notification, so return!
+07-31 11:46:28.193  1870  1870 I AODBatteryManager: updateBatteryData: ACTION_BATTERY_CHANGED: false, isSleepModeChanged:false ,isRemainingTimeChanged: true, isUSBRestriction: false
+07-31 11:46:28.193  1870  1870 I ChargingInfoManager: updateChargingInfo: newState = AOD ChargingInfo [mState=BATTERY_AND_REMAIN_TIME, mIsCharging=true, mIsPlugged=true, mIsFullyCharged=false, mIsBatteryProtectMode=false, mBetteryLevel=53, mBetteryProtectModeType0, mIsSlowChargingfalse], oldState = AOD ChargingInfo [mState=BATTERY_AND_REMAIN_TIME, mIsCharging=true, mIsPlugged=true, mIsFullyCharged=false, mIsBatteryProtectMode=false, mBetteryLevel=53, mBetteryProtectModeType0, mIsSlowChargingfalse]
+07-31 11:46:28.782  1414  1671 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: Connected to unknown network * ID: 20 SSID: "Ladani_1" PROVIDER-NAME: null BSSID: null FQDN: null HOME-PROVIDER-NETWORK: false PRIO: 0 HIDDEN: false PMF: false CarrierId: -1 SubscriptionId: -1 SubscriptionGroup: null Currently Connected: true User Selected: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  NetworkSelectionStatus NETWORK_SELECTION_ENABLED
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  hasEverConnected: true
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  hasNeverDetectedCaptivePortal: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  hasEverValidatedInternetAccess: true
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  mCandidateSecurityParams: Security Parameters:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  Type: 2
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  Enabled: true
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  KeyMgmt: WPA_PSK
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  Protocols: WPA RSN
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  AuthAlgorithms:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  PairwiseCiphers: TKIP CCMP
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  GroupCiphers: WEP40 WEP104 TKIP CCMP
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  GroupMgmtCiphers:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  SuiteBCiphers:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  RequirePmf: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  IsAddedByAutoUpgrade: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  IsSaeH2eOnlyMode: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  IsSaePkOnlyMode: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  mLastUsedSecurityParams: Security Parameters:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  Type: 2
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  Enabled: true
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  KeyMgmt: WPA_PSK
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  Protocols: WPA RSN
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  AuthAlgorithms:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  PairwiseCiphers: TKIP CCMP
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  GroupCiphers: WEP40 WEP104 TKIP CCMP
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  GroupMgmtCiphers:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  SuiteBCiphers:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  RequirePmf: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  IsAddedByAutoUpgrade: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  IsSaeH2eOnlyMode: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  IsSaePkOnlyMode: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  numAssociation 102
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  validatedInternetAccess shared trusted
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  macRandomizationSetting: 3
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  mRandomizedMacAddress: ea:97:94:58:40:9c
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  randomizedMacExpirationTimeMs: 2026-07-31T13:02:07.962
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  randomizedMacLastModifiedTimeMs: <none>
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  mIsSendDhcpHostnameEnabled: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  deletionPriority: 0
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  KeyMgmt: WPA_PSK Protocols: WPA RSN
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  AuthAlgorithms:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  PairwiseCiphers: TKIP CCMP
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  GroupCiphers: WEP40 WEP104 TKIP CCMP
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  GroupMgmtCiphers:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  SuiteBCiphers:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  PSK/SAE: *
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: SecurityParams List:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: Security Parameters:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  Type: 2
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  Enabled: true
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  KeyMgmt: WPA_PSK
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  Protocols: WPA RSN
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  AuthAlgorithms:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  PairwiseCiphers: TKIP CCMP
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  GroupCiphers: WEP40 WEP104 TKIP CCMP
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  GroupMgmtCiphers:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  SuiteBCiphers:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  RequirePmf: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  IsAddedByAutoUpgrade: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  IsSaeH2eOnlyMode: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  IsSaePkOnlyMode: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: Security Parameters:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  Type: 4
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  Enabled: true
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  KeyMgmt: SAE
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  Protocols: RSN
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  AuthAlgorithms:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  PairwiseCiphers: CCMP GCMP_256 GCMP_128
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  GroupCiphers: CCMP GCMP_256 GCMP_128
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  GroupMgmtCiphers:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  SuiteBCiphers:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  RequirePmf: true
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  IsAddedByAutoUpgrade: true
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  IsSaeH2eOnlyMode: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  IsSaePkOnlyMode: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: 
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: Enterprise config:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  ocsp: 0
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  trust_on_first_use: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  user_approve_no_ca_cert: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  selected_rcoi: 0
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  minimum_tls_version: 0
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  enable_conservative_peer_mode: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  tofu_dialog_state: 0
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  tofu_connection_state: 0
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: IP config:
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: IP assignment: DHCP
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: Proxy settings: NONE
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  cuid=1000 cname=android.uid.system:1000 luid=1000 lname=android.uid.system:1000 lcuid=1000 allowAutojoin=true noInternetAccessExpected=false mostRecentlyConnected=false 
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: lastConnected: 2026-07-31T11:02:08.006 
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: 
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: numRebootsSinceLastUse: 0
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: recentFailure: Association Rejection code: 0, last update time: 0
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: bssidAllowlist unset
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: vendorData unset
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: IsDppConfigurator: true
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory: HasEncryptedPreSharedKey: false
+07-31 11:46:28.790  1414  1671 W WifiNetworkFactory:  setWifi7Enabled=true:40:ed:00:09:53:28. Ignoring...
+07-31 11:46:28.795  1414  3306 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 88481, isSameBssidAndFreq true
+07-31 11:46:28.796  2246  2461 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236038, activityId=2131236043)
+07-31 11:46:28.797  1414  1766 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-07-25 19:37:31 syn=3, rto=0, cwnd=0
+07-31 11:46:28.797  1414  1684 D ConnectivityService: notifyType CALLBACK_CAP_CHANGED for [607 WIFI]
+07-31 11:46:28.798  1414  1766 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1785487588798 lastDateWindow=1784997456000
+07-31 11:46:28.799  1414  1766 I SemWifiLinkQualityMonitor: Link stat: 511 / 49 / 1.36 (15) / 96 / -64.0 || 100.0 : 96.00 / G (B) || 000953282422: 0.163 / 49.089 / N || N N / 4 0 / N 2.0 / Y X 0 / 460288617 0 || 2026-07-25 19:37:36  / 0: 3 0 0 0 0 0 / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0
+07-31 11:46:28.800  1414  1724 D SemWifiApNsd:Client: lpInterface:wlan0
+07-31 11:46:28.800  1414  1724 D SemWifiSwitchForIndividualAppsService: stopTCPMonitoring : already stopped
+07-31 11:46:28.801  1414  1724 I WifiConnectivityMonitor.NCC: sNetworkCallback(oCC) FULL : 607(valid: true/captive: false)
+07-31 11:46:28.802  1414  1724 I WifiConnectivityMonitor.NCC: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=24658Kbps LinkDnBandwidth>=37552Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:**:**:00, MAC: 02:00:00:**:**:00, IP: /192.***.*.125, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11n, RSSI: -64, Link speed: 96Mbps, Tx Link speed: 96Mbps, Max Supported Tx Link speed: 144Mbps, Rx Link speed: 52Mbps, Max Supported Rx Link speed: 144Mbps, Frequency: 2422MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -64 AdminUids: [1000] SSID: "Ladani_1" UnderlyingNetworks: Null]
+07-31 11:46:28.803  1414  1792 D WifiConnectivityMonitor: HANDLE_ON_CAPABILITIES_CHANGED
+07-31 11:46:28.803  1414  1786 D SemApeService: Deducted link capacity (M: R=36 T=72) RSSI=-64
+07-31 11:46:28.804  1414  1786 D SemApeService: Deducted link capacity (M: R=36 T=72) on (wlan0) GoogleAPI(M: R=37 T=24) RSSI=-64 isDefault=false isMlo=false
+07-31 11:46:28.804  1414  1792 I WifiConnectivityMonitor: determineMode : MODE_NON_SWITCHABLE_BY_POOR_NETWORK_DETECTION_DISABLED
+07-31 11:46:28.804  1414  1792 D OpenNetworkQos[4.00]: updateBssidNoInternet: mBssidNoInternet = false
+07-31 11:46:28.804  1414  1792 D OpenNetworkQos[4.00]: getOpenNetworkQosNoInternetStatus: false
+07-31 11:46:28.804  1414  1792 D OpenNetworkQos[4.00]: getOpenNetworkQosScores: 26 26 26 
+07-31 11:46:28.804  1414  1792 D KNOX_MDM_SettingsProvider: isChangeAllowed() : name = wifi_wcm_qos_sharing_score_summary
+07-31 11:46:28.805  1870  2050 I WifiPickerTracker: NetworkCallback : onCapabilitiesChanged
+07-31 11:46:28.805  1870  2050 D WifiPickerTracker: updateWifiEntries capabilities
+07-31 11:46:28.816  4654  5664 I HBD     : g onCapabilitiesChanged network : 607 current network state : wifi 
+07-31 11:46:28.820  1414  1684 D ConnectivityService: notifyType CALLBACK_CAP_CHANGED for [608 WIFI|VPN]
+07-31 11:46:28.830  1114  1245 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+07-31 11:46:28.831  2167  2450 I WfcEpdgManager: mDefaultNetworkCallback onCapabilitiesChanged(): isWifi :true,validated :true
+07-31 11:46:28.832  1414  1792 I WifiProfileShare: network QoS data was changed (internet), updateQoSData networkType: true, qosData: false
+07-31 11:46:28.833  1114  1223 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+07-31 11:46:28.834  1414  2846 V WifiProfileShare.Caster: update wips network, size: 0
+07-31 11:46:28.835  2167  2356 I WfcEpdgManager: [Connected] processMessage WIFI_CONNECTED
+07-31 11:46:28.835  1414  2846 D WifiProfileShare: nearby scanning settings run
+07-31 11:46:28.835  1414  2846 D WifiProfileShare: network score provider settings enabled
+07-31 11:46:28.835  1414  2846 D OpenNetworkQos[4.00]: getOpenNetworkQosScores: 26 26 26 
+07-31 11:46:28.835  1414  2846 D OpenNetworkQos[4.00]: getOpenNetworkQosNoInternetStatus: false
+07-31 11:46:28.835  1414  2846 I WifiProfileShare.Caster: current network type: 0, score: [26, 26, 26]
+07-31 11:46:28.836  1414  2846 V WifiProfileShare.Caster: captive portal configuration was set
+07-31 11:46:28.836  1414  2846 V WifiProfileShare.Cache: update network score 40:ed:00:**:**:28
+07-31 11:46:28.836  1414  2846 D WifiProfileShare.ScanMatcher: getMcfDataList size:2
+07-31 11:46:28.836  1414  2846 I WifiProfileShare.Caster: qos data was updated , before:type:QOS, pBssid:e4:53:68, qosData:f9 after:type:QOS, pBssid:e4:53:68, qosData:f9
+07-31 11:46:28.837  6350 11860 D ConnectivityManager: StackLog: [android.net.ConnectivityManager.sendRequestForNetwork(ConnectivityManager.java:4744)] [android.net.ConnectivityManager.sendRequestForNetwork(ConnectivityManager.java:4912)] [android.net.ConnectivityManager.registerNetworkCallback(ConnectivityManager.java:5329)] [android.net.ConnectivityManager.registerNetworkCallback(ConnectivityManager.java:5299)] [dtzg.a(:com.google.android.gms@262634035@26.26.34 (260400-945364269):34)] [lnz.a(:com.google.android.gms@262634035@26.26.34 (260400-945364269):19)] [dtzs.j(:com.google.android.gms@262634035@26.26.34 (260400-945364269):19)] [dtzs.O(:com.google.android.gms@262634035@26.26.34 (260400-945364269):14)] [dtzs.K(:com.google.android.gms@262634035@26.26.34 (260400-945364269):7)] [dtzs.I(:com.google.android.gms@262634035@26.26.34 (260400-945364269):23)] [dtzk.run(:com.google.android.gms@262634035@26.26.34 (260400-945364269):9)] [blvq.c(:com.google.android.gms@262634035@26.26.34 (260400-945364269):50)] [blvq.run(:com.google.android.gms@262634035@26.26.34 (260400-945364269):71)] [java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)] [java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)] [bmbk.run(:com.google.android.gms@262634035@26.26.34 (260400-945364269):8)] [java.lang.Thread.run(Thread.java:1572)]
+07-31 11:46:28.838  1870  2050 D WifiPickerTracker: update AutoHotspot Entries() : bleAccessPoints -> 0
+07-31 11:46:28.838  1870  2050 D WifiPickerTracker: handleNetworkCapabilitiesChanged
+07-31 11:46:28.838  1870  2050 I WifiPickerTracker: DefaultNetworkCallback : onCapabilitiesChanged
+07-31 11:46:28.838 27610 27643 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=1159 ]
+07-31 11:46:28.839 28511 28557 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI|VPN Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=24658Kbps LinkDnBandwidth>=37552Kbps TransportInfo: <VpnTransportInfo{type=1, sessionId=null, bypassable=false longLivedTcpConnectionsExpensive=false}> UnderlyingNetworks: Null]
+07-31 11:46:28.840 27610 27649 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix="RcsEngineImpl[DUAL_REG]:[3459c7be-7f85]>Handler" thread_id=1164 ]
+07-31 11:46:28.841  1114  1114 I LayerHistory: StatusBar$_1870#98 voted NoVote (0.00 Hz)
+07-31 11:46:28.841  1114  1114 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+07-31 11:46:28.842  1114  1114 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+07-31 11:46:28.842 27610 27649 I BugleRcsEngine: Cannot use CS.apk as it's battery optimized [CONTEXT thread_id=1164 ]
+07-31 11:46:28.843  1017  1017 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+07-31 11:46:28.843  1017  1017 I display : Current VRR MODE is 3
+07-31 11:46:28.843  1017  1017 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+07-31 11:46:28.843  1017  1017 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+07-31 11:46:28.844  1017  1017 I display : commit modeset : 1080x2340@120hs
+07-31 11:46:28.844  1414  2846 I [MCFSDK_android_1.3.7026]_4_McfCasterImpl: isNetworkEnabled - type : 1 ret : true
+07-31 11:46:28.844  1414  2846 D WifiProfileShare.McfCast: -ME--- mIsNetworkEnabled :true
+07-31 11:46:28.844  1414  2846 D WifiProfileShare.McfCast: updateQoSData ignored, same contents
+07-31 11:46:28.844  1414  2846 D WifiProfileShare.MCF: success update QosData !
+07-31 11:46:28.844  2114  3197 I EPDG -- SIM1 [SMARTWIFI]: mWiFiValidateNetworkCallback onCapabilitiesChanged(): validated true captiveportal false
+07-31 11:46:28.844  1414  2846 I [MCFSDK_android_1.3.7026]_4_McfCasterImpl: isNetworkEnabled - type : 1 ret : true
+07-31 11:46:28.844  1414  2846 D WifiProfileShare.McfCast: -ME--- mIsNetworkEnabled :true
+07-31 11:46:28.844  1414  2846 D WifiProfileShare.McfCast: -ME--- updatePasswordDate pwdData size:2
+07-31 11:46:28.846  1870  1985 D WifiInteractor: get wifiIconGroup ePDGConnected : false
+07-31 11:46:28.846  1870  1984 D WifiInteractor: get wifiIconGroup ePDGConnected : false
+07-31 11:46:28.847  2114  3197 I EPDG -- SIM1 [NetController]: WifiNetworkCallback onCapabilitiesChanged(): validated true
+07-31 11:46:28.849  2246  2461 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236037, activityId=2131236043)
+07-31 11:46:28.849  2246  2461 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236037, activityId=2131236043)
+07-31 11:46:28.853  6350 11860 D ConnectivityManager: StackLog: [android.net.ConnectivityManager.unregisterNetworkCallback(ConnectivityManager.java:5579)] [dtzs.j(:com.google.android.gms@262634035@26.26.34 (260400-945364269):43)] [dtzs.O(:com.google.android.gms@262634035@26.26.34 (260400-945364269):14)] [dtzs.K(:com.google.android.gms@262634035@26.26.34 (260400-945364269):7)] [dtzs.I(:com.google.android.gms@262634035@26.26.34 (260400-945364269):23)] [dtzk.run(:com.google.android.gms@262634035@26.26.34 (260400-945364269):9)] [blvq.c(:com.google.android.gms@262634035@26.26.34 (260400-945364269):50)] [blvq.run(:com.google.android.gms@262634035@26.26.34 (260400-945364269):71)] [java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)] [java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)] [bmbk.run(:com.google.android.gms@262634035@26.26.34 (260400-945364269):8)] [java.lang.Thread.run(Thread.java:1572)]
+07-31 11:46:28.854  1414  1684 D ConnectivityService: Rematched networks [computed 1ms] [applied 3ms] [issued 3]
+07-31 11:46:28.854  1414  1684 D ConnectivityService: NetworkReassignment : no changes
+07-31 11:46:28.855  6350 11860 I NearbyMediums: Wifi changed new SSID: <unknown ssid>
+07-31 11:46:28.855  6350 11860 I NearbyMediums: WifiLanConnectivityInfo is not changed, skip notify.
+07-31 11:46:28.855  6350 11860 I NearbyMediums: [WifiNetworkV2] defaultNetworkCallback onCapabilitiesChanged network:608 [ WIFI VPN ] isNonBypassable:true
+07-31 11:46:28.858  1414  1744 D BackgroundInstallControlService: Package event received: 0
+07-31 11:46:28.864  1017  1017 W display : deliverWinConfigData:: commit modeset time (20 ms)
+07-31 11:46:28.865  1017  1098 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+07-31 11:46:28.865  1114  1114 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+07-31 11:46:28.866  1114  1114 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+07-31 11:46:28.866  1017  1098 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+07-31 11:46:28.866  1017  1098 I display : Set m2mMPP capacity(4) for fps(120)
+07-31 11:46:28.866  1017  1098 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+07-31 11:46:28.866  1017  1098 I display : Set Affinity config for fps(120) : cpuIDs : 255
+07-31 11:46:28.866  1017  1098 I display : Set Affinity CPU ID : 0
+07-31 11:46:28.866  1017  1098 I display : Set Affinity CPU ID : 1
+07-31 11:46:28.866  1017  1098 I display : Set Affinity CPU ID : 2
+07-31 11:46:28.866  1017  1098 I display : Set Affinity CPU ID : 3
+07-31 11:46:28.866  1017  1098 I display : Set Affinity CPU ID : 4
+07-31 11:46:28.866  1017  1098 I display : Set Affinity CPU ID : 5
+07-31 11:46:28.867  1017  1098 I display : Set Affinity CPU ID : 6
+07-31 11:46:28.867  1017  1098 I display : Set Affinity CPU ID : 7
+07-31 11:46:28.867  1017  1098 I display : Set affinity HWC : 1017
+07-31 11:46:28.870  1017  1098 I display : CPU set : Cluster(0), min_clock(0)
+07-31 11:46:28.870  1017  1098 I display : CPU set : Cluster(1), min_clock(0)
+07-31 11:46:28.870  1017  1098 I display : CPU set : Cluster(2), min_clock(0)
+07-31 11:46:28.870  1114  1223 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+07-31 11:46:28.919  4654  4654 I HBD     : g onCapabilityChanged  setNetworkState currentNetworkState : wifi 
+07-31 11:46:28.920  4654  4654 I HBD     : h LogTag.TAG_LMDOWNLOAD network status is changed.
+07-31 11:46:29.066  1105  1126 E HeatmapThread: ECT Thread time in milliseconds: 1785487589
+07-31 11:46:29.066  1105  1126 D HeatmapThread: !@ batteryplugType : 0
+07-31 11:46:29.067  1105  1126 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+07-31 11:46:29.067  1105  1126 D HeatmapThread: !@ Heatmap currtime: 29758126
+07-31 11:46:29.067  1105  1126 D HeatmapThread: !@ Heatmap prevtime: 29758101
+07-31 11:46:29.067  1105  1126 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+07-31 11:46:29.067  1105  1126 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29739448
+07-31 11:46:29.068  1105  1126 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+07-31 11:46:29.068  1105  1126 E HeatmapThread: !@ CAM Could not access BSOH EFS
+07-31 11:46:29.068  1105  1126 E HeatmapThread: !@ CAM New BSOH: 0
+07-31 11:46:29.121  1114  1245 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+07-31 11:46:29.123  1114  1114 I LayerHistory: StatusBar$_1870#98 voted NoVote (0.00 Hz)
+07-31 11:46:29.123  1114  1114 I SurfaceFlinger: Idle - choose 60.00 Hz
+07-31 11:46:29.124  1114  1114 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+07-31 11:46:29.125  1114  1223 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+07-31 11:46:29.125  1017  1017 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+07-31 11:46:29.125  1017  1017 I display : Current VRR MODE is 3
+07-31 11:46:29.125  1017  1017 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+07-31 11:46:29.125  1017  1017 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+07-31 11:46:29.126  1017  1017 I display : commit modeset : 1080x2340@60phs
+07-31 11:46:29.139  1017  1017 W display : deliverWinConfigData:: commit modeset time (13 ms)
+07-31 11:46:29.140  1017  1098 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+07-31 11:46:29.140  1017  1098 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+07-31 11:46:29.140  1017  1098 I display : Set m2mMPP capacity(8) for fps(60)
+07-31 11:46:29.140  1017  1098 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+07-31 11:46:29.140  1017  1098 I display : Set Affinity config for fps(60) : cpuIDs : 255
+07-31 11:46:29.140  1114  1114 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+07-31 11:46:29.140  1017  1098 I display : Set Affinity CPU ID : 0
+07-31 11:46:29.140  1017  1098 I display : Set Affinity CPU ID : 1
+07-31 11:46:29.140  1017  1098 I display : Set Affinity CPU ID : 2
+07-31 11:46:29.140  1017  1098 I display : Set Affinity CPU ID : 3
+07-31 11:46:29.140  1017  1098 I display : Set Affinity CPU ID : 4
+07-31 11:46:29.140  1017  1098 I display : Set Affinity CPU ID : 5
+07-31 11:46:29.140  1017  1098 I display : Set Affinity CPU ID : 6
+07-31 11:46:29.140  1017  1098 I display : Set Affinity CPU ID : 7
+07-31 11:46:29.140  1017  1098 I display : Set affinity HWC : 1017
+07-31 11:46:29.141  1017  1098 I display : CPU set : Cluster(0), min_clock(0)
+07-31 11:46:29.141  1017  1098 I display : CPU set : Cluster(1), min_clock(0)
+07-31 11:46:29.141  1017  1098 I display : CPU set : Cluster(2), min_clock(0)
+07-31 11:46:29.141  1114  1223 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+07-31 11:46:29.277  1414  1764 I SemWifiServiceDetector: Service det. resumed: T / T / 25300
+07-31 11:46:29.330  6350 11860 I NearbySharing: Network state changed: NetworkState(isRestricted=false, isOnline=true, isCongested=false, isMetered=false, isWifiConnected=true)
+07-31 11:46:29.331  6350 11968 I NearbySharing: Network state changed: NetworkState(isRestricted=false, isOnline=true, isCongested=false, isMetered=false, isWifiConnected=true)
+07-31 11:46:29.675 25545 25545 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

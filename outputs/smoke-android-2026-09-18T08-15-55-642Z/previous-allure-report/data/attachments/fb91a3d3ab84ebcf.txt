@@ -1,0 +1,202 @@
+--------- beginning of main
+08-10 15:24:01.272 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:01.272 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:01.274 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+08-10 15:24:01.283  2648  3296 I ScanController: onScanResult to scannerId: 2- eventType=0x1a, addressType=1, address=XX:XX:XX:XX:D9:36, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-68, periodicAdvInt=0x0
+08-10 15:24:01.287 21983  7404 I EasySetup[11.1.23.4] : IcControlService.isFoldDeviceFolded() - isFoldDevice: false, isNotFolded: false
+08-10 15:24:01.287 21983  7404 I Peripheral_SmartThingsManager[1.2.95]: parseBlePacketserviceId : 9
+08-10 15:24:01.288 21983  7404 E Peripheral_OCFTvUtil[1.2.95]: not supported version
+08-10 15:24:01.288 21983  7404 E Peripheral_OCFTVManager[1.2.95]: isOCFTVDevice is null
+08-10 15:24:01.289 21983  7404 E IC_DeviceManager[1.2.95]: isValidScanResult(), packet is not valid
+08-10 15:24:01.289 21983  7404 E IC_DeviceManager[1.2.95]: 1. ADV_IDX_PACKET_VER(2): 2 / 2. ADV_IDX_PACKET_SVC_ID(9): 9 / 3. ADV_IDX_PACKET_SS_DISCOVERY(1): 1 / 4. ADV_IDX_PACKET_ASSOCIATED_SVC_ID(2): 2 / 5. MASK_PACKET_FEATURES_SVC_DATA(16): 16 / 6. MASK_PACKET_FEATURES_DEVICE(4): 4 / 7. ADV_IDX_PACKET_IC_VER(1): 1 / 8. MASK_DEVICE_EXTRA_SUPPORT_ACCOUNT_HASH(4): 4
+08-10 15:24:01.289 21983  7404 W IC_Service[1.2.95]: recieved scanResult packet is not valid
+08-10 15:24:01.314 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:01.314 13559 13595 I appium  : Found zero matches
+08-10 15:24:01.315 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:01.333 13559 13595 I appium  : channel read: POST /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/elements
+08-10 15:24:01.333 13559 13595 I appium  : FindElements command
+08-10 15:24:01.334 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:01.334 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:01.336 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+08-10 15:24:01.372 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:01.372 13559 13595 I appium  : Found zero matches
+08-10 15:24:01.373 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:01.393 13559 13595 I appium  : channel read: POST /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/elements
+08-10 15:24:01.393 13559 13595 I appium  : FindElements command
+08-10 15:24:01.394 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:01.394 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:01.395 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+08-10 15:24:01.399 13559 13563 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-10 15:24:01.423 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:01.423 13559 13595 I appium  : Found zero matches
+08-10 15:24:01.423 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:01.441 13559 13595 I appium  : channel read: POST /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/elements
+08-10 15:24:01.441 13559 13595 I appium  : FindElements command
+08-10 15:24:01.442 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:01.442 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:01.443 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+08-10 15:24:01.473 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:01.473 13559 13595 I appium  : Found zero matches
+08-10 15:24:01.474 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:01.546 13559 13595 I appium  : channel read: POST /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/elements
+08-10 15:24:01.547 13559 13595 I appium  : FindElements command
+08-10 15:24:01.548 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:01.548 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:01.549 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+08-10 15:24:01.591 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:01.591 13559 13595 I appium  : Found zero matches
+08-10 15:24:01.593 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:01.645 13559 13595 I appium  : channel read: POST /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/elements
+08-10 15:24:01.646 13559 13595 I appium  : FindElements command
+08-10 15:24:01.647 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:01.647 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:01.649 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+08-10 15:24:01.655 13559 13563 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-10 15:24:01.684 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:01.684 13559 13595 I appium  : Found zero matches
+08-10 15:24:01.686 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:01.748 13559 13595 I appium  : channel read: POST /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/elements
+08-10 15:24:01.749 13559 13595 I appium  : FindElements command
+08-10 15:24:01.750 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:01.750 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:01.752 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+08-10 15:24:01.793 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:01.794 13559 13595 I appium  : Found zero matches
+08-10 15:24:01.795 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:01.847 13559 13595 I appium  : channel read: POST /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/elements
+08-10 15:24:01.847 13559 13595 I appium  : FindElements command
+08-10 15:24:01.848 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:01.849 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:01.851 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+08-10 15:24:01.895 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:01.895 13559 13595 I appium  : Found zero matches
+08-10 15:24:01.897 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:01.946 13559 13595 I appium  : channel read: POST /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/elements
+08-10 15:24:01.947 13559 13595 I appium  : FindElements command
+08-10 15:24:01.948 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:01.948 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:01.951 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+08-10 15:24:01.957 13559 13563 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-10 15:24:02.019 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:02.019 13559 13595 I appium  : Found zero matches
+08-10 15:24:02.021 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:02.042 13559 13595 I appium  : channel read: POST /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/elements
+08-10 15:24:02.042 13559 13595 I appium  : FindElements command
+08-10 15:24:02.044 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:02.044 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:02.046 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+08-10 15:24:02.096 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:02.096 13559 13595 I appium  : Found zero matches
+08-10 15:24:02.097 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:02.145 13559 13595 I appium  : channel read: POST /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/elements
+08-10 15:24:02.146 13559 13595 I appium  : FindElements command
+08-10 15:24:02.147 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:02.147 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:02.150 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+08-10 15:24:02.191 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:02.191 13559 13595 I appium  : Found zero matches
+08-10 15:24:02.192 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:02.225  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786364642
+08-10 15:24:02.225  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-10 15:24:02.225  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-10 15:24:02.225  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29772744
+08-10 15:24:02.225  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29772721
+08-10 15:24:02.225  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-10 15:24:02.225  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-10 15:24:02.226  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-10 15:24:02.226  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-10 15:24:02.226  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-10 15:24:02.248 13559 13595 I appium  : channel read: POST /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/elements
+08-10 15:24:02.249 13559 13595 I appium  : FindElements command
+08-10 15:24:02.250 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:02.250 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:02.253 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+08-10 15:24:02.258 13559 13563 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-10 15:24:02.294 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:02.295 13559 13595 I appium  : Found zero matches
+08-10 15:24:02.296 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:02.346 27195 27217 D LogsManager: No need to flush logs
+08-10 15:24:02.350 13559 13595 I appium  : channel read: POST /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/elements
+08-10 15:24:02.350 13559 13595 I appium  : FindElements command
+08-10 15:24:02.352 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:02.352 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:02.354 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+--------- beginning of system
+08-10 15:24:02.371   730   730 D io_stats: !@   8,0 r 49971807 927803477 w 15452434 280715888 d 4519828 336814980 f 0 1424867 iot 22951388 0 th 0 0 0 pt 0 inp 0 0 350348.664
+08-10 15:24:02.372   730   730 D io_stats: !@ Write_top(KB): kworker/u16:2(8351) 532 ugin:persistent(6020) 8
+08-10 15:24:02.405 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:02.405 13559 13595 I appium  : Found zero matches
+08-10 15:24:02.407 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:02.448 13559 13595 I appium  : channel read: POST /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/elements
+08-10 15:24:02.449 13559 13595 I appium  : FindElements command
+08-10 15:24:02.450 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:02.450 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:02.453 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+08-10 15:24:02.490 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:02.490 13559 13595 I appium  : Found zero matches
+08-10 15:24:02.492 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:02.548 13559 13595 I appium  : channel read: POST /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/elements
+08-10 15:24:02.548 13559 13595 I appium  : FindElements command
+08-10 15:24:02.549 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:02.550 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:02.553 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+08-10 15:24:02.560 13559 13563 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-10 15:24:02.592 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:02.592 13559 13595 I appium  : Found zero matches
+08-10 15:24:02.594 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:02.648 13559 13595 I appium  : channel read: POST /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/elements
+08-10 15:24:02.648 13559 13595 I appium  : FindElements command
+08-10 15:24:02.649 13559 13595 I appium  : method: 'xpath', selector: '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]'
+08-10 15:24:02.650 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:02.652 13559 13595 I appium  : The following attributes will be included to the page source: [resource-id, text]
+08-10 15:24:02.695 13559 13595 I appium  : Took 0ms to retrieve 0 matches for '//*[contains(@resource-id,"verificationOfPayee_screen")]//android.widget.TextView[@text="Match" or @text="Close Match" or @text="No Match" or @text="Unavailable"]' XPath2 query
+08-10 15:24:02.695 13559 13595 I appium  : Found zero matches
+08-10 15:24:02.696 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":[]}
+08-10 15:24:02.715 13559 13595 I appium  : channel read: GET /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/screenshot
+08-10 15:24:02.716 13559 13595 I appium  : CaptureScreenshot command
+08-10 15:24:02.841  2648  3296 I ScanController: onScanResult to scannerId: 2- eventType=0x1a, addressType=1, address=XX:XX:XX:XX:D9:36, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-74, periodicAdvInt=0x0
+08-10 15:24:02.846 21983  7404 I EasySetup[11.1.23.4] : IcControlService.isFoldDeviceFolded() - isFoldDevice: false, isNotFolded: false
+08-10 15:24:02.846 21983  7404 I Peripheral_SmartThingsManager[1.2.95]: parseBlePacketserviceId : 9
+08-10 15:24:02.846 21983  7404 E Peripheral_OCFTvUtil[1.2.95]: not supported version
+08-10 15:24:02.846 21983  7404 E Peripheral_OCFTVManager[1.2.95]: isOCFTVDevice is null
+08-10 15:24:02.847 21983  7404 E IC_DeviceManager[1.2.95]: isValidScanResult(), packet is not valid
+08-10 15:24:02.847 21983  7404 E IC_DeviceManager[1.2.95]: 1. ADV_IDX_PACKET_VER(2): 2 / 2. ADV_IDX_PACKET_SVC_ID(9): 9 / 3. ADV_IDX_PACKET_SS_DISCOVERY(1): 1 / 4. ADV_IDX_PACKET_ASSOCIATED_SVC_ID(2): 2 / 5. MASK_PACKET_FEATURES_SVC_DATA(16): 16 / 6. MASK_PACKET_FEATURES_DEVICE(4): 4 / 7. ADV_IDX_PACKET_IC_VER(1): 1 / 8. MASK_DEVICE_EXTRA_SUPPORT_ACCOUNT_HASH(4): 4
+08-10 15:24:02.847 21983  7404 W IC_Service[1.2.95]: recieved scanResult packet is not valid
+08-10 15:24:02.857 15626 15626 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-10 15:24:02.858 15626 15626 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-10 15:24:02.859 15626 15626 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-10 15:24:02.859  1726  2774 I EDMNativeHelperService: isScreenCaptureEnabled
+08-10 15:24:02.859  1726  2774 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-10 15:24:02.859 15626 15626 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-10 15:24:02.859 15626 15626 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-10 15:24:02.861  1437  1463 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_13612#60513(seamlessTransition:0)
+08-10 15:24:02.861  1437  1463 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_13612#60555(seamlessTransition:0)
+08-10 15:24:02.861  1437  1463 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-10 15:24:02.861  1437  1463 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-10 15:24:02.861  1437  1463 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-10 15:24:02.862  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-10 15:24:02.862  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_13612#60513 at index 1
+08-10 15:24:02.862  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_13612#60555 at index 2
+08-10 15:24:02.862  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 3
+08-10 15:24:02.862  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 4
+08-10 15:24:02.882 15626 15629 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-10 15:24:03.053 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N13cFv3gS/6LzpAFBIEe5HETkkUVSiJkiVZtuXEvkmcYt+NEyde3xTbWb9M7pu9L1vu3Ozd+97O29nZndm5O3m5SW42idfrOHHi2Jaz3tiRXOQiFkmsosTeOwE29HbeHxQhHQJgEUEAh/x…
+08-10 15:24:03.080 13559 13595 I appium  : channel read: GET /session/42c1ac82-806b-40d1-9648-6b9fbf87e144/source
+08-10 15:24:03.083 13559 13595 I appium  : Source command
+08-10 15:24:03.083 13559 13595 I appium  : Waiting up to 10000ms for the device to idle
+08-10 15:24:03.164 13559 13595 I appium  : AppiumResponse: {"sessionId":"42c1ac82-806b-40d1-9648-6b9fbf87e144","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-10 15:24:03.198  7530  7530 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-10 15:24:03.225  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786364643
+08-10 15:24:03.225  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-10 15:24:03.225  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-10 15:24:03.225  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29772744
+08-10 15:24:03.225  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29772721
+08-10 15:24:03.225  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-10 15:24:03.225  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-10 15:24:03.225  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-10 15:24:03.225  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-10 15:24:03.225  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-10 15:24:03.259 15630 15630 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-10 15:24:03.309  7530  7530 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-10 15:24:03.373 15633 15633 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-10 15:24:03.432  7530  7530 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

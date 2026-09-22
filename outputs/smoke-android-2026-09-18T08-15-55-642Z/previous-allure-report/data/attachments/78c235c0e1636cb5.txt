@@ -1,0 +1,239 @@
+--------- beginning of main
+06-22 15:55:42.760   500   509 I system_server: Background young concurrent copying GC freed 345275(21MB) AllocSpace objects, 4(80KB) LOS objects, 43% free, 28MB/50MB, paused 1.848ms,170us total 582.773ms
+06-22 15:55:42.794  5707  5707 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+06-22 15:55:42.975 10069 10069 E YT.mlplayer: setAudioDrc(enabled=1)
+06-22 15:55:42.983 10069 10069 E YT.mlplayer: setDefaultLoudnessTargetPreferenceState
+06-22 15:55:42.984  1527  1639 W SQLiteLog: (28) double-quoted string literal: "1781960142983"
+06-22 15:55:42.984  1527  1639 W SQLiteLog: (28) double-quoted string literal: "1"
+06-22 15:55:43.087   500   819 D ConnectivityService: requestNetwork for uid/pid:10133/10069 activeRequest: null callbackRequest: 291 [NetworkRequest [ REQUEST id=292, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10133 RequestorUid: 10133 RequestorPkg: com.google.android.youtube UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+06-22 15:55:43.089   500   618 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=292, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10133 RequestorUid: 10133 RequestorPkg: com.google.android.youtube UnderlyingNetworks: Null] ]
+06-22 15:55:43.089   500   618 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=292, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10133 RequestorUid: 10133 RequestorPkg: com.google.android.youtube UnderlyingNetworks: Null] ]
+06-22 15:55:43.089   500   618 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=292, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10133 RequestorUid: 10133 RequestorPkg: com.google.android.youtube UnderlyingNetworks: Null] ]
+06-22 15:55:43.089   500   618 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=292, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10133 RequestorUid: 10133 RequestorPkg: com.google.android.youtube UnderlyingNetworks: Null] ]
+06-22 15:55:43.090   500   625 D ConnectivityService: NetReassign [292 : null → 101] [c 0] [a 1] [i 1]
+--------- beginning of system
+06-22 15:55:43.102   500   526 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10138; state: DISABLED
+06-22 15:55:43.104   500   527 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10138; state: ENABLED
+06-22 15:55:43.109   292   292 D Zygote  : Forked child process 10203
+06-22 15:55:43.110   500   527 I ActivityManager: Start proc 10203:com.android.chrome/u0a138 for broadcast {com.android.chrome/com.google.android.apps.chrome.rlz.RevenueStatsConfigurationUpdateReceiver}
+06-22 15:55:43.117 10203 10203 I .android.chrome: Using CollectorTypeCC GC.
+06-22 15:55:43.119   500   819 I ActivityManager: Killing 6480:com.android.vending/u0a112 (adj 985): empty for 2047s
+06-22 15:55:43.124 10203 10203 E .android.chrome: Not starting debugger since process cannot load the jdwp agent.
+06-22 15:55:43.125   500   819 I ActivityManager: Killing 1832:com.google.android.googlequicksearchbox:search/u0a121 (adj 975): empty for 2057s
+06-22 15:55:43.127   500   528 I libprocessgroup: Successfully killed process cgroup uid 10112 pid 6480 in 1ms
+06-22 15:55:43.145   500   819 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10138; state: DISABLED
+06-22 15:55:43.145   500   819 D CompatibilityChangeReporter: Compat change id reported: 273564678; UID 10138; state: DISABLED
+06-22 15:55:43.154 10203 10203 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10138; state: ENABLED
+06-22 15:55:43.156  5707  5979 D TrafficStats: tagSocket(90) with statsTag=0x5065fff, statsUid=10128
+06-22 15:55:43.161 10203 10203 W ziparchive: Unable to open '/data/app/~~4GSU13ilRgZ8N1DO7u1_Bw==/com.google.android.trichromelibrary_768017733-kmYD1T-mHoVzOGHTgX2L5Q==/base.dm': No such file or directory
+06-22 15:55:43.161 10203 10203 W ziparchive: Unable to open '/data/app/~~4GSU13ilRgZ8N1DO7u1_Bw==/com.google.android.trichromelibrary_768017733-kmYD1T-mHoVzOGHTgX2L5Q==/base.dm': No such file or directory
+06-22 15:55:43.162 10203 10203 W .android.chrome: Entry not found
+06-22 15:55:43.163 10203 10203 D nativeloader: Configuring classloader-namespace for other apk /data/app/~~4GSU13ilRgZ8N1DO7u1_Bw==/com.google.android.trichromelibrary_768017733-kmYD1T-mHoVzOGHTgX2L5Q==/base.apk. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~CpO8csnbmw0xCYIZRlKEeg==/com.android.chrome-wM3GBeHv6XT8UUDnZq-voQ==/lib/arm64:/data/app/~~CpO8csnbmw0xCYIZRlKEeg==/com.android.chrome-wM3GBeHv6XT8UUDnZq-voQ==/base.apk!/lib/arm64-v8a:/data/app/~~4GSU13ilRgZ8N1DO7u1_Bw==/com.google.android.trichromelibrary_768017733-kmYD1T-mHoVzOGHTgX2L5Q==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.android.chrome
+06-22 15:55:43.165 10203 10203 D nativeloader: Configuring classloader-namespace for other apk /system_ext/framework/androidx.window.extensions.jar. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~CpO8csnbmw0xCYIZRlKEeg==/com.android.chrome-wM3GBeHv6XT8UUDnZq-voQ==/lib/arm64:/data/app/~~CpO8csnbmw0xCYIZRlKEeg==/com.android.chrome-wM3GBeHv6XT8UUDnZq-voQ==/base.apk!/lib/arm64-v8a:/data/app/~~4GSU13ilRgZ8N1DO7u1_Bw==/com.google.android.trichromelibrary_768017733-kmYD1T-mHoVzOGHTgX2L5Q==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.android.chrome
+06-22 15:55:43.165 10203 10203 D nativeloader: Configuring classloader-namespace for other apk /system_ext/framework/androidx.window.sidecar.jar. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~CpO8csnbmw0xCYIZRlKEeg==/com.android.chrome-wM3GBeHv6XT8UUDnZq-voQ==/lib/arm64:/data/app/~~CpO8csnbmw0xCYIZRlKEeg==/com.android.chrome-wM3GBeHv6XT8UUDnZq-voQ==/base.apk!/lib/arm64-v8a:/data/app/~~4GSU13ilRgZ8N1DO7u1_Bw==/com.google.android.trichromelibrary_768017733-kmYD1T-mHoVzOGHTgX2L5Q==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.android.chrome
+06-22 15:55:43.176 10203 10203 D nativeloader: Configuring classloader-namespace for other apk /data/app/~~CpO8csnbmw0xCYIZRlKEeg==/com.android.chrome-wM3GBeHv6XT8UUDnZq-voQ==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~CpO8csnbmw0xCYIZRlKEeg==/com.android.chrome-wM3GBeHv6XT8UUDnZq-voQ==/lib/arm64:/data/app/~~CpO8csnbmw0xCYIZRlKEeg==/com.android.chrome-wM3GBeHv6XT8UUDnZq-voQ==/base.apk!/lib/arm64-v8a:/data/app/~~4GSU13ilRgZ8N1DO7u1_Bw==/com.google.android.trichromelibrary_768017733-kmYD1T-mHoVzOGHTgX2L5Q==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.android.chrome
+06-22 15:55:43.190 10203 10203 W .android.chrome: JIT profile information will not be recorded: profile file does not exist.
+06-22 15:55:43.203 10203 10203 V GraphicsEnvironment: ANGLE Developer option for 'com.android.chrome' set to: 'default'
+06-22 15:55:43.204 10203 10203 V GraphicsEnvironment: ANGLE GameManagerService for com.android.chrome: false
+06-22 15:55:43.204 10203 10203 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+06-22 15:55:43.207   292   292 I Zygote  : Process 6480 exited due to signal 9 (Killed)
+06-22 15:55:43.208   500   625 D ConnectivityService: releasing NetworkRequest [ REQUEST id=241, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ] (release request)
+06-22 15:55:43.208   500   625 D ConnectivityService: releasing NetworkRequest [ REQUEST id=88, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10121 RequestorUid: 10121 RequestorPkg: com.google.android.googlequicksearchbox UnderlyingNetworks: Null] ] (release request)
+06-22 15:55:43.208   292   292 I Zygote  : Process 1832 exited due to signal 9 (Killed)
+06-22 15:55:43.210 10203 10203 I LoadedApk: No resource references to update in package com.google.android.trichromelibrary
+06-22 15:55:43.210 10203 10203 D NetworkSecurityConfig: Using Network Security Config from resource 0_resource_name_obfuscated debugBuild: false
+06-22 15:55:43.210   500   625 D ConnectivityService: releasing NetworkRequest [ REQUEST id=204, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10121 RequestorUid: 10121 RequestorPkg: com.google.android.googlequicksearchbox UnderlyingNetworks: Null] ] (release request)
+06-22 15:55:43.210   500   528 I libprocessgroup: Successfully killed process cgroup uid 10121 pid 1832 in 0ms
+06-22 15:55:43.211   500   625 D ConnectivityService: releasing NetworkRequest [ REQUEST id=211, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10121 RequestorUid: 10121 RequestorPkg: com.google.android.googlequicksearchbox UnderlyingNetworks: Null] ] (release request)
+06-22 15:55:43.213 10203 10203 D NetworkSecurityConfig: Using Network Security Config from resource 0_resource_name_obfuscated debugBuild: false
+06-22 15:55:43.217 10203 10203 I cr_SplitCompatApp: version=146.0.7680.177 (768017733) minSdkVersion=29 processName=com.android.chrome isIsolatedProcess=false splits=chrome,config.en,dev_ui,on_demand,stack_unwinder,test_dummy
+06-22 15:55:43.274  5707  5719 I FontLog : (REDACTED) Received query %s, URI %s
+06-22 15:55:43.275  5707  5719 I FontLog : (REDACTED) Query [%s] resolved to %s
+06-22 15:55:43.276 10203 10224 I cr_LibraryLoader: Loading monochrome_64 from within /data/app/~~CpO8csnbmw0xCYIZRlKEeg==/com.android.chrome-wM3GBeHv6XT8UUDnZq-voQ==/base.apk
+06-22 15:55:43.278   500  2288 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 10138; state: DISABLED
+06-22 15:55:43.280 10203 10224 I cr_Linker: loadLibraryImplLocked: monochrome_64, relroMode=1
+06-22 15:55:43.281  5707  5719 I FontLog : (REDACTED) Font PFD returned from cache for %s
+06-22 15:55:43.281  5707  5719 I FontLog : (REDACTED) Fetch %s end status %s
+06-22 15:55:43.284  5707  5719 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+06-22 15:55:43.286   500  2288 I ActivityManager: Killing 8653:com.google.android.webview:webview_service/u0a139 (adj 995): empty for 1986s
+06-22 15:55:43.292   500   528 I libprocessgroup: Successfully killed process cgroup uid 10139 pid 8653 in 5ms
+06-22 15:55:43.295   292   292 I Zygote  : Process 8653 exited due to signal 9 (Killed)
+06-22 15:55:43.303  5707  5719 I FontLog : (REDACTED) Received query %s, URI %s
+06-22 15:55:43.304  5707  5719 I FontLog : (REDACTED) Query [%s] resolved to %s
+06-22 15:55:43.304  5707  5719 I FontLog : (REDACTED) Font PFD returned from cache for %s
+06-22 15:55:43.304  5707  5719 I FontLog : (REDACTED) Fetch %s end status %s
+06-22 15:55:43.313  5707  5942 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+06-22 15:55:43.313  5707  5979 D TrafficStats: tagSocket(110) with statsTag=0x5065fff, statsUid=10121
+06-22 15:55:43.316  5707  5942 I FontLog : (REDACTED) Received query %s, URI %s
+06-22 15:55:43.316  5707  5942 I FontLog : (REDACTED) Query [%s] resolved to %s
+06-22 15:55:43.316  5707  5942 I FontLog : (REDACTED) Font PFD returned from cache for %s
+06-22 15:55:43.316  5707  5942 I FontLog : (REDACTED) Fetch %s end status %s
+06-22 15:55:43.317  5707  5942 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+06-22 15:55:43.320  5707  5942 I FontLog : (REDACTED) Received query %s, URI %s
+06-22 15:55:43.320  5707  5942 I FontLog : (REDACTED) Query [%s] resolved to %s
+06-22 15:55:43.321  5707  5942 I FontLog : (REDACTED) Font PFD returned from cache for %s
+06-22 15:55:43.321  5707  5942 I FontLog : (REDACTED) Fetch %s end status %s
+06-22 15:55:43.321  5707  5942 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+06-22 15:55:43.324  5707  5942 I FontLog : (REDACTED) Received query %s, URI %s
+06-22 15:55:43.324  5707  5942 I FontLog : (REDACTED) Query [%s] resolved to %s
+06-22 15:55:43.324  5707  5942 I FontLog : (REDACTED) Font PFD returned from cache for %s
+06-22 15:55:43.324  5707  5942 I FontLog : (REDACTED) Fetch %s end status %s
+06-22 15:55:43.325  5707  5942 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+06-22 15:55:43.365 10203 10224 I cr_LibraryLoader: Successfully loaded native library
+06-22 15:55:43.368 10203 10224 I cr_CachingUmaRecorder: Flushed 13 samples from 12 histograms, 0 samples were dropped.
+06-22 15:55:43.402  5707  5979 D TrafficStats: tagSocket(207) with statsTag=0x5065fff, statsUid=10145
+06-22 15:55:43.481   500   526 W BroadcastQueue: Exported Denial: sending Intent { act=android.net.conn.CONNECTIVITY_CHANGE flg=0x4200010 (has extras) }, action: android.net.conn.CONNECTIVITY_CHANGE from null (uid=-1) due to receiver ProcessRecord{6102bc 10069:com.google.android.youtube/u0a133} (uid 10133) not specifying RECEIVER_EXPORTED
+06-22 15:55:43.481   500  2288 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10120; state: DISABLED
+06-22 15:55:43.486   500  2288 D ConnectivityService: requestNetwork for uid/pid:10133/10069 activeRequest: null callbackRequest: 293 [NetworkRequest [ REQUEST id=294, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10133 RequestorUid: 10133 RequestorPkg: com.google.android.youtube UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+06-22 15:55:43.488  1527  1527 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.potokens.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+06-22 15:55:43.488  1527  1527 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.potokens.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+06-22 15:55:43.490   500   625 D ConnectivityService: NetReassign [294 : null → 101] [c 0] [a 2] [i 1]
+06-22 15:55:43.490   500   618 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=294, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10133 RequestorUid: 10133 RequestorPkg: com.google.android.youtube UnderlyingNetworks: Null] ]
+06-22 15:55:43.490   500   618 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=294, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10133 RequestorUid: 10133 RequestorPkg: com.google.android.youtube UnderlyingNetworks: Null] ]
+06-22 15:55:43.490   500   618 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=294, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10133 RequestorUid: 10133 RequestorPkg: com.google.android.youtube UnderlyingNetworks: Null] ]
+06-22 15:55:43.490   500   618 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=294, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10133 RequestorUid: 10133 RequestorPkg: com.google.android.youtube UnderlyingNetworks: Null] ]
+06-22 15:55:43.512  5707  5979 D TrafficStats: tagSocket(167) with statsTag=0x5065fff, statsUid=10141
+06-22 15:55:43.515   500   942 D ConnectivityService: requestNetwork for uid/pid:10133/10069 activeRequest: null callbackRequest: 295 [NetworkRequest [ REQUEST id=296, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10133 RequestorUid: 10133 RequestorPkg: com.google.android.youtube UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+06-22 15:55:43.520   500   618 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=296, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10133 RequestorUid: 10133 RequestorPkg: com.google.android.youtube UnderlyingNetworks: Null] ]
+06-22 15:55:43.520   500   618 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=296, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10133 RequestorUid: 10133 RequestorPkg: com.google.android.youtube UnderlyingNetworks: Null] ]
+06-22 15:55:43.520   500   618 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=296, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10133 RequestorUid: 10133 RequestorPkg: com.google.android.youtube UnderlyingNetworks: Null] ]
+06-22 15:55:43.520   500   618 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=296, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10133 RequestorUid: 10133 RequestorPkg: com.google.android.youtube UnderlyingNetworks: Null] ]
+06-22 15:55:43.520   500   625 D ConnectivityService: NetReassign [296 : null → 101] [c 0] [a 1] [i 3]
+06-22 15:55:43.607  5707  5979 D TrafficStats: tagSocket(185) with statsTag=0x5065fff, statsUid=10115
+06-22 15:55:44.251 10069 10156 D CompatibilityChangeReporter: Compat change id reported: 194532703; UID 10133; state: ENABLED
+06-22 15:55:44.253   500   979 D CompatibilityChangeReporter: Compat change id reported: 194532703; UID 10133; state: ENABLED
+06-22 15:55:44.272 10069 10156 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10133; state: ENABLED
+06-22 15:55:44.293  5707  5728 I FontLog : (REDACTED) Received query %s, URI %s
+06-22 15:55:44.293  5707  5728 I FontLog : (REDACTED) Query [%s] resolved to %s
+06-22 15:55:44.297  5707  5728 I FontLog : (REDACTED) Fetch %s end status %s
+06-22 15:55:44.299  5707  5728 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+06-22 15:55:44.301 10069 10246 W android.youtube: ClassLoaderContext classpath size mismatch. expected=16, found=0 (DLC[];PCL[base.apk*3998213184:base.apk!classes2.dex*2568681366:base.apk!classes3.dex*1730570048:base.apk!classes4.dex*1036139242:base.apk!classes5.dex*2534712458:base.apk!classes6.dex*2448980980:base.apk!classes7.dex*2947346070:base.apk!classes8.dex*3284835690:base.apk!classes9.dex*2250458589:base.apk!classes10.dex*2333641574:base.apk!classes11.dex*2222711256:base.apk!classes12.dex*2282949538:base.apk!classes13.dex*3159118057:base.apk!classes14.dex*985945042:base.apk!classes15.dex*1477446538:base.apk!classes16.dex*1815678600]{PCL[/system/framework/org.apache.http.legacy.jar*1601893743]#PCL[/system/framework/com.android.location.provider.jar*989331188]#PCL[/system/framework/com.android.media.remotedisplay.jar*373201995]#PCL[/system_ext/framework/androidx.window.extensions.jar*2205133122]#PCL[/system_ext/framework/androidx.window.sidecar.jar*2932832050]} | DLC[];PCL[])
+06-22 15:55:44.310  5707  5728 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+06-22 15:55:44.321 10069 10255 I FA      : App measurement initialized, version: 167001
+06-22 15:55:44.321 10069 10255 I FA      : To enable debug logging run: adb shell setprop log.tag.FA VERBOSE
+06-22 15:55:44.321 10069 10255 I FA      : To enable faster debug mode event logging run:
+06-22 15:55:44.321 10069 10255 I FA      :   adb shell setprop debug.firebase.analytics.app com.google.android.youtube
+06-22 15:55:44.323  5707  5707 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.auth.aang.events.services.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+06-22 15:55:44.334  1527  1527 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.measurement.START pkg=com.google.android.gms }
+06-22 15:55:44.334  1527  1527 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.measurement.START pkg=com.google.android.gms }
+06-22 15:55:44.353  1527 10263 D AdvertisingIdClient: AdvertisingIdClient already created.
+06-22 15:55:44.353  1527 10263 D AdvertisingIdClient: AdvertisingIdClient is not bounded. Starting to bind it...
+06-22 15:55:44.356  1527 10263 D AdvertisingIdClient: AdvertisingIdClient is bounded
+06-22 15:55:44.357  1527 10263 I AdvertisingIdClient: shouldSendLog 2160321
+06-22 15:55:44.358  1527 10263 I AdvertisingIdClient: GetInfoInternal elapse 5ms
+06-22 15:55:44.368  1527  1527 I AdvertisingIdClient: getting error as 17: API: ClientTelemetry.API is not available on this device. Connection failed with: ConnectionResult{statusCode=API_DISABLED_FOR_CONNECTION, resolution=null, message=null, clientMethodKey=null}
+06-22 15:55:44.555  5707 10029 I NetworkScheduler.Stats: (REDACTED) Task %s/%s finished executing. cause:%s result: %s elapsed_millis: %s uptime_millis: %s exec_start_elapsed_seconds: %s
+06-22 15:55:45.338   700   957 D EGL_emulation: app_time_stats: avg=6466.38ms min=6466.38ms max=6466.38ms count=1
+06-22 15:55:47.975 10071 10273 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10118; state: ENABLED
+06-22 15:55:48.004   500  2288 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 10118; state: DISABLED
+06-22 15:55:48.037 10071 10189 V ClearcutMetricXmitter: Transmission is done.
+06-22 15:55:48.038 10071 10189 V ClearcutMetricXmitter: Transmission is done.
+06-22 15:55:48.853   700   959 D ControlsListingControllerImpl: Subscribing callback, service count: 0
+06-22 15:55:48.871   700   959 D ControlsListingControllerImpl: Unsubscribing callback
+06-22 15:55:49.259  5707  5813 E SQLiteLog: (1) no such table: ChangeCounts in "SELECT EXISTS (
+06-22 15:55:49.259  5707  5813 E SQLiteLog:       SELECT NULL
+06-22 15:55:49.259  5707  5813 E SQLiteLog:       FROM ChangeCounts
+06-22 15:55:49.259  5707  5813 E SQLiteLog:       WHERE
+06-22 15:55:49.259  5707  5813 E SQLiteLog:         packageName = ?1
+06-22 15:55:49.259  5707  5813 E SQLiteLog:         AND count > ?2
+06-22 15:55:49.259  5707  5813 E SQLiteLog:     );"
+06-22 15:55:49.330  5707  5813 W PhBaseOp: Phenotype API error. Event: # ivrb@75d1549e, EventCode: COMMIT_CONFIG [CONTEXT service_id=51 ]
+06-22 15:55:49.330  5707  5813 W PhBaseOp: android.database.sqlite.SQLiteException: no such table: ChangeCounts (code 1 SQLITE_ERROR): , while compiling: SELECT EXISTS (
+06-22 15:55:49.330  5707  5813 W PhBaseOp:       SELECT NULL
+06-22 15:55:49.330  5707  5813 W PhBaseOp:       FROM ChangeCounts
+06-22 15:55:49.330  5707  5813 W PhBaseOp:       WHERE
+06-22 15:55:49.330  5707  5813 W PhBaseOp:         packageName = ?1
+06-22 15:55:49.330  5707  5813 W PhBaseOp:         AND count > ?2
+06-22 15:55:49.330  5707  5813 W PhBaseOp:     );
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at android.database.sqlite.SQLiteConnection.nativePrepareStatement(Native Method)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at android.database.sqlite.SQLiteConnection.acquirePreparedStatement(SQLiteConnection.java:1068)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at android.database.sqlite.SQLiteConnection.prepare(SQLiteConnection.java:673)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at android.database.sqlite.SQLiteSession.prepare(SQLiteSession.java:590)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at android.database.sqlite.SQLiteProgram.<init>(SQLiteProgram.java:62)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at android.database.sqlite.SQLiteStatement.<init>(SQLiteStatement.java:34)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at android.database.sqlite.SQLiteDatabase.compileStatement(SQLiteDatabase.java:1390)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at evtj.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):7)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at evtj.g(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at evwe.d(:com.google.android.gms@261233029@26.12.33 (190400-892550550):45)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at evwe.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):44)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at evwd.i(:com.google.android.gms@261233029@26.12.33 (190400-892550550):3)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at evvz.h(:com.google.android.gms@261233029@26.12.33 (190400-892550550):31)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at evvz.f(:com.google.android.gms@261233029@26.12.33 (190400-892550550):13)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at ctxz.fD(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at ctyl.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):118)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at gwiw.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):19)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):73)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at biej.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+06-22 15:55:49.330  5707  5813 W PhBaseOp: 	at java.lang.Thread.run(Thread.java:1012)
+06-22 15:55:49.372  5707  5707 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+06-22 15:55:51.141  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:770): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 15:55:54.385  1527  1527 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.measurement.START pkg=com.google.android.gms }
+06-22 15:55:58.554  1527  1527 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.potokens.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+06-22 15:55:58.857   700   957 D EGL_emulation: app_time_stats: avg=13518.04ms min=13518.04ms max=13518.04ms count=1
+06-22 15:55:59.338  5707  5707 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.aang.events.services.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+06-22 15:55:59.917  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:771): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 15:56:00.028   700   957 D EGL_emulation: app_time_stats: avg=1170.60ms min=1170.60ms max=1170.60ms count=1
+06-22 15:56:00.037  1425  1723 I AiAiEcho: Predicting[0]: 
+06-22 15:56:00.037  1425  1723 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+06-22 15:56:00.041  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+06-22 15:56:00.043  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+06-22 15:56:00.044  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+06-22 15:56:00.066   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 15:56:00.906  5707  5774 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+06-22 15:56:00.913  5707 10073 W SystemServiceRegistry: No service published for: wifirtt
+06-22 15:56:01.707   500  1638 D WifiNl80211Manager: Scan result ready event
+06-22 15:56:01.707   500  1638 D WifiNative: Scan result ready event
+06-22 15:56:01.737  5707 10073 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 15:56:01.742  5707  5774 I ActivityScheduler: nextTriggerTime: 4358144, in 117079ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 15:56:05.617  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:772): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 15:56:21.153  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:773): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 15:56:29.949  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:774): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 15:56:29.989  1408  2258 I PhenotypeProcessReaper: Memory state is: 200
+06-22 15:56:35.649  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:775): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 15:56:51.189  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:776): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 15:56:59.981  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:777): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 15:57:00.032  1425  1723 I AiAiEcho: Predicting[0]: 
+06-22 15:57:00.032  1425  1723 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+06-22 15:57:00.036   700   957 D EGL_emulation: app_time_stats: avg=60006.76ms min=60006.76ms max=60006.76ms count=1
+06-22 15:57:00.037  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+06-22 15:57:00.039  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+06-22 15:57:00.039  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+06-22 15:57:00.054   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 15:57:01.308  5707  5774 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+06-22 15:57:01.315  5707 10117 W SystemServiceRegistry: No service published for: wifirtt
+06-22 15:57:02.105   500  2262 D WifiNl80211Manager: Scan result ready event
+06-22 15:57:02.105   500  2262 D WifiNative: Scan result ready event
+06-22 15:57:02.124  5707 10117 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 15:57:02.133  5707  5774 I ActivityScheduler: nextTriggerTime: 4362002, in 60547ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 15:57:05.681  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:778): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 15:57:21.213  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:779): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 15:57:30.017  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:780): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 15:57:35.713  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:781): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 15:57:40.604   315   315 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+06-22 15:57:40.911   500  2288 D WifiNl80211Manager: Scan result ready event
+06-22 15:57:40.912   500  2288 D WifiNative: Scan result ready event
+06-22 15:57:51.233  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:782): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 15:57:58.900   700   957 D EGL_emulation: app_time_stats: avg=58864.39ms min=58864.39ms max=58864.39ms count=1
+06-22 15:58:00.028   700   957 D EGL_emulation: app_time_stats: avg=1127.05ms min=1127.05ms max=1127.05ms count=1
+06-22 15:58:00.031  1425  1723 I AiAiEcho: Predicting[0]: 
+06-22 15:58:00.032  1425  1723 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+06-22 15:58:00.034  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+06-22 15:58:00.035  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+06-22 15:58:00.035  1425  1723 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+06-22 15:58:00.054   700   700 D SsMediaDataProvider: Forwarding Smartspace updates []
+06-22 15:58:00.049  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:783): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 15:58:01.710  5707  5774 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+06-22 15:58:01.713  5707 10073 W SystemServiceRegistry: No service published for: wifirtt
+06-22 15:58:02.312   500  2288 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782131819776
+06-22 15:58:02.321   500   514 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 79 startTime of in progress event=1782131819776
+06-22 15:58:02.323   500   514 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782131819776
+06-22 15:58:02.326   500  2262 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782131819776
+06-22 15:58:02.328   500   514 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1782131819776
+06-22 15:58:02.332  5707  5774 I ActivityScheduler: nextTriggerTime: 4599755, in 238100ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 15:58:02.540   500   514 D WifiNl80211Manager: Scan result ready event
+06-22 15:58:02.540   500   514 D WifiNative: Scan result ready event
+06-22 15:58:02.549  5707 10073 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 15:58:02.554  5707  5774 I ActivityScheduler: nextTriggerTime: 4599755, in 237878ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000

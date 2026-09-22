@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppiumAUT>
+  <XCUIElementTypeApplication type="XCUIElementTypeApplication" name="moneybase stg" label="moneybase stg" enabled="true" visible="true" accessible="false" x="0" y="0" width="402" height="874" index="0" traits="" processId="22836" bundleId="com.moneybase.quality">
+    <XCUIElementTypeWindow type="XCUIElementTypeWindow" enabled="true" visible="true" accessible="false" x="0" y="0" width="402" height="874" index="0" traits="">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="402" height="874" index="0" traits="">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="402" height="874" index="0" traits="">
+          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="402" height="874" index="0" traits="">
+            <XCUIElementTypeNavigationBar type="XCUIElementTypeNavigationBar" name="moneybase.RegisterMobileNumberView" enabled="true" visible="true" accessible="false" x="0" y="62" width="402" height="54" index="0" traits="">
+              <XCUIElementTypeImage type="XCUIElementTypeImage" name="LogoWithMB" enabled="true" visible="true" accessible="false" x="110" y="72" width="182" height="24" index="0" traits="Image"/>
+              <XCUIElementTypeButton type="XCUIElementTypeButton" name="QuestionMark" label="QuestionMark" enabled="true" visible="true" accessible="true" x="346" y="66" width="36" height="36" index="1" traits="Button"/>
+              <XCUIElementTypeProgressIndicator type="XCUIElementTypeProgressIndicator" value="0%" name="Progress" label="Progress" enabled="true" visible="false" accessible="true" x="0" y="106" width="402" height="25" index="2" traits="UpdatesFrequently"/>
+            </XCUIElementTypeNavigationBar>
+            <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="402" height="874" index="1" traits="">
+              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="402" height="874" index="0" traits="">
+                <XCUIElementTypeOther type="XCUIElementTypeOther" name="register_screen" enabled="true" visible="true" accessible="false" x="0" y="0" width="402" height="874" index="0" traits="">
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="170" width="370" height="139" index="0" traits="">
+                    <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Hello! Welcome to moneybase" name="Hello! Welcome to moneybase" label="Hello! Welcome to moneybase" enabled="true" visible="true" accessible="true" x="16" y="170" width="370" height="27" index="0" traits="StaticText"/>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="258" width="370" height="51" index="1" traits="">
+                      <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="258" width="370" height="51" index="0" traits="AllowsDirectInteraction">
+                        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="257" width="370" height="53" index="0" traits="">
+                          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="257" width="102" height="53" index="0" traits="">
+                            <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="257" width="102" height="53" index="0" traits="">
+                              <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Country Code" name="Country Code" label="Country Code" enabled="true" visible="true" accessible="true" x="16" y="257" width="102" height="16" index="0" traits="StaticText"/>
+                              <XCUIElementTypeOther type="XCUIElementTypeOther" name="register_button_countryCode" enabled="true" visible="true" accessible="true" x="16" y="278" width="102" height="32" index="1" traits="AllowsDirectInteraction"/>
+                            </XCUIElementTypeOther>
+                          </XCUIElementTypeOther>
+                          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="142" y="257" width="244" height="53" index="1" traits="">
+                            <XCUIElementTypeTextField type="XCUIElementTypeTextField" name="register_input_mobileNumber" label="" enabled="true" visible="true" accessible="true" x="142" y="277" width="236" height="33" index="0" placeholderValue="" traits=""/>
+                          </XCUIElementTypeOther>
+                        </XCUIElementTypeOther>
+                      </XCUIElementTypeOther>
+                    </XCUIElementTypeOther>
+                  </XCUIElementTypeOther>
+                  <XCUIElementTypeImage type="XCUIElementTypeImage" name="Wave(Color)" enabled="false" visible="true" accessible="false" x="0" y="688" width="402" height="186" index="1" traits="NotEnabled, Image"/>
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="708" width="370" height="132" index="2" traits="">
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="708" width="370" height="116" index="0" traits="">
+                      <XCUIElementTypeOther type="XCUIElementTypeOther" name="register_button_changePhoneNumber" enabled="true" visible="true" accessible="true" x="16" y="708" width="370" height="50" index="0" traits=""/>
+                      <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="16" y="774" width="370" height="50" index="1" traits="">
+                        <XCUIElementTypeButton type="XCUIElementTypeButton" name="register_button_continue" label="Continue" enabled="true" visible="true" accessible="true" x="16" y="774" width="370" height="50" index="0" traits="Button, AllowsDirectInteraction">
+                          <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Continue" name="Continue" label="Continue" enabled="true" visible="true" accessible="false" x="165" y="788" width="72" height="21" index="0" traits="StaticText"/>
+                        </XCUIElementTypeButton>
+                      </XCUIElementTypeOther>
+                    </XCUIElementTypeOther>
+                  </XCUIElementTypeOther>
+                </XCUIElementTypeOther>
+              </XCUIElementTypeOther>
+            </XCUIElementTypeOther>
+            <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="0" width="402" height="874" index="2" traits="">
+              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="0" width="402" height="874" index="0" traits=""/>
+            </XCUIElementTypeOther>
+          </XCUIElementTypeOther>
+        </XCUIElementTypeOther>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeWindow>
+  </XCUIElementTypeApplication>
+</AppiumAUT>

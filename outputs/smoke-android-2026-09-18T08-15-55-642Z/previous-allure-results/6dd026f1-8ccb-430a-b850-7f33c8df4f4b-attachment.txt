@@ -1,0 +1,301 @@
+--------- beginning of main
+08-14 16:23:32.841  2357  2357 D S.S.N.  : entryViewBound parent :0|net.openvpn.openvpn|1642|null|10466
+08-14 16:23:32.843  2357  2357 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+08-14 16:23:32.853  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-14 16:23:32.857  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 16:23:32.857  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-14 16:23:32.857  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-14 16:23:32.858  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-14 16:23:32.858  2357  2357 I AODNotificationManager: updateNotification() 
+08-14 16:23:32.918 15279 15308 D LogsManager: No need to flush logs
+08-14 16:23:33.128  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786713813
+08-14 16:23:33.129  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-14 16:23:33.129  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-14 16:23:33.129  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29778563
+08-14 16:23:33.129  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29778553
+08-14 16:23:33.129  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-14 16:23:33.129  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-14 16:23:33.129  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-14 16:23:33.130  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-14 16:23:33.130  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-14 16:23:34.029  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-14 16:23:34.126  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786713814
+08-14 16:23:34.126  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-14 16:23:34.126  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-14 16:23:34.126  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29778563
+08-14 16:23:34.126  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29778553
+08-14 16:23:34.126  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-14 16:23:34.126  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-14 16:23:34.127  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-14 16:23:34.127  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-14 16:23:34.127  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+--------- beginning of system
+08-14 16:23:34.718   730   730 D io_stats: !@   8,0 r 72438517 1327112605 w 22034973 396965860 d 6438769 452990396 f 0 2045713 iot 33368440 0 th 0 0 0 pt 0 inp 0 0 539087.110
+08-14 16:23:34.719   730   730 D io_stats: !@ Write_top(KB): kworker/u16:0(15739) 468 ugin:persistent(6020) 8
+08-14 16:23:34.740  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: Connected to unknown network * ID: 20 SSID: "Ladani_1" PROVIDER-NAME: null BSSID: null FQDN: null HOME-PROVIDER-NETWORK: false PRIO: 0 HIDDEN: false PMF: false CarrierId: -1 SubscriptionId: -1 SubscriptionGroup: null Currently Connected: true User Selected: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  NetworkSelectionStatus NETWORK_SELECTION_ENABLED
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  hasEverConnected: true
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  hasNeverDetectedCaptivePortal: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  hasEverValidatedInternetAccess: true
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  mCandidateSecurityParams: Security Parameters:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  Type: 2
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  Enabled: true
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  KeyMgmt: WPA_PSK
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  Protocols: WPA RSN
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  AuthAlgorithms:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  PairwiseCiphers: TKIP CCMP
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  GroupCiphers: WEP40 WEP104 TKIP CCMP
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  GroupMgmtCiphers:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  SuiteBCiphers:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  RequirePmf: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  IsAddedByAutoUpgrade: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  IsSaeH2eOnlyMode: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  IsSaePkOnlyMode: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  mLastUsedSecurityParams: Security Parameters:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  Type: 2
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  Enabled: true
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  KeyMgmt: WPA_PSK
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  Protocols: WPA RSN
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  AuthAlgorithms:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  PairwiseCiphers: TKIP CCMP
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  GroupCiphers: WEP40 WEP104 TKIP CCMP
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  GroupMgmtCiphers:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  SuiteBCiphers:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  RequirePmf: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  IsAddedByAutoUpgrade: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  IsSaeH2eOnlyMode: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  IsSaePkOnlyMode: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  numAssociation 106
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  validatedInternetAccess shared trusted
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  macRandomizationSetting: 3
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  mRandomizedMacAddress: ea:97:94:58:40:9c
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  randomizedMacExpirationTimeMs: 2026-08-14T18:11:46.590
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  randomizedMacLastModifiedTimeMs: <none>
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  mIsSendDhcpHostnameEnabled: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  deletionPriority: 0
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  KeyMgmt: WPA_PSK Protocols: WPA RSN
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  AuthAlgorithms:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  PairwiseCiphers: TKIP CCMP
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  GroupCiphers: WEP40 WEP104 TKIP CCMP
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  GroupMgmtCiphers:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  SuiteBCiphers:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  PSK/SAE: *
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: SecurityParams List:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: Security Parameters:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  Type: 2
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  Enabled: true
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  KeyMgmt: WPA_PSK
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  Protocols: WPA RSN
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  AuthAlgorithms:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  PairwiseCiphers: TKIP CCMP
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  GroupCiphers: WEP40 WEP104 TKIP CCMP
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  GroupMgmtCiphers:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  SuiteBCiphers:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  RequirePmf: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  IsAddedByAutoUpgrade: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  IsSaeH2eOnlyMode: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  IsSaePkOnlyMode: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: Security Parameters:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  Type: 4
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  Enabled: true
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  KeyMgmt: SAE
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  Protocols: RSN
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  AuthAlgorithms:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  PairwiseCiphers: CCMP GCMP_256 GCMP_128
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  GroupCiphers: CCMP GCMP_256 GCMP_128
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  GroupMgmtCiphers:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  SuiteBCiphers:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  RequirePmf: true
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  IsAddedByAutoUpgrade: true
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  IsSaeH2eOnlyMode: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  IsSaePkOnlyMode: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: 
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: Enterprise config:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  ocsp: 0
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  trust_on_first_use: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  user_approve_no_ca_cert: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  selected_rcoi: 0
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  minimum_tls_version: 0
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  enable_conservative_peer_mode: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  tofu_dialog_state: 0
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  tofu_connection_state: 0
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: IP config:
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: IP assignment: DHCP
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: Proxy settings: NONE
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  cuid=1000 cname=android.uid.system:1000 luid=1000 lname=android.uid.system:1000 lcuid=10048 allowAutojoin=true noInternetAccessExpected=false mostRecentlyConnected=false 
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: lastConnected: 2026-08-14T13:11:45.810 
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: 
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: numRebootsSinceLastUse: 0
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: recentFailure: Association Rejection code: 0, last update time: 0
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: bssidAllowlist unset
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: vendorData unset
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: IsDppConfigurator: true
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory: HasEncryptedPreSharedKey: false
+08-14 16:23:34.751  1726  2136 W WifiNetworkFactory:  setWifi7Enabled=true:28:ee:52:fc:78:d7. Ignoring...
+08-14 16:23:34.754  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 112537, isSameBssidAndFreq true
+08-14 16:23:34.755  1726  2147 D ConnectivityService: notifyType CALLBACK_CAP_CHANGED for [647 WIFI]
+08-14 16:23:34.762  1726  2183 D SemWifiApNsd:Client: lpInterface:wlan0
+08-14 16:23:34.763  1726  2183 D SemWifiSwitchForIndividualAppsService: stopTCPMonitoring : already stopped
+08-14 16:23:34.763  1726  2183 I WifiConnectivityMonitor.NCC: sNetworkCallback(oCC) FULL : 647(valid: true/captive: false)
+08-14 16:23:34.763  5082  6354 I HBD     : g onCapabilitiesChanged network : 647 current network state : wifi 
+08-14 16:23:34.765  1726  2183 I WifiConnectivityMonitor.NCC: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=20967Kbps LinkDnBandwidth>=27828Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:**:**:00, MAC: 02:00:00:**:**:00, IP: /192.***.*.158, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11n, RSSI: -62, Link speed: 144Mbps, Tx Link speed: 144Mbps, Max Supported Tx Link speed: 144Mbps, Rx Link speed: 72Mbps, Max Supported Rx Link speed: 144Mbps, Frequency: 2452MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -62 AdminUids: [1000] SSID: "Ladani_1" UnderlyingNetworks: Null]
+08-14 16:23:34.767  1726  2147 D ConnectivityService: notifyType CALLBACK_CAP_CHANGED for [648 WIFI|VPN]
+08-14 16:23:34.777  2357  2567 I WifiPickerTracker: NetworkCallback : onCapabilitiesChanged
+08-14 16:23:34.778  2357  2567 D WifiPickerTracker: updateWifiEntries capabilities
+08-14 16:23:34.781  2576  3674 I EPDG -- SIM1 [SMARTWIFI]: mWiFiValidateNetworkCallback onCapabilitiesChanged(): validated true captiveportal false
+08-14 16:23:34.781  2684  3024 I WfcEpdgManager: mDefaultNetworkCallback onCapabilitiesChanged(): isWifi :true,validated :true
+08-14 16:23:34.782  2576  3674 I EPDG -- SIM1 [NetController]: WifiNetworkCallback onCapabilitiesChanged(): validated true
+08-14 16:23:34.783  2684  2903 I WfcEpdgManager: [Connected] processMessage WIFI_CONNECTED
+08-14 16:23:34.783  1726  2254 D WifiConnectivityMonitor: HANDLE_ON_CAPABILITIES_CHANGED
+08-14 16:23:34.784  1726  2254 I WifiConnectivityMonitor: determineMode : MODE_NON_SWITCHABLE_BY_POOR_NETWORK_DETECTION_DISABLED
+08-14 16:23:34.784  1726  2254 D OpenNetworkQos[4.00]: updateBssidNoInternet: mBssidNoInternet = false
+08-14 16:23:34.784  1726  2254 D OpenNetworkQos[4.00]: getOpenNetworkQosNoInternetStatus: false
+08-14 16:23:34.784  1726  2254 D OpenNetworkQos[4.00]: getOpenNetworkQosScores: 26 26 26 
+08-14 16:23:34.784  1726  2254 D KNOX_MDM_SettingsProvider: isChangeAllowed() : name = wifi_wcm_qos_sharing_score_summary
+08-14 16:23:34.785  1726  2254 I WifiProfileShare: network QoS data was changed (internet), updateQoSData networkType: true, qosData: false
+08-14 16:23:34.787  1726  2248 D SemApeService: Deducted link capacity (M: R=50 T=100) RSSI=-62
+08-14 16:23:34.788  1726  2248 D SemApeService: Deducted link capacity (M: R=50 T=100) on (wlan0) GoogleAPI(M: R=27 T=20) RSSI=-62 isDefault=false isMlo=false
+08-14 16:23:34.790  1726  3221 V WifiProfileShare.Caster: update wips network, size: 0
+08-14 16:23:34.792 27353 27402 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix="RcsEngineImpl[DUAL_REG]:[e08dd34e-451f]>Handler" thread_id=897 ]
+08-14 16:23:34.792  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786713814792 lastDateWindow=1786464242000
+08-14 16:23:34.794  2357  2567 D WifiPickerTracker: update AutoHotspot Entries() : bleAccessPoints -> 0
+08-14 16:23:34.794  2357  2567 D WifiPickerTracker: handleNetworkCapabilitiesChanged
+08-14 16:23:34.795 27353 27402 I BugleRcsEngine: Cannot use CS.apk as it's battery optimized [CONTEXT thread_id=897 ]
+08-14 16:23:34.795  2357  2567 I WifiPickerTracker: DefaultNetworkCallback : onCapabilitiesChanged
+08-14 16:23:34.796 27353 27394 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=893 ]
+08-14 16:23:34.797  1726  3221 D WifiProfileShare: nearby scanning settings run
+08-14 16:23:34.797  1726  3221 D WifiProfileShare: network score provider settings enabled
+08-14 16:23:34.797  1726  3221 D OpenNetworkQos[4.00]: getOpenNetworkQosScores: 26 26 26 
+08-14 16:23:34.797  1726  3221 D OpenNetworkQos[4.00]: getOpenNetworkQosNoInternetStatus: false
+08-14 16:23:34.797  1726  3221 I WifiProfileShare.Caster: current network type: 0, score: [26, 26, 26]
+08-14 16:23:34.797  1726  3221 V WifiProfileShare.Caster: captive portal configuration was set
+08-14 16:23:34.798  1726  3221 V WifiProfileShare.Cache: update network score 28:ee:52:**:**:d7
+08-14 16:23:34.798  1726  3221 D WifiProfileShare.ScanMatcher: getMcfDataList size:2
+08-14 16:23:34.799  1726  3221 I WifiProfileShare.Caster: qos data was updated , before:type:QOS, pBssid:12:2a:ff, qosData:f9 after:type:QOS, pBssid:12:2a:ff, qosData:f9
+08-14 16:23:34.800  1726  3221 I [MCFSDK_android_1.3.7026]_4_McfCasterImpl: isNetworkEnabled - type : 1 ret : true
+08-14 16:23:34.801  1726  3221 D WifiProfileShare.McfCast: -ME--- mIsNetworkEnabled :true
+08-14 16:23:34.801  1726  3221 D WifiProfileShare.McfCast: updateQoSData ignored, same contents
+08-14 16:23:34.801  1726  3221 D WifiProfileShare.MCF: success update QosData !
+08-14 16:23:34.803  2357  2493 D WifiInteractor: get wifiIconGroup ePDGConnected : false
+08-14 16:23:34.803  2357  2478 D WifiInteractor: get wifiIconGroup ePDGConnected : false
+08-14 16:23:34.804  2870  2971 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236038, activityId=2131236042)
+08-14 16:23:34.805  2870  2971 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236038, activityId=2131236042)
+08-14 16:23:34.805  1726  3221 I [MCFSDK_android_1.3.7026]_4_McfCasterImpl: isNetworkEnabled - type : 1 ret : true
+08-14 16:23:34.805  1726  3221 D WifiProfileShare.McfCast: -ME--- mIsNetworkEnabled :true
+08-14 16:23:34.806  1726  3221 D WifiProfileShare.McfCast: -ME--- updatePasswordDate pwdData size:2
+08-14 16:23:34.810 14376 20368 I NearbyMediums: [WifiNetworkV2] defaultNetworkCallback onCapabilitiesChanged network:648 [ WIFI VPN ] isNonBypassable:true
+08-14 16:23:34.811 14376 20368 D ConnectivityManager: StackLog: [android.net.ConnectivityManager.sendRequestForNetwork(ConnectivityManager.java:4744)] [android.net.ConnectivityManager.sendRequestForNetwork(ConnectivityManager.java:4912)] [android.net.ConnectivityManager.registerNetworkCallback(ConnectivityManager.java:5329)] [android.net.ConnectivityManager.registerNetworkCallback(ConnectivityManager.java:5299)] [dwbl.a(:com.google.android.gms@262932035@26.29.32 (260400-956293556):34)] [lqk.a(:com.google.android.gms@262932035@26.29.32 (260400-956293556):19)] [dwbx.j(:com.google.android.gms@262932035@26.29.32 (260400-956293556):19)] [dwbx.O(:com.google.android.gms@262932035@26.29.32 (260400-956293556):14)] [dwbx.K(:com.google.android.gms@262932035@26.29.32 (260400-956293556):7)] [dwbx.I(:com.google.android.gms@262932035@26.29.32 (260400-956293556):23)] [dwbp.run(:com.google.android.gms@262932035@26.29.32 (260400-956293556):9)] [bmiw.c(:com.google.android.gms@262932035@26.29.32 (260400-956293556):50)] [bmiw.run(:com.google.android.gms@262932035@26.29.32 (260400-956293556):90)] [java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)] [java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)] [bmos.run(:com.google.android.gms@262932035@26.29.32 (260400-956293556):8)] [java.lang.Thread.run(Thread.java:1572)]
+08-14 16:23:34.816  1726  2205 D BackgroundInstallControlService: Package event received: 0
+08-14 16:23:34.816  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-14 16:23:34.833  1726  2147 D ConnectivityService: Rematched networks [computed 1ms] [applied 2ms] [issued 2]
+08-14 16:23:34.833  1726  2147 D ConnectivityService: NetworkReassignment : no changes
+08-14 16:23:34.834 14376 20368 D ConnectivityManager: StackLog: [android.net.ConnectivityManager.unregisterNetworkCallback(ConnectivityManager.java:5579)] [dwbx.j(:com.google.android.gms@262932035@26.29.32 (260400-956293556):43)] [dwbx.O(:com.google.android.gms@262932035@26.29.32 (260400-956293556):14)] [dwbx.K(:com.google.android.gms@262932035@26.29.32 (260400-956293556):7)] [dwbx.I(:com.google.android.gms@262932035@26.29.32 (260400-956293556):23)] [dwbp.run(:com.google.android.gms@262932035@26.29.32 (260400-956293556):9)] [bmiw.c(:com.google.android.gms@262932035@26.29.32 (260400-956293556):50)] [bmiw.run(:com.google.android.gms@262932035@26.29.32 (260400-956293556):90)] [java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)] [java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)] [bmos.run(:com.google.android.gms@262932035@26.29.32 (260400-956293556):8)] [java.lang.Thread.run(Thread.java:1572)]
+08-14 16:23:34.835 14376 20368 I NearbyMediums: Wifi changed new SSID: <unknown ssid>
+08-14 16:23:34.835 14376 20368 I NearbyMediums: WifiLanConnectivityInfo is not changed, skip notify.
+08-14 16:23:34.841  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-14 16:23:34.845  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-14 16:23:34.855  1437  1437 I SurfaceFlinger: SFWD update time=539087247210889
+08-14 16:23:34.859  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-14 16:23:34.859  1437  1437 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+08-14 16:23:34.861  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-14 16:23:34.863  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-14 16:23:34.863  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForClientComposition
+08-14 16:23:34.868  1325  1406 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-14 16:23:34.868  1325  1406 I display : Current VRR MODE is 3
+08-14 16:23:34.868  1325  1406 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-14 16:23:34.868  1325  1406 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-14 16:23:34.868  1325  1406 I display : commit modeset : 1080x2340@120hs
+08-14 16:23:34.871  5082  5082 I HBD     : g onCapabilityChanged  setNetworkState currentNetworkState : wifi 
+08-14 16:23:34.871  5082  5082 I HBD     : h LogTag.TAG_LMDOWNLOAD network status is changed.
+08-14 16:23:34.895  1325  1406 W display : deliverWinConfigData:: commit modeset time (26 ms)
+08-14 16:23:34.896  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-14 16:23:34.897  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-14 16:23:34.897  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-14 16:23:34.897  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-14 16:23:34.897  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-14 16:23:34.897  1325  1397 I display : Set Affinity CPU ID : 0
+08-14 16:23:34.897  1325  1397 I display : Set Affinity CPU ID : 1
+08-14 16:23:34.897  1325  1397 I display : Set Affinity CPU ID : 2
+08-14 16:23:34.897  1325  1397 I display : Set Affinity CPU ID : 3
+08-14 16:23:34.897  1325  1397 I display : Set Affinity CPU ID : 4
+08-14 16:23:34.897  1325  1397 I display : Set Affinity CPU ID : 5
+08-14 16:23:34.897  1325  1397 I display : Set Affinity CPU ID : 6
+08-14 16:23:34.897  1325  1397 I display : Set Affinity CPU ID : 7
+08-14 16:23:34.897  1325  1397 I display : Set affinity HWC : 1325
+08-14 16:23:34.897  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-14 16:23:34.897  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-14 16:23:34.897  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-14 16:23:34.898  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-14 16:23:34.898  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-14 16:23:35.095  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-14 16:23:35.099  1437  1437 I LayerHistory: StatusBar$_2357#104 voted NoVote (0.00 Hz)
+08-14 16:23:35.099  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-14 16:23:35.100  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-14 16:23:35.104  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-14 16:23:35.105  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-14 16:23:35.109  1325  1406 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-14 16:23:35.109  1325  1406 I display : Current VRR MODE is 3
+08-14 16:23:35.109  1325  1406 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-14 16:23:35.109  1325  1406 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-14 16:23:35.110  1325  1406 I display : commit modeset : 1080x2340@60phs
+08-14 16:23:35.126  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786713815
+08-14 16:23:35.126  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-14 16:23:35.127  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-14 16:23:35.127  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29778563
+08-14 16:23:35.127  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29778553
+08-14 16:23:35.127  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-14 16:23:35.127  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-14 16:23:35.127  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-14 16:23:35.127  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-14 16:23:35.128  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-14 16:23:35.128  1325  1406 W display : deliverWinConfigData:: commit modeset time (18 ms)
+08-14 16:23:35.130  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-14 16:23:35.130  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-14 16:23:35.130  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-14 16:23:35.130  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-14 16:23:35.130  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-14 16:23:35.130  1325  1397 I display : Set Affinity CPU ID : 0
+08-14 16:23:35.130  1325  1397 I display : Set Affinity CPU ID : 1
+08-14 16:23:35.130  1325  1397 I display : Set Affinity CPU ID : 2
+08-14 16:23:35.130  1325  1397 I display : Set Affinity CPU ID : 3
+08-14 16:23:35.130  1325  1397 I display : Set Affinity CPU ID : 4
+08-14 16:23:35.130  1325  1397 I display : Set Affinity CPU ID : 5
+08-14 16:23:35.130  1325  1397 I display : Set Affinity CPU ID : 6
+08-14 16:23:35.130  1325  1397 I display : Set Affinity CPU ID : 7
+08-14 16:23:35.130  1325  1397 I display : Set affinity HWC : 1325
+08-14 16:23:35.130  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-14 16:23:35.130  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-14 16:23:35.130  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-14 16:23:35.130  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-14 16:23:35.131  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-14 16:23:35.298 14376 20368 I NearbySharing: Network state changed: NetworkState(isRestricted=false, isOnline=true, isCongested=false, isMetered=false, isWifiConnected=true)
+08-14 16:23:35.298 14376 12123 I NearbySharing: Network state changed: NetworkState(isRestricted=false, isOnline=true, isCongested=false, isMetered=false, isWifiConnected=true)
+08-14 16:23:36.009  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-14 16:23:36.127  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786713816
+08-14 16:23:36.127  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-14 16:23:36.128  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-14 16:23:36.128  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29778563
+08-14 16:23:36.128  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29778553
+08-14 16:23:36.128  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-14 16:23:36.128  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-14 16:23:36.129  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-14 16:23:36.129  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-14 16:23:36.130  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-14 16:23:36.722   730   730 D io_stats: !@   8,0 r 72438517 1327112605 w 22034987 396965972 d 6438769 452990396 f 0 2045715 iot 33368472 0 th 0 0 0 pt 0 inp 0 0 539089.114
+08-14 16:23:37.018  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-14 16:23:37.128  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786713817
+08-14 16:23:37.128  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-14 16:23:37.128  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-14 16:23:37.128  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29778563
+08-14 16:23:37.129  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29778553
+08-14 16:23:37.129  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-14 16:23:37.129  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-14 16:23:37.129  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-14 16:23:37.129  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-14 16:23:37.130  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-14 16:23:37.315 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-14 16:23:37.399 12972 12972 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-14 16:23:37.442 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-14 16:23:37.505 12976 12976 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-14 16:23:37.557 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

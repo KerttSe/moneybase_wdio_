@@ -1,0 +1,206 @@
+--------- beginning of main
+07-31 11:58:58.719  2114  3197 I EPDG -- SIM1 [NetController]: WifiNetworkCallback onCapabilitiesChanged(): validated true
+07-31 11:58:58.722  1114  1245 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+07-31 11:58:58.725  1870  2050 D WifiPickerTracker: update AutoHotspot Entries() : bleAccessPoints -> 0
+07-31 11:58:58.725  1870  2050 D WifiPickerTracker: handleNetworkCapabilitiesChanged
+07-31 11:58:58.725  1414  2846 I [MCFSDK_android_1.3.7026]_4_McfCasterImpl: isNetworkEnabled - type : 1 ret : true
+07-31 11:58:58.725  1870  2050 I WifiPickerTracker: DefaultNetworkCallback : onCapabilitiesChanged
+07-31 11:58:58.725  1414  2846 D WifiProfileShare.McfCast: -ME--- mIsNetworkEnabled :true
+07-31 11:58:58.725  1414  2846 D WifiProfileShare.McfCast: -ME--- updatePasswordDate pwdData size:2
+07-31 11:58:58.725  1114  1223 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+07-31 11:58:58.725  2114  3197 I EPDG -- SIM1 [SMARTWIFI]: mWiFiValidateNetworkCallback onCapabilitiesChanged(): validated true captiveportal false
+07-31 11:58:58.728  2167  2450 I WfcEpdgManager: mDefaultNetworkCallback onCapabilitiesChanged(): isWifi :true,validated :true
+07-31 11:58:58.728 27610 27643 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=1159 ]
+07-31 11:58:58.729 27610 27649 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix="RcsEngineImpl[DUAL_REG]:[3459c7be-7f85]>Handler" thread_id=1164 ]
+07-31 11:58:58.729  2167  2356 I WfcEpdgManager: [Connected] processMessage WIFI_CONNECTED
+07-31 11:58:58.730  1114  1223 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+07-31 11:58:58.735 27610 27649 I BugleRcsEngine: Cannot use CS.apk as it's battery optimized [CONTEXT thread_id=1164 ]
+07-31 11:58:58.737  1114  1114 I LayerHistory: StatusBar$_1870#98 voted NoVote (0.00 Hz)
+07-31 11:58:58.737  1114  1114 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+07-31 11:58:58.737  1114  1114 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+07-31 11:58:58.739  1017  1017 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+07-31 11:58:58.739  1017  1017 I display : Current VRR MODE is 3
+07-31 11:58:58.739  1017  1017 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+07-31 11:58:58.739  1017  1017 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+07-31 11:58:58.739  1017  1017 I display : commit modeset : 1080x2340@120hs
+07-31 11:58:58.740  1414  1684 D ConnectivityService: Rematched networks [computed 1ms] [applied 2ms] [issued 3]
+07-31 11:58:58.740  1414  1684 D ConnectivityService: NetworkReassignment : no changes
+07-31 11:58:58.743  6350 25133 D ConnectivityManager: StackLog: [android.net.ConnectivityManager.unregisterNetworkCallback(ConnectivityManager.java:5579)] [dtzs.j(:com.google.android.gms@262634035@26.26.34 (260400-945364269):43)] [dtzs.O(:com.google.android.gms@262634035@26.26.34 (260400-945364269):14)] [dtzs.K(:com.google.android.gms@262634035@26.26.34 (260400-945364269):7)] [dtzs.I(:com.google.android.gms@262634035@26.26.34 (260400-945364269):23)] [dtzk.run(:com.google.android.gms@262634035@26.26.34 (260400-945364269):9)] [blvq.c(:com.google.android.gms@262634035@26.26.34 (260400-945364269):50)] [blvq.run(:com.google.android.gms@262634035@26.26.34 (260400-945364269):71)] [java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)] [java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)] [bmbk.run(:com.google.android.gms@262634035@26.26.34 (260400-945364269):8)] [java.lang.Thread.run(Thread.java:1572)]
+07-31 11:58:58.747  6350 25133 I NearbyMediums: Wifi changed new SSID: <unknown ssid>
+07-31 11:58:58.747  6350 25133 I NearbyMediums: WifiLanConnectivityInfo is not changed, skip notify.
+--------- beginning of system
+07-31 11:58:58.747  1414  1744 D BackgroundInstallControlService: Package event received: 0
+07-31 11:58:58.747  6350 25133 I NearbyMediums: [WifiNetworkV2] defaultNetworkCallback onCapabilitiesChanged network:608 [ WIFI VPN ] isNonBypassable:true
+07-31 11:58:58.751  1870  1969 D WifiInteractor: get wifiIconGroup ePDGConnected : false
+07-31 11:58:58.753  1870  1985 D WifiInteractor: get wifiIconGroup ePDGConnected : false
+07-31 11:58:58.754  2246  2461 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236037, activityId=2131236043)
+07-31 11:58:58.755  2246  2461 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236037, activityId=2131236043)
+07-31 11:58:58.760  1017  1017 W display : deliverWinConfigData:: commit modeset time (20 ms)
+07-31 11:58:58.762  1114  1114 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+07-31 11:58:58.762  1114  1114 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+07-31 11:58:58.764  1017  1098 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+07-31 11:58:58.764  1017  1098 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+07-31 11:58:58.766  1017  1098 I display : Set m2mMPP capacity(4) for fps(120)
+07-31 11:58:58.766  1017  1098 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+07-31 11:58:58.766  1017  1098 I display : Set Affinity config for fps(120) : cpuIDs : 255
+07-31 11:58:58.766  1017  1098 I display : Set Affinity CPU ID : 0
+07-31 11:58:58.766  1017  1098 I display : Set Affinity CPU ID : 1
+07-31 11:58:58.766  1017  1098 I display : Set Affinity CPU ID : 2
+07-31 11:58:58.766  1017  1098 I display : Set Affinity CPU ID : 3
+07-31 11:58:58.766  1017  1098 I display : Set Affinity CPU ID : 4
+07-31 11:58:58.766  1017  1098 I display : Set Affinity CPU ID : 5
+07-31 11:58:58.766  1017  1098 I display : Set Affinity CPU ID : 6
+07-31 11:58:58.766  1017  1098 I display : Set Affinity CPU ID : 7
+07-31 11:58:58.766  1017  1098 I display : Set affinity HWC : 1017
+07-31 11:58:58.766  1017  1098 I display : CPU set : Cluster(0), min_clock(0)
+07-31 11:58:58.766  1017  1098 I display : CPU set : Cluster(1), min_clock(0)
+07-31 11:58:58.767  1017  1098 I display : CPU set : Cluster(2), min_clock(0)
+07-31 11:58:58.767  1114  1223 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+07-31 11:58:58.812  4654  4654 I HBD     : g onCapabilityChanged  setNetworkState currentNetworkState : wifi 
+07-31 11:58:58.812  4654  4654 I HBD     : h LogTag.TAG_LMDOWNLOAD network status is changed.
+07-31 11:58:59.024  1114  1245 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+07-31 11:58:59.026  1114  1223 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+07-31 11:58:59.027  1114  1114 I LayerHistory: StatusBar$_1870#98 voted NoVote (0.00 Hz)
+07-31 11:58:59.027  1114  1114 I SurfaceFlinger: Idle - choose 60.00 Hz
+07-31 11:58:59.028  1114  1114 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+07-31 11:58:59.029  1114  1223 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+07-31 11:58:59.030  1017  1017 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+07-31 11:58:59.030  1017  1017 I display : Current VRR MODE is 3
+07-31 11:58:59.030  1017  1017 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+07-31 11:58:59.030  1017  1017 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+07-31 11:58:59.030  1017  1017 I display : commit modeset : 1080x2340@60phs
+07-31 11:58:59.044  1017  1017 W display : deliverWinConfigData:: commit modeset time (13 ms)
+07-31 11:58:59.045  1114  1114 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+07-31 11:58:59.045  1017  1098 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+07-31 11:58:59.046  1017  1098 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+07-31 11:58:59.046  1017  1098 I display : Set m2mMPP capacity(8) for fps(60)
+07-31 11:58:59.046  1017  1098 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+07-31 11:58:59.046  1017  1098 I display : Set Affinity config for fps(60) : cpuIDs : 255
+07-31 11:58:59.046  1017  1098 I display : Set Affinity CPU ID : 0
+07-31 11:58:59.046  1017  1098 I display : Set Affinity CPU ID : 1
+07-31 11:58:59.046  1017  1098 I display : Set Affinity CPU ID : 2
+07-31 11:58:59.046  1017  1098 I display : Set Affinity CPU ID : 3
+07-31 11:58:59.046  1017  1098 I display : Set Affinity CPU ID : 4
+07-31 11:58:59.046  1017  1098 I display : Set Affinity CPU ID : 5
+07-31 11:58:59.046  1017  1098 I display : Set Affinity CPU ID : 6
+07-31 11:58:59.046  1017  1098 I display : Set Affinity CPU ID : 7
+07-31 11:58:59.046  1017  1098 I display : Set affinity HWC : 1017
+07-31 11:58:59.046  1017  1098 I display : CPU set : Cluster(0), min_clock(0)
+07-31 11:58:59.046  1017  1098 I display : CPU set : Cluster(1), min_clock(0)
+07-31 11:58:59.046  1017  1098 I display : CPU set : Cluster(2), min_clock(0)
+07-31 11:58:59.046  1114  1223 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+07-31 11:58:59.066  1105  1126 E HeatmapThread: ECT Thread time in milliseconds: 1785488339
+07-31 11:58:59.066  1105  1126 D HeatmapThread: !@ batteryplugType : 0
+07-31 11:58:59.066  1105  1126 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+07-31 11:58:59.066  1105  1126 D HeatmapThread: !@ Heatmap currtime: 29758138
+07-31 11:58:59.067  1105  1126 D HeatmapThread: !@ Heatmap prevtime: 29758131
+07-31 11:58:59.067  1105  1126 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+07-31 11:58:59.067  1105  1126 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29739448
+07-31 11:58:59.067  1105  1126 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+07-31 11:58:59.067  1105  1126 E HeatmapThread: !@ CAM Could not access BSOH EFS
+07-31 11:58:59.067  1105  1126 E HeatmapThread: !@ CAM New BSOH: 0
+07-31 11:58:59.218  6350 25133 I NearbySharing: Network state changed: NetworkState(isRestricted=false, isOnline=true, isCongested=false, isMetered=false, isWifiConnected=true)
+07-31 11:58:59.222  6350 25133 I NearbySharing: Network state changed: NetworkState(isRestricted=false, isOnline=true, isCongested=false, isMetered=false, isWifiConnected=true)
+07-31 11:59:00.018  1870  2291 I DateTimeView: updateAll - getTimeFormat
+07-31 11:59:00.021  1870  1870 D ClockFaceEvents: onTimeTick. callers : com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.refreshTime:19
+07-31 11:59:00.021  1870  1870 D ClockFaceEvents: com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.onTimeChanged:1
+07-31 11:59:00.021  1870  1870 D ClockFaceEvents: com.android.keyguard.KeyguardUpdateMonitor$16.handleMessage:732
+07-31 11:59:00.022  1870  1870 D ClockFaceEvents: onTimeTick. callers : com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.refreshTime:38
+07-31 11:59:00.022  1870  1870 D ClockFaceEvents: com.android.keyguard.ClockEventController$keyguardUpdateMonitorCallback$1.onTimeChanged:1
+07-31 11:59:00.022  1870  1870 D ClockFaceEvents: com.android.keyguard.KeyguardUpdateMonitor$16.handleMessage:732
+07-31 11:59:00.022  1870  1870 D FaceWidgetPagesController: onTimeChanged()
+07-31 11:59:00.028  1870  2291 D QSClockBellTower: onReceive(android.intent.action.TIME_TICK) mTimeZoneString:Europe/Kiev
+07-31 11:59:00.029  1414  1414 I EyeComfortSolutionService: action  :  android.intent.action.TIME_TICK
+07-31 11:59:00.031  1870  1870 D QSClockBellTower: He is ready to ring the bell. (((QSClockBellSound - TimeText:11:59, TimeContentDescription:11:59, DateText:Fri, July 31, ShortDateText:Fri, Jul 31, Demo:false)))
+07-31 11:59:00.036  1870  1870 D QSClock : StatusBar clock=11:59 notifyTimeChanged(QSClockBellSound - TimeText:11:59, TimeContentDescription:11:59, DateText:Fri, July 31, ShortDateText:Fri, Jul 31, Demo:false) clockVisibleByPolicy=true, clockVisibleByUser=true, visible=true, parent=android.widget.LinearLayout{7790d0f V.E...... ......ID 0,0-97,58 #7f0a069b app:id/left_clock_container} caller=com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.animateShow:52 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.updateStatusBarVisibilitiesInner:230 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.updateStatusBarVisibilities:65 com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.disable:71 com.android.systemui.statusbar.CommandQueue$H.handleMessage:2997  
+07-31 11:59:00.037  1870  1870 D QSClockBellTower: Everyone heard the bell. run(currentTime:1785488340030, getTime():Fri Jul 31 11:59:00 GMT+03:00 2026, getTimeZone():libcore.util.ZoneInfo[mDstSavings=3600000,mUseDst=true,mDelegate=[id="Europe/Kiev",mRawOffset=7200000,mEarliestRawOffset=7324000,transitions=245]])
+07-31 11:59:00.058  1114  1245 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+07-31 11:59:00.060  1114  1223 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+07-31 11:59:00.065  1870  1870 W View    : requestLayout() improperly called by com.android.systemui.qs.SecQSGradationDrawableView{d1cede7 V.E...... ......ID 0,0-1080,310 #7f0a0a16 app:id/qs_gradation_view} during layout: running second layout pass
+07-31 11:59:00.065  1870  1870 W View    : requestLayout() improperly called by android.widget.FrameLayout{d77dd94 V.E...... ......I. 0,0-1080,2340 #2} during layout: running second layout pass
+07-31 11:59:00.065  1870  1870 W View    : requestLayout() improperly called by android.widget.FrameLayout{604a03d V.E...... ......ID 0,143-1080,2214 #7f0a0a14 app:id/qs_frame} during layout: running second layout pass
+07-31 11:59:00.066  1105  1126 E HeatmapThread: ECT Thread time in milliseconds: 1785488340
+07-31 11:59:00.066  1105  1126 D HeatmapThread: !@ batteryplugType : 0
+07-31 11:59:00.066  1105  1126 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+07-31 11:59:00.066  1105  1126 D HeatmapThread: !@ Heatmap currtime: 29758139
+07-31 11:59:00.066  1105  1126 D HeatmapThread: !@ Heatmap prevtime: 29758131
+07-31 11:59:00.066  1105  1126 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+07-31 11:59:00.066  1105  1126 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29739448
+07-31 11:59:00.067  1105  1126 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+07-31 11:59:00.067  1105  1126 E HeatmapThread: !@ CAM Could not access BSOH EFS
+07-31 11:59:00.067  1105  1126 E HeatmapThread: !@ CAM New BSOH: 0
+07-31 11:59:00.068  1870  1870 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+07-31 11:59:00.070  1114  1114 I LayerHistory: StatusBar$_1870#98 voted NoVote (0.00 Hz)
+07-31 11:59:00.070  1114  1114 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+07-31 11:59:00.070  1114  1114 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+07-31 11:59:00.071  1017  1017 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+07-31 11:59:00.071  1017  1017 I display : Current VRR MODE is 3
+07-31 11:59:00.071  1017  1017 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+07-31 11:59:00.072  1017  1017 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+07-31 11:59:00.072  1017  1017 I display : commit modeset : 1080x2340@120hs
+07-31 11:59:00.093  1017  1017 W display : deliverWinConfigData:: commit modeset time (21 ms)
+07-31 11:59:00.095  1017  1098 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+07-31 11:59:00.095  1114  1114 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+07-31 11:59:00.095  1017  1098 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+07-31 11:59:00.095  1017  1098 I display : Set m2mMPP capacity(4) for fps(120)
+07-31 11:59:00.095  1017  1098 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+07-31 11:59:00.095  1017  1098 I display : Set Affinity config for fps(120) : cpuIDs : 255
+07-31 11:59:00.095  1017  1098 I display : Set Affinity CPU ID : 0
+07-31 11:59:00.095  1017  1098 I display : Set Affinity CPU ID : 1
+07-31 11:59:00.095  1017  1098 I display : Set Affinity CPU ID : 2
+07-31 11:59:00.095  1017  1098 I display : Set Affinity CPU ID : 3
+07-31 11:59:00.095  1017  1098 I display : Set Affinity CPU ID : 4
+07-31 11:59:00.095  1017  1098 I display : Set Affinity CPU ID : 5
+07-31 11:59:00.095  1114  1114 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+07-31 11:59:00.095  1017  1098 I display : Set Affinity CPU ID : 6
+07-31 11:59:00.095  1017  1098 I display : Set Affinity CPU ID : 7
+07-31 11:59:00.095  1017  1098 I display : Set affinity HWC : 1017
+07-31 11:59:00.095  1017  1098 I display : CPU set : Cluster(0), min_clock(0)
+07-31 11:59:00.095  1017  1098 I display : CPU set : Cluster(1), min_clock(0)
+07-31 11:59:00.095  1017  1098 I display : CPU set : Cluster(2), min_clock(0)
+07-31 11:59:00.096  1114  1223 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+07-31 11:59:00.309  1114  1245 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+07-31 11:59:00.311  1114  1114 I LayerHistory: StatusBar$_1870#98 voted NoVote (0.00 Hz)
+07-31 11:59:00.311  1114  1114 I SurfaceFlinger: Idle - choose 60.00 Hz
+07-31 11:59:00.312  1114  1114 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+07-31 11:59:00.313  1114  1223 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+07-31 11:59:00.313  1017  1017 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+07-31 11:59:00.313  1017  1017 I display : Current VRR MODE is 3
+07-31 11:59:00.313  1017  1017 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+07-31 11:59:00.313  1017  1017 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+07-31 11:59:00.314  1017  1017 I display : commit modeset : 1080x2340@60phs
+07-31 11:59:00.327  1017  1017 W display : deliverWinConfigData:: commit modeset time (12 ms)
+07-31 11:59:00.328  1017  1098 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+07-31 11:59:00.328  1017  1098 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+07-31 11:59:00.328  1017  1098 I display : Set m2mMPP capacity(8) for fps(60)
+07-31 11:59:00.328  1017  1098 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+07-31 11:59:00.328  1017  1098 I display : Set Affinity config for fps(60) : cpuIDs : 255
+07-31 11:59:00.328  1017  1098 I display : Set Affinity CPU ID : 0
+07-31 11:59:00.328  1017  1098 I display : Set Affinity CPU ID : 1
+07-31 11:59:00.328  1017  1098 I display : Set Affinity CPU ID : 2
+07-31 11:59:00.328  1017  1098 I display : Set Affinity CPU ID : 3
+07-31 11:59:00.328  1017  1098 I display : Set Affinity CPU ID : 4
+07-31 11:59:00.328  1017  1098 I display : Set Affinity CPU ID : 5
+07-31 11:59:00.328  1017  1098 I display : Set Affinity CPU ID : 6
+07-31 11:59:00.328  1017  1098 I display : Set Affinity CPU ID : 7
+07-31 11:59:00.328  1017  1098 I display : Set affinity HWC : 1017
+07-31 11:59:00.328  1017  1098 I display : CPU set : Cluster(0), min_clock(0)
+07-31 11:59:00.328  1017  1098 I display : CPU set : Cluster(1), min_clock(0)
+07-31 11:59:00.328  1017  1098 I display : CPU set : Cluster(2), min_clock(0)
+07-31 11:59:00.328  1114  1223 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+07-31 11:59:00.329  1114  1114 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+07-31 11:59:00.650   739   739 D io_stats: !@   8,0 r 65698096 1244684371 w 19305578 322832408 d 5487488 381285112 f 0 2007766 iot 28889080 0 th 0 0 0 pt 0 inp 0 0 461040.470
+07-31 11:59:00.989  1414  4041 D NetdEventListenerService: CSC Feature value: true
+07-31 11:59:00.989  1414  4041 D NetdEventListenerService: CSC Feature value: true
+07-31 11:59:00.989  1414  4041 D NetdEventListenerService: CSC Feature value: true
+07-31 11:59:01.067  1105  1126 E HeatmapThread: ECT Thread time in milliseconds: 1785488341
+07-31 11:59:01.067  1105  1126 D HeatmapThread: !@ batteryplugType : 0
+07-31 11:59:01.067  1105  1126 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+07-31 11:59:01.067  1105  1126 D HeatmapThread: !@ Heatmap currtime: 29758139
+07-31 11:59:01.067  1105  1126 D HeatmapThread: !@ Heatmap prevtime: 29758131
+07-31 11:59:01.067  1105  1126 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+07-31 11:59:01.068  1105  1126 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29739448
+07-31 11:59:01.068  1105  1126 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+07-31 11:59:01.068  1105  1126 E HeatmapThread: !@ CAM Could not access BSOH EFS
+07-31 11:59:01.068  1105  1126 E HeatmapThread: !@ CAM New BSOH: 0
+07-31 11:59:01.504 25545 25545 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

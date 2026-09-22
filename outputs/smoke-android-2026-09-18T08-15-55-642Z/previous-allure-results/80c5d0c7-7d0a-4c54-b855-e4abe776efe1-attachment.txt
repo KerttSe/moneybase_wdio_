@@ -1,0 +1,244 @@
+--------- beginning of main
+08-11 12:47:28.898  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-11 12:47:28.898  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 12:47:28.898  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-11 12:47:28.898  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 12:47:28.898  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-11 12:47:28.898  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 12:47:28.898  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 12:47:28.898  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 12:47:28.898  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 12:47:28.898  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 12:47:28.898  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 12:47:28.898  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 12:47:28.898  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 12:47:28.898  1325  1397 I display : Set affinity HWC : 1325
+08-11 12:47:28.898  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 12:47:28.898  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 12:47:28.898  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 12:47:28.899  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-11 12:47:28.900  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-11 12:47:28.900  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+--------- beginning of system
+08-11 12:47:28.991  1726  1775 E Watchdog: !@Sync: 12881 heap(MB): 163 / 176 FD: 1347 [2026-08-11 12:47:28.991]
+08-11 12:47:29.137 23360 23360 I View    : setRequestedFrameRate frameRate=NaN, this=androidx.compose.ui.platform.AndroidComposeView{55f4be9 VFED..... ........ 0,0-1080,2340 aid=1073741843}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 androidx.compose.ui.platform.Api35Impl.setRequestedFrameRate:3822 androidx.compose.ui.platform.AndroidComposeView.dispatchDraw:2114 android.view.View.draw:26345 android.view.View.updateDisplayListIfDirty:25175 
+08-11 12:47:29.137 23360 23360 I View    : setRequestedFrameRate frameRate=NaN, this=android.view.View{b21e07c V.ED..... ........ 0,0-0,0}, caller=androidx.compose.ui.platform.Api35Impl.setRequestedFrameRate:3822 androidx.compose.ui.platform.AndroidComposeView.dispatchDraw:2115 android.view.View.draw:26345 android.view.View.updateDisplayListIfDirty:25175 android.view.View.draw:26072 
+08-11 12:47:29.145  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-11 12:47:29.148  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-11 12:47:29.158  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_23360#67185 voted ExplicitCategory with category: HighHint
+08-11 12:47:29.158  1437  1437 I SurfaceFlinger: Touch Boost [late] - choose 120.00 Hz
+08-11 12:47:29.159  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-11 12:47:29.161  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-11 12:47:29.161  1325  9351 I display : Current VRR MODE is 3
+08-11 12:47:29.162  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-11 12:47:29.162  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-11 12:47:29.162  1325  9351 I display : commit modeset : 1080x2340@120hs
+08-11 12:47:29.168 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1572)\n"}}
+08-11 12:47:29.181  1325  9351 W display : deliverWinConfigData:: commit modeset time (18 ms)
+08-11 12:47:29.182  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-11 12:47:29.182  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 12:47:29.182  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-11 12:47:29.182  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 12:47:29.182  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-11 12:47:29.182  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 12:47:29.182  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 12:47:29.182  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 12:47:29.182  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 12:47:29.182  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 12:47:29.182  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 12:47:29.182  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 12:47:29.182  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 12:47:29.182  1325  1397 I display : Set affinity HWC : 1325
+08-11 12:47:29.182  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 12:47:29.183  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 12:47:29.183  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 12:47:29.183  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-11 12:47:29.183  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 12:47:29.197 23214 23342 I appium  : channel read: GET /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/screenshot
+08-11 12:47:29.198 23214 23342 I appium  : CaptureScreenshot command
+08-11 12:47:29.338 26107 26107 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-11 12:47:29.338 26107 26107 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-11 12:47:29.339 26107 26107 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-11 12:47:29.339  1726  4579 I EDMNativeHelperService: isScreenCaptureEnabled
+08-11 12:47:29.339  1726  4579 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-11 12:47:29.339 26107 26107 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-11 12:47:29.339 26107 26107 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-11 12:47:29.341  1437  1463 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_23360#67185(seamlessTransition:0)
+08-11 12:47:29.341  1437  1463 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-11 12:47:29.341  1437  1463 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-11 12:47:29.341  1437  1463 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-11 12:47:29.348  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-11 12:47:29.349  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_23360#67185 at index 1
+08-11 12:47:29.349  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-11 12:47:29.349  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-11 12:47:29.374 26107 26110 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-11 12:47:29.396  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+08-11 12:47:29.398  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+08-11 12:47:29.398  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_23360#67185 voted ExplicitCategory with category: HighHint
+08-11 12:47:29.398  1437  1437 I SurfaceFlinger: Idle - choose 60.00 Hz
+08-11 12:47:29.399  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+08-11 12:47:29.400  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+08-11 12:47:29.400  1325  9351 I display : Current VRR MODE is 3
+08-11 12:47:29.400  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+08-11 12:47:29.400  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+08-11 12:47:29.400  1325  9351 I display : commit modeset : 1080x2340@60phs
+08-11 12:47:29.413  1325  9351 W display : deliverWinConfigData:: commit modeset time (12 ms)
+08-11 12:47:29.414  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-11 12:47:29.414  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 12:47:29.414  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-11 12:47:29.414  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-11 12:47:29.414  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-11 12:47:29.414  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 12:47:29.414  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 12:47:29.414  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 12:47:29.414  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 12:47:29.414  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 12:47:29.414  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 12:47:29.414  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 12:47:29.414  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 12:47:29.414  1325  1397 I display : Set affinity HWC : 1325
+08-11 12:47:29.414  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 12:47:29.414  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 12:47:29.414  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 12:47:29.414  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-11 12:47:29.414  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 12:47:29.560 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N13eFvl3T7wW1uWvPeKncQryytx9nISIHuyChTKpkBL+/Zt+/466IIWaCktewQSCJAwsxMgCdl7Oo4TO17xkveWtaz1+8OJiLwdS5YV35/r4ro4RzrnfGU7ts6t5/k+Ap3BagURERERERE…
+08-11 12:47:29.586 23214 23342 I appium  : channel read: GET /session/76ce960b-ed80-4d51-a132-5c9acfa7fc91/source
+08-11 12:47:29.588 23214 23342 I appium  : Source command
+08-11 12:47:29.588 23214 23342 I appium  : Waiting up to 10000ms for the device to idle
+08-11 12:47:29.607  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-11 12:47:29.615  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 82976, isSameBssidAndFreq true
+08-11 12:47:29.616  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786441649616 lastDateWindow=1786275667000
+08-11 12:47:29.639  1726  1920 D InputReader: Btn_touch(4): value=1 when=386793.377784
+08-11 12:47:29.639  1726  1920 I InputReader: Touch event's action is 0x0 (id=5, t=0) [pCnt=1, s=0.64588 ] when=386793.377784
+08-11 12:47:29.642  1726  1919 I InputDispatcher: Delivering touch to (2357): action: 0x4, f=0x0, d=0, 'c0cc01f', t=1 
+08-11 12:47:29.642  1726  1919 I InputDispatcher: Delivering touch to (23360): action: 0x0, f=0x0, d=0, '33598e3', t=1 
+08-11 12:47:29.642  1437  1605 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+08-11 12:47:29.642  1726  1919 D PowerManagerService: [api] userActivityFromNative : touch displayId=0 eventTime=386793377
+08-11 12:47:29.643 23360 23360 I VRI[DashboardActivity]@60e6905: ViewPostIme pointer 0
+08-11 12:47:29.643  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-11 12:47:29.644  1726  1769 I GestureDetector: obtain mCurrentDownEvent. id: 1043831252 caller: com.android.server.wm.SystemGesturesPointerEventListener.onPointerEvent:17 com.android.server.wm.PointerEventDispatcher.onInputEvent:51 android.view.InputEventReceiver.dispatchInputEvent:392 
+08-11 12:47:29.644  1726  1769 I GestureDetector: obtain mCurrentDownEvent. id: 1043831252 caller: com.android.server.wm.SystemPerformancePointerEventListener.onPointerEvent:13 com.android.server.wm.PointerEventDispatcher.onInputEvent:51 android.view.InputEventReceiver.dispatchInputEvent:392 
+08-11 12:47:29.645  4554  4554 I SemDvfsHyPerManager: acquire hyper - TABoost/4554@29, type = -999
+08-11 12:47:29.645  1337  1439 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 10504265  [4554 / 29]    HINT :      list : [TABoost / 1] [TIMEOUT / 1500] 
+08-11 12:47:29.646  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+08-11 12:47:29.655  1437  1437 I SurfaceFlinger: RequestedLayer [Sprite#5620] hidden!! flag  from(1) --> to(0)
+08-11 12:47:29.656  1437  1437 I LayerHistory: [BBQ] Sprite#5620#5621 is infrequent
+08-11 12:47:29.656  1437  1437 I LayerHistory: com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_23360#67185 voted ExplicitCategory with category: HighHint
+08-11 12:47:29.657  1437  1437 I SurfaceFlinger: Touch Boost - choose 120.00 Hz
+08-11 12:47:29.657  1437  1437 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+08-11 12:47:29.658  1325  9351 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+08-11 12:47:29.659  1325  9351 I display : Current VRR MODE is 3
+08-11 12:47:29.659  1325  9351 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+08-11 12:47:29.659  1325  9351 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+08-11 12:47:29.659  1325  9351 I display : commit modeset : 1080x2340@120hs
+08-11 12:47:29.669  1726  1769 I GestureDetector: obtain mCurrentMotionEventRaw. action: 2 id: 102498845
+08-11 12:47:29.669  1726  1769 I GestureDetector: obtain mCurrentMotionEventRaw. action: 2 id: 102498845
+08-11 12:47:29.680  1325  9351 W display : deliverWinConfigData:: commit modeset time (20 ms)
+08-11 12:47:29.680  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+08-11 12:47:29.680  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 12:47:29.680  1325  1397 I display : Set m2mMPP capacity(4) for fps(120)
+08-11 12:47:29.680  1325  1397 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+08-11 12:47:29.680  1325  1397 I display : Set Affinity config for fps(120) : cpuIDs : 255
+08-11 12:47:29.680  1325  1397 I display : Set Affinity CPU ID : 0
+08-11 12:47:29.680  1325  1397 I display : Set Affinity CPU ID : 1
+08-11 12:47:29.680  1325  1397 I display : Set Affinity CPU ID : 2
+08-11 12:47:29.680  1325  1397 I display : Set Affinity CPU ID : 3
+08-11 12:47:29.680  1325  1397 I display : Set Affinity CPU ID : 4
+08-11 12:47:29.680  1325  1397 I display : Set Affinity CPU ID : 5
+08-11 12:47:29.680  1325  1397 I display : Set Affinity CPU ID : 6
+08-11 12:47:29.680  1325  1397 I display : Set Affinity CPU ID : 7
+08-11 12:47:29.680  1325  1397 I display : Set affinity HWC : 1325
+08-11 12:47:29.681  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-11 12:47:29.681  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-11 12:47:29.681  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-11 12:47:29.681  1437  1437 D SurfaceFlinger: Display 4633128672291736000 HWC layers:
+08-11 12:47:29.681  1437  1437 D SurfaceFlinger:        DEVICE |          100330436034590 | 00002102 | RGBA_8888    |    0.0    0.0 1080.0 2340.0 |    0    0 1080 2340 | com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_23360#67185 (1319)
+08-11 12:47:29.681  1437  1437 D SurfaceFlinger:        DEVICE |           10123237955749 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0   80.0 |    0    0 1080   80 | StatusBar$_2357#104 (151089)
+08-11 12:47:29.681  1437  1437 D SurfaceFlinger:        DEVICE |           10123237955751 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2214 1080 2340 | NavigationBar0$_2357#102 (171396)
+08-11 12:47:29.681  1437  1437 D SurfaceFlinger:        DEVICE |            7413113553594 | 00000100 | RGBA_8888    |    0.0    0.0   63.0   63.0 |   43  199  106  262 | [BBQ] Sprite#5620#5621 (6477)
+08-11 12:47:29.681  1437  1437 D SurfaceFlinger: 
+08-11 12:47:29.681  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+08-11 12:47:29.682  1437  1559 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+08-11 12:47:29.701  1726  1920 D InputReader: Btn_touch(4): value=0 when=386793.440218
+08-11 12:47:29.701  1726  1920 I InputReader: Touch event's action is 0x1 (id=5, t=0) [pCnt=1, s=] when=386793.440218
+08-11 12:47:29.701  1726  1919 I InputDispatcher: Delivering touch to (23360): action: 0x1, f=0x0, d=0, '33598e3', t=1 
+08-11 12:47:29.702 23360 23360 I VRI[DashboardActivity]@60e6905: ViewPostIme pointer 1
+08-11 12:47:29.705  1437  1559 I VSyncReactor: Current= 120, Period= 120, hwcPeriod= 120
+08-11 12:47:29.778  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786441649
+08-11 12:47:29.778  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 12:47:29.778  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 12:47:29.778  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774027
+08-11 12:47:29.778  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774024
+08-11 12:47:29.778  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 12:47:29.778  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 12:47:29.778  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 12:47:29.779  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 12:47:29.779  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 12:47:29.780 23214 23342 I appium  : AppiumResponse: {"sessionId":"76ce960b-ed80-4d51-a132-5c9acfa7fc91","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-11 12:47:29.820 13277 13277 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 12:47:29.832 23360 24863 E CouchbaseLite/NETWORK: Obj=/JRepl@1143595676/C4RemoteRepl#517/Repl#523/N8litecore4blip10ConnectionE#520/C4Socket#522/ WebSocket closed abnormally (reason=Network error 22) java.io.EOFException
+08-11 12:47:29.833 23360 24739 E CouchbaseLite/REPLICATOR: Obj=/JRepl@1143595676/C4RemoteRepl#517/Repl#523/ CorrID=6f4a7206 Got LiteCore error: Network error 22, "java.io.EOFException"
+08-11 12:47:29.834 23360 24739 E CouchbaseLite/REPLICATOR: Obj=/JRepl@1143595676/C4RemoteRepl#517/ Transient error (Network error 22, "java.io.EOFException"); attempt #2 in 2 sec...
+08-11 12:47:29.835 23360 24739 E CouchbaseLite/REPLICATOR: Obj=/JRepl@1143595676/C4RemoteRepl#517/ State: offline, progress=100.00%, error=Network error 22, "java.io.EOFException"
+08-11 12:47:29.836 23360 26127 D ConnectivityManager: StackLog: [android.net.ConnectivityManager.sendRequestForNetwork(ConnectivityManager.java:4744)] [android.net.ConnectivityManager.registerDefaultNetworkCallbackForUid(ConnectivityManager.java:5469)] [android.net.ConnectivityManager.registerDefaultNetworkCallback(ConnectivityManager.java:5436)] [android.net.ConnectivityManager.registerDefaultNetworkCallback(ConnectivityManager.java:5410)] [com.couchbase.lite.internal.connectivity.ConnectivityListenerPost28.start(ConnectivityListenerPost28.java:42)] [com.couchbase.lite.internal.connectivity.AndroidConnectivityManager.start(AndroidConnectivityManager.java:129)] [com.couchbase.lite.internal.connectivity.AndroidConnectivityManager.registerObserver(AndroidConnectivityManager.java:79)] [com.couchbase.lite.internal.replicator.AndroidConnectivityObserver.handleOffline(AndroidConnectivityObserver.java:56)] [com.couchbase.lite.Replicator.handleOffline(Replicator.java:73)] [com.couchbase.lite.AbstractReplicator.statusChanged(AbstractReplicator.java:730)] [com.couchbase.lite.AbstractReplicator.lambda$dispatchStatusChange$0$com-couchbase-lite-AbstractReplicator(AbstractReplicator.java:565)] [com.couchbase.lite.AbstractReplicator$$ExternalSyntheticLambda8.run(D8$$SyntheticClass:0)] [com.couchbase.lite.internal.exec.InstrumentedTask.run(InstrumentedTask.java:62)] [java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)] [java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)] [java.lang.Thread.run(Thread.java:1572)]
+08-11 12:47:29.838  1726  2528 D ConnectivityService: requestNetwork for uid/pid:10569/23360 activeRequest: null callbackRequest: 39773 [NetworkRequest [ REQUEST id=39774, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10569 RequestorUid: 10569 RequestorPkg: com.moneybase.qa UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647 isUidTracked: false declaredMethods: AVAIL|LOST
+08-11 12:47:29.840  1726  2147 D ConnectivityService:    accepting network in place of null for NetworkRequest [ REQUEST id=39774, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10569 RequestorUid: 10569 RequestorPkg: com.moneybase.qa UnderlyingNetworks: Null] ]
+08-11 12:47:29.840 23360 25933 D [REPLICATOR_WORKAROUND]: ReplicatorChange status: Offline
+08-11 12:47:29.841 23360 23360 D [REPLICATOR_WORKAROUND]: couchbaseLite error happened, replication workaround will be skipped due to 
+08-11 12:47:29.841 23360 23360 D [REPLICATOR_WORKAROUND]: CouchbaseLiteException{CouchbaseLite, 5022: java.io.EOFException
+08-11 12:47:29.841 23360 23360 D [REPLICATOR_WORKAROUND]: 	at com.couchbase.lite.ReplicatorStatus.convertC4StatusError(ReplicatorStatus.java:63)
+08-11 12:47:29.841 23360 23360 D [REPLICATOR_WORKAROUND]: 	at com.couchbase.lite.ReplicatorStatus.<init>(ReplicatorStatus.java:88)
+08-11 12:47:29.841 23360 23360 D [REPLICATOR_WORKAROUND]: 	at com.couchbase.lite.AbstractReplicator.updateStatus(AbstractReplicator.java:800)
+08-11 12:47:29.841 23360 23360 D [REPLICATOR_WORKAROUND]: 	at com.couchbase.lite.AbstractReplicator.statusChanged(AbstractReplicator.java:736)
+08-11 12:47:29.841 23360 23360 D [REPLICATOR_WORKAROUND]: 	at com.couchbase.lite.AbstractReplicator.lambda$dispatchStatusChange$0$com-couchbase-lite-AbstractReplicator(AbstractReplicator.java:565)
+08-11 12:47:29.841 23360 23360 D [REPLICATOR_WORKAROUND]: 	at com.couchbase.lite.AbstractReplicator$$ExternalSyntheticLambda8.run(D8$$SyntheticClass:0)
+08-11 12:47:29.841 23360 23360 D [REPLICATOR_WORKAROUND]: 	at com.couchbase.lite.internal.exec.InstrumentedTask.run(InstrumentedTask.java:62)
+08-11 12:47:29.841 23360 23360 D [REPLICATOR_WORKAROUND]: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-11 12:47:29.841 23360 23360 D [REPLICATOR_WORKAROUND]: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-11 12:47:29.841 23360 23360 D [REPLICATOR_WORKAROUND]: 	at java.lang.Thread.run(Thread.java:1572)
+08-11 12:47:29.842 23360 25933 D FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR_WORKAROUND]] ReplicatorChange status: Offline
+08-11 12:47:29.842 23360 23360 D FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR_WORKAROUND]] couchbaseLite error happened, replication workaround will be skipped due to 
+08-11 12:47:29.842 23360 25933 E [REPLICATOR_WORKAROUND]: ReplicatorChange Error code:: CouchbaseLiteException{CouchbaseLite, 5022: java.io.EOFException (5022)
+08-11 12:47:29.842 23360 25933 E [REPLICATOR_WORKAROUND]: CouchbaseLiteException{CouchbaseLite, 5022: java.io.EOFException
+08-11 12:47:29.842 23360 25933 E [REPLICATOR_WORKAROUND]: 	at com.couchbase.lite.ReplicatorStatus.convertC4StatusError(ReplicatorStatus.java:63)
+08-11 12:47:29.842 23360 25933 E [REPLICATOR_WORKAROUND]: 	at com.couchbase.lite.ReplicatorStatus.<init>(ReplicatorStatus.java:88)
+08-11 12:47:29.842 23360 25933 E [REPLICATOR_WORKAROUND]: 	at com.couchbase.lite.AbstractReplicator.updateStatus(AbstractReplicator.java:800)
+08-11 12:47:29.842 23360 25933 E [REPLICATOR_WORKAROUND]: 	at com.couchbase.lite.AbstractReplicator.statusChanged(AbstractReplicator.java:736)
+08-11 12:47:29.842 23360 25933 E [REPLICATOR_WORKAROUND]: 	at com.couchbase.lite.AbstractReplicator.lambda$dispatchStatusChange$0$com-couchbase-lite-AbstractReplicator(AbstractReplicator.java:565)
+08-11 12:47:29.842 23360 25933 E [REPLICATOR_WORKAROUND]: 	at com.couchbase.lite.AbstractReplicator$$ExternalSyntheticLambda8.run(D8$$SyntheticClass:0)
+08-11 12:47:29.842 23360 25933 E [REPLICATOR_WORKAROUND]: 	at com.couchbase.lite.internal.exec.InstrumentedTask.run(InstrumentedTask.java:62)
+08-11 12:47:29.842 23360 25933 E [REPLICATOR_WORKAROUND]: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-11 12:47:29.842 23360 25933 E [REPLICATOR_WORKAROUND]: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-11 12:47:29.842 23360 25933 E [REPLICATOR_WORKAROUND]: 	at java.lang.Thread.run(Thread.java:1572)
+08-11 12:47:29.843 23360 25933 I Datadog : [_dd.sdk_core.default]: Requested to forward error log to RUM, but RUM feature is not registered.
+08-11 12:47:29.843 23360 25933 E FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR_WORKAROUND]] ReplicatorChange Error code:: CouchbaseLiteException{CouchbaseLite, 5022: java.io.EOFException (5022)
+08-11 12:47:29.843 23360 25933 E FS.Core.Shared.LogForwarder.WebApi: CouchbaseLiteException{CouchbaseLite, 5022: java.io.EOFException
+08-11 12:47:29.843 23360 25933 E FS.Core.Shared.LogForwarder.WebApi: 	at com.couchbase.lite.ReplicatorStatus.convertC4StatusError(ReplicatorStatus.java:63)
+08-11 12:47:29.843 23360 25933 E FS.Core.Shared.LogForwarder.WebApi: 	at com.couchbase.lite.ReplicatorStatus.<init>(ReplicatorStatus.java:88)
+08-11 12:47:29.843 23360 25933 E FS.Core.Shared.LogForwarder.WebApi: 	at com.couchbase.lite.AbstractReplicator.updateStatus(AbstractReplicator.java:800)
+08-11 12:47:29.843 23360 25933 E FS.Core.Shared.LogForwarder.WebApi: 	at com.couchbase.lite.AbstractReplicator.statusChanged(AbstractReplicator.java:736)
+08-11 12:47:29.843 23360 25933 E FS.Core.Shared.LogForwarder.WebApi: 	at com.couchbase.lite.AbstractReplicator.lambda$dispatchStatusChange$0$com-couchbase-lite-AbstractReplicator(AbstractReplicator.java:565)
+08-11 12:47:29.843 23360 25933 E FS.Core.Shared.LogForwarder.WebApi: 	at com.couchbase.lite.AbstractReplicator$$ExternalSyntheticLambda8.run(D8$$SyntheticClass:0)
+08-11 12:47:29.843 23360 25933 E FS.Core.Shared.LogForwarder.WebApi: 	at com.couchbase.lite.internal.exec.InstrumentedTask.run(InstrumentedTask.java:62)
+08-11 12:47:29.843 23360 25933 E FS.Core.Shared.LogForwarder.WebApi: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-11 12:47:29.843 23360 25933 E FS.Core.Shared.LogForwarder.WebApi: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-11 12:47:29.843 23360 25933 E FS.Core.Shared.LogForwarder.WebApi: 	at java.lang.Thread.run(Thread.java:1572)
+08-11 12:47:29.845  1726  2136 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=39774, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10569 RequestorUid: 10569 RequestorPkg: com.moneybase.qa UnderlyingNetworks: Null] ]
+08-11 12:47:29.845  1726  2136 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=39774, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10569 RequestorUid: 10569 RequestorPkg: com.moneybase.qa UnderlyingNetworks: Null] ]
+08-11 12:47:29.846  1726  2136 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=39774, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10569 RequestorUid: 10569 RequestorPkg: com.moneybase.qa UnderlyingNetworks: Null] ]
+08-11 12:47:29.846  1726  2147 D ConnectivityService: Rematched networks [computed 1ms] [applied 2ms] [issued 4]
+08-11 12:47:29.846  1726  2147 D ConnectivityService: NetworkReassignment :
+08-11 12:47:29.846  1726  2147 D ConnectivityService:   39774 : null → 499
+08-11 12:47:29.864 26125 26125 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 12:47:29.896 13277 13277 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 12:47:29.930  1437  1437 I SurfaceFlinger: RequestedLayer [Sprite#5620] hidden!! flag  from(0) --> to(1)
+08-11 12:47:29.932  1437  1437 D SurfaceFlinger: Display 4633128672291736000 HWC layers:
+08-11 12:47:29.932  1437  1437 D SurfaceFlinger:        DEVICE |          100330436034590 | 00002102 | RGBA_8888    |    0.0    0.0 1080.0 2340.0 |    0    0 1080 2340 | com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_23360#67185 (1319)
+08-11 12:47:29.932  1437  1437 D SurfaceFlinger:        DEVICE |           10123237955749 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0   80.0 |    0    0 1080   80 | StatusBar$_2357#104 (151089)
+08-11 12:47:29.932  1437  1437 D SurfaceFlinger:        DEVICE |           10123237955751 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2214 1080 2340 | NavigationBar0$_2357#102 (171396)
+08-11 12:47:29.932  1437  1437 D SurfaceFlinger: 
+08-11 12:47:29.937 26129 26129 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 12:47:29.944  1726  1769 I GestureDetector: handleMessage TAP
+08-11 12:47:29.944  1726  1726 I GestureDetector: handleMessage TAP
+08-11 12:47:29.973 13277 13277 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

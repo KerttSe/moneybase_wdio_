@@ -1,0 +1,202 @@
+--------- beginning of main
+05-15 18:34:21.971  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:34:21.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:34:21.971  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:34:22.970  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778859262
+05-15 18:34:22.971  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:34:22.971  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:34:22.971  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647654
+05-15 18:34:22.971  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647646
+05-15 18:34:22.971  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:34:22.971  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:34:22.971  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:34:22.972  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:34:22.972  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+--------- beginning of system
+05-15 18:34:23.526   727   727 D io_stats: !@   8,0 r 76099984 1556740173 w 24142381 453406840 d 7006325 477904908 f 0 2514095 iot 37269404 0 th 0 0 0 pt 0 inp 0 0 554385.549
+05-15 18:34:23.526   727   727 D io_stats: !@ Write_top(KB): kworker/u16:2(30850) 4
+05-15 18:34:23.588  1760  1839 D MARsPolicyManager: triggerAction called!
+05-15 18:34:23.588  1760  1839 I NSLocationMonitor: getGPSUsingApps() called
+05-15 18:34:23.589  3222  8210 I NSLocationManager_FLP: getGPSUsingApps, No change
+05-15 18:34:23.616  1760  1839 D FreecessController: FZ : com.linkedin.android(10318) [21313] reason: LEV [cached:X
+05-15 18:34:23.619  1760  3240 W LocationManagerService: onFreezeStateChanged, uid[10318]=true
+05-15 18:34:23.620  1760  3240 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10318 , disable= true
+05-15 18:34:23.620  1760  3240 I PowerManagerService: [PWL] can not change uid =  10318
+05-15 18:34:23.679  1760  3230 D ActivityManager: unpendingScheduleServiceRestart: u=10318, drop=false
+05-15 18:34:23.680  1760  3228 W FreecessController: getAllRunningPackagePids: Failed to read pid from /sys/fs/cgroup/apps/uid_10318/pid_23972/cgroup.procs
+05-15 18:34:23.687  1760  3240 W LocationManagerService: onFreezeStateChanged, uid[10318]=false
+05-15 18:34:23.690  1760  3228 D FreecessController: UFZ : com.linkedin.android(10318) [21313] reason: Binder(0)
+05-15 18:34:23.691  1760  3240 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10318 , disable= false
+05-15 18:34:23.691  1760  3240 I PowerManagerService: [PWL] can not change uid =  10318
+05-15 18:34:23.970  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778859263
+05-15 18:34:23.970  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:34:23.970  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:34:23.970  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647654
+05-15 18:34:23.970  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647646
+05-15 18:34:23.970  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:34:23.971  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:34:23.971  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:34:23.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:34:23.971  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:34:24.584  1395 23646 W C2BqBuffer: last successful dequeue was 21586764002 us ago, 189006 consecutive failures
+05-15 18:34:24.717 21061 21061 W JobInfo : Job 'com.android.chrome/org.chromium.components.background_task_scheduler.internal.BackgroundTaskJobService#116' has a deadline with no functional constraints. The deadline won't improve job execution latency. Consider removing the deadline.
+05-15 18:34:24.723  1760  3367 W JobInfo : Job 'com.android.chrome/org.chromium.components.background_task_scheduler.internal.BackgroundTaskJobService#116' has a deadline with no functional constraints. The deadline won't improve job execution latency. Consider removing the deadline.
+05-15 18:34:24.744  1760  3367 I ActivityManager: Changes in 10271 17 to 8, 0 to 128
+05-15 18:34:24.752  1524  1625 I CameraService: onUidStateChanged: uid=10271, procState is changed. (17 -> 8)
+05-15 18:34:24.756 20508 20862 I ejla    : (REDACTED) HDM. appOpsListener %s %s
+05-15 18:34:24.763 20508 20862 I ejla    : (REDACTED) HDM. Ignoring irrelevant audio permission changes for package %s
+05-15 18:34:24.765  1760  2246 D BackgroundInstallControlService: Package event received: 0
+05-15 18:34:24.774 21061 21061 W cr_BkgrdTaskJS: Starting background task (jobId=116)
+05-15 18:34:24.782  1760  1894 I ActivityManager: Changes in 10271 8 to 10, 128 to 0
+05-15 18:34:24.784  1524  1625 I CameraService: onUidStateChanged: uid=10271, procState is changed. (8 -> 10)
+05-15 18:34:24.797  1524  9083 I CameraService: onUidStateChanged: uid=10271, procState is changed. (10 -> 17)
+05-15 18:34:24.970  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778859264
+05-15 18:34:24.970  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:34:24.970  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:34:24.970  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647654
+05-15 18:34:24.970  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647646
+05-15 18:34:24.971  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:34:24.971  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:34:24.971  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:34:24.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:34:24.971  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:34:25.527   727   727 D io_stats: !@   8,0 r 76099984 1556740173 w 24142385 453406936 d 7006325 477904908 f 0 2514095 iot 37269416 0 th 0 0 0 pt 0 inp 0 0 554387.550
+05-15 18:34:25.654  1379  1396 E BatteryDump: !@new_battery_dump : 4340,22,1800,2054,100,263,244,269,263,0,269,255,0,Full,NO_CHARGING,None,Good,PDIC,0,Normal,0,0,9180,0x10000,0x10000,0x0,0,0,0000,0000,ffff0700,0,0,0,0,607,4338,10000,990,0,
+05-15 18:34:25.661  1379  1379 I android.hardware.health@2.1-service-samsung: updateLrpSysfs: write: 268
+05-15 18:34:25.789 20508 20862 I ejla    : (REDACTED) HDM. appOpsListener %s %s
+05-15 18:34:25.789 20508 20862 I ejla    : (REDACTED) HDM. Ignoring irrelevant audio permission changes for package %s
+05-15 18:34:25.947  1395 23683 W C2BqBuffer: last successful dequeue was 21573545532 us ago, 188177 consecutive failures
+05-15 18:34:25.970  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778859265
+05-15 18:34:25.970  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:34:25.970  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:34:25.970  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647654
+05-15 18:34:25.970  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647646
+05-15 18:34:25.970  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:34:25.971  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:34:25.971  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:34:25.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:34:25.971  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:34:26.970  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778859266
+05-15 18:34:26.970  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:34:26.970  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:34:26.971  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647654
+05-15 18:34:26.971  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647646
+05-15 18:34:26.971  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:34:26.971  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:34:26.971  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:34:26.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:34:26.971  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:34:27.442  1760  2246 D BackgroundInstallControlService: Package event received: 0
+05-15 18:34:27.530   727   727 D io_stats: !@   8,0 r 76099984 1556740173 w 24142395 453406968 d 7006325 477904908 f 0 2514097 iot 37269440 0 th 0 0 0 pt 0 inp 0 0 554389.552
+05-15 18:34:27.530   727   727 D io_stats: !@ Write_top(KB): .android.chrome(21061) 88 appmanager:auth(29510) 8 soft.appmanager(29550) 8
+05-15 18:34:27.970  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778859267
+05-15 18:34:27.970  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:34:27.970  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:34:27.970  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647654
+05-15 18:34:27.970  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647646
+05-15 18:34:27.971  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:34:27.971  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:34:27.971  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:34:27.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:34:27.972  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:34:28.622  1760  1839 D MARsPolicyManager: triggerAction called!
+05-15 18:34:28.622  1760  1839 I NSLocationMonitor: getGPSUsingApps() called
+05-15 18:34:28.623  3222  8210 I NSLocationManager_FLP: getGPSUsingApps, No change
+05-15 18:34:28.652  1760  1839 D FreecessController: FZ : com.linkedin.android(10318) [21313] reason: LEV [cached:X
+05-15 18:34:28.656  1760  3240 W LocationManagerService: onFreezeStateChanged, uid[10318]=true
+05-15 18:34:28.656  1760  3240 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10318 , disable= true
+05-15 18:34:28.656  1760  3240 I PowerManagerService: [PWL] can not change uid =  10318
+05-15 18:34:28.663  1760  3228 W FreecessController: getAllRunningPackagePids: Failed to read pid from /sys/fs/cgroup/apps/uid_10318/pid_23972/cgroup.procs
+05-15 18:34:28.663  1760  3230 D ActivityManager: unpendingScheduleServiceRestart: u=10318, drop=false
+05-15 18:34:28.667  1760  3228 D FreecessController: UFZ : com.linkedin.android(10318) [21313] reason: Binder(0)
+05-15 18:34:28.668  1760  3240 W LocationManagerService: onFreezeStateChanged, uid[10318]=false
+05-15 18:34:28.669  1760  3240 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10318 , disable= false
+05-15 18:34:28.670  1760  3240 I PowerManagerService: [PWL] can not change uid =  10318
+05-15 18:34:28.732  1760  1817 E Watchdog: !@Sync: 18463 heap(MB): 167 / 189 FD: 1360 [2026-05-15 18:34:28.732]
+05-15 18:34:28.969  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778859268
+05-15 18:34:28.969  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:34:28.969  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:34:28.970  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647654
+05-15 18:34:28.970  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647646
+05-15 18:34:28.970  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:34:28.970  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:34:28.970  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:34:28.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:34:28.971  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:34:29.531   727   727 D io_stats: !@   8,0 r 76099984 1556740173 w 24142400 453407372 d 7006325 477904908 f 0 2514097 iot 37269452 0 th 0 0 0 pt 0 inp 0 0 554391.554
+05-15 18:34:29.666  1395 23646 W C2BqBuffer: last successful dequeue was 21591845115 us ago, 189051 consecutive failures
+05-15 18:34:29.811  1760  2188 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+05-15 18:34:29.816  1760  2188 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+05-15 18:34:29.816  1760  2188 D InetDiagMessage: Destroyed live tcp sockets for uids={10271} in 11ms
+05-15 18:34:29.821  1760  2188 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+05-15 18:34:29.825  1760  2188 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+05-15 18:34:29.826  1760  2188 D InetDiagMessage: Destroyed live tcp sockets for uids={20271} in 8ms
+05-15 18:34:29.919  1483  1483 I SurfaceFlinger: SFWD update time=554391942393038
+05-15 18:34:29.969  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778859269
+05-15 18:34:29.969  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:34:29.970  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:34:29.970  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647654
+05-15 18:34:29.970  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647646
+05-15 18:34:29.970  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:34:29.970  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:34:29.970  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:34:29.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:34:29.971  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:34:30.269 23664 23664 I wpa_supplicant: Heartbeat 3982
+05-15 18:34:30.969  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778859270
+05-15 18:34:30.969  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:34:30.969  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:34:30.969  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647654
+05-15 18:34:30.969  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647646
+05-15 18:34:30.970  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:34:30.970  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:34:30.970  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:34:30.970  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:34:30.970  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:34:31.035  1395 23683 W C2BqBuffer: last successful dequeue was 21578633520 us ago, 188222 consecutive failures
+05-15 18:34:31.534   727   727 D io_stats: !@ Write_top(KB): kworker/u16:3(28225) 404
+05-15 18:34:31.970  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778859271
+05-15 18:34:31.970  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:34:31.970  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:34:31.970  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647654
+05-15 18:34:31.970  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647646
+05-15 18:34:31.970  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:34:31.970  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:34:31.971  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:34:31.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:34:31.971  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:34:32.571  1760  2246 D BackgroundInstallControlService: Package event received: 0
+05-15 18:34:32.970  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778859272
+05-15 18:34:32.970  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:34:32.970  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:34:32.970  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647654
+05-15 18:34:32.970  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647646
+05-15 18:34:32.970  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:34:32.970  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:34:32.971  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:34:32.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:34:32.971  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-15 18:34:33.535   727   727 D io_stats: !@   8,0 r 76099984 1556740173 w 24142401 453407504 d 7006325 477904908 f 0 2514097 iot 37269460 0 th 0 0 0 pt 0 inp 0 0 554395.558
+05-15 18:34:33.657  1760  1839 D MARsPolicyManager: triggerAction called!
+05-15 18:34:33.658  1760  1839 I NSLocationMonitor: getGPSUsingApps() called
+05-15 18:34:33.659  3222  8210 I NSLocationManager_FLP: getGPSUsingApps, No change
+05-15 18:34:33.688  1760  1839 D FreecessController: FZ : com.linkedin.android(10318) [21313] reason: LEV [cached:X
+05-15 18:34:33.692  1760  3240 W LocationManagerService: onFreezeStateChanged, uid[10318]=true
+05-15 18:34:33.692  1760  3240 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10318 , disable= true
+05-15 18:34:33.692  1760  3240 I PowerManagerService: [PWL] can not change uid =  10318
+05-15 18:34:33.740  1760  3230 D ActivityManager: unpendingScheduleServiceRestart: u=10318, drop=false
+05-15 18:34:33.742  1760  3228 W FreecessController: getAllRunningPackagePids: Failed to read pid from /sys/fs/cgroup/apps/uid_10318/pid_23972/cgroup.procs
+05-15 18:34:33.749  1760  3228 D FreecessController: UFZ : com.linkedin.android(10318) [21313] reason: Binder(0)
+05-15 18:34:33.750  1760  3240 W LocationManagerService: onFreezeStateChanged, uid[10318]=false
+05-15 18:34:33.750  1760  3240 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10318 , disable= false
+05-15 18:34:33.753  1760  3240 I PowerManagerService: [PWL] can not change uid =  10318
+05-15 18:34:33.970  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778859273
+05-15 18:34:33.970  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-15 18:34:33.970  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-15 18:34:33.970  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29647654
+05-15 18:34:33.970  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29647646
+05-15 18:34:33.970  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-15 18:34:33.971  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-15 18:34:33.971  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-15 18:34:33.971  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-15 18:34:33.971  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0

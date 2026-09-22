@@ -1,0 +1,202 @@
+--------- beginning of main
+08-14 17:17:20.597  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted net.openvpn.openvpn: 0|net.openvpn.openvpn|1642|null|10466: 0
+08-14 17:17:20.597  2870  6282 I HoneySpace.NotificationListener: invalid notification: net.openvpn.openvpn UserHandle{0}: canShowBadge is false
+08-14 17:17:20.600  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-14 17:17:20.600  6020  6488 I NotificationPipeline: Discarding notification: 0|net.openvpn.openvpn|1642|null|10466
+08-14 17:17:20.602  2870 27756 I HoneySpace.PackageEventOperator: [ApplistViewModel] badge count is updated. net.openvpn.openvpn/net.openvpn.unified.MainActivity#UserHandle{0}|33979 : 0
+08-14 17:17:20.620  2357  2357 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+08-14 17:17:20.628  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 17:17:20.633  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-14 17:17:20.633  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-14 17:17:20.633  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-14 17:17:20.633  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-14 17:17:20.634  2357  2357 D S.S.N.  : entryViewBound parent :0|net.openvpn.openvpn|1642|null|10466
+08-14 17:17:20.636  2357  2357 I AppIconSolution: return adaptive icon for net.openvpn.openvpn, isNight = false
+08-14 17:17:20.646  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-14 17:17:20.650  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 17:17:20.650  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+08-14 17:17:20.650  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|net.openvpn.openvpn|1642|null|10466
+--------- beginning of system
+08-14 17:17:20.651   730   730 D io_stats: !@   8,0 r 72734033 1332469913 w 22155420 399085216 d 6475004 455220356 f 0 2055883 iot 33554396 0 th 0 0 0 pt 0 inp 0 0 542313.042
+08-14 17:17:20.651  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-14 17:17:20.651  2357  2357 I AODNotificationManager: updateNotification() 
+08-14 17:17:20.701 22096 22096 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-14 17:17:20.702 22096 22096 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-14 17:17:20.702 22096 22096 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-14 17:17:20.702  1726  2752 I EDMNativeHelperService: isScreenCaptureEnabled
+08-14 17:17:20.704  1726  2752 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-14 17:17:20.704 22096 22096 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-14 17:17:20.705 22096 22096 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-14 17:17:20.710  1437  1682 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_16142#97269(seamlessTransition:0)
+08-14 17:17:20.711  1437  1682 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-14 17:17:20.711  1437  1682 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-14 17:17:20.711  1437  1682 I SurfaceFlinger: Capture layer list: 	 $_20674#97442(seamlessTransition:0)
+08-14 17:17:20.711  1437  1682 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-14 17:17:20.712  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-14 17:17:20.712  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_16142#97269 at index 1
+08-14 17:17:20.712  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-14 17:17:20.712  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-14 17:17:20.712  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer $_20674#97442 at index 4
+08-14 17:17:20.768 22096 22107 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-14 17:17:20.941 21935 22044 I Health.SamsungAccountRepositoryImpl: isPreviousAccountEmpty : false
+08-14 17:17:20.959  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-14 17:17:20.962  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 113600, isSameBssidAndFreq true
+08-14 17:17:20.971  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786717040971 lastDateWindow=1786464242000
+08-14 17:17:20.982 20674 20674 I [SC_ScreenRecorder]_FloatingButtonView: 00:00:02
+08-14 17:17:20.984 20674 20674 I NotificationManager: com.samsung.android.app.smartcapture: notify(1332, null, Notification(channel=CHANNEL_ID_RECORDING_SCREEN shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|ONLY_ALERT_ONCE color=0x00000000 category=navigation groupKey=screen_recorder_group_key vis=PRIVATE semFlags=0x0 semPriority=0 semMissedCount=0)) as user
+08-14 17:17:21.029 16041 16099 I appium  : AppiumResponse: {"sessionId":"842a35b9-374c-4cf8-819b-aad7c059c536","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N1pcxNpmj76K1O75U2Wd2O8YBuwWY0NZjOYgqqCKqZrr+7pjvnHxMxnOBHzbt7MfIMTM3HOmTfT3VHT1bUATUc1XVBAsdlgG2NsY8CA932TtW+Z54VH2QjbgG1JKcnXL4IolJIyH5WFpbz…
+08-14 17:17:21.051 16041 16099 I appium  : channel read: GET /session/842a35b9-374c-4cf8-819b-aad7c059c536/source
+08-14 17:17:21.052 16041 16099 I appium  : Source command
+08-14 17:17:21.052 16041 16099 I appium  : Waiting up to 10000ms for the device to idle
+08-14 17:17:21.125  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786717041
+08-14 17:17:21.126  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-14 17:17:21.126  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-14 17:17:21.126  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29778617
+08-14 17:17:21.126  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29778613
+08-14 17:17:21.126  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-14 17:17:21.126  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-14 17:17:21.126  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-14 17:17:21.126  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-14 17:17:21.126  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-14 17:17:21.135  1726  1780 I ActivityManager: Changes in 10071 5 to 6, 144 to 128
+08-14 17:17:21.140  1414  1414 V APM_AudioPolicyManager: setAppState(portId:3950, state:1)
+08-14 17:17:21.195  1726  1726 I Telecom : SamsungTelecomServiceImpl : isInManagedCall - callingPackage : android / callingUser : UserHandle{0} / hasCrossUserAccess : true
+08-14 17:17:21.219  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.219  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-14 17:17:21.226  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted com.samsung.android.app.smartcapture: 0|com.samsung.android.app.smartcapture|1332|null|10229: 0
+08-14 17:17:21.226  2870  6282 I HoneySpace.NotificationListener: invalid notification: com.samsung.android.app.smartcapture UserHandle{0}: canShowBadge is false
+08-14 17:17:21.229  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-14 17:17:21.230  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1332
+08-14 17:17:21.232  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-14 17:17:21.233  6020  6488 I NotificationPipeline: Processing new notification: 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.234  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-14 17:17:21.234  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-14 17:17:21.234  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-14 17:17:21.235  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-14 17:17:21.236  6020  6488 I NotificationPipeline: Discarding notification: 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.236  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-14 17:17:21.237  2357  2357 I AODNotificationManager: updateNotification() 
+08-14 17:17:21.299  2336  2835 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-14 17:17:21.301  1726  2214 D SemCellularStateManager: onSignalStrengthsChanged: mCellularSignalLevel=3
+08-14 17:17:21.351 21755 22108 E [SPOS]i : RxCachedThreadScheduler-1 | doOnError java.util.concurrent.TimeoutException: The source did not signal an event for 3 seconds and has been terminated.
+08-14 17:17:21.354 21755 21765 I [SPOS]PathHistoryProvider: binder:21755_3 | cursor count 0
+08-14 17:17:21.362 21716 21746 I Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.analyzers.placeanalysis.ReferencePlaceAnalyzer.analyze(SourceFile:7) : analyze - start
+08-14 17:17:21.381 11096 13584 I SamsungAccount: [PlaceProvider] query
+08-14 17:17:21.383 11096 13584 I SamsungAccount: [PlaceProvider] return cursor and notify with uri
+08-14 17:17:21.395  1414  1414 V APM_AudioPolicyManager: setAppState(portId:3950, state:1)
+08-14 17:17:21.405 21716 21746 I Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.analyzers.placeanalysis.ReferencePlaceAnalyzer.analyze(SourceFile:278) : Data have NOT been changed.
+08-14 17:17:21.405 21716 21746 I Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.analyzers.placeanalysis.ReferencePlaceAnalyzer.analyze(SourceFile:306) : analyze - end. Took 0.042s.
+08-14 17:17:21.418  2357  2357 D Bubbles : onEntryUpdated : shouldBubbleUp=false ,key=0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.419  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.419  2357  2357 I {OngoingActivityController}: onEntryUpdated and OA data is empty. So update latest task info
+08-14 17:17:21.434 21716 21746 I Rubin   : [918] R5.b.c(SourceFile:18) : Gear state receiver unregistered!!
+08-14 17:17:21.436  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-14 17:17:21.442 21716 21746 W Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.SleepTimeEventMonitor.cancelAlarmForSleepCheck(SourceFile:58) : Receiver not registered: N5.v@adbec3d
+08-14 17:17:21.443  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 17:17:21.445  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.445  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.446 21716 21746 W Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.SleepTimeEventMonitor.cancelAlarmForSleepCheck(SourceFile:58) : Receiver not registered: N5.v@adbec3d
+08-14 17:17:21.450  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-14 17:17:21.451  2357  2357 I AODNotificationManager: updateNotification() 
+08-14 17:17:21.453 21716 21746 W Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.SleepTimeEventMonitor.cancelAlarmForSleepCheck(SourceFile:58) : Receiver not registered: N5.v@adbec3d
+08-14 17:17:21.456 21716 21746 W Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.SleepTimeEventMonitor.cancelAlarmForSleepCheck(SourceFile:58) : Receiver not registered: N5.v@adbec3d
+08-14 17:17:21.456  2357  3033 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-14 17:17:21.458 21716 21746 W Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.SleepTimeEventMonitor.cancelAlarmForSleepCheck(SourceFile:58) : Receiver not registered: N5.v@adbec3d
+08-14 17:17:21.458  2357  3033 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-14 17:17:21.460 21716 21746 W Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.SleepTimeEventMonitor.cancelAlarmForSleepCheck(SourceFile:58) : Receiver not registered: N5.v@adbec3d
+08-14 17:17:21.463 21716 21746 W Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.SleepTimeEventMonitor.cancelAlarmForSleepCheck(SourceFile:58) : Receiver not registered: N5.v@adbec3d
+08-14 17:17:21.467  2357  2357 I AppIconSolution: return adaptive icon for com.samsung.android.app.smartcapture, isNight = false
+08-14 17:17:21.485  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 17:17:21.490  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.490  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.490  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.490  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.493  2357  2357 D S.S.N.  : entryViewBound parent :0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.494  2357  2357 I AppIconSolution: return adaptive icon for com.samsung.android.app.smartcapture, isNight = false
+08-14 17:17:21.500 21716 21746 W Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.SleepTimeEventMonitor.cancelAlarmForSleepCheck(SourceFile:58) : Receiver not registered: N5.v@adbec3d
+08-14 17:17:21.503  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-14 17:17:21.503 21716 21746 W Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.SleepTimeEventMonitor.cancelAlarmForSleepCheck(SourceFile:58) : Receiver not registered: N5.v@adbec3d
+08-14 17:17:21.506  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 17:17:21.506  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.506  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.508  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-14 17:17:21.508  2357  2357 I AODNotificationManager: updateNotification() 
+08-14 17:17:21.515 16041 16099 I appium  : AppiumResponse: {"sessionId":"842a35b9-374c-4cf8-819b-aad7c059c536","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-14 17:17:21.530  1726  1726 D SSRM:CustomFrequencyManagerService: GpisHintRunnable ScreenRecorderEnabled force return
+08-14 17:17:21.545  1726  2774 W ActivityManager: Receiver with filter android.content.IntentFilter@51e448 already registered for pid 21716, callerPackage is com.samsung.android.rubin.app
+08-14 17:17:21.548  1726  2774 W ActivityManager: Receiver with filter android.content.IntentFilter@e1c52e1 already registered for pid 21716, callerPackage is com.samsung.android.rubin.app
+08-14 17:17:21.548 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-14 17:17:21.552  1726  2774 W ActivityManager: Receiver with filter android.content.IntentFilter@e560806 already registered for pid 21716, callerPackage is com.samsung.android.rubin.app
+08-14 17:17:21.555  1726  2752 W ActivityManager: Receiver with filter android.content.IntentFilter@bb76ec7 already registered for pid 21716, callerPackage is com.samsung.android.rubin.app
+08-14 17:17:21.559  1726  2774 W ActivityManager: Receiver with filter android.content.IntentFilter@5c4fcf4 already registered for pid 21716, callerPackage is com.samsung.android.rubin.app
+08-14 17:17:21.564  1726  2774 W ActivityManager: Receiver with filter android.content.IntentFilter@2aa3c1d already registered for pid 21716, callerPackage is com.samsung.android.rubin.app
+08-14 17:17:21.567  1726  2752 W ActivityManager: Receiver with filter android.content.IntentFilter@c3a9e92 already registered for pid 21716, callerPackage is com.samsung.android.rubin.app
+08-14 17:17:21.572  1726  2752 W ActivityManager: Receiver with filter android.content.IntentFilter@8323063 already registered for pid 21716, callerPackage is com.samsung.android.rubin.app
+08-14 17:17:21.576  1726  2774 W ActivityManager: Receiver with filter android.content.IntentFilter@7aef460 already registered for pid 21716, callerPackage is com.samsung.android.rubin.app
+08-14 17:17:21.587 21716 21746 I Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.WakeupEventMonitor.lambda$start$0(SourceFile:46) : Current wake up status -> AFTER_NORMAL_WAKEUP
+08-14 17:17:21.597 21716 21746 W Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.WakeupEventMonitor.unregisterWakeupTrigger(SourceFile:71) : Receiver not registered: N5.O@5558ad7
+08-14 17:17:21.630 22111 22111 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-14 17:17:21.655  1726  1726 D GroupHelper: onNotificationPostedWithDelay - isGroupChildWithoutSummary OR isGroupSummaryWithoutChildNotificationRecord(0x0e6011de: pkg=com.samsung.android.app.smartcapture user=UserHandle{0} id=1332 tag=null importance=2 key=0|com.samsung.android.app.smartcapture|1332|null|10229: Notification(channel=CHANNEL_ID_RECORDING_SCREEN shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|ONLY_ALERT_ONCE|NO_CLEAR|FOREGROUND_SERVICE color=0x00000000 category=navigation groupKey=screen_recorder_group_key vis=PRIVATE semFlags=0x0 semPriority=0 semMissedCount=0))
+08-14 17:17:21.656  1726  1726 I GroupHelper: Found aggregate summary => force grouping
+08-14 17:17:21.666 21716 21746 I Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.RefreshingEventMonitor.handleEvent(SourceFile:226) : FINISH -> FINISH : nothing
+08-14 17:17:21.673 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-14 17:17:21.700  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.701  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-14 17:17:21.705  2870  6282 I HoneySpace.NotificationListener: onNotificationPosted com.samsung.android.app.smartcapture: 0|com.samsung.android.app.smartcapture|1332|null|10229: 0
+08-14 17:17:21.705  2870  6282 I HoneySpace.NotificationListener: invalid notification: com.samsung.android.app.smartcapture UserHandle{0}: canShowBadge is false
+08-14 17:17:21.709  1726  2154 D RingtoneManager: getActualDefaultRingtoneUri  type    :2
+08-14 17:17:21.709  1726  2154 I RingtoneManager: Ringtone value : content://media/internal/audio/media/49?title=Spaceline&canonical=1
+08-14 17:17:21.709  1726  2154 W Utils   : The vibration Uri is null.
+08-14 17:17:21.710  6010  6010 D NLService: The notifications buffer size has reached its maximum size of 100 items. Shrinking it in order to satisfy the constraints.
+08-14 17:17:21.710  6010  6010 D NLService: Successfully stored the newly arrived notification identified by 1332
+08-14 17:17:21.713  6020  6020 I NotificationListener: [Service]v6.1.9-eap02 Received new notification
+08-14 17:17:21.714  2357  2357 D PluginActionManager: stopListening
+08-14 17:17:21.715  6020  6488 I NotificationPipeline: Processing new notification: 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.715  2357  2357 D PluginActionManager: startListening
+08-14 17:17:21.715  6020  6488 W BridgeModeModel: Not started, default to bridging
+08-14 17:17:21.715  2357  2496 D PluginActionManager: queryAll com.android.systemui.action.PLUGIN_NOTIFICATION_MENU_ROW
+08-14 17:17:21.715  6020  6488 E Notification4Water_NB: WatchFactory.getWatch-lastConnectedNodeId is null
+08-14 17:17:21.716  2357  2496 D PluginActionManager: Found 0 plugins
+08-14 17:17:21.716  2357  2357 W NotifRow: cancelAppearDrawing childKey: 0|com.samsung.android.app.smartcapture|1332|null|10229 wasDrawing:false
+08-14 17:17:21.716  6020  6488 W Notification4Water_NB: NotificationBridgeCallback.onNotificationPosted-never connected before
+08-14 17:17:21.716  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|0|0|com.samsung.android.app.smartcapture|g:Aggregate_NormalNotificationSection|10229|0|com.samsung.android.app.smartcapture|g:Aggregate_NormalNotificationSection
+08-14 17:17:21.716  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|0|0|com.samsung.android.app.smartcapture|g:Aggregate_NormalNotificationSection|10229|0|com.samsung.android.app.smartcapture|g:Aggregate_NormalNotificationSection
+08-14 17:17:21.716  6020  6488 I NotificationPipeline: Discarding notification: 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.717  2357  2357 I View    : setRequestedFrameRate frameRate=-2.0, this=StatusBarIconView(slot='com.samsung.android.app.smartcapture/0x534' alpha=1.0 icon=StatusBarIcon(icon=Icon(typ=RESOURCE pkg=com.samsung.android.app.smartcapture id=0x7f08042f) visible user=0 ) visibleState=ICON iconColor=#ff252528 staticDrawableColor=#ff475d92 decorColor=#ff1b6cf7 animationStartColor=#0 currentSetColor=#ff252528 notification=StatusBarNotification(pkg=com.samsung.android.app.smartcapture user=UserHandle{0} id=1332 tag=null key=0|com.samsung.android.app.smartcapture|1332|null|10229: Notification(channel=CHANNEL_ID_RECORDING_SCREEN shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|ONLY_ALERT_ONCE|NO_CLEAR|FOREGROUND_SERVICE color=0x00000000 category=navigation groupKey=screen_recorder_group_key vis=PRIVATE semFlags=0x0 semPriority=0 semMissedCount=0))), caller=com.android.systemui.statusbar.StatusBarIconView.onAttachedToWindow:6 android.view.View.dispatchAttachedToWindow:24320 android.view.ViewGroup.addTransientView:5172 com.android.systemui.statusbar.phone.NotificationIconContainer.onViewRemoved:108 android.view.ViewGroup.dispatchViewRemoved:5433 
+08-14 17:17:21.717  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-14 17:17:21.717 22115 22115 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-14 17:17:21.719  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 17:17:21.720  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.720  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.720  1726  2154 D RingtoneManager: getActualDefaultRingtoneUri  type    :2
+08-14 17:17:21.720  1726  2154 I RingtoneManager: Ringtone value : content://media/internal/audio/media/49?title=Spaceline&canonical=1
+08-14 17:17:21.721  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-14 17:17:21.721  1726  2154 W Utils   : The vibration Uri is null.
+08-14 17:17:21.721  2357  2357 I AODNotificationManager: updateNotification() 
+08-14 17:17:21.730  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 17:17:21.732  2870  2870 I HoneySpace.NotificationListener: onNotificationRankingUpdate
+08-14 17:17:21.733  2357  3033 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-14 17:17:21.734  2357  3033 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-14 17:17:21.743  2870  6282 I HoneySpace.NotificationListener: PK(p='com.samsung.android.app.smartcapture', u=UserHandle{0}) performed ranking update logic
+08-14 17:17:21.743  2870  6282 I HoneySpace.NotificationListener: invalid notification: com.samsung.android.app.smartcapture UserHandle{0}: canShowBadge is false
+08-14 17:17:21.747  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.747  2357  2357 D InterruptionStateProvider:  no Heads up : edgelighting enabled app. 0|net.openvpn.openvpn|1642|null|10466
+08-14 17:17:21.751  2357  2357 I AppIconSolution: return adaptive icon for com.samsung.android.app.smartcapture, isNight = false
+08-14 17:17:21.757 21716 21746 I Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.nightlife.NightlifeWithCalendarMonitor.handleEvent(SourceFile:126) : FINISH -> FINISH : nothing
+08-14 17:17:21.761  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.761  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.762  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.762  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.764  2357  2357 D S.S.N.  : entryViewBound parent :0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.764 21716 21746 I Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.NightlifeEventMonitor.handleEvent(SourceFile:139) : FINISH -> FINISH : nothing
+08-14 17:17:21.766  2357  2357 I AppIconSolution: return adaptive icon for com.samsung.android.app.smartcapture, isNight = false
+08-14 17:17:21.767 21716 21746 I Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.ExercisingEventMonitor.handleEvent(SourceFile:331) : FINISH -> FINISH : nothing
+08-14 17:17:21.770 21716 21746 I Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.exercise.ExercisingWithSHealthMonitor.isSatisfiedByPattern(SourceFile:127) : isSatisfiedByPattern is false
+08-14 17:17:21.772 21716 21746 I Rubin   : [918] com.samsung.android.rubin.inferenceengine.contextanalytics.engine.monitors.moment.exercise.ExercisingWithCmhMonitor.isSatisfiedByCmh(SourceFile:49) : isSatisfiedByCmh is false
+08-14 17:17:21.774  2357  2357 D SubscreenNotificationListCoordinator: onAfterRenderList() isSubScreen = false, pluginLockMode = 0, doNotShowOnCover = false
+08-14 17:17:21.775 19516 19516 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''
+08-14 17:17:21.778  2357  2357 W RefactorFlag: New code path expects SceneContainerFlag to be enabled.
+08-14 17:17:21.778  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.778  2357  2357 D ExpandableNotifRow: mMaxSmallHeight different before reInflateViews mMaxSmallHeight: 189 mTempSmallHeight:0 0|com.samsung.android.app.smartcapture|1332|null|10229
+08-14 17:17:21.779  2357  2357 I LockscreenNotificationIconsOnlyController: onNotificationInfoUpdated 0
+08-14 17:17:21.779  2357  2357 I AODNotificationManager: updateNotification() 

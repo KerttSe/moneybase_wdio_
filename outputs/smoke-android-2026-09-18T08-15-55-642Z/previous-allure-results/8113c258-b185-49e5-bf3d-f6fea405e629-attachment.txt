@@ -1,0 +1,202 @@
+--------- beginning of main
+08-11 17:24:25.407 21910 21951 I appium  : channel read: GET /session/603cf96a-0138-431e-947d-4bd30573b37e/element/00000000-0000-07c6-0000-000800000131/text
+08-11 17:24:25.407 21910 21951 I appium  : GetText command
+08-11 17:24:25.418 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":"flag-USD USD"}
+08-11 17:24:25.564 21910 21951 I appium  : channel read: POST /session/603cf96a-0138-431e-947d-4bd30573b37e/element
+08-11 17:24:25.565 21910 21951 I appium  : FindElement command
+08-11 17:24:25.567 21910 21951 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 17:24:25.567 21910 21951 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:24:25.569 21910 21951 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:24:25.763 21910 21951 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 17:24:25.767 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":{"ELEMENT":"00000000-0000-07c6-0000-000800000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-07c6-0000-000800000131"}}
+08-11 17:24:25.784 21910 21951 I appium  : channel read: GET /session/603cf96a-0138-431e-947d-4bd30573b37e/element/00000000-0000-07c6-0000-000800000131/text
+08-11 17:24:25.785 21910 21951 I appium  : GetText command
+08-11 17:24:25.794 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":"flag-USD USD"}
+--------- beginning of system
+08-11 17:24:25.932   730   730 D io_stats: !@   8,0 r 55699303 1028931634 w 17244632 312307468 d 5067884 365255020 f 0 1587920 iot 25785648 0 th 0 0 0 pt 0 inp 0 0 401049.329
+08-11 17:24:26.065 21910 21951 I appium  : channel read: POST /session/603cf96a-0138-431e-947d-4bd30573b37e/element
+08-11 17:24:26.066 21910 21951 I appium  : FindElement command
+08-11 17:24:26.067 21910 21951 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 17:24:26.068 21910 21951 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:24:26.072 21910 21951 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:24:26.122  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786458266
+08-11 17:24:26.122  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:24:26.122  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:24:26.123  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774304
+08-11 17:24:26.123  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774294
+08-11 17:24:26.123  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:24:26.123  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:24:26.124  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:24:26.124  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:24:26.124  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:24:26.347 21910 21951 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 17:24:26.348 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":{"ELEMENT":"00000000-0000-07c6-0000-000800000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-07c6-0000-000800000131"}}
+08-11 17:24:26.361 21910 21951 I appium  : channel read: GET /session/603cf96a-0138-431e-947d-4bd30573b37e/element/00000000-0000-07c6-0000-000800000131/text
+08-11 17:24:26.362 21910 21951 I appium  : GetText command
+08-11 17:24:26.370 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":"flag-USD USD"}
+08-11 17:24:26.566 21910 21951 I appium  : channel read: POST /session/603cf96a-0138-431e-947d-4bd30573b37e/element
+08-11 17:24:26.566 21910 21951 I appium  : FindElement command
+08-11 17:24:26.568 21910 21951 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 17:24:26.568 21910 21951 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:24:26.571 21910 21951 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:24:26.747 21910 21951 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 17:24:26.751 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":{"ELEMENT":"00000000-0000-07c6-0000-000800000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-07c6-0000-000800000131"}}
+08-11 17:24:26.767 21910 21951 I appium  : channel read: GET /session/603cf96a-0138-431e-947d-4bd30573b37e/element/00000000-0000-07c6-0000-000800000131/text
+08-11 17:24:26.767 21910 21951 I appium  : GetText command
+08-11 17:24:26.774 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":"flag-USD USD"}
+08-11 17:24:27.067 21910 21951 I appium  : channel read: POST /session/603cf96a-0138-431e-947d-4bd30573b37e/element
+08-11 17:24:27.068 21910 21951 I appium  : FindElement command
+08-11 17:24:27.070 21910 21951 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 17:24:27.070 21910 21951 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:24:27.075 21910 21951 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:24:27.121  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786458267
+08-11 17:24:27.122  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:24:27.123  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:24:27.123  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774304
+08-11 17:24:27.123  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774294
+08-11 17:24:27.123  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:24:27.123  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:24:27.124  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:24:27.124  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:24:27.124  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:24:27.285  1726  2261 D WifiConnectivityMonitor: called startWcmPoll but already Ongoing
+08-11 17:24:27.286  1726  2261 D SemWifiRssiBasePoller: RSSI_BASE_STOP
+08-11 17:24:27.347 21910 21951 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 17:24:27.349 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":{"ELEMENT":"00000000-0000-07c6-0000-000800000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-07c6-0000-000800000131"}}
+08-11 17:24:27.366 21910 21951 I appium  : channel read: GET /session/603cf96a-0138-431e-947d-4bd30573b37e/element/00000000-0000-07c6-0000-000800000131/text
+08-11 17:24:27.367 21910 21951 I appium  : GetText command
+08-11 17:24:27.379 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":"flag-USD USD"}
+08-11 17:24:27.564 21910 21951 I appium  : channel read: POST /session/603cf96a-0138-431e-947d-4bd30573b37e/element
+08-11 17:24:27.565 21910 21951 I appium  : FindElement command
+08-11 17:24:27.567 21910 21951 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 17:24:27.567 21910 21951 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:24:27.569 21910 21951 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:24:27.575 21910 21914 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-11 17:24:27.787 21910 21951 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 17:24:27.789 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":{"ELEMENT":"00000000-0000-07c6-0000-000800000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-07c6-0000-000800000131"}}
+08-11 17:24:27.803 21910 21951 I appium  : channel read: GET /session/603cf96a-0138-431e-947d-4bd30573b37e/element/00000000-0000-07c6-0000-000800000131/text
+08-11 17:24:27.804 21910 21951 I appium  : GetText command
+08-11 17:24:27.813 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":"flag-USD USD"}
+08-11 17:24:27.892  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-11 17:24:27.901  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 87461, isSameBssidAndFreq true
+08-11 17:24:27.909  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786458267909 lastDateWindow=1786275667000
+08-11 17:24:27.912  1726  2228 I SemWifiLinkQualityMonitor: Link stat: 407 / 84 / 1.00 (13) / 144 / -49.0 || 100.0 : 144.00 / 0.5 : 1.00 / 0.55 : 0.21 / G (G) || 52fc78d72452: 0.146 / 54.690 / N || N N / 0 0 / N 2.0 / N X 0 / 401051305 0 || 2026-08-09 14:41:07  / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0
+08-11 17:24:27.934   730   730 D io_stats: !@   8,0 r 55699303 1028931634 w 17244636 312308384 d 5067884 365255020 f 0 1587920 iot 25785660 0 th 0 0 0 pt 0 inp 0 0 401051.331
+08-11 17:24:27.935   730   730 D io_stats: !@ Read_top(KB): .android.chrome(17398) 20
+08-11 17:24:27.936   730   730 D io_stats: !@ Write_top(KB): kworker/u16:1(7446) 916
+08-11 17:24:28.064 21910 21951 I appium  : channel read: POST /session/603cf96a-0138-431e-947d-4bd30573b37e/element
+08-11 17:24:28.065 21910 21951 I appium  : FindElement command
+08-11 17:24:28.067 21910 21951 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 17:24:28.067 21910 21951 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:24:28.070 21910 21951 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:24:28.121  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786458268
+08-11 17:24:28.121  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:24:28.122  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:24:28.122  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774304
+08-11 17:24:28.122  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774294
+08-11 17:24:28.122  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:24:28.122  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:24:28.126  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:24:28.126  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:24:28.126  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:24:28.364 21910 21951 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 17:24:28.365 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":{"ELEMENT":"00000000-0000-07c6-0000-000800000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-07c6-0000-000800000131"}}
+08-11 17:24:28.377 21910 21951 I appium  : channel read: GET /session/603cf96a-0138-431e-947d-4bd30573b37e/element/00000000-0000-07c6-0000-000800000131/text
+08-11 17:24:28.377 21910 21951 I appium  : GetText command
+08-11 17:24:28.386 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":"flag-USD USD"}
+08-11 17:24:28.565 21910 21951 I appium  : channel read: POST /session/603cf96a-0138-431e-947d-4bd30573b37e/element
+08-11 17:24:28.566 21910 21951 I appium  : FindElement command
+08-11 17:24:28.567 21910 21951 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 17:24:28.567 21910 21951 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:24:28.569 21910 21951 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:24:28.786 21910 21951 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 17:24:28.787 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":{"ELEMENT":"00000000-0000-07c6-0000-000800000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-07c6-0000-000800000131"}}
+08-11 17:24:28.801 21910 21951 I appium  : channel read: GET /session/603cf96a-0138-431e-947d-4bd30573b37e/element/00000000-0000-07c6-0000-000800000131/text
+08-11 17:24:28.801 21910 21951 I appium  : GetText command
+08-11 17:24:28.811 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":"flag-USD USD"}
+08-11 17:24:29.062 21910 21951 I appium  : channel read: POST /session/603cf96a-0138-431e-947d-4bd30573b37e/element
+08-11 17:24:29.063 21910 21951 I appium  : FindElement command
+08-11 17:24:29.064 21910 21951 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 17:24:29.064 21910 21951 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:24:29.068 21910 21951 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:24:29.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786458269
+08-11 17:24:29.121  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:24:29.121  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:24:29.121  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774304
+08-11 17:24:29.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774294
+08-11 17:24:29.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:24:29.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:24:29.122  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:24:29.122  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:24:29.125  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:24:29.346 21910 21951 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 17:24:29.348 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":{"ELEMENT":"00000000-0000-07c6-0000-000800000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-07c6-0000-000800000131"}}
+08-11 17:24:29.363 21910 21951 I appium  : channel read: GET /session/603cf96a-0138-431e-947d-4bd30573b37e/element/00000000-0000-07c6-0000-000800000131/text
+08-11 17:24:29.364 21910 21951 I appium  : GetText command
+08-11 17:24:29.372 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":"flag-USD USD"}
+08-11 17:24:29.558 21972 22026 I Datadog : [_dd.sdk_core.default]: Batch ba7e1e32-806b-4828-bd4c-0772fb65f6f3 [4871 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+08-11 17:24:29.566 21910 21951 I appium  : channel read: POST /session/603cf96a-0138-431e-947d-4bd30573b37e/element
+08-11 17:24:29.567 21910 21951 I appium  : FindElement command
+08-11 17:24:29.568 21910 21951 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 17:24:29.568 21910 21951 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:24:29.572 21910 21951 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 17:24:29.655  1726  2226 I SemWifiServiceDetector: Service det. suspended: T / T / 8260
+08-11 17:24:29.814 21910 21951 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 17:24:29.815 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":{"ELEMENT":"00000000-0000-07c6-0000-000800000131","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-07c6-0000-000800000131"}}
+08-11 17:24:29.830 21910 21951 I appium  : channel read: GET /session/603cf96a-0138-431e-947d-4bd30573b37e/element/00000000-0000-07c6-0000-000800000131/text
+08-11 17:24:29.831 21910 21951 I appium  : GetText command
+08-11 17:24:29.837 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":"flag-USD USD"}
+08-11 17:24:30.069 21910 21951 I appium  : channel read: GET /session/603cf96a-0138-431e-947d-4bd30573b37e/screenshot
+08-11 17:24:30.070 21910 21951 I appium  : CaptureScreenshot command
+08-11 17:24:30.120  1726  1775 E Watchdog: !@Sync: 13356 heap(MB): 171 / 181 FD: 1301 [2026-08-11 17:24:30.119]
+08-11 17:24:30.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786458270
+08-11 17:24:30.120  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:24:30.120  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:24:30.120  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774304
+08-11 17:24:30.120  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774294
+08-11 17:24:30.120  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:24:30.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:24:30.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:24:30.121  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:24:30.121  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:24:30.258 24750 24750 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-11 17:24:30.258 24750 24750 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-11 17:24:30.259 24750 24750 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-11 17:24:30.259  1726  2751 I EDMNativeHelperService: isScreenCaptureEnabled
+08-11 17:24:30.259  1726  2751 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-11 17:24:30.259 24750 24750 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-11 17:24:30.260 24750 24750 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-11 17:24:30.262  1437  1995 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_21972#70874(seamlessTransition:0)
+08-11 17:24:30.263  1437  1995 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-11 17:24:30.263  1437  1995 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-11 17:24:30.263  1437  1995 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-11 17:24:30.265  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-11 17:24:30.266  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_21972#70874 at index 1
+08-11 17:24:30.266  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 2
+08-11 17:24:30.266  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 3
+08-11 17:24:30.291 24750 24753 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-11 17:24:30.498 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15dFXlvf/xz8lAZqYMQoBEhgQISCAgMsgUAZVJJhGvKKKt1d6u9trV6fa2vb/e2/a6bgdaa6+2aitVqkUExARkHkRmQpghECBkgEyEzOPJ+f1Bc8rOOUlO5uzk/VrLpfs5e3g2iSH7s5/…
+08-11 17:24:30.523 21910 21951 I appium  : channel read: GET /session/603cf96a-0138-431e-947d-4bd30573b37e/source
+08-11 17:24:30.524 21910 21951 I appium  : Source command
+08-11 17:24:30.524 21910 21951 I appium  : Waiting up to 10000ms for the device to idle
+08-11 17:24:30.865 21910 21951 I appium  : AppiumResponse: {"sessionId":"603cf96a-0138-431e-947d-4bd30573b37e","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-11 17:24:30.919 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 17:24:30.930  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-11 17:24:30.945  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 87462, isSameBssidAndFreq true
+08-11 17:24:30.946  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786458270946 lastDateWindow=1786275667000
+08-11 17:24:30.949  1726  2228 I SemWifiLinkQualityMonitor: Link stat: 439 / 38 / 1.17 (7) / 144 / -51.0 || 100.0 : 144.00 / 0.5 : 0.86 / 0.55 : 0.09 / G (G) || 52fc78d72452: 0.134 / 59.533 / N || N N / 0 0 / N 2.0 / N X 0 / 401054343 0 || 2026-08-09 14:41:07  / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0 / 0: 0 0 0 0 0 0
+08-11 17:24:30.979 24754 24754 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 17:24:31.027 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 17:24:31.078 24757 24757 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 17:24:31.093  4554  5580 I SDHMS:x : SIOP:: AP:360 BAT:339 USB:328 CHG:355 PA:362 CP:357 WIFI:354 BLK:0 SUBBAT:0 LRPTHM:346 SKIN:337 SKINF:332 SKINB:337 LRP:337 LRP2:337 LRF2:332 LRB2:337 AP2:336 CHG2:326 MEM2:335 WIFI2:337 SPK2:317 VAP02:367 VWIFI:359 AVGCUR:0 AVGSYS:374 POWER:0
+08-11 17:24:31.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786458271
+08-11 17:24:31.121  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 17:24:31.121  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 17:24:31.121  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774304
+08-11 17:24:31.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774294
+08-11 17:24:31.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 17:24:31.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 17:24:31.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 17:24:31.122  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 17:24:31.122  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 17:24:31.128 15288 15288 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

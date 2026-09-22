@@ -1,0 +1,203 @@
+--------- beginning of main
+08-05 16:48:26.255 18789 18816 D WM-GreedyScheduler: Ignoring {WorkSpec: 9d87c917-4e70-4a6f-bbd8-0c6b0e397477}. Requires device idle.
+08-05 16:48:26.255 18789 18816 D WM-GreedyScheduler: Ignoring {WorkSpec: bc6d01af-0635-4883-9581-0be387f38955}. Requires device idle.
+08-05 16:48:26.255 18789 18816 D WM-GreedyScheduler: Ignoring {WorkSpec: 5f35b3d6-9fde-4355-826e-5a8ebd00325c}. Requires ContentUri triggers.
+08-05 16:48:26.255 18789 18816 D WM-GreedyScheduler: Ignoring {WorkSpec: d6ae31f5-ab0d-4166-8968-2a8eaadd0104}. Requires device idle.
+08-05 16:48:26.256 18789 18815 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=a1ee5b63-b642-4f33-a537-3816f5caddca, class=com.google.android.apps.messaging.shared.datamodel.workqueue.WorkQueueWorkerShim, tags={ com.google.android.apps.messaging.shared.datamodel.workqueue.WorkQueueWorkerShim,ftd_data_clean_up_work- } ]
+08-05 16:48:26.257 18789 18789 D WM-Processor: tnn a1ee5b63-b642-4f33-a537-3816f5caddca executed; reschedule = false
+08-05 16:48:26.277 18789 18816 D WM-GreedyScheduler: Cancelling work ID a1ee5b63-b642-4f33-a537-3816f5caddca
+08-05 16:48:26.301 16257 16305 I appium  : Took 0ms to retrieve 0 matches for '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]' XPath2 query
+08-05 16:48:26.301 16257 16305 I appium  : Found zero matches
+08-05 16:48:26.303 16257 16305 I appium  : AppiumResponse: {"sessionId":"088a52d5-7cf9-4b31-a90c-592ac793997f","value":[]}
+08-05 16:48:26.312 18789 18816 D WM-GreedyScheduler: Ignoring {WorkSpec: 0630dfa8-ed78-42dc-8732-81b29290a926}. Requires ContentUri triggers.
+08-05 16:48:26.312 18789 18816 D WM-GreedyScheduler: Ignoring {WorkSpec: 9d87c917-4e70-4a6f-bbd8-0c6b0e397477}. Requires device idle.
+08-05 16:48:26.312 18789 18816 D WM-GreedyScheduler: Ignoring {WorkSpec: bc6d01af-0635-4883-9581-0be387f38955}. Requires device idle.
+08-05 16:48:26.312 18789 18816 D WM-GreedyScheduler: Ignoring {WorkSpec: 5f35b3d6-9fde-4355-826e-5a8ebd00325c}. Requires ContentUri triggers.
+08-05 16:48:26.313 18789 18816 D WM-GreedyScheduler: Ignoring {WorkSpec: d6ae31f5-ab0d-4166-8968-2a8eaadd0104}. Requires device idle.
+08-05 16:48:26.339 16257 16305 I appium  : channel read: POST /session/088a52d5-7cf9-4b31-a90c-592ac793997f/elements
+08-05 16:48:26.340 16257 16305 I appium  : FindElements command
+08-05 16:48:26.341 16257 16305 I appium  : method: 'xpath', selector: '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]'
+08-05 16:48:26.341 16257 16305 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:48:26.342 16257 16305 I appium  : The following attributes will be included to the page source: [text]
+08-05 16:48:26.389 16257 16305 I appium  : Took 0ms to retrieve 0 matches for '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]' XPath2 query
+08-05 16:48:26.389 16257 16305 I appium  : Found zero matches
+08-05 16:48:26.390 16257 16305 I appium  : AppiumResponse: {"sessionId":"088a52d5-7cf9-4b31-a90c-592ac793997f","value":[]}
+08-05 16:48:26.442 16257 16305 I appium  : channel read: POST /session/088a52d5-7cf9-4b31-a90c-592ac793997f/elements
+08-05 16:48:26.443 16257 16305 I appium  : FindElements command
+08-05 16:48:26.445 16257 16305 I appium  : method: 'xpath', selector: '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]'
+08-05 16:48:26.445 16257 16305 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:48:26.448 16257 16305 I appium  : The following attributes will be included to the page source: [text]
+08-05 16:48:26.519 16257 16305 I appium  : Took 0ms to retrieve 0 matches for '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]' XPath2 query
+08-05 16:48:26.519 16257 16305 I appium  : Found zero matches
+08-05 16:48:26.520 16257 16305 I appium  : AppiumResponse: {"sessionId":"088a52d5-7cf9-4b31-a90c-592ac793997f","value":[]}
+08-05 16:48:26.542 16257 16305 I appium  : channel read: POST /session/088a52d5-7cf9-4b31-a90c-592ac793997f/elements
+08-05 16:48:26.542 16257 16305 I appium  : FindElements command
+08-05 16:48:26.543 16257 16305 I appium  : method: 'xpath', selector: '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]'
+08-05 16:48:26.543 16257 16305 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:48:26.545 16257 16305 I appium  : The following attributes will be included to the page source: [text]
+08-05 16:48:26.550 16257 16262 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-05 16:48:26.565  2991  3078 D LogsManager: No need to flush logs
+08-05 16:48:26.607 16257 16305 I appium  : Took 0ms to retrieve 0 matches for '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]' XPath2 query
+08-05 16:48:26.607 16257 16305 I appium  : Found zero matches
+08-05 16:48:26.609 16257 16305 I appium  : AppiumResponse: {"sessionId":"088a52d5-7cf9-4b31-a90c-592ac793997f","value":[]}
+08-05 16:48:26.647 16257 16305 I appium  : channel read: POST /session/088a52d5-7cf9-4b31-a90c-592ac793997f/elements
+08-05 16:48:26.647 16257 16305 I appium  : FindElements command
+08-05 16:48:26.648 16257 16305 I appium  : method: 'xpath', selector: '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]'
+08-05 16:48:26.649 16257 16305 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:48:26.651 16257 16305 I appium  : The following attributes will be included to the page source: [text]
+08-05 16:48:26.733 16257 16305 I appium  : Took 0ms to retrieve 0 matches for '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]' XPath2 query
+08-05 16:48:26.733 16257 16305 I appium  : Found zero matches
+08-05 16:48:26.734 16257 16305 I appium  : AppiumResponse: {"sessionId":"088a52d5-7cf9-4b31-a90c-592ac793997f","value":[]}
+08-05 16:48:26.755 16257 16305 I appium  : channel read: POST /session/088a52d5-7cf9-4b31-a90c-592ac793997f/elements
+08-05 16:48:26.756 16257 16305 I appium  : FindElements command
+08-05 16:48:26.757 16257 16305 I appium  : method: 'xpath', selector: '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]'
+08-05 16:48:26.757 16257 16305 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:48:26.759 16257 16305 I appium  : The following attributes will be included to the page source: [text]
+08-05 16:48:26.832 16257 16305 I appium  : Took 0ms to retrieve 0 matches for '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]' XPath2 query
+08-05 16:48:26.832 16257 16305 I appium  : Found zero matches
+08-05 16:48:26.833 16257 16305 I appium  : AppiumResponse: {"sessionId":"088a52d5-7cf9-4b31-a90c-592ac793997f","value":[]}
+08-05 16:48:26.855 16257 16305 I appium  : channel read: POST /session/088a52d5-7cf9-4b31-a90c-592ac793997f/elements
+08-05 16:48:26.856 16257 16305 I appium  : FindElements command
+08-05 16:48:26.857 16257 16305 I appium  : method: 'xpath', selector: '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]'
+08-05 16:48:26.857 16257 16305 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:48:26.860 16257 16305 I appium  : The following attributes will be included to the page source: [text]
+08-05 16:48:26.862  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1785937706
+08-05 16:48:26.863  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-05 16:48:26.863  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-05 16:48:26.863  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29765628
+08-05 16:48:26.863  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29765600
+08-05 16:48:26.863  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-05 16:48:26.863  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-05 16:48:26.863  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-05 16:48:26.863  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-05 16:48:26.863  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-05 16:48:26.875 15743 15804 W JobInfo : Requested important-while-foreground flag for job-2147483216 is ignored and takes no effect
+08-05 16:48:26.876 15743 15804 D WM-SystemJobScheduler: Scheduling work ID 3bdb2fea-20b1-42b1-9cc2-2adbf151798eJob ID -2147483216
+--------- beginning of system
+08-05 16:48:26.890  1726  2745 I ActivityManager: Changes in 10318 19 to 8, 0 to 128
+08-05 16:48:26.898 15743 15804 D WM-GreedyScheduler: Starting tracking for 3bdb2fea-20b1-42b1-9cc2-2adbf151798e
+08-05 16:48:26.903 15743 15806 D WM-WorkConstraintsTrack: NetworkRequestConstraintController register shared callback
+08-05 16:48:26.904 15743 15743 D WM-SystemJobService: onStartJob for WorkGenerationalId(workSpecId=3bdb2fea-20b1-42b1-9cc2-2adbf151798e, generation=0)
+08-05 16:48:26.904 15743 15806 D ConnectivityManager: StackLog: [android.net.ConnectivityManager.sendRequestForNetwork(ConnectivityManager.java:4744)] [android.net.ConnectivityManager.registerDefaultNetworkCallbackForUid(ConnectivityManager.java:5469)] [android.net.ConnectivityManager.registerDefaultNetworkCallback(ConnectivityManager.java:5436)] [android.net.ConnectivityManager.registerDefaultNetworkCallback(ConnectivityManager.java:5410)] [coil3.RealImageLoader$execute$2.invokeSuspend(SourceFile:1551)] [coil3.RealImageLoader$execute$2.invoke(SourceFile:374)] [kotlinx.coroutines.flow.ChannelFlowBuilder.collectTo(SourceFile:50)] [kotlinx.coroutines.flow.CallbackFlowBuilder.collectTo(SourceFile:58)] [kotlinx.coroutines.flow.FlowKt__DelayKt$sample$2$1$2.invokeSuspend(SourceFile:122)] [kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(SourceFile:5)] [kotlinx.coroutines.DispatchedTask.run(SourceFile:117)] [com.google.android.gms.tasks.zze.run(SourceFile:1217)] [java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)] [java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)] [java.lang.Thread.run(Thread.java:1572)]
+08-05 16:48:26.909  1726  2745 D ConnectivityService: requestNetwork for uid/pid:10318/15743 activeRequest: null callbackRequest: 16618 [NetworkRequest [ REQUEST id=16619, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10318 RequestorUid: 10318 RequestorPkg: com.linkedin.android UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647 isUidTracked: false declaredMethods: AVAIL|LOST|NC|BLK
+08-05 16:48:26.910 15743 15743 W JobService: onNetworkChanged() not implemented in androidx.work.impl.background.systemjob.SystemJobService. Must override in a subclass.
+08-05 16:48:26.911  1726  2147 D ConnectivityService:    accepting network in place of null for NetworkRequest [ REQUEST id=16619, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10318 RequestorUid: 10318 RequestorPkg: com.linkedin.android UnderlyingNetworks: Null] ]
+08-05 16:48:26.914 15743 15771 D WM-WorkConstraintsTrack: NetworkRequestConstraintController onCapabilitiesChanged callback
+08-05 16:48:26.914 15743 15771 D WM-WorkConstraintsTrack: Not dispatching constraint state yet: isBlocked=null, capabilitiesInitialized=true
+08-05 16:48:26.914  1726  2136 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=16619, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10318 RequestorUid: 10318 RequestorPkg: com.linkedin.android UnderlyingNetworks: Null] ]
+08-05 16:48:26.914 15743 15771 D WM-WorkConstraintsTrack: NetworkRequestConstraintController onBlockedStatusChanged callback false
+08-05 16:48:26.914  1726  2147 D ConnectivityService: Rematched networks [computed 1ms] [applied 1ms] [issued 2]
+08-05 16:48:26.914  1726  2136 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=16619, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10318 RequestorUid: 10318 RequestorPkg: com.linkedin.android UnderlyingNetworks: Null] ]
+08-05 16:48:26.914  1726  2147 D ConnectivityService: NetworkReassignment :
+08-05 16:48:26.914  1726  2147 D ConnectivityService:   16619 : null → 271
+08-05 16:48:26.914  1726  2136 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=16619, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10318 RequestorUid: 10318 RequestorPkg: com.linkedin.android UnderlyingNetworks: Null] ]
+08-05 16:48:26.915 15743 15806 D WM-Processor: Processor: processing WorkGenerationalId(workSpecId=3bdb2fea-20b1-42b1-9cc2-2adbf151798e, generation=0)
+08-05 16:48:26.920 15743 15743 D WM-WorkerWrapper: Starting work for com.linkedin.lieventobservability.sync.TelemetryObserveWorker
+08-05 16:48:26.920 15743 15806 D WM-GreedyScheduler: Constraints met: Scheduling work ID WorkGenerationalId(workSpecId=3bdb2fea-20b1-42b1-9cc2-2adbf151798e, generation=0)
+08-05 16:48:26.922 15743 15806 D WM-Processor: Work WorkGenerationalId(workSpecId=3bdb2fea-20b1-42b1-9cc2-2adbf151798e, generation=0) is already enqueued for processing
+08-05 16:48:26.952 16257 16305 I appium  : Took 0ms to retrieve 0 matches for '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]' XPath2 query
+08-05 16:48:26.953 16257 16305 I appium  : Found zero matches
+08-05 16:48:26.954 16257 16305 I appium  : AppiumResponse: {"sessionId":"088a52d5-7cf9-4b31-a90c-592ac793997f","value":[]}
+08-05 16:48:26.974 16257 16305 I appium  : channel read: POST /session/088a52d5-7cf9-4b31-a90c-592ac793997f/elements
+08-05 16:48:26.974 16257 16305 I appium  : FindElements command
+08-05 16:48:26.975 16257 16305 I appium  : method: 'xpath', selector: '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]'
+08-05 16:48:26.975 16257 16305 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:48:26.977 16257 16305 I appium  : The following attributes will be included to the page source: [text]
+08-05 16:48:27.020 16257 16305 I appium  : Took 0ms to retrieve 0 matches for '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]' XPath2 query
+08-05 16:48:27.020 16257 16305 I appium  : Found zero matches
+08-05 16:48:27.020 16257 16305 I appium  : AppiumResponse: {"sessionId":"088a52d5-7cf9-4b31-a90c-592ac793997f","value":[]}
+08-05 16:48:27.040 16257 16305 I appium  : channel read: POST /session/088a52d5-7cf9-4b31-a90c-592ac793997f/elements
+08-05 16:48:27.041 16257 16305 I appium  : FindElements command
+08-05 16:48:27.042 16257 16305 I appium  : method: 'xpath', selector: '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]'
+08-05 16:48:27.042 16257 16305 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:48:27.043 16257 16305 I appium  : The following attributes will be included to the page source: [text]
+08-05 16:48:27.048 16257 16262 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-05 16:48:27.066   730   730 D io_stats: !@   8,0 r 22977360 446580440 w 6894505 129278180 d 1997167 174870688 f 0 643690 iot 10243004 0 th 0 0 0 pt 0 inp 0 0 136408.721
+08-05 16:48:27.077  3012  3012 I wpa_supplicant: Heartbeat 6438
+08-05 16:48:27.100 16257 16305 I appium  : Took 0ms to retrieve 0 matches for '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]' XPath2 query
+08-05 16:48:27.100 16257 16305 I appium  : Found zero matches
+08-05 16:48:27.102 16257 16305 I appium  : AppiumResponse: {"sessionId":"088a52d5-7cf9-4b31-a90c-592ac793997f","value":[]}
+08-05 16:48:27.140 16257 16305 I appium  : channel read: POST /session/088a52d5-7cf9-4b31-a90c-592ac793997f/elements
+08-05 16:48:27.141 16257 16305 I appium  : FindElements command
+08-05 16:48:27.143 16257 16305 I appium  : method: 'xpath', selector: '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]'
+08-05 16:48:27.143 16257 16305 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:48:27.145 16257 16305 I appium  : The following attributes will be included to the page source: [text]
+08-05 16:48:27.206 16257 16305 I appium  : Took 0ms to retrieve 0 matches for '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]' XPath2 query
+08-05 16:48:27.206 16257 16305 I appium  : Found zero matches
+08-05 16:48:27.207 16257 16305 I appium  : AppiumResponse: {"sessionId":"088a52d5-7cf9-4b31-a90c-592ac793997f","value":[]}
+08-05 16:48:27.240 16257 16305 I appium  : channel read: POST /session/088a52d5-7cf9-4b31-a90c-592ac793997f/elements
+08-05 16:48:27.241 16257 16305 I appium  : FindElements command
+08-05 16:48:27.242 16257 16305 I appium  : method: 'xpath', selector: '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]'
+08-05 16:48:27.242 16257 16305 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:48:27.245 16257 16305 I appium  : The following attributes will be included to the page source: [text]
+08-05 16:48:27.335 15743 15804 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=3bdb2fea-20b1-42b1-9cc2-2adbf151798e, tags={ com.linkedin.lieventobservability.sync.TelemetryObserveWorker,telemetry_observe_send_one_batch } ]
+08-05 16:48:27.341 15743 15743 D WM-Processor: Processor 3bdb2fea-20b1-42b1-9cc2-2adbf151798e executed; reschedule = false
+08-05 16:48:27.342 15743 15743 D WM-GreedyScheduler: Stopping tracking for WorkGenerationalId(workSpecId=3bdb2fea-20b1-42b1-9cc2-2adbf151798e, generation=0)
+08-05 16:48:27.342 15743 15743 D WM-SystemJobService: 3bdb2fea-20b1-42b1-9cc2-2adbf151798e executed on JobScheduler
+08-05 16:48:27.351  1726  2745 I ActivityManager: Changes in 10318 8 to 10, 128 to 0
+08-05 16:48:27.354 16257 16305 I appium  : Took 0ms to retrieve 0 matches for '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]' XPath2 query
+08-05 16:48:27.354 16257 16305 I appium  : Found zero matches
+08-05 16:48:27.356 16257 16305 I appium  : AppiumResponse: {"sessionId":"088a52d5-7cf9-4b31-a90c-592ac793997f","value":[]}
+08-05 16:48:27.359 15743 15806 D WM-GreedyScheduler: Cancelling work ID 3bdb2fea-20b1-42b1-9cc2-2adbf151798e
+08-05 16:48:27.369  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-05 16:48:27.372 15743 15806 D WM-WorkConstraintsTrack: NetworkRequestConstraintController unregister shared callback
+08-05 16:48:27.372 15743 15806 D ConnectivityManager: StackLog: [android.net.ConnectivityManager.unregisterNetworkCallback(ConnectivityManager.java:5579)] [coil3.gif.AnimatedImageDecoder$$ExternalSyntheticLambda0.invoke(SourceFile:358)] [androidx.camera.camera2.pipe.core.Threads$$ExternalSyntheticLambda0.invoke(SourceFile:221)] [kotlinx.coroutines.channels.ProduceKt.awaitClose(SourceFile:106)] [kotlinx.coroutines.channels.ProduceKt$awaitClose$1.invokeSuspend(SourceFile:10)] [kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(SourceFile:5)] [kotlinx.coroutines.DispatchedTask.run(SourceFile:107)] [com.google.android.gms.tasks.zze.run(SourceFile:1217)] [java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)] [java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)] [java.lang.Thread.run(Thread.java:1572)]
+08-05 16:48:27.379 16257 16305 I appium  : channel read: POST /session/088a52d5-7cf9-4b31-a90c-592ac793997f/elements
+08-05 16:48:27.376  1726  2147 D ConnectivityService:  Removing from current network [271 WIFI|VPN], leaving 130 requests.
+08-05 16:48:27.380 16257 16305 I appium  : FindElements command
+08-05 16:48:27.381 16257 16305 I appium  : method: 'xpath', selector: '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]'
+08-05 16:48:27.381 16257 16305 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:48:27.384 16257 16305 I appium  : The following attributes will be included to the page source: [text]
+08-05 16:48:27.455 16257 16305 I appium  : Took 0ms to retrieve 0 matches for '//android.widget.TextView[contains(@text,"User Limit Reached") or contains(@text,"user limit reached")]' XPath2 query
+08-05 16:48:27.455 16257 16305 I appium  : Found zero matches
+08-05 16:48:27.456 16257 16305 I appium  : AppiumResponse: {"sessionId":"088a52d5-7cf9-4b31-a90c-592ac793997f","value":[]}
+08-05 16:48:27.474 16257 16305 I appium  : channel read: GET /session/088a52d5-7cf9-4b31-a90c-592ac793997f/screenshot
+08-05 16:48:27.474 16257 16305 I appium  : CaptureScreenshot command
+08-05 16:48:27.632 18974 18974 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-05 16:48:27.633 18974 18974 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-05 16:48:27.636 18974 18974 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-05 16:48:27.636  1726  2745 I EDMNativeHelperService: isScreenCaptureEnabled
+08-05 16:48:27.636  1726  2745 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-05 16:48:27.636 18974 18974 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-05 16:48:27.636 18974 18974 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-05 16:48:27.639  1437  1463 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_16325#27327(seamlessTransition:0)
+08-05 16:48:27.639  1437  1463 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_16325#27400(seamlessTransition:0)
+08-05 16:48:27.639  1437  1463 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-05 16:48:27.639  1437  1463 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-05 16:48:27.640  1437  1463 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-05 16:48:27.642  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-05 16:48:27.642  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_16325#27327 at index 1
+08-05 16:48:27.642  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_16325#27400 at index 2
+08-05 16:48:27.642  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 3
+08-05 16:48:27.642  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 4
+08-05 16:48:27.663 18974 18977 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-05 16:48:27.754  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-05 16:48:27.757  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 25923, isSameBssidAndFreq true
+08-05 16:48:27.757  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:22 syn=2, rto=0, cwnd=0
+08-05 16:48:27.757  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:23 syn=2, rto=0, cwnd=0
+08-05 16:48:27.757  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:24 syn=0, rto=0, cwnd=2
+08-05 16:48:27.757  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:25 syn=0, rto=0, cwnd=2
+08-05 16:48:27.757  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:26 syn=0, rto=0, cwnd=2
+08-05 16:48:27.757  1726  2228 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-08-03 21:20:27 syn=0, rto=0, cwnd=2
+08-05 16:48:27.758  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1785937707758 lastDateWindow=1785781227000
+08-05 16:48:27.759  1726  2228 I SemWifiLinkQualityMonitor: Link stat: 1038 / 93 / 1.06 (38) / 144 / -58.0 || 100.0 : 144.00 / 0.5 : 0.95 / 0.55 : 0.09 / B (G) || 52fc78d72457: 0.135 / 59.417 / N || N N / 3 0 / N 2.0 / Y X 0 / 136409412 0 || 2026-08-03 21:20:27  / 0: 2 2 0 0 0 0 / 0: 0 0 0 0 0 0 / 2: 0 0 2 2 2 2
+08-05 16:48:27.863  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1785937707
+08-05 16:48:27.863  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-05 16:48:27.863  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-05 16:48:27.863  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29765628
+08-05 16:48:27.863  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29765600
+08-05 16:48:27.863  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-05 16:48:27.863  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-05 16:48:27.863  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-05 16:48:27.863  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-05 16:48:27.863  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-05 16:48:27.872 16257 16305 I appium  : AppiumResponse: {"sessionId":"088a52d5-7cf9-4b31-a90c-592ac793997f","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N1pbFznefbxa3YOOcOdw50UF1HUbu2rl8hZ6hqO08CJUSNNC7hGG8QuuqTfCwQFEiB42xRFi7RO0g9NA6dx4zq2E8W2IsmLdonULlIUSYmryOFOzgxnOPN+UDnRcIYU9+Eh/79P5nPOnHN…
+08-05 16:48:27.898 16257 16305 I appium  : channel read: GET /session/088a52d5-7cf9-4b31-a90c-592ac793997f/source
+08-05 16:48:27.898 16257 16305 I appium  : Source command
+08-05 16:48:27.899 16257 16305 I appium  : Waiting up to 10000ms for the device to idle
+08-05 16:48:27.999 16257 16305 I appium  : AppiumResponse: {"sessionId":"088a52d5-7cf9-4b31-a90c-592ac793997f","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-05 16:48:28.049 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-05 16:48:28.106 18978 18978 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-05 16:48:28.163 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys window displays'
+08-05 16:48:28.227 18981 18981 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-05 16:48:28.293 20614 20614 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

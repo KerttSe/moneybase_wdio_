@@ -1,0 +1,596 @@
+--------- beginning of main
+05-12 15:52:18.933 11170 11170 D nativeloader: Configuring classloader-namespace-shared for other apk /system/priv-app/MtpService/MtpService.apk. target_sdk_version=33, uses_libraries=, library_path=/system/priv-app/MtpService/lib/arm64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.android.mtp:/system/priv-app/MtpService:/system/lib64:/system_ext/lib64
+--------- beginning of system
+05-12 15:52:18.972   506  2062 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 10131; state: DISABLED
+05-12 15:52:18.976 11170 11170 D nativeloader: Configuring classloader-namespace-shared for other apk /system/priv-app/MediaProviderLegacy/MediaProviderLegacy.apk. target_sdk_version=33, uses_libraries=, library_path=/system/priv-app/MediaProviderLegacy/lib/arm64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.android.providers.media:/system/priv-app/MediaProviderLegacy:/system/lib64:/system_ext/lib64
+05-12 15:52:18.987   506  1645 I ActivityManager: Killing 1448:com.google.process.gapps/u0a120 (adj 975): empty #17
+05-12 15:52:18.994   506   538 I libprocessgroup: Successfully killed process cgroup uid 10120 pid 1448 in 0ms
+05-12 15:52:18.995   295   295 I Zygote  : Process 1448 exited due to signal 9 (Killed)
+05-12 15:52:19.016 11150 11194 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10131; state: ENABLED
+05-12 15:52:19.028 11150 11150 W droid.apps.docs: Method void rkp.c(android.app.Activity) failed lock verification and will run slower.
+05-12 15:52:19.028 11150 11150 W droid.apps.docs: Common causes for lock verification issues are non-optimized dex code
+05-12 15:52:19.028 11150 11150 W droid.apps.docs: and incorrect proguard optimizations.
+05-12 15:52:19.049 11150 11209 W CacheStorage: cache doesn't exist
+05-12 15:52:19.052 11150 11209 W CacheStorage: cache doesn't exist
+05-12 15:52:19.059  1191  2688 I FontLog : (REDACTED) Received query %s, URI %s
+05-12 15:52:19.060  1191  2688 I FontLog : (REDACTED) Query [%s] resolved to %s
+05-12 15:52:19.064   506  1613 D ConnectivityService: requestNetwork for uid/pid:10131/11150 activeRequest: null callbackRequest: 322 [NetworkRequest [ REQUEST id=323, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.apps.docs UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+05-12 15:52:19.065   506   635 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=323, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.apps.docs UnderlyingNetworks: Null] ]
+05-12 15:52:19.066   506   635 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=323, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.apps.docs UnderlyingNetworks: Null] ]
+05-12 15:52:19.066   506   635 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=323, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.apps.docs UnderlyingNetworks: Null] ]
+05-12 15:52:19.066   506   635 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=323, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.apps.docs UnderlyingNetworks: Null] ]
+05-12 15:52:19.066   506   642 D ConnectivityService: NetReassign [323 : null → 101] [c 0] [a 1] [i 0]
+05-12 15:52:19.066  1191  2688 I FontLog : (REDACTED) Fetch %s end status %s
+05-12 15:52:19.068  1191  2688 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+05-12 15:52:19.072 11150 11211 E DocsApplication: from onCreate Completable for sending summary about blocked SyncRequests
+05-12 15:52:19.072 11150 11211 E DocsApplication: java.lang.IllegalStateException
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at hqk.h(PG:64)
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at jyb.a(PG:261)
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at haf.lambda$onCreate$2(PG:9)
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at haf.$r8$lambda$M-tqsz8QJK2QrqieVTlg-c3Lhbo(PG:1)
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at hac.run(PG:264)
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at abnj.c(PG:13)
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at abla.d(PG:3)
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at abnr$a.run(PG:3)
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at ablk$a.run(PG:10)
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at abra.run(PG:14)
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at abra.call(PG:1)
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:307)
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+05-12 15:52:19.072 11150 11211 E DocsApplication: 	at java.lang.Thread.run(Thread.java:1012)
+05-12 15:52:19.073  1191  2339 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+05-12 15:52:19.077 11117 11145 I ProvidersCache: Provider returned no roots. Possibly naughty: com.google.android.apps.docs.storage
+05-12 15:52:19.091 11150 11229 W DynamiteModule: Local module descriptor class for com.google.android.gms.providerinstaller.dynamite not found.
+05-12 15:52:19.092  1191  1283 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+05-12 15:52:19.094 11150 11229 W ProviderInstaller: Failed to load providerinstaller module: No acceptable module com.google.android.gms.providerinstaller.dynamite found. Local version is 0 and remote version is 0.
+05-12 15:52:19.098 11150 11229 D nativeloader: Configuring classloader-namespace for other apk /system/framework/com.android.location.provider.jar. target_sdk_version=37, uses_libraries=ALL, library_path=/data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/lib/arm64:/data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+05-12 15:52:19.101 11150 11229 D nativeloader: Configuring classloader-namespace for other apk /system/framework/com.android.media.remotedisplay.jar. target_sdk_version=37, uses_libraries=ALL, library_path=/data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/lib/arm64:/data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+05-12 15:52:19.105 11150 11229 D nativeloader: Configuring classloader-namespace for other apk /data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/base.apk. target_sdk_version=37, uses_libraries=, library_path=/data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/lib/arm64:/data/app/~~5vCfkxkt-u9l6NXqB9vixg==/com.google.android.gms-dgwx42Ujj_9BaDen1JsIzQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+05-12 15:52:19.153 11150 11229 V NativeCrypto: Registering com/google/android/gms/org/conscrypt/NativeCrypto's 336 native methods...
+05-12 15:52:19.176  1191  1288 W GLSUser : [AppCertManager] Exception while requesting key: 
+05-12 15:52:19.176  1191  1288 W GLSUser : java.util.concurrent.ExecutionException: cvhs: Parsing Exception
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at hfeb.j(:com.google.android.gms@261233029@26.12.33 (190400-892550550):21)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at hfek.u(:com.google.android.gms@261233029@26.12.33 (190400-892550550):71)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at alqw.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):439)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at alqu.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):67)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at alqu.dispatchTransaction(:com.google.android.gms@261233029@26.12.33 (190400-892550550):16)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at byza.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):72)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at zpv.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):23)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at android.os.Binder.transact(Binder.java:1164)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at clbu.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):10)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at android.os.Binder.transact(Binder.java:1164)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at byzo.onTransact(:com.google.android.gms@261233029@26.12.33 (190400-892550550):161)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at android.os.Binder.execTransactInternal(Binder.java:1280)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at android.os.Binder.execTransact(Binder.java:1244)
+05-12 15:52:19.176  1191  1288 W GLSUser : Caused by: cvhs: Parsing Exception
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at cvix.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):15)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at hfgv.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):47)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at bhys.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):50)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at bhys.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):73)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at biej.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at java.lang.Thread.run(Thread.java:1012)
+05-12 15:52:19.176  1191  1288 W GLSUser : Caused by: iphx: Protocol message end-group tag did not match expected tag.
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at ipjy.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):62)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at ipiv.l(:com.google.android.gms@261233029@26.12.33 (190400-892550550):60)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at ipgw.s(:com.google.android.gms@261233029@26.12.33 (190400-892550550):19)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at ipeq.f(:com.google.android.gms@261233029@26.12.33 (190400-892550550):5)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at ipeq.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at ipeq.o(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at cviw.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):15)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at cvjb.call(:com.google.android.gms@261233029@26.12.33 (190400-892550550):8)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+05-12 15:52:19.176  1191  1288 W GLSUser : 	... 6 more
+05-12 15:52:19.177  1191  1288 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+05-12 15:52:19.196   506  1613 E AppOps  : Bad call made by uid 10120. Package "com.google.android.gms" does not belong to uid 10131.
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: Failed to get service from broker. 
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: java.lang.SecurityException: Unknown calling package name 'com.google.android.gms'.
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3011)
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: 	at android.os.Parcel.createException(Parcel.java:2995)
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:2978)
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:2920)
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: 	at bhfb.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):36)
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: 	at bhdc.z(:com.google.android.gms@261233029@26.12.33 (190400-892550550):143)
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: 	at bgjb.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):42)
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: 	at android.os.Handler.handleCallback(Handler.java:942)
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: 	at cvnu.mF(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: 	at cvnu.dispatchMessage(:com.google.android.gms@261233029@26.12.33 (190400-892550550):5)
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: 	at android.os.Looper.loopOnce(Looper.java:201)
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: 	at android.os.Looper.loop(Looper.java:288)
+05-12 15:52:19.197 11150 11239 E GoogleApiManager: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+05-12 15:52:19.200 11150 11239 W GoogleApiManager: Not showing notification since connectionResult is not user-facing: ConnectionResult{statusCode=DEVELOPER_ERROR, resolution=null, message=null, clientMethodKey=null}
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: Failed to register com.google.android.gms.providerinstaller#com.google.android.apps.docs
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: gfpx: 17: 17: API: Phenotype.API is not available on this device. Connection failed with: ConnectionResult{statusCode=DEVELOPER_ERROR, resolution=null, message=null, clientMethodKey=null}
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at gfpz.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):13)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at hfdr.d(:com.google.android.gms@261233029@26.12.33 (190400-892550550):3)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at hfdt.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):130)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at hfgc.execute(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at hfeb.f(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at hfeb.m(:com.google.android.gms@261233029@26.12.33 (190400-892550550):99)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at hfeb.r(:com.google.android.gms@261233029@26.12.33 (190400-892550550):17)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at fxik.hH(:com.google.android.gms@261233029@26.12.33 (190400-892550550):35)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at fjvl.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):12)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at hfgc.execute(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at fjvm.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):18)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at fjwb.b(:com.google.android.gms@261233029@26.12.33 (190400-892550550):34)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at fjwd.d(:com.google.android.gms@261233029@26.12.33 (190400-892550550):25)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at bggk.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):9)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at bgiz.q(:com.google.android.gms@261233029@26.12.33 (190400-892550550):48)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at bgiz.d(:com.google.android.gms@261233029@26.12.33 (190400-892550550):10)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at bgiz.g(:com.google.android.gms@261233029@26.12.33 (190400-892550550):191)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at bgiz.onConnectionFailed(:com.google.android.gms@261233029@26.12.33 (190400-892550550):2)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at bgjb.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):70)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at android.os.Handler.handleCallback(Handler.java:942)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at cvnu.mF(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at cvnu.dispatchMessage(:com.google.android.gms@261233029@26.12.33 (190400-892550550):5)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at android.os.Looper.loopOnce(Looper.java:201)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at android.os.Looper.loop(Looper.java:288)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: Caused by: bger: 17: API: Phenotype.API is not available on this device. Connection failed with: ConnectionResult{statusCode=DEVELOPER_ERROR, resolution=null, message=null, clientMethodKey=null}
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at bhco.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):15)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at bggn.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	at bggk.c(:com.google.android.gms@261233029@26.12.33 (190400-892550550):5)
+05-12 15:52:19.201 11150 11238 W FlagRegistrar: 	... 12 more
+05-12 15:52:19.208 11150 11240 I gfpl    : Unable to retrieve flag snapshot for com.google.android.gms.providerinstaller#com.google.android.apps.docs, using defaults.
+05-12 15:52:19.218 11150 11229 I ProviderInstaller: Installed default security provider GmsCore_OpenSSL
+05-12 15:52:19.223 11150 11229 W DriveVideoServiceUrlFet: Start up request to Drive Video Service failed.
+05-12 15:52:19.223 11150 11229 E DefaultHttpIssuer: Attempt to close HttpIssuer when no request is executing.
+05-12 15:52:19.408 10910 11100 I cn_CronetUrlRequestContext: destroyNativeStreamLocked org.chromium.net.impl.CronetBidirectionalStream@407ce43
+05-12 15:52:19.410 10910 11031 W bsyh    : Error processing gRPC request
+05-12 15:52:19.410 10910 11031 W bsyh    : fudw: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fuyo.c(PG:41)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fucx.c(PG:3)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fggf.m(PG:97)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fggf.s(PG:23)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fggf.c(PG:8)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fggr.run(PG:9)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fggt.k(PG:28)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fggt.c(PG:6)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fgfu.run(PG:14)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fgfr.run(PG:16)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fexd.run(PG:3)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fexe.run(PG:64)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at feve.execute(PG:1)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fgfz.execute(PG:3)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fexf.execute(PG:34)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fgfo.execute(PG:11)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fgfx.c(PG:10)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at eues.c(PG:4)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fggd.run(PG:184)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at eurb.run(PG:28)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fgfr.run(PG:16)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fexd.run(PG:3)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fexe.run(PG:64)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at feve.execute(PG:1)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fgfz.execute(PG:3)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fexf.execute(PG:34)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fgfo.execute(PG:11)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fetg.d(PG:1)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fetg.j(PG:95)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fetg.o(PG:29)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fetl.d(PG:3)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fetn.run(PG:53)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at cwim.run(PG:5)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at fdqx.run(PG:46)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at cwhy.run(PG:81)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at java.lang.Thread.run(Thread.java:1012)
+05-12 15:52:19.410 10910 11031 W bsyh    : 	at cwjp.run(PG:63)
+05-12 15:52:19.410 10910 11031 W bvbz    : Discover get refresh session failed.
+05-12 15:52:19.410 10910 11031 W bvbz    : fudw: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fuyo.c(PG:41)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fucx.c(PG:3)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fggf.m(PG:97)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fggf.s(PG:23)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fggf.c(PG:8)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fggr.run(PG:9)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fggt.k(PG:28)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fggt.c(PG:6)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fgfu.run(PG:14)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fgfr.run(PG:16)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fexd.run(PG:3)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fexe.run(PG:64)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at feve.execute(PG:1)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fgfz.execute(PG:3)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fexf.execute(PG:34)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fgfo.execute(PG:11)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fgfx.c(PG:10)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at eues.c(PG:4)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fggd.run(PG:184)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at eurb.run(PG:28)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fgfr.run(PG:16)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fexd.run(PG:3)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fexe.run(PG:64)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at feve.execute(PG:1)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fgfz.execute(PG:3)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fexf.execute(PG:34)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fgfo.execute(PG:11)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fetg.d(PG:1)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fetg.j(PG:95)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fetg.o(PG:29)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fetl.d(PG:3)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fetn.run(PG:53)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at cwim.run(PG:5)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at fdqx.run(PG:46)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at cwhy.run(PG:81)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at java.lang.Thread.run(Thread.java:1012)
+05-12 15:52:19.410 10910 11031 W bvbz    : 	at cwjp.run(PG:63)
+05-12 15:52:19.417 10910 11031 W buvb    : (REDACTED) Fetch failed. Renderable stream failure reason: %s
+05-12 15:52:19.417 10910 11031 W buvb    : bvcy: fudw: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+05-12 15:52:19.417 10910 11031 W buvb    : 	at bvby.invokeSuspend(PG:1030)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fvxa.resumeWith(PG:11)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fwju.x(PG:27)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fwfl.resumeWith(PG:14)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fvxa.resumeWith(PG:37)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fwju.x(PG:27)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fwfl.resumeWith(PG:14)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fvxa.resumeWith(PG:37)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fwju.x(PG:27)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fwfl.resumeWith(PG:14)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fvxa.resumeWith(PG:37)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fwhj.run(PG:107)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at etdi.run(PG:3)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at euqw.run(PG:17)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at cwim.run(PG:5)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fdqx.run(PG:46)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at cwhy.run(PG:81)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at java.lang.Thread.run(Thread.java:1012)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at cwjp.run(PG:63)
+05-12 15:52:19.417 10910 11031 W buvb    : Caused by: fudw: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fuyo.c(PG:41)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fucx.c(PG:3)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fggf.m(PG:97)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fggf.s(PG:23)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fggf.c(PG:8)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fggr.run(PG:9)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fggt.k(PG:28)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fggt.c(PG:6)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fgfu.run(PG:14)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fgfr.run(PG:16)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fexd.run(PG:3)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fexe.run(PG:64)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at feve.execute(PG:1)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fgfz.execute(PG:3)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fexf.execute(PG:34)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fgfo.execute(PG:11)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fgfx.c(PG:10)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at eues.c(PG:4)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fggd.run(PG:184)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at eurb.run(PG:28)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fgfr.run(PG:16)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fexd.run(PG:3)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fexe.run(PG:64)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at feve.execute(PG:1)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fgfz.execute(PG:3)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fexf.execute(PG:34)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fgfo.execute(PG:11)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fetg.d(PG:1)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fetg.j(PG:95)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fetg.o(PG:29)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fetl.d(PG:3)
+05-12 15:52:19.417 10910 11031 W buvb    : 	at fetn.run(PG:53)
+05-12 15:52:19.417 10910 11031 W buvb    : 	... 5 more
+05-12 15:52:19.418 10910 10910 W bvgd    : Failed RenderableStream callback; SubscriptionCallbacks#onError(Throwable) called.
+05-12 15:52:19.418 10910 10910 W bvgd    : butp: bvcy: fudw: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at buvd.c(PG:3)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at buvb.e(PG:294)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at buuw.invokeSuspend(PG:13)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fvxa.resumeWith(PG:11)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwju.x(PG:27)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwfl.resumeWith(PG:14)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fvxa.resumeWith(PG:37)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwju.x(PG:27)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwfl.resumeWith(PG:14)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fvxa.resumeWith(PG:37)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwju.x(PG:27)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwfl.resumeWith(PG:14)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fvxa.resumeWith(PG:37)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwju.x(PG:27)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwfl.resumeWith(PG:14)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fvxa.resumeWith(PG:37)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwju.x(PG:27)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwfl.resumeWith(PG:14)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fvxa.resumeWith(PG:37)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwhj.run(PG:115)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at etdi.run(PG:3)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at cwim.run(PG:5)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fdqx.run(PG:46)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at cwhy.run(PG:81)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at java.lang.Thread.run(Thread.java:1012)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at cwjp.run(PG:63)
+05-12 15:52:19.418 10910 10910 W bvgd    : Caused by: bvcy: fudw: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at bvby.invokeSuspend(PG:1030)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fvxa.resumeWith(PG:11)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwju.x(PG:27)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwfl.resumeWith(PG:14)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fvxa.resumeWith(PG:37)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwju.x(PG:27)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwfl.resumeWith(PG:14)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fvxa.resumeWith(PG:37)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwju.x(PG:27)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwfl.resumeWith(PG:14)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fvxa.resumeWith(PG:37)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fwhj.run(PG:107)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at etdi.run(PG:3)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at euqw.run(PG:17)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	... 5 more
+05-12 15:52:19.418 10910 10910 W bvgd    : Caused by: fudw: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fuyo.c(PG:41)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fucx.c(PG:3)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fggf.m(PG:97)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fggf.s(PG:23)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fggf.c(PG:8)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fggr.run(PG:9)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fggt.k(PG:28)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fggt.c(PG:6)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fgfu.run(PG:14)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fgfr.run(PG:16)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fexd.run(PG:3)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fexe.run(PG:64)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at feve.execute(PG:1)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fgfz.execute(PG:3)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fexf.execute(PG:34)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fgfo.execute(PG:11)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fgfx.c(PG:10)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at eues.c(PG:4)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fggd.run(PG:184)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at eurb.run(PG:28)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fgfr.run(PG:16)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fexd.run(PG:3)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fexe.run(PG:64)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at feve.execute(PG:1)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fgfz.execute(PG:3)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fexf.execute(PG:34)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fgfo.execute(PG:11)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fetg.d(PG:1)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fetg.j(PG:95)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fetg.o(PG:29)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fetl.d(PG:3)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	at fetn.run(PG:53)
+05-12 15:52:19.418 10910 10910 W bvgd    : 	... 5 more
+05-12 15:52:19.418 10910 10910 I bvia    : (REDACTED) Clearing batch update data for stream %s
+05-12 15:52:19.418 10910 10910 I bvia    : (REDACTED) Removed set %s for stream %s
+05-12 15:52:19.428 10910 10910 W FontsContract: Platform version of downloadable fonts is deprecated. Please use androidx version instead.
+05-12 15:52:19.429  1191  2688 I FontLog : (REDACTED) Received query %s, URI %s
+05-12 15:52:19.429  1191  2688 I FontLog : (REDACTED) Query [%s] resolved to %s
+05-12 15:52:19.430  1191  2688 I FontLog : (REDACTED) Font PFD returned from cache for %s
+05-12 15:52:19.430  1191  2688 I FontLog : (REDACTED) Fetch %s end status %s
+05-12 15:52:19.431  1191  2688 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+05-12 15:52:19.448 10910 10910 W View    : requestLayout() improperly called by android.widget.FrameLayout{9e4a4a0 V.E...... ......ID 0,0-1080,294} during layout: running second layout pass
+05-12 15:52:19.449 10910 11043 D EGL_emulation: app_time_stats: avg=438.94ms min=23.15ms max=1167.59ms count=3
+05-12 15:52:20.131   506   560 I AppsFilter: interaction: PackageSetting{9c7d51c io.appium.uiautomator2.server.test/10175} -> PackageSetting{d1d85b5 com.google.android.apps.docs/10131} BLOCKED
+05-12 15:52:20.131   506   560 I AppsFilter: interaction: PackageSetting{7a64ab io.appium.settings/10174} -> PackageSetting{d1d85b5 com.google.android.apps.docs/10131} BLOCKED
+05-12 15:52:20.150   787   787 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+05-12 15:52:20.150   787   787 D MediaPlayerList: Name of package changed: com.google.android.apps.docs
+05-12 15:52:20.161   506   596 I RoleService: Granting default roles...
+05-12 15:52:20.163   506   535 E system_server: No package ID 7f found for ID 0x7f08046f.
+05-12 15:52:20.163   506   535 E system_server: No package ID 7f found for ID 0x7f140c8e.
+05-12 15:52:20.163   506   535 E system_server: No package ID 7f found for ID 0x7f140c8e.
+05-12 15:52:20.164   506   535 E system_server: No package ID 7f found for ID 0x7f08046b.
+05-12 15:52:20.164   506   535 E system_server: No package ID 7f found for ID 0x7f140c8c.
+05-12 15:52:20.164   506   535 E system_server: No package ID 7f found for ID 0x7f140c8c.
+05-12 15:52:20.164   506   535 E system_server: No package ID 7f found for ID 0x7f08046d.
+05-12 15:52:20.164   506   535 E system_server: No package ID 7f found for ID 0x7f140c8d.
+05-12 15:52:20.164   506   535 E system_server: No package ID 7f found for ID 0x7f140c8d.
+05-12 15:52:20.164   506   535 W ShortcutService: Invalid tag 'capability' found at depth 2
+05-12 15:52:20.164   506   535 E ShortcutService: Ignoring excessive intent tag.
+05-12 15:52:20.164   506   535 W ShortcutService: Invalid tag 'parameter' found at depth 4
+05-12 15:52:20.164   506   535 W ShortcutService: Invalid tag 'capability' found at depth 2
+05-12 15:52:20.164   506   535 W ShortcutService: Invalid tag 'slice' found at depth 3
+05-12 15:52:20.164   506   535 W ShortcutService: Invalid tag 'url-template' found at depth 4
+05-12 15:52:20.166   506   506 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.google.android.dialer: DDC.oR@AdE
+05-12 15:52:20.167   506   605 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS | 
+05-12 15:52:20.169   937  1287 I PermissionControllerServiceImpl: Updating user sensitive for uid 10131
+05-12 15:52:20.172   506   588 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10131; state: ENABLED
+05-12 15:52:20.172   698   698 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+05-12 15:52:20.172 11117 11249 I ProvidersCache: Provider returned no roots. Possibly naughty: com.google.android.apps.docs.storage
+05-12 15:52:20.178   937 10993 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms.supervision, role: android.app.role.SYSTEM_SUPERVISION
+05-12 15:52:20.178   937 10993 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+05-12 15:52:20.179   857   857 D CarrierSvcBindHelper: onPackageModified: com.google.android.apps.docs
+05-12 15:52:20.180   506   535 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.google.android.apps.docs/com.google.android.apps.docs.drive.widget.suggestion.SuggestionAppWidgetProvider} won't be persisted.
+05-12 15:52:20.180   506   535 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.google.android.apps.docs/com.google.android.apps.docs.drive.widget.CakemixAppWidgetProvider} won't be persisted.
+05-12 15:52:20.184   857   857 D CarrierSvcBindHelper: No carrier app for: 0
+05-12 15:52:20.191   857   857 D ImsResolver: maybeAddedImsService, packageName: com.google.android.apps.docs
+05-12 15:52:20.262  1058  1566 D EGL_emulation: app_time_stats: avg=366.64ms min=1.84ms max=1440.64ms count=4
+05-12 15:52:22.215   698   953 D EGL_emulation: app_time_stats: avg=480.69ms min=1.72ms max=3694.27ms count=9
+05-12 15:52:23.303  1191  1191 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+05-12 15:52:23.919 10910 11134 V ClearcutMetricXmitter: Transmission is done.
+05-12 15:52:23.925   506  1645 I ActivityManager: Killing 6428:com.google.android.partnersetup/u0a118 (adj 935): empty #17
+05-12 15:52:23.931   506   538 I libprocessgroup: Successfully killed process cgroup uid 10118 pid 6428 in 5ms
+05-12 15:52:23.957   295   295 I Zygote  : Process 6428 exited due to signal 9 (Killed)
+05-12 15:52:24.931  2736  2736 W ThreadPoolForeg: type=1400 audit(0.0:281): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-12 15:52:26.087   506 11033 D IntervalStats: Unable to parse usage stats packages: [253]
+05-12 15:52:26.087   506 11033 D IntervalStats: Unable to parse event packages: [253]
+05-12 15:52:26.417   170 10942 I keystore2: keystore2::watchdog: Watchdog thread idle -> terminating. Have a great day.
+05-12 15:52:26.933 10910 10920 W chbox:googleapp: Cleared Reference was only reachable from finalizer (only reported once)
+05-12 15:52:26.960 10910 11134 V ClearcutMetricXmitter: Transmission is done.
+05-12 15:52:26.960 10910 11134 V ClearcutMetricXmitter: Transmission is done.
+05-12 15:52:29.079 11117 11117 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10082; state: ENABLED
+05-12 15:52:29.082   506  1002 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10074; state: DISABLED
+05-12 15:52:29.082   506  1002 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10074; state: DISABLED
+05-12 15:52:29.082   506  1002 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10074; state: DISABLED
+05-12 15:52:29.082   506  1002 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10074; state: ENABLED
+05-12 15:52:29.083   506   537 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10074; state: ENABLED
+05-12 15:52:29.088   295   295 D Zygote  : Forked child process 11267
+05-12 15:52:29.088   506   537 I ActivityManager: Start proc 11267:com.android.externalstorage/u0a74 for content provider {com.android.externalstorage/com.android.externalstorage.ExternalStorageProvider}
+05-12 15:52:29.094 11267 11267 I externalstorage: Using CollectorTypeCC GC.
+05-12 15:52:29.099 11267 11267 E externalstorage: Not starting debugger since process cannot load the jdwp agent.
+05-12 15:52:29.107 11267 11267 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10074; state: ENABLED
+05-12 15:52:29.114 11267 11267 D nativeloader: Configuring classloader-namespace-shared for other apk /system/priv-app/ExternalStorageProvider/ExternalStorageProvider.apk. target_sdk_version=33, uses_libraries=, library_path=/system/priv-app/ExternalStorageProvider/lib/arm64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.android.externalstorage:/system/priv-app/ExternalStorageProvider:/system/lib64:/system_ext/lib64
+05-12 15:52:29.118 11267 11267 V GraphicsEnvironment: ANGLE Developer option for 'com.android.externalstorage' set to: 'default'
+05-12 15:52:29.118 11267 11267 V GraphicsEnvironment: ANGLE GameManagerService for com.android.externalstorage: false
+05-12 15:52:29.118 11267 11267 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+05-12 15:52:29.119 11267 11267 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+05-12 15:52:29.119 11267 11267 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+05-12 15:52:29.126 11267 11267 D ExternalStorage: After updating volumes, found 1 active roots
+05-12 15:52:29.131   506  2053 I ActivityManager: Killing 10229:com.google.android.dialer/u0a111 (adj 935): empty #17
+05-12 15:52:29.132   506   538 I libprocessgroup: Successfully killed process cgroup uid 10111 pid 10229 in 0ms
+05-12 15:52:29.134 11117 11264 I ProvidersCache: Provider returned no roots. Possibly naughty: com.google.android.apps.docs.storage
+05-12 15:52:29.144   295   295 I Zygote  : Process 10229 exited due to signal 9 (Killed)
+05-12 15:52:29.211   506  1613 E AppOps  : Bad call made by uid 10120. Package "com.google.android.gms" does not belong to uid 10131.
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: Failed to get service from broker. 
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: java.lang.SecurityException: Unknown calling package name 'com.google.android.gms'.
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3011)
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: 	at android.os.Parcel.createException(Parcel.java:2995)
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:2978)
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:2920)
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: 	at bhfb.a(:com.google.android.gms@261233029@26.12.33 (190400-892550550):36)
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: 	at bhdc.z(:com.google.android.gms@261233029@26.12.33 (190400-892550550):143)
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: 	at bgjb.run(:com.google.android.gms@261233029@26.12.33 (190400-892550550):42)
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: 	at android.os.Handler.handleCallback(Handler.java:942)
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: 	at cvnu.mF(:com.google.android.gms@261233029@26.12.33 (190400-892550550):1)
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: 	at cvnu.dispatchMessage(:com.google.android.gms@261233029@26.12.33 (190400-892550550):5)
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: 	at android.os.Looper.loopOnce(Looper.java:201)
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: 	at android.os.Looper.loop(Looper.java:288)
+05-12 15:52:29.211 11150 11239 E GoogleApiManager: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+05-12 15:52:29.211 11150 11239 W GoogleApiManager: Not showing notification since connectionResult is not user-facing: ConnectionResult{statusCode=DEVELOPER_ERROR, resolution=null, message=null, clientMethodKey=null}
+05-12 15:52:32.103  1191  1191 W ThreadPoolForeg: type=1400 audit(0.0:282): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-12 15:52:34.477  1191  1191 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.presencemanager.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+05-12 15:52:34.478  1191  1191 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+05-12 15:52:35.429   506  1613 I ActivityManager: Killing 8869:com.google.android.configupdater/u0a116 (adj 975): empty #17
+05-12 15:52:35.439   295   295 I Zygote  : Process 8869 exited due to signal 9 (Killed)
+05-12 15:52:35.441   506   538 I libprocessgroup: Successfully killed process cgroup uid 10116 pid 8869 in 11ms
+05-12 15:52:36.098 11117 11289 I ProvidersCache: Provider returned no roots. Possibly naughty: com.google.android.apps.docs.storage
+05-12 15:52:39.159 11117 11295 I ProvidersCache: Provider returned no roots. Possibly naughty: com.google.android.apps.docs.storage
+05-12 15:52:40.278  1191  1747 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+05-12 15:52:40.280  1191 11114 W SystemServiceRegistry: No service published for: wifirtt
+05-12 15:52:41.092   506  2067 D WifiNl80211Manager: Scan result ready event
+05-12 15:52:41.092   506  2067 D WifiNative: Scan result ready event
+05-12 15:52:41.113  1191 11114 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+05-12 15:52:41.121  1191  1747 I ActivityScheduler: nextTriggerTime: 1557193, in 60542ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+05-12 15:52:42.184   698   953 D EGL_emulation: app_time_stats: avg=19968.01ms min=19968.01ms max=19968.01ms count=1
+05-12 15:52:42.486  5915  5915 I Finsky  : [2] SCH: job service start with id 9102.
+05-12 15:52:42.500  5915 10978 I Finsky  : [272] SCH: Satisfied jobs for 9102 are: 12-1
+05-12 15:52:42.504  5915 11301 I Finsky  : [281] SCH: Job 12-1 starting
+05-12 15:52:42.505  5915  5915 I Finsky  : [2] WM::SCH: Logging work start for 12-1
+05-12 15:52:42.505  5915  5915 I Finsky  : [2] [ContentSync] job started
+05-12 15:52:42.537  5915 11302 I Finsky  : [282] App states replicator found 26 unowned apps
+05-12 15:52:42.544  5915  5976 I Finsky  : [65] Completed 0 account content syncs with 0 successful.
+05-12 15:52:42.545  5915  5915 I Finsky  : [2] [ContentSync] Installation state replication succeeded.
+05-12 15:52:42.545  5915  5915 I Finsky  : [2] SCH: jobFinished: 12-1. TimeElapsed: 40ms.
+05-12 15:52:42.545  5915  5915 I Finsky  : [2] WM::SCH: Logging work end for 12-1
+05-12 15:52:42.556  5915  5969 I Finsky  : [58] SCH: Scheduling phonesky job Id: 1-1337, CT: 1778588969326, Constraints: [{ L: 34450651, D: 77650651, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+05-12 15:52:42.558  5915  5964 I Finsky  : [53] SCH: Scheduling 1 system job(s)
+05-12 15:52:42.558  5915  5964 I Finsky  : [53] SCH: Scheduling system job Id: 9104, L: 33057419, D: 76257419, C: false, I: false, N: 1
+05-12 15:52:42.560  5915 11301 I Finsky  : [281] SCH: job service finished with id 9102.
+05-12 15:52:43.835  5564  5564 W ThreadPoolForeg: type=1400 audit(0.0:283): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-12 15:52:46.905 10910 10996 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 10121; state: ENABLED
+05-12 15:52:46.908 10910 11011 I WM-GreedyScheduler: Ignoring schedule request in non-main process
+05-12 15:52:46.914 10910 11011 D CompatibilityChangeReporter: Compat change id reported: 194532703; UID 10121; state: ENABLED
+05-12 15:52:46.914 10910 11011 D WM-SystemJobScheduler: Scheduling work ID 27eb4023-ada3-474e-897b-c4035e37052aJob ID 895
+05-12 15:52:46.914   506  2053 D CompatibilityChangeReporter: Compat change id reported: 194532703; UID 10121; state: ENABLED
+05-12 15:52:46.915 10910 11011 I WM-GreedyScheduler: Ignoring schedule request in a secondary process
+05-12 15:52:54.939  2736  2736 W ThreadPoolForeg: type=1400 audit(0.0:284): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-12 15:53:00.023  1424  1736 I AiAiEcho: Predicting[0]: 
+05-12 15:53:00.023  1424  1736 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+05-12 15:53:00.026  1424  1736 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+05-12 15:53:00.026  1424  1736 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+05-12 15:53:00.027  1424  1736 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+05-12 15:53:00.033   698   953 D EGL_emulation: app_time_stats: avg=17849.33ms min=17849.33ms max=17849.33ms count=1
+05-12 15:53:00.035   698   698 D SsMediaDataProvider: Forwarding Smartspace updates []
+05-12 15:53:02.135  1191  1191 W ThreadPoolForeg: type=1400 audit(0.0:285): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-12 15:53:02.177   698   953 D EGL_emulation: app_time_stats: avg=2143.74ms min=2143.74ms max=2143.74ms count=1
+05-12 15:53:02.764 10910 10910 I fgim    : (REDACTED) Created gRPC endpoint for service %s
+05-12 15:53:02.778  9068  9068 I fgim    : (REDACTED) Created gRPC endpoint for service %s
+05-12 15:53:02.812  8999  9050 W dmwj    : (REDACTED) Error reading proc %s
+05-12 15:53:02.812  8999  9050 W dmwj    : java.io.FileNotFoundException: /proc/8999/dmabuf_rss: open failed: ENOENT (No such file or directory)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.IoBridge.open(IoBridge.java:574)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.io.FileInputStream.<init>(FileInputStream.java:160)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at fdoj.a(PG:10)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at dngs.f(PG:43)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at dngs.b(PG:200)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at dngj.apply(PG:19)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at fetl.c(PG:3)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at fetn.run(PG:47)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:463)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:307)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at dmwg.run(PG:12)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.lang.Thread.run(Thread.java:1012)
+05-12 15:53:02.812  8999  9050 W dmwj    : Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.Linux.open(Native Method)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:7810)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.IoBridge.open(IoBridge.java:560)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	... 14 more
+05-12 15:53:02.812  8999  9050 W dmwj    : (REDACTED) Error reading proc %s
+05-12 15:53:02.812  8999  9050 W dmwj    : java.io.FileNotFoundException: /proc/8999/dmabuf_rss_hwm: open failed: ENOENT (No such file or directory)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.IoBridge.open(IoBridge.java:574)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.io.FileInputStream.<init>(FileInputStream.java:160)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at fdoj.a(PG:10)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at dngs.f(PG:43)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at dngs.b(PG:214)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at dngj.apply(PG:19)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at fetl.c(PG:3)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at fetn.run(PG:47)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:463)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:307)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at dmwg.run(PG:12)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.lang.Thread.run(Thread.java:1012)
+05-12 15:53:02.812  8999  9050 W dmwj    : Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.Linux.open(Native Method)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:7810)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.IoBridge.open(IoBridge.java:560)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	... 14 more
+05-12 15:53:02.812  8999  9050 W dmwj    : (REDACTED) Error reading proc %s
+05-12 15:53:02.812  8999  9050 W dmwj    : java.io.FileNotFoundException: /proc/8999/dmabuf_pss: open failed: ENOENT (No such file or directory)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.IoBridge.open(IoBridge.java:574)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.io.FileInputStream.<init>(FileInputStream.java:160)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at fdoj.a(PG:10)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at dngs.f(PG:43)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at dngs.b(PG:228)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at dngj.apply(PG:19)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at fetl.c(PG:3)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at fetn.run(PG:47)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:463)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:307)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at dmwg.run(PG:12)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at java.lang.Thread.run(Thread.java:1012)
+05-12 15:53:02.812  8999  9050 W dmwj    : Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.Linux.open(Native Method)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:7810)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	at libcore.io.IoBridge.open(IoBridge.java:560)
+05-12 15:53:02.812  8999  9050 W dmwj    : 	... 14 more
+05-12 15:53:02.825   506  1376 I ActivityManager: Killing 8942:android.process.acore/u0a72 (adj 975): empty #17
+05-12 15:53:02.825   506   538 I libprocessgroup: Successfully killed process cgroup uid 10072 pid 8942 in 0ms
+05-12 15:53:02.832   506  2067 D CountryDetector: No listener is left
+05-12 15:53:02.833   295   295 I Zygote  : Process 8942 exited due to signal 9 (Killed)
+05-12 15:53:02.836  8999  9014 V ClearcutMetricXmitter: Transmission is done.
+05-12 15:53:13.871  5564  5564 W ThreadPoolForeg: type=1400 audit(0.0:286): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-12 15:53:18.795  5564  5564 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+05-12 15:53:22.202   698   953 D EGL_emulation: app_time_stats: avg=20024.65ms min=20024.65ms max=20024.65ms count=1
+05-12 15:53:24.971  2736  2736 W ThreadPoolForeg: type=1400 audit(0.0:287): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-12 15:53:32.163  1191  1191 W ThreadPoolForeg: type=1400 audit(0.0:288): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+05-12 15:53:40.672  1191  1747 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+05-12 15:53:40.676  1191 11114 W SystemServiceRegistry: No service published for: wifirtt
+05-12 15:53:41.227   506   614 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1778590336900
+05-12 15:53:41.232   506   614 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1778590336900
+05-12 15:53:41.234   506   614 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 113 startTime of in progress event=1778590336900
+05-12 15:53:41.236   506  1376 W AppOps  : Noting op not finished: uid 10120 pkg com.google.android.gms code 79 startTime of in progress event=1778590336900
+05-12 15:53:41.238  1191  1747 I ActivityScheduler: nextTriggerTime: 1794867, in 238100ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+05-12 15:53:41.475   506   614 D WifiNl80211Manager: Scan result ready event
+05-12 15:53:41.475   506   614 D WifiNative: Scan result ready event
+05-12 15:53:41.484  1191 11114 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+05-12 15:53:41.488  1191  1747 I ActivityScheduler: nextTriggerTime: 1794867, in 237849ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+05-12 15:53:43.875  5564  5564 W ThreadPoolForeg: type=1400 audit(0.0:289): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms

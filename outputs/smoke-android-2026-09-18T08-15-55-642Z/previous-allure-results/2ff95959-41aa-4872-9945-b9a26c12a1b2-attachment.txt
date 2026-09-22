@@ -1,0 +1,202 @@
+--------- beginning of main
+08-11 18:40:51.573  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 88926, isSameBssidAndFreq true
+08-11 18:40:51.576  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786462851576 lastDateWindow=1786275667000
+08-11 18:40:51.619 30084 30325 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 18:40:51.622 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":{"ELEMENT":"00000000-0000-08bf-0000-004c00000134","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-08bf-0000-004c00000134"}}
+08-11 18:40:51.639 30084 30325 I appium  : channel read: GET /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/element/00000000-0000-08bf-0000-004c00000134/text
+08-11 18:40:51.640 30084 30325 I appium  : GetText command
+08-11 18:40:51.654 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":"flag-GBP GBP"}
+08-11 18:40:51.787 30363 30363 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{e993455 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 18:40:51.898  2648  3296 I ScanController: onScanResult to scannerId: 2- eventType=0x1a, addressType=1, address=XX:XX:XX:XX:D9:36, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-68, periodicAdvInt=0x0
+08-11 18:40:51.904 20866 20880 I EasySetup[11.1.23.4] : IcControlService.isFoldDeviceFolded() - isFoldDevice: false, isNotFolded: false
+08-11 18:40:51.905 20866 20880 I Peripheral_SmartThingsManager[1.2.95]: parseBlePacketserviceId : 9
+08-11 18:40:51.905 20866 20880 E Peripheral_OCFTvUtil[1.2.95]: not supported version
+08-11 18:40:51.905 20866 20880 E Peripheral_OCFTVManager[1.2.95]: isOCFTVDevice is null
+08-11 18:40:51.911 20866 20880 E IC_DeviceManager[1.2.95]: isValidScanResult(), packet is not valid
+08-11 18:40:51.911 20866 20880 E IC_DeviceManager[1.2.95]: 1. ADV_IDX_PACKET_VER(2): 2 / 2. ADV_IDX_PACKET_SVC_ID(9): 9 / 3. ADV_IDX_PACKET_SS_DISCOVERY(1): 1 / 4. ADV_IDX_PACKET_ASSOCIATED_SVC_ID(2): 2 / 5. MASK_PACKET_FEATURES_SVC_DATA(16): 16 / 6. MASK_PACKET_FEATURES_DEVICE(4): 4 / 7. ADV_IDX_PACKET_IC_VER(1): 1 / 8. MASK_DEVICE_EXTRA_SUPPORT_ACCOUNT_HASH(4): 4
+08-11 18:40:51.911 20866 20880 W IC_Service[1.2.95]: recieved scanResult packet is not valid
+08-11 18:40:51.996 30084 30325 I appium  : channel read: POST /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/element
+08-11 18:40:51.997 30084 30325 I appium  : FindElement command
+08-11 18:40:51.999 30084 30325 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 18:40:51.999 30084 30325 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:40:52.002 30084 30325 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 18:40:52.080 30084 30325 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 18:40:52.084 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":{"ELEMENT":"00000000-0000-08bf-0000-004c00000134","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-08bf-0000-004c00000134"}}
+08-11 18:40:52.104 30084 30325 I appium  : channel read: GET /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/element/00000000-0000-08bf-0000-004c00000134/text
+08-11 18:40:52.105 30084 30325 I appium  : GetText command
+08-11 18:40:52.120 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":"flag-GBP GBP"}
+08-11 18:40:52.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786462852
+08-11 18:40:52.120  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 18:40:52.121  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 18:40:52.121  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774380
+08-11 18:40:52.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774354
+08-11 18:40:52.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 18:40:52.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 18:40:52.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 18:40:52.121  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 18:40:52.121  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 18:40:52.285 30363 30363 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{e993455 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 18:40:52.401 28151 28170 D LogsManager: No need to flush logs
+08-11 18:40:52.491 30084 30325 I appium  : channel read: POST /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/element
+08-11 18:40:52.492 30084 30325 I appium  : FindElement command
+08-11 18:40:52.493 30084 30325 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 18:40:52.494 30084 30325 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:40:52.497 30084 30325 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 18:40:52.619 30084 30325 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 18:40:52.623 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":{"ELEMENT":"00000000-0000-08bf-0000-004c00000134","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-08bf-0000-004c00000134"}}
+08-11 18:40:52.641 30084 30325 I appium  : channel read: GET /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/element/00000000-0000-08bf-0000-004c00000134/text
+08-11 18:40:52.641 30084 30325 I appium  : GetText command
+08-11 18:40:52.655 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":"flag-GBP GBP"}
+08-11 18:40:52.733  1726  2226 I SemWifiServiceDetector: Service det. suspended: T / T / 8260
+08-11 18:40:52.785 30363 30363 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{e993455 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 18:40:52.798  1437  1437 I SurfaceFlinger: SFWD update time=405636195248742
+--------- beginning of system
+08-11 18:40:52.829   730   730 D io_stats: !@   8,0 r 56221746 1038091210 w 17415387 315742768 d 5123910 368724516 f 0 1600636 iot 26058752 0 th 0 0 0 pt 0 inp 0 0 405636.226
+08-11 18:40:52.999 30084 30325 I appium  : channel read: POST /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/element
+08-11 18:40:53.000 30084 30325 I appium  : FindElement command
+08-11 18:40:53.002 30084 30325 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 18:40:53.002 30084 30325 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:40:53.006 30084 30325 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 18:40:53.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786462853
+08-11 18:40:53.121  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 18:40:53.121  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 18:40:53.124  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774380
+08-11 18:40:53.124  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774354
+08-11 18:40:53.124  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 18:40:53.124  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 18:40:53.126  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 18:40:53.127  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 18:40:53.127  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 18:40:53.133 30084 30325 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 18:40:53.136 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":{"ELEMENT":"00000000-0000-08bf-0000-004c00000134","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-08bf-0000-004c00000134"}}
+08-11 18:40:53.156 30084 30325 I appium  : channel read: GET /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/element/00000000-0000-08bf-0000-004c00000134/text
+08-11 18:40:53.157 30084 30325 I appium  : GetText command
+08-11 18:40:53.170 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":"flag-GBP GBP"}
+08-11 18:40:53.287 30363 30363 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{e993455 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 18:40:53.336  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-11 18:40:53.494 30084 30325 I appium  : channel read: POST /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/element
+08-11 18:40:53.495 30084 30325 I appium  : FindElement command
+08-11 18:40:53.497 30084 30325 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 18:40:53.498 30084 30325 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:40:53.501 30084 30325 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 18:40:53.512 30084 30094 I tomator2.server: Method exceeds compiler instruction limit: 19264 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
+08-11 18:40:53.632 30084 30325 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 18:40:53.636 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":{"ELEMENT":"00000000-0000-08bf-0000-004c00000134","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-08bf-0000-004c00000134"}}
+08-11 18:40:53.654 30084 30325 I appium  : channel read: GET /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/element/00000000-0000-08bf-0000-004c00000134/text
+08-11 18:40:53.655 30084 30325 I appium  : GetText command
+08-11 18:40:53.669 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":"flag-GBP GBP"}
+08-11 18:40:53.785 30363 30363 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{e993455 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 18:40:53.896  2336  2835 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+08-11 18:40:53.911  1726  2214 D SemCellularStateManager: onSignalStrengthsChanged: mCellularSignalLevel=3
+08-11 18:40:53.995 30084 30325 I appium  : channel read: POST /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/element
+08-11 18:40:53.996 30084 30325 I appium  : FindElement command
+08-11 18:40:53.998 30084 30325 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 18:40:53.998 30084 30325 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:40:54.000  1726  3186 I NSLocationMonitor: getGPSUsingApps() called
+08-11 18:40:54.001 30084 30325 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 18:40:54.002  3189  8919 I NSLocationManager_FLP: getGPSUsingApps, No change
+08-11 18:40:54.027  1726  3186 D FreecessController: FZ : com.samsung.android.game.gamehome(10312) [5649] reason: Bg [cached:X
+08-11 18:40:54.028  1726  3186 D FreecessHandler: freeze com.samsung.android.game.gamehome(10312) result : 0
+08-11 18:40:54.030  1726  3186 W LocationManagerService: onFreezeStateChanged, uid[10312]=true
+08-11 18:40:54.032  1726  3186 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10312 , disable= true
+08-11 18:40:54.033  1726  3186 I PowerManagerService: [PWL] can not change uid =  10312
+08-11 18:40:54.107 30084 30325 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 18:40:54.111 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":{"ELEMENT":"00000000-0000-08bf-0000-004c00000134","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-08bf-0000-004c00000134"}}
+08-11 18:40:54.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786462854
+08-11 18:40:54.120  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 18:40:54.120  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 18:40:54.120  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774380
+08-11 18:40:54.120  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774354
+08-11 18:40:54.120  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 18:40:54.120  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 18:40:54.121  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 18:40:54.121  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 18:40:54.121  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 18:40:54.129 30084 30325 I appium  : channel read: GET /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/element/00000000-0000-08bf-0000-004c00000134/text
+08-11 18:40:54.130 30084 30325 I appium  : GetText command
+08-11 18:40:54.139  1726  2254 D WifiConnectivityMonitor: Stop WCM Poll. cnt : 5
+08-11 18:40:54.139  1726  2254 I WifiConnectivityMonitor: LinkQualityMonitorCallback was not registered yet
+08-11 18:40:54.146 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":"flag-GBP GBP"}
+08-11 18:40:54.287 30363 30363 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{e993455 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 18:40:54.495 30084 30325 I appium  : channel read: POST /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/element
+08-11 18:40:54.496 30084 30325 I appium  : FindElement command
+08-11 18:40:54.498 30084 30325 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 18:40:54.498 30084 30325 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:40:54.501 30084 30325 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 18:40:54.600  1726  2136 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+08-11 18:40:54.609 30084 30325 I appium  : Took 0ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 18:40:54.612  1726 14505 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 88927, isSameBssidAndFreq true
+08-11 18:40:54.615  2870  2971 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236038, activityId=2131236053)
+08-11 18:40:54.617  1726  2228 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1786462854616 lastDateWindow=1786275667000
+08-11 18:40:54.622 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":{"ELEMENT":"00000000-0000-08bf-0000-004c00000134","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-08bf-0000-004c00000134"}}
+08-11 18:40:54.623  2648  3296 I ScanController: onScanResult to scannerId: 2- eventType=0x1a, addressType=1, address=XX:XX:XX:XX:D9:36, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-64, periodicAdvInt=0x0
+08-11 18:40:54.627 20866 20880 I EasySetup[11.1.23.4] : IcControlService.isFoldDeviceFolded() - isFoldDevice: false, isNotFolded: false
+08-11 18:40:54.627 20866 20880 I Peripheral_SmartThingsManager[1.2.95]: parseBlePacketserviceId : 9
+08-11 18:40:54.628 20866 20880 E Peripheral_OCFTvUtil[1.2.95]: not supported version
+08-11 18:40:54.628 20866 20880 E Peripheral_OCFTVManager[1.2.95]: isOCFTVDevice is null
+08-11 18:40:54.629 20866 20880 E IC_DeviceManager[1.2.95]: isValidScanResult(), packet is not valid
+08-11 18:40:54.629 20866 20880 E IC_DeviceManager[1.2.95]: 1. ADV_IDX_PACKET_VER(2): 2 / 2. ADV_IDX_PACKET_SVC_ID(9): 9 / 3. ADV_IDX_PACKET_SS_DISCOVERY(1): 1 / 4. ADV_IDX_PACKET_ASSOCIATED_SVC_ID(2): 2 / 5. MASK_PACKET_FEATURES_SVC_DATA(16): 16 / 6. MASK_PACKET_FEATURES_DEVICE(4): 4 / 7. ADV_IDX_PACKET_IC_VER(1): 1 / 8. MASK_DEVICE_EXTRA_SUPPORT_ACCOUNT_HASH(4): 4
+08-11 18:40:54.629 20866 20880 W IC_Service[1.2.95]: recieved scanResult packet is not valid
+08-11 18:40:54.641 30084 30325 I appium  : channel read: GET /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/element/00000000-0000-08bf-0000-004c00000134/text
+08-11 18:40:54.642 30084 30325 I appium  : GetText command
+08-11 18:40:54.652 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":"flag-GBP GBP"}
+08-11 18:40:54.786 30363 30363 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{e993455 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 18:40:54.831   730   730 D io_stats: !@   8,0 r 56221892 1038093070 w 17415387 315742768 d 5123910 368724516 f 0 1600636 iot 26058832 0 th 0 0 0 pt 0 inp 0 0 405638.228
+08-11 18:40:54.832   730   730 D io_stats: !@ Read_top(KB): loop48(3238) 9728 .android.chrome(17398) 1860 system_server(1726) 64
+08-11 18:40:54.832   730   730 D io_stats: !@ Write_top(KB): kworker/u16:3(26442) 664
+08-11 18:40:54.994 30084 30325 I appium  : channel read: POST /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/element
+08-11 18:40:54.995 30084 30325 I appium  : FindElement command
+08-11 18:40:54.997 30084 30325 I appium  : method: 'xpath', selector: '//*[@resource-id="fromWalletSelect"]'
+08-11 18:40:54.997 30084 30325 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:40:55.002 30084 30325 I appium  : The following attributes will be included to the page source: [resource-id]
+08-11 18:40:55.120  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786462855
+08-11 18:40:55.121  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-11 18:40:55.121  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-11 18:40:55.121  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29774380
+08-11 18:40:55.121  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29774354
+08-11 18:40:55.121  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-11 18:40:55.121  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-11 18:40:55.122  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-11 18:40:55.122  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-11 18:40:55.122  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-11 18:40:55.156 30084 30325 I appium  : Took 1ms to retrieve 1 matches for '//*[@resource-id="fromWalletSelect"]' XPath2 query
+08-11 18:40:55.159 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":{"ELEMENT":"00000000-0000-08bf-0000-004c00000134","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-08bf-0000-004c00000134"}}
+08-11 18:40:55.176 30084 30325 I appium  : channel read: GET /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/element/00000000-0000-08bf-0000-004c00000134/text
+08-11 18:40:55.177 30084 30325 I appium  : GetText command
+08-11 18:40:55.187 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":"flag-GBP GBP"}
+08-11 18:40:55.196 30084 30325 I appium  : channel read: GET /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/screenshot
+08-11 18:40:55.197 30084 30325 I appium  : CaptureScreenshot command
+08-11 18:40:55.283 30363 30363 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{e993455 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 18:40:55.337  3436  3436 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+08-11 18:40:55.337  3436  3436 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+08-11 18:40:55.337  3436  3436 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: edmnativehelper
+08-11 18:40:55.337  1726  4606 I EDMNativeHelperService: isScreenCaptureEnabled
+08-11 18:40:55.338  1726  4606 D RestrictionPolicy: isScreenCaptureEnabled : ret=true userId=0
+08-11 18:40:55.338  3436  3436 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+08-11 18:40:55.338  3436  3436 I SurfaceComposerClient: captureDisplay:Display-4633128672291736000
+08-11 18:40:55.340  1437  1915 I SurfaceFlinger: Capture layer list: 	 com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_30363#72581(seamlessTransition:0)
+08-11 18:40:55.340  1437  1915 I SurfaceFlinger: Capture layer list: 	 InputMethod$_5082#72626(seamlessTransition:0)
+08-11 18:40:55.340  1437  1915 I SurfaceFlinger: Capture layer list: 	 StatusBar$_2357#104(seamlessTransition:0)
+08-11 18:40:55.340  1437  1915 I SurfaceFlinger: Capture layer list: 	 NavigationBar0$_2357#102(seamlessTransition:0)
+08-11 18:40:55.340  1437  1915 E HWComposer: getLuts: getLuts failed for display 4633128672291736000: UNSUPPORTED (8)
+08-11 18:40:55.340  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer ScreenCaptureFillLayer at index 0
+08-11 18:40:55.340  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer com.moneybase.qa/com.moneybase.views.dashboard.DashboardActivity$_30363#72581 at index 1
+08-11 18:40:55.340  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer InputMethod$_5082#72626 at index 2
+08-11 18:40:55.340  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer StatusBar$_2357#104 at index 3
+08-11 18:40:55.341  1437  1468 D RenderEngine: [SEC_SF_EFFECTS] drawLayersInternal,1494, Rendering layer NavigationBar0$_2357#102 at index 4
+08-11 18:40:55.364  3436  3439 I screencap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+08-11 18:40:55.572 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N13eFTnnff/z4w00qh3JNQBSfQimkQPuARcMDZ2EifZ/SXZJN6N8zjZ7OaXx0+8SdbJpm9ipzzOxpt4E8fGm3UBGzuAscGGgERHdJBAoIIK6mVGZWaeP2SNGc2ol9GI9+u6csVzZs4596A…
+08-11 18:40:55.579  1178  1178 I wpa_supplicant: Heartbeat 9389
+08-11 18:40:55.596 30084 30325 I appium  : channel read: GET /session/5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3/source
+08-11 18:40:55.596 30084 30325 I appium  : Source command
+08-11 18:40:55.596 30084 30325 I appium  : Waiting up to 10000ms for the device to idle
+08-11 18:40:55.673 30084 30325 I appium  : AppiumResponse: {"sessionId":"5d7cec3f-01cc-4776-b7b2-3a9a35fb44c3","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-11 18:40:55.719 31212 31212 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 18:40:55.776  3440  3440 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 18:40:55.784 30363 30363 I View    : setRequestedFrameRate frameRate=-4.0, this=android.webkit.WebView{e993455 VFEDHVC.. .F...... 0,80-1080,2214 #7f0a0524 app:id/moneybaseInvestWebView aid=1073741832}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 WV.xf.p:1 WV.wg.h:117 WV.wg.onDraw:7 com.android.webview.chromium.WebViewChromium.onDraw:19 
+08-11 18:40:55.789  1726  4608 I ImeTracker: system_server:de9a9517: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false
+08-11 18:40:55.816  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-11 18:40:55.830 31212 31212 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-11 18:40:55.878  3447  3447 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-11 18:40:55.889  1726  4608 I ImeTracker: system_server:e0d83849: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false
+08-11 18:40:55.928 31212 31212 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

@@ -1,0 +1,209 @@
+--------- beginning of main
+05-11 17:30:46.588  1760  3240 I NSLocationMonitor: getGPSUsingApps() called
+05-11 17:30:46.590  3222  3249 I NSLocationManager_FLP: getGPSUsingApps, No change
+05-11 17:30:46.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778509846
+05-11 17:30:46.599  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 17:30:46.599  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 17:30:46.599  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641830
+05-11 17:30:46.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641816
+05-11 17:30:46.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 17:30:46.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 17:30:46.600  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 17:30:46.600  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 17:30:46.600  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+--------- beginning of system
+05-11 17:30:46.608  1760  3240 D FreecessHandler: freeze org.telegram.messenger(10339) result : 2
+05-11 17:30:46.706  4516  4516 I SDHMS:LOAD: type: LoadsFreqs, value: 0:0:0:576000:576000:576000:576000:576000:576000:6:303:0
+05-11 17:30:46.957   727   727 D io_stats: !@   8,0 r 58913251 1215186446 w 18231135 342533544 d 5316380 368379520 f 0 1873828 iot 28633860 0 th 0 0 0 pt 0 inp 0 0 418252.350
+05-11 17:30:46.958   727   727 D io_stats: !@ Read_top(KB): ogle.android.gm(19378) 1640 loop48(3283) 1536 android.wifi.ai(8002) 84
+05-11 17:30:46.958   727   727 D io_stats: !@ Write_top(KB): system_server(1760) 120 kworker/u16:4(5000) 116
+05-11 17:30:47.062  1760  2319 D NetdEventListenerService: DNS Requested by 514, 10271(com.android.chrome), 4(FAIL), isBlocked=true, 0ms
+05-11 17:30:47.078  1760  2319 D NetdEventListenerService: DNS Requested by 514, 10271(com.android.chrome), 4(FAIL), isBlocked=true, 0ms
+05-11 17:30:47.086  1760  2177 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+05-11 17:30:47.094  1760  3742 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 69874, isSameBssidAndFreq true
+05-11 17:30:47.097  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:35 syn=1, rto=0, cwnd=0
+05-11 17:30:47.098  2896  3026 I HoneySpace.StatusIconTracker: invokeEvent() called with: event = Wifi(visible=true, resId=2131236038, activityId=2131236043)
+05-11 17:30:47.101  1483  1602 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+05-11 17:30:47.099  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:36 syn=1, rto=0, cwnd=0
+05-11 17:30:47.103  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:37 syn=1, rto=0, cwnd=0
+05-11 17:30:47.103  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:38 syn=1, rto=0, cwnd=0
+05-11 17:30:47.103  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:39 syn=3, rto=0, cwnd=0
+05-11 17:30:47.105  1760  2268 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1778509847105 lastDateWindow=1778476839000
+05-11 17:30:47.112  1483  1640 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=120.00 Hz, modePtr={id=0, vsyncRate=120.00 Hz, peakRefreshRate=120.00 Hz}}, emitEvent=true, force=false}
+05-11 17:30:47.120  1483  1602 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 60
+05-11 17:30:47.131  1483  1483 I LayerHistory: StatusBar$_2431#105 voted NoVote (0.00 Hz)
+05-11 17:30:47.131  1483  1483 I SurfaceFlinger: No layers with votes - choose 120.00 Hz
+05-11 17:30:47.132  1483  1483 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 3
+05-11 17:30:47.136  1378  1461 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(3)
+05-11 17:30:47.136  1378  1461 I display : Current VRR MODE is 3
+05-11 17:30:47.136  1378  1461 I display : setActiveConfigWithConstraints:: HFR match - config: 3, base: 3, try: 1
+05-11 17:30:47.136  1378  1461 I display : setActiveConfigWithConstraints::update 1080x2340@120hs
+05-11 17:30:47.137  1378  1461 I display : commit modeset : 1080x2340@120hs
+05-11 17:30:47.153  1378  1461 W display : deliverWinConfigData:: commit modeset time (16 ms)
+05-11 17:30:47.156  1378  1454 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 83 of display(0)
+05-11 17:30:47.156  1378  1454 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-11 17:30:47.156  1378  1454 I display : Set m2mMPP capacity(4) for fps(120)
+05-11 17:30:47.156  1378  1454 I display : getFpsForPerformance, performance table found using table(key:120, cpu:255)
+05-11 17:30:47.156  1378  1454 I display : Set Affinity config for fps(120) : cpuIDs : 255
+05-11 17:30:47.156  1378  1454 I display : Set Affinity CPU ID : 0
+05-11 17:30:47.156  1378  1454 I display : Set Affinity CPU ID : 1
+05-11 17:30:47.156  1378  1454 I display : Set Affinity CPU ID : 2
+05-11 17:30:47.156  1378  1454 I display : Set Affinity CPU ID : 3
+05-11 17:30:47.156  1378  1454 I display : Set Affinity CPU ID : 4
+05-11 17:30:47.156  1378  1454 I display : Set Affinity CPU ID : 5
+05-11 17:30:47.156  1378  1454 I display : Set Affinity CPU ID : 6
+05-11 17:30:47.156  1378  1454 I display : Set Affinity CPU ID : 7
+05-11 17:30:47.156  1378  1454 I display : Set affinity HWC : 1378
+05-11 17:30:47.157  1483  1483 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+05-11 17:30:47.157  1483  1483 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-11 17:30:47.159  1378  1454 I display : CPU set : Cluster(0), min_clock(0)
+05-11 17:30:47.159  1378  1454 I display : CPU set : Cluster(1), min_clock(0)
+05-11 17:30:47.159  1378  1454 I display : CPU set : Cluster(2), min_clock(0)
+05-11 17:30:47.160  1483  1602 I VSyncReactor: Current= 60, Period= 120, hwcPeriod= 120
+05-11 17:30:47.364  1483  1640 D DisplayModeController: setDesiredMode 4633128672291736000 {mode={fps=60.00 Hz, modePtr={id=1, vsyncRate=60.00 Hz, peakRefreshRate=60.00 Hz}}, emitEvent=false, force=false}
+05-11 17:30:47.367  1483  1483 I LayerHistory: StatusBar$_2431#105 voted NoVote (0.00 Hz)
+05-11 17:30:47.367  1483  1483 I SurfaceFlinger: Idle - choose 60.00 Hz
+05-11 17:30:47.368  1483  1483 I HWComposer: [4633128672291736000] ActiveConfigToHWC, ID : 4
+05-11 17:30:47.369  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+05-11 17:30:47.370  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 120
+05-11 17:30:47.371  1378  1461 D display : setActiveConfigWithConstraints:: PrimaryDisplay config(4)
+05-11 17:30:47.371  1378  1461 I display : Current VRR MODE is 3
+05-11 17:30:47.371  1378  1461 I display : setActiveConfigWithConstraints:: HFR match - config: 5, base: 4, try: 0
+05-11 17:30:47.371  1378  1461 I display : setActiveConfigWithConstraints::update 1080x2340@60phs
+05-11 17:30:47.371  1378  1461 I display : commit modeset : 1080x2340@60phs
+05-11 17:30:47.386  1378  1461 W display : deliverWinConfigData:: commit modeset time (14 ms)
+05-11 17:30:47.387  1378  1454 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+05-11 17:30:47.387  1378  1454 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-11 17:30:47.387  1378  1454 I display : Set m2mMPP capacity(8) for fps(60)
+05-11 17:30:47.387  1378  1454 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+05-11 17:30:47.387  1378  1454 I display : Set Affinity config for fps(60) : cpuIDs : 255
+05-11 17:30:47.387  1378  1454 I display : Set Affinity CPU ID : 0
+05-11 17:30:47.387  1378  1454 I display : Set Affinity CPU ID : 1
+05-11 17:30:47.387  1378  1454 I display : Set Affinity CPU ID : 2
+05-11 17:30:47.387  1378  1454 I display : Set Affinity CPU ID : 3
+05-11 17:30:47.387  1378  1454 I display : Set Affinity CPU ID : 4
+05-11 17:30:47.387  1378  1454 I display : Set Affinity CPU ID : 5
+05-11 17:30:47.387  1378  1454 I display : Set Affinity CPU ID : 6
+05-11 17:30:47.387  1378  1454 I display : Set Affinity CPU ID : 7
+05-11 17:30:47.387  1378  1454 I display : Set affinity HWC : 1378
+05-11 17:30:47.387  1378  1454 I display : CPU set : Cluster(0), min_clock(0)
+05-11 17:30:47.387  1378  1454 I display : CPU set : Cluster(1), min_clock(0)
+05-11 17:30:47.387  1378  1454 I display : CPU set : Cluster(2), min_clock(0)
+05-11 17:30:47.387  1483  1483 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+05-11 17:30:47.387  1483  1602 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+05-11 17:30:47.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778509847
+05-11 17:30:47.599  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 17:30:47.599  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 17:30:47.599  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641830
+05-11 17:30:47.599  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641816
+05-11 17:30:47.599  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 17:30:47.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 17:30:47.600  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 17:30:47.600  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 17:30:47.600  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 17:30:47.636  1379  1396 E BatteryDump: !@new_battery_dump : 4341,0,1800,2054,100,276,270,289,276,0,282,271,0,Full,NO_CHARGING,None,Good,PDIC,0,Normal,0,0,5400,0x10000,0x10000,0x0,0,0,0000,0000,ffff0700,0,0,0,0,604,4342,9998,990,0,
+05-11 17:30:47.642  1379  1379 I android.hardware.health@2.1-service-samsung: updateLrpSysfs: write: 282
+05-11 17:30:48.035  6940  7040 V CpEventLog(u0): [P] cp_state: [                 contacts = {contacts=1530, raw_contacts=5051, data=23088, account={secphone(1)=0, google(2)=204, sim(3)=0, sim2(4)=42, agg(5)=0, samsung(6)=0, google(11)=0, google(13)=315, google(15)=1017, google(17)=0, com.microsoft.msa.ltw(19)=0, duo(21)=150, com.microsoft.workaccount.ltw(29)=0, google(38)=0, com.microsoft.workaccount.ltw(42)=0, com.microsoft.workaccount.ltw(44)=0, whatsapp(47)=768, viber(48)=0, telegram(49)=1030, com.github.android(57)=0, mobileservice(59)=0, viber(60)=1525}, trash=0, trash_acc={}, trash_sync=0, database=contacts2.db} ]
+05-11 17:30:48.035  6940  7040 V CpEventLog(u0): [P] cp_state: [               aggregated = {[13,13,49,47,60]=1, [13,13,49,49,47,47,60]=1, [13,13,49,49,49,47,47,60]=1, [13,15,47,60]=1, [13,15,49,47,60]=2, [13,15,49,49,47,47,60]=1, [13,15,49,49,49,47,60,21]=1, [13,21,60]=2, [13,47,21,60]=4, [13,47,49,60,21]=1, [13,47,49,60]=1, [13,47,60,21]=4, [13,47,60]=29, [13,49,21,60]=4, [13,49,47,21,60]=14, [13,49,47,60,21]=6, [13,49,47,60]=103, [13,49,49,47,60]=1, [13,49,60,21]=3, [13,49,60,47]=2, [13,49,60,49]=1, [13,49,60]=46, [13,60,21]=2, [13,60,47]=2, [13,60,49,47]=2, [13,60]=63, [13]=2, [15,13,49,47,49,60]=1, [15,15,15,15,15,15,4,60]=1, [15,15,4,49,49,49,49,60]=1, [15,15,47,47,60]=1, [15,15,49,47,60]=2, [15,15,49,49,47,47,21,60]=1, [15,15,49,60,21]=1, [15,15,49,60,47]=1, [15,2,49,49,47,47,60]=1, [15,21,60]=8, [15,21]=1, [15,4,49,60]=1, [15,4,60]=1, [15,47,21,60]=13, [15,47,49,49,60]=1, [15,47,49,60]=10, [15,47,60,21]=3, [15,47,60,49]=2, [15,47,60]=83, [15,49,21,60]=8, [15,49,47,21,60]=17, [15,49,47,60,21]=16, [15,49,47,60]=305, [15,49,49,47,60]=1, [15,49,49,60,47]=1, [15,49,49,60]=1, [15,49,60,21]=7, [15,49,60,47]=5, [15,49,60]=124, [15,60,21]=7, [15,60,47]=1, [15,60,49]=2, [15,60]=362, [2,13,15,47,60]=1, [2,13,15,49,47,60]=1, [2,13,47,60,21]=1, [2,13,49,47,47,60]=1, [2,13,49,47,60]=1, [2,13,49,49,47,60,21]=1, [2,13,49,49,49,47,60]=1, [2,13,49,49,60]=1, [2,15,15,49,47,47,60]=1, [2,15,15,49,49,60,49]=1, [2,15,21,60]=1, [2,15,49,47,60]=1, [2,15,49,60,21]=1, [2,2,15,49,47,60]=1, [2,2,47,60]=1, [2,2,49,47,60]=1, [2,21,60]=1, [2,21]=1, [2,4,47,60]=1, [2,47,21,60]=4, [2,47,49,60]=1, [2,47,60,21]=3, [2,47,60,49,21]=1, [2,47,60,49]=2, [2,47,60]=32, [2,49,47,21,60]=7, [2,49,47,60,21]=1, [2,49,47,60]=37, [2,49,60,21]=1, [2,49,60,47]=3, [2,49,60]=22, [2,60,21]=2, [2,60,47]=1, [2,60,49]=1, [2,60]=62, [2]=1, [4,47,60]=3, [4,49,21,60]=1, [4,49,47,21,60]=1, [4,49,47,60]=6, [4,49,60]=4, [4,60]=22, [47,13,60]=1, [49,13,47,60]=2, [49,49]=2, [49]=200} ]
+05-11 17:30:48.035  6940  7040 V CpEventLog(u0): [P] cp_state: [                  request = {} ]
+05-11 17:30:48.035  6940  7040 V CpEventLog(u0): [P] cp_state: [                    calls = {types={[100]=866, [1000]=1127, [1150]=7}, database=calllog.db} ]
+05-11 17:30:48.035  6940  7040 V CpEventLog(u0): [P] cp_state: [                  profile = {contacts=0, raw_contacts=0, data=0, account={secphone(1)=0, google(2)=0, sim(3)=0, sim2(4)=0, agg(5)=0, samsung(6)=0, google(10)=0, google(11)=0, google(12)=0, google(13)=0, com.microsoft.msa.ltw(14)=0, duo(15)=0, com.microsoft.workaccount.ltw(19)=0, google(23)=0, com.microsoft.workaccount.ltw(25)=0, com.microsoft.workaccount.ltw(26)=0, whatsapp(27)=0, viber(28)=0, telegram(29)=0, com.github.android(32)=0, mobileservice(33)=0}, trash=0, trash_acc={}, trash_sync=0, database=profile.db} ]
+05-11 17:30:48.035  6940  7040 V CpEventLog(u0): [P] cp_state: [               sa_profile = {contacts=1, raw_contacts=1, data=2, account={secphone(1)=1, google(2)=0, sim(3)=0, sim2(4)=0, agg(5)=0, samsung(6)=0, google(10)=0, google(11)=0, google(12)=0, google(13)=0, com.microsoft.msa.ltw(14)=0, duo(15)=0, com.microsoft.workaccount.ltw(19)=0, google(23)=0, com.microsoft.workaccount.ltw(25)=0, com.microsoft.workaccount.ltw(26)=0, whatsapp(27)=0, viber(28)=0, telegram(29)=0, com.github.android(32)=0, mobileservice(33)=0}, trash=0, trash_acc={}, trash_sync=0, database=profile_sa.db} ]
+05-11 17:30:48.035  6940  7040 V CpEventLog(u0): [P] cp_state: [                      etc = {binders=0, country_iso=UA, version=15.6.28, db_version=2000, db_size=17, db_wal_size=3, csc=/, sec_enabled=false, is_roaming=false} ]
+05-11 17:30:48.035  6940  7040 V CpEventLog(u0): [P] cp_state: ------------------------------------------------------------------------------
+05-11 17:30:48.503  1760  2319 D NetdEventListenerService: DNS Requested by 514, 10271(com.android.chrome), 4(FAIL), isBlocked=true, 0ms
+05-11 17:30:48.512  1760  2319 D NetdEventListenerService: DNS Requested by 514, 10271(com.android.chrome), 4(FAIL), isBlocked=true, 0ms
+05-11 17:30:48.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778509848
+05-11 17:30:48.599  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 17:30:48.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 17:30:48.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641830
+05-11 17:30:48.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641816
+05-11 17:30:48.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 17:30:48.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 17:30:48.600  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 17:30:48.600  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 17:30:48.600  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 17:30:48.639  1760  2319 D NetdEventListenerService: DNS Requested by 514, 10271(com.android.chrome), 4(FAIL), isBlocked=true, 0ms
+05-11 17:30:48.652  1760  2319 D NetdEventListenerService: DNS Requested by 514, 10271(com.android.chrome), 4(FAIL), isBlocked=true, 0ms
+05-11 17:30:48.960   727   727 D io_stats: !@   8,0 r 58913251 1215186446 w 18231137 342533552 d 5316380 368379520 f 0 1873828 iot 28633868 0 th 0 0 0 pt 0 inp 0 0 418254.353
+05-11 17:30:49.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778509849
+05-11 17:30:49.599  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 17:30:49.599  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 17:30:49.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641830
+05-11 17:30:49.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641816
+05-11 17:30:49.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 17:30:49.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 17:30:49.600  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 17:30:49.600  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 17:30:49.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 17:30:49.715  1760  2298 I WifiConnectivityMonitor.NetworkStatsAnalyzer: pull out the line???
+05-11 17:30:50.025  1760 10671 D WifiConnectivityMonitor.DnsThread:  [|205]
+05-11 17:30:50.025  1760  2298 D WifiConnectivityMonitor.NetworkStatsAnalyzer: DNS resultType : 0, responseTime : 205
+05-11 17:30:50.026  1760  2294 D OpenNetworkQos[4.00]: updateBssidLatestDnsResultType - result: 0
+05-11 17:30:50.026  1760  2294 D OpenNetworkQos[4.00]: updateBssidNoInternet: mBssidNoInternet = false
+05-11 17:30:50.026  1760  2294 D OpenNetworkQos[4.00]: getOpenNetworkQosNoInternetStatus: false
+05-11 17:30:50.026  1760  2294 D OpenNetworkQos[4.00]: getOpenNetworkQosScores: 23 26 10 
+05-11 17:30:50.026  1760  2294 D KNOX_MDM_SettingsProvider: isChangeAllowed() : name = wifi_wcm_qos_sharing_score_summary
+05-11 17:30:50.026  1760  2294 I WifiProfileShare: network QoS data was changed (internet), updateQoSData networkType: true, qosData: false
+05-11 17:30:50.027  1760  3279 V WifiProfileShare.Caster: update wips network, size: 0
+05-11 17:30:50.027  1760  3279 D WifiProfileShare: nearby scanning settings run
+05-11 17:30:50.028  1760  3279 D WifiProfileShare: network score provider settings enabled
+05-11 17:30:50.028  1760  3279 D OpenNetworkQos[4.00]: getOpenNetworkQosScores: 23 26 10 
+05-11 17:30:50.028  1760  3279 D OpenNetworkQos[4.00]: getOpenNetworkQosNoInternetStatus: false
+05-11 17:30:50.029  1760  3279 I WifiProfileShare.Caster: current network type: 0, score: [23, 26, 10]
+05-11 17:30:50.030  1760  3279 V WifiProfileShare.Cache: update network score 38:6b:1c:**:**:a8
+05-11 17:30:50.030  1760  3279 V WifiProfileShare.Caster: checkAndGetShareData(pwd sta) - unavailable for this config
+05-11 17:30:50.031  1760  3279 I WifiProfileShare.Caster: qos data was updated , before:type:QOS, pBssid:77:f0:90, qosData:61 after:type:QOS, pBssid:77:f0:90, qosData:61
+05-11 17:30:50.033  1760  3279 I [MCFSDK_android_1.3.7026]_4_McfCasterImpl: isNetworkEnabled - type : 1 ret : true
+05-11 17:30:50.033  1760  3279 D WifiProfileShare.McfCast: -ME--- mIsNetworkEnabled :true
+05-11 17:30:50.033  1760  3279 D WifiProfileShare.McfCast: updateQoSData ignored, same contents
+05-11 17:30:50.033  1760  3279 D WifiProfileShare.MCF: success update QosData !
+05-11 17:30:50.035  1760  3279 I [MCFSDK_android_1.3.7026]_4_McfCasterImpl: isNetworkEnabled - type : 1 ret : true
+05-11 17:30:50.035  1760  3279 D WifiProfileShare.McfCast: -ME--- mIsNetworkEnabled :true
+05-11 17:30:50.124  1760  2177 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+05-11 17:30:50.132  1760  3742 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 69875, isSameBssidAndFreq true
+05-11 17:30:50.134  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:35 syn=1, rto=0, cwnd=0
+05-11 17:30:50.134  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:36 syn=1, rto=0, cwnd=0
+05-11 17:30:50.134  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:37 syn=1, rto=0, cwnd=0
+05-11 17:30:50.134  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:38 syn=1, rto=0, cwnd=0
+05-11 17:30:50.134  1760  2268 D SemWifiSwitchForIndividualAppsService: TMI window: 2026-05-11 08:20:39 syn=3, rto=0, cwnd=0
+05-11 17:30:50.136  1760  2268 E SemWifiLinkQualityMonitor: Too old or invalid TMI: currentTime=1778509850136 lastDateWindow=1778476839000
+05-11 17:30:50.137  1760  2268 I SemWifiLinkQualityMonitor: Link stat: 685 / 36 / 1.00 (1) / 78 / -41.0 || 100.0 : 78.00 / G (B) || 1c1ceca82412: 0.179 / 44.803 / N || N N / 0 0 / N 2.0 / N X 0 / 418255527 0 || 2026-05-11 08:20:39  / 0: 0 1 1 1 1 3 / 0: 0 0 0 0 0 0 / 1: 0 0 0 0 0 0
+05-11 17:30:50.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778509850
+05-11 17:30:50.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 17:30:50.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 17:30:50.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641830
+05-11 17:30:50.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641816
+05-11 17:30:50.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 17:30:50.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 17:30:50.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 17:30:50.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 17:30:50.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 17:30:50.961   727   727 D io_stats: !@   8,0 r 58913251 1215186446 w 18231166 342534528 d 5316380 368379520 f 0 1873828 iot 28633912 0 th 0 0 0 pt 0 inp 0 0 418256.354
+05-11 17:30:50.962   727   727 D io_stats: !@ Write_top(KB): kworker/u16:1(1681) 976 android.hardwar(1379) 8
+05-11 17:30:51.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778509851
+05-11 17:30:51.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 17:30:51.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 17:30:51.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641830
+05-11 17:30:51.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641816
+05-11 17:30:51.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 17:30:51.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 17:30:51.600  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 17:30:51.600  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 17:30:51.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 17:30:52.165  1760  3240 I NSLocationMonitor: getGPSUsingApps() called
+05-11 17:30:52.166  3222  3249 I NSLocationManager_FLP: getGPSUsingApps, No change
+05-11 17:30:52.180  1760  3240 D FreecessHandler: freeze com.moneybase.qa(10482) result : 12
+05-11 17:30:52.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778509852
+05-11 17:30:52.599  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 17:30:52.599  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 17:30:52.599  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641830
+05-11 17:30:52.599  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641816
+05-11 17:30:52.599  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 17:30:52.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 17:30:52.600  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 17:30:52.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 17:30:52.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 17:30:52.609  1760  3240 I NSLocationMonitor: getGPSUsingApps() called
+05-11 17:30:52.610  3222  3249 I NSLocationManager_FLP: getGPSUsingApps, No change
+05-11 17:30:52.623  1760  3240 D FreecessHandler: freeze org.telegram.messenger(10339) result : 2

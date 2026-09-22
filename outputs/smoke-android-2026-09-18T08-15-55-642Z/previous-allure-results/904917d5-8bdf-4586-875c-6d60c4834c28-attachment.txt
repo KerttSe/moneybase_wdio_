@@ -1,0 +1,205 @@
+--------- beginning of main
+06-22 18:53:05.705  1527  1527 W ThreadPoolForeg: type=1400 audit(0.0:1915): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:53:05.825   500   942 D WifiNl80211Manager: Scan result ready event
+06-22 18:53:05.825   500   942 D WifiNative: Scan result ready event
+06-22 18:53:05.844  5707 16026 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+06-22 18:53:05.857  5707  5774 I ActivityScheduler: nextTriggerTime: 14982476, in 117296ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+06-22 18:53:11.333  5707  5707 W ThreadPoolForeg: type=1400 audit(0.0:1916): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+06-22 18:53:18.298   700   711 I ndroid.systemui: Background concurrent copying GC freed 336482(17MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 63us,71us total 109.728ms
+06-22 18:53:26.785  2632  2632 W ThreadPoolForeg: type=1400 audit(0.0:1917): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+--------- beginning of system
+06-22 18:53:32.499   500   500 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10115; state: DISABLED
+06-22 18:53:32.500   500   500 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10115; state: DISABLED
+06-22 18:53:32.500   500   500 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10115; state: DISABLED
+06-22 18:53:32.500   500   500 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10115; state: ENABLED
+06-22 18:53:32.505   500   527 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10115; state: ENABLED
+06-22 18:53:32.581   500   699 D NetworkStatsObservers: Unregistering RequestInfo from pid/uid:500/1000(android) for DataUsageRequest [ requestId=12, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, thresholdInBytes=6267860 ] accessLevel:3
+06-22 18:53:32.583   500   616 D NetworkStatsObservers: Registering observer for RequestInfo from pid/uid:500/1000(android) for DataUsageRequest [ requestId=13, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, thresholdInBytes=6267187 ] accessLevel:3
+06-22 18:53:32.607   292   292 D Zygote  : Forked child process 16346
+06-22 18:53:32.607   500   527 W ActivityManager: Slow operation: 110ms so far, now at startProcess: returned from zygote!
+06-22 18:53:32.608   500   527 W ActivityManager: Slow operation: 111ms so far, now at startProcess: done updating battery stats
+06-22 18:53:32.609   500   527 W ActivityManager: Slow operation: 113ms so far, now at startProcess: building log message
+06-22 18:53:32.609   500   527 I ActivityManager: Start proc 16346:com.google.android.apps.messaging/u0a115 for service {com.google.android.apps.messaging/androidx.work.impl.background.systemjob.SystemJobService}
+06-22 18:53:32.609   500   527 W ActivityManager: Slow operation: 113ms so far, now at startProcess: starting to update pids map
+06-22 18:53:32.610   500   527 W ActivityManager: Slow operation: 114ms so far, now at startProcess: done updating pids map
+06-22 18:53:32.740 16346 16346 I .apps.messaging: Using CollectorTypeCC GC.
+06-22 18:53:32.763  5707 16344 E WorkSourceUtil: Could not find package: com.google.android.gms.westworld
+06-22 18:53:32.843   367   410 I adbd    : jdwp connection from 16346
+06-22 18:53:32.866  5707  5707 D BoundBrokerSvc: onBind: Intent { act=com.google.android.contextmanager.service.ContextManagerLogsUploadBoundService.ACTION_TASK_READY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentInternalBoundBrokerService }
+06-22 18:53:32.867  5707  5707 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.contextmanager.service.ContextManagerLogsUploadBoundService.ACTION_TASK_READY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentInternalBoundBrokerService }
+06-22 18:53:32.904  5707 16282 I NetworkScheduler.Stats: (REDACTED) Task %s/%s started execution. cause:%s exec_start_elapsed_seconds: %s
+06-22 18:53:32.911  5707  5707 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.contextmanager.service.ContextManagerLogsUploadBoundService.ACTION_TASK_READY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentInternalBoundBrokerService }
+06-22 18:53:32.917  5707 16348 I NetworkScheduler.Stats: (REDACTED) Task %s/%s finished executing. cause:%s result: %s elapsed_millis: %s uptime_millis: %s exec_start_elapsed_seconds: %s
+06-22 18:53:32.925   500   942 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10115; state: DISABLED
+06-22 18:53:32.925   500   942 D CompatibilityChangeReporter: Compat change id reported: 273564678; UID 10115; state: DISABLED
+06-22 18:53:32.953 16346 16346 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10115; state: ENABLED
+06-22 18:53:32.998  5707 16282 I NetworkScheduler.Stats: (REDACTED) Task %s/%s started execution. cause:%s exec_start_elapsed_seconds: %s
+06-22 18:53:32.999  5707 16282 I NetworkScheduler.Stats: (REDACTED) Task %s/%s finished executing. cause:%s result: %s elapsed_millis: %s uptime_millis: %s exec_start_elapsed_seconds: %s
+06-22 18:53:33.039 16346 16346 D nativeloader: Configuring classloader-namespace for other apk /system/framework/org.apache.http.legacy.jar. target_sdk_version=37, uses_libraries=ALL, library_path=/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/lib/arm64:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/base.apk!/lib/arm64-v8a:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.arm64_v8a.apk!/lib/arm64-v8a:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.en.apk!/lib/arm64-v8a:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.xxhdpi.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.apps.messaging
+06-22 18:53:33.055 16346 16346 D nativeloader: Configuring classloader-namespace for other apk /system_ext/framework/androidx.window.extensions.jar. target_sdk_version=37, uses_libraries=ALL, library_path=/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/lib/arm64:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/base.apk!/lib/arm64-v8a:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.arm64_v8a.apk!/lib/arm64-v8a:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.en.apk!/lib/arm64-v8a:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.xxhdpi.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.apps.messaging
+06-22 18:53:33.071 16346 16346 D nativeloader: Configuring classloader-namespace for other apk /system_ext/framework/androidx.window.sidecar.jar. target_sdk_version=37, uses_libraries=ALL, library_path=/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/lib/arm64:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/base.apk!/lib/arm64-v8a:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.arm64_v8a.apk!/lib/arm64-v8a:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.en.apk!/lib/arm64-v8a:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.xxhdpi.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.apps.messaging
+06-22 18:53:33.126   700   711 I ndroid.systemui: Background young concurrent copying GC freed 250434(13MB) AllocSpace objects, 0(0B) LOS objects, 35% free, 21MB/32MB, paused 181us,67us total 103.611ms
+06-22 18:53:33.250 16346 16346 W ziparchive: Unable to open '/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.arm64_v8a.dm': No such file or directory
+06-22 18:53:33.250 16346 16346 W ziparchive: Unable to open '/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.arm64_v8a.dm': No such file or directory
+06-22 18:53:33.265 16346 16346 W .apps.messaging: Entry not found
+06-22 18:53:33.267 16346 16346 W ziparchive: Unable to open '/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.en.dm': No such file or directory
+06-22 18:53:33.267 16346 16346 W ziparchive: Unable to open '/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.en.dm': No such file or directory
+06-22 18:53:33.271 16346 16346 W .apps.messaging: Entry not found
+06-22 18:53:33.271 16346 16346 W ziparchive: Unable to open '/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.xxhdpi.dm': No such file or directory
+06-22 18:53:33.271 16346 16346 W ziparchive: Unable to open '/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.xxhdpi.dm': No such file or directory
+06-22 18:53:33.275 16346 16346 W .apps.messaging: Entry not found
+06-22 18:53:33.278 16346 16346 D nativeloader: Configuring classloader-namespace for other apk /data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/base.apk:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.arm64_v8a.apk:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.en.apk:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.xxhdpi.apk. target_sdk_version=37, uses_libraries=, library_path=/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/lib/arm64:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/base.apk!/lib/arm64-v8a:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA==/split_config.arm64_v8a.apk!/lib/arm64-v8a:/data/app/~~Qxju00cmDroyCUu6ROrv5g==/com.google.android.apps.messaging-sIkPtEXvjxuYVIZyH7h8qA
+06-22 18:53:33.297 16346 16346 W .apps.messaging: JIT profile information will not be recorded: profile file does not exist.
+06-22 18:53:33.297 16346 16346 W .apps.messaging: JIT profile information will not be recorded: profile file does not exist.
+06-22 18:53:33.297 16346 16346 W .apps.messaging: JIT profile information will not be recorded: profile file does not exist.
+06-22 18:53:33.321  5707  5715 I .gms.persistent: Background concurrent copying GC freed 289473(11MB) AllocSpace objects, 15(5588KB) LOS objects, 49% free, 17MB/34MB, paused 107us,72us total 531.546ms
+06-22 18:53:33.321  5707  5715 W .gms.persistent: Reducing the number of considered missed Gc histogram windows from 142 to 100
+06-22 18:53:33.393 16346 16346 V GraphicsEnvironment: ANGLE Developer option for 'com.google.android.apps.messaging' set to: 'default'
+06-22 18:53:33.394 16346 16346 V GraphicsEnvironment: ANGLE GameManagerService for com.google.android.apps.messaging: false
+06-22 18:53:33.394 16346 16346 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+06-22 18:53:33.401 16346 16346 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+06-22 18:53:33.405 16346 16346 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+06-22 18:53:33.744  5401  5401 E prng_seeder: main: Launch terminated: Err(hwrng.read_exact in reseed
+06-22 18:53:33.744  5401  5401 E prng_seeder: 
+06-22 18:53:33.744  5401  5401 E prng_seeder: Caused by:
+06-22 18:53:33.744  5401  5401 E prng_seeder:     Try again (os error 11))
+06-22 18:53:33.840   700   711 I ndroid.systemui: Background concurrent copying GC freed 343194(18MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 16MB/33MB, paused 515us,48us total 137.454ms
+06-22 18:53:33.902 16346 16346 D PrimesLoggerHolder: Primes instant initialization
+06-22 18:53:33.915 16374 16374 I prng_seeder: main: Starting listen loop
+06-22 18:53:33.998 16346 16346 I evkm    : SslGuard completed installation.
+06-22 18:53:34.014   500   979 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 10115; state: DISABLED
+06-22 18:53:34.094 16346 16346 I Bugle   : BugleApplicationBase: Bugle version: messages.android_20260424_00_rc03.phone_dynamic , Bugle version code: 307712063
+06-22 18:53:34.099 16346 16346 I Bugle   : DarkModeManager: setDarkMode: -1
+06-22 18:53:34.114 16346 16388 I stetho  : Listening on @stetho_com.google.android.apps.messaging_devtools_remote
+06-22 18:53:34.120 16346 16346 D WM-PackageManagerHelper: Skipping component enablement for androidx.work.impl.background.systemjob.SystemJobService
+06-22 18:53:34.121 16346 16346 D WM-Schedulers: Created SystemJobScheduler and enabled SystemJobService
+06-22 18:53:34.122 16346 16379 D WM-ForceStopRunnable: Is default app process = true
+06-22 18:53:34.122 16346 16379 D WM-ForceStopRunnable: Performing cleanup operations.
+06-22 18:53:34.136 16346 16346 D WM-SystemJobService: onStartJob for WorkGenerationalId(workSpecId=0d4ab206-0769-4052-a74e-e6b9dd68a064, generation=0)
+06-22 18:53:34.176 16346 16382 I Bugle   : DatabaseHelperBasic.doInitializationTraced
+06-22 18:53:34.178 16346 16381 I Bugle   : DatabaseHelperBasic.doInitializationTraced
+06-22 18:53:34.184 16346 16389 I Bugle   : DatabaseHelperBasic.doInitializationTraced
+06-22 18:53:34.195 16346 16379 D WM-SystemJobScheduler: Reconciling jobs
+06-22 18:53:34.197 16346 16389 I Bugle   : DatabaseHelperBasic: sqlite version is 3.32.2
+06-22 18:53:34.200 16346 16382 I Bugle   : DatabaseHelperBasic: sqlite version is 3.32.2
+06-22 18:53:34.207 16346 16389 I Bugle   : DatabaseHelperBasic.doInitializationTraced() returned SQLiteDatabase: /data/user/0/com.google.android.apps.messaging/databases/workqueue_db
+06-22 18:53:34.207 16346 16389 I Bugle   : DatabaseHelperBasic.doInitializationTraced returned SQLiteDatabase: /data/user/0/com.google.android.apps.messaging/databases/workqueue_db
+06-22 18:53:34.212 16346 16382 I Bugle   : DatabaseHelperBasic.doInitializationTraced() returned SQLiteDatabase: /data/user/0/com.google.android.apps.messaging/databases/bugle_backup_db
+06-22 18:53:34.212 16346 16382 I Bugle   : DatabaseHelperBasic.doInitializationTraced returned SQLiteDatabase: /data/user/0/com.google.android.apps.messaging/databases/bugle_backup_db
+06-22 18:53:34.223 16346 16379 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 10115; state: ENABLED
+06-22 18:53:34.229 16346 16379 D WM-ForceStopRunnable: Found unfinished work, scheduling it.
+06-22 18:53:34.245 16346 16380 I Bugle   : Initializing EmojiCompat
+06-22 18:53:34.252 16346 16380 I CarrierServices: Initializing Carrier Services Library. [CONTEXT thread_id=62 ]
+06-22 18:53:34.257  5707  5826 I FontLog : (REDACTED) Received query %s, URI %s
+06-22 18:53:34.258  5707  5826 I FontLog : (REDACTED) Query [%s] resolved to %s
+06-22 18:53:34.260  5707  5728 I FontLog : (REDACTED) Received query %s, URI %s
+06-22 18:53:34.261  5707  5728 I FontLog : (REDACTED) Query [%s] resolved to %s
+06-22 18:53:34.266 16346 16379 D CompatibilityChangeReporter: Compat change id reported: 194532703; UID 10115; state: ENABLED
+06-22 18:53:34.266 16346 16379 D WM-SystemJobScheduler: Scheduling work ID 0bfe4bfd-ac24-42db-b78c-f30f5b840361Job ID 1003
+06-22 18:53:34.268   500  2310 D CompatibilityChangeReporter: Compat change id reported: 194532703; UID 10115; state: ENABLED
+06-22 18:53:34.275  5707  5728 I FontLog : (REDACTED) Fetch %s end status %s
+06-22 18:53:34.278   500  2310 D ActivityManager: sync unfroze 7774 com.google.process.gservices
+06-22 18:53:34.281  5707  5728 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+06-22 18:53:34.285  5707  5826 I FontLog : (REDACTED) Fetch %s end status %s
+06-22 18:53:34.290 16346 16381 I Bugle   : DatabaseHelperBasic: sqlite version is 3.32.2
+06-22 18:53:34.292  5707  5826 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+06-22 18:53:34.293 16346 16379 D WM-SystemJobScheduler: Scheduling work ID a4ad6c0b-a229-4072-a8f7-fe13a03e2e39Job ID 1006
+06-22 18:53:34.294 16346 16379 D WM-SystemJobScheduler: Scheduling work ID ca636977-d474-4ba1-b880-f0f56cef79fdJob ID 1007
+06-22 18:53:34.297 16346 16379 D WM-SystemJobScheduler: Scheduling work ID 1af83193-1d38-4bf7-b948-b727b02d7ce8Job ID 1619
+06-22 18:53:34.299 16346 16379 D WM-SystemJobScheduler: Scheduling work ID 10ae1c3f-34d3-45aa-a46c-c20dd65602b4Job ID 1175
+06-22 18:53:34.308 16346 16380 I CarrierServices: Initializing Carrier Services Logging. [CONTEXT thread_id=62 ]
+06-22 18:53:34.310 16346 16379 D WM-SystemJobScheduler: Scheduling work ID 9ea6408b-f0b9-44cd-8eb5-85074238b377Job ID 1622
+06-22 18:53:34.316 16346 16379 D WM-SystemJobScheduler: Scheduling work ID 9faf9acf-ebaf-4ac9-bd3f-7a8c0d78ea9eJob ID 1621
+06-22 18:53:34.317  5707  5826 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+06-22 18:53:34.318 16346 16379 D WM-SystemJobScheduler: Scheduling work ID 336322f8-f18d-44f5-b829-91e726896de7Job ID 1618
+06-22 18:53:34.321 16346 16379 D WM-SystemJobScheduler: Scheduling work ID d3b1326c-b874-4433-98ae-280e6f02e1fbJob ID 1604
+06-22 18:53:34.323 16346 16379 D WM-SystemJobScheduler: Scheduling work ID 93f41857-4682-4059-a8be-2646d872c1a5Job ID 1211
+06-22 18:53:34.324  5707  5826 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+06-22 18:53:34.325 16346 16379 D WM-SystemJobScheduler: Scheduling work ID 919a4d6f-7fb2-460e-a480-11ec86e3f15fJob ID 1571
+06-22 18:53:34.329 16346 16379 D WM-SystemJobScheduler: Scheduling work ID 9e7cbe0d-c7e8-4781-8460-de179f3cba03Job ID 1617
+06-22 18:53:34.330 16346 16379 D WM-SystemJobScheduler: Scheduling work ID 51c45104-12e5-4d25-a15c-37d9d9e85b1cJob ID 1596
+06-22 18:53:34.331 16346 16379 D WM-SystemJobScheduler: Scheduling work ID bea6e4d4-ef4f-4c07-87ef-c3652dc2cd03Job ID 1597
+06-22 18:53:34.335 16346 16379 D WM-SystemJobScheduler: Scheduling work ID 0d4ab206-0769-4052-a74e-e6b9dd68a064Job ID 1600
+06-22 18:53:34.339 16346 16346 D WM-SystemJobService: onStopJob for WorkGenerationalId(workSpecId=0d4ab206-0769-4052-a74e-e6b9dd68a064, generation=0)
+06-22 18:53:34.344 16346 16381 I BugleDataModel: HeavyWorkQueueEmptyObserver: Starting observation of WorkQueueWorkManagerTable
+06-22 18:53:34.346 16346 16379 D WM-SystemJobScheduler: Scheduling work ID a24cb241-6831-432e-b9f5-58e997790170Job ID 1620
+06-22 18:53:34.347   500  2310 W JobScheduler: Job didn't exist in JobStore: 1ebb817 #u0a115/1600 com.google.android.apps.messaging/androidx.work.impl.background.systemjob.SystemJobService
+06-22 18:53:34.348 16346 16346 D WM-SystemJobService: onStartJob for WorkGenerationalId(workSpecId=0d4ab206-0769-4052-a74e-e6b9dd68a064, generation=0)
+06-22 18:53:34.350 16346 16379 D WM-SystemJobScheduler: Scheduling work ID e00b3f29-0bef-499d-9f4f-d2f7e065c5daJob ID 1605
+06-22 18:53:34.352 16346 16379 D WM-SystemJobScheduler: Scheduling work ID 0ca4bdfd-7584-4d9e-807f-c4f912d0cb64Job ID 1606
+06-22 18:53:34.359 16346 16379 D WM-SystemJobScheduler: Scheduling work ID 499a7361-e6c3-45c9-8a51-67b4c9683b71Job ID 1614
+06-22 18:53:34.365 16346 16379 D WM-GreedyScheduler: Ignoring {WorkSpec: 0bfe4bfd-ac24-42db-b78c-f30f5b840361}. Requires device idle.
+06-22 18:53:34.365 16346 16379 D WM-GreedyScheduler: Ignoring {WorkSpec: a4ad6c0b-a229-4072-a8f7-fe13a03e2e39}. Requires device idle.
+06-22 18:53:34.365 16346 16379 D WM-GreedyScheduler: Ignoring {WorkSpec: ca636977-d474-4ba1-b880-f0f56cef79fd}. Requires device idle.
+06-22 18:53:34.365 16346 16379 D WM-GreedyScheduler: Ignoring {WorkSpec: 1af83193-1d38-4bf7-b948-b727b02d7ce8}. Requires device idle.
+06-22 18:53:34.365 16346 16379 D WM-GreedyScheduler: Ignoring {WorkSpec: 93f41857-4682-4059-a8be-2646d872c1a5}. Requires device idle.
+06-22 18:53:34.365 16346 16379 D WM-GreedyScheduler: Starting work for 20a5014c-47e7-4222-becb-8d5b1bd872ca
+06-22 18:53:34.365 16346 16379 D WM-GreedyScheduler: Starting tracking for 10ae1c3f-34d3-45aa-a46c-c20dd65602b4,0d4ab206-0769-4052-a74e-e6b9dd68a064,d3b1326c-b874-4433-98ae-280e6f02e1fb,9faf9acf-ebaf-4ac9-bd3f-7a8c0d78ea9e,9ea6408b-f0b9-44cd-8eb5-85074238b377,336322f8-f18d-44f5-b829-91e726896de7
+06-22 18:53:34.373 16346 16380 I LogSaver: LogSaver new instance with filename: carrier_services
+06-22 18:53:34.378 16346 16379 D WM-Processor: stt: processing WorkGenerationalId(workSpecId=0d4ab206-0769-4052-a74e-e6b9dd68a064, generation=0)
+06-22 18:53:34.382 16346 16381 I BugleJobs: Starting sync data to wearable message observer. [CONTEXT class_name="SyncDataToWearableMessageChangeObserver" ]
+06-22 18:53:34.384 16346 16379 D WM-Processor: WorkerWrapper interrupted for 0d4ab206-0769-4052-a74e-e6b9dd68a064
+06-22 18:53:34.384 16346 16379 D WM-StopWorkRunnable: StopWorkRunnable for 0d4ab206-0769-4052-a74e-e6b9dd68a064; Processor.stopWork = true
+06-22 18:53:34.387 16346 16382 D WM-Processor: stt: processing WorkGenerationalId(workSpecId=0d4ab206-0769-4052-a74e-e6b9dd68a064, generation=0)
+06-22 18:53:34.387 16346 16379 D WM-Processor: stt: processing WorkGenerationalId(workSpecId=20a5014c-47e7-4222-becb-8d5b1bd872ca, generation=64)
+06-22 18:53:34.390 16346 16380 I BugleBackup: Registering preference change listener for "bugle".
+06-22 18:53:34.393 16346 16381 I Bugle   : DatabaseHelperBasic.doInitializationTraced() returned SQLiteDatabase: /data/user/0/com.google.android.apps.messaging/databases/bugle_db
+06-22 18:53:34.393 16346 16381 I Bugle   : DatabaseHelperBasic.doInitializationTraced returned SQLiteDatabase: /data/user/0/com.google.android.apps.messaging/databases/bugle_db
+06-22 18:53:34.395 16346 16379 D WM-WorkerWrapper: Status for 0d4ab206-0769-4052-a74e-e6b9dd68a064 is ENQUEUED; not doing any work and rescheduling for later execution
+06-22 18:53:34.399 16346 16346 D WM-Processor: stt 0d4ab206-0769-4052-a74e-e6b9dd68a064 executed; reschedule = true
+06-22 18:53:34.399 16346 16346 D WM-SystemJobService: 0d4ab206-0769-4052-a74e-e6b9dd68a064 executed on JobScheduler
+06-22 18:53:34.399 16346 16346 D WM-GreedyScheduler: Stopping tracking for WorkGenerationalId(workSpecId=0d4ab206-0769-4052-a74e-e6b9dd68a064, generation=0)
+06-22 18:53:34.403 16346 16379 D MddListenableWorkerFactory: createWorker for class: com.google.android.libraries.communications.mobileconfiguration.sync.SyncWorker
+06-22 18:53:34.426   500   979 I ActivityManager: Killing 14810:com.google.android.apps.docs/u0a131 (adj 935): empty for 2172s
+06-22 18:53:34.456   500   528 I libprocessgroup: Successfully killed process cgroup uid 10131 pid 14810 in 26ms
+06-22 18:53:34.518 16346 16346 D WM-WorkerWrapper: Starting work for com.google.android.libraries.communications.mobileconfiguration.sync.SyncWorker
+06-22 18:53:34.518 16346 16381 D MddListenableWorkerFactory: createWorker for class: com.google.apps.tiktok.contrib.work.TikTokListenableWorker
+06-22 18:53:34.519 16346 16346 I SyncHelper: [a0d7be18-b4b2-44da-8c8d-94d2d9b52c55] sync started, workRequestId:0d4ab206-0769-4052-a74e-e6b9dd68a064
+06-22 18:53:34.532 16346 16346 D WM-WorkerWrapper: Starting work for com.google.apps.tiktok.contrib.work.TikTokListenableWorker
+06-22 18:53:34.542 16346 16381 D WM-GreedyScheduler: Cancelling work ID 0d4ab206-0769-4052-a74e-e6b9dd68a064
+06-22 18:53:34.550 16346 16346 I DefaultProcessValidator: Validating WorkManager process
+06-22 18:53:34.556 16346 16381 D WM-SystemJobScheduler: Scheduling work ID 5152eae9-e9d3-436e-864c-80dd0600445cJob ID 1623
+06-22 18:53:34.556 16346 16382 I Bugle   : TelephonyManagerFactory: Returning per-subscription TelephonyManager (>= N) subscription{id:1}
+06-22 18:53:34.558 16346 16373 I DefaultProcessValidator: Processes: NONE, true, com.google.android.apps.messaging, com.google.android.apps.messaging
+06-22 18:53:34.585 16346 16381 D WM-GreedyScheduler: Ignoring {WorkSpec: 0bfe4bfd-ac24-42db-b78c-f30f5b840361}. Requires device idle.
+06-22 18:53:34.585 16346 16381 D WM-GreedyScheduler: Ignoring {WorkSpec: a4ad6c0b-a229-4072-a8f7-fe13a03e2e39}. Requires device idle.
+06-22 18:53:34.585 16346 16381 D WM-GreedyScheduler: Ignoring {WorkSpec: ca636977-d474-4ba1-b880-f0f56cef79fd}. Requires device idle.
+06-22 18:53:34.585 16346 16381 D WM-GreedyScheduler: Ignoring {WorkSpec: 1af83193-1d38-4bf7-b948-b727b02d7ce8}. Requires device idle.
+06-22 18:53:34.585 16346 16381 D WM-GreedyScheduler: Ignoring {WorkSpec: 93f41857-4682-4059-a8be-2646d872c1a5}. Requires device idle.
+06-22 18:53:34.585 16346 16381 D WM-GreedyScheduler: Starting tracking for 10ae1c3f-34d3-45aa-a46c-c20dd65602b4,d3b1326c-b874-4433-98ae-280e6f02e1fb,9faf9acf-ebaf-4ac9-bd3f-7a8c0d78ea9e,9ea6408b-f0b9-44cd-8eb5-85074238b377,336322f8-f18d-44f5-b829-91e726896de7
+06-22 18:53:34.587   292   292 I Zygote  : Process 14810 exited due to signal 9 (Killed)
+06-22 18:53:34.589  5707  5813 E IPCThreadState: Process seems to be sending too many oneway calls.
+06-22 18:53:34.589  5707  5813 W IPCThreadState: CallStack::getCurrentInternal not linked, returning null
+06-22 18:53:34.590  5707  5813 W oneway spamming: CallStack::logStackInternal not linked
+06-22 18:53:34.590  5707  5813 W BpBinder: Large outgoing transaction of 447884 bytes, interface descriptor <uncached descriptor>, code 4
+06-22 18:53:34.590   500   625 D ConnectivityService: releasing NetworkRequest [ REQUEST id=318, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.apps.docs UnderlyingNetworks: Null] ] (release request)
+06-22 18:53:34.617 16346 16380 D WM-ConstraintTracker: sxz: initial state = false
+06-22 18:53:34.617 16346 16380 D WM-BrdcstRcvrCnstrntTrc: sxz: registering receiver
+06-22 18:53:34.627 16346 16396 D WM-ConstraintTracker: syb: initial state = true
+06-22 18:53:34.627 16346 16396 D WM-BrdcstRcvrCnstrntTrc: syb: registering receiver
+06-22 18:53:34.632 16346 16379 D WM-WorkConstraintsTrack: NetworkRequestConstraintController register shared callback
+06-22 18:53:34.640   500  2310 D ConnectivityService: requestNetwork for uid/pid:10115/16346 activeRequest: null callbackRequest: 331 [NetworkRequest [ REQUEST id=332, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10115 RequestorUid: 10115 RequestorPkg: com.google.android.apps.messaging UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+06-22 18:53:34.652 16346 16381 D WM-PackageManagerHelper: Skipping component enablement for androidx.work.impl.background.systemalarm.RescheduleReceiver
+06-22 18:53:34.658 16346 16381 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=10ae1c3f-34d3-45aa-a46c-c20dd65602b4, generation=0)
+06-22 18:53:34.658 16346 16381 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=336322f8-f18d-44f5-b829-91e726896de7, generation=64)
+06-22 18:53:34.658 16346 16381 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=d3b1326c-b874-4433-98ae-280e6f02e1fb, generation=15)
+06-22 18:53:34.662   500   618 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=332, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10115 RequestorUid: 10115 RequestorPkg: com.google.android.apps.messaging UnderlyingNetworks: Null] ]
+06-22 18:53:34.674   500   618 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=332, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10115 RequestorUid: 10115 RequestorPkg: com.google.android.apps.messaging UnderlyingNetworks: Null] ]
+06-22 18:53:34.678   500   618 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=332, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10115 RequestorUid: 10115 RequestorPkg: com.google.android.apps.messaging UnderlyingNetworks: Null] ]
+06-22 18:53:34.680   500   625 D ConnectivityService: NetReassign [332 : null → 101] [c 2] [a 7] [i 27]
+06-22 18:53:34.682   500   618 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=332, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10115 RequestorUid: 10115 RequestorPkg: com.google.android.apps.messaging UnderlyingNetworks: Null] ]
+06-22 18:53:34.690 16346 16397 D WM-WorkConstraintsTrack: NetworkRequestConstraintController onCapabilitiesChanged callback
+06-22 18:53:34.691 16346 16397 D WM-WorkConstraintsTrack: Not dispatching constraint state yet: isBlocked=null, capabilitiesInitialized=true
+06-22 18:53:34.691 16346 16397 D WM-WorkConstraintsTrack: NetworkRequestConstraintController onBlockedStatusChanged callback false
+06-22 18:53:34.691 16346 16389 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=9ea6408b-f0b9-44cd-8eb5-85074238b377, generation=26)
+06-22 18:53:34.692 16346 16389 D WM-GreedyScheduler: Constraints not met: Cancelling work ID WorkGenerationalId(workSpecId=9faf9acf-ebaf-4ac9-bd3f-7a8c0d78ea9e, generation=26)
+06-22 18:53:34.702 16346 16399 I SyncHelper: [a0d7be18-b4b2-44da-8c8d-94d2d9b52c55] configValidity: PT4H45S, durationSinceLastUpdate: PT4H7M27.214S, batchSyncConfigExpireInterval: PT24H, shouldSync: true
+06-22 18:53:34.703 16346 16399 I SyncHelper: [a0d7be18-b4b2-44da-8c8d-94d2d9b52c55] configValidity: PT4H22M31S, durationSinceLastUpdate: PT4H7M27.22S, batchSyncConfigExpireInterval: PT24H, shouldSync: true
+06-22 18:53:34.703 16346 16399 I SyncHelper: [a0d7be18-b4b2-44da-8c8d-94d2d9b52c55] configValidity: PT4H21M56S, durationSinceLastUpdate: PT4H7M27.221S, batchSyncConfigExpireInterval: PT24H, shouldSync: true
+06-22 18:53:34.703 16346 16399 I SyncHelper: [a0d7be18-b4b2-44da-8c8d-94d2d9b52c55] configValidity: PT123H6M2S, durationSinceLastUpdate: PT4H7M27.221S, batchSyncConfigExpireInterval: PT24H, shouldSync: false
+06-22 18:53:34.703 16346 16399 I SyncHelper: [a0d7be18-b4b2-44da-8c8d-94d2d9b52c55] configValidity: PT25H12M12S, durationSinceLastUpdate: PT4H7M27.221S, batchSyncConfigExpireInterval: PT24H, shouldSync: true
+06-22 18:53:34.718 16346 16396 I BugleRcsProvisioning: BugleSystemBindingManager: onBuglePhenotypeFlagChanged
+06-22 18:53:34.739 16346 16396 I BugleTransport: Not kicking off update transport registration because RCS provisioning change has not been received.
+06-22 18:53:34.747 16346 16384 I BugleRcsEngine: SystemBinding enabled: true [CONTEXT log_prefix="SystemBindingManager" thread_id=66 ]
+06-22 18:53:34.748 16346 16384 I BugleRcsEngine: System Binding updated [CONTEXT thread_id=66 ]
+06-22 18:53:34.773 16346 16401 I RcsProvisioningFlow: EVENT_TYPE_AMBER_SYNC_STARTED logging skipped for redacted-pii:sim_id[chars:20,last3:897] because of NOT_ELIGIBLE_CURRENT_EVENT_ALREADY_LOGGED.

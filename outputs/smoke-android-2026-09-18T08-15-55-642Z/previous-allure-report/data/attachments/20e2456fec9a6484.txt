@@ -1,0 +1,202 @@
+--------- beginning of main
+04-30 14:12:27.669  1160  1173 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+04-30 14:12:27.671   503   531 I libprocessgroup: Successfully killed process cgroup uid 10112 pid 22150 in 10ms
+04-30 14:12:27.671  1160  1173 I FontLog : (REDACTED) Received query %s, URI %s
+04-30 14:12:27.671  1160  1173 I FontLog : (REDACTED) Query [%s] resolved to %s
+04-30 14:12:27.672  1160  1173 I FontLog : (REDACTED) Font PFD returned from cache for %s
+04-30 14:12:27.672  1160  1173 I FontLog : (REDACTED) Fetch %s end status %s
+04-30 14:12:27.673  1160  1173 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+04-30 14:12:27.676  1160  1173 I FontLog : (REDACTED) Received query %s, URI %s
+04-30 14:12:27.676  1160  1173 I FontLog : (REDACTED) Query [%s] resolved to %s
+04-30 14:12:27.676  1160  1173 I FontLog : (REDACTED) Font PFD returned from cache for %s
+04-30 14:12:27.676  1160  1173 I FontLog : (REDACTED) Fetch %s end status %s
+04-30 14:12:27.677  1160  1173 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+04-30 14:12:27.681  1160  1173 I FontLog : (REDACTED) Received query %s, URI %s
+04-30 14:12:27.681  1160  1173 I FontLog : (REDACTED) Query [%s] resolved to %s
+04-30 14:12:27.681  1160  1173 I FontLog : (REDACTED) Font PFD returned from cache for %s
+04-30 14:12:27.681  1160  1173 I FontLog : (REDACTED) Fetch %s end status %s
+04-30 14:12:27.682  1160  1173 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+--------- beginning of system
+04-30 14:12:27.696   503  1947 W ActivityManager: Scheduling restart of crashed service com.android.vending/com.google.android.finsky.multiusercoordinator.MultiUserCoordinatorService in 1000ms for connection
+04-30 14:12:27.696   503   627 D ConnectivityService: releasing NetworkRequest [ REQUEST id=477, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ] (release request)
+04-30 14:12:27.696   503   627 D ConnectivityService: releasing NetworkRequest [ REQUEST id=475, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ] (release request)
+04-30 14:12:27.696   503   627 D ConnectivityService: releasing NetworkRequest [ REQUEST id=480, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ] (release request)
+04-30 14:12:27.700   296   296 I Zygote  : Process 22150 exited due to signal 9 (Killed)
+04-30 14:12:27.863 24291 24312 I cr_LibraryLoader: Successfully loaded native library
+04-30 14:12:27.866 24291 24312 I cr_CachingUmaRecorder: Flushed 13 samples from 12 histograms, 0 samples were dropped.
+04-30 14:12:28.696   503   529 I ActivityManager: com.android.vending is exempt from freezer
+04-30 14:12:28.696   503   529 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10112; state: DISABLED
+04-30 14:12:28.696   503   529 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10112; state: DISABLED
+04-30 14:12:28.696   503   529 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10112; state: DISABLED
+04-30 14:12:28.697   503   529 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10112; state: ENABLED
+04-30 14:12:28.697   503   530 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10112; state: ENABLED
+04-30 14:12:28.708   296   296 D Zygote  : Forked child process 24318
+04-30 14:12:28.708   503   530 I ActivityManager: Start proc 24318:com.android.vending:background/u0a112 for service {com.android.vending/com.google.android.finsky.multiusercoordinator.MultiUserCoordinatorService}
+04-30 14:12:28.721 24318 24318 I ding:background: Using CollectorTypeCC GC.
+04-30 14:12:28.727 24318 24318 E ding:background: Not starting debugger since process cannot load the jdwp agent.
+04-30 14:12:28.736   503  2015 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10112; state: DISABLED
+04-30 14:12:28.736   503  2015 D CompatibilityChangeReporter: Compat change id reported: 273564678; UID 10112; state: DISABLED
+04-30 14:12:28.738 24318 24318 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10112; state: ENABLED
+04-30 14:12:28.746 24318 24318 D nativeloader: Configuring classloader-namespace for other apk /system/framework/org.apache.http.legacy.jar. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/lib/arm64:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/base.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_config.arm64_v8a.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_config.en.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_data_loader.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_data_loader.config.arm64_v8a.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_webrtc_native_lib.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZw
+04-30 14:12:28.747 24318 24318 D nativeloader: Configuring classloader-namespace for other apk /system_ext/framework/androidx.window.extensions.jar. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/lib/arm64:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/base.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_config.arm64_v8a.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_config.en.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_data_loader.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_data_loader.config.arm64_v8a.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_webrtc_native_lib.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l
+04-30 14:12:28.748 24318 24318 D nativeloader: Configuring classloader-namespace for other apk /system_ext/framework/androidx.window.sidecar.jar. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/lib/arm64:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/base.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_config.arm64_v8a.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_config.en.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_data_loader.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_data_loader.config.arm64_v8a.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_webrtc_native_lib.apk!/lib/arm64-v8a:/data/app/~~OkIhh6l1AN
+04-30 14:12:28.795 24318 24318 W ziparchive: Unable to open '/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_config.arm64_v8a.dm': No such file or directory
+04-30 14:12:28.795 24318 24318 W ziparchive: Unable to open '/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_config.arm64_v8a.dm': No such file or directory
+04-30 14:12:28.797 24318 24318 W ding:background: Entry not found
+04-30 14:12:28.798 24318 24318 W ziparchive: Unable to open '/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_config.en.dm': No such file or directory
+04-30 14:12:28.798 24318 24318 W ziparchive: Unable to open '/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_config.en.dm': No such file or directory
+04-30 14:12:28.799 24318 24318 W ding:background: Entry not found
+04-30 14:12:28.799 24318 24318 W ziparchive: Unable to open '/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_data_loader.dm': No such file or directory
+04-30 14:12:28.799 24318 24318 W ziparchive: Unable to open '/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_data_loader.dm': No such file or directory
+04-30 14:12:28.799 24318 24318 W ding:background: Entry not found
+04-30 14:12:28.799 24318 24318 W ziparchive: Unable to open '/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_data_loader.config.arm64_v8a.dm': No such file or directory
+04-30 14:12:28.799 24318 24318 W ziparchive: Unable to open '/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_data_loader.config.arm64_v8a.dm': No such file or directory
+04-30 14:12:28.801 24318 24318 W ding:background: Entry not found
+04-30 14:12:28.801 24318 24318 W ziparchive: Unable to open '/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_webrtc_native_lib.dm': No such file or directory
+04-30 14:12:28.801 24318 24318 W ziparchive: Unable to open '/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_webrtc_native_lib.dm': No such file or directory
+04-30 14:12:28.802 24318 24318 W ding:background: Entry not found
+04-30 14:12:28.802 24318 24318 W ziparchive: Unable to open '/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_webrtc_native_lib.config.arm64_v8a.dm': No such file or directory
+04-30 14:12:28.802 24318 24318 W ziparchive: Unable to open '/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_webrtc_native_lib.config.arm64_v8a.dm': No such file or directory
+04-30 14:12:28.803 24318 24318 W ding:background: Entry not found
+04-30 14:12:28.804 24318 24318 D nativeloader: Configuring classloader-namespace for other apk /data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/base.apk:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_config.arm64_v8a.apk:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_config.en.apk:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_data_loader.apk:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_data_loader.config.arm64_v8a.apk:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_webrtc_native_lib.apk:/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/split_phonesky_webrtc_native_lib.config.arm64_v8a.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~OkIhh6l1ANO6lZwWLpvwMA==/com.android.vending-94BNdhug3wE6nX1boOdIYg==/lib/arm64:/data/app/~~OkIhh6l1ANO6lZwWL
+04-30 14:12:28.805 24318 24318 W ding:background: JIT profile information will not be recorded: profile file does not exist.
+04-30 14:12:28.806 24318 24318 W ding:background: JIT profile information will not be recorded: profile file does not exist.
+04-30 14:12:28.806 24318 24318 W ding:background: JIT profile information will not be recorded: profile file does not exist.
+04-30 14:12:28.806 24318 24318 W ding:background: JIT profile information will not be recorded: profile file does not exist.
+04-30 14:12:28.806 24318 24318 W ding:background: JIT profile information will not be recorded: profile file does not exist.
+04-30 14:12:28.806 24318 24318 W ding:background: JIT profile information will not be recorded: profile file does not exist.
+04-30 14:12:28.866 24318 24318 V GraphicsEnvironment: ANGLE Developer option for 'com.android.vending' set to: 'default'
+04-30 14:12:28.866 24318 24318 V GraphicsEnvironment: ANGLE GameManagerService for com.android.vending: false
+04-30 14:12:28.866 24318 24318 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+04-30 14:12:28.868 24318 24318 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+04-30 14:12:28.868 24318 24318 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+04-30 14:12:28.939 24318 24318 I Finsky:background: [2] Process created at version: 51.0.19-31 [0] [PR] 897988648
+04-30 14:12:28.991 24318 24318 I Finsky:background: [2] [BGP] Initializing early flags...
+04-30 14:12:28.991 24318 24318 I Finsky:background: [2] [BGP] Initializing Gservices...
+04-30 14:12:28.999 24318 24318 I Finsky:background: [2] [BGP] Initializing flags...
+04-30 14:12:29.031   503  2015 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 10112; state: DISABLED
+04-30 14:12:29.077 24318 24318 I Finsky:background: [2] Finished reading experiment flags from file [0tGUNCGIkbk4o6-fQ335kUYSKwVj4lusnHT-A5Dsy08] numFlags=2280.
+04-30 14:12:29.129 24318 24318 I Finsky:background: [2] Finished reading experiment flags from file [Se-xCc4LzNyh3UrKMIU2sUf-PUKz4oQEbpKZDMuaFno] numFlags=1993.
+04-30 14:12:29.152 24318 24318 I Finsky:background: [2] [BGP] Initializing crash detector...
+04-30 14:12:29.163 24318 24318 I Finsky:background: [2] ajal - Registering in memory receiver for android.intent.action.PACKAGE_ADDED and android.intent.action.PACKAGE_REMOVED
+04-30 14:12:29.180 24318 24318 I Finsky:background: [2] This process start was not selected for Play memory metrics collection.
+04-30 14:12:29.217 24318 24348 W Settings: Setting download_manager_max_bytes_over_mobile has moved from android.provider.Settings.Secure to android.provider.Settings.Global.
+04-30 14:12:29.219 24318 24348 I Finsky:background: [58] SettingNotFoundException, fall through to G.downloadBytesOverMobileMaximum
+04-30 14:12:29.219 24318 24348 W Settings: Setting download_manager_recommended_max_bytes_over_mobile has moved from android.provider.Settings.Secure to android.provider.Settings.Global.
+04-30 14:12:29.219 24318 24348 I Finsky:background: [58] SettingNotFoundException, fall through to G.downloadBytesOverMobileRecommended
+04-30 14:12:29.219 24318 24348 I Finsky:background: [58] registerListener
+04-30 14:12:29.220 24318 24348 I Finsky:background: [58] DFS: Listener added for shy@aa02cb0
+04-30 14:12:29.220 24318 24348 I Finsky:background: [58] registerListener
+04-30 14:12:29.222 24318 24348 I Finsky:background: [58] registerListener
+04-30 14:12:29.222 24318 24348 I Finsky:background: [58] DFS: Listener added for anhj@2bb526b
+04-30 14:12:29.247 24318 24348 I Finsky:background: [58] IV2: IQv2 is disabled. Recovering all active installs: []
+04-30 14:12:29.285 24318 24352 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10112; state: ENABLED
+04-30 14:12:29.289   503  2015 D ConnectivityService: requestNetwork for uid/pid:10112/24318 activeRequest: null callbackRequest: 483 [NetworkRequest [ REQUEST id=484, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+04-30 14:12:29.291 24318 24345 I Finsky:background: [55] Device is ineligible for platform Cronet and will use embedded Cronet instead.
+04-30 14:12:29.294   503   620 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=484, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-30 14:12:29.294   503   620 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=484, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-30 14:12:29.294   503   627 D ConnectivityService: NetReassign [484 : null → 103] [c 2] [a 2] [i 1]
+04-30 14:12:29.295   503   620 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=484, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-30 14:12:29.295   503   620 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=484, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-30 14:12:29.299 24318 24354 I Finsky:background: [64] IQ: Pruning inactive install requests
+04-30 14:12:29.301 24318 24347 I Finsky:background: [57] IQ: start evaluating install requests.
+04-30 14:12:29.301 24318 24347 I Finsky:background: [57] IQ: no jobs active. Skipping
+04-30 14:12:29.307 24318 24345 D HttpFlagsLoader: Not loading HTTP flags because they are disabled in the manifest
+04-30 14:12:29.317 24318 24347 I Finsky:background: [57] IQ: 0 scheduled install statuses found to proceed. 
+04-30 14:12:29.322   503  2015 D ConnectivityService: requestNetwork for uid/pid:10112/24318 activeRequest: null callbackRequest: 485 [NetworkRequest [ REQUEST id=486, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+04-30 14:12:29.324   503   620 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=486, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-30 14:12:29.324   503   620 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=486, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-30 14:12:29.324   503   620 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=486, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-30 14:12:29.324   503   627 D ConnectivityService: NetReassign [486 : null → 103] [c 0] [a 0] [i 1]
+04-30 14:12:29.324   503   620 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=486, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10112 RequestorUid: 10112 RequestorPkg: com.android.vending UnderlyingNetworks: Null] ]
+04-30 14:12:29.325   503   627 D ConnectivityService: NetReassign [no changes] [c 0] [a 1] [i 0]
+04-30 14:12:29.335 24318 24354 I Finsky:background: [64] Resetting scheduler db
+04-30 14:12:29.338 24318 24343 I Finsky:background: [53] SCH: Scheduling phonesky job Id: 3-498, CT: 1777543597812, Constraints: [{ L: 0, D: 86400000, C: CHARGING_REQUIRED, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-30 14:12:29.338 24318 24343 I Finsky:background: [53] SCH: Scheduling phonesky job Id: 3-499, CT: 1777543597812, Constraints: [{ L: 0, D: 86400000, C: CHARGING_REQUIRED, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-30 14:12:29.338 24318 24343 I Finsky:background: [53] SCH: Scheduling phonesky job Id: 3-500, CT: 1777543615474, Constraints: [{ L: 42784527, D: 53584527, C: CHARGING_NONE, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-30 14:12:29.338 24318 24343 I Finsky:background: [53] SCH: Scheduling phonesky job Id: 47-15, CT: 1777543598225, Constraints: [{ L: 3600000, D: 21421819, C: CHARGING_NONE, I: IDLE_REQUIRED, N: NET_NONE, B: BATTERY_ANY }]
+04-30 14:12:29.345 24318 24345 I cn_CronetLibraryLoader: Cronet version: 147.0.7727.49, arch: aarch64
+04-30 14:12:29.349 24318 24343 I Finsky:background: [53] SCH: Scheduling 0 system job(s)
+04-30 14:12:29.357 24318 24345 I Finsky:background: [55] CronetEngine is present. Using Cronet for the networking stack.
+04-30 14:12:29.364 24318 24359 I Finsky:background: [69] SCH: Canceling job 3-498
+04-30 14:12:29.364 24318 24359 I Finsky:background: [69] WM::SCH: Logging work end for 3-498
+04-30 14:12:29.369 24318 24347 I Finsky:background: [57] SCH: Scheduling phonesky job Id: 3-499, CT: 1777543597812, Constraints: [{ L: 0, D: 86400000, C: CHARGING_REQUIRED, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-30 14:12:29.371 24318 24345 I Finsky:background: [55] Subscription detail: DataSubscriptionInfo{groupIdLevel1=null, serviceProviderName=[Zr1R7g28S8p7iucp_gnNJJtsRl-pgO3Y6eIkCh24Iy0], simCarrierId=1}
+04-30 14:12:29.375 24318 24318 I Finsky:background: [2] onSubscriptionsChanged
+04-30 14:12:29.379 24318 24351 I Finsky:background: [61] SCH: Scheduling 1 system job(s)
+04-30 14:12:29.379 24318 24351 D CompatibilityChangeReporter: Compat change id reported: 194532703; UID 10112; state: ENABLED
+04-30 14:12:29.379 24318 24351 I Finsky:background: [61] SCH: Scheduling system job Id: 10986, L: 0, D: 82448433, C: true, I: true, N: 2
+04-30 14:12:29.380   503  2015 D CompatibilityChangeReporter: Compat change id reported: 194532703; UID 10112; state: ENABLED
+04-30 14:12:29.387 24318 24359 I Finsky:background: [69] SCH: Canceling job 3-499
+04-30 14:12:29.387 24318 24359 I Finsky:background: [69] WM::SCH: Logging work end for 3-499
+04-30 14:12:29.387 24318 24345 I Finsky:background: [55] SCH: no pending jobs to schedule.
+04-30 14:12:29.390 24318 24359 I Finsky:background: [69] SCH: Canceling job 3-500
+04-30 14:12:29.390 24318 24359 I Finsky:background: [69] WM::SCH: Logging work end for 3-500
+04-30 14:12:29.390 24318 24347 I Finsky:background: [57] SCH: no pending jobs to schedule.
+04-30 14:12:29.396 24318 24354 I Finsky:background: [64] IQ: Creating job 501, for (REQ_CHARGING, REQ_DEVICE_IDLE, REQ_GEARHEAD_PROJECTION_OFF, NETWORK=UNMETERED, PROVISIONING_STATE=PROVISIONED, BACKUP_MANAGER_STATE=BACKUP_READY)
+04-30 14:12:29.398 24318 24354 I Finsky:background: [64] IQ: Creating job 502, for (REQ_DEVICE_IDLE, REQ_GEARHEAD_PROJECTION_OFF, MIN_BATTERY=20, SHOULD_APPLY_BUDGET=true, NETWORK=UNMETERED, PROVISIONING_STATE=PROVISIONED, BACKUP_MANAGER_STATE=BACKUP_READY, TIME=[2026-04-30T22:00:00Z-2026-05-01T01:00:00Z])
+04-30 14:12:29.398 24318 24354 I Finsky:background: [64] IQ: Creating job 503, for (REQ_CHARGING, REQ_DEVICE_IDLE, REQ_GEARHEAD_PROJECTION_OFF, NETWORK=UNMETERED, PROVISIONING_STATE=PROVISIONED, BACKUP_MANAGER_STATE=BACKUP_READY, PROCESS_IMPORTANCE_THRESHOLD=125)
+04-30 14:12:29.398 24318 24354 I Finsky:background: [64] IQ: Bulk scheduling created jobs
+04-30 14:12:29.401 24318 24354 I Finsky:background: [64] SCH: Received scheduling request: Id: 3-501, Constraints: [{ L: 0, D: 86400000, C: CHARGING_REQUIRED, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-30 14:12:29.410 24318 24354 D WM-PackageManagerHelper: Skipping component enablement for androidx.work.impl.background.systemjob.SystemJobService
+04-30 14:12:29.410 24318 24354 D WM-Schedulers: Created SystemJobScheduler and enabled SystemJobService
+04-30 14:12:29.413 24318 24343 D WM-ForceStopRunnable: Is default app process = true
+04-30 14:12:29.413 24318 24343 D WM-ForceStopRunnable: Performing cleanup operations.
+04-30 14:12:29.437 24318 24354 I Finsky:background: [64] SCH: Received scheduling request: Id: 3-502, Constraints: [{ L: 38850602, D: 49650602, C: CHARGING_NONE, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-30 14:12:29.437 24318 24354 I Finsky:background: [64] SCH: Received scheduling request: Id: 3-503, Constraints: [{ L: 0, D: 86400000, C: CHARGING_REQUIRED, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-30 14:12:29.440 24318 24351 I Finsky:background: [61] SSM: Start staged session task with 0 tracked staged sessions
+04-30 14:12:29.440 24318 24343 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 10112; state: ENABLED
+04-30 14:12:29.452 24318 24343 D WM-PackageManagerHelper: Skipping component enablement for androidx.work.impl.background.systemalarm.RescheduleReceiver
+04-30 14:12:29.502 24318 24374 D TrafficStats: tagSocket(94) with statsTag=0xffffffff, statsUid=-1
+04-30 14:12:29.658 24318 24336 I Finsky:background: [46] WM::SCH: Logging work initialize for 3-501
+04-30 14:12:29.658 24318 24336 I Finsky:background: [46] WM::SCH: Logging work initialize for 3-502
+04-30 14:12:29.658 24318 24336 I Finsky:background: [46] WM::SCH: Logging work initialize for 3-503
+04-30 14:12:29.665 24318 24347 I Finsky:background: [57] SCH: Scheduling phonesky job Id: 3-501, CT: 1777547549401, Constraints: [{ L: 0, D: 86400000, C: CHARGING_REQUIRED, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-30 14:12:29.665 24318 24347 I Finsky:background: [57] SCH: Scheduling phonesky job Id: 3-502, CT: 1777547549437, Constraints: [{ L: 38850602, D: 49650602, C: CHARGING_NONE, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-30 14:12:29.665 24318 24347 I Finsky:background: [57] SCH: Scheduling phonesky job Id: 3-503, CT: 1777547549437, Constraints: [{ L: 0, D: 86400000, C: CHARGING_REQUIRED, I: IDLE_REQUIRED, N: NET_UNMETERED, B: BATTERY_ANY }]
+04-30 14:12:29.667 24318 24343 I Finsky:background: [53] SCH: Scheduling 0 system job(s)
+04-30 14:12:33.341   503   565 I ActivityManager: Killing 22326:com.android.vending:instant_app_installer/u0a112 (adj 965): empty for 2628s
+04-30 14:12:33.352   503   531 I libprocessgroup: Successfully killed process cgroup uid 10112 pid 22326 in 5ms
+04-30 14:12:33.369   296   296 I Zygote  : Process 22326 exited due to signal 9 (Killed)
+04-30 14:12:33.370  1160  1160 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.instantapps.START pkg=com.google.android.gms }
+04-30 14:12:33.686 24245 24386 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10118; state: ENABLED
+04-30 14:12:33.691   503   565 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 10118; state: DISABLED
+04-30 14:12:33.726 24245 24382 V ClearcutMetricXmitter: Transmission is done.
+04-30 14:12:33.726 24245 24382 V ClearcutMetricXmitter: Transmission is done.
+04-30 14:12:36.178 24318 24342 I Finsky:background: [52] playLoggingServerUrl: https://play.googleapis.com/play/log
+04-30 14:12:36.178 24318 24342 I Finsky:background: [52] playLoggingServerTimestampUrl: https://play.googleapis.com/play/log/timestamp
+04-30 14:12:36.516  1160  1160 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.libs.gmscorelogger.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+04-30 14:12:49.629  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3149): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:12:51.555  1160  1160 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.libs.gmscorelogger.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+04-30 14:12:51.641  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3150): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:12:54.593  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:3151): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:13:00.017  1450  1820 I AiAiEcho: Predicting[0]: 
+04-30 14:13:00.017  1450  1820 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+04-30 14:13:00.019  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0
+04-30 14:13:00.019  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0
+04-30 14:13:00.020  1450  1820 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface media_data_manager with targets# 0
+04-30 14:13:00.031   694   694 D SsMediaDataProvider: Forwarding Smartspace updates []
+04-30 14:13:00.037   694   937 D EGL_emulation: app_time_stats: avg=60000.89ms min=60000.89ms max=60000.89ms count=1
+04-30 14:13:17.608  1160  1758 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+04-30 14:13:17.619  1160 24238 W SystemServiceRegistry: No service published for: wifirtt
+04-30 14:13:18.416   503   565 D WifiNl80211Manager: Scan result ready event
+04-30 14:13:18.416   503   565 D WifiNative: Scan result ready event
+04-30 14:13:18.422  1160 24238 I FrewleTileCacheManagerV: (REDACTED) Fetched %d AP models from cache
+04-30 14:13:18.428   503   565 D CompatibilityChangeReporter: Compat change id reported: 171306433; UID 10120; state: ENABLED
+04-30 14:13:18.428   503   565 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10120; state: ENABLED
+04-30 14:13:18.429  1160  1758 I ActivityScheduler: nextTriggerTime: 19147376, in 60562ms, detectorType: 39, FULL_TYPE alarmWindowMillis: 80000
+04-30 14:13:19.661  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3152): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:13:21.673  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3153): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:13:24.613  3778  3778 W ThreadPoolForeg: type=1400 audit(0.0:3154): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:13:29.063 24318 24335 I Finsky:background: [45] Stats for Executor: bgExecutor vlp@c5a09a9[Running, pool size = 4, active threads = 0, queued tasks = 0, completed tasks = 37]
+04-30 14:13:29.099 24318 24335 I Finsky:background: [45] Stats for Executor: LightweightExecutor vlp@2fdcb2e[Running, pool size = 3, active threads = 0, queued tasks = 0, completed tasks = 6]
+04-30 14:13:29.196 24318 24335 I Finsky:background: [45] Stats for Executor: BlockingExecutor vlp@d8bb6cf[Running, pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1]
+04-30 14:13:34.813   323   323 E android.hardware.power.stats@1.0-service-mock: Failed to getEnergyData
+04-30 14:13:36.216 24318 24396 I PlayCommon: [89] Preparing logs for uploading
+04-30 14:13:36.233 24318 24396 I PlayCommon: [89] Connecting to server for timestamp: https://play.googleapis.com/play/log/timestamp
+04-30 14:13:36.240 24318 24396 D TrafficStats: tagSocket(106) with statsTag=0xffffffff, statsUid=-1
+04-30 14:13:36.404 24318 24396 W PlayCommon: [89] No account for auth token provided
+04-30 14:13:36.404 24318 24396 I PlayCommon: [89] Connecting to server: https://play.googleapis.com/play/log?format=raw&proto_v2=true
+04-30 14:13:36.468 24318 24396 I PlayCommon: [89] Successfully uploaded logs.
+04-30 14:13:49.669  1540  1540 W ThreadPoolForeg: type=1400 audit(0.0:3155): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+04-30 14:13:51.685  1160  1160 W ThreadPoolForeg: type=1400 audit(0.0:3156): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=648 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms

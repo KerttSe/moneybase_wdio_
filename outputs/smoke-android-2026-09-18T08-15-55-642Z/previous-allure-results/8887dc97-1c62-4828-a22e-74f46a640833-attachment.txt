@@ -1,0 +1,215 @@
+--------- beginning of main
+08-17 16:38:01.757 25908 25908 D [EDGE_TO_EDGE]: set bottom insets from WindowInsetsListener of clMobileVerificationMain
+08-17 16:38:01.757 25908 25908 D FS.Core.Shared.LogForwarder.WebApi: [[EDGE_TO_EDGE]] set bottom insets from WindowInsetsListener of clMobileVerificationMain
+08-17 16:38:01.764  1325  9351 W display : deliverWinConfigData:: commit modeset time (14 ms)
+08-17 16:38:01.765  1325  1397 I display : [compareVsyncPeriod] set the lowest(mode:0) vsync 166 of display(0)
+08-17 16:38:01.765  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-17 16:38:01.765  1325  1397 I display : Set m2mMPP capacity(8) for fps(60)
+08-17 16:38:01.765  1325  1397 I display : getFpsForPerformance, performance table found using table(key:60, cpu:255)
+08-17 16:38:01.765  1325  1397 I display : Set Affinity config for fps(60) : cpuIDs : 255
+08-17 16:38:01.765  1325  1397 I display : Set Affinity CPU ID : 0
+08-17 16:38:01.765  1325  1397 I display : Set Affinity CPU ID : 1
+08-17 16:38:01.765  1325  1397 I display : Set Affinity CPU ID : 2
+08-17 16:38:01.765  1325  1397 I display : Set Affinity CPU ID : 3
+08-17 16:38:01.765  1325  1397 I display : Set Affinity CPU ID : 4
+08-17 16:38:01.765  1325  1397 I display : Set Affinity CPU ID : 5
+08-17 16:38:01.765  1325  1397 I display : Set Affinity CPU ID : 6
+08-17 16:38:01.765  1325  1397 I display : Set Affinity CPU ID : 7
+08-17 16:38:01.765  1325  1397 I display : Set affinity HWC : 1325
+08-17 16:38:01.765  1325  1397 I display : CPU set : Cluster(0), min_clock(0)
+08-17 16:38:01.765  1325  1397 I display : CPU set : Cluster(1), min_clock(0)
+08-17 16:38:01.765  1325  1397 I display : CPU set : Cluster(2), min_clock(0)
+08-17 16:38:01.765  1437  1559 I VSyncReactor: Current= 120, Period= 60, hwcPeriod= 60
+08-17 16:38:01.765  1437  1437 I SurfaceFlinger: finalizeDisplayModeChange 4633128672291736000
+--------- beginning of system
+08-17 16:38:01.765  1726  1771 D LocalDisplayAdapter: updateActiveModeLocked for d=4633128672291736000, mActiveModeId=2, mActiveSfDisplayMode=DisplayMode{id=1, width=1080, height=2340, xDpi=403.411, yDpi=401.594, peakRefreshRate=60.0, vsyncRate=60.0, appVsyncOffsetNanos=16666667, presentationDeadlineNanos=17666667, supportedHdrTypes=[2, 3, 4], group=0}
+08-17 16:38:01.765  1726  1771 I DisplayDeviceRepository: Display device changed render timings: "Built-in Screen", renderFrameRate=60.000004, presentationDeadlineNanos=17666667, appVsyncOffsetNanos=16666667, frameRateOverrides=[]
+08-17 16:38:01.766  1726  1769 D WindowManager: DeferredDisplayUpdater: partially applying DisplayInfo(1080 x 2340) immediately
+08-17 16:38:01.767  1726  3321 D LiftUpHandler: [LTW] Stopped already.
+08-17 16:38:01.767  1414  2664 D AudioFlinger: setParameters: filtered dev setParameters keyvalue screen_state=on
+08-17 16:38:01.767  1315  8952 D audio_hw_primary: device-adev_set_parameters: enter
+08-17 16:38:01.768  1315  8952 I audio_hw_proxy2: proxy-proxy_set_parameters: set Screen-state 1
+08-17 16:38:01.768  1315  8952 D audio_hw_primary: device-adev_set_parameters: param (screen_state=on)
+08-17 16:38:01.768  1315  8952 I Audio_a2dpsink_hw: adev_set_parameters: kevpairs=[screen_state=on]
+08-17 16:38:01.769  1726  1769 D SurfaceComposerClient: setCornerRadius ## d16db8f com.moneybase.qa/com.moneybase.views.activities.LoginActivity#124855 cornerRadius=0.000000
+08-17 16:38:01.769  1726  2171 D AS.DesktopModeHelper: onDisplayChanged: #Id=0
+08-17 16:38:01.770 25908 25908 I BLASTBufferQueue_Java: update, w= 1080 h= 2340 mName = VRI[LoginActivity]@d65d01e mNativeObject= 0xb40000707afd6040 sc.mNativeObject= 0xb40000709adeafd0 format= -1 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3574 android.view.ViewRootImpl.relayoutWindow:11685 android.view.ViewRootImpl.performTraversals:4804 android.view.ViewRootImpl.doTraversal:3924 android.view.ViewRootImpl$TraversalRunnable.run:12903 android.view.Choreographer$CallbackRecord.run:1901 
+08-17 16:38:01.770 25908 25908 I VRI[LoginActivity]@d65d01e: Relayout returned: old=(0,0,1080,2340) new=(0,0,1080,2340) relayoutAsync=true req=(1080,2340)0 dur=1 res=0x0 s={true 0xb40000717ae69f10} ch=false seqId=0
+08-17 16:38:01.770  1726  4575 I WindowManager: Relayout Window{d16db8f u0 com.moneybase.qa/com.moneybase.views.activities.LoginActivity}: viewVisibility=0 req=1080x2340 ty=1 d0
+08-17 16:38:01.770  1726  1726 D SGM:GameManager: onDisplayChanged. displyId: 0, state: 2
+08-17 16:38:01.770  1726  4575 D SurfaceComposerClient: setCornerRadius ## d16db8f com.moneybase.qa/com.moneybase.views.activities.LoginActivity#124855 cornerRadius=0.000000
+08-17 16:38:01.770  1726  1726 D AODManagerService: requestReCalToTSP IsSingleTouchMode = falserequestedReCalToTSP = false / previousDisplayState = ON
+08-17 16:38:01.771  1726  4575 D SurfaceComposerClient: setCornerRadius ## d16db8f com.moneybase.qa/com.moneybase.views.activities.LoginActivity#124855 cornerRadius=0.000000
+08-17 16:38:01.771  5082  5082 I HBD     : DeX h DeX mode state change in non-main thread 
+08-17 16:38:01.771  5082  5082 I HBD     : DeX h DeX mode state change: 3 
+08-17 16:38:01.771  2870 22171 I HoneySpace.Memory-Monitor: current state = 2, didTrim = false
+08-17 16:38:01.771  1726  1951 D SGM:FgCheckThread: onLooperPrepared(), msg: MSG_LCD_ON
+08-17 16:38:01.771  2870 22171 I HoneySpace.RefreshRateSource: singleFrameMs 16
+08-17 16:38:01.772  1726  4575 I WindowManager: Relayout hash=d16db8f, pid=0, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=resize} layoutInDisplayCutoutMode=always ty=BASE_APPLICATION wanim=0x1030317
+08-17 16:38:01.772  1726  4575 I WindowManager:   fl=81810100
+08-17 16:38:01.772  1726  4575 I WindowManager:   pfl=100088c0
+08-17 16:38:01.772  1726  4575 I WindowManager:   vsysui=2010
+08-17 16:38:01.772  1726  4575 I WindowManager:   apr=18
+08-17 16:38:01.772  1726  4575 I WindowManager:   bhv=1
+08-17 16:38:01.772  1726  4575 I WindowManager:   fitSides=0
+08-17 16:38:01.772  1726  4575 I WindowManager:   frameRateBoostOnTouch=true
+08-17 16:38:01.772  1726  4575 I WindowManager:   dvrrWindowFrameRateHint=true naviIconColor=0}
+08-17 16:38:01.772 25908 25908 D ScrollView:  onsize change changed 
+08-17 16:38:01.772  2357  2357 D DisplayLifecycle: updateDisplay id = 0
+08-17 16:38:01.772  1726  4608 D WifiDisplayAdapter: isFitToActiveDisplayLocked : false
+08-17 16:38:01.772  2357  2472 D StackScroller: onDisplayChanged for predraw skip to 2
+08-17 16:38:01.775 25908 25908 I VRI[LoginActivity]@d65d01e: registerCallbackForPendingTransactions
+08-17 16:38:01.776  1726  4608 V InputMethodManagerService: IME window vis: 3 active: 1 visible: 2 displayId: 0
+08-17 16:38:01.776  1726  4608 D InputMethodManagerService: isImeSwitcherDisabledPackage : false
+08-17 16:38:01.776  5082  5082 I HBD     : MultiModalSwitcher onAppPrivateCommand needsToShowImeSwitcher : false 
+08-17 16:38:01.776  5082  5082 I HBD     : m HoneyVoice setNavigationBarShortcut null
+08-17 16:38:01.776 25908 26050 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703adfdad0 mBlastBufferQueue=0xb40000707afd6040 fn= 937 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:01.776 25908 26050 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae5ded0 mBlastBufferQueue=0xb40000707afd6040 fn= 937 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$10.onFrameDraw:6536 android.view.ViewRootImpl$4.onFrameDraw:2489 android.view.ThreadedRenderer$1.onFrameDraw:718 
+08-17 16:38:01.777  2357  2357 D NavigationBar: setImeWindowStatus displayId=0 vis=1 backDisposition=0 showImeSwitcher=false isImeVisible=false
+08-17 16:38:01.777  2357  2357 D Navbar.Store: handleEvent(0) OnNavBarIconHintChanged(iconHint=0) [Module] NavigationBar
+08-17 16:38:01.777  2357  2357 D Navbar.Store: --[Band]SETUPWIZARD_PACK_SET_NAVBAR_ICON_HINT
+08-17 16:38:01.777  2357  2357 D Navbar.Store: --[Band]VIS_PACK_REEVAULATE_NAVBAR
+08-17 16:38:01.777  2357  2357 D Navbar.Store: ----apply(0) NavBarStoreAction$ReevaluateNavBar
+08-17 16:38:01.778  2357  2357 D NavBarView: disableBack=false (isBackDismissIme=false, handlingGestures=false, disabledFlagBack=false, isBottomGesture=false, isImeRenderingNavButtons=false)
+08-17 16:38:01.778  2357  2357 D Navbar.Store: handleEvent(0) OnUpdateSysUiStateFlag(noArguments=true) [Module] SamsungNavigationBarView
+08-17 16:38:01.778  2357  2357 D Navbar.Store: --[Band]GESTURE_PACK_UPDATE_SYSTEMUI_STATE_FLAG
+08-17 16:38:01.778  2357  2357 D Navbar.Store: --[Band] (afterAction) GESTURE_PACK_UPDATE_SYSTEMUI_STATE_FLAG
+08-17 16:38:01.778  2357  2357 D NavigationBarControllerImpl: setNavigationBarShortcut requestClass : com.samsung.android.honeyboard, remoteViews : null, position : 0, priority : 12
+08-17 16:38:01.778  2357  2357 D RemoteViewPack: OnSetRemoteView RemoteViewShortcut(requestClass=com.samsung.android.honeyboard, remoteViews=null, position=0, priority=12)
+08-17 16:38:01.778  2357  2357 D NavBarStateManager: NavBarStates(0) isGameMode: false
+08-17 16:38:01.779  2870 28350 I HoneySpace.KeyguardStateRepositoryImpl: KEYGUARD_GOING_AWAY: false
+08-17 16:38:01.779  2870 17362 I HoneySpace.SystemUiRepository: systemUiFlags: allow_gesture|awake
+08-17 16:38:01.779  2870  2971 I HoneySpace.TaskbarEventTracker: invokeEvent() called with: event = SystemUiStateChanged(stateFlags=268566528)
+08-17 16:38:01.780 25908 26051 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703adf4290 mBlastBufferQueue=0xb40000707afd6040 fn= 938 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:01.782  1437  1437 I SurfaceFlinger: RequestedLayer [Surface(name=920da56 InputMethod)/@0[...]ion-leash of insets_animation#124913] hidden!! flag  from(0) --> to(1)
+08-17 16:38:01.782  1437  1437 E SurfaceFlinger: alpha changed 0.000 -> 1.000 - Surface(name=920da56 InputMethod)/@0xc195fc4 - animation-leash of insets_animation#124913
+08-17 16:38:01.790  2357  2357 D NavBarStateManager: NavBarStates(0) canUseNavBarBackgroundFrame: false
+08-17 16:38:01.790  1726  4608 V InputMethodManagerService: IME window vis: 3 active: 1 visible: 2 displayId: 0
+08-17 16:38:01.790  1726  4608 D InputMethodManagerService: isImeSwitcherDisabledPackage : false
+08-17 16:38:01.790  1726  4608 D InputMethodManagerService: shouldShowImeSwitcherLocked : checking vis : 3
+08-17 16:38:01.791  5082  5082 I HBD     : MultiModalSwitcher onAppPrivateCommand needsToShowImeSwitcher : true 
+08-17 16:38:01.791  5082  5082 I HBD     : a color = [r : 228], [g : 228], [b : 231], [alpha : 255], rgb = -1776409, isDark = false 
+08-17 16:38:01.792  2357  2357 D NavigationBar: setImeWindowStatus displayId=0 vis=3 backDisposition=0 showImeSwitcher=false isImeVisible=true
+08-17 16:38:01.792  2357  2357 D Navbar.Store: handleEvent(0) OnNavBarIconHintChanged(iconHint=3) [Module] NavigationBar
+08-17 16:38:01.792  2357  2357 D Navbar.Store: --[Band]SETUPWIZARD_PACK_SET_NAVBAR_ICON_HINT
+08-17 16:38:01.792  2357  2357 D Navbar.Store: --[Band]VIS_PACK_REEVAULATE_NAVBAR
+08-17 16:38:01.792  2357  2357 D Navbar.Store: ----apply(0) NavBarStoreAction$ReevaluateNavBar
+08-17 16:38:01.792  5082  5082 I HBD     : a color = [r : 228], [g : 228], [b : 231], [alpha : 255], rgb = -1776409, isDark = false 
+08-17 16:38:01.792  5082  5082 I HBD     : a color = [r : 228], [g : 228], [b : 231], [alpha : 255], rgb = -1776409, isDark = false 
+08-17 16:38:01.792  2357  2357 D NavBarView: disableBack=false (isBackDismissIme=true, handlingGestures=false, disabledFlagBack=false, isBottomGesture=false, isImeRenderingNavButtons=false)
+08-17 16:38:01.792  2357  2357 D NavBarStateManager: NavBarStates(0) canShowKeyboardButtonForRotation(0): true
+08-17 16:38:01.792  5082  5082 I HBD     : m HoneyVoice setNavigationBarShortcut android.widget.RemoteViews@f290ddd
+08-17 16:38:01.792  2357  2357 D Navbar.Store: handleEvent(0) OnUpdateSysUiStateFlag(noArguments=true) [Module] SamsungNavigationBarView
+08-17 16:38:01.792  2357  2357 D Navbar.Store: --[Band]GESTURE_PACK_UPDATE_SYSTEMUI_STATE_FLAG
+08-17 16:38:01.792  2357  2357 D Navbar.Store: --[Band] (afterAction) GESTURE_PACK_UPDATE_SYSTEMUI_STATE_FLAG
+08-17 16:38:01.793 25908 26050 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703adf4290 mBlastBufferQueue=0xb40000707afd6040 fn= 939 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:01.793  2870 28350 I HoneySpace.KeyguardStateRepositoryImpl: KEYGUARD_GOING_AWAY: false
+08-17 16:38:01.793  2870 22171 I HoneySpace.SystemUiRepository: systemUiFlags: allow_gesture|ime_visible|awake|back_dismiss_ime
+08-17 16:38:01.794  2870  2971 I HoneySpace.TaskbarEventTracker: invokeEvent() called with: event = SystemUiStateChanged(stateFlags=68988305408)
+08-17 16:38:01.815  1437  1559 I VSyncReactor: Current= 60, Period= 60, hwcPeriod= 60
+08-17 16:38:01.815  1437  1437 I SurfaceFlinger: RequestedLayer [Surface(name=920da56 InputMethod)/@0[...]ion-leash of insets_animation#124913] hidden!! flag  from(1) --> to(0)
+08-17 16:38:01.815  2357  2357 D NavBarStateManager: NavBarStates(0) canUseNavBarBackgroundFrame: false
+08-17 16:38:01.815  2357  2357 D NavigationBarControllerImpl: setNavigationBarShortcut requestClass : com.samsung.android.honeyboard, remoteViews : android.widget.RemoteViews@7f34d39, position : 0, priority : 12
+08-17 16:38:01.815  2357  2357 D RemoteViewPack: OnSetRemoteView RemoteViewShortcut(requestClass=com.samsung.android.honeyboard, remoteViews=android.widget.RemoteViews@7f34d39, position=0, priority=12)
+08-17 16:38:01.816  2357  2357 D NavBarStateManager: NavBarStates(0) isGameMode: false
+08-17 16:38:01.817 25908 26051 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae05710 mBlastBufferQueue=0xb40000707afd6040 fn= 940 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:01.832  2357  2357 D NavBarStateManager: NavBarStates(0) canUseNavBarBackgroundFrame: false
+08-17 16:38:01.832  1437  1437 D SurfaceFlinger: Display 4633128672291736000 HWC layers:
+08-17 16:38:01.832  1437  1437 D SurfaceFlinger:        DEVICE |          111274012704777 | 00002102 | RGBA_8888    |    0.0    0.0 1080.0 2340.0 |    0    0 1080 2340 | com.moneybase.qa/com.moneybase.views.activities.LoginActivity$_25908#124892 (939)
+08-17 16:38:01.832  1437  1437 D SurfaceFlinger:        DEVICE |           21827023804931 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0 1340.0 |    0 1000 1080 2340 | InputMethod$_5082#124914 (4)
+08-17 16:38:01.832  1437  1437 D SurfaceFlinger:        DEVICE |           10123237990034 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0   80.0 |    0    0 1080   80 | StatusBar$_2357#104 (274581)
+08-17 16:38:01.832  1437  1437 D SurfaceFlinger:        DEVICE |           10123237990056 | 00002100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2214 1080 2340 | NavigationBar0$_2357#102 (285970)
+08-17 16:38:01.832  1437  1437 D SurfaceFlinger: 
+08-17 16:38:01.834 25908 26050 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae05710 mBlastBufferQueue=0xb40000707afd6040 fn= 941 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:01.850 25908 26051 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae5cf10 mBlastBufferQueue=0xb40000707afd6040 fn= 942 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:01.867 25908 26050 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae5cf10 mBlastBufferQueue=0xb40000707afd6040 fn= 943 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:01.884 25908 26051 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae5e790 mBlastBufferQueue=0xb40000707afd6040 fn= 944 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:01.901 25908 26050 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae5e790 mBlastBufferQueue=0xb40000707afd6040 fn= 945 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:01.917 25908 26051 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae663d0 mBlastBufferQueue=0xb40000707afd6040 fn= 946 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:01.934 25908 26050 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae663d0 mBlastBufferQueue=0xb40000707afd6040 fn= 947 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:01.951 25908 26051 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae60710 mBlastBufferQueue=0xb40000707afd6040 fn= 948 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:01.969 25908 26050 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae60710 mBlastBufferQueue=0xb40000707afd6040 fn= 949 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:01.985 25908 26051 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae64610 mBlastBufferQueue=0xb40000707afd6040 fn= 950 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:01.988  1337 27052 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 12920987
+08-17 16:38:02.004 25908 26050 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae64610 mBlastBufferQueue=0xb40000707afd6040 fn= 951 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:02.018 25908 26051 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae02ed0 mBlastBufferQueue=0xb40000707afd6040 fn= 952 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:02.037 25908 26050 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae02ed0 mBlastBufferQueue=0xb40000707afd6040 fn= 953 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:02.057 25908 26051 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae647d0 mBlastBufferQueue=0xb40000707afd6040 fn= 954 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:02.072 25908 26050 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae647d0 mBlastBufferQueue=0xb40000707afd6040 fn= 955 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:02.089 25908 26051 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae63b90 mBlastBufferQueue=0xb40000707afd6040 fn= 956 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:02.105 25908 26050 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae63b90 mBlastBufferQueue=0xb40000707afd6040 fn= 957 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:02.122 25908 26051 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae23d90 mBlastBufferQueue=0xb40000707afd6040 fn= 958 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:02.133 25908 25908 I InsetsController: cancelAnimation: types=ime, animType=0, host=com.moneybase.qa/com.moneybase.views.activities.LoginActivity, from=android.view.InsetsController.notifyFinished:2006 android.view.InsetsAnimationControlImpl.applyChangeInsets:335 android.view.InsetsController.lambda$new$3:957 
+08-17 16:38:02.134 25908 25908 I ImeTracker: com.moneybase.qa:1b7c6868: onShown
+08-17 16:38:02.143 25908 26050 I VRI[LoginActivity]@d65d01e: mWNT: t=0xb40000703ae23d90 mBlastBufferQueue=0xb40000707afd6040 fn= 959 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:100 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0:73 android.view.SyncRtSurfaceTransactionApplier.$r8$lambda$afI4fXg3U3-nBZQEDQMiNy-B06s:0 
+08-17 16:38:02.662  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786973882
+08-17 16:38:02.663  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 16:38:02.663  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 16:38:02.663  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782898
+08-17 16:38:02.663  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782869
+08-17 16:38:02.663  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 16:38:02.663  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 16:38:02.663  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 16:38:02.663  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 16:38:02.663  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 16:38:02.721  1726  4572 D CustomizedBinderCallsStatsInternal: reportCpuUsage() : 2%
+08-17 16:38:02.723  1726  1780 I BinderCallsStats: Collected cpu time : 0us, collected call count : 0 for 16065379 ms
+08-17 16:38:02.723  1726  4572 D ProcessCpuUsage: [0] 702, {400=11900, 576=18260, 672=6860, 768=5010, 864=5650, 960=3090, 1056=2780, 1152=6030, 1248=270, 1344=100, 1440=130}
+08-17 16:38:02.723  1726  4572 D ProcessCpuUsage: [4] 848, {576=33620, 672=3860, 768=3380, 864=3160, 960=2540, 1056=2020, 1152=1700, 1248=1300, 1344=1110, 1440=1450, 1536=820, 1632=810, 1728=520, 1824=620, 1920=590, 2016=440, 2112=280, 2208=280, 2304=300, 2400=180, 2515=1230}
+08-17 16:38:02.723  1726  4572 D ProcessCpuUsage: [7] 687, {576=52670, 672=510, 768=680, 864=340, 960=1180, 1056=330, 1152=380, 1248=480, 1344=240, 1440=200, 1536=140, 1632=310, 1728=420, 1824=140, 1920=300, 2016=380, 2208=290, 2304=140, 2515=200, 2611=400, 2803=240}
+08-17 16:38:02.745  1726  2205 D BackgroundInstallControlService: Package event received: 0
+08-17 16:38:02.750  1726  2205 D BackgroundInstallControlService: Package event received: 0
+08-17 16:38:03.095 25908 25908 I View    : setRequestedFrameRate frameRate=NaN, this=androidx.compose.ui.platform.AndroidComposeView{56ef944 VFED..... ........ 0,0-1080,248 aid=1073741864}, caller=android.view.ViewGroup.setRequestedFrameRate:9952 androidx.compose.ui.platform.Api35Impl.setRequestedFrameRate:4033 androidx.compose.ui.platform.AndroidComposeView.dispatchDraw:2248 android.view.View.draw:26345 android.view.View.updateDisplayListIfDirty:25175 
+08-17 16:38:03.096 25908 25908 I View    : setRequestedFrameRate frameRate=NaN, this=android.view.View{5f53013 V.ED..... ........ 0,0-0,0}, caller=androidx.compose.ui.platform.Api35Impl.setRequestedFrameRate:4033 androidx.compose.ui.platform.AndroidComposeView.dispatchDraw:2251 android.view.View.draw:26345 android.view.View.updateDisplayListIfDirty:25175 android.view.View.draw:26072 
+08-17 16:38:03.153 25703 25890 I appium  : AppiumResponse: {"sessionId":"e9db2b06-43a1-4b8d-8bf1-a14efa868f4b","value":{"error":"no such element","message":"An element could not be located on the page using the given search parameters","stacktrace":"io.appium.uiautomator2.common.exceptions.ElementNotFoundException: An element could not be located on the page using the given search parameters\n\tat io.appium.uiautomator2.handler.FindElement.safeHandle(FindElement.java:63)\n\tat io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:267)\n\tat io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:261)\n\tat io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:356)\n\tat io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:434)\n\tat io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:361)\n\tat io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:325)\n\tat io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:249)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:293)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:354)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1429)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:918)\n\tat io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:172)\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445)\n\tat io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571)\n\tat io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512)\n\tat io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484)\n\tat io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225)\n\tat io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\tat java.lang.Thread.run(Thread.java:1572)\n"}}
+08-17 16:38:03.176 25703 25890 I appium  : channel read: GET /session/e9db2b06-43a1-4b8d-8bf1-a14efa868f4b/source
+08-17 16:38:03.180 25703 25890 I appium  : Source command
+08-17 16:38:03.181 25703 25890 I appium  : Waiting up to 10000ms for the device to idle
+08-17 16:38:03.213  1726  3186 I NSLocationMonitor: getGPSUsingApps() called
+08-17 16:38:03.215  3189  9248 I NSLocationManager_FLP: getGPSUsingApps, No change
+08-17 16:38:03.234  1726  3186 D FreecessHandler: freeze org.telegram.messenger(10339) result : 2
+08-17 16:38:03.426 25908 25977 I Datadog : [_dd.sdk_core.default]: Batch 886cba5e-3b69-4ada-8fc4-605e62fcb8fd [33259 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+08-17 16:38:03.544  4554  4554 I SDHMS:LOAD: type: LoadsFreqs, value: 48:7:0:804860:2707000:576000:922360:2515000:576000:42:303:0
+08-17 16:38:03.598  1437  1437 D SurfaceFlinger: GPIS:: requestGpisForSFSluggish
+08-17 16:38:03.646  1726  1775 E Watchdog: !@Sync: 22535 heap(MB): 191 / 197 FD: 1350 [2026-08-17 16:38:03.646]
+08-17 16:38:03.661   730   730 D io_stats: !@   8,0 r 90734949 1656245432 w 27565574 501328436 d 8014338 556973956 f 0 2557733 iot 41868444 0 th 0 0 0 pt 0 inp 0 0 676658.517
+08-17 16:38:03.662  1421  1425 E HeatmapThread: ECT Thread time in milliseconds: 1786973883
+08-17 16:38:03.662  1421  1425 D HeatmapThread: !@ batteryplugType : 0
+08-17 16:38:03.662  1421  1425 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+08-17 16:38:03.662  1421  1425 D HeatmapThread: !@ Heatmap currtime: 29782898
+08-17 16:38:03.662  1421  1425 D HeatmapThread: !@ Heatmap prevtime: 29782869
+08-17 16:38:03.662  1421  1425 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+08-17 16:38:03.662  1421  1425 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29759723
+08-17 16:38:03.663  1421  1425 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+08-17 16:38:03.663  1421  1425 E HeatmapThread: !@ CAM Could not access BSOH EFS
+08-17 16:38:03.663  1421  1425 E HeatmapThread: !@ CAM New BSOH: 0
+08-17 16:38:03.664   730   730 D io_stats: !@ Read_top(KB): roid.honeyboard(5082) 1440 gle.android.gms(17374) 420 .gms.persistent(12222) 396
+08-17 16:38:03.664   730   730 D io_stats: !@ Write_top(KB): om.moneybase.qa(25908) 76 gle.android.gms(17374) 52 ungpassautofill(26442) 8
+08-17 16:38:03.664 18155 18155 I wpa_supplicant: Heartbeat 1574
+08-17 16:38:04.113  4004  4019 D Choreographer: BBA2 receive callback when in bg : 4
+08-17 16:38:04.114 18560 18560 I Finsky  : [2] Memory trim requested to level 40
+08-17 16:38:04.116  4004  7782 D HWUI    : CacheManager::trimMemory(40)
+08-17 16:38:04.117  1726 16627 D PerProcessNandswap$NandswapHandler: nandswap start for activity org.telegram.messenger(pid 4004) action:9 adj:850 type:3
+08-17 16:38:04.117 18560 18560 I Finsky  : [2] Flushing in-memory image cache
+08-17 16:38:04.120 25703 25890 I appium  : AppiumResponse: {"sessionId":"e9db2b06-43a1-4b8d-8bf1-a14efa868f4b","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2340\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+08-17 16:38:04.129 25703 25890 I appium  : channel read: POST /session/e9db2b06-43a1-4b8d-8bf1-a14efa868f4b/element
+08-17 16:38:04.129 25703 25890 I appium  : FindElement command
+08-17 16:38:04.130 25703 25890 I appium  : method: '-android uiautomator', selector: 'new UiSelector().resourceId("com.moneybase.qa:id/composeViewRegisterMobile")'
+08-17 16:38:04.130 25703 25890 I appium  : Waiting up to 10000ms for the device to idle
+08-17 16:38:04.140 25703 25890 I QueryController: Matched selector: UiSelector[RESOURCE_ID=com.moneybase.qa:id/composeViewRegisterMobile] <<==>> [android.view.accessibility.AccessibilityNodeInfo@38eac; boundsInParent: Rect(0, 0 - 1080, 248); boundsInScreen: Rect(0, 0 - 1080, 248); boundsInWindow: Rect(0, 0 - 1080, 248); packageName: com.moneybase.qa; className: androidx.compose.ui.platform.ComposeView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: com.moneybase.qa:id/composeViewRegisterMobile; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]; isTextSelectable: false]
+08-17 16:38:04.141 25703 25890 I appium  : AppiumResponse: {"sessionId":"e9db2b06-43a1-4b8d-8bf1-a14efa868f4b","value":{"ELEMENT":"00000000-0000-151e-ffff-ffff000000ce","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-151e-ffff-ffff000000ce"}}
+08-17 16:38:04.165 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-17 16:38:04.193  1726 16627 D PerProcessNandswap$NandswapHandler: nandswap end for activity org.telegram.messenger(pid 4004) ret:-16 adj:850
+08-17 16:38:04.230 27078 27078 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-17 16:38:04.244  1726  4572 I ImeTracker: system_server:7f90db7: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false
+08-17 16:38:04.258 25703 25890 I appium  : channel read: GET /session/e9db2b06-43a1-4b8d-8bf1-a14efa868f4b/element/00000000-0000-151e-ffff-ffff000000ce/attribute/displayed
+08-17 16:38:04.260 25703 25890 I appium  : GetElementAttribute command
+08-17 16:38:04.266 25703 25890 I QueryController: Matched selector: UiSelector[RESOURCE_ID=com.moneybase.qa:id/composeViewRegisterMobile] <<==>> [android.view.accessibility.AccessibilityNodeInfo@38eac; boundsInParent: Rect(0, 0 - 1080, 248); boundsInScreen: Rect(0, 0 - 1080, 248); boundsInWindow: Rect(0, 0 - 1080, 248); packageName: com.moneybase.qa; className: androidx.compose.ui.platform.ComposeView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: com.moneybase.qa:id/composeViewRegisterMobile; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]; isTextSelectable: false]
+08-17 16:38:04.267 25703 25890 D UiObject: Waiting 0ms for UiSelector[RESOURCE_ID=com.moneybase.qa:id/composeViewRegisterMobile].
+08-17 16:38:04.275 25703 25890 I QueryController: Matched selector: UiSelector[RESOURCE_ID=com.moneybase.qa:id/composeViewRegisterMobile] <<==>> [android.view.accessibility.AccessibilityNodeInfo@38eac; boundsInParent: Rect(0, 0 - 1080, 248); boundsInScreen: Rect(0, 0 - 1080, 248); boundsInWindow: Rect(0, 0 - 1080, 248); packageName: com.moneybase.qa; className: androidx.compose.ui.platform.ComposeView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: com.moneybase.qa:id/composeViewRegisterMobile; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]; isTextSelectable: false]
+08-17 16:38:04.280 25703 25890 I QueryController: Matched selector: UiSelector[RESOURCE_ID=com.moneybase.qa:id/composeViewRegisterMobile] <<==>> [android.view.accessibility.AccessibilityNodeInfo@38eac; boundsInParent: Rect(0, 0 - 1080, 248); boundsInScreen: Rect(0, 0 - 1080, 248); boundsInWindow: Rect(0, 0 - 1080, 248); packageName: com.moneybase.qa; className: androidx.compose.ui.platform.ComposeView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: com.moneybase.qa:id/composeViewRegisterMobile; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]; isTextSelectable: false]
+08-17 16:38:04.281 25703 25890 I appium  : AppiumResponse: {"sessionId":"e9db2b06-43a1-4b8d-8bf1-a14efa868f4b","value":"true"}
+08-17 16:38:04.308 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:dumpsys window displays'
+08-17 16:38:04.378 27081 27081 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+08-17 16:38:04.389  1726  4572 I ImeTracker: system_server:3957e1c6: onRequestShow at ORIGIN_SERVER reason CONTROLS_CHANGED fromUser false
+08-17 16:38:04.432 17645 17645 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '200''

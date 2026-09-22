@@ -1,0 +1,245 @@
+--------- beginning of main
+06-26 14:59:02.131 18407 18410 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000011/dl-MlkitOcrCommon.optional_260235100400.dm': No such file or directory
+06-26 14:59:02.131 18407 18410 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000011/dl-MlkitOcrCommon.optional_260235100400.dm': No such file or directory
+06-26 14:59:02.133 18407 18410 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/7D5C9405A3D81C422016C0CF22E38A12D08182E8/the.dm': No such file or directory
+06-26 14:59:02.133 18407 18410 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/7D5C9405A3D81C422016C0CF22E38A12D08182E8/the.dm': No such file or directory
+06-26 14:59:02.134 18407 18410 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000013/dl-MlkitBarcodeUi.optional_260235100400.dm': No such file or directory
+06-26 14:59:02.134 18407 18410 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000013/dl-MlkitBarcodeUi.optional_260235100400.dm': No such file or directory
+06-26 14:59:02.140 18407 18410 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/646DA7BE3AF9B756DEFD88CA7189FC9D7C55EC0F/the.dm': No such file or directory
+06-26 14:59:02.140 18407 18410 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/646DA7BE3AF9B756DEFD88CA7189FC9D7C55EC0F/the.dm': No such file or directory
+06-26 14:59:02.144 18407 18410 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/754BEC187BC4F26BBC31300F93DBF9B7506C1861/the.dm': No such file or directory
+06-26 14:59:02.144 18407 18410 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/754BEC187BC4F26BBC31300F93DBF9B7506C1861/the.dm': No such file or directory
+06-26 14:59:02.145 18407 18410 W artd    : Could not get dex checksums for location /data/app/~~VbJOtikKBlttgBEQ9Jd5pw==/com.android.vending-xW2C66DUaxBVkL_Egz9K7w==/base.apk, fd=-1
+06-26 14:59:02.146 18407 18410 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+06-26 14:59:02.146 18407 18410 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+06-26 14:59:02.745 12760 15419 I IPCThreadState: oneway function results for code 2 on binder at 0xb4000071360948c0 will be dropped but finished with status UNKNOWN_TRANSACTION
+06-26 14:59:02.745 12760 18266 I IPCThreadState: oneway function results for code 2 on binder at 0xb40000713608bb00 will be dropped but finished with status UNKNOWN_TRANSACTION
+--------- beginning of system
+06-26 14:59:02.751   540  2198 W ProcessStats: Tracking association SourceState{5cf55e6 com.moneybase.qa/10193 BTop #39904} whose proc state 2 is better than process ProcessState{b6dd94a com.google.android.gms/10123 pkg=com.google.android.gms} proc state 5 (85 skipped)
+06-26 14:59:02.755 14890 14902 I IPCThreadState: oneway function results for code 2 on binder at 0xb400007136090030 will be dropped but finished with status UNKNOWN_TRANSACTION
+06-26 14:59:02.972 13070 13070 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.time.trustedtime.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+06-26 14:59:04.400 17311 17311 D CompatibilityChangeReporter: Compat change id reported: 289878283; UID 10130; state: ENABLED
+06-26 14:59:04.402 17311 17311 I BugleDataModel: ActionExecutorImpl: ACTION_EXECUTE_QUEUED_FixupMessageStatusOnStartupAction
+06-26 14:59:04.402 17311 17311 I BugleDataModel: ActionExecutorImpl: ACTION_EXECUTE_QUEUED_ProcessPendingMessagesAction
+06-26 14:59:04.402 17311 19704 I BugleDataModel: running action FixupMessageStatusOnStartupAction
+06-26 14:59:04.405 17311 17311 I BugleDataModel: ActionExecutorImpl: ACTION_EXECUTE_QUEUED_CountryCodeDetectorAction
+06-26 14:59:04.421 17311 19704 I BugleDataModel: FixupMessageStatusOnStartupAction: sendFailedCnt: 0, downloadFailedCnt: 0, partsProcessingFailedCnt: 0
+06-26 14:59:04.421 17311 17311 I BugleDataModel: ActionExecutorImpl: ACTION_EXECUTE_QUEUED_SelfParticipantsRefreshAction
+06-26 14:59:04.429 17311 19704 I BugleDataModel: PendingMessagesProcessor process from FixupMessageStatusOnStartupAction due to process restarts throttled  with delay 0s with queues smsMessagesToSend:0 mmsMessagesToSend:0 rcsMessagesToSend:0 rcsFTMessagesToSend:0 messagesToDownload:0
+06-26 14:59:04.429 17311 19704 I BugleDataModel: Cleared next retry time for channel: sms_send 
+06-26 14:59:04.429 17311 19704 I BugleDataModel: Cleared next retry time for channel: mms_send 
+06-26 14:59:04.429 17311 19704 I BugleDataModel: Cleared next retry time for channel: mms_download 
+06-26 14:59:04.429 17311 19704 I BugleDataModel: Cleared next retry time for channel: rcs_send 
+06-26 14:59:04.429 17311 19704 I BugleDataModel: Cleared next retry time for channel: rcs_ft_upload 
+06-26 14:59:04.430 17311 19704 I BugleDataModel: Cleared next retry time for channel: rcs_ft_download 
+06-26 14:59:04.430 17311 19704 I BugleDataModel: Cleared next retry time for channel: cloud_sync_send 
+06-26 14:59:04.430 17311 19704 I BugleDataModel: Cleared next retry time for channel: cloud_sync_attachment_download 
+06-26 14:59:04.430 17311 19704 I BugleDataModel: finished running action FixupMessageStatusOnStartupAction in 28 ms
+06-26 14:59:04.431 17311 19704 I BugleDataModel: running action ProcessPendingMessagesAction
+06-26 14:59:04.433 17311 19704 I BugleDataModel: PendingMessagesProcessor process from ProcessPendingMessagesAction due to scheduled processing  with delay 0s with queues smsMessagesToSend:0 mmsMessagesToSend:0 rcsMessagesToSend:0 rcsFTMessagesToSend:0 messagesToDownload:0
+06-26 14:59:04.433 17311 19704 I BugleDataModel: finished running action ProcessPendingMessagesAction in 2 ms
+06-26 14:59:04.433 17311 19704 I BugleDataModel: running action CountryCodeDetectorAction
+06-26 14:59:04.433 17311 19704 I BugleDataModel: ActionExecutorImpl: ACTION_BACKGROUND_QUEUED_CountryCodeDetectorAction
+06-26 14:59:04.434 17311 19705 I Bugle   : CountryCodeDetector: updateSmsNetworkCountry from default subscription network country. detected country: us
+06-26 14:59:04.434 17311 19704 I BugleDataModel: finished running action CountryCodeDetectorAction in 1 ms
+06-26 14:59:04.434 17311 19705 I BugleDataModel: ActionExecutorImpl: ACTION_RESPONSE_QUEUED_CountryCodeDetectorAction
+06-26 14:59:04.434 17311 19704 I BugleDataModel: running action SelfParticipantsRefreshAction
+06-26 14:59:04.434 17311 19704 I BugleDataModel: ActionExecutorImpl: ACTION_BACKGROUND_QUEUED_SelfParticipantsRefreshAction
+06-26 14:59:04.434 17311 19704 I BugleDataModel: finished running action SelfParticipantsRefreshAction in 0 ms
+06-26 14:59:04.435 17311 19698 I BugleDataModel: ParticipantRefresh: ContactContentObserver created
+06-26 14:59:04.436 17311 19698 I BugleDataModel: ParticipantFullRefresh: Start participant refresh. refreshMode: SELF_ONLY
+06-26 14:59:04.438 17311 19698 I SubscriptionsTracker: SubscriptionsTracker#refreshSelfParticipantList([1]), with subIdToSimIdMap([])
+06-26 14:59:04.444 17311 19698 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+06-26 14:59:04.445 13070 13070 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+06-26 14:59:04.445 17311 19698 I Bugle   : SubscriptionUtils.getCanonicalForSelf: self=redacted-pii[12-chars], country=US [CONTEXT sub_id=1 ]
+06-26 14:59:04.446 17311 19698 I Bugle   : CountryCodeDetector: updateSmsNetworkCountry from default subscription network country. detected country: us
+06-26 14:59:04.448 17311 19698 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+06-26 14:59:04.450 17311 19698 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+06-26 14:59:04.450 17311 19698 I Bugle   : SubscriptionUtils.getCanonicalForSelf: self=redacted-pii[12-chars], country=US [CONTEXT sub_id=1 ]
+06-26 14:59:04.451 17311 19698 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+06-26 14:59:04.453 17311 19698 I SubscriptionsTracker: SubscriptionsTracker bindToTrackingMap bound participants: [ParticipantId=1 subId=-1, ParticipantId=2 subId=1]
+06-26 14:59:04.454 17311 19698 I SubscriptionsTracker: set orderedRowIdAndTokenPairs: [rowId=2 subId= 1 token=0b5c76eb-52eb-41e7-976c-a141b4622a2d, rowId=1 subId= -1 token=af150c9f-1477-452e-8351-0418689f8ca3]
+06-26 14:59:04.457 17311 19698 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+06-26 14:59:04.458 17311 19698 I Bugle   : SubscriptionUtils.getCanonicalForSelf: self=redacted-pii[12-chars], country=US [CONTEXT sub_id=1 ]
+06-26 14:59:04.465   540  1341 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10082; state: DISABLED
+06-26 14:59:04.465   540  1341 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10082; state: DISABLED
+06-26 14:59:04.465   540  1341 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10082; state: DISABLED
+06-26 14:59:04.465   540  1341 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10082; state: ENABLED
+06-26 14:59:04.466   540   567 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10082; state: ENABLED
+06-26 14:59:04.483   350   350 D Zygote  : Forked child process 19726
+06-26 14:59:04.484   540   567 I ActivityManager: Start proc 19726:android.process.acore/u0a82 for content provider {com.android.providers.contacts/com.android.providers.contacts.ContactsProvider2}
+06-26 14:59:04.513 19726 19726 I d.process.acore: Using CollectorTypeCC GC.
+06-26 14:59:04.527 19726 19726 E d.process.acore: Not starting debugger since process cannot load the jdwp agent.
+06-26 14:59:04.539   540  1341 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10082; state: DISABLED
+06-26 14:59:04.539   540  1341 D CompatibilityChangeReporter: Compat change id reported: 273564678; UID 10082; state: DISABLED
+06-26 14:59:04.542 19726 19726 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10082; state: ENABLED
+06-26 14:59:04.542 19726 19726 D CompatibilityChangeReporter: Compat change id reported: 242716250; UID 10082; state: ENABLED
+06-26 14:59:04.544   540   613 D CompatibilityChangeReporter: Compat change id reported: 265195908; UID 10082; state: ENABLED
+06-26 14:59:04.547   540  1341 D CompatibilityChangeReporter: Compat change id reported: 170503758; UID 10082; state: ENABLED
+06-26 14:59:04.554 19726 19726 D nativeloader: Configuring clns-shared-6 for other apk /system/priv-app/ContactsProvider/ContactsProvider.apk. target_sdk_version=34, uses_libraries=, library_path=/system/priv-app/ContactsProvider/lib/arm64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.android.providers.contacts:/system/priv-app/ContactsProvider:/system/lib64:/system_ext/lib64
+06-26 14:59:04.587 19726 19726 V GraphicsEnvironment: Currently set values for:
+06-26 14:59:04.587 19726 19726 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+06-26 14:59:04.587 19726 19726 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+06-26 14:59:04.587 19726 19726 V GraphicsEnvironment: ANGLE GameManagerService for com.android.providers.contacts: false
+06-26 14:59:04.588 19726 19726 V GraphicsEnvironment: com.android.providers.contacts is not listed in per-application setting
+06-26 14:59:04.588 19726 19726 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+06-26 14:59:04.593 19726 19726 D nativeloader: Configuring clns-shared-7 for other apk /system/priv-app/UserDictionaryProvider/UserDictionaryProvider.apk. target_sdk_version=34, uses_libraries=, library_path=/system/priv-app/UserDictionaryProvider/lib/arm64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.android.providers.userdictionary:/system/priv-app/UserDictionaryProvider:/system/lib64:/system_ext/lib64
+06-26 14:59:04.603 19726 19726 D nativeloader: Configuring clns-shared-8 for other apk /system/priv-app/BlockedNumberProvider/BlockedNumberProvider.apk. target_sdk_version=34, uses_libraries=, library_path=/system/priv-app/BlockedNumberProvider/lib/arm64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user_de/0/com.android.providers.blockednumber:/system/priv-app/BlockedNumberProvider:/system/lib64:/system_ext/lib64
+06-26 14:59:04.604 19726 19726 I ContactsPerf: VoicemailContentProvider.onCreate start
+06-26 14:59:04.608   540  2198 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 10082; state: ENABLED
+06-26 14:59:04.608 19726 19726 I ContactsPerf: VoicemailContentProvider.onCreate finish
+06-26 14:59:04.614 19726 19746 I PhoneAccountHandleMigrationUtils_CallLogDatabaseHelper: updatePhoneAccountHandleMigrationPendingStatus false
+06-26 14:59:04.615 19726 19746 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10082; state: ENABLED
+06-26 14:59:04.616 19726 19748 I PhoneAccountHandleMigrationUtils_CallLogDatabaseHelper: updatePhoneAccountHandleMigrationPendingStatus false
+06-26 14:59:04.632   540  1341 D CountryDetector: The first listener is added
+06-26 14:59:04.632 19726 19726 I ContactsDatabaseHelper: updateUseStrictPhoneNumberComparison: US
+06-26 14:59:04.635 19726 19726 D CompatibilityChangeReporter: Compat change id reported: 3400644; UID 10082; state: ENABLED
+06-26 14:59:04.640   540  2205 I ActivityManager: Flag disabled. Ignoring finishAttachApplication from uid: 10082. pid: 19726
+06-26 14:59:04.642 19726 19746 I CallLogProvider: Syncing call composer pics -- source user=0, isShadow=true, forAllUser=false
+06-26 14:59:04.642 19726 19746 I CallLogProvider: Fetching list of Uris to sync
+06-26 14:59:04.642 19726 19726 I ContactsDatabaseHelper: updateUseStrictPhoneNumberComparison: US
+06-26 14:59:04.645 19726 19746 I CallLogProvider: Will sync following Uris:[]
+06-26 14:59:04.645 19726 19746 I CallLogProvider: Syncing call composer pics -- got []
+06-26 14:59:04.650 19726 19750 D ContactsDatabaseHelper: WAL enabled for contacts2.db: true
+06-26 14:59:04.655 19726 19750 I PhoneAccountHandleMigrationUtils_ContactsDatabaseHelper: updatePhoneAccountHandleMigrationPendingStatus false
+06-26 14:59:04.693 19726 19750 I ContactLocale: AddressBook Labels [[en_US]]: […, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Α, Β, Γ, Δ, Ε, Ζ, Η, Θ, Ι, Κ, Λ, Μ, Ν, Ξ, Ο, Π, Ρ, Σ, Τ, Υ, Φ, Χ, Ψ, Ω, …, А, Б, В, Г, Д, Ђ, Е, Є, Ж, З, И, І, Й, Ј, К, Л, Љ, М, Н, Њ, О, П, Р, С, Т, Ћ, У, Ф, Х, Ц, Ч, Џ, Ш, Щ, Ю, Я, …, א, ב, ג, ד, ה, ו, ז, ח, ט, י, כ, ל, מ, נ, ס, ע, פ, צ, ק, ר, ש, ת, …, ا, ب, ت, ث, ج, ح, خ, د, ذ, ر, ز, س, ش, ص, ض, ط, ظ, ع, غ, ف, ق, ك, ل, م, ن, ه, و, ي, …, ก, ข, ฃ, ค, ฅ, ฆ, ง, จ, ฉ, ช, ซ, ฌ, ญ, ฎ, ฏ, ฐ, ฑ, ฒ, ณ, ด, ต, ถ, ท, ธ, น, บ, ป, ผ, ฝ, พ, ฟ, ภ, ม, ย, ร, ฤ, ล, ฦ, ว, ศ, ษ, ส, ห, ฬ, อ, ฮ, …, ㄱ, ㄴ, ㄷ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ, ㅈ, ㅊ, ㅋ, ㅌ, ㅍ, ㅎ, …, あ, か, さ, た, な, は, ま, や, ら, わ, #, …]
+06-26 14:59:04.699 19726 19750 D ContactsDatabaseHelper: WAL enabled for profile.db: false
+06-26 14:59:04.722 17311 19705 I BugleSelfIdentity: Active SelfIdentities [SelfIdentity{id:2, subIds: [1]}]
+06-26 14:59:04.732 17311 19698 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+06-26 14:59:04.732 17311 19698 I Bugle   : SubscriptionUtils.getCanonicalForSelf: self=redacted-pii[12-chars], country=US [CONTEXT sub_id=1 ]
+06-26 14:59:04.737 19726 19750 V ContactsProvider: 0 Dangling Contacts have been cleaned up.
+06-26 14:59:04.743 17311 19698 I BugleDataModel: ParticipantFullRefresh: Number of participants refreshed: 0
+06-26 14:59:04.743 17311 19698 I BugleDataModel: ActionExecutorImpl: ACTION_RESPONSE_QUEUED_SelfParticipantsRefreshAction
+06-26 14:59:04.748   540  2205 I ActivityManager: Killing 13150:com.google.android.apps.photos/u0a153 (adj 945): empty #17
+06-26 14:59:04.755 17311 17341 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+06-26 14:59:04.755 17311 17341 I Bugle   : SubscriptionUtils.getCanonicalForSelf: self=redacted-pii[12-chars], country=US [CONTEXT sub_id=1 ]
+06-26 14:59:04.759 17311 17341 I BugleSelfIdentity: Phone number for MyIdentity 0b5c76eb-52eb-41e7-976c-a141b4622a2d does not change [CONTEXT sub_id=1 icc_id="redacted-pii[20-chars]" messaging_identity="redacted-pii[12-chars]" rcs_provisioning_id="redacted-pii[0-chars]" ]
+06-26 14:59:04.760   540   568 I libprocessgroup: Successfully killed process cgroup uid 10153 pid 13150 in 5ms
+06-26 14:59:04.762 17311 17341 I ForwardSyncCache: reclaimMemory: Clearing caches
+06-26 14:59:04.763 17311 17341 I BugleSpam: HadesBitmapStore: Purged 0 images during memory reclamation
+06-26 14:59:04.763 17311 17341 I BugleRestore: reclaimMemory: Clearing persistent caches
+06-26 14:59:04.763 17311 17341 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+06-26 14:59:04.769 17311 17358 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+06-26 14:59:04.770 17311 17358 I Bugle   : SubscriptionUtils.getCanonicalForSelf: self=redacted-pii[12-chars], country=US [CONTEXT sub_id=1 ]
+06-26 14:59:04.771 17311 17358 I BugleSelfIdentity: Phone number for MyIdentity 0b5c76eb-52eb-41e7-976c-a141b4622a2d does not change [CONTEXT sub_id=1 icc_id="redacted-pii[20-chars]" messaging_identity="redacted-pii[12-chars]" rcs_provisioning_id="redacted-pii[0-chars]" ]
+06-26 14:59:04.779 17311 17332 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[12-chars] [CONTEXT sub_id=1 ]
+06-26 14:59:04.779 17311 17332 I Bugle   : SubscriptionUtils.getCanonicalForSelf: self=redacted-pii[12-chars], country=US [CONTEXT sub_id=1 ]
+06-26 14:59:04.783 17311 17332 I BugleSelfIdentity: Phone number for MyIdentity 0b5c76eb-52eb-41e7-976c-a141b4622a2d does not change [CONTEXT sub_id=1 icc_id="redacted-pii[20-chars]" messaging_identity="redacted-pii[12-chars]" rcs_provisioning_id="redacted-pii[0-chars]" ]
+06-26 14:59:04.818   350   350 I Zygote  : Process 13150 exited due to signal 9 (Killed)
+06-26 14:59:04.819   540   681 D ConnectivityService: releasing NetworkRequest [ REQUEST id=591, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10153 RequestorUid: 10153 RequestorPkg: com.google.android.apps.photos UnderlyingNetworks: Null] ] (release request)
+06-26 14:59:04.823   540  1341 I ActivityManager: Killing 13222:com.google.android.gm/u0a154 (adj 985): empty #17
+06-26 14:59:04.823   540   557 D DisplayManagerService: Drop pending events for gone uid 10153
+06-26 14:59:04.835   540   568 I libprocessgroup: Successfully killed process cgroup uid 10154 pid 13222 in 11ms
+06-26 14:59:04.862 13070 19638 I NetworkScheduler.Stats: (REDACTED) Task %s/%s started execution. cause:%s exec_start_elapsed_seconds: %s
+06-26 14:59:04.875 13070 19689 I NetworkScheduler.Stats: (REDACTED) Task %s/%s finished executing. cause:%s result: %s elapsed_millis: %s uptime_millis: %s exec_start_elapsed_seconds: %s
+06-26 14:59:04.892   540   557 D DisplayManagerService: Drop pending events for gone uid 10154
+06-26 14:59:04.893 13070 13070 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.aang.events.services.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+06-26 14:59:04.893   350   350 I Zygote  : Process 13222 exited due to signal 9 (Killed)
+06-26 14:59:05.288 17311 17311 I BugleDataModel: ActionExecutorImpl: ACTION_EXECUTE_QUEUED_GenericWorkerQueueAction
+06-26 14:59:05.289 17311 19698 I BugleDataModel: running action GenericWorkerQueueAction
+06-26 14:59:05.290 17311 19698 I BugleDataModel: ActionExecutorImpl: ACTION_BACKGROUND_QUEUED_GenericWorkerQueueAction
+06-26 14:59:05.291 17311 19698 I BugleDataModel: finished running action GenericWorkerQueueAction in 2 ms
+06-26 14:59:05.295 17311 19705 I BugleJobs: GenericWorkerQueueAction: Bailing early, no work found, no failed work found
+06-26 14:59:05.296 17311 19705 I BugleDataModel: ActionExecutorImpl: ACTION_RESPONSE_QUEUED_GenericWorkerQueueAction
+06-26 14:59:05.314 17311 17332 I ForwardSyncCache: reclaimMemory: Clearing caches
+06-26 14:59:05.314 17311 17332 I BugleSpam: HadesBitmapStore: Purged 0 images during memory reclamation
+06-26 14:59:05.314 17311 17332 I BugleRestore: reclaimMemory: Clearing persistent caches
+06-26 14:59:05.314 17311 17332 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+06-26 14:59:06.399   763   763 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+06-26 14:59:07.354   763   763 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+06-26 14:59:07.363   763   837 D EGL_emulation: app_time_stats: avg=7266.45ms min=7266.45ms max=7266.45ms count=1
+06-26 14:59:08.792 12760 12956 E elgs    : (REDACTED) Trace %s timed out after %d ms. Complete trace: %s
+06-26 14:59:08.792 12760 12956 E elgs    : elic: 
+06-26 14:59:08.792 12760 12956 E elgs    : 	at tk_trace.Write TimeTriggerStore(Started After:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 	at tk_trace.Update TimeTriggerStore(Started After:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 	at tk_trace.handleBroadcast(Started After:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 	at tk_trace.Broadcast to com.google.android.libraries.assistant.contexttrigger.impl.ContextTriggerBroadcastReceiver_Receiver TIME TRIGGER ALLOW IDLE ACTION(Started After:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 	Suppressed: elib: 
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.GET_FILE_GROUP_FINISHED(unfinished)(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.handleBroadcast 10 ms(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.Broadcast to com.google.android.libraries.assistant.contexttrigger.impl.ContextTriggerBroadcastReceiver_Receiver TIME TRIGGER ALLOW IDLE ACTION 0 ms(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 	Suppressed: elib: 
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.GET_FILE_GROUP_START(unfinished)(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.handleBroadcast 10 ms(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.Broadcast to com.google.android.libraries.assistant.contexttrigger.impl.ContextTriggerBroadcastReceiver_Receiver TIME TRIGGER ALLOW IDLE ACTION 0 ms(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 	Suppressed: elib: 
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.ADD_FILE_GROUP_FINISHED(unfinished)(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.handleBroadcast 10 ms(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.Broadcast to com.google.android.libraries.assistant.contexttrigger.impl.ContextTriggerBroadcastReceiver_Receiver TIME TRIGGER ALLOW IDLE ACTION 0 ms(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 	Suppressed: elib: 
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.ADD_FILE_GROUP_START(unfinished)(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.handleBroadcast 10 ms(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.Broadcast to com.google.android.libraries.assistant.contexttrigger.impl.ContextTriggerBroadcastReceiver_Receiver TIME TRIGGER ALLOW IDLE ACTION 0 ms(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 	Suppressed: elib: 
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.GET_FILE_GROUP_FINISHED(unfinished)(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.handleBroadcast 10 ms(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.Broadcast to com.google.android.libraries.assistant.contexttrigger.impl.ContextTriggerBroadcastReceiver_Receiver TIME TRIGGER ALLOW IDLE ACTION 0 ms(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 	Suppressed: elib: 
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.GET_FILE_GROUP_START(unfinished)(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.handleBroadcast 10 ms(Unknown Source:0)
+06-26 14:59:08.792 12760 12956 E elgs    : 		at tk_trace.Broadcast to com.google.android.libraries.assistant.contexttrigger.impl.ContextTriggerBroadcastReceiver_Receiver TIME TRIGGER ALLOW IDLE ACTION 0 ms(Unknown Source:0)
+06-26 14:59:09.094 17311 17357 E TraceManagerImpl: Trace BuglePhoneApplicationBase#attatchBaseContext timed out after 5689638 ms. Complete trace: # feod@c60183a1
+06-26 14:59:09.094 17311 17357 E TraceManagerImpl: feok: 
+06-26 14:59:09.094 17311 17357 E TraceManagerImpl: 	at tk_trace.TelephonySatelliteReporter#reportNtnSmsSupport(Started After:1)
+06-26 14:59:09.094 17311 17357 E TraceManagerImpl: 	at tk_trace.PhenotypeHelper#onBuglePhenotypeChanged(Started After:0)
+06-26 14:59:09.094 17311 17357 E TraceManagerImpl: 	at tk_trace.PhenotypeHelper#registerPhenotype(Started After:0)
+06-26 14:59:09.094 17311 17357 E TraceManagerImpl: 	at tk_trace.PhoneAsyncAppCreateStartupTask(Started After:0)
+06-26 14:59:09.094 17311 17357 E TraceManagerImpl: 	at tk_trace.StartupHandlerImpl#onApplicationCreatedInternal(Started After:0)
+06-26 14:59:09.094 17311 17357 E TraceManagerImpl: 	at tk_trace.StartupHandlerImpl#onApplicationCreated(Started After:0)
+06-26 14:59:09.094 17311 17357 E TraceManagerImpl: 	at tk_trace.Application.onCreate(Started After:0)
+06-26 14:59:09.094 17311 17357 E TraceManagerImpl: 	at tk_trace.Application creation(Started After:0)
+06-26 14:59:09.094 17311 17357 E TraceManagerImpl: 	at tk_trace.BuglePhoneApplicationBase#attatchBaseContext(Started After:0)
+06-26 14:59:09.103 17311 17361 E TraceManagerImpl: Trace WorkQueueWorkerShim#startWork timed out after 5688485 ms. Complete trace: # feod@c0142344
+06-26 14:59:09.103 17311 17361 E TraceManagerImpl: feok: 
+06-26 14:59:09.103 17311 17361 E TraceManagerImpl: 	at tk_trace.DatabaseWrapperImpl.inTransactionDeferredRunnableList(Started After:0)
+06-26 14:59:09.103 17311 17361 E TraceManagerImpl: 	at tk_trace.WorkQueueWorkerImpl.startWork(Started After:0)
+06-26 14:59:09.103 17311 17361 E TraceManagerImpl: 	at tk_trace.WorkQueueWorkerShim#startWork(Started After:0)
+06-26 14:59:12.065 18407 18410 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-MlkitBarcodeUi.optional_231818100000.dm': No such file or directory
+06-26 14:59:12.065 18407 18410 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-MlkitBarcodeUi.optional_231818100000.dm': No such file or directory
+06-26 14:59:12.067 18407 18410 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000c/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+06-26 14:59:12.067 18407 18410 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000c/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+06-26 14:59:12.067 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+06-26 14:59:12.067 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+06-26 14:59:12.068 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+06-26 14:59:12.068 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+06-26 14:59:12.068 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+06-26 14:59:12.068 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+06-26 14:59:12.069 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000034/dl-TfliteDynamiteDynamite.integ_260580502100400.dm': No such file or directory
+06-26 14:59:12.069 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000034/dl-TfliteDynamiteDynamite.integ_260580502100400.dm': No such file or directory
+06-26 14:59:12.071 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000010/dl-VisionOcr.optional_260235100000.dm': No such file or directory
+06-26 14:59:12.071 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000010/dl-VisionOcr.optional_260235100000.dm': No such file or directory
+06-26 14:59:12.074 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000b/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+06-26 14:59:12.074 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000b/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+06-26 14:59:12.075 18407 18411 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/DD26CFCA40A2391A1E3626BBAF83BD500298C9F7/the.dm': No such file or directory
+06-26 14:59:12.075 18407 18411 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/DD26CFCA40A2391A1E3626BBAF83BD500298C9F7/the.dm': No such file or directory
+06-26 14:59:12.075 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+06-26 14:59:12.075 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+06-26 14:59:12.077 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000016/dl-PlayCloudSearch.optional_260235100000.dm': No such file or directory
+06-26 14:59:12.077 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000016/dl-PlayCloudSearch.optional_260235100000.dm': No such file or directory
+06-26 14:59:12.078 18407 18411 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/9B790551AEA6F45286C19831BDC04308DF1AFF9F/the.dm': No such file or directory
+06-26 14:59:12.078 18407 18411 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/9B790551AEA6F45286C19831BDC04308DF1AFF9F/the.dm': No such file or directory
+06-26 14:59:12.079 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000015/dl-Appsearch.optional_260235100400.dm': No such file or directory
+06-26 14:59:12.079 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000015/dl-Appsearch.optional_260235100400.dm': No such file or directory
+06-26 14:59:12.081 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000011/dl-MlkitOcrCommon.optional_260235100400.dm': No such file or directory
+06-26 14:59:12.081 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000011/dl-MlkitOcrCommon.optional_260235100400.dm': No such file or directory
+06-26 14:59:12.082 18407 18411 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/7D5C9405A3D81C422016C0CF22E38A12D08182E8/the.dm': No such file or directory
+06-26 14:59:12.082 18407 18411 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/7D5C9405A3D81C422016C0CF22E38A12D08182E8/the.dm': No such file or directory
+06-26 14:59:12.084 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000013/dl-MlkitBarcodeUi.optional_260235100400.dm': No such file or directory
+06-26 14:59:12.084 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000013/dl-MlkitBarcodeUi.optional_260235100400.dm': No such file or directory
+06-26 14:59:12.085 18407 18411 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/646DA7BE3AF9B756DEFD88CA7189FC9D7C55EC0F/the.dm': No such file or directory
+06-26 14:59:12.085 18407 18411 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/646DA7BE3AF9B756DEFD88CA7189FC9D7C55EC0F/the.dm': No such file or directory
+06-26 14:59:12.089 18407 18411 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/754BEC187BC4F26BBC31300F93DBF9B7506C1861/the.dm': No such file or directory
+06-26 14:59:12.089 18407 18411 W ziparchive: Unable to open '/data/user/0/com.google.android.gms/app_dg_cache/754BEC187BC4F26BBC31300F93DBF9B7506C1861/the.dm': No such file or directory
+06-26 14:59:12.090 18407 18411 W artd    : Could not get dex checksums for location /data/app/~~VbJOtikKBlttgBEQ9Jd5pw==/com.android.vending-xW2C66DUaxBVkL_Egz9K7w==/base.apk, fd=-1
+06-26 14:59:12.094 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+06-26 14:59:12.094 18407 18411 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+06-26 14:59:12.796   540   620 D ActivityManager: freezing 12760 com.google.android.googlequicksearchbox:search
+06-26 14:59:12.799   540   620 D ActivityManager: freezing 14890 com.google.android.googlequicksearchbox:googleapp
+06-26 14:59:13.839  1448  1448 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.service.START pkg=com.google.android.gms }
+06-26 14:59:13.840   540  2203 W ProcessStats: Tracking association SourceState{5cf55e6 com.moneybase.qa/10193 BTop #39945} whose proc state 2 is better than process ProcessState{b6dd94a com.google.android.gms/10123 pkg=com.google.android.gms} proc state 5 (36 skipped)
+06-26 14:59:13.983  1448  1448 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.notifications.capping.api.NotificationsCappingApiService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+06-26 14:59:14.753   540   620 D ActivityManager: freezing 13426 com.google.process.gservices
+06-26 14:59:14.755 19726 19753 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10082; state: ENABLED
+06-26 14:59:14.825   540   620 D ActivityManager: freezing 14559 com.google.process.gapps
+06-26 14:59:14.904  1448  1448 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.mobstore.service.START pkg=com.google.android.gms }
+06-26 14:59:15.302   540   620 D ActivityManager: freezing 17311 com.google.android.apps.messaging

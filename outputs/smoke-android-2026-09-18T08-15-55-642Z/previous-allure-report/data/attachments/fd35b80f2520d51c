@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppiumAUT>
+  <XCUIElementTypeApplication type="XCUIElementTypeApplication" name="moneybase stg" label="moneybase stg" enabled="true" visible="true" accessible="false" x="0" y="0" width="402" height="874" index="0" traits="" processId="61275" bundleId="com.moneybase.quality">
+    <XCUIElementTypeWindow type="XCUIElementTypeWindow" enabled="true" visible="true" accessible="false" x="0" y="0" width="402" height="874" index="0" traits="">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="0" width="402" height="874" index="0" traits="">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="0" width="402" height="874" index="0" traits=""/>
+      </XCUIElementTypeOther>
+      <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="402" height="874" index="1" traits="">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="402" height="874" index="0" traits="">
+          <XCUIElementTypeNavigationBar type="XCUIElementTypeNavigationBar" name="moneybase.ApplePayCreateCardView" enabled="true" visible="true" accessible="false" x="0" y="62" width="402" height="54" index="0" traits="">
+            <XCUIElementTypeButton type="XCUIElementTypeButton" name="applePayProposal_button_close" label="close" enabled="true" visible="true" accessible="true" x="346" y="66" width="36" height="36" index="0" traits="Button"/>
+          </XCUIElementTypeNavigationBar>
+          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="402" height="874" index="1" traits="">
+            <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="402" height="874" index="0" traits="">
+              <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="0" y="0" width="402" height="874" index="0" traits="">
+                <XCUIElementTypeImage type="XCUIElementTypeImage" name="apple_pay_cards" enabled="true" visible="true" accessible="false" x="54" y="146" width="294" height="276" index="0" traits="Image"/>
+                <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" accessible="false" x="30" y="462" width="342" height="114" index="1" traits="">
+                  <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Create a Card to add to your Apple Wallet" name="Create a Card to add to your Apple Wallet" label="Create a Card to add to your Apple Wallet" enabled="true" visible="true" accessible="true" x="30" y="462" width="342" height="58" index="0" traits="StaticText"/>
+                  <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Pay with Apple Pay by adding your Moneybase cards to Apple Wallet." name="Pay with Apple Pay by adding your Moneybase cards to Apple Wallet." label="Pay with Apple Pay by adding your Moneybase cards to Apple Wallet." enabled="true" visible="true" accessible="true" x="30" y="533" width="342" height="43" index="1" traits="StaticText"/>
+                </XCUIElementTypeOther>
+                <XCUIElementTypeImage type="XCUIElementTypeImage" name="apple_pay_mark" enabled="true" visible="true" accessible="false" x="165" y="595" width="72" height="43" index="2" traits="Image"/>
+                <XCUIElementTypeButton type="XCUIElementTypeButton" name="Get Started" label="Get Started" enabled="true" visible="true" accessible="true" x="16" y="770" width="370" height="50" index="3" traits="Button">
+                  <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Get Started" name="Get Started" label="Get Started" enabled="true" visible="true" accessible="false" x="155" y="784" width="92" height="21" index="0" traits="StaticText"/>
+                </XCUIElementTypeButton>
+              </XCUIElementTypeOther>
+            </XCUIElementTypeOther>
+          </XCUIElementTypeOther>
+          <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="0" width="402" height="874" index="2" traits="">
+            <XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" accessible="false" x="0" y="0" width="402" height="874" index="0" traits=""/>
+          </XCUIElementTypeOther>
+        </XCUIElementTypeOther>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeWindow>
+  </XCUIElementTypeApplication>
+</AppiumAUT>

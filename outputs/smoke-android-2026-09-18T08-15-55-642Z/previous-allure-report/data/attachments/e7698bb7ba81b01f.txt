@@ -1,0 +1,202 @@
+--------- beginning of main
+05-11 16:52:30.600  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:52:30.600  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:52:30.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:52:31.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507551
+05-11 16:52:31.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:52:31.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:52:31.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641792
+05-11 16:52:31.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641786
+05-11 16:52:31.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:52:31.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:52:31.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:52:31.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:52:31.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+--------- beginning of system
+05-11 16:52:31.737 16341 16341 I wpa_supplicant: Heartbeat 4689
+05-11 16:52:32.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507552
+05-11 16:52:32.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:52:32.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:52:32.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641792
+05-11 16:52:32.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641786
+05-11 16:52:32.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:52:32.601  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:52:32.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:52:32.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:52:32.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:52:32.844  2410  2957 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+05-11 16:52:32.868   727   727 D io_stats: !@   8,0 r 58686577 1209969426 w 18178604 341060904 d 5299417 367772504 f 0 1870177 iot 28526120 0 th 0 0 0 pt 0 inp 0 0 415958.261
+05-11 16:52:32.868   727   727 D io_stats: !@ Write_top(KB): kworker/u16:4(12773) 140 appmanager:auth(22332) 24
+05-11 16:52:33.000  1760  1839 D MARsPolicyManager: triggerAction called!
+05-11 16:52:33.000  1760  1839 I NSLocationMonitor: getGPSUsingApps() called
+05-11 16:52:33.002  3222  3249 I NSLocationManager_FLP: getGPSUsingApps, No change
+05-11 16:52:33.532  1483  1483 I SurfaceFlinger: SFWD update time=415958925390970
+05-11 16:52:33.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507553
+05-11 16:52:33.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:52:33.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:52:33.601  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641792
+05-11 16:52:33.601  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641786
+05-11 16:52:33.601  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:52:33.601  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:52:33.601  1477  1492 E HeatmapThread: !@Entered the read from path function
+05-11 16:52:33.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/extended_heatmap', errno = 13
+05-11 16:52:33.601  1477  1492 E HeatmapThread: !@Extended_heatmap efs Forced Reset
+05-11 16:52:33.602  1477  1492 E HeatmapThread: !@Read Extended_heatmap from efs is: 
+05-11 16:52:33.602  1477  1492 E HeatmapThread: !@Write Extended Heatmap to efs is: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+05-11 16:52:33.602  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/extended_heatmap', errno = 13
+05-11 16:52:33.603  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:52:33.603  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:52:33.603  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:52:34.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507554
+05-11 16:52:34.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:52:34.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:52:34.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641792
+05-11 16:52:34.601  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641786
+05-11 16:52:34.601  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:52:34.601  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:52:34.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:52:34.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:52:34.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:52:34.869   727   727 D io_stats: !@   8,0 r 58686577 1209969426 w 18178612 341060928 d 5299417 367772504 f 0 1870179 iot 28526132 0 th 0 0 0 pt 0 inp 0 0 415960.262
+05-11 16:52:35.599  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507555
+05-11 16:52:35.599  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:52:35.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:52:35.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641792
+05-11 16:52:35.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641786
+05-11 16:52:35.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:52:35.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:52:35.600  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:52:35.600  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:52:35.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:52:36.307  4516  5373 I SDHMS:x : SIOP:: AP:300 BAT:290 USB:276 CHG:299 PA:304 CP:300 WIFI:299 BLK:0 SUBBAT:0 LRPTHM:294 SKIN:292 SKINF:290 SKINB:292 LRP:292 LRP2:292 LRF2:290 LRB2:292 AP2:292 CHG2:285 MEM2:292 WIFI2:292 SPK2:272 VAP02:306 VWIFI:308 AVGCUR:2 AVGSYS:198 POWER:8
+05-11 16:52:36.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507556
+05-11 16:52:36.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:52:36.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:52:36.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641792
+05-11 16:52:36.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641786
+05-11 16:52:36.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:52:36.601  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:52:36.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:52:36.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:52:36.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:52:36.870   727   727 D io_stats: !@   8,0 r 58686577 1209969426 w 18178617 341061212 d 5299417 367772504 f 0 1870179 iot 28526140 0 th 0 0 0 pt 0 inp 0 0 415962.263
+05-11 16:52:36.871   727   727 D io_stats: !@ Write_top(KB): kworker/u16:4(12773) 284 soft.appmanager(10927) 16
+05-11 16:52:37.326  1379  1396 E BatteryDump: !@new_battery_dump : 4334,15,1800,2054,100,288,276,298,288,0,294,282,0,Full,NO_CHARGING,None,Good,PDIC,0,Normal,0,0,9180,0x10000,0x10000,0x0,0,0,0000,0000,ffff0700,0,0,0,0,604,4333,9982,990,0,
+05-11 16:52:37.333  1379  1379 I android.hardware.health@2.1-service-samsung: updateLrpSysfs: write: 292
+05-11 16:52:37.335  1760  1908 D BatteryService: [processValuesLocked]batteryLevel:100 ,LastbatteryLevel:100 ,mPlugType:2 ,batteryStatus:5
+05-11 16:52:37.335  1760  1908 D BatteryService: [countBatteryChangedConditions]mBatteryChangedConditionCounts:[109, 17, 1, 2107, 98, 2019, 1318, 0, 0, 105, 97, 0, 0, 0, 0, 11, 477, 100, 0, 0, 0, 1]
+05-11 16:52:37.336  1760  1908 D BatteryService: Sending ACTION_BATTERY_CHANGED: level:100, status:5, health:2, remain:0, ac:false, usb:true, wireless:false, pogo:false, misc:0x10000, charge_type:1, charger_type:0, voltage:4334, temperature:288, online:19, charging_status:0, cycle_count:0, current_avg:1, ps:false, hvc:false, current_event:0x10000, mcc:0, mcv:0, cc:4195000, present:true, scale:100, technology:Li-ion, protection:0
+05-11 16:52:37.339  1760  1908 D [SS]BattUtils: [readNode]path:/efs/FactoryApp/bsoh ,value:99
+05-11 16:52:37.353  1760  2313 I DeviceBatteryInfoService: action: android.intent.action.BATTERY_CHANGED
+05-11 16:52:37.365  1760  2313 I DeviceBatteryInfoService: phone battery level: 100
+05-11 16:52:37.365  1760  2313 I DeviceBatteryInfoService: phone battery status: 5
+05-11 16:52:37.367  1760  2171 D MotionRecognitionService: [SAR]  onReceive : ACTION_BATTERY_CHANGED, Plugged: 2
+05-11 16:52:37.368  1760  1760 D AdaptiveBrightnessLongtermModelBuilder[0]: Received android.intent.action.BATTERY_CHANGED
+05-11 16:52:37.374  2431  2431 I PowerUI : mBootCompleted = true |  mFullyConnected = true
+05-11 16:52:37.374  2431  2431 I PowerUI : BATTERY_HEALTH_CHECK / batteryHealth : 2 / wirelessOverheat : false
+05-11 16:52:37.375  2431  2431 D PowerUI : Skip charging animation - by Plug reason
+05-11 16:52:37.375  2431  2431 D PowerUI : Skip charging sound & vibrate - by Plug reason
+05-11 16:52:37.375  2431  2431 D PowerUI : oldMisalign : false, curMisalign : false
+05-11 16:52:37.375  2431 13644 D PowerUI.Notification: updateNotification mWarning = false mPlaySound = false
+05-11 16:52:37.383  2431  2431 D KeyguardUpdateMonitor: handleBatteryUpdate
+05-11 16:52:37.385  2431  2431 D SamsungBatteryMeterDrawable: onBatteryLevelChanged isSomethingChanged: false
+05-11 16:52:37.386  2431  2431 D SamsungBatteryMeterDrawable: onBatteryLevelChanged isSomethingChanged: false
+05-11 16:52:37.389  2431  2431 D SamsungBatteryMeterDrawable: onBatteryLevelChanged isSomethingChanged: false
+05-11 16:52:37.392  2410  2410 D SemBigDataInfoController: Intent: android.intent.action.BATTERY_CHANGED
+05-11 16:52:37.393  2410  2410 D SemBigDataInfoController: Intent: android.intent.action.BATTERY_CHANGED
+05-11 16:52:37.394  2431  2431 D SamsungBatteryMeterDrawable: onBatteryLevelChanged isSomethingChanged: false
+05-11 16:52:37.395  2431  2431 I AODBatteryManager: updateBatteryData: ACTION_BATTERY_CHANGED: true, isSleepModeChanged:false ,isRemainingTimeChanged: false, isUSBRestriction: false
+05-11 16:52:37.395  2431  2431 I AODBatteryManager: getChargeEstimateTime: not charging
+05-11 16:52:37.395  2431  2431 I AODBatteryManager: saveBatteryData : AOD BatteryData [mBatteryLevel=100, mBatteryStatus=FULL, mBatteryPlugType=USB, mBatteryPlugged=true, mRemainingChargeTime=0, mBatteryChargingType=0, mBatteryChargerType=NORMAL, mBatteryOnline=NOT_DEFINED, mBatterySwellingMode=NONE, mBatteryProtectMode=false, mBatteryProtectModeType=0, mSleepChargingEvent=null, mSleepChargingEventFinishTime=null, mBatteryHealth=2, mIsDirectPowerMode=false, mIsUsbRestriction=false]
+05-11 16:52:37.412  2431  2431 I SecKeyguardClockPositionAlgorithm: prepareClockContainerHeightChanging:
+05-11 16:52:37.413  2431  2431 I PluginFaceWidgetManager: isEditMode = false
+05-11 16:52:37.414  2431  2431 I NowBarItemManager: getVisibleList isScreenTurnedOn = false / aodShowState false shouldControlScreenOff false visibleList size = 0
+05-11 16:52:37.417  2431  2431 I SecKeyguardClockPositionAlgorithm: prepareClockContainerHeightChanging:
+05-11 16:52:37.418  2431  2431 I PluginFaceWidgetManager: isEditMode = false
+05-11 16:52:37.418  2431  2431 I NowBarItemManager: getVisibleList isScreenTurnedOn = false / aodShowState false shouldControlScreenOff false visibleList size = 0
+05-11 16:52:37.420  2431  2431 W View    : requestLayout() improperly called by com.android.systemui.qs.SecQSGradationDrawableView{4da3418 V.E...... ......I. 0,0-1080,310 #7f0a0a16 app:id/qs_gradation_view} during layout: running second layout pass
+05-11 16:52:37.420  2431  2431 W View    : requestLayout() improperly called by android.widget.FrameLayout{f57ae71 V.E...... ......I. 0,0-1080,2340 #2} during layout: running second layout pass
+05-11 16:52:37.420  2431  2431 W View    : requestLayout() improperly called by android.widget.FrameLayout{be1e456 V.E...... ......I. 0,143-1080,2214 #7f0a0a14 app:id/qs_frame} during layout: running second layout pass
+05-11 16:52:37.423  2431  2431 I SecKeyguardClockPositionAlgorithm: prepareClockContainerHeightChanging:
+05-11 16:52:37.424  2431  2431 I PluginFaceWidgetManager: isEditMode = false
+05-11 16:52:37.425  2431  2431 I NowBarItemManager: getVisibleList isScreenTurnedOn = false / aodShowState false shouldControlScreenOff false visibleList size = 0
+05-11 16:52:37.428  2431  2431 I SecKeyguardClockPositionAlgorithm: prepareClockContainerHeightChanging:
+05-11 16:52:37.429  2431  2431 I PluginFaceWidgetManager: isEditMode = false
+05-11 16:52:37.429  2431  2431 I NowBarItemManager: getVisibleList isScreenTurnedOn = false / aodShowState false shouldControlScreenOff false visibleList size = 0
+05-11 16:52:37.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507557
+05-11 16:52:37.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:52:37.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:52:37.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641792
+05-11 16:52:37.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641786
+05-11 16:52:37.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:52:37.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:52:37.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:52:37.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:52:37.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:52:37.860  1760  1895 I BatteryService_BatteryPropertiesRegistrar: [getProperty]id:4
+05-11 16:52:37.860  1760  1895 I BatteryService_BatteryPropertiesRegistrar: [getProperty]prop.long:-9223372036854775808 ,prop.string:null
+05-11 16:52:37.863  1760  1895 I BatteryService_BatteryPropertiesRegistrar: [getProperty]id:1
+05-11 16:52:37.863  1760  1895 I BatteryService_BatteryPropertiesRegistrar: [getProperty]prop.long:-9223372036854775808 ,prop.string:null
+05-11 16:52:37.865  1760  1895 I BatteryService_BatteryPropertiesRegistrar: [getProperty]id:3
+05-11 16:52:37.865  1760  1895 I BatteryService_BatteryPropertiesRegistrar: [getProperty]prop.long:-9223372036854775808 ,prop.string:null
+05-11 16:52:38.033  1760  1839 D MARsPolicyManager: triggerAction called!
+05-11 16:52:38.033  1760  1839 I NSLocationMonitor: getGPSUsingApps() called
+05-11 16:52:38.035  3222  3249 I NSLocationManager_FLP: getGPSUsingApps, No change
+05-11 16:52:38.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507558
+05-11 16:52:38.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:52:38.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:52:38.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641792
+05-11 16:52:38.600  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641786
+05-11 16:52:38.600  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:52:38.600  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:52:38.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:52:38.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:52:38.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:52:38.872   727   727 D io_stats: !@   8,0 r 58686654 1209970166 w 18178619 341061220 d 5299417 367772504 f 0 1870179 iot 28526220 0 th 0 0 0 pt 0 inp 0 0 415964.266
+05-11 16:52:39.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507559
+05-11 16:52:39.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:52:39.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:52:39.601  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641792
+05-11 16:52:39.601  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641786
+05-11 16:52:39.601  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:52:39.601  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:52:39.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:52:39.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:52:39.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:52:40.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507560
+05-11 16:52:40.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:52:40.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:52:40.601  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641792
+05-11 16:52:40.601  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641786
+05-11 16:52:40.601  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:52:40.601  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:52:40.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:52:40.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:52:40.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:52:40.875   727   727 D io_stats: !@ Read_top(KB): .android.chrome(13338) 352 m.android.phone(2410) 256 net.buddy.prj4(18396) 68
+05-11 16:52:40.875   727   727 D io_stats: !@ Write_top(KB): android.hardwar(1379) 8
+05-11 16:52:41.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507561
+05-11 16:52:41.600  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:52:41.600  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:52:41.600  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641792
+05-11 16:52:41.601  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641786
+05-11 16:52:41.601  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:52:41.601  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:52:41.601  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:52:41.601  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:52:41.601  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:52:41.747 16341 16341 I wpa_supplicant: Heartbeat 4690
+05-11 16:52:42.600  1477  1492 E HeatmapThread: ECT Thread time in milliseconds: 1778507562
+05-11 16:52:42.601  1477  1492 D HeatmapThread: !@ batteryplugType : 0
+05-11 16:52:42.601  1477  1492 D HeatmapThread: !@ batteryLevel : 0  batteryTemperature : 0 
+05-11 16:52:42.601  1477  1492 D HeatmapThread: !@ Heatmap currtime: 29641792
+05-11 16:52:42.602  1477  1492 D HeatmapThread: !@ Heatmap prevtime: 29641786
+05-11 16:52:42.602  1477  1492 D HeatmapThread: !@ Heatmap plugstarttime: 35791394
+05-11 16:52:42.603  1477  1492 D HeatmapThread: !@ Heatmap prevv_dsoh_update_time: 29625781
+05-11 16:52:42.603  1477  1492 E HeatmapThread: !@Could not open '/efs/FactoryApp/bsoh', errno = 13
+05-11 16:52:42.604  1477  1492 E HeatmapThread: !@ CAM Could not access BSOH EFS
+05-11 16:52:42.604  1477  1492 E HeatmapThread: !@ CAM New BSOH: 0
+05-11 16:52:42.876   727   727 D io_stats: !@   8,0 r 58686654 1209970166 w 18178630 341061532 d 5299417 367772504 f 0 1870181 iot 28526236 0 th 0 0 0 pt 0 inp 0 0 415968.269
+05-11 16:52:43.068  1760  1839 D MARsPolicyManager: triggerAction called!
+05-11 16:52:43.069  1760  1839 I NSLocationMonitor: getGPSUsingApps() called
+05-11 16:52:43.071  3222  3249 I NSLocationManager_FLP: getGPSUsingApps, No change

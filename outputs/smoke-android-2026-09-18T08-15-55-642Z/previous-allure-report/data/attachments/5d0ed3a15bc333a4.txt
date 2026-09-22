@@ -1,0 +1,202 @@
+--------- beginning of main
+03-25 12:59:00.443  4277  4788 D FS.Core.Shared.LogForwarder.WebApi: [MoneybaseAuthenticator] Auth flow: using valid access token
+03-25 12:59:00.459   544   558 I ImeTracker: com.moneybase.qa:ab10087c: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+03-25 12:59:00.459   544   558 I ImeTracker: com.moneybase.qa:ab10087c: onCancelled at PHASE_SERVER_SHOULD_HIDE
+03-25 12:59:00.466  1420  1420 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():2114 
+03-25 12:59:00.467  1420  1420 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 0, locked = false
+03-25 12:59:00.468  1420  1420 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1385 onStartInput(EditorInfo{EditorInfo{packageName=com.moneybase.qa, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+03-25 12:59:00.468  1420  1420 I AndroidIME: LatinIMEBase.updateInputViewCoverNavigation():314 Update input view padding, extendsTouchBelowSpace=false, bottom inset=126
+03-25 12:59:00.468  1420  1420 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 1, locked = false
+--------- beginning of system
+03-25 12:59:00.469   544  1930 W PackageConfigPersister: App-specific configuration not found for packageName: com.moneybase.qa and userId: 0
+03-25 12:59:00.595  4277  4621 D EGL_emulation: app_time_stats: avg=339.55ms min=34.04ms max=924.84ms count=3
+03-25 12:59:00.665  1478  2231 W AiAiEcho: LyftNotificationParser Ridesharing ETA not enabled
+03-25 12:59:00.666  1478  2231 W AiAiEcho: SmartspaceNotificationPredictor no parser can handle this notification or notification is invalid
+03-25 12:59:00.669  1593  1593 D NLService: Successfully stored the newly arrived notification identified by 1138
+03-25 12:59:00.735   753   874 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+03-25 12:59:00.737   753   874 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+03-25 12:59:01.366  4277  4788 I NETWORK REQUEST [AUTO_TOP_UP]: method: DELETE, API call: https://stgapi.moneybase.com/cardpayments/v1/api/Autotopup/85ae871a-f224-492b-8c66-4b8871db7a1e (cedba628-1a1d-445d-91ec-a865e978b2df), headers: ["x-mb-reqid": "cedba628-1a1d-445d-91ec-a865e978b2df", "x-mb-fdi": "fd39014719513331", "x-mb-fpi": "1774436256013.jbnGF4", "x-mb-dt": "Android google sdk_gphone64_arm64 (14)", "application-id": "7cce1295-6809-428f-97c6-9486a2bcaafa", "client-public-id": "676F4446-6827-4A30-A213-70250DFAC314", "client-secret-key": "nWgBIXqsUrH8ts6EXqkk", "sub-application-name": "moneybase", "Authorization": "Bearer c4Xi0FXq"], tookMs: 919ms
+03-25 12:59:01.373  4277  4788 I FS.Core.Shared.LogForwarder.WebApi: [NETWORK REQUEST [AUTO_TOP_UP]] method: DELETE, API call: https://stgapi.moneybase.com/cardpayments/v1/api/Autotopup/85ae871a-f224-492b-8c66-4b8871db7a1e (cedba628-1a1d-445d-91ec-a865e978b2df), headers: ["x-mb-reqid": "cedba628-1a1d-445d-91ec-a865e978b2df", "x-mb-fdi": "fd39014719513331", "x-mb-fpi": "1774436256013.jbnGF4", "x-mb-dt": "Android google sdk_gphone64_arm64 (14)", "application-id": "7cce1295-6809-428f-97c6-9486a2bcaafa", "client-public-id": "676F4446-6827-4A30-A213-70250DFAC314", "client-secret-key": "nWgBIXqsUrH8ts6EXqkk", "sub-application-name": "moneybase", "Authorization": "Bearer c4Xi0FXq"], tookMs: 919ms
+03-25 12:59:01.374  4277  4788 I NETWORK RESPONSE [AUTO_TOP_UP]: 🟢 statusCode: 204, method: DELETE, request: https://stgapi.moneybase.com/cardpayments/v1/api/Autotopup/85ae871a-f224-492b-8c66-4b8871db7a1e, headers: ["date": "Wed, 25 Mar 2026 10:59:02 GMT", "cf-ray": "9e1d675c9ca434ce-WAW", "cf-cache-status": "DYNAMIC", "server": "cloudflare", "strict-transport-security": "max-age=15724800; includeSubDomains"], tookMs: 919ms
+03-25 12:59:01.374  4277  4788 I FS.Core.Shared.LogForwarder.WebApi: [NETWORK RESPONSE [AUTO_TOP_UP]] 🟢 statusCode: 204, method: DELETE, request: https://stgapi.moneybase.com/cardpayments/v1/api/Autotopup/85ae871a-f224-492b-8c66-4b8871db7a1e, headers: ["date": "Wed, 25 Mar 2026 10:59:02 GMT", "cf-ray": "9e1d675c9ca434ce-WAW", "cf-cache-status": "DYNAMIC", "server": "cloudflare", "strict-transport-security": "max-age=15724800; includeSubDomains"], tookMs: 919ms
+03-25 12:59:01.374  4277  4788 D FibonacciInterceptor: Response code 204 is in localRetryErrorCodes: false
+03-25 12:59:01.374  4277  4788 D FS.Core.Shared.LogForwarder.WebApi: [FibonacciInterceptor] Response code 204 is in localRetryErrorCodes: false
+03-25 12:59:01.376  4277  4486 D MoneybaseDatabase: getting current database instance 
+03-25 12:59:01.376  4277  4486 D FS.Core.Shared.LogForwarder.WebApi: [MoneybaseDatabase] getting current database instance 
+03-25 12:59:01.382  4277  4486 D MoneybaseDatabase: getting current database instance 
+03-25 12:59:01.382  4277  4486 D FS.Core.Shared.LogForwarder.WebApi: [MoneybaseDatabase] getting current database instance 
+03-25 12:59:01.404  4277  4486 I [AUTO_TOP_UP]: Document autotopups::veg40002-1 has been updated locally
+03-25 12:59:01.405  4277  4486 I FS.Core.Shared.LogForwarder.WebApi: [[AUTO_TOP_UP]] Document autotopups::veg40002-1 has been updated locally
+03-25 12:59:01.410  4277  4491 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+03-25 12:59:01.410  4277  4491 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+03-25 12:59:01.410  4277  4277 I [AUTO_TOP_UP]: update loader visibility to false
+03-25 12:59:01.411  4277  4277 I FS.Core.Shared.LogForwarder.WebApi: [[AUTO_TOP_UP]] update loader visibility to false
+03-25 12:59:01.420  4277  4610 D MoneybaseDatabase: getting current database instance 
+03-25 12:59:01.420  4277  4610 D FS.Core.Shared.LogForwarder.WebApi: [MoneybaseDatabase] getting current database instance 
+03-25 12:59:01.426  4277  5208 D [AUTO_TOP_UP]: auto top-up rules list updated: []
+03-25 12:59:01.426  4277  5558 D [AUTO_TOP_UP]: auto top-up rules list updated: []
+03-25 12:59:01.427  4277  5558 D FS.Core.Shared.LogForwarder.WebApi: [[AUTO_TOP_UP]] auto top-up rules list updated: []
+03-25 12:59:01.427  4277  5558 D [AUTO_TOP_UP]: auto top-up rules list updated: []
+03-25 12:59:01.427  4277  5558 D FS.Core.Shared.LogForwarder.WebApi: [[AUTO_TOP_UP]] auto top-up rules list updated: []
+03-25 12:59:01.428  4277  5208 D FS.Core.Shared.LogForwarder.WebApi: [[AUTO_TOP_UP]] auto top-up rules list updated: []
+03-25 12:59:01.518  4277  4277 D SharedBottomNavigationViewModel: update bottom navigation visible state to: false
+03-25 12:59:01.519  4277  4277 D FS.Core.Shared.LogForwarder.WebApi: [SharedBottomNavigationViewModel] update bottom navigation visible state to: false
+03-25 12:59:01.550  4277  4277 D SharedBottomNavigationViewModel: update bottom navigation visible state to: false
+03-25 12:59:01.551  4277  4277 D FS.Core.Shared.LogForwarder.WebApi: [SharedBottomNavigationViewModel] update bottom navigation visible state to: false
+03-25 12:59:01.570  1593  1593 D NLService: Successfully stored the newly arrived notification identified by 1138
+03-25 12:59:01.571  1478  2231 W AiAiEcho: LyftNotificationParser Ridesharing ETA not enabled
+03-25 12:59:01.571  1478  2231 W AiAiEcho: SmartspaceNotificationPredictor no parser can handle this notification or notification is invalid
+03-25 12:59:01.578  4277  5557 D [REPLICATOR_WORKAROUND]: ReplicatorChange status: Connected
+03-25 12:59:01.579  4277  5557 D FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR_WORKAROUND]] ReplicatorChange status: Connected
+03-25 12:59:01.592   753   877 D EGL_emulation: app_time_stats: avg=511.97ms min=49.30ms max=828.29ms count=3
+03-25 12:59:01.614   753   874 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+03-25 12:59:01.615   753   874 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+03-25 12:59:01.617  4277  4277 D LeakCanary: Watching instance of androidx.compose.ui.platform.ComposeView (com.moneybase.feature.autotopup.AutoTopUpDetailsFragment received Fragment#onDestroyView() callback (references to its views should be cleared to prevent leaks)) with key 2e4e23ca-53c9-4be1-b204-188296e67697
+03-25 12:59:01.626  4277  5557 D [REPLICATOR_WORKAROUND]: ReplicatorChange status: Idle
+03-25 12:59:01.627  4277  5557 D FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR_WORKAROUND]] ReplicatorChange status: Idle
+03-25 12:59:01.628  4277  5557 D MoneybaseDatabase: getting current database instance to check not precessed offline requests
+03-25 12:59:01.628  4277  5557 D FS.Core.Shared.LogForwarder.WebApi: [MoneybaseDatabase] getting current database instance to check not precessed offline requests
+03-25 12:59:01.653  4277  4277 D LeakCanary: Watching instance of androidx.navigation.fragment.FragmentNavigator$ClearEntryStateViewModel (androidx.navigation.fragment.FragmentNavigator$ClearEntryStateViewModel received ViewModel#onCleared() callback) with key 98e84c82-5b39-4060-909b-660e269a0050
+03-25 12:59:01.653  4277  4277 D LeakCanary: Watching instance of androidx.lifecycle.SavedStateHandlesVM (androidx.lifecycle.SavedStateHandlesVM received ViewModel#onCleared() callback) with key 6faca0e2-8e5e-4ea7-8d1f-71b61f95291f
+03-25 12:59:01.653  4277  4277 D LeakCanary: Watching instance of leakcanary.internal.ViewModelClearedWatcher (leakcanary.internal.ViewModelClearedWatcher received ViewModel#onCleared() callback) with key 6b0e2c12-14bf-472c-a8ad-d70e82bcf959
+03-25 12:59:01.653  4277  4277 D LeakCanary: Watching instance of com.moneybase.feature.autotopup.AutoTopUpDetailsViewModel (com.moneybase.feature.autotopup.AutoTopUpDetailsViewModel received ViewModel#onCleared() callback) with key 9fee358c-4783-48c5-b66e-192c9a197f77
+03-25 12:59:01.654  4277  4277 D LeakCanary: Watching instance of com.moneybase.feature.wallets.WalletsViewModel (com.moneybase.feature.wallets.WalletsViewModel received ViewModel#onCleared() callback) with key 5e7c3bce-2e77-4ae1-9239-88a3e0fcd914
+03-25 12:59:01.654  4277  4277 D LeakCanary: Watching instance of androidx.loader.app.LoaderManagerImpl$LoaderViewModel (androidx.loader.app.LoaderManagerImpl$LoaderViewModel received ViewModel#onCleared() callback) with key 6b405d3b-4ab7-4bcc-9a4d-a1a7c23b9ca8
+03-25 12:59:01.670  4277  4277 D LeakCanary: Watching instance of com.moneybase.feature.autotopup.AutoTopUpDetailsFragment (com.moneybase.feature.autotopup.AutoTopUpDetailsFragment received Fragment#onDestroy() callback) with key 36f7264c-9041-43d5-8531-679e29feeff4
+03-25 12:59:01.676  3502  4121 W QueryController: AccessibilityNodeInfo returned a null child (2 of 4)
+03-25 12:59:01.676  3502  4121 W QueryController: parent = android.view.accessibility.AccessibilityNodeInfo@69288; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(0, 0 - 1080, 2400); boundsInWindow: Rect(0, 0 - 1080, 2400); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_screen; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false
+03-25 12:59:01.680  4277  4277 D [EDGE_TO_EDGE]: applying WindowSystemBarsInsets listener clMoneybaseInvestWebView
+03-25 12:59:01.680  4277  4277 D FS.Core.Shared.LogForwarder.WebApi: [[EDGE_TO_EDGE]] applying WindowSystemBarsInsets listener clMoneybaseInvestWebView
+03-25 12:59:01.719  4277  4277 D [EDGE_TO_EDGE]: set insets from WindowInsetsListener of clMoneybaseInvestWebView, does bottom insets included: true
+03-25 12:59:01.719  4277  4277 D FS.Core.Shared.LogForwarder.WebApi: [[EDGE_TO_EDGE]] set insets from WindowInsetsListener of clMoneybaseInvestWebView, does bottom insets included: true
+03-25 12:59:01.744  4277  4621 D EGL_emulation: app_time_stats: avg=31.90ms min=3.56ms max=265.94ms count=23
+03-25 12:59:01.748  3502  4121 W QueryController: AccessibilityNodeInfo returned a null child (3 of 4)
+03-25 12:59:02.073  4277  4277 D LeakCanary: Watching instance of androidx.compose.ui.platform.ComposeView (com.moneybase.feature.autotopup.AutoTopUpListFragment received Fragment#onDestroyView() callback (references to its views should be cleared to prevent leaks)) with key 457e54b0-adcd-4d17-b511-f775eae9fdc7
+03-25 12:59:02.073  4277  4277 D LeakCanary: Watching instance of androidx.navigation.fragment.FragmentNavigator$ClearEntryStateViewModel (androidx.navigation.fragment.FragmentNavigator$ClearEntryStateViewModel received ViewModel#onCleared() callback) with key dd1f2a43-4993-4052-9e64-41907bf479a2
+03-25 12:59:02.073  4277  4277 D LeakCanary: Watching instance of androidx.lifecycle.SavedStateHandlesVM (androidx.lifecycle.SavedStateHandlesVM received ViewModel#onCleared() callback) with key 6a9974f5-4af4-451d-baa0-afe9652e30f3
+03-25 12:59:02.073  4277  4277 D LeakCanary: Watching instance of leakcanary.internal.ViewModelClearedWatcher (leakcanary.internal.ViewModelClearedWatcher received ViewModel#onCleared() callback) with key fdb868e0-b4d6-41fe-8981-ba14855fe487
+03-25 12:59:02.074  4277  4277 D LeakCanary: Watching instance of com.moneybase.feature.autotopup.AutoTopUpListViewModel (com.moneybase.feature.autotopup.AutoTopUpListViewModel received ViewModel#onCleared() callback) with key ba235ddb-023c-4cec-aba7-45eb4bff04ed
+03-25 12:59:02.074  4277  4277 D LeakCanary: Watching instance of com.moneybase.feature.autotopup.SharedAutoTopUpViewModel (com.moneybase.feature.autotopup.SharedAutoTopUpViewModel received ViewModel#onCleared() callback) with key 9426d53c-ccef-4a5f-bec1-5666e5e383d6
+03-25 12:59:02.074  4277  4277 D LeakCanary: Watching instance of androidx.loader.app.LoaderManagerImpl$LoaderViewModel (androidx.loader.app.LoaderManagerImpl$LoaderViewModel received ViewModel#onCleared() callback) with key 96fc7812-22af-4b7b-b4ee-92c8940bb511
+03-25 12:59:02.075  4277  4277 D LeakCanary: Watching instance of com.moneybase.feature.autotopup.AutoTopUpListFragment (com.moneybase.feature.autotopup.AutoTopUpListFragment received Fragment#onDestroy() callback) with key fcf57b91-202e-4534-97f4-ee032ae79970
+03-25 12:59:02.158   753   753 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+03-25 12:59:02.516  5613  5613 I artd    : Starting artd
+03-25 12:59:02.517  5613  5613 I AidlLazyServiceRegistrar: Registering service artd
+03-25 12:59:02.522  1235  5576 I NetworkScheduler.Stats: (REDACTED) Task %s/%s started execution. cause:%s exec_start_elapsed_seconds: %s
+03-25 12:59:02.528  1235  5599 I TapAndPay: deviceSupportsHce has detected emulator [CONTEXT service_id=79 ]
+03-25 12:59:02.535  1235  5599 V NFC     : this device does not have NFC support
+03-25 12:59:02.535  1235  5599 I TapAndPay: NfcAdapter is null while obtaining CardEmulation instance. [CONTEXT service_id=79 ]
+03-25 12:59:02.547  1235  5599 I NetworkScheduler.Stats: (REDACTED) Task %s/%s finished executing. cause:%s result: %s elapsed_millis: %s uptime_millis: %s exec_start_elapsed_seconds: %s
+03-25 12:59:02.590  5613  5616 I AidlLazyServiceRegistrar: Process has 1 (of 1 available) client(s) in use after notification artd has clients: 1
+03-25 12:59:02.604  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000035/dl-MlkitOcrCommon.optional_260931100400.dm': No such file or directory
+03-25 12:59:02.604  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000035/dl-MlkitOcrCommon.optional_260931100400.dm': No such file or directory
+03-25 12:59:02.605  5613  5613 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+03-25 12:59:02.605  5613  5613 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+03-25 12:59:02.606  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+03-25 12:59:02.606  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+03-25 12:59:02.607  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000039/dl-MlkitBarcodeUi.optional_260931100400.dm': No such file or directory
+03-25 12:59:02.608  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000039/dl-MlkitBarcodeUi.optional_260931100400.dm': No such file or directory
+03-25 12:59:02.609  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+03-25 12:59:02.609  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+03-25 12:59:02.609  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+03-25 12:59:02.609  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000005/GoogleCertificates.dm': No such file or directory
+03-25 12:59:02.611  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000037/dl-PlayCloudSearch.optional_260931100000.dm': No such file or directory
+03-25 12:59:02.611  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000037/dl-PlayCloudSearch.optional_260931100000.dm': No such file or directory
+03-25 12:59:02.612  5613  5613 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+03-25 12:59:02.620  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000009/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+03-25 12:59:02.620  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000009/dl-VisionOcrDynamite.integ_231602402100000.dm': No such file or directory
+03-25 12:59:02.626  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+03-25 12:59:02.626  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/dl-MlkitOcrCommon.optional_231818100400.dm': No such file or directory
+03-25 12:59:02.630  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+03-25 12:59:02.630  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000008/dl-TfliteDynamiteDynamite.integ_252130102100400.dm': No such file or directory
+03-25 12:59:02.641  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000036/dl-VisionOcr.optional_260931100000.dm': No such file or directory
+03-25 12:59:02.641  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000036/dl-VisionOcr.optional_260931100000.dm': No such file or directory
+03-25 12:59:02.642  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+03-25 12:59:02.642  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.dm': No such file or directory
+03-25 12:59:02.644  5613  5613 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+03-25 12:59:02.647  5613  5613 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+03-25 12:59:02.650  5613  5613 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+03-25 12:59:02.650  5613  5613 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+03-25 12:59:02.650  4277  4491 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+03-25 12:59:02.654  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000038/dl-Appsearch.optional_260931100400.dm': No such file or directory
+03-25 12:59:02.654  5613  5613 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000038/dl-Appsearch.optional_260931100400.dm': No such file or directory
+03-25 12:59:02.655  5613  5613 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+03-25 12:59:02.656  5613  5613 W artd    : Could not get dex checksums for location /data/app/~~WKghzskG58AQO58RFwVnSw==/com.google.android.gms-YRkocjnTQ-Se6VM3LfU93w==/base.apk, fd=-1
+03-25 12:59:02.658  5613  5613 W artd    : Could not get dex checksums for location /data/app/~~W3i221IpBN7M8ax3-cqQRg==/com.android.vending-xKm5jg-o0SYY1LcrBsytrQ==/base.apk, fd=-1
+03-25 12:59:02.682  1235  1243 I .gms.persistent: Background young concurrent copying GC freed 191871(10MB) AllocSpace objects, 5(1216KB) LOS objects, 32% free, 22MB/33MB, paused 157us,51us total 192.291ms
+03-25 12:59:02.787  4277  4621 D EGL_emulation: app_time_stats: avg=56.31ms min=8.30ms max=646.46ms count=15
+03-25 12:59:02.968   544   907 D WifiNl80211Manager: Scan result ready event
+03-25 12:59:02.969   544   907 D WifiNative: Scan result ready event
+03-25 12:59:05.380  4277  4519 I Datadog : [_dd.sdk_core.default]: Batch 9ed755ea-d98b-4fcc-aa31-d1d221475994 [1862 bytes] (Logs Request) sent successfully. This request was attempted 1 time(s).
+03-25 12:59:05.959  4277  4621 D EGL_emulation: app_time_stats: avg=3172.49ms min=3172.49ms max=3172.49ms count=1
+03-25 12:59:05.987  4277  4277 D SharedBottomNavigationViewModel: update bottom navigation visible state to: false
+03-25 12:59:05.992  4277  4277 D FS.Core.Shared.LogForwarder.WebApi: [SharedBottomNavigationViewModel] update bottom navigation visible state to: false
+03-25 12:59:06.007  4277  4277 D [AUTO_TOP_UP]: Current rule currency code: ''
+03-25 12:59:06.021  4277  4277 D FS.Core.Shared.LogForwarder.WebApi: [[AUTO_TOP_UP]] Current rule currency code: ''
+03-25 12:59:06.022  4277  4277 D [AUTO_TOP_UP]: New currency code to check: ''
+03-25 12:59:06.023  4277  4277 D FS.Core.Shared.LogForwarder.WebApi: [[AUTO_TOP_UP]] New currency code to check: ''
+03-25 12:59:06.023  4277  4277 D [AUTO_TOP_UP]: Existing currency codes (excluding nulls): []
+03-25 12:59:06.023  4277  4277 D FS.Core.Shared.LogForwarder.WebApi: [[AUTO_TOP_UP]] Existing currency codes (excluding nulls): []
+03-25 12:59:06.023  4277  4277 D kmp-shared: Logging from AutoTopUpsValidator
+03-25 12:59:06.075  4277  4277 I [AUTO_TOP_UP]: update loader visibility to false
+03-25 12:59:06.076  4277  4277 I FS.Core.Shared.LogForwarder.WebApi: [[AUTO_TOP_UP]] update loader visibility to false
+03-25 12:59:06.214  4277  4277 D [EDGE_TO_EDGE]: set insets from WindowInsetsListener of clMoneybaseInvestWebView, does bottom insets included: true
+03-25 12:59:06.215  4277  4277 D FS.Core.Shared.LogForwarder.WebApi: [[EDGE_TO_EDGE]] set insets from WindowInsetsListener of clMoneybaseInvestWebView, does bottom insets included: true
+03-25 12:59:06.262  4277  4277 D [EDGE_TO_EDGE]: applying WindowSystemBarsInsets listener clMoneybaseInvestWebView
+03-25 12:59:06.262  4277  4277 D FS.Core.Shared.LogForwarder.WebApi: [[EDGE_TO_EDGE]] applying WindowSystemBarsInsets listener clMoneybaseInvestWebView
+03-25 12:59:06.342  4277  4277 D [AUTO_TOP_UP]: Current rule currency code: ''
+03-25 12:59:06.343  4277  4277 D FS.Core.Shared.LogForwarder.WebApi: [[AUTO_TOP_UP]] Current rule currency code: ''
+03-25 12:59:06.343  4277  4277 D [AUTO_TOP_UP]: New currency code to check: 'EUR'
+03-25 12:59:06.344  4277  4277 D FS.Core.Shared.LogForwarder.WebApi: [[AUTO_TOP_UP]] New currency code to check: 'EUR'
+03-25 12:59:06.344  4277  4277 D [AUTO_TOP_UP]: Existing currency codes (excluding nulls): []
+03-25 12:59:06.345  4277  4277 D FS.Core.Shared.LogForwarder.WebApi: [[AUTO_TOP_UP]] Existing currency codes (excluding nulls): []
+03-25 12:59:06.345  4277  4277 D kmp-shared: Logging from AutoTopUpsValidator
+03-25 12:59:06.465  4277  4277 D LeakCanary: Watching instance of androidx.compose.ui.platform.ComposeView (com.moneybase.feature.addfunds.AddFundsFragment received Fragment#onDestroyView() callback (references to its views should be cleared to prevent leaks)) with key 5d8e9856-ca6c-4fdd-b6a3-d2a30b4fea03
+03-25 12:59:06.617  4277  4491 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+03-25 12:59:06.656  4277  4491 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+03-25 12:59:06.671  4277  4491 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+03-25 12:59:06.925  3502  4121 I QueryController: Matched selector: UiSelector[RESOURCE_ID=autoTopUpDetails_button_save] <<==>> [android.view.accessibility.AccessibilityNodeInfo@6fb28; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(53, 2184 - 1027, 2321); boundsInWindow: Rect(53, 2184 - 1027, 2321); packageName: com.moneybase.qa; className: android.view.View; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: autoTopUpDetails_button_save; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: false; password: false; scrollable: false; importantForAccessibility: true; visible: true; actions: [AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null]; isTextSelectable: false]
+03-25 12:59:06.927  3502  4121 I appium  : AppiumResponse: {"sessionId":"357777b3-c977-42bf-8999-18714540f8e7","value":"false"}
+03-25 12:59:06.940  3502  4121 I appium  : channel read: GET /session/357777b3-c977-42bf-8999-18714540f8e7/screenshot
+03-25 12:59:06.941  3502  4121 I appium  : CaptureScreenshot command
+03-25 12:59:06.943  3502  4121 W tomator2.server: Accessing hidden method Landroid/view/Display;->getAddress()Landroid/view/DisplayAddress; (blocked, reflection, allowed)
+03-25 12:59:06.944  3502  4121 W tomator2.server: Accessing hidden method Landroid/view/DisplayAddress$Physical;->getPhysicalDisplayId()J (blocked, reflection, allowed)
+03-25 12:59:07.016  4277  5209 D [REPLICATOR_WORKAROUND]: ReplicatorChange status: Connected
+03-25 12:59:07.017  4277  5209 D FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR_WORKAROUND]] ReplicatorChange status: Connected
+03-25 12:59:07.074  4277  4491 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+03-25 12:59:07.074  4277  4491 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+03-25 12:59:07.075  4277  4491 D LeakCanary: LeakCanary is currently disabled: test class org.junit.Test was found in classpath.
+03-25 12:59:07.232  4277  5209 D MoneybaseDatabase: getting current database instance 
+03-25 12:59:07.235  4277  5209 D FS.Core.Shared.LogForwarder.WebApi: [MoneybaseDatabase] getting current database instance 
+03-25 12:59:07.244  4277  4583 D [REPLICATOR]: DocumentReplication Replication Doc ID:  autotopups::veg40002-1 type: Pull In: Continuous
+03-25 12:59:07.246  5620  5620 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+03-25 12:59:07.246  4277  5559 D [REPLICATOR_WORKAROUND]: ReplicatorChange status: Connected
+03-25 12:59:07.248  4277  4609 D [AUTO_TOP_UP]: auto top-up rules list updated: []
+03-25 12:59:07.249  4277  4609 D FS.Core.Shared.LogForwarder.WebApi: [[AUTO_TOP_UP]] auto top-up rules list updated: []
+03-25 12:59:07.250  4277  5559 D FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR_WORKAROUND]] ReplicatorChange status: Connected
+03-25 12:59:07.251  4277  4583 D FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR]] DocumentReplication Replication Doc ID:  autotopups::veg40002-1 type: Pull In: Continuous
+03-25 12:59:07.251  5620  5620 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+03-25 12:59:07.260   387   532 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5620
+03-25 12:59:07.260   387   532 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (5164 us)
+03-25 12:59:07.288   159   159 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+03-25 12:59:07.288  5620  5624 I Gralloc4: mapper 4.x is not supported
+03-25 12:59:07.339  4277  5559 D MoneybaseDatabase: getting current database instance to check not precessed offline requests
+03-25 12:59:07.341  4277  5559 D FS.Core.Shared.LogForwarder.WebApi: [MoneybaseDatabase] getting current database instance to check not precessed offline requests
+03-25 12:59:07.344  4277  4583 D [REPLICATOR_WORKAROUND]: ReplicatorChange status: Idle
+03-25 12:59:07.345  4277  4583 D FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR_WORKAROUND]] ReplicatorChange status: Idle
+03-25 12:59:07.361  4277  5209 D [REPLICATOR_WORKAROUND]: ReplicatorChange status: Connected
+03-25 12:59:07.363  4277  5209 D FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR_WORKAROUND]] ReplicatorChange status: Connected
+03-25 12:59:07.415  4277  5209 D MoneybaseDatabase: getting current database instance to check not precessed offline requests
+03-25 12:59:07.417  4277  5209 D FS.Core.Shared.LogForwarder.WebApi: [MoneybaseDatabase] getting current database instance to check not precessed offline requests
+03-25 12:59:07.417  4277  5559 D [REPLICATOR_WORKAROUND]: ReplicatorChange status: Idle
+03-25 12:59:07.418  4277  5559 D FS.Core.Shared.LogForwarder.WebApi: [[REPLICATOR_WORKAROUND]] ReplicatorChange status: Idle
+03-25 12:59:07.439  3502  4121 I appium  : AppiumResponse: {"sessionId":"357777b3-c977-42bf-8999-18714540f8e7","value":"iVBORw0KGgoAAAANSUhEUgAABDgAAAlgCAYAAABtGofVAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N15eNTVvcfxz0xmshBChLCEkJCwhU0FQQn7YtRQ1woBtwrUFi2997oB1tvbS+1y69OKuLR1pVIVZSkFKiKiICIQpEVkEYEoSEhCCBAgAbLPzP0jN3MZZrIvMyd5v56H58mc+S1nDqD8PnP…
+03-25 12:59:07.476  3502  4121 I appium  : channel read: GET /session/357777b3-c977-42bf-8999-18714540f8e7/source
+03-25 12:59:07.480  3502  4121 I appium  : Source command
+03-25 12:59:07.481  3502  4121 I appium  : Waiting up to 10000ms for the device to idle
+03-25 12:59:07.628  3502  4121 I appium  : AppiumResponse: {"sessionId":"357777b3-c977-42bf-8999-18714540f8e7","value":"<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>\r\n<hierarchy index=\"0\" class=\"hierarchy\" rotation=\"0\" width=\"1080\" height=\"2205\">\r\n  <android.widget.FrameLayout index=\"0\" package=\"com.moneybase.qa\" class=\"android…
+03-25 12:59:07.691   544   570 D OomAdjuster: Not killing cached processes
+03-25 12:59:07.757  1235  5576 I NetworkScheduler.Stats: (REDACTED) Task %s/%s started execution. cause:%s exec_start_elapsed_seconds: %s
+03-25 12:59:07.765  1235  5599 I NetworkScheduler.Stats: (REDACTED) Task %s/%s finished executing. cause:%s result: %s elapsed_millis: %s uptime_millis: %s exec_start_elapsed_seconds: %s
+03-25 12:59:07.794  1235  5576 I NetworkScheduler.Stats: (REDACTED) Task %s/%s started execution. cause:%s exec_start_elapsed_seconds: %s
+03-25 12:59:07.795  1679  3092 I TelephonySpamChimeraSer: Running Telephony Spam Chimera Service [CONTEXT service_id=150 ]
