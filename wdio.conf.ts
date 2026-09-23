@@ -260,7 +260,7 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
         },
       } as Record<string, unknown>),
     },
-    'appium:app': process.env.BS_APP_IOS || 'bs://d3142df66fcd0172ca376867382c6fc296c32475',
+    'appium:app': process.env.BS_APP_IOS || 'bs://9ce628c86d87ac4ebbe7c834f0b5ab361a30ec8a',
     'appium:bundleId': process.env.BS_IOS_BUNDLE_ID,
     'appium:autoAcceptAlerts': true,
     'appium:newCommandTimeout': 3600,
