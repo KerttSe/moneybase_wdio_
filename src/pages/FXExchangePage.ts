@@ -11,7 +11,7 @@ class FXExchangePage extends BasePage {
     if (browser.isAndroid) {
       return $('(//*[@resource-id="com.moneybase.qa:id/home_button_exchange"] | //*[contains(@resource-id,"home_button_exchange")] | //*[@content-desc="home_button_exchange"])[1]')
     }
-    return $('-ios predicate string:name == "ic_exchange" OR name == "Exchange" OR label == "Exchange"')
+    return $('-ios predicate string:name == "home_button_exchange" OR name == "ic_exchange"')
   }
 
   private get exchangeSubmitButton() {
@@ -29,8 +29,8 @@ class FXExchangePage extends BasePage {
       ]
     }
     return [
-      $('~Exchange'),
-      $('-ios predicate string:name == "Exchange" OR label == "Exchange"'),
+      $('~FX Exchange'),
+      $('-ios predicate string:name == "FX Exchange" OR label == "FX Exchange"'),
     ]
   }
 
