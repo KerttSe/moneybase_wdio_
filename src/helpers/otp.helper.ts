@@ -113,9 +113,13 @@ export class OtpHelper {
 		const encodedPhone = encodeURIComponent(phoneCandidate)
 
 		if (template) {
-			return template.includes('{phone}')
-				? template.replace('{phone}', encodedPhone)
-				: template
+			if (template.includes('{phone}')) return template.replace('{phone}', encodedPhone)
+			const url = new URL(template)
+			const fixedPhone = url.pathname.match(/\/getLatest\/([^/]+)\/?$/)?.[1]
+			if (fixedPhone && this.normalizeDigits(decodeURIComponent(fixedPhone)) !== this.normalizeDigits(phoneCandidate)) {
+				throw new Error('CONFIGURATION_ERROR: OTP_GET_LATEST_URL targets a different phone. Use a {phone} placeholder for primary/secondary runs.')
+			}
+			return template
 		}
 
 		return `${baseUrl}/otp/otp/getLatest/${encodedPhone}`

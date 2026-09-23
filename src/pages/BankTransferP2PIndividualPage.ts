@@ -1,4 +1,5 @@
 import BasePage from './BasePage'
+import { openIOSPaymentReview } from '../helpers/iosPayment.helper'
 import { $, browser } from '@wdio/globals'
 import HomeScreenPage from './HomeScreenPage'
 
@@ -576,20 +577,7 @@ class BankTransferP2PIndividualPage extends BasePage {
 
   private async maybeTapReviewPaymentIOS() {
     if (!browser.isIOS) return
-
-    await browser.hideKeyboard().catch(() => {})
-
-    const shown = await this.reviewPaymentBtnIOS.waitForExist({ timeout: 3000 }).catch(() => false)
-    if (!shown) return
-
-    await browser
-      .waitUntil(async () => await this.reviewPaymentBtnIOS.isEnabled().catch(() => false), {
-        timeout: 20000,
-        interval: 250,
-      })
-      .catch(() => {})
-
-    await this.tap(this.reviewPaymentBtnIOS)
+    await openIOSPaymentReview()
   }
 
   private async dragSliderToRightIOS() {

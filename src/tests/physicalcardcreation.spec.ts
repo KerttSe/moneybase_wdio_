@@ -37,13 +37,13 @@ describe('Physical card creation, freezing and deletion - Individual', function 
     }))
 
     it('PC-1.2 Create physical card (Android)', smokeStep(async function () {
-      await PhysicalCardCreationPage.createPhysicalCardAndroid('2468', '000000')
+      await PhysicalCardCreationPage.createPhysicalCardAndroid('2468')
     }))
   }
 
   if (browser.isIOS) {
     it('PC-1.1 Create physical card (iOS)', smokeStep(async function () {
-      await PhysicalCardCreationPage.createPhysicalCardIOS('2468', '000000')
+      await PhysicalCardCreationPage.createPhysicalCardIOS('2468')
     }))
   }
 })

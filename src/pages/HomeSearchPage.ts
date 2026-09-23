@@ -7,7 +7,7 @@ class HomeSearchPage extends BasePage {
     if (browser.isAndroid) {
       return $('(//*[@resource-id="com.moneybase.qa:id/home_input_search"] | //*[@content-desc="Search"]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[@text="Search"]/ancestor::*[@clickable="true"][1])[1]')
     }
-    return $('~home_input_search')
+    return $('//XCUIElementTypeNavigationBar[@name="Home"]//XCUIElementTypeSearchField[@name="Search"]')
   }
 
   private get androidEditText() {

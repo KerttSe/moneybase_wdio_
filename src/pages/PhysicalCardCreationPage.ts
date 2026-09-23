@@ -3,6 +3,8 @@ import { $, $$, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
 import HomeScreenPage from './HomeScreenPage'
 import OtpHelper from '../helpers/otp.helper'
+import { AUTH } from '../data/credentials'
+import { assertIOSOtpPhone, waitForIOSOtpOutcome } from '../helpers/iosOtp.helper'
 
 
 class PhysicalCardCreationPage extends BasePage {
@@ -1395,16 +1397,15 @@ class PhysicalCardCreationPage extends BasePage {
     await this.freezeAndUnfreezeCardAndroid()
   }
 
-  /** Full flow — but data must come from spec */
-  public async createPhysicalCardAndroid(pin: string, otp: string) {
-    await this.preparePhysicalCardAndroid(pin, otp)
-    await this.enterPhysicalCardDeliveryAndroid(pin, otp)
-    await this.setPhysicalCardPinAndroid(pin, otp)
-    await this.confirmPhysicalCardOtpAndroid(pin, otp)
-    await this.finishPhysicalCardAndroid(pin, otp)
+  public async createPhysicalCardAndroid(pin: string) {
+    await this.preparePhysicalCardAndroid()
+    await this.enterPhysicalCardDeliveryAndroid()
+    await this.setPhysicalCardPinAndroid(pin)
+    await this.confirmPhysicalCardOtpAndroid()
+    await this.finishPhysicalCardAndroid()
   }
 
-  public async preparePhysicalCardAndroid(pin: string, otp: string) {
+  public async preparePhysicalCardAndroid() {
     await this.openCardsTabAndroid()
     await this.cleanupExistingCardAndroid(30000)
     await this.startAddNewCardAndroid()
@@ -1412,75 +1413,79 @@ class PhysicalCardCreationPage extends BasePage {
     await this.confirmPhysicalCardAndroid()
   }
 
-  public async enterPhysicalCardDeliveryAndroid(pin: string, otp: string) {
+  public async enterPhysicalCardDeliveryAndroid() {
     await this.fillDeliveryAddressAndroid()
     await this.confirmDeliveryAddressAndroid()
   }
 
-  public async setPhysicalCardPinAndroid(pin: string, otp: string) {
+  public async setPhysicalCardPinAndroid(pin: string) {
     await this.createPinAndroid(pin)
     await this.reenterPinAndroid(pin)
   }
 
-  public async confirmPhysicalCardOtpAndroid(pin: string, otp: string) {
+  public async confirmPhysicalCardOtpAndroid() {
+    await this.otpInputAndroid.waitForDisplayed({ timeout: 20000 })
+    const otp = await this.getPhysicalCardOtp()
     await this.enterOtpAndroid(otp)
     await this.closeCardSheetAndroid()
   }
 
-  public async finishPhysicalCardAndroid(pin: string, otp: string) {
+  public async finishPhysicalCardAndroid() {
     await this.reportAndBlockCardAndroid(30000)
   }
 
-  public async createPhysicalCardIOS(pin: string, otp: string) {
-    await this.preparePhysicalCardIOS(pin, otp)
-    await this.enterPhysicalCardDeliveryIOS(pin, otp)
-    await this.setPhysicalCardPinIOS(pin, otp)
-    await this.confirmPhysicalCardOtpIOS(pin, otp)
-    await this.finishPhysicalCardIOS(pin, otp)
+  public async createPhysicalCardIOS(pin: string) {
+    await this.preparePhysicalCardIOS()
+    await this.enterPhysicalCardDeliveryIOS()
+    await this.setPhysicalCardPinIOS(pin)
+    await this.confirmPhysicalCardOtpIOS()
+    await this.finishPhysicalCardIOS()
   }
 
-  public async preparePhysicalCardIOS(pin: string, otp: string) {
+  public async preparePhysicalCardIOS() {
     await this.openCardsTabIOS()
     await this.startAddNewCardIOS()
     await this.choosePhysicalCardTypeIOS()
     await this.confirmDefaultDesignIOS()
   }
 
-  public async enterPhysicalCardDeliveryIOS(pin: string, otp: string) {
+  public async enterPhysicalCardDeliveryIOS() {
     await this.fillDeliveryAddressIOS()
     await this.confirmDeliveryAddressIOS()
   }
 
-  public async setPhysicalCardPinIOS(pin: string, otp: string) {
+  public async setPhysicalCardPinIOS(pin: string) {
     await this.createPinIOS(pin)
     await this.reenterPinIOS(pin)
   }
 
-  private async getPhysicalCardOtp(fallbackOtp: string) {
-    const explicit = process.env.PHYSICAL_CARD_OTP
-    if (explicit) return explicit.replace(/\D/g, '').slice(0, 6)
-
+  private async getPhysicalCardOtp() {
     const endpointConfigured = Boolean(String(process.env.OTP_GET_LATEST_URL || process.env.OTP_API_BASE_URL || '').trim())
-    if (!endpointConfigured) return fallbackOtp
+    if (!endpointConfigured) throw new Error('CONFIGURATION_ERROR: Physical card verification requires an OTP API endpoint')
 
-    const phone = process.env.PHYSICAL_CARD_OTP_PHONE || process.env.PHYSICAL_CARD_MB_PHONE || ''
-    if (!phone) return fallbackOtp
+    const phone = process.env.PHYSICAL_CARD_OTP_PHONE || process.env.PHYSICAL_CARD_MB_PHONE || AUTH.otpPhone || AUTH.phone
+    if (browser.isIOS) await assertIOSOtpPhone(phone)
 
     return OtpHelper.getLatestOtp({
       phone,
       timeoutMs: Number(process.env.PHYSICAL_CARD_OTP_TIMEOUT_MS || process.env.OTP_TIMEOUT_MS || 90000),
       intervalMs: Number(process.env.PHYSICAL_CARD_OTP_POLL_INTERVAL_MS || process.env.OTP_POLL_INTERVAL_MS || 2000),
       maxRequests: Number(process.env.PHYSICAL_CARD_OTP_MAX_REQUESTS || 1),
+      excludeTokens: [process.env.LAST_LOGIN_OTP || ''],
     })
   }
 
-  public async confirmPhysicalCardOtpIOS(pin: string, otp: string) {
-    const resolvedOtp = await this.getPhysicalCardOtp(otp)
+  public async confirmPhysicalCardOtpIOS() {
+    await this.waitForOtpEntryIOS()
+    const resolvedOtp = await this.getPhysicalCardOtp()
     await this.enterOtpIOS(resolvedOtp)
+    await waitForIOSOtpOutcome(async () =>
+      await this.applePayProposalCloseBtnIOS.isExisting() || await this.freezeButtonIOS.isExisting(),
+    'Physical Card')
     await this.closeApplePayProposalIOS()
   }
 
-  public async finishPhysicalCardIOS(pin: string, otp: string) {
+  public async finishPhysicalCardIOS() {
     await this.waitForFreezeReadyIOS(60000)
     await this.freezeButtonIOS.waitForExist({ timeout: 60000 })
     await this.tap(this.freezeButtonIOS)

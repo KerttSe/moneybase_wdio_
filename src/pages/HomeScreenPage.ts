@@ -170,7 +170,8 @@ class HomeScreenPage extends BasePage {
   }
 
   private get businessAccountItemIOS() {
-    return $('-ios predicate string:name CONTAINS "Business" OR label CONTAINS "Business" OR name CONTAINS "DER00003" OR label CONTAINS "DER00003"')
+    const code = AUTH.businessAccountCode ?? 'DER00003'
+    return $(`-ios predicate string:name CONTAINS "${code}" OR label CONTAINS "${code}"`)
   }
 
   private get homeRootIOS() {
@@ -376,6 +377,10 @@ class HomeScreenPage extends BasePage {
   private async waitForIOSHomeAccount(accountType: 'Business' | 'Individual' | 'Joint', accountCode: string, timeout = 30000) {
     await browser.waitUntil(
       async () => {
+        if (await this.moreNavBarIOS.isExisting().catch(() => false)) {
+          await this.tap($('//XCUIElementTypeNavigationBar[@name="More"]//XCUIElementTypeButton[@name="close"]'))
+          return false
+        }
         const homeShown = await this.homeRootIOS.isExisting().catch(() => false)
         const accountCodeShown = await this.profilePickerAccountCodeLabelIOS.isExisting().catch(() => false)
         if (!homeShown || !accountCodeShown) return false
@@ -534,36 +539,14 @@ class HomeScreenPage extends BasePage {
     await this.openIOSSubAccountsSheet(item)
     await this.selectIOSSubAccount(item)
 
-    // After identity switch the app may return to the More screen before navigating home.
-    // The More screen can appear anywhere from 0–15s after the switch, so we poll both
-    // states together rather than using a short fixed wait for More.
-    const closeBtn = $('//XCUIElementTypeNavigationBar[@name="More" or @label="More"]//XCUIElementTypeButton[@name="close" or @label="close"]')
-    const deadline = Date.now() + 30000
-    while (Date.now() < deadline) {
-      const moreOpen = await this.moreNavBarIOS.isExisting().catch(() => false)
-      if (moreOpen) {
-        await this.tap(closeBtn).catch(() => {})
-        await browser.pause(500)
-        continue
-      }
-
-      const homeShown = await this.homeRootIOS.isExisting().catch(() => false)
-      const pickerShown = await this.profilePickerAccountCodeLabelIOS.isExisting().catch(() => false)
-      if (homeShown && pickerShown) {
-        const label = await this.getIOSAccountCodeLabel().catch(() => '')
-        if (label.includes(accountCode) && (!label.includes('•') || label.includes(accountType))) return
-      }
-
-      await browser.pause(500)
-    }
-    throw new Error(`Home screen did not switch to ${accountType} account (${accountCode}) on iOS`)
+    await this.waitForIOSHomeAccount(accountType, accountCode)
   }
 
   private get iosAccountTargets() {
     return [
       { type: 'Individual' as const, code: 'VEG40002', item: this.individualAccountItemIOS },
       { type: 'Joint' as const, code: 'VEG40003', item: this.jointAccountItemIOS },
-      { type: 'Business' as const, code: 'DER00003', item: this.businessAccountItemIOS },
+      { type: 'Business' as const, code: AUTH.businessAccountCode ?? 'DER00003', item: this.businessAccountItemIOS },
     ]
   }
 
@@ -893,20 +876,16 @@ class HomeScreenPage extends BasePage {
   public async verifyIOSAccountSwitchingAcrossTypes() {
     if (!browser.isIOS) return
 
-    await this.openIOSSubAccountsSheet(this.businessAccountItemIOS)
-    await this.selectIOSSubAccount(this.businessAccountItemIOS)
-    await this.profilePickerAccountCodeLabelIOS.waitForExist({ timeout: 10000 })
-
-    await this.openIOSSubAccountsSheet(this.individualAccountItemIOS)
-    await this.selectIOSSubAccount(this.individualAccountItemIOS)
-    await this.profilePickerAccountCodeLabelIOS.waitForExist({ timeout: 10000 })
+    await this.ensureIOSHomeAccount('Business', AUTH.businessAccountCode ?? 'DER00003', this.businessAccountItemIOS)
+    await this.ensureIOSHomeAccount('Individual', AUTH.individualAccountCode ?? 'VEG40002', this.individualAccountItemIOS)
   }
 
   public async openSmokeBusinessAccountIOS() {
     await this.waitForHomeLoaded()
 
+    const accountCode = AUTH.businessAccountCode ?? 'DER00003'
     const currentLabel = await this.getIOSAccountCodeLabel().catch(() => '')
-    if (currentLabel.includes('DER00003') && (!currentLabel.includes('•') || currentLabel.includes('Business'))) return true
+    if (currentLabel.includes(accountCode) && (!currentLabel.includes('•') || currentLabel.includes('Business'))) return true
 
     const opened = await this.openIOSSubAccountsSheet().then(() => true).catch(() => false)
     if (!opened) return false
@@ -918,13 +897,7 @@ class HomeScreenPage extends BasePage {
     }
 
     await this.selectIOSSubAccount(this.businessAccountItemIOS)
-
-    const closeBtn = $('//XCUIElementTypeNavigationBar[@name="More" or @label="More"]//XCUIElementTypeButton[@name="close" or @label="close"]')
-    const moreOpen = await this.moreNavBarIOS.isExisting().catch(() => false)
-    if (moreOpen) {
-      await this.tap(closeBtn).catch(() => {})
-    }
-
+    await this.waitForIOSHomeAccount('Business', accountCode)
     return true
   }
 

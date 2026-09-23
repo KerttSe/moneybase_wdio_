@@ -261,26 +261,7 @@ export default class CashFundsPage extends BasePage {
   }
 
   private get discoverTabIOS() {
-    return this.iosClassChain('**/XCUIElementTypeOther[`name == "main"`]/XCUIElementTypeOther[7]')
-  }
-
-  private get discoverTabIOSXpath() {
-    return $('//XCUIElementTypeOther[@name="main"]/XCUIElementTypeOther[7]')
-  }
-
-  private get discoverTabIOSFallback() {
-    return this.iosA11y('Discover')
-  }
-
-  private get discoverBottomTabIOS() {
-    // Prefer tapping the bottom navigation item when we actually need to navigate.
-    // Avoid relying on the localized nav container name ("навігація") — match by y-position instead.
-    return $('//XCUIElementTypeStaticText[@name="Discover" and @y > 650]')
-  }
-
-  private get discoverBottomTabIOSByY() {
-    // Fallback if the nav container name differs; match the bottom area.
-    return $('//XCUIElementTypeStaticText[@name="Discover" and @y > 650]')
+    return $('//XCUIElementTypeOther[@name="main"]//XCUIElementTypeStaticText[@name="Discover" and @visible="true"]/ancestor::XCUIElementTypeOther[2]')
   }
 
   private get cashFundsCardIOS() {
@@ -546,36 +527,15 @@ export default class CashFundsPage extends BasePage {
       return
     }
 
-    await this.investTabIOS.waitForExist({ timeout: 20000 })
-    await browser.waitUntil(
-      async () => {
-        await this.tap(this.investTabIOS).catch(() => {})
-        return (
-          (await this.discoverHeaderIOS.isExisting().catch(() => false)) ||
-          (await this.discoverTabIOS.isExisting().catch(() => false)) ||
-          (await this.discoverTabIOSXpath.isExisting().catch(() => false)) ||
-          (await this.discoverBottomTabIOS.isExisting().catch(() => false))
-        )
-      },
-      { timeout: 25000, interval: 1500 }
-    )
-
-    // Often after tapping Invest we are already on the Discover screen.
-    // So: first wait for the Discover header, and only if it's missing,
-    // tap Discover in the bottom navigation.
-    const onDiscover = await this.discoverHeaderIOS.waitForExist({ timeout: 20000 }).then(() => true).catch(() => false)
+    await this.tap(this.investTabIOS, 20000)
+    await browser.waitUntil(async () =>
+      await this.discoverHeaderIOS.isDisplayed() || await this.discoverTabIOS.isDisplayed(), {
+      timeout: 25000, interval: 500, timeoutMsg: 'Invest did not open the Investments dashboard or Discover',
+    })
+    const onDiscover = await this.discoverHeaderIOS.isDisplayed()
     if (!onDiscover) {
-      // Bring back the old (index-based) selector that previously navigated correctly.
-      // Keep header verification so a wrong tap doesn't silently proceed.
-      const discoverTapCandidates = [
-        this.discoverTabIOS,
-        this.discoverTabIOSXpath,
-        this.discoverBottomTabIOS,
-        this.discoverBottomTabIOSByY,
-        this.discoverTabIOSFallback,
-      ]
-      await this.waitForAnyDisplayed(discoverTapCandidates, 20000, 'Discover navigation (iOS)')
-      await this.tapFirstDisplayedAndWaitFor(discoverTapCandidates, this.discoverHeaderIOS, 'Discover navigation (iOS)', 20000)
+      await this.tapCenterIOS(await this.discoverTabIOS as unknown as WebdriverIO.Element)
+      await this.discoverHeaderIOS.waitForDisplayed({ timeout: 20000, timeoutMsg: 'Discover did not open after tapping its dashboard entry' })
     }
 
     await browser.pause(600)

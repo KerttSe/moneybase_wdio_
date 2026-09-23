@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<AppiumAUT>
+  <XCUIElementTypeNavigationBar name="More">
+    <XCUIElementTypeSearchField name="Search" />
+  </XCUIElementTypeNavigationBar>
+  <XCUIElementTypeNavigationBar name="Home">
+    <XCUIElementTypeSearchField name="Search" marker="home-search" />
+  </XCUIElementTypeNavigationBar>
+  <XCUIElementTypeOther name="home_screen_view">
+    <XCUIElementTypeOther>
+      <XCUIElementTypeImage name="ic_exchange" marker="home-exchange" />
+      <XCUIElementTypeStaticText name="Exchange" />
+    </XCUIElementTypeOther>
+  </XCUIElementTypeOther>
+  <XCUIElementTypeStaticText name="Exchange" />
+  <XCUIElementTypeOther name="main">
+    <XCUIElementTypeStaticText name="Back" />
+    <XCUIElementTypeOther>
+      <XCUIElementTypeStaticText name="Instrument" />
+    </XCUIElementTypeOther>
+    <XCUIElementTypeOther marker="watchlist-action" />
+    <XCUIElementTypeOther />
+    <XCUIElementTypeOther />
+    <XCUIElementTypeOther />
+    <XCUIElementTypeOther />
+    <XCUIElementTypeOther>
+      <XCUIElementTypeOther><XCUIElementTypeStaticText name="Portfolio" visible="true" /></XCUIElementTypeOther>
+    </XCUIElementTypeOther>
+    <XCUIElementTypeOther marker="discover-entry">
+      <XCUIElementTypeOther><XCUIElementTypeStaticText name="Discover" visible="true" /></XCUIElementTypeOther>
+    </XCUIElementTypeOther>
+  </XCUIElementTypeOther>
+  <XCUIElementTypeOther>
+    <XCUIElementTypeLink name="Discover" visible="false">
+      <XCUIElementTypeStaticText name="Discover" visible="false" />
+    </XCUIElementTypeLink>
+  </XCUIElementTypeOther>
+  <XCUIElementTypeOther name="autoTopup_button_save">
+    <XCUIElementTypeOther><XCUIElementTypeStaticText name="Save" marker="save-text" /></XCUIElementTypeOther>
+  </XCUIElementTypeOther>
+</AppiumAUT>

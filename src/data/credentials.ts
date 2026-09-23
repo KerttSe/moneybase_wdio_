@@ -6,6 +6,7 @@ export interface AuthData {
   otpPhone?: string
   individualAccountCode?: string
   individualAccountSuffix?: string
+  businessAccountCode?: string
   cardLastFour?: string
 }
 
@@ -16,6 +17,7 @@ const primaryAuth: AuthData = {
   otpPhone: process.env.OTP_PHONE,
   individualAccountCode: process.env.MB_INDIVIDUAL_CODE || 'VEG40002',
   individualAccountSuffix: process.env.MB_INDIVIDUAL_SUFFIX || '-1',
+  businessAccountCode: process.env.MB_BUSINESS_CODE || 'DER00003',
   cardLastFour: process.env.MB_CARD_LAST_FOUR || '0036',
 }
 
@@ -28,6 +30,7 @@ const secondaryAuth: AuthData = {
   otpPhone: process.env.MB_ALT_OTP_PHONE || process.env.AUTH_OTP_OTP_PHONE,
   individualAccountCode: process.env.MB_ALT_INDIVIDUAL_CODE || 'KER40014',
   individualAccountSuffix: process.env.MB_ALT_INDIVIDUAL_SUFFIX || '-1',
+  businessAccountCode: process.env.MB_ALT_BUSINESS_CODE || 'DON00003',
   cardLastFour: process.env.MB_ALT_CARD_LAST_FOUR || '0015',
 }
 

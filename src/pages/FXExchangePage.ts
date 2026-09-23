@@ -11,7 +11,7 @@ class FXExchangePage extends BasePage {
     if (browser.isAndroid) {
       return $('(//*[@resource-id="com.moneybase.qa:id/home_button_exchange"] | //*[contains(@resource-id,"home_button_exchange")] | //*[@content-desc="home_button_exchange"])[1]')
     }
-    return $('-ios predicate string:name == "home_button_exchange" OR name == "ic_exchange"')
+    return $('//*[@name="home_screen_view"]//*[@name="home_button_exchange" or (self::XCUIElementTypeImage and @name="ic_exchange")]')
   }
 
   private get exchangeSubmitButton() {
@@ -824,16 +824,25 @@ class FXExchangePage extends BasePage {
     await this.dismissIOSAlerts()
 
     await this.homeExchangeButton.waitForExist({ timeout: 15000 })
-    await browser.waitUntil(
+    if (browser.isIOS) await this.tapElementCenter(this.homeExchangeButton, 15000)
+    const opened = await browser.waitUntil(
       async () => {
-        await this.tapElementCenter(this.homeExchangeButton, 15000).catch(() => {})
+        if (browser.isIOS) return this.isIOSExchangeFormReady()
+        if (browser.isAndroid) await this.tapElementCenter(this.homeExchangeButton, 15000).catch(() => {})
         for (const el of this.fxExchangeScreenCandidates) {
           if (await el.isExisting().catch(() => false)) return true
         }
         return false
       },
-      { timeout: 25000, interval: 1500 }
-    )
+      { timeout: 25000, interval: 500, timeoutMsg: 'Home Exchange was tapped but FX Exchange did not open' }
+    ).then(() => true).catch(() => false)
+    if (!opened) {
+      const investments = $('//XCUIElementTypeOther[@name="main"]//XCUIElementTypeStaticText[@name="Investments" and @visible="true"]')
+      if (browser.isIOS && await investments.isExisting()) {
+        throw new Error('APP_NAVIGATION_ERROR: Home Exchange opened Investments instead of the exchange form')
+      }
+      throw new Error('Home Exchange was tapped but the exchange form did not open')
+    }
     await this.ensureNewTabActive()
     await this.waitForAnyDisplayed(this.fromWalletCandidates, 15000, 'From Wallet field')
   }
@@ -953,14 +962,17 @@ class FXExchangePage extends BasePage {
   }
 
   public async verifyExchangeScreenVisibleIOS() {
-    await $('~FX Exchange').waitForExist({ timeout: 15000 })
-    await this.fromWalletFieldIOS.waitForExist({ timeout: 15000 })
+    await browser.waitUntil(() => this.isIOSExchangeFormReady(), {
+      timeout: 15000, interval: 500, timeoutMsg: 'iOS exchange wallet fields did not appear',
+    })
+  }
+
+  private async isIOSExchangeFormReady() {
+    return await this.fromWalletField.isExisting() && await this.toWalletField.isExisting()
   }
 
   private async ensureExchangeScreenReadyIOS() {
-    const screenVisible = await $('~FX Exchange').isExisting().catch(() => false)
-    const fromWalletVisible = await this.fromWalletFieldIOS.isExisting().catch(() => false)
-    if (screenVisible && fromWalletVisible) {
+    if (await this.isIOSExchangeFormReady()) {
       await this.ensureNewTabActive()
       return
     }

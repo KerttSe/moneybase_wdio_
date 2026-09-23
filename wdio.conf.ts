@@ -5,6 +5,7 @@ import { execSync } from 'node:child_process'
 import { basename, resolve } from 'node:path'
 import { attachFailureArtifacts, writeAllureEnvironment, writeAllureExecutor } from './src/helpers/allure.helper'
 import { getLastBrowserStackStep } from './src/helpers/browserstack.helper'
+import { classifyFailureReason } from './src/helpers/failureClassification.helper'
 
 const envBaseDir = process.env.INIT_CWD ?? process.env.PWD ?? process.cwd()
 const envPath = resolve(envBaseDir, '.env')
@@ -122,39 +123,6 @@ if (useBrowserStack && requestedMaxInstances > 1 && !hasBrowserStackAltAccount) 
 
 if (shouldKeepBrowserStackSmokeSingleLane) {
   console.warn('[WDIO] Use smokePrimary + smokeSecondary commands for account-safe 2-parallel smoke; keeping --suite smoke at maxInstances=1.')
-}
-
-const classifyFailureReason = (error: Error) => {
-  const msg = `${error.message ?? ''} ${error.stack ?? ''}`.toLowerCase()
-
-  // Classify by HTTP code first (most precise), then fall back to text patterns.
-  // This guarantees the code in brackets always matches the actual error.
-  const httpCodeMatch = msg.match(/\b(429|403|401|511|5[0-9]{2})\b/)
-  const httpCode = httpCodeMatch?.[1]
-
-  let reason: string
-  if (httpCode) {
-    if (['500', '502', '503', '504', '429'].includes(httpCode)) {
-      reason = `BE_ERROR[${httpCode}]`
-    } else if (httpCode === '511') {
-      reason = `ENVIRONMENT_ISSUE[${httpCode}]`
-    } else {
-      // 401, 403 — backend rejected the request
-      reason = `BE_ERROR[${httpCode}]`
-    }
-  } else if (
-    /firebase|fis_auth|fis_error|something went wrong|network request failed|backend|server error|api error|request failed|account.*locked|too many attempt|otp.*reject|otp.*invalid|beneficiar.*not.*accept|otp.*did not complete|otp.*step.*did not|otp.*not.*appear|beneficiar.*screen.*not appear|add card did not open card type selection|card eligibility/.test(msg)
-  ) {
-    reason = 'BE_ERROR'
-  } else if (
-    /browserstack|appium.*crashed|driver.*died|session.*deleted|could not.*connect|sms.*timeout|sms.*not.*received|application under test.*not running|possibly crashed/.test(msg)
-  ) {
-    reason = 'ENVIRONMENT_ISSUE'
-  } else {
-    reason = 'AUTOMATION_BUG'
-  }
-
-  return { reason, httpCode }
 }
 
 const isMochaSkipError = (error: Error) => {

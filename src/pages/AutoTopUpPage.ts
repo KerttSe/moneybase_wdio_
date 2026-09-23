@@ -234,7 +234,7 @@ export default class AutoTopUpPage extends BasePage {
   get saveBtn() {
     if (browser.isAndroid)
       return $('(//*[@resource-id="com.moneybase.qa:id/autoTopUpDetails_button_save"] | //*[contains(@resource-id,"autoTopUpDetails_button_save")])[1]')
-    return $('-ios predicate string: name == "autoTopup_button_save" OR name == "autoTopUpDetails_button_save"')
+    return $('//*[@name="autoTopup_button_save" or @name="autoTopUpDetails_button_save"]//XCUIElementTypeStaticText[@name="Save"]')
   }
 
   get customAmountInput() {
@@ -319,10 +319,9 @@ export default class AutoTopUpPage extends BasePage {
     }
 
     if (browser.isIOS) {
-      await this.ensureIndividualAccountIOS()
-
       const addFundsAlreadyOpen = await this.addFundsScreen.isExisting().catch(() => false)
       if (addFundsAlreadyOpen) return
+      await this.ensureIndividualAccountIOS()
 
       // Loader may intercept the tap — retry until Add Funds screen appears
       await this.openBtn.waitForExist({ timeout: 15000 })
@@ -578,6 +577,12 @@ export default class AutoTopUpPage extends BasePage {
   async saveAutoTopUp() {
     await this.saveBtn.waitForEnabled({ timeout: 15000 })
     await this.tap(this.saveBtn)
+    if (browser.isIOS) {
+      await this.saveBtn.waitForExist({
+        reverse: true, timeout: 20000,
+        timeoutMsg: 'Auto Top-Up Save did not close the form; the rule has not been confirmed as saved',
+      })
+    }
   }
 
   /**
@@ -777,8 +782,11 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   async verifyAndDeleteAutoTopUpFromHomeFlow(options: { amount: number | string }) {
-    await this.openFromHome()
-    await this.goToAutoTopUpList()
+    const alreadyOnRuleList = browser.isIOS && await this.getAutoTopUpListItemByAmount(options.amount).isExisting()
+    if (!alreadyOnRuleList) {
+      await this.openFromHome()
+      await this.goToAutoTopUpList()
+    }
 
     //for ios: search by accessibility id autoTopupList_item_active_€500_€{amount}
 
@@ -786,8 +794,7 @@ export default class AutoTopUpPage extends BasePage {
     if (browser.isIOS) {
       ruleItem = this.getAutoTopUpListItemByAmount(options.amount);
       if (!ruleItem) throw new Error('Could not build locator for autoTopupList_item_active');
-      const visible = await ruleItem.isDisplayed().catch(() => false);
-      if (!visible) throw new Error(`Auto Top-Up rule not found by accessibility id: autoTopupList_item_active_€500_€${options.amount}`);
+      await ruleItem.waitForDisplayed({ timeout: 15000 });
       await this.tap(ruleItem);
     } else {
       await this.verifyThresholdRuleIsVisible(options.amount);
@@ -926,13 +933,13 @@ export default class AutoTopUpPage extends BasePage {
 
     // iOS повертається на Add Funds screen, Android — на Home
     if (browser.isIOS) {
-      const backOnAddFunds = await this.addFundsScreen
-        .waitForExist({ timeout: 20000 })
-        .then(() => true)
-        .catch(() => false)
-      if (!backOnAddFunds) {
-        await this.openBtn.waitForExist({ timeout: 15000 })
-      }
+      await browser.waitUntil(async () =>
+        await this.addFundsScreen.isExisting() ||
+        await this.getAutoTopUpListItemByAmount(options.amount).isExisting() ||
+        await $('~home_screen_view').isExisting(), {
+        timeout: 20000, interval: 500,
+        timeoutMsg: 'Auto Top-Up Save closed the form but no return screen appeared',
+      })
     } else {
       await this.openBtn.waitForExist({ timeout: 30000 })
     }
@@ -1019,7 +1026,7 @@ export default class AutoTopUpPage extends BasePage {
    */
   private getAutoTopUpListItemByAmount(amount: number | string) {
     const addNum = Number(String(amount).replace(/[^\d.]/g, ''));
-    if (!Number.isFinite(addNum) || addNum <= 0) return undefined;
+    if (!Number.isFinite(addNum) || addNum <= 0) throw new Error('CONFIGURATION_ERROR: Auto Top-Up amount must be positive');
     return $(`~autoTopupList_item_active_€500_€${addNum}`);
   }
 }

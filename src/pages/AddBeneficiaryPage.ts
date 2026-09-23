@@ -2,6 +2,7 @@ import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
 import OtpHelper from '../helpers/otp.helper'
+import { assertIOSOtpPhone, waitForIOSOtpOutcome } from '../helpers/iosOtp.helper'
 import { AUTH } from '../data/credentials'
 import HomeScreenPage from './HomeScreenPage'
 
@@ -10,6 +11,7 @@ export default class AddBeneficiaryPage extends BasePage {
     return (
       process.env.ADD_BENEFICIARY_OTP_PHONE ||
       process.env.ADD_BENEFICIARY_LOGIN_OTP_PHONE ||
+      process.env.ADD_BENEFICIARY_MB_PHONE ||
       AUTH.otpPhone ||
       AUTH.phone ||
       process.env.OTP_PHONE ||
@@ -2210,6 +2212,7 @@ export default class AddBeneficiaryPage extends BasePage {
 
     const otpPhone = this.getConfiguredOtpPhone()
     if (!otpPhone) throw new Error('OTP phone is not configured. Set ADD_BENEFICIARY_OTP_PHONE, OTP_PHONE, or MB_PHONE')
+    await assertIOSOtpPhone(otpPhone)
 
     const beneficiaryOtpTimeoutMs = Math.max(
       90000,
@@ -2221,7 +2224,7 @@ export default class AddBeneficiaryPage extends BasePage {
       await browser.pause(Math.floor(otpFetchDelayMs))
     }
 
-    console.log(`[AddBeneficiary][OTP iOS] Fetching OTP for ${otpPhone}`)
+    console.log('[AddBeneficiary][OTP iOS] Fetching OTP for the verified challenge destination')
     const otp = await OtpHelper.getLatestOtp({
       phone: otpPhone,
       timeoutMs: beneficiaryOtpTimeoutMs,
@@ -2235,63 +2238,12 @@ export default class AddBeneficiaryPage extends BasePage {
       excludeTokens: [process.env.LAST_LOGIN_OTP || ''],
     })
 
-    const enterOtpDigitsIOS = async (_delayMs: number) => {
-      // Slots are XCUIElementTypeTextField named OTP_entry_0..5.
-      // One addValue(otp) call types all 6 digits as a continuous stream so
-      // XCUITest auto-advances slot focus without re-tapping slot 0 between chars.
-      const firstSlot = $('//XCUIElementTypeTextField[starts-with(@name, "OTP_entry_")]')
-      await firstSlot.waitForExist({ timeout: 15000, timeoutMsg: '[AddBeneficiary][iOS] OTP input fields not found' })
-      await firstSlot.clearValue().catch(() => {})
-      await firstSlot.addValue(otp)
-    }
-
-    await enterOtpDigitsIOS(50)
-
-    // Wait for OTP to submit. Check positive success signals first, then use isExisting()
-    // for OTP gone — isDisplayed() is unreliable when otp_input has visible=false (Compose bug).
-    const otpGoneOrSuccess = async () => {
-      if (await this.isPostOtpSuccessAnchorIOS(expectedIban)) return true
-      return !(await this.otpContainerIOS.isExisting().catch(() => false))
-    }
-    const autoSubmitted = await browser
-      .waitUntil(otpGoneOrSuccess, { timeout: 15000, interval: 300 })
-      .catch(() => false)
-
-    if (!autoSubmitted) {
-      console.warn('[AddBeneficiary][iOS] OTP auto-submit did not fire — retrying with 100ms interval')
-      await enterOtpDigitsIOS(100)
-      await browser.waitUntil(otpGoneOrSuccess, { timeout: 15000, interval: 300 }).catch(() => {})
-    }
-
-    // Confirm success: home screen, Pay tab, Pay screen (even behind success overlay), or IBAN visible.
-    // Delay first retry by initializing lastOtpReentryAt to now — prevents spurious re-entry
-    // on the success screen if otp_input lingers in the accessibility tree after navigation.
-    let otpReentryCount = 0
-    let lastOtpReentryAt = Date.now()
-    await browser.waitUntil(
-      async () => {
-        if (await this.isPostOtpSuccessAnchorIOS(expectedIban)) return true
-
-        // Use isExisting — visible=false doesn't mean OTP screen is gone
-        const otpStillShown = await this.otpContainerIOS.isExisting().catch(() => false)
-        if (otpStillShown) {
-          const now = Date.now()
-          if (otpReentryCount < 2 && now - lastOtpReentryAt > 8000) {
-            otpReentryCount++
-            lastOtpReentryAt = now
-            console.warn(`[AddBeneficiary][iOS] OTP still visible — re-entering digits (attempt ${otpReentryCount}/2)`)
-            await enterOtpDigitsIOS(150)
-          }
-        }
-
-        return false
-      },
-      {
-        timeout: 180000,
-        interval: 1000,
-        timeoutMsg: '[AddBeneficiary][iOS] Success screen did not appear after OTP submit',
-      },
-    )
+    const firstSlot = $('//XCUIElementTypeTextField[@name="OTP_entry_0"]')
+    await firstSlot.waitForExist({ timeout: 15000, timeoutMsg: '[AddBeneficiary][iOS] OTP input fields not found' })
+    await firstSlot.addValue(otp)
+    await waitForIOSOtpOutcome(async () =>
+      !(await this.otpContainerIOS.isExisting()) && await this.isPostOtpSuccessAnchorIOS(expectedIban),
+    'Add Beneficiary', 90000)
   }
 
   /**

@@ -51,15 +51,14 @@ export default class WatchlistPage extends BasePage {
   }
 
   private get watchlistActionIOS() {
-    return this.iosClassChain('**/XCUIElementTypeOther[`name == "main"`]/XCUIElementTypeOther[2]')
+    return $('//XCUIElementTypeOther[@name="main"]/XCUIElementTypeOther[XCUIElementTypeStaticText[@name="Instrument"]]/following-sibling::XCUIElementTypeOther[1]')
   }
 
   private get watchlistUpdatedToastIOS() {
     return this.iosPredicate(
       'type == "XCUIElementTypeStaticText" AND ' +
-      '(name CONTAINS[c] "watchlist" OR label CONTAINS[c] "watchlist" OR value CONTAINS[c] "watchlist" OR ' +
-      'name CONTAINS[c] "success" OR label CONTAINS[c] "success" OR value CONTAINS[c] "success" OR ' +
-      'name CONTAINS[c] "updated" OR label CONTAINS[c] "updated" OR value CONTAINS[c] "updated")'
+      '(label CONTAINS[c] "watchlist" AND ' +
+      '(label CONTAINS[c] "updated" OR label CONTAINS[c] "added" OR label CONTAINS[c] "removed"))'
     )
   }
 
@@ -183,26 +182,12 @@ export default class WatchlistPage extends BasePage {
     await browser.execute('mobile: tap', { x, y })
   }
 
-  private async tapIOSPoint(xRatio: number, yRatio: number) {
-    const size = await browser.getWindowSize()
-    await browser.execute('mobile: tap', {
-      x: Math.round(size.width * xRatio),
-      y: Math.round(size.height * yRatio),
-    })
-  }
-
   private async tapWatchlistActionIOS() {
     await this.tapIOSExists(this.watchlistActionIOS, 20000)
-    await browser.pause(700)
-
-    const toastShown = await this.watchlistUpdatedToastIOS
-      .waitForExist({ timeout: 1500 })
-      .then(() => true)
-      .catch(() => false)
-    if (toastShown) return
-
-    await this.tapIOSPoint(0.92, 0.09)
-    await browser.pause(700)
+    // Observe the acknowledgement once. A second tap reverses the first update.
+    await this.watchlistUpdatedToastIOS.waitForExist({
+      timeout: 25000, interval: 200, timeoutMsg: 'Watchlist update was not acknowledged after one tap',
+    })
   }
 
   async addFirstExistingInstrumentToWatchlistIOS() {
@@ -228,18 +213,6 @@ export default class WatchlistPage extends BasePage {
     await browser.switchContext('NATIVE_APP')
 
     await this.tapWatchlistActionIOS()
-
-    const toastShown = await this.watchlistUpdatedToastIOS.waitForExist({ timeout: 25000 }).then(() => true).catch(() => false)
-    if (!toastShown) {
-      const stillOnInstrument = await this.waitForAnyDisplayed([this.instrumentHeaderIOS, this.instrumentBuyButtonIOS], 1500, 'Instrument details (iOS)')
-        .then(() => true)
-        .catch(() => false)
-      const actionStillVisible = await this.watchlistActionIOS.isExisting().catch(() => false)
-      if (stillOnInstrument && !actionStillVisible) return
-
-      await this.debugSnapshot('watchlist-ios-toast-not-found')
-      throw new Error('Watchlist updated toast did not appear')
-    }
   }
 
   async addFirstExistingInstrumentToWatchlistAndroid() {
