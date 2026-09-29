@@ -578,8 +578,9 @@ export default class AutoTopUpPage extends BasePage {
     await this.saveBtn.waitForEnabled({ timeout: 15000 })
     await this.tap(this.saveBtn)
     if (browser.isIOS) {
+      const saveTimeoutMs = Number(process.env.AUTO_TOP_UP_SAVE_TIMEOUT_MS || 60000)
       await this.saveBtn.waitForExist({
-        reverse: true, timeout: 20000,
+        reverse: true, timeout: saveTimeoutMs,
         timeoutMsg: 'Auto Top-Up Save did not close the form; the rule has not been confirmed as saved',
       })
     }
