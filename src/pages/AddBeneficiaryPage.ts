@@ -10,13 +10,8 @@ export default class AddBeneficiaryPage extends BasePage {
   private getConfiguredOtpPhone() {
     return (
       process.env.ADD_BENEFICIARY_OTP_PHONE ||
-      process.env.ADD_BENEFICIARY_LOGIN_OTP_PHONE ||
       process.env.ADD_BENEFICIARY_MB_PHONE ||
-      AUTH.otpPhone ||
-      AUTH.phone ||
-      process.env.OTP_PHONE ||
-      process.env.MB_PHONE ||
-      ''
+      AUTH.phone
     )
   }
 

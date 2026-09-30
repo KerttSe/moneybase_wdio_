@@ -1463,7 +1463,7 @@ class PhysicalCardCreationPage extends BasePage {
     const endpointConfigured = Boolean(String(process.env.OTP_GET_LATEST_URL || process.env.OTP_API_BASE_URL || '').trim())
     if (!endpointConfigured) throw new Error('CONFIGURATION_ERROR: Physical card verification requires an OTP API endpoint')
 
-    const phone = process.env.PHYSICAL_CARD_OTP_PHONE || process.env.PHYSICAL_CARD_MB_PHONE || AUTH.otpPhone || AUTH.phone
+    const phone = process.env.PHYSICAL_CARD_OTP_PHONE || process.env.PHYSICAL_CARD_MB_PHONE || AUTH.phone
     if (browser.isIOS) await assertIOSOtpPhone(phone)
 
     return OtpHelper.getLatestOtp({
