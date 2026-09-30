@@ -231,8 +231,8 @@ jobs:
       OTP_FETCH_DELAY_MS: "5000"
       OTP_GET_LATEST_URL: ${{ secrets.OTP_GET_LATEST_URL }}
       OTP_RESEND_WAIT_MS: "0"
-      ADD_BENEFICIARY_LOGIN_USE_API_OTP: "true"
-      PHYSICAL_CARD_LOGIN_USE_API_OTP: "true"
+      ADD_BENEFICIARY_LOGIN_USE_API_OTP: "false"
+      PHYSICAL_CARD_LOGIN_USE_API_OTP: "false"
       CARD_FREEZE_LOGIN_USE_API_OTP: "true"
       ONBOARDED_ACCOUNTS_FILE: ".generated/onboarded-accounts.json"
     steps:
@@ -476,8 +476,8 @@ jobs:
       OTP_FETCH_DELAY_MS: "5000"
       OTP_GET_LATEST_URL: ${{ secrets.OTP_GET_LATEST_URL }}
       OTP_RESEND_WAIT_MS: "0"
-      ADD_BENEFICIARY_LOGIN_USE_API_OTP: "true"
-      PHYSICAL_CARD_LOGIN_USE_API_OTP: "true"
+      ADD_BENEFICIARY_LOGIN_USE_API_OTP: "false"
+      PHYSICAL_CARD_LOGIN_USE_API_OTP: "false"
       CARD_FREEZE_LOGIN_USE_API_OTP: "true"
       ONBOARDED_ACCOUNTS_FILE: ".generated/onboarded-accounts.json"
     steps:
