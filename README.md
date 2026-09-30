@@ -64,7 +64,7 @@ BrowserStack-specific variables:
 
 - `BROWSERSTACK_USERNAME`
 - `BROWSERSTACK_ACCESS_KEY`
-- `BS_APP_ANDROID` (expects a `bs://...` app url from BrowserStack)
+- `BS_APP_ANDROID` (optional override for the default Android `bs://...` app URL)
 - `BS_APP_IOS` (expects a `bs://...` app url from BrowserStack)
 - `BS_PROJECT`
 - `BS_BUILD`
