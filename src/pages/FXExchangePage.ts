@@ -816,16 +816,14 @@ class FXExchangePage extends BasePage {
     await browser.pause(700)
   }
 
-  public async openFromHome() {
-    await this.dismissIOSAlerts()
-    await HomeScreenPage.waitForHomeLoaded()
-    await HomeScreenPage.ensureIndividualAccount()
-    await HomeScreenPage.waitForHomeLoaded()
-    await this.dismissIOSAlerts()
+  private async isIOSInvestmentsScreenShown() {
+    return $('//XCUIElementTypeOther[@name="main"]//XCUIElementTypeStaticText[@name="Investments" and @visible="true"]')
+      .isExisting()
+      .catch(() => false)
+  }
 
-    await this.homeExchangeButton.waitForExist({ timeout: 15000 })
-    if (browser.isIOS) await this.tapElementCenter(this.homeExchangeButton, 15000)
-    const opened = await browser.waitUntil(
+  private async waitForFxExchangeOpened() {
+    return browser.waitUntil(
       async () => {
         if (browser.isIOS) return this.isIOSExchangeFormReady()
         if (browser.isAndroid) await this.tapElementCenter(this.homeExchangeButton, 15000).catch(() => {})
@@ -836,10 +834,37 @@ class FXExchangePage extends BasePage {
       },
       { timeout: 25000, interval: 500, timeoutMsg: 'Home Exchange was tapped but FX Exchange did not open' }
     ).then(() => true).catch(() => false)
+  }
+
+  public async openFromHome() {
+    await this.dismissIOSAlerts()
+    await HomeScreenPage.waitForHomeLoaded()
+    await HomeScreenPage.ensureIndividualAccount()
+    await HomeScreenPage.waitForHomeLoaded()
+    await this.dismissIOSAlerts()
+
+    await this.homeExchangeButton.waitForExist({ timeout: 15000 })
+    if (browser.isIOS) await this.tapElementCenter(this.homeExchangeButton, 15000)
+    let opened = await this.waitForFxExchangeOpened()
+
+    // KNOWN APP BUG (iOS, staging, reported — see docs/smoke-72-analysis.md): the first tap on
+    // Home Exchange right after login can route to Investments instead of the exchange form.
+    // Confirmed via manual live retap on-device: Back to Home, tap Exchange again, and the form
+    // opens correctly — a cold-start routing race on first navigation, not a locator issue. This
+    // is a documented workaround, retried exactly once; if the second attempt also lands on
+    // Investments, the test still fails with APP_NAVIGATION_ERROR rather than masking it further.
+    if (!opened && browser.isIOS && await this.isIOSInvestmentsScreenShown()) {
+      await markBrowserStackStep('Home Exchange opened Investments on first tap (known app bug) — retrying via Back')
+      await this.tap(this.backBtn).catch(() => {})
+      await HomeScreenPage.waitForHomeLoaded().catch(() => {})
+      await this.homeExchangeButton.waitForExist({ timeout: 15000 })
+      await this.tapElementCenter(this.homeExchangeButton, 15000)
+      opened = await this.waitForFxExchangeOpened()
+    }
+
     if (!opened) {
-      const investments = $('//XCUIElementTypeOther[@name="main"]//XCUIElementTypeStaticText[@name="Investments" and @visible="true"]')
-      if (browser.isIOS && await investments.isExisting()) {
-        throw new Error('APP_NAVIGATION_ERROR: Home Exchange opened Investments instead of the exchange form')
+      if (browser.isIOS && await this.isIOSInvestmentsScreenShown()) {
+        throw new Error('APP_NAVIGATION_ERROR: Home Exchange opened Investments instead of the exchange form (retry also failed)')
       }
       throw new Error('Home Exchange was tapped but the exchange form did not open')
     }

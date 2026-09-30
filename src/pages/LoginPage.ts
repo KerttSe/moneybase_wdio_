@@ -44,24 +44,59 @@ export class LoginPage extends BasePage {
   get welcomeLogInBtn() { return this.byId(LoginPage.IDS.welcomeLogIn) }
   get registerScreen() { return this.byId(LoginPage.IDS.registerScreen) }
 
+  private async tapElementCenter(element: ChainablePromiseElement) {
+    const location = await element.getLocation()
+    const size = await element.getSize()
+    const x = Math.round(location.x + size.width / 2)
+    const y = Math.round(location.y + size.height / 2)
+
+    await browser.performActions([
+      {
+        type: 'pointer',
+        id: 'finger-login-welcome',
+        parameters: { pointerType: 'touch' },
+        actions: [
+          { type: 'pointerMove', duration: 0, x, y },
+          { type: 'pointerDown', button: 0 },
+          { type: 'pause', duration: 100 },
+          { type: 'pointerUp', button: 0 },
+        ],
+      },
+    ])
+    await browser.releaseActions().catch(() => {})
+  }
+
+  private async tapWelcomeEntryButton(element: ChainablePromiseElement) {
+    const clicked = await element.click().then(() => true).catch(() => false)
+    if (!clicked) {
+      await this.tapElementCenter(element)
+      return
+    }
+
+    await browser.pause(350)
+    if (await element.isDisplayed().catch(() => false)) {
+      await this.tapElementCenter(element)
+    }
+  }
+
   private async tapWelcomeEntryButtonIfShown() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
     const signInBtn = this.welcomeSignInBtn
-    if (await signInBtn.isExisting().catch(() => false)) {
-      await signInBtn.click()
+    if (await signInBtn.isDisplayed().catch(() => false)) {
+      await this.tapWelcomeEntryButton(signInBtn)
       return true
     }
 
     const logInBtn = this.welcomeLogInBtn
-    if (await logInBtn.isExisting().catch(() => false)) {
-      await logInBtn.click()
+    if (await logInBtn.isDisplayed().catch(() => false)) {
+      await this.tapWelcomeEntryButton(logInBtn)
       return true
     }
 
     const skipBtn = this.welcomeSkipBtn
-    if (await skipBtn.isExisting().catch(() => false)) {
-      await skipBtn.click()
+    if (await skipBtn.isDisplayed().catch(() => false)) {
+      await this.tapWelcomeEntryButton(skipBtn)
       return true
     }
 
@@ -176,7 +211,7 @@ export class LoginPage extends BasePage {
     }
 
     // Initial welcome screen can expose either the legacy Skip button or the new Sign in entry point.
-    if (await this.tapWelcomeEntryButtonIfShown()) {
+    if (await this.tapWelcomeEntryButtonIfShown() && browser.isIOS) {
       await this.waitForWelcomeEntryTransition().catch(() => {})
     }
 
@@ -222,17 +257,16 @@ export class LoginPage extends BasePage {
       const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
       const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
       const mainShellShown = await this.isAndroidMainShellShown()
-      const activity = await browser.getCurrentActivity().catch(() => '')
-      const loginActivityShown = /LoginActivity/i.test(activity)
-
-      if (loginActivityShown) {
-        const deviceSecurityShown = await $('//*[@text="Device Security"]').isExisting().catch(() => false)
-        if (deviceSecurityShown) {
-          throw new Error('BrowserStack device is blocked by Device Security screen (VPN or security policy)')
-        }
+      const deviceSecurityShown = await $('//*[@text="Device Security"]').isDisplayed().catch(() => false)
+      if (deviceSecurityShown) {
+        throw new Error('BrowserStack device is blocked by Device Security screen (VPN or security policy)')
       }
 
-      if (registerShown || homeShown || mainShellShown || loginActivityShown) return true
+      if (registerShown || homeShown || mainShellShown) return true
+
+      // LoginActivity also hosts the welcome screen, so it cannot prove that Sign in worked.
+      // Retry the visible entry action until the register screen actually appears.
+      if (await this.tapWelcomeEntryButtonIfShown()) return false
 
       await this.dismissAndroidBlockersOnce(0)
       return false

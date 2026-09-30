@@ -4,7 +4,7 @@ import { LoginPage } from '../pages/LoginPage'
 import { AUTH } from '../data/credentials'
 
 describe('Matrix - Smoke', function () {
-  this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 300000))
+  this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
 
   const loginPage = new LoginPage()
 

@@ -103,9 +103,9 @@ export async function attachFailureArtifacts() {
  * so Allure shows device/OS info in the Environment widget.
  * Pass the raw capabilities array from onPrepare to include device names.
  */
-export function writeAllureEnvironment(capabilities?: WebdriverIO.Capabilities[]) {
+export function writeAllureEnvironment(capabilities?: WebdriverIO.Capabilities[], outputDir = 'allure-results') {
   try {
-    mkdirSync('allure-results', { recursive: true })
+    mkdirSync(outputDir, { recursive: true })
 
     const lines: string[] = [
       `Framework=WebdriverIO`,
@@ -132,7 +132,7 @@ export function writeAllureEnvironment(capabilities?: WebdriverIO.Capabilities[]
       })
     }
 
-    writeFileSync(join('allure-results', 'environment.properties'), lines.join('\n'), 'utf8')
+    writeFileSync(join(outputDir, 'environment.properties'), lines.join('\n'), 'utf8')
     console.log('[Allure] environment.properties written')
   } catch (err) {
     console.warn('[Allure] Failed to write environment.properties:', err)
@@ -149,7 +149,7 @@ export function writeAllureEnvironment(capabilities?: WebdriverIO.Capabilities[]
  *  - Jenkins         (JENKINS_URL, BUILD_NUMBER, BUILD_URL)
  *  - Local fallback
  */
-export function writeAllureExecutor() {
+export function writeAllureExecutor(outputDir = 'allure-results') {
   const env = process.env
 
   let executor: Record<string, unknown>
@@ -200,9 +200,9 @@ export function writeAllureExecutor() {
   }
 
   try {
-    mkdirSync('allure-results', { recursive: true })
+    mkdirSync(outputDir, { recursive: true })
     writeFileSync(
-      join('allure-results', 'executor.json'),
+      join(outputDir, 'executor.json'),
       JSON.stringify(executor, null, 2),
       'utf8'
     )

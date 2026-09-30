@@ -87,6 +87,8 @@ const browserStackBuildTags = (platform: 'android' | 'ios') => [
 ]
 const browserStackServicePlatform = platformFilter === 'ios' ? 'ios' : 'android'
 const browserStackServiceBuildTags = browserStackBuildTags(browserStackServicePlatform)
+const allureResultsDir = process.env.ALLURE_RESULTS_DIR || 'allure-results'
+const allureReportDir = process.env.ALLURE_REPORT_DIR || 'allure-report'
 const browserStackDebugOptions = {
   debug: envFlag('BS_DEBUG', true),
   appiumLogs: envFlag('BS_APPIUM_LOGS', true),
@@ -334,6 +336,8 @@ const smokeSecondaryAccountSpecs = envList('BS_SMOKE_SECONDARY_ACCOUNT_SPECS', s
 const smokeSecondaryAccountSpecNames = new Set(smokeSecondaryAccountSpecs.map(spec => basename(spec)))
 const smokePrimaryAccountSpecs = smokeSpecs.filter(spec => !smokeSecondaryAccountSpecNames.has(basename(spec)))
 const smokePrimaryAccountSpecNames = new Set(smokePrimaryAccountSpecs.map(spec => basename(spec)))
+const smokePrimarySuite = useBrowserStack ? [smokePrimaryAccountSpecs] : smokePrimaryAccountSpecs
+const smokeSecondarySuite = useBrowserStack ? [smokeSecondaryAccountSpecs] : smokeSecondaryAccountSpecs
 
 const regressionSecondarySpecs = [
   // smoke secondary
@@ -419,8 +423,8 @@ export const config: WebdriverIO.Config = {
     launchOnly: ['./src/tests/launch.spec.ts'],
     onboarding: ['./src/tests/onboarding.spec.ts'],
     pricePlan: ['./src/tests/pricePlan.spec.ts'],
-    smokePrimary: smokePrimaryAccountSpecs,
-    smokeSecondary: smokeSecondaryAccountSpecs,
+    smokePrimary: smokePrimarySuite,
+    smokeSecondary: smokeSecondarySuite,
     smokeWithoutOnboarding: smokeSpecs.filter((spec) => spec !== './src/tests/onboarding.spec.ts'),
     regressionPrimary: regressionPrimarySpecs,
     regressionSecondary: regressionSecondarySpecs,
@@ -441,7 +445,7 @@ export const config: WebdriverIO.Config = {
   reporters: [
     'spec',
     ['allure', {
-      outputDir: 'allure-results',
+      outputDir: allureResultsDir,
       disableWebdriverStepsReporting: true,
       disableWebdriverScreenshotsReporting: false,
     }],
@@ -465,8 +469,8 @@ export const config: WebdriverIO.Config = {
   mochaOpts: { ui: 'bdd', timeout: Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000) },
 
   onPrepare: function (_config, capabilities) {
-    writeAllureEnvironment(capabilities as WebdriverIO.Capabilities[])
-    writeAllureExecutor()
+    writeAllureEnvironment(capabilities as WebdriverIO.Capabilities[], allureResultsDir)
+    writeAllureExecutor(allureResultsDir)
   },
 
   beforeSession: function (_config, capabilities, specs) {
@@ -531,7 +535,7 @@ export const config: WebdriverIO.Config = {
 
   onComplete: function () {
     try {
-      execSync('npx allure generate allure-results -o allure-report --clean', { stdio: 'inherit' })
+      execSync(`npx allure generate ${allureResultsDir} -o ${allureReportDir} --clean`, { stdio: 'inherit' })
     } catch (err) {
       console.warn('Allure report generation failed:', err)
     }

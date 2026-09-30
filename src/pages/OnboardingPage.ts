@@ -1037,20 +1037,20 @@ export default class OnboardingPage extends BasePage {
       await browser.pause(1000)
     }
 
-    if (await this.isDisplayed(this.welcomeSkipBtn, 7000)) {
-      await this.tap(this.welcomeSkipBtn)
-    } else if (await this.welcomeNextBtn.isExisting().catch(() => false)) {
+    if (await this.existsSoon(this.welcomeSkipBtn, 3000)) {
+      await this.tapWelcomeControl(this.welcomeSkipBtn)
+    } else if (await this.existsSoon(this.welcomeNextBtn, 1000)) {
       // Compose build: no skip button — tap through carousel slides until welcome screen gone
       for (let i = 0; i < 6; i++) {
-        const getStartedShown = await this.welcomeGetStartedBtn.isExisting().catch(() => false)
+        const getStartedShown = await this.existsSoon(this.welcomeGetStartedBtn, 750)
         if (getStartedShown) {
-          await this.tap(this.welcomeGetStartedBtn)
+          await this.tapWelcomeControl(this.welcomeGetStartedBtn)
           break
         }
-        const nextShown = await this.welcomeNextBtn.isExisting().catch(() => false)
+        const nextShown = await this.existsSoon(this.welcomeNextBtn, 750)
         if (!nextShown) break
-        await this.tap(this.welcomeNextBtn)
-        await browser.pause(400)
+        await this.tapWelcomeControl(this.welcomeNextBtn)
+        await browser.pause(600)
       }
     }
 
@@ -1061,6 +1061,17 @@ export default class OnboardingPage extends BasePage {
         (await this.mobileInput.isExisting().catch(() => false)),
       { timeout: 30000, interval: 500, timeoutMsg: 'register_screen or mobile input did not appear' }
     )
+  }
+
+  private async existsSoon(el: ChainablePromiseElement, timeout = 750) {
+    return el.waitForExist({ timeout }).then(() => true).catch(() => false)
+  }
+
+  private async tapWelcomeControl(el: ChainablePromiseElement) {
+    await el.waitForExist({ timeout: 5000 })
+    await el.click().catch(async () => {
+      await this.tapElementCenter(el)
+    })
   }
 
   private async throwIfDeviceSecurityBlocked() {
