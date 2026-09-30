@@ -7,7 +7,7 @@ class HomeSearchPage extends BasePage {
     if (browser.isAndroid) {
       return $('(//*[@resource-id="com.moneybase.qa:id/home_input_search"] | //*[@content-desc="Search"]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[@text="Search"]/ancestor::*[@clickable="true"][1])[1]')
     }
-    return $('//XCUIElementTypeNavigationBar[@name="Home"]//XCUIElementTypeSearchField[@name="Search"]')
+    return $('-ios predicate string:type == "XCUIElementTypeSearchField" AND (name == "Search" OR label == "Search")')
   }
 
   private get androidEditText() {
@@ -19,6 +19,33 @@ class HomeSearchPage extends BasePage {
       return $('//*[contains(@content-desc,"Carlos Cat") or contains(@text,"Carlos Cat")]')
     }
     return $('-ios predicate string: label CONTAINS "Carlos Cat" OR name CONTAINS "Carlos Cat"')
+  }
+
+  private async revealSearchInputIOS() {
+    if (!browser.isIOS || await this.searchInput.isDisplayed().catch(() => false)) return
+
+    const { width, height } = await browser.getWindowRect()
+    const x = Math.round(width * 0.5)
+
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      await browser.performActions([
+        {
+          type: 'pointer',
+          id: `finger-home-search-${attempt}`,
+          parameters: { pointerType: 'touch' },
+          actions: [
+            { type: 'pointerMove', duration: 0, x, y: Math.round(height * 0.35) },
+            { type: 'pointerDown', button: 0 },
+            { type: 'pause', duration: 100 },
+            { type: 'pointerMove', duration: 500, x, y: Math.round(height * 0.78) },
+            { type: 'pointerUp', button: 0 },
+          ],
+        },
+      ])
+      await browser.releaseActions().catch(() => {})
+      await browser.pause(500)
+      if (await this.searchInput.isDisplayed().catch(() => false)) return
+    }
   }
 
   private async typeIntoSearch(value: string) {
@@ -56,6 +83,7 @@ class HomeSearchPage extends BasePage {
     await HomeScreenPage.waitForHomeLoaded()
     await this.dismissIOSAlerts()
 
+    await this.revealSearchInputIOS()
     await this.searchInput.waitForDisplayed({ timeout: 15000 })
     await this.typeIntoSearch(query)
 
