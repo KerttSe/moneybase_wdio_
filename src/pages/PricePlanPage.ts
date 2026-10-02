@@ -300,7 +300,6 @@ class PricePlanPage extends BasePage {
         await this.userAvatarAndroid.waitForDisplayed({ timeout: 10000 })
         await this.tap(this.userAvatarAndroid)
         await this.moreScreenAndroid.waitForDisplayed({ timeout: 10000 })
-        // Avatar opens More with an account-picker overlay — dismiss it so menu items are accessible
         const accountPickerShown = await $('android=new UiSelector().resourceIdMatches(".*:id/accountSelection_screen$")').isDisplayed().catch(() => false)
         if (accountPickerShown) {
           await browser.back()

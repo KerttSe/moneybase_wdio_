@@ -99,7 +99,6 @@ class PersonalDetailsPage extends BasePage {
         await browser.pause(600)
         await this.tap(this.personalDetailsRowAndroid, 15000)
       } else {
-        // No More tab — Personal Details is directly in more_screen via avatar
         await this.userAvatarAndroid.waitForExist({ timeout: 20000 })
         await this.tap(this.userAvatarAndroid)
         await browser.pause(1000)

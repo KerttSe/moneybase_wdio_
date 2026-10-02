@@ -7,6 +7,8 @@ import { AUTH } from '../data/credentials'
 type WdioEl = ChainablePromiseElement
 
 class HomeScreenPage extends BasePage {
+  private readonly androidAppPackage = process.env.BS_ANDROID_APP_PACKAGE || 'com.moneybase.qa'
+
   /* =========================
    * ANDROID: HOME / ACCOUNT (Single vs Business)
    * ========================= */
@@ -321,6 +323,24 @@ class HomeScreenPage extends BasePage {
 
   private async scrollDownOnce() {
     const { width, height } = await browser.getWindowRect()
+    if (browser.isAndroid) {
+      const scrolled = await browser.execute('mobile: scrollGesture', {
+        left: Math.round(width * 0.08),
+        top: Math.round(height * 0.18),
+        width: Math.round(width * 0.84),
+        height: Math.round(height * 0.68),
+        // Android scrollGesture direction describes content movement, not finger movement.
+        // Moving content up reveals the lower Home sections.
+        direction: 'up',
+        percent: 0.85,
+      }).then((result) => result === true).catch(() => false)
+
+      if (scrolled) {
+        await browser.pause(900)
+        return
+      }
+    }
+
     const startX = Math.round(width * 0.5)
     const startY = Math.round(height * 0.75)
     const endY = Math.round(height * 0.3)
@@ -335,6 +355,42 @@ class HomeScreenPage extends BasePage {
           { type: 'pointerDown', button: 0 },
           { type: 'pause', duration: 150 },
           { type: 'pointerMove', duration: 500, x: startX, y: endY },
+          { type: 'pointerUp', button: 0 },
+        ],
+      },
+    ])
+    await browser.releaseActions().catch(() => {})
+    await browser.pause(900)
+  }
+
+  private async scrollUpOnce() {
+    const { width, height } = await browser.getWindowRect()
+    if (browser.isAndroid) {
+      const scrolled = await browser.execute('mobile: scrollGesture', {
+        left: Math.round(width * 0.08),
+        top: Math.round(height * 0.18),
+        width: Math.round(width * 0.84),
+        height: Math.round(height * 0.68),
+        direction: 'up',
+        percent: 0.85,
+      }).then((result) => result === true).catch(() => false)
+
+      if (scrolled) {
+        await browser.pause(900)
+        return
+      }
+    }
+
+    await browser.performActions([
+      {
+        type: 'pointer',
+        id: 'finger1',
+        parameters: { pointerType: 'touch' },
+        actions: [
+          { type: 'pointerMove', duration: 0, x: Math.round(width * 0.5), y: Math.round(height * 0.3) },
+          { type: 'pointerDown', button: 0 },
+          { type: 'pause', duration: 150 },
+          { type: 'pointerMove', duration: 500, x: Math.round(width * 0.5), y: Math.round(height * 0.75) },
           { type: 'pointerUp', button: 0 },
         ],
       },
@@ -783,24 +839,24 @@ class HomeScreenPage extends BasePage {
 
 
   private async tapHomeBottomNavAndroid() {
-    if (!browser.isAndroid) return
-
-    const cardsShown = await this.cardsRootAndroid.isDisplayed().catch(() => false)
-    if (!cardsShown) return
+    if (!browser.isAndroid) return false
 
     if (await this.homeTabAndroid.isDisplayed().catch(() => false)) {
       await this.tap(this.homeTabAndroid).catch(() => {})
-      return
+      return true
     }
 
     if (await this.homeTabAndroidA11y.isDisplayed().catch(() => false)) {
       await this.tap(this.homeTabAndroidA11y).catch(() => {})
-      return
+      return true
     }
 
     if (await this.homeTabAndroidXpath.isDisplayed().catch(() => false)) {
       await this.tap(this.homeTabAndroidXpath).catch(() => {})
+      return true
     }
+
+    return false
   }
 
   public async ensureIndividualAccount() {
@@ -1076,6 +1132,10 @@ class HomeScreenPage extends BasePage {
       return [
         this.byId('home_section_spendAnalytics'),
         this.androidTextContains('Spend Analytics'),
+        this.byId('home_button_statistics'),
+        this.byId('home_button_analytics'),
+        this.androidTextContains('Analytics'),
+        $('//*[@content-desc="ic statistics" or @content-desc="Statistics" or @content-desc="Analytics" or contains(@resource-id,"statistics") or contains(@resource-id,"analytics")]'),
       ]
     }
 
@@ -1094,7 +1154,14 @@ class HomeScreenPage extends BasePage {
         this.byId('navigation_button_pay'),
         this.byId('navigation_button_invest'),
         this.byId('navigation_button_more'),
+        this.byId('navigation_button_crypto'),
         this.byId('nav_graph_more'),
+        this.byId('nav_graph_crypto'),
+        this.androidTextContains('Home'),
+        this.androidTextContains('Cards'),
+        this.androidTextContains('Pay'),
+        this.androidTextContains('Invest'),
+        this.androidTextContains('Crypto'),
       ]
     }
 
@@ -1113,7 +1180,7 @@ class HomeScreenPage extends BasePage {
   }
 
   private get androidBackButton() {
-    return $('(//*[@content-desc="Back" and @clickable="true"] | //*[@content-desc="Navigate up"])[1]')
+    return $('(//*[@content-desc="Back"]/ancestor::*[@clickable="true"][1] | //*[@content-desc="Back" and @clickable="true"] | //*[@content-desc="Navigate up"] | //*[contains(@resource-id,"button_back") and @clickable="true"] | //*[@content-desc="Close" or @content-desc="close"])[1]')
   }
 
   private get iosBackButton() {
@@ -1213,9 +1280,6 @@ class HomeScreenPage extends BasePage {
   public async tapActionButtons() {
     if (browser.isIOS) return
 
-    await this.tapFirstDisplayed([this.addFundsButton, this.addFundsButtonText], 'Add Funds button')
-    await this.tapHomeTab()
-
     const exchangeTapped = await this.tapFirstDisplayed([this.exchangeButton, this.exchangeButtonText], 'Exchange button').catch(() => false)
     if (exchangeTapped !== false) await this.tapHomeTab()
 
@@ -1224,34 +1288,91 @@ class HomeScreenPage extends BasePage {
   }
 
   private async tapHomeTab() {
-    const homeTabFound = browser.isIOS
-      ? await this.homeTab.isExisting().catch(() => false)
-      : await this.homeTab.isDisplayed().catch(() => false)
-    if (homeTabFound) {
-      await this.tap(this.homeTab)
-      const waitFn = browser.isIOS ? 'waitForExist' : 'waitForDisplayed'
-      await this.homeRoot[waitFn]({ timeout: 20000 }).catch(() => {})
+    if (browser.isAndroid) {
+      for (let attempt = 0; attempt < 3; attempt += 1) {
+        const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
+          || await this.addFundsButton.isDisplayed().catch(() => false)
+          || await this.addFundsButtonText.isDisplayed().catch(() => false)
+          || await this.userAvatarBtnAndroid.isDisplayed().catch(() => false)
+        if (homeShown) return
+
+        if (await this.tapHomeBottomNavAndroid().catch(() => false)) {
+          await browser.pause(500)
+          continue
+        }
+
+        const backShown = await this.androidBackButton.isDisplayed().catch(() => false)
+        if (backShown) await this.tap(this.androidBackButton)
+        else await browser.back().catch(() => {})
+        await browser.pause(500)
+      }
+
+      await this.waitForAnyDisplayed(
+        [this.homeRoot, this.addFundsButton, this.addFundsButtonText, this.userAvatarBtnAndroid],
+        10000,
+        'Home screen after closing action page',
+      )
       return
     }
 
-    if (browser.isAndroid) {
-      const backShown = await this.androidBackButton.isDisplayed().catch(() => false)
-      if (backShown) {
-        await this.tap(this.androidBackButton)
-      } else {
-        await browser.back().catch(() => {})
-      }
-    } else if (browser.isIOS) {
-      const backShown = await this.iosBackButton.isExisting().catch(() => false)
-      if (backShown) {
-        await this.tap(this.iosBackButton)
-      } else {
-        await browser.back().catch(() => {})
-      }
+    const homeTabFound = await this.homeTab.isExisting().catch(() => false)
+    if (homeTabFound) {
+      await this.tap(this.homeTab)
+      await this.homeRoot.waitForExist({ timeout: 20000 }).catch(() => {})
+      return
     }
 
-    const waitFn = browser.isIOS ? 'waitForExist' : 'waitForDisplayed'
-    await this.homeRoot[waitFn]({ timeout: 20000 }).catch(() => {})
+    const backShown = await this.iosBackButton.isExisting().catch(() => false)
+    if (backShown) await this.tap(this.iosBackButton)
+    else await browser.back().catch(() => {})
+
+    await this.homeRoot.waitForExist({ timeout: 20000 }).catch(() => {})
+  }
+
+  public async ensureHomeBeforeSectionLookup() {
+    if (browser.isAndroid) {
+      await browser.switchContext('NATIVE_APP').catch(() => {})
+
+      const currentPackage = await browser.execute('mobile: getCurrentPackage')
+        .catch(() => undefined) as string | undefined
+      if (currentPackage && currentPackage !== this.androidAppPackage) {
+        await browser.activateApp(this.androidAppPackage).catch(() => {})
+        await browser.pause(1000)
+      }
+
+      for (let attempt = 0; attempt < 5; attempt += 1) {
+        const onHome = await this.homeRoot.isDisplayed().catch(() => false)
+          || await this.userAvatarBtnAndroid.isDisplayed().catch(() => false)
+          || await this.anyDisplayed(this.accountHolderNameCandidates)
+        if (onHome) return
+
+        if (await this.tapHomeBottomNavAndroid().catch(() => false)) {
+          await browser.pause(600)
+          continue
+        }
+
+        const backShown = await this.androidBackButton.isDisplayed().catch(() => false)
+        if (backShown) await this.tap(this.androidBackButton)
+        else await browser.back().catch(() => {})
+        await browser.pause(700)
+      }
+
+      await this.waitForAnyDisplayed(
+        [this.homeRoot, this.userAvatarBtnAndroid, ...this.accountHolderNameCandidates],
+        10000,
+        'Home screen before Home section lookup',
+      )
+      return
+    }
+
+    await this.waitForHomeLoaded().catch(() => {})
+  }
+
+  private async anyDisplayed(candidates: WdioEl[]) {
+    for (const candidate of candidates) {
+      if (await candidate.isDisplayed().catch(() => false)) return true
+    }
+    return false
   }
 
   public async verifyNotificationBannerIfApplicable() {
@@ -1271,6 +1392,8 @@ class HomeScreenPage extends BasePage {
   }
 
   public async verifyPendingTransactions() {
+    await this.ensureHomeBeforeSectionLookup()
+
     const candidates = this.pendingTransactionsCandidates
     const anyExists = await Promise.all(candidates.map((el) => el.isExisting().catch(() => false)))
     if (!anyExists.some(Boolean)) return
@@ -1279,6 +1402,8 @@ class HomeScreenPage extends BasePage {
   }
 
   public async verifyRecentTransactions() {
+    await this.ensureHomeBeforeSectionLookup()
+
     const headerCandidates = this.recentTransactionsHeaderCandidates
     const headerExists = await Promise.all(
       headerCandidates.map((el) => el.isExisting().catch(() => false))
@@ -1294,11 +1419,20 @@ class HomeScreenPage extends BasePage {
   }
 
   public async verifyRecentActivities() {
+    await this.ensureHomeBeforeSectionLookup()
     await this.ensureVisibleByScrolling(this.recentActivitiesCandidates, 'Recent Activities section')
   }
 
   public async verifySpendAnalytics() {
-    await this.ensureVisibleByScrolling(this.spendAnalyticsCandidates, 'Spend Analytics section')
+    for (let i = 0; i <= 6; i += 1) {
+      try {
+        await this.waitForAnyDisplayed(this.spendAnalyticsCandidates, 4000, 'Spend Analytics section')
+        return
+      } catch {
+        if (i === 6) throw new Error('Spend Analytics section did not appear')
+        await this.scrollDownOnce()
+      }
+    }
   }
 
   public async verifyBottomNavigation() {

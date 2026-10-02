@@ -45,7 +45,7 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
   }
 
   private get cardsTabAndroid() {
-    return $('(//*[@resource-id="com.moneybase.qa:id/navigation_button_cards"] | //*[contains(@resource-id,"navigation_button_cards")] | //*[@content-desc="Cards" and @clickable="true"])[1]')
+    return $('(//android.widget.FrameLayout[@content-desc="Cards"] | //*[@resource-id="com.moneybase.qa:id/navigation_button_cards"] | //*[contains(@resource-id,"navigation_button_cards")] | //*[@content-desc="Cards" and @clickable="true"] | //android.widget.TextView[@text="Cards"]/ancestor::*[@clickable="true"][1])[1]')
   }
 
   private get cardsTabAndroidByA11y() {
@@ -57,11 +57,11 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
   }
 
   private get addCardBtnAndroid() {
-    return $('(//*[contains(@resource-id,"cards_card_addNewCard")] | //*[contains(@resource-id,"addNewCard")] | //*[contains(@resource-id,"addCard")] | //*[contains(@resource-id,"add_card")] | //*[contains(@resource-id,"add_Card")])[1]')
+    return $('(//*[contains(@resource-id,"cards_card_addNewCard")] | //*[contains(@resource-id,"addNewCard")] | //*[contains(@resource-id,"addCard")] | //*[contains(@resource-id,"add_card")] | //*[contains(@resource-id,"add_Card")] | //*[contains(@content-desc,"Add Card")] | //*[contains(@content-desc,"Add New Card")])[1]')
   }
 
   private get addCardBtnAndroidByText() {
-    return $('(//*[@text="Add Card" or @content-desc="Add Card"] | //*[@text="Add New Card" or @content-desc="Add New Card"] | //*[contains(@text,"Add") and contains(@text,"Card")])[1]')
+    return $('(//*[@text="Add Card" or @content-desc="Add Card"] | //*[@text="Add New Card" or @content-desc="Add New Card"] | //android.widget.TextView[contains(@text,"Add") and contains(@text,"Card")]/ancestor::*[@clickable="true"][1] | //*[contains(@text,"Add") and contains(@text,"Card")])[1]')
   }
 
   private get addCardBtnIOS() {
@@ -322,15 +322,23 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
       return
     }
 
-    await this.tap(this.cardsTabAndroid).catch(async () => {
-      await this.tap(this.cardsTabAndroidByA11y)
-    })
-    await this.addCardBtnAndroid.waitForExist({ timeout: 30000 }).catch(async () => {
-      await this.addCardBtnAndroidByText.waitForExist({
-        timeout: 10000,
-        timeoutMsg: 'Add Card button did not appear on Cards tab',
+    await this.stabilizeAndroidHomeSurface(15000).catch(() => {})
+
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      await this.tap(this.cardsTabAndroid, 7000).catch(async () => {
+        await this.tap(this.cardsTabAndroidByA11y, 7000).catch(() => {})
       })
-    })
+      const addCardShown = await browser.waitUntil(
+        async () =>
+          (await this.addCardBtnAndroid.isExisting().catch(() => false)) ||
+          (await this.addCardBtnAndroidByText.isExisting().catch(() => false)),
+        { timeout: 10000, interval: 500 },
+      ).then(() => true).catch(() => false)
+      if (addCardShown) return
+      await browser.pause(700)
+    }
+
+    throw new Error('Add Card button did not appear on Cards tab')
   }
 
   public async tapAddCard() {

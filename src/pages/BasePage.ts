@@ -74,7 +74,7 @@ export default class BasePage {
   }
 
   private get androidDeviceNotSyncedOkButton() {
-    return $('//android.widget.TextView[@text="Device Not Synced"]/ancestor::*[android.widget.TextView[@text="OK"]][1]//android.widget.TextView[@text="OK"]/ancestor::*[@clickable="true"][1]')
+    return $('//android.widget.TextView[@text="OK"]/ancestor::*[@clickable="true"][1]')
   }
 
   private get androidVerificationSuccessContinueBtn() {
@@ -368,9 +368,6 @@ export default class BasePage {
     while (Date.now() < deadline) {
       await browser.switchContext('NATIVE_APP').catch(() => {})
 
-      await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
-      await this.dismissCommonAndroidAlert(500).catch(() => false)
-
       const currentActivity = await browser.getCurrentActivity().catch(() => '')
       const isFreshchatActivity = /freshchat|CategoryListActivity|ConversationActivity/i.test(currentActivity)
       if (isFreshchatActivity) {
@@ -378,6 +375,27 @@ export default class BasePage {
         await browser.pause(400)
         continue
       }
+
+      // Compose Home can omit home_screen. A single source snapshot is much
+      // cheaper than probing every optional popup with separate XPath calls.
+      if (/DashboardActivity/i.test(currentActivity)) {
+        const source = await browser.getPageSource().catch(() => '')
+        const hasBlockingSurface = [
+          'verificationSuccess_screen',
+          'verificationSuccess_button_continue',
+          'googlepayProposal_button_close',
+          'More menu has been moved',
+          'Device Not Synced',
+          'accountSelection_screen',
+          'more_screen',
+          'android:id/button3',
+        ].some(marker => source.includes(marker))
+
+        if (!hasBlockingSurface) return true
+      }
+
+      await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
+      await this.dismissCommonAndroidAlert(500).catch(() => false)
 
       const moreShown = await this.androidMoreRoot.isDisplayed().catch(() => false)
         || await this.androidMoreRoot.isExisting().catch(() => false)
@@ -446,13 +464,14 @@ export default class BasePage {
     if (!browser.isAndroid) return
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
-    await this.stabilizeAndroidHomeSurface(20000).catch(() => false)
 
     const homeAccountLabel = $(`//android.widget.TextView[contains(@text,"${accountCode}")]`)
     const alreadyOnAccount =
       await homeAccountLabel.isDisplayed().catch(() => false) ||
       await homeAccountLabel.isExisting().catch(() => false)
     if (alreadyOnAccount) return
+
+    await this.stabilizeAndroidHomeSurface(20000).catch(() => false)
 
     const userAvatarBtn = $('//*[contains(@resource-id,"home_button_userAvatar") or @content-desc="home_button_userAvatar"]')
     const moreScreen = this.byIdRx('more_screen')
@@ -616,10 +635,11 @@ export default class BasePage {
   protected async ensureAndroidIndividualHomeReady(stabilizeTimeoutMs = 15000) {
     if (!browser.isAndroid) return
 
-    await this.ensureAndroidIndividualAccount()
-    await browser.pause(700)
-    await this.dismissKnownAndroidBlockingPopups(3).catch(() => false)
-    await this.dismissCommonAndroidAlert(3000).catch(() => false)
+    if (AUTH.individualAccountCode) {
+      await this.ensureAndroidIndividualAccount()
+      return
+    }
+
     await this.stabilizeAndroidHomeSurface(stabilizeTimeoutMs).catch(() => false)
   }
 

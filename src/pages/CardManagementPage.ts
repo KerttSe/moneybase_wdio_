@@ -69,7 +69,7 @@ class CardManagementPage extends BasePage {
   private get freezeButton() {
     return browser.isIOS
       ? $('~cards_button_freeze')
-      : $('(//*[@resource-id="cards_button_freeze"] | //*[contains(@resource-id,"cards_button_freeze")] | //*[@content-desc="Freeze"])[1]')
+      : $('(//*[@resource-id="cards_button_freeze"] | //*[contains(@resource-id,"cards_button_freeze")] | //*[@content-desc="Freeze" or @text="Freeze"] | //android.widget.TextView[@text="Freeze"]/ancestor::*[@clickable="true"][1] | //*[@text="Freeze"]/ancestor::*[@clickable="true"][1])[1]')
   }
 
   private get freezeLabelIOS() {
@@ -93,11 +93,11 @@ class CardManagementPage extends BasePage {
   }
 
   private get freezeActionAndroidByText() {
-    return $('//android.widget.TextView[@text="Freeze"]/ancestor::*[@clickable="true"][1]')
+    return $('(//android.widget.TextView[@text="Freeze"]/ancestor::*[@clickable="true"][1] | //*[@text="Freeze"]/ancestor::*[@clickable="true"][1])[1]')
   }
 
   private get unfreezeActionAndroidByText() {
-    return $('//android.widget.TextView[@text="Unfreeze"]/ancestor::*[@clickable="true"][1]')
+    return $('(//android.widget.TextView[@text="Unfreeze"]/ancestor::*[@clickable="true"][1] | //*[@text="Unfreeze"]/ancestor::*[@clickable="true"][1])[1]')
   }
 
   private get freezeActionAndroidByDesc() {
@@ -410,6 +410,15 @@ class CardManagementPage extends BasePage {
       return
     }
 
+    const visible = await browser.waitUntil(
+      async () =>
+        (await this.isFreezeActionVisibleAndroid()) ||
+        (await this.isUnfreezeActionVisibleAndroid()),
+      { timeout: 12000, interval: 500 }
+    ).then(() => true).catch(() => false)
+    if (visible) return
+
+    await this.tap(this.firstCardItemAndroid, 8000).catch(() => {})
     await browser.waitUntil(
       async () =>
         (await this.isFreezeActionVisibleAndroid()) ||

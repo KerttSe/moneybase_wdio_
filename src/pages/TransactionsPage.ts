@@ -1,5 +1,6 @@
 import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
+import HomeScreenPage from './HomeScreenPage'
 
 export default class TransactionsPage extends BasePage {
 
@@ -58,6 +59,8 @@ export default class TransactionsPage extends BasePage {
    * ====================== */
 
   async verifyRecentActivityVisible() {
+    await HomeScreenPage.ensureHomeBeforeSectionLookup()
+
     if (browser.isIOS) {
       await browser.waitUntil(
         async () => this.recentActivitySectionIOS.isExisting().catch(() => false),
@@ -69,6 +72,8 @@ export default class TransactionsPage extends BasePage {
   }
 
   async tapShowAll() {
+    await HomeScreenPage.ensureHomeBeforeSectionLookup()
+
     if (browser.isIOS) {
       await browser.waitUntil(
         async () => {

@@ -249,6 +249,10 @@ class PhysicalCardCreationPage extends BasePage {
     return $('(//android.widget.EditText)[1]')
   }
 
+  private get otpLockedErrorAndroid() {
+    return $('//*[contains(@text,"Too many attempts") or contains(@content-desc,"Too many attempts") or contains(@text,"temporarily locked") or contains(@content-desc,"temporarily locked")]')
+  }
+
   private get closeSheetAndroid() {
     return $('~Close sheet')
   }
@@ -580,8 +584,16 @@ class PhysicalCardCreationPage extends BasePage {
     if (!browser.isAndroid) return
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
+    let otpLockedSeen = await this.otpLockedErrorAndroid.isDisplayed().catch(() => false)
+    if (otpLockedSeen) {
+      throw new Error('OTP step blocked (Android): Too many attempts. Account is temporarily locked')
+    }
+
     await browser.waitUntil(
       async () => {
+        otpLockedSeen = await this.otpLockedErrorAndroid.isDisplayed().catch(() => false)
+        if (otpLockedSeen) return true
+
         const errorDialog = await $('//*[@resource-id="com.moneybase.qa:id/alertTitle"]').isDisplayed().catch(() => false)
         if (errorDialog) {
           await $('//*[@resource-id="android:id/button1"]').click().catch(() => {})
@@ -606,6 +618,10 @@ class PhysicalCardCreationPage extends BasePage {
         timeoutMsg: 'Close sheet not visible in time',
       }
     )
+
+    if (otpLockedSeen) {
+      throw new Error('OTP step blocked (Android): Too many attempts. Account is temporarily locked')
+    }
 
     const tapCenter = async (el: ChainablePromiseElement) => {
       const target = await el

@@ -167,11 +167,15 @@ class BusinessCardAdminPage extends BasePage {
   }
 
   private get freezeBtnAndroid() {
-    return $('(//*[@content-desc="Freeze"] | //*[contains(@content-desc,"Freeze") and not(contains(@content-desc,"Unfreeze"))])[1]')
+    return $('(//*[@content-desc="Freeze" or @text="Freeze"] | //*[contains(@content-desc,"Freeze") and not(contains(@content-desc,"Unfreeze"))] | //android.widget.TextView[@text="Freeze"]/ancestor::*[@clickable="true"][1] | //*[@text="Freeze"]/ancestor::*[@clickable="true"][1])[1]')
   }
 
   private get unfreezeBtnAndroid() {
-    return $('(//*[@content-desc="Unfreeze"] | //*[contains(@content-desc,"Unfreeze")])[1]')
+    return $('(//*[@content-desc="Unfreeze" or @text="Unfreeze"] | //*[contains(@content-desc,"Unfreeze")] | //android.widget.TextView[@text="Unfreeze"]/ancestor::*[@clickable="true"][1] | //*[@text="Unfreeze"]/ancestor::*[@clickable="true"][1])[1]')
+  }
+
+  private get cardActionsMarkerAndroid() {
+    return $('//*[contains(@text,"Freeze") or contains(@content-desc,"Freeze") or contains(@text,"Unfreeze") or contains(@content-desc,"Unfreeze") or contains(@text,"Card Security") or contains(@content-desc,"Card Security") or contains(@text,"View PIN") or contains(@content-desc,"View PIN")]')
   }
 
   // ── State checks ──────────────────────────────────────────────────────────
@@ -295,7 +299,8 @@ class BusinessCardAdminPage extends BasePage {
         browser.isIOS
           ? (await this.isFreezeVisibleIOS()) || (await this.isUnfreezeVisibleIOS())
           : (await this.freezeBtnAndroid.isExisting().catch(() => false)) ||
-            (await this.unfreezeBtnAndroid.isExisting().catch(() => false)),
+            (await this.unfreezeBtnAndroid.isExisting().catch(() => false)) ||
+            (await this.cardActionsMarkerAndroid.isExisting().catch(() => false)),
       {
         timeout: 20000,
         interval: 500,
@@ -344,10 +349,14 @@ class BusinessCardAdminPage extends BasePage {
       })
       return
     }
-    await this.unfreezeBtnAndroid.waitForExist({
-      timeout: 10000,
-      timeoutMsg: 'Card not shown as frozen (Unfreeze button not visible) on Android',
-    })
+    await browser.waitUntil(
+      async () => await this.unfreezeBtnAndroid.isExisting().catch(() => false),
+      {
+        timeout: 10000,
+        interval: 500,
+        timeoutMsg: 'Card not shown as frozen (Unfreeze button not visible) on Android',
+      },
+    )
   }
 
   public async unfreezeCard() {
@@ -375,10 +384,14 @@ class BusinessCardAdminPage extends BasePage {
       })
       return
     }
-    await this.freezeBtnAndroid.waitForExist({
-      timeout: 10000,
-      timeoutMsg: 'Card not shown as active (Freeze button not visible) on Android',
-    })
+    await browser.waitUntil(
+      async () => await this.freezeBtnAndroid.isExisting().catch(() => false),
+      {
+        timeout: 10000,
+        interval: 500,
+        timeoutMsg: 'Card not shown as active (Freeze button not visible) on Android',
+      },
+    )
   }
 }
 

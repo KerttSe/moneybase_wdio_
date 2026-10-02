@@ -114,7 +114,9 @@ export default class AddFundsPage extends BasePage {
    * ========================= */
 
   get amountInput() {
-    if (browser.isAndroid) return this.byAndroidResId('depositAmountText')
+    if (browser.isAndroid) {
+      return $('(//*[@resource-id="cardDeposit_input_amount"] | //*[@resource-id="com.moneybase.qa:id/cardDeposit_input_amount"] | //*[contains(@resource-id,"depositAmountText")])[1]')
+    }
     return $('~cardDeposit_textInput_')
   }
 
@@ -123,7 +125,9 @@ export default class AddFundsPage extends BasePage {
    * ========================= */
 
   get continueBtn() {
-    if (browser.isAndroid) return this.byAndroidResId('cardTopUp_button_continue')
+    if (browser.isAndroid) {
+      return $('(//*[@resource-id="cardDeposit_button_continue"] | //*[@resource-id="com.moneybase.qa:id/cardDeposit_button_continue"] | //*[contains(@resource-id,"cardTopUp_button_continue")] | //*[@text="Continue" or @content-desc="Continue"])[last()]')
+    }
     return $('~Continue')
   }
 
@@ -217,6 +221,10 @@ private get payProcessingBtnIOS() {
     await this.tap(this.amountInput)
     await this.amountInput.clearValue().catch(() => {})
     await this.amountInput.setValue(String(amount))
+    if (browser.isAndroid) {
+      await browser.hideKeyboard().catch(() => {})
+      await browser.pause(300)
+    }
   }
 
   /* =========================
@@ -283,11 +291,21 @@ private async smallScrollDownToDepositIOS() {
 }
 
 async selectCardAndroid() {
+  const payReady = await this.payProcessingBtnAndroid.isDisplayed().catch(() => false)
+    && await this.payProcessingBtnAndroid.isEnabled().catch(() => false)
+  if (payReady) return
+
   await this.cardPickerBtnAndroid.waitForDisplayed({ timeout: 15000 })
   await this.tap(this.cardPickerBtnAndroid)
 
-  await this.cardAndroid.waitForDisplayed({ timeout: 15000 })
-  await this.tap(this.cardAndroid)
+  const configuredCardShown = await this.cardAndroid.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+  if (configuredCardShown) {
+    await this.tap(this.cardAndroid)
+  } else {
+    const firstSavedCard = $('//*[contains(@text,".... ") or contains(@text,"•••• ")][1]')
+    await firstSavedCard.waitForDisplayed({ timeout: 10000 })
+    await this.tap(firstSavedCard)
+  }
 
   // невелика пауза щоб UI встиг 
   await browser.pause(300)
@@ -303,11 +321,9 @@ async selectCardAndroid() {
 
     /* ---------- ANDROID ---------- */
 if (browser.isAndroid) {
-  //  0036
-  await this.selectCardAndroid()
-
-  // 1) Pay Processing
+  // The payment form preselects the available saved card.
   await this.payProcessingBtnAndroid.waitForDisplayed({ timeout: 30000 })
+  await this.payProcessingBtnAndroid.waitForEnabled({ timeout: 15000 })
   await this.tap(this.payProcessingBtnAndroid)
 
   // 2) waiter for 0036 pay procesing btn 

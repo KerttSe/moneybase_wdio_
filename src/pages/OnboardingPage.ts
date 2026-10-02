@@ -51,6 +51,14 @@ export default class OnboardingPage extends BasePage {
     return this.byId('welcomeToMoneybase_button_skip')
   }
 
+  private get welcomeSignInBtn() {
+    return $('(//*[@resource-id="welcomeToMoneybase_button_signIn" or contains(@resource-id,"welcomeToMoneybase_button_signIn")] | //*[@text="Sign In" or @content-desc="Sign In"] | //android.widget.TextView[@text="Sign In"]/ancestor::*[@clickable="true"][1])[1]')
+  }
+
+  private get welcomeLogInBtn() {
+    return $('(//*[@resource-id="welcomeToMoneybase_button_logIn" or contains(@resource-id,"welcomeToMoneybase_button_logIn")] | //*[@text="Log In" or @text="Login" or @content-desc="Log In" or @content-desc="Login"] | //android.widget.TextView[@text="Log In" or @text="Login"]/ancestor::*[@clickable="true"][1])[1]')
+  }
+
   private get welcomeNextBtn() {
     return this.byId('welcomeToMoneybase_button_next')
   }
@@ -1037,20 +1045,26 @@ export default class OnboardingPage extends BasePage {
       await browser.pause(1000)
     }
 
-    if (await this.existsSoon(this.welcomeSkipBtn, 3000)) {
-      await this.tapWelcomeControl(this.welcomeSkipBtn)
+    const entryButton = await this.visibleWelcomeEntryButton(3000)
+    if (entryButton) {
+      await this.tapWelcomeControl(entryButton)
     } else if (await this.existsSoon(this.welcomeNextBtn, 1000)) {
-      // Compose build: no skip button — tap through carousel slides until welcome screen gone
+      // Compose build: no skip button - tap through carousel slides until an entry action appears.
       for (let i = 0; i < 6; i++) {
-        const getStartedShown = await this.existsSoon(this.welcomeGetStartedBtn, 750)
-        if (getStartedShown) {
-          await this.tapWelcomeControl(this.welcomeGetStartedBtn)
+        const carouselEntryButton = await this.visibleWelcomeEntryButton(750)
+        if (carouselEntryButton) {
+          await this.tapWelcomeControl(carouselEntryButton)
           break
         }
+
         const nextShown = await this.existsSoon(this.welcomeNextBtn, 750)
         if (!nextShown) break
         await this.tapWelcomeControl(this.welcomeNextBtn)
         await browser.pause(600)
+
+        const registerShown = await this.registerScreen.isExisting().catch(() => false)
+        const mobileShown = await this.mobileInput.isExisting().catch(() => false)
+        if (registerShown || mobileShown) break
       }
     }
 
@@ -1067,11 +1081,38 @@ export default class OnboardingPage extends BasePage {
     return el.waitForExist({ timeout }).then(() => true).catch(() => false)
   }
 
+  private async visibleWelcomeEntryButton(timeout = 750) {
+    const deadline = Date.now() + timeout
+    const candidates = [
+      this.welcomeSignInBtn,
+      this.welcomeLogInBtn,
+      this.welcomeSkipBtn,
+      this.welcomeGetStartedBtn,
+    ]
+
+    while (Date.now() < deadline) {
+      for (const candidate of candidates) {
+        if (await candidate.isDisplayed().catch(() => false)) return candidate
+      }
+
+      await browser.pause(250)
+    }
+
+    return undefined
+  }
+
   private async tapWelcomeControl(el: ChainablePromiseElement) {
     await el.waitForExist({ timeout: 5000 })
-    await el.click().catch(async () => {
+    const clicked = await el.click().then(() => true).catch(() => false)
+    if (!clicked) {
       await this.tapElementCenter(el)
-    })
+      return
+    }
+
+    await browser.pause(350)
+    if (await el.isDisplayed().catch(() => false)) {
+      await this.tapElementCenter(el)
+    }
   }
 
   private async throwIfDeviceSecurityBlocked() {

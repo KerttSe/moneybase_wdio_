@@ -177,6 +177,17 @@ class HomeStorylyPage extends BasePage {
   }
 
   private async inferredStorylyBoundsFromHomeXml() {
+    const source = await browser.getPageSource().catch(() => '')
+    const hasStorylyMarker = [
+      'st_storyly_list_recycler_view',
+      'Storyly Bar',
+      'st_badge_holder',
+      'st_icon_holder',
+      this.firstStoryContentDescPrefix,
+      'Story position',
+    ].some((marker) => source.includes(marker))
+    if (!hasStorylyMarker) return null
+
     const pendingExists = await this.pendingHeaderAndroid.isExisting().catch(() => false)
     if (!pendingExists) return null
 

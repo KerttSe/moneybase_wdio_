@@ -179,6 +179,10 @@ class SpendAnalyticsPage extends BasePage {
     return $('//android.view.View[@clickable="true"][.//android.widget.TextView[starts-with(@text,"This ")]]')
   }
 
+  private get statisticsBtnAndroid() {
+    return $('//*[@content-desc="ic statistics" or @content-desc="Statistics" or @content-desc="Analytics" or contains(@resource-id,"home_button_statistics") or contains(@resource-id,"home_button_analytics") or contains(@resource-id,"statistics") or contains(@resource-id,"analytics")]')
+  }
+
   // The big amount (e.g. "€684.91") and the period label ("This Month") are siblings
   // inside the same clickable card — the amount is the preceding sibling of the label.
   private get currentAmountAndroid() {
@@ -207,6 +211,10 @@ class SpendAnalyticsPage extends BasePage {
 
   private get periodRowAndroid() {
     return $('//android.widget.TextView[@text="Spent"]/following-sibling::android.view.View[@clickable="true"][1]')
+  }
+
+  private get spentAmountAndroid() {
+    return $('(//android.widget.TextView[@text="Spent"]/following::android.widget.TextView[contains(@text,"€") or contains(@text,"$") or contains(@text,"£")][1] | //android.widget.TextView[contains(@text,"€") or contains(@text,"$") or contains(@text,"£")][1])[1]')
   }
 
   private get spendDetailsHeaderAndroid() {
@@ -261,8 +269,12 @@ class SpendAnalyticsPage extends BasePage {
       return (label || (await this.currentAmountHomeIOS.getAttribute('name').catch(() => ''))).trim()
     }
     await HomeScreenPage.verifySpendAnalytics()
-    await this.currentAmountAndroid.waitForDisplayed({ timeout: 10000 })
-    return (await this.currentAmountAndroid.getText()).trim()
+    const amountShown = await this.currentAmountAndroid.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+    if (amountShown) return (await this.currentAmountAndroid.getText()).trim()
+
+    await this.openDetails()
+    await this.spentAmountAndroid.waitForDisplayed({ timeout: 10000 })
+    return (await this.spentAmountAndroid.getText()).trim()
   }
 
   /**
@@ -284,8 +296,13 @@ class SpendAnalyticsPage extends BasePage {
       return
     }
     await HomeScreenPage.verifySpendAnalytics()
-    await this.cardAndroid.waitForDisplayed({ timeout: 10000 })
-    await this.tap(this.cardAndroid)
+    const cardShown = await this.cardAndroid.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+    if (cardShown) {
+      await this.tap(this.cardAndroid)
+    } else {
+      await this.statisticsBtnAndroid.waitForExist({ timeout: 10000 })
+      await this.tap(this.statisticsBtnAndroid)
+    }
     await this.screenTitleAndroid.waitForDisplayed({ timeout: 15000 })
   }
 

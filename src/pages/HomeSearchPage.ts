@@ -5,7 +5,7 @@ import { $, browser } from '@wdio/globals'
 class HomeSearchPage extends BasePage {
   private get searchInput() {
     if (browser.isAndroid) {
-      return $('(//*[@resource-id="com.moneybase.qa:id/home_input_search"] | //*[@content-desc="Search"]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[@text="Search"]/ancestor::*[@clickable="true"][1])[1]')
+      return $('(//*[@resource-id="home_input_search" or @resource-id="com.moneybase.qa:id/home_input_search"] | //*[@content-desc="Search"]/ancestor::*[@clickable="true"][1] | //android.widget.TextView[@text="Search"]/ancestor::*[@clickable="true"][1])[1]')
     }
     return $('-ios predicate string:type == "XCUIElementTypeSearchField" AND (name == "Search" OR label == "Search")')
   }
@@ -21,8 +21,8 @@ class HomeSearchPage extends BasePage {
     return $('-ios predicate string: label CONTAINS "Carlos Cat" OR name CONTAINS "Carlos Cat"')
   }
 
-  private async revealSearchInputIOS() {
-    if (!browser.isIOS || await this.searchInput.isDisplayed().catch(() => false)) return
+  private async revealSearchInput() {
+    if (await this.searchInput.isDisplayed().catch(() => false)) return
 
     const { width, height } = await browser.getWindowRect()
     const x = Math.round(width * 0.5)
@@ -83,7 +83,7 @@ class HomeSearchPage extends BasePage {
     await HomeScreenPage.waitForHomeLoaded()
     await this.dismissIOSAlerts()
 
-    await this.revealSearchInputIOS()
+    await this.revealSearchInput()
     await this.searchInput.waitForDisplayed({ timeout: 15000 })
     await this.typeIntoSearch(query)
 

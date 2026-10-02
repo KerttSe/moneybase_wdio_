@@ -701,10 +701,16 @@ async enterOtp(code: string = '123456') {
   return $('~Continue')
   }
 
-	  get verificationSuccessScreen() {
-	    if (browser.isAndroid) return this.byId('verificationSuccess_screen')
+  get verificationSuccessScreen() {
+	    if (browser.isAndroid) {
+      return $('(//*[contains(@resource-id,"verificationSuccess_screen")] | //*[@text="Mobile successfully verified."] | //*[@content-desc="Mobile successfully verified."])[1]')
+    }
 	    return $('-ios predicate string:name == "verificationSuccess_screen" OR label CONTAINS[c] "success" OR name CONTAINS[c] "success" OR value CONTAINS[c] "success" OR label CONTAINS[c] "verified" OR name CONTAINS[c] "verified" OR value CONTAINS[c] "verified"')
 	  }
+
+  private get postOtpContinueBtnAndroidFallback() {
+    return $('(//*[@text="Continue" or @content-desc="Continue"])[last()]')
+  }
 
 	  private get postOtpContinueBtnIOSFallback() {
 	    return $('-ios predicate string:(type == "XCUIElementTypeButton" OR type == "XCUIElementTypeStaticText") AND (name == "Continue" OR label == "Continue" OR value == "Continue")')
@@ -715,18 +721,22 @@ async enterOtp(code: string = '123456') {
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    const continueShown = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
+    const primaryContinueShown = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
+    const fallbackContinueShown = await this.postOtpContinueBtnAndroidFallback.isDisplayed().catch(() => false)
     const successShown = await this.verificationSuccessScreen.isDisplayed().catch(() => false)
-    if (!continueShown && !successShown) return false
+    if (!primaryContinueShown && !fallbackContinueShown && !successShown) return false
 
-    if (continueShown) {
+    if (primaryContinueShown || fallbackContinueShown) {
+      const continueButton = primaryContinueShown
+        ? this.postOtpContinueBtn
+        : this.postOtpContinueBtnAndroidFallback
       for (let attempt = 0; attempt < 3; attempt += 1) {
-        const loc = await this.postOtpContinueBtn.getLocation().catch(() => null)
-        const size = await this.postOtpContinueBtn.getSize().catch(() => null)
+        const loc = await continueButton.getLocation().catch(() => null)
+        const size = await continueButton.getSize().catch(() => null)
         if (loc && size) {
           await this.tapAndroidCoordinates(loc.x + size.width / 2, loc.y + size.height / 2)
         } else {
-          await this.postOtpContinueBtn.click().catch(() => {})
+          await continueButton.click().catch(() => {})
         }
 
         await browser.pause(700)
@@ -927,6 +937,8 @@ get payRootAndroid() {
 
     await browser.waitUntil(async () => {
       try {
+        if (browser.isAndroid && await this.isHomeLoaded()) return true
+
         await this.dismissPostOtpPopupAndroidOnce()
         if (browser.isIOS) {
           await this.dismissIOSAlerts()
@@ -936,6 +948,7 @@ get payRootAndroid() {
         const androidOtpError = await this.getAndroidOtpErrorText()
 	        const continueVisible =
 	          (await this.postOtpContinueBtn.isDisplayed().catch(() => false)) ||
+	          (browser.isAndroid && await this.postOtpContinueBtnAndroidFallback.isDisplayed().catch(() => false)) ||
 	          (browser.isIOS && await this.postOtpContinueBtnIOSFallback.isDisplayed().catch(() => false))
 	        const successVisible = await this.verificationSuccessScreen.isDisplayed().catch(() => false)
 	        const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
@@ -978,6 +991,8 @@ get payRootAndroid() {
 /** 2) we awaiting for  Home, if card exist ApplePay in-app) */
 async waitForPostOtpNextStep(timeout = 30000) {
   await browser.waitUntil(async () => {
+    if (browser.isAndroid && await this.isHomeLoaded()) return true
+
     await this.dismissPostOtpPopupAndroidOnce()
     if (browser.isIOS) {
       await this.dismissIOSAlerts()
@@ -985,6 +1000,7 @@ async waitForPostOtpNextStep(timeout = 30000) {
     }
 	    const continueVisible =
 	      (await this.postOtpContinueBtn.isDisplayed().catch(() => false)) ||
+	      (browser.isAndroid && await this.postOtpContinueBtnAndroidFallback.isDisplayed().catch(() => false)) ||
 	      (browser.isIOS && await this.postOtpContinueBtnIOSFallback.isDisplayed().catch(() => false))
 	    const successVisible = await this.verificationSuccessScreen.isDisplayed().catch(() => false)
 	    const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
@@ -1015,6 +1031,8 @@ async waitForHome(timeout = 30000) {
 
     await browser.waitUntil(
       async () => {
+        if (await this.isHomeLoaded()) return true
+
         await this.dismissPostOtpPopupAndroidOnce()
         await this.dismissKnownAndroidBlockingPopups(2).catch(() => false)
         const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
@@ -1244,13 +1262,11 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
   await this.waitForPostOtpNextStep(30000)
   await this.closeApplePayIfVisible()
 
+
   await this.waitForHome(30000)
 
-  // Ensure app stays in foreground after successful login
-  if (browser.isAndroid) {
-    await this.stabilizeAndroidHomeSurface(20000).catch(() => false)
-    await browser.pause(500)
-  }
+  // waitForHome already confirms DashboardActivity on Android. Re-running the
+  // generic stabilizer here scans every optional popup and delays every spec.
 }
 
 async loginFlow(auth: AuthData, options: LoginFlowOptions = {}) {

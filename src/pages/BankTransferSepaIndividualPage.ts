@@ -23,7 +23,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get payTabAndroidLegacy() {
-    return $('(//*[contains(@resource-id,"navigation_button_pay")] | //*[@content-desc="Pay" and @clickable="true"])[1]')
+    return $('(//android.widget.FrameLayout[@content-desc="Pay"] | //*[@content-desc="Pay" and @clickable="true"])[1]')
   }
 
   private get sepaBeneficiaryAndroidByDesc() {
@@ -796,15 +796,26 @@ class BankTransferSepaIndividualPage extends BasePage {
     if (!browser.isAndroid) return
 
     await BankTransferP2PIndividualPage.ensureIndividualAccount()
-    await this.dismissBlockingAlertAndroid(10000)
+    const payDeadline = Date.now() + 45000
+    let payOpened = false
 
-    const payShown = await this.payTabAndroid.waitForExist({ timeout: 12000 }).catch(() => false)
-    if (payShown) {
-      await this.tap(this.payTabAndroid)
-    } else {
-      await this.payTabAndroidLegacy.waitForExist({ timeout: 12000 })
-      await this.tap(this.payTabAndroidLegacy)
+    while (Date.now() < payDeadline && !payOpened) {
+      await this.dismissKnownAndroidBlockingPopups(4).catch(() => false)
+      await this.dismissBlockingAlertAndroid(1500)
+      await this.stabilizeAndroidHomeSurface(3000).catch(() => false)
+
+      if (await this.payTabAndroid.isDisplayed().catch(() => false)) {
+        await this.tap(this.payTabAndroid)
+        payOpened = true
+      } else if (await this.payTabAndroidLegacy.isDisplayed().catch(() => false)) {
+        await this.tap(this.payTabAndroidLegacy)
+        payOpened = true
+      } else {
+        await browser.pause(500)
+      }
     }
+
+    if (!payOpened) throw new Error('Pay navigation was not available after dismissing Android blocking surfaces')
 
     await this.openSepaBeneficiaryAndroid()
 

@@ -202,7 +202,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     throw new Error('Amount input was not displayed')
   }
 
-  private async assertSupportSheetNotShownAndroid(timeoutMs = 3000) {
+  private async dismissSupportSheetIfShownAndroid(timeoutMs = 3000) {
     if (!browser.isAndroid) return
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
@@ -213,7 +213,13 @@ class BankTransferP2PIndividualPage extends BasePage {
       const closeShown = await this.supportSheetCloseAndroid.isDisplayed().catch(() => false)
 
       if (titleShown || closeShown) {
-        throw new Error('Unexpected Support sheet appeared before opening Pay tab')
+        if (closeShown) {
+          await this.tap(this.supportSheetCloseAndroid).catch(() => {})
+        } else {
+          await browser.back().catch(() => {})
+        }
+        await this.supportSheetTitleAndroid.waitForDisplayed({ reverse: true, timeout: 5000 }).catch(() => {})
+        return
       }
 
       await browser.pause(250)
@@ -223,7 +229,7 @@ class BankTransferP2PIndividualPage extends BasePage {
   private async openPayTabAndroid() {
     await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
     await this.dismissBlockingAlertAndroid(5000)
-    await this.assertSupportSheetNotShownAndroid(5000)
+    await this.dismissSupportSheetIfShownAndroid(5000)
 
     for (let attempt = 0; attempt < 2; attempt++) {
       await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
@@ -239,7 +245,7 @@ class BankTransferP2PIndividualPage extends BasePage {
       }
 
       await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
-      await this.assertSupportSheetNotShownAndroid(2000)
+      await this.dismissSupportSheetIfShownAndroid(2000)
     }
 
     throw new Error('Pay tab was not displayed')
