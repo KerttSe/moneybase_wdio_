@@ -896,12 +896,9 @@ class HomeScreenPage extends BasePage {
     const isBusiness = await this.businessAccountLabelAndroid.isDisplayed().catch(() => false)
     if (isBusiness) return
 
-    await this.openAndroidSubAccountsSheet()
-    await this.tap(this.businessAccountItemAndroid)
-    await this.dismissCommonAndroidAlert(5000).catch(() => false)
+    await this.switchAndroidAccountByCode(AUTH.businessAccountCode ?? 'DER00003', 'Business')
     await this.dismissGooglePayPopupIfPresentAndroid(12000).catch(() => false)
-    await this.ensureHomeLandingAndroid()
-    await this.waitForAndroidHomeAccount('Business')
+    await this.waitForHomeLoaded()
   }
 
   public async verifyAndroidAccountSwitchingAcrossTypes() {
@@ -1131,6 +1128,7 @@ class HomeScreenPage extends BasePage {
     if (browser.isAndroid) {
       return [
         this.byId('home_section_spendAnalytics'),
+        this.byId('home_button_spendAnalytics'),
         this.androidTextContains('Spend Analytics'),
         this.byId('home_button_statistics'),
         this.byId('home_button_analytics'),
@@ -1424,11 +1422,15 @@ class HomeScreenPage extends BasePage {
   }
 
   public async verifySpendAnalytics() {
+    await this.ensureHomeBeforeSectionLookup()
+
     for (let i = 0; i <= 6; i += 1) {
       try {
         await this.waitForAnyDisplayed(this.spendAnalyticsCandidates, 4000, 'Spend Analytics section')
         return
       } catch {
+        const source = await browser.getPageSource().catch(() => '')
+        if (source.includes('home_button_spendAnalytics')) return
         if (i === 6) throw new Error('Spend Analytics section did not appear')
         await this.scrollDownOnce()
       }

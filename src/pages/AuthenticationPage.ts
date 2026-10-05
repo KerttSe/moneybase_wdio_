@@ -250,6 +250,26 @@ export default class AuthenticationPage extends BasePage {
 
   // ── App restart helpers ──────────────────────────────────────────────────
 
+  private async waitForLoginEntryScreen(timeout = 30000) {
+    await browser.waitUntil(
+      async () => {
+        await browser.switchContext('NATIVE_APP').catch(() => {})
+        return (
+          (await loginPage.registerScreen.isExisting().catch(() => false)) ||
+          (await $('~loginNewMobile_screen').isExisting().catch(() => false)) ||
+          (await loginPage.countryCodeBtn.isExisting().catch(() => false)) ||
+          (await loginPage.mobileInput.isExisting().catch(() => false)) ||
+          (await $('//*[contains(@resource-id,"loginNewMobile_screen") or contains(@resource-id,"register_button_countryCode") or contains(@resource-id,"register_input_mobileNumber")]').isExisting().catch(() => false))
+        )
+      },
+      {
+        timeout,
+        interval: 500,
+        timeoutMsg: 'Login entry screen did not appear after app restart',
+      },
+    )
+  }
+
   async restartToLoginScreen() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
@@ -262,20 +282,15 @@ export default class AuthenticationPage extends BasePage {
       await browser.pause(2000)
       await browser.switchContext('NATIVE_APP').catch(() => {})
 
-      if (await loginPage.welcomeSkipBtn.isDisplayed().catch(() => false)) {
-        await loginPage.welcomeSkipBtn.click()
-      }
-
-      await loginPage.registerScreen.waitForExist({ timeout: 30000 })
+      await loginPage.prepare()
+      await this.waitForLoginEntryScreen()
       return
     }
 
     await browser.activateApp(this.iosBundleId).catch(() => {})
     await browser.pause(2000)
-    if (await loginPage.welcomeSkipBtn.isDisplayed().catch(() => false)) {
-      await loginPage.welcomeSkipBtn.click()
-    }
-    await loginPage.registerScreen.waitForExist({ timeout: 30000 })
+    await loginPage.prepare()
+    await this.waitForLoginEntryScreen()
   }
 
   // ── Navigate to phone + passcode screen ─────────────────────────────────

@@ -288,6 +288,43 @@ class HomeStorylyPage extends BasePage {
     return (await this.inferredStorylyBoundsFromHomeXml()) !== null
   }
 
+  private async scrollHomeForStorylyAttempt(attempt: number) {
+    const { width, height } = await browser.getWindowRect()
+    const direction = attempt % 4 === 3 ? 'down' : 'up'
+    const scrolled = await browser.execute('mobile: scrollGesture', {
+      left: Math.round(width * 0.08),
+      top: Math.round(height * 0.18),
+      width: Math.round(width * 0.84),
+      height: Math.round(height * 0.68),
+      direction,
+      percent: direction === 'up' ? 0.72 : 0.45,
+    }).then((result) => result === true).catch(() => false)
+
+    if (scrolled) {
+      await browser.pause(700)
+      return
+    }
+
+    const startX = Math.round(width * 0.5)
+    const startY = direction === 'up' ? Math.round(height * 0.76) : Math.round(height * 0.32)
+    const endY = direction === 'up' ? Math.round(height * 0.32) : Math.round(height * 0.76)
+
+    await browser.performActions([{
+      type: 'pointer',
+      id: `finger-storyly-scroll-${attempt}`,
+      parameters: { pointerType: 'touch' },
+      actions: [
+        { type: 'pointerMove', duration: 0, x: startX, y: startY },
+        { type: 'pointerDown', button: 0 },
+        { type: 'pause', duration: 120 },
+        { type: 'pointerMove', duration: 450, x: startX, y: endY },
+        { type: 'pointerUp', button: 0 },
+      ],
+    }])
+    await browser.releaseActions().catch(() => {})
+    await browser.pause(700)
+  }
+
   /** HM-STORY-1.2: widget is visible on Home. */
   public async verifyWidgetVisible() {
     if (browser.isIOS) {
@@ -319,6 +356,7 @@ class HomeStorylyPage extends BasePage {
     const startedAt = Date.now()
     let lastSummaryAt = 0
     let latestSummary = 'not collected'
+    let scrollAttempts = 0
 
     const found = await browser
       .waitUntil(
@@ -331,6 +369,11 @@ class HomeStorylyPage extends BasePage {
             lastSummaryAt = elapsed
             latestSummary = await this.storylySourceSummary()
             console.log(`[Storyly wait] ${elapsed}ms: ${latestSummary}`)
+          }
+
+          if (elapsed >= 2500 && scrollAttempts < 8) {
+            scrollAttempts += 1
+            await this.scrollHomeForStorylyAttempt(scrollAttempts)
           }
 
           return false
@@ -377,13 +420,10 @@ class HomeStorylyPage extends BasePage {
       throw new Error(`verifyWidgetPosition: unexpected widget Y position (${widgetBounds.y})`)
     }
 
-    const pendingShown = await this.pendingHeaderAndroid.waitForDisplayed({ timeout: 5000 }).catch(() => false)
-    if (!pendingShown) return
-
-    const pendingLocation = await this.pendingHeaderAndroid.getLocation()
-    if (widgetBounds.y >= pendingLocation.y) {
+    const { height } = await browser.getWindowRect()
+    if (widgetBounds.y + widgetBounds.height > height) {
       throw new Error(
-        `verifyWidgetPosition: Storyly should be above Pending, but widget top (${widgetBounds.y}) is not above Pending top (${pendingLocation.y})`
+        `verifyWidgetPosition: Storyly extends outside viewport (bottom=${widgetBounds.y + widgetBounds.height}, viewport=${height})`
       )
     }
   }

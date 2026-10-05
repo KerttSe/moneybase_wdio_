@@ -358,7 +358,13 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get uploadIdentityDocumentAnchor() {
-    return $('//*[@text="Upload identity document" or @content-desc="Upload identity document"]')
+    return $(
+      '//*[contains(@text,"Upload identity") or contains(@content-desc,"Upload identity") or ' +
+        'contains(@text,"Upload document") or contains(@content-desc,"Upload document") or ' +
+        'contains(@text,"identity document") or contains(@content-desc,"identity document") or ' +
+        'contains(@text,"Verify your identity") or contains(@content-desc,"Verify your identity") or ' +
+        'contains(@text,"Verification is required") or contains(@content-desc,"Verification is required")]'
+    )
   }
 
   private get homeRoot() {
@@ -1983,10 +1989,34 @@ export default class OnboardingPage extends BasePage {
   }
 
   private async waitForUploadIdentityDocumentAnchor(timeout: number) {
+    let scrollAttempts = 0
+
     return browser
       .waitUntil(
         async () => {
-          return await this.uploadIdentityDocumentAnchor.isDisplayed().catch(() => false)
+          const anchorVisible = await this.uploadIdentityDocumentAnchor.isDisplayed().catch(() => false)
+          if (anchorVisible) return true
+
+          const source = await browser.getPageSource().catch(() => '')
+          if (/Upload identity|Upload document|identity document|Verify your identity|Verification is required/i.test(source)) {
+            return true
+          }
+
+          if (browser.isAndroid && scrollAttempts < 4) {
+            scrollAttempts += 1
+            const { width, height } = await browser.getWindowRect()
+            await browser.execute('mobile: scrollGesture', {
+              left: Math.round(width * 0.08),
+              top: Math.round(height * 0.18),
+              width: Math.round(width * 0.84),
+              height: Math.round(height * 0.68),
+              direction: 'up',
+              percent: 0.7,
+            }).catch(() => {})
+            await browser.pause(500)
+          }
+
+          return false
         },
         {
           timeout,

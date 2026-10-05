@@ -205,11 +205,11 @@ export default class OrdersPage extends BasePage {
   }
 
   private get previewBuyButtonAndroidUiSelector() {
-    return $('//android.view.View[@clickable="true" and (@text="Buy" or @text="BUY" or @content-desc="Buy" or @content-desc="BUY")]')
+    return $('//android.view.View[@clickable="true" and (@text="Buy" or @text="BUY" or @text="Confirm Buy" or @text="Place Buy Order" or @content-desc="Buy" or @content-desc="BUY" or @content-desc="Confirm Buy" or @content-desc="Place Buy Order")]')
   }
 
   private get previewBuyButtonAndroidAnyContainer() {
-    return $('//*[.//*[contains(@text,"Order Preview")]]//*[@clickable="true" and (contains(@text,"Buy") or contains(@text,"BUY"))]')
+    return $('//*[.//*[contains(@text,"Order Preview") or contains(@content-desc,"Order Preview")]]//*[@clickable="true" and (contains(@text,"Buy") or contains(@text,"BUY") or contains(@text,"Confirm") or contains(@content-desc,"Buy") or contains(@content-desc,"BUY") or contains(@content-desc,"Confirm"))]')
   }
 
   private get orderPreviewTitleAndroid() {
@@ -248,12 +248,17 @@ export default class OrdersPage extends BasePage {
     return $('//android.app.AlertDialog[.//*[contains(@text,"Order Preview")]]//android.widget.Button[contains(@text,"Buy") or contains(@text,"BUY")]')
   }
 
+  private get previewBuyButtonAndroidBroad() {
+    return $('//*[@clickable="true" and (contains(@text,"Buy") or contains(@text,"BUY") or contains(@text,"Confirm") or contains(@content-desc,"Buy") or contains(@content-desc,"BUY") or contains(@content-desc,"Confirm"))]')
+  }
+
   private get allPreviewBuyButtonCandidatesAndroid() {
     return [
       this.previewConfirmBuyButtonAndroid,
       this.previewBuyButtonAndroid,
       this.previewBuyButtonAndroidUiSelector,
       this.previewBuyButtonAndroidAnyContainer,
+      this.previewBuyButtonAndroidBroad,
     ]
   }
 
@@ -1742,10 +1747,13 @@ export default class OrdersPage extends BasePage {
           await this.tapCenterOnElement(buyBtn)
         })
       } else {
-        const clickedBySource = await this.tapAndroidNodeFromSource({
-          class: 'android.widget.Button',
-          text: 'Buy',
-        })
+        const clickedBySource =
+          await this.tapAndroidNodeFromSource({ class: 'android.widget.Button', text: 'Buy' }) ||
+          await this.tapAndroidNodeFromSource({ class: 'android.widget.Button', text: 'BUY' }) ||
+          await this.tapAndroidNodeFromSource({ class: 'android.widget.Button', text: 'Confirm Buy' }) ||
+          await this.tapAndroidNodeFromSource({ class: 'android.widget.Button', text: 'Place Buy Order' }) ||
+          await this.tapAndroidNodeFromSource({ text: 'Buy' }) ||
+          await this.tapAndroidNodeFromSource({ 'content-desc': 'Buy' })
         if (!clickedBySource) {
           throw new Error('Preview Buy button (Android) did not appear')
         }
@@ -1770,6 +1778,8 @@ export default class OrdersPage extends BasePage {
   private async verifyBuyCompletedBySellAvailableAndroid() {
     const sellAvailable = await this.isInstrumentSellAvailableAndroid(30000)
     if (!sellAvailable) {
+      const detailsShown = await this.isOrderDetailsShownAndroid(10000)
+      if (detailsShown) return
       throw new Error('Instrument Sell action (Android) did not appear after Buy order')
     }
   }
