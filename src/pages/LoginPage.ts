@@ -69,13 +69,17 @@ export class LoginPage extends BasePage {
   private async tapWelcomeEntryButton(element: ChainablePromiseElement) {
     const clicked = await element.click().then(() => true).catch(() => false)
     if (!clicked) {
-      await this.tapElementCenter(element)
+      const stillTappable = await element.isDisplayed().catch(() => false)
+        || await element.isExisting().catch(() => false)
+      if (stillTappable) {
+        await this.tapElementCenter(element).catch(() => {})
+      }
       return
     }
 
     await browser.pause(350)
     if (await element.isDisplayed().catch(() => false)) {
-      await this.tapElementCenter(element)
+      await this.tapElementCenter(element).catch(() => {})
     }
   }
 

@@ -1083,6 +1083,8 @@ class CardManagementPage extends BasePage {
       return alreadyFrozen
     }
 
+    await this.ensureActiveCardControlsVisible().catch(() => {})
+
     const alreadyFrozen = await this.isUnfreezeActionVisibleAndroid()
     if (alreadyFrozen) {
       await this.tapAndroidCardAction(

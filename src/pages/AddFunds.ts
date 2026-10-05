@@ -243,6 +243,40 @@ private get payProcessingBtnIOS() {
     return $('(//*[@resource-id="sendOtp"] | //*[contains(@resource-id,"sendOtp")])[1]')
   }
 
+  private async tapPayProcessingAndroid() {
+    await browser.waitUntil(
+      async () => {
+        const shown = await this.payProcessingBtnAndroid.isDisplayed().catch(() => false)
+        const exists = await this.payProcessingBtnAndroid.isExisting().catch(() => false)
+        if (shown || exists) return true
+
+        const source = await browser.getPageSource().catch(() => '')
+        return source.includes('Pay Processing')
+      },
+      {
+        timeout: 45000,
+        interval: 500,
+        timeoutMsg: 'Pay Processing control did not appear after Continue',
+      }
+    )
+
+    const enabled = await this.payProcessingBtnAndroid.isEnabled().catch(() => true)
+    if (!enabled) {
+      await this.payProcessingBtnAndroid.waitForEnabled({ timeout: 15000 }).catch(() => {})
+    }
+
+    await this.payProcessingBtnAndroid.click().catch(async () => {
+      const location = await this.payProcessingBtnAndroid.getLocation().catch(() => null)
+      const size = await this.payProcessingBtnAndroid.getSize().catch(() => null)
+      if (location && size) {
+        await browser.execute('mobile: clickGesture', {
+          x: Math.round(location.x + size.width / 2),
+          y: Math.round(location.y + size.height / 2),
+        }).catch(() => {})
+      }
+    })
+  }
+
   private get depositSuccessTextAndroid() {
     return $('//*[contains(@text,"You deposited") or contains(@content-desc,"You deposited")]')
   }
@@ -322,9 +356,7 @@ async selectCardAndroid() {
     /* ---------- ANDROID ---------- */
 if (browser.isAndroid) {
   // The payment form preselects the available saved card.
-  await this.payProcessingBtnAndroid.waitForDisplayed({ timeout: 30000 })
-  await this.payProcessingBtnAndroid.waitForEnabled({ timeout: 15000 })
-  await this.tap(this.payProcessingBtnAndroid)
+  await this.tapPayProcessingAndroid()
 
   // 2) waiter for 0036 pay procesing btn 
   const otpAppeared = await browser

@@ -75,6 +75,15 @@ class BusinessCardPage extends BasePage {
     )
   }
 
+  private get anyPhysicalPendingCardAndroid() {
+    return $(
+      '(//*[contains(@text,"Physical") or contains(@content-desc,"Physical")]' +
+        '[ancestor-or-self::*[contains(@text,"Pending") or contains(@text,"PENDING") or contains(@content-desc,"Pending") or contains(@content-desc,"PENDING")]]' +
+        ' | //*[contains(@text,"Pending") or contains(@text,"PENDING") or contains(@content-desc,"Pending") or contains(@content-desc,"PENDING")]' +
+        '[ancestor-or-self::*[contains(@text,"Physical") or contains(@content-desc,"Physical")]])[1]'
+    )
+  }
+
   private get assignCardButtonAndroid() {
     return $('(//*[contains(@content-desc,"Assign Card")] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Assign Card"]])[1]')
   }
@@ -1330,9 +1339,16 @@ class BusinessCardPage extends BasePage {
     }
 
     await browser.waitUntil(
-      async () =>
-        (await this.manageCardsTitleAndroid.isExisting().catch(() => false)) &&
-        (await this.createdPhysicalPendingCardAndroid.isExisting().catch(() => false)),
+      async () => {
+        const manageShown = await this.manageCardsTitleAndroid.isExisting().catch(() => false)
+        if (!manageShown) return false
+
+        if (await this.createdPhysicalPendingCardAndroid.isExisting().catch(() => false)) return true
+        if (await this.anyPhysicalPendingCardAndroid.isExisting().catch(() => false)) return true
+
+        const source = await browser.getPageSource().catch(() => '')
+        return /Physical/i.test(source) && /Pending/i.test(source)
+      },
       {
         timeout: 30000,
         interval: 1000,

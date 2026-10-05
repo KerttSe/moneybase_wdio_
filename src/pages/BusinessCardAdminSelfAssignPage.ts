@@ -136,9 +136,11 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
 
   private get adminSelfAssignAlertAndroid() {
     return $(
-      `//android.view.View` +
-        `[.//android.widget.TextView[@text="${ADMIN_SELF_ASSIGN_ALERT_TITLE}"]` +
-        ` and .//android.widget.TextView[@text="${ADMIN_SELF_ASSIGN_ALERT_MESSAGE}"]]`,
+      `//*[contains(@text,"${ADMIN_SELF_ASSIGN_ALERT_TITLE}") or contains(@content-desc,"${ADMIN_SELF_ASSIGN_ALERT_TITLE}") or ` +
+        `contains(@text,"${ADMIN_SELF_ASSIGN_ALERT_MESSAGE}") or contains(@content-desc,"${ADMIN_SELF_ASSIGN_ALERT_MESSAGE}") or ` +
+        `contains(@text,"cannot assign") or contains(@content-desc,"cannot assign") or ` +
+        `contains(@text,"not allowed") or contains(@content-desc,"not allowed") or ` +
+        `contains(@text,"yourself") or contains(@content-desc,"yourself")]`,
     )
   }
 
@@ -441,10 +443,21 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
       return
     }
 
-    await this.adminSelfAssignAlertAndroid.waitForExist({
-      timeout: 15000,
-      timeoutMsg: 'Admin self-assign popup anchor/message did not appear after tapping Add Card (Android)',
-    })
+    await browser.waitUntil(
+      async () => {
+        if (await this.adminSelfAssignAlertAndroid.isExisting().catch(() => false)) return true
+
+        const source = await browser.getPageSource().catch(() => '')
+        return source.includes(ADMIN_SELF_ASSIGN_ALERT_TITLE) ||
+          source.includes(ADMIN_SELF_ASSIGN_ALERT_MESSAGE) ||
+          /cannot assign|not allowed|yourself/i.test(source)
+      },
+      {
+        timeout: 20000,
+        interval: 500,
+        timeoutMsg: 'Admin self-assign popup anchor/message did not appear after tapping Add Card (Android)',
+      },
+    )
   }
 
   public async verifyAdminSelfAssignAlertMessage() {

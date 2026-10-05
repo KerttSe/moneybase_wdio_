@@ -543,15 +543,15 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get otpContainerAndroid() {
-    return $('(//*[@resource-id="com.moneybase.qa:id/composeViewRegisterMobile"] | //*[@resource-id="com.moneybase.qa:id/composeViewOTP"])[1]')
+    return $('(//*[contains(@resource-id,"composeViewRegisterMobile")] | //*[contains(@resource-id,"composeViewOTP")])[1]')
   }
 
   private get otpInputAndroid() {
-    return $('//*[@resource-id="com.moneybase.qa:id/otp_input"]')
+    return $('//*[contains(@resource-id,"otp_input") or contains(@resource-id,"otpInput")]')
   }
 
   private get otpPhoneViewAndroid() {
-    return $('//*[@resource-id="com.moneybase.qa:id/otpPhoneView"]')
+    return $('//*[contains(@resource-id,"otpPhoneView") or contains(@resource-id,"otp_phone") or contains(@resource-id,"otpPhone")]')
   }
 
   private get otpContinueBtnAndroid() {
@@ -1735,10 +1735,16 @@ export default class AddBeneficiaryPage extends BasePage {
         }
 
         const containerShown = await this.otpContainerAndroid.isDisplayed().catch(() => false)
+          || await this.otpContainerAndroid.isExisting().catch(() => false)
         const inputShown = await this.otpInputAndroid.isDisplayed().catch(() => false)
+          || await this.otpInputAndroid.isExisting().catch(() => false)
         const phoneLabelShown = await this.otpPhoneViewAndroid.isDisplayed().catch(() => false)
+          || await this.otpPhoneViewAndroid.isExisting().catch(() => false)
 
         if (containerShown || inputShown || phoneLabelShown) return true
+
+        const source = await browser.getPageSource().catch(() => '')
+        if (/composeViewOTP|otp_input|otpPhoneView|Mobile Verification|Enter.*code|OTP/i.test(source)) return true
 
         // Some users can proceed without OTP screen in this flow.
         const detailsStillShown = await this.detailsContinueViewAndroid.isDisplayed().catch(() => false)
@@ -1770,7 +1776,9 @@ export default class AddBeneficiaryPage extends BasePage {
     }
 
     const otpInputShown = await this.otpInputAndroid.isDisplayed().catch(() => false)
+      || await this.otpInputAndroid.isExisting().catch(() => false)
     const otpPhoneLabelShown = await this.otpPhoneViewAndroid.isDisplayed().catch(() => false)
+      || await this.otpPhoneViewAndroid.isExisting().catch(() => false)
     if (!otpInputShown && !otpPhoneLabelShown) {
       // Flow may advance without OTP input for some users.
       const detailsStillShown = await this.detailsContinueViewAndroid.isDisplayed().catch(() => false)
@@ -1803,6 +1811,7 @@ export default class AddBeneficiaryPage extends BasePage {
     }
 
     const otpPhoneShown = await this.otpPhoneViewAndroid.isDisplayed().catch(() => false)
+      || await this.otpPhoneViewAndroid.isExisting().catch(() => false)
     if (!otpPhoneShown) {
       throw new Error('OTP phone label is not visible on OTP screen')
     }

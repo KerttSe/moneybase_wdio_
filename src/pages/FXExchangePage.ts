@@ -665,11 +665,32 @@ class FXExchangePage extends BasePage {
       }
     }
 
-    await browser.pause(500)
+    let finalValueUpdated = await browser.waitUntil(
+      async () => {
+        const current = await this.readInputValue(amountInput).catch(() => '')
+        return current.includes(value)
+      },
+      { timeout: 2500, interval: 250 }
+    ).then(() => true).catch(() => false)
 
-    const finalValueUpdated = await this.readInputValue(amountInput)
-      .then((current) => current.includes(value))
-      .catch(() => false)
+    if (!finalValueUpdated) {
+      await amountInput.click().catch(() => {})
+      await amountInput.clearValue().catch(() => {})
+      await amountInput.addValue(value).catch(async () => {
+        await browser.execute('mobile: shell', {
+          command: 'input',
+          args: ['text', value.replace(/ /g, '%s')],
+        }).catch(() => {})
+      })
+      await browser.hideKeyboard().catch(() => {})
+      finalValueUpdated = await browser.waitUntil(
+        async () => {
+          const current = await this.readInputValue(amountInput).catch(() => '')
+          return current.includes(value)
+        },
+        { timeout: 5000, interval: 250 }
+      ).then(() => true).catch(() => false)
+    }
 
     if (!finalValueUpdated) {
       throw new Error('FX amount did not update')
