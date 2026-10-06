@@ -1994,8 +1994,13 @@ export default class OnboardingPage extends BasePage {
     return browser
       .waitUntil(
         async () => {
+          if (browser.isAndroid) await this.dismissKnownAndroidBlockingPopups().catch(() => {})
+
           const anchorVisible = await this.uploadIdentityDocumentAnchor.isDisplayed().catch(() => false)
           if (anchorVisible) return true
+
+          const homeVisible = await this.homeRoot.isDisplayed().catch(() => false)
+          if (homeVisible) return true
 
           const source = await browser.getPageSource().catch(() => '')
           if (/Upload identity|Upload document|identity document|Verify your identity|Verification is required/i.test(source)) {
@@ -2088,9 +2093,60 @@ export default class OnboardingPage extends BasePage {
 
     await this.debugAfterVerifyNow()
 
-    if (process.env.ONBOARDING_SKIP_KYC_AFTER_VERIFY_NOW !== 'true') {
+    if (process.env.ONBOARDING_COMPLETE_ONFIDO_KYC === 'true' && process.env.ONBOARDING_SKIP_KYC_AFTER_VERIFY_NOW !== 'true') {
       await this.completeKycVerification()
+    } else if (process.env.ONBOARDING_SKIP_KYC_AFTER_VERIFY_NOW === 'true') {
+      await this.waitForOnfidoOpenedAfterVerifyNow()
+      await this.goBackToHomeAfterOnfido()
+    } else if (process.env.ONBOARDING_SKIP_KYC_AFTER_VERIFY_NOW !== 'true') {
+      await this.avoidOnfidoVerification()
     }
+  }
+
+  private async waitForOnfidoOpenedAfterVerifyNow() {
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    await browser.waitUntil(
+      async () => {
+        const currentActivity = await browser.getCurrentActivity().catch(() => '')
+        if (/OnfidoActivity/i.test(currentActivity)) return true
+
+        return (
+          (await this.text('Choose your document').isDisplayed().catch(() => false)) ||
+          (await this.onfidoTitle.isDisplayed().catch(() => false)) ||
+          (await this.onfidoDocumentList.isDisplayed().catch(() => false))
+        )
+      },
+      {
+        timeout: Number(process.env.ONBOARDING_ONFIDO_OPEN_TIMEOUT_MS || 30000),
+        interval: 500,
+        timeoutMsg: 'Expected the next Onfido screen after tapping Verify Now',
+      }
+    )
+  }
+
+  private async goBackToHomeAfterOnfido() {
+    await browser.back()
+
+    await browser.waitUntil(
+      async () => {
+        await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
+        const homeShown =
+          (await this.homeRoot.isDisplayed().catch(() => false)) ||
+          (await this.homeRoot.isExisting().catch(() => false))
+        if (homeShown) return true
+
+        const currentActivity = await browser.getCurrentActivity().catch(() => '')
+        return /DashboardActivity/i.test(currentActivity)
+      },
+      {
+        timeout: Number(process.env.ONBOARDING_HOME_AFTER_ONFIDO_BACK_TIMEOUT_MS || 45000),
+        interval: 500,
+        timeoutMsg: 'Expected Home screen with blocking popup dismissed after returning from Onfido',
+      }
+    )
+
+    await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
   }
 
   private async debugAfterVerifyNow() {
@@ -2123,6 +2179,82 @@ export default class OnboardingPage extends BasePage {
     await this.waitForOnboardingComplete()
   }
 
+  private async avoidOnfidoVerification() {
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+
+    const onfidoShown = await browser.waitUntil(
+      async () => {
+        const currentActivity = await browser.getCurrentActivity().catch(() => '')
+        if (/OnfidoActivity/i.test(currentActivity)) return true
+
+        return (
+          (await this.text('Choose your document').isDisplayed().catch(() => false)) ||
+          (await this.onfidoTitle.isDisplayed().catch(() => false)) ||
+          (await this.onfidoDocumentList.isDisplayed().catch(() => false))
+        )
+      },
+      {
+        timeout: Number(process.env.ONBOARDING_ONFIDO_AVOID_TIMEOUT_MS || 30000),
+        interval: 500,
+        timeoutMsg: 'Expected Onfido to open after Verify Now',
+      }
+    ).catch(() => false)
+
+    if (!onfidoShown) return
+
+    const tappedExit = await this.tapFirstVisible(
+      [
+        this.byId('action_exit_flow'),
+        this.contentDesc('Exit'),
+        this.nativeButtonByText('Exit'),
+        this.contentDesc('Close'),
+        this.contentDesc('back'),
+      ],
+      10000,
+    )
+
+    if (!tappedExit) {
+      await browser.back().catch(() => {})
+    }
+
+    await this.tapFirstVisible(
+      [
+        this.nativeButtonByText('Leave'),
+        this.nativeButtonByText('Yes, leave'),
+        this.nativeButtonByText('Exit'),
+        this.buttonByText('Leave'),
+        this.buttonByText('Yes, leave'),
+        this.text('Leave'),
+        this.text('Yes, leave'),
+      ],
+      4000,
+    ).catch(() => false)
+
+    await browser.waitUntil(
+      async () => {
+        const currentActivity = await browser.getCurrentActivity().catch(() => '')
+        if (!/OnfidoActivity/i.test(currentActivity)) return true
+        return this.isVerificationRequiredScreenShown()
+      },
+      {
+        timeout: Number(process.env.ONBOARDING_ONFIDO_EXIT_TIMEOUT_MS || 15000),
+        interval: 500,
+        timeoutMsg: 'Expected to leave Onfido after tapping exit',
+      }
+    ).catch(() => {})
+
+    if (await this.isVerificationRequiredScreenShown().catch(() => false)) {
+      // Onfido returns to the verification info screen; continue through the
+      // existing close-and-find-anchor flow instead of relaunching immediately.
+      await this.closeVerificationRequiredScreen()
+      return
+    }
+
+    if (browser.isAndroid) {
+      await this.relaunchAndroidAndUnlockToHome(process.env.ONBOARDING_PIN || '2468')
+    }
+  }
+
   private async selectDriverLicense() {
     await this.waitForAnyVisible(
       [
@@ -2148,7 +2280,7 @@ export default class OnboardingPage extends BasePage {
       return
     }
 
-    const country = process.env.ONBOARDING_ONFIDO_ISSUING_COUNTRY || 'Ukraine'
+    const country = process.env.ONBOARDING_ONFIDO_ISSUING_COUNTRY || 'Malta'
     await this.onfidoCountryPicker.waitForExist({ timeout: 15000 })
     await this.tapElementCenter(this.onfidoCountryPicker)
 
@@ -2273,13 +2405,20 @@ export default class OnboardingPage extends BasePage {
     const imageUrl = side === 'front'
       ? process.env.ONBOARDING_CAMERA_FRONT_MEDIA_URL
       : process.env.ONBOARDING_CAMERA_BACK_MEDIA_URL
+    const videoInjectionEnabled = process.env.BS_ENABLE_CAMERA_VIDEO_INJECTION !== 'false'
+    const imageInjectionEnabled = process.env.BS_ENABLE_CAMERA_IMAGE_INJECTION !== 'false'
     const preferVideo =
       process.env.ONBOARDING_DOCUMENT_CAMERA_INJECTION !== 'image' &&
-      process.env.BS_ENABLE_CAMERA_VIDEO_INJECTION !== 'false' &&
+      videoInjectionEnabled &&
       Boolean(videoUrl)
-    const mediaUrl = preferVideo ? videoUrl : imageUrl || videoUrl
+    const mediaUrl = preferVideo
+      ? videoUrl
+      : (imageInjectionEnabled ? imageUrl : undefined) || (videoInjectionEnabled ? videoUrl : undefined)
 
-    if (!mediaUrl) return
+    if (!mediaUrl) {
+      console.warn(`[Onboarding] Skipping ${side} camera media injection because BrowserStack camera injection is disabled`)
+      return
+    }
 
     if (process.env.BROWSERSTACK !== 'true') {
       console.warn(`[Onboarding] Skipping ${side} camera media injection outside BrowserStack: ${mediaUrl}`)
@@ -2593,8 +2732,32 @@ export default class OnboardingPage extends BasePage {
     )
 
     const letMeInShown = await this.onboardingLetMeInBtn.isDisplayed().catch(() => false)
+    let tappedLetMeIn = false
     if (letMeInShown && process.env.ONBOARDING_TAP_LET_ME_IN_ON_COMPLETE === 'true') {
       await this.tapElementCenter(this.onboardingLetMeInBtn)
+      tappedLetMeIn = true
+    }
+
+    if (browser.isAndroid && (tappedLetMeIn || (await this.homeRoot.isExisting().catch(() => false)))) {
+      await browser.waitUntil(
+        async () => {
+          await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
+          const homeShown =
+            (await this.homeRoot.isDisplayed().catch(() => false)) ||
+            (await this.homeRoot.isExisting().catch(() => false))
+          if (homeShown) return true
+
+          const currentActivity = await browser.getCurrentActivity().catch(() => '')
+          return /DashboardActivity/i.test(currentActivity)
+        },
+        {
+          timeout: Number(process.env.ONBOARDING_HOME_AFTER_LET_ME_IN_TIMEOUT_MS || 30000),
+          interval: 500,
+          timeoutMsg: 'Expected Android Home after tapping Let me in on onboarding complete',
+        }
+      ).catch(() => {})
+
+      await this.dismissKnownAndroidBlockingPopups(3).catch(() => {})
     }
   }
 

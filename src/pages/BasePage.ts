@@ -155,6 +155,55 @@ export default class BasePage {
     await browser.pause(300)
   }
 
+  private async tapAndroidCenterPoint(element: WdioEl, pointerId = 'finger-android-center-tap') {
+    const location = await element.getLocation()
+    const size = await element.getSize()
+    const x = Math.round(location.x + size.width / 2)
+    const y = Math.round(location.y + size.height / 2)
+
+    await browser.execute('mobile: clickGesture', { x, y }).catch(async () => {
+      await browser.performActions([
+        {
+          type: 'pointer',
+          id: pointerId,
+          parameters: { pointerType: 'touch' },
+          actions: [
+            { type: 'pointerMove', duration: 0, x, y },
+            { type: 'pointerDown', button: 0 },
+            { type: 'pause', duration: 80 },
+            { type: 'pointerUp', button: 0 },
+          ],
+        },
+      ])
+      await browser.releaseActions().catch(() => {})
+    })
+  }
+
+  private async dismissAndroidTooltipTextIfVisible() {
+    const dismissTextShown = await this.androidMoreMenuMovedTooltipDismissText.isDisplayed().catch(() => false)
+    if (!dismissTextShown) return false
+
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      const clickableDismissShown = await this.androidMoreMenuMovedTooltipDismiss.isDisplayed().catch(() => false)
+      if (clickableDismissShown) {
+        await this.androidMoreMenuMovedTooltipDismiss.click().catch(() => {})
+      } else {
+        await this.tapAndroidCenterPoint(this.androidMoreMenuMovedTooltipDismissText, 'finger-more-menu-tooltip-dismiss')
+      }
+
+      const gone = await this.androidMoreMenuMovedTooltipDismissText
+        .waitForDisplayed({ reverse: true, timeout: 7000 })
+        .then(() => true)
+        .catch(() => false)
+      if (gone) {
+        await browser.pause(300)
+        return true
+      }
+    }
+
+    return false
+  }
+
   protected async tapAndroidVerificationSuccessContinueIfVisible() {
     if (!browser.isAndroid) return false
 
@@ -246,38 +295,13 @@ export default class BasePage {
       return true
     }
 
+    const dismissedTooltipText = await this.dismissAndroidTooltipTextIfVisible()
+    if (dismissedTooltipText) return true
+
     const moreMenuTooltipShown = await this.androidMoreMenuMovedTooltipTitle.isDisplayed().catch(() => false)
-    const moreMenuTooltipDismissShown = await this.androidMoreMenuMovedTooltipDismiss.isDisplayed().catch(() => false)
-    if (moreMenuTooltipShown || moreMenuTooltipDismissShown) {
-      if (moreMenuTooltipDismissShown) {
-        const clicked = await this.androidMoreMenuMovedTooltipDismiss.click().then(() => true).catch(() => false)
-        if (!clicked) {
-          const textShown = await this.androidMoreMenuMovedTooltipDismissText.isDisplayed().catch(() => false)
-          if (textShown) {
-            const location = await this.androidMoreMenuMovedTooltipDismissText.getLocation()
-            const size = await this.androidMoreMenuMovedTooltipDismissText.getSize()
-            await browser.performActions([
-              {
-                type: 'pointer',
-                id: 'finger-more-menu-tooltip-dismiss',
-                parameters: { pointerType: 'touch' },
-                actions: [
-                  {
-                    type: 'pointerMove',
-                    duration: 0,
-                    x: Math.round(location.x + size.width / 2),
-                    y: Math.round(location.y + size.height / 2),
-                  },
-                  { type: 'pointerDown', button: 0 },
-                  { type: 'pause', duration: 80 },
-                  { type: 'pointerUp', button: 0 },
-                ],
-              },
-            ])
-            await browser.releaseActions().catch(() => {})
-          }
-        }
-      } else {
+    if (moreMenuTooltipShown) {
+      const dismissedFromTitle = await this.dismissAndroidTooltipTextIfVisible()
+      if (!dismissedFromTitle) {
         await browser.back().catch(() => {})
       }
       await this.androidMoreMenuMovedTooltipTitle.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
@@ -385,6 +409,8 @@ export default class BasePage {
           'verificationSuccess_button_continue',
           'googlepayProposal_button_close',
           'More menu has been moved',
+          'text="Dismiss"',
+          'content-desc="Dismiss"',
           'Device Not Synced',
           'accountSelection_screen',
           'more_screen',
