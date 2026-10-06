@@ -31,6 +31,40 @@ on:
         description: "BrowserStack Android app id (bs://...). Overrides BS_APP_ANDROID secret."
         required: false
         type: string
+      regression_specs:
+        description: "Comma-separated regression spec paths to run (overrides the checkpoint checkboxes below). Example: src/tests/fxExchange.spec.ts,src/tests/onboarding.spec.ts"
+        required: false
+        type: string
+      checkpoint_home:
+        description: "Checkpoint: Home & Navigation (launch, home search/spend analytics/storyly, account switch)"
+        required: false
+        default: true
+        type: boolean
+      checkpoint_payments:
+        description: "Checkpoint: Payments & Transfers (bank transfers, cross-border, VOP, beneficiaries, add funds)"
+        required: false
+        default: true
+        type: boolean
+      checkpoint_cards:
+        description: "Checkpoint: Cards (business + physical card management, freeze/unfreeze, limits, terminate/relink)"
+        required: false
+        default: true
+        type: boolean
+      checkpoint_invest:
+        description: "Checkpoint: Invest (portfolio, orders, price alerts, watchlist, FX exchange, cash funds)"
+        required: false
+        default: true
+        type: boolean
+      checkpoint_auth_onboarding:
+        description: "Checkpoint: Auth & Onboarding (onboarding, personal details, passcode/OTP auth)"
+        required: false
+        default: true
+        type: boolean
+      checkpoint_account_misc:
+        description: "Checkpoint: Account & Misc (auto top-up, transactions, price plan, salary/stipend/pension)"
+        required: false
+        default: true
+        type: boolean
 
 permissions:
   contents: read
@@ -284,6 +318,13 @@ jobs:
         shell: bash
         env:
           PLATFORM_INPUT: ${{ github.event.inputs.platform || 'all' }}
+          REGRESSION_SPECS_INPUT: ${{ github.event.inputs.regression_specs }}
+          CHECKPOINT_HOME: ${{ github.event.inputs.checkpoint_home || 'true' }}
+          CHECKPOINT_PAYMENTS: ${{ github.event.inputs.checkpoint_payments || 'true' }}
+          CHECKPOINT_CARDS: ${{ github.event.inputs.checkpoint_cards || 'true' }}
+          CHECKPOINT_INVEST: ${{ github.event.inputs.checkpoint_invest || 'true' }}
+          CHECKPOINT_AUTH_ONBOARDING: ${{ github.event.inputs.checkpoint_auth_onboarding || 'true' }}
+          CHECKPOINT_ACCOUNT_MISC: ${{ github.event.inputs.checkpoint_account_misc || 'true' }}
         run: |
           # Lane 1 — primary account (VEG40002): account-specific + agnostic Individual
           PRIMARY_SPECS=(
@@ -344,6 +385,126 @@ jobs:
             ios)     PLATFORMS=("ios") ;;
             *)       PLATFORMS=("android" "ios") ;;
           esac
+
+          # Optional: restrict the regression matrix to a hand-picked list of specs.
+          # Leave REGRESSION_SPECS_INPUT empty to run the full matrix as before.
+          if [[ -n "$REGRESSION_SPECS_INPUT" ]]; then
+            IFS=',' read -ra REQUESTED_SPECS <<< "$REGRESSION_SPECS_INPUT"
+            TRIMMED_SPECS=()
+            for raw in "${REQUESTED_SPECS[@]}"; do
+              trimmed=$(echo "$raw" | xargs)
+              [[ -n "$trimmed" ]] && TRIMMED_SPECS+=("$trimmed")
+            done
+
+            is_requested() {
+              local target="$1"
+              for s in "${TRIMMED_SPECS[@]}"; do
+                [[ "$target" == "$s" ]] && return 0
+              done
+              return 1
+            }
+
+            NEW_PRIMARY=()
+            for spec in "${PRIMARY_SPECS[@]}"; do
+              is_requested "$spec" && NEW_PRIMARY+=("$spec")
+            done
+            PRIMARY_SPECS=("${NEW_PRIMARY[@]}")
+
+            NEW_SECONDARY=()
+            for spec in "${SECONDARY_SPECS[@]}"; do
+              is_requested "$spec" && NEW_SECONDARY+=("$spec")
+            done
+            SECONDARY_SPECS=("${NEW_SECONDARY[@]}")
+
+            for requested in "${TRIMMED_SPECS[@]}"; do
+              found=false
+              for spec in "${PRIMARY_SPECS[@]}" "${SECONDARY_SPECS[@]}"; do
+                [[ "$spec" == "$requested" ]] && found=true && break
+              done
+              [[ "$found" == "false" ]] && echo "::warning::regression_specs entry not found in the regression matrix: $requested"
+            done
+
+            echo "Filtered to requested specs: ${TRIMMED_SPECS[*]}"
+          else
+            # No exact spec list given — fall back to the checkpoint checkboxes.
+            # Each spec belongs to exactly one checkpoint category; unchecking a
+            # category drops its specs from both lanes.
+            declare -A SPEC_CHECKPOINT=(
+              ["src/tests/launch.spec.ts"]="CHECKPOINT_HOME"
+              ["src/tests/homeSearch.spec.ts"]="CHECKPOINT_HOME"
+              ["src/tests/homeSpendAnalytics.spec.ts"]="CHECKPOINT_HOME"
+              ["src/tests/homeStoryly.spec.ts"]="CHECKPOINT_HOME"
+              ["src/tests/homeScreen.spec.ts"]="CHECKPOINT_HOME"
+              ["src/tests/homeAccountSwitch.spec.ts"]="CHECKPOINT_HOME"
+
+              ["src/tests/addFundsBankTransferWalletManager.spec.ts"]="CHECKPOINT_PAYMENTS"
+              ["src/tests/bankTransfer.p2p.individual.spec.ts"]="CHECKPOINT_PAYMENTS"
+              ["src/tests/bankTransfer.sepa.individual.spec.ts"]="CHECKPOINT_PAYMENTS"
+              ["src/tests/bankTransfer.swift.individual.spec.ts"]="CHECKPOINT_PAYMENTS"
+              ["src/tests/crossBorder.swift.retail.spec.ts"]="CHECKPOINT_PAYMENTS"
+              ["src/tests/vop.beneficiary.spec.ts"]="CHECKPOINT_PAYMENTS"
+              ["src/tests/vop.sepa.spec.ts"]="CHECKPOINT_PAYMENTS"
+              ["src/tests/addbeneficiary.individual.spec.ts"]="CHECKPOINT_PAYMENTS"
+              ["src/tests/addbeneficiary.individual.usd.steps.spec.ts"]="CHECKPOINT_PAYMENTS"
+              ["src/tests/addfunds.spec.ts"]="CHECKPOINT_PAYMENTS"
+
+              ["src/tests/assignBusinessCard.spec.ts"]="CHECKPOINT_CARDS"
+              ["src/tests/businessCard.adminSelfAssign.spec.ts"]="CHECKPOINT_CARDS"
+              ["src/tests/businessCard.cardLimits.spec.ts"]="CHECKPOINT_CARDS"
+              ["src/tests/businessCard.noRights.spec.ts"]="CHECKPOINT_CARDS"
+              ["src/tests/businessCard.walletReachOut.spec.ts"]="CHECKPOINT_CARDS"
+              ["src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts"]="CHECKPOINT_CARDS"
+              ["src/tests/businessCard.terminate.spec.ts"]="CHECKPOINT_CARDS"
+              ["src/tests/businessCard.relink.spec.ts"]="CHECKPOINT_CARDS"
+              ["src/tests/cardFreezeUnfreeze.joint.spec.ts"]="CHECKPOINT_CARDS"
+              ["src/tests/cardManagement.joint.spec.ts"]="CHECKPOINT_CARDS"
+              ["src/tests/physicalcardcreation.spec.ts"]="CHECKPOINT_CARDS"
+
+              ["src/tests/portfolio.spec.ts"]="CHECKPOINT_INVEST"
+              ["src/tests/orders.spec.ts"]="CHECKPOINT_INVEST"
+              ["src/tests/orders.regression.spec.ts"]="CHECKPOINT_INVEST"
+              ["src/tests/priceAlerts.spec.ts"]="CHECKPOINT_INVEST"
+              ["src/tests/watchlist.spec.ts"]="CHECKPOINT_INVEST"
+              ["src/tests/fxExchange.spec.ts"]="CHECKPOINT_INVEST"
+              ["src/tests/fxExchange.regression.spec.ts"]="CHECKPOINT_INVEST"
+              ["src/tests/cashFunds.spec.ts"]="CHECKPOINT_INVEST"
+
+              ["src/tests/onboarding.spec.ts"]="CHECKPOINT_AUTH_ONBOARDING"
+              ["src/tests/personalDetails.spec.ts"]="CHECKPOINT_AUTH_ONBOARDING"
+              ["src/tests/authentication.incorrectPasscode.spec.ts"]="CHECKPOINT_AUTH_ONBOARDING"
+              ["src/tests/authentication.passcodeLockout.spec.ts"]="CHECKPOINT_AUTH_ONBOARDING"
+              ["src/tests/authentication.otpCountdown.spec.ts"]="CHECKPOINT_AUTH_ONBOARDING"
+
+              ["src/tests/autoTopUp.spec.ts"]="CHECKPOINT_ACCOUNT_MISC"
+              ["src/tests/transactions.spec.ts"]="CHECKPOINT_ACCOUNT_MISC"
+              ["src/tests/pricePlan.spec.ts"]="CHECKPOINT_ACCOUNT_MISC"
+              ["src/tests/salaryStipendPension.spec.ts"]="CHECKPOINT_ACCOUNT_MISC"
+            )
+
+            checkpoint_enabled() {
+              local spec="$1"
+              local category="${SPEC_CHECKPOINT[$spec]}"
+              if [[ -z "$category" ]]; then
+                echo "::warning::Spec has no checkpoint category mapping, including it by default: $spec"
+                return 0
+              fi
+              [[ "${!category}" == "true" ]]
+            }
+
+            NEW_PRIMARY=()
+            for spec in "${PRIMARY_SPECS[@]}"; do
+              checkpoint_enabled "$spec" && NEW_PRIMARY+=("$spec")
+            done
+            PRIMARY_SPECS=("${NEW_PRIMARY[@]}")
+
+            NEW_SECONDARY=()
+            for spec in "${SECONDARY_SPECS[@]}"; do
+              checkpoint_enabled "$spec" && NEW_SECONDARY+=("$spec")
+            done
+            SECONDARY_SPECS=("${NEW_SECONDARY[@]}")
+
+            echo "Checkpoints — home:$CHECKPOINT_HOME payments:$CHECKPOINT_PAYMENTS cards:$CHECKPOINT_CARDS invest:$CHECKPOINT_INVEST auth/onboarding:$CHECKPOINT_AUTH_ONBOARDING account/misc:$CHECKPOINT_ACCOUNT_MISC"
+          fi
 
           INCLUDE="[]"
           PRIMARY_INCLUDE="[]"
