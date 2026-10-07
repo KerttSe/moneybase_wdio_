@@ -1,4 +1,4 @@
-# Manual regression run — pick platform and tick/untick individual spec checkboxes below.
+# Manual regression run: choose platform and category checkboxes.
 name: WDIO Regression
 
 on:
@@ -21,232 +21,38 @@ on:
         description: "BrowserStack Android app id (bs://...). Overrides BS_APP_ANDROID secret."
         required: false
         type: string
-      # --- Home & Navigation ---
-      spec_launch:
-        description: "[Home & Navigation] launch.spec.ts"
+      home_navigation:
+        description: "Home & Navigation"
         required: false
         default: true
         type: boolean
-      spec_homeSearch:
-        description: "[Home & Navigation] homeSearch.spec.ts"
+      bank_transfers:
+        description: "Bank Transfers & Beneficiaries"
         required: false
         default: true
         type: boolean
-      spec_homeSpendAnalytics:
-        description: "[Home & Navigation] homeSpendAnalytics.spec.ts"
+      payments:
+        description: "Payments, Top-ups & FX"
         required: false
         default: true
         type: boolean
-      spec_homeStoryly:
-        description: "[Home & Navigation] homeStoryly.spec.ts"
+      cards:
+        description: "Business, Personal & Joint Cards"
         required: false
         default: true
         type: boolean
-      spec_homeScreen:
-        description: "[Home & Navigation] homeScreen.spec.ts"
+      invest:
+        description: "Invest"
         required: false
         default: true
         type: boolean
-      spec_homeAccountSwitch:
-        description: "[Home & Navigation] homeAccountSwitch.spec.ts"
+      authentication:
+        description: "Authentication"
         required: false
         default: true
         type: boolean
-      # --- Bank Transfers ---
-      spec_addFundsBankTransferWalletManager:
-        description: "[Bank Transfers] addFundsBankTransferWalletManager.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_bankTransferP2p:
-        description: "[Bank Transfers] bankTransfer.p2p.individual.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_bankTransferSepa:
-        description: "[Bank Transfers] bankTransfer.sepa.individual.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_bankTransferSwift:
-        description: "[Bank Transfers] bankTransfer.swift.individual.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_crossBorderSwiftRetail:
-        description: "[Bank Transfers] crossBorder.swift.retail.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_vopBeneficiary:
-        description: "[Bank Transfers] vop.beneficiary.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_vopSepa:
-        description: "[Bank Transfers] vop.sepa.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      # --- Beneficiaries & Funds ---
-      spec_addbeneficiaryIndividual:
-        description: "[Beneficiaries & Funds] addbeneficiary.individual.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_addbeneficiaryIndividualUsd:
-        description: "[Beneficiaries & Funds] addbeneficiary.individual.usd.steps.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_addfunds:
-        description: "[Beneficiaries & Funds] addfunds.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      # --- Business Cards ---
-      spec_assignBusinessCard:
-        description: "[Business Cards] assignBusinessCard.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_businessCardAdminSelfAssign:
-        description: "[Business Cards] businessCard.adminSelfAssign.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_businessCardCardLimits:
-        description: "[Business Cards] businessCard.cardLimits.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_businessCardNoRights:
-        description: "[Business Cards] businessCard.noRights.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_businessCardWalletReachOut:
-        description: "[Business Cards] businessCard.walletReachOut.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_businessCardFreezeUnfreezeOtherPerson:
-        description: "[Business Cards] businessCard.freezeUnfreeze.otherPerson.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_businessCardTerminate:
-        description: "[Business Cards] businessCard.terminate.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_businessCardRelink:
-        description: "[Business Cards] businessCard.relink.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      # --- Personal / Joint Cards ---
-      spec_cardFreezeUnfreezeJoint:
-        description: "[Personal / Joint Cards] cardFreezeUnfreeze.joint.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_cardManagementJoint:
-        description: "[Personal / Joint Cards] cardManagement.joint.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_physicalcardcreation:
-        description: "[Personal / Joint Cards] physicalcardcreation.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      # --- Invest ---
-      spec_portfolio:
-        description: "[Invest] portfolio.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_orders:
-        description: "[Invest] orders.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_ordersRegression:
-        description: "[Invest] orders.regression.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_priceAlerts:
-        description: "[Invest] priceAlerts.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_watchlist:
-        description: "[Invest] watchlist.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_fxExchange:
-        description: "[Invest] fxExchange.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_fxExchangeRegression:
-        description: "[Invest] fxExchange.regression.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_cashFunds:
-        description: "[Invest] cashFunds.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      # --- Authentication ---
-      spec_authIncorrectPasscode:
-        description: "[Authentication] authentication.incorrectPasscode.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_authPasscodeLockout:
-        description: "[Authentication] authentication.passcodeLockout.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_authOtpCountdown:
-        description: "[Authentication] authentication.otpCountdown.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      # --- Onboarding & Personal Details ---
-      spec_onboarding:
-        description: "[Onboarding & Personal Details] onboarding.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_personalDetails:
-        description: "[Onboarding & Personal Details] personalDetails.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      # --- Account & Misc ---
-      spec_autoTopUp:
-        description: "[Account & Misc] autoTopUp.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_transactions:
-        description: "[Account & Misc] transactions.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_pricePlan:
-        description: "[Account & Misc] pricePlan.spec.ts"
-        required: false
-        default: true
-        type: boolean
-      spec_salaryStipendPension:
-        description: "[Account & Misc] salaryStipendPension.spec.ts"
+      onboarding_account:
+        description: "Onboarding, Personal Details & Price Plans"
         required: false
         default: true
         type: boolean
@@ -262,213 +68,207 @@ concurrency:
 
 jobs:
   setup-regression:
-    name: Build regression matrix
+    name: Build regression blocks
     runs-on: arc-runner-mb-deploy-stg-scale-set
     outputs:
       matrix: ${{ steps.build.outputs.matrix }}
       primary_matrix: ${{ steps.build.outputs.primary_matrix }}
       secondary_matrix: ${{ steps.build.outputs.secondary_matrix }}
+      primary_count: ${{ steps.build.outputs.primary_count }}
+      secondary_count: ${{ steps.build.outputs.secondary_count }}
     steps:
-      - name: Build regression matrix filtered by platform
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build selected category blocks
         id: build
         shell: bash
         env:
           PLATFORM_INPUT: ${{ github.event.inputs.platform || 'all' }}
           ALL_INPUTS_JSON: ${{ toJSON(github.event.inputs) }}
         run: |
-          # Lane 1 — primary account (VEG40002): account-specific + agnostic Individual
-          PRIMARY_SPECS=(
-            "src/tests/launch.spec.ts"
-            "src/tests/homeSearch.spec.ts"
-            "src/tests/homeSpendAnalytics.spec.ts"
-            "src/tests/homeStoryly.spec.ts"
-            "src/tests/addFundsBankTransferWalletManager.spec.ts"
-            "src/tests/assignBusinessCard.spec.ts"
-            "src/tests/businessCard.adminSelfAssign.spec.ts"
-            "src/tests/businessCard.cardLimits.spec.ts"
-            "src/tests/cardFreezeUnfreeze.joint.spec.ts"
-            "src/tests/cardManagement.joint.spec.ts"
-            "src/tests/autoTopUp.spec.ts"
-            "src/tests/transactions.spec.ts"
-            "src/tests/bankTransfer.p2p.individual.spec.ts"
-            "src/tests/bankTransfer.sepa.individual.spec.ts"
-            "src/tests/bankTransfer.swift.individual.spec.ts"
-            "src/tests/portfolio.spec.ts"
-            "src/tests/orders.spec.ts"
-            "src/tests/businessCard.noRights.spec.ts"
-            "src/tests/businessCard.walletReachOut.spec.ts"
-            "src/tests/crossBorder.swift.retail.spec.ts"
-            "src/tests/orders.regression.spec.ts"
-            "src/tests/priceAlerts.spec.ts"
-            "src/tests/vop.beneficiary.spec.ts"
-            "src/tests/vop.sepa.spec.ts"
-          )
-
-          # Lane 2 — secondary (KER40014) + dedicated isolated accounts (AUTH_SECURITY, AUTH_OTP, BH)
-          # Dedicated-account specs use their own env vars — authSlot value is irrelevant for them
-          SECONDARY_SPECS=(
-            "src/tests/homeScreen.spec.ts"
-            "src/tests/homeAccountSwitch.spec.ts"
-            "src/tests/addbeneficiary.individual.spec.ts"
-            "src/tests/addfunds.spec.ts"
-            "src/tests/cashFunds.spec.ts"
-            "src/tests/physicalcardcreation.spec.ts"
-            "src/tests/fxExchange.spec.ts"
-            "src/tests/watchlist.spec.ts"
-            "src/tests/addbeneficiary.individual.usd.steps.spec.ts"
-            "src/tests/personalDetails.spec.ts"
-            "src/tests/onboarding.spec.ts"
-            "src/tests/authentication.incorrectPasscode.spec.ts"
-            "src/tests/authentication.passcodeLockout.spec.ts"
-            "src/tests/authentication.otpCountdown.spec.ts"
-            "src/tests/fxExchange.regression.spec.ts"
-            "src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts"
-            "src/tests/businessCard.terminate.spec.ts"
-            "src/tests/businessCard.relink.spec.ts"
-            "src/tests/pricePlan.spec.ts"
-            "src/tests/salaryStipendPension.spec.ts"
-          )
-
-          PLATFORMS=()
-          case "$PLATFORM_INPUT" in
-            android) PLATFORMS=("android") ;;
-            ios)     PLATFORMS=("ios") ;;
-            *)       PLATFORMS=("android" "ios") ;;
-          esac
-
-          # Each regression spec has its own checkbox in workflow_dispatch (spec_xxx).
-          # Unchecking one drops that spec from both lanes; default is true (full matrix).
-          declare -A SPEC_INPUT_KEY=(
-            ["src/tests/launch.spec.ts"]="spec_launch"
-            ["src/tests/homeSearch.spec.ts"]="spec_homeSearch"
-            ["src/tests/homeSpendAnalytics.spec.ts"]="spec_homeSpendAnalytics"
-            ["src/tests/homeStoryly.spec.ts"]="spec_homeStoryly"
-            ["src/tests/homeScreen.spec.ts"]="spec_homeScreen"
-            ["src/tests/homeAccountSwitch.spec.ts"]="spec_homeAccountSwitch"
-
-            ["src/tests/addFundsBankTransferWalletManager.spec.ts"]="spec_addFundsBankTransferWalletManager"
-            ["src/tests/bankTransfer.p2p.individual.spec.ts"]="spec_bankTransferP2p"
-            ["src/tests/bankTransfer.sepa.individual.spec.ts"]="spec_bankTransferSepa"
-            ["src/tests/bankTransfer.swift.individual.spec.ts"]="spec_bankTransferSwift"
-            ["src/tests/crossBorder.swift.retail.spec.ts"]="spec_crossBorderSwiftRetail"
-            ["src/tests/vop.beneficiary.spec.ts"]="spec_vopBeneficiary"
-            ["src/tests/vop.sepa.spec.ts"]="spec_vopSepa"
-
-            ["src/tests/addbeneficiary.individual.spec.ts"]="spec_addbeneficiaryIndividual"
-            ["src/tests/addbeneficiary.individual.usd.steps.spec.ts"]="spec_addbeneficiaryIndividualUsd"
-            ["src/tests/addfunds.spec.ts"]="spec_addfunds"
-
-            ["src/tests/assignBusinessCard.spec.ts"]="spec_assignBusinessCard"
-            ["src/tests/businessCard.adminSelfAssign.spec.ts"]="spec_businessCardAdminSelfAssign"
-            ["src/tests/businessCard.cardLimits.spec.ts"]="spec_businessCardCardLimits"
-            ["src/tests/businessCard.noRights.spec.ts"]="spec_businessCardNoRights"
-            ["src/tests/businessCard.walletReachOut.spec.ts"]="spec_businessCardWalletReachOut"
-            ["src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts"]="spec_businessCardFreezeUnfreezeOtherPerson"
-            ["src/tests/businessCard.terminate.spec.ts"]="spec_businessCardTerminate"
-            ["src/tests/businessCard.relink.spec.ts"]="spec_businessCardRelink"
-
-            ["src/tests/cardFreezeUnfreeze.joint.spec.ts"]="spec_cardFreezeUnfreezeJoint"
-            ["src/tests/cardManagement.joint.spec.ts"]="spec_cardManagementJoint"
-            ["src/tests/physicalcardcreation.spec.ts"]="spec_physicalcardcreation"
-
-            ["src/tests/portfolio.spec.ts"]="spec_portfolio"
-            ["src/tests/orders.spec.ts"]="spec_orders"
-            ["src/tests/orders.regression.spec.ts"]="spec_ordersRegression"
-            ["src/tests/priceAlerts.spec.ts"]="spec_priceAlerts"
-            ["src/tests/watchlist.spec.ts"]="spec_watchlist"
-            ["src/tests/fxExchange.spec.ts"]="spec_fxExchange"
-            ["src/tests/fxExchange.regression.spec.ts"]="spec_fxExchangeRegression"
-            ["src/tests/cashFunds.spec.ts"]="spec_cashFunds"
-
-            ["src/tests/authentication.incorrectPasscode.spec.ts"]="spec_authIncorrectPasscode"
-            ["src/tests/authentication.passcodeLockout.spec.ts"]="spec_authPasscodeLockout"
-            ["src/tests/authentication.otpCountdown.spec.ts"]="spec_authOtpCountdown"
-
-            ["src/tests/onboarding.spec.ts"]="spec_onboarding"
-            ["src/tests/personalDetails.spec.ts"]="spec_personalDetails"
-
-            ["src/tests/autoTopUp.spec.ts"]="spec_autoTopUp"
-            ["src/tests/transactions.spec.ts"]="spec_transactions"
-            ["src/tests/pricePlan.spec.ts"]="spec_pricePlan"
-            ["src/tests/salaryStipendPension.spec.ts"]="spec_salaryStipendPension"
-          )
-
-          spec_checked() {
-            local spec="$1"
-            local key="${SPEC_INPUT_KEY[$spec]}"
-            if [[ -z "$key" ]]; then
-              echo "::warning::Spec has no checkbox mapping, including it by default: $spec"
-              return 0
-            fi
-            local value
-            value=$(echo "$ALL_INPUTS_JSON" | jq -r --arg k "$key" '.[$k] // "true"')
-            [[ "$value" == "true" ]]
+          node <<'NODE'
+          const fs = require('node:fs');
+          const inputs = JSON.parse(process.env.ALL_INPUTS_JSON || '{}');
+          // Preserve the existing account lanes within every category.
+          const categories = {
+            home_navigation: {
+              name: 'Home & Navigation',
+              primary: [
+                'launch.spec.ts',
+                'homeSearch.spec.ts',
+                'homeSpendAnalytics.spec.ts',
+                'homeStoryly.spec.ts',
+              ],
+              secondary: [
+                'homeScreen.spec.ts',
+                'homeAccountSwitch.spec.ts',
+              ],
+            },
+            bank_transfers: {
+              name: 'Bank Transfers & Beneficiaries',
+              primary: [
+                'addFundsBankTransferWalletManager.spec.ts',
+                'bankTransfer.business.spec.ts',
+                'bankTransfer.p2p.individual.spec.ts',
+                'bankTransfer.sepa.individual.spec.ts',
+                'bankTransfer.swift.individual.spec.ts',
+                'crossBorder.swift.retail.spec.ts',
+                'vop.beneficiary.spec.ts',
+                'vop.sepa.spec.ts',
+              ],
+              secondary: [
+                'addbeneficiary.individual.spec.ts',
+                'addbeneficiary.individual.usd.steps.spec.ts',
+                'addbeneficiary.individual.usBicSwiftInvalid.spec.ts',
+              ],
+            },
+            payments: {
+              name: 'Payments, Top-ups & FX',
+              primary: [
+                'autoTopUp.spec.ts',
+                'transactions.spec.ts',
+              ],
+              secondary: [
+                'addfunds.spec.ts',
+                'fxExchange.spec.ts',
+                'fxExchange.regression.spec.ts',
+                'salaryStipendPension.spec.ts',
+              ],
+            },
+            cards: {
+              name: 'Cards',
+              primary: [
+                'assignBusinessCard.spec.ts',
+                'businessCard.adminSelfAssign.spec.ts',
+                'businessCard.cardLimits.spec.ts',
+                'cardFreezeUnfreeze.joint.spec.ts',
+                'cardManagement.joint.spec.ts',
+                'cardManagement.viewPin.spec.ts',
+                'businessCard.noRights.spec.ts',
+                'businessCard.walletReachOut.spec.ts',
+              ],
+              secondary: [
+                'physicalcardcreation.spec.ts',
+                'businessCard.freezeUnfreeze.otherPerson.spec.ts',
+                'businessCard.terminate.spec.ts',
+                'businessCard.relink.spec.ts',
+              ],
+            },
+            invest: {
+              name: 'Invest',
+              primary: [
+                'portfolio.spec.ts',
+                'orders.spec.ts',
+                'orders.regression.spec.ts',
+                'priceAlerts.spec.ts',
+              ],
+              secondary: [
+                'cashFunds.spec.ts',
+                'watchlist.spec.ts',
+              ],
+            },
+            authentication: {
+              name: 'Authentication',
+              primary: [],
+              secondary: [
+                'authentication.incorrectPasscode.spec.ts',
+                'authentication.passcodeLockout.spec.ts',
+                'authentication.otpCountdown.spec.ts',
+              ],
+            },
+            onboarding_account: {
+              name: 'Onboarding & Account',
+              primary: [],
+              secondary: [
+                'personalDetails.spec.ts',
+                'onboarding.spec.ts',
+                'pricePlan.spec.ts',
+              ],
+            },
+          };
+          // Reject missing, duplicated or stale specs instead of silently reducing coverage.
+          const mappedSpecs = Object.values(categories).flatMap(category =>
+            [...category.primary, ...category.secondary].map(spec => 'src/tests/' + spec),
+          );
+          const existingSpecs = fs.readdirSync('src/tests', { recursive: true })
+            .filter(spec => spec.endsWith('.spec.ts'))
+            .map(spec => 'src/tests/' + spec.replaceAll('\\', '/'));
+          const mappedSet = new Set(mappedSpecs);
+          const existingSet = new Set(existingSpecs);
+          const missing = existingSpecs.filter(spec => !mappedSet.has(spec));
+          const stale = mappedSpecs.filter(spec => !existingSet.has(spec));
+          if (missing.length || stale.length || mappedSet.size !== mappedSpecs.length) {
+            throw new Error('Invalid regression coverage: ' + JSON.stringify({
+              missing,
+              stale,
+              duplicates: mappedSpecs.filter((spec, index) => mappedSpecs.indexOf(spec) !== index),
+            }));
           }
-
-          NEW_PRIMARY=()
-          for spec in "${PRIMARY_SPECS[@]}"; do
-            spec_checked "$spec" && NEW_PRIMARY+=("$spec")
-          done
-          PRIMARY_SPECS=("${NEW_PRIMARY[@]}")
-
-          NEW_SECONDARY=()
-          for spec in "${SECONDARY_SPECS[@]}"; do
-            spec_checked "$spec" && NEW_SECONDARY+=("$spec")
-          done
-          SECONDARY_SPECS=("${NEW_SECONDARY[@]}")
-
-          {
-            echo "### Regression specs selected"
-            echo ""
-            for spec in "${!SPEC_INPUT_KEY[@]}"; do
-              name=$(basename "$spec")
-              found=false
-              for s in "${PRIMARY_SPECS[@]}" "${SECONDARY_SPECS[@]}"; do
-                [[ "$s" == "$spec" ]] && found=true && break
-              done
-              if [[ "$found" == "true" ]]; then
-                echo "- ✅ $name"
-              else
-                echo "- ⬜ $name"
-              fi
-            done | sort
-          } >> "$GITHUB_STEP_SUMMARY"
-
-          echo "Specs selected: $(( ${#PRIMARY_SPECS[@]} + ${#SECONDARY_SPECS[@]} )) / ${#SPEC_INPUT_KEY[@]}"
-
-          INCLUDE="[]"
-          PRIMARY_INCLUDE="[]"
-          SECONDARY_INCLUDE="[]"
-
-          for platform in "${PLATFORMS[@]}"; do
-            for spec in "${PRIMARY_SPECS[@]}"; do
-              entry=$(jq -c -n --arg p "$platform" --arg s "$spec" \
-                '{"platform": $p, "spec": $s, "smoke": false, "authSlot": "primary"}')
-              INCLUDE=$(echo "$INCLUDE" | jq -c --argjson e "$entry" '. += [$e]')
-              PRIMARY_INCLUDE=$(echo "$PRIMARY_INCLUDE" | jq -c --argjson e "$entry" '. += [$e]')
-            done
-            for spec in "${SECONDARY_SPECS[@]}"; do
-              entry=$(jq -c -n --arg p "$platform" --arg s "$spec" \
-                '{"platform": $p, "spec": $s, "smoke": false, "authSlot": "secondary"}')
-              INCLUDE=$(echo "$INCLUDE" | jq -c --argjson e "$entry" '. += [$e]')
-              SECONDARY_INCLUDE=$(echo "$SECONDARY_INCLUDE" | jq -c --argjson e "$entry" '. += [$e]')
-            done
-          done
-
-          MATRIX=$(jq -c -n --argjson inc "$INCLUDE" '{"include": $inc}')
-          PRIMARY_MATRIX=$(jq -c -n --argjson inc "$PRIMARY_INCLUDE" '{"include": $inc}')
-          SECONDARY_MATRIX=$(jq -c -n --argjson inc "$SECONDARY_INCLUDE" '{"include": $inc}')
-          echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
-          echo "primary_matrix=$PRIMARY_MATRIX" >> "$GITHUB_OUTPUT"
-          echo "secondary_matrix=$SECONDARY_MATRIX" >> "$GITHUB_OUTPUT"
-          echo "Selected platform: $PLATFORM_INPUT"
-          echo "Primary jobs: $(echo "$PRIMARY_INCLUDE" | jq 'length')"
-          echo "Secondary jobs: $(echo "$SECONDARY_INCLUDE" | jq 'length')"
+          const platformInput = process.env.PLATFORM_INPUT || 'all';
+          if (!['all', 'android', 'ios'].includes(platformInput)) {
+            throw new Error('Unsupported platform: ' + platformInput);
+          }
+          const platforms = platformInput === 'all' ? ['android', 'ios'] : [platformInput];
+          const primary = [];
+          const secondary = [];
+          const summary = ['### Regression blocks selected', ''];
+          let selectedSpecs = 0;
+          let totalSpecs = 0;
+          for (const [key, category] of Object.entries(categories)) {
+            const count = category.primary.length + category.secondary.length;
+            totalSpecs += count;
+            const value = inputs[key];
+            const selected = value == null || value === true || value === 'true';
+            summary.push('- [' + (selected ? 'x' : ' ') + '] ' + category.name + ' (' + count + ' specs)');
+            if (!selected) continue;
+            selectedSpecs += count;
+            for (const platform of platforms) {
+              for (const authSlot of ['primary', 'secondary']) {
+                const specs = category[authSlot];
+                if (specs.length === 0) continue;
+                const entry = {
+                  platform,
+                  category: category.name,
+                  categoryKey: key,
+                  specs: specs.map(spec => 'src/tests/' + spec).join(','),
+                  smoke: false,
+                  authSlot,
+                };
+                (authSlot === 'primary' ? primary : secondary).push(entry);
+              }
+            }
+          }
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary.join('\n') + '\n');
+          if (selectedSpecs === 0) {
+            throw new Error('Select at least one regression category.');
+          }
+          const outputs = {
+            matrix: JSON.stringify({ include: [...primary, ...secondary] }),
+            primary_matrix: JSON.stringify({ include: primary }),
+            secondary_matrix: JSON.stringify({ include: secondary }),
+            primary_count: primary.length,
+            secondary_count: secondary.length,
+          };
+          fs.appendFileSync(
+            process.env.GITHUB_OUTPUT,
+            Object.entries(outputs).map(([key, value]) => key + '=' + value).join('\n') + '\n',
+          );
+          console.log('Specs selected: ' + selectedSpecs + ' / ' + totalSpecs);
+          console.log('Selected platform: ' + platformInput);
+          console.log('Primary blocks: ' + primary.length);
+          console.log('Secondary blocks: ' + secondary.length);
+          NODE
 
   e2e-regression:
-    name: "REGRESSION parallel 1 (${{ matrix.platform }}) — ${{ matrix.spec }}"
+    name: "REGRESSION primary (${{ matrix.platform }}) - ${{ matrix.category }}"
     needs: setup-regression
-    if: needs.setup-regression.result == 'success'
+    if: needs.setup-regression.result == 'success' && needs.setup-regression.outputs.primary_count != '0'
     runs-on: arc-runner-mb-deploy-stg-scale-set
     strategy:
       max-parallel: 1
@@ -476,6 +276,8 @@ jobs:
       matrix: ${{ fromJSON(needs.setup-regression.outputs.primary_matrix) }}
     env:
       MB_AUTH_SLOT: ${{ matrix.authSlot }}
+      WDIO_MAX_INSTANCES: "1"
+      REGRESSION_SPECS: ${{ matrix.specs }}
       MB_COUNTRY: ${{ secrets.MB_COUNTRY }}
       MB_PHONE: ${{ secrets.MB_PHONE }}
       MB_PIN: ${{ secrets.MB_PIN }}
@@ -486,7 +288,7 @@ jobs:
       BS_APP_IOS: ${{ github.event.inputs.bs_app_ios || secrets.BS_APP_IOS }}
       PLATFORM: ${{ matrix.platform }}
       BS_BUILD: regression-${{ github.run_id }}-${{ github.run_attempt }}
-      BS_BUILD_TAGS: ${{ matrix.spec }},${{ matrix.platform }},regression
+      BS_BUILD_TAGS: ${{ matrix.categoryKey }},${{ matrix.platform }},regression
       OTP_FORCE_RESEND_BEFORE_FETCH: "false"
       OTP_FETCH_DELAY_MS: "5000"
       OTP_GET_LATEST_URL: ${{ secrets.OTP_GET_LATEST_URL }}
@@ -526,7 +328,10 @@ jobs:
         continue-on-error: true
 
       - name: Run tests
-        run: npm run wdio -- --spec ${{ matrix.spec }}
+        shell: bash
+        run: |
+          IFS=',' read -r -a specs <<< "$REGRESSION_SPECS"
+          npm run wdio -- --spec "${specs[@]}"
 
       - name: Upload Allure results artifact
         if: always()
@@ -537,9 +342,9 @@ jobs:
           if-no-files-found: warn
 
   e2e-regression-secondary:
-    name: "REGRESSION parallel 2 (${{ matrix.platform }}) — ${{ matrix.spec }}"
+    name: "REGRESSION secondary (${{ matrix.platform }}) - ${{ matrix.category }}"
     needs: setup-regression
-    if: needs.setup-regression.result == 'success'
+    if: needs.setup-regression.result == 'success' && needs.setup-regression.outputs.secondary_count != '0'
     runs-on: arc-runner-mb-deploy-stg-scale-set
     strategy:
       max-parallel: 1
@@ -547,6 +352,8 @@ jobs:
       matrix: ${{ fromJSON(needs.setup-regression.outputs.secondary_matrix) }}
     env:
       MB_AUTH_SLOT: ${{ matrix.authSlot }}
+      WDIO_MAX_INSTANCES: "1"
+      REGRESSION_SPECS: ${{ matrix.specs }}
       MB_COUNTRY: ${{ secrets.MB_COUNTRY }}
       MB_PHONE: ${{ secrets.MB_PHONE }}
       MB_PIN: ${{ secrets.MB_PIN }}
@@ -567,7 +374,7 @@ jobs:
       BS_APP_IOS: ${{ github.event.inputs.bs_app_ios || secrets.BS_APP_IOS }}
       PLATFORM: ${{ matrix.platform }}
       BS_BUILD: regression-${{ github.run_id }}-${{ github.run_attempt }}
-      BS_BUILD_TAGS: ${{ matrix.spec }},${{ matrix.platform }},regression,secondary
+      BS_BUILD_TAGS: ${{ matrix.categoryKey }},${{ matrix.platform }},regression,secondary
       OTP_FORCE_RESEND_BEFORE_FETCH: "false"
       OTP_FETCH_DELAY_MS: "5000"
       OTP_GET_LATEST_URL: ${{ secrets.OTP_GET_LATEST_URL }}
@@ -598,7 +405,10 @@ jobs:
         continue-on-error: true
 
       - name: Run tests
-        run: npm run wdio -- --spec ${{ matrix.spec }}
+        shell: bash
+        run: |
+          IFS=',' read -r -a specs <<< "$REGRESSION_SPECS"
+          npm run wdio -- --spec "${specs[@]}"
 
       - name: Upload Allure results artifact
         if: always()
@@ -611,8 +421,8 @@ jobs:
   sync-jira:
     name: Sync failures to JIRA
     runs-on: arc-runner-mb-deploy-stg-scale-set
-    needs: [e2e-regression, e2e-regression-secondary]
-    if: always()
+    needs: [setup-regression, e2e-regression, e2e-regression-secondary]
+    if: always() && needs.setup-regression.result == 'success'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -656,8 +466,8 @@ jobs:
   deploy-pages:
     name: Deploy Allure report to GitHub Pages
     runs-on: ubuntu-latest
-    needs: [e2e-regression, e2e-regression-secondary]
-    if: always()
+    needs: [setup-regression, e2e-regression, e2e-regression-secondary]
+    if: always() && needs.setup-regression.result == 'success'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
