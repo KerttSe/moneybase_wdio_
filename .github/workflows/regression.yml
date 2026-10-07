@@ -22,230 +22,230 @@ on:
         type: string
       # --- Home & Navigation ---
       spec_launch:
-        description: "launch.spec.ts"
+        description: "[Home & Navigation] launch.spec.ts"
         required: false
         default: true
         type: boolean
       spec_homeSearch:
-        description: "homeSearch.spec.ts"
+        description: "[Home & Navigation] homeSearch.spec.ts"
         required: false
         default: true
         type: boolean
       spec_homeSpendAnalytics:
-        description: "homeSpendAnalytics.spec.ts"
+        description: "[Home & Navigation] homeSpendAnalytics.spec.ts"
         required: false
         default: true
         type: boolean
       spec_homeStoryly:
-        description: "homeStoryly.spec.ts"
+        description: "[Home & Navigation] homeStoryly.spec.ts"
         required: false
         default: true
         type: boolean
       spec_homeScreen:
-        description: "homeScreen.spec.ts"
+        description: "[Home & Navigation] homeScreen.spec.ts"
         required: false
         default: true
         type: boolean
       spec_homeAccountSwitch:
-        description: "homeAccountSwitch.spec.ts"
+        description: "[Home & Navigation] homeAccountSwitch.spec.ts"
         required: false
         default: true
         type: boolean
       # --- Bank Transfers ---
       spec_addFundsBankTransferWalletManager:
-        description: "addFundsBankTransferWalletManager.spec.ts"
+        description: "[Bank Transfers] addFundsBankTransferWalletManager.spec.ts"
         required: false
         default: true
         type: boolean
       spec_bankTransferP2p:
-        description: "bankTransfer.p2p.individual.spec.ts"
+        description: "[Bank Transfers] bankTransfer.p2p.individual.spec.ts"
         required: false
         default: true
         type: boolean
       spec_bankTransferSepa:
-        description: "bankTransfer.sepa.individual.spec.ts"
+        description: "[Bank Transfers] bankTransfer.sepa.individual.spec.ts"
         required: false
         default: true
         type: boolean
       spec_bankTransferSwift:
-        description: "bankTransfer.swift.individual.spec.ts"
+        description: "[Bank Transfers] bankTransfer.swift.individual.spec.ts"
         required: false
         default: true
         type: boolean
       spec_crossBorderSwiftRetail:
-        description: "crossBorder.swift.retail.spec.ts"
+        description: "[Bank Transfers] crossBorder.swift.retail.spec.ts"
         required: false
         default: true
         type: boolean
       spec_vopBeneficiary:
-        description: "vop.beneficiary.spec.ts"
+        description: "[Bank Transfers] vop.beneficiary.spec.ts"
         required: false
         default: true
         type: boolean
       spec_vopSepa:
-        description: "vop.sepa.spec.ts"
+        description: "[Bank Transfers] vop.sepa.spec.ts"
         required: false
         default: true
         type: boolean
       # --- Beneficiaries & Funds ---
       spec_addbeneficiaryIndividual:
-        description: "addbeneficiary.individual.spec.ts"
+        description: "[Beneficiaries & Funds] addbeneficiary.individual.spec.ts"
         required: false
         default: true
         type: boolean
       spec_addbeneficiaryIndividualUsd:
-        description: "addbeneficiary.individual.usd.steps.spec.ts"
+        description: "[Beneficiaries & Funds] addbeneficiary.individual.usd.steps.spec.ts"
         required: false
         default: true
         type: boolean
       spec_addfunds:
-        description: "addfunds.spec.ts"
+        description: "[Beneficiaries & Funds] addfunds.spec.ts"
         required: false
         default: true
         type: boolean
       # --- Business Cards ---
       spec_assignBusinessCard:
-        description: "assignBusinessCard.spec.ts"
+        description: "[Business Cards] assignBusinessCard.spec.ts"
         required: false
         default: true
         type: boolean
       spec_businessCardAdminSelfAssign:
-        description: "businessCard.adminSelfAssign.spec.ts"
+        description: "[Business Cards] businessCard.adminSelfAssign.spec.ts"
         required: false
         default: true
         type: boolean
       spec_businessCardCardLimits:
-        description: "businessCard.cardLimits.spec.ts"
+        description: "[Business Cards] businessCard.cardLimits.spec.ts"
         required: false
         default: true
         type: boolean
       spec_businessCardNoRights:
-        description: "businessCard.noRights.spec.ts"
+        description: "[Business Cards] businessCard.noRights.spec.ts"
         required: false
         default: true
         type: boolean
       spec_businessCardWalletReachOut:
-        description: "businessCard.walletReachOut.spec.ts"
+        description: "[Business Cards] businessCard.walletReachOut.spec.ts"
         required: false
         default: true
         type: boolean
       spec_businessCardFreezeUnfreezeOtherPerson:
-        description: "businessCard.freezeUnfreeze.otherPerson.spec.ts"
+        description: "[Business Cards] businessCard.freezeUnfreeze.otherPerson.spec.ts"
         required: false
         default: true
         type: boolean
       spec_businessCardTerminate:
-        description: "businessCard.terminate.spec.ts"
+        description: "[Business Cards] businessCard.terminate.spec.ts"
         required: false
         default: true
         type: boolean
       spec_businessCardRelink:
-        description: "businessCard.relink.spec.ts"
+        description: "[Business Cards] businessCard.relink.spec.ts"
         required: false
         default: true
         type: boolean
       # --- Personal / Joint Cards ---
       spec_cardFreezeUnfreezeJoint:
-        description: "cardFreezeUnfreeze.joint.spec.ts"
+        description: "[Personal / Joint Cards] cardFreezeUnfreeze.joint.spec.ts"
         required: false
         default: true
         type: boolean
       spec_cardManagementJoint:
-        description: "cardManagement.joint.spec.ts"
+        description: "[Personal / Joint Cards] cardManagement.joint.spec.ts"
         required: false
         default: true
         type: boolean
       spec_physicalcardcreation:
-        description: "physicalcardcreation.spec.ts"
+        description: "[Personal / Joint Cards] physicalcardcreation.spec.ts"
         required: false
         default: true
         type: boolean
       # --- Invest ---
       spec_portfolio:
-        description: "portfolio.spec.ts"
+        description: "[Invest] portfolio.spec.ts"
         required: false
         default: true
         type: boolean
       spec_orders:
-        description: "orders.spec.ts"
+        description: "[Invest] orders.spec.ts"
         required: false
         default: true
         type: boolean
       spec_ordersRegression:
-        description: "orders.regression.spec.ts"
+        description: "[Invest] orders.regression.spec.ts"
         required: false
         default: true
         type: boolean
       spec_priceAlerts:
-        description: "priceAlerts.spec.ts"
+        description: "[Invest] priceAlerts.spec.ts"
         required: false
         default: true
         type: boolean
       spec_watchlist:
-        description: "watchlist.spec.ts"
+        description: "[Invest] watchlist.spec.ts"
         required: false
         default: true
         type: boolean
       spec_fxExchange:
-        description: "fxExchange.spec.ts"
+        description: "[Invest] fxExchange.spec.ts"
         required: false
         default: true
         type: boolean
       spec_fxExchangeRegression:
-        description: "fxExchange.regression.spec.ts"
+        description: "[Invest] fxExchange.regression.spec.ts"
         required: false
         default: true
         type: boolean
       spec_cashFunds:
-        description: "cashFunds.spec.ts"
+        description: "[Invest] cashFunds.spec.ts"
         required: false
         default: true
         type: boolean
       # --- Authentication ---
       spec_authIncorrectPasscode:
-        description: "authentication.incorrectPasscode.spec.ts"
+        description: "[Authentication] authentication.incorrectPasscode.spec.ts"
         required: false
         default: true
         type: boolean
       spec_authPasscodeLockout:
-        description: "authentication.passcodeLockout.spec.ts"
+        description: "[Authentication] authentication.passcodeLockout.spec.ts"
         required: false
         default: true
         type: boolean
       spec_authOtpCountdown:
-        description: "authentication.otpCountdown.spec.ts"
+        description: "[Authentication] authentication.otpCountdown.spec.ts"
         required: false
         default: true
         type: boolean
       # --- Onboarding & Personal Details ---
       spec_onboarding:
-        description: "onboarding.spec.ts"
+        description: "[Onboarding & Personal Details] onboarding.spec.ts"
         required: false
         default: true
         type: boolean
       spec_personalDetails:
-        description: "personalDetails.spec.ts"
+        description: "[Onboarding & Personal Details] personalDetails.spec.ts"
         required: false
         default: true
         type: boolean
       # --- Account & Misc ---
       spec_autoTopUp:
-        description: "autoTopUp.spec.ts"
+        description: "[Account & Misc] autoTopUp.spec.ts"
         required: false
         default: true
         type: boolean
       spec_transactions:
-        description: "transactions.spec.ts"
+        description: "[Account & Misc] transactions.spec.ts"
         required: false
         default: true
         type: boolean
       spec_pricePlan:
-        description: "pricePlan.spec.ts"
+        description: "[Account & Misc] pricePlan.spec.ts"
         required: false
         default: true
         type: boolean
       spec_salaryStipendPension:
-        description: "salaryStipendPension.spec.ts"
+        description: "[Account & Misc] salaryStipendPension.spec.ts"
         required: false
         default: true
         type: boolean
