@@ -31,37 +31,229 @@ on:
         description: "BrowserStack Android app id (bs://...). Overrides BS_APP_ANDROID secret."
         required: false
         type: string
-      regression_specs:
-        description: "Comma-separated regression spec paths to run (overrides the checkpoint checkboxes below). Example: src/tests/fxExchange.spec.ts,src/tests/onboarding.spec.ts"
-        required: false
-        type: string
-      checkpoint_home:
-        description: "Checkpoint: Home & Navigation (launch, home search/spend analytics/storyly, account switch)"
+      # --- Regression spec checkboxes — Home & Navigation ---
+      spec_launch:
+        description: "launch.spec.ts"
         required: false
         default: true
         type: boolean
-      checkpoint_payments:
-        description: "Checkpoint: Payments & Transfers (bank transfers, cross-border, VOP, beneficiaries, add funds)"
+      spec_homeSearch:
+        description: "homeSearch.spec.ts"
         required: false
         default: true
         type: boolean
-      checkpoint_cards:
-        description: "Checkpoint: Cards (business + physical card management, freeze/unfreeze, limits, terminate/relink)"
+      spec_homeSpendAnalytics:
+        description: "homeSpendAnalytics.spec.ts"
         required: false
         default: true
         type: boolean
-      checkpoint_invest:
-        description: "Checkpoint: Invest (portfolio, orders, price alerts, watchlist, FX exchange, cash funds)"
+      spec_homeStoryly:
+        description: "homeStoryly.spec.ts"
         required: false
         default: true
         type: boolean
-      checkpoint_auth_onboarding:
-        description: "Checkpoint: Auth & Onboarding (onboarding, personal details, passcode/OTP auth)"
+      spec_homeScreen:
+        description: "homeScreen.spec.ts"
         required: false
         default: true
         type: boolean
-      checkpoint_account_misc:
-        description: "Checkpoint: Account & Misc (auto top-up, transactions, price plan, salary/stipend/pension)"
+      spec_homeAccountSwitch:
+        description: "homeAccountSwitch.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      # --- Payments & Transfers ---
+      spec_addFundsBankTransferWalletManager:
+        description: "addFundsBankTransferWalletManager.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_bankTransferP2p:
+        description: "bankTransfer.p2p.individual.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_bankTransferSepa:
+        description: "bankTransfer.sepa.individual.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_bankTransferSwift:
+        description: "bankTransfer.swift.individual.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_crossBorderSwiftRetail:
+        description: "crossBorder.swift.retail.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_vopBeneficiary:
+        description: "vop.beneficiary.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_vopSepa:
+        description: "vop.sepa.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_addbeneficiaryIndividual:
+        description: "addbeneficiary.individual.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_addbeneficiaryIndividualUsd:
+        description: "addbeneficiary.individual.usd.steps.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_addfunds:
+        description: "addfunds.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      # --- Cards ---
+      spec_assignBusinessCard:
+        description: "assignBusinessCard.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_businessCardAdminSelfAssign:
+        description: "businessCard.adminSelfAssign.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_businessCardCardLimits:
+        description: "businessCard.cardLimits.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_businessCardNoRights:
+        description: "businessCard.noRights.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_businessCardWalletReachOut:
+        description: "businessCard.walletReachOut.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_businessCardFreezeUnfreezeOtherPerson:
+        description: "businessCard.freezeUnfreeze.otherPerson.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_businessCardTerminate:
+        description: "businessCard.terminate.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_businessCardRelink:
+        description: "businessCard.relink.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_cardFreezeUnfreezeJoint:
+        description: "cardFreezeUnfreeze.joint.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_cardManagementJoint:
+        description: "cardManagement.joint.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_physicalcardcreation:
+        description: "physicalcardcreation.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      # --- Invest ---
+      spec_portfolio:
+        description: "portfolio.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_orders:
+        description: "orders.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_ordersRegression:
+        description: "orders.regression.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_priceAlerts:
+        description: "priceAlerts.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_watchlist:
+        description: "watchlist.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_fxExchange:
+        description: "fxExchange.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_fxExchangeRegression:
+        description: "fxExchange.regression.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_cashFunds:
+        description: "cashFunds.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      # --- Auth & Onboarding ---
+      spec_onboarding:
+        description: "onboarding.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_personalDetails:
+        description: "personalDetails.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_authIncorrectPasscode:
+        description: "authentication.incorrectPasscode.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_authPasscodeLockout:
+        description: "authentication.passcodeLockout.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_authOtpCountdown:
+        description: "authentication.otpCountdown.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      # --- Account & Misc ---
+      spec_autoTopUp:
+        description: "autoTopUp.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_transactions:
+        description: "transactions.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_pricePlan:
+        description: "pricePlan.spec.ts"
+        required: false
+        default: true
+        type: boolean
+      spec_salaryStipendPension:
+        description: "salaryStipendPension.spec.ts"
         required: false
         default: true
         type: boolean
@@ -318,13 +510,7 @@ jobs:
         shell: bash
         env:
           PLATFORM_INPUT: ${{ github.event.inputs.platform || 'all' }}
-          REGRESSION_SPECS_INPUT: ${{ github.event.inputs.regression_specs }}
-          CHECKPOINT_HOME: ${{ github.event.inputs.checkpoint_home || 'true' }}
-          CHECKPOINT_PAYMENTS: ${{ github.event.inputs.checkpoint_payments || 'true' }}
-          CHECKPOINT_CARDS: ${{ github.event.inputs.checkpoint_cards || 'true' }}
-          CHECKPOINT_INVEST: ${{ github.event.inputs.checkpoint_invest || 'true' }}
-          CHECKPOINT_AUTH_ONBOARDING: ${{ github.event.inputs.checkpoint_auth_onboarding || 'true' }}
-          CHECKPOINT_ACCOUNT_MISC: ${{ github.event.inputs.checkpoint_account_misc || 'true' }}
+          ALL_INPUTS_JSON: ${{ toJSON(github.event.inputs) }}
         run: |
           # Lane 1 — primary account (VEG40002): account-specific + agnostic Individual
           PRIMARY_SPECS=(
@@ -386,125 +572,102 @@ jobs:
             *)       PLATFORMS=("android" "ios") ;;
           esac
 
-          # Optional: restrict the regression matrix to a hand-picked list of specs.
-          # Leave REGRESSION_SPECS_INPUT empty to run the full matrix as before.
-          if [[ -n "$REGRESSION_SPECS_INPUT" ]]; then
-            IFS=',' read -ra REQUESTED_SPECS <<< "$REGRESSION_SPECS_INPUT"
-            TRIMMED_SPECS=()
-            for raw in "${REQUESTED_SPECS[@]}"; do
-              trimmed=$(echo "$raw" | xargs)
-              [[ -n "$trimmed" ]] && TRIMMED_SPECS+=("$trimmed")
-            done
+          # Each regression spec has its own checkbox in workflow_dispatch (spec_xxx).
+          # Unchecking one drops that spec from both lanes; default is true (full matrix).
+          declare -A SPEC_INPUT_KEY=(
+            ["src/tests/launch.spec.ts"]="spec_launch"
+            ["src/tests/homeSearch.spec.ts"]="spec_homeSearch"
+            ["src/tests/homeSpendAnalytics.spec.ts"]="spec_homeSpendAnalytics"
+            ["src/tests/homeStoryly.spec.ts"]="spec_homeStoryly"
+            ["src/tests/homeScreen.spec.ts"]="spec_homeScreen"
+            ["src/tests/homeAccountSwitch.spec.ts"]="spec_homeAccountSwitch"
 
-            is_requested() {
-              local target="$1"
-              for s in "${TRIMMED_SPECS[@]}"; do
-                [[ "$target" == "$s" ]] && return 0
-              done
-              return 1
-            }
+            ["src/tests/addFundsBankTransferWalletManager.spec.ts"]="spec_addFundsBankTransferWalletManager"
+            ["src/tests/bankTransfer.p2p.individual.spec.ts"]="spec_bankTransferP2p"
+            ["src/tests/bankTransfer.sepa.individual.spec.ts"]="spec_bankTransferSepa"
+            ["src/tests/bankTransfer.swift.individual.spec.ts"]="spec_bankTransferSwift"
+            ["src/tests/crossBorder.swift.retail.spec.ts"]="spec_crossBorderSwiftRetail"
+            ["src/tests/vop.beneficiary.spec.ts"]="spec_vopBeneficiary"
+            ["src/tests/vop.sepa.spec.ts"]="spec_vopSepa"
+            ["src/tests/addbeneficiary.individual.spec.ts"]="spec_addbeneficiaryIndividual"
+            ["src/tests/addbeneficiary.individual.usd.steps.spec.ts"]="spec_addbeneficiaryIndividualUsd"
+            ["src/tests/addfunds.spec.ts"]="spec_addfunds"
 
-            NEW_PRIMARY=()
-            for spec in "${PRIMARY_SPECS[@]}"; do
-              is_requested "$spec" && NEW_PRIMARY+=("$spec")
-            done
-            PRIMARY_SPECS=("${NEW_PRIMARY[@]}")
+            ["src/tests/assignBusinessCard.spec.ts"]="spec_assignBusinessCard"
+            ["src/tests/businessCard.adminSelfAssign.spec.ts"]="spec_businessCardAdminSelfAssign"
+            ["src/tests/businessCard.cardLimits.spec.ts"]="spec_businessCardCardLimits"
+            ["src/tests/businessCard.noRights.spec.ts"]="spec_businessCardNoRights"
+            ["src/tests/businessCard.walletReachOut.spec.ts"]="spec_businessCardWalletReachOut"
+            ["src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts"]="spec_businessCardFreezeUnfreezeOtherPerson"
+            ["src/tests/businessCard.terminate.spec.ts"]="spec_businessCardTerminate"
+            ["src/tests/businessCard.relink.spec.ts"]="spec_businessCardRelink"
+            ["src/tests/cardFreezeUnfreeze.joint.spec.ts"]="spec_cardFreezeUnfreezeJoint"
+            ["src/tests/cardManagement.joint.spec.ts"]="spec_cardManagementJoint"
+            ["src/tests/physicalcardcreation.spec.ts"]="spec_physicalcardcreation"
 
-            NEW_SECONDARY=()
-            for spec in "${SECONDARY_SPECS[@]}"; do
-              is_requested "$spec" && NEW_SECONDARY+=("$spec")
-            done
-            SECONDARY_SPECS=("${NEW_SECONDARY[@]}")
+            ["src/tests/portfolio.spec.ts"]="spec_portfolio"
+            ["src/tests/orders.spec.ts"]="spec_orders"
+            ["src/tests/orders.regression.spec.ts"]="spec_ordersRegression"
+            ["src/tests/priceAlerts.spec.ts"]="spec_priceAlerts"
+            ["src/tests/watchlist.spec.ts"]="spec_watchlist"
+            ["src/tests/fxExchange.spec.ts"]="spec_fxExchange"
+            ["src/tests/fxExchange.regression.spec.ts"]="spec_fxExchangeRegression"
+            ["src/tests/cashFunds.spec.ts"]="spec_cashFunds"
 
-            for requested in "${TRIMMED_SPECS[@]}"; do
+            ["src/tests/onboarding.spec.ts"]="spec_onboarding"
+            ["src/tests/personalDetails.spec.ts"]="spec_personalDetails"
+            ["src/tests/authentication.incorrectPasscode.spec.ts"]="spec_authIncorrectPasscode"
+            ["src/tests/authentication.passcodeLockout.spec.ts"]="spec_authPasscodeLockout"
+            ["src/tests/authentication.otpCountdown.spec.ts"]="spec_authOtpCountdown"
+
+            ["src/tests/autoTopUp.spec.ts"]="spec_autoTopUp"
+            ["src/tests/transactions.spec.ts"]="spec_transactions"
+            ["src/tests/pricePlan.spec.ts"]="spec_pricePlan"
+            ["src/tests/salaryStipendPension.spec.ts"]="spec_salaryStipendPension"
+          )
+
+          spec_checked() {
+            local spec="$1"
+            local key="${SPEC_INPUT_KEY[$spec]}"
+            if [[ -z "$key" ]]; then
+              echo "::warning::Spec has no checkbox mapping, including it by default: $spec"
+              return 0
+            fi
+            local value
+            value=$(echo "$ALL_INPUTS_JSON" | jq -r --arg k "$key" '.[$k] // "true"')
+            [[ "$value" == "true" ]]
+          }
+
+          NEW_PRIMARY=()
+          for spec in "${PRIMARY_SPECS[@]}"; do
+            spec_checked "$spec" && NEW_PRIMARY+=("$spec")
+          done
+          PRIMARY_SPECS=("${NEW_PRIMARY[@]}")
+
+          NEW_SECONDARY=()
+          for spec in "${SECONDARY_SPECS[@]}"; do
+            spec_checked "$spec" && NEW_SECONDARY+=("$spec")
+          done
+          SECONDARY_SPECS=("${NEW_SECONDARY[@]}")
+
+          {
+            echo "### Regression specs selected"
+            echo ""
+            for spec in "${!SPEC_INPUT_KEY[@]}"; do
+              name=$(basename "$spec")
               found=false
-              for spec in "${PRIMARY_SPECS[@]}" "${SECONDARY_SPECS[@]}"; do
-                [[ "$spec" == "$requested" ]] && found=true && break
+              for s in "${PRIMARY_SPECS[@]}" "${SECONDARY_SPECS[@]}"; do
+                [[ "$s" == "$spec" ]] && found=true && break
               done
-              [[ "$found" == "false" ]] && echo "::warning::regression_specs entry not found in the regression matrix: $requested"
-            done
-
-            echo "Filtered to requested specs: ${TRIMMED_SPECS[*]}"
-          else
-            # No exact spec list given — fall back to the checkpoint checkboxes.
-            # Each spec belongs to exactly one checkpoint category; unchecking a
-            # category drops its specs from both lanes.
-            declare -A SPEC_CHECKPOINT=(
-              ["src/tests/launch.spec.ts"]="CHECKPOINT_HOME"
-              ["src/tests/homeSearch.spec.ts"]="CHECKPOINT_HOME"
-              ["src/tests/homeSpendAnalytics.spec.ts"]="CHECKPOINT_HOME"
-              ["src/tests/homeStoryly.spec.ts"]="CHECKPOINT_HOME"
-              ["src/tests/homeScreen.spec.ts"]="CHECKPOINT_HOME"
-              ["src/tests/homeAccountSwitch.spec.ts"]="CHECKPOINT_HOME"
-
-              ["src/tests/addFundsBankTransferWalletManager.spec.ts"]="CHECKPOINT_PAYMENTS"
-              ["src/tests/bankTransfer.p2p.individual.spec.ts"]="CHECKPOINT_PAYMENTS"
-              ["src/tests/bankTransfer.sepa.individual.spec.ts"]="CHECKPOINT_PAYMENTS"
-              ["src/tests/bankTransfer.swift.individual.spec.ts"]="CHECKPOINT_PAYMENTS"
-              ["src/tests/crossBorder.swift.retail.spec.ts"]="CHECKPOINT_PAYMENTS"
-              ["src/tests/vop.beneficiary.spec.ts"]="CHECKPOINT_PAYMENTS"
-              ["src/tests/vop.sepa.spec.ts"]="CHECKPOINT_PAYMENTS"
-              ["src/tests/addbeneficiary.individual.spec.ts"]="CHECKPOINT_PAYMENTS"
-              ["src/tests/addbeneficiary.individual.usd.steps.spec.ts"]="CHECKPOINT_PAYMENTS"
-              ["src/tests/addfunds.spec.ts"]="CHECKPOINT_PAYMENTS"
-
-              ["src/tests/assignBusinessCard.spec.ts"]="CHECKPOINT_CARDS"
-              ["src/tests/businessCard.adminSelfAssign.spec.ts"]="CHECKPOINT_CARDS"
-              ["src/tests/businessCard.cardLimits.spec.ts"]="CHECKPOINT_CARDS"
-              ["src/tests/businessCard.noRights.spec.ts"]="CHECKPOINT_CARDS"
-              ["src/tests/businessCard.walletReachOut.spec.ts"]="CHECKPOINT_CARDS"
-              ["src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts"]="CHECKPOINT_CARDS"
-              ["src/tests/businessCard.terminate.spec.ts"]="CHECKPOINT_CARDS"
-              ["src/tests/businessCard.relink.spec.ts"]="CHECKPOINT_CARDS"
-              ["src/tests/cardFreezeUnfreeze.joint.spec.ts"]="CHECKPOINT_CARDS"
-              ["src/tests/cardManagement.joint.spec.ts"]="CHECKPOINT_CARDS"
-              ["src/tests/physicalcardcreation.spec.ts"]="CHECKPOINT_CARDS"
-
-              ["src/tests/portfolio.spec.ts"]="CHECKPOINT_INVEST"
-              ["src/tests/orders.spec.ts"]="CHECKPOINT_INVEST"
-              ["src/tests/orders.regression.spec.ts"]="CHECKPOINT_INVEST"
-              ["src/tests/priceAlerts.spec.ts"]="CHECKPOINT_INVEST"
-              ["src/tests/watchlist.spec.ts"]="CHECKPOINT_INVEST"
-              ["src/tests/fxExchange.spec.ts"]="CHECKPOINT_INVEST"
-              ["src/tests/fxExchange.regression.spec.ts"]="CHECKPOINT_INVEST"
-              ["src/tests/cashFunds.spec.ts"]="CHECKPOINT_INVEST"
-
-              ["src/tests/onboarding.spec.ts"]="CHECKPOINT_AUTH_ONBOARDING"
-              ["src/tests/personalDetails.spec.ts"]="CHECKPOINT_AUTH_ONBOARDING"
-              ["src/tests/authentication.incorrectPasscode.spec.ts"]="CHECKPOINT_AUTH_ONBOARDING"
-              ["src/tests/authentication.passcodeLockout.spec.ts"]="CHECKPOINT_AUTH_ONBOARDING"
-              ["src/tests/authentication.otpCountdown.spec.ts"]="CHECKPOINT_AUTH_ONBOARDING"
-
-              ["src/tests/autoTopUp.spec.ts"]="CHECKPOINT_ACCOUNT_MISC"
-              ["src/tests/transactions.spec.ts"]="CHECKPOINT_ACCOUNT_MISC"
-              ["src/tests/pricePlan.spec.ts"]="CHECKPOINT_ACCOUNT_MISC"
-              ["src/tests/salaryStipendPension.spec.ts"]="CHECKPOINT_ACCOUNT_MISC"
-            )
-
-            checkpoint_enabled() {
-              local spec="$1"
-              local category="${SPEC_CHECKPOINT[$spec]}"
-              if [[ -z "$category" ]]; then
-                echo "::warning::Spec has no checkpoint category mapping, including it by default: $spec"
-                return 0
+              if [[ "$found" == "true" ]]; then
+                echo "- ✅ $name"
+              else
+                echo "- ⬜ $name"
               fi
-              [[ "${!category}" == "true" ]]
-            }
+            done | sort
+          } >> "$GITHUB_STEP_SUMMARY"
 
-            NEW_PRIMARY=()
-            for spec in "${PRIMARY_SPECS[@]}"; do
-              checkpoint_enabled "$spec" && NEW_PRIMARY+=("$spec")
-            done
-            PRIMARY_SPECS=("${NEW_PRIMARY[@]}")
-
-            NEW_SECONDARY=()
-            for spec in "${SECONDARY_SPECS[@]}"; do
-              checkpoint_enabled "$spec" && NEW_SECONDARY+=("$spec")
-            done
-            SECONDARY_SPECS=("${NEW_SECONDARY[@]}")
-
-            echo "Checkpoints — home:$CHECKPOINT_HOME payments:$CHECKPOINT_PAYMENTS cards:$CHECKPOINT_CARDS invest:$CHECKPOINT_INVEST auth/onboarding:$CHECKPOINT_AUTH_ONBOARDING account/misc:$CHECKPOINT_ACCOUNT_MISC"
-          fi
+          echo "Specs selected: $(( ${#PRIMARY_SPECS[@]} + ${#SECONDARY_SPECS[@]} )) / ${#SPEC_INPUT_KEY[@]}"
 
           INCLUDE="[]"
           PRIMARY_INCLUDE="[]"
