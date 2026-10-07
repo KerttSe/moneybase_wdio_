@@ -4,10 +4,6 @@ import { $, browser } from '@wdio/globals'
 class PersonalDetailsPage extends BasePage {
   // ── Navigation entry points ───────────────────────────────────────────────
 
-  private get moreTabAndroid() {
-    return $('(//*[@resource-id="com.moneybase.qa:id/navigation_button_more"] | //*[contains(@resource-id,"navigation_button_more")] | //*[contains(@resource-id,"nav_graph_more")] | //*[contains(@resource-id,"navigation_more_btn")] | //*[@content-desc="More" and @clickable="true"])[1]')
-  }
-
   private get userAvatarAndroid() {
     return $('(//*[@resource-id="home_button_userAvatar"] | //*[@resource-id="com.moneybase.qa:id/home_button_userAvatar"] | //*[@content-desc="home_button_userAvatar"])[1]')
   }
@@ -19,7 +15,7 @@ class PersonalDetailsPage extends BasePage {
   // ── Settings ──────────────────────────────────────────────────────────────
 
   private get settingsAndroid() {
-    return $('//*[@text="Settings" or @content-desc="Settings"]')
+    return $('(//*[@text="Settings" or @content-desc="Settings"]/ancestor::*[@clickable="true"][1] | //*[@text="Settings" or @content-desc="Settings"])[1]')
   }
 
   private get settingsIOS() {
@@ -29,7 +25,7 @@ class PersonalDetailsPage extends BasePage {
   // ── Personal Details row ──────────────────────────────────────────────────
 
   private get personalDetailsRowAndroid() {
-    return $('(//*[@text="Personal Details" or @content-desc="Personal Details"])[1]')
+    return $('(//*[@text="Personal Details" or @content-desc="Personal Details"]/ancestor::*[@clickable="true"][1] | //*[@text="Personal Details" or @content-desc="Personal Details"])[1]')
   }
 
   private get personalDetailsRowIOS() {
@@ -91,13 +87,20 @@ class PersonalDetailsPage extends BasePage {
       await browser.pause(600)
       await this.tap(this.personalDetailsRowIOS, 15000)
     } else {
-      const moreTabShown = await this.moreTabAndroid.isDisplayed().catch(() => false)
-      if (moreTabShown) {
-        await this.tap(this.moreTabAndroid)
+      const topMoreButtonShown = await this.userAvatarAndroid.isDisplayed().catch(() => false)
+
+      if (topMoreButtonShown) {
+        await this.tap(this.userAvatarAndroid)
         await browser.pause(600)
-        await this.tap(this.settingsAndroid, 15000)
-        await browser.pause(600)
-        await this.tap(this.personalDetailsRowAndroid, 15000)
+
+        const personalDetailsVisible = await this.personalDetailsRowAndroid.isDisplayed().catch(() => false)
+        if (personalDetailsVisible) {
+          await this.tap(this.personalDetailsRowAndroid, 15000)
+        } else {
+          await this.tap(this.settingsAndroid, 15000)
+          await browser.pause(600)
+          await this.tap(this.personalDetailsRowAndroid, 15000)
+        }
       } else {
         await this.userAvatarAndroid.waitForExist({ timeout: 20000 })
         await this.tap(this.userAvatarAndroid)

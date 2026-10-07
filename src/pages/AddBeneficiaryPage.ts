@@ -841,6 +841,62 @@ export default class AddBeneficiaryPage extends BasePage {
     )
   }
 
+  private get bankNameInputAndroid() {
+    return this.androidInputByIdOrLabel(
+      'addBeneficiaryDetails_input_bankName',
+      '@text="Bank Name" or @text="Bank name" or @text="Beneficiary bank name" or @text="Beneficiary Bank Name" or contains(@text, "Bank Name") or contains(@text, "Bank name")',
+    )
+  }
+
+  private get bankNameInputAndroidByLabelAncestor() {
+    return $('(//android.widget.TextView[@text="Bank Name" or @text="Bank name" or @text="Beneficiary bank name" or @text="Beneficiary Bank Name" or contains(@text, "Bank Name") or contains(@text, "Bank name")]/ancestor::android.view.View[1]//android.widget.EditText)[1]')
+  }
+
+  private get bankNameInputAndroidByResIdRegex() {
+    return $('//android.widget.EditText[contains(@resource-id,"bankName") or contains(@resource-id,"bank_name") or contains(@resource-id,"bank")]')
+  }
+
+  private async resolveBankNameInputAndroid() {
+    const candidates = [
+      this.bankNameInputAndroid,
+      this.bankNameInputAndroidByLabelAncestor,
+      this.bankNameInputAndroidByResIdRegex,
+    ]
+
+    for (const candidate of candidates) {
+      const shown = await candidate.isDisplayed().catch(() => false)
+      if (shown) return candidate
+    }
+
+    return null
+  }
+
+  private async readAndroidTextInputValue(el: ChainablePromiseElement) {
+    const currentValue = await el.getText().catch(() => '')
+    const currentAttr = await el.getAttribute('text').catch(() => '')
+    const contentDesc = await el.getAttribute('content-desc').catch(() => '')
+    return `${currentValue}${currentAttr}${contentDesc}`.trim()
+  }
+
+  private async androidTextInputHasValue(el: ChainablePromiseElement, expectedValue: string) {
+    const actual = await this.readAndroidTextInputValue(el)
+    const normalize = (value: string) => value.replace(/\s+/g, '').toLowerCase()
+    return normalize(actual).includes(normalize(expectedValue))
+  }
+
+  private async setComposeTextInputAndroid(el: ChainablePromiseElement, value: string) {
+    await this.tap(el)
+    await el.clearValue().catch(() => {})
+    await el.setValue(value)
+    await browser.pause(150)
+
+    if (!(await this.androidTextInputHasValue(el, value))) {
+      await this.tap(el)
+      await el.clearValue().catch(() => {})
+      await browser.keys(value.split(''))
+    }
+  }
+
   /** Step: enter beneficiary first/last name on the US details screen. */
   async enterBeneficiaryNameUSAndroid(name: string, surname: string) {
     if (!browser.isAndroid) return
@@ -868,10 +924,36 @@ export default class AddBeneficiaryPage extends BasePage {
     await this.setBicAndroid(bic)
   }
 
+  /** Step: enter the beneficiary bank name on the US details screen. */
+  async enterBeneficiaryBankNameUSAndroid(bankName = 'Bank of America') {
+    if (!browser.isAndroid) return
+
+    let input = await this.resolveBankNameInputAndroid()
+    if (!input) {
+      await browser
+        .waitUntil(
+          async () => {
+            input = await this.resolveBankNameInputAndroid()
+            return input !== null
+          },
+          { timeout: 10000, interval: 500 }
+        )
+        .catch(() => false)
+    }
+
+    if (!input) {
+      throw new Error('[AddBeneficiary][USD] DIAG: Bank Name input not found on Android details screen')
+    }
+
+    await this.setComposeTextInputAndroid(input, bankName)
+    await browser.hideKeyboard().catch(() => {})
+  }
+
   async fillBeneficiaryDetailsUSAndroid(params: {
     name: string
     surname: string
     accountNumber: string
+    bankName?: string
     bic?: string
     friendName?: string
   }) {
@@ -883,6 +965,8 @@ export default class AddBeneficiaryPage extends BasePage {
     if (params.bic) {
       await this.enterBeneficiaryBicUSAndroid(params.bic)
     }
+
+    await this.enterBeneficiaryBankNameUSAndroid(params.bankName)
 
     await browser.hideKeyboard().catch(() => {})
 
@@ -967,20 +1051,7 @@ export default class AddBeneficiaryPage extends BasePage {
   // this field's Compose state, so verify via getText() and fall back to real
   // keystrokes (browser.keys()) which always reach the focused input.
   private async setAddressFieldAndroid(el: ChainablePromiseElement, value: string) {
-    await this.tap(el)
-    await el.clearValue().catch(() => {})
-    await el.setValue(value)
-    await browser.pause(150)
-
-    const currentValue = await el.getText().catch(() => '')
-    const currentAttr = await el.getAttribute('text').catch(() => '')
-    const hasValue = (currentValue && currentValue.length > 0) || (currentAttr && currentAttr.length > 0)
-
-    if (!hasValue) {
-      await this.tap(el)
-      await el.clearValue().catch(() => {})
-      await browser.keys(value.split(''))
-    }
+    await this.setComposeTextInputAndroid(el, value)
   }
 
   async fillBeneficiaryAddressUSAndroid(params: {
@@ -2399,6 +2470,7 @@ export default class AddBeneficiaryPage extends BasePage {
     name: string
     surname: string
     accountNumber: string
+    bankName?: string
     bic?: string
     addressLine1: string
     addressLine2?: string
@@ -2445,6 +2517,7 @@ export default class AddBeneficiaryPage extends BasePage {
     name: string
     surname: string
     accountNumber: string
+    bankName?: string
     bic?: string
     addressLine1: string
     addressLine2?: string

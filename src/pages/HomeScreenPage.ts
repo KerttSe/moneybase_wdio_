@@ -688,10 +688,6 @@ class HomeScreenPage extends BasePage {
     )
   }
 
-  private get moreTabAndroid() {
-    return $('(//*[contains(@resource-id,"navigation_button_more")] | //*[contains(@resource-id,"nav_graph_more")] | //*[@content-desc="More"])[1]')
-  }
-
   private async accountPickerOpen() {
     const composeMoreShown = await this.composeMoreIndicatorAndroid.isDisplayed().catch(() => false)
       || await this.composeMoreIndicatorAndroid.isExisting().catch(() => false)
@@ -721,15 +717,9 @@ class HomeScreenPage extends BasePage {
       || await this.moreRootAndroid.isExisting().catch(() => false)
 
     if (!moreRootShown) {
-      const moreTabShown = await this.moreTabAndroid.isDisplayed().catch(() => false)
-      if (moreTabShown) {
-        await this.tap(this.moreTabAndroid)
-        await browser.pause(500)
-      } else {
-        await this.ensureHomeLandingAndroid()
-        await this.userAvatarBtnAndroid.waitForExist({ timeout: 20000 })
-        await this.tap(this.userAvatarBtnAndroid)
-      }
+      await this.ensureHomeLandingAndroid()
+      await this.userAvatarBtnAndroid.waitForExist({ timeout: 20000 })
+      await this.tap(this.userAvatarBtnAndroid)
     }
 
     await browser.waitUntil(
@@ -1151,9 +1141,7 @@ class HomeScreenPage extends BasePage {
         this.byId('navigation_button_cards'),
         this.byId('navigation_button_pay'),
         this.byId('navigation_button_invest'),
-        this.byId('navigation_button_more'),
         this.byId('navigation_button_crypto'),
-        this.byId('nav_graph_more'),
         this.byId('nav_graph_crypto'),
         this.androidTextContains('Home'),
         this.androidTextContains('Cards'),

@@ -104,10 +104,6 @@ class BusinessCardRelinkPage extends BasePage {
     return $('~More')
   }
 
-  private get moreTabAndroid() {
-    return $('(//*[@content-desc="More"] | //*[contains(@resource-id,"navigation_button_more")] | //*[contains(@resource-id,"nav_graph_more")])[1]')
-  }
-
   // ── Administration item ──────────────────────────────────────────────────
 
   private get administrationItemIOS() {
@@ -206,6 +202,17 @@ class BusinessCardRelinkPage extends BasePage {
       `//XCUIElementTypeOther[@name="businessWalletSelection_screen"]` +
       `//XCUIElementTypeStaticText[@name="${name}" or @label="${name}"]`,
     )
+  }
+
+  private isUsableWalletName(name: string) {
+    if (!name) return false
+    if (name === this._currentWallet) return false
+    if (name.includes('·')) return false
+
+    const blockedNames = ['Add New Wallet', 'Select Wallet', 'Drag handle', 'Close', 'Back', 'Navigate up']
+    if (blockedNames.includes(name)) return false
+
+    return !/^(€|£|\$|available|balance)$/i.test(name)
   }
 
   // ── Spend From verification on Card Details ───────────────────────────────
@@ -330,7 +337,7 @@ class BusinessCardRelinkPage extends BasePage {
       for (const el of nameEls) {
         if (!el) continue
         const text = await el.getText().catch(() => '')
-        if (text && !text.includes('·') && text !== 'Add New Wallet' && text !== this._currentWallet) {
+        if (this.isUsableWalletName(text)) {
           names.push(text)
         }
       }
@@ -345,7 +352,7 @@ class BusinessCardRelinkPage extends BasePage {
         const text = (await el.getText().catch(() => ''))
           || (await el.getAttribute('content-desc').catch(() => ''))
         const name = text.split('\n')[0].trim()
-        if (name && name !== 'Add New Wallet' && name !== this._currentWallet) names.push(name)
+        if (this.isUsableWalletName(name)) names.push(name)
       }
       if (names.length === 0) throw new Error(`No alternative wallet found (current: "${this._currentWallet}")`)
       this._targetWallet = names[Math.floor(Math.random() * names.length)]

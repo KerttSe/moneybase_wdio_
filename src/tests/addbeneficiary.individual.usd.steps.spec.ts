@@ -43,6 +43,7 @@ describe('Add Beneficiary - Another person (USD) - step by step', function () {
   const accountNumber = getUSAccountNumberForTest()
   const { bic8: bic } = generateUniqueSwiftBic({ countryCode: 'US' })
   const beneficiary = randomBeneficiaryDetails()
+  const bankName = process.env.ADD_BENEFICIARY_USD_BANK_NAME || 'Bank of America'
   const address = {
     addressLine1: '350 5th Avenue',
     city: 'New York',
@@ -90,17 +91,22 @@ describe('Add Beneficiary - Another person (USD) - step by step', function () {
     await addBeneficiaryPage.enterBeneficiaryAccountNumberUSAndroid(accountNumber)
   })
 
-  it('AB-USD-1.9 Enter BIC/SWIFT code and continue', async function () {
+  it('AB-USD-1.9 Enter BIC/SWIFT code', async function () {
     console.log(`[TEST] Using SWIFT: ${bic}`)
     await addBeneficiaryPage.enterBeneficiaryBicUSAndroid(bic)
+  })
+
+  it('AB-USD-1.10 Enter bank name and continue', async function () {
+    console.log(`[TEST] Using bank name: ${bankName}`)
+    await addBeneficiaryPage.enterBeneficiaryBankNameUSAndroid(bankName)
     await addBeneficiaryPage.continueFromDetailsAndroid()
   })
 
-  it('AB-USD-1.10 Enter beneficiary address and continue', async function () {
+  it('AB-USD-1.11 Enter beneficiary address and continue', async function () {
     await addBeneficiaryPage.fillBeneficiaryAddressUSAndroid(address)
   })
 
-  it('AB-USD-1.11 Confirm OTP and verify beneficiary created successfully', async function () {
+  it('AB-USD-1.12 Confirm OTP and verify beneficiary created successfully', async function () {
     await addBeneficiaryPage.waitForOtpAndSubmitAndroid()
   })
 })

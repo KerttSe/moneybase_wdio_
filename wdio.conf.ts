@@ -197,7 +197,7 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
         },
       } as Record<string, unknown>),
     },
-    'appium:app': process.env.BS_APP_ANDROID || 'bs://8751f027a36768769c2f944003f552638a8e0dc1',
+    'appium:app': process.env.BS_APP_ANDROID || 'bs://202b3479e14985762d974afa2c0dff31d0003798',
     'appium:autoGrantPermissions': true,
     ...(process.env.BS_ANDROID_APP_PACKAGE ? { 'appium:appPackage': process.env.BS_ANDROID_APP_PACKAGE } : {}),
     ...(process.env.BS_ANDROID_APP_ACTIVITY ? { 'appium:appActivity': process.env.BS_ANDROID_APP_ACTIVITY } : {}),

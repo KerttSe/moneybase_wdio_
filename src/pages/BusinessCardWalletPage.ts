@@ -112,10 +112,6 @@ class BusinessCardWalletPage extends BasePage {
     return $('~More')
   }
 
-  private get moreTabAndroid() {
-    return $('(//*[@content-desc="More"] | //*[contains(@resource-id,"navigation_button_more")] | //*[contains(@resource-id,"nav_graph_more")])[1]')
-  }
-
   // ── Administration item ──────────────────────────────────────────────────
 
   private get administrationItemIOS() {
@@ -203,7 +199,14 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get spendFromRowAndroid() {
-    return $('(//*[contains(@content-desc,"Spend From")] | //android.view.View[@clickable="true"][.//android.view.View[@content-desc="Spend From"]])[1]')
+    return $(
+      '(//*[@resource-id="assignBusinessCard_button_selectWallet"] | ' +
+        '//*[contains(@resource-id,"selectWallet")] | ' +
+        '//*[@content-desc="Spend From"]/ancestor::*[@clickable="true"][1] | ' +
+        '//android.widget.TextView[@text="Spend From"]/ancestor::*[@clickable="true"][1] | ' +
+        '//android.widget.TextView[@text="Spend From"]/following-sibling::android.view.View[@clickable="true"][1] | ' +
+        '//android.view.View[@clickable="true"][.//*[contains(@content-desc,"Spend From") or @text="Spend From"]])[1]',
+    )
   }
 
   private get spendFromRowIOS() {
@@ -241,7 +244,13 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get walletNameInputAndroid() {
-    return $('//android.widget.ScrollView//android.widget.EditText[1]')
+    return $(
+      '(//*[@resource-id="businessWalletDetails_input_name"]//android.widget.EditText | ' +
+        '//*[contains(@resource-id,"wallet") and contains(@resource-id,"name")]//android.widget.EditText | ' +
+        '//android.widget.EditText[.//android.widget.TextView[@text="Wallet Name" or @text="Wallet name" or @text="Name"]] | ' +
+        '//android.widget.ScrollView//android.widget.EditText[1] | ' +
+        '(//android.widget.EditText)[1])[1]',
+    )
   }
 
   private get walletNameInputIOS() {

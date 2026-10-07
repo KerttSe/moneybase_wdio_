@@ -173,10 +173,6 @@ class BusinessCardCardLimitsPage extends BasePage {
 
   // ── Navigation ────────────────────────────────────────────────────────────
 
-  private get moreTabAndroid() {
-    return $('(//*[@content-desc="More"] | //*[contains(@resource-id,"navigation_button_more")] | //*[contains(@resource-id,"nav_graph_more")])[1]')
-  }
-
   private get moreTabIOS() {
     return $('~More')
   }

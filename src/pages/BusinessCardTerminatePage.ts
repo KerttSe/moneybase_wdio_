@@ -106,10 +106,6 @@ class BusinessCardTerminatePage extends BasePage {
     return $('~More')
   }
 
-  private get moreTabAndroid() {
-    return $('(//*[@content-desc="More"] | //*[contains(@resource-id,"navigation_button_more")] | //*[contains(@resource-id,"nav_graph_more")])[1]')
-  }
-
   // ── Administration item ──────────────────────────────────────────────────
 
   private get administrationItemIOS() {
@@ -198,7 +194,7 @@ class BusinessCardTerminatePage extends BasePage {
   // ── Assign Card form: Continue button ─────────────────────────────────────
 
   private get continueBtnAndroid() {
-    return $('(//*[@resource-id="assignBusinessCard_button_continue"] | //*[contains(@content-desc,"Continue")])[1]')
+    return $('(//*[@resource-id="assignBusinessCard_button_continue"] | //*[contains(@resource-id,"assignBusinessCard_button_continue")] | //*[contains(@content-desc,"Continue")] | //android.widget.TextView[@text="Continue"]/ancestor::*[@clickable="true"][1] | //*[@text="Continue"])[1]')
   }
 
   private get continueBtnIOS() {
@@ -236,7 +232,7 @@ class BusinessCardTerminatePage extends BasePage {
   }
 
   private get closeSheetBackdropAndroid() {
-    return $('//android.view.View[@content-desc="Close sheet"]')
+    return $('(//android.view.View[@content-desc="Close sheet"] | //*[@content-desc="Close sheet"] | //*[@content-desc="Close"] | //*[@text="Close"])[1]')
   }
 
   private get userSelectionSheetAndroid() {
@@ -280,6 +276,18 @@ class BusinessCardTerminatePage extends BasePage {
     )
   }
 
+  private get existingOwnVirtualCardsAndroid() {
+    return $$(
+      `//*[contains(@content-desc,"${BH_SELF_NAME}") and ` +
+      `(contains(@content-desc,"Virtual") or contains(@content-desc,"Physical")) and ` +
+      `(contains(@content-desc,"ACTIVE") or contains(@content-desc,"FROZEN"))]/ancestor::*[@clickable="true"][1]` +
+      ` | //android.view.View[@clickable="true"]` +
+      `[.//android.widget.TextView[contains(@text,"${BH_SELF_NAME}")]]` +
+      `[.//android.widget.TextView[contains(@text,"Virtual") or contains(@text,"Physical")]]` +
+      `[.//android.widget.TextView[@text="ACTIVE" or @text="FROZEN"]]`,
+    )
+  }
+
   private get ownVirtualCardPendingAndroid() {
     return $(
       `(//*[contains(@content-desc,"${BH_SELF_NAME}") and contains(@content-desc,"Virtual") and contains(@content-desc,"PENDING")]` +
@@ -305,6 +313,15 @@ class BusinessCardTerminatePage extends BasePage {
       `[.//*[contains(@name,"${BH_SELF_NAME}") or contains(@label,"${BH_SELF_NAME}")]]` +
       `[.//*[contains(@name,"Virtual") or contains(@label,"Virtual")]]` +
       `[.//*[@name="ACTIVE" or @label="ACTIVE"]]`,
+    )
+  }
+
+  private get existingOwnVirtualCardsIOS() {
+    return $$(
+      `//XCUIElementTypeCell` +
+      `[.//*[contains(@name,"${BH_SELF_NAME}") or contains(@label,"${BH_SELF_NAME}")]]` +
+      `[.//*[contains(@name,"Virtual") or contains(@label,"Virtual") or contains(@name,"Physical") or contains(@label,"Physical")]]` +
+      `[.//*[@name="ACTIVE" or @label="ACTIVE" or @name="FROZEN" or @label="FROZEN"]]`,
     )
   }
 
@@ -628,6 +645,73 @@ class BusinessCardTerminatePage extends BasePage {
     return (await this.ownVirtualCardsActiveIOS).length
   }
 
+  private async cleanupExistingOwnVirtualCardsAndroid() {
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      const cards = await this.existingOwnVirtualCardsAndroid
+      if ((await cards.length) === 0) return
+
+      console.warn(`[BusinessCard][cleanup] Found existing own business card for "${BH_SELF_NAME}" on Android — terminating before create`)
+      await this.tap(cards[0])
+      await browser.waitUntil(
+        async () => this.cardDetailsTitleAndroid.isExisting().catch(() => false),
+        { timeout: 20000, interval: 500, timeoutMsg: 'Existing own virtual card details did not open on Android' },
+      )
+
+      const freezeVisible = await this.freezeBtnAndroid.isExisting().catch(() => false)
+      const alreadyFrozen = await this.unfreezeBtnAndroid.isExisting().catch(() => false)
+      if (freezeVisible && !alreadyFrozen) {
+        await this.tap(this.freezeBtnAndroid)
+        await this.unfreezeBtnAndroid.waitForExist({
+          timeout: 20000,
+          timeoutMsg: 'Existing own virtual card did not freeze during cleanup (Android)',
+        })
+      }
+
+      await this.terminateCard()
+      await this.returnToManageCardsAndroid()
+    }
+
+    throw new Error(`Could not clean existing own virtual cards for "${BH_SELF_NAME}" on Android`)
+  }
+
+  private async cleanupExistingOwnVirtualCardsIOS() {
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      const cards = await this.existingOwnVirtualCardsIOS
+      if ((await cards.length) === 0) return
+
+      console.warn(`[BusinessCard][cleanup] Found existing own business card for "${BH_SELF_NAME}" on iOS — terminating before create`)
+      await this.tap(cards[0])
+      await this.cardDetailsTitleIOS.waitForExist({
+        timeout: 20000,
+        timeoutMsg: 'Existing own virtual card details did not open on iOS',
+      })
+
+      const freezeVisible = await this.freezeBtnIOS.isExisting().catch(() => false)
+      const alreadyFrozen = await this.unfreezeBtnIOS.isExisting().catch(() => false)
+      if (freezeVisible && !alreadyFrozen) {
+        await this.tap(this.freezeBtnIOS)
+        await this.unfreezeBtnIOS.waitForExist({
+          timeout: 20000,
+          timeoutMsg: 'Existing own virtual card did not freeze during cleanup (iOS)',
+        })
+      }
+
+      await this.terminateCard()
+      await this.returnToManageCardsIOS()
+    }
+
+    throw new Error(`Could not clean existing own virtual cards for "${BH_SELF_NAME}" on iOS`)
+  }
+
+  private async cleanupExistingOwnVirtualCards() {
+    if (browser.isAndroid) {
+      await this.cleanupExistingOwnVirtualCardsAndroid()
+      return
+    }
+
+    await this.cleanupExistingOwnVirtualCardsIOS()
+  }
+
   public async ensureSeDeKEAccount() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
@@ -679,6 +763,8 @@ class BusinessCardTerminatePage extends BasePage {
   }
 
   public async tapAssignCard() {
+    await this.cleanupExistingOwnVirtualCards()
+
     const btn = browser.isIOS ? this.assignCardBtnIOS : this.assignCardBtnAndroid
     await btn.waitForExist({ timeout: 15000, timeoutMsg: 'Assign Card button not found on Manage Cards' })
     if (browser.isAndroid) {
@@ -847,7 +933,11 @@ class BusinessCardTerminatePage extends BasePage {
     } else {
       const backdrop = this.closeSheetBackdropAndroid
       if (await backdrop.isExisting().catch(() => false)) {
-        await this.tap(backdrop)
+        await backdrop.click().catch(async () => {
+          await this.tapElementCenterAndroid(backdrop).catch(async () => {
+            await browser.execute('mobile: clickGesture', { x: 540, y: 300 })
+          })
+        })
       } else {
         await browser.execute('mobile: clickGesture', { x: 540, y: 300 })
       }

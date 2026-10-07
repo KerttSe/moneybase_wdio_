@@ -8,9 +8,7 @@ type WdioEl = ChainablePromiseElement
  * Covers the "My Price Plan" screen, reached via Home > More > My Price Plan.
  * Confirmed via real device page source:
  * - iOS More tab: accessibility id "More".
- * - More tab: content-desc "More" (resource-id has changed between app builds —
- *   "navigation_button_more" vs "nav_graph_more" — so this matches on content-desc
- *   instead, which has stayed stable).
+ * - Android More opens from the top Home profile button "home_button_userAvatar".
  * - Android More menu row: a clickable View whose child TextView text is "My Price Plan"
  *   (the row also shows the current plan name inline, e.g. "My Price Plan • Starter").
  * - iOS exposes the same entry as the visible "Moneybase Club" row with the
@@ -42,10 +40,6 @@ class PricePlanPage extends BasePage {
     return this.iosPredicate(
       `type == "XCUIElementTypeStaticText" AND (name == "${text}" OR label == "${text}" OR value == "${text}")`
     )
-  }
-
-  private get moreTabAndroid() {
-    return $('(//*[contains(@resource-id,"navigation_button_more")] | //*[contains(@resource-id,"nav_graph_more")] | //*[@content-desc="More"])[1]')
   }
 
   private get userAvatarAndroid() {
@@ -278,7 +272,7 @@ class PricePlanPage extends BasePage {
     await this.openPricePlanScreen()
   }
 
-  /** MPP-1.2: open the More tab from the bottom navigation. */
+  /** MPP-1.2: open More from the top Home profile button. */
   public async openMoreTab() {
     if (browser.isIOS) {
       await this.moreTabIOS.waitForExist({ timeout: 10000 })
@@ -293,18 +287,13 @@ class PricePlanPage extends BasePage {
 
     const alreadyOnMore = await this.moreScreenAndroid.isDisplayed().catch(() => false)
     if (!alreadyOnMore) {
-      const bottomNavMore = await this.moreTabAndroid.isDisplayed().catch(() => false)
-      if (bottomNavMore) {
-        await this.tap(this.moreTabAndroid)
-      } else {
-        await this.userAvatarAndroid.waitForDisplayed({ timeout: 10000 })
-        await this.tap(this.userAvatarAndroid)
-        await this.moreScreenAndroid.waitForDisplayed({ timeout: 10000 })
-        const accountPickerShown = await $('android=new UiSelector().resourceIdMatches(".*:id/accountSelection_screen$")').isDisplayed().catch(() => false)
-        if (accountPickerShown) {
-          await browser.back()
-          await browser.pause(500)
-        }
+      await this.userAvatarAndroid.waitForDisplayed({ timeout: 10000 })
+      await this.tap(this.userAvatarAndroid)
+      await this.moreScreenAndroid.waitForDisplayed({ timeout: 10000 })
+      const accountPickerShown = await $('android=new UiSelector().resourceIdMatches(".*:id/accountSelection_screen$")').isDisplayed().catch(() => false)
+      if (accountPickerShown) {
+        await browser.back()
+        await browser.pause(500)
       }
     }
     await this.moreScreenAndroid.waitForDisplayed({ timeout: 10000 })

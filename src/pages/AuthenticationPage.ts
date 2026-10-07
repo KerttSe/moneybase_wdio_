@@ -356,10 +356,6 @@ export default class AuthenticationPage extends BasePage {
 
   // ── More → Settings → Change Passcode ───────────────────────────────────
 
-  private get moreTabAndroid() {
-    return $('(//*[@resource-id="com.moneybase.qa:id/navigation_button_more"] | //*[contains(@resource-id,"navigation_button_more")] | //*[@content-desc="More" and @clickable="true"])[1]')
-  }
-
   private get moreTabIOS() {
     return $('~More')
   }
@@ -381,8 +377,11 @@ export default class AuthenticationPage extends BasePage {
   }
 
   async navigateToChangePasscodeViaSettings() {
-    const moreTab = browser.isIOS ? this.moreTabIOS : this.moreTabAndroid
-    await this.tap(moreTab, 15000)
+    if (browser.isIOS) {
+      await this.tap(this.moreTabIOS, 15000)
+    } else {
+      await this.openAndroidMoreMenuFromProfile()
+    }
     await browser.pause(500)
 
     const settingsItem = browser.isIOS ? this.settingsItemIOS : this.settingsItemAndroid

@@ -112,6 +112,18 @@ class HomeStorylyPage extends BasePage {
     return $('//*[@text="Pending" or contains(@text,"Pending transactions") or @content-desc="Pending" or contains(@content-desc,"Pending transactions")]')
   }
 
+  private get forYouHeaderAndroid() {
+    return $('//*[@text="For you" or @content-desc="For you"]')
+  }
+
+  private get forYouSilentStoryBlockAndroid() {
+    return $('(//*[@text="For you" or @content-desc="For you"]/following-sibling::android.view.View[1])[1]')
+  }
+
+  private get totalWealthHeaderAndroid() {
+    return $('//*[@text="Total Wealth" or @content-desc="Total Wealth"]')
+  }
+
   private async isExactFirstStoryDisplayed() {
     const byAccessibilityIdShown = await this.firstStoryButtonExactAndroid.isDisplayed().catch(() => false)
     if (byAccessibilityIdShown) return true
@@ -214,8 +226,52 @@ class HomeStorylyPage extends BasePage {
     }
   }
 
+  private async forYouStorylyBoundsFromHomeXml() {
+    const forYouExists = await this.forYouHeaderAndroid.isExisting().catch(() => false)
+    if (!forYouExists) return null
+
+    const { width, height } = await browser.getWindowRect()
+    const forYou = await this.getElementBounds(this.forYouHeaderAndroid)
+    const bottomNavSafeTop = Math.round(height * 0.88)
+
+    if (forYou.y + forYou.height > bottomNavSafeTop - 140) return null
+
+    const silentBlockExists = await this.forYouSilentStoryBlockAndroid.isExisting().catch(() => false)
+    if (silentBlockExists) {
+      const silentBlock = await this.getElementBounds(this.forYouSilentStoryBlockAndroid)
+      const isBelowHeader = silentBlock.y > forYou.y + forYou.height
+      const isUsableSize = silentBlock.height >= 160 && silentBlock.width >= Math.round(width * 0.45)
+      const isAboveBottomNav = silentBlock.y < bottomNavSafeTop && silentBlock.y + silentBlock.height <= height
+      if (isBelowHeader && isUsableSize && isAboveBottomNav) return silentBlock
+    }
+
+    const y = forYou.y + forYou.height + 32
+    let bottom = Math.min(y + 430, bottomNavSafeTop)
+
+    const totalWealthExists = await this.totalWealthHeaderAndroid.isExisting().catch(() => false)
+    if (totalWealthExists) {
+      const totalWealth = await this.getElementBounds(this.totalWealthHeaderAndroid)
+      if (totalWealth.y > y + 160) {
+        bottom = Math.min(bottom, totalWealth.y - 32)
+      }
+    }
+
+    if (bottom - y < 160) return null
+
+    return {
+      x: 42,
+      y,
+      width: Math.max(width - 84, 1),
+      height: Math.max(bottom - y, 1),
+    }
+  }
+
   private async storylyBounds() {
-    return (await this.nativeStorylyBounds()) ?? (await this.inferredStorylyBoundsFromHomeXml())
+    return (
+      (await this.nativeStorylyBounds()) ??
+      (await this.forYouStorylyBoundsFromHomeXml()) ??
+      (await this.inferredStorylyBoundsFromHomeXml())
+    )
   }
 
   // The element immediately above the widget in the Home scroll column, used
@@ -247,6 +303,8 @@ class HomeStorylyPage extends BasePage {
     const source = await browser.getPageSource().catch(() => '')
     const hasHome = source.includes('resource-id="home_screen"') || source.includes('resource-id="com.moneybase.qa:id/home_screen"')
     const hasSearch = source.includes('home_input_search') || source.includes('text="Search"')
+    const forYouIndex = source.indexOf('text="For you"')
+    const totalWealthIndex = source.indexOf('text="Total Wealth"')
     const inviteIndex = source.indexOf('Invite &amp; earn money!')
     const pendingIndex = source.indexOf('text="Pending"')
     const widgetIdIndex = source.indexOf('st_storyly_list_recycler_view')
@@ -270,6 +328,7 @@ class HomeStorylyPage extends BasePage {
     return [
       `home=${hasHome}`,
       `search=${hasSearch}`,
+      `forYou=${forYouIndex >= 0}`,
       `invite=${hasInvite}`,
       `widgetId=${hasWidgetId}`,
       `widgetDesc=${hasWidgetDesc}`,
@@ -277,7 +336,7 @@ class HomeStorylyPage extends BasePage {
       `iconHolder=${hasIconHolder}`,
       `firstStory=${firstStoryIndex >= 0}`,
       `storyButtons=${storyButtonMatches.length}`,
-      `idx(invite/storyly/pending)=${inviteIndex}/${storylyIndex}/${pendingIndex}`,
+      `idx(forYou/storyly/totalWealth/pending)=${forYouIndex}/${storylyIndex}/${totalWealthIndex}/${pendingIndex}`,
       `storylyBetweenInviteAndPending=${storylyBetweenInviteAndPending}`,
     ].join(', ')
   }
@@ -285,6 +344,7 @@ class HomeStorylyPage extends BasePage {
   private async isStorylyVisible() {
     const nativeBounds = await this.nativeStorylyBounds()
     if (nativeBounds) return true
+    if ((await this.forYouStorylyBoundsFromHomeXml()) !== null) return true
     return (await this.inferredStorylyBoundsFromHomeXml()) !== null
   }
 
@@ -361,6 +421,7 @@ class HomeStorylyPage extends BasePage {
     const found = await browser
       .waitUntil(
         async () => {
+          await this.dismissKnownAndroidBlockingPopups(2).catch(() => {})
           const visible = await this.isStorylyVisible()
           const elapsed = Date.now() - startedAt
           if (visible) return true
@@ -586,17 +647,17 @@ class HomeStorylyPage extends BasePage {
   }
 
   /**
-   * HM-STORY-1.8: tap the first story ring to open the viewer. Storyly's story-ring
+   * HM-STORY-1.8: tap a Storyly For You card to open the viewer. The first visible
+   * For You card can be a native campaign screen, so the Android fallback taps the
+   * second card position inside the silent For You block.
    * Buttons handle taps via their own touch/gesture listener rather than a standard
    * OnClickListener (confirmed by the in-viewer navigation also needing raw tap-zones,
    * not buttons) — a synthetic accessibility click (this.tap()/element.click()) does
    * not open the viewer, so this dispatches a real touch instead.
    *
-   * Primary: `mobile: clickGesture` — UiAutomator2's own native tap, executed
-   * driver-side rather than relayed through the client-driven W3C Actions
-   * protocol, which is more reliable against custom touch-handled widgets
-   * (and against network latency on cloud devices). Falls back to raw
-   * performActions if that doesn't open the viewer.
+   * Primary: W3C touch action, so BrowserStack video clearly shows the tap
+   * landing on the target card. Falls back to `mobile: clickGesture`, which is
+   * driver-side and reliable but can be hard to spot in recorded video.
    */
   public async openFirstStory() {
     if (browser.isIOS) {
@@ -646,35 +707,45 @@ class HomeStorylyPage extends BasePage {
     }
     if (!browser.isAndroid) throw new Error('openFirstStory: Android only')
     await this.waitForStorylyWidget()
-    const nativeBounds = await this.nativeStorylyBounds()
-    const bounds = nativeBounds ?? (await this.inferredStorylyBoundsFromHomeXml())
+    const forYouBounds = await this.forYouStorylyBoundsFromHomeXml()
+    const nativeBounds = forYouBounds ? null : await this.nativeStorylyBounds()
+    const bounds = forYouBounds ?? nativeBounds ?? (await this.inferredStorylyBoundsFromHomeXml())
     if (!bounds) throw new Error('openFirstStory: Storyly bounds unavailable')
 
-    const tapX = Math.round(nativeBounds ? bounds.x + bounds.width / 2 : bounds.x + bounds.width * 0.25)
+    const tapX = Math.round(
+      forYouBounds ? bounds.x + bounds.width * 0.75 : nativeBounds ? bounds.x + bounds.width / 2 : bounds.x + bounds.width * 0.25
+    )
     const tapY = Math.round(bounds.y + bounds.height / 2)
 
-    await browser.execute('mobile: clickGesture', { x: tapX, y: tapY }).catch(() => {})
+    console.log(
+      `[Storyly open] tapping ${forYouBounds ? 'second For you card' : nativeBounds ? 'native Storyly element' : 'inferred Storyly area'} ` +
+      `at (${tapX},${tapY}) within bounds=${JSON.stringify(bounds)}`
+    )
+
+    await browser.performActions([
+      {
+        type: 'pointer',
+        id: 'finger-storyly-open',
+        parameters: { pointerType: 'touch' },
+        actions: [
+          { type: 'pointerMove', duration: 0, x: tapX, y: tapY },
+          { type: 'pointerDown', button: 0 },
+          { type: 'pause', duration: 180 },
+          { type: 'pointerUp', button: 0 },
+        ],
+      },
+    ])
+    await browser.releaseActions().catch(() => {})
     let opened = await this.waitForStoryViewerOpen(6000)
 
+    // Keep the driver-side gesture as a fallback only. It may not show clearly
+    // in BrowserStack video, so it should not be the primary proof of tapping.
     if (!opened) {
-      await browser.performActions([
-        {
-          type: 'pointer',
-          id: 'finger1',
-          parameters: { pointerType: 'touch' },
-          actions: [
-            { type: 'pointerMove', duration: 0, x: tapX, y: tapY },
-            { type: 'pointerDown', button: 0 },
-            { type: 'pause', duration: 80 },
-            { type: 'pointerUp', button: 0 },
-          ],
-        },
-      ])
-      await browser.releaseActions().catch(() => {})
+      await browser.execute('mobile: clickGesture', { x: tapX, y: tapY }).catch(() => {})
       opened = await this.waitForStoryViewerOpen(8000)
     }
 
-    if (!opened) throw new Error('openFirstStory: story viewer did not open after tapping the first story ring')
+    if (!opened) throw new Error('openFirstStory: Storyly viewer did not open after tapping the For You story card')
   }
 
   private async getStoryProgressLabel(): Promise<string> {
