@@ -4,8 +4,8 @@ import type { ChainablePromiseElement } from 'webdriverio'
 
 const BH_ACCOUNT_CODE = process.env.BH_ACCOUNT_CODE || 'SED00004'
 const BH_SELF_NAME = process.env.BH_SELF_NAME || 'Dmytro Kertys'
-const ADMIN_SELF_ASSIGN_ALERT_TITLE = process.env.ADMIN_SELF_ASSIGN_ALERT_TITLE!
-const ADMIN_SELF_ASSIGN_ALERT_MESSAGE = process.env.ADMIN_SELF_ASSIGN_ALERT_MESSAGE!
+const ADMIN_SELF_ASSIGN_ALERT_TITLE = process.env.ADMIN_SELF_ASSIGN_ALERT_TITLE?.trim() || 'You cannot create your own card'
+const ADMIN_SELF_ASSIGN_ALERT_MESSAGE = process.env.ADMIN_SELF_ASSIGN_ALERT_MESSAGE?.trim() || 'Please ask another administrator or account owner to create your card.'
 
 class BusinessCardAdminSelfAssignPage extends BasePage {
   private get userAvatarAndroid() {
@@ -135,13 +135,7 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
   }
 
   private get adminSelfAssignAlertAndroid() {
-    return $(
-      `//*[contains(@text,"${ADMIN_SELF_ASSIGN_ALERT_TITLE}") or contains(@content-desc,"${ADMIN_SELF_ASSIGN_ALERT_TITLE}") or ` +
-        `contains(@text,"${ADMIN_SELF_ASSIGN_ALERT_MESSAGE}") or contains(@content-desc,"${ADMIN_SELF_ASSIGN_ALERT_MESSAGE}") or ` +
-        `contains(@text,"cannot assign") or contains(@content-desc,"cannot assign") or ` +
-        `contains(@text,"not allowed") or contains(@content-desc,"not allowed") or ` +
-        `contains(@text,"yourself") or contains(@content-desc,"yourself")]`,
-    )
+    return $(`//*[@text="${ADMIN_SELF_ASSIGN_ALERT_TITLE}" or @content-desc="${ADMIN_SELF_ASSIGN_ALERT_TITLE}"]`)
   }
 
   private get adminSelfAssignAlertMessageIOS() {
@@ -444,14 +438,9 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
     }
 
     await browser.waitUntil(
-      async () => {
-        if (await this.adminSelfAssignAlertAndroid.isExisting().catch(() => false)) return true
-
-        const source = await browser.getPageSource().catch(() => '')
-        return source.includes(ADMIN_SELF_ASSIGN_ALERT_TITLE) ||
-          source.includes(ADMIN_SELF_ASSIGN_ALERT_MESSAGE) ||
-          /cannot assign|not allowed|yourself/i.test(source)
-      },
+      async () =>
+        (await this.adminSelfAssignAlertAndroid.isDisplayed().catch(() => false)) &&
+        (await this.adminSelfAssignAlertMessageAndroid.isDisplayed().catch(() => false)),
       {
         timeout: 20000,
         interval: 500,

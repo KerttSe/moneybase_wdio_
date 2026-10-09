@@ -297,6 +297,9 @@ jobs:
       AUTH_SECURITY_MB_PHONE: ${{ secrets.AUTH_SECURITY_MB_PHONE }}
       AUTH_SECURITY_MB_PIN: ${{ secrets.AUTH_SECURITY_MB_PIN }}
       AUTH_SECURITY_OTP_PHONE: ${{ secrets.AUTH_SECURITY_OTP_PHONE }}
+      PD_MB_PHONE: ${{ secrets.PD_MB_PHONE }}
+      PD_MB_PIN: ${{ secrets.PD_MB_PIN }}
+      PD_OTP_PHONE: ${{ secrets.PD_OTP_PHONE }}
       AUTH_OTP_MB_PHONE: ${{ secrets.AUTH_OTP_MB_PHONE }}
       AUTH_OTP_MB_PIN: ${{ secrets.AUTH_OTP_MB_PIN }}
       AUTH_OTP_OTP_PHONE: ${{ secrets.AUTH_OTP_OTP_PHONE }}
@@ -363,6 +366,9 @@ jobs:
       AUTH_SECURITY_MB_PHONE: ${{ secrets.AUTH_SECURITY_MB_PHONE }}
       AUTH_SECURITY_MB_PIN: ${{ secrets.AUTH_SECURITY_MB_PIN }}
       AUTH_SECURITY_OTP_PHONE: ${{ secrets.AUTH_SECURITY_OTP_PHONE }}
+      PD_MB_PHONE: ${{ secrets.PD_MB_PHONE }}
+      PD_MB_PIN: ${{ secrets.PD_MB_PIN }}
+      PD_OTP_PHONE: ${{ secrets.PD_OTP_PHONE }}
       BH_MB_COUNTRY: ${{ secrets.BH_MB_COUNTRY }}
       BH_MB_PHONE: ${{ secrets.BH_MB_PHONE }}
       BH_MB_PIN: ${{ secrets.BH_MB_PIN }}

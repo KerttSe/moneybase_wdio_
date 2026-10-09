@@ -6,9 +6,9 @@ describe('Authentication - Security', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 300000))
 
   const [primaryAccount, secondaryAccount] = AUTH_POOL
-  const phone = process.env.AUTH_OTP_MB_PHONE
-  const pin = process.env.AUTH_OTP_MB_PIN || '2468'
-  if (!phone) throw new Error('AUTH_OTP_MB_PHONE is not set')
+  const phone = process.env.AUTH_SECURITY_MB_PHONE
+  const pin = process.env.AUTH_SECURITY_MB_PIN || '2468'
+  if (!phone) throw new Error('AUTH_SECURITY_MB_PHONE is not set')
   if (phone === primaryAccount.phone || phone === '99011190') {
     throw new Error('Authentication OTP specs must use a secondary/security account, not primary')
   }
