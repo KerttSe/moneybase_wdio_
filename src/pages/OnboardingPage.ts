@@ -6,6 +6,7 @@ import BasePage from './BasePage'
 import OtpHelper from '../helpers/otp.helper'
 import { generateUniqueMalteseMobileNumber, saveOnboardedAccount } from '../helpers/phone.helper'
 import { loginPage } from './LoginPage'
+import { waitForControlEnabled } from '../helpers/controlState.helper'
 
 type OnboardingData = {
   pin?: string
@@ -2797,6 +2798,62 @@ export default class OnboardingPage extends BasePage {
     await loginPage.continue()
     }
     return { data, generatedPhone, pin, generatedName }
+  }
+
+  async prepareValidationPersonalDetails() {
+    const context = await this.prepareSmokeOnboarding()
+    await this.verifySmokeOnboardingMobile(context)
+    await this.onboardingNameScreen.waitForDisplayed({ timeout: 30000 })
+    await this.setValidationPersonalNames('John', 'Borg')
+    await this.verifyValidationPersonalDetailsReady()
+  }
+
+  async setValidationPersonalNames(firstName: string, lastName: string) {
+    await this.onboardingNameScreen.waitForDisplayed({ timeout: 10000 })
+    for (const [field, value] of [[this.onboardingFirstNameInput, firstName], [this.onboardingLastNameInput, lastName]] as const) {
+      await field.waitForDisplayed({ timeout: 10000 })
+      await field.clearValue()
+      if (value) await field.setValue(value)
+      const actual = browser.isIOS ? await field.getAttribute('value') : await field.getText()
+      if (value && actual !== value) throw new Error('TEST_PRECONDITION: onboarding name input did not retain its validation value')
+    }
+    await browser.hideKeyboard().catch(() => {})
+  }
+
+  async verifyValidationPersonalDetailsNext(enabled: boolean) {
+    await this.onboardingNameScreen.waitForDisplayed({ timeout: 10000 })
+    const next = browser.isIOS
+      ? this.onboardingNameNextBtn
+      : this.onboardingNameNextBtn.$('.//android.widget.Button')
+    await waitForControlEnabled(next, enabled, 'Onboarding personal details Next')
+  }
+
+  private get validationPersonalNameError() {
+    if (browser.isIOS) {
+      return $('-ios predicate string:type == "XCUIElementTypeStaticText" AND ((label CONTAINS[c] "name" AND label CONTAINS[c] "invalid") OR label CONTAINS[c] "letters" OR label CONTAINS[c] "characters" OR label CONTAINS[c] "at least")')
+    }
+    const text = 'translate(concat(@text," ",@content-desc),"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz")'
+    return $(`//*[ (contains(${text},"name") and contains(${text},"invalid")) or contains(${text},"letters") or contains(${text},"characters") or contains(${text},"at least")]`)
+  }
+
+  async verifyValidationPersonalDetailsReady() {
+    await this.verifyValidationPersonalDetailsNext(true)
+    if (await this.validationPersonalNameError.isDisplayed()) {
+      throw new Error('TEST_PRECONDITION: valid onboarding names already show a validation error')
+    }
+  }
+
+  async verifyValidationPersonalDetailsRejected() {
+    const next = browser.isIOS ? this.onboardingNameNextBtn : this.onboardingNameNextBtn.$('.//android.widget.Button')
+    await next.waitForExist({ timeout: 10000 })
+    if (await next.isEnabled()) {
+      await next.click()
+      await this.validationPersonalNameError.waitForDisplayed({ timeout: 10000 })
+      await this.verifyValidationPersonalDetailsNext(true)
+    } else {
+      await this.verifyValidationPersonalDetailsNext(false)
+    }
+    await this.onboardingNameScreen.waitForDisplayed({ timeout: 10000 })
   }
 
   async verifySmokeOnboardingMobile(context: Awaited<ReturnType<OnboardingPage['prepareSmokeOnboarding']>>) {

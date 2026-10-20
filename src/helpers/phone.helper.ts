@@ -100,9 +100,13 @@ export const generateUniqueMalteseMobileNumber = (): GeneratedMtPhone => {
   const localLength = prefix.length + suffixLength
   const used = readUsedPhones()
 
-  const existingLoginPhone = normalizeDigits(process.env.MB_PHONE || '')
-  if (existingLoginPhone) {
-    used.add(existingLoginPhone.startsWith(countryCode) ? existingLoginPhone.slice(countryCode.length) : existingLoginPhone)
+  const reservedPhoneKeys = [
+    'MB_PHONE', 'MB_ALT_PHONE', 'AUTH_OTP_MB_PHONE', 'AUTH_SECURITY_MB_PHONE',
+    'PD_MB_PHONE', 'BH_MB_PHONE', 'BC_ADMIN_SELF_ASSIGN_PHONE', 'ADD_BENEFICIARY_MB_PHONE',
+  ]
+  for (const key of reservedPhoneKeys) {
+    const phone = normalizeDigits(process.env[key] || '')
+    if (phone) used.add(phone.startsWith(countryCode) ? phone.slice(countryCode.length) : phone)
   }
 
   for (let attempt = 0; attempt < 1000; attempt += 1) {

@@ -5,8 +5,90 @@ import OtpHelper from '../helpers/otp.helper'
 import { assertIOSOtpPhone, waitForIOSOtpOutcome } from '../helpers/iosOtp.helper'
 import { AUTH } from '../data/credentials'
 import HomeScreenPage from './HomeScreenPage'
+import { waitForControlEnabled } from '../helpers/controlState.helper'
 
 export default class AddBeneficiaryPage extends BasePage {
+  private get validationContinue() {
+    return browser.isIOS ? this.detailsContinueBtnIOS : this.detailsContinueBtnAndroid.$('.//android.widget.Button')
+  }
+
+  private validationField(field: 'name' | 'surname' | 'iban') {
+    if (browser.isIOS) return field === 'name' ? this.nameInputIOS : field === 'surname' ? this.surnameInputIOS : this.ibanInputIOS
+    return field === 'name' ? this.nameInputAndroid : field === 'surname' ? this.surnameInputAndroid : this.ibanInputAndroid
+  }
+
+  private validationError(kind: 'name' | 'length' | 'checksum' | 'country') {
+    const words = kind === 'name'
+      ? ['invalid', 'characters', 'letters', 'at least', 'minimum']
+      : kind === 'length' ? ['length', 'characters', '31']
+        : kind === 'country' ? ['country', 'start', 'prefix', 'mismatch']
+          : ['checksum', 'invalid', 'not valid', 'validity']
+    if (browser.isIOS) {
+      const clauses = words.map(word => `label CONTAINS[c] "${word}"`).join(' OR ')
+      const qualifier = kind === 'name' ? '' : ' AND label CONTAINS[c] "IBAN"'
+      const exclusions = kind === 'checksum' ? ' AND NOT (label CONTAINS[c] "length" OR label CONTAINS[c] "country" OR label CONTAINS[c] "characters")' : ''
+      return $(`-ios predicate string:type == "XCUIElementTypeStaticText" AND (${clauses})${qualifier}${exclusions}`)
+    }
+    const text = 'translate(concat(@text," ",@content-desc),"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz")'
+    const clauses = words.map(word => `contains(${text},"${word}")`).join(' or ')
+    const qualifier = kind === 'name' ? '' : ` and contains(${text},"iban")`
+    const exclusions = kind === 'checksum' ? ` and not(contains(${text},"length") or contains(${text},"country") or contains(${text},"characters"))` : ''
+    return $(`//*[(${clauses})${qualifier}${exclusions}]`)
+  }
+
+  async openValidationBankDetails(params: { name: string; surname: string; iban: string; bic: string }) {
+    if (browser.isAndroid) await this.selectSmokeBeneficiaryAndroid(params)
+    else if (browser.isIOS) await this.selectSmokeBeneficiaryIOS(params)
+    else throw new Error('Unsupported platform for beneficiary validation')
+    await this.resetValidationBankDetails(params)
+  }
+
+  async resetValidationBankDetails(params: { name: string; surname: string; iban: string; bic: string }) {
+    if (browser.isAndroid) await this.fillBeneficiaryDetailsAndroid(params)
+    else if (browser.isIOS) await this.fillBeneficiaryDetailsIOS(params)
+    else throw new Error('Unsupported platform for beneficiary validation')
+    await this.verifyBankDetailsAccepted()
+  }
+
+  async enterValidationField(field: 'name' | 'surname' | 'iban', value: string) {
+    const input = this.validationField(field)
+    await input.waitForDisplayed({ timeout: 15000 })
+    await input.clearValue()
+    await input.setValue(value)
+    const actual = browser.isIOS ? await input.getAttribute('value') : await input.getText()
+    const normalize = (text: string) => field === 'iban' ? text.replace(/\s/g, '').toUpperCase() : text
+    if (normalize(actual) !== normalize(value)) {
+      throw new Error(`TEST_PRECONDITION: beneficiary ${field} input did not retain the requested validation value`)
+    }
+    await this.validationField(field === 'name' ? 'surname' : 'name').click()
+    await browser.hideKeyboard().catch(() => {})
+  }
+
+  async verifyBankDetailsAccepted() {
+    await this.validationField('iban').waitForDisplayed({ timeout: 10000 })
+    await waitForControlEnabled(this.validationContinue, true, 'Beneficiary details Continue')
+  }
+
+  async verifyNoValidationError(kind: 'name' | 'length' | 'checksum' | 'country') {
+    if (await this.validationError(kind).isDisplayed()) {
+      throw new Error(`TEST_PRECONDITION: valid beneficiary form already shows a ${kind} validation message`)
+    }
+  }
+
+  async verifyBankDetailsRejected(kind: 'name' | 'length' | 'checksum' | 'country') {
+    const control = this.validationContinue
+    await control.waitForExist({ timeout: 10000 })
+    const enabled = await control.isEnabled()
+    if (enabled) await control.click()
+    if (kind !== 'name' || enabled) {
+      await this.validationError(kind).waitForDisplayed({ timeout: 10000 })
+      if (enabled) await waitForControlEnabled(control, true, 'Beneficiary validation recovery')
+    }
+    await this.validationField('iban').waitForDisplayed({ timeout: 10000 })
+    const otp = browser.isIOS ? this.otpContainerIOS : this.otpContainerAndroid
+    if (await otp.isExisting()) throw new Error('Invalid beneficiary data unexpectedly opened OTP verification')
+  }
+
   private getConfiguredOtpPhone() {
     return (
       process.env.ADD_BENEFICIARY_OTP_PHONE ||

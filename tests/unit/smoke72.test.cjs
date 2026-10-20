@@ -33,6 +33,7 @@ function loadPage(name, globals = {}, dependencies = {}, env = {}) {
     './HomeScreenPage': { default: {} },
     '../data/credentials': { AUTH: { phone: '99112233', individualAccountCode: 'SECONDARY' } },
     '../helpers/browserstack.helper': { markBrowserStackStep: async () => {} },
+    '../helpers/controlState.helper': { waitForControlEnabled: async () => { throw new Error('Control-state assertion needs an explicit mock') } },
     '@wdio/globals': { browser: { isIOS: true }, $: selector => ({ selector }), ...globals },
     ...dependencies,
   }, env).default

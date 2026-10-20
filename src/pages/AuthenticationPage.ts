@@ -295,6 +295,13 @@ export default class AuthenticationPage extends BasePage {
 
   // ── Navigate to phone + passcode screen ─────────────────────────────────
 
+  async verifyRegisteredNumberLoginScreen() {
+    const root = browser.isIOS ? loginPage.authLoginNavBar : this.androidId('login_screen')
+    await root.waitForDisplayed({ timeout: 30000 })
+    const digit = browser.isIOS ? this.keypadDigitIOS('1') : this.keypadDigitAndroid('1')
+    await digit.waitForDisplayed({ timeout: 10000 })
+  }
+
   async navigateToPasscodeScreen(phone: string) {
     await loginPage.selectCountry('Malta')
     await loginPage.enterMobile(phone)

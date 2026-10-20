@@ -25,15 +25,16 @@ function loadConfig() {
   const code = ts.transpileModule(fs.readFileSync('wdio.conf.ts', 'utf8'), {
     compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
   }).outputText
+  const env = { BROWSERSTACK: 'true', BROWSERSTACK_USERNAME: 'unit', BROWSERSTACK_ACCESS_KEY: 'unit' }
   vm.runInNewContext(code, {
     module, exports: module.exports, Error, console: { log() {}, warn() {} },
-    process: { env: { BROWSERSTACK: 'true', BROWSERSTACK_USERNAME: 'unit', BROWSERSTACK_ACCESS_KEY: 'unit' }, argv: [], cwd: () => process.cwd() },
+    process: { env, argv: [], cwd: () => process.cwd() },
     require(name) {
       assert.ok(name in mocks, `Unmocked import ${name}`)
       return mocks[name]
     },
   })
-  return { config: module.exports.config, commands, terminated, browser, mocks }
+  return { config: module.exports.config, commands, terminated, browser, mocks, env }
 }
 
 test('a spec-load exception marks the session failed even without afterTest', async () => {
@@ -103,4 +104,37 @@ test('artifact collection cannot prevent reporting a failed test', async () => {
   mocks['./src/helpers/allure.helper'].attachFailureArtifacts = async () => { throw new Error('screenshot failed') }
   await assert.rejects(config.afterTest({ title: 'login' }, {}, { error: new Error('OTP rejected') }), /screenshot failed/)
   assert.equal(commands.find(command => command.action === 'setSessionStatus')?.arguments.status, 'failed')
+})
+
+test('split regression suites include every spec exactly once', () => {
+  const { config } = loadConfig()
+  const actual = [...config.suites.regressionPrimary, ...config.suites.regressionSecondary].map(file => path.basename(file)).sort()
+  const expected = fs.readdirSync('src/tests').filter(file => file.endsWith('.spec.ts')).sort()
+  assert.deepEqual(Array.from(actual), expected)
+})
+
+test('new specs retain their designated primary or secondary slot', () => {
+  const { config, env } = loadConfig()
+  const slots = {
+    'authentication.phoneValidation.spec.ts': 'secondary',
+    'addfunds.validation.spec.ts': 'secondary',
+    'salary.partialValidation.spec.ts': 'secondary',
+    'autoTopUp.validation.spec.ts': 'primary',
+    'lifecycle.regression.spec.ts': 'primary',
+    'beneficiary.nameValidation.spec.ts': 'secondary',
+    'beneficiary.ibanLength.spec.ts': 'secondary',
+    'beneficiary.ibanChecksum.spec.ts': 'secondary',
+    'beneficiary.ibanCountry.spec.ts': 'secondary',
+    'autoTopUp.editUnchanged.spec.ts': 'primary',
+    'autoTopUp.currencyReset.spec.ts': 'primary',
+    'autoTopUp.amountAboveRange.spec.ts': 'primary',
+    'autoTopUp.amountBelowRange.spec.ts': 'primary',
+    'onboarding.invalidNames.spec.ts': 'secondary',
+    'onboarding.shortName.spec.ts': 'secondary',
+  }
+  for (const [spec, slot] of Object.entries(slots)) {
+    delete env.MB_AUTH_SLOT
+    config.beforeSession({}, {}, [spec])
+    assert.equal(env.MB_AUTH_SLOT, slot, spec)
+  }
 })

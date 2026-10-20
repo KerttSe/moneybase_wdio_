@@ -457,6 +457,16 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
     }
   }
 
+  public async verifyAssigneePickerNotOpened() {
+    await this.verifyAdminSelfAssignAlert()
+    const picker = browser.isIOS
+      ? this.userSelectionScreenIOS
+      : $('//*[contains(@resource-id,"assignBusinessCardUserSelection_screen")]')
+    if (await picker.isExisting()) {
+      throw new Error('Admin self-assign restriction incorrectly opened the assignee picker')
+    }
+  }
+
   public async dismissAlert() {
     if (browser.isIOS) {
       await this.alertCloseBtnIOS.waitForExist({ timeout: 10000, timeoutMsg: 'Close button not found on admin self-assign popup (iOS)' })

@@ -2,6 +2,7 @@ import BasePage from './BasePage'
 import HomeScreenPage from './HomeScreenPage'
 import { $, browser } from '@wdio/globals'
 import { AUTH } from '../data/credentials'
+import { waitForControlEnabled } from '../helpers/controlState.helper'
 
 export default class AddFundsPage extends BasePage {
   private byAndroidResId(id: string) {
@@ -224,6 +225,26 @@ private get payProcessingBtnIOS() {
     if (browser.isAndroid) {
       await browser.hideKeyboard().catch(() => {})
       await browser.pause(300)
+    }
+  }
+
+  async verifyContinueEnabled(enabled: boolean) {
+    await this.amountInput.waitForExist({ timeout: 10000 })
+    await waitForControlEnabled(this.continueBtn, enabled, 'Card top-up Continue')
+  }
+
+  async verifyMinimumTopUpError() {
+    const lowerText = 'translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz")'
+    const lowerDescription = 'translate(@content-desc,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz")'
+    const message = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label CONTAINS[c] "minimum" OR label CONTAINS[c] "min.")')
+      : $(`//*[contains(${lowerText},"minimum") or contains(${lowerDescription},"minimum") or contains(${lowerText},"min.")]`)
+    await message.waitForDisplayed({ timeout: 10000 })
+    const text = browser.isIOS
+      ? await message.getAttribute('label')
+      : (await message.getText()) || (await message.getAttribute('content-desc'))
+    if (!/(?:^|[^\d])10[.,]00(?:[^\d]|$)/.test(text)) {
+      throw new Error('Minimum top-up error must include the formatted 10.00 limit')
     }
   }
 
