@@ -1,6 +1,7 @@
 import BasePage from './BasePage'
 import AddFundsPage from './AddFunds'
 import { $, browser } from '@wdio/globals'
+import { waitForControlEnabled } from '../helpers/controlState.helper'
 
 export default class SalaryStipendPensionPage extends BasePage {
   private readonly addFundsPage = new AddFundsPage()
@@ -135,13 +136,19 @@ export default class SalaryStipendPensionPage extends BasePage {
     if (browser.isIOS) {
       await this.selectPreferenceHeadingIOS.waitForExist({ timeout: 15000 })
       await this.tap(this.partialSalaryOptionIOS)
-      if (amount) {
+      if (amount !== undefined) {
         const field = this.salaryAmountFieldIOS
         await field.waitForExist({ timeout: 8000 })
         await field.clearValue()
-        await field.setValue(amount)
+        if (amount) await field.setValue(amount)
       }
     }
+  }
+
+  async verifyNextEnabled(enabled: boolean) {
+    if (!browser.isIOS) throw new Error('Partial salary validation is currently iOS-only')
+    await this.selectPreferenceHeadingIOS.waitForExist({ timeout: 10000 })
+    await waitForControlEnabled(this.nextBtnIOS, enabled, 'Partial salary Next')
   }
 
   async tapNext() {

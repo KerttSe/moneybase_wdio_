@@ -4,6 +4,7 @@ import type { AuthData } from '../data/credentials'
 import type { ChainablePromiseElement } from 'webdriverio'
 import OtpHelper from '../helpers/otp.helper'
 import { markBrowserStackStep } from '../helpers/browserstack.helper'
+import { waitForControlEnabled } from '../helpers/controlState.helper'
 
 type LoginFlowOptions = {
   useApiOtp?: boolean
@@ -399,6 +400,16 @@ get continueBtn() {
 
 async enterMobile(phone: string) {
   await this.type(this.mobileInput, phone, 20000)
+}
+
+async clearMobile() {
+  await this.mobileInput.waitForExist({ timeout: 10000 })
+  await this.mobileInput.clearValue()
+}
+
+async verifyMobileContinueEnabled(enabled: boolean) {
+  await this.mobileInput.waitForExist({ timeout: 10000 })
+  await waitForControlEnabled(this.continueBtn, enabled, 'Mobile number Continue')
 }
 
 async continue() {

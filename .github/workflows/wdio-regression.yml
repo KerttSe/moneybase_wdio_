@@ -104,6 +104,7 @@ jobs:
                 'homeSearch.spec.ts',
                 'homeSpendAnalytics.spec.ts',
                 'homeStoryly.spec.ts',
+                'lifecycle.regression.spec.ts',
               ],
               secondary: [
                 'homeScreen.spec.ts',
@@ -126,19 +127,30 @@ jobs:
                 'addbeneficiary.individual.spec.ts',
                 'addbeneficiary.individual.usd.steps.spec.ts',
                 'addbeneficiary.individual.usBicSwiftInvalid.spec.ts',
+                'beneficiary.nameValidation.spec.ts',
+                'beneficiary.ibanLength.spec.ts',
+                'beneficiary.ibanChecksum.spec.ts',
+                'beneficiary.ibanCountry.spec.ts',
               ],
             },
             payments: {
               name: 'Payments, Top-ups & FX',
               primary: [
                 'autoTopUp.spec.ts',
+                'autoTopUp.validation.spec.ts',
+                'autoTopUp.editUnchanged.spec.ts',
+                'autoTopUp.currencyReset.spec.ts',
+                'autoTopUp.amountAboveRange.spec.ts',
+                'autoTopUp.amountBelowRange.spec.ts',
                 'transactions.spec.ts',
               ],
               secondary: [
                 'addfunds.spec.ts',
+                'addfunds.validation.spec.ts',
                 'fxExchange.spec.ts',
                 'fxExchange.regression.spec.ts',
                 'salaryStipendPension.spec.ts',
+                'salary.partialValidation.spec.ts',
               ],
             },
             cards: {
@@ -180,6 +192,7 @@ jobs:
                 'authentication.incorrectPasscode.spec.ts',
                 'authentication.passcodeLockout.spec.ts',
                 'authentication.otpCountdown.spec.ts',
+                'authentication.phoneValidation.spec.ts',
               ],
             },
             onboarding_account: {
@@ -188,6 +201,12 @@ jobs:
               secondary: [
                 'personalDetails.spec.ts',
                 'onboarding.spec.ts',
+                'onboarding.invalidNames.spec.ts',
+                'onboarding.shortName.spec.ts',
+                'onboarding.addressOptional.spec.ts',
+                'onboarding.addressRequired.spec.ts',
+                'onboarding.employmentFields.spec.ts',
+                'onboarding.emailTerms.spec.ts',
                 'pricePlan.spec.ts',
               ],
             },
@@ -278,6 +297,10 @@ jobs:
       MB_AUTH_SLOT: ${{ matrix.authSlot }}
       WDIO_MAX_INSTANCES: "1"
       REGRESSION_SPECS: ${{ matrix.specs }}
+      AUTO_TOP_UP_EDIT_RULE_A11Y: ${{ vars.AUTO_TOP_UP_EDIT_RULE_A11Y }}
+      AUTO_TOP_UP_TEST_SECOND_CURRENCY: ${{ vars.AUTO_TOP_UP_TEST_SECOND_CURRENCY }}
+      AUTO_TOP_UP_TEST_MIN_AMOUNT: ${{ vars.AUTO_TOP_UP_TEST_MIN_AMOUNT }}
+      AUTO_TOP_UP_TEST_MAX_AMOUNT: ${{ vars.AUTO_TOP_UP_TEST_MAX_AMOUNT }}
       MB_COUNTRY: ${{ secrets.MB_COUNTRY }}
       MB_PHONE: ${{ secrets.MB_PHONE }}
       MB_PIN: ${{ secrets.MB_PIN }}
@@ -297,6 +320,9 @@ jobs:
       AUTH_SECURITY_MB_PHONE: ${{ secrets.AUTH_SECURITY_MB_PHONE }}
       AUTH_SECURITY_MB_PIN: ${{ secrets.AUTH_SECURITY_MB_PIN }}
       AUTH_SECURITY_OTP_PHONE: ${{ secrets.AUTH_SECURITY_OTP_PHONE }}
+      PD_MB_PHONE: ${{ secrets.PD_MB_PHONE }}
+      PD_MB_PIN: ${{ secrets.PD_MB_PIN }}
+      PD_OTP_PHONE: ${{ secrets.PD_OTP_PHONE }}
       AUTH_OTP_MB_PHONE: ${{ secrets.AUTH_OTP_MB_PHONE }}
       AUTH_OTP_MB_PIN: ${{ secrets.AUTH_OTP_MB_PIN }}
       AUTH_OTP_OTP_PHONE: ${{ secrets.AUTH_OTP_OTP_PHONE }}
@@ -363,6 +389,9 @@ jobs:
       AUTH_SECURITY_MB_PHONE: ${{ secrets.AUTH_SECURITY_MB_PHONE }}
       AUTH_SECURITY_MB_PIN: ${{ secrets.AUTH_SECURITY_MB_PIN }}
       AUTH_SECURITY_OTP_PHONE: ${{ secrets.AUTH_SECURITY_OTP_PHONE }}
+      PD_MB_PHONE: ${{ secrets.PD_MB_PHONE }}
+      PD_MB_PIN: ${{ secrets.PD_MB_PIN }}
+      PD_OTP_PHONE: ${{ secrets.PD_OTP_PHONE }}
       BH_MB_COUNTRY: ${{ secrets.BH_MB_COUNTRY }}
       BH_MB_PHONE: ${{ secrets.BH_MB_PHONE }}
       BH_MB_PIN: ${{ secrets.BH_MB_PIN }}

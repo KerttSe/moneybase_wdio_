@@ -1,5 +1,8 @@
 # Automation Coverage
 
+For the 519-case regression matrix and the current expansion, use
+[Regression Matrix Coverage](regression-matrix-coverage.md).
+
 For the current smoke suite, use [Smoke Specifications](smoke-specifications.md).
 The historical inventory below predates that review and includes stale smoke
 entries. Current scope, platform differences and acceptance limits are recorded

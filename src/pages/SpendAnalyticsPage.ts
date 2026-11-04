@@ -180,7 +180,7 @@ class SpendAnalyticsPage extends BasePage {
   }
 
   private get statisticsBtnAndroid() {
-    return $('//*[@content-desc="ic statistics" or @content-desc="Statistics" or @content-desc="Analytics" or contains(@resource-id,"home_button_statistics") or contains(@resource-id,"home_button_analytics") or contains(@resource-id,"statistics") or contains(@resource-id,"analytics")]')
+    return $('(//*[contains(@resource-id,"home_button_spendAnalytics")]/ancestor-or-self::*[@clickable="true"][1] | //*[@content-desc="ic statistics" or @content-desc="Statistics" or @content-desc="Analytics" or contains(@resource-id,"home_button_statistics") or contains(@resource-id,"home_button_analytics") or contains(@resource-id,"statistics") or contains(@resource-id,"analytics")])[1]')
   }
 
   // The big amount (e.g. "€684.91") and the period label ("This Month") are siblings

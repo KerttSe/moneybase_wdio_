@@ -25,4 +25,9 @@ describe('Business Cards - Admin Self-Assign Card Blocked', function () {
   it('BCAS-1.3 Verify admin self-assign blocked popup appears', async function () {
     await BusinessCardAdminSelfAssignPage.verifyAdminSelfAssignAlert()
   })
+
+  it('CARD-020 [TC3374] Restriction shows the exact message and does not open an assignee picker', async function () {
+    await BusinessCardAdminSelfAssignPage.verifyAdminSelfAssignAlertMessage()
+    await BusinessCardAdminSelfAssignPage.verifyAssigneePickerNotOpened()
+  })
 })

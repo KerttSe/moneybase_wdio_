@@ -1,5 +1,6 @@
 
 import BasePage from './BasePage'
+import { waitForControlEnabled } from '../helpers/controlState.helper'
 import { $, browser } from '@wdio/globals'
 import HomeScreenPage from './HomeScreenPage'
 
@@ -235,6 +236,106 @@ export default class AutoTopUpPage extends BasePage {
     if (browser.isAndroid)
       return $('(//*[@resource-id="com.moneybase.qa:id/autoTopUpDetails_button_save"] | //*[contains(@resource-id,"autoTopUpDetails_button_save")])[1]')
     return $('//*[@name="autoTopup_button_save" or @name="autoTopUpDetails_button_save"]//XCUIElementTypeStaticText[@name="Save"]')
+  }
+
+  async verifySaveEnabled(enabled: boolean) {
+    const control = browser.isIOS
+      ? $('//*[@name="autoTopup_button_save" or @name="autoTopUpDetails_button_save"][1]')
+      : this.saveBtn
+    await this.autoTopUpDetailsScreen.waitForExist({ timeout: 10000 })
+    await waitForControlEnabled(control, enabled, 'Auto Top-Up Save')
+  }
+
+  private get validationThresholdSection() {
+    return browser.isIOS
+      ? $('~autoTopup_item_lowBarierPicker')
+      : $('//android.widget.TextView[@text="When balance falls below:"]/following-sibling::android.view.View[1]')
+  }
+
+  private get validationAmountSection() {
+    return browser.isIOS
+      ? $('~autoTopup_item_amountPicker')
+      : $('//android.widget.TextView[@text="Add the following amount:"]/following-sibling::android.view.View[1]')
+  }
+
+  private async validationAmountControls() {
+    if (browser.isIOS) return { input: $('~autoTopUpDetails_input_customAmount'), done: this.customAmountDoneBtn }
+    if (await this.customAmountModalInputAndroid.isExisting()) {
+      return { input: this.customAmountModalInputAndroid, done: this.customAmountModalDoneBtnAndroid }
+    }
+    return { input: this.customAmountInput, done: this.customAmountDoneBtn }
+  }
+
+  async openValidationAmountEditor() {
+    await this.validationAmountSection.waitForExist({ timeout: 10000 })
+    const other = this.validationAmountSection.$(browser.isIOS
+      ? '-ios predicate string:name == "amountPicker_item_Other" OR label == "Other"'
+      : './/*[@content-desc="Other" or @text="Other"]')
+    await other.waitForDisplayed({ timeout: 10000 })
+    await this.tap(other)
+    const { input } = await this.validationAmountControls()
+    await input.waitForDisplayed({ timeout: 10000 })
+  }
+
+  async enterValidationCustomAmount(amount: string) {
+    const { input } = await this.validationAmountControls()
+    await input.waitForDisplayed({ timeout: 10000 })
+    await input.clearValue()
+    await input.setValue(amount)
+    const actual = browser.isIOS ? await input.getAttribute('value') : await input.getText()
+    const cents = (value: string) => {
+      const normalized = value.replace(/EUR|\s|€/gi, '').replace(',', '.')
+      if (!/^\d+(?:\.\d{1,2})?$/.test(normalized)) return null
+      const [whole, fraction = ''] = normalized.split('.')
+      return BigInt(whole) * 100n + BigInt(fraction.padEnd(2, '0'))
+    }
+    const expected = cents(amount)
+    if (expected === null || cents(actual) !== expected) {
+      throw new Error('TEST_PRECONDITION: Auto Top-Up amount input did not retain the requested validation value')
+    }
+  }
+
+  async verifyValidationAmountDoneEnabled(enabled: boolean) {
+    const { input, done } = await this.validationAmountControls()
+    await input.waitForDisplayed({ timeout: 10000 })
+    await waitForControlEnabled(done, enabled, 'Auto Top-Up custom amount Done')
+  }
+
+  async configureValidationAmounts(amount: string) {
+    if (browser.isIOS) await this.selectPreset500IOS()
+    else {
+      const preset = this.validationThresholdSection.$('.//*[@content-desc="€500" or @text="€500"]')
+      await preset.waitForDisplayed({ timeout: 10000 })
+      await this.tap(preset)
+    }
+    await this.openValidationAmountEditor()
+    await this.enterValidationCustomAmount(amount)
+    await this.verifyValidationAmountDoneEnabled(true)
+    const { input, done } = await this.validationAmountControls()
+    await this.tap(done)
+    await input.waitForDisplayed({ reverse: true, timeout: 10000 })
+  }
+
+  async verifyValidationSelections(selected: boolean) {
+    for (const [label, section] of [['threshold', this.validationThresholdSection], ['amount', this.validationAmountSection]] as const) {
+      await section.waitForExist({ timeout: 10000 })
+      await browser.waitUntil(async () => {
+        const items = await section.$$('.//*[@selected="true" or @checked="true"]')
+        const count = await items.length
+        return selected ? count > 0 : count === 0
+      }, { timeout: 10000, interval: 500, timeoutMsg: `Auto Top-Up ${label} must ${selected ? 'expose a selected value' : 'be cleared after currency change'}` })
+    }
+  }
+
+  async openValidationExistingRule(accessibilityId: string) {
+    await this.openFromHome()
+    await this.goToAutoTopUpList()
+    const rule = $(`~${accessibilityId}`)
+    await rule.waitForDisplayed({ timeout: 10000 })
+    await this.tap(rule)
+    await this.autoTopUpDetailsScreen.waitForExist({ timeout: 10000 })
+    await this.deleteBtn.waitForDisplayed({ timeout: 10000 })
+    await this.verifyValidationSelections(true)
   }
 
   get customAmountInput() {

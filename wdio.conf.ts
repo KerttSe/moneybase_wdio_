@@ -134,11 +134,18 @@ const isMochaSkipError = (error: Error) => {
   return name === 'Pending' || /sync skip; aborting execution|test has been skipped/i.test(message)
 }
 
+let browserStackFailureReported = false
+
 const markBrowserStackFailure = async (error: Error) => {
   if (!useBrowserStack) return
 
-  const { reason, httpCode } = classifyFailureReason(error)
-  const shortMsg = error.message?.slice(0, 150) ?? ''
+  // WDIO wraps import errors in a long preamble; retain the underlying error in BS.
+  const specLoadMessage = error.message.startsWith('Unable to load spec files')
+    ? /\nError: ([^\n]+)/.exec(error.message)?.[1]
+    : undefined
+  const failure = specLoadMessage ? new Error(specLoadMessage) : error
+  const { reason, httpCode } = classifyFailureReason(failure)
+  const shortMsg = failure.message?.slice(0, 150) ?? ''
   const lastStep = getLastBrowserStackStep()
 
   await browser
@@ -149,7 +156,8 @@ const markBrowserStackFailure = async (error: Error) => {
         reason: `${reason} after ${lastStep}: ${shortMsg}`,
       },
     })}`)
-    .catch(() => {})
+    .then(() => { browserStackFailureReported = true })
+    .catch(() => { console.warn('[WDIO] Could not mark BrowserStack session failed; the worker result remains failed.') })
 
   if (httpCode) {
     await browser
@@ -351,10 +359,24 @@ const regressionSecondarySpecs = [
   './src/tests/watchlist.spec.ts',
   // regression-only secondary
   './src/tests/addbeneficiary.individual.usd.steps.spec.ts',
+  './src/tests/addbeneficiary.individual.usBicSwiftInvalid.spec.ts',
+  './src/tests/beneficiary.nameValidation.spec.ts',
+  './src/tests/beneficiary.ibanLength.spec.ts',
+  './src/tests/beneficiary.ibanChecksum.spec.ts',
+  './src/tests/beneficiary.ibanCountry.spec.ts',
   './src/tests/personalDetails.spec.ts',
   './src/tests/authentication.incorrectPasscode.spec.ts',
   './src/tests/authentication.otpCountdown.spec.ts',
   './src/tests/authentication.passcodeLockout.spec.ts',
+  './src/tests/authentication.phoneValidation.spec.ts',
+  './src/tests/addfunds.validation.spec.ts',
+  './src/tests/salary.partialValidation.spec.ts',
+  './src/tests/onboarding.invalidNames.spec.ts',
+  './src/tests/onboarding.shortName.spec.ts',
+  './src/tests/onboarding.addressOptional.spec.ts',
+  './src/tests/onboarding.addressRequired.spec.ts',
+  './src/tests/onboarding.employmentFields.spec.ts',
+  './src/tests/onboarding.emailTerms.spec.ts',
   './src/tests/fxExchange.regression.spec.ts',
   './src/tests/homeSpendAnalytics.spec.ts',
   './src/tests/homeStoryly.spec.ts',
@@ -375,6 +397,14 @@ const regressionPrimarySpecs = [
   './src/tests/portfolio.spec.ts',
   './src/tests/priceAlerts.spec.ts',
   // regression-only primary
+  './src/tests/bankTransfer.business.spec.ts',
+  './src/tests/cardManagement.viewPin.spec.ts',
+  './src/tests/autoTopUp.validation.spec.ts',
+  './src/tests/autoTopUp.editUnchanged.spec.ts',
+  './src/tests/autoTopUp.currencyReset.spec.ts',
+  './src/tests/autoTopUp.amountAboveRange.spec.ts',
+  './src/tests/autoTopUp.amountBelowRange.spec.ts',
+  './src/tests/lifecycle.regression.spec.ts',
   './src/tests/addFundsBankTransferWalletManager.spec.ts',
   './src/tests/assignBusinessCard.spec.ts',
   './src/tests/businessCard.adminSelfAssign.spec.ts',
@@ -474,6 +504,7 @@ export const config: WebdriverIO.Config = {
   },
 
   beforeSession: function (_config, capabilities, specs) {
+    browserStackFailureReported = false
     const specName = specs.length > 0 ? basename(specs[0]) : 'unknown-spec'
     const authSlot = String(
       process.env.MB_AUTH_SLOT ||
@@ -504,6 +535,15 @@ export const config: WebdriverIO.Config = {
       .catch(() => {})
 
     if (result !== 0) {
+      // Import/runtime failures can bypass both afterTest and afterHook.
+      if (!browserStackFailureReported) {
+        const workerResult: unknown = result
+        await markBrowserStackFailure(
+          workerResult instanceof Error
+            ? workerResult
+            : new Error(`WDIO worker exited with result ${String(workerResult)} (${specName})`),
+        )
+      }
       const caps = browser.capabilities as Record<string, unknown>
       const appId = String(
         caps['appium:appPackage']
@@ -522,15 +562,15 @@ export const config: WebdriverIO.Config = {
       console.log(`[WDIO] Skipped test ignored for BrowserStack failure status: ${test.title}`)
       return
     }
-    await attachFailureArtifacts()
     await markBrowserStackFailure(error)
+    await attachFailureArtifacts()
   },
 
   afterHook: async function (_test, _context, { error }) {
     if (!error) return
     if (isMochaSkipError(error)) return
-    await attachFailureArtifacts()
     await markBrowserStackFailure(error)
+    await attachFailureArtifacts()
   },
 
   onComplete: function () {

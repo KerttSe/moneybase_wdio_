@@ -63,14 +63,22 @@ export const AUTH: AuthData = getAuthBySlot()
 
 export const AUTH_SECURITY: AuthData = {
   country: process.env.MB_COUNTRY || 'Malta',
-  phone: process.env.AUTH_SECURITY_MB_PHONE || (() => { throw new Error('AUTH_SECURITY_MB_PHONE is not set') })(),
+  get phone() {
+    const phone = process.env.AUTH_SECURITY_MB_PHONE
+    if (!phone) throw new Error('AUTH_SECURITY_MB_PHONE is not set')
+    return phone
+  },
   pin: process.env.AUTH_SECURITY_MB_PIN || '2468',
   otpPhone: process.env.AUTH_SECURITY_OTP_PHONE,
 }
 
 export const PD_AUTH: AuthData = {
   country: process.env.MB_COUNTRY || 'Malta',
-  phone: process.env.PD_MB_PHONE || (() => { throw new Error('PD_MB_PHONE is not set') })(),
+  get phone() {
+    const phone = process.env.PD_MB_PHONE
+    if (!phone) throw new Error('PD_MB_PHONE is not set')
+    return phone
+  },
   pin: process.env.PD_MB_PIN || '1212',
   otpPhone: process.env.PD_OTP_PHONE,
 }
