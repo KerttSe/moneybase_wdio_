@@ -484,17 +484,19 @@ class HomeScreenPage extends BasePage {
     await this.tapScreenPointIOS(0.5, 0.19, 'finger-ios-more-account-picker')
   }
 
-  private async openIOSMoreMenu() {
+  public async openIOSMoreMenu() {
     if (await this.isIOSMoreOpen()) return
 
-    const attempts = [
-      async () => this.tap(this.moreTabIOS),
-      async () => this.tap(this.profilePickerUserNameLabelIOS),
-      async () => this.tap(this.profilePickerAccountCodeLabelIOS),
+    const entries = [
+      this.moreTabIOS,
+      this.profilePickerUserNameLabelIOS,
+      this.profilePickerAccountCodeLabelIOS,
+      $('//XCUIElementTypeNavigationBar[@name="Home"]//XCUIElementTypeImage[string-length(@label)=2]'),
     ]
 
-    for (const attempt of attempts) {
-      await attempt().catch(() => {})
+    for (const entry of entries) {
+      if (!await entry.isExisting()) continue
+      await this.tap(entry).catch(() => {})
       const opened = await browser
         .waitUntil(async () => this.isIOSMoreOpen(), {
           timeout: 4000,
@@ -571,6 +573,95 @@ class HomeScreenPage extends BasePage {
     await this.tap(item)
     await this.subAccountsTitleIOS.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
     await browser.pause(300)
+  }
+
+  private async pickerAccountIds() {
+    const rows = browser.isIOS
+      ? $$('-ios predicate string:name BEGINSWITH "switchSubidentity_item_"')
+      : this.accountSelectionRootAndroid.$$(
+        './/*[not(self::android.widget.EditText) and (contains(@resource-id,"switchSubidentity_item_") or @content-desc or self::android.widget.TextView)]',
+      )
+    const labels = await rows.map(async row => {
+      if (browser.isIOS) return row.getAttribute('name')
+      return [
+        await row.getAttribute('resource-id'),
+        await row.getAttribute('content-desc'),
+        await row.getText(),
+      ].join(' ')
+    })
+    const ids = labels.flatMap(label => label.toUpperCase().match(/[A-Z]{3}\d{5}(?:-\d+)?\b/g) ?? [])
+    return [...new Set(ids)].sort()
+  }
+
+  public async verifyAccountPickerSearch() {
+    const accountCode = AUTH.individualAccountCode
+    if (!accountCode) throw new Error('The individual account code is required for the picker search fixture')
+    await this.waitForIndividualAccountCode(accountCode)
+
+    if (browser.isIOS) await this.openIOSSubAccountsSheet()
+    else await this.openAndroidSubAccountsSheet()
+    const search = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeSearchField" OR name == "switchSubidentity_input_search"')
+      : this.accountSelectionRootAndroid.$('.//android.widget.EditText')
+    await search.waitForDisplayed({ timeout: 10000 })
+    const allAccounts = await this.pickerAccountIds()
+    if (allAccounts.length < 2) throw new Error('Account picker search requires at least two configured identities')
+
+    const matchingAccounts = allAccounts.filter(id => id.toLowerCase().includes(accountCode.toLowerCase()))
+    if (matchingAccounts.length === 0 || matchingAccounts.length === allAccounts.length) {
+      throw new Error('The account picker fixture must contain matching and non-matching account codes')
+    }
+
+    const waitForAccounts = async (expected: string[], message: string) => {
+      await browser.waitUntil(async () => {
+        const actual = await this.pickerAccountIds()
+        return actual.length === expected.length && actual.every((id, index) => id === expected[index])
+      }, { timeout: 10000, interval: 400, timeoutMsg: message })
+    }
+
+    await search.setValue(accountCode.toLowerCase())
+    await waitForAccounts(matchingAccounts, 'TC2944: account code search should match regardless of case')
+    await search.clearValue()
+    await waitForAccounts(allAccounts, 'TC2945: clearing the query should restore the original identities')
+    await search.setValue('zz-no-such-account-921')
+    await waitForAccounts([], 'TC2946: an unmatched query should return no identities')
+    await search.clearValue()
+    await waitForAccounts(allAccounts, 'Expected the account rows after clearing the unmatched query')
+  }
+
+  public async verifyReselectCurrentAccount() {
+    const code = AUTH.individualAccountCode
+    if (!code) throw new Error('The individual account code is required for account re-selection')
+
+    if (browser.isIOS) {
+      await this.tap(this.individualAccountItemIOS, 10000)
+      await browser.waitUntil(async () => !await this.isIOSSubAccountsSheetOpen(this.individualAccountItemIOS), {
+        timeout: 15000,
+        timeoutMsg: 'TC2948: the account picker should dismiss after selecting the active account',
+      })
+    } else {
+      const row = this.accountSelectionRootAndroid.$(
+        `(.//*[contains(@text,"${code}") or contains(@content-desc,"${code}")]/ancestor-or-self::*[@clickable="true"][1])[1]`,
+      )
+      await this.tap(row, 10000)
+      await browser.waitUntil(async () => !await this.accountPickerOpen(), {
+        timeout: 15000,
+        timeoutMsg: 'TC2948: the account picker should dismiss after selecting the active account',
+      })
+      await this.ensureHomeLandingAndroid()
+    }
+    await this.waitForIndividualAccountCode(code)
+  }
+
+  private async waitForIndividualAccountCode(code: string) {
+    if (browser.isIOS) {
+      await this.waitForIOSHomeAccount('Individual', code)
+      return
+    }
+    await this.homeRootAndroid.$(`.//*[contains(@text,"${code}") or contains(@content-desc,"${code}")]`).waitForDisplayed({
+      timeout: 15000,
+      timeoutMsg: 'Expected the configured individual account on Home',
+    })
   }
 
   private async closeIOSSubAccountsSheet() {
@@ -874,9 +965,11 @@ class HomeScreenPage extends BasePage {
     await markBrowserStackStep('Switched to Joint')
   }
 
-  public async ensureBusinessAccount() {
+  public async ensureBusinessAccount(accountCode?: string) {
+    const code = accountCode ?? AUTH.businessAccountCode ?? 'DER00003'
     if (browser.isIOS) {
-      await this.ensureIOSHomeAccount('Business', 'DER00003', this.businessAccountItemIOS)
+      const item = accountCode ? this.iosPredicateContains(code) : this.businessAccountItemIOS
+      await this.ensureIOSHomeAccount('Business', code, item)
       return
     }
 
@@ -884,9 +977,9 @@ class HomeScreenPage extends BasePage {
 
     await this.waitForHomeLoaded()
     const isBusiness = await this.businessAccountLabelAndroid.isDisplayed().catch(() => false)
-    if (isBusiness) return
+    if (isBusiness && !accountCode) return
 
-    await this.switchAndroidAccountByCode(AUTH.businessAccountCode ?? 'DER00003', 'Business')
+    await this.switchAndroidAccountByCode(code, accountCode ? undefined : 'Business')
     await this.dismissGooglePayPopupIfPresentAndroid(12000).catch(() => false)
     await this.waitForHomeLoaded()
   }
@@ -1236,6 +1329,85 @@ class HomeScreenPage extends BasePage {
       }))
   }
 
+  public async verifyRecentPayeeOpensDetails(name: string) {
+    const section = this.byId('home_section_recentPayees')
+    const payButton = browser.isAndroid
+      ? $('//*[contains(@resource-id,"beneficiaryDetails_button_pay") or @content-desc="beneficiaryDetails_button_pay"]')
+      : $('~beneficiaryDetails_button_pay')
+    const nameLiteral = `concat('${name.split("'").join(`',"'",'`)}','')`
+    const nameSelector = `*[@text=${nameLiteral} or @content-desc=${nameLiteral} or @label=${nameLiteral} or @name=${nameLiteral}]`
+    const payee = section.$(`.//${nameSelector}`)
+
+    await payee.waitForDisplayed({ timeout: 15000, timeoutMsg: 'Expected the configured payee in Recent Payees on Home' })
+    await this.tap(payee)
+    await payButton.waitForDisplayed({ timeout: 15000, timeoutMsg: 'Expected the beneficiary details screen' })
+    await section.waitForDisplayed({ reverse: true, timeout: 10000 })
+    await $(`//${nameSelector}`).waitForDisplayed({
+      timeout: 10000,
+      timeoutMsg: 'Expected beneficiary details to show the selected payee name',
+    })
+  }
+
+  public async verifyBusinessHomeOmitsRecentPayees() {
+    const code = AUTH.businessAccountCode
+    if (!code) throw new Error('A business account code is required for the Recent Payees fixture')
+    await this.ensureBusinessAccount()
+    await this.waitForHomeLoaded()
+    if (browser.isIOS) {
+      await this.waitForIOSHomeAccount('Business', code)
+    } else {
+      await this.businessAccountLabelAndroid.waitForDisplayed({ timeout: 10000 })
+    }
+
+    const recentPayees = browser.isIOS
+      ? $('-ios predicate string:name == "home_section_recentPayees" OR label ==[c] "Recent payees"')
+      : $('//*[contains(@resource-id,"home_section_recentPayees") or @text="Recent payees" or @content-desc="Recent payees"]')
+    for (let position = 0; position < 5; position += 1) {
+      if (await recentPayees.isDisplayed()) throw new Error('TC3063: Business Home should not show Recent Payees')
+      if (position < 4) await this.scrollDownOnce()
+    }
+  }
+
+  public async verifyAboutUsOpens() {
+    if (browser.isIOS) await this.openIOSMoreMenu()
+    else await this.openAndroidMoreMenuFromProfile()
+
+    const entry = browser.isIOS ? $('~About Us') : $('//*[@text="About Us" or @content-desc="About Us"]')
+    await this.ensureVisibleByScrolling([entry], 'About Us row')
+    await this.tap(entry, 10000)
+    const title = browser.isIOS
+      ? $('//XCUIElementTypeNavigationBar[@name="About Us"]')
+      : $('//*[@text="About Us" or @content-desc="About Us"]')
+    const content = browser.isIOS
+      ? $('//XCUIElementTypeStaticText[contains(@label,"Moneybase") and string-length(@label)>20]')
+      : $('//android.widget.TextView[contains(@text,"Moneybase") and string-length(@text)>20]')
+    await title.waitForDisplayed({ timeout: 10000 })
+    await content.waitForDisplayed({ timeout: 15000 })
+    await this.tapHomeTab()
+    await this.waitForHomeLoaded()
+  }
+
+  public async verifyTotalWealthSectionVisible() {
+    const heading = browser.isAndroid
+      ? $('//*[@text="Total Wealth" or @content-desc="Total Wealth"]')
+      : $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label ==[c] "Total Wealth"')
+    await this.ensureVisibleByScrolling([heading], 'Total Wealth section')
+  }
+
+  public async verifyWalletBalanceFormat() {
+    const amount = String.raw`(?:\d+|\d{1,3}(?:[,. \u00a0\u202f]\d{3})+)[.,]\d{2}`
+    const currency = String.raw`(?:[€£$]|[A-Z]{3})`
+    const formatted = new RegExp(`^(?:${currency}\\s*${amount}|${amount}\\s*${currency})$`)
+    await browser.waitUntil(async () => {
+      for (const candidate of this.accountBalanceCandidates) {
+        if (!await candidate.isDisplayed().catch(() => false)) continue
+        const text = await candidate.getText().catch(() => '')
+        if (formatted.test(text.trim())) return true
+      }
+      return false
+    }, { timeout: 15000, timeoutMsg: 'Expected the wallet balance to show a formatted amount and currency' })
+  }
+
   public async verifyBalance() {
     await this.waitForAnyDisplayed(this.accountBalanceCandidates, 15000, 'Account balance')
       .catch(async () => this.waitForBalanceFallback(15000))
@@ -1261,6 +1433,279 @@ class HomeScreenPage extends BasePage {
     ).catch(() => {
       console.warn('[HomeScreenPage] Details button not found — skipping (may have been renamed/removed in this build)')
     })
+  }
+
+  public async verifyWalletDetailsOpens() {
+    await this.openCurrentWalletDetails()
+    await this.tapHomeTab()
+    await this.waitForHomeLoaded()
+  }
+
+  public async openCurrentWalletDetails() {
+    await this.tapFirstDisplayed([this.detailsButton, this.detailsButtonText], 'Details button')
+    await this.waitForWalletDetails()
+  }
+
+  public async waitForWalletDetails(currency?: 'EUR' | 'USD' | 'GBP') {
+    const title = browser.isIOS
+      ? $(currency
+        ? `//XCUIElementTypeNavigationBar[@name="${currency} Account"]`
+        : '-ios predicate string:type == "XCUIElementTypeNavigationBar" AND name MATCHES "[A-Z]{3} Account"')
+      : $('//*[@text="Wallet Details" or @text="Wallet details" or @content-desc="Wallet Details"]')
+    await title.waitForDisplayed({ timeout: 15000, timeoutMsg: 'Expected the wallet details screen' })
+  }
+
+  public async verifyWalletStatementAction(available: boolean) {
+    const action = browser.isIOS
+      ? $('-ios predicate string:name == "walletDetails_button_statement" OR (type IN {"XCUIElementTypeButton", "XCUIElementTypeStaticText"} AND label IN {"Statement", "Statements"})')
+      : $('//*[contains(@resource-id,"walletDetails_button_statement") or @content-desc="Statement" or @content-desc="Statements" or @text="Statement" or @text="Statements"]')
+    await action.waitForDisplayed({ reverse: !available, timeout: 10000 })
+    if (!available) return
+    await this.tap(action)
+    const report = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeNavigationBar" AND label IN {"Statements Report", "Statements"}')
+      : $('//*[@text="Statements Report" or @content-desc="Statements Report" or contains(@resource-id,"statementsReport_screen")]')
+    await report.waitForDisplayed({ timeout: 15000 })
+  }
+
+  public async verifyStatementFormatSelection() {
+    for (const format of ['CSV', 'PDF']) {
+      const option = browser.isIOS
+        ? $(`-ios predicate string:type == "XCUIElementTypeButton" AND (name == "${format}" OR label == "${format}")`)
+        : $(`(//*[@text="${format}" or @content-desc="${format}"]/ancestor-or-self::*[@clickable="true"][1])[1]`)
+      await this.tap(option, 10000)
+      await browser.waitUntil(async () => {
+        if (await option.isSelected()) return true
+        return browser.isAndroid && (await option.getAttribute('checked')) === 'true'
+      }, { timeout: 10000, timeoutMsg: `TC2936: ${format} should be selected` })
+    }
+  }
+
+  public async verifyStatementTypeSelection() {
+    const picker = browser.isIOS
+      ? $('-ios predicate string:type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND (label == "Consolidated" OR name == "statementsReport_button_accountType")')
+      : $('(//*[contains(@resource-id,"statementsReport_button_accountType")] | //*[@text="Consolidated"]/ancestor-or-self::*[@clickable="true"][1])[1]')
+    await this.tap(picker, 10000)
+    const investment = browser.isIOS
+      ? $('-ios predicate string:(name == "Investment Account" OR label == "Investment Account") AND type IN {"XCUIElementTypeButton", "XCUIElementTypeCell", "XCUIElementTypeStaticText"}')
+      : $('//*[@text="Investment Account" or @content-desc="Investment Account"]')
+    await this.tap(investment, 10000)
+    const done = browser.isIOS ? $('~Done') : $('//*[@text="Done" or @content-desc="Done"]')
+    if (await done.isDisplayed()) await this.tap(done)
+    const selected = browser.isIOS
+      ? $('-ios predicate string:type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND (label == "Investment Account" OR (name == "statementsReport_button_accountType" AND value == "Investment Account"))')
+      : $('//*[contains(@resource-id,"statementsReport_button_accountType") and (@text="Investment Account" or @content-desc="Investment Account" or .//*[@text="Investment Account"])]')
+    await selected.waitForDisplayed({ timeout: 15000, timeoutMsg: 'TC2937: statement type should be Investment Account' })
+  }
+
+  private statementDateControl(bound: 'From' | 'To') {
+    const id = 'statementsReport_button_' + bound.toLowerCase()
+    return browser.isIOS
+      ? $(`//XCUIElementTypeButton[@name="${id}" or starts-with(@label,"${bound},")] | //XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="${bound}"]]`)
+      : $(`(//*[contains(@resource-id,"${id}")] | //*[@text="${bound}"]/ancestor::*[@clickable="true"][1])[1]`)
+  }
+
+  private async verifyStatementMonth(bound: 'From' | 'To', month: string) {
+    const control = this.statementDateControl(bound)
+    const monthText = browser.isIOS
+      ? control.$$('.//XCUIElementTypeStaticText')
+      : control.$$('.//android.widget.TextView')
+    const expected = month.toLowerCase()
+    await browser.waitUntil(async () => {
+      const children = await monthText.map(el => el.getText())
+      const current = [
+        await control.getText(),
+        await control.getAttribute(browser.isIOS ? 'label' : 'content-desc'),
+        ...children,
+      ].join(' ').toLowerCase()
+      return current.includes(expected)
+    }, { timeout: 10000, timeoutMsg: `Expected statement ${bound} month to be ${month}` })
+  }
+
+  private async selectStatementMonth(bound: 'From' | 'To', month: string) {
+    await this.tap(this.statementDateControl(bound), 10000)
+    const wheel = $('//XCUIElementTypePickerWheel')
+    if (browser.isIOS && await wheel.isExisting()) {
+      await wheel.setValue(month)
+    } else {
+      const option = browser.isIOS
+        ? $(`-ios predicate string:label == "${month}" OR name == "${month}"`)
+        : $(`//*[@text="${month}" or @content-desc="${month}"]`)
+      await this.tap(option, 10000)
+    }
+    const done = browser.isIOS ? $('~Done') : $('//*[@text="Done" or @content-desc="Done"]')
+    if (await done.isDisplayed()) await this.tap(done)
+  }
+
+  public async verifyStatementDateRange() {
+    const format = new Intl.DateTimeFormat('en-GB', { month: 'long', year: 'numeric' })
+    const now = new Date()
+    const latest = process.env.STATEMENT_LATEST_MONTH || format.format(now)
+    const older = process.env.STATEMENT_OLDER_MONTH
+      || format.format(new Date(now.getFullYear(), now.getMonth() - 1, 1))
+    if (latest === older) throw new Error('Statement date fixture needs two distinct months')
+    await this.verifyStatementMonth('From', latest)
+    await this.verifyStatementMonth('To', latest)
+    await this.selectStatementMonth('From', older)
+    await this.verifyStatementMonth('From', older)
+    await this.selectStatementMonth('To', older)
+    await this.verifyStatementMonth('To', older)
+    await this.selectStatementMonth('From', latest)
+    await this.verifyStatementMonth('From', older)
+  }
+
+  private async openLogoutConfirmation() {
+    if (browser.isIOS) await this.openIOSMoreMenu()
+    else await this.openAndroidMoreMenuFromProfile()
+    const logout = browser.isIOS
+      ? $('-ios predicate string:(name ==[c] "Log out" OR label ==[c] "Log out" OR name ==[c] "Logout")')
+      : this.homeAndroidDrawerLogoutItem
+    await this.ensureVisibleByScrolling([logout], 'Logout row')
+    await this.tap(logout)
+    const confirm = browser.isIOS ? $('~modal_button_primary') : this.byId('modal_button_primary')
+    const close = browser.isIOS ? $('~modal_button_close') : this.byId('modal_button_close')
+    await confirm.waitForDisplayed({ timeout: 10000 })
+    await close.waitForDisplayed({ timeout: 10000 })
+    return { confirm, close }
+  }
+
+  public async confirmLogout() {
+    const { confirm } = await this.openLogoutConfirmation()
+    await this.tap(confirm)
+  }
+
+  public async cancelLogoutAndVerifyHome() {
+    const { close } = await this.openLogoutConfirmation()
+    await this.tap(close)
+    await close.waitForDisplayed({ reverse: true, timeout: 10000 })
+    if (browser.isIOS && await this.isIOSMoreOpen()) {
+      await this.tap(this.moreNavBarIOS.$('./XCUIElementTypeButton[@name="close"]'))
+    }
+    await this.tapHomeTab()
+    await this.waitForHomeLoaded()
+  }
+
+  private get supportTitle() {
+    return browser.isIOS ? $('~Support') : $('//*[@text="Support" or @content-desc="Support"]')
+  }
+
+  private supportOption(title: 'Chat' | 'FAQ' | 'Call Us') {
+    return browser.isIOS ? $(`~${title}`) : $(`//*[@text="${title}" or @content-desc="${title}"]`)
+  }
+
+  public async openSupport() {
+    await this.waitForHomeLoaded()
+    const help = browser.isIOS
+      ? $('//XCUIElementTypeNavigationBar[@name="Home"]/XCUIElementTypeButton[@name="home_button_help" or @name="Help" or @name="Support" or (not(@name) and not(@label))]')
+      : $('//*[contains(@resource-id,"home_button_help") or contains(@resource-id,"home_button_support") or @content-desc="Help" or @content-desc="Support"]')
+    await help.waitForDisplayed({ timeout: 10000 })
+    await this.tap(help)
+    await this.supportTitle.waitForDisplayed({ timeout: 10000 })
+  }
+
+  public async verifySignedInSupportOptions() {
+    await this.openSupport()
+    return this.verifySupportOptions(false)
+  }
+
+  private async verifySupportOptions(guest: boolean) {
+    const greeting = browser.isIOS
+      ? $('-ios predicate string:label BEGINSWITH "Hi " AND label CONTAINS[c] "how can we help you"')
+      : $('//*[starts-with(@text,"Hi ") and contains(@text,"how can we help you")]')
+    await greeting.waitForDisplayed({ timeout: 10000 })
+    const message = await greeting.getText()
+    for (const option of ['FAQ', 'Call Us'] as const) {
+      await this.supportOption(option).waitForDisplayed({ timeout: 10000 })
+    }
+    await this.supportOption('Chat').waitForDisplayed({ reverse: guest, timeout: 10000 })
+    if (guest && !/^Hi Guest\b/i.test(message)) throw new Error('Guest Support should greet Guest')
+    return message
+  }
+
+  public async verifyGuestSupportOptions() {
+    const help = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeButton" AND (name == "register_button_help" OR name == "loginNewMobile_button_help" OR label IN {"Help", "Support"})')
+      : $('//*[contains(@resource-id,"register_button_help") or contains(@resource-id,"loginNewMobile_button_help") or @content-desc="Help" or @content-desc="Support"]')
+    await this.tap(help, 10000)
+    await this.supportTitle.waitForDisplayed({ timeout: 10000 })
+    await this.verifySupportOptions(true)
+  }
+
+  public async verifySupportClosesToHome() {
+    await this.openSupport()
+    await this.closeSupport()
+    await this.waitForHomeLoaded()
+  }
+
+  private async closeSupport() {
+    const close = browser.isIOS
+      ? $('~modal_button_close')
+      : $('//*[contains(@resource-id,"modal_button_close") or contains(@resource-id,"support_button_close") or @content-desc="Close"]')
+    await this.tap(close, 10000)
+    await this.supportTitle.waitForDisplayed({ reverse: true, timeout: 10000 })
+  }
+
+  public async verifySupportFromCards(homeGreeting: string) {
+    await this.closeSupport()
+    const tab = browser.isIOS ? $('~Cards') : this.byId('navigation_button_cards')
+    await this.tap(tab, 10000)
+    const cards = browser.isIOS
+      ? $('//XCUIElementTypeNavigationBar[@name="Cards"]')
+      : this.cardsRootAndroid
+    await cards.waitForDisplayed({ timeout: 15000 })
+    const help = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeButton" AND (name == "cards_button_help" OR label IN {"Help", "Support"})')
+      : $('//*[contains(@resource-id,"cards_button_help") or @content-desc="Help" or @content-desc="Support"]')
+    await this.tap(help, 10000)
+    await this.supportTitle.waitForDisplayed({ timeout: 10000 })
+    const cardsGreeting = await this.verifySupportOptions(false)
+    if (cardsGreeting !== homeGreeting) throw new Error('TC2871: Cards and Home should show the same Support greeting')
+  }
+
+  public async verifySupportFaqOpens() {
+    await this.tap(this.supportOption('FAQ'), 10000)
+    await this.supportTitle.waitForDisplayed({ reverse: true, timeout: 15000 })
+    const heading = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeNavigationBar" AND label IN {"FAQ", "Help Center", "Frequently Asked Questions"}')
+      : $('//*[@text="FAQ" or @text="Help Center" or @text="Frequently Asked Questions"]')
+    await heading.waitForDisplayed({ timeout: 15000 })
+    const contact = browser.isIOS ? $('~Contact Us') : $('//*[@text="Contact Us" or @content-desc="Contact Us"]')
+    await contact.waitForDisplayed({ reverse: true, timeout: 5000 })
+  }
+
+  public async verifySupportOpensChat() {
+    await this.openSupport()
+    await this.tap(this.supportOption('Chat'), 10000)
+    if (browser.isIOS) {
+      await $('//XCUIElementTypeNavigationBar[@name="Conversations"]').waitForDisplayed({ timeout: 20000 })
+    } else {
+      await browser.waitUntil(async () => /freshchat|CategoryListActivity|ConversationActivity/i.test(await browser.getCurrentActivity()), {
+        timeout: 20000,
+        timeoutMsg: 'Chat did not open a Freshchat screen',
+      })
+    }
+  }
+
+  public async verifyTotalWealthDestinations() {
+    const destinations = [
+      ['Investments', 'Portfolio'],
+      ['Savings', 'Portfolio'],
+      ['Cash', 'Wallet Manager'],
+    ]
+    for (const [row, title] of destinations) {
+      await this.verifyTotalWealthSectionVisible()
+      const action = browser.isIOS
+        ? $(`//XCUIElementTypeStaticText[@label="${row}"]/ancestor::*[self::XCUIElementTypeButton or self::XCUIElementTypeCell][1]`)
+        : $(`(//*[@text="${row}" or @content-desc="${row}"]/ancestor-or-self::*[@clickable="true"][1])[1]`)
+      await action.waitForDisplayed({ timeout: 10000 })
+      await this.tap(action)
+      const destination = browser.isIOS
+        ? $(`//XCUIElementTypeNavigationBar[@name="${title}"]`)
+        : $(`//*[@text="${title}" or @content-desc="${title}"]`)
+      await destination.waitForDisplayed({ timeout: 15000 })
+      await this.tapHomeTab()
+      await this.waitForHomeLoaded()
+    }
   }
 
   public async tapActionButtons() {
@@ -1387,21 +1832,33 @@ class HomeScreenPage extends BasePage {
     await this.ensureVisibleByScrolling(candidates, 'Pending transactions section')
   }
 
-  public async verifyRecentTransactions() {
+  public async verifyRecentTransactions(required = false) {
     await this.ensureHomeBeforeSectionLookup()
 
     const headerCandidates = this.recentTransactionsHeaderCandidates
     const headerExists = await Promise.all(
       headerCandidates.map((el) => el.isExisting().catch(() => false))
     )
-    if (!headerExists.some(Boolean)) return
+    if (!required && !headerExists.some(Boolean)) return
 
     await this.ensureVisibleByScrolling(headerCandidates, 'Recent transactions header')
 
-    await this.ensureVisibleByScrolling(
-      [this.byId('home_list_recentTransactions'), this.byId('home_recentTransactions_list')],
-      'Recent transactions list'
-    )
+    const lists = [this.byId('home_list_recentTransactions'), this.byId('home_recentTransactions_list')]
+    await this.ensureVisibleByScrolling(lists, 'Recent transactions list')
+    if (!required) return
+
+    await browser.waitUntil(async () => {
+      for (const list of lists) {
+        if (!await list.isDisplayed().catch(() => false)) continue
+        const entries = await list.$$('.//*[@text or @content-desc or @label or @value]')
+        for (const entry of entries) {
+          if (!await entry.isDisplayed().catch(() => false)) continue
+          const text = await entry.getText().catch(() => '')
+          if (this.isLikelyBalance(text.trim().replace(/^[+−-]\s*/, ''))) return true
+        }
+      }
+      return false
+    }, { timeout: 15000, timeoutMsg: 'Expected a visible transaction amount in Recent Transactions' })
   }
 
   public async verifyRecentActivities() {
@@ -1427,6 +1884,24 @@ class HomeScreenPage extends BasePage {
 
   public async verifyBottomNavigation() {
     await this.waitForAnyDisplayed(this.bottomNavCandidates, 12000, 'Bottom navigation')
+
+    const tabs = browser.isAndroid ? [
+      ['Cards', [this.byId('navigation_button_cards'), $('//*[@content-desc="Cards"]')], this.cardsRootAndroid],
+      ['Pay', [this.byId('navigation_button_pay'), $('//*[@content-desc="Pay"]')], this.payRootAndroid],
+      ['Invest', [this.byId('navigation_button_invest'), $('//*[@content-desc="Invest" and @clickable="true"]')], $('//*[@text="Portfolio" or @content-desc="Portfolio"]')],
+    ] as const : [
+      ['Cards', [$('~Cards')], $('-ios predicate string:name == "cards_screen" OR name == "card_item_addCard" OR name BEGINSWITH "CARDS_"')],
+      ['Pay', [$('~Pay')], $('-ios predicate string:name == "pay_screen_view" OR name == "pay_button_add"')],
+      ['Invest', [$('~Invest')], $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (name == "Portfolio" OR label == "Portfolio")')],
+    ] as const
+
+    for (const [label, buttons, screen] of tabs) {
+      await this.tapFirstDisplayed([...buttons], `${label} tab`)
+      await screen.waitForDisplayed({ timeout: 15000, timeoutMsg: `Expected the ${label} screen` })
+    }
+
+    await this.tapHomeTab()
+    await this.waitForAnyDisplayed([this.homeRoot, this.addFundsButton], 15000, 'Home screen after switching tabs')
   }
 }
 

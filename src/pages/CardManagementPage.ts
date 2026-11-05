@@ -2,6 +2,7 @@ import BasePage from './BasePage'
 import { $, $$, browser } from '@wdio/globals'
 import OtpHelper from '../helpers/otp.helper'
 import { markBrowserStackStep } from '../helpers/browserstack.helper'
+import HomeScreenPage from './HomeScreenPage'
 
 type CardSecurityControl = 'Swipe payments' | 'Contactless payments' | 'ATM withdrawals' | 'Online Transactions'
 
@@ -637,6 +638,12 @@ class CardManagementPage extends BasePage {
   }
 
   public async viewCardPinForCard(lastFour: string, passcode: string) {
+    await this.revealCardPinForCardAndroid(lastFour, passcode)
+    await this.pinDoneButtonAndroid.waitForDisplayed({ timeout: 10000 })
+    await this.tap(this.pinDoneButtonAndroid)
+  }
+
+  private async revealCardPinForCardAndroid(lastFour: string, passcode: string) {
     await this.selectCardByLastFour(lastFour)
 
     if (!browser.isAndroid) {
@@ -668,8 +675,22 @@ class CardManagementPage extends BasePage {
 
     await this.cardPinTitleAndroid.waitForDisplayed({ timeout: 10000 })
     await this.waitForAndroidCardPinValue(10000)
-    await this.pinDoneButtonAndroid.waitForDisplayed({ timeout: 10000 })
-    await this.tap(this.pinDoneButtonAndroid)
+  }
+
+  public async verifyCardPinClosesAutomatically(lastFour: string, passcode: string) {
+    if (browser.isIOS) {
+      await HomeScreenPage.ensureJointAccount()
+      await this.verifyCardPinDisplayed(passcode)
+    } else {
+      await this.revealCardPinForCardAndroid(lastFour, passcode)
+    }
+
+    const timeout = browser.isIOS ? this.pinSecurityTimeoutIOS : this.pinSecurityTimeoutAndroid
+    const pin = browser.isIOS ? this.cardPinTitleIOS : this.cardPinTitleAndroid
+    const viewPin = browser.isIOS ? this.viewPinButton : this.viewPinButtonOnCardSummaryAndroid
+    await timeout.waitForDisplayed({ timeout: 5000 })
+    await pin.waitForDisplayed({ reverse: true, timeout: 12000 })
+    await viewPin.waitForDisplayed({ timeout: 10000 })
   }
 
   public async verifyCardManagementActionsDisplayed() {
@@ -988,6 +1009,17 @@ class CardManagementPage extends BasePage {
 
     await this.securityTitleAndroid.waitForDisplayed({ timeout: 15000 })
     await markBrowserStackStep('Opened Card Security')
+  }
+
+  public async verifyReselectCardsReturnsToRoot() {
+    await this.openSecuritySettings()
+    const security = browser.isIOS ? this.securityNavBarIOS : this.securityTitleAndroid
+    const cardsTab = browser.isIOS ? this.cardsTab : $('id=com.moneybase.qa:id/navigation_button_cards')
+    await cardsTab.waitForDisplayed({ timeout: 10000 })
+    if (browser.isIOS) await this.tap(cardsTab)
+    else await this.tapAndroidCenterPoint(cardsTab)
+    await security.waitForDisplayed({ reverse: true, timeout: 10000 })
+    await this.waitForCardsLoaded()
   }
 
   public async verifySecurityControlsDisplayed() {

@@ -30,7 +30,7 @@ describe('Authentication - Security', function () {
     await authenticationPage.unlockViaOtp(otpPhone).catch(() => {})
   })
 
-  it('AUTH-1.2 App locks after 3 invalid passcode attempts (TC200)', async function () {
+  it('AUTH-1.2 App locks after 3 invalid passcode attempts (TC200/TC3134)', async function () {
     const wrongPin = pin === '1111' ? '2222' : '1111'
 
     await authenticationPage.enterPin(wrongPin)
@@ -41,5 +41,6 @@ describe('Authentication - Security', function () {
 
     await authenticationPage.enterPin(wrongPin)
     await authenticationPage.waitForAccountLocked()
+    await authenticationPage.verifyLockoutCountdownDecreases()
   })
 })

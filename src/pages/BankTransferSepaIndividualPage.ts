@@ -35,7 +35,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get sepaBeneficiaryAndroidByIbanText() {
-    return $(`//*[contains(@text,"${this.sepaIbanPrefix}") or contains(@content-desc,"${this.sepaIbanPrefix}")]`)
+    return $(`//android.widget.TextView[contains(@text,"${this.sepaIbanPrefix}")]/ancestor-or-self::*[@clickable="true"][1]`)
   }
 
   private get sepaBeneficiaryAndroidByIbanTailDesc() {
@@ -43,7 +43,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get sepaBeneficiaryAndroidByIbanTailText() {
-    return $(`//*[contains(@text,"${this.sepaIbanTail}") or contains(@content-desc,"${this.sepaIbanTail}")]`)
+    return $(`//android.widget.TextView[contains(@text,"${this.sepaIbanTail}")]/ancestor-or-self::*[@clickable="true"][1]`)
   }
 
   private get sepaBeneficiaryAndroidByBankText() {
@@ -430,8 +430,7 @@ class BankTransferSepaIndividualPage extends BasePage {
       await this.scrollHomeDownIOS()
       if (await anchor().isExisting().catch(() => false)) return
     }
-    // Soft assertion — payment confirmed by slider; home screen refresh is timing/locale dependent on iOS.
-    console.warn(`[iOS] waitForMinusAmountHomeIOS: "${amount}" not found on home screen, continuing`)
+    throw new Error(`[iOS] Expected an outgoing SEPA transaction for ${amount} on Home`)
   }
 
   private minusAmountHomeAnchorAndroid(amount: number | string) {
@@ -469,7 +468,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get paySearchInputAndroid() {
-    return $('(//*[@resource-id="pay_input_search"] | //*[contains(@resource-id,"pay_input_search")])[1]')
+    return $('(//*[contains(@resource-id,"pay_input_search") or contains(@resource-id,"payees_input_search")])[1]')
   }
 
   private async searchAndSelectSepaBeneficiaryAndroid(): Promise<boolean> {
@@ -795,6 +794,19 @@ class BankTransferSepaIndividualPage extends BasePage {
   public async openSepaToReviewPaymentAndroid(amount: number | string = 11) {
     if (!browser.isAndroid) return
 
+    const amountInput = await this.openSepaAmountInputAndroid()
+    await amountInput.clearValue().catch(() => {})
+    await amountInput.setValue(String(amount))
+
+    await this.maybeTapReviewPaymentAndroid()
+  }
+
+  private async openSepaAmountInputAndroid() {
+    await this.openSepaBeneficiaryDetailsAndroid()
+    return this.continueToSepaAmountAndroid()
+  }
+
+  private async openSepaBeneficiaryDetailsAndroid() {
     await BankTransferP2PIndividualPage.ensureIndividualAccount()
     const payDeadline = Date.now() + 45000
     let payOpened = false
@@ -818,16 +830,109 @@ class BankTransferSepaIndividualPage extends BasePage {
     if (!payOpened) throw new Error('Pay navigation was not available after dismissing Android blocking surfaces')
 
     await this.openSepaBeneficiaryAndroid()
+  }
 
+  private async continueToSepaAmountAndroid() {
     await this.beneficiaryPayBtnAndroid.waitForExist({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnAndroid)
 
     const amountInput = await this.resolveAmountInputSepaAndroid()
     await amountInput.waitForExist({ timeout: 20000 })
-    await amountInput.clearValue().catch(() => {})
-    await amountInput.setValue(String(amount))
+    return amountInput
+  }
 
-    await this.maybeTapReviewPaymentAndroid()
+  private async openSepaAmountInput() {
+    return browser.isIOS ? this.openSepaAmountInputIOS() : this.openSepaAmountInputAndroid()
+  }
+
+  public async openSepaToReview(amount: number | string) {
+    if (browser.isAndroid) {
+      await this.openSepaToReviewPaymentAndroid(amount)
+    } else {
+      await this.prepareSmokeSepaIOS(amount)
+      await this.maybeTapReviewPaymentIOS()
+    }
+  }
+
+  public async verifySepaAmountRules() {
+    const input = await this.openSepaAmountInput()
+    const read = () => browser.isIOS ? input.getAttribute('value') : input.getText()
+    await input.click()
+    await input.clearValue()
+    await input.addValue('12345678')
+    const baseline = await read()
+    if (!baseline.replace(/\D/g, '').startsWith('12345678')) {
+      throw new Error('Expected eight leading digits before testing the ninth digit')
+    }
+    await input.addValue('9')
+    const actual = await read()
+    if (actual !== baseline) {
+      throw new Error(`Expected ninth digit to be rejected, amount changed from "${baseline}" to "${actual}"`)
+    }
+
+    await input.clearValue()
+    const belowMinimum = process.env.SEPA_TEST_BELOW_MIN_AMOUNT || '0.01'
+    if (!/^\d+(?:\.\d+)?$/.test(belowMinimum) || Number(belowMinimum) <= 0) {
+      throw new Error('SEPA_TEST_BELOW_MIN_AMOUNT must be a positive decimal amount')
+    }
+    await input.setValue(belowMinimum)
+    const entered = (await read()).replace(/[^\d.,]/g, '').replace(',', '.')
+    if (!entered || Number(entered) !== Number(belowMinimum)) throw new Error('The payment draft did not retain the below-minimum fixture amount')
+    if (await browser.isKeyboardShown()) await browser.hideKeyboard()
+    const minimumError = browser.isIOS
+      ? $('-ios predicate string:label CONTAINS[c] "minimum" AND (label CONTAINS[c] "amount" OR label CONTAINS[c] "payment")')
+      : $('//*[contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"minimum") and (contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"amount") or contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"payment"))]')
+    await minimumError.waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC3276: the seeded below-minimum amount should show a minimum error' })
+    const review = browser.isIOS ? this.reviewPaymentBtnIOS : this.reviewPaymentBtnAndroid
+    await review.waitForEnabled({ reverse: true, timeout: 10000 })
+
+    await input.clearValue()
+    await input.setValue('11')
+    if (await browser.isKeyboardShown()) await browser.hideKeyboard()
+    const instant = browser.isIOS
+      ? $('-ios predicate string:label CONTAINS[c] "within seconds" OR (label CONTAINS[c] "instant" AND label CONTAINS[c] "second")')
+      : $('//*[contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"within seconds") or (contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"instant") and contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"second"))]')
+    await instant.waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC3278: the SEPA Instant fixture should show a timing hint for EUR 11' })
+  }
+
+  public async verifyPaymentReferenceLimit() {
+    await this.openSepaAmountInput()
+    const reference = browser.isIOS
+      ? $('-ios predicate string:type IN {"XCUIElementTypeTextField", "XCUIElementTypeTextView"} AND (name CONTAINS[c] "reference" OR label CONTAINS[c] "reference" OR value == "Reference")')
+      : $('(//android.widget.EditText[contains(@resource-id,"reference") or @content-desc="Reference" or @text="Reference" or .//android.widget.TextView[@text="Reference"]] | //*[contains(@resource-id,"input_reference")]//android.widget.EditText)[1]')
+    const read = () => browser.isIOS ? reference.getAttribute('value') : reference.getText()
+    await reference.waitForDisplayed({ timeout: 15000 })
+    await reference.clearValue()
+    const limit = '1234567890'.repeat(14)
+    await reference.setValue(limit)
+    if (await read() !== limit) throw new Error('Expected the form to retain a 140-character reference')
+    await reference.addValue('X')
+    if (await read() !== limit) throw new Error('The payment reference accepted a 141st character')
+  }
+
+  public async verifyNoFeeInSepaReview() {
+    const feeRow = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label IN {"Fee", "Transfer Fee"} OR label BEGINSWITH[c] "Fee:")')
+      : $('(//*[@text="Fee" or @text="Transfer Fee" or @content-desc="Fee" or starts-with(@content-desc,"Fee:")])[1]')
+    if (!await feeRow.isDisplayed()) return
+    const value = await feeRow.getText()
+    const row = feeRow.$('..')
+    const content = [value, await feeRow.getAttribute(browser.isIOS ? 'label' : 'content-desc'), await row.getText()]
+    const children = row.$$(browser.isIOS ? './/XCUIElementTypeStaticText' : './/android.widget.TextView')
+    content.push(...await children.map(child => child.getText()))
+    const amounts = content.join(' ').match(/[€£$]\s*\d+(?:[.,]\d{2})?|\b\d+[.,]\d{2}\s*(?:EUR|GBP|USD)\b/g) || []
+    if (amounts.length === 0 || amounts.some(amount => /[1-9]/.test(amount))) {
+      throw new Error('The SEPA review fee row was present without an observable zero fee')
+    }
+  }
+
+  public async verifyReturningFromReviewPreservesAmount(amount: string) {
+    const input = browser.isIOS ? this.amountInputIOS : await this.resolveAmountInputSepaAndroid()
+    await input.waitForDisplayed({ timeout: 15000 })
+    const actual = (browser.isIOS ? await input.getAttribute('value') : await input.getText()).replace(/[^\d.,]/g, '')
+    if (actual !== amount && actual !== `${amount}.00` && actual !== `${amount},00`) {
+      throw new Error(`Expected amount ${amount} after closing review, got "${actual}"`)
+    }
   }
 
   public async sendSepaBySlideAndroid(amount: number | string = 11) {
@@ -862,7 +967,18 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   public async prepareSmokeSepaIOS(amount: number | string = 11) {
+    const input = await this.openSepaAmountInputIOS()
+    await this.tap(input)
+    await input.clearValue().catch(() => {})
+    await input.setValue(String(amount))
+  }
 
+  private async openSepaAmountInputIOS() {
+    await this.openSepaBeneficiaryDetailsIOS()
+    return this.continueToSepaAmountIOS()
+  }
+
+  private async openSepaBeneficiaryDetailsIOS() {
     await this.ensureIndividualAccountIOS()
     await this.tapPayTabAndWaitIOS()
     await browser.pause(2500)
@@ -874,14 +990,37 @@ class BankTransferSepaIndividualPage extends BasePage {
     await this.tap(this.payAddBtnIOS)
 
     await this.openSepaBeneficiaryIOS()
+  }
 
+  private async continueToSepaAmountIOS() {
     await this.beneficiaryPayBtnIOS.waitForExist({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnIOS)
 
     await this.amountInputIOS.waitForExist({ timeout: 20000 })
-    await this.tap(this.amountInputIOS)
-    await this.amountInputIOS.clearValue().catch(() => {})
-    await this.amountInputIOS.setValue(String(amount))
+    return this.amountInputIOS
+  }
+
+  public async verifyBeneficiaryCopyAndOpenReview(amount: number | string) {
+    if (browser.isIOS) await this.openSepaBeneficiaryDetailsIOS()
+    else await this.openSepaBeneficiaryDetailsAndroid()
+
+    for (const field of ['IBAN', 'BIC']) {
+      const row = browser.isIOS
+        ? $(`//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="${field}"]] | //XCUIElementTypeButton[@label="${field}" or contains(@name,"copy${field}")]`)
+        : $(`(//*[@text="${field}" or @content-desc="${field}"]/ancestor-or-self::*[@clickable="true"][1])[1]`)
+      await this.tap(row, 10000)
+      const copied = browser.isIOS
+        ? $(`-ios predicate string:label CONTAINS[c] "${field}" AND label CONTAINS[c] "copied"`)
+        : $(`//*[contains(@text,"${field}") and contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"copied")]`)
+      await copied.waitForExist({ timeout: 5000, timeoutMsg: `TC3321: expected copy confirmation for ${field}` })
+    }
+
+    const input = browser.isIOS ? await this.continueToSepaAmountIOS() : await this.continueToSepaAmountAndroid()
+    if (browser.isIOS) await this.tap(input)
+    await input.clearValue().catch(() => {})
+    await input.setValue(String(amount))
+    if (browser.isIOS) await this.maybeTapReviewPaymentIOS()
+    else await this.maybeTapReviewPaymentAndroid()
   }
 
   public async submitSmokeSepaIOS(amount: number | string = 11) {

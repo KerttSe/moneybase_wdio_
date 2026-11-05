@@ -46,7 +46,7 @@ describe('Home Screen - Storyly widget', function () {
     await HomeStorylyPage.verifyLayoutStable()
   })
 
-  it('HM-STORY-1.7 Verify Storyly content loads successfully', async function () {
+  it('HM-STORY-1.7 [TC3075] Verify Storyly content loads successfully', async function () {
     await HomeScreenPage.waitForHomeLoaded()
     await HomeStorylyPage.verifyContentLoaded()
   })

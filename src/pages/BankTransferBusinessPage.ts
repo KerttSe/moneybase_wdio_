@@ -95,6 +95,18 @@ class BankTransferBusinessPage extends BasePage {
     return $('android=new UiSelector().resourceId("com.moneybase.qa:id/navigation_bar_item_icon_view").instance(2)')
   }
 
+  async verifyUnavailableBusinessPayAndroid() {
+    await this.homeRootAndroid.waitForDisplayed({ timeout: 60000 })
+    await this.ensureBusinessAccountAndroid()
+    await this.payTabAndroid.waitForDisplayed({ timeout: 20000 })
+    await this.tap(this.payTabAndroid)
+
+    const comingSoon = $('//*[@text="Coming soon" or @content-desc="Coming soon" or @text="Coming Soon"]')
+    await comingSoon.waitForDisplayed({ timeout: 15000, timeoutMsg: 'Expected Coming soon for unavailable Business Pay' })
+    const payScreen = $('//*[contains(@resource-id,"pay_screen")]')
+    if (await payScreen.isDisplayed()) throw new Error('Business Pay opened despite the Coming soon alert')
+  }
+
   async openPayFromHomeEnsuringBusiness() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
@@ -107,6 +119,10 @@ class BankTransferBusinessPage extends BasePage {
       }, { timeout: 20000, interval: 500, timeoutMsg: 'Pay tab is not visible' })
 
       await this.tap(this.payTabAndroid)
+      await $('//*[contains(@resource-id,"pay_screen")]').waitForDisplayed({
+        timeout: 15000,
+        timeoutMsg: "Expected the Pay screen after switching to the Business account",
+      })
       return
     }
 

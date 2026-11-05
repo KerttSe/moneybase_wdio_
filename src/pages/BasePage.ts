@@ -155,7 +155,7 @@ export default class BasePage {
     await browser.pause(300)
   }
 
-  private async tapAndroidCenterPoint(element: WdioEl, pointerId = 'finger-android-center-tap') {
+  protected async tapAndroidCenterPoint(element: WdioEl, pointerId = 'finger-android-center-tap') {
     const location = await element.getLocation()
     const size = await element.getSize()
     const x = Math.round(location.x + size.width / 2)
@@ -505,6 +505,7 @@ export default class BasePage {
     const accountSelectionScreen = this.byIdRx('accountSelection_screen')
     const oldSubAccountsTitle = $('//*[@text="Sub Accounts" or @content-desc="Sub Accounts"]')
     const composeMoreIndicator = $('//*[@text="Personal Details" or @content-desc="Personal Details"]')
+    const leakCanary = this.byIdRx('leak_canary_main_container')
     const composeAccountPickerRow = $('//android.widget.TextView[contains(@text,"  Business") or contains(@text,"  Individual") or contains(@text,"  Corporate") or contains(@text,"  Personal")]/ancestor::*[@clickable="true"][1]')
     const targetCurrentAccountRow = accountType
       ? $(`//android.widget.TextView[contains(@text,"${accountCode}") and contains(@text,"${accountType}")]/ancestor::*[@clickable="true"][1]`)
@@ -513,9 +514,17 @@ export default class BasePage {
 
     await userAvatarBtn.waitForExist({ timeout: 20000 })
     await this.tap(userAvatarBtn)
+    let recoveredFromLeakCanary = false
 
     await browser.waitUntil(
       async () => {
+        if (!recoveredFromLeakCanary && await leakCanary.isExisting()) {
+          recoveredFromLeakCanary = true
+          await browser.back()
+          if (await leakCanary.isExisting()) await browser.back()
+          await this.tap(userAvatarBtn)
+          return false
+        }
         if (await accountSelectionScreen.isDisplayed().catch(() => false)
           || await accountSelectionScreen.isExisting().catch(() => false)) return true
         if (await oldSubAccountsTitle.isDisplayed().catch(() => false)) return true
@@ -561,7 +570,7 @@ export default class BasePage {
 
     if (targetAlreadySelectedFromMore && !(await accountSelectionScreen.isExisting().catch(() => false))) return
 
-    const accountByCode = $(`//*[contains(@resource-id,"accountSelection_screen")]//*[contains(@text,"${accountCode}") or contains(@content-desc,"${accountCode}")]/ancestor::*[@clickable="true"][1]`)
+    const accountByCode = $(`//*[contains(@resource-id,"accountSelection_screen")]//*[not(self::android.widget.EditText) and (contains(@text,"${accountCode}") or contains(@content-desc,"${accountCode}"))]/ancestor-or-self::*[@clickable="true"][1]`)
     const accountSearchInput = $('//*[contains(@resource-id,"accountSelection_screen")]//android.widget.EditText')
     const legacyByCode = $(`//android.widget.TextView[contains(@text,"${accountCode}")]/ancestor::*[@clickable="true"][1]`)
     const legacyByType = accountType
@@ -575,7 +584,7 @@ export default class BasePage {
     const composeByType = accountType
       ? $(`//*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[contains(@text,"${accountType}")] | //*[contains(@resource-id,"accountSelection_screen")]//*[@content-desc="${accountType}"]`)
       : composeByCode
-    const uiSelectorDescCode = $(`//*[contains(@resource-id,"accountSelection_screen")]//*[contains(@content-desc,"${accountCode}") or contains(@text,"${accountCode}")]`)
+    const uiSelectorDescCode = $(`//*[contains(@resource-id,"accountSelection_screen")]//*[not(self::android.widget.EditText) and (contains(@content-desc,"${accountCode}") or contains(@text,"${accountCode}"))]`)
 
     if (!(await accountByCode.isDisplayed().catch(() => false)) && await accountSearchInput.isDisplayed().catch(() => false)) {
       await accountSearchInput.setValue(accountCode).catch(async () => {
@@ -589,16 +598,16 @@ export default class BasePage {
       await this.tap(accountByCode)
     } else if (await legacyByCode.isDisplayed().catch(() => false)) {
       await this.tap(legacyByCode)
-    } else if (await legacyByType.isExisting().catch(() => false)) {
-      await this.tap(legacyByType)
     } else if (await composeByCodeContentDesc.isExisting().catch(() => false)) {
       await this.tap(composeByCodeContentDesc)
-    } else if (await composeByTypeContentDesc.isExisting().catch(() => false)) {
-      await this.tap(composeByTypeContentDesc)
     } else if (await uiSelectorDescCode.isExisting().catch(() => false)) {
       await this.tap(uiSelectorDescCode)
     } else if (await composeByCode.isExisting().catch(() => false)) {
       await this.tap(composeByCode)
+    } else if (await legacyByType.isExisting().catch(() => false)) {
+      await this.tap(legacyByType)
+    } else if (await composeByTypeContentDesc.isExisting().catch(() => false)) {
+      await this.tap(composeByTypeContentDesc)
     } else {
       await composeByType.waitForExist({ timeout: 10000 })
       await this.tap(composeByType)
@@ -639,7 +648,8 @@ export default class BasePage {
 
         // Compose build doesn't render account code as text/content-desc on home.
         // Accept home_screen visible + picker gone as confirmation the switch succeeded.
-        const homeVisible = await this.byIdRx('home_screen').isExisting().catch(() => false)
+        const homeVisible = await this.byIdRx('home_screen').isDisplayed().catch(() => false)
+          || await this.byIdRx('home_button_addFunds').isDisplayed().catch(() => false)
         const pickerGone = !(await this.byIdRx('accountSelection_screen').isExisting().catch(() => false))
         return homeVisible && pickerGone
       },

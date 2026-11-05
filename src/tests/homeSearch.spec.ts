@@ -19,8 +19,20 @@ describe('Home Search - Individual', function () {
     await HomeScreenPage.waitForHomeLoaded()
   }))
 
+  it('[TC3050] Hides search on downward scroll and reveals it on return', async function () {
+    await homeSearchPage.verifySearchVisibilityOnScroll()
+  })
+
   it('SEARCH-1.1 Search "cat" and verify Carlos Cat', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await homeSearchPage.verifyHomeSearch('cat')
+  }))
+
+  it('[TC2949/TC2950/TC2951] Checks recents and the search query threshold', smokeStep(async function () {
+    await homeSearchPage.verifySearchQueryRules()
+  }))
+
+  it('[TC3051] Hides restricted search sections and statistics on Business Home', smokeStep(async function () {
+    await homeSearchPage.verifyBusinessHomeSearchScope()
   }))
 })

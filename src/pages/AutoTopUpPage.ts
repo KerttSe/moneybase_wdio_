@@ -5,6 +5,7 @@ import { $, browser } from '@wdio/globals'
 import HomeScreenPage from './HomeScreenPage'
 
 export default class AutoTopUpPage extends BasePage {
+  private validationRuleCreated = false
   private byAndroidResId(id: string) {
     return $(`(//*[@resource-id="com.moneybase.qa:id/${id}"] | //*[contains(@resource-id,"${id}")] | //*[@content-desc="${id}"])[1]`)
   }
@@ -281,10 +282,15 @@ export default class AutoTopUpPage extends BasePage {
     const { input } = await this.validationAmountControls()
     await input.waitForDisplayed({ timeout: 10000 })
     await input.clearValue()
-    await input.setValue(amount)
+    await input.setValue(amount.replace(/\.0+$/, ''))
     const actual = browser.isIOS ? await input.getAttribute('value') : await input.getText()
     const cents = (value: string) => {
-      const normalized = value.replace(/EUR|\s|€/gi, '').replace(',', '.')
+      let normalized = value.replace(/EUR|\s|€/gi, '')
+      if (normalized.includes(',') && normalized.includes('.')) {
+        normalized = normalized.lastIndexOf(',') > normalized.lastIndexOf('.') ? normalized.replace(/\./g, '').replace(',', '.') : normalized.replace(/,/g, '')
+      } else {
+        normalized = /^\d{1,3}(?:,\d{3})+$/.test(normalized) ? normalized.replace(/,/g, '') : normalized.replace(',', '.')
+      }
       if (!/^\d+(?:\.\d{1,2})?$/.test(normalized)) return null
       const [whole, fraction = ''] = normalized.split('.')
       return BigInt(whole) * 100n + BigInt(fraction.padEnd(2, '0'))
@@ -299,6 +305,24 @@ export default class AutoTopUpPage extends BasePage {
     const { input, done } = await this.validationAmountControls()
     await input.waitForDisplayed({ timeout: 10000 })
     await waitForControlEnabled(done, enabled, 'Auto Top-Up custom amount Done')
+  }
+
+  async selectAlternativeValidationCurrency() {
+    await this.currencyPicker.waitForDisplayed({ timeout: 10000 })
+    await this.tap(this.currencyPicker)
+    const candidates = ['USD', 'US Dollar', 'US Dollars', 'GBP', 'British Pound', 'Pound Sterling', 'CHF', 'Swiss Franc']
+    let selected: Awaited<ReturnType<typeof $>> | undefined
+    await browser.waitUntil(async () => {
+      for (const name of candidates) {
+        const item = $(browser.isIOS
+          ? `-ios predicate string:name == "${name}" OR label == "${name}" OR name BEGINSWITH "${name} " OR label BEGINSWITH "${name} "`
+          : `//*[@text="${name}" or @content-desc="${name}" or starts-with(@text,"${name} ") or starts-with(@content-desc,"${name} ")]`)
+        if (await item.isDisplayed()) { selected = item; return true }
+      }
+      return false
+    }, { timeout: 15000, interval: 500, timeoutMsg: 'TEST_PRECONDITION: selected card must support a second currency (USD, GBP or CHF); alternatively set AUTO_TOP_UP_TEST_SECOND_CURRENCY' })
+    await this.tap(selected!)
+    await this.autoTopUpDetailsScreen.waitForExist({ timeout: 10000 })
   }
 
   async configureValidationAmounts(amount: string) {
@@ -336,6 +360,52 @@ export default class AutoTopUpPage extends BasePage {
     await this.autoTopUpDetailsScreen.waitForExist({ timeout: 10000 })
     await this.deleteBtn.waitForDisplayed({ timeout: 10000 })
     await this.verifyValidationSelections(true)
+  }
+
+  async prepareValidationExistingRule(cardLabel: string, accessibilityId?: string) {
+    if (accessibilityId) return this.openValidationExistingRule(accessibilityId)
+    await this.openFromHome()
+    await this.goToAutoTopUpList()
+    // With no saved rules the app opens the new-rule form directly. Its
+    // threshold heading has the same text as a list row on Android.
+    const detailsOpen = await this.cardPicker.isDisplayed()
+    if (detailsOpen && await this.deleteBtn.isDisplayed()) {
+      await this.verifyValidationSelections(true)
+      return
+    }
+    const existing = $(browser.isIOS
+      ? '-ios predicate string:name BEGINSWITH "autoTopupList_item_active_"'
+      : '//*[starts-with(@content-desc,"When balance falls below:") or starts-with(@text,"When balance falls below:")]')
+    if (!detailsOpen && await existing.isDisplayed()) {
+      await this.tap(existing)
+    } else {
+      if (!cardLabel) throw new Error('CONFIGURATION_ERROR: selected account cardLastFour is required')
+      await this.tapAddNew()
+      await this.selectCard(cardLabel)
+      await this.selectCurrency('Euro')
+      await this.configureValidationAmounts('1500')
+      await this.verifySaveEnabled(true)
+      await this.saveSmokeAutoTopUp({ cardLabel, currency: 'Euro', amount: 1500 })
+      this.validationRuleCreated = true
+      await this.ensureOnHomeScreen()
+      await this.openFromHome()
+      await this.goToAutoTopUpList()
+      const created = await this.findThresholdRuleElement(1500)
+      if (!created) throw new Error('TEST_PRECONDITION: saved validation rule could not be found')
+      await this.tap(created)
+    }
+    await this.deleteBtn.waitForDisplayed({ timeout: 10000 })
+    await this.verifyValidationSelections(true)
+  }
+
+  async cleanupValidationExistingRule() {
+    if (!this.validationRuleCreated) return
+    // The unchanged-rule spec stays on this rule's details screen. Never delete a
+    // pre-existing rule, or a generic first list item, as part of cleanup.
+    await this.deleteBtn.waitForDisplayed({ timeout: 10000 })
+    await this.deleteAutoTopUp()
+    await this.confirmDeleteAutoTopUp()
+    this.validationRuleCreated = false
   }
 
   get customAmountInput() {
@@ -463,9 +533,8 @@ export default class AutoTopUpPage extends BasePage {
    * and waits for the Details screen to appear.
    */
   async tapAddNew() {
-    const alreadyOnDetails = browser.isIOS
-      ? await this.autoTopUpDetailsScreen.isExisting().catch(() => false)
-      : await this.autoTopUpDetailsScreen.isDisplayed().catch(() => false)
+    // Both the list and details can have the title "Auto Top-Up" on iOS.
+    const alreadyOnDetails = await this.cardPicker.isDisplayed()
     if (alreadyOnDetails) return
 
     await this.autoTopUpListScreen.waitForExist({ timeout: 15000 })

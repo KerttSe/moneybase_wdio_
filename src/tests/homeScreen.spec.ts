@@ -22,9 +22,9 @@ describe('Home Screen - Individual', function () {
     await HomeScreenPage.verifyAccountHeader()
   }))
 
-  it('HS-1.2 Verify balance', smokeStep(async function () {
+  it('HS-1.2 [TC3053 partial] Verify wallet balance format', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
-    await HomeScreenPage.verifyBalance()
+    await HomeScreenPage.verifyWalletBalanceFormat()
   }))
 
   it('HS-1.3 Verify action buttons', smokeStep(async function () {
@@ -35,6 +35,11 @@ describe('Home Screen - Individual', function () {
   it('HS-1.4 Tap action buttons', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await HomeScreenPage.tapActionButtons()
+  }))
+
+  it('HS-1.4a [TC3054 partial] Details opens Wallet Details', smokeStep(async function () {
+    if (!(browser.isAndroid || browser.isIOS)) return this.skip()
+    await HomeScreenPage.verifyWalletDetailsOpens()
   }))
 
   it('HS-1.5 Verify notification banner', smokeStep(async function () {
@@ -57,6 +62,16 @@ describe('Home Screen - Individual', function () {
     await HomeScreenPage.verifyRecentTransactions()
   }))
 
+  it('HS-1.8a [TC3049 partial] Home shows profile, wallet balance, Total Wealth and recent transactions', smokeStep(async function () {
+    if (!(browser.isAndroid || browser.isIOS)) return this.skip()
+    if (process.env.MB_RUN_POPULATED_HOME !== 'true') return this.skip()
+
+    await HomeScreenPage.verifyAccountHeader()
+    await HomeScreenPage.verifyWalletBalanceFormat()
+    await HomeScreenPage.verifyTotalWealthSectionVisible()
+    await HomeScreenPage.verifyRecentTransactions(true)
+  }))
+
   it('HS-1.9 Verify recent activities', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await HomeScreenPage.verifyRecentActivities()
@@ -67,7 +82,7 @@ describe('Home Screen - Individual', function () {
     await HomeScreenPage.verifySpendAnalytics()
   }))
 
-  it('HS-1.11 Verify bottom navigation', smokeStep(async function () {
+  it('HS-1.11 [TC3078 partial] Verify bottom navigation', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await HomeScreenPage.verifyBottomNavigation()
   }))

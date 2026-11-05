@@ -568,8 +568,12 @@ class HomeStorylyPage extends BasePage {
     }
     if (!browser.isAndroid) throw new Error('verifyContentLoaded: Android only')
     await this.waitForStorylyWidget()
-    const bounds = await this.storylyBounds()
-    if (!bounds) throw new Error('verifyContentLoaded: Storyly content bounds unavailable')
+    if (await this.isExactFirstStoryDisplayed()) return
+
+    // Some Android builds expose the story card only as a touch target.
+    // Opening the viewer confirms content is available even on those builds.
+    await this.openFirstStory()
+    await this.closeStoryViewerIfOpen()
   }
 
   // Either signal alone proves the viewer is open — don't rely on a single

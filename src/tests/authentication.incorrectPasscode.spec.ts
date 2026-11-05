@@ -22,9 +22,9 @@ describe('Authentication - Security', function () {
     await authenticationPage.navigateToPasscodeScreen(phone)
   })
 
-  it('AUTH-1.1 Incorrect passcode — error message is shown', async function () {
+  it('AUTH-1.1 [TC3133] Incorrect passcode shows remaining attempts', async function () {
     const wrongPin = pin === '1111' ? '2222' : '1111'
     await authenticationPage.enterPin(wrongPin)
-    await authenticationPage.waitForPasscodeError()
+    await authenticationPage.waitForRemainingPasscodeAttempts()
   })
 })

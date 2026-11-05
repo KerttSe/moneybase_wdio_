@@ -3,6 +3,9 @@ import type { ChainablePromiseElement } from 'webdriverio'
 import BasePage from './BasePage'
 import { loginPage } from './LoginPage'
 import OtpHelper from '../helpers/otp.helper'
+import { dismissTooEasyPasscodeWarning } from '../helpers/passcodeWarning.helper'
+
+type Theme = 'Light' | 'Dark' | 'System'
 
 export default class AuthenticationPage extends BasePage {
   private readonly androidAppPackage = process.env.BS_ANDROID_APP_PACKAGE || 'com.moneybase.qa'
@@ -167,6 +170,34 @@ export default class AuthenticationPage extends BasePage {
     return el
   }
 
+  async waitForRemainingPasscodeAttempts(timeout = 10000) {
+    const candidates = browser.isIOS ? [this.passcodeErrorIOS] : this.passcodeErrorAndroidCandidates
+    const remainingAttempts = /\b[1-9]\d*\s+(?:(?:remaining|more)\s+)?(?:attempts?|tries)\s*(?:left|remaining)\b|\b(?:remaining\s+(?:attempts?|tries)|(?:attempts?|tries)\s+(?:left|remaining))\s*:?\s*[1-9]\d*\b|\b[1-9]\d*\s+(?:remaining|more)\s+(?:attempts?|tries)\b/i
+    await browser.waitUntil(async () => {
+      for (const candidate of candidates) {
+        if (!(await candidate.isDisplayed().catch(() => false))) continue
+        if (remainingAttempts.test(await candidate.getText())) return true
+      }
+      return false
+    }, { timeout, interval: 500, timeoutMsg: 'Expected a remaining-attempt count after an incorrect passcode' })
+  }
+
+  async verifyLockoutCountdownDecreases(timeout = 15000) {
+    const countdown = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label MATCHES[c] ".*try again in.*[0-9]+:[0-9]{2}.*"')
+      : $('//*[contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"try again in")]')
+    let initialSeconds: number | undefined
+
+    await browser.waitUntil(async () => {
+      if (!(await countdown.isDisplayed())) return false
+      const time = (await countdown.getText()).match(/\b(\d+):([0-5]\d)\b/)
+      if (!time) return false
+      const seconds = Number(time[1]) * 60 + Number(time[2])
+      initialSeconds ??= seconds
+      return seconds < initialSeconds
+    }, { timeout, interval: 500, timeoutMsg: 'Expected the passcode lockout countdown to decrease' })
+  }
+
   async waitForAccountLocked(timeout = 15000) {
     const locked = browser.isIOS ? this.accountLockedIOS : this.accountLockedAndroid
     await browser.waitUntil(
@@ -185,7 +216,7 @@ export default class AuthenticationPage extends BasePage {
   }
 
   get otpCountdownIOS() {
-    return $('-ios predicate string:name CONTAINS "Resend in" OR label CONTAINS "Resend in" OR name CONTAINS "seconds" OR label CONTAINS "seconds"')
+    return $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label BEGINSWITH[c] "You can resend your code" OR label BEGINSWITH[c] "Resend in" OR label CONTAINS[c] "seconds")')
   }
 
   get otpResendBtnAndroid() {
@@ -193,7 +224,7 @@ export default class AuthenticationPage extends BasePage {
   }
 
   get otpResendBtnIOS() {
-    return $('~otp_resendButton')
+    return $('-ios predicate string:name == "otp_resendButton" OR (type == "XCUIElementTypeButton" AND label IN {"Resend", "Resend code", "Resend Code"})')
   }
 
   private get otpResendBtnAndroidCandidates() {
@@ -210,7 +241,7 @@ export default class AuthenticationPage extends BasePage {
           // countdown text visible (e.g. "Resend in 00:30")
           if (await this.otpCountdownIOS.isExisting().catch(() => false)) return true
           // OR resend button exists but is disabled (countdown active)
-          const resendBtn = $('~otp_resendButton')
+          const resendBtn = this.otpResendBtnIOS
           if (await resendBtn.isExisting().catch(() => false)) {
             const enabled = await resendBtn.getAttribute('enabled').catch(() => 'true')
             return enabled === 'false'
@@ -318,6 +349,36 @@ export default class AuthenticationPage extends BasePage {
     }
   }
 
+  async verifyPartialPasscodeKeepsKeypadInteractive(pin: string) {
+    if (!/^\d{4}$/.test(pin)) throw new Error('The partial passcode fixture requires four digits')
+    await this.waitForPasscodeScreen()
+    await this.enterPin(pin.slice(0, 3))
+    const keypad = browser.isIOS ? this.keypadDigitIOS(pin[3]) : this.keypadDigitAndroid(pin[3])
+    const otp = browser.isIOS ? loginPage.otpContainerIOS : loginPage.otpContainerAndroid
+    await keypad.waitForDisplayed({ timeout: 10000 })
+    await keypad.waitForEnabled({ timeout: 10000 })
+    if (await otp.isDisplayed()) {
+      throw new Error('Entering three digits advanced to OTP verification')
+    }
+  }
+
+  async waitForOtpLockoutIOS() {
+    const lockout = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label CONTAINS[c] "too many tries" OR label CONTAINS[c] "too many attempts" OR name == "TooManyTries")')
+    await lockout.waitForDisplayed({ timeout: 10000, timeoutMsg: 'Expected OTP lockout after the third incorrect code' })
+  }
+
+  async verifyIncorrectOtpFeedbackIOS() {
+    await browser.waitUntil(async () => {
+      const feedback = await loginPage.otpIncorrectCodeIOS.getText().catch(() => '')
+      return /\b[1-9]\d*\s+(?:(?:more|remaining)\s+)?(?:attempts?|tries)\s*(?:left|remaining)\b|\b[1-9]\d*\s+(?:more|remaining)\s+(?:attempts?|tries)\b/i.test(feedback)
+    }, { timeout: 10000, timeoutMsg: 'Expected the incorrect OTP message to show remaining attempts' })
+
+    await browser.waitUntil(async () => {
+      const focused = await loginPage.otpLastSlotIOS.getAttribute('focused').catch(() => '')
+      return focused === 'true' || focused === '1'
+    }, { timeout: 5000, timeoutMsg: 'Expected focus to return to the final OTP digit' })
+  }
+
   async enterOtpNoise() {
     if (browser.isIOS) {
       for (const d of ['1', '2', '3']) {
@@ -383,7 +444,7 @@ export default class AuthenticationPage extends BasePage {
     return $('-ios predicate string:label MATCHES "(?i)change pass(code|word)" OR name MATCHES "(?i)change pass(code|word)"')
   }
 
-  async navigateToChangePasscodeViaSettings() {
+  async openSettings() {
     if (browser.isIOS) {
       await this.tap(this.moreTabIOS, 15000)
     } else {
@@ -394,10 +455,185 @@ export default class AuthenticationPage extends BasePage {
     const settingsItem = browser.isIOS ? this.settingsItemIOS : this.settingsItemAndroid
     await this.tap(settingsItem, 15000)
     await browser.pause(500)
+  }
 
+  async verifyBusinessSettingsRestrictions() {
+    await this.openSettings()
+    const title = browser.isIOS
+      ? $('//XCUIElementTypeNavigationBar[@name="Settings"]')
+      : $('//*[@text="Settings" or contains(@resource-id,"settings_screen")]')
+    await title.waitForDisplayed({ timeout: 15000 })
+
+    const privacy = browser.isIOS ? $('~Privacy Settings') : $('//*[@text="Privacy Settings" or @content-desc="Privacy Settings"]')
+    const close = browser.isIOS ? $('~Close Account') : $('//*[@text="Close Account" or @content-desc="Close Account"]')
+    await close.waitForExist({ timeout: 10000 })
+    if (await privacy.isExisting()) throw new Error('TC2963: Privacy Settings should be hidden for a business account')
+
+    await this.tap(close, 10000)
+    const restriction = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label CONTAINS[c] "business account" AND (label CONTAINS[c] "cannot" OR label CONTAINS[c] "not available" OR label CONTAINS[c] "not supported")')
+      : $('//*[contains(@text,"business account") and (contains(@text,"cannot") or contains(@text,"not available") or contains(@text,"not supported"))]')
+    await restriction.waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC2965: Business accounts should show the account-closure restriction' })
+  }
+
+  private themeRow(theme: Theme) {
+    if (browser.isIOS) {
+      return $(`//XCUIElementTypeCell[@label="${theme}" or .//XCUIElementTypeStaticText[@label="${theme}"]] | //XCUIElementTypeButton[@label="${theme}"]`)
+    }
+    return $(`(//*[@text="${theme}" or @content-desc="${theme}"]/ancestor-or-self::*[@clickable="true"][1])[1]`)
+  }
+
+  private async isThemeSelected(theme: Theme) {
+    return this.isSettingsOptionSelected(this.themeRow(theme))
+  }
+
+  private async isSettingsOptionSelected(row: ChainablePromiseElement) {
+    if (!await row.isDisplayed()) return false
+    if (await row.isSelected()) return true
+    const mark = browser.isIOS
+      ? row.$('.//XCUIElementTypeImage[contains(@name,"checkmark") or contains(@label,"selected")]')
+      : row.$('.//*[@checked="true" or @selected="true"]')
+    return await mark.isExisting()
+      || (browser.isAndroid && (await row.getAttribute('checked')) === 'true')
+  }
+
+  private async openThemeFromSettings() {
+    const entry = browser.isIOS ? $('~Theme') : $('//*[@text="Theme" or @content-desc="Theme"]')
+    await this.tap(entry, 10000)
+    await this.themeRow('Light').waitForDisplayed({ timeout: 10000 })
+    await this.themeRow('Dark').waitForDisplayed({ timeout: 10000 })
+  }
+
+  private async selectTheme(theme: Theme) {
+    await this.tap(this.themeRow(theme), 10000)
+    await browser.waitUntil(() => this.isThemeSelected(theme), {
+      timeout: 10000,
+      timeoutMsg: `Expected ${theme} to be selected`,
+    })
+  }
+
+  private async backFromTheme() {
+    if (browser.isIOS) {
+      const back = $('//XCUIElementTypeNavigationBar//XCUIElementTypeButton[@name="BackButton" or @label="Settings"]')
+      await this.tap(back, 10000)
+    } else {
+      await browser.back()
+    }
+  }
+
+  async verifyThemePreferences() {
+    await this.openSettings()
+    await this.openThemeFromSettings()
+    let original: Theme | undefined
+    for (const theme of ['Light', 'Dark', 'System'] as const) {
+      if (await this.isThemeSelected(theme)) {
+        original = theme
+        break
+      }
+    }
+    if (!original) throw new Error('Theme screen must expose the current selection before editing')
+
+    try {
+      await this.selectTheme('Light')
+      await this.selectTheme('Light')
+      await this.selectTheme('Dark')
+      await this.backFromTheme()
+      await this.openThemeFromSettings()
+      if (!await this.isThemeSelected('Dark')) throw new Error('TC2989: Dark should remain selected when reopening Theme')
+    } finally {
+      if (!await this.themeRow('Light').isDisplayed()) await this.openThemeFromSettings()
+      await this.selectTheme(original)
+    }
+  }
+
+  private privacyOption(label: 'My Contacts' | 'Switch Off') {
+    return browser.isIOS
+      ? $(`//XCUIElementTypeCell[@label="${label}" or .//XCUIElementTypeStaticText[@label="${label}"]] | //XCUIElementTypeButton[@label="${label}"]`)
+      : $(`(//*[@text="${label}" or @content-desc="${label}"]/ancestor-or-self::*[@clickable="true"][1])[1]`)
+  }
+
+  private async openPrivacySettings() {
+    const entry = browser.isIOS ? $('~Privacy Settings') : $('//*[@text="Privacy Settings" or @content-desc="Privacy Settings"]')
+    await this.tap(entry, 10000)
+    await this.privacyOption('My Contacts').waitForDisplayed({ timeout: 10000 })
+  }
+
+  async verifyPrivacyPreferencesAfterTheme() {
+    await this.backFromTheme()
+    await this.openPrivacySettings()
+    const contacts = this.privacyOption('My Contacts')
+    if (!await this.isSettingsOptionSelected(contacts)) {
+      throw new Error('TC2979 requires the retail fixture to have My Contacts saved')
+    }
+
+    const off = this.privacyOption('Switch Off')
+    try {
+      await this.tap(off, 10000)
+      await browser.waitUntil(() => this.isSettingsOptionSelected(off), {
+        timeout: 10000,
+        timeoutMsg: 'TC2980: Switch Off should be selected immediately',
+      })
+      await this.backFromTheme()
+      await this.openPrivacySettings()
+      if (!await this.isSettingsOptionSelected(off)) {
+        throw new Error('TC2980: Switch Off should remain selected when Privacy Settings is reopened')
+      }
+    } finally {
+      if (!await contacts.isDisplayed()) await this.openPrivacySettings()
+      await this.tap(contacts, 10000)
+      await browser.waitUntil(() => this.isSettingsOptionSelected(contacts), {
+        timeout: 10000,
+        timeoutMsg: 'Expected the original My Contacts selection after restoring privacy settings',
+      })
+      await this.backFromTheme()
+      await this.openPrivacySettings()
+      if (!await this.isSettingsOptionSelected(contacts)) throw new Error('Privacy fixture was not restored after reopening Settings')
+    }
+  }
+
+  async navigateToChangePasscodeViaSettings() {
+    await this.openSettings()
+    await this.openChangePasscodeFromSettings()
+  }
+
+  private async openChangePasscodeFromSettings() {
     const changePasscode = browser.isIOS ? this.changePasscodeItemIOS : this.changePasscodeItemAndroid
     await this.tap(changePasscode, 15000)
     await browser.pause(500)
+  }
+
+  async cancelChangePasscode() {
+    await this.waitForPasscodeScreen()
+    if (browser.isIOS) {
+      const back = $('//XCUIElementTypeNavigationBar//XCUIElementTypeButton[@name="BackButton" or @label="Settings"]')
+      await this.tap(back, 10000)
+    } else {
+      await browser.back()
+    }
+    const item = browser.isIOS ? this.changePasscodeItemIOS : this.changePasscodeItemAndroid
+    await item.waitForDisplayed({ timeout: 15000 })
+  }
+
+  async verifyTooEasyNewPasscodeRejected(currentPin: string) {
+    await this.openChangePasscodeFromSettings()
+    await this.waitForPasscodeScreen()
+    await this.enterPin(currentPin)
+    const newPasscode = browser.isIOS
+      ? $('-ios predicate string:label IN {"New Passcode", "Enter New Passcode", "Enter your new passcode"} OR name == "New Passcode"')
+      : $('//*[@text="New Passcode" or @text="Enter New Passcode" or @text="Enter your new passcode" or @content-desc="New Passcode"]')
+    await newPasscode.waitForDisplayed({ timeout: 15000 })
+    await this.enterPin('0000')
+    await dismissTooEasyPasscodeWarning()
+    await newPasscode.waitForDisplayed({ timeout: 10000 })
+  }
+
+  async resendOtpAndVerifyCooldown() {
+    await this.waitForOtpCountdownShown(10000)
+    await this.waitForResendEnabled()
+    const resend = browser.isIOS ? this.otpResendBtnIOS : await this.firstExisting(this.otpResendBtnAndroidCandidates)
+    if (!resend) throw new Error('Resend OTP button was not found after cooldown')
+    await this.tap(resend, 10000)
+    await this.waitForOtpCountdownShown(10000)
   }
 
   async enterCurrentAndNewPasscode(currentPin: string, newPin: string) {
@@ -441,6 +677,30 @@ export default class AuthenticationPage extends BasePage {
     const el = browser.isIOS ? this.forgotPasscodeIOS : this.forgotPasscodeAndroid
     await el.waitForExist({ timeout: 10000, timeoutMsg: '"Forgot passcode" link not found on passcode screen' })
     await this.tap(el)
+  }
+
+  async verifyForgotPasscodeOpensSecurityQuestions(phone: string) {
+    await this.restartToLoginScreen()
+    await this.navigateToPasscodeScreen(phone)
+    await this.tapForgotPasscode()
+
+    const resetTitle = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeNavigationBar" AND label IN {"Reset Passcode", "Forgot Passcode"}')
+      : $('//*[@text="Reset Passcode" or @text="Forgot Passcode" or contains(@resource-id,"resetPasscodeMobileNumber_screen")]')
+    await resetTitle.waitForDisplayed({ timeout: 15000 })
+    const resetMobile = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeTextField" AND (name CONTAINS[c] "mobile" OR label CONTAINS[c] "mobile")')
+      : $('(//android.widget.EditText[contains(@resource-id,"mobile") or contains(@resource-id,"phone")] | //*[contains(@resource-id,"mobileNumber")]//android.widget.EditText)[1]')
+    await resetMobile.waitForDisplayed({ timeout: 10000 })
+    await resetMobile.setValue(phone)
+    const next = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeButton" AND label IN {"Continue", "Next"}')
+      : $('//*[@text="Continue" or @text="Next" or @content-desc="Continue"]')
+    await this.tap(next, 10000)
+    const question = browser.isIOS
+      ? $('-ios predicate string:name CONTAINS[c] "securityQuestion" AND (type == "XCUIElementTypeTextField" OR type == "XCUIElementTypeStaticText")')
+      : $('//*[contains(@resource-id,"securityQuestion") and (self::android.widget.EditText or self::android.widget.TextView)]')
+    await question.waitForDisplayed({ timeout: 20000, timeoutMsg: 'TC3158: expected the registered account security question' })
   }
 }
 

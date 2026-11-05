@@ -58,6 +58,10 @@ Optional execution switches:
 - `IOS_DEVICE_NAME` to label the real iOS device capability, for example `iPhone`
 - `IOS_APP` to override the local iOS app path
 - `ANDROID_UDID` to run local Android tests on a real device instead of the configured emulator
+- `ANDROID_USE_INSTALLED_APP=true` to use the QA app installed from App Tester on
+  that device, without reinstalling the local APK or clearing app data. Requires
+  `ANDROID_UDID`. Optional `ANDROID_APP_PACKAGE` / `ANDROID_APP_ACTIVITY` select
+  the installed application; their defaults are Moneybase QA.
 - `BROWSERSTACK=true` to use BrowserStack capabilities instead of local simulators/emulators
 
 BrowserStack-specific variables:
@@ -83,6 +87,41 @@ Run every spec on every enabled capability:
 ```bash
 npm run wdio
 ```
+
+Run the complete regression on BrowserStack, one spec/session at a time. Run
+Android first, then iOS, because both platforms use the same test accounts.
+Separate results directories keep old runs out of the new report:
+
+```bash
+MB_RUN_ID=$(date +%Y%m%d-%H%M%S)
+BROWSERSTACK=true PLATFORM=android WDIO_MAX_INSTANCES=1 MB_AUTH_SLOT= \
+  ALLURE_RESULTS_DIR="allure-results/regression-$MB_RUN_ID/android" \
+  ALLURE_REPORT_DIR="allure-report/regression-$MB_RUN_ID/android" \
+  npm run wdio -- --suite regression
+
+BROWSERSTACK=true PLATFORM=ios WDIO_MAX_INSTANCES=1 MB_AUTH_SLOT= \
+  ALLURE_RESULTS_DIR="allure-results/regression-$MB_RUN_ID/ios" \
+  ALLURE_REPORT_DIR="allure-report/regression-$MB_RUN_ID/ios" \
+  npm run wdio -- --suite regression
+```
+
+`regression` selects all current spec files. Each spec still runs independently
+with its existing Page Objects and primary/secondary account assignment.
+Existing platform/WIP skips remain visible in Allure. Expected negative
+scenarios pass when the application rejects invalid input. A failure remains a
+failure and the existing spec-file retry policy applies.
+
+Open a platform's report with:
+
+```bash
+npx allure open "allure-report/regression-$MB_RUN_ID/android"
+npx allure open "allure-report/regression-$MB_RUN_ID/ios"
+```
+
+For a focused fix, keep the same environment variables and replace
+`--suite regression` with `--spec src/tests/autoTopUp.amountBelowRange.spec.ts`.
+See [the 12-week delivery plan](docs/regression-12-week-plan.md) for priorities,
+source-matrix counts and criteria for verified coverage.
 
 Run a single spec:
 

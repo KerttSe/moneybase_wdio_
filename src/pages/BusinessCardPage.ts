@@ -1070,6 +1070,71 @@ class BusinessCardPage extends BasePage {
     await this.continueBtnAndroid.waitForExist({ timeout: 10000 })
   }
 
+  private selectedCardTypeAndroid(type: 'Physical Card' | 'Virtual Card') {
+    return this.cardTypeRowAndroid.$(
+      `(./self::*[@content-desc="${type}"] | .//*[@text="${type}" or @content-desc="${type}"])[1]`,
+    )
+  }
+
+  public async verifyChangingCardTypeClearsAssignee() {
+    await this.openCardTypeSelection()
+    await this.selectPhysicalCardType()
+    await this.selectAvailableAssignee()
+    if (browser.isIOS) {
+      await this.verifyChangingCardTypeClearsAssigneeIOS()
+      return
+    }
+
+    const selected = this.cardAssigneeSelectedAndroid
+    await selected.waitForDisplayed({ timeout: 10000 })
+
+    await this.tap(this.cardTypeRowAndroid)
+    await this.changeCardTypeTitleAndroid.waitForDisplayed({ timeout: 10000 })
+    await this.tap(this.changeCardTypeConfirmBtnAndroid)
+    await this.cardTypeSelectionTitleAndroid.waitForDisplayed({ timeout: 10000 })
+    const virtualOption = $('(//*[@content-desc="Virtual Card"] | //android.view.View[@clickable="true"][.//android.widget.TextView[@text="Virtual Card"]])[1]')
+    await this.tap(virtualOption)
+    await this.selectedCardTypeAndroid('Virtual Card').waitForDisplayed({ timeout: 10000 })
+    await this.cardAssigneeRowAndroid.waitForDisplayed({ timeout: 10000 })
+    await selected.waitForDisplayed({ reverse: true, timeout: 10000 })
+  }
+
+  private async verifyChangingCardTypeClearsAssigneeIOS() {
+    const selected = this.cardAssigneeLasVegasSelectedIOS
+    await selected.waitForExist({ timeout: 10000 })
+    await this.tap(this.cardTypeRowIOS)
+    await this.changeCardTypeTitleIOS.waitForExist({ timeout: 10000 })
+    await this.tap(this.changeCardTypeConfirmBtnIOS)
+    const virtual = $('//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="Virtual Card" or @name="Virtual Card"]]')
+    await this.tap(virtual, 10000)
+    const selectedType = $('//XCUIElementTypeStaticText[@name="Virtual Card" or @label="Virtual Card"]')
+    await browser.waitUntil(async () => {
+      return await this.isIOSAssignBusinessCardFormVisible()
+        && !await this.isIOSCardTypeSelectionVisible()
+        && await selectedType.isDisplayed()
+    }, { timeout: 10000, timeoutMsg: 'Expected Virtual Card on the assignment form' })
+    await selected.waitForExist({ reverse: true, timeout: 10000 })
+  }
+
+  public async verifyDismissingCardTypePreservesSelection() {
+    await this.openCardTypeSelection()
+    await this.selectPhysicalCardType()
+    if (browser.isIOS) {
+      await this.openCardTypeSelection()
+      await this.closeIOSCardTypeSelection()
+      await browser.waitUntil(async () => {
+        return !await this.isIOSCardTypeSelectionVisible() && await this.isIOSPhysicalCardTypeSelected()
+      }, { timeout: 10000, timeoutMsg: 'Expected Physical Card to remain selected' })
+      return
+    }
+
+    await this.selectedCardTypeAndroid('Physical Card').waitForDisplayed({ timeout: 10000 })
+    await this.openCardTypeSelection()
+    await browser.back()
+    await this.cardTypeSelectionTitleAndroid.waitForDisplayed({ reverse: true, timeout: 10000 })
+    await this.selectedCardTypeAndroid('Physical Card').waitForDisplayed({ timeout: 10000 })
+  }
+
   public async selectAvailableAssignee() {
     if (browser.isAndroid) {
       await this.cardAssigneeRowAndroid.waitForExist({

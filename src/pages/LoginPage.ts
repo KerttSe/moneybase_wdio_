@@ -11,8 +11,19 @@ type LoginFlowOptions = {
   otpPhone?: string
 }
 
+export class LoginOtpRejectedError extends Error {
+  constructor(message: string) {
+    super(`Login OTP was rejected by app: ${message}`)
+    this.name = 'LoginOtpRejectedError'
+  }
+}
 
-
+class LoginDeviceSecurityError extends Error {
+  constructor() {
+    super('BrowserStack device is blocked by the app Device Security screen')
+    this.name = 'LoginDeviceSecurityError'
+  }
+}
 
 export class LoginPage extends BasePage {
   private readonly iosBundleId = 'com.moneybase.quality'
@@ -210,6 +221,21 @@ export class LoginPage extends BasePage {
     return /DashboardActivity/i.test(activity)
   }
 
+  private async waitForLoginEntry(
+    condition: () => Promise<boolean>,
+    options: { timeout: number; interval: number; timeoutMsg: string },
+  ) {
+    const securityNotice = browser.isIOS
+      ? $('//XCUIElementTypeStaticText[@label="Device Security"]')
+      : $('//*[@text="Device Security" or @content-desc="Device Security"]')
+    let blocked = false
+    await browser.waitUntil(async () => {
+      blocked = await securityNotice.isDisplayed().catch(() => false)
+      return blocked || await condition()
+    }, options)
+    if (blocked) throw new LoginDeviceSecurityError()
+  }
+
   async prepare() {
     if (browser.isIOS) {
       await this.dismissIOSAlerts()
@@ -224,7 +250,7 @@ export class LoginPage extends BasePage {
       await this.dismissIOSAlerts()
       await this.dismissIOSPermissionAlertsIfPresent().catch(() => {})
       let snapshotTaken = false
-      await browser.waitUntil(async () => {
+      await this.waitForLoginEntry(async () => {
         await this.dismissIOSAlerts()
         await this.dismissIOSPermissionAlertsIfPresent().catch(() => {})
         // dismiss leftover CNContactPickerViewController sheet from a previous BS session
@@ -258,14 +284,10 @@ export class LoginPage extends BasePage {
     // Android: wait for Register or Home, dismissing potential permission dialogs/alerts
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    await browser.waitUntil(async () => {
+    await this.waitForLoginEntry(async () => {
       const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
       const homeShown = await this.homeRoot.isDisplayed().catch(() => false)
       const mainShellShown = await this.isAndroidMainShellShown()
-      const deviceSecurityShown = await $('//*[@text="Device Security"]').isDisplayed().catch(() => false)
-      if (deviceSecurityShown) {
-        throw new Error('BrowserStack device is blocked by Device Security screen (VPN or security policy)')
-      }
 
       if (registerShown || homeShown || mainShellShown) return true
 
@@ -472,7 +494,7 @@ private androidKeypadDigit(d: string) {
   private async waitForAndroidLoginNextStepAfterMobile(timeout = 45000) {
     if (!browser.isAndroid) return
 
-    await browser.waitUntil(async () => {
+    await this.waitForLoginOutcome(async () => {
       await browser.switchContext('NATIVE_APP').catch(() => {})
       const androidOtpError = await this.getAndroidOtpErrorText()
       if (androidOtpError) return true
@@ -611,7 +633,48 @@ private async throwAndroidOtpErrorIfPresent(prefix = 'Login OTP was rejected by 
   const errorText = await this.getAndroidOtpErrorText()
   if (!errorText) return
 
+  if (prefix === 'Login OTP was rejected by app') throw new LoginOtpRejectedError(errorText)
   throw new Error(`${prefix}: ${errorText}`)
+}
+
+private get otpRejectionAlertIOS() {
+  return $('//XCUIElementTypeAlert//XCUIElementTypeStaticText[contains(@name,"Please try again") or contains(@label,"Please try again")]')
+}
+
+private async getLoginOtpErrorText() {
+  if (browser.isAndroid) return this.getAndroidOtpErrorText()
+  if (browser.isIOS) {
+    for (const candidate of [this.otpIncorrectCodeIOS, this.otpRejectionAlertIOS]) {
+      if (!await candidate.isDisplayed().catch(() => false)) continue
+      const text = String(await candidate.getText()).trim()
+      if (text) return text
+    }
+  }
+  return ''
+}
+
+private async throwLoginOtpErrorIfPresent() {
+  const message = await this.getLoginOtpErrorText()
+  if (message) throw new LoginOtpRejectedError(message)
+}
+
+private async waitForLoginOutcome(
+  condition: () => Promise<boolean>,
+  options: { timeout: number; interval?: number; timeoutMsg?: string },
+) {
+  let rejection: LoginOtpRejectedError | undefined
+  await browser.waitUntil(async () => {
+    const message = await this.getLoginOtpErrorText()
+    if (message) {
+      rejection = new LoginOtpRejectedError(message)
+      // WDIO retries exceptions thrown inside waitUntil until its timeout.
+      // Resolve polling first, then throw outside it to fail immediately.
+      return true
+    }
+    return condition()
+  }, options)
+  if (rejection) throw rejection
+  await this.throwLoginOtpErrorIfPresent()
 }
 
 /* ===== Shared ===== */
@@ -623,12 +686,15 @@ private normalizeOtp(code: string): string {
 
 async waitForOtpScreen() {
   if (browser.isIOS) {
-    await this.otpContainerIOS.waitForExist({ timeout: 40000 });
+    await this.waitForLoginOutcome(
+      async () => this.otpContainerIOS.isExisting().catch(() => false),
+      { timeout: 40000, interval: 500, timeoutMsg: 'OTP screen did not appear on iOS' },
+    )
     return;
   }
 
   if (browser.isAndroid) {
-    await browser.waitUntil(async () => {
+    await this.waitForLoginOutcome(async () => {
       const androidOtpError = await this.getAndroidOtpErrorText()
       if (androidOtpError) return true
 
@@ -663,20 +729,27 @@ async enterOtp(code: string = '123456') {
 
   if (browser.isIOS) {
     const field = this.otpFirstSlotIOS;
-    await field.waitForExist({ timeout: 40000 });
+    await this.waitForLoginOutcome(
+      async () => field.isExisting().catch(() => false),
+      { timeout: 40000, interval: 500, timeoutMsg: 'OTP input did not appear on iOS' },
+    )
     await field.click();
     await field.clearValue().catch(() => {});
     await field.addValue(otp);
 
-    const filled = await browser
-      .waitUntil(
+    const filled = await this
+      .waitForLoginOutcome(
         async () => {
           const value = await this.otpLastSlotIOS.getAttribute('value').catch(() => '')
           return /\d/.test(String(value || ''))
         },
         { timeout: 3000, interval: 200 }
       )
-      .catch(() => false)
+      .then(() => true)
+      .catch(error => {
+        if (error instanceof LoginOtpRejectedError) throw error
+        return false
+      })
 
     if (!filled) {
       await field.click();
@@ -685,12 +758,19 @@ async enterOtp(code: string = '123456') {
         await field.addValue(digit);
       }
     }
+    await this.throwLoginOtpErrorIfPresent()
     return;
   }
 
   if (browser.isAndroid) {
     const field = this.otpFieldAndroid; 
-    const hasField = await field.waitForExist({ timeout: 8000 }).catch(() => false)
+    const hasField = await this.waitForLoginOutcome(
+      async () => field.isExisting().catch(() => false),
+      { timeout: 8000, interval: 500, timeoutMsg: 'OTP input did not appear on Android' },
+    ).then(() => true).catch(error => {
+      if (error instanceof LoginOtpRejectedError) throw error
+      return false
+    })
     await this.throwAndroidOtpErrorIfPresent()
     if (!hasField) return
     await field.click();
@@ -698,6 +778,7 @@ async enterOtp(code: string = '123456') {
     await field.addValue(otp).catch(async () => {
       await field.setValue(otp)
     })
+    await this.throwLoginOtpErrorIfPresent()
     return;
   }
 
@@ -774,11 +855,30 @@ async enterOtp(code: string = '123456') {
 		    return true
 		  }
 
+  private get verificationContinueIOS() {
+    return $('//XCUIElementTypeOther[@name="modal_button_primary"][.//XCUIElementTypeStaticText[@label="Continue"]]')
+  }
+
+  private async isVerificationModalPresentIOS() {
+    return browser.isIOS
+      && await $('~Mobile successfully verified.').isExisting()
+      && await this.verificationContinueIOS.isExisting()
+  }
+
 	  private async tapPostOtpContinueIfVisibleIOS() {
 	    if (!browser.isIOS) return false
 
 	    await this.dismissIOSAlerts()
 	    await this.dismissIOSPermissionAlertsIfPresent().catch(() => false)
+
+    if (await this.isVerificationModalPresentIOS()) {
+      const button = this.verificationContinueIOS
+      const loc = await button.getLocation()
+      const size = await button.getSize()
+      await this.tapIOSCoordinates(loc.x + size.width / 2, loc.y + size.height / 2)
+      await browser.pause(800)
+      return true
+    }
 
 	    const primaryContinueShown = await this.postOtpContinueBtn.isDisplayed().catch(() => false)
 	    const fallbackContinueShown = await this.postOtpContinueBtnIOSFallback.isDisplayed().catch(() => false)
@@ -948,44 +1048,34 @@ get payRootAndroid() {
 
 /** 1) tap Continue */
   async tapContinueAfterOtp() {
-    await browser.pause(1200)
-
-    await browser.waitUntil(async () => {
-      try {
-        if (browser.isAndroid && await this.isHomeLoaded()) return true
-
-        await this.dismissPostOtpPopupAndroidOnce()
-        if (browser.isIOS) {
-          await this.dismissIOSAlerts()
-          await this.dismissIOSPermissionAlertsIfPresent().catch(() => false)
-        }
-        const incorrectOtp = browser.isIOS && await this.otpIncorrectCodeIOS.isExisting().catch(() => false)
-        const androidOtpError = await this.getAndroidOtpErrorText()
-	        const continueVisible =
-	          (await this.postOtpContinueBtn.isDisplayed().catch(() => false)) ||
-	          (browser.isAndroid && await this.postOtpContinueBtnAndroidFallback.isDisplayed().catch(() => false)) ||
-	          (browser.isIOS && await this.postOtpContinueBtnIOSFallback.isDisplayed().catch(() => false))
-	        const successVisible = await this.verificationSuccessScreen.isDisplayed().catch(() => false)
-	        const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
-		        const home = await this.isHomeLoaded()
-	        const mainShellShown = await this.isAndroidMainShellShown()
-	        const passcodeShown = await this.isIOSPasscodeScreenShown()
-	        return Boolean(androidOtpError) || incorrectOtp || continueVisible || successVisible || applePay || home || mainShellShown || passcodeShown
-      } catch (error) {
-        const androidOtpError = await this.getAndroidOtpErrorText()
-        if (androidOtpError) return true
-        throw error
+    await this.waitForLoginOutcome(async () => {
+      if (browser.isAndroid && await this.isHomeLoaded()) return true
+      await this.dismissPostOtpPopupAndroidOnce()
+      if (browser.isIOS) {
+        await this.dismissIOSAlerts()
+        await this.dismissIOSPermissionAlertsIfPresent().catch(() => false)
+        if (await this.isVerificationModalPresentIOS()) return true
       }
-  }, {
-    timeout: 60000,
-    interval: 500,
-    timeoutMsg: 'After OTP: Continue/Home/ApplePay/passcode did not appear',
-  })
+      const continueVisible =
+        (await this.postOtpContinueBtn.isDisplayed().catch(() => false)) ||
+        (browser.isAndroid && await this.postOtpContinueBtnAndroidFallback.isDisplayed().catch(() => false)) ||
+        (browser.isIOS && await this.postOtpContinueBtnIOSFallback.isDisplayed().catch(() => false))
+      const successVisible = await this.verificationSuccessScreen.isDisplayed().catch(() => false)
+      const applePay = await this.applePayProposalCloseBtn.isDisplayed().catch(() => false)
+      const home = await this.isHomeLoaded()
+      const mainShellShown = await this.isAndroidMainShellShown()
+      const passcodeShown = await this.isIOSPasscodeScreenShown()
+      return continueVisible || successVisible || applePay || home || mainShellShown || passcodeShown
+    }, {
+      timeout: 60000,
+      interval: 500,
+      timeoutMsg: 'After OTP: Continue/Home/ApplePay/passcode did not appear',
+    })
 
   await this.throwAndroidOtpErrorIfPresent()
 
   if (browser.isIOS && await this.otpIncorrectCodeIOS.isExisting().catch(() => false)) {
-    throw new Error('Login OTP was rejected by app: Entered code is incorrect')
+    throw new LoginOtpRejectedError('Entered code is incorrect')
   }
 
 	  if (browser.isAndroid && await this.tapPostOtpContinueIfVisibleAndroid()) return
@@ -1005,7 +1095,7 @@ get payRootAndroid() {
 
 /** 2) we awaiting for  Home, if card exist ApplePay in-app) */
 async waitForPostOtpNextStep(timeout = 30000) {
-  await browser.waitUntil(async () => {
+  await this.waitForLoginOutcome(async () => {
     if (browser.isAndroid && await this.isHomeLoaded()) return true
 
     await this.dismissPostOtpPopupAndroidOnce()
@@ -1044,7 +1134,7 @@ async waitForHome(timeout = 30000) {
   if (browser.isAndroid) {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
-    await browser.waitUntil(
+    await this.waitForLoginOutcome(
       async () => {
         if (await this.isHomeLoaded()) return true
 
@@ -1088,7 +1178,7 @@ async waitForHome(timeout = 30000) {
     return
   }
 
-  await browser.waitUntil(async () => {
+  await this.waitForLoginOutcome(async () => {
     await this.dismissIOSAlerts()
     await this.dismissIOSPermissionAlertsIfPresent().catch(() => false)
 
@@ -1177,10 +1267,10 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
   console.log('[LoginPage.loginFlowOnce] Starting with options:', JSON.stringify(options))
   
   const alreadyHome = await this.isHomeLoaded()
-  if (alreadyHome) return
+  if (alreadyHome) return false
 
   await this.prepare()
-  if (await this.isHomeLoaded()) return
+  if (await this.isHomeLoaded()) return false
 
   if (browser.isIOS && await this.otpContainerIOS.isExisting().catch(() => false)) {
     await this.enterOtp(await this.getLoginOtp(auth, options))
@@ -1191,14 +1281,14 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
     await this.waitForPostOtpNextStep(30000)
     await this.closeApplePayIfVisible()
     await this.waitForHome(30000)
-    return
+    return true
   }
 
   if (browser.isIOS && await this.isIOSPasscodeScreenShown()) {
     await this.enterPin(auth.pin)
     await this.closeApplePayIfVisible()
 
-    await browser.waitUntil(async () => {
+    await this.waitForLoginOutcome(async () => {
       const homeShown = await this.homeRoot.isExisting().catch(() => false)
       const otpShown = await this.otpContainerIOS.isExisting().catch(() => false)
       return homeShown || otpShown
@@ -1208,7 +1298,7 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
       timeoutMsg: 'After iOS passcode: neither Home nor OTP appeared',
     })
 
-    if (await this.isHomeLoaded()) return
+    if (await this.isHomeLoaded()) return false
 
     await this.enterOtp(await this.getLoginOtp(auth, options))
     await this.tapContinueAfterOtp()
@@ -1218,7 +1308,7 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
     await this.waitForPostOtpNextStep(30000)
     await this.closeApplePayIfVisible()
     await this.waitForHome(30000)
-    return
+    return true
   }
 
   await this.selectCountry(auth.country)
@@ -1236,7 +1326,7 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
 	      await this.enterAndroidPinWithRetryIfStillOnPasscode(auth.pin)
 	      androidPinEntered = true
 
-	      await browser.waitUntil(async () => {
+	      await this.waitForLoginOutcome(async () => {
 	        const androidOtpError = await this.getAndroidOtpErrorText()
 	        if (androidOtpError) return true
 	        const mainShellShown = await this.isAndroidMainShellShown()
@@ -1280,19 +1370,18 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
 
   await this.waitForHome(30000)
 
-  // waitForHome already confirms DashboardActivity on Android. Re-running the
-  // generic stabilizer here scans every optional popup and delays every spec.
+  return true
 }
 
 async loginFlow(auth: AuthData, options: LoginFlowOptions = {}) {
   try {
-    await this.loginFlowOnce(auth, options)
+    return await this.loginFlowOnce(auth, options)
   } catch (error) {
-    if (!browser.isIOS) throw error
+    if (error instanceof LoginOtpRejectedError || error instanceof LoginDeviceSecurityError || !browser.isIOS) throw error
 
     console.warn('[LoginPage] iOS login failed, trying one recovery retry:', error)
     await this.relaunchIOSApp()
-    await this.loginFlowOnce(auth, options)
+    return this.loginFlowOnce(auth, options)
   }
 }
 

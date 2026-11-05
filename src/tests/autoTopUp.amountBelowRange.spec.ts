@@ -9,16 +9,18 @@ describe('PAY-077 [TC3348] Auto Top-Up amount below minimum', function () {
   let range: ReturnType<typeof autoTopUpRangeFixture>
 
   before(async function () {
-    range = autoTopUpRangeFixture()
     await loginPage.loginFlow(AUTH)
     await page.openFromHome()
     await page.goToAutoTopUpList()
     await page.tapAddNew()
+    if (!AUTH.cardLastFour) throw new Error('CONFIGURATION_ERROR: selected account cardLastFour is required')
+    await page.selectCard(AUTH.cardLastFour)
     await page.selectCurrency('Euro')
     await page.openValidationAmountEditor()
+    range = autoTopUpRangeFixture(100n)
   })
 
-  it('PAY-077 [TC3348] Minimum is accepted, one cent below is blocked, correction re-enables Done', async function () {
+  it('PAY-077 [TC3348] Minimum is accepted, one whole unit below is blocked, correction re-enables Done', async function () {
     await page.enterValidationCustomAmount(range.min)
     await page.verifyValidationAmountDoneEnabled(true)
     await page.enterValidationCustomAmount(range.below)

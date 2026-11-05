@@ -161,6 +161,18 @@ class AddFundsBankTransferWalletManagerPage extends BasePage {
     }
   }
 
+  async verifyBusinessFundingMethods() {
+    await this.tapFirstAvailable([this.addFundsPage.openBtn], 'Add Funds on business Home')
+    const bankTransfer = browser.isIOS ? this.bankTransferTileIOS : this.bankTransferTileAndroidByText
+    await bankTransfer.waitForDisplayed({ timeout: 15000 })
+    const retailOption = browser.isIOS
+      ? $('-ios predicate string:name IN {"addFunds_item_card", "addFunds_item_autoTopup", "addFunds_item_salary"} OR label IN {"Card", "Auto Top-Up", "Salary/Stipend/Pension"}')
+      : $('//*[contains(@resource-id,"addFunds_card_cardTopUp") or contains(@resource-id,"addFunds_card_autoTopUp") or contains(@resource-id,"addFunds_card_salary") or @text="Card Top-Up" or @text="Auto Top-Up" or @text="Salary/Stipend/Pension"]')
+    if (await retailOption.isExisting()) {
+      throw new Error('Business Add Funds contains a card, recurring top-up or salary option')
+    }
+  }
+
   async selectBankTransferOption() {
     if (browser.isIOS) {
       await this.tapFirstAvailable([this.bankTransferTileIOS], 'Bank Transfer option')
@@ -191,6 +203,30 @@ class AddFundsBankTransferWalletManagerPage extends BasePage {
       20000
     )
     await this.walletManagerScreenAnchorAndroid.waitForDisplayed({ timeout: 20000 })
+  }
+
+  async openWalletDetailsFromManager(currency: 'EUR' | 'USD' | 'GBP') {
+    await this.openHomeScreen()
+    await this.openAddFunds()
+    await this.selectBankTransferOption()
+    await this.openWalletManager()
+    const row = browser.isIOS
+      ? this.walletCurrencyAnchorIOS(currency)
+      : $(`(//*[@text="${currency}" or @content-desc="${currency}"]/ancestor::*[@clickable="true"][1])[1]`)
+    await row.waitForDisplayed({ timeout: 15000 })
+    await this.tap(row)
+    await HomeScreenPage.waitForWalletDetails(currency)
+  }
+
+  async verifyIbanBankNameVisibility(visible: boolean) {
+    const iban = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label BEGINSWITH[c] "IBAN"')
+      : $('//*[starts-with(@text,"IBAN") or starts-with(@content-desc,"IBAN")]')
+    await iban.waitForDisplayed({ timeout: 15000 })
+    const bankName = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label BEGINSWITH[c] "Bank Name"')
+      : $('//*[starts-with(@text,"Bank Name") or starts-with(@text,"Bank name") or starts-with(@content-desc,"Bank Name")]')
+    await bankName.waitForDisplayed({ reverse: !visible, timeout: 10000 })
   }
 
   async verifyWalletManagerLoaded() {

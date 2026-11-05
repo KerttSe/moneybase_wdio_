@@ -1,6 +1,7 @@
 import { stopAfterFailedStep } from '../helpers/sequentialSmoke.helper'
-import { browser } from '@wdio/globals'
+import { browser, expect } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
+import HomeScreenPage from '../pages/HomeScreenPage'
 import { AUTH } from '../data/credentials'
 
 describe('Matrix - Smoke', function () {
@@ -10,8 +11,10 @@ describe('Matrix - Smoke', function () {
 
   const smokeStep = stopAfterFailedStep()
 
-  it('LAUNCH-1.1 Login flow and Home Screen verification', smokeStep(async function () {
+  it('LAUNCH-1.1 [TC3132/TC3140] Successful OTP verification opens Home', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
-    await loginPage.loginFlow(AUTH)
+    const otpVerified = await loginPage.loginFlow(AUTH)
+    expect(otpVerified).toBe(true)
+    await HomeScreenPage.waitForHomeLoaded()
   }))
 })

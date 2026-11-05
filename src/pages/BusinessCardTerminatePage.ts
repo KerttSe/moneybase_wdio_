@@ -253,6 +253,41 @@ class BusinessCardTerminatePage extends BasePage {
     return $('-ios predicate string:name == "Inactive" OR label == "Inactive"')
   }
 
+  public async verifyActiveFilterSelected() {
+    const active = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeButton" AND (name == "Active" OR label == "Active")')
+      : $('(//*[@content-desc="Active" and @clickable="true"] | //*[@text="Active"]/ancestor::*[@clickable="true"][1])[1]')
+    const inactive = browser.isIOS ? this.inactiveTabIOS : this.inactiveTabAndroid
+    await active.waitForDisplayed({ timeout: 15000 })
+    await inactive.waitForDisplayed({ timeout: 10000 })
+    await browser.waitUntil(async () => (await active.isSelected()) && !(await inactive.isSelected()), {
+      timeout: 10000,
+      interval: 400,
+      timeoutMsg: 'Manage Cards should open with Active selected and Inactive unselected',
+    })
+  }
+
+  public async verifyManageCardsSearchRequiresEveryWord() {
+    const words = BH_SELF_NAME.toLowerCase().trim().split(/\s+/)
+    if (words.length < 2) throw new Error('Manage Cards requires a seeded cardholder with at least two name tokens')
+
+    const card = browser.isIOS ? this.ownVirtualCardIOS : this.ownVirtualCardAndroid
+    await card.waitForDisplayed({ timeout: 15000 })
+    const search = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeSearchField" OR name == "administration_input_search"')
+      : $('(//android.widget.EditText[contains(@resource-id,"search") or @text="Search"] | //*[contains(@resource-id,"administration_input_search")]//android.widget.EditText)[1]')
+    await search.waitForDisplayed({ timeout: 10000 })
+    await search.setValue(words.slice(0, 2).join(' '))
+    await card.waitForDisplayed({ timeout: 10000 })
+    await search.setValue(`${words[1]} zz-unmatched-token`)
+    await card.waitForDisplayed({ reverse: true, timeout: 10000 })
+
+    const noResults = browser.isIOS
+      ? $('-ios predicate string:label IN {"No results", "No cards found", "No results found"}')
+      : $('//*[@text="No results" or @text="No cards found" or @text="No results found"]')
+    await noResults.waitForDisplayed({ timeout: 10000 })
+  }
+
   // ── Own ACTIVE virtual card in the list ──────────────────────────────────
   // "ACTIVE" badge filter ensures we don't accidentally open a frozen virtual card
 

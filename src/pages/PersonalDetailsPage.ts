@@ -183,6 +183,62 @@ class PersonalDetailsPage extends BasePage {
     await browser.hideKeyboard().catch(() => undefined)
   }
 
+  async verifyNameEditRequiresConfirmation() {
+    const field = browser.isIOS ? this.firstNameInputIOS : this.firstNameInputAndroid
+    const alert = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeAlert"')
+      : $('//*[@resource-id="android:id/parentPanel" or @class="android.app.Dialog"]')
+    const warning = browser.isIOS
+      ? alert.$('.//XCUIElementTypeStaticText[contains(@label,"Identity Document") or contains(@label,"identity document")]')
+      : alert.$('.//*[contains(@text,"Identity Document") or contains(@text,"identity document")]')
+    const cancel = browser.isIOS
+      ? alert.$('.//XCUIElementTypeButton[@label="Cancel"]')
+      : alert.$('.//*[@text="Cancel" or @text="CANCEL"]')
+    const confirm = browser.isIOS
+      ? alert.$('.//XCUIElementTypeButton[@label="Confirm" or @label="Continue"]')
+      : alert.$('.//*[@text="Confirm" or @text="CONFIRM" or @text="Continue" or @text="CONTINUE"]')
+    const readName = () => browser.isIOS ? field.getAttribute('value') : field.getText()
+    await field.waitForDisplayed({ timeout: 10000 })
+    const originalValue = await readName()
+
+    await field.click()
+    await warning.waitForDisplayed({ timeout: 10000 })
+    await cancel.click()
+    await alert.waitForDisplayed({ reverse: true, timeout: 10000 })
+    await browser.waitUntil(async () => !await browser.isKeyboardShown(), { timeout: 10000 })
+    if ((await readName()) !== originalValue) throw new Error('Cancel changed the first name')
+
+    await field.click()
+    await warning.waitForDisplayed({ timeout: 10000 })
+    await confirm.click()
+    await alert.waitForDisplayed({ reverse: true, timeout: 10000 })
+    await field.waitForEnabled({ timeout: 10000 })
+    await browser.waitUntil(() => browser.isKeyboardShown(), { timeout: 10000 })
+  }
+
+  async verifyMobileEditCanBeCancelled() {
+    const mobile = browser.isIOS
+      ? $('-ios predicate string:type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND (name CONTAINS[c] "editMobile" OR label BEGINSWITH[c] "Mobile Number" OR label BEGINSWITH[c] "Phone Number")')
+      : $('(//*[contains(@resource-id,"editMobile") or contains(@resource-id,"editPhone")] | //*[@text="Mobile number" or @text="Phone number"]/ancestor::*[@clickable="true"][1])[1]')
+    await mobile.waitForDisplayed({ timeout: 10000 })
+    const original = await mobile.getText()
+    await this.tap(mobile, 10000)
+
+    const alert = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeAlert"')
+      : $('//*[@resource-id="android:id/parentPanel" or @class="android.app.Dialog"]')
+    const attribute = browser.isIOS ? '@label' : '@text'
+    const lower = `translate(${attribute},"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz")`
+    const message = alert.$(`.//*[contains(${lower},"verif") and (contains(${lower},"mobile") or contains(${lower},"number"))]`)
+    await message.waitForDisplayed({ timeout: 10000 })
+    const cancel = alert.$(`.//*[translate(${attribute},"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz")="cancel"]`)
+    await this.tap(cancel, 10000)
+    await alert.waitForDisplayed({ reverse: true, timeout: 10000 })
+    await this.verifyPersonalDetailsScreenVisible()
+    await mobile.waitForDisplayed({ timeout: 10000 })
+    if (await mobile.getText() !== original) throw new Error('TC2977: cancelling should leave the mobile row unchanged')
+  }
+
   async editLastName(value: string, timeout = 10000) {
     const field = browser.isIOS ? this.lastNameInputIOS : this.lastNameInputAndroid
     await field.waitForDisplayed({ timeout })

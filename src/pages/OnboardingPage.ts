@@ -1,4 +1,4 @@
-import { $, browser, driver } from '@wdio/globals'
+import { $, $$, browser, driver } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
 import { readFileSync } from 'node:fs'
 import { basename, resolve } from 'node:path'
@@ -7,6 +7,7 @@ import OtpHelper from '../helpers/otp.helper'
 import { generateUniqueMalteseMobileNumber, saveOnboardedAccount } from '../helpers/phone.helper'
 import { loginPage } from './LoginPage'
 import { waitForControlEnabled } from '../helpers/controlState.helper'
+import { dismissTooEasyPasscodeWarning, passcodeWarning, passcodeWarningAction } from '../helpers/passcodeWarning.helper'
 
 type OnboardingData = {
   pin?: string
@@ -22,6 +23,8 @@ type OnboardingData = {
   previousEmployment?: string
   email?: string
 }
+
+type OnboardingAddress = Required<Pick<OnboardingData, 'addressLine1' | 'addressLine2' | 'city' | 'postCode' | 'country'>>
 
 const randomOnboardingName = () => {
   const firstNames = ['Carlos', 'Daniel', 'Mark', 'Luke', 'David', 'James', 'Michael', 'Thomas']
@@ -135,7 +138,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get onboardingNameNextBtn() {
-    if (browser.isIOS) return this.buttonByText('Next')
+    if (browser.isIOS) return $('-ios predicate string:type == "XCUIElementTypeButton" AND name == "personalDetails_button_next"')
     return this.byId('onboardingName_button_next')
   }
 
@@ -1287,6 +1290,44 @@ export default class OnboardingPage extends BasePage {
     await this.tap(this.mobileContinueBtn, 20000)
   }
 
+  private async enterApplicantPasscodeDigits(pin: string) {
+    await this.passcodeScreen.waitForExist({ timeout: 30000 })
+    for (const digit of pin) {
+      if (browser.isIOS) await this.tapIOSKeypadDigitByCoordinates(digit)
+      else await this.tap(this.keypadDigit(digit))
+    }
+  }
+
+  async verifyTooEasyPasscodesRejected() {
+    await this.prepareSmokeOnboarding()
+    for (const pin of ['1111', '1234']) {
+      await this.enterApplicantPasscodeDigits(pin)
+      await dismissTooEasyPasscodeWarning()
+      await this.passcodeScreen.waitForDisplayed({ timeout: 10000 })
+    }
+  }
+
+  async verifyEasyPasscodeWarning() {
+    const alert = passcodeWarning()
+    const change = passcodeWarningAction('change it')
+    const keep = passcodeWarningAction('keep it')
+    await this.enterApplicantPasscodeDigits('2580')
+    await change.waitForDisplayed({ timeout: 10000 })
+    await keep.waitForDisplayed({ timeout: 10000 })
+    await change.click()
+    await alert.waitForDisplayed({ reverse: true, timeout: 10000 })
+    await this.passcodeScreen.waitForDisplayed({ timeout: 10000 })
+
+    await this.enterApplicantPasscodeDigits('2580')
+    await keep.waitForDisplayed({ timeout: 10000 })
+    await keep.click()
+    await alert.waitForDisplayed({ reverse: true, timeout: 10000 })
+    const confirmation = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label CONTAINS[c] "Confirm passcode" OR label CONTAINS[c] "Re-enter" OR label CONTAINS[c] "Enter your passcode again")')
+      : $('//*[contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"confirm passcode") or contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"re-enter") or contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"enter your passcode again")]')
+    await confirmation.waitForDisplayed({ timeout: 10000 })
+  }
+
   private async enterPinTwice(pin: string) {
     await this.passcodeScreen.waitForExist({ timeout: 30000 })
 
@@ -1598,10 +1639,10 @@ export default class OnboardingPage extends BasePage {
     await this.tapNext()
   }
 
-  private async fillHomeAddress(data: Required<Pick<OnboardingData, 'addressLine1' | 'addressLine2' | 'city' | 'postCode' | 'country'>>) {
+  private async fillHomeAddress(data: OnboardingAddress) {
     if (await this.onboardingAddressScreen.waitForExist({ timeout: 3000 }).then(() => true).catch(() => false)) {
       await this.typeElement(this.onboardingAddress1Input, data.addressLine1)
-      await this.typeElement(this.onboardingAddress2Input, data.addressLine2)
+      if (data.addressLine2) await this.typeElement(this.onboardingAddress2Input, data.addressLine2)
 
       await this.tap(this.onboardingAddressCountryBtn)
       await this.selectSearchOption(this.addressCountrySearchInput, data.country)
@@ -1614,7 +1655,7 @@ export default class OnboardingPage extends BasePage {
 
     await this.waitForScreenTitle('Your home address')
     await this.typeField('Address Line 1', data.addressLine1)
-    await this.typeField('Address Line 2', data.addressLine2)
+    if (data.addressLine2) await this.typeField('Address Line 2', data.addressLine2)
 
     await this.tapPickerByLabel('Select Country', 0.5, 0.38)
     await this.searchAndSelectCountry(data.country)
@@ -1631,16 +1672,21 @@ export default class OnboardingPage extends BasePage {
     return this.text('Last few personal details').waitForExist({ timeout }).then(() => true).catch(() => false)
   }
 
+  private async selectEmploymentStatus(status: 'Employed' | 'Student' | 'Unemployed' | 'Pensioner' | 'Homemaker') {
+    await this.tap(this.onboardingEmploymentStatusBtn)
+    if (await this.employmentStatusSearchInput.isDisplayed().catch(() => false)) {
+      await this.typeIntoSearchInput(this.employmentStatusSearchInput, status)
+    }
+    await this.selectVisibleOption(status)
+    await this.waitForPickerClosed()
+  }
+
   private async fillLastPersonalDetails(data: Required<Pick<OnboardingData, 'company' | 'occupation' | 'previousEmployment'>>) {
     if (await this.onboardingDetailsScreen.waitForExist({ timeout: 3000 }).then(() => true).catch(() => false)) {
       await this.tap(this.onboardingTaxCountryBtn)
       await this.selectSearchOption(this.taxCountrySearchInput, 'Malta')
 
-      await this.tap(this.onboardingEmploymentStatusBtn)
-      const employmentSearchShown = await this.employmentStatusSearchInput.isDisplayed().catch(() => false)
-      if (employmentSearchShown) await this.typeIntoSearchInput(this.employmentStatusSearchInput, 'Employed')
-      await this.selectVisibleOption('Employed')
-      await this.waitForPickerClosed()
+      await this.selectEmploymentStatus('Employed')
 
       await this.typeElement(this.onboardingCompanyInput, data.company)
       await this.typeElement(this.onboardingOccupationInput, data.occupation)
@@ -1688,7 +1734,8 @@ export default class OnboardingPage extends BasePage {
     await this.tapNext()
   }
 
-  private async typeEmailAndAcceptTerms(email: string) {
+
+  private async enterOnboardingEmail(email: string) {
     await this.closePickerIfOpen()
     const newEmailScreenShown = await this.onboardingEmailScreen.waitForExist({ timeout: 30000 }).then(() => true).catch(() => false)
     if (!newEmailScreenShown) {
@@ -1706,7 +1753,11 @@ export default class OnboardingPage extends BasePage {
       await emailInput.setValue(email)
       await browser.hideKeyboard().catch(() => {})
     }
+    return emailInput
+  }
 
+  private async typeEmailAndAcceptTerms(email: string) {
+    await this.enterOnboardingEmail(email)
     const submittedFromTermsStep = await this.tapTermsCheckbox()
     if (!submittedFromTermsStep) {
       await this.tapContinue()
@@ -2764,7 +2815,7 @@ export default class OnboardingPage extends BasePage {
 
   private async fillDetailsAndAddress(
     detailsData: Required<Pick<OnboardingData, 'company' | 'occupation' | 'previousEmployment'>>,
-    addressData: Required<Pick<OnboardingData, 'addressLine1' | 'addressLine2' | 'city' | 'postCode' | 'country'>>
+    addressData: OnboardingAddress
   ) {
     const detailsFirst = await this.isLastPersonalDetailsScreenDisplayed(5000)
     if (detailsFirst) {
@@ -2800,10 +2851,14 @@ export default class OnboardingPage extends BasePage {
     return { data, generatedPhone, pin, generatedName }
   }
 
-  async prepareValidationPersonalDetails() {
+  async openApplicantNameForm() {
     const context = await this.prepareSmokeOnboarding()
     await this.verifySmokeOnboardingMobile(context)
     await this.onboardingNameScreen.waitForDisplayed({ timeout: 30000 })
+  }
+
+  async prepareValidationPersonalDetails() {
+    await this.openApplicantNameForm()
     await this.setValidationPersonalNames('John', 'Borg')
     await this.verifyValidationPersonalDetailsReady()
   }
@@ -2812,12 +2867,26 @@ export default class OnboardingPage extends BasePage {
     await this.onboardingNameScreen.waitForDisplayed({ timeout: 10000 })
     for (const [field, value] of [[this.onboardingFirstNameInput, firstName], [this.onboardingLastNameInput, lastName]] as const) {
       await field.waitForDisplayed({ timeout: 10000 })
-      await field.clearValue()
-      if (value) await field.setValue(value)
+      if (browser.isIOS) {
+        await this.typeIOSTextInput(field, value)
+      } else {
+        await field.clearValue()
+        if (value) await field.setValue(value)
+      }
       const actual = browser.isIOS ? await field.getAttribute('value') : await field.getText()
       if (value && actual !== value) throw new Error('TEST_PRECONDITION: onboarding name input did not retain its validation value')
+      if (!value && actual) {
+        const placeholder = browser.isIOS ? await field.getAttribute('placeholderValue') : await field.getAttribute('hint')
+        if (actual !== placeholder) {
+          throw new Error('TEST_PRECONDITION: onboarding name input did not clear')
+        }
+      }
     }
-    await browser.hideKeyboard().catch(() => {})
+    if (browser.isIOS) {
+      await this.dismissIOSKeyboardIfOpen()
+    } else {
+      await browser.hideKeyboard().catch(() => {})
+    }
   }
 
   async verifyValidationPersonalDetailsNext(enabled: boolean) {
@@ -2826,6 +2895,30 @@ export default class OnboardingPage extends BasePage {
       ? this.onboardingNameNextBtn
       : this.onboardingNameNextBtn.$('.//android.widget.Button')
     await waitForControlEnabled(next, enabled, 'Onboarding personal details Next')
+  }
+
+  async verifyNameFormKeyboardLayout(dismiss: boolean) {
+    const next = browser.isIOS ? this.onboardingNameNextBtn : this.onboardingNameNextBtn.$('.//android.widget.Button')
+    if (await browser.isKeyboardShown()) {
+      if (browser.isIOS) await this.dismissIOSKeyboardIfOpen()
+      else await browser.hideKeyboard()
+    }
+    await browser.waitUntil(async () => !await browser.isKeyboardShown(), { timeout: 10000 })
+    const before = await next.getLocation()
+    await this.onboardingFirstNameInput.click()
+    await browser.waitUntil(() => browser.isKeyboardShown(), { timeout: 10000 })
+    await browser.waitUntil(async () => {
+      return await next.isDisplayed() && (await next.getLocation()).y < before.y
+    }, { timeout: 10000, timeoutMsg: 'Next must move above the keyboard' })
+
+    if (!dismiss) return
+    if (browser.isIOS) await this.dismissIOSKeyboardIfOpen()
+    else await browser.hideKeyboard()
+    await browser.waitUntil(async () => !await browser.isKeyboardShown(), { timeout: 10000 })
+    await browser.waitUntil(async () => Math.abs((await next.getLocation()).y - before.y) <= 2, {
+      timeout: 10000,
+      timeoutMsg: 'Next must return to its initial position after dismissing the keyboard',
+    })
   }
 
   private get validationPersonalNameError() {
@@ -2863,12 +2956,164 @@ export default class OnboardingPage extends BasePage {
     await this.continueAfterVerification()
   }
 
+  async openApplicantOtpValidation() {
+    const context = await this.prepareSmokeOnboarding()
+    await this.enterPinTwice(context.pin)
+    await this.otpInput.waitForDisplayed({ timeout: 30000 })
+  }
+
+  async verifyApplicantOtpAllowsRetry() {
+    const error = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label CONTAINS[c] "Entered code is incorrect" OR label CONTAINS[c] "OTP code is wrong")')
+      : $('//*[contains(@text,"Entered code is incorrect") or contains(@text,"OTP code is wrong") or contains(@text,"Invalid code")]')
+    await this.otpInput.click()
+    await this.otpInput.addValue('000000')
+    if (browser.isIOS) await error.waitForExist({ timeout: 15000 })
+    else await error.waitForDisplayed({ timeout: 15000 })
+    await this.otpInput.waitForEnabled({ timeout: 10000 })
+    await this.otpInput.clearValue()
+    await this.otpInput.addValue('1')
+    if (browser.isIOS) await error.waitForExist({ reverse: true, timeout: 10000 })
+    else await error.waitForDisplayed({ reverse: true, timeout: 10000 })
+  }
+
   async fillSmokeOnboardingPersonalDetails(context: Awaited<ReturnType<OnboardingPage['prepareSmokeOnboarding']>>) {
     const { data, generatedPhone, pin, generatedName } = context
     await this.fillPersonalDetails({
       firstName: data.firstName || generatedName.firstName,
       lastName: data.lastName || generatedName.lastName,
     })
+  }
+
+  private async prepareOnboardingFormValidation() {
+    const context = await this.prepareSmokeOnboarding()
+    await this.verifySmokeOnboardingMobile(context)
+    await this.fillSmokeOnboardingPersonalDetails(context)
+    await browser.waitUntil(async () =>
+      await this.onboardingAddressScreen.isDisplayed() || await this.onboardingDetailsScreen.isDisplayed(),
+    { timeout: 30000, timeoutMsg: 'Expected Address or Employment after submitting valid names' })
+    return context
+  }
+
+  private async openAddressForValidation() {
+    await this.prepareOnboardingFormValidation()
+    const detailsFirst = await this.onboardingDetailsScreen.isDisplayed()
+    if (detailsFirst) {
+      await this.fillLastPersonalDetails({ company: 'Moneybase QA', occupation: 'QA Automation', previousEmployment: 'QA Automation' })
+    }
+
+    await this.onboardingAddressScreen.waitForDisplayed({ timeout: 30000 })
+    return { nextScreen: detailsFirst ? this.onboardingEmailScreen : this.onboardingDetailsScreen }
+  }
+
+  private async submitValidAddress(address: Omit<OnboardingAddress, 'addressLine2'>, nextScreen: ChainablePromiseElement) {
+    await this.fillHomeAddress({ ...address, addressLine2: '' })
+    await nextScreen.waitForDisplayed({ timeout: 30000, timeoutMsg: 'Expected onboarding to advance with Address Line 2 left blank' })
+    await this.onboardingAddressScreen.waitForDisplayed({ reverse: true, timeout: 10000 })
+  }
+
+  async verifyAddressLineTwoOptional(address: Omit<OnboardingAddress, 'addressLine2'>) {
+    const { nextScreen } = await this.openAddressForValidation()
+    await this.submitValidAddress(address, nextScreen)
+  }
+
+  private async visibleRequiredAddressErrors() {
+    const messages = browser.isIOS
+      ? await $$('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label CONTAINS[c] "required" OR label CONTAINS[c] "empty" OR label BEGINSWITH[c] "Please enter" OR label BEGINSWITH[c] "Please select")')
+      : await this.onboardingAddressScreen.$$('.//android.widget.TextView')
+    const visible = new Set<string>()
+    for (const message of messages) {
+      const label = (await message.getText()).trim().toLowerCase()
+      const required = /\b(?:is required|are required|cannot be empty|must not be empty)\b|^required$/.test(label)
+      const missingAddress = /^please (?:enter|select)\b.*\b(?:address|city|post\s*code|country)\b/.test(label)
+      if ((required || missingAddress) && await message.isDisplayed()) visible.add(label)
+    }
+    return visible
+  }
+
+  async verifyBlankAddressRejected(address: Omit<OnboardingAddress, 'addressLine2'>) {
+    const { nextScreen } = await this.openAddressForValidation()
+    for (const [input, placeholder] of [
+      [this.onboardingAddress1Input, 'address line 1'],
+      [this.onboardingCityInput, 'city'],
+      [this.onboardingPostcodeInput, 'postcode'],
+    ] as const) {
+      await input.waitForExist({ timeout: 10000 })
+      const normalize = (text: string) => text.replace(/[\s*]/g, '').toLowerCase()
+      const value = normalize((browser.isIOS ? await input.getAttribute('value') : await input.getText()) ?? '')
+      if (value && value !== normalize(placeholder)) {
+        throw new Error(`TEST_PRECONDITION: expected ${placeholder} to be blank before address validation`)
+      }
+    }
+
+    const next = this.onboardingAddressNextBtn
+    await next.waitForDisplayed({ timeout: 10000 })
+    if (await next.isEnabled()) {
+      const before = await this.visibleRequiredAddressErrors()
+      await next.click()
+      await browser.waitUntil(async () => {
+        if (await nextScreen.isDisplayed()) throw new Error('Blank address unexpectedly advanced onboarding')
+        const after = await this.visibleRequiredAddressErrors()
+        return [...after].some(label => !before.has(label))
+      }, { timeout: 10000, timeoutMsg: 'Expected a new required-field error after attempting to submit a blank address' })
+    } else {
+      await waitForControlEnabled(next, false, 'Blank onboarding address Next')
+    }
+    await this.onboardingAddressScreen.waitForDisplayed({ timeout: 10000 })
+    if (await nextScreen.isDisplayed()) throw new Error('Blank address unexpectedly advanced onboarding')
+
+    await this.submitValidAddress(address, nextScreen)
+  }
+
+  async prepareEmploymentValidation(address: Omit<OnboardingAddress, 'addressLine2'>) {
+    await this.prepareOnboardingFormValidation()
+    if (await this.onboardingAddressScreen.isDisplayed()) {
+      await this.fillHomeAddress({ ...address, addressLine2: '' })
+    }
+    await this.onboardingDetailsScreen.waitForDisplayed({ timeout: 30000 })
+  }
+
+  async verifyEmploymentFieldVisibility(status: 'Employed' | 'Student' | 'Unemployed', visible: boolean) {
+    await this.onboardingDetailsScreen.waitForDisplayed({ timeout: 10000 })
+    await this.selectEmploymentStatus(status)
+    for (const [field, label] of [[this.onboardingCompanyInput, 'Company'], [this.onboardingOccupationInput, 'Occupation']] as const) {
+      await field.waitForDisplayed({ reverse: !visible, timeout: 10000, timeoutMsg: `${label} should be ${visible ? 'visible' : 'hidden'} for ${status}` })
+    }
+    await this.onboardingDetailsScreen.waitForDisplayed({ timeout: 10000 })
+  }
+
+  async verifyPreviousEmploymentFields(status: 'Pensioner' | 'Homemaker') {
+    await this.selectEmploymentStatus(status)
+    await this.onboardingCompanyInput.waitForDisplayed({ reverse: true, timeout: 10000 })
+    const previousEmployment = browser.isIOS
+      ? this.onboardingOccupationInput
+      : this.labeledInput('Previous employment')
+    await previousEmployment.waitForDisplayed({ timeout: 10000 })
+    await waitForControlEnabled(previousEmployment, true, 'Previous employment')
+  }
+
+  async prepareEmailTermsValidation() {
+    const context = await this.prepareOnboardingFormValidation()
+    await this.fillSmokeOnboardingAddress(context)
+    const email = `qa.${context.generatedPhone.local}@example.com`
+    const input = await this.enterOnboardingEmail(email)
+    const actual = browser.isIOS ? await input.getAttribute('value') : await input.getText()
+    if (actual !== email) throw new Error('TEST_PRECONDITION: email input did not retain the requested address')
+  }
+
+  async verifyEmailContinueEnabled(enabled: boolean) {
+    await this.onboardingEmailScreen.waitForDisplayed({ timeout: 10000 })
+    // Android Compose exposes enabled directly on the tagged clickable View.
+    const control = this.onboardingEmailContinueBtn
+    await control.waitForDisplayed({ timeout: 10000 })
+    await waitForControlEnabled(control, enabled, 'Onboarding email Continue')
+  }
+
+  async toggleEmailTermsForValidation() {
+    await this.onboardingEmailScreen.waitForDisplayed({ timeout: 10000 })
+    const checkbox = browser.isIOS ? this.termsCheckbox : this.onboardingTermsBtn
+    await checkbox.waitForDisplayed({ timeout: 10000 })
+    await this.tapElementCenter(checkbox)
   }
 
   async fillSmokeOnboardingAddress(context: Awaited<ReturnType<OnboardingPage['prepareSmokeOnboarding']>>) {

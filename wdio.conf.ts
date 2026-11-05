@@ -29,6 +29,13 @@ const requireEnv = (name: string): string => {
 const useBrowserStack = process.env.BROWSERSTACK === 'true'
 const platformFilter = process.env.PLATFORM?.toLowerCase()
 const androidUdid = process.env.ANDROID_UDID?.trim()
+const androidUseInstalledApp = process.env.ANDROID_USE_INSTALLED_APP === 'true'
+const androidApp = process.env.ANDROID_APP?.trim() || '/Users/dmytrokertys/Desktop/app/app-qa-debug.apk'
+const androidAppPackage = process.env.ANDROID_APP_PACKAGE?.trim() || 'com.moneybase.qa'
+const androidAppActivity = process.env.ANDROID_APP_ACTIVITY?.trim() || 'com.moneybase.views.activities.LoginActivity'
+if (!useBrowserStack && platformFilter !== 'ios' && androidUseInstalledApp && !androidUdid) {
+  throw new Error('ANDROID_USE_INSTALLED_APP=true requires an explicit ANDROID_UDID')
+}
 const iosUdid = process.env.IOS_UDID?.trim()
 const iosDeviceName = process.env.IOS_DEVICE_NAME?.trim() || (iosUdid ? 'iPhone' : 'iPhone 17 Pro')
 const iosApp = process.env.IOS_APP?.trim() || '/Users/dmytrokertys/Desktop/app/moneybase.app'
@@ -205,7 +212,7 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
         },
       } as Record<string, unknown>),
     },
-    'appium:app': process.env.BS_APP_ANDROID || 'bs://202b3479e14985762d974afa2c0dff31d0003798',
+    'appium:app': process.env.BS_APP_ANDROID || 'bs://eb1e0a0af91cb231c3d0e60a297208e73f500670',
     'appium:autoGrantPermissions': true,
     ...(process.env.BS_ANDROID_APP_PACKAGE ? { 'appium:appPackage': process.env.BS_ANDROID_APP_PACKAGE } : {}),
     ...(process.env.BS_ANDROID_APP_ACTIVITY ? { 'appium:appActivity': process.env.BS_ANDROID_APP_ACTIVITY } : {}),
@@ -238,7 +245,7 @@ const browserStackCapabilities: WebdriverIO.Capabilities[] = [
         },
       } as Record<string, unknown>),
     },
-    'appium:app': process.env.BS_APP_IOS || 'bs://d3142df66fcd0172ca376867382c6fc296c32475',
+    'appium:app': process.env.BS_APP_IOS || 'bs://9fa60499a6ae535455d7bae48808c549e325e8dd',
     'appium:bundleId': process.env.BS_IOS_BUNDLE_ID,
     'appium:autoAcceptAlerts': true,
     'appium:newCommandTimeout': 3600,
@@ -281,12 +288,13 @@ const localCapabilities: WebdriverIO.Capabilities[] = [
         'appium:avdLaunchTimeout': 180000,
         'appium:avdReadyTimeout': 180000,
       }),
-    'appium:app': '/Users/dmytrokertys/Desktop/app/app-qa-debug.apk',
-    'appium:appPackage': 'com.moneybase.qa',
-    'appium:appActivity': 'com.moneybase.views.activities.LoginActivity',
+    ...(androidUseInstalledApp ? {} : { 'appium:app': androidApp }),
+    'appium:appPackage': androidAppPackage,
+    'appium:appActivity': androidAppActivity,
     'appium:appWaitActivity': '*',
     'appium:autoGrantPermissions': true,
-    'appium:noReset': false,
+    'appium:noReset': androidUseInstalledApp,
+    ...(androidUseInstalledApp ? { 'appium:forceAppLaunch': true } : {}),
     'appium:fullReset': false,
     'appium:autoAcceptAlerts': true,
     'appium:ensureWebviewsHavePages': true,
@@ -365,19 +373,50 @@ const regressionSecondarySpecs = [
   './src/tests/beneficiary.ibanChecksum.spec.ts',
   './src/tests/beneficiary.ibanCountry.spec.ts',
   './src/tests/personalDetails.spec.ts',
+  './src/tests/profile.businessSettings.spec.ts',
+  './src/tests/profile.appearance.spec.ts',
   './src/tests/authentication.incorrectPasscode.spec.ts',
   './src/tests/authentication.otpCountdown.spec.ts',
   './src/tests/authentication.passcodeLockout.spec.ts',
   './src/tests/authentication.phoneValidation.spec.ts',
+  './src/tests/authentication.securityAccount.spec.ts',
+  './src/tests/authentication.changePasscode.spec.ts',
+  './src/tests/authentication.incorrectOtp.spec.ts',
+  './src/tests/authentication.otpLockout.spec.ts',
   './src/tests/addfunds.validation.spec.ts',
   './src/tests/salary.partialValidation.spec.ts',
   './src/tests/onboarding.invalidNames.spec.ts',
   './src/tests/onboarding.shortName.spec.ts',
+  './src/tests/onboarding.addressOptional.spec.ts',
+  './src/tests/onboarding.addressRequired.spec.ts',
+  './src/tests/onboarding.employmentFields.spec.ts',
+  './src/tests/onboarding.emailTerms.spec.ts',
   './src/tests/fxExchange.regression.spec.ts',
   './src/tests/homeSpendAnalytics.spec.ts',
   './src/tests/homeStoryly.spec.ts',
   './src/tests/launch.spec.ts',
   './src/tests/pricePlan.spec.ts',
+  // Coverage expansion
+  './src/tests/onboarding.nameRequired.spec.ts',
+  './src/tests/onboarding.previousEmployment.spec.ts',
+  './src/tests/onboarding.otpRetry.spec.ts',
+  './src/tests/onboarding.otpResend.spec.ts',
+  './src/tests/profile.logout.spec.ts',
+  './src/tests/authentication.partialPasscode.spec.ts',
+  './src/tests/authentication.changePasscodeCancel.spec.ts',
+  './src/tests/authentication.recoveryQuestions.spec.ts',
+  './src/tests/onboarding.keyboardRaise.spec.ts',
+  './src/tests/onboarding.keyboardRestore.spec.ts',
+  './src/tests/accountPicker.search.spec.ts',
+  './src/tests/personalDetails.nameEditConfirmation.spec.ts',
+  './src/tests/onboarding.passcodePolicy.spec.ts',
+  './src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts',
+  './src/tests/businessCard.terminate.spec.ts',
+  './src/tests/businessCard.relink.spec.ts',
+  './src/tests/businessCard.activeFilterDefault.spec.ts',
+  './src/tests/businessCard.walletReachOut.spec.ts',
+  './src/tests/businessWallet.requiredName.spec.ts',
+  './src/tests/businessWallet.cancelCreation.spec.ts',
 ]
 
 const regressionPrimarySpecs = [
@@ -394,6 +433,7 @@ const regressionPrimarySpecs = [
   './src/tests/priceAlerts.spec.ts',
   // regression-only primary
   './src/tests/bankTransfer.business.spec.ts',
+  './src/tests/bankTransfer.businessUnavailable.spec.ts',
   './src/tests/cardManagement.viewPin.spec.ts',
   './src/tests/autoTopUp.validation.spec.ts',
   './src/tests/autoTopUp.editUnchanged.spec.ts',
@@ -401,15 +441,13 @@ const regressionPrimarySpecs = [
   './src/tests/autoTopUp.amountAboveRange.spec.ts',
   './src/tests/autoTopUp.amountBelowRange.spec.ts',
   './src/tests/lifecycle.regression.spec.ts',
+  './src/tests/lifecycle.freshInstallWelcome.spec.ts',
+  './src/tests/home.recentPayees.spec.ts',
   './src/tests/addFundsBankTransferWalletManager.spec.ts',
   './src/tests/assignBusinessCard.spec.ts',
   './src/tests/businessCard.adminSelfAssign.spec.ts',
   './src/tests/businessCard.cardLimits.spec.ts',
-  './src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts',
   './src/tests/businessCard.noRights.spec.ts',
-  './src/tests/businessCard.relink.spec.ts',
-  './src/tests/businessCard.terminate.spec.ts',
-  './src/tests/businessCard.walletReachOut.spec.ts',
   './src/tests/cardManagement.joint.spec.ts',
   './src/tests/crossBorder.swift.retail.spec.ts',
   './src/tests/orders.regression.spec.ts',
@@ -417,9 +455,38 @@ const regressionPrimarySpecs = [
   './src/tests/transactions.spec.ts',
   './src/tests/vop.beneficiary.spec.ts',
   './src/tests/vop.sepa.spec.ts',
+  // Coverage expansion
+  './src/tests/bankTransfer.sepaAmountLength.spec.ts',
+  './src/tests/addFunds.businessMethods.spec.ts',
+  './src/tests/walletManager.openDetails.spec.ts',
+  './src/tests/bankTransfer.swiftFeeCancel.spec.ts',
+  './src/tests/bankTransfer.swiftWalletCancel.spec.ts',
+  './src/tests/bankTransfer.sepaReviewClose.spec.ts',
+  './src/tests/cardManagement.pinTimeout.spec.ts',
+  './src/tests/home.cardsTabReselect.spec.ts',
+  './src/tests/walletManager.ibanBankNameUSD.spec.ts',
+  './src/tests/walletManager.ibanBankNameEUR.spec.ts',
+  './src/tests/walletDetails.statementBusiness.spec.ts',
+  './src/tests/walletDetails.statementIndividual.spec.ts',
+  './src/tests/home.totalWealthNavigation.spec.ts',
+  './src/tests/support.loggedInOptions.spec.ts',
+  './src/tests/support.close.spec.ts',
+  './src/tests/support.openChat.spec.ts',
+  './src/tests/authentication.welcomeSignIn.spec.ts',
+  './src/tests/bankTransfer.sepaReferenceLimit.spec.ts',
+  './src/tests/bankTransfer.sepaNoFee.spec.ts',
+  './src/tests/businessCard.changeTypeClearsAssignee.spec.ts',
+  './src/tests/businessCard.cancelCardType.spec.ts',
+  './src/tests/bankTransfer.swiftFeeDisclaimer.spec.ts',
 ]
 const regressionPrimarySpecNames = new Set(regressionPrimarySpecs.map(spec => basename(spec)))
 const regressionSecondarySpecNames = new Set(regressionSecondarySpecs.map(spec => basename(spec)))
+const nativeAlertAssertionSpecs = new Set([
+  'authentication.changePasscodeCancel.spec.ts',
+  'profile.businessSettings.spec.ts',
+  'onboarding.passcodePolicy.spec.ts',
+  'personalDetails.nameEditConfirmation.spec.ts',
+])
 
 const authSlotForSpec = (specName?: string) => {
   if (!specName) return ''
@@ -502,6 +569,14 @@ export const config: WebdriverIO.Config = {
   beforeSession: function (_config, capabilities, specs) {
     browserStackFailureReported = false
     const specName = specs.length > 0 ? basename(specs[0]) : 'unknown-spec'
+    const requested = capabilities as Record<string, unknown>
+    const sessionCaps = (requested.alwaysMatch as Record<string, unknown> | undefined) ?? requested
+    if (useBrowserStack && specName === 'authentication.welcomeSignIn.spec.ts') {
+      Object.assign(sessionCaps, { 'appium:fullReset': true, 'appium:noReset': false })
+    }
+    if (String(sessionCaps.platformName ?? platformFilter).toLowerCase() === 'ios' && nativeAlertAssertionSpecs.has(specName)) {
+      sessionCaps['appium:autoAcceptAlerts'] = false
+    }
     const authSlot = String(
       process.env.MB_AUTH_SLOT ||
       (cliSuiteTag === 'smokePrimary' || cliSuiteTag === 'regressionPrimary' ? 'primary' : '') ||

@@ -1,12 +1,15 @@
 # Regression Matrix Coverage
 
-Source: `regression_automation_matrix_detailed_full.xlsx`, sheet
-`Detailed Regression Matrix`, 519 source test cases. Reviewed 2026-10-16.
+For the full worksheet-to-code audit, use
+[Regression Coverage Audit](regression-coverage-audit-2026-11-04.md).
+The table below records the expansion, not all matching assertions in the repo.
 
-The current expansion adds 15 specs and 37 named checks across 8 scenario families.
-It implements or extends checks for 22 source IDs. This is source-code coverage,
-not 22 passing device tests and not completion of all 519 cases. Repeated
-checkpoints for one source ID count as one matrix case, not multiple cases.
+Source: `regression_automation_matrix_detailed_full.xlsx`, sheet
+`Detailed Regression Matrix`, 519 source test cases. Updated 2026-11-04.
+
+The initial expansion tracked 19 new specs and 41 named checks across 26 source IDs.
+This is source-code coverage, not 26 passing device tests and not completion of
+all 519 cases. Repeated checkpoints for one source ID count as one matrix case.
 
 ## Implemented Checks
 
@@ -28,12 +31,16 @@ checkpoints for one source ID count as one matrix case, not multiple cases.
 | TC3305 | PAY-034 | 173 | `beneficiary.ibanLength.spec.ts` | Android, iOS | Malta: reject 30 characters with a length error and accept a valid 31-character IBAN. UK length is not exercised. |
 | TC3306 | PAY-035 | 174 | `beneficiary.ibanChecksum.spec.ts` | Android, iOS | One changed digit breaks the checksum without changing the 31-character length; a validity error is required, excluding length/country errors. |
 | TC3307 | PAY-036 | 175 | `beneficiary.ibanCountry.spec.ts` | Android, iOS | A checksum-valid German IBAN must produce a country mismatch for a Malta beneficiary, not merely a length error. |
-| TC3343 | PAY-072 | 211 | `autoTopUp.editUnchanged.spec.ts` | Android, iOS | The exact existing rule is opened; visible Delete and selected values establish edit mode before asserting disabled Save. No rule is created as setup. |
+| TC3343 | PAY-072 | 211 | `autoTopUp.editUnchanged.spec.ts` | Android, iOS | Open the specified/first active rule, or create a temporary rule if none is present. Visible Delete and selected values establish edit mode before asserting disabled Save. Cleanup deletes only a rule created by this spec. |
 | TC3344 | PAY-073 | 212 | `autoTopUp.currencyReset.spec.ts` | Android, iOS | Both selections must be observable before currency change, then both cleared and Save disabled. Missing selected-state accessibility is a failed precondition, not a pass. |
-| TC3347 | PAY-076 | 215 | `autoTopUp.amountAboveRange.spec.ts` | Android, iOS | Partial: maximum accepted, maximum + 0.01 blocks Done, correction enables it. Red styling, shake and haptics are not asserted. |
-| TC3348 | PAY-077 | 216 | `autoTopUp.amountBelowRange.spec.ts` | Android, iOS | Partial: minimum accepted, minimum - 0.01 blocks Done, correction enables it. Absence of red styling/shake/haptics is not asserted. |
+| TC3347 | PAY-076 | 215 | `autoTopUp.amountAboveRange.spec.ts` | Android, iOS | Partial: maximum accepted, maximum + 1 blocks Done, correction enables it. Red styling, shake and haptics are not asserted. |
+| TC3348 | PAY-077 | 216 | `autoTopUp.amountBelowRange.spec.ts` | Android, iOS | Partial: minimum accepted, minimum - 1 blocks Done, correction enables it. Absence of red styling/shake/haptics is not asserted. |
 | TC3085 | KYC-002 | 59 | `onboarding.invalidNames.spec.ts` | Android, iOS | Partial: digits/symbols cannot advance; disabled Next or an on-submit error is required. Both field-error states and absence of API calls are not independently inspected. |
 | TC3086 | KYC-003 | 60 | `onboarding.shortName.spec.ts` | Android, iOS | Partial: a two-character first name cannot advance, valid correction recovers. Minimum-length error styling/API-call suppression are not inspected. |
+| TC3088 | KYC-005 | 62 | `onboarding.addressOptional.spec.ts` | Android, iOS | Submitting the required address with Line 2 untouched advances to Employment, or Email if Employment came first. Does not inspect the request or loader. |
+| TC3089 | KYC-006 | 63 | `onboarding.addressRequired.spec.ts` | Android, iOS | Partial: blank text fields block Next or show a new required-field error; a corrected address advances. Country is left untouched; per-field errors and API suppression are not independently asserted. Device run pending. |
+| TC3092 | KYC-009 | 66 | `onboarding.emailTerms.spec.ts` | Android, iOS | With a valid email, Continue goes disabled, enabled, then disabled as consent is checked and unchecked. Continue is never pressed; API suppression is not independently inspected. |
+| TC3096 | KYC-013 | 70 | `onboarding.employmentFields.spec.ts` | Android, iOS | Partial: Student and Unemployed hide both fields; Employed restores them. Hidden fields' validation is not inspected and Employment is not submitted in this spec. |
 
 Empty login-form and zero top-up guards are additional checks, not extra matrix
 IDs. In particular, the login-form check does not cover AUTH-036 / TC3166:
@@ -59,27 +66,57 @@ that case specifically requires the change-mobile-number screen.
   IBAN, its one-character-short variant, a same-length checksum-invalid variant
   and a known checksum-valid German example. Successful details are not submitted.
   Negative submission can trigger validation but never confirms review or OTP.
-- Auto Top-Up edit, currency reset and range tests need explicit fixtures:
-  `AUTO_TOP_UP_EDIT_RULE_A11Y`, `AUTO_TOP_UP_TEST_SECOND_CURRENCY`,
-  `AUTO_TOP_UP_TEST_MIN_AMOUNT` and `AUTO_TOP_UP_TEST_MAX_AMOUNT` respectively.
-  The limits must describe the EUR add-amount picker, not the threshold picker.
-  Configure these in `.env` locally or matching GitHub repository variables for
-  CI. Missing/invalid fixture values fail with `CONFIGURATION_ERROR`, not skips.
-  Boundary arithmetic uses integer cents; no limits are guessed or rules saved.
+- Auto Top-Up overrides are optional: `AUTO_TOP_UP_EDIT_RULE_A11Y` selects a
+  particular existing rule; otherwise setup reuses an active rule or creates a
+  temporary one and cleanup deletes only its own rule. Currency reset selects a
+  visible USD/GBP/CHF option unless `AUTO_TOP_UP_TEST_SECOND_CURRENCY` is set.
+  EUR add-amount defaults are 10–2500, read from the Android QA amount sheet on
+  2026-11-02; these defaults are independent of the Done-button assertions.
+  Set `AUTO_TOP_UP_TEST_MIN_AMOUNT` and `AUTO_TOP_UP_TEST_MAX_AMOUNT` together to
+  override them. Invalid/partial overrides fail with `CONFIGURATION_ERROR`.
+  Boundary arithmetic remains exact in cents, but these device cases use a
+  whole-unit step: Android transformed a requested `0.01` into `1` in inspection.
+  Integer values omit trailing decimal zeros on input and are read back before
+  assertions. The same expected range still requires device verification on iOS.
 - KYC name tests verify a new generated test mobile number through the existing
   onboarding setup and stop on Personal Details. This creates partial test
   registrations, requires a working OTP fixture, and does not complete KYC or
   save an incomplete account as the shared onboarded-account fixture. Generated
   numbers exclude configured primary, secondary, security and business accounts.
   These cases do not cover KYC-011, which uses a different confirmation controller.
+- The KYC form specs use the same generated-phone onboarding setup. They
+  may save earlier applicant steps on QA but never complete registration, enter
+  external identity verification, or overwrite the shared onboarded-account
+  fixture. They need a working OTP setup for new QA numbers, not an existing
+  primary or secondary login. TC3088, TC3092 and TC3096 passed on Android; iOS
+  and the new TC3089 device run are pending.
 
 The existing seven workflow categories include every spec exactly once per
 platform. New specs keep explicit primary/secondary lanes; no existing lane is
 reassigned. Previously omitted legacy entries are now included in the local
-split suites as well. The WIP business-transfer spec remains skipped: listing
-it in a suite does not establish implemented transfer coverage.
+split suites as well. Opt-in cases keep their runtime gates: listing a spec
+in a category does not mean its cases executed or passed.
 
 ## Verification Status
+
+BrowserStack Android on 2026-11-04:
+
+- [Initial KYC forms run](https://automation.browserstack.com/builds/gdn7ud0sjud5jsh5uouw12abkubocfmfkjhsuva8): TC3088 and TC3096 passed. TC3092 reached Email but failed because the tagged Compose Continue control has no nested `android.widget.Button`; its `enabled` state is on the tagged view itself.
+- [TC3092 targeted rerun](https://automation.browserstack.com/builds/wgitcdkwswzoxrenkbxrzscxw1ekhdkis028i7i2): passed after checking Continue directly. The button went disabled, enabled, then disabled as consent changed. The test did not submit email.
+- The three executed KYC specs each have one passing Android execution. TC3089,
+  iOS and repeatability runs are pending.
+
+Local readiness fixes on 2026-11-02:
+
+- The full unit/import/configuration suite passes 124/124 checks. Missing
+  reporter mocks were repaired; the Home search selector is now scoped to Home
+  instead of matching the More search field as well.
+- TypeScript compilation and `git diff --check` pass.
+- One Android BrowserStack inspection reached the Auto Top-Up amount sheet and
+  captured its EUR 10–2500 range. That inspection failed its decimal readback
+  precondition (`0.01` appeared as `1`), prompting the whole-unit input fix.
+- This inspection is not a passing regression run. The revised Auto Top-Up
+  scenarios and their iOS behaviour still require focused device verification.
 
 Local verification on 2026-10-16:
 
@@ -92,10 +129,8 @@ Local verification on 2026-10-16:
   XPath by `smoke72.test.cjs`. This is not a fully green unit-suite result.
 
 Import checks, unit tests, category-selection tests and TypeScript compilation
-run locally without device commands. The new checks have not been executed on
-BrowserStack. Selector compatibility, real fixtures, login/OTP availability and
-timing behaviour still require targeted device runs before marking matrix rows
-as verified automated coverage. Existing workbook statuses have not been changed.
+run locally without device commands. Only the device results noted above have
+been confirmed here. Existing workbook statuses have not been changed.
 
 Remaining matrix work includes the change-mobile-number screens, additional KYC
 validation and external verification, crypto trading/search/watchlists, profile/settings,

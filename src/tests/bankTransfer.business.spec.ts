@@ -1,11 +1,13 @@
+import { browser } from '@wdio/globals'
 import { LoginPage } from '../pages/LoginPage'
 import BankTransferBusinessPage from '../pages/BankTransferBusinessPage'
 import { AUTH } from '../data/credentials'
 
-describe.skip('Bank Transfer - Business (WIP)', () => {
+describe('Bank Transfer - Business', () => {
   const loginPage = new LoginPage()
 
-  beforeEach(async () => {
+  beforeEach(async function () {
+    if (!browser.isAndroid || process.env.MB_RUN_BUSINESS_PAY !== 'true') return this.skip()
     await loginPage.loginFlow(AUTH)
   })
 

@@ -1,4 +1,6 @@
 import BasePage from './BasePage'
+import HomeScreenPage from './HomeScreenPage'
+import { waitForControlEnabled } from '../helpers/controlState.helper'
 import { $, browser } from '@wdio/globals'
 import allure from '@wdio/allure-reporter'
 import type { ChainablePromiseElement } from 'webdriverio'
@@ -7,91 +9,6 @@ const BH_ACCOUNT_CODE = process.env.BH_ACCOUNT_CODE || 'SED00004'
 const BH_SELF_NAME = process.env.BH_SELF_NAME || 'Dmytro Kertys'
 
 class BusinessCardWalletPage extends BasePage {
-  // ── Account switcher ─────────────────────────────────────────────────────
-
-  private get userAvatarAndroid() {
-    return $('(//*[@resource-id="home_button_userAvatar"] | //*[contains(@resource-id,"userAvatar")])[1]')
-  }
-
-  private get subAccountsSheetAndroid() {
-    return $('//*[@text="Sub Accounts" or @content-desc="Sub Accounts"]')
-  }
-
-  private get seDeKeItemAndroid() {
-    return $('(//*[contains(@content-desc,"SeDeKE") or contains(@content-desc,"SED00004")] | //android.view.View[@clickable="true"][.//android.widget.TextView[contains(@text,"SeDeKE") or contains(@text,"SED00004")]])[1]')
-  }
-
-  private get seDeKeItemIOS() {
-    return $('-ios predicate string:label CONTAINS "SeDeKE" OR name CONTAINS "SeDeKE" OR label CONTAINS "SED00004" OR name CONTAINS "SED00004"')
-  }
-
-  private get accountChipAndroid() {
-    return $(`(//*[contains(@content-desc,"${BH_ACCOUNT_CODE}")] | //*[contains(@text,"${BH_ACCOUNT_CODE}")])[1]`)
-  }
-
-  private get profilePickerCodeLabelIOS() {
-    return $('~profilePicker_label_accountCode')
-  }
-
-  private get profilePickerUserNameLabelIOS() {
-    return $('~profilePicker_label_userName')
-  }
-
-  private get subAccountsTitleIOS() {
-    return $('~Sub Accounts')
-  }
-
-  private get homeRootIOS() {
-    return $('~home_screen_view')
-  }
-
-  private async getIOSAccountCodeLabel() {
-    return (
-      await this.profilePickerCodeLabelIOS
-        .getAttribute('label')
-        .catch(async () => await this.profilePickerCodeLabelIOS.getText().catch(() => ''))
-    ).trim()
-  }
-
-  private async waitForIOSSeDeKEHome(timeout = 30000) {
-    await browser.waitUntil(
-      async () => {
-        const homeShown = await this.homeRootIOS.isExisting().catch(() => false)
-        const chipShown = await this.profilePickerCodeLabelIOS.isExisting().catch(() => false)
-        if (!homeShown || !chipShown) return false
-        const label = await this.getIOSAccountCodeLabel()
-        return label.includes(BH_ACCOUNT_CODE) && (!label.includes('•') || label.includes('Business'))
-      },
-      { timeout, interval: 500, timeoutMsg: `Home screen did not switch to Business account (${BH_ACCOUNT_CODE}) on iOS` },
-    )
-  }
-
-  private async openIOSSubAccountsSheet() {
-    await this.homeRootIOS.waitForExist({ timeout: 30000, timeoutMsg: 'Home screen did not load on iOS' })
-    await this.profilePickerCodeLabelIOS.waitForExist({ timeout: 20000 })
-
-    const tapAttempts = [
-      async () => this.tap(this.profilePickerUserNameLabelIOS),
-      async () => this.tap(this.profilePickerCodeLabelIOS),
-      async () => {
-        const location = await this.profilePickerCodeLabelIOS.getLocation()
-        const size = await this.profilePickerCodeLabelIOS.getSize()
-        await browser.execute('mobile: tap', {
-          x: Math.max(24, location.x - 34),
-          y: location.y + Math.round(size.height / 2),
-        })
-      },
-    ]
-
-    for (const attempt of tapAttempts) {
-      await attempt().catch(() => {})
-      const opened = await this.subAccountsTitleIOS.waitForExist({ timeout: 3000 }).catch(() => false)
-      if (opened) return
-    }
-
-    await this.subAccountsTitleIOS.waitForExist({ timeout: 15000, timeoutMsg: 'Sub Accounts sheet did not open on iOS' })
-  }
-
   private async tapElementCenterAndroid(el: ChainablePromiseElement) {
     await el.waitForExist({ timeout: 5000 })
     const loc = await el.getLocation().catch(() => null)
@@ -104,12 +21,6 @@ class BusinessCardWalletPage extends BasePage {
     } else {
       await el.click().catch(() => {})
     }
-  }
-
-  // ── More tab ─────────────────────────────────────────────────────────────
-
-  private get moreTabIOS() {
-    return $('~More')
   }
 
   // ── Administration item ──────────────────────────────────────────────────
@@ -282,30 +193,13 @@ class BusinessCardWalletPage extends BasePage {
   // ── Public methods ────────────────────────────────────────────────────────
 
   public async ensureSeDeKEAccount() {
-    await browser.switchContext('NATIVE_APP').catch(() => {})
-
-    if (browser.isIOS) {
-      const chip = this.profilePickerCodeLabelIOS
-      if (await chip.isExisting().catch(() => false)) {
-        const text = await this.getIOSAccountCodeLabel().catch(() => '')
-        if (text.includes(BH_ACCOUNT_CODE)) return
-      }
-      await this.openIOSSubAccountsSheet()
-      await this.seDeKeItemIOS.waitForExist({ timeout: 10000, timeoutMsg: 'SeDeKE account item not found in iOS picker' })
-      await this.tap(this.seDeKeItemIOS)
-      await this.subAccountsTitleIOS.waitForExist({ reverse: true, timeout: 15000 }).catch(() => {})
-      await this.waitForIOSSeDeKEHome()
-      return
-    }
-
-    await this.switchAndroidAccountByCode(BH_ACCOUNT_CODE, 'Business')
+    await HomeScreenPage.ensureBusinessAccount(BH_ACCOUNT_CODE)
   }
 
   public async openAdministration() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
     if (browser.isIOS) {
-      await this.moreTabIOS.waitForExist({ timeout: 15000 })
-      await this.tap(this.moreTabIOS)
+      await HomeScreenPage.openIOSMoreMenu()
     } else {
       await this.openAndroidMoreMenuFromProfile()
     }
@@ -454,6 +348,36 @@ class BusinessCardWalletPage extends BasePage {
     await input.clearValue()
     await input.setValue(name)
     await browser.pause(300)
+  }
+
+  public async verifyWalletAddEnabled(enabled: boolean) {
+    const button = browser.isIOS
+      ? this.addBtnIOS
+      : $('//*[@content-desc="Add" or self::android.widget.Button[@text="Add"] or self::android.view.View[./android.widget.TextView[@text="Add"]]]')
+    await waitForControlEnabled(button, enabled, 'New Wallet Add')
+  }
+
+  public async openWalletCreationFromAdministration() {
+    await this.ensureSeDeKEAccount()
+    await this.openAdministration()
+    await this.openManageCards()
+    await this.tapAssignCard()
+    await this.selectVirtualCardType()
+    await this.selectSelfAssignee()
+    await this.openWalletPickerFromSpendFrom()
+    await this.tapAddNewWallet()
+    await this.verifyNewWalletForm()
+  }
+
+  public async cancelWalletCreation() {
+    const close = browser.isIOS
+      ? $('-ios predicate string:type == "XCUIElementTypeButton" AND (name IN {"Close", "Cancel", "modal_button_close"} OR label IN {"Close", "Cancel"})')
+      : $('//*[contains(@resource-id,"modal_button_close") or @content-desc="Close" or @content-desc="Cancel" or @text="Cancel"]')
+    await close.waitForDisplayed({ timeout: 10000 })
+    await this.tap(close)
+    const title = browser.isIOS ? this.newWalletScreenTitleIOS : this.newWalletScreenTitleAndroid
+    await title.waitForDisplayed({ reverse: true, timeout: 10000 })
+    await this.verifySelectWalletSheet()
   }
 
   public async tapAdd() {
