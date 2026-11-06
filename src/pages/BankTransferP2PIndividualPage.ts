@@ -751,11 +751,11 @@ class BankTransferP2PIndividualPage extends BasePage {
     await this.tap(this.homeTabIOS)
   }
 
-  private async scrollHomeAndroid() {
+  private async scrollHomeAndroid(direction: 'down' | 'up' = 'down') {
     const { width, height } = await browser.getWindowRect()
     const startX = Math.round(width * 0.5)
-    const startY = Math.round(height * 0.75)
-    const endY = Math.round(height * 0.3)
+    const startY = Math.round(height * (direction === 'down' ? 0.75 : 0.3))
+    const endY = Math.round(height * (direction === 'down' ? 0.3 : 0.75))
 
     await browser.performActions([
       {
@@ -777,13 +777,13 @@ class BankTransferP2PIndividualPage extends BasePage {
 
   private async waitForMinusAmountHomeAndroid(amount: number | string, timeoutMs = 30000) {
     await browser.switchContext('NATIVE_APP').catch(() => {})
-    await this.scrollHomeAndroid()
 
+    // Recent Activity is near the top of Home, so scrolling only down can pass the new row.
     const deadline = Date.now() + timeoutMs
-    while (Date.now() < deadline) {
+    for (let step = 0; Date.now() < deadline; step += 1) {
       if (await this.minusAmountHomeAnchorAndroid(amount).isDisplayed().catch(() => false)) return
       if (await this.sentAmountHomeAnchorAndroid(amount).isDisplayed().catch(() => false)) return
-      await this.scrollHomeAndroid()
+      await this.scrollHomeAndroid(step % 6 < 2 ? 'down' : 'up')
     }
 
     const minusShown = await this.minusAmountHomeAnchorAndroid(amount)

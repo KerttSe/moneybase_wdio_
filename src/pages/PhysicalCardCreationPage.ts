@@ -1469,6 +1469,12 @@ class PhysicalCardCreationPage extends BasePage {
       const appPackage = process.env.ANDROID_APP_PACKAGE?.trim() || 'com.moneybase.qa'
       await browser.terminateApp(appPackage)
       await browser.activateApp(appPackage)
+      // BrowserStack devices reopen on the signed-out Welcome screen.
+      const signIn = $('//*[@text="Sign In" or @content-desc="Sign In"]')
+      if (await signIn.waitForDisplayed({ timeout: 10000 }).catch(() => false)) {
+        await this.tapAndroidCenterPoint(signIn)
+        await browser.pause(2000)
+      }
       await loginPage.loginFlow(AUTH)
       await this.openCardsTabAndroid()
       await this.waitForFreezeReadyAndroid(60000)
