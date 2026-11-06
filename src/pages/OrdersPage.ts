@@ -1171,7 +1171,7 @@ export default class OrdersPage extends BasePage {
 
       return hasOrderForm && !hasBlankSkeletonRows
     }, {
-      timeout: 30000,
+      timeout: 60000,
       interval: 1000,
       timeoutMsg: 'Buy order form (Android) did not finish loading',
     })

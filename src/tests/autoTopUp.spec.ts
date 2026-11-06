@@ -20,7 +20,7 @@ describe('Auto Top-Up', function () {
   it("ATU-1.1 Open Auto Top-Up and select card and wallet", smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await autoTopUpPage.selectSmokeAutoTopUpCard({
-          cardLabel: '0015',
+          cardLabel: AUTH.cardLastFour as string,
           currency: 'Euro',
           amount: 1500,
         })
@@ -29,7 +29,7 @@ describe('Auto Top-Up', function () {
   it("ATU-1.2 Set preset 500 and custom amount 1500", smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await autoTopUpPage.configureSmokeAutoTopUpAmounts({
-          cardLabel: '0015',
+          cardLabel: AUTH.cardLastFour as string,
           currency: 'Euro',
           amount: 1500,
         })
@@ -38,7 +38,7 @@ describe('Auto Top-Up', function () {
   it("ATU-1.3 Save Auto Top-Up and return to Add Funds or Home", smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await autoTopUpPage.saveSmokeAutoTopUp({
-          cardLabel: '0015',
+          cardLabel: AUTH.cardLastFour as string,
           currency: 'Euro',
           amount: 1500,
         })

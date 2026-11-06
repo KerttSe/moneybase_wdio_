@@ -30,17 +30,11 @@ describe('Add Beneficiary - Another person', function () {
     phone: process.env.ADD_BENEFICIARY_MB_PHONE || AUTH.phone,
     pin: process.env.ADD_BENEFICIARY_MB_PIN || AUTH.pin,
   }
-  const useApiLoginOtp = ['1', 'true', 'yes', 'on'].includes(
-    String(process.env.ADD_BENEFICIARY_LOGIN_USE_API_OTP || '').toLowerCase(),
-  )
 
   const smokeStep = stopAfterFailedStep()
 
   before(smokeStep(async function () {
-    await loginPage.loginFlow(beneficiaryAuth, {
-      useApiOtp: useApiLoginOtp,
-      otpPhone: process.env.ADD_BENEFICIARY_LOGIN_OTP_PHONE || beneficiaryAuth.otpPhone,
-    })
+    await loginPage.loginFlow(beneficiaryAuth)
   }))
 
   if (browser.isAndroid) {

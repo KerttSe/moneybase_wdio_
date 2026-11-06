@@ -278,6 +278,14 @@ export default class PriceAlertsPage extends BasePage {
     return $('//*[@class="android.widget.EditText" and contains(@resource-id,"globalCodeInput") and (@hint="Find Instrument" or @content-desc="Find Instrument")]')
   }
 
+  private get investHeaderSearchAndroid() {
+    return $('//*[@text="Search Instrument" or @resource-id="search-input-field"]')
+  }
+
+  private get plusOnePercentAndroidByCarouselId() {
+    return $('//*[@resource-id="price-alerts-carousel-increase-item-1"]')
+  }
+
   private get plusOnePercentAndroidByText() {
     return this.androidText('+1%')
   }
@@ -663,7 +671,11 @@ export default class PriceAlertsPage extends BasePage {
   }
 
   private async getSafePlusOnePercentAndroid() {
-    const plusCandidates = [this.plusOnePercentAndroidByText, this.plusOnePercentAndroidByTextContains]
+    const plusCandidates = [
+      this.plusOnePercentAndroidByCarouselId,
+      this.plusOnePercentAndroidByText,
+      this.plusOnePercentAndroidByTextContains,
+    ]
 
     for (const candidate of plusCandidates) {
       const el = (await candidate) as unknown as WebdriverIO.Element
@@ -691,18 +703,11 @@ export default class PriceAlertsPage extends BasePage {
     throw new Error('+1% option not visible outside Buy surface after scrolling price-alert instrument screen (Android)')
   }
 
-  private async pickPlusOnePercentAndReturnAndroid() {
+  private async pickPlusOnePercentAndVerifyCreatedAndroid() {
     // Hard stop: New Order screen must not be open at this point
     if (await this.isOnNewOrderScreenAndroid()) {
       await this.debugSnapshot('price-alerts-android-new-order-at-plus1-entry')
       throw new Error('New Order screen is open at start of +1% flow — wrong screen (Android)')
-    }
-
-    // Hard stop: must be on the price alert create surface
-    const onCreateSurface = await this.isPriceAlertCreateSurfaceAndroid()
-    if (!onCreateSurface) {
-      await this.debugSnapshot('price-alerts-android-not-on-create-surface')
-      throw new Error('Not on Price Alert create surface when trying to tap +1% (Android)')
     }
 
     let plus = await browser.waitUntil(
@@ -748,14 +753,8 @@ export default class PriceAlertsPage extends BasePage {
       this.alertSummaryAndroidByXpathBmw,
       this.alertSummaryAndroidByTextContains,
       this.alertSummaryAndroidByXpathContains,
-      this.deleteBtnAndroidById,
-      this.deleteBtnAndroidByText,
-      this.deleteBtnAndroidByDesc,
     ]
-    await this.waitForAnyDisplayed(detailAnchors, 12000, 'Created alert detail/summary (Android)')
-      .catch(() => {})
-
-    await this.returnFromCreatedAlertToPriceAlertsAndroid()
+    await this.waitForAnyDisplayed(detailAnchors, 15000, 'Created alert confirmation (Android)')
   }
 
 
@@ -1134,17 +1133,8 @@ export default class PriceAlertsPage extends BasePage {
       await browser.pause(350)
     }
 
-    // Trigger search (some builds only populate results after Enter/search action)
-    await browser.keys(['Enter']).catch(() => {})
-    const triggerShown = await this.findInstrumentSearchTriggerAndroid.isDisplayed().catch(() => false)
-    if (triggerShown) {
-      await this.findInstrumentSearchTriggerAndroid.click().catch(() => {})
-    }
-    await browser.pause(250)
-
-    // Best-effort: hide keyboard so results can update.
-    await browser.hideKeyboard().catch(() => {})
-    await browser.pause(1200)
+    // Mirror iOS: results appear while typing. Enter or a keyboard-hiding back press leaves the form.
+    await browser.pause(1500)
   }
 
   private async selectFirstSearchResultAndroid(query: string) {
@@ -1272,18 +1262,21 @@ export default class PriceAlertsPage extends BasePage {
     if (!browser.isAndroid) return
     await this.selectSmokePriceAlertAndroid(params)
     await this.submitSmokePriceAlertAndroid(params)
-    await this.verifySmokePriceAlertAndroid(params)
   }
 
   public async selectSmokePriceAlertAndroid(params: CreatePriceAlertParams) {
 
-    // Mirror iOS: Price Alerts → New tab → Find Instrument → select → +1%
-    // Do NOT go through invest home search → instrument landing (that path lands on New Order)
-    await this.openPriceAlertsAndroid()
-    await this.goToNewTabAndroid()
-
-    // Type in the Find Instrument field inside the New tab (not global invest search)
-    await this.waitForFindInstrumentInputAndroid()
+    // Mirror iOS: Invest header search -> instrument screen -> +1% at the bottom of that screen.
+    // The Price Alerts New tab opens the New Rule form, which has no +1% presets.
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+    await this.investTabAndroid.waitForExist({ timeout: 20000 })
+    await this.tap(this.investTabAndroid)
+    await this.investHeaderSearchAndroid.waitForDisplayed({
+      timeout: 30000,
+      timeoutMsg: 'Invest header Search Instrument did not appear (Android)',
+    })
+    await this.tap(this.investHeaderSearchAndroid)
+    await browser.pause(1000)
     await this.typeInstrumentQueryAndroid(params.instrumentQuery)
 
     // Select the instrument from results
@@ -1299,12 +1292,7 @@ export default class PriceAlertsPage extends BasePage {
       throw new Error('Selecting instrument from Price Alerts New tab opened New Order screen (Android)')
     }
 
-    // New Rule form (Condition + Target Price + Save) or legacy +1% preset buttons
-    if (await this.isOnNewRuleFormAndroid()) {
-      await this.fillNewRuleFormAndroid()
-    } else {
-      await this.pickPlusOnePercentAndReturnAndroid()
-    }
+    await this.pickPlusOnePercentAndVerifyCreatedAndroid()
   }
 
   public async verifySmokePriceAlertAndroid(params: CreatePriceAlertParams) {

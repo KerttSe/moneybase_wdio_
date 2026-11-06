@@ -14,17 +14,11 @@ describe('Physical card creation, freezing and deletion - Individual', function 
     phone: process.env.PHYSICAL_CARD_MB_PHONE || AUTH.phone,
     pin: process.env.PHYSICAL_CARD_MB_PIN || AUTH.pin,
   }
-  const useApiLoginOtp = ['1', 'true', 'yes', 'on'].includes(
-    String(process.env.PHYSICAL_CARD_LOGIN_USE_API_OTP || '').toLowerCase(),
-  )
 
   const smokeStep = stopAfterFailedStep()
 
   before(smokeStep(async function () {
-    await loginPage.loginFlow(cardCreationAuth, {
-      useApiOtp: useApiLoginOtp,
-      otpPhone: process.env.PHYSICAL_CARD_OTP_PHONE,
-    })
+    await loginPage.loginFlow(cardCreationAuth)
     if (browser.isAndroid) {
       await PhysicalCardCreationPage.dismissGooglePayPromoAndroid()
       await BankTransferP2PIndividualPage.ensureIndividualAccount()

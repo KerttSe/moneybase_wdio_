@@ -52,8 +52,12 @@ screen appeared when the session was reused.
 `src/tests/homeScreen.spec.ts`: log in, select Individual and wait for Home.
 Separate steps check holder name, balance, actions, banners, transactions,
 Recent Activities, Spend Analytics and navigation. Account type, Exchange and
-Details are best-effort. Notification/promo banners and pending/recent
-transactions may be absent without failing. Action navigation is Android-only.
+Details are best-effort. Notification banners and pending/recent transactions
+may be absent without failing. HS-1.6 promo banners and HS-1.10 Spend Analytics:
+covered as optional on Android; the run logs whether each section is shown and
+never fails on its absence, because this content depends on the account. Home
+Search TC2949 search history follows the same optional rule on Android. Action
+navigation is Android-only.
 Balance is a visibility check, not backend reconciliation. Bottom navigation
 accepts one candidate, not the complete icon set. Recent Activities is not an
 assertion of recent payees; transaction field values are not compared.

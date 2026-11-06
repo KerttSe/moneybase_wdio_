@@ -102,6 +102,7 @@ jobs:
               primary: [
                 'launch.spec.ts',
                 'homeSearch.spec.ts',
+                'homeSearch.business.spec.ts',
                 'homeSpendAnalytics.spec.ts',
                 'homeStoryly.spec.ts',
                 'home.recentPayees.spec.ts',
@@ -363,7 +364,6 @@ jobs:
       OTP_FETCH_DELAY_MS: "5000"
       OTP_GET_LATEST_URL: ${{ secrets.OTP_GET_LATEST_URL }}
       OTP_RESEND_WAIT_MS: "0"
-      CARD_FREEZE_LOGIN_USE_API_OTP: "true"
       AUTH_SECURITY_MB_PHONE: ${{ secrets.AUTH_SECURITY_MB_PHONE }}
       AUTH_SECURITY_MB_PIN: ${{ secrets.AUTH_SECURITY_MB_PIN }}
       AUTH_SECURITY_OTP_PHONE: ${{ secrets.AUTH_SECURITY_OTP_PHONE }}
@@ -456,9 +456,6 @@ jobs:
       OTP_FETCH_DELAY_MS: "5000"
       OTP_GET_LATEST_URL: ${{ secrets.OTP_GET_LATEST_URL }}
       OTP_RESEND_WAIT_MS: "0"
-      ADD_BENEFICIARY_LOGIN_USE_API_OTP: "false"
-      PHYSICAL_CARD_LOGIN_USE_API_OTP: "false"
-      CARD_FREEZE_LOGIN_USE_API_OTP: "true"
       ONBOARDED_ACCOUNTS_FILE: ".generated/onboarded-accounts.json"
     steps:
       - name: Checkout

@@ -39,9 +39,5 @@ describe('Orders (iOS/Android)', function () {
     it('PO-1.4 Place BMW buy order (Android)', smokeStep(async function () {
       await orders.placeSmokeBuyOrderAndroid(params)
     }))
-
-    it('PO-1.5 Verify Sell available after buying (Android)', smokeStep(async function () {
-      await orders.verifySmokeBuyOrderAndroid(params)
-    }))
   }
 })

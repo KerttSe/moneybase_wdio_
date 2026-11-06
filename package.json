@@ -7,9 +7,9 @@
     "wdio": "wdio run ./wdio.conf.ts",
     "clean:allure": "node -e \"const fs=require('fs'); for (const p of ['allure-results','allure-report']) fs.rmSync(p,{recursive:true,force:true})\"",
     "presmoke:android": "npm run clean:allure",
-    "smoke:android": "concurrently --kill-others-on-fail \"WDIO_MAX_INSTANCES=${WDIO_MAX_INSTANCES:-1} ALLURE_RESULTS_DIR=allure-results/smokePrimary ALLURE_REPORT_DIR=allure-report/smokePrimary PLATFORM=android BROWSERSTACK=true wdio run ./wdio.conf.ts --suite smokePrimary\" \"WDIO_MAX_INSTANCES=${WDIO_MAX_INSTANCES:-1} ALLURE_RESULTS_DIR=allure-results/smokeSecondary ALLURE_REPORT_DIR=allure-report/smokeSecondary PLATFORM=android BROWSERSTACK=true wdio run ./wdio.conf.ts --suite smokeSecondary\"",
+    "smoke:android": "concurrently --kill-others-on-fail \"WDIO_MAX_INSTANCES=${WDIO_MAX_INSTANCES:-1} ALLURE_RESULTS_DIR=allure-results/smokeLane1 ALLURE_REPORT_DIR=allure-report/smokeLane1 PLATFORM=android BROWSERSTACK=true wdio run ./wdio.conf.ts --suite smokeLane1\" \"WDIO_MAX_INSTANCES=${WDIO_MAX_INSTANCES:-1} ALLURE_RESULTS_DIR=allure-results/smokeLane2 ALLURE_REPORT_DIR=allure-report/smokeLane2 PLATFORM=android BROWSERSTACK=true wdio run ./wdio.conf.ts --suite smokeLane2\"",
     "postsmoke:android": "npm run allure:report:smoke",
-    "allure:report:smoke": "npx allure generate allure-results/smokePrimary allure-results/smokeSecondary -o allure-report --clean"
+    "allure:report:smoke": "npx allure generate allure-results/smokeLane1 allure-results/smokeLane2 -o allure-report --clean"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",

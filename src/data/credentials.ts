@@ -8,6 +8,7 @@ export interface AuthData {
   individualAccountSuffix?: string
   businessAccountCode?: string
   cardLastFour?: string
+  swiftBeneficiaryName?: string
 }
 
 const primaryAuth: AuthData = {
@@ -34,6 +35,9 @@ const secondaryAuth: AuthData = {
   cardLastFour: process.env.MB_ALT_CARD_LAST_FOUR || '0015',
 }
 
+// The only login with the Elite tier greeting, which reopens after an account switch.
+export const ELITE_INDIVIDUAL_CODE = 'MUM40001'
+
 export const AUTH_POOL: AuthData[] = [primaryAuth, secondaryAuth]
 
 const nationalNumber = (phone: string) => phone.replace(/\D/g, '').replace(/^(?:00)?356(?=\d{8}$)/, '')
@@ -47,6 +51,41 @@ const getWorkerIndex = () => {
 
 const getAuthBySlot = () => {
   const slot = process.env.MB_AUTH_SLOT?.trim().toLowerCase()
+  const namedBusinessCodes: Record<string, string> = {
+    laz: 'XER00249',
+    rog: 'XER00249',
+    mum: 'XER00247',
+    pop: 'XER00250',
+  }
+  const namedSwiftBeneficiaries: Record<string, string> = { mum: 'Swift Beneficiary' }
+  const namedCodes: Record<string, string> = {
+    kat: 'KAT40008',
+    mai: 'MAI40018',
+    laz: 'LAZ40012',
+    rog: 'ROG40015',
+    mum: 'MUM40001',
+    pop: 'POP40015',
+  }
+  if (slot && namedCodes[slot]) {
+    const prefix = `MB_${slot.toUpperCase()}`
+    const phone = process.env[`${prefix}_PHONE`]
+    const pin = process.env[`${prefix}_PIN`]
+    if (!phone || !pin) throw new Error(`${prefix}_PHONE and ${prefix}_PIN are required`)
+    if (AUTH_POOL.some(account => nationalNumber(account.phone) === nationalNumber(phone))) {
+      throw new Error(`${prefix}_PHONE must use a different login from primary and secondary`)
+    }
+    return {
+      country: process.env[`${prefix}_COUNTRY`] || 'Malta',
+      phone,
+      pin,
+      otpPhone: process.env[`${prefix}_OTP_PHONE`] || phone,
+      individualAccountCode: process.env[`${prefix}_INDIVIDUAL_CODE`] || namedCodes[slot],
+      individualAccountSuffix: process.env[`${prefix}_INDIVIDUAL_SUFFIX`] || '-1',
+      businessAccountCode: process.env[`${prefix}_BUSINESS_CODE`] || namedBusinessCodes[slot],
+      cardLastFour: process.env[`${prefix}_CARD_LAST_FOUR`],
+      swiftBeneficiaryName: process.env[`${prefix}_SWIFT_BENEFICIARY_NAME`] || namedSwiftBeneficiaries[slot],
+    }
+  }
   if (slot === 'primary') {
     if (!process.env.MB_PHONE) throw new Error('MB_AUTH_SLOT=primary requires MB_PHONE')
     return primaryAuth
@@ -89,6 +128,12 @@ export function getPasscodeRecoveryPhone() {
     process.env.AUTH_SECURITY_MB_PHONE,
     process.env.PD_MB_PHONE,
     process.env.BH_MB_PHONE,
+    process.env.MB_KAT_PHONE,
+    process.env.MB_MAI_PHONE,
+    process.env.MB_LAZ_PHONE,
+    process.env.MB_ROG_PHONE,
+    process.env.MB_MUM_PHONE,
+    process.env.MB_POP_PHONE,
   ]
   if (sharedPhones.some(shared => shared && nationalNumber(shared) === phone)) {
     throw new Error('AUTH_RECOVERY_MB_PHONE must belong to a separate recovery test account')

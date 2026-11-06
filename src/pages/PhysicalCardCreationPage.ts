@@ -1,3 +1,4 @@
+import { loginPage } from './LoginPage'
 import BasePage from './BasePage'
 import { $, $$, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
@@ -724,7 +725,11 @@ class PhysicalCardCreationPage extends BasePage {
 
     if (!hasExistingCard) return
 
-    await this.reportAndBlockCardAndroid(timeoutMs)
+    await this.reportAndBlockCardAndroid(timeoutMs).catch(async (error: Error) => {
+      // The Cards screen can reset to Add New Card; that state is ready for a new card.
+      if (!await this.addNewCardBtnAndroid.isDisplayed().catch(() => false)) throw error
+      console.warn('[PhysicalCard] Existing card cleanup ended on Add New Card:', error.message)
+    })
     await this.cardsRootAndroid.waitForDisplayed({ timeout: timeoutMs }).catch(() => {})
     await this.addNewCardBtnAndroid.waitForDisplayed({ timeout: timeoutMs }).catch(() => {})
   }
@@ -1436,13 +1441,39 @@ class PhysicalCardCreationPage extends BasePage {
 
   public async setPhysicalCardPinAndroid(pin: string) {
     await this.createPinAndroid(pin)
+    // Digits typed before the Confirm screen settles are lost, which leaves the PIN boxes empty.
+    await $('//*[contains(@text,"Confirm your card PIN")]').waitForDisplayed({
+      timeout: 15000,
+      timeoutMsg: 'Confirm card PIN screen did not appear (Android)',
+    })
+    await browser.pause(1000)
     await this.reenterPinAndroid(pin)
   }
 
   public async confirmPhysicalCardOtpAndroid() {
+    // The PIN and OTP screens share one input ID, so the OTP must wait until the PIN screen has left.
+    await $('//*[contains(@text,"Confirm your card PIN") or contains(@text,"Re-enter 4 digits")]').waitForDisplayed({
+      reverse: true,
+      timeout: 120000,
+      timeoutMsg: 'Card creation stayed on the Confirm PIN spinner for 120 s (Android)',
+    })
     await this.otpInputAndroid.waitForDisplayed({ timeout: 20000 })
     const otp = await this.getPhysicalCardOtp()
     await this.enterOtpAndroid(otp)
+
+    // Known Android bug: the card is created, but the app returns to Confirm PIN instead of the main screen.
+    const pinScreen = $('//*[contains(@text,"Confirm your card PIN")]')
+    const backOnPinScreen = await pinScreen.waitForDisplayed({ timeout: 30000 }).catch(() => false)
+    if (backOnPinScreen) {
+      console.warn('[KNOWN BUG] Android returned to Confirm PIN after the card OTP; relaunching the app')
+      const appPackage = process.env.ANDROID_APP_PACKAGE?.trim() || 'com.moneybase.qa'
+      await browser.terminateApp(appPackage)
+      await browser.activateApp(appPackage)
+      await loginPage.loginFlow(AUTH)
+      await this.openCardsTabAndroid()
+      await this.waitForFreezeReadyAndroid(60000)
+      return
+    }
     await this.closeCardSheetAndroid()
   }
 

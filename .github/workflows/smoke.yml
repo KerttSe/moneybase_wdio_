@@ -37,7 +37,6 @@ jobs:
     name: Build smoke matrix
     runs-on: arc-runner-mb-deploy-stg-scale-set
     outputs:
-      matrix: ${{ steps.build.outputs.matrix }}
       primary_matrix: ${{ steps.build.outputs.primary_matrix }}
       secondary_matrix: ${{ steps.build.outputs.secondary_matrix }}
     steps:
@@ -47,26 +46,32 @@ jobs:
         env:
           PLATFORM_INPUT: ${{ github.event.inputs.platform || 'all' }}
         run: |
-          SPECS=(
-            "src/tests/launch.spec.ts"
-            "src/tests/homeScreen.spec.ts"
-            "src/tests/homeAccountSwitch.spec.ts"
-            "src/tests/homeSearch.spec.ts"
-            "src/tests/addfunds.spec.ts"
-            "src/tests/addbeneficiary.individual.spec.ts"
-            "src/tests/physicalcardcreation.spec.ts"
-            "src/tests/cardFreezeUnfreeze.joint.spec.ts"
-            "src/tests/bankTransfer.p2p.individual.spec.ts"
-            "src/tests/bankTransfer.sepa.individual.spec.ts"
-            "src/tests/bankTransfer.swift.individual.spec.ts"
-            "src/tests/fxExchange.spec.ts"
-            "src/tests/autoTopUp.spec.ts"
-            "src/tests/cashFunds.spec.ts"
-            "src/tests/portfolio.spec.ts"
-            "src/tests/watchlist.spec.ts"
-            "src/tests/orders.spec.ts"
-            "src/tests/priceAlerts.spec.ts"
-            "src/tests/onboarding.spec.ts"
+          # 2 BrowserStack parallels, one lane each. Each lane owns 3 accounts and rotates them, so an
+          # account never runs in both lanes and two other accounts' specs separate its logins.
+          # primary=VEG, secondary=KER, the other slots are named after their account.
+          LANE_1=(
+            "primary:src/tests/cardFreezeUnfreeze.joint.spec.ts"
+            "rog:src/tests/physicalcardcreation.spec.ts"
+            "mum:src/tests/bankTransfer.swift.individual.spec.ts"
+            "primary:src/tests/portfolio.spec.ts"
+            "rog:src/tests/homeScreen.spec.ts"
+            "mum:src/tests/orders.spec.ts"
+            "primary:src/tests/autoTopUp.spec.ts"
+            "rog:src/tests/addbeneficiary.individual.spec.ts"
+            "mum:src/tests/fxExchange.spec.ts"
+            "primary:src/tests/bankTransfer.sepa.individual.spec.ts"
+          )
+          LANE_2=(
+            "secondary:src/tests/addfunds.spec.ts"
+            "laz:src/tests/homeSearch.spec.ts"
+            "pop:src/tests/cashFunds.spec.ts"
+            "secondary:src/tests/launch.spec.ts"
+            "laz:src/tests/homeSearch.business.spec.ts"
+            "pop:src/tests/priceAlerts.spec.ts"
+            "secondary:src/tests/homeAccountSwitch.spec.ts"
+            "laz:src/tests/bankTransfer.p2p.individual.spec.ts"
+            "pop:src/tests/watchlist.spec.ts"
+            "secondary:src/tests/onboarding.spec.ts"
           )
 
           PLATFORMS=()
@@ -76,59 +81,28 @@ jobs:
             *)       PLATFORMS=("android" "ios") ;;
           esac
 
-          SECONDARY_SPECS=(
-            "src/tests/homeScreen.spec.ts"
-            "src/tests/homeAccountSwitch.spec.ts"
-            "src/tests/addbeneficiary.individual.spec.ts"
-            "src/tests/addfunds.spec.ts"
-            "src/tests/cashFunds.spec.ts"
-            "src/tests/physicalcardcreation.spec.ts"
-            "src/tests/fxExchange.spec.ts"
-            "src/tests/watchlist.spec.ts"
-            "src/tests/onboarding.spec.ts"
-          )
-
-          is_secondary_spec() {
-            local target="$1"
-            for secondary in "${SECONDARY_SPECS[@]}"; do
-              [[ "$target" == "$secondary" ]] && return 0
+          lane_matrix() {
+            local include="[]"
+            for platform in "${PLATFORMS[@]}"; do
+              for entry in "$@"; do
+                include=$(echo "$include" | jq -c \
+                  --arg p "$platform" --arg s "${entry#*:}" --arg slot "${entry%%:*}" \
+                  '. += [{"platform": $p, "spec": $s, "smoke": true, "authSlot": $slot}]')
+              done
             done
-            return 1
+            jq -c -n --argjson inc "$include" '{"include": $inc}'
           }
 
-          INCLUDE="[]"
-          PRIMARY_INCLUDE="[]"
-          SECONDARY_INCLUDE="[]"
-          for platform in "${PLATFORMS[@]}"; do
-            for spec in "${SPECS[@]}"; do
-              INCLUDE=$(echo "$INCLUDE" | jq -c \
-                --arg p "$platform" --arg s "$spec" \
-                '. += [{"platform": $p, "spec": $s, "smoke": true}]')
-              if is_secondary_spec "$spec"; then
-                SECONDARY_INCLUDE=$(echo "$SECONDARY_INCLUDE" | jq -c \
-                  --arg p "$platform" --arg s "$spec" \
-                  '. += [{"platform": $p, "spec": $s, "smoke": true, "authSlot": "secondary"}]')
-              else
-                PRIMARY_INCLUDE=$(echo "$PRIMARY_INCLUDE" | jq -c \
-                  --arg p "$platform" --arg s "$spec" \
-                  '. += [{"platform": $p, "spec": $s, "smoke": true, "authSlot": "primary"}]')
-              fi
-            done
-          done
-
-          MATRIX=$(jq -c -n --argjson inc "$INCLUDE" '{"include": $inc}')
-          PRIMARY_MATRIX=$(jq -c -n --argjson inc "$PRIMARY_INCLUDE" '{"include": $inc}')
-          SECONDARY_MATRIX=$(jq -c -n --argjson inc "$SECONDARY_INCLUDE" '{"include": $inc}')
-          echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
+          PRIMARY_MATRIX=$(lane_matrix "${LANE_1[@]}")
+          SECONDARY_MATRIX=$(lane_matrix "${LANE_2[@]}")
           echo "primary_matrix=$PRIMARY_MATRIX" >> "$GITHUB_OUTPUT"
           echo "secondary_matrix=$SECONDARY_MATRIX" >> "$GITHUB_OUTPUT"
           echo "Selected platform: $PLATFORM_INPUT"
-          echo "Jobs to create: $(echo "$INCLUDE" | jq 'length')"
-          echo "Primary jobs: $(echo "$PRIMARY_INCLUDE" | jq 'length')"
-          echo "Secondary jobs: $(echo "$SECONDARY_INCLUDE" | jq 'length')"
+          echo "Lane 1 jobs: $(echo "$PRIMARY_MATRIX" | jq '.include | length')"
+          echo "Lane 2 jobs: $(echo "$SECONDARY_MATRIX" | jq '.include | length')"
 
   e2e-smoke:
-    name: "SMOKE parallel 1 (${{ matrix.platform }}) — ${{ matrix.spec }}"
+    name: "SMOKE lane 1 (${{ matrix.platform }}) — ${{ matrix.spec }}"
     needs: setup-smoke
     if: needs.setup-smoke.result == 'success'
     runs-on: arc-runner-mb-deploy-stg-scale-set
@@ -141,6 +115,10 @@ jobs:
       MB_COUNTRY: ${{ secrets.MB_COUNTRY }}
       MB_PHONE: ${{ secrets.MB_PHONE }}
       MB_PIN: ${{ secrets.MB_PIN }}
+      MB_ROG_PHONE: ${{ secrets.MB_ROG_PHONE }}
+      MB_ROG_PIN: ${{ secrets.MB_ROG_PIN }}
+      MB_MUM_PHONE: ${{ secrets.MB_MUM_PHONE }}
+      MB_MUM_PIN: ${{ secrets.MB_MUM_PIN }}
       BROWSERSTACK: "true"
       BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
       BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
@@ -154,7 +132,6 @@ jobs:
       OTP_FETCH_DELAY_MS: "5000"
       OTP_GET_LATEST_URL: ${{ secrets.OTP_GET_LATEST_URL }}
       OTP_RESEND_WAIT_MS: "0"
-      CARD_FREEZE_LOGIN_USE_API_OTP: "true"
       ONBOARDED_ACCOUNTS_FILE: ".generated/onboarded-accounts.json"
     steps:
       - name: Checkout
@@ -189,7 +166,7 @@ jobs:
           if-no-files-found: warn
 
   e2e-smoke-secondary:
-    name: "SMOKE parallel 2 (${{ matrix.platform }}) — ${{ matrix.spec }}"
+    name: "SMOKE lane 2 (${{ matrix.platform }}) — ${{ matrix.spec }}"
     needs: setup-smoke
     if: needs.setup-smoke.result == 'success'
     runs-on: arc-runner-mb-deploy-stg-scale-set
@@ -202,6 +179,10 @@ jobs:
       MB_COUNTRY: ${{ secrets.MB_COUNTRY }}
       MB_PHONE: ${{ secrets.MB_PHONE }}
       MB_PIN: ${{ secrets.MB_PIN }}
+      MB_LAZ_PHONE: ${{ secrets.MB_LAZ_PHONE }}
+      MB_LAZ_PIN: ${{ secrets.MB_LAZ_PIN }}
+      MB_POP_PHONE: ${{ secrets.MB_POP_PHONE }}
+      MB_POP_PIN: ${{ secrets.MB_POP_PIN }}
       AUTH_OTP_MB_PHONE: ${{ secrets.AUTH_OTP_MB_PHONE }}
       AUTH_OTP_MB_PIN: ${{ secrets.AUTH_OTP_MB_PIN }}
       AUTH_OTP_OTP_PHONE: ${{ secrets.AUTH_OTP_OTP_PHONE }}
@@ -218,9 +199,6 @@ jobs:
       OTP_FETCH_DELAY_MS: "5000"
       OTP_GET_LATEST_URL: ${{ secrets.OTP_GET_LATEST_URL }}
       OTP_RESEND_WAIT_MS: "0"
-      ADD_BENEFICIARY_LOGIN_USE_API_OTP: "false"
-      PHYSICAL_CARD_LOGIN_USE_API_OTP: "false"
-      CARD_FREEZE_LOGIN_USE_API_OTP: "true"
       ONBOARDED_ACCOUNTS_FILE: ".generated/onboarded-accounts.json"
     steps:
       - name: Checkout

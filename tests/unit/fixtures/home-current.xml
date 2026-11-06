@@ -1,0 +1,44 @@
+<hierarchy>
+  <android.view.View resource-id="home_screen">
+    <android.view.View resource-id="home_button_userAvatar">
+      <android.view.View><android.widget.TextView text="AE"/></android.view.View>
+      <android.widget.TextView text="Alex Example"/>
+      <android.widget.TextView text="Individual • LAZ40012"/>
+    </android.view.View>
+    <android.view.View>
+      <android.view.View resource-id="home_input_search"/>
+      <android.widget.TextView text="€1,234.56"/>
+      <android.view.View resource-id="home_button_addFunds"/>
+      <android.view.View resource-id="home_button_exchange"/>
+      <android.view.View resource-id="home_button_walletDetails"/>
+      <android.widget.TextView text="Recent Activity"/>
+      <android.view.View><android.view.View clickable="true" marker="person-transfer">
+        <android.view.View><android.widget.TextView text="AE"/></android.view.View>
+        <android.widget.TextView text="Alex Example"/>
+        <android.widget.TextView text="6 Nov 2026, 12:00"/>
+        <android.widget.TextView text="- €8.00"/>
+      </android.view.View></android.view.View>
+      <android.widget.TextView text="For you"/>
+      <android.view.View><android.view.View clickable="true" marker="promo">
+        <android.widget.TextView text="Example Promotion"/>
+        <android.widget.TextView text="Some description"/>
+        <android.widget.TextView text="€500.00"/>
+      </android.view.View></android.view.View>
+      <android.widget.TextView text="Spend Analytics"/>
+    </android.view.View>
+  </android.view.View>
+  <XCUIElementTypeOther name="home_screen_view">
+    <XCUIElementTypeCell><XCUIElementTypeStaticText label="Recent Activity"/></XCUIElementTypeCell>
+    <XCUIElementTypeCell marker="person-transfer">
+      <XCUIElementTypeStaticText label="Alex Example"/>
+      <XCUIElementTypeStaticText label="6 Nov 2026, 12:00"/>
+      <XCUIElementTypeStaticText label="- €8.00"/>
+    </XCUIElementTypeCell>
+    <XCUIElementTypeCell><XCUIElementTypeStaticText label="Total Wealth"/></XCUIElementTypeCell>
+    <XCUIElementTypeCell marker="wealth">
+      <XCUIElementTypeStaticText label="Cash"/>
+      <XCUIElementTypeStaticText label="3 Wallets"/>
+      <XCUIElementTypeStaticText label="€1,234.56"/>
+    </XCUIElementTypeCell>
+  </XCUIElementTypeOther>
+</hierarchy>

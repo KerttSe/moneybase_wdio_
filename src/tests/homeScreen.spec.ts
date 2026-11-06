@@ -44,7 +44,7 @@ describe('Home Screen - Individual', function () {
 
   it('HS-1.5 Verify notification banner', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
-    await HomeScreenPage.verifyNotificationBannerIfApplicable()
+    if (!await HomeScreenPage.verifyNotificationBannerIfApplicable()) this.skip()
   }))
 
   it('HS-1.6 Verify promo banners', smokeStep(async function () {
@@ -54,7 +54,7 @@ describe('Home Screen - Individual', function () {
 
   it('HS-1.7 Verify pending transactions', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
-    await HomeScreenPage.verifyPendingTransactions()
+    if (!await HomeScreenPage.verifyPendingTransactions()) this.skip()
   }))
 
   it('HS-1.8 Verify recent transactions', smokeStep(async function () {
@@ -69,7 +69,7 @@ describe('Home Screen - Individual', function () {
     await HomeScreenPage.verifyAccountHeader()
     await HomeScreenPage.verifyWalletBalanceFormat()
     await HomeScreenPage.verifyTotalWealthSectionVisible()
-    await HomeScreenPage.verifyRecentTransactions(true)
+    await HomeScreenPage.verifyRecentTransactions()
   }))
 
   it('HS-1.9 Verify recent activities', smokeStep(async function () {

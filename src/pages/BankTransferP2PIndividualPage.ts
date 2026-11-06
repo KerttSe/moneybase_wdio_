@@ -1,3 +1,4 @@
+import { AUTH } from '../data/credentials'
 import BasePage from './BasePage'
 import { openIOSPaymentReview } from '../helpers/iosPayment.helper'
 import { $, browser } from '@wdio/globals'
@@ -126,8 +127,9 @@ class BankTransferP2PIndividualPage extends BasePage {
     return $('(//*[@content-desc="Close sheet"] | //*[@content-desc="Close"])[1]')
   }
 
-  private get carlosCatAndroid() {
-    return $('~Carlos Cat')
+  // A Moneybase friend's Pay row has this badge; some rows show a blank name, so tap the amount label.
+  private get firstMoneybaseFriendAndroid() {
+    return $('(//android.view.View[@content-desc="Friends on Moneybase"]/following-sibling::android.widget.TextView[starts-with(@text,"Sent ")])[1]')
   }
 
   private get payInputSearchAndroid() {
@@ -320,7 +322,7 @@ class BankTransferP2PIndividualPage extends BasePage {
     return $('~SEPA')
   }
 
-  private readonly swiftBeneficiaryName = 'usjsk whwjwk'
+  private readonly swiftBeneficiaryName = AUTH.swiftBeneficiaryName || 'usjsk whwjwk'
 
   private get swiftBeneficiaryAndroid() {
     return $(`~${this.swiftBeneficiaryName}`)
@@ -716,38 +718,7 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private async exitToHomeAfterP2PAndroid() {
-    await browser.switchContext('NATIVE_APP').catch(() => {})
-
-    await this.txDetailsBackAndroid.waitForExist({ timeout: 15000 })
-    await this.tap(this.txDetailsBackAndroid)
-
-    const backShown = await this.headerBackAndroid.waitForExist({ timeout: 8000 }).catch(() => false)
-    if (backShown) {
-      await this.tap(this.headerBackAndroid)
-    } else {
-      const backAltShown = await this.headerBackAltAndroid.waitForExist({ timeout: 8000 }).catch(() => false)
-      if (backAltShown) await this.tap(this.headerBackAltAndroid)
-      else await browser.back()
-    }
-
-    await browser.pause(800)
-    const homeShown = await this.homeTabAndroid.waitForExist({ timeout: 15000 }).catch(() => false)
-    if (homeShown) {
-      await this.tap(this.homeTabAndroid)
-      await this.homeRootAndroid.waitForExist({ timeout: 15000 })
-      return
-    }
-
-    const homeA11yShown = await this.homeTabAndroidA11y.waitForExist({ timeout: 5000 }).catch(() => false)
-    if (homeA11yShown) {
-      await this.tap(this.homeTabAndroidA11y)
-      await this.homeRootAndroid.waitForExist({ timeout: 15000 })
-      return
-    }
-
-    await this.homeTabAndroidLegacy.waitForExist({ timeout: 8000 })
-    await this.tap(this.homeTabAndroidLegacy)
-    await this.homeRootAndroid.waitForExist({ timeout: 15000 })
+    await this.backUntilAndroidHomeTab()
   }
 
   private async exitToHomeAfterP2PIOS() {
@@ -1002,8 +973,8 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     await this.openPayTabAndroid()
 
-    await this.carlosCatAndroid.waitForExist({ timeout: 20000 })
-    await this.tap(this.carlosCatAndroid)
+    await this.firstMoneybaseFriendAndroid.waitForExist({ timeout: 20000 })
+    await this.tap(this.firstMoneybaseFriendAndroid)
 
     await this.beneficiaryPayBtnAndroid.waitForExist({ timeout: 20000 })
     await this.tap(this.beneficiaryPayBtnAndroid)

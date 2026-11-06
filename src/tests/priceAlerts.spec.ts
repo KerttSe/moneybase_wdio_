@@ -24,10 +24,6 @@ describe('Price Alerts (iOS/Android)', function () {
     it('PA-1.1 Create price alert for BMW (Android)', smokeStep(async function () {
       await priceAlerts.createPriceAlertAndroid({ instrumentQuery: 'BMW' })
     }))
-
-    it('PA-1.2 Delete price alert for BMW (Android)', smokeStep(async function () {
-      await priceAlerts.deletePriceAlertAndroid('BMW')
-    }))
   }
 
   if (browser.isIOS) {

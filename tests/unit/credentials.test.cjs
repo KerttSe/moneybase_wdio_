@@ -42,3 +42,38 @@ test('specialized credentials are still used when configured', () => {
   assert.equal(PD_AUTH.phone, 'pd-test')
   assert.equal(AUTH_SECURITY.phone, 'security-test')
 })
+
+for (const [slot, code, business] of [
+  ['kat', 'KAT40008'],
+  ['mai', 'MAI40018'],
+  ['laz', 'LAZ40012', 'XER00249'],
+  ['rog', 'ROG40015', 'XER00249'],
+  ['mum', 'MUM40001', 'XER00247'],
+  ['pop', 'POP40015', 'XER00250'],
+]) {
+  test(`named profile ${slot} uses its own login, OTP and profile code`, () => {
+    const prefix = `MB_${slot.toUpperCase()}`
+    const { AUTH } = load({
+      MB_AUTH_SLOT: slot,
+      MB_PHONE: '79000001',
+      OTP_PHONE: '+35679000001',
+      [`${prefix}_PHONE`]: '79000003',
+      [`${prefix}_PIN`]: '4321',
+      [`${prefix}_OTP_PHONE`]: '+35679000003',
+    })
+    assert.equal(AUTH.phone, '79000003')
+    assert.equal(AUTH.pin, '4321')
+    assert.equal(AUTH.otpPhone, '+35679000003')
+    assert.equal(AUTH.individualAccountCode, code)
+    assert.equal(AUTH.individualAccountSuffix, '-1')
+    assert.equal(AUTH.businessAccountCode, business)
+    assert.equal(AUTH.cardLastFour, undefined)
+  })
+}
+
+test('named profile requires explicit credentials and rejects a primary-login alias', () => {
+  assert.throws(() => load({ MB_AUTH_SLOT: 'kat' }), /MB_KAT_PHONE and MB_KAT_PIN are required/)
+  assert.throws(() => load({
+    MB_AUTH_SLOT: 'kat', MB_PHONE: '79000001', MB_KAT_PHONE: '+35679000001', MB_KAT_PIN: '4321',
+  }), /different login/)
+})

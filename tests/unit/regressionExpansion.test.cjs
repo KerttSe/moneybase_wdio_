@@ -3,6 +3,7 @@ const assert = require('node:assert/strict')
 const fs = require('node:fs')
 const vm = require('node:vm')
 const ts = require('typescript')
+const { execFileSync } = require('node:child_process')
 
 function load(file, mocks = {}) {
   const module = { exports: {} }
@@ -37,6 +38,210 @@ function loadPage(name, globals = {}, dependencies = {}) {
     ...dependencies,
   })
 }
+
+for (const isIOS of [false, true]) {
+  test(`QA login uses the bypass for every account on ${isIOS ? 'iOS' : 'Android'}`, async () => {
+    for (const code of ['VEG40002', 'KER40014', 'KAT40008', 'MAI40018', 'LAZ40012']) {
+      const { LoginPage } = loadPage('LoginPage', { browser: { isIOS, isAndroid: !isIOS } })
+      const page = new LoginPage()
+      const entered = []
+      const absent = { isExisting: async () => false, isDisplayed: async () => false }
+      Object.defineProperty(page, 'homeRoot', { value: absent })
+      Object.defineProperty(page, 'otpContainerIOS', { value: absent })
+      page.isHomeLoaded = async () => false
+      page.isIOSPasscodeScreenShown = async () => false
+      page.isAndroidPasscodeScreenShown = async () => false
+      for (const method of ['prepare', 'selectCountry', 'enterMobile', 'continue',
+        'waitForAndroidLoginNextStepAfterMobile', 'enterPin', 'waitForOtpScreen',
+        'tapContinueAfterOtp', 'waitForPostOtpNextStep', 'closeApplePayIfVisible', 'waitForHome']) {
+        page[method] = async () => {}
+      }
+      page.enterOtp = async value => entered.push(value)
+      await page.loginFlow({ country: 'Malta', phone: 'fixture', pin: '2468', individualAccountCode: code })
+      assert.deepEqual(entered, ['000000'], code)
+    }
+  })
+}
+
+for (const initial of ['pin', 'logout']) {
+  test(`Android login confirms the actual logout screen when starting on ${initial}`, async () => {
+    const { LoginPage } = loadPage('LoginPage', { browser: { isAndroid: true, switchContext: async () => {} } })
+    const page = new LoginPage()
+    let screen = initial
+    const taps = []
+    page.byId = id => ({ id, isDisplayed: async () =>
+      (id === 'logout_screen' && screen === 'logout') ||
+      (id === 'login_button_logout' && screen === 'pin') ||
+      (id === 'register_screen' && screen === 'register'),
+    })
+    page.isAndroidMainShellShown = async () => false
+    Object.defineProperty(page, 'homeRoot', { value: { isDisplayed: async () => false } })
+    page.tapAndroidCenterPoint = async control => {
+      taps.push(control.id)
+      screen = control.id === 'login_button_logout' ? 'logout' : 'welcome'
+    }
+    page.tapWelcomeEntryButtonIfShown = async () => {
+      if (screen !== 'welcome') return false
+      screen = 'register'
+      return true
+    }
+    page.dismissAndroidBlockersOnce = async () => {}
+    page.waitForLoginEntry = async condition => {
+      for (let i = 0; i < 5; i++) if (await condition()) return
+      throw new Error('Login entry was not reached')
+    }
+    await page.prepare()
+    assert.equal(screen, 'register')
+    assert.deepEqual(taps, initial === 'pin' ? ['login_button_logout', 'logout_button_continue'] : ['logout_button_continue'])
+  })
+}
+
+test('Android Home scroll directions are distinct and reaching an edge does not trigger a second swipe', async () => {
+  const directions = []
+  const { default: home } = loadPage('HomeScreenPage', { browser: {
+    isAndroid: true,
+    getWindowRect: async () => ({ width: 1080, height: 2340 }),
+    execute: async (_command, args) => { directions.push(args.direction); return false },
+    pause: async () => {},
+    performActions: async () => { throw new Error('An edge is not a driver failure') },
+  } })
+  assert.equal(await home.scrollDownOnce(), false)
+  assert.equal(await home.scrollUpOnce(), false)
+  assert.deepEqual(directions, ['down', 'up'])
+})
+
+for (const isIOS of [false, true]) {
+  test(`Home reads a visible recent payee on ${isIOS ? 'iOS' : 'Android'} without a fixed account name`, async () => {
+    const labels = [
+      { text: 'Recent Payees', visible: true },
+      { text: 'View All', visible: true },
+      { text: 'Hidden Person', visible: false },
+      { text: '  Anne  O\'Neil  ', visible: true },
+    ]
+    const { default: home } = loadPage('HomeScreenPage', {
+      browser: { isIOS },
+      $: () => ({ $$: async () => labels.map(label => ({
+        isDisplayed: async () => label.visible,
+        getText: async () => label.text,
+      })) }),
+    })
+    home.ensureVisibleByScrolling = async () => {}
+    assert.equal(await home.readRecentPayeeName(), "Anne O'Neil")
+  })
+}
+
+test('empty Recent Payees fails the fixture precondition instead of using a default person', async () => {
+  const { default: home } = loadPage('HomeScreenPage', {
+    $: () => ({ $$: async () => [] }),
+  })
+  home.ensureVisibleByScrolling = async () => {}
+  await assert.rejects(home.readRecentPayeeName(), /TEST_PRECONDITION.*visible payee/)
+})
+
+test('Home Search searches the name captured before entering search and waits for its result', async () => {
+  const calls = []
+  const name = `Anne O'Neil "QA"`
+  const home = {
+    waitForHomeLoaded: async () => {},
+    ensureIndividualAccount: async () => {},
+    readHomeSearchPayeeName: async () => { calls.push('read'); return name },
+    recentPayeesSection: { waitForDisplayed: async options => {
+      assert.equal(options.reverse, true)
+      calls.push('home-hidden')
+    } },
+    recentActivityHeader: { waitForDisplayed: async options => {
+      assert.equal(options.reverse, true)
+      calls.push('activity-hidden')
+    } },
+  }
+  const { default: Page } = loadPage('HomeSearchPage', {
+    $: selector => ({ waitForDisplayed: async () => {
+      if (!selector.includes('normalize-space')) return
+      assert.ok(selector.includes('concat('))
+      assert.ok(selector.includes('self::XCUIElementTypeStaticText'))
+      assert.ok(!selector.includes('self::XCUIElementTypeSearchField'))
+      assert.ok(selector.includes('Anne O'))
+      assert.ok(selector.includes('Neil "QA"'))
+      assert.equal(calls.at(-1), 'activity-hidden')
+      calls.push('result')
+    } }),
+  }, { './HomeScreenPage': { default: home } })
+  const page = new Page()
+  page.dismissIOSAlerts = async () => {}
+  page.revealSearchInput = async () => {}
+  page.typeIntoSearch = async query => { assert.equal(query, name); calls.push('type') }
+  await page.verifyHomeSearch()
+  assert.deepEqual(calls, ['read', 'type', 'home-hidden', 'activity-hidden', 'result'])
+})
+
+for (const source of ['payees', 'activity', 'missing']) {
+  test(`Home Search auto-selects its recipient source (${source})`, async () => {
+    let position = 0
+    const { default: home } = loadPage('HomeScreenPage', { browser: { isAndroid: true } })
+    home.ensureHomeBeforeSectionLookup = async () => {}
+    home.scrollToHomeTop = async () => {}
+    home.scrollDownOnce = async () => ++position < 2
+    home.readActivityRecipientName = async () => source === 'missing' ? null : 'Activity Person'
+    home.readRecentPayeeName = async () => 'Payee Person'
+    Object.defineProperty(home, 'recentPayeesSection', { value: { isDisplayed: async () => source === 'payees' && position === 1 } })
+    Object.defineProperty(home, 'recentActivityHeader', { value: { isDisplayed: async () => position === 0 } })
+    if (source === 'missing') await assert.rejects(home.readHomeSearchPayeeName(), /TEST_PRECONDITION/)
+    else assert.equal(await home.readHomeSearchPayeeName(), source === 'payees' ? 'Payee Person' : 'Activity Person')
+  })
+}
+
+test('Recent Activity fallback takes the first person or company, skipping system entries', async () => {
+  const label = text => ({ isDisplayed: async () => true, getText: async () => text })
+  const row = (name, amount) => ({
+    isDisplayed: async () => true,
+    $$: async () => [name, '6 Nov 2026, 12:00', amount].map(label),
+  })
+  const { default: home } = loadPage('HomeScreenPage', { browser: { isAndroid: true } })
+  Object.defineProperty(home, 'recentActivityRows', { value: [
+    row('Exchanged From Eur', '- €5.00'),
+    row('Example Store', '- €5.00'),
+    row('Alex Example', '+ €8.00'),
+  ] })
+  assert.equal(await home.readActivityRecipientName(), 'Example Store')
+})
+
+test('Home recent-transactions assertion fails when the header has no transaction rows', async () => {
+  const { default: home } = loadPage('HomeScreenPage', { browser: { isAndroid: true, waitUntil } })
+  home.ensureHomeBeforeSectionLookup = async () => {}
+  home.scrollToHomeTop = async () => {}
+  home.ensureVisibleByScrolling = async () => {}
+  Object.defineProperty(home, 'recentActivityRows', { value: [] })
+  await assert.rejects(home.verifyRecentTransactions(), /visible transaction row/)
+})
+
+for (const isIOS of [false, true]) {
+  test(`Recent Activity rows exclude unrelated Home sections on ${isIOS ? 'iOS' : 'Android'}`, () => {
+    const { default: home } = loadPage('HomeScreenPage', {
+      browser: { isIOS, isAndroid: !isIOS }, $$: selector => ({ selector }),
+    })
+    const selector = home.recentActivityRows.selector
+    const fixture = 'tests/unit/fixtures/home-current.xml'
+    const count = execFileSync('xmllint', ['--xpath', `count(${selector})`, fixture], { encoding: 'utf8' }).trim()
+    const marker = execFileSync('xmllint', ['--xpath', `string((${selector})/@marker)`, fixture], { encoding: 'utf8' }).trim()
+    assert.equal(count, '1')
+    assert.equal(marker, 'person-transfer')
+  })
+}
+
+test('current Home selectors find the holder, account, balance and actions without legacy label IDs', () => {
+  const { default: home } = loadPage('HomeScreenPage', { browser: { isAndroid: true } })
+  for (const control of [home.accountHolderNameCandidates[0], home.accountTypeCandidates[0],
+    home.accountBalanceCandidates[0], home.addFundsButton, home.exchangeButton, home.detailsButton,
+    home.recentActivityHeader, home.spendAnalyticsCandidates[0]]) {
+    const count = execFileSync('xmllint', ['--xpath', `count(${control.selector})`, 'tests/unit/fixtures/home-current.xml'], { encoding: 'utf8' }).trim()
+    assert.equal(count, '1', control.selector)
+  }
+})
+
+test('a Recent Payees section cannot satisfy the Home Recent Activity check', () => {
+  const { default: home } = loadPage('HomeScreenPage', { browser: { isAndroid: true } })
+  for (const candidate of home.recentActivitiesCandidates) assert.ok(!candidate.selector.includes('recentPayees'))
+})
 
 for (const enabled of [false, true]) {
   test(`button assertion checks the actual ${enabled ? 'enabled' : 'disabled'} state`, async () => {
@@ -138,7 +343,7 @@ test('the registered-number assertion requires a login root, not only a generic 
   const selectors = []
   const { default: Page } = loadPage('AuthenticationPage', {
     browser: { isAndroid: true }, $: selector => ({ waitForDisplayed: async () => selectors.push(selector) }),
-  }, { './LoginPage': {} })
+  }, { './LoginPage': {}, '../helpers/passcodeWarning.helper': {} })
   const page = new Page()
   await page.verifyRegisteredNumberLoginScreen()
   assert.match(selectors[0], /login_screen/)

@@ -252,6 +252,12 @@ class HomeScreenPage extends BasePage {
     return hasNumber && (hasSymbol || hasCode)
   }
 
+  private isFormattedMoney(text: string) {
+    const amount = String.raw`(?:\d+|\d{1,3}(?:[,. \u00a0\u202f]\d{3})+)[.,]\d{2}`
+    const currency = String.raw`(?:[€£$]|[A-Z]{3})`
+    return new RegExp(`^(?:${currency}\\s*${amount}|${amount}\\s*${currency})$`).test(text.trim())
+  }
+
   private async waitForAccountHolderNameFallback(timeout = 15000) {
     await browser.waitUntil(async () => {
       const texts = await this.getVisibleTextCandidates()
@@ -313,7 +319,8 @@ class HomeScreenPage extends BasePage {
         ? await resolved.isExisting().catch(() => false)
         : await resolved.isDisplayed().catch(() => false)
       if (found) {
-        await resolved.click()
+        if (browser.isAndroid) await this.tapAndroidCenterPoint(resolved)
+        else await resolved.click()
         return true
       }
     }
@@ -329,15 +336,13 @@ class HomeScreenPage extends BasePage {
         top: Math.round(height * 0.18),
         width: Math.round(width * 0.84),
         height: Math.round(height * 0.68),
-        // Android scrollGesture direction describes content movement, not finger movement.
-        // Moving content up reveals the lower Home sections.
-        direction: 'up',
+        direction: 'down',
         percent: 0.85,
-      }).then((result) => result === true).catch(() => false)
+      }).catch(() => null)
 
-      if (scrolled) {
+      if (typeof scrolled === 'boolean') {
         await browser.pause(900)
-        return
+        return scrolled
       }
     }
 
@@ -361,6 +366,7 @@ class HomeScreenPage extends BasePage {
     ])
     await browser.releaseActions().catch(() => {})
     await browser.pause(900)
+    return true
   }
 
   private async scrollUpOnce() {
@@ -373,11 +379,11 @@ class HomeScreenPage extends BasePage {
         height: Math.round(height * 0.68),
         direction: 'up',
         percent: 0.85,
-      }).then((result) => result === true).catch(() => false)
+      }).catch(() => null)
 
-      if (scrolled) {
+      if (typeof scrolled === 'boolean') {
         await browser.pause(900)
-        return
+        return scrolled
       }
     }
 
@@ -397,6 +403,7 @@ class HomeScreenPage extends BasePage {
     ])
     await browser.releaseActions().catch(() => {})
     await browser.pause(900)
+    return true
   }
 
   private async ensureVisibleByScrolling(
@@ -1069,9 +1076,7 @@ class HomeScreenPage extends BasePage {
   private get accountHolderNameCandidates(): WdioEl[] {
     if (browser.isAndroid) {
       return [
-        this.byId('home_label_accountHolderName'),
-        this.byId('home_label_accountName'),
-        this.byId('home_label_accountHolder'),
+        $('//*[contains(@resource-id,"home_button_userAvatar")]/android.widget.TextView[1]'),
       ]
     }
 
@@ -1085,8 +1090,7 @@ class HomeScreenPage extends BasePage {
   private get accountTypeCandidates(): WdioEl[] {
     if (browser.isAndroid) {
       return [
-        this.byId('home_label_accountType'),
-        this.byId('home_text_accountType'),
+        $('//*[contains(@resource-id,"home_button_userAvatar")]/android.widget.TextView[2]'),
       ]
     }
 
@@ -1099,9 +1103,7 @@ class HomeScreenPage extends BasePage {
   private get accountBalanceCandidates(): WdioEl[] {
     if (browser.isAndroid) {
       return [
-        this.byId('home_label_balance'),
-        this.byId('home_label_balanceValue'),
-        this.byId('home_text_balance'),
+        $('//*[contains(@resource-id,"home_screen")]//*[contains(@resource-id,"home_input_search")]/following-sibling::android.widget.TextView[1]'),
       ]
     }
 
@@ -1151,6 +1153,9 @@ class HomeScreenPage extends BasePage {
 
   private get promoBannerCandidates(): WdioEl[] {
     return [
+      browser.isAndroid
+        ? $('//*[contains(@resource-id,"home_screen")]//android.widget.TextView[@text="For you"]')
+        : $('//*[@name="home_screen_view"]//XCUIElementTypeStaticText[@label="For you"]'),
       this.byId('home_banner_promo'),
       this.byId('home_banner_feature'),
       this.byId('home_banner_promotion'),
@@ -1176,47 +1181,77 @@ class HomeScreenPage extends BasePage {
     if (browser.isAndroid) {
       return [
         this.byId('home_section_recentTransactions'),
+        this.recentActivityHeader,
         this.androidTextContains('Recent transactions'),
       ]
     }
 
     return [
       this.byId('home_section_recentTransactions'),
+      this.recentActivityHeader,
       this.iosPredicateContains('Recent transactions'),
     ]
   }
 
 
   private get recentActivitiesCandidates(): WdioEl[] {
-    if (browser.isAndroid) {
-      return [
-        this.byId('home_section_recentActivities'),
-        this.byId('home_section_recentPayees'),
-        this.androidTextContains('Recent Activity'),
-        this.androidTextContains('Recent Activities'),
-        this.androidTextContains('Recent payees'),
-      ]
-    }
-
     return [
       this.byId('home_section_recentActivities'),
-      this.byId('home_section_recentPayees'),
-      this.iosPredicateContains('Recent Activity'),
-      this.iosPredicateContains('Recent Activities'),
-      this.iosPredicateContains('Recent payees'),
+      this.recentActivityHeader,
     ]
+  }
+
+  public get recentActivityHeader() {
+    return browser.isAndroid
+      ? $('//*[contains(@resource-id,"home_screen")]//android.widget.TextView[@text="Recent Activity" or @text="Recent Activities" or @text="Recent Transactions"]')
+      : $('//*[@name="home_screen_view"]//XCUIElementTypeStaticText[@label="Recent Activity" or @label="Recent Activities" or @label="Recent Transactions"]')
+  }
+
+  private get recentActivityRowsSelectorAndroid() {
+    const heading = '@text="Recent Activity" or @text="Recent Activities" or @text="Recent Transactions"'
+    return `//*[contains(@resource-id,"home_screen")]//android.widget.TextView[${heading}]/following-sibling::android.view.View[preceding-sibling::android.widget.TextView[1][${heading}]]/descendant-or-self::android.view.View[count(android.widget.TextView)>=3]`
+  }
+
+  private async recentActivityRowLabels(row: WebdriverIO.Element, index: number) {
+    const relative = browser.isAndroid ? './android.widget.TextView' : './/XCUIElementTypeStaticText'
+    const labels = await row.$$(relative) as unknown as WebdriverIO.Element[]
+    if (labels.length || !browser.isAndroid) return labels
+    // Element-scoped XPath can return nothing on Compose rows, so address the row globally.
+    return await $$(`(${this.recentActivityRowsSelectorAndroid})[${index + 1}]/android.widget.TextView`) as unknown as WebdriverIO.Element[]
+  }
+
+  private get recentActivityRows() {
+    if (browser.isAndroid) {
+      // Compose exposes the rows as siblings of the heading, without a list ID.
+      return $$(this.recentActivityRowsSelectorAndroid)
+    }
+    const heading = '@label="Recent Activity" or @label="Recent Activities" or @label="Recent Transactions"'
+    const sectionHeading = `${heading} or @label="For you" or @label="Total Wealth" or @label="Spend Analytics" or @label="Recent Payees"`
+    return $$(`(//*[@name="home_list_recentTransactions" or @name="home_recentTransactions_list" or @name="home_section_recentActivities"]//XCUIElementTypeCell | //*[@name="home_screen_view"]//XCUIElementTypeCell[preceding-sibling::XCUIElementTypeStaticText[1][${heading}]] | //*[@name="home_screen_view"]//XCUIElementTypeCell[preceding-sibling::XCUIElementTypeCell[.//XCUIElementTypeStaticText[${sectionHeading}]][1][.//XCUIElementTypeStaticText[${heading}]]])[count(.//XCUIElementTypeStaticText)>=3]`)
+  }
+
+  private async readActivityRecipientName() {
+    // Any person or company listed on Home is searchable; system entries are not.
+    const systemEntry = /^(exchanged|deposit|dividend|withdrawal|interest|refund)\b|campaign/i
+    const rows = await this.recentActivityRows as unknown as WebdriverIO.Element[]
+    for (let index = 0; index < rows.length; index += 1) {
+      const row = rows[index]
+      if (!await row.isDisplayed()) continue
+      const labels = await this.recentActivityRowLabels(row, index)
+      for (const label of labels) {
+        if (!await label.isDisplayed()) continue
+        const text = (await label.getText()).replace(/\s+/g, ' ').trim()
+        const isName = text.length >= 3 && /\p{L}/u.test(text) && !/\d/.test(text) && !/^[A-Z]{1,3}$/.test(text)
+        if (isName && !systemEntry.test(text)) return text
+      }
+    }
+    return null
   }
 
   private get spendAnalyticsCandidates(): WdioEl[] {
     if (browser.isAndroid) {
       return [
-        this.byId('home_section_spendAnalytics'),
-        this.byId('home_button_spendAnalytics'),
-        this.androidTextContains('Spend Analytics'),
-        this.byId('home_button_statistics'),
-        this.byId('home_button_analytics'),
-        this.androidTextContains('Analytics'),
-        $('//*[@content-desc="ic statistics" or @content-desc="Statistics" or @content-desc="Analytics" or contains(@resource-id,"statistics") or contains(@resource-id,"analytics")]'),
+        $('//*[contains(@resource-id,"home_screen")]//android.widget.TextView[@text="Spend Analytics"]'),
       ]
     }
 
@@ -1320,17 +1355,78 @@ class HomeScreenPage extends BasePage {
   }
 
   public async verifyAccountHeader() {
+    if (browser.isAndroid) {
+      await this.waitForAnyDisplayed(this.accountHolderNameCandidates, 10000, 'Account holder name')
+      await this.waitForAnyDisplayed(this.accountTypeCandidates, 10000, 'Account type and code')
+      const name = await this.accountHolderNameCandidates[0].getText()
+      const account = await this.accountTypeCandidates[0].getText()
+      if (!name.trim() || !account.includes('Individual') || (AUTH.individualAccountCode && !account.includes(AUTH.individualAccountCode))) {
+        throw new Error('Home header must show the selected Individual account and its holder')
+      }
+      return
+    }
     await this.waitForAnyDisplayed(this.accountHolderNameCandidates, 15000, 'Account holder name')
       .catch(async () => this.waitForAccountHolderNameFallback(15000))
 
     await this.waitForAnyDisplayed(this.accountTypeCandidates, 15000, 'Account type')
-      .catch(async () => this.waitForAccountTypeFallback(15000).catch(() => {
-        console.warn('[HomeScreenPage] Account type label not found — skipping (may have been removed in this build)')
-      }))
+      .catch(async () => this.waitForAccountTypeFallback(15000))
+  }
+
+  public get recentPayeesSection() {
+    return this.byId('home_section_recentPayees')
+  }
+
+  public async readRecentPayeeName() {
+    const section = this.recentPayeesSection
+    await this.ensureVisibleByScrolling([section], 'Recent Payees on Home')
+    const labels = await section.$$(browser.isIOS
+      ? './/XCUIElementTypeStaticText'
+      : './/android.widget.TextView')
+    for (const label of labels) {
+      if (!await label.isDisplayed()) continue
+      const name = (await label.getText()).replace(/\s+/g, ' ').trim()
+      const heading = /^(recent payees|view all|see all)$/i.test(name)
+      if (!heading && name.length >= 3 && /\p{L}/u.test(name)) return name
+    }
+    throw new Error('TEST_PRECONDITION: Recent Payees on Home must contain a visible payee name')
+  }
+
+  public async readHomeSearchPayeeName() {
+    await this.ensureHomeBeforeSectionLookup()
+    await this.scrollToHomeTop()
+    let activityName: string | null = null
+    let atBottom = false
+    for (let position = 0; position <= 8; position += 1) {
+      if (await this.recentPayeesSection.isDisplayed()) {
+        try {
+          const name = await this.readRecentPayeeName()
+          console.log('[Home Search] Recipient source: Recent Payees')
+          await this.scrollToHomeTop()
+          return name
+        } catch (error) {
+          if (!(error instanceof Error) || !error.message.startsWith('TEST_PRECONDITION:')) throw error
+        }
+      }
+      if (!activityName && await this.recentActivityHeader.isDisplayed()) activityName = await this.readActivityRecipientName()
+      if (atBottom) break
+      atBottom = !await this.scrollDownOnce()
+    }
+    await this.scrollToHomeTop()
+    if (activityName) {
+      console.log('[Home Search] Recipient source: Recent Activity')
+      return activityName
+    }
+    throw new Error('TEST_PRECONDITION: Home must list a person or company in Recent Payees or Recent Activity')
+  }
+
+  private async scrollToHomeTop() {
+    for (let i = 0; i < 6; i += 1) {
+      if (!await this.scrollUpOnce()) break
+    }
   }
 
   public async verifyRecentPayeeOpensDetails(name: string) {
-    const section = this.byId('home_section_recentPayees')
+    const section = this.recentPayeesSection
     const payButton = browser.isAndroid
       ? $('//*[contains(@resource-id,"beneficiaryDetails_button_pay") or @content-desc="beneficiaryDetails_button_pay"]')
       : $('~beneficiaryDetails_button_pay')
@@ -1395,14 +1491,11 @@ class HomeScreenPage extends BasePage {
   }
 
   public async verifyWalletBalanceFormat() {
-    const amount = String.raw`(?:\d+|\d{1,3}(?:[,. \u00a0\u202f]\d{3})+)[.,]\d{2}`
-    const currency = String.raw`(?:[€£$]|[A-Z]{3})`
-    const formatted = new RegExp(`^(?:${currency}\\s*${amount}|${amount}\\s*${currency})$`)
     await browser.waitUntil(async () => {
       for (const candidate of this.accountBalanceCandidates) {
         if (!await candidate.isDisplayed().catch(() => false)) continue
         const text = await candidate.getText().catch(() => '')
-        if (formatted.test(text.trim())) return true
+        if (this.isFormattedMoney(text)) return true
       }
       return false
     }, { timeout: 15000, timeoutMsg: 'Expected the wallet balance to show a formatted amount and currency' })
@@ -1423,16 +1516,12 @@ class HomeScreenPage extends BasePage {
       [this.exchangeButton, this.exchangeButtonText],
       10000,
       'Exchange button'
-    ).catch(() => {
-      console.warn('[HomeScreenPage] Exchange button not found — skipping (may have been renamed/removed in this build)')
-    })
+    )
     await this.waitForAnyDisplayed(
       [this.detailsButton, this.detailsButtonText],
       10000,
       'Details button'
-    ).catch(() => {
-      console.warn('[HomeScreenPage] Details button not found — skipping (may have been renamed/removed in this build)')
-    })
+    )
   }
 
   public async verifyWalletDetailsOpens() {
@@ -1451,7 +1540,7 @@ class HomeScreenPage extends BasePage {
       ? $(currency
         ? `//XCUIElementTypeNavigationBar[@name="${currency} Account"]`
         : '-ios predicate string:type == "XCUIElementTypeNavigationBar" AND name MATCHES "[A-Z]{3} Account"')
-      : $('//*[@text="Wallet Details" or @text="Wallet details" or @content-desc="Wallet Details"]')
+      : $(`android=new UiSelector().textMatches("${currency ?? '[A-Z]{3}'} Wallet")`)
     await title.waitForDisplayed({ timeout: 15000, timeoutMsg: 'Expected the wallet details screen' })
   }
 
@@ -1709,13 +1798,15 @@ class HomeScreenPage extends BasePage {
   }
 
   public async tapActionButtons() {
-    if (browser.isIOS) return
+    await this.tapFirstDisplayed([this.exchangeButton, this.exchangeButtonText], 'Exchange button')
+    const exchangeTitle = browser.isAndroid
+      ? $('//*[@text="FX Exchange" or @content-desc="FX Exchange"]')
+      : $('~FX Exchange')
+    await exchangeTitle.waitForDisplayed({ timeout: 15000, timeoutMsg: 'Exchange must open the FX Exchange screen' })
+    await this.tapHomeTab()
 
-    const exchangeTapped = await this.tapFirstDisplayed([this.exchangeButton, this.exchangeButtonText], 'Exchange button').catch(() => false)
-    if (exchangeTapped !== false) await this.tapHomeTab()
-
-    const detailsTapped = await this.tapFirstDisplayed([this.detailsButton, this.detailsButtonText], 'Details button').catch(() => false)
-    if (detailsTapped !== false) await this.tapHomeTab()
+    await this.openCurrentWalletDetails()
+    await this.tapHomeTab()
   }
 
   private async tapHomeTab() {
@@ -1809,17 +1900,25 @@ class HomeScreenPage extends BasePage {
   public async verifyNotificationBannerIfApplicable() {
     const candidates = this.notificationBannerCandidates
     const anyExists = await Promise.all(candidates.map((el) => el.isExisting().catch(() => false)))
-    if (!anyExists.some(Boolean)) return
+    if (!anyExists.some(Boolean)) return false
 
     await this.waitForAnyDisplayed(candidates, 8000, 'Notification banner')
+    return true
   }
 
   public async verifyPromoBanners() {
-    const candidates = this.promoBannerCandidates
-    const anyExists = await Promise.all(candidates.map((el) => el.isExisting().catch(() => false)))
-    if (!anyExists.some(Boolean)) return
-
-    await this.ensureVisibleByScrolling(candidates, 'Promo / feature banner')
+    await this.ensureHomeBeforeSectionLookup()
+    await this.scrollToHomeTop()
+    if (browser.isAndroid) {
+      // Promo content depends on the account, so its absence is logged and never fails the run.
+      const shown = await this.ensureVisibleByScrolling(this.promoBannerCandidates, 'For you / promo section')
+        .then(() => true)
+        .catch(() => false)
+      console.log(`[Home] For you / promo section shown: ${shown}`)
+      await this.scrollToHomeTop()
+      return
+    }
+    await this.ensureVisibleByScrolling(this.promoBannerCandidates, 'For you / promo section')
   }
 
   public async verifyPendingTransactions() {
@@ -1827,59 +1926,52 @@ class HomeScreenPage extends BasePage {
 
     const candidates = this.pendingTransactionsCandidates
     const anyExists = await Promise.all(candidates.map((el) => el.isExisting().catch(() => false)))
-    if (!anyExists.some(Boolean)) return
+    if (!anyExists.some(Boolean)) return false
 
     await this.ensureVisibleByScrolling(candidates, 'Pending transactions section')
+    return true
   }
 
-  public async verifyRecentTransactions(required = false) {
+  public async verifyRecentTransactions() {
     await this.ensureHomeBeforeSectionLookup()
-
-    const headerCandidates = this.recentTransactionsHeaderCandidates
-    const headerExists = await Promise.all(
-      headerCandidates.map((el) => el.isExisting().catch(() => false))
-    )
-    if (!required && !headerExists.some(Boolean)) return
-
-    await this.ensureVisibleByScrolling(headerCandidates, 'Recent transactions header')
-
-    const lists = [this.byId('home_list_recentTransactions'), this.byId('home_recentTransactions_list')]
-    await this.ensureVisibleByScrolling(lists, 'Recent transactions list')
-    if (!required) return
+    await this.scrollToHomeTop()
+    await this.ensureVisibleByScrolling(this.recentTransactionsHeaderCandidates, 'Recent Activity / Transactions header')
 
     await browser.waitUntil(async () => {
-      for (const list of lists) {
-        if (!await list.isDisplayed().catch(() => false)) continue
-        const entries = await list.$$('.//*[@text or @content-desc or @label or @value]')
+      const rows = await this.recentActivityRows as unknown as WebdriverIO.Element[]
+      for (let index = 0; index < rows.length; index += 1) {
+        const row = rows[index]
+        if (!await row.isDisplayed()) continue
+        const entries = await this.recentActivityRowLabels(row, index)
         for (const entry of entries) {
           if (!await entry.isDisplayed().catch(() => false)) continue
           const text = await entry.getText().catch(() => '')
-          if (this.isLikelyBalance(text.trim().replace(/^[+−-]\s*/, ''))) return true
+          if (this.isFormattedMoney(text.trim().replace(/^[+−-]\s*/, ''))) return true
         }
       }
       return false
-    }, { timeout: 15000, timeoutMsg: 'Expected a visible transaction amount in Recent Transactions' })
+    }, { timeout: 15000, timeoutMsg: 'Expected a visible transaction row with a formatted amount in Recent Activity / Transactions' })
   }
 
   public async verifyRecentActivities() {
     await this.ensureHomeBeforeSectionLookup()
+    await this.scrollToHomeTop()
     await this.ensureVisibleByScrolling(this.recentActivitiesCandidates, 'Recent Activities section')
   }
 
   public async verifySpendAnalytics() {
     await this.ensureHomeBeforeSectionLookup()
-
-    for (let i = 0; i <= 6; i += 1) {
-      try {
-        await this.waitForAnyDisplayed(this.spendAnalyticsCandidates, 4000, 'Spend Analytics section')
-        return
-      } catch {
-        const source = await browser.getPageSource().catch(() => '')
-        if (source.includes('home_button_spendAnalytics')) return
-        if (i === 6) throw new Error('Spend Analytics section did not appear')
-        await this.scrollDownOnce()
-      }
+    await this.scrollToHomeTop()
+    if (browser.isAndroid) {
+      // Spend Analytics depends on the account, so its absence is logged and never fails the run.
+      const shown = await this.ensureVisibleByScrolling(this.spendAnalyticsCandidates, 'Spend Analytics section', 6)
+        .then(() => true)
+        .catch(() => false)
+      console.log(`[Home] Spend Analytics section shown: ${shown}`)
+      await this.scrollToHomeTop()
+      return
     }
+    await this.ensureVisibleByScrolling(this.spendAnalyticsCandidates, 'Spend Analytics section', 6)
   }
 
   public async verifyBottomNavigation() {

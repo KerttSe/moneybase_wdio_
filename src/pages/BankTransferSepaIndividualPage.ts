@@ -653,39 +653,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private async exitToHomeAfterPaymentAndroid() {
-    await browser.switchContext('NATIVE_APP').catch(() => {})
-
-    const txBackShown = await this.txDetailsBackAndroid.waitForExist({ timeout: 15000 }).catch(() => false)
-    if (txBackShown) await this.txDetailsBackAndroid.click()
-    else await browser.back()
-
-    const backShown = await this.headerBackAndroid.waitForExist({ timeout: 8000 }).catch(() => false)
-    if (backShown) {
-      await this.headerBackAndroid.click()
-    } else {
-      const backAltShown = await this.headerBackAltAndroid.waitForExist({ timeout: 8000 }).catch(() => false)
-      if (backAltShown) await this.headerBackAltAndroid.click()
-      else await browser.back()
-    }
-
-    await browser.pause(800)
-    const homeShown = await this.homeTabAndroid.waitForExist({ timeout: 15000 }).catch(() => false)
-    if (homeShown) {
-      await this.homeTabAndroid.click()
-      await this.homeRootAndroid.waitForExist({ timeout: 15000 })
-      return
-    }
-
-    const homeA11yShown = await this.homeTabAndroidA11y.waitForExist({ timeout: 5000 }).catch(() => false)
-    if (homeA11yShown) {
-      await this.homeTabAndroidA11y.click()
-      await this.homeRootAndroid.waitForExist({ timeout: 15000 })
-      return
-    }
-
-    await this.homeTabAndroidLegacy.waitForExist({ timeout: 8000 })
-    await this.homeTabAndroidLegacy.click()
-    await this.homeRootAndroid.waitForExist({ timeout: 15000 })
+    await this.backUntilAndroidHomeTab()
   }
 
   private async scrollHomeAndroid() {

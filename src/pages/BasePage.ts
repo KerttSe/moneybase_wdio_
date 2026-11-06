@@ -1,6 +1,6 @@
 import type { ChainablePromiseElement } from 'webdriverio'
 import { $, browser } from '@wdio/globals'
-import { AUTH } from '../data/credentials'
+import { AUTH, ELITE_INDIVIDUAL_CODE } from '../data/credentials'
 
 type WdioEl = ChainablePromiseElement
 type ResolvableWdioEl = WdioEl | WebdriverIO.Element | Promise<WdioEl | WebdriverIO.Element>
@@ -43,6 +43,14 @@ export default class BasePage {
 
   private get androidAlertTitle() {
     return $('(//*[@resource-id="com.moneybase.qa:id/alertTitle"] | //*[contains(@resource-id,"alertTitle")])[1]')
+  }
+
+  private get androidTierGreetingClose() {
+    return this.byIdRx('tierGreeting_button_close')
+  }
+
+  private get androidTierGreetingScreen() {
+    return this.byIdRx('tierGreeting_screen')
   }
 
   private get androidGooglePayNotNow() {
@@ -122,7 +130,7 @@ export default class BasePage {
   }
 
   private get androidMoreCloseButton() {
-    return $('(//*[@content-desc="close"] | //*[@content-desc="Close"] | //*[@content-desc="Navigate up"] | //*[@text="Close"] | //*[contains(@content-desc,"close_button")])[1]')
+    return $('(//*[contains(@resource-id,"more_screen")]//*[@content-desc="Close"]/ancestor::*[@clickable="true"][1])[1]')
   }
 
   private get androidDrawerLogoutItem() {
@@ -155,9 +163,10 @@ export default class BasePage {
     await browser.pause(300)
   }
 
-  protected async tapAndroidCenterPoint(element: WdioEl, pointerId = 'finger-android-center-tap') {
-    const location = await element.getLocation()
-    const size = await element.getSize()
+  protected async tapAndroidCenterPoint(element: WdioEl | WebdriverIO.Element, pointerId = 'finger-android-center-tap') {
+    const target = (await element) as WebdriverIO.Element
+    const location = await target.getLocation()
+    const size = await target.getSize()
     const x = Math.round(location.x + size.width / 2)
     const y = Math.round(location.y + size.height / 2)
 
@@ -274,6 +283,13 @@ export default class BasePage {
 
     const continuedFromVerificationSuccess = await this.tapAndroidVerificationSuccessContinueIfVisible()
     if (continuedFromVerificationSuccess) return true
+
+    if (AUTH.individualAccountCode === ELITE_INDIVIDUAL_CODE
+      && await this.androidTierGreetingClose.isDisplayed().catch(() => false)) {
+      await this.tapAndroidCenterPoint(this.androidTierGreetingClose)
+      await this.androidTierGreetingScreen.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+      return true
+    }
 
     const gpayFullScreenShown = await this.androidGooglePayScreen.isDisplayed().catch(() => false)
     if (gpayFullScreenShown) {
@@ -408,6 +424,9 @@ export default class BasePage {
           'verificationSuccess_screen',
           'verificationSuccess_button_continue',
           'googlepayProposal_button_close',
+          'tierGreeting_screen',
+          'text="Not Now"',
+          'content-desc="Not Now"',
           'More menu has been moved',
           'text="Dismiss"',
           'content-desc="Dismiss"',
@@ -489,176 +508,91 @@ export default class BasePage {
   protected async switchAndroidAccountByCode(accountCode: string, accountType?: string) {
     if (!browser.isAndroid) return
 
-    await browser.switchContext('NATIVE_APP').catch(() => {})
+    await browser.switchContext('NATIVE_APP')
+    await this.stabilizeAndroidHomeSurface(20000)
 
-    const homeAccountLabel = $(`//android.widget.TextView[contains(@text,"${accountCode}")]`)
-    const alreadyOnAccount =
-      await homeAccountLabel.isDisplayed().catch(() => false) ||
-      await homeAccountLabel.isExisting().catch(() => false)
-    if (alreadyOnAccount) return
+    const homeAccountLabel = $(`//*[contains(@resource-id,"_button_userAvatar")]//android.widget.TextView[contains(@text,"${accountCode}")]`)
+    if (await homeAccountLabel.isExisting()) return
 
-    await this.stabilizeAndroidHomeSurface(20000).catch(() => false)
-
-    const userAvatarBtn = $('//*[contains(@resource-id,"home_button_userAvatar") or @content-desc="home_button_userAvatar"]')
-    const moreScreen = this.byIdRx('more_screen')
-    const accountPickerButton = this.byIdRx('more_button_accountPicker')
-    const accountSelectionScreen = this.byIdRx('accountSelection_screen')
-    const oldSubAccountsTitle = $('//*[@text="Sub Accounts" or @content-desc="Sub Accounts"]')
-    const composeMoreIndicator = $('//*[@text="Personal Details" or @content-desc="Personal Details"]')
-    const leakCanary = this.byIdRx('leak_canary_main_container')
-    const composeAccountPickerRow = $('//android.widget.TextView[contains(@text,"  Business") or contains(@text,"  Individual") or contains(@text,"  Corporate") or contains(@text,"  Personal")]/ancestor::*[@clickable="true"][1]')
-    const targetCurrentAccountRow = accountType
-      ? $(`//android.widget.TextView[contains(@text,"${accountCode}") and contains(@text,"${accountType}")]/ancestor::*[@clickable="true"][1]`)
-      : $(`//android.widget.TextView[contains(@text,"${accountCode}")]/ancestor::*[@clickable="true"][1]`)
-    let targetAlreadySelectedFromMore = false
-
-    await userAvatarBtn.waitForExist({ timeout: 20000 })
-    await this.tap(userAvatarBtn)
+    const userAvatar = this.byIdRx('home_button_userAvatar')
+    const picker = this.byIdRx('more_button_accountPicker')
+    const currentAccount = $(`//*[contains(@resource-id,"more_button_accountPicker")]//*[contains(@text,"${accountCode}") or contains(@content-desc,"${accountCode}")]`)
+    let accountAlreadySelected = false
     let recoveredFromLeakCanary = false
+    await this.dismissKnownAndroidBlockingPopups(2)
+    // A session can resume on another tab, which has no Home avatar.
+    const homeTab = this.byIdRx('navigation_button_home')
+    if (!await userAvatar.isDisplayed().catch(() => false) && await homeTab.isDisplayed().catch(() => false)) {
+      await this.tap(homeTab)
+      await userAvatar.waitForDisplayed({ timeout: 15000 }).catch(() => {})
+    }
+    await this.tap(userAvatar)
 
-    await browser.waitUntil(
-      async () => {
-        if (!recoveredFromLeakCanary && await leakCanary.isExisting()) {
-          recoveredFromLeakCanary = true
-          await browser.back()
-          if (await leakCanary.isExisting()) await browser.back()
-          await this.tap(userAvatarBtn)
-          return false
-        }
-        if (await accountSelectionScreen.isDisplayed().catch(() => false)
-          || await accountSelectionScreen.isExisting().catch(() => false)) return true
-        if (await oldSubAccountsTitle.isDisplayed().catch(() => false)) return true
+    await browser.waitUntil(async () => {
+      const source = await browser.getPageSource()
+      if (/resource-id="[^"]*accountSelection_screen"/.test(source)) return true
 
-        const moreShown = await moreScreen.isDisplayed().catch(() => false)
-          || await moreScreen.isExisting().catch(() => false)
-        if (moreShown) {
-          const pickerShown = await accountPickerButton.isDisplayed().catch(() => false)
-            || await accountPickerButton.isExisting().catch(() => false)
-          if (pickerShown) {
-            await this.tap(accountPickerButton)
-          }
-          return false
-        }
-
-        const composeMoreShown = await composeMoreIndicator.isExisting().catch(() => false)
-        if (composeMoreShown) {
-          const currentAccountAlreadyTarget = await targetCurrentAccountRow.isDisplayed().catch(() => false)
-            || await targetCurrentAccountRow.isExisting().catch(() => false)
-          if (currentAccountAlreadyTarget) {
-            targetAlreadySelectedFromMore = true
-            await browser.back().catch(() => {})
-            await browser.pause(400)
-            await this.stabilizeAndroidHomeSurface(10000).catch(() => false)
-            return true
-          }
-
-          const pickerRowShown = await composeAccountPickerRow.isExisting().catch(() => false)
-          if (pickerRowShown) {
-            await this.tap(composeAccountPickerRow)
-          }
-          return false
-        }
-
+      // These sheets can open after the avatar tap and swallow it.
+      if (source.includes('text="Not Now"') || source.includes('tierGreeting_screen')) {
+        await this.dismissKnownAndroidBlockingPopups(2)
+        await this.tap(userAvatar)
         return false
-      },
-      {
-        timeout: 15000,
-        interval: 500,
-        timeoutMsg: 'Android account picker did not open',
       }
-    )
 
-    if (targetAlreadySelectedFromMore && !(await accountSelectionScreen.isExisting().catch(() => false))) return
+      if (!recoveredFromLeakCanary && source.includes('leak_canary_main_container')) {
+        recoveredFromLeakCanary = true
+        await browser.back()
+        if (await this.byIdRx('leak_canary_main_container').isExisting()) await browser.back()
+        await this.tap(userAvatar)
+        return false
+      }
 
-    const accountByCode = $(`//*[contains(@resource-id,"accountSelection_screen")]//*[not(self::android.widget.EditText) and (contains(@text,"${accountCode}") or contains(@content-desc,"${accountCode}"))]/ancestor-or-self::*[@clickable="true"][1]`)
-    const accountSearchInput = $('//*[contains(@resource-id,"accountSelection_screen")]//android.widget.EditText')
-    const legacyByCode = $(`//android.widget.TextView[contains(@text,"${accountCode}")]/ancestor::*[@clickable="true"][1]`)
-    const legacyByType = accountType
-      ? $(`//*[contains(@resource-id,"accountSelection_screen")]//*[@content-desc="${accountType}"]/ancestor::*[@clickable="true"][1] | //*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[contains(@text,"${accountType}")]/ancestor::*[@clickable="true"][1]`)
-      : legacyByCode
-    const composeByCodeContentDesc = $(`//*[contains(@resource-id,"accountSelection_screen")]//*[contains(@content-desc,"${accountCode}")]`)
-    const composeByTypeContentDesc = accountType
-      ? $(`//*[contains(@resource-id,"accountSelection_screen")]//*[contains(@content-desc,"${accountType}")]`)
-      : composeByCodeContentDesc
-    const composeByCode = $(`//*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[contains(@text,"${accountCode}")]`)
-    const composeByType = accountType
-      ? $(`//*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[contains(@text,"${accountType}")] | //*[contains(@resource-id,"accountSelection_screen")]//*[@content-desc="${accountType}"]`)
-      : composeByCode
-    const uiSelectorDescCode = $(`//*[contains(@resource-id,"accountSelection_screen")]//*[not(self::android.widget.EditText) and (contains(@content-desc,"${accountCode}") or contains(@text,"${accountCode}"))]`)
-
-    if (!(await accountByCode.isDisplayed().catch(() => false)) && await accountSearchInput.isDisplayed().catch(() => false)) {
-      await accountSearchInput.setValue(accountCode).catch(async () => {
-        await this.tap(accountSearchInput)
-        await browser.keys(accountCode)
-      })
-      await browser.pause(500)
-    }
-
-    if (await accountByCode.isDisplayed().catch(() => false)) {
-      await this.tap(accountByCode)
-    } else if (await legacyByCode.isDisplayed().catch(() => false)) {
-      await this.tap(legacyByCode)
-    } else if (await composeByCodeContentDesc.isExisting().catch(() => false)) {
-      await this.tap(composeByCodeContentDesc)
-    } else if (await uiSelectorDescCode.isExisting().catch(() => false)) {
-      await this.tap(uiSelectorDescCode)
-    } else if (await composeByCode.isExisting().catch(() => false)) {
-      await this.tap(composeByCode)
-    } else if (await legacyByType.isExisting().catch(() => false)) {
-      await this.tap(legacyByType)
-    } else if (await composeByTypeContentDesc.isExisting().catch(() => false)) {
-      await this.tap(composeByTypeContentDesc)
-    } else {
-      await composeByType.waitForExist({ timeout: 10000 })
-      await this.tap(composeByType)
-    }
-
-    await this.dismissCommonAndroidAlert(5000).catch(() => false)
-    await this.dismissKnownAndroidBlockingPopups(3).catch(() => false)
-    await this.stabilizeAndroidHomeSurface(30000).catch(() => false)
-
-    await browser.waitUntil(
-      async () => {
-        await this.dismissKnownAndroidBlockingPopups(2).catch(() => false)
-
-        // If still on More screen, click close/back to navigate to Home
-        const moreStillOpen = await this.androidMoreRoot.isExisting().catch(() => false)
-        if (moreStillOpen) {
-          const closeShown = await this.androidMoreCloseButton.isDisplayed().catch(() => false)
-            || await this.androidMoreCloseButton.isExisting().catch(() => false)
-          if (closeShown) {
-            await this.androidMoreCloseButton.click().catch(() => {})
-          } else {
-            await browser.back().catch(() => {})
-          }
-          await browser.pause(400)
+      if (/resource-id="[^"]*more_screen"/.test(source)) {
+        if (await currentAccount.isExisting()) {
+          accountAlreadySelected = true
+          await this.tapAndroidCenterPoint(this.androidMoreCloseButton)
+          return true
         }
-
-        const tv = $(`//android.widget.TextView[contains(@text,"${accountCode}")]`)
-        const cdEl = $(`//*[contains(@content-desc,"${accountCode}")]`)
-        const homeAccountChip = $(
-          `//*[contains(@resource-id,"home_button_userAvatar") and .//android.widget.TextView[contains(@text,"${accountCode}")]]`,
-        )
-        if (
-          await tv.isDisplayed().catch(() => false) ||
-          await tv.isExisting().catch(() => false) ||
-          await cdEl.isExisting().catch(() => false) ||
-          await homeAccountChip.isExisting().catch(() => false)
-        ) return true
-
-        // Compose build doesn't render account code as text/content-desc on home.
-        // Accept home_screen visible + picker gone as confirmation the switch succeeded.
-        const homeVisible = await this.byIdRx('home_screen').isDisplayed().catch(() => false)
-          || await this.byIdRx('home_button_addFunds').isDisplayed().catch(() => false)
-        const pickerGone = !(await this.byIdRx('accountSelection_screen').isExisting().catch(() => false))
-        return homeVisible && pickerGone
-      },
-      {
-        timeout: 30000,
-        interval: 500,
-        timeoutMsg: `Android home did not switch to account ${accountCode}`,
+        await this.tapAndroidCenterPoint(picker)
       }
-    )
+      return false
+    }, {
+      timeout: 20000,
+      interval: 500,
+      timeoutMsg: 'Android account picker did not open',
+    })
+
+    if (!accountAlreadySelected) {
+      const account = $(`//*[contains(@resource-id,"accountSelection_screen")]//*[not(self::android.widget.EditText) and (contains(@text,"${accountCode}") or contains(@content-desc,"${accountCode}"))]/ancestor-or-self::*[@clickable="true"][1]`)
+      const search = $('//*[contains(@resource-id,"accountSelection_screen")]//android.widget.EditText')
+      if (!await account.isExisting() && await search.isExisting()) {
+        await search.setValue(accountCode)
+      }
+      await account.waitForDisplayed({
+        timeout: 15000,
+        timeoutMsg: `Expected ${accountType ?? 'the'} account ${accountCode} in the picker`,
+      })
+      await this.tapAndroidCenterPoint(account)
+    }
+
+    await browser.waitUntil(async () => {
+      const source = await browser.getPageSource()
+      if (/resource-id="[^"]*more_screen"/.test(source)) {
+        await this.tapAndroidCenterPoint(this.androidMoreCloseButton)
+        return false
+      }
+
+      const homeVisible = /resource-id="[^"]*(?:home_screen|home_button_addFunds)"/.test(source)
+      const pickerVisible = /resource-id="[^"]*accountSelection_screen"/.test(source)
+      if (homeVisible && !pickerVisible) return true
+
+      await this.dismissKnownAndroidBlockingPopups(1)
+      return false
+    }, {
+      timeout: 60000,
+      interval: 500,
+      timeoutMsg: `Android home did not switch to account ${accountCode}`,
+    })
   }
 
   protected async ensureAndroidIndividualAccount() {
@@ -666,6 +600,21 @@ export default class BasePage {
     if (accountCode) {
       await this.switchAndroidAccountByCode(accountCode, 'Individual')
     }
+  }
+
+  protected async backUntilAndroidHomeTab(maxBacks = 8) {
+    await browser.switchContext('NATIVE_APP').catch(() => {})
+    const homeTab = this.byIdRx('navigation_button_home')
+    for (let attempt = 0; attempt <= maxBacks; attempt += 1) {
+      if (await homeTab.isDisplayed().catch(() => false)) {
+        await this.tap(homeTab)
+        await browser.pause(1500)
+        return
+      }
+      await browser.back()
+      await browser.pause(1500)
+    }
+    throw new Error(`Home tab did not appear after ${maxBacks} back presses`)
   }
 
   protected async ensureAndroidIndividualHomeReady(stabilizeTimeoutMs = 15000) {

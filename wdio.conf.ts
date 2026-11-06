@@ -81,7 +81,7 @@ const cliSuiteTag = normalizeTag(cliValue('suite'))
 const cliSpecTag = normalizeTag(cliValue('spec') ? basename(cliValue('spec') as string) : undefined)
 
 if (
-  (cliValue('suite') === 'smokeSecondary' || cliValue('suite') === 'regressionSecondary') &&
+  cliValue('suite') === 'regressionSecondary' &&
   !process.env.MB_AUTH_SLOT
 ) {
   process.env.MB_AUTH_SLOT = 'secondary'
@@ -131,7 +131,7 @@ if (useBrowserStack && requestedMaxInstances > 1 && !hasBrowserStackAltAccount) 
 }
 
 if (shouldKeepBrowserStackSmokeSingleLane) {
-  console.warn('[WDIO] Use smokePrimary + smokeSecondary commands for account-safe 2-parallel smoke; keeping --suite smoke at maxInstances=1.')
+  console.warn('[WDIO] Use smokeLane1 + smokeLane2 commands for account-safe 2-parallel smoke; keeping --suite smoke at maxInstances=1.')
 }
 
 const isMochaSkipError = (error: Error) => {
@@ -294,6 +294,7 @@ const localCapabilities: WebdriverIO.Capabilities[] = [
     'appium:appWaitActivity': '*',
     'appium:autoGrantPermissions': true,
     'appium:noReset': androidUseInstalledApp,
+    ...({ 'appium:enforceXPath1': true } as Record<string, unknown>),
     ...(androidUseInstalledApp ? { 'appium:forceAppLaunch': true } : {}),
     'appium:fullReset': false,
     'appium:autoAcceptAlerts': true,
@@ -317,6 +318,7 @@ const smokeSpecs = [
   './src/tests/homeAccountSwitch.spec.ts',
   './src/tests/homeScreen.spec.ts',
   './src/tests/homeSearch.spec.ts',
+  './src/tests/homeSearch.business.spec.ts',
   './src/tests/onboarding.spec.ts',
   './src/tests/orders.spec.ts',
   './src/tests/physicalcardcreation.spec.ts',
@@ -325,35 +327,27 @@ const smokeSpecs = [
   './src/tests/watchlist.spec.ts',
 ]
 
-const smokeSecondaryAccountSpecsDefault = [
-  './src/tests/addbeneficiary.individual.spec.ts',
-  './src/tests/addfunds.spec.ts',
-  './src/tests/cashFunds.spec.ts',
-  './src/tests/fxExchange.spec.ts',
-  './src/tests/homeAccountSwitch.spec.ts',
-  './src/tests/homeScreen.spec.ts',
-  './src/tests/onboarding.spec.ts',
-  './src/tests/physicalcardcreation.spec.ts',
-  './src/tests/watchlist.spec.ts',
-]
-
-const envList = (name: string, fallback: string[]) => {
-  const value = process.env[name]?.trim()
-  if (!value) return fallback
-
-  return value
-    .split(',')
-    .map(item => item.trim())
-    .filter(Boolean)
-    .map(item => item.startsWith('./') ? item : `./src/tests/${item}`)
+// One owner per smoke spec. onboarding.spec.ts creates its own applicant and only shares KER's CI queue.
+const smokeSpecsByAccount: Record<string, string[]> = {
+  primary: ['cardFreezeUnfreeze.joint', 'portfolio', 'autoTopUp', 'bankTransfer.sepa.individual'],
+  secondary: ['addfunds', 'launch', 'homeAccountSwitch', 'onboarding'],
+  rog: ['physicalcardcreation', 'homeScreen', 'addbeneficiary.individual'],
+  laz: ['homeSearch', 'homeSearch.business', 'bankTransfer.p2p.individual'],
+  mum: ['bankTransfer.swift.individual', 'orders', 'fxExchange'],
+  pop: ['cashFunds', 'priceAlerts', 'watchlist'],
 }
-
-const smokeSecondaryAccountSpecs = envList('BS_SMOKE_SECONDARY_ACCOUNT_SPECS', smokeSecondaryAccountSpecsDefault)
-const smokeSecondaryAccountSpecNames = new Set(smokeSecondaryAccountSpecs.map(spec => basename(spec)))
-const smokePrimaryAccountSpecs = smokeSpecs.filter(spec => !smokeSecondaryAccountSpecNames.has(basename(spec)))
-const smokePrimaryAccountSpecNames = new Set(smokePrimaryAccountSpecs.map(spec => basename(spec)))
-const smokePrimarySuite = useBrowserStack ? [smokePrimaryAccountSpecs] : smokePrimaryAccountSpecs
-const smokeSecondarySuite = useBrowserStack ? [smokeSecondaryAccountSpecs] : smokeSecondaryAccountSpecs
+const smokeAccountSpecs = (slot: string) => smokeSpecsByAccount[slot].map(name => `./src/tests/${name}.spec.ts`)
+// BrowserStack has 2 parallel sessions. Each lane owns 3 accounts and rotates them, so an account
+// never runs in both lanes and two other accounts' specs separate its consecutive logins.
+const smokeLaneSpecs = (slots: string[]) => {
+  const longest = Math.max(...slots.map(slot => smokeAccountSpecs(slot).length))
+  return Array.from({ length: longest }).flatMap((_, round) =>
+    slots.flatMap(slot => smokeAccountSpecs(slot).slice(round, round + 1)),
+  )
+}
+const smokeSlotBySpecName = new Map<string, string>(
+  Object.entries(smokeSpecsByAccount).flatMap(([slot, names]) => names.map(name => [`${name}.spec.ts`, slot] as const)),
+)
 
 const regressionSecondarySpecs = [
   // smoke secondary
@@ -428,6 +422,7 @@ const regressionPrimarySpecs = [
   './src/tests/bankTransfer.swift.individual.spec.ts',
   './src/tests/cardFreezeUnfreeze.joint.spec.ts',
   './src/tests/homeSearch.spec.ts',
+  './src/tests/homeSearch.business.spec.ts',
   './src/tests/orders.spec.ts',
   './src/tests/portfolio.spec.ts',
   './src/tests/priceAlerts.spec.ts',
@@ -490,8 +485,10 @@ const nativeAlertAssertionSpecs = new Set([
 
 const authSlotForSpec = (specName?: string) => {
   if (!specName) return ''
-  if (smokePrimaryAccountSpecNames.has(specName) || regressionPrimarySpecNames.has(specName)) return 'primary'
-  if (smokeSecondaryAccountSpecNames.has(specName) || regressionSecondarySpecNames.has(specName)) return 'secondary'
+  const smokeSlot = smokeSlotBySpecName.get(specName)
+  if (smokeSlot) return smokeSlot
+  if (regressionPrimarySpecNames.has(specName)) return 'primary'
+  if (regressionSecondarySpecNames.has(specName)) return 'secondary'
   return ''
 }
 
@@ -501,7 +498,7 @@ const capabilities = (useBrowserStack ? browserStackCapabilities : localCapabili
     return String(capability.platformName).toLowerCase() === platformFilter
   })
 
-const secondaryAccountSuites = new Set(['smokeSecondary', 'regressionSecondary'])
+const secondaryAccountSuites = new Set(['regressionSecondary'])
 const autoAuthSlot = secondaryAccountSuites.has(cliValue('suite') ?? '') && !process.env.MB_AUTH_SLOT
   ? 'secondary'
   : undefined
@@ -516,8 +513,8 @@ export const config: WebdriverIO.Config = {
     launchOnly: ['./src/tests/launch.spec.ts'],
     onboarding: ['./src/tests/onboarding.spec.ts'],
     pricePlan: ['./src/tests/pricePlan.spec.ts'],
-    smokePrimary: smokePrimarySuite,
-    smokeSecondary: smokeSecondarySuite,
+    smokeLane1: smokeLaneSpecs(['primary', 'rog', 'mum']),
+    smokeLane2: smokeLaneSpecs(['secondary', 'laz', 'pop']),
     smokeWithoutOnboarding: smokeSpecs.filter((spec) => spec !== './src/tests/onboarding.spec.ts'),
     regressionPrimary: regressionPrimarySpecs,
     regressionSecondary: regressionSecondarySpecs,
@@ -579,11 +576,11 @@ export const config: WebdriverIO.Config = {
     }
     const authSlot = String(
       process.env.MB_AUTH_SLOT ||
-      (cliSuiteTag === 'smokePrimary' || cliSuiteTag === 'regressionPrimary' ? 'primary' : '') ||
-      (cliSuiteTag === 'smokeSecondary' || cliSuiteTag === 'regressionSecondary' ? 'secondary' : '') ||
+      (cliSuiteTag === 'regressionPrimary' ? 'primary' : '') ||
+      (cliSuiteTag === 'regressionSecondary' ? 'secondary' : '') ||
       authSlotForSpec(specName),
     )
-    if (authSlot === 'primary' || authSlot === 'secondary') {
+    if (['primary', 'secondary', 'kat', 'mai', 'laz', 'rog', 'mum', 'pop'].includes(authSlot)) {
       process.env.MB_AUTH_SLOT = authSlot
       console.log(`[WDIO] Auth slot for ${specName}: ${authSlot}`)
     } else {

@@ -80,6 +80,13 @@ test('a new session clears the previous worker failure state', async () => {
   assert.equal(commands.filter(command => command.action === 'setSessionStatus').length, 2)
 })
 
+test('beforeSession retains the explicitly selected kat profile', () => {
+  const { config, env } = loadConfig()
+  env.MB_AUTH_SLOT = 'kat'
+  config.beforeSession({}, {}, ['src/tests/homeSearch.spec.ts'])
+  assert.equal(env.MB_AUTH_SLOT, 'kat')
+})
+
 test('a failed status request is retried at worker teardown', async () => {
   const { config, browser, commands } = loadConfig()
   const execute = browser.execute

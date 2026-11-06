@@ -2,14 +2,8 @@ import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
 import type { AuthData } from '../data/credentials'
 import type { ChainablePromiseElement } from 'webdriverio'
-import OtpHelper from '../helpers/otp.helper'
 import { markBrowserStackStep } from '../helpers/browserstack.helper'
 import { waitForControlEnabled } from '../helpers/controlState.helper'
-
-type LoginFlowOptions = {
-  useApiOtp?: boolean
-  otpPhone?: string
-}
 
 export class LoginOtpRejectedError extends Error {
   constructor(message: string) {
@@ -283,6 +277,7 @@ export class LoginPage extends BasePage {
 
     // Android: wait for Register or Home, dismissing potential permission dialogs/alerts
     await browser.switchContext('NATIVE_APP').catch(() => {})
+    let leavingStoredLogin = false
 
     await this.waitForLoginEntry(async () => {
       const registerShown = await this.registerScreen.isDisplayed().catch(() => false)
@@ -290,6 +285,20 @@ export class LoginPage extends BasePage {
       const mainShellShown = await this.isAndroidMainShellShown()
 
       if (registerShown || homeShown || mainShellShown) return true
+
+      const logoutScreen = this.byId('logout_screen')
+      if (await logoutScreen.isDisplayed()) {
+        leavingStoredLogin = true
+        await this.tapAndroidCenterPoint(this.byId('logout_button_continue'))
+        return false
+      }
+
+      const logout = this.byId('login_button_logout')
+      if (!leavingStoredLogin && await logout.isDisplayed()) {
+        leavingStoredLogin = true
+        await this.tapAndroidCenterPoint(logout)
+        return false
+      }
 
       // LoginActivity also hosts the welcome screen, so it cannot prove that Sign in worked.
       // Retry the visible entry action until the register screen actually appears.
@@ -1243,28 +1252,9 @@ private async relaunchIOSApp() {
   await browser.pause(1200)
 }
 
-private async getLoginOtp(auth: AuthData, options: LoginFlowOptions) {
-  if (!options.useApiOtp) return '000000'
-
-  const phone = options.otpPhone ?? auth.otpPhone ?? auth.phone
-  const maxRequests = Number(process.env.LOGIN_OTP_MAX_REQUESTS || 1)
-  const fetchDelayMs = Number(process.env.LOGIN_OTP_FETCH_DELAY_MS || 0)
-  if (Number.isFinite(fetchDelayMs) && fetchDelayMs > 0) {
-    await browser.pause(Math.floor(fetchDelayMs))
-  }
-  console.log(`[LoginPage.getLoginOtp] Fetching login OTP via API with maxRequests=${maxRequests}`)
-  const otp = await OtpHelper.getLatestOtp({
-    phone,
-    timeoutMs: Number(process.env.LOGIN_OTP_TIMEOUT_MS || process.env.OTP_TIMEOUT_MS || 90000),
-    intervalMs: Number(process.env.LOGIN_OTP_POLL_INTERVAL_MS || process.env.OTP_POLL_INTERVAL_MS || 2000),
-    maxRequests,
-  })
-  process.env.LAST_LOGIN_OTP = otp
-  return otp
-}
-
-private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
-  console.log('[LoginPage.loginFlowOnce] Starting with options:', JSON.stringify(options))
+private async loginFlowOnce(auth: AuthData) {
+  // The QA login OTP bypass applies to every test account on both platforms.
+  const loginOtp = '000000'
   
   const alreadyHome = await this.isHomeLoaded()
   if (alreadyHome) return false
@@ -1273,7 +1263,7 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
   if (await this.isHomeLoaded()) return false
 
   if (browser.isIOS && await this.otpContainerIOS.isExisting().catch(() => false)) {
-    await this.enterOtp(await this.getLoginOtp(auth, options))
+    await this.enterOtp(loginOtp)
     await this.tapContinueAfterOtp()
     if (await this.isIOSPasscodeScreenShown()) {
       await this.enterPin(auth.pin)
@@ -1300,7 +1290,7 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
 
     if (await this.isHomeLoaded()) return false
 
-    await this.enterOtp(await this.getLoginOtp(auth, options))
+    await this.enterOtp(loginOtp)
     await this.tapContinueAfterOtp()
     if (await this.isIOSPasscodeScreenShown()) {
       await this.enterPin(auth.pin)
@@ -1357,7 +1347,7 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
   }
 
   await this.waitForOtpScreen()
-  await this.enterOtp(await this.getLoginOtp(auth, options))
+  await this.enterOtp(loginOtp)
 
   await this.tapContinueAfterOtp()
   if (browser.isIOS && await this.isIOSPasscodeScreenShown()) {
@@ -1373,20 +1363,16 @@ private async loginFlowOnce(auth: AuthData, options: LoginFlowOptions = {}) {
   return true
 }
 
-async loginFlow(auth: AuthData, options: LoginFlowOptions = {}) {
+async loginFlow(auth: AuthData) {
   try {
-    return await this.loginFlowOnce(auth, options)
+    return await this.loginFlowOnce(auth)
   } catch (error) {
     if (error instanceof LoginOtpRejectedError || error instanceof LoginDeviceSecurityError || !browser.isIOS) throw error
 
     console.warn('[LoginPage] iOS login failed, trying one recovery retry:', error)
     await this.relaunchIOSApp()
-    return this.loginFlowOnce(auth, options)
+    return this.loginFlowOnce(auth)
   }
-}
-
-async loginFlowWithApiOtp(auth: AuthData) {
-  await this.loginFlow(auth, { useApiOtp: true })
 }
 
 

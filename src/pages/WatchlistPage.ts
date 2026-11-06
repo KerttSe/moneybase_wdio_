@@ -82,6 +82,10 @@ export default class WatchlistPage extends BasePage {
     return this.androidTextContains('Watchlist')
   }
 
+  private get firstInstrumentRowAndroidByRowId() {
+    return $('(//*[contains(@resource-id,"watchlist-instrument-row-mobile-")])[1]')
+  }
+
   private get firstInstrumentRowAndroidByTextWithTicker() {
     return $('//android.widget.TextView[contains(@text,"(")]/ancestor::*[@clickable="true" or @focusable="true"][1]')
   }
@@ -111,7 +115,7 @@ export default class WatchlistPage extends BasePage {
   }
 
   private get watchlistUpdatedToastAndroidBySuccessText() {
-    return $('//*[contains(@text,"success") or contains(@text,"updated") or contains(@text,"successfully")]')
+    return $('//*[contains(@text,"uccess") or contains(@text,"updated")]')
   }
 
   private get instrumentHeaderAndroid() {
@@ -236,6 +240,7 @@ export default class WatchlistPage extends BasePage {
     await this.tapFirstDisplayed(watchlistEntryCandidates, 'Watchlist entry (Android)')
 
     const rowCandidates = [
+      this.firstInstrumentRowAndroidByRowId,
       this.firstInstrumentRowAndroidByClickableView,
       this.firstInstrumentRowAndroidByInstrumentName,
       this.firstInstrumentRowAndroidByTextWithTicker,
@@ -284,9 +289,20 @@ export default class WatchlistPage extends BasePage {
       await this.tapFirstDisplayed(watchlistActionCandidates, 'Watchlist action (Android)')
     } else if (onInstrumentDetails) {
       usedTopRightFallback = true
-      await this.instrumentTopRightActionAndroid.waitForExist({ timeout: 12000 })
-      const beforeState = await this.instrumentTopRightActionAndroid.getAttribute('selected').catch(() => '')
-      await this.instrumentTopRightActionAndroid.click()
+      const starInTree = await this.instrumentTopRightActionAndroid.waitForExist({ timeout: 12000 }).catch(() => false)
+      const beforeState = starInTree ? await this.instrumentTopRightActionAndroid.getAttribute('selected').catch(() => '') : ''
+      if (starInTree) {
+        await this.instrumentTopRightActionAndroid.click()
+      } else {
+        // Some devices expose no node for the header star, so tap its fixed top-right position.
+        const { width, height } = await browser.getWindowRect()
+        await browser.action('pointer')
+          .move({ x: Math.round(width * 0.927), y: Math.round(height * 0.066) })
+          .down()
+          .pause(80)
+          .up()
+          .perform()
+      }
       await browser.pause(700)
       const afterState = await this.instrumentTopRightActionAndroid.getAttribute('selected').catch(() => '')
       topRightStateChanged = String(beforeState) !== String(afterState)
@@ -311,16 +327,6 @@ export default class WatchlistPage extends BasePage {
       if (topRightVisibleAfterTap) {
         const postTapTopRightSelected = await this.instrumentTopRightActionAndroid.getAttribute('selected').catch(() => '')
         topRightStateChanged = String(preTapTopRightSelected) !== String(postTapTopRightSelected)
-      }
-    }
-
-    if (!toastShown && !topRightStateChanged) {
-      const stillOnInstrument = await this.waitForAnyDisplayed([this.instrumentHeaderAndroid, this.instrumentBuyButtonAndroid], 1500, 'Instrument details (Android)')
-        .then(() => true)
-        .catch(() => false)
-      const actionStillVisible = await this.isAnyDisplayed(watchlistActionCandidates)
-      if (stillOnInstrument && !actionStillVisible) {
-        return
       }
     }
 

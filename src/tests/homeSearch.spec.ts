@@ -23,16 +23,13 @@ describe('Home Search - Individual', function () {
     await homeSearchPage.verifySearchVisibilityOnScroll()
   })
 
-  it('SEARCH-1.1 Search "cat" and verify Carlos Cat', smokeStep(async function () {
+  it('SEARCH-1.1 Search for a recipient read from Recent Payees or Recent Activity on Home', smokeStep(async function () {
     if (!(browser.isAndroid || browser.isIOS)) return this.skip()
-    await homeSearchPage.verifyHomeSearch('cat')
+    await homeSearchPage.verifyHomeSearch()
   }))
 
   it('[TC2949/TC2950/TC2951] Checks recents and the search query threshold', smokeStep(async function () {
     await homeSearchPage.verifySearchQueryRules()
   }))
 
-  it('[TC3051] Hides restricted search sections and statistics on Business Home', smokeStep(async function () {
-    await homeSearchPage.verifyBusinessHomeSearchScope()
-  }))
 })
