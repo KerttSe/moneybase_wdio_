@@ -1465,17 +1465,22 @@ class PhysicalCardCreationPage extends BasePage {
     const pinScreen = $('//*[contains(@text,"Confirm your card PIN")]')
     const backOnPinScreen = await pinScreen.waitForDisplayed({ timeout: 30000 }).catch(() => false)
     if (backOnPinScreen) {
-      console.warn('[KNOWN BUG] Android returned to Confirm PIN after the card OTP; relaunching the app')
-      const appPackage = process.env.ANDROID_APP_PACKAGE?.trim() || 'com.moneybase.qa'
-      await browser.terminateApp(appPackage)
-      await browser.activateApp(appPackage)
-      // BrowserStack devices reopen on the signed-out Welcome screen.
-      const signIn = $('//*[@text="Sign In" or @content-desc="Sign In"]')
-      if (await signIn.waitForDisplayed({ timeout: 10000 }).catch(() => false)) {
-        await this.tapAndroidCenterPoint(signIn)
-        await browser.pause(2000)
+      console.warn('[KNOWN BUG] Android returned to Confirm PIN after the card OTP; leaving through Back')
+      // A cold relaunch can hit the Device Security block on BrowserStack, so try Back first.
+      const reachedHome = await this.backUntilAndroidHomeTab(6).then(() => true).catch(() => false)
+      if (!reachedHome) {
+        console.warn('[KNOWN BUG] Back did not reach Home; relaunching the app')
+        const appPackage = process.env.ANDROID_APP_PACKAGE?.trim() || 'com.moneybase.qa'
+        await browser.terminateApp(appPackage)
+        await browser.activateApp(appPackage)
+        // BrowserStack devices reopen on the signed-out Welcome screen.
+        const signIn = $('//*[@text="Sign In" or @content-desc="Sign In"]')
+        if (await signIn.waitForDisplayed({ timeout: 10000 }).catch(() => false)) {
+          await this.tapAndroidCenterPoint(signIn)
+          await browser.pause(2000)
+        }
+        await loginPage.loginFlow(AUTH)
       }
-      await loginPage.loginFlow(AUTH)
       await this.openCardsTabAndroid()
       await this.waitForFreezeReadyAndroid(60000)
       return
