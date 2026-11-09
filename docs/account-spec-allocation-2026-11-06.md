@@ -11,11 +11,11 @@ Smoke runs on 2 BrowserStack parallels. Each lane owns 3 logins and rotates them
 | 1 | VEG `cardFreezeUnfreeze.joint` | KER `addfunds` |
 | 2 | ROG `physicalcardcreation` | LAZ `homeSearch` |
 | 3 | MUM `bankTransfer.swift.individual` | POP `cashFunds` |
-| 4 | VEG `portfolio` | KER `launch` |
+| 4 | VEG `portfolio` | KER `addbeneficiary.individual` |
 | 5 | ROG `homeScreen` | LAZ `homeSearch.business` |
 | 6 | MUM `orders` | POP `priceAlerts` |
 | 7 | VEG `autoTopUp` | KER `homeAccountSwitch` |
-| 8 | ROG `addbeneficiary.individual` | LAZ `bankTransfer.p2p.individual` |
+| 8 | ROG `launch` | LAZ `bankTransfer.p2p.individual` |
 | 9 | MUM `fxExchange` | POP `watchlist` |
 | 10 | VEG `bankTransfer.sepa.individual` | `onboarding` (generated number) |
 

@@ -57,7 +57,7 @@ jobs:
             "rog:src/tests/homeScreen.spec.ts"
             "mum:src/tests/orders.spec.ts"
             "primary:src/tests/autoTopUp.spec.ts"
-            "rog:src/tests/addbeneficiary.individual.spec.ts"
+            "rog:src/tests/launch.spec.ts"
             "mum:src/tests/fxExchange.spec.ts"
             "primary:src/tests/bankTransfer.sepa.individual.spec.ts"
           )
@@ -65,7 +65,7 @@ jobs:
             "secondary:src/tests/addfunds.spec.ts"
             "laz:src/tests/homeSearch.spec.ts"
             "pop:src/tests/cashFunds.spec.ts"
-            "secondary:src/tests/launch.spec.ts"
+            "secondary:src/tests/addbeneficiary.individual.spec.ts"
             "laz:src/tests/homeSearch.business.spec.ts"
             "pop:src/tests/priceAlerts.spec.ts"
             "secondary:src/tests/homeAccountSwitch.spec.ts"

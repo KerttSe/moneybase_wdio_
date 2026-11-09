@@ -330,8 +330,8 @@ const smokeSpecs = [
 // One owner per smoke spec. onboarding.spec.ts creates its own applicant and only shares KER's CI queue.
 const smokeSpecsByAccount: Record<string, string[]> = {
   primary: ['cardFreezeUnfreeze.joint', 'portfolio', 'autoTopUp', 'bankTransfer.sepa.individual'],
-  secondary: ['addfunds', 'launch', 'homeAccountSwitch', 'onboarding'],
-  rog: ['physicalcardcreation', 'homeScreen', 'addbeneficiary.individual'],
+  secondary: ['addfunds', 'addbeneficiary.individual', 'homeAccountSwitch', 'onboarding'],
+  rog: ['physicalcardcreation', 'homeScreen', 'launch'],
   laz: ['homeSearch', 'homeSearch.business', 'bankTransfer.p2p.individual'],
   mum: ['bankTransfer.swift.individual', 'orders', 'fxExchange'],
   pop: ['cashFunds', 'priceAlerts', 'watchlist'],
