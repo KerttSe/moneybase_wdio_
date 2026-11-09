@@ -2293,8 +2293,17 @@ export default class OrdersPage extends BasePage {
       await this.tapCenterOnElement(result)
     }
 
-    const instrumentAnchors = [this.instrumentTitleIOS, this.instrumentBuyButtonIOS, this.bmwInstrumentTextIOS]
-    await this.waitForAnyDisplayed(instrumentAnchors, 25000, 'Instrument screen (iOS)')
+    const instrumentAnchors = [this.instrumentTitleIOS, this.instrumentBuyButtonIOS]
+    const opened = await this.waitForAnyDisplayed(instrumentAnchors, 12000, 'Instrument screen (iOS)')
+      .then(() => true)
+      .catch(() => false)
+    if (!opened) {
+      // The first tap can only dismiss the keyboard, which leaves the result list open.
+      // The first search row has a fixed position, while its accessibility node can be a larger container.
+      const { width, height } = await browser.getWindowRect()
+      await this.tapAt(Math.round(width * 0.35), Math.round(height * 0.245))
+      await this.waitForAnyDisplayed(instrumentAnchors, 25000, 'Instrument screen (iOS)')
+    }
   }
 
   private async openInstrumentFromInvestLocatorIOS(query: string) {

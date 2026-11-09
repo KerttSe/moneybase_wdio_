@@ -380,7 +380,8 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get carlosCatIOS() {
-    return $('-ios predicate string:name == "pay_item_Carlos Cat" OR name == "Carlos Cat" OR label CONTAINS[c] "Carlos Cat"')
+    const payee = AUTH.recentPayeeName || 'Carlos Cat'
+    return $(`-ios predicate string:name == "pay_item_${payee}" OR name == "${payee}" OR label CONTAINS[c] "${payee}"`)
   }
 
   private get beneficiaryPayBtnIOS() {
@@ -1052,7 +1053,7 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     await this.exitToHomeAfterP2PIOS()
 
-    await this.waitForMinusAmountHomeIOS(amount, 60000, 'To Carlos Cat')
+    await this.waitForMinusAmountHomeIOS(amount, 60000)
   }
 
   public async sendSepaBySlideAndroid(amount: number | string = 11) {

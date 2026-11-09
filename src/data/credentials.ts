@@ -9,6 +9,7 @@ export interface AuthData {
   businessAccountCode?: string
   cardLastFour?: string
   swiftBeneficiaryName?: string
+  recentPayeeName?: string
 }
 
 const primaryAuth: AuthData = {
@@ -58,6 +59,7 @@ const getAuthBySlot = () => {
     pop: 'XER00250',
   }
   const namedSwiftBeneficiaries: Record<string, string> = { mum: 'Swift Beneficiary' }
+  const namedRecentPayees: Record<string, string> = { laz: 'Sengali Manta' }
   const namedCodes: Record<string, string> = {
     kat: 'KAT40008',
     mai: 'MAI40018',
@@ -84,6 +86,7 @@ const getAuthBySlot = () => {
       businessAccountCode: process.env[`${prefix}_BUSINESS_CODE`] || namedBusinessCodes[slot],
       cardLastFour: process.env[`${prefix}_CARD_LAST_FOUR`],
       swiftBeneficiaryName: process.env[`${prefix}_SWIFT_BENEFICIARY_NAME`] || namedSwiftBeneficiaries[slot],
+      recentPayeeName: process.env[`${prefix}_RECENT_PAYEE_NAME`] || namedRecentPayees[slot],
     }
   }
   if (slot === 'primary') {

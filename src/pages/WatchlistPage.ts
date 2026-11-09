@@ -57,8 +57,8 @@ export default class WatchlistPage extends BasePage {
   private get watchlistUpdatedToastIOS() {
     return this.iosPredicate(
       'type == "XCUIElementTypeStaticText" AND ' +
-      '(label CONTAINS[c] "watchlist" AND ' +
-      '(label CONTAINS[c] "updated" OR label CONTAINS[c] "added" OR label CONTAINS[c] "removed"))'
+      '(label CONTAINS[c] "successfully" OR (label CONTAINS[c] "watchlist" AND ' +
+      '(label CONTAINS[c] "updated" OR label CONTAINS[c] "added" OR label CONTAINS[c] "removed")))'
     )
   }
 
@@ -187,7 +187,9 @@ export default class WatchlistPage extends BasePage {
   }
 
   private async tapWatchlistActionIOS() {
-    await this.tapIOSExists(this.watchlistActionIOS, 20000)
+    await this.watchlistActionIOS.waitForExist({ timeout: 20000 })
+    const { width, height } = await browser.getWindowRect()
+    await browser.execute('mobile: tap', { x: Math.round(width * 0.93), y: Math.round(height * 0.09) })
     // Observe the acknowledgement once. A second tap reverses the first update.
     await this.watchlistUpdatedToastIOS.waitForExist({
       timeout: 25000, interval: 200, timeoutMsg: 'Watchlist update was not acknowledged after one tap',

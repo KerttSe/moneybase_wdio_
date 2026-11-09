@@ -156,7 +156,7 @@ test('Home Search searches the name captured before entering search and waits fo
   }
   const { default: Page } = loadPage('HomeSearchPage', {
     $: selector => ({ waitForDisplayed: async () => {
-      if (!selector.includes('normalize-space')) return
+      if (!selector.includes('contains(@label')) return
       assert.ok(selector.includes('concat('))
       assert.ok(selector.includes('self::XCUIElementTypeStaticText'))
       assert.ok(!selector.includes('self::XCUIElementTypeSearchField'))
@@ -199,6 +199,7 @@ test('Recent Activity fallback takes the first person or company, skipping syste
   const { default: home } = loadPage('HomeScreenPage', { browser: { isAndroid: true } })
   Object.defineProperty(home, 'recentActivityRows', { value: [
     row('Exchanged From Eur', '- €5.00'),
+    row('Master', '+ €60,000.00'),
     row('Example Store', '- €5.00'),
     row('Alex Example', '+ €8.00'),
   ] })

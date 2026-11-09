@@ -1659,7 +1659,7 @@ export default class AddBeneficiaryPage extends BasePage {
     }
 
     if (params.friendName) {
-      const shown = await this.friendNameInputIOS.waitForExist({ timeout: 4000 }).catch(() => false)
+      const shown = await this.friendNameInputIOS.isDisplayed().catch(() => false)
       if (shown) await this.type(this.friendNameInputIOS, params.friendName)
     }
   }
