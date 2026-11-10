@@ -234,7 +234,8 @@ class CrossBorderPaymentPage extends BasePage {
   public async verifySwiftFeeDisclaimer() {
     const disclaimer = browser.isIOS
       ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label CONTAINS[c] "may receive less"')
-      : this.reviewScreenAndroid.$('.//*[contains(@text,"may receive less") or contains(@content-desc,"may receive less")]')
+      // A full XPath, not a child of reviewScreenAndroid: the review sheet is reopened, so a cached parent goes stale.
+      : $('//*[contains(@resource-id,"verificationOfPayee_screen")]//*[contains(@text,"may receive less") or contains(@content-desc,"may receive less")]')
 
     if (browser.isIOS) await BankTransferP2PIndividualPage.prepareSmokeSwiftIOS(11)
     else await this.openToPaymentScreenAndroid(11)

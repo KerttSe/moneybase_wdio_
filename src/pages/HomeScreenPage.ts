@@ -1013,8 +1013,7 @@ class HomeScreenPage extends BasePage {
   }
 
   public async returnToSmokeIndividualAccountAndroid() {
-    const accountCode = AUTH.individualAccountCode ?? 'VEG40002'
-    await this.switchAndroidAccountByCode(accountCode, 'Individual')
+    await this.switchAndroidAccountByCode(undefined, 'Individual')
   }
 
   public async verifyIOSAccountSwitchingAcrossTypes() {
@@ -1493,7 +1492,8 @@ class HomeScreenPage extends BasePage {
     const heading = browser.isAndroid
       ? $('//*[@text="Total Wealth" or @content-desc="Total Wealth"]')
       : $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label ==[c] "Total Wealth"')
-    await this.ensureVisibleByScrolling([heading], 'Total Wealth section')
+    // Total Wealth sits below Pending, Recent Activity and For you, so it needs more scrolls on shorter screens.
+    await this.ensureVisibleByScrolling([heading], 'Total Wealth section', 10)
   }
 
   public async verifyWalletBalanceFormat() {
@@ -1564,15 +1564,17 @@ class HomeScreenPage extends BasePage {
     await this.tap(action)
     const report = browser.isIOS
       ? $('-ios predicate string:type == "XCUIElementTypeNavigationBar" AND label IN {"Statements Report", "Statements"}')
-      : $('//*[@text="Statements Report" or @content-desc="Statements Report" or contains(@resource-id,"statementsReport_screen")]')
+      // Android 2.27.0 opens a "Statement" screen whose anchor is its Generate Statement button.
+      : $('//*[@text="Statements Report" or @content-desc="Statements Report" or contains(@resource-id,"statementsReport_screen") or (contains(@resource-id,"btnContinue") and @text="Generate Statement")]')
     await report.waitForDisplayed({ timeout: 15000 })
   }
 
   public async verifyStatementFormatSelection() {
-    for (const format of ['CSV', 'PDF']) {
+    // Android offers PDF and EXCEL tabs (content-desc pdf / excel); iOS offers CSV and PDF.
+    for (const format of browser.isIOS ? ['CSV', 'PDF'] : ['EXCEL', 'PDF']) {
       const option = browser.isIOS
         ? $(`-ios predicate string:type == "XCUIElementTypeButton" AND (name == "${format}" OR label == "${format}")`)
-        : $(`(//*[@text="${format}" or @content-desc="${format}"]/ancestor-or-self::*[@clickable="true"][1])[1]`)
+        : $(`//*[@content-desc="${format.toLowerCase()}" or (@text="${format}" and @clickable="true")]`)
       await this.tap(option, 10000)
       await browser.waitUntil(async () => {
         if (await option.isSelected()) return true
@@ -1584,7 +1586,7 @@ class HomeScreenPage extends BasePage {
   public async verifyStatementTypeSelection() {
     const picker = browser.isIOS
       ? $('-ios predicate string:type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND (label == "Consolidated" OR name == "statementsReport_button_accountType")')
-      : $('(//*[contains(@resource-id,"statementsReport_button_accountType")] | //*[@text="Consolidated"]/ancestor-or-self::*[@clickable="true"][1])[1]')
+      : $('(//*[contains(@resource-id,"statementsReport_button_accountType") or contains(@resource-id,"reportDatePickerAccountExposedDropdown")] | //*[@text="Consolidated"]/ancestor-or-self::*[@clickable="true"][1])[1]')
     await this.tap(picker, 10000)
     const investment = browser.isIOS
       ? $('-ios predicate string:(name == "Investment Account" OR label == "Investment Account") AND type IN {"XCUIElementTypeButton", "XCUIElementTypeCell", "XCUIElementTypeStaticText"}')
@@ -1594,22 +1596,24 @@ class HomeScreenPage extends BasePage {
     if (await done.isDisplayed()) await this.tap(done)
     const selected = browser.isIOS
       ? $('-ios predicate string:type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND (label == "Investment Account" OR (name == "statementsReport_button_accountType" AND value == "Investment Account"))')
-      : $('//*[contains(@resource-id,"statementsReport_button_accountType") and (@text="Investment Account" or @content-desc="Investment Account" or .//*[@text="Investment Account"])]')
+      : $('//*[(contains(@resource-id,"statementsReport_button_accountType") or contains(@resource-id,"reportDatePickerAccountExposedDropdown")) and (@text="Investment Account" or @content-desc="Investment Account" or .//*[@text="Investment Account"])]')
     await selected.waitForDisplayed({ timeout: 15000, timeoutMsg: 'TC2937: statement type should be Investment Account' })
   }
 
+  // Android 2.27.0 shows From and To as two month wheels (NumberPicker), left to right.
   private statementDateControl(bound: 'From' | 'To') {
     const id = 'statementsReport_button_' + bound.toLowerCase()
     return browser.isIOS
       ? $(`//XCUIElementTypeButton[@name="${id}" or starts-with(@label,"${bound},")] | //XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="${bound}"]]`)
-      : $(`(//*[contains(@resource-id,"${id}")] | //*[@text="${bound}"]/ancestor::*[@clickable="true"][1])[1]`)
+      : $(`(//android.widget.NumberPicker)[${bound === 'From' ? 1 : 2}]`)
   }
 
   private async verifyStatementMonth(bound: 'From' | 'To', month: string) {
     const control = this.statementDateControl(bound)
+    // On Android only the wheel's input holds the selected month; its buttons show neighbours.
     const monthText = browser.isIOS
       ? control.$$('.//XCUIElementTypeStaticText')
-      : control.$$('.//android.widget.TextView')
+      : control.$$('.//*[@resource-id="android:id/numberpicker_input"]')
     const expected = month.toLowerCase()
     await browser.waitUntil(async () => {
       const children = await monthText.map(el => el.getText())
@@ -1623,6 +1627,44 @@ class HomeScreenPage extends BasePage {
   }
 
   private async selectStatementMonth(bound: 'From' | 'To', month: string) {
+    if (browser.isAndroid) {
+      // A wheel shows an adjacent month as a button; a month outside its range has none, so it stays put.
+      const wheel = `(//android.widget.NumberPicker)[${bound === 'From' ? 1 : 2}]`
+      const neighbour = $(`${wheel}//android.widget.Button[@text="${month}"]`)
+      if (!await neighbour.isExisting()) return
+      const input = $(`${wheel}//*[@resource-id="android:id/numberpicker_input"]`)
+      const selected = async () => (await input.getText().catch(() => '')) === month
+      // A plain tap or W3C drag did not move this wheel on 2.27.0, so try in turn until the value changes.
+      const attempts: Array<() => Promise<unknown>> = [
+        () => neighbour.click(),
+        async () => {
+          await input.click()
+          await input.clearValue().catch(() => {})
+          await input.setValue(month)
+          await browser.pressKeyCode(66)
+          await browser.hideKeyboard().catch(() => {})
+        },
+        async () => {
+          const { x, y } = await input.getLocation()
+          const { width, height } = await input.getSize()
+          const target = await neighbour.getLocation()
+          const startY = Math.round(y + height / 2)
+          await browser.execute('mobile: dragGesture', {
+            startX: Math.round(x + width / 2),
+            startY,
+            endX: Math.round(x + width / 2),
+            endY: target.y < y ? startY + Math.round(height * 1.4) : startY - Math.round(height * 1.4),
+            speed: 600,
+          })
+        },
+      ]
+      for (const attempt of attempts) {
+        await attempt().catch(() => {})
+        await browser.pause(800)
+        if (await selected()) return
+      }
+      return
+    }
     await this.tap(this.statementDateControl(bound), 10000)
     const wheel = $('//XCUIElementTypePickerWheel')
     if (browser.isIOS && await wheel.isExisting()) {
@@ -1651,6 +1693,12 @@ class HomeScreenPage extends BasePage {
     await this.selectStatementMonth('To', older)
     await this.verifyStatementMonth('To', older)
     await this.selectStatementMonth('From', latest)
+    if (browser.isAndroid) {
+      // Android 2.27.0 keeps the range valid by moving To along with a later From.
+      await this.verifyStatementMonth('From', latest)
+      await this.verifyStatementMonth('To', latest)
+      return
+    }
     await this.verifyStatementMonth('From', older)
   }
 
@@ -1746,6 +1794,24 @@ class HomeScreenPage extends BasePage {
     await this.supportTitle.waitForDisplayed({ reverse: true, timeout: 10000 })
   }
 
+  // The Android Cards header icons (Analytics, then Help) have no id or label; Help is the rightmost one.
+  private async cardsHeaderHelpAndroid() {
+    const labelled = $('//*[contains(@resource-id,"cards_button_help") or contains(@resource-id,"cards_button_support") or @content-desc="Help" or @content-desc="Support"]')
+    if (await labelled.isExisting()) return labelled
+    const icons = await $$('//*[contains(@resource-id,"cards_button_userAvatar")]/following::*[@clickable="true"][position() <= 3]')
+    let rightmost: WebdriverIO.Element | undefined
+    let rightmostX = -1
+    for (const icon of icons) {
+      const { x, y } = await icon.getLocation()
+      if (y < 400 && x > rightmostX) {
+        rightmost = icon
+        rightmostX = x
+      }
+    }
+    if (!rightmost) throw new Error('TC2871: the Cards header Help icon was not found')
+    return rightmost
+  }
+
   public async verifySupportFromCards(homeGreeting: string) {
     await this.closeSupport()
     const tab = browser.isIOS ? $('~Cards') : this.byId('navigation_button_cards')
@@ -1756,8 +1822,7 @@ class HomeScreenPage extends BasePage {
     await cards.waitForDisplayed({ timeout: 15000 })
     const help = browser.isIOS
       ? $('-ios predicate string:type == "XCUIElementTypeButton" AND (name == "cards_button_help" OR label IN {"Help", "Support"})')
-      // The Android Cards help icon has no id or label; it is the first control after the avatar.
-      : $('(//*[contains(@resource-id,"cards_button_help") or @content-desc="Help" or @content-desc="Support"] | //*[contains(@resource-id,"cards_button_userAvatar")]/following::*[@clickable="true"][1])[1]')
+      : await this.cardsHeaderHelpAndroid()
     await this.tap(help, 10000)
     await this.supportTitle.waitForDisplayed({ timeout: 10000 })
     const cardsGreeting = await this.verifySupportOptions(false)
@@ -1769,7 +1834,8 @@ class HomeScreenPage extends BasePage {
     await this.supportTitle.waitForDisplayed({ reverse: true, timeout: 15000 })
     const heading = browser.isIOS
       ? $('-ios predicate string:type == "XCUIElementTypeNavigationBar" AND label IN {"FAQ", "Help Center", "Frequently Asked Questions"}')
-      : $('//*[@text="FAQ" or @text="Help Center" or @text="Frequently Asked Questions"]')
+      // Android 2.27.0 opens the Freshchat "FAQs" screen.
+      : $('//*[@text="FAQ" or @text="FAQs" or @text="Help Center" or @text="Frequently Asked Questions"]')
     await heading.waitForDisplayed({ timeout: 15000 })
     const contact = browser.isIOS ? $('~Contact Us') : $('//*[@text="Contact Us" or @content-desc="Contact Us"]')
     await contact.waitForDisplayed({ reverse: true, timeout: 5000 })

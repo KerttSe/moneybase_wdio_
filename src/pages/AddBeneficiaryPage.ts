@@ -18,11 +18,13 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private validationError(kind: 'name' | 'length' | 'checksum' | 'country') {
-    const words = kind === 'name'
+    const specific = kind === 'name'
       ? ['invalid', 'characters', 'letters', 'at least', 'minimum']
       : kind === 'length' ? ['length', 'characters', '31']
         : kind === 'country' ? ['country', 'start', 'prefix', 'mismatch']
           : ['checksum', 'invalid', 'not valid', 'validity']
+    // Android 2.27.0 shows one "Please enter a valid IBAN" message for length, checksum and country errors.
+    const words = kind !== 'name' && browser.isAndroid ? [...specific, 'enter a valid'] : specific
     if (browser.isIOS) {
       const clauses = words.map(word => `label CONTAINS[c] "${word}"`).join(' OR ')
       const qualifier = kind === 'name' ? '' : ' AND label CONTAINS[c] "IBAN"'
@@ -1175,6 +1177,9 @@ export default class AddBeneficiaryPage extends BasePage {
     // If tapping reopened the same country picker used in the earlier step, re-select it.
     const countryPickerReopened = await this.countrySearchInputAndroid.isDisplayed().catch(() => false)
     if (countryPickerReopened) {
+      // The list is alphabetical, so United States is off-screen until searched for.
+      await this.countrySearchInputAndroid.setValue('United States').catch(() => {})
+      await browser.hideKeyboard().catch(() => {})
       await this.unitedStatesOptionAndroid.waitForExist({ timeout: 10000 }).catch(() => {})
       await this.tap(this.unitedStatesOptionAndroid).catch(() => {})
       await browser.pause(500)

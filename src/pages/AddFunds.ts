@@ -127,7 +127,8 @@ export default class AddFundsPage extends BasePage {
 
   get continueBtn() {
     if (browser.isAndroid) {
-      return $('(//*[@resource-id="cardDeposit_button_continue"] | //*[@resource-id="com.moneybase.qa:id/cardDeposit_button_continue"] | //*[contains(@resource-id,"cardTopUp_button_continue")] | //*[@text="Continue" or @content-desc="Continue"])[last()]')
+      // [1], not [last()]: the last match is the inner "Continue" text, which always reports enabled.
+      return $('(//*[@resource-id="cardDeposit_button_continue"] | //*[@resource-id="com.moneybase.qa:id/cardDeposit_button_continue"] | //*[contains(@resource-id,"cardTopUp_button_continue")] | //*[@text="Continue" or @content-desc="Continue"])[1]')
     }
     return $('~Continue')
   }
@@ -231,6 +232,15 @@ private get payProcessingBtnIOS() {
   async verifyContinueEnabled(enabled: boolean) {
     await this.amountInput.waitForExist({ timeout: 10000 })
     await waitForControlEnabled(this.continueBtn, enabled, 'Card top-up Continue')
+  }
+
+  // Android 2.27.0 replaces an amount below the minimum with EUR 10, and Continue stays usable.
+  async verifyAmountRaisedToMinimum() {
+    await browser.waitUntil(async () => {
+      const shown = (await this.amountInput.getText().catch(() => '')).replace(/[^\d.,]/g, '').replace(',', '.')
+      return Number(shown) === 10
+    }, { timeout: 10000, interval: 500, timeoutMsg: 'Expected the top-up amount to be raised to the EUR 10 minimum' })
+    await this.verifyContinueEnabled(true)
   }
 
   async verifyMinimumTopUpError() {

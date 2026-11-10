@@ -481,8 +481,11 @@ class FXExchangePage extends BasePage {
 
   private async hideKeyboardIfNeeded() {
     if (browser.isAndroid) {
-      await browser.hideKeyboard().catch(() => {})
-      await browser.pause(300)
+      // With no keyboard open, hideKeyboard falls back to Back and leaves the Exchange screen.
+      if (await browser.isKeyboardShown().catch(() => false)) {
+        await browser.hideKeyboard().catch(() => {})
+        await browser.pause(300)
+      }
       return
     }
 

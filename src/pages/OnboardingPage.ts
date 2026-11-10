@@ -2891,14 +2891,27 @@ export default class OnboardingPage extends BasePage {
 
   async verifyValidationPersonalDetailsNext(enabled: boolean) {
     await this.onboardingNameScreen.waitForDisplayed({ timeout: 10000 })
-    const next = browser.isIOS
-      ? this.onboardingNameNextBtn
-      : this.onboardingNameNextBtn.$('.//android.widget.Button')
+    // Android 2.27.0 renders Next as one clickable view with no inner Button.
+    const next = this.onboardingNameNextBtn
+    if (!enabled && browser.isAndroid) {
+      // With a name missing, Android 2.27.0 hides Next entirely instead of disabling it.
+      await browser.waitUntil(async () => !await next.isExisting() || !await next.isEnabled(), {
+        timeout: 10000,
+        interval: 250,
+        timeoutMsg: 'Onboarding personal details Next must be hidden or disabled',
+      })
+      return
+    }
     await waitForControlEnabled(next, enabled, 'Onboarding personal details Next')
   }
 
   async verifyNameFormKeyboardLayout(dismiss: boolean) {
-    const next = browser.isIOS ? this.onboardingNameNextBtn : this.onboardingNameNextBtn.$('.//android.widget.Button')
+    const next = this.onboardingNameNextBtn
+    // Android 2.27.0 hides Next until both names are valid, so give it valid names to measure.
+    if (browser.isAndroid && !await next.isExisting()) {
+      await this.setValidationPersonalNames('John', 'Borg')
+      await next.waitForExist({ timeout: 10000, timeoutMsg: 'Next should appear once both names are valid' })
+    }
     if (await browser.isKeyboardShown()) {
       if (browser.isIOS) await this.dismissIOSKeyboardIfOpen()
       else await browser.hideKeyboard()
@@ -2937,7 +2950,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   async verifyValidationPersonalDetailsRejected() {
-    const next = browser.isIOS ? this.onboardingNameNextBtn : this.onboardingNameNextBtn.$('.//android.widget.Button')
+    const next = this.onboardingNameNextBtn
     await next.waitForExist({ timeout: 10000 })
     if (await next.isEnabled()) {
       await next.click()
@@ -3047,8 +3060,11 @@ export default class OnboardingPage extends BasePage {
     }
 
     const next = this.onboardingAddressNextBtn
-    await next.waitForDisplayed({ timeout: 10000 })
-    if (await next.isEnabled()) {
+    // Android 2.27.0 hides Next while required address fields are blank, so a hidden Next is a rejection too.
+    const nextShown = await next.waitForDisplayed({ timeout: 10000 }).catch(() => false)
+    if (!nextShown) {
+      if (!browser.isAndroid) throw new Error('Blank onboarding address Next was not displayed')
+    } else if (await next.isEnabled()) {
       const before = await this.visibleRequiredAddressErrors()
       await next.click()
       await browser.waitUntil(async () => {

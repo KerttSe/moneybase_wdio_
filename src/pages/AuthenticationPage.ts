@@ -472,7 +472,8 @@ export default class AuthenticationPage extends BasePage {
     await this.tap(close, 10000)
     const restriction = browser.isIOS
       ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label CONTAINS[c] "business account" AND (label CONTAINS[c] "cannot" OR label CONTAINS[c] "not available" OR label CONTAINS[c] "not supported")')
-      : $('//*[contains(@text,"business account") and (contains(@text,"cannot") or contains(@text,"not available") or contains(@text,"not supported"))]')
+      // App 2.27.0 on Android: "You do not have permissions to close this account. Please contact the account owner."
+      : $('//*[(contains(@text,"business account") and (contains(@text,"cannot") or contains(@text,"not available") or contains(@text,"not supported"))) or contains(@text,"permissions to close this account")]')
     await restriction.waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC2965: Business accounts should show the account-closure restriction' })
   }
 

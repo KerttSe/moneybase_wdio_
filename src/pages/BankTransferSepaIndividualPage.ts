@@ -30,8 +30,9 @@ class BankTransferSepaIndividualPage extends BasePage {
     return $(`~${this.sepaBankName}\n${this.sepaIban}`)
   }
 
+  // Skips the payee search box, which holds the typed IBAN prefix after a search.
   private get sepaBeneficiaryAndroidByIbanDesc() {
-    return $(`//*[contains(@content-desc,"${this.sepaIbanPrefix}") or contains(@text,"${this.sepaIbanPrefix}")]`)
+    return $(`//*[not(self::android.widget.EditText) and (contains(@content-desc,"${this.sepaIbanPrefix}") or contains(@text,"${this.sepaIbanPrefix}"))]/ancestor-or-self::*[@clickable="true"][1]`)
   }
 
   private get sepaBeneficiaryAndroidByIbanText() {
@@ -39,7 +40,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get sepaBeneficiaryAndroidByIbanTailDesc() {
-    return $(`//*[contains(@content-desc,"${this.sepaIbanTail}") or contains(@text,"${this.sepaIbanTail}")]`)
+    return $(`//*[not(self::android.widget.EditText) and (contains(@content-desc,"${this.sepaIbanTail}") or contains(@text,"${this.sepaIbanTail}"))]/ancestor-or-self::*[@clickable="true"][1]`)
   }
 
   private get sepaBeneficiaryAndroidByIbanTailText() {
@@ -47,7 +48,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get sepaBeneficiaryAndroidByBankText() {
-    return $(`//*[contains(@text,"${this.sepaBankName}") or contains(@content-desc,"${this.sepaBankName}")]`)
+    return $(`//*[not(self::android.widget.EditText) and (contains(@text,"${this.sepaBankName}") or contains(@content-desc,"${this.sepaBankName}"))]/ancestor-or-self::*[@clickable="true"][1]`)
   }
 
   private get beneficiaryPayBtnAndroid() {
@@ -503,7 +504,16 @@ class BankTransferSepaIndividualPage extends BasePage {
     return false
   }
 
+  // SEPA beneficiaries (IBAN payees) are listed under the Payees screen's Accounts tab.
+  private async openPayeesAccountsTabAndroid() {
+    const accountsTab = $('//*[contains(@resource-id,"payees_button_filterAccounts")]')
+    if (!await accountsTab.waitForDisplayed({ timeout: 10000 }).catch(() => false)) return
+    await this.tapAndroidCenterPoint(accountsTab)
+    await browser.pause(800)
+  }
+
   private async openSepaBeneficiaryAndroid() {
+    await this.openPayeesAccountsTabAndroid()
     const deadline = Date.now() + 25000
 
     while (Date.now() < deadline) {
@@ -829,13 +839,20 @@ class BankTransferSepaIndividualPage extends BasePage {
     await input.clearValue()
     await input.addValue('12345678')
     const baseline = await read()
-    if (!baseline.replace(/\D/g, '').startsWith('12345678')) {
-      throw new Error('Expected eight leading digits before testing the ninth digit')
-    }
-    await input.addValue('9')
-    const actual = await read()
-    if (actual !== baseline) {
-      throw new Error(`Expected ninth digit to be rejected, amount changed from "${baseline}" to "${actual}"`)
+    if (browser.isAndroid) {
+      // App 2.27.0 on Android caps a SEPA amount at EUR 500,000 instead of limiting the digit count.
+      if (baseline.replace(/\D/g, '') !== '500000') {
+        throw new Error(`Expected an over-limit amount to be capped at 500,000, got "${baseline}"`)
+      }
+    } else {
+      if (!baseline.replace(/\D/g, '').startsWith('12345678')) {
+        throw new Error('Expected eight leading digits before testing the ninth digit')
+      }
+      await input.addValue('9')
+      const actual = await read()
+      if (actual !== baseline) {
+        throw new Error(`Expected ninth digit to be rejected, amount changed from "${baseline}" to "${actual}"`)
+      }
     }
 
     await input.clearValue()
@@ -864,18 +881,29 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   public async verifyPaymentReferenceLimit() {
-    await this.openSepaAmountInput()
+    const amountInput = await this.openSepaAmountInput()
+    if (browser.isAndroid) {
+      // Android 2.27.0 shows the unlabeled reference field only once an amount is entered.
+      await amountInput.click()
+      await amountInput.clearValue().catch(() => {})
+      await amountInput.setValue('11')
+      await browser.hideKeyboard().catch(() => {})
+    }
     const reference = browser.isIOS
       ? $('-ios predicate string:type IN {"XCUIElementTypeTextField", "XCUIElementTypeTextView"} AND (name CONTAINS[c] "reference" OR label CONTAINS[c] "reference" OR value == "Reference")')
-      : $('(//android.widget.EditText[contains(@resource-id,"reference") or @content-desc="Reference" or @text="Reference" or .//android.widget.TextView[@text="Reference"]] | //*[contains(@resource-id,"input_reference")]//android.widget.EditText)[1]')
+      : $('(//android.widget.EditText[contains(@resource-id,"reference") or @content-desc="Reference" or @text="Reference" or .//android.widget.TextView[@text="Reference"]] | //*[contains(@resource-id,"input_reference")]//android.widget.EditText | //*[contains(@resource-id,"bankTransfer_screen")]//android.widget.EditText[not(contains(@resource-id,"bankTransfer_input_amount"))])[1]')
     const read = () => browser.isIOS ? reference.getAttribute('value') : reference.getText()
     await reference.waitForDisplayed({ timeout: 15000 })
     await reference.clearValue()
     const limit = '1234567890'.repeat(14)
     await reference.setValue(limit)
     if (await read() !== limit) throw new Error('Expected the form to retain a 140-character reference')
-    await reference.addValue('X')
-    if (await read() !== limit) throw new Error('The payment reference accepted a 141st character')
+    // Typing all 141 characters at once: on an Android Compose field addValue replaces the text.
+    // The app may truncate to 140 or reject the over-long input; either way no 141st character is kept.
+    await reference.clearValue()
+    await reference.setValue(`${limit}X`)
+    const after = await read()
+    if (after.length > limit.length || after.includes('X')) throw new Error('The payment reference accepted a 141st character')
   }
 
   public async verifyNoFeeInSepaReview() {
@@ -973,13 +1001,22 @@ class BankTransferSepaIndividualPage extends BasePage {
     else await this.openSepaBeneficiaryDetailsAndroid()
 
     for (const field of ['IBAN', 'BIC']) {
-      const row = browser.isIOS
-        ? $(`//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="${field}"]] | //XCUIElementTypeButton[@label="${field}" or contains(@name,"copy${field}")]`)
-        : $(`(//*[@text="${field}" or @content-desc="${field}"]/ancestor-or-self::*[@clickable="true"][1])[1]`)
+      if (browser.isAndroid) {
+        // Android 2.27.0: the value (blue text right after the "IBAN" / "BIC/SWIFT" label) copies on tap.
+        const label = field === 'BIC' ? 'BIC/SWIFT' : field
+        const value = $(`(//android.widget.TextView[@text="${label}"]/following::android.widget.TextView)[1]`)
+        await value.waitForDisplayed({ timeout: 10000, timeoutMsg: `TC3321: expected the ${label} value` })
+        const expected = (await value.getText()).replace(/\s/g, '')
+        await this.tapAndroidCenterPoint(value)
+        await browser.waitUntil(async () => {
+          const clip = Buffer.from(String(await browser.getClipboard().catch(() => '')), 'base64').toString('utf8')
+          return clip.replace(/\s/g, '') === expected
+        }, { timeout: 5000, interval: 500, timeoutMsg: `TC3321: expected ${label} to be copied to the clipboard` })
+        continue
+      }
+      const row = $(`//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="${field}"]] | //XCUIElementTypeButton[@label="${field}" or contains(@name,"copy${field}")]`)
       await this.tap(row, 10000)
-      const copied = browser.isIOS
-        ? $(`-ios predicate string:label CONTAINS[c] "${field}" AND label CONTAINS[c] "copied"`)
-        : $(`//*[contains(@text,"${field}") and contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"copied")]`)
+      const copied = $(`-ios predicate string:label CONTAINS[c] "${field}" AND label CONTAINS[c] "copied"`)
       await copied.waitForExist({ timeout: 5000, timeoutMsg: `TC3321: expected copy confirmation for ${field}` })
     }
 

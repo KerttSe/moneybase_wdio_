@@ -260,6 +260,15 @@ class BusinessCardTerminatePage extends BasePage {
     const inactive = browser.isIOS ? this.inactiveTabIOS : this.inactiveTabAndroid
     await active.waitForDisplayed({ timeout: 15000 })
     await inactive.waitForDisplayed({ timeout: 10000 })
+    if (browser.isAndroid) {
+      // Android 2.27.0 reports selected="false" for both filters, so the Active default is read from the list.
+      await browser.waitUntil(async () => {
+        const active = await $$('//*[contains(@resource-id,"manageBusinessCards_screen")]//android.widget.TextView[@text="ACTIVE"]').length
+        const inactive = await $$('//*[contains(@resource-id,"manageBusinessCards_screen")]//android.widget.TextView[@text="INACTIVE"]').length
+        return active > 0 && inactive === 0
+      }, { timeout: 10000, interval: 400, timeoutMsg: 'Manage Cards should open on the Active filter, listing only active cards' })
+      return
+    }
     await browser.waitUntil(async () => (await active.isSelected()) && !(await inactive.isSelected()), {
       timeout: 10000,
       interval: 400,

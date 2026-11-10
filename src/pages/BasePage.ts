@@ -505,18 +505,27 @@ export default class BasePage {
     return await this.byIdRx('home_screen').isDisplayed().catch(() => false)
   }
 
-  protected async switchAndroidAccountByCode(accountCode: string, accountType?: string) {
+  // Without an accountCode, the first profile of accountType linked to the logged-in user is used,
+  // read from the Home header ("Individual • KER40014") and the account picker rows.
+  protected async switchAndroidAccountByCode(accountCode: string | undefined, accountType?: string) {
     if (!browser.isAndroid) return
+    if (!accountCode && !accountType) throw new Error('switchAndroidAccountByCode needs an account code or type')
+    const target = accountCode ?? String(accountType)
 
     await browser.switchContext('NATIVE_APP')
     await this.stabilizeAndroidHomeSurface(20000)
 
-    const homeAccountLabel = $(`//*[contains(@resource-id,"_button_userAvatar")]//android.widget.TextView[contains(@text,"${accountCode}")]`)
+    const homeAccountLabel = accountCode
+      ? $(`//*[contains(@resource-id,"_button_userAvatar")]//android.widget.TextView[contains(@text,"${accountCode}")]`)
+      : $(`//*[contains(@resource-id,"_button_userAvatar")]//android.widget.TextView[starts-with(@text,"${accountType} •")]`)
     if (await homeAccountLabel.isExisting()) return
 
     const userAvatar = this.byIdRx('home_button_userAvatar')
     const picker = this.byIdRx('more_button_accountPicker')
-    const currentAccount = $(`//*[contains(@resource-id,"more_button_accountPicker")]//*[contains(@text,"${accountCode}") or contains(@content-desc,"${accountCode}")]`)
+    // More shows only the active code, so by type the active profile is known from Home alone.
+    const currentAccount = accountCode
+      ? $(`//*[contains(@resource-id,"more_button_accountPicker")]//*[contains(@text,"${accountCode}") or contains(@content-desc,"${accountCode}")]`)
+      : $('//*[@resource-id="no-active-account-match-by-type"]')
     let accountAlreadySelected = false
     let recoveredFromLeakCanary = false
     await this.dismissKnownAndroidBlockingPopups(2)
@@ -563,14 +572,16 @@ export default class BasePage {
     })
 
     if (!accountAlreadySelected) {
-      const account = $(`//*[contains(@resource-id,"accountSelection_screen")]//*[not(self::android.widget.EditText) and (contains(@text,"${accountCode}") or contains(@content-desc,"${accountCode}"))]/ancestor-or-self::*[@clickable="true"][1]`)
+      const account = accountCode
+        ? $(`//*[contains(@resource-id,"accountSelection_screen")]//*[not(self::android.widget.EditText) and (contains(@text,"${accountCode}") or contains(@content-desc,"${accountCode}"))]/ancestor-or-self::*[@clickable="true"][1]`)
+        : $(`//*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[@text="${accountType}"]/ancestor::*[@clickable="true"][1]`)
       const search = $('//*[contains(@resource-id,"accountSelection_screen")]//android.widget.EditText')
-      if (!await account.isExisting() && await search.isExisting()) {
+      if (accountCode && !await account.isExisting() && await search.isExisting()) {
         await search.setValue(accountCode)
       }
       await account.waitForDisplayed({
         timeout: 15000,
-        timeoutMsg: `Expected ${accountType ?? 'the'} account ${accountCode} in the picker`,
+        timeoutMsg: `Expected ${accountType ?? 'the'} account ${target} in the picker`,
       })
       await this.tapAndroidCenterPoint(account)
     }
@@ -591,15 +602,13 @@ export default class BasePage {
     }, {
       timeout: 60000,
       interval: 500,
-      timeoutMsg: `Android home did not switch to account ${accountCode}`,
+      timeoutMsg: `Android home did not switch to account ${target}`,
     })
   }
 
+  // The Individual profile linked to whichever user is logged in, not a configured account code.
   protected async ensureAndroidIndividualAccount() {
-    const accountCode = AUTH.individualAccountCode
-    if (accountCode) {
-      await this.switchAndroidAccountByCode(accountCode, 'Individual')
-    }
+    await this.switchAndroidAccountByCode(undefined, 'Individual')
   }
 
   protected async backUntilAndroidHomeTab(maxBacks = 8) {
@@ -620,12 +629,8 @@ export default class BasePage {
   protected async ensureAndroidIndividualHomeReady(stabilizeTimeoutMs = 15000) {
     if (!browser.isAndroid) return
 
-    if (AUTH.individualAccountCode) {
-      await this.ensureAndroidIndividualAccount()
-      return
-    }
-
     await this.stabilizeAndroidHomeSurface(stabilizeTimeoutMs).catch(() => false)
+    await this.ensureAndroidIndividualAccount()
   }
 
   async pause(ms = 1000) {
