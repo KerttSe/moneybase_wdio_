@@ -9,7 +9,7 @@ import { waitForControlEnabled } from '../helpers/controlState.helper'
 
 export default class AddBeneficiaryPage extends BasePage {
   private get validationContinue() {
-    return browser.isIOS ? this.detailsContinueBtnIOS : this.detailsContinueBtnAndroid.$('.//android.widget.Button')
+    return browser.isIOS ? this.detailsContinueBtnIOS : this.detailsContinueBtnAndroid
   }
 
   private validationField(field: 'name' | 'surname' | 'iban') {
@@ -1070,7 +1070,7 @@ export default class AddBeneficiaryPage extends BasePage {
    * ========================= */
 
   private get addressCountryRowAndroid() {
-    return $('//android.view.View[.//android.widget.TextView[@text="Country"]]')
+    return $('(//*[contains(@resource-id,"addBeneficiaryAddress_picker_country")]/*[@clickable="true"] | //android.view.View[.//android.widget.TextView[@text="Country"]])[1]')
   }
 
   private get addressLine1InputAndroid() {

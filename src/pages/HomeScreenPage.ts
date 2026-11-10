@@ -1695,6 +1695,7 @@ class HomeScreenPage extends BasePage {
 
   public async openSupport() {
     await this.waitForHomeLoaded()
+    if (browser.isAndroid) await this.dismissKnownAndroidBlockingPopups()
     const help = browser.isIOS
       ? $('//XCUIElementTypeNavigationBar[@name="Home"]/XCUIElementTypeButton[@name="home_button_help" or @name="Help" or @name="Support" or (not(@name) and not(@label))]')
       : $('//*[contains(@resource-id,"home_button_help") or contains(@resource-id,"home_button_support") or @content-desc="Help" or @content-desc="Support"]')
@@ -1755,7 +1756,8 @@ class HomeScreenPage extends BasePage {
     await cards.waitForDisplayed({ timeout: 15000 })
     const help = browser.isIOS
       ? $('-ios predicate string:type == "XCUIElementTypeButton" AND (name == "cards_button_help" OR label IN {"Help", "Support"})')
-      : $('//*[contains(@resource-id,"cards_button_help") or @content-desc="Help" or @content-desc="Support"]')
+      // The Android Cards help icon has no id or label; it is the first control after the avatar.
+      : $('(//*[contains(@resource-id,"cards_button_help") or @content-desc="Help" or @content-desc="Support"] | //*[contains(@resource-id,"cards_button_userAvatar")]/following::*[@clickable="true"][1])[1]')
     await this.tap(help, 10000)
     await this.supportTitle.waitForDisplayed({ timeout: 10000 })
     const cardsGreeting = await this.verifySupportOptions(false)
@@ -1786,6 +1788,14 @@ class HomeScreenPage extends BasePage {
     }
   }
 
+  private async closeInvestorCompensationSheetIfShown() {
+    const sheet = $('//*[contains(@text,"Maltese Investor Compensation Scheme")]')
+    if (!await sheet.waitForDisplayed({ timeout: 5000 }).catch(() => false)) return
+    // Its scrim reports bounds over the sheet itself, so tapping "Close sheet" would miss it.
+    await browser.back()
+    await sheet.waitForDisplayed({ reverse: true, timeout: 10000, timeoutMsg: 'Investor Compensation sheet did not close' })
+  }
+
   public async verifyTotalWealthDestinations() {
     const destinations = [
       ['Investments', 'Portfolio'],
@@ -1799,6 +1809,7 @@ class HomeScreenPage extends BasePage {
         : $(`(//*[@text="${row}" or @content-desc="${row}"]/ancestor-or-self::*[@clickable="true"][1])[1]`)
       await action.waitForDisplayed({ timeout: 10000 })
       await this.tap(action)
+      if (browser.isAndroid) await this.closeInvestorCompensationSheetIfShown()
       const destination = browser.isIOS
         ? $(`//XCUIElementTypeNavigationBar[@name="${title}"]`)
         : $(`//*[@text="${title}" or @content-desc="${title}"]`)
