@@ -452,16 +452,20 @@ export default class PortfolioPage extends BasePage {
       this.continueBtnAndroidByText,
       this.continueBtnAndroidByTextContains,
     ]
-    for (let step = 1; step <= 4; step += 1) {
-      const tutorialShown = await this.waitForAnyDisplayed(tutorialCandidates, 4000, 'Tutorial button (Android)')
-        .then(() => true)
-        .catch(() => false)
+    // The coachmarks (e.g. "Columns Scrolling") can appear late and cover the instrument list.
+    const dismissTutorial = async (firstWaitMs: number) => {
+      for (let step = 1; step <= 4; step += 1) {
+        const tutorialShown = await this.waitForAnyDisplayed(tutorialCandidates, step === 1 ? firstWaitMs : 2000, 'Tutorial button (Android)')
+          .then(() => true)
+          .catch(() => false)
 
-      if (!tutorialShown) break
+        if (!tutorialShown) break
 
-      await this.tapFirstDisplayed(tutorialCandidates, 'Tutorial button (Android)')
-      await browser.pause(300)
+        await this.tapFirstDisplayed(tutorialCandidates, 'Tutorial button (Android)')
+        await browser.pause(300)
+      }
     }
+    await dismissTutorial(4000)
 
     const instrumentCandidates = [
       this.simondsFarsonsBondAndroidRowExact,
@@ -470,7 +474,15 @@ export default class PortfolioPage extends BasePage {
     ]
 
     for (let attempt = 1; attempt <= 3; attempt += 1) {
-      await this.waitForAnyDisplayed(instrumentCandidates, 20000, 'Simonds Farsons bond row (Android)')
+      await dismissTutorial(1000)
+      const rowShown = await this.waitForAnyDisplayed(instrumentCandidates, 20000, 'Simonds Farsons bond row (Android)')
+        .then(() => true)
+        .catch(() => false)
+      if (!rowShown) {
+        if (attempt < 3) continue
+        await this.waitForAnyDisplayed(instrumentCandidates, 2000, 'Simonds Farsons bond row (Android)')
+      }
+      await dismissTutorial(500)
       await this.tapFirstDisplayed(instrumentCandidates, 'Simonds Farsons bond row (Android)')
 
       const tradeActionsVisible = await this.ensureInstrumentTradeActionsVisibleAndroid(3000)
