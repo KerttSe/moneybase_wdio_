@@ -18,6 +18,11 @@ const envBaseDir = process.env.INIT_CWD ?? process.env.PWD ?? process.cwd()
 const envPath = resolve(envBaseDir, '.env')
 dotenv.config({ path: envPath })
 
+// The business holder fixture is the secondary account (same phone), so CI only needs the MB_ALT_* secrets.
+for (const [target, source] of [['BH_MB_PHONE', 'MB_ALT_PHONE'], ['BH_MB_PIN', 'MB_ALT_PIN'], ['BH_OTP_PHONE', 'MB_ALT_OTP_PHONE']]) {
+  if (!process.env[target] && process.env[source]) process.env[target] = process.env[source]
+}
+
 
 
 
