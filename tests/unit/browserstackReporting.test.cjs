@@ -20,7 +20,7 @@ function loadConfig() {
     './src/helpers/allure.helper': { attachFailureArtifacts: async () => {} },
     './src/helpers/browserstack.helper': { getLastBrowserStackStep: () => 'Session started' },
     './src/helpers/failureClassification.helper': { classifyFailureReason: () => ({ reason: 'AUTOMATION_BUG' }) },
-    './scripts/regressionLanes.cjs': require(path.resolve('scripts/regressionLanes.cjs')),
+    'node:module': { createRequire: () => file => require(path.resolve(file)) },
   }
   const module = { exports: {} }
   const code = ts.transpileModule(fs.readFileSync('wdio.conf.ts', 'utf8'), {

@@ -2,14 +2,17 @@ import * as dotenv from 'dotenv'
 import type { Options } from '@wdio/types'
 import { browser } from '@wdio/globals'
 import { execSync } from 'node:child_process'
+import { createRequire } from 'node:module'
 import { basename, resolve } from 'node:path'
 import { attachFailureArtifacts, writeAllureEnvironment, writeAllureExecutor } from './src/helpers/allure.helper'
 import { getLastBrowserStackStep } from './src/helpers/browserstack.helper'
 import { classifyFailureReason } from './src/helpers/failureClassification.helper'
+// wdio loads this file as an ES module, so the shared CommonJS lane module needs createRequire.
+// wdio and the CI workflow always run from the repository root.
 const regressionLanes: {
   slotForSpec: (specName: string) => string
   laneOrder: (lane: string) => string[]
-} = require('./scripts/regressionLanes.cjs')
+} = createRequire(resolve('wdio.conf.ts'))('./scripts/regressionLanes.cjs')
 
 const envBaseDir = process.env.INIT_CWD ?? process.env.PWD ?? process.cwd()
 const envPath = resolve(envBaseDir, '.env')
