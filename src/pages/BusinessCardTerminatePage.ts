@@ -394,12 +394,14 @@ class BusinessCardTerminatePage extends BasePage {
 
   // ── Freeze / Unfreeze buttons on Card Details ─────────────────────────────
 
+  // Android 2.27.0: the Card Details action is the businessCardDetails_button_freeze view with a
+  // "Freeze" / "Unfreeze" text child and no content-desc.
   private get freezeBtnAndroid() {
-    return $('(//*[@content-desc="Freeze"] | //*[contains(@content-desc,"Freeze") and not(contains(@content-desc,"Unfreeze"))])[1]')
+    return $('(//*[contains(@resource-id,"businessCardDetails_button_freeze")][.//android.widget.TextView[@text="Freeze"]] | //*[@content-desc="Freeze"] | //*[contains(@content-desc,"Freeze") and not(contains(@content-desc,"Unfreeze"))])[1]')
   }
 
   private get unfreezeBtnAndroid() {
-    return $('(//*[@content-desc="Unfreeze"] | //*[contains(@content-desc,"Unfreeze")])[1]')
+    return $('(//*[contains(@resource-id,"businessCardDetails_button_freeze")][.//android.widget.TextView[@text="Unfreeze"]] | //android.widget.TextView[@text="Unfreeze"]/ancestor::*[@clickable="true"][1] | //*[@content-desc="Unfreeze"] | //*[contains(@content-desc,"Unfreeze")])[1]')
   }
 
   private get freezeBtnIOS() {
