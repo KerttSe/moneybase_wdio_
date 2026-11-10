@@ -1,5 +1,6 @@
 import BasePage from './BasePage'
 import HomeScreenPage from './HomeScreenPage'
+import BusinessCardTerminatePage from './BusinessCardTerminatePage'
 import { waitForControlEnabled } from '../helpers/controlState.helper'
 import { $, browser } from '@wdio/globals'
 import allure from '@wdio/allure-reporter'
@@ -226,6 +227,8 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   public async tapAssignCard() {
+    // Leftover own cards from failed terminate runs fill the user's card limit and block Assign Card.
+    await BusinessCardTerminatePage.cleanupExistingOwnVirtualCards()
     const btn = browser.isIOS ? this.assignCardBtnIOS : this.assignCardBtnAndroid
     await btn.waitForExist({ timeout: 15000, timeoutMsg: 'Assign Card button not found on Manage Cards' })
     await this.tap(btn)

@@ -692,6 +692,11 @@ class BusinessCardTerminatePage extends BasePage {
   }
 
   private async cleanupExistingOwnVirtualCardsAndroid() {
+    // The card list loads a few seconds after Manage Cards opens; an empty first read missed leftovers.
+    await browser.waitUntil(
+      async () => (await $$('//android.widget.TextView[starts-with(@text,"Exp:")]').length) > 0,
+      { timeout: 12000, interval: 500 },
+    ).catch(() => {})
     for (let attempt = 0; attempt < 3; attempt += 1) {
       const cards = await this.existingOwnVirtualCardsAndroid
       if ((await cards.length) === 0) return
@@ -749,7 +754,8 @@ class BusinessCardTerminatePage extends BasePage {
     throw new Error(`Could not clean existing own virtual cards for "${BH_SELF_NAME}" on iOS`)
   }
 
-  private async cleanupExistingOwnVirtualCards() {
+  /** Terminates own cards left ACTIVE/FROZEN by earlier failed runs; call on Manage Cards. */
+  public async cleanupExistingOwnVirtualCards() {
     if (browser.isAndroid) {
       await this.cleanupExistingOwnVirtualCardsAndroid()
       return
