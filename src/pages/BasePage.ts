@@ -894,6 +894,8 @@ export default class BasePage {
       (await this.androidAdministrationEntry.isExisting().catch(() => false))
     if (alreadyOpen) return
 
+    // The "More menu has been moved" tooltip covers Home and hides the profile entry.
+    await this.dismissKnownAndroidBlockingPopups(2).catch(() => {})
     await this.androidProfileMoreEntry.waitForExist({
       timeout: 20000,
       timeoutMsg: 'Profile/More entry was not found on Android',

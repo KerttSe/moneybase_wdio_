@@ -485,7 +485,35 @@ export default class AuthenticationPage extends BasePage {
   }
 
   private async isThemeSelected(theme: Theme) {
-    return this.isSettingsOptionSelected(this.themeRow(theme))
+    if (await this.isSettingsOptionSelected(this.themeRow(theme))) return true
+    return browser.isAndroid ? this.isThemeCheckedByColourAndroid(theme) : false
+  }
+
+  // Android 2.27.0 marks the chosen theme only with a green check under its label and exposes no
+  // selected/checked attribute, so look for that green in the screenshot just below the label.
+  private async isThemeCheckedByColourAndroid(theme: Theme) {
+    const label = $(`//android.widget.TextView[@text="${theme}"]`)
+    if (!await label.isDisplayed().catch(() => false)) return false
+    const { x, y } = await label.getLocation()
+    const { width, height } = await label.getSize()
+    let sharp: typeof import('sharp')
+    try {
+      sharp = (await import('sharp')).default
+    } catch {
+      throw new Error('Theme selection needs the sharp image library to read the Android check mark')
+    }
+    const { data, info } = await sharp(Buffer.from(await browser.takeScreenshot(), 'base64'))
+      .raw().toBuffer({ resolveWithObject: true })
+    const centreX = Math.round(x + width / 2)
+    const top = Math.round(y + height)
+    for (let py = top; py < Math.min(info.height, top + 160); py += 2) {
+      for (let dx = -16; dx <= 16; dx += 4) {
+        const index = (py * info.width + centreX + dx) * info.channels
+        const [r, g, b] = [data[index], data[index + 1], data[index + 2]]
+        if (g > 150 && g - r > 60 && g - b > 20) return true
+      }
+    }
+    return false
   }
 
   private async isSettingsOptionSelected(row: ChainablePromiseElement) {
