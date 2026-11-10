@@ -44,8 +44,8 @@ and `.github/workflows/wdio-regression.yml` use it. CI no longer sets
 | 2 | secondary | KER | 13 | Add funds, beneficiary with real OTP, account switch, salary, business statements, price plan |
 | 2 | laz | LAZ | 8 | Home search, P2P, recent payees, beneficiary validation, account picker, appearance |
 | 2 | pop | POP | 9 | Invest discover, support, Storyly, EUR wallet, individual statements |
-| 2 | businessHolder | `BH_*` / `BC_ADMIN_SELF_ASSIGN_PHONE` | 10 | Own business card accounts |
-| 2 | authSecurity | `AUTH_SECURITY_*` | 9 | Own account; `incorrectOtp`, `incorrectPasscode`, `otpLockout`, `passcodeLockout` run after the rest |
+| 2 | businessHolder | `BH_*` (KER phone, business SED00004) / `BC_ADMIN_SELF_ASSIGN_PHONE` | 10 | Business card admin; shares KER's phone, so the lane spaces it from KER specs |
+| 2 | authSecurity | `AUTH_SECURITY_*` | 8 | Own account; `incorrectOtp`, `incorrectPasscode`, `otpLockout`, `passcodeLockout` run after the rest |
 | 2 | personalDetails | `PD_*` | 2 | Own account |
 | 2 | signedOut | none / `AUTH_RECOVERY_MB_PHONE` | 4 | Signed-out flows |
 
@@ -323,7 +323,6 @@ Required fixtures
 
 Assigned files under src/tests
 
-- `authentication.changePasscode.spec.ts`
 - `authentication.changePasscodeCancel.spec.ts`
 - `authentication.incorrectOtp.spec.ts`
 - `authentication.incorrectPasscode.spec.ts`

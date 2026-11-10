@@ -3,7 +3,7 @@ import { $, browser } from '@wdio/globals'
 export function passcodeWarning() {
   return browser.isIOS
     ? $('-ios predicate string:type == "XCUIElementTypeAlert"')
-    : $('//*[@resource-id="android:id/parentPanel" or @class="android.app.Dialog"]')
+    : $('//*[@resource-id="android:id/parentPanel" or contains(@resource-id,":id/parentPanel") or @class="android.app.Dialog"]')
 }
 
 export function passcodeWarningAction(label: 'ok' | 'change it' | 'keep it') {

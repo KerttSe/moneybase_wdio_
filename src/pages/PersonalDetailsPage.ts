@@ -187,7 +187,7 @@ class PersonalDetailsPage extends BasePage {
     const field = browser.isIOS ? this.firstNameInputIOS : this.firstNameInputAndroid
     const alert = browser.isIOS
       ? $('-ios predicate string:type == "XCUIElementTypeAlert"')
-      : $('//*[@resource-id="android:id/parentPanel" or @class="android.app.Dialog"]')
+      : $('//*[@resource-id="android:id/parentPanel" or contains(@resource-id,":id/parentPanel") or @class="android.app.Dialog"]')
     const warning = browser.isIOS
       ? alert.$('.//XCUIElementTypeStaticText[contains(@label,"Identity Document") or contains(@label,"identity document")]')
       : alert.$('.//*[contains(@text,"Identity Document") or contains(@text,"identity document")]')
@@ -226,7 +226,7 @@ class PersonalDetailsPage extends BasePage {
 
     const alert = browser.isIOS
       ? $('-ios predicate string:type == "XCUIElementTypeAlert"')
-      : $('//*[@resource-id="android:id/parentPanel" or @class="android.app.Dialog"]')
+      : $('//*[@resource-id="android:id/parentPanel" or contains(@resource-id,":id/parentPanel") or @class="android.app.Dialog"]')
     const attribute = browser.isIOS ? '@label' : '@text'
     const lower = `translate(${attribute},"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz")`
     const message = alert.$(`.//*[contains(${lower},"verif") and (contains(${lower},"mobile") or contains(${lower},"number"))]`)

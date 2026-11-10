@@ -162,7 +162,7 @@ test('account-locking authentication specs run after the rest of that account', 
   const lane = config.suites.regressionLane2.map(file => path.basename(file, '.spec.ts'))
   const locking = ['authentication.incorrectOtp', 'authentication.otpLockout', 'authentication.incorrectPasscode', 'authentication.passcodeLockout']
   const firstLock = Math.min(...locking.map(name => lane.indexOf(name)))
-  for (const name of ['authentication.securityAccount', 'authentication.changePasscode', 'authentication.changePasscodeCancel', 'authentication.partialPasscode', 'authentication.otpCountdown']) {
+  for (const name of ['authentication.securityAccount', 'authentication.changePasscodeCancel', 'authentication.partialPasscode', 'authentication.otpCountdown']) {
     assert.ok(lane.indexOf(name) < firstLock, name)
   }
 })

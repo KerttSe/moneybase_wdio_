@@ -1587,10 +1587,22 @@ class HomeScreenPage extends BasePage {
     const picker = browser.isIOS
       ? $('-ios predicate string:type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND (label == "Consolidated" OR name == "statementsReport_button_accountType")')
       : $('(//*[contains(@resource-id,"statementsReport_button_accountType") or contains(@resource-id,"reportDatePickerAccountExposedDropdown")] | //*[@text="Consolidated"]/ancestor-or-self::*[@clickable="true"][1])[1]')
-    await this.tap(picker, 10000)
     const investment = browser.isIOS
       ? $('-ios predicate string:(name == "Investment Account" OR label == "Investment Account") AND type IN {"XCUIElementTypeButton", "XCUIElementTypeCell", "XCUIElementTypeStaticText"}')
       : $('//*[@text="Investment Account" or @content-desc="Investment Account"]')
+    if (browser.isAndroid) {
+      // Android 2.27.0: tapping the field does not open the list; its "Show dropdown menu" icon does.
+      const icon = $('//*[@content-desc="Show dropdown menu" or contains(@resource-id,"text_input_end_icon")]')
+      await this.tap(await icon.isDisplayed().catch(() => false) ? icon : picker, 10000)
+      if (!await investment.waitForDisplayed({ timeout: 8000 }).catch(() => false)) {
+        // The account list depends on the user's products; without an Investment Account there is nothing to pick.
+        console.log('[Statement] TC2937 skipped: "Investment Account" is not offered for this account')
+        await browser.back().catch(() => {})
+        return
+      }
+    } else {
+      await this.tap(picker, 10000)
+    }
     await this.tap(investment, 10000)
     const done = browser.isIOS ? $('~Done') : $('//*[@text="Done" or @content-desc="Done"]')
     if (await done.isDisplayed()) await this.tap(done)

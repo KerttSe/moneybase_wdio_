@@ -866,6 +866,22 @@ export default class BasePage {
     }
   }
 
+  // The More menu sometimes opens without a business entry (e.g. Administration) on 2.27.0;
+  // closing and reopening it shows the full list, so retry a few times before failing.
+  protected async openAndroidMoreMenuWithItem(item: WdioEl, label: string, attempts = 3) {
+    for (let attempt = 1; attempt <= attempts; attempt += 1) {
+      await this.openAndroidMoreMenuFromProfile()
+      await browser.pause(500)
+      if (await item.waitForExist({ timeout: 6000 }).catch(() => false)) return
+      if (attempt === attempts) break
+      const close = this.androidMoreCloseButton
+      if (await close.isExisting().catch(() => false)) await this.tapAndroidCenterPoint(close).catch(() => {})
+      else await browser.back().catch(() => {})
+      await browser.pause(1500)
+    }
+    throw new Error(`${label} not found in More section after ${attempts} attempts`)
+  }
+
   protected async openAndroidMoreMenuFromProfile() {
     if (!browser.isAndroid) return
 

@@ -1,3 +1,4 @@
+import { browser } from '@wdio/globals'
 import { loginPage } from '../pages/LoginPage'
 import AddBeneficiaryPage from '../pages/AddBeneficiaryPage'
 import { AUTH } from '../data/credentials'
@@ -15,6 +16,10 @@ describe('PAY-036 [TC3307] Beneficiary IBAN country mismatch', function () {
   })
 
   it('PAY-036 [TC3307] Reject a checksum-valid German IBAN for a Malta beneficiary with a country error', async function () {
+    if (browser.isAndroid) {
+      await page.verifyForeignIbanBlocked(data.foreignIban)
+      return
+    }
     await page.enterValidationField('iban', data.foreignIban)
     await page.verifyBankDetailsRejected('country')
   })

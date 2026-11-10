@@ -201,7 +201,7 @@ class BusinessCardWalletPage extends BasePage {
     if (browser.isIOS) {
       await HomeScreenPage.openIOSMoreMenu()
     } else {
-      await this.openAndroidMoreMenuFromProfile()
+      await this.openAndroidMoreMenuWithItem(this.administrationItemAndroid, 'Administration item')
     }
     await browser.pause(500)
     const adminItem = browser.isIOS ? this.administrationItemIOS : this.administrationItemAndroid

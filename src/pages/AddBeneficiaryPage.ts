@@ -52,6 +52,21 @@ export default class AddBeneficiaryPage extends BasePage {
     await this.verifyBankDetailsAccepted()
   }
 
+  // Android 2.27.0 does not accept another country's IBAN for a Malta beneficiary at all: the input stays
+  // without it and Continue stays disabled, which is how the country mismatch is enforced.
+  async verifyForeignIbanBlocked(value: string) {
+    const input = this.validationField('iban')
+    await input.waitForDisplayed({ timeout: 15000 })
+    await input.clearValue()
+    await input.setValue(value)
+    await browser.hideKeyboard().catch(() => {})
+    const kept = (await input.getText()).replace(/\s/g, '').toUpperCase()
+    if (kept.includes(value.replace(/\s/g, '').toUpperCase())) {
+      throw new Error('TC3307: a foreign IBAN was accepted into a Malta beneficiary form')
+    }
+    await waitForControlEnabled(this.validationContinue, false, 'Beneficiary details Continue with a foreign IBAN')
+  }
+
   async enterValidationField(field: 'name' | 'surname' | 'iban', value: string) {
     const input = this.validationField(field)
     await input.waitForDisplayed({ timeout: 15000 })
@@ -1239,9 +1254,18 @@ export default class AddBeneficiaryPage extends BasePage {
       )
     }
 
-    await this.tap(this.addressContinueBtnAndroid).catch(() => {})
-
-    const transitioned = await this.waitForAddressTransitionSignalAndroid(15000)
+    // Continue is laid out only while the keyboard is closed; a tap made as the keyboard reopens lands on a
+    // field instead. Hide the keyboard before each tap and retry until the screen moves on.
+    let transitioned = false
+    for (let attempt = 0; attempt < 3 && !transitioned; attempt += 1) {
+      if (await browser.isKeyboardShown().catch(() => false)) {
+        await browser.hideKeyboard().catch(() => {})
+        await browser.pause(500)
+      }
+      if (!await this.addressContinueBtnAndroid.isDisplayed().catch(() => false)) break
+      await this.tapAndroidCenterPoint(this.addressContinueBtnAndroid).catch(() => {})
+      transitioned = await this.waitForAddressTransitionSignalAndroid(attempt === 2 ? 15000 : 8000)
+    }
     console.log('[fillBeneficiaryAddressUSAndroid] transitioned:', transitioned)
     if (!transitioned) {
       console.warn('[AddBeneficiary][USD] Address Continue tap did not trigger a detected transition — proceeding anyway')

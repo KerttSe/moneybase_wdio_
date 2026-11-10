@@ -5,6 +5,11 @@ const accounts = require('../src/data/regressionAccounts.json')
 // Groups that log in with a pool account and therefore set MB_AUTH_SLOT.
 const POOL_SLOTS = new Set(['primary', 'secondary', 'rog', 'laz', 'mum', 'pop'])
 
+// Groups with their own credentials that still share a phone with a pool account. businessHolder logs in
+// with BH_MB_PHONE, which is KER's number (business profile SED00004), so it counts as KER for spacing.
+const SAME_PHONE_AS = { businessHolder: 'secondary' }
+const phoneOf = group => SAME_PHONE_AS[group] ?? (POOL_SLOTS.has(group) ? group : '')
+
 const specFile = name => `${name}.spec.ts`
 
 function slotForSpec(specName) {
@@ -28,10 +33,10 @@ function laneOrder(lane, include = () => true) {
       .filter(entry => entry.next < entry.names.length)
       .sort((a, b) => (a.next + 0.5) / a.names.length - (b.next + 0.5) / b.names.length)
     if (ready.length === 0) return ordered
-    const pick = ready.find(entry => entry.group !== lastSlot) ?? ready[0]
+    const pick = ready.find(entry => !lastSlot || phoneOf(entry.group) !== lastSlot) ?? ready[0]
     ordered.push(pick.names[pick.next])
     pick.next += 1
-    lastSlot = POOL_SLOTS.has(pick.group) ? pick.group : ''
+    lastSlot = phoneOf(pick.group)
   }
 }
 

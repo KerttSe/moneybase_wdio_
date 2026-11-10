@@ -248,7 +248,7 @@ class BusinessCardAdminPage extends BasePage {
       await this.moreTabIOS.waitForExist({ timeout: 15000 })
       await this.tap(this.moreTabIOS)
     } else {
-      await this.openAndroidMoreMenuFromProfile()
+      await this.openAndroidMoreMenuWithItem(this.administrationItemAndroid, 'Administration item')
     }
     await browser.pause(500)
 

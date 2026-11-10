@@ -209,11 +209,7 @@ class BusinessCardPage extends BasePage {
       )
       return
     }
-    await this.openAndroidMoreMenuFromProfile()
-    await this.administrationItemAndroid.waitForExist({
-      timeout: 15000,
-      timeoutMsg: 'Administration item not found in More section',
-    })
+    await this.openAndroidMoreMenuWithItem(this.administrationItemAndroid, 'Administration item')
     await this.tap(this.administrationItemAndroid)
     await browser.waitUntil(
       async () => await this.manageCardsTitleAndroid.isExisting().catch(() => false),
