@@ -6,6 +6,10 @@ import { basename, resolve } from 'node:path'
 import { attachFailureArtifacts, writeAllureEnvironment, writeAllureExecutor } from './src/helpers/allure.helper'
 import { getLastBrowserStackStep } from './src/helpers/browserstack.helper'
 import { classifyFailureReason } from './src/helpers/failureClassification.helper'
+const regressionLanes: {
+  slotForSpec: (specName: string) => string
+  laneOrder: (lane: string) => string[]
+} = require('./scripts/regressionLanes.cjs')
 
 const envBaseDir = process.env.INIT_CWD ?? process.env.PWD ?? process.cwd()
 const envPath = resolve(envBaseDir, '.env')
@@ -80,12 +84,6 @@ const normalizeTag = (value?: string) => value?.trim().replace(/^\.?\//, '').rep
 const cliSuiteTag = normalizeTag(cliValue('suite'))
 const cliSpecTag = normalizeTag(cliValue('spec') ? basename(cliValue('spec') as string) : undefined)
 
-if (
-  cliValue('suite') === 'regressionSecondary' &&
-  !process.env.MB_AUTH_SLOT
-) {
-  process.env.MB_AUTH_SLOT = 'secondary'
-}
 const browserStackBuildTags = (platform: 'android' | 'ios') => [
   platform,
   ...(cliSuiteTag ? [cliSuiteTag] : []),
@@ -349,133 +347,9 @@ const smokeSlotBySpecName = new Map<string, string>(
   Object.entries(smokeSpecsByAccount).flatMap(([slot, names]) => names.map(name => [`${name}.spec.ts`, slot] as const)),
 )
 
-const regressionSecondarySpecs = [
-  // smoke secondary
-  './src/tests/addbeneficiary.individual.spec.ts',
-  './src/tests/cashFunds.spec.ts',
-  './src/tests/fxExchange.spec.ts',
-  './src/tests/homeAccountSwitch.spec.ts',
-  './src/tests/homeScreen.spec.ts',
-  './src/tests/onboarding.spec.ts',
-  './src/tests/physicalcardcreation.spec.ts',
-  './src/tests/watchlist.spec.ts',
-  // regression-only secondary
-  './src/tests/addbeneficiary.individual.usd.steps.spec.ts',
-  './src/tests/addbeneficiary.individual.usBicSwiftInvalid.spec.ts',
-  './src/tests/beneficiary.nameValidation.spec.ts',
-  './src/tests/beneficiary.ibanLength.spec.ts',
-  './src/tests/beneficiary.ibanChecksum.spec.ts',
-  './src/tests/beneficiary.ibanCountry.spec.ts',
-  './src/tests/personalDetails.spec.ts',
-  './src/tests/profile.businessSettings.spec.ts',
-  './src/tests/profile.appearance.spec.ts',
-  './src/tests/authentication.incorrectPasscode.spec.ts',
-  './src/tests/authentication.otpCountdown.spec.ts',
-  './src/tests/authentication.passcodeLockout.spec.ts',
-  './src/tests/authentication.phoneValidation.spec.ts',
-  './src/tests/authentication.securityAccount.spec.ts',
-  './src/tests/authentication.changePasscode.spec.ts',
-  './src/tests/authentication.incorrectOtp.spec.ts',
-  './src/tests/authentication.otpLockout.spec.ts',
-  './src/tests/addfunds.validation.spec.ts',
-  './src/tests/salary.partialValidation.spec.ts',
-  './src/tests/onboarding.invalidNames.spec.ts',
-  './src/tests/onboarding.shortName.spec.ts',
-  './src/tests/onboarding.addressOptional.spec.ts',
-  './src/tests/onboarding.addressRequired.spec.ts',
-  './src/tests/onboarding.employmentFields.spec.ts',
-  './src/tests/onboarding.emailTerms.spec.ts',
-  './src/tests/fxExchange.regression.spec.ts',
-  './src/tests/homeSpendAnalytics.spec.ts',
-  './src/tests/homeStoryly.spec.ts',
-  './src/tests/launch.spec.ts',
-  './src/tests/pricePlan.spec.ts',
-  // Coverage expansion
-  './src/tests/onboarding.nameRequired.spec.ts',
-  './src/tests/onboarding.previousEmployment.spec.ts',
-  './src/tests/onboarding.otpRetry.spec.ts',
-  './src/tests/onboarding.otpResend.spec.ts',
-  './src/tests/profile.logout.spec.ts',
-  './src/tests/authentication.partialPasscode.spec.ts',
-  './src/tests/authentication.changePasscodeCancel.spec.ts',
-  './src/tests/authentication.recoveryQuestions.spec.ts',
-  './src/tests/onboarding.keyboardRaise.spec.ts',
-  './src/tests/onboarding.keyboardRestore.spec.ts',
-  './src/tests/accountPicker.search.spec.ts',
-  './src/tests/personalDetails.nameEditConfirmation.spec.ts',
-  './src/tests/onboarding.passcodePolicy.spec.ts',
-  './src/tests/businessCard.freezeUnfreeze.otherPerson.spec.ts',
-  './src/tests/businessCard.terminate.spec.ts',
-  './src/tests/businessCard.relink.spec.ts',
-  './src/tests/businessCard.activeFilterDefault.spec.ts',
-  './src/tests/businessCard.walletReachOut.spec.ts',
-  './src/tests/businessWallet.requiredName.spec.ts',
-  './src/tests/businessWallet.cancelCreation.spec.ts',
-]
-
-const regressionPrimarySpecs = [
-  // smoke primary
-  './src/tests/addfunds.spec.ts',
-  './src/tests/autoTopUp.spec.ts',
-  './src/tests/bankTransfer.p2p.individual.spec.ts',
-  './src/tests/bankTransfer.sepa.individual.spec.ts',
-  './src/tests/bankTransfer.swift.individual.spec.ts',
-  './src/tests/cardFreezeUnfreeze.joint.spec.ts',
-  './src/tests/homeSearch.spec.ts',
-  './src/tests/homeSearch.business.spec.ts',
-  './src/tests/orders.spec.ts',
-  './src/tests/portfolio.spec.ts',
-  './src/tests/priceAlerts.spec.ts',
-  // regression-only primary
-  './src/tests/bankTransfer.business.spec.ts',
-  './src/tests/bankTransfer.businessUnavailable.spec.ts',
-  './src/tests/cardManagement.viewPin.spec.ts',
-  './src/tests/autoTopUp.validation.spec.ts',
-  './src/tests/autoTopUp.editUnchanged.spec.ts',
-  './src/tests/autoTopUp.currencyReset.spec.ts',
-  './src/tests/autoTopUp.amountAboveRange.spec.ts',
-  './src/tests/autoTopUp.amountBelowRange.spec.ts',
-  './src/tests/lifecycle.regression.spec.ts',
-  './src/tests/lifecycle.freshInstallWelcome.spec.ts',
-  './src/tests/home.recentPayees.spec.ts',
-  './src/tests/addFundsBankTransferWalletManager.spec.ts',
-  './src/tests/assignBusinessCard.spec.ts',
-  './src/tests/businessCard.adminSelfAssign.spec.ts',
-  './src/tests/businessCard.cardLimits.spec.ts',
-  './src/tests/businessCard.noRights.spec.ts',
-  './src/tests/cardManagement.joint.spec.ts',
-  './src/tests/crossBorder.swift.retail.spec.ts',
-  './src/tests/orders.regression.spec.ts',
-  './src/tests/salaryStipendPension.spec.ts',
-  './src/tests/transactions.spec.ts',
-  './src/tests/vop.beneficiary.spec.ts',
-  './src/tests/vop.sepa.spec.ts',
-  // Coverage expansion
-  './src/tests/bankTransfer.sepaAmountLength.spec.ts',
-  './src/tests/addFunds.businessMethods.spec.ts',
-  './src/tests/walletManager.openDetails.spec.ts',
-  './src/tests/bankTransfer.swiftFeeCancel.spec.ts',
-  './src/tests/bankTransfer.swiftWalletCancel.spec.ts',
-  './src/tests/bankTransfer.sepaReviewClose.spec.ts',
-  './src/tests/cardManagement.pinTimeout.spec.ts',
-  './src/tests/home.cardsTabReselect.spec.ts',
-  './src/tests/walletManager.ibanBankNameUSD.spec.ts',
-  './src/tests/walletManager.ibanBankNameEUR.spec.ts',
-  './src/tests/walletDetails.statementBusiness.spec.ts',
-  './src/tests/walletDetails.statementIndividual.spec.ts',
-  './src/tests/home.totalWealthNavigation.spec.ts',
-  './src/tests/support.loggedInOptions.spec.ts',
-  './src/tests/support.close.spec.ts',
-  './src/tests/support.openChat.spec.ts',
-  './src/tests/authentication.welcomeSignIn.spec.ts',
-  './src/tests/bankTransfer.sepaReferenceLimit.spec.ts',
-  './src/tests/bankTransfer.sepaNoFee.spec.ts',
-  './src/tests/businessCard.changeTypeClearsAssignee.spec.ts',
-  './src/tests/businessCard.cancelCardType.spec.ts',
-  './src/tests/bankTransfer.swiftFeeDisclaimer.spec.ts',
-]
-const regressionPrimarySpecNames = new Set(regressionPrimarySpecs.map(spec => basename(spec)))
-const regressionSecondarySpecNames = new Set(regressionSecondarySpecs.map(spec => basename(spec)))
+// Regression owners live in src/data/regressionAccounts.json; scripts/regressionLanes.cjs orders
+// each lane so one account never logs in twice in a row. The CI workflow uses the same module.
+const regressionLaneSpecs = (lane: string) => regressionLanes.laneOrder(lane).map(spec => `./src/tests/${spec}`)
 const nativeAlertAssertionSpecs = new Set([
   'authentication.changePasscodeCancel.spec.ts',
   'profile.businessSettings.spec.ts',
@@ -487,9 +361,7 @@ const authSlotForSpec = (specName?: string) => {
   if (!specName) return ''
   const smokeSlot = smokeSlotBySpecName.get(specName)
   if (smokeSlot) return smokeSlot
-  if (regressionPrimarySpecNames.has(specName)) return 'primary'
-  if (regressionSecondarySpecNames.has(specName)) return 'secondary'
-  return ''
+  return regressionLanes.slotForSpec(specName)
 }
 
 const capabilities = (useBrowserStack ? browserStackCapabilities : localCapabilities)
@@ -498,14 +370,8 @@ const capabilities = (useBrowserStack ? browserStackCapabilities : localCapabili
     return String(capability.platformName).toLowerCase() === platformFilter
   })
 
-const secondaryAccountSuites = new Set(['regressionSecondary'])
-const autoAuthSlot = secondaryAccountSuites.has(cliValue('suite') ?? '') && !process.env.MB_AUTH_SLOT
-  ? 'secondary'
-  : undefined
-
 export const config: WebdriverIO.Config = {
   runner: 'local',
-  runnerEnv: autoAuthSlot ? { MB_AUTH_SLOT: autoAuthSlot } : undefined,
   specs: ['./src/tests/**/*.spec.ts'],
   suites: {
     smoke: smokeSpecs,
@@ -516,8 +382,8 @@ export const config: WebdriverIO.Config = {
     smokeLane1: smokeLaneSpecs(['primary', 'rog', 'mum']),
     smokeLane2: smokeLaneSpecs(['secondary', 'laz', 'pop']),
     smokeWithoutOnboarding: smokeSpecs.filter((spec) => spec !== './src/tests/onboarding.spec.ts'),
-    regressionPrimary: regressionPrimarySpecs,
-    regressionSecondary: regressionSecondarySpecs,
+    regressionLane1: regressionLaneSpecs('lane1'),
+    regressionLane2: regressionLaneSpecs('lane2'),
   },
   maxInstances,
   specFileRetries: Number(process.env.SPEC_FILE_RETRIES ?? 1),
@@ -576,8 +442,6 @@ export const config: WebdriverIO.Config = {
     }
     const authSlot = String(
       process.env.MB_AUTH_SLOT ||
-      (cliSuiteTag === 'regressionPrimary' ? 'primary' : '') ||
-      (cliSuiteTag === 'regressionSecondary' ? 'secondary' : '') ||
       authSlotForSpec(specName),
     )
     if (['primary', 'secondary', 'kat', 'mai', 'laz', 'rog', 'mum', 'pop'].includes(authSlot)) {

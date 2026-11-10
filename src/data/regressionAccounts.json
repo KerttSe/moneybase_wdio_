@@ -1,0 +1,151 @@
+{
+  "_comment": [
+    "Regression owner of every spec, shared by wdio.conf.ts and .github/workflows/wdio-regression.yml.",
+    "Pool groups (primary, secondary, rog, laz, mum, pop) set MB_AUTH_SLOT and must match the smoke owner for smoke specs.",
+    "Other groups log in with their own credentials (BH_*, AUTH_SECURITY_*, PD_*) or do not log in, so they take no slot.",
+    "Each lane runs its groups interleaved evenly, so consecutive logins of one account are separated by other accounts.",
+    "authSecurity lists the specs that lock that account last."
+  ],
+  "lanes": {
+    "lane1": ["primary", "rog", "mum", "onboarding"],
+    "lane2": ["secondary", "laz", "pop", "businessHolder", "authSecurity", "personalDetails", "signedOut"]
+  },
+  "groups": {
+    "primary": [
+      "cardFreezeUnfreeze.joint",
+      "portfolio",
+      "autoTopUp",
+      "bankTransfer.sepa.individual",
+      "cardManagement.joint",
+      "home.cardsTabReselect",
+      "assignBusinessCard",
+      "businessCard.changeTypeClearsAssignee",
+      "businessCard.cancelCardType",
+      "autoTopUp.validation",
+      "autoTopUp.editUnchanged",
+      "autoTopUp.currencyReset",
+      "autoTopUp.amountAboveRange",
+      "autoTopUp.amountBelowRange",
+      "bankTransfer.sepaAmountLength",
+      "bankTransfer.sepaReferenceLimit",
+      "bankTransfer.sepaNoFee",
+      "bankTransfer.sepaReviewClose",
+      "vop.sepa",
+      "vop.beneficiary",
+      "cardManagement.viewPin",
+      "cardManagement.pinTimeout",
+      "transactions",
+      "bankTransfer.business",
+      "walletManager.ibanBankNameUSD"
+    ],
+    "secondary": [
+      "addfunds",
+      "addbeneficiary.individual",
+      "homeAccountSwitch",
+      "addfunds.validation",
+      "addbeneficiary.individual.usd.steps",
+      "addbeneficiary.individual.usBicSwiftInvalid",
+      "salary.partialValidation",
+      "salaryStipendPension",
+      "profile.businessSettings",
+      "pricePlan",
+      "walletDetails.statementBusiness",
+      "addFunds.businessMethods",
+      "bankTransfer.businessUnavailable"
+    ],
+    "rog": [
+      "physicalcardcreation",
+      "homeScreen",
+      "launch",
+      "beneficiary.nameValidation",
+      "beneficiary.ibanLength",
+      "addFundsBankTransferWalletManager",
+      "walletManager.openDetails",
+      "homeSpendAnalytics",
+      "lifecycle.regression",
+      "profile.logout"
+    ],
+    "laz": [
+      "homeSearch",
+      "homeSearch.business",
+      "bankTransfer.p2p.individual",
+      "home.recentPayees",
+      "beneficiary.ibanChecksum",
+      "beneficiary.ibanCountry",
+      "accountPicker.search",
+      "profile.appearance"
+    ],
+    "mum": [
+      "bankTransfer.swift.individual",
+      "orders",
+      "fxExchange",
+      "crossBorder.swift.retail",
+      "bankTransfer.swiftFeeCancel",
+      "bankTransfer.swiftWalletCancel",
+      "bankTransfer.swiftFeeDisclaimer",
+      "fxExchange.regression",
+      "orders.regression"
+    ],
+    "pop": [
+      "cashFunds",
+      "priceAlerts",
+      "watchlist",
+      "home.totalWealthNavigation",
+      "support.loggedInOptions",
+      "support.close",
+      "support.openChat",
+      "homeStoryly",
+      "walletManager.ibanBankNameEUR",
+      "walletDetails.statementIndividual"
+    ],
+    "businessHolder": [
+      "businessCard.activeFilterDefault",
+      "businessCard.adminSelfAssign",
+      "businessCard.cardLimits",
+      "businessCard.freezeUnfreeze.otherPerson",
+      "businessCard.noRights",
+      "businessCard.relink",
+      "businessCard.terminate",
+      "businessCard.walletReachOut",
+      "businessWallet.requiredName",
+      "businessWallet.cancelCreation"
+    ],
+    "authSecurity": [
+      "authentication.securityAccount",
+      "authentication.changePasscode",
+      "authentication.changePasscodeCancel",
+      "authentication.partialPasscode",
+      "authentication.otpCountdown",
+      "authentication.incorrectOtp",
+      "authentication.incorrectPasscode",
+      "authentication.otpLockout",
+      "authentication.passcodeLockout"
+    ],
+    "personalDetails": [
+      "personalDetails",
+      "personalDetails.nameEditConfirmation"
+    ],
+    "signedOut": [
+      "authentication.phoneValidation",
+      "authentication.recoveryQuestions",
+      "authentication.welcomeSignIn",
+      "lifecycle.freshInstallWelcome"
+    ],
+    "onboarding": [
+      "onboarding",
+      "onboarding.invalidNames",
+      "onboarding.shortName",
+      "onboarding.addressOptional",
+      "onboarding.addressRequired",
+      "onboarding.employmentFields",
+      "onboarding.previousEmployment",
+      "onboarding.nameRequired",
+      "onboarding.otpRetry",
+      "onboarding.otpResend",
+      "onboarding.keyboardRaise",
+      "onboarding.keyboardRestore",
+      "onboarding.passcodePolicy",
+      "onboarding.emailTerms"
+    ]
+  }
+}

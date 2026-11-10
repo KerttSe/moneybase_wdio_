@@ -1,6 +1,7 @@
 const { test } = require('node:test')
 const assert = require('node:assert/strict')
 const fs = require('node:fs')
+const path = require('node:path')
 const vm = require('node:vm')
 const yaml = require('js-yaml')
 
@@ -10,64 +11,81 @@ const categoryKeys = Object.entries(inputs).filter(([, input]) => input.type ===
 const step = workflow.jobs['setup-regression'].steps.find(step => step.run?.includes('const categories ='))
 const code = /^node <<'NODE'\n([\s\S]*)\nNODE\s*$/.exec(step.run)[1]
 
-function matrix(selection, platform = 'all') {
+function run(selection, platform = 'all') {
   const output = {}
-  vm.runInNewContext(code, {
+  const context = {
     require(name) {
+      if (name === './scripts/regressionLanes.cjs') return require(path.resolve('scripts/regressionLanes.cjs'))
       assert.equal(name, 'node:fs')
-      return { readdirSync: fs.readdirSync, appendFileSync(path, value) { output[path] = (output[path] || '') + value } }
+      return { readdirSync: fs.readdirSync, appendFileSync(file, value) { output[file] = (output[file] || '') + value } }
     },
     process: { env: { ALL_INPUTS_JSON: JSON.stringify(selection), PLATFORM_INPUT: platform, GITHUB_OUTPUT: 'output', GITHUB_STEP_SUMMARY: 'summary' } },
     console: { log() {} },
-  })
+  }
+  vm.runInNewContext(code + '\nglobalThis.categories = categories', context)
   const values = Object.fromEntries(output.output.trim().split('\n').map(line => [line.slice(0, line.indexOf('=')), line.slice(line.indexOf('=') + 1)]))
-  return JSON.parse(values.matrix).include
+  const lanes = {
+    lane1: JSON.parse(values.lane1_matrix).include,
+    lane2: JSON.parse(values.lane2_matrix).include,
+  }
+  return { lanes, categories: context.categories }
 }
+const specsOf = entries => entries.flatMap(entry => entry.specs.split(','))
 
-test('seven categories cover every regression spec exactly once per platform', () => {
+test('seven categories and both lanes cover every regression spec exactly once per platform', () => {
   assert.equal(categoryKeys.length, 7)
-  const entries = matrix({})
+  const { lanes } = run({})
   const specs = fs.readdirSync('src/tests').filter(file => file.endsWith('.spec.ts')).map(file => `src/tests/${file}`).sort()
   for (const platform of ['android', 'ios']) {
-    const actual = entries.filter(entry => entry.platform === platform).flatMap(entry => entry.specs.split(',')).sort()
+    const actual = specsOf([...lanes.lane1, ...lanes.lane2].filter(entry => entry.platform === platform)).sort()
     assert.deepEqual(actual, specs)
   }
 })
 
 for (const category of categoryKeys) {
-  test(`selecting ${category} isolates that category and retains explicit account lanes`, () => {
-    const entries = matrix(Object.fromEntries(categoryKeys.map(key => [key, key === category])), 'android')
+  test(`selecting ${category} runs only that category`, () => {
+    const { lanes, categories } = run(Object.fromEntries(categoryKeys.map(key => [key, key === category])), 'android')
+    const entries = [...lanes.lane1, ...lanes.lane2]
     assert.ok(entries.length > 0)
-    assert.ok(entries.every(entry => entry.categoryKey === category && ['primary', 'secondary'].includes(entry.authSlot)))
     assert.ok(entries.every(entry => entry.platform === 'android'))
+    const expected = Array.from(categories[category].specs, spec => `src/tests/${spec}`).sort()
+    assert.deepEqual(specsOf(entries).sort(), expected)
   })
 }
 
-test('new scenario specs keep their category and account lane', () => {
-  const entries = matrix({}, 'android')
+test('specs run in the lane of their account owner', () => {
+  const { lanes } = run({}, 'android')
+  const lane1 = new Set(specsOf(lanes.lane1))
   const mapping = {
-    'beneficiary.nameValidation.spec.ts': ['bank_transfers', 'secondary'],
-    'beneficiary.ibanLength.spec.ts': ['bank_transfers', 'secondary'],
-    'beneficiary.ibanChecksum.spec.ts': ['bank_transfers', 'secondary'],
-    'beneficiary.ibanCountry.spec.ts': ['bank_transfers', 'secondary'],
-    'autoTopUp.editUnchanged.spec.ts': ['payments', 'primary'],
-    'autoTopUp.currencyReset.spec.ts': ['payments', 'primary'],
-    'autoTopUp.amountAboveRange.spec.ts': ['payments', 'primary'],
-    'autoTopUp.amountBelowRange.spec.ts': ['payments', 'primary'],
-    'onboarding.invalidNames.spec.ts': ['onboarding_account', 'secondary'],
-    'onboarding.shortName.spec.ts': ['onboarding_account', 'secondary'],
+    'beneficiary.nameValidation.spec.ts': true,
+    'autoTopUp.amountBelowRange.spec.ts': true,
+    'onboarding.shortName.spec.ts': true,
+    'orders.regression.spec.ts': true,
+    'beneficiary.ibanChecksum.spec.ts': false,
+    'support.close.spec.ts': false,
+    'authentication.passcodeLockout.spec.ts': false,
+    'businessCard.terminate.spec.ts': false,
   }
-  for (const [spec, [category, slot]] of Object.entries(mapping)) {
-    const matches = entries.filter(entry => entry.specs.split(',').includes(`src/tests/${spec}`))
-    assert.equal(matches.length, 1, spec)
-    assert.equal(matches[0].categoryKey, category, spec)
-    assert.equal(matches[0].authSlot, slot, spec)
+  for (const [spec, inLane1] of Object.entries(mapping)) {
+    assert.equal(lane1.has(`src/tests/${spec}`), inLane1, spec)
   }
 })
 
-test('CI forwards the explicit Auto Top-Up fixtures without adding workflow inputs', () => {
-  for (const name of ['AUTO_TOP_UP_EDIT_RULE_A11Y', 'AUTO_TOP_UP_TEST_SECOND_CURRENCY', 'AUTO_TOP_UP_TEST_MIN_AMOUNT', 'AUTO_TOP_UP_TEST_MAX_AMOUNT']) {
-    assert.equal(workflow.jobs['e2e-regression'].env[name], '${{ vars.' + name + ' }}')
+test('blocks hold at most 15 specs', () => {
+  const { lanes } = run({})
+  for (const entry of [...lanes.lane1, ...lanes.lane2]) assert.ok(entry.specs.split(',').length <= 15)
+})
+
+test('CI forwards fixtures and pool accounts to both lanes without a fixed auth slot', () => {
+  for (const job of ['e2e-regression', 'e2e-regression-secondary']) {
+    const env = workflow.jobs[job].env
+    for (const name of ['AUTO_TOP_UP_EDIT_RULE_A11Y', 'AUTO_TOP_UP_TEST_SECOND_CURRENCY', 'AUTO_TOP_UP_TEST_MIN_AMOUNT', 'AUTO_TOP_UP_TEST_MAX_AMOUNT']) {
+      assert.equal(env[name], '${{ vars.' + name + ' }}')
+    }
+    for (const slot of ['ROG', 'LAZ', 'MUM', 'POP']) {
+      assert.equal(env[`MB_${slot}_PHONE`], '${{ secrets.MB_' + slot + '_PHONE }}')
+    }
+    assert.equal(env.MB_AUTH_SLOT, undefined)
   }
   assert.equal(categoryKeys.length, 7)
 })

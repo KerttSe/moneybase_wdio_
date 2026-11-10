@@ -20,6 +20,7 @@ function loadConfig() {
     './src/helpers/allure.helper': { attachFailureArtifacts: async () => {} },
     './src/helpers/browserstack.helper': { getLastBrowserStackStep: () => 'Session started' },
     './src/helpers/failureClassification.helper': { classifyFailureReason: () => ({ reason: 'AUTOMATION_BUG' }) },
+    './scripts/regressionLanes.cjs': require(path.resolve('scripts/regressionLanes.cjs')),
   }
   const module = { exports: {} }
   const code = ts.transpileModule(fs.readFileSync('wdio.conf.ts', 'utf8'), {
@@ -113,35 +114,55 @@ test('artifact collection cannot prevent reporting a failed test', async () => {
   assert.equal(commands.find(command => command.action === 'setSessionStatus')?.arguments.status, 'failed')
 })
 
-test('split regression suites include every spec exactly once', () => {
+test('regression lanes include every spec exactly once', () => {
   const { config } = loadConfig()
-  const actual = [...config.suites.regressionPrimary, ...config.suites.regressionSecondary].map(file => path.basename(file)).sort()
+  const actual = [...config.suites.regressionLane1, ...config.suites.regressionLane2].map(file => path.basename(file)).sort()
   const expected = fs.readdirSync('src/tests').filter(file => file.endsWith('.spec.ts')).sort()
   assert.deepEqual(Array.from(actual), expected)
 })
 
-test('new specs retain their designated primary or secondary slot', () => {
+test('regression specs take their account slot, own-credential specs take none', () => {
   const { config, env } = loadConfig()
   const slots = {
-    'authentication.phoneValidation.spec.ts': 'secondary',
-    'addfunds.validation.spec.ts': 'secondary',
-    'salary.partialValidation.spec.ts': 'secondary',
     'autoTopUp.validation.spec.ts': 'primary',
-    'lifecycle.regression.spec.ts': 'primary',
-    'beneficiary.nameValidation.spec.ts': 'secondary',
-    'beneficiary.ibanLength.spec.ts': 'secondary',
-    'beneficiary.ibanChecksum.spec.ts': 'secondary',
-    'beneficiary.ibanCountry.spec.ts': 'secondary',
-    'autoTopUp.editUnchanged.spec.ts': 'primary',
-    'autoTopUp.currencyReset.spec.ts': 'primary',
-    'autoTopUp.amountAboveRange.spec.ts': 'primary',
-    'autoTopUp.amountBelowRange.spec.ts': 'primary',
-    'onboarding.invalidNames.spec.ts': 'secondary',
-    'onboarding.shortName.spec.ts': 'secondary',
+    'cardManagement.joint.spec.ts': 'primary',
+    'addfunds.validation.spec.ts': 'secondary',
+    'beneficiary.nameValidation.spec.ts': 'rog',
+    'beneficiary.ibanChecksum.spec.ts': 'laz',
+    'orders.regression.spec.ts': 'mum',
+    'support.close.spec.ts': 'pop',
+    'homeScreen.spec.ts': 'rog',
+    'businessCard.terminate.spec.ts': undefined,
+    'authentication.incorrectPasscode.spec.ts': undefined,
+    'onboarding.shortName.spec.ts': undefined,
   }
   for (const [spec, slot] of Object.entries(slots)) {
     delete env.MB_AUTH_SLOT
     config.beforeSession({}, {}, [spec])
     assert.equal(env.MB_AUTH_SLOT, slot, spec)
+  }
+})
+
+test('regression lanes never log one account in twice in a row', () => {
+  const { config, env } = loadConfig()
+  for (const lane of ['regressionLane1', 'regressionLane2']) {
+    const owners = config.suites[lane].map(file => {
+      delete env.MB_AUTH_SLOT
+      config.beforeSession({}, {}, [path.basename(file)])
+      return env.MB_AUTH_SLOT
+    })
+    owners.forEach((owner, index) => {
+      if (owner && index > 0) assert.notEqual(owner, owners[index - 1], `${lane}: ${config.suites[lane][index]}`)
+    })
+  }
+})
+
+test('account-locking authentication specs run after the rest of that account', () => {
+  const { config } = loadConfig()
+  const lane = config.suites.regressionLane2.map(file => path.basename(file, '.spec.ts'))
+  const locking = ['authentication.incorrectOtp', 'authentication.otpLockout', 'authentication.incorrectPasscode', 'authentication.passcodeLockout']
+  const firstLock = Math.min(...locking.map(name => lane.indexOf(name)))
+  for (const name of ['authentication.securityAccount', 'authentication.changePasscode', 'authentication.changePasscodeCancel', 'authentication.partialPasscode', 'authentication.otpCountdown']) {
+    assert.ok(lane.indexOf(name) < firstLock, name)
   }
 })

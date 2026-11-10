@@ -168,8 +168,9 @@ Do not spend the final weeks adding unverified specs merely to increase counts.
   Related checks can share a Page Object. Do not duplicate page navigation for
   every spreadsheet row or count many checkpoints as many completed source IDs.
 - Each spec is runnable with the existing `npm run wdio -- --spec ...` command.
-  Keep the existing `regression`, `regressionPrimary` and `regressionSecondary`
-  suites. No new execution framework is needed.
+  Keep the existing `regression`, `regressionLane1` and `regressionLane2`
+  suites; add each new spec to an owner in `src/data/regressionAccounts.json`.
+  No new execution framework is needed.
 - Implement one small scenario family, run it on the applicable platforms,
   fix it and update its evidence before starting the next family.
 - Use APIs for controlled fixture setup/cleanup where appropriate; retain the

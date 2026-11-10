@@ -28,6 +28,38 @@ Known Android behaviours handled by the specs:
 - `priceAlerts` creates its alert from the Invest header search path and does not delete it, so alerts accumulate on POP40015.
 - `orders` matches iOS and stops after the Preview confirmation. It no longer asserts Sell availability.
 
+## Active regression allocation (2026-11-10)
+
+Source of truth: `src/data/regressionAccounts.json`. `scripts/regressionLanes.cjs`
+orders each lane, and both `wdio.conf.ts` (suites `regressionLane1`/`regressionLane2`)
+and `.github/workflows/wdio-regression.yml` use it. CI no longer sets
+`MB_AUTH_SLOT`: each spec takes its account in `beforeSession`.
+
+| Lane | Group | Account | Specs | Why here |
+|---|---|---|---|---|
+| 1 | primary | VEG | 25 | Joint, business card admin, Auto Top-Up card, SEPA/VoP beneficiaries, individual card PIN, USD wallet |
+| 1 | rog | ROG | 10 | Beneficiary form validation, wallet details, Home, lifecycle, logout |
+| 1 | mum | MUM | 9 | SWIFT (`Swift Beneficiary`), FX, orders |
+| 1 | onboarding | none (fresh applicant) | 14 | Does not log in |
+| 2 | secondary | KER | 13 | Add funds, beneficiary with real OTP, account switch, salary, business statements, price plan |
+| 2 | laz | LAZ | 8 | Home search, P2P, recent payees, beneficiary validation, account picker, appearance |
+| 2 | pop | POP | 10 | Invest discover, support, Storyly, EUR wallet, individual statements |
+| 2 | businessHolder | `BH_*` / `BC_ADMIN_SELF_ASSIGN_PHONE` | 10 | Own business card accounts |
+| 2 | authSecurity | `AUTH_SECURITY_*` | 9 | Own account; `incorrectOtp`, `incorrectPasscode`, `otpLockout`, `passcodeLockout` run after the rest |
+| 2 | personalDetails | `PD_*` | 2 | Own account |
+| 2 | signedOut | none / `AUTH_RECOVERY_MB_PHONE` | 4 | Signed-out flows |
+
+Rules:
+
+- Smoke specs keep their smoke owner in regression.
+- Within a lane, each group is spread evenly and one pool account never logs
+  in twice in a row. A partial run (one selected category) keeps the order, but
+  a lane left with one account can still run it back to back.
+- CI splits each lane into blocks of 15 specs that run one after another on
+  one BrowserStack parallel.
+- Specs moved to ROG, LAZ, MUM and POP were chosen as account-agnostic, but
+  their fixtures on those accounts are not yet verified by a full run.
+
 ## Earlier full-suite proposal
 
 The rest of this document is the earlier five-account proposal. Its smoke lists are superseded by the table above; KAT and MAI are not part of the active pool.

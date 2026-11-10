@@ -68,14 +68,13 @@ concurrency:
 
 jobs:
   setup-regression:
-    name: Build regression blocks
+    name: Build regression lanes
     runs-on: arc-runner-mb-deploy-stg-scale-set
     outputs:
-      matrix: ${{ steps.build.outputs.matrix }}
-      primary_matrix: ${{ steps.build.outputs.primary_matrix }}
-      secondary_matrix: ${{ steps.build.outputs.secondary_matrix }}
-      primary_count: ${{ steps.build.outputs.primary_count }}
-      secondary_count: ${{ steps.build.outputs.secondary_count }}
+      lane1_matrix: ${{ steps.build.outputs.lane1_matrix }}
+      lane2_matrix: ${{ steps.build.outputs.lane2_matrix }}
+      lane1_count: ${{ steps.build.outputs.lane1_count }}
+      lane2_count: ${{ steps.build.outputs.lane2_count }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -85,7 +84,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Build selected category blocks
+      - name: Build selected category lanes
         id: build
         shell: bash
         env:
@@ -94,12 +93,14 @@ jobs:
         run: |
           node <<'NODE'
           const fs = require('node:fs');
+          const { laneOrder } = require('./scripts/regressionLanes.cjs');
           const inputs = JSON.parse(process.env.ALL_INPUTS_JSON || '{}');
-          // Preserve the existing account lanes within every category.
+          // Category membership only selects specs. Account owners and lane order come from
+          // src/data/regressionAccounts.json through scripts/regressionLanes.cjs.
           const categories = {
             home_navigation: {
-              name: 'Home & Navigation',
-              primary: [
+              name: "Home & Navigation",
+              specs: [
                 'launch.spec.ts',
                 'homeSearch.spec.ts',
                 'homeSearch.business.spec.ts',
@@ -114,16 +115,14 @@ jobs:
                 'authentication.welcomeSignIn.spec.ts',
                 'lifecycle.regression.spec.ts',
                 'lifecycle.freshInstallWelcome.spec.ts',
-              ],
-              secondary: [
                 'homeScreen.spec.ts',
                 'homeAccountSwitch.spec.ts',
                 'accountPicker.search.spec.ts',
               ],
             },
             bank_transfers: {
-              name: 'Bank Transfers & Beneficiaries',
-              primary: [
+              name: "Bank Transfers & Beneficiaries",
+              specs: [
                 'addFundsBankTransferWalletManager.spec.ts',
                 'walletManager.openDetails.spec.ts',
                 'walletManager.ibanBankNameUSD.spec.ts',
@@ -145,8 +144,6 @@ jobs:
                 'bankTransfer.swiftWalletCancel.spec.ts',
                 'vop.beneficiary.spec.ts',
                 'vop.sepa.spec.ts',
-              ],
-              secondary: [
                 'addbeneficiary.individual.spec.ts',
                 'addbeneficiary.individual.usd.steps.spec.ts',
                 'addbeneficiary.individual.usBicSwiftInvalid.spec.ts',
@@ -157,8 +154,8 @@ jobs:
               ],
             },
             payments: {
-              name: 'Payments, Top-ups & FX',
-              primary: [
+              name: "Payments, Top-ups & FX",
+              specs: [
                 'autoTopUp.spec.ts',
                 'addFunds.businessMethods.spec.ts',
                 'autoTopUp.validation.spec.ts',
@@ -167,8 +164,6 @@ jobs:
                 'autoTopUp.amountAboveRange.spec.ts',
                 'autoTopUp.amountBelowRange.spec.ts',
                 'transactions.spec.ts',
-              ],
-              secondary: [
                 'addfunds.spec.ts',
                 'addfunds.validation.spec.ts',
                 'fxExchange.spec.ts',
@@ -178,8 +173,8 @@ jobs:
               ],
             },
             cards: {
-              name: 'Cards',
-              primary: [
+              name: "Cards",
+              specs: [
                 'assignBusinessCard.spec.ts',
                 'businessCard.changeTypeClearsAssignee.spec.ts',
                 'businessCard.cancelCardType.spec.ts',
@@ -190,8 +185,6 @@ jobs:
                 'cardManagement.viewPin.spec.ts',
                 'cardManagement.pinTimeout.spec.ts',
                 'businessCard.noRights.spec.ts',
-              ],
-              secondary: [
                 'physicalcardcreation.spec.ts',
                 'businessCard.freezeUnfreeze.otherPerson.spec.ts',
                 'businessCard.terminate.spec.ts',
@@ -203,22 +196,19 @@ jobs:
               ],
             },
             invest: {
-              name: 'Invest',
-              primary: [
+              name: "Invest",
+              specs: [
                 'portfolio.spec.ts',
                 'orders.spec.ts',
                 'orders.regression.spec.ts',
                 'priceAlerts.spec.ts',
-              ],
-              secondary: [
                 'cashFunds.spec.ts',
                 'watchlist.spec.ts',
               ],
             },
             authentication: {
-              name: 'Authentication',
-              primary: [],
-              secondary: [
+              name: "Authentication",
+              specs: [
                 'authentication.incorrectPasscode.spec.ts',
                 'authentication.passcodeLockout.spec.ts',
                 'authentication.otpCountdown.spec.ts',
@@ -233,9 +223,8 @@ jobs:
               ],
             },
             onboarding_account: {
-              name: 'Onboarding & Account',
-              primary: [],
-              secondary: [
+              name: "Onboarding & Account",
+              specs: [
                 'personalDetails.spec.ts',
                 'profile.businessSettings.spec.ts',
                 'profile.appearance.spec.ts',
@@ -260,89 +249,81 @@ jobs:
             },
           };
           // Reject missing, duplicated or stale specs instead of silently reducing coverage.
-          const mappedSpecs = Object.values(categories).flatMap(category =>
-            [...category.primary, ...category.secondary].map(spec => 'src/tests/' + spec),
-          );
           const existingSpecs = fs.readdirSync('src/tests', { recursive: true })
             .filter(spec => spec.endsWith('.spec.ts'))
-            .map(spec => 'src/tests/' + spec.replaceAll('\\', '/'));
-          const mappedSet = new Set(mappedSpecs);
-          const existingSet = new Set(existingSpecs);
-          const missing = existingSpecs.filter(spec => !mappedSet.has(spec));
-          const stale = mappedSpecs.filter(spec => !existingSet.has(spec));
-          if (missing.length || stale.length || mappedSet.size !== mappedSpecs.length) {
-            throw new Error('Invalid regression coverage: ' + JSON.stringify({
-              missing,
-              stale,
-              duplicates: mappedSpecs.filter((spec, index) => mappedSpecs.indexOf(spec) !== index),
-            }));
-          }
+            .map(spec => spec.replaceAll('\\', '/'))
+            .sort();
+          const checkCoverage = (label, mapped) => {
+            const mappedSet = new Set(mapped);
+            const existingSet = new Set(existingSpecs);
+            const missing = existingSpecs.filter(spec => !mappedSet.has(spec));
+            const stale = mapped.filter(spec => !existingSet.has(spec));
+            const duplicates = mapped.filter((spec, index) => mapped.indexOf(spec) !== index);
+            if (missing.length || stale.length || duplicates.length) {
+              throw new Error('Invalid regression ' + label + ': ' + JSON.stringify({ missing, stale, duplicates }));
+            }
+          };
+          checkCoverage('categories', Object.values(categories).flatMap(category => category.specs));
+          checkCoverage('account lanes', [...laneOrder('lane1'), ...laneOrder('lane2')]);
+
           const platformInput = process.env.PLATFORM_INPUT || 'all';
           if (!['all', 'android', 'ios'].includes(platformInput)) {
             throw new Error('Unsupported platform: ' + platformInput);
           }
           const platforms = platformInput === 'all' ? ['android', 'ios'] : [platformInput];
-          const primary = [];
-          const secondary = [];
+          const selected = new Set();
           const summary = ['### Regression blocks selected', ''];
-          let selectedSpecs = 0;
-          let totalSpecs = 0;
           for (const [key, category] of Object.entries(categories)) {
-            const count = category.primary.length + category.secondary.length;
-            totalSpecs += count;
             const value = inputs[key];
-            const selected = value == null || value === true || value === 'true';
-            summary.push('- [' + (selected ? 'x' : ' ') + '] ' + category.name + ' (' + count + ' specs)');
-            if (!selected) continue;
-            selectedSpecs += count;
-            for (const platform of platforms) {
-              for (const authSlot of ['primary', 'secondary']) {
-                const specs = category[authSlot];
-                if (specs.length === 0) continue;
-                const entry = {
-                  platform,
-                  category: category.name,
-                  categoryKey: key,
-                  specs: specs.map(spec => 'src/tests/' + spec).join(','),
-                  smoke: false,
-                  authSlot,
-                };
-                (authSlot === 'primary' ? primary : secondary).push(entry);
-              }
-            }
+            const isSelected = value == null || value === true || value === 'true';
+            summary.push('- [' + (isSelected ? 'x' : ' ') + '] ' + category.name + ' (' + category.specs.length + ' specs)');
+            if (isSelected) category.specs.forEach(spec => selected.add(spec));
           }
-          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary.join('\n') + '\n');
-          if (selectedSpecs === 0) {
+          if (selected.size === 0) {
             throw new Error('Select at least one regression category.');
           }
+
+          // Each lane is one BrowserStack parallel. Its blocks run one after another in lane order.
+          const BLOCK_SIZE = 15;
+          const lanes = {};
+          for (const lane of ['lane1', 'lane2']) {
+            const order = laneOrder(lane, spec => selected.has(spec));
+            const blocks = [];
+            for (let start = 0; start < order.length; start += BLOCK_SIZE) blocks.push(order.slice(start, start + BLOCK_SIZE));
+            lanes[lane] = platforms.flatMap(platform => blocks.map((specs, index) => ({
+              platform,
+              block: 'part ' + (index + 1) + '/' + blocks.length,
+              specs: specs.map(spec => 'src/tests/' + spec).join(','),
+            })));
+            summary.push('', lane + ': ' + order.length + ' specs in ' + blocks.length + ' blocks per platform');
+          }
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary.join('\n') + '\n');
           const outputs = {
-            matrix: JSON.stringify({ include: [...primary, ...secondary] }),
-            primary_matrix: JSON.stringify({ include: primary }),
-            secondary_matrix: JSON.stringify({ include: secondary }),
-            primary_count: primary.length,
-            secondary_count: secondary.length,
+            lane1_matrix: JSON.stringify({ include: lanes.lane1 }),
+            lane2_matrix: JSON.stringify({ include: lanes.lane2 }),
+            lane1_count: lanes.lane1.length,
+            lane2_count: lanes.lane2.length,
           };
           fs.appendFileSync(
             process.env.GITHUB_OUTPUT,
             Object.entries(outputs).map(([key, value]) => key + '=' + value).join('\n') + '\n',
           );
-          console.log('Specs selected: ' + selectedSpecs + ' / ' + totalSpecs);
+          console.log('Specs selected: ' + selected.size + ' / ' + existingSpecs.length);
           console.log('Selected platform: ' + platformInput);
-          console.log('Primary blocks: ' + primary.length);
-          console.log('Secondary blocks: ' + secondary.length);
+          console.log('Lane 1 blocks: ' + lanes.lane1.length);
+          console.log('Lane 2 blocks: ' + lanes.lane2.length);
           NODE
 
   e2e-regression:
-    name: "REGRESSION primary (${{ matrix.platform }}) - ${{ matrix.category }}"
+    name: "REGRESSION lane 1 (${{ matrix.platform }}) - ${{ matrix.block }}"
     needs: setup-regression
-    if: needs.setup-regression.result == 'success' && needs.setup-regression.outputs.primary_count != '0'
+    if: needs.setup-regression.result == 'success' && needs.setup-regression.outputs.lane1_count != '0'
     runs-on: arc-runner-mb-deploy-stg-scale-set
     strategy:
       max-parallel: 1
       fail-fast: false
-      matrix: ${{ fromJSON(needs.setup-regression.outputs.primary_matrix) }}
+      matrix: ${{ fromJSON(needs.setup-regression.outputs.lane1_matrix) }}
     env:
-      MB_AUTH_SLOT: ${{ matrix.authSlot }}
       WDIO_MAX_INSTANCES: "1"
       REGRESSION_SPECS: ${{ matrix.specs }}
       AUTO_TOP_UP_EDIT_RULE_A11Y: ${{ vars.AUTO_TOP_UP_EDIT_RULE_A11Y }}
@@ -352,6 +333,28 @@ jobs:
       MB_COUNTRY: ${{ secrets.MB_COUNTRY }}
       MB_PHONE: ${{ secrets.MB_PHONE }}
       MB_PIN: ${{ secrets.MB_PIN }}
+      MB_ROG_PHONE: ${{ secrets.MB_ROG_PHONE }}
+      MB_ROG_PIN: ${{ secrets.MB_ROG_PIN }}
+      MB_LAZ_PHONE: ${{ secrets.MB_LAZ_PHONE }}
+      MB_LAZ_PIN: ${{ secrets.MB_LAZ_PIN }}
+      MB_MUM_PHONE: ${{ secrets.MB_MUM_PHONE }}
+      MB_MUM_PIN: ${{ secrets.MB_MUM_PIN }}
+      MB_POP_PHONE: ${{ secrets.MB_POP_PHONE }}
+      MB_POP_PIN: ${{ secrets.MB_POP_PIN }}
+      AUTH_OTP_MB_PHONE: ${{ secrets.AUTH_OTP_MB_PHONE }}
+      AUTH_OTP_MB_PIN: ${{ secrets.AUTH_OTP_MB_PIN }}
+      AUTH_OTP_OTP_PHONE: ${{ secrets.AUTH_OTP_OTP_PHONE }}
+      AUTH_SECURITY_MB_PHONE: ${{ secrets.AUTH_SECURITY_MB_PHONE }}
+      AUTH_SECURITY_MB_PIN: ${{ secrets.AUTH_SECURITY_MB_PIN }}
+      AUTH_SECURITY_OTP_PHONE: ${{ secrets.AUTH_SECURITY_OTP_PHONE }}
+      AUTH_RECOVERY_MB_PHONE: ${{ secrets.AUTH_RECOVERY_MB_PHONE }}
+      PD_MB_PHONE: ${{ secrets.PD_MB_PHONE }}
+      PD_MB_PIN: ${{ secrets.PD_MB_PIN }}
+      PD_OTP_PHONE: ${{ secrets.PD_OTP_PHONE }}
+      BH_MB_COUNTRY: ${{ secrets.BH_MB_COUNTRY }}
+      BH_MB_PHONE: ${{ secrets.BH_MB_PHONE }}
+      BH_MB_PIN: ${{ secrets.BH_MB_PIN }}
+      BH_OTP_PHONE: ${{ secrets.BH_OTP_PHONE }}
       BROWSERSTACK: "true"
       BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
       BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
@@ -359,24 +362,11 @@ jobs:
       BS_APP_IOS: ${{ github.event.inputs.bs_app_ios || secrets.BS_APP_IOS }}
       PLATFORM: ${{ matrix.platform }}
       BS_BUILD: regression-${{ github.run_id }}-${{ github.run_attempt }}
-      BS_BUILD_TAGS: ${{ matrix.categoryKey }},${{ matrix.platform }},regression
+      BS_BUILD_TAGS: ${{ matrix.platform }},regression,lane1
       OTP_FORCE_RESEND_BEFORE_FETCH: "false"
       OTP_FETCH_DELAY_MS: "5000"
       OTP_GET_LATEST_URL: ${{ secrets.OTP_GET_LATEST_URL }}
       OTP_RESEND_WAIT_MS: "0"
-      AUTH_SECURITY_MB_PHONE: ${{ secrets.AUTH_SECURITY_MB_PHONE }}
-      AUTH_SECURITY_MB_PIN: ${{ secrets.AUTH_SECURITY_MB_PIN }}
-      AUTH_SECURITY_OTP_PHONE: ${{ secrets.AUTH_SECURITY_OTP_PHONE }}
-      PD_MB_PHONE: ${{ secrets.PD_MB_PHONE }}
-      PD_MB_PIN: ${{ secrets.PD_MB_PIN }}
-      PD_OTP_PHONE: ${{ secrets.PD_OTP_PHONE }}
-      AUTH_OTP_MB_PHONE: ${{ secrets.AUTH_OTP_MB_PHONE }}
-      AUTH_OTP_MB_PIN: ${{ secrets.AUTH_OTP_MB_PIN }}
-      AUTH_OTP_OTP_PHONE: ${{ secrets.AUTH_OTP_OTP_PHONE }}
-      BH_MB_COUNTRY: ${{ secrets.BH_MB_COUNTRY }}
-      BH_MB_PHONE: ${{ secrets.BH_MB_PHONE }}
-      BH_MB_PIN: ${{ secrets.BH_MB_PIN }}
-      BH_OTP_PHONE: ${{ secrets.BH_OTP_PHONE }}
       ONBOARDED_ACCOUNTS_FILE: ".generated/onboarded-accounts.json"
     steps:
       - name: Checkout
@@ -392,7 +382,6 @@ jobs:
         run: npm ci
 
       - name: Download onboarded accounts from smoke run
-        if: env.AUTH_SECURITY_MB_PHONE == ''
         uses: actions/download-artifact@v4
         with:
           pattern: onboarded-accounts-smoke-${{ matrix.platform }}-*
@@ -400,6 +389,7 @@ jobs:
           merge-multiple: true
         continue-on-error: true
 
+      # MB_AUTH_SLOT stays unset: wdio.conf.ts picks each spec's account from regressionAccounts.json.
       - name: Run tests
         shell: bash
         run: |
@@ -410,33 +400,44 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results-regression-${{ matrix.platform }}-primary-${{ strategy.job-index }}
+          name: allure-results-regression-${{ matrix.platform }}-lane1-${{ strategy.job-index }}
           path: allure-results
           if-no-files-found: warn
 
   e2e-regression-secondary:
-    name: "REGRESSION secondary (${{ matrix.platform }}) - ${{ matrix.category }}"
+    name: "REGRESSION lane 2 (${{ matrix.platform }}) - ${{ matrix.block }}"
     needs: setup-regression
-    if: needs.setup-regression.result == 'success' && needs.setup-regression.outputs.secondary_count != '0'
+    if: needs.setup-regression.result == 'success' && needs.setup-regression.outputs.lane2_count != '0'
     runs-on: arc-runner-mb-deploy-stg-scale-set
     strategy:
       max-parallel: 1
       fail-fast: false
-      matrix: ${{ fromJSON(needs.setup-regression.outputs.secondary_matrix) }}
+      matrix: ${{ fromJSON(needs.setup-regression.outputs.lane2_matrix) }}
     env:
-      MB_AUTH_SLOT: ${{ matrix.authSlot }}
       WDIO_MAX_INSTANCES: "1"
       REGRESSION_SPECS: ${{ matrix.specs }}
+      AUTO_TOP_UP_EDIT_RULE_A11Y: ${{ vars.AUTO_TOP_UP_EDIT_RULE_A11Y }}
+      AUTO_TOP_UP_TEST_SECOND_CURRENCY: ${{ vars.AUTO_TOP_UP_TEST_SECOND_CURRENCY }}
+      AUTO_TOP_UP_TEST_MIN_AMOUNT: ${{ vars.AUTO_TOP_UP_TEST_MIN_AMOUNT }}
+      AUTO_TOP_UP_TEST_MAX_AMOUNT: ${{ vars.AUTO_TOP_UP_TEST_MAX_AMOUNT }}
       MB_COUNTRY: ${{ secrets.MB_COUNTRY }}
       MB_PHONE: ${{ secrets.MB_PHONE }}
       MB_PIN: ${{ secrets.MB_PIN }}
+      MB_ROG_PHONE: ${{ secrets.MB_ROG_PHONE }}
+      MB_ROG_PIN: ${{ secrets.MB_ROG_PIN }}
+      MB_LAZ_PHONE: ${{ secrets.MB_LAZ_PHONE }}
+      MB_LAZ_PIN: ${{ secrets.MB_LAZ_PIN }}
+      MB_MUM_PHONE: ${{ secrets.MB_MUM_PHONE }}
+      MB_MUM_PIN: ${{ secrets.MB_MUM_PIN }}
+      MB_POP_PHONE: ${{ secrets.MB_POP_PHONE }}
+      MB_POP_PIN: ${{ secrets.MB_POP_PIN }}
       AUTH_OTP_MB_PHONE: ${{ secrets.AUTH_OTP_MB_PHONE }}
       AUTH_OTP_MB_PIN: ${{ secrets.AUTH_OTP_MB_PIN }}
       AUTH_OTP_OTP_PHONE: ${{ secrets.AUTH_OTP_OTP_PHONE }}
       AUTH_SECURITY_MB_PHONE: ${{ secrets.AUTH_SECURITY_MB_PHONE }}
-      AUTH_RECOVERY_MB_PHONE: ${{ secrets.AUTH_RECOVERY_MB_PHONE }}
       AUTH_SECURITY_MB_PIN: ${{ secrets.AUTH_SECURITY_MB_PIN }}
       AUTH_SECURITY_OTP_PHONE: ${{ secrets.AUTH_SECURITY_OTP_PHONE }}
+      AUTH_RECOVERY_MB_PHONE: ${{ secrets.AUTH_RECOVERY_MB_PHONE }}
       PD_MB_PHONE: ${{ secrets.PD_MB_PHONE }}
       PD_MB_PIN: ${{ secrets.PD_MB_PIN }}
       PD_OTP_PHONE: ${{ secrets.PD_OTP_PHONE }}
@@ -451,7 +452,7 @@ jobs:
       BS_APP_IOS: ${{ github.event.inputs.bs_app_ios || secrets.BS_APP_IOS }}
       PLATFORM: ${{ matrix.platform }}
       BS_BUILD: regression-${{ github.run_id }}-${{ github.run_attempt }}
-      BS_BUILD_TAGS: ${{ matrix.categoryKey }},${{ matrix.platform }},regression,secondary
+      BS_BUILD_TAGS: ${{ matrix.platform }},regression,lane2
       OTP_FORCE_RESEND_BEFORE_FETCH: "false"
       OTP_FETCH_DELAY_MS: "5000"
       OTP_GET_LATEST_URL: ${{ secrets.OTP_GET_LATEST_URL }}
@@ -473,11 +474,12 @@ jobs:
       - name: Download onboarded accounts from smoke run
         uses: actions/download-artifact@v4
         with:
-          pattern: onboarded-accounts-smoke-${{ matrix.platform }}-secondary-*
+          pattern: onboarded-accounts-smoke-${{ matrix.platform }}-*
           path: .generated
           merge-multiple: true
         continue-on-error: true
 
+      # MB_AUTH_SLOT stays unset: wdio.conf.ts picks each spec's account from regressionAccounts.json.
       - name: Run tests
         shell: bash
         run: |
@@ -488,7 +490,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results-regression-${{ matrix.platform }}-secondary-${{ strategy.job-index }}
+          name: allure-results-regression-${{ matrix.platform }}-lane2-${{ strategy.job-index }}
           path: allure-results
           if-no-files-found: warn
 
