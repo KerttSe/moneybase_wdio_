@@ -1722,8 +1722,16 @@ class HomeScreenPage extends BasePage {
       : this.homeAndroidDrawerLogoutItem
     await this.ensureVisibleByScrolling([logout], 'Logout row')
     await this.tap(logout)
-    const confirm = browser.isIOS ? $('~modal_button_primary') : this.byId('modal_button_primary')
-    const close = browser.isIOS ? $('~modal_button_close') : this.byId('modal_button_close')
+    if (browser.isAndroid) {
+      // 2.27.0 shows a full logout_screen with only Continue; leaving it with Back cancels the logout.
+      const confirm = $('(//*[contains(@resource-id,"logout_button_continue")] | //*[contains(@resource-id,"modal_button_primary")])[1]')
+      await confirm.waitForDisplayed({ timeout: 10000 })
+      const closeBtn = this.byId('modal_button_close')
+      const close = await closeBtn.isDisplayed().catch(() => false) ? closeBtn : undefined
+      return { confirm, close }
+    }
+    const confirm = $('~modal_button_primary')
+    const close = $('~modal_button_close')
     await confirm.waitForDisplayed({ timeout: 10000 })
     await close.waitForDisplayed({ timeout: 10000 })
     return { confirm, close }
@@ -1735,9 +1743,10 @@ class HomeScreenPage extends BasePage {
   }
 
   public async cancelLogoutAndVerifyHome() {
-    const { close } = await this.openLogoutConfirmation()
-    await this.tap(close)
-    await close.waitForDisplayed({ reverse: true, timeout: 10000 })
+    const { confirm, close } = await this.openLogoutConfirmation()
+    if (close) await this.tap(close)
+    else await browser.back()
+    await confirm.waitForDisplayed({ reverse: true, timeout: 10000 })
     if (browser.isIOS && await this.isIOSMoreOpen()) {
       await this.tap(this.moreNavBarIOS.$('./XCUIElementTypeButton[@name="close"]'))
     }
@@ -1855,7 +1864,17 @@ class HomeScreenPage extends BasePage {
 
   public async verifySupportOpensChat() {
     await this.openSupport()
-    await this.tap(this.supportOption('Chat'), 10000)
+    if (browser.isAndroid) {
+      // A tap on the "Chat" label can leave the Support sheet open; tap the whole row and retry once.
+      const row = $('(//*[@text="Chat" or @content-desc="Chat"]/ancestor-or-self::*[@clickable="true"][1])[1]')
+      for (let attempt = 0; attempt < 2; attempt += 1) {
+        await this.tap(row, 10000)
+        const left = await this.supportTitle.waitForDisplayed({ reverse: true, timeout: 6000 }).then(() => true).catch(() => false)
+        if (left) break
+      }
+    } else {
+      await this.tap(this.supportOption('Chat'), 10000)
+    }
     if (browser.isIOS) {
       await $('//XCUIElementTypeNavigationBar[@name="Conversations"]').waitForDisplayed({ timeout: 20000 })
     } else {
@@ -1874,6 +1893,21 @@ class HomeScreenPage extends BasePage {
     await sheet.waitForDisplayed({ reverse: true, timeout: 10000, timeoutMsg: 'Investor Compensation sheet did not close' })
   }
 
+  // Total Wealth rows land right above the tab bar after scrolling, where a tap does not open them.
+  private async liftAboveBottomNavAndroid(el: ChainablePromiseElement) {
+    const { height, width } = await browser.getWindowRect()
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      const rect = await browser.getElementRect(await el.elementId).catch(() => null)
+      if (!rect || rect.y + rect.height <= height * 0.7) return
+      await browser.execute('mobile: scrollGesture', {
+        left: Math.round(width * 0.1), top: Math.round(height * 0.3),
+        width: Math.round(width * 0.8), height: Math.round(height * 0.4),
+        direction: 'down', percent: 0.5,
+      }).catch(() => {})
+      await browser.pause(400)
+    }
+  }
+
   public async verifyTotalWealthDestinations() {
     const destinations = [
       ['Investments', 'Portfolio'],
@@ -1886,8 +1920,19 @@ class HomeScreenPage extends BasePage {
         ? $(`//XCUIElementTypeStaticText[@label="${row}"]/ancestor::*[self::XCUIElementTypeButton or self::XCUIElementTypeCell][1]`)
         : $(`(//*[@text="${row}" or @content-desc="${row}"]/ancestor-or-self::*[@clickable="true"][1])[1]`)
       await action.waitForDisplayed({ timeout: 10000 })
-      await this.tap(action)
-      if (browser.isAndroid) await this.closeInvestorCompensationSheetIfShown()
+      if (browser.isAndroid) {
+        await this.liftAboveBottomNavAndroid(action)
+        // The row centre sits on the title's Info icon, which opens the Investor Compensation sheet
+        // instead of navigating. Tap the subtitle line ("1 Holdings") at the row's left edge.
+        const rect = await browser.getElementRect(await action.elementId)
+        await browser.execute('mobile: clickGesture', {
+          x: Math.round(rect.x + rect.width * 0.12),
+          y: Math.round(rect.y + rect.height * 0.75),
+        })
+        await this.closeInvestorCompensationSheetIfShown()
+      } else {
+        await this.tap(action)
+      }
       const destination = browser.isIOS
         ? $(`//XCUIElementTypeNavigationBar[@name="${title}"]`)
         : $(`//*[@text="${title}" or @content-desc="${title}"]`)
