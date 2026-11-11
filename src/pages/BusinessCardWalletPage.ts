@@ -375,11 +375,18 @@ class BusinessCardWalletPage extends BasePage {
   public async cancelWalletCreation() {
     const close = browser.isIOS
       ? $('-ios predicate string:type == "XCUIElementTypeButton" AND (name IN {"Close", "Cancel", "modal_button_close"} OR label IN {"Close", "Cancel"})')
-      : $('//*[contains(@resource-id,"modal_button_close") or @content-desc="Close" or @content-desc="Cancel" or @text="Cancel"]')
+      // 2.27.0 opens New Wallet as a full screen with a Back button instead of a Close action.
+      : $('(//*[@resource-id="newWallet_button_back"] | //*[contains(@resource-id,"modal_button_close") or @content-desc="Close" or @content-desc="Cancel" or @text="Cancel"])[1]')
     await close.waitForDisplayed({ timeout: 10000 })
     await this.tap(close)
     const title = browser.isIOS ? this.newWalletScreenTitleIOS : this.newWalletScreenTitleAndroid
     await title.waitForDisplayed({ reverse: true, timeout: 10000 })
+    if (browser.isAndroid) {
+      // 2.27.0 returns from New Wallet to the Assign Card form (Spend From keeps its wallet), not the picker.
+      const pickerOrForm = $('(//*[@text="Select Wallet" or @content-desc="Select Wallet"] | //*[@resource-id="assignBusinessCard_button_selectWallet"])[1]')
+      await pickerOrForm.waitForExist({ timeout: 10000, timeoutMsg: 'Closing New Wallet did not return to the wallet picker or Assign Card form' })
+      return
+    }
     await this.verifySelectWalletSheet()
   }
 
