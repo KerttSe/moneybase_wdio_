@@ -522,8 +522,26 @@ export default class AuthenticationPage extends BasePage {
     const mark = browser.isIOS
       ? row.$('.//XCUIElementTypeImage[contains(@name,"checkmark") or contains(@label,"selected")]')
       : row.$('.//*[@checked="true" or @selected="true"]')
-    return await mark.isExisting()
-      || (browser.isAndroid && (await row.getAttribute('checked')) === 'true')
+    if (await mark.isExisting()) return true
+    if (!browser.isAndroid) return false
+    if ((await row.getAttribute('checked')) === 'true') return true
+    return this.hasGreenMarkAndroid(row)
+  }
+
+  // Compose rows in 2.27.0 expose no selected/checked state; the chosen option carries a green mark.
+  private async hasGreenMarkAndroid(row: ChainablePromiseElement) {
+    const { x, y, width, height } = await browser.getElementRect(await row.elementId)
+    const sharp = (await import('sharp')).default
+    const { data, info } = await sharp(Buffer.from(await browser.takeScreenshot(), 'base64'))
+      .raw().toBuffer({ resolveWithObject: true })
+    for (let py = Math.max(0, y); py < Math.min(info.height, y + height); py += 3) {
+      for (let px = Math.max(0, x); px < Math.min(info.width, x + width); px += 3) {
+        const index = (py * info.width + px) * info.channels
+        const [r, g, b] = [data[index], data[index + 1], data[index + 2]]
+        if (g > 150 && g - r > 60 && g - b > 20) return true
+      }
+    }
+    return false
   }
 
   private async openThemeFromSettings() {
@@ -575,10 +593,17 @@ export default class AuthenticationPage extends BasePage {
     }
   }
 
-  private privacyOption(label: 'My Contacts' | 'Switch Off') {
-    return browser.isIOS
-      ? $(`//XCUIElementTypeCell[@label="${label}" or .//XCUIElementTypeStaticText[@label="${label}"]] | //XCUIElementTypeButton[@label="${label}"]`)
-      : $(`(//*[@text="${label}" or @content-desc="${label}"]/ancestor-or-self::*[@clickable="true"][1])[1]`)
+  private privacyOption(label: 'Everyone' | 'My Contacts' | 'Switch Off') {
+    if (browser.isIOS) {
+      return $(`//XCUIElementTypeCell[@label="${label}" or .//XCUIElementTypeStaticText[@label="${label}"]] | //XCUIElementTypeButton[@label="${label}"]`)
+    }
+    // 2.27.0 renamed the Android options to "My Contacts Only" and "Switch off".
+    const text = label === 'My Contacts'
+      ? '@text="My Contacts" or @text="My Contacts Only" or @content-desc="My Contacts" or @content-desc="My Contacts Only"'
+      : label === 'Everyone'
+        ? '@text="Everyone" or @content-desc="Everyone"'
+        : '@text="Switch off" or @text="Switch Off" or @content-desc="Switch off" or @content-desc="Switch Off"'
+    return $(`(//*[${text}]/ancestor-or-self::*[@clickable="true"][1])[1]`)
   }
 
   private async openPrivacySettings() {
@@ -590,33 +615,35 @@ export default class AuthenticationPage extends BasePage {
   async verifyPrivacyPreferencesAfterTheme() {
     await this.backFromTheme()
     await this.openPrivacySettings()
-    const contacts = this.privacyOption('My Contacts')
-    if (!await this.isSettingsOptionSelected(contacts)) {
-      throw new Error('TC2979 requires the retail fixture to have My Contacts saved')
+    // TC2979: the saved option is shown as selected. Accounts keep different saved options
+    // (LAZ has Everyone), so read it instead of requiring My Contacts, then restore it.
+    const labels = ['Everyone', 'My Contacts', 'Switch Off'] as const
+    let original: (typeof labels)[number] | undefined
+    for (const label of labels) {
+      if (await this.isSettingsOptionSelected(this.privacyOption(label))) { original = label; break }
     }
+    if (!original) throw new Error('TC2979: Privacy Settings should show the saved option as selected')
 
-    const off = this.privacyOption('Switch Off')
-    try {
-      await this.tap(off, 10000)
-      await browser.waitUntil(() => this.isSettingsOptionSelected(off), {
+    // TC2980: a new choice is selected immediately and kept after reopening Privacy Settings.
+    const target = original === 'Switch Off' ? 'My Contacts' : 'Switch Off'
+    const selectAndVerify = async (label: (typeof labels)[number], tc: string) => {
+      const option = this.privacyOption(label)
+      if (!await option.isDisplayed().catch(() => false)) await this.openPrivacySettings()
+      await this.tap(option, 10000)
+      await browser.waitUntil(() => this.isSettingsOptionSelected(option), {
         timeout: 10000,
-        timeoutMsg: 'TC2980: Switch Off should be selected immediately',
+        timeoutMsg: `${tc}: ${label} should be selected immediately`,
       })
       await this.backFromTheme()
       await this.openPrivacySettings()
-      if (!await this.isSettingsOptionSelected(off)) {
-        throw new Error('TC2980: Switch Off should remain selected when Privacy Settings is reopened')
+      if (!await this.isSettingsOptionSelected(this.privacyOption(label))) {
+        throw new Error(`${tc}: ${label} should remain selected when Privacy Settings is reopened`)
       }
+    }
+    try {
+      await selectAndVerify(target, 'TC2980')
     } finally {
-      if (!await contacts.isDisplayed()) await this.openPrivacySettings()
-      await this.tap(contacts, 10000)
-      await browser.waitUntil(() => this.isSettingsOptionSelected(contacts), {
-        timeout: 10000,
-        timeoutMsg: 'Expected the original My Contacts selection after restoring privacy settings',
-      })
-      await this.backFromTheme()
-      await this.openPrivacySettings()
-      if (!await this.isSettingsOptionSelected(contacts)) throw new Error('Privacy fixture was not restored after reopening Settings')
+      await selectAndVerify(original, 'Privacy fixture restore')
     }
   }
 
