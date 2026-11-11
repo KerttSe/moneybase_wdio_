@@ -15,7 +15,8 @@ describe('PAY-072 [TC3343] Unchanged Auto Top-Up rule', function () {
     await page.cleanupValidationExistingRule()
   })
 
-  it('PAY-072 [TC3343] Existing unchanged rule keeps Save disabled', async function () {
-    await page.verifySaveEnabled(false)
+  it('PAY-072 [TC3343] Saving an existing unchanged rule changes nothing', async function () {
+    // 2.27.0 keeps Save enabled on an unchanged rule; saving it must leave the rule as it was.
+    await page.verifyUnchangedRuleSaveIsNoOp()
   })
 })

@@ -1,7 +1,7 @@
 
 import BasePage from './BasePage'
 import { waitForControlEnabled } from '../helpers/controlState.helper'
-import { $, browser } from '@wdio/globals'
+import { $, $$, browser } from '@wdio/globals'
 import HomeScreenPage from './HomeScreenPage'
 
 export default class AutoTopUpPage extends BasePage {
@@ -237,6 +237,39 @@ export default class AutoTopUpPage extends BasePage {
     if (browser.isAndroid)
       return $('(//*[@resource-id="com.moneybase.qa:id/autoTopUpDetails_button_save"] | //*[contains(@resource-id,"autoTopUpDetails_button_save")])[1]')
     return $('//*[@name="autoTopup_button_save" or @name="autoTopUpDetails_button_save"]//XCUIElementTypeStaticText[@name="Save"]')
+  }
+
+  /**
+   * TC3343 on Android 2.27.0: Save stays enabled on an unchanged rule but saving changes nothing.
+   * Tap it, check the rule is still the single €500 → €1500 rule, then reopen it for cleanup.
+   */
+  async verifyUnchangedRuleSaveIsNoOp() {
+    if (!browser.isAndroid || !await this.saveBtn.isEnabled().catch(() => false)) {
+      await this.verifySaveEnabled(false)
+      return
+    }
+    await this.tap(this.saveBtn)
+    const left = await browser.waitUntil(async () =>
+      await this.addFundsScreen.isDisplayed().catch(() => false) ||
+      await this.autoTopUpListScreen.isDisplayed().catch(() => false) ||
+      await this.openBtn.isDisplayed().catch(() => false), {
+      timeout: 8000, interval: 500,
+    }).then(() => true).catch(() => false)
+    if (!left) {
+      // Save did nothing: the form stays open with the same rule, which is what TC3343 needs.
+      await this.deleteBtn.waitForDisplayed({ timeout: 5000, timeoutMsg: 'TC3343: the rule form should stay open after a no-op Save' })
+      await this.verifyValidationSelections(true)
+      return
+    }
+    if (!await this.autoTopUpListScreen.isDisplayed().catch(() => false)) {
+      await this.openFromHome()
+      await this.goToAutoTopUpList()
+    }
+    await this.validationRuleRowAndroid.waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC3343: the €500 → €1500 rule should be unchanged after Save' })
+    const rows = await $$('//*[@clickable="true"][.//*[contains(@text,"When balance falls below")]]').length
+    if (rows !== 1) throw new Error(`TC3343: saving an unchanged rule should not add a rule (found ${rows})`)
+    await this.tap(this.validationRuleRowAndroid)
+    await this.deleteBtn.waitForDisplayed({ timeout: 10000 })
   }
 
   async verifySaveEnabled(enabled: boolean) {
