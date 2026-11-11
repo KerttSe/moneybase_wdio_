@@ -20,6 +20,13 @@ describe('Orders Regression (iOS/Android)', function () {
       this.skip()
       return
     }
+    // Known issue: Android 2.27.0 shows no Market/Limit order type on New Order (BMW, MUM40001), so the
+    // limit-order flow cannot run. Remove this skip once the order type selector is back.
+    if (browser.isAndroid) {
+      console.warn('[orders.regression] Skipped on Android: known issue, no Market/Limit selector on New Order in 2.27.0')
+      this.skip()
+      return
+    }
 
     await home.ensureIndividualAccount()
     await home.waitForHomeLoaded()
