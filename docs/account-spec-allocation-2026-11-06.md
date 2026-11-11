@@ -37,9 +37,9 @@ and `.github/workflows/wdio-regression.yml` use it. CI no longer sets
 
 | Lane | Group | Account | Specs | Why here |
 |---|---|---|---|---|
-| 1 | primary | VEG | 26 | Joint, business card admin, Auto Top-Up card, SEPA/VoP beneficiaries, individual card PIN, USD wallet |
+| 1 | primary | VEG | 28 | Joint, business card admin, Auto Top-Up card, SEPA/VoP beneficiaries, individual card PIN, USD wallet, SWIFT wallet picker and fee disclaimer (`usjsk whwjwk`) |
 | 1 | rog | ROG | 10 | Beneficiary form validation, wallet details, Home, lifecycle, logout |
-| 1 | mum | MUM | 9 | SWIFT (`Swift Beneficiary`), FX, orders |
+| 1 | mum | MUM | 7 | SWIFT (`Swift Beneficiary`), FX, orders |
 | 1 | onboarding | none (fresh applicant) | 14 | Does not log in |
 | 2 | secondary | KER | 13 | Add funds, beneficiary with real OTP, account switch, salary, business statements, price plan |
 | 2 | laz | LAZ | 8 | Home search, P2P, recent payees, beneficiary validation, account picker, appearance |

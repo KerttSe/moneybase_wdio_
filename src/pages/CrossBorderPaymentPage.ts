@@ -186,12 +186,13 @@ class CrossBorderPaymentPage extends BasePage {
     const euro = this.walletSelectionScreenAndroid.$('.//*[@content-desc="EUR" or @text="EUR"]/ancestor-or-self::*[@clickable="true" or @selected="true"][1]')
     await euro.waitForDisplayed({ timeout: 10000 })
     if (await euro.isEnabled()) await euro.click()
-    if (!await this.walletSelectionScreenAndroid.isDisplayed()) {
-      throw new Error('TC2920: reselecting EUR should leave the picker open')
+    // 2.27.0 closes the picker when the selected wallet is tapped again; TC2920 then holds if EUR stays selected.
+    const pickerStillOpen = await this.walletSelectionScreenAndroid.isDisplayed().catch(() => false)
+    if (pickerStillOpen) {
+      await browser.back()
+      await this.walletSelectionScreenAndroid.waitForDisplayed({ reverse: true, timeout: 10000 })
     }
-    await browser.back()
-    await this.walletSelectionScreenAndroid.waitForDisplayed({ reverse: true, timeout: 10000 })
-    await selectedWallet.waitForDisplayed({ timeout: 10000 })
+    await selectedWallet.waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC2920/TC2921: EUR should stay selected after reselecting it and closing the picker' })
   }
 
   public async verifyReviewPaymentBtnPresent() {
