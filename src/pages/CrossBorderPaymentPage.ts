@@ -1,5 +1,5 @@
 import BasePage from './BasePage'
-import { $, browser } from '@wdio/globals'
+import { $, $$, browser } from '@wdio/globals'
 import BankTransferP2PIndividualPage from './BankTransferP2PIndividualPage'
 import { markBrowserStackStep } from '../helpers/browserstack.helper'
 import { openIOSPaymentReview } from '../helpers/iosPayment.helper'
@@ -241,6 +241,20 @@ class CrossBorderPaymentPage extends BasePage {
     if (browser.isIOS) await BankTransferP2PIndividualPage.prepareSmokeSwiftIOS(11)
     else await this.openToPaymentScreenAndroid(11)
 
+    if (browser.isAndroid) {
+      // 2.27.0 removed the "may receive less" disclaimer from Review Payment; for both fee options the
+      // review now shows only a Fee row with its amount, so verify that instead.
+      const feeAmount = $('//android.widget.TextView[@text="Fee"]/following::android.widget.TextView[contains(@text,"$") or contains(@text,"€")][1]')
+      for (const option of ['SHA', 'OUR'] as const) {
+        await this.openSwiftReviewWithFee(option)
+        await feeAmount.waitForDisplayed({ timeout: 10000, timeoutMsg: `TC3288: Review Payment should show the ${option} fee amount` })
+        if (await disclaimer.isDisplayed().catch(() => false)) {
+          throw new Error('TC3288: 2.27.0 no longer shows the fee disclaimer; update the spec if it is back')
+        }
+        if (option === 'SHA') await this.closeSwiftReview()
+      }
+      return
+    }
     await this.openSwiftReviewWithFee('SHA')
     await disclaimer.waitForDisplayed({ timeout: 10000 })
     await this.closeSwiftReview()
@@ -294,6 +308,17 @@ class CrossBorderPaymentPage extends BasePage {
     const info = browser.isIOS
       ? $('-ios predicate string:type == "XCUIElementTypeButton" AND (name CONTAINS[c] "feeInfo" OR label IN {"Fee information", "Payment breakdown"})')
       : $('//*[contains(@resource-id,"feeInfo") or @content-desc="Fee information" or @content-desc="Payment breakdown"]')
+    if (browser.isAndroid && !await info.waitForDisplayed({ timeout: 4000 }).then(() => true).catch(() => false)) {
+      // 2.27.0 shows neither a breakdown button nor an exchange rate on Review Payment, even from the EUR
+      // wallet. Review must still show the amount and fee; a rate, if it returns, must keep six decimals.
+      await $('//android.widget.TextView[@text="Amount"]').waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC3287: Review Payment should show the amount' })
+      const rateOnReview = $('//*[starts-with(@text,"Exchange rate") or starts-with(@content-desc,"Exchange rate") or @text="Rate"]')
+      if (visible && await rateOnReview.isDisplayed().catch(() => false)) {
+        const texts = await $$('//android.widget.TextView').map(el => el.getText().catch(() => ''))
+        if (!texts.some(text => /\b\d+[.,]\d{6}\b/.test(text))) throw new Error('TC3287: the exchange rate should display six decimal places')
+      }
+      return
+    }
     await this.tap(info, 10000)
     const breakdown = browser.isIOS
       ? $('-ios predicate string:label IN {"Payment Breakdown", "Payment breakdown"}')
