@@ -42,14 +42,14 @@ The former report-only `smokeStep` wrappers have been removed.
 
 ### Login: LF, Workbook Rows 25-33
 
-`src/tests/launch.spec.ts`: authenticate or resume the configured session, handle
+`src/tests/Core/auth/launch.spec.ts`: authenticate or resume the configured session, handle
 required credentials/OTP/prompts and reach Home. Login is a business step; its
 original stack identifies internal failures. A pass does not prove every login
 screen appeared when the session was reused.
 
 ### Home: HS, Rows 35-45
 
-`src/tests/homeScreen.spec.ts`: log in, select Individual and wait for Home.
+`src/tests/Core/home-page/homeScreen.spec.ts`: log in, select Individual and wait for Home.
 Separate steps check holder name, balance, actions, banners, transactions,
 Recent Activities, Spend Analytics and navigation. Account type, Exchange and
 Details are best-effort. Notification banners and pending/recent transactions
@@ -64,7 +64,7 @@ assertion of recent payees; transaction field values are not compared.
 
 ### Beneficiary: ABS, Rows 138-143
 
-`src/tests/addbeneficiary.individual.spec.ts`: requires beneficiary-capable
+`src/tests/Payments/beneficiaries/addbeneficiary.individual.spec.ts`: requires beneficiary-capable
 credentials and configured/generated test IBAN. Open Pay/Add Beneficiary, choose
 Another person and country/currency, fill generated names and bank details,
 submit/review and complete OTP handling. Named cases distinguish form entry,
@@ -72,7 +72,7 @@ submission and OTP. Generated names vary; retain the run evidence to reproduce.
 
 ### Card Top-Up: AFC, Rows 128-136
 
-`src/tests/addfunds.spec.ts`: requires an eligible saved funding card. Open Add
+`src/tests/Payments/add-funds/addfunds.spec.ts`: requires an eligible saved funding card. Open Add
 Funds, open top-up, enter 11 and complete payment verification. Android waits for
 deposit success/error and throws on error. iOS returns Home and checks the
 deposit-approved anchor. No exact credited balance comparison is performed.
@@ -80,7 +80,7 @@ Auto Top-Up activation/rule wording in these workbook rows is copied text.
 
 ### Auto Top-Up: ATU, Rows 47-55
 
-`src/tests/autoTopUp.spec.ts`: use saved card `0015`, Euro, preset 500 and custom
+`src/tests/Payments/add-funds/autoTopUp.spec.ts`: use saved card `0015`, Euro, preset 500 and custom
 amount 1500. Open the rule list, add/select/configure/save, find the rule, delete
 it and verify absence. Platform input order differs. Workbook card 0036 and
 example amounts are not the active spec data. Named cases locate selection,
@@ -88,8 +88,8 @@ save, lookup and deletion failures.
 
 ### P2P and SEPA: Rows 57-73 and 110-126
 
-`src/tests/bankTransfer.p2p.individual.spec.ts` and
-`src/tests/bankTransfer.sepa.individual.spec.ts`: use Individual and a funded
+`src/tests/Payments/bank-transfers/bankTransfer.p2p.individual.spec.ts` and
+`src/tests/Payments/bank-transfers/bankTransfer.sepa.individual.spec.ts`: use Individual and a funded
 wallet, select the expected beneficiary, enter 11, review if applicable, slide
 to submit and inspect the returned Home result. P2P targets Carlos Cat; iOS also
 checks its destination text. Both flows check negative amounts. A Home amount
@@ -99,14 +99,14 @@ contract are not established by these specs.
 
 ### SWIFT: No Dedicated Workbook Section
 
-`src/tests/bankTransfer.swift.individual.spec.ts`: submit amount 11 to the
+`src/tests/Payments/bank-transfers/bankTransfer.swift.individual.spec.ts`: submit amount 11 to the
 configured SWIFT beneficiary. Android runs the SWIFT success helper; iOS exits
 details and checks the negative amount on Home. Named cases distinguish review,
 slider submission and result failures. This is not full metadata reconciliation.
 
 ### Physical Card: PC, Rows 75-91
 
-`src/tests/physicalcardcreation.spec.ts`: requires a card-eligible Individual
+`src/tests/Cards/card-management/physicalcardcreation.spec.ts`: requires a card-eligible Individual
 account, delivery details and test PIN/OTP. Select a physical card, confirm
 design/type and delivery, enter/confirm PIN, complete OTP and finish the flow.
 Android first cleans up an existing card and ends with report/block. iOS handles
@@ -116,7 +116,7 @@ and virtual-card list expectations do not apply.
 
 ### Joint Card Freeze: FC, Rows 93-103
 
-`src/tests/cardFreezeUnfreeze.joint.spec.ts`: log in, select Joint, open Cards,
+`src/tests/Cards/card-management/cardFreezeUnfreeze.joint.spec.ts`: log in, select Joint, open Cards,
 normalize frozen state if needed and exercise Freeze/Unfreeze. Each action waits
 for its opposite action. Android finishes with Freeze available. iOS can finish
 frozen when it started active. The method does not independently assert physical
@@ -125,26 +125,26 @@ expectation is therefore not guaranteed on iOS.
 
 ### Account Switching: SA, Rows 105-108
 
-`src/tests/homeAccountSwitch.spec.ts`: secondary slot only. Android switches
+`src/tests/Core/home-page/homeAccountSwitch.spec.ts`: secondary slot only. Android switches
 Business then Individual, but can return without switching if the picker or
 Business entry is unavailable. iOS checks Business, Individual, Joint, Business.
 Android Joint coverage and a final Individual account on iOS are not asserted.
 
 ### Home Search: No Dedicated Workbook Section
 
-`src/tests/homeSearch.spec.ts`: log in, select Individual, wait for Home and
+`src/tests/Core/home-page/homeSearch.spec.ts`: log in, select Individual, wait for Home and
 search `cat`, targeting Carlos Cat. That recipient must exist in test data.
 
 ### Onboarding: O, Rows 3-23
 
-`src/tests/onboarding.spec.ts`: generate a Maltese number, enter PIN/confirmation,
+`src/tests/Core/onboarding/onboarding.spec.ts`: generate a Maltese number, enter PIN/confirmation,
 complete OTP, personal details, employment/address and email/terms, then save
 the generated account. Full Onfido document/liveness and final Home/Pending
 Verification are outside this flow. Workbook rows 14-23 are not executed here.
 
 ### Orders: PO, Rows 146-151
 
-`src/tests/orders.spec.ts`: use Individual and BMW. iOS creates quantity 5,
+`src/tests/Invest/orders/orders.spec.ts`: use Individual and BMW. iOS creates quantity 5,
 asserts ACTIVE, modifies to 15, asserts ACTIVE/15, cancels and asserts
 CANCELLED/15. Android buys quantity 5 and checks Sell availability. Android
 smoke does not call modify/cancel even though a separate page method exists.
@@ -152,26 +152,26 @@ Do not assume Android cleans up the order/resulting account state.
 
 ### Cash Funds: DS, Rows 153-154
 
-`src/tests/cashFunds.spec.ts`: open Individual, Invest, Discover, Cash Funds.
+`src/tests/Invest/discover-section/cashFunds.spec.ts`: open Individual, Invest, Discover, Cash Funds.
 Checks accept a fund anchor or Cash Funds header. They do not independently
 validate instrument name, APY, currency and price values.
 
 ### Watchlist: WL, Rows 156-158
 
-`src/tests/watchlist.spec.ts`: add an existing instrument through the platform
+`src/tests/Invest/watchlist/watchlist.spec.ts`: add an existing instrument through the platform
 flow and check the Watchlist updated toast. Reordering and deletion are not
 called by smoke. Workbook edit/delete rows are not verified by this scenario.
 
 ### Price Alerts: CPA, Rows 160-164
 
-`src/tests/priceAlerts.spec.ts`: Android creates a BMW alert, checks its Overview
+`src/tests/Invest/watchlist/priceAlerts.spec.ts`: Android creates a BMW alert, checks its Overview
 row, exercises deletion and checks return to a Price Alerts anchor. Row absence
 after deletion is not asserted. iOS checks the +1% creation confirmation only.
 Neither branch modifies alerts; iOS does not check Overview or delete.
 
 ### Portfolio: No Dedicated Workbook Section
 
-`src/tests/portfolio.spec.ts`: open Portfolio from Invest, then in a second test
+`src/tests/Invest/portfolio/portfolio.spec.ts`: open Portfolio from Invest, then in a second test
 open the Simonds Farsons Cisk 2027 bond using platform navigation. Login runs
 once; account for prior test state when diagnosing the second test. These are
 UI navigation flows, not valuation assertions.

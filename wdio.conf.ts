@@ -2,8 +2,9 @@ import * as dotenv from 'dotenv'
 import type { Options } from '@wdio/types'
 import { browser } from '@wdio/globals'
 import { execSync } from 'node:child_process'
+import { readdirSync } from 'node:fs'
 import { createRequire } from 'node:module'
-import { basename, resolve } from 'node:path'
+import { basename, resolve, sep } from 'node:path'
 import { attachFailureArtifacts, writeAllureEnvironment, writeAllureExecutor } from './src/helpers/allure.helper'
 import { getLastBrowserStackStep } from './src/helpers/browserstack.helper'
 import { classifyFailureReason } from './src/helpers/failureClassification.helper'
@@ -310,27 +311,40 @@ const localCapabilities: WebdriverIO.Capabilities[] = [
   },
 ]
 
+// Specs live in domain folders (src/tests/<Area>/<feature>/); file names stay unique, so lists use names.
+const specIndex = new Map<string, string>(
+  (readdirSync(resolve('src/tests'), { recursive: true }) as string[])
+    .filter(file => file.endsWith('.spec.ts'))
+    .map(file => [basename(file), `./src/tests/${file.split(sep).join('/')}`] as const),
+)
+const specPath = (name: string) => {
+  const file = name.endsWith('.spec.ts') ? name : `${name}.spec.ts`
+  const path = specIndex.get(file)
+  if (!path) throw new Error(`Spec ${file} was not found under src/tests`)
+  return path
+}
+
 const smokeSpecs = [
-  './src/tests/launch.spec.ts',
-  './src/tests/addbeneficiary.individual.spec.ts',
-  './src/tests/addfunds.spec.ts',
-  './src/tests/autoTopUp.spec.ts',
-  './src/tests/bankTransfer.p2p.individual.spec.ts',
-  './src/tests/bankTransfer.sepa.individual.spec.ts',
-  './src/tests/bankTransfer.swift.individual.spec.ts',
-  './src/tests/cardFreezeUnfreeze.joint.spec.ts',
-  './src/tests/cashFunds.spec.ts',
-  './src/tests/fxExchange.spec.ts',
-  './src/tests/homeAccountSwitch.spec.ts',
-  './src/tests/homeScreen.spec.ts',
-  './src/tests/homeSearch.spec.ts',
-  './src/tests/homeSearch.business.spec.ts',
-  './src/tests/onboarding.spec.ts',
-  './src/tests/orders.spec.ts',
-  './src/tests/physicalcardcreation.spec.ts',
-  './src/tests/portfolio.spec.ts',
-  './src/tests/priceAlerts.spec.ts',
-  './src/tests/watchlist.spec.ts',
+  specPath('launch'),
+  specPath('addbeneficiary.individual'),
+  specPath('addfunds'),
+  specPath('autoTopUp'),
+  specPath('bankTransfer.p2p.individual'),
+  specPath('bankTransfer.sepa.individual'),
+  specPath('bankTransfer.swift.individual'),
+  specPath('cardFreezeUnfreeze.joint'),
+  specPath('cashFunds'),
+  specPath('fxExchange'),
+  specPath('homeAccountSwitch'),
+  specPath('homeScreen'),
+  specPath('homeSearch'),
+  specPath('homeSearch.business'),
+  specPath('onboarding'),
+  specPath('orders'),
+  specPath('physicalcardcreation'),
+  specPath('portfolio'),
+  specPath('priceAlerts'),
+  specPath('watchlist'),
 ]
 
 // One owner per smoke spec. onboarding.spec.ts creates its own applicant and only shares KER's CI queue.
@@ -342,7 +356,7 @@ const smokeSpecsByAccount: Record<string, string[]> = {
   mum: ['bankTransfer.swift.individual', 'orders', 'fxExchange'],
   pop: ['cashFunds', 'priceAlerts', 'watchlist'],
 }
-const smokeAccountSpecs = (slot: string) => smokeSpecsByAccount[slot].map(name => `./src/tests/${name}.spec.ts`)
+const smokeAccountSpecs = (slot: string) => smokeSpecsByAccount[slot].map(name => specPath(name))
 // BrowserStack has 2 parallel sessions. Each lane owns 3 accounts and rotates them, so an account
 // never runs in both lanes and two other accounts' specs separate its consecutive logins.
 const smokeLaneSpecs = (slots: string[]) => {
@@ -357,7 +371,7 @@ const smokeSlotBySpecName = new Map<string, string>(
 
 // Regression owners live in src/data/regressionAccounts.json; scripts/regressionLanes.cjs orders
 // each lane so one account never logs in twice in a row. The CI workflow uses the same module.
-const regressionLaneSpecs = (lane: string) => regressionLanes.laneOrder(lane).map(spec => `./src/tests/${spec}`)
+const regressionLaneSpecs = (lane: string) => regressionLanes.laneOrder(lane).map(spec => specPath(spec))
 const nativeAlertAssertionSpecs = new Set([
   'authentication.changePasscodeCancel.spec.ts',
   'profile.businessSettings.spec.ts',
@@ -384,12 +398,12 @@ export const config: WebdriverIO.Config = {
   suites: {
     smoke: smokeSpecs,
     regression: ['./src/tests/**/*.spec.ts'],
-    launchOnly: ['./src/tests/launch.spec.ts'],
-    onboarding: ['./src/tests/onboarding.spec.ts'],
-    pricePlan: ['./src/tests/pricePlan.spec.ts'],
+    launchOnly: [specPath('launch')],
+    onboarding: [specPath('onboarding')],
+    pricePlan: [specPath('pricePlan')],
     smokeLane1: smokeLaneSpecs(['primary', 'rog', 'mum']),
     smokeLane2: smokeLaneSpecs(['secondary', 'laz', 'pop']),
-    smokeWithoutOnboarding: smokeSpecs.filter((spec) => spec !== './src/tests/onboarding.spec.ts'),
+    smokeWithoutOnboarding: smokeSpecs.filter((spec) => spec !== specPath('onboarding')),
     regressionLane1: regressionLaneSpecs('lane1'),
     regressionLane2: regressionLaneSpecs('lane2'),
   },

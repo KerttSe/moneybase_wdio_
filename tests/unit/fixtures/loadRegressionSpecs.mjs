@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { readdirSync } from 'node:fs'
-import { resolve } from 'node:path'
+import { basename, resolve } from 'node:path'
 import Mocha from 'mocha'
 import { _setGlobal } from '@wdio/globals'
 
@@ -33,7 +33,9 @@ for (const key of ['$', '$$']) {
 }
 
 const directory = resolve('src/tests')
-const specs = readdirSync(directory).filter(file => file.endsWith('.spec.ts')).sort()
+// Specs sit in domain folders; report them by file name, which stays unique.
+const specs = readdirSync(directory, { recursive: true }).filter(file => file.endsWith('.spec.ts'))
+  .sort((a, b) => (basename(a) < basename(b) ? -1 : 1))
 const loaded = []
 for (const file of specs) {
   const mocha = new Mocha({ ui: 'bdd' })
@@ -41,7 +43,7 @@ for (const file of specs) {
   await mocha.loadFilesAsync()
   const tests = []
   mocha.suite.eachTest(test => tests.push(test))
-  assert.ok(tests.length > 0, `${file} did not register any tests`)
-  loaded.push({ file, registered: tests.length, active: tests.filter(test => !test.isPending()).length })
+  assert.ok(tests.length > 0, `${basename(file)} did not register any tests`)
+  loaded.push({ file: basename(file), registered: tests.length, active: tests.filter(test => !test.isPending()).length })
 }
 console.log(JSON.stringify({ platform, loaded }))

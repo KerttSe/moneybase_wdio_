@@ -50,28 +50,28 @@ jobs:
           # account never runs in both lanes and two other accounts' specs separate its logins.
           # primary=VEG, secondary=KER, the other slots are named after their account.
           LANE_1=(
-            "primary:src/tests/cardFreezeUnfreeze.joint.spec.ts"
-            "rog:src/tests/physicalcardcreation.spec.ts"
-            "mum:src/tests/bankTransfer.swift.individual.spec.ts"
-            "primary:src/tests/portfolio.spec.ts"
-            "rog:src/tests/homeScreen.spec.ts"
-            "mum:src/tests/orders.spec.ts"
-            "primary:src/tests/autoTopUp.spec.ts"
-            "rog:src/tests/launch.spec.ts"
-            "mum:src/tests/fxExchange.spec.ts"
-            "primary:src/tests/bankTransfer.sepa.individual.spec.ts"
+            "primary:src/tests/Cards/card-management/cardFreezeUnfreeze.joint.spec.ts"
+            "rog:src/tests/Cards/card-management/physicalcardcreation.spec.ts"
+            "mum:src/tests/Payments/bank-transfers/bankTransfer.swift.individual.spec.ts"
+            "primary:src/tests/Invest/portfolio/portfolio.spec.ts"
+            "rog:src/tests/Core/home-page/homeScreen.spec.ts"
+            "mum:src/tests/Invest/orders/orders.spec.ts"
+            "primary:src/tests/Payments/add-funds/autoTopUp.spec.ts"
+            "rog:src/tests/Core/auth/launch.spec.ts"
+            "mum:src/tests/Payments/fx-exchange/fxExchange.spec.ts"
+            "primary:src/tests/Payments/bank-transfers/bankTransfer.sepa.individual.spec.ts"
           )
           LANE_2=(
-            "secondary:src/tests/addfunds.spec.ts"
-            "laz:src/tests/homeSearch.spec.ts"
-            "pop:src/tests/cashFunds.spec.ts"
-            "secondary:src/tests/addbeneficiary.individual.spec.ts"
-            "laz:src/tests/homeSearch.business.spec.ts"
-            "pop:src/tests/priceAlerts.spec.ts"
-            "secondary:src/tests/homeAccountSwitch.spec.ts"
-            "laz:src/tests/bankTransfer.p2p.individual.spec.ts"
-            "pop:src/tests/watchlist.spec.ts"
-            "secondary:src/tests/onboarding.spec.ts"
+            "secondary:src/tests/Payments/add-funds/addfunds.spec.ts"
+            "laz:src/tests/Core/home-page/homeSearch.spec.ts"
+            "pop:src/tests/Invest/discover-section/cashFunds.spec.ts"
+            "secondary:src/tests/Payments/beneficiaries/addbeneficiary.individual.spec.ts"
+            "laz:src/tests/Core/home-page/homeSearch.business.spec.ts"
+            "pop:src/tests/Invest/watchlist/priceAlerts.spec.ts"
+            "secondary:src/tests/Core/home-page/homeAccountSwitch.spec.ts"
+            "laz:src/tests/Payments/bank-transfers/bankTransfer.p2p.individual.spec.ts"
+            "pop:src/tests/Invest/watchlist/watchlist.spec.ts"
+            "secondary:src/tests/Core/onboarding/onboarding.spec.ts"
           )
 
           PLATFORMS=()

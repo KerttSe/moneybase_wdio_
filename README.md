@@ -11,7 +11,7 @@ Mobile automation framework for Moneybase built with WebdriverIO, TypeScript and
 
 ## Project layout
 
-- `src/tests` contains the runnable spec files
+- `src/tests` contains the runnable spec files, grouped by area and feature (`Cards/`, `Core/`, `Invest/`, `Payments/`, e.g. `src/tests/Payments/bank-transfers/`); file names stay unique
 - `src/pages` contains page objects and reusable business flows
 - `src/helpers` contains Allure and OTP helpers
 - `src/data/credentials.ts` reads the auth data used by login-based flows
@@ -119,14 +119,14 @@ npx allure open "allure-report/regression-$MB_RUN_ID/ios"
 ```
 
 For a focused fix, keep the same environment variables and replace
-`--suite regression` with `--spec src/tests/autoTopUp.amountBelowRange.spec.ts`.
+`--suite regression` with `--spec src/tests/Payments/add-funds/autoTopUp.amountBelowRange.spec.ts`.
 See [the 12-week delivery plan](docs/regression-12-week-plan.md) for priorities,
 source-matrix counts and criteria for verified coverage.
 
 Run a single spec:
 
 ```bash
-npm run wdio -- --spec src/tests/<file>.spec.ts
+npm run wdio -- --spec src/tests/<Area>/<feature>/<file>.spec.ts
 ```
 
 Run the smoke suite:
@@ -144,20 +144,20 @@ BROWSERSTACK=true PLATFORM=android npm run wdio -- --suite smoke
 Run a single spec on one platform only:
 
 ```bash
-PLATFORM=android npm run wdio -- --spec src/tests/launch.spec.ts
-PLATFORM=ios npm run wdio -- --spec src/tests/homeScreen.spec.ts
+PLATFORM=android npm run wdio -- --spec src/tests/Core/auth/launch.spec.ts
+PLATFORM=ios npm run wdio -- --spec src/tests/Core/home-page/homeScreen.spec.ts
 ```
 
 Run a single spec on a connected real iPhone:
 
 ```bash
-BROWSERSTACK=false PLATFORM=ios IOS_UDID=<device-udid> IOS_DEVICE_NAME=iPhone npm run wdio -- --spec src/tests/launch.spec.ts
+BROWSERSTACK=false PLATFORM=ios IOS_UDID=<device-udid> IOS_DEVICE_NAME=iPhone npm run wdio -- --spec src/tests/Core/auth/launch.spec.ts
 ```
 
 Run on BrowserStack:
 
 ```bash
-BROWSERSTACK=true PLATFORM=android npm run wdio -- --spec src/tests/addfunds.spec.ts
+BROWSERSTACK=true PLATFORM=android npm run wdio -- --spec src/tests/Payments/add-funds/addfunds.spec.ts
 ```
 
 Onboarding is included in the main smoke suite. For a faster run without the identity verification path:

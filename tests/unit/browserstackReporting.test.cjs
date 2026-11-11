@@ -1,6 +1,7 @@
 const { test } = require('node:test')
 const assert = require('node:assert/strict')
 const fs = require('node:fs')
+const { specNames } = require('./fixtures/specFiles.cjs')
 const path = require('node:path')
 const vm = require('node:vm')
 const ts = require('typescript')
@@ -16,6 +17,7 @@ function loadConfig() {
     dotenv: { config() {} },
     '@wdio/globals': { browser },
     'node:path': path,
+    'node:fs': { readdirSync: fs.readdirSync },
     'node:child_process': { execSync() {} },
     './src/helpers/allure.helper': { attachFailureArtifacts: async () => {} },
     './src/helpers/browserstack.helper': { getLastBrowserStackStep: () => 'Session started' },
@@ -117,7 +119,7 @@ test('artifact collection cannot prevent reporting a failed test', async () => {
 test('regression lanes include every spec exactly once', () => {
   const { config } = loadConfig()
   const actual = [...config.suites.regressionLane1, ...config.suites.regressionLane2].map(file => path.basename(file)).sort()
-  const expected = fs.readdirSync('src/tests').filter(file => file.endsWith('.spec.ts')).sort()
+  const expected = specNames()
   assert.deepEqual(Array.from(actual), expected)
 })
 

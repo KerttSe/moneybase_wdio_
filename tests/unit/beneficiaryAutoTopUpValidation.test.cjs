@@ -1,6 +1,7 @@
 const { test } = require('node:test')
 const assert = require('node:assert/strict')
 const fs = require('node:fs')
+const { specPath } = require('./fixtures/specFiles.cjs')
 const vm = require('node:vm')
 const ts = require('typescript')
 
@@ -268,7 +269,7 @@ test('every new matrix case is implemented in its own independent spec', () => {
     'onboarding.invalidNames.spec.ts': 'TC3085', 'onboarding.shortName.spec.ts': 'TC3086',
   }
   for (const [file, id] of Object.entries(cases)) {
-    const source = fs.readFileSync(`src/tests/${file}`, 'utf8')
+    const source = fs.readFileSync(specPath(file), 'utf8')
     assert.deepEqual([...new Set(source.match(/TC\d+/g))], [id], file)
     assert.doesNotMatch(source, /\.saveAutoTopUp\(|\.submitSmokeBeneficiary|\.confirmSmokeBeneficiary|\.finishSmokeOnboarding\(/, file)
   }

@@ -248,10 +248,12 @@ jobs:
             },
           };
           // Reject missing, duplicated or stale specs instead of silently reducing coverage.
-          const existingSpecs = fs.readdirSync('src/tests', { recursive: true })
+          // Specs sit in domain folders (src/tests/<Area>/<feature>/); categories list unique file names.
+          const specFiles = new Map(fs.readdirSync('src/tests', { recursive: true })
             .filter(spec => spec.endsWith('.spec.ts'))
             .map(spec => spec.replaceAll('\\', '/'))
-            .sort();
+            .map(spec => [spec.slice(spec.lastIndexOf('/') + 1), 'src/tests/' + spec]));
+          const existingSpecs = [...specFiles.keys()].sort();
           const checkCoverage = (label, mapped) => {
             const mappedSet = new Set(mapped);
             const existingSet = new Set(existingSpecs);
@@ -282,6 +284,10 @@ jobs:
             throw new Error('Select at least one regression category.');
           }
 
+          const specPath = spec => {
+            if (!specFiles.has(spec)) throw new Error('Spec ' + spec + ' was not found under src/tests');
+            return specFiles.get(spec);
+          };
           // Each lane is one BrowserStack parallel. Its blocks run one after another in lane order.
           const BLOCK_SIZE = 15;
           const lanes = {};
@@ -292,7 +298,7 @@ jobs:
             lanes[lane] = platforms.flatMap(platform => blocks.map((specs, index) => ({
               platform,
               block: 'part ' + (index + 1) + '/' + blocks.length,
-              specs: specs.map(spec => 'src/tests/' + spec).join(','),
+              specs: specs.map(specPath).join(','),
             })));
             summary.push('', lane + ': ' + order.length + ' specs in ' + blocks.length + ' blocks per platform');
           }

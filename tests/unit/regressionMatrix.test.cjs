@@ -1,6 +1,7 @@
 const { test } = require('node:test')
 const assert = require('node:assert/strict')
 const fs = require('node:fs')
+const { specNames, specPaths, specPath } = require('./fixtures/specFiles.cjs')
 const path = require('node:path')
 const vm = require('node:vm')
 const yaml = require('js-yaml')
@@ -35,7 +36,7 @@ const specsOf = entries => entries.flatMap(entry => entry.specs.split(','))
 test('seven categories and both lanes cover every regression spec exactly once per platform', () => {
   assert.equal(categoryKeys.length, 7)
   const { lanes } = run({})
-  const specs = fs.readdirSync('src/tests').filter(file => file.endsWith('.spec.ts')).map(file => `src/tests/${file}`).sort()
+  const specs = specPaths()
   for (const platform of ['android', 'ios']) {
     const actual = specsOf([...lanes.lane1, ...lanes.lane2].filter(entry => entry.platform === platform)).sort()
     assert.deepEqual(actual, specs)
@@ -48,7 +49,7 @@ for (const category of categoryKeys) {
     const entries = [...lanes.lane1, ...lanes.lane2]
     assert.ok(entries.length > 0)
     assert.ok(entries.every(entry => entry.platform === 'android'))
-    const expected = Array.from(categories[category].specs, spec => `src/tests/${spec}`).sort()
+    const expected = Array.from(categories[category].specs, spec => specPath(spec)).sort()
     assert.deepEqual(specsOf(entries).sort(), expected)
   })
 }
@@ -67,7 +68,7 @@ test('specs run in the lane of their account owner', () => {
     'businessCard.terminate.spec.ts': false,
   }
   for (const [spec, inLane1] of Object.entries(mapping)) {
-    assert.equal(lane1.has(`src/tests/${spec}`), inLane1, spec)
+    assert.equal(lane1.has(specPath(spec)), inLane1, spec)
   }
 })
 
