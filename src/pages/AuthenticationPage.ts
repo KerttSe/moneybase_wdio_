@@ -170,7 +170,8 @@ export default class AuthenticationPage extends BasePage {
     return el
   }
 
-  async waitForRemainingPasscodeAttempts(timeout = 10000) {
+  // The passcode check can spin a loader for several seconds before the remaining-attempts message.
+  async waitForRemainingPasscodeAttempts(timeout = 30000) {
     const candidates = browser.isIOS ? [this.passcodeErrorIOS] : this.passcodeErrorAndroidCandidates
     const remainingAttempts = /\b[1-9]\d*\s+(?:(?:remaining|more)\s+)?(?:attempts?|tries)\s*(?:left|remaining)\b|\b(?:remaining\s+(?:attempts?|tries)|(?:attempts?|tries)\s+(?:left|remaining))\s*:?\s*[1-9]\d*\b|\b[1-9]\d*\s+(?:remaining|more)\s+(?:attempts?|tries)\b/i
     await browser.waitUntil(async () => {
@@ -439,7 +440,8 @@ export default class AuthenticationPage extends BasePage {
   }
 
   private get changePasscodeItemAndroid() {
-    return $('(//*[@text="Change Passcode" or @content-desc="Change Passcode"] | //*[@text="Change Password" or @content-desc="Change Password"] | //*[contains(@text,"Change Pass") or contains(@content-desc,"Change Pass")])[1]')
+    // 2.27.0 labels the Settings row "Change passcode" (lower-case p).
+    return $('(//*[@text="Change Passcode" or @content-desc="Change Passcode" or @text="Change passcode" or @content-desc="Change passcode"] | //*[@text="Change Password" or @content-desc="Change Password"] | //*[contains(@text,"Change Pass") or contains(@content-desc,"Change Pass")])[1]')
   }
 
   private get changePasscodeItemIOS() {
