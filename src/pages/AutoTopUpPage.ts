@@ -267,13 +267,60 @@ export default class AutoTopUpPage extends BasePage {
     return { input: this.customAmountInput, done: this.customAmountDoneBtn }
   }
 
-  async openValidationAmountEditor() {
-    await this.validationAmountSection.waitForExist({ timeout: 10000 })
-    const other = this.validationAmountSection.$(browser.isIOS
-      ? '-ios predicate string:name == "amountPicker_item_Other" OR label == "Other"'
-      : './/*[@content-desc="Other" or @text="Other"]')
+  /**
+   * Sometimes the Custom amount sheet exposes only its root (autoTopUpCustomAmountModal_screen) to
+   * UiAutomator while its field already has focus and the keyboard is up. Type into the focused field
+   * and confirm with the keyboard tick. Returns false when the normal, exposed field should be used.
+   */
+  private async enterAmountIntoUnexposedModalAndroid(amount: string) {
+    const other = this.validationAmountSection.$('.//*[@content-desc="Other" or @text="Other"]')
     await other.waitForDisplayed({ timeout: 10000 })
     await this.tap(other)
+    const modal = $('//*[contains(@resource-id,"autoTopUpCustomAmountModal_screen")]')
+    await browser.waitUntil(
+      async () => await this.customAmountModalInputAndroid.isExisting().catch(() => false)
+        || await this.customAmountInput.isExisting().catch(() => false)
+        || await modal.isExisting().catch(() => false),
+      { timeout: 10000, interval: 300 },
+    ).catch(() => {})
+    await browser.pause(800)
+    const exposed = await this.customAmountModalInputAndroid.isExisting().catch(() => false)
+      || await this.customAmountInput.isExisting().catch(() => false)
+    if (exposed || !await modal.isExisting().catch(() => false)) {
+      // Leave the sheet open for the normal flow, which taps Other again only when needed.
+      return false
+    }
+    console.warn('[AutoTopUp] Custom amount sheet exposes no field; typing into the focused field')
+    await browser.keys(amount.replace(/\.0+$/, '').split(''))
+    await browser.pressKeyCode(66).catch(() => {}) // keyboard tick / Enter
+    await modal.waitForExist({ reverse: true, timeout: 10000 }).catch(() => {})
+    if (await modal.isExisting().catch(() => false)) {
+      throw new Error('Custom amount sheet stayed open after typing the amount (Android)')
+    }
+    return true
+  }
+
+  async openValidationAmountEditor() {
+    // While the Custom amount sheet is open the amount section is hidden from the hierarchy.
+    const alreadyOpen = browser.isAndroid && (
+      await this.customAmountModalInputAndroid.isExisting().catch(() => false)
+      || await this.customAmountInput.isDisplayed().catch(() => false))
+    if (!alreadyOpen) {
+      await this.validationAmountSection.waitForExist({ timeout: 10000 })
+      const other = this.validationAmountSection.$(browser.isIOS
+        ? '-ios predicate string:name == "amountPicker_item_Other" OR label == "Other"'
+        : './/*[@content-desc="Other" or @text="Other"]')
+      await other.waitForDisplayed({ timeout: 10000 })
+      await this.tap(other)
+    }
+    // The custom amount modal renders its input a moment after the sheet opens; wait before picking the field.
+    if (browser.isAndroid) {
+      await browser.waitUntil(
+        async () => await this.customAmountModalInputAndroid.isExisting().catch(() => false)
+          || await this.customAmountInput.isExisting().catch(() => false),
+        { timeout: 10000, interval: 300 },
+      ).catch(() => {})
+    }
     const { input } = await this.validationAmountControls()
     await input.waitForDisplayed({ timeout: 10000 })
   }
@@ -331,6 +378,7 @@ export default class AutoTopUpPage extends BasePage {
       const preset = this.validationThresholdSection.$('.//*[@content-desc="€500" or @text="€500"]')
       await preset.waitForDisplayed({ timeout: 10000 })
       await this.tap(preset)
+      if (await this.enterAmountIntoUnexposedModalAndroid(amount)) return
     }
     await this.openValidationAmountEditor()
     await this.enterValidationCustomAmount(amount)
@@ -341,6 +389,18 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   async verifyValidationSelections(selected: boolean) {
+    if (browser.isAndroid) {
+      // 2.27.0 Compose chips expose no selected/checked state; the custom amount chip text and Save carry it.
+      // A new form shows "€1,500"; a saved rule shows "€1500".
+      const customAmount = $('//android.widget.TextView[@text="Add the following amount:"]/following::*[contains(@text,"1,500") or contains(@content-desc,"1,500") or contains(@text,"1500") or contains(@content-desc,"1500")][1]')
+      await this.validationAmountSection.waitForExist({ timeout: 10000 })
+      await browser.waitUntil(async () => (await customAmount.isDisplayed().catch(() => false)) === selected, {
+        timeout: 10000,
+        interval: 500,
+        timeoutMsg: `Auto Top-Up amount must ${selected ? 'show the entered €1,500' : 'be cleared after currency change'}`,
+      })
+      return
+    }
     for (const [label, section] of [['threshold', this.validationThresholdSection], ['amount', this.validationAmountSection]] as const) {
       await section.waitForExist({ timeout: 10000 })
       await browser.waitUntil(async () => {
@@ -390,12 +450,50 @@ export default class AutoTopUpPage extends BasePage {
       await this.ensureOnHomeScreen()
       await this.openFromHome()
       await this.goToAutoTopUpList()
-      const created = await this.findThresholdRuleElement(1500)
+      // 2.27.0 lists the threshold and the "Add: € 1500" amount as separate texts in one row.
+      const createdRow = browser.isAndroid
+        ? $('(//*[@clickable="true"][.//*[contains(@text,"When balance falls below")]][.//*[starts-with(@text,"Add:") and (contains(@text,"1500") or contains(@text,"1,500"))]])[last()]')
+        : undefined
+      const created = createdRow && await createdRow.waitForDisplayed({ timeout: 10000 }).then(() => true).catch(() => false)
+        ? createdRow
+        : await this.findThresholdRuleElement(1500)
       if (!created) throw new Error('TEST_PRECONDITION: saved validation rule could not be found')
       await this.tap(created)
     }
     await this.deleteBtn.waitForDisplayed({ timeout: 10000 })
     await this.verifyValidationSelections(true)
+  }
+
+  private get validationRuleRowAndroid() {
+    return $('(//*[@clickable="true"][.//*[contains(@text,"When balance falls below") and contains(@text,"500")]][.//*[starts-with(@text,"Add:") and (contains(@text,"1500") or contains(@text,"1,500"))]])[last()]')
+  }
+
+  /**
+   * Deletes the €500 → €1500 rule a failed validation spec left behind. Any EUR rule blocks
+   * new EUR rules ("Auto top-up is already enabled for the selected currency"). Call on the list.
+   */
+  async removeLeftoverValidationRule() {
+    if (!browser.isAndroid) return
+    if (await this.cardPicker.isDisplayed().catch(() => false)) return
+    if (!await this.validationRuleRowAndroid.waitForDisplayed({ timeout: 5000 }).then(() => true).catch(() => false)) return
+    console.warn('[AutoTopUp][cleanup] Deleting leftover €500 → €1500 validation rule before the spec')
+    await this.tap(this.validationRuleRowAndroid)
+    await this.deleteAutoTopUp()
+    await this.confirmDeleteAutoTopUp()
+    // After deleting, 2.27.0 lands on Add Funds (Select Deposit Method), or with no rules left
+    // straight on the new-rule form; only fall back to Home when neither shows.
+    const landed = await browser.waitUntil(async () => {
+      if (await this.cardPicker.isDisplayed().catch(() => false)) return 'details'
+      if (await this.autoTopUpListScreen.isDisplayed().catch(() => false)) return 'list'
+      if (await this.addFundsScreen.isDisplayed().catch(() => false)) return 'addFunds'
+      return false
+    }, { timeout: 15000, interval: 500 }).catch(() => 'unknown')
+    if (landed === 'details' || landed === 'list') return
+    if (landed !== 'addFunds') {
+      await this.ensureOnHomeScreen()
+      await this.openFromHome()
+    }
+    await this.goToAutoTopUpList()
   }
 
   async cleanupValidationExistingRule() {
@@ -476,10 +574,11 @@ export default class AutoTopUpPage extends BasePage {
    */
   async openFromHome() {
     if (browser.isAndroid) {
-      await this.ensureSingleAccountAndroid()
-
+      // 2.27.0 returns to Add Funds after saving or deleting a rule; the account check needs Home.
       const addFundsAlreadyOpen = await this.addFundsScreen.isDisplayed().catch(() => false)
       if (addFundsAlreadyOpen) return
+
+      await this.ensureSingleAccountAndroid()
 
       await this.ensureHomeLandingAndroid()
 
@@ -1112,7 +1211,14 @@ export default class AutoTopUpPage extends BasePage {
         timeoutMsg: 'Auto Top-Up Save closed the form but no return screen appeared',
       })
     } else {
-      await this.openBtn.waitForExist({ timeout: 30000 })
+      // 2.27.0 returns to Add Funds (Select Deposit Method) after Save; older builds went to Home.
+      await browser.waitUntil(async () =>
+        await this.addFundsScreen.isDisplayed().catch(() => false) ||
+        await this.autoTopUpListScreen.isDisplayed().catch(() => false) ||
+        await this.openBtn.isDisplayed().catch(() => false), {
+        timeout: 30000, interval: 500,
+        timeoutMsg: 'Auto Top-Up Save closed the form but no return screen appeared (Android)',
+      })
     }
   }
 

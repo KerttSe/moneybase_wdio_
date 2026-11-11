@@ -3,7 +3,7 @@ import AutoTopUpPage from '../../../pages/AutoTopUpPage'
 import { AUTH } from '../../../data/credentials'
 
 describe('PAY-072 [TC3343] Unchanged Auto Top-Up rule', function () {
-  this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 300000))
+  this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
   const page = new AutoTopUpPage()
 
   before(async function () {

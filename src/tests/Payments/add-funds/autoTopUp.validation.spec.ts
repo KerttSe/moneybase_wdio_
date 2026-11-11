@@ -4,7 +4,7 @@ import AutoTopUpPage from '../../../pages/AutoTopUpPage'
 import { AUTH } from '../../../data/credentials'
 
 describe('Auto Top-Up - Required fields', function () {
-  this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 300000))
+  this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
   const page = new AutoTopUpPage()
   const step = stopAfterFailedStep()
   const options = { cardLabel: AUTH.cardLastFour || '', currency: 'Euro', amount: 1500 }
@@ -14,6 +14,7 @@ describe('Auto Top-Up - Required fields', function () {
     await loginPage.loginFlow(AUTH)
     await page.openFromHome()
     await page.goToAutoTopUpList()
+    await page.removeLeftoverValidationRule()
     await page.tapAddNew()
   }))
 

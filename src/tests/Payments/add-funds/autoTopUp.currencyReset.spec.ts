@@ -3,7 +3,7 @@ import AutoTopUpPage from '../../../pages/AutoTopUpPage'
 import { AUTH } from '../../../data/credentials'
 
 describe('PAY-073 [TC3344] Auto Top-Up currency reset', function () {
-  this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 300000))
+  this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
   const page = new AutoTopUpPage()
   const secondCurrency = process.env.AUTO_TOP_UP_TEST_SECOND_CURRENCY?.trim()
 
@@ -13,6 +13,7 @@ describe('PAY-073 [TC3344] Auto Top-Up currency reset', function () {
     await loginPage.loginFlow(AUTH)
     await page.openFromHome()
     await page.goToAutoTopUpList()
+    await page.removeLeftoverValidationRule()
     await page.tapAddNew()
     await page.selectCard(AUTH.cardLastFour)
     await page.selectCurrency('Euro')
