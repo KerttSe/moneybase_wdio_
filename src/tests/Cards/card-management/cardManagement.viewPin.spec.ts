@@ -15,7 +15,7 @@ describe('Card Management - View PIN (Android)', function () {
   })
 
   it('User can view the PIN for a specific card', async function () {
-    const lastFour = process.env.CARD_MANAGEMENT_VIEW_PIN_LAST_FOUR || '8750'
+    const lastFour = process.env.CARD_MANAGEMENT_VIEW_PIN_LAST_FOUR || '' // empty: any card that can show its PIN
     await cardManagementPage.viewCardPinForCard(lastFour, AUTH.pin)
   })
 })

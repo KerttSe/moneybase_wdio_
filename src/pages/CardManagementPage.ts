@@ -621,7 +621,37 @@ class CardManagementPage extends BasePage {
     }
   }
 
+  /**
+   * Finds any card that can show its PIN instead of a fixed card: swipes the Cards carousel to a card
+   * with View PIN, unfreezing a frozen card on the way. Card fixtures change between runs (cards get
+   * created, frozen or terminated), so the PIN specs no longer depend on one card number.
+   */
+  private async selectPinCapableCardAndroid() {
+    await this.openCardsTab()
+    for (let swipe = 0; swipe < 8; swipe += 1) {
+      const settled = await browser.waitUntil(async () =>
+        await this.viewPinButton.isDisplayed().catch(() => false) ||
+        await this.isUnfreezeActionVisibleAndroid() ||
+        await this.isFreezeActionVisibleAndroid(), { timeout: swipe === 0 ? 10000 : 3000, interval: 500 },
+      ).then(() => true).catch(() => false)
+      if (await this.viewPinButton.isDisplayed().catch(() => false)) return
+      if (settled && await this.isUnfreezeActionVisibleAndroid()) {
+        await this.unfreezeSmokeCard()
+        if (await this.viewPinButton.waitForDisplayed({ timeout: 10000 }).then(() => true).catch(() => false)) return
+      }
+      const { width, height } = await browser.getWindowRect()
+      await browser.execute('mobile: swipeGesture', {
+        left: Math.round(width * 0.1), top: Math.round(height * 0.15),
+        width: Math.round(width * 0.8), height: Math.round(height * 0.2),
+        direction: 'left', percent: 0.75,
+      }).catch(() => {})
+      await browser.pause(600)
+    }
+    throw new Error('No card with View PIN was found on the Cards tab (Android)')
+  }
+
   public async selectCardByLastFour(lastFour: string) {
+    if (browser.isAndroid && !lastFour) return this.selectPinCapableCardAndroid()
     await this.openCardsTab()
 
     if (browser.isIOS) {
