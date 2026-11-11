@@ -171,6 +171,8 @@ test('Android amount setup selects the threshold section explicitly and never sa
   Object.defineProperty(p, 'validationThresholdSection', { value: { $: () => preset } })
   p.tap = async el => events.push(el === preset ? 'threshold' : 'Done')
   p.openValidationAmountEditor = async () => events.push('open amount')
+  // The fallback for a sheet that exposes no field is not part of this path.
+  p.enterAmountIntoUnexposedModalAndroid = async () => false
   p.enterValidationCustomAmount = async value => events.push(value)
   p.verifyValidationAmountDoneEnabled = async enabled => events.push(enabled)
   p.validationAmountControls = async () => ({ input: { waitForDisplayed: async ({ reverse }) => events.push(reverse) }, done: {} })
