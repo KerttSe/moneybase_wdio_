@@ -212,7 +212,9 @@ export default class AuthenticationPage extends BasePage {
   // ── OTP screen ──────────────────────────────────────────────────────────
 
   get otpCountdownAndroid() {
-    return $('(//*[contains(@resource-id,"tvOtpCountdown")] | //*[contains(@resource-id,"tvResendTimer")] | //*[contains(@resource-id,"otp_countdown")] | //*[contains(@resource-id,"otpCountdown")])[1]')
+    // 2.27.0 also shows "A code was recently sent. Please try again in m:ss" (tvMobileVerificationLockCountdown)
+    // after a resend; that lock countdown is the resend cooldown too.
+    return $('(//*[contains(@resource-id,"tvOtpCountdown")] | //*[contains(@resource-id,"tvResendTimer")] | //*[contains(@resource-id,"otp_countdown")] | //*[contains(@resource-id,"otpCountdown")] | //*[contains(@resource-id,"tvMobileVerificationLockCountdown")])[1]')
   }
 
   get otpCountdownIOS() {
@@ -685,7 +687,8 @@ export default class AuthenticationPage extends BasePage {
 
   async resendOtpAndVerifyCooldown() {
     await this.waitForOtpCountdownShown(10000)
-    await this.waitForResendEnabled()
+    // The lock countdown after a recent code runs about two minutes.
+    await this.waitForResendEnabled(180000)
     const resend = browser.isIOS ? this.otpResendBtnIOS : await this.firstExisting(this.otpResendBtnAndroidCandidates)
     if (!resend) throw new Error('Resend OTP button was not found after cooldown')
     await this.tap(resend, 10000)
