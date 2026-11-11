@@ -1316,6 +1316,8 @@ export default class OnboardingPage extends BasePage {
     const change = passcodeWarningAction('change it')
     const keep = passcodeWarningAction('keep it')
     await this.enterApplicantPasscodeDigits('2580')
+    // Chained lookups fail at once while the parent dialog is still missing, so wait for the dialog first.
+    await alert.waitForDisplayed({ timeout: 10000 })
     await change.waitForDisplayed({ timeout: 10000 })
     await keep.waitForDisplayed({ timeout: 10000 })
     await change.click()
@@ -1337,6 +1339,8 @@ export default class OnboardingPage extends BasePage {
     const change = passcodeWarningAction('change it')
     const keep = passcodeWarningAction('keep it')
     await this.enterApplicantPasscodeDigits('2580')
+    // Chained lookups fail at once while the parent dialog is still missing, so wait for the dialog first.
+    await alert.waitForDisplayed({ timeout: 10000 })
     await change.waitForDisplayed({ timeout: 10000 })
     await keep.waitForDisplayed({ timeout: 10000 })
     await change.click()
@@ -1344,6 +1348,7 @@ export default class OnboardingPage extends BasePage {
     await this.passcodeScreen.waitForDisplayed({ timeout: 10000 })
 
     await this.enterApplicantPasscodeDigits('2580')
+    await alert.waitForDisplayed({ timeout: 10000 })
     await keep.waitForDisplayed({ timeout: 10000 })
     await keep.click()
     await alert.waitForDisplayed({ reverse: true, timeout: 10000 })

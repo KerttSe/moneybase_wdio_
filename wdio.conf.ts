@@ -20,8 +20,14 @@ const envPath = resolve(envBaseDir, '.env')
 dotenv.config({ path: envPath })
 
 // The business holder fixture is the secondary account (same phone), so CI only needs the MB_ALT_* secrets.
-for (const [target, source] of [['BH_MB_PHONE', 'MB_ALT_PHONE'], ['BH_MB_PIN', 'MB_ALT_PIN'], ['BH_OTP_PHONE', 'MB_ALT_OTP_PHONE']]) {
-  if (!process.env[target] && process.env[source]) process.env[target] = process.env[source]
+// CI passes the secondary account as AUTH_OTP_* (no MB_ALT_*), so fall back through both, like credentials.ts.
+for (const [target, ...sources] of [
+  ['BH_MB_PHONE', 'MB_ALT_PHONE', 'AUTH_OTP_MB_PHONE'],
+  ['BH_MB_PIN', 'MB_ALT_PIN', 'AUTH_OTP_MB_PIN'],
+  ['BH_OTP_PHONE', 'MB_ALT_OTP_PHONE', 'AUTH_OTP_OTP_PHONE'],
+]) {
+  const value = sources.map((name) => process.env[name]?.trim()).find(Boolean)
+  if (!process.env[target]?.trim() && value) process.env[target] = value
 }
 
 

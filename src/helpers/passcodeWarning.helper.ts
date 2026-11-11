@@ -15,6 +15,7 @@ export function passcodeWarningAction(label: 'ok' | 'change it' | 'keep it') {
 
 export async function dismissTooEasyPasscodeWarning() {
   const alert = passcodeWarning()
+  await alert.waitForDisplayed({ timeout: 10000 })
   const attribute = browser.isIOS ? '@label' : '@text'
   const message = alert.$(`.//*[contains(translate(${attribute},"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"too easy")]`)
   await message.waitForDisplayed({ timeout: 10000 })
