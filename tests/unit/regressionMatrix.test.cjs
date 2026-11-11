@@ -90,3 +90,18 @@ test('CI forwards fixtures and pool accounts to both lanes without a fixed auth 
   }
   assert.equal(categoryKeys.length, 7)
 })
+
+test('specs that lock AUTH_SECURITY are spaced so a lock cannot block the next one', () => {
+  const lanes = require(path.resolve('scripts/regressionLanes.cjs'))
+  const order = lanes.laneOrder('lane2')
+  const security = lanes.accounts.groups.authSecurity.map(name => `${name}.spec.ts`)
+  const positions = order.map((spec, index) => [spec, index]).filter(([spec]) => security.includes(spec))
+  for (let i = 0; i < positions.length - 1; i += 1) {
+    const [spec, index] = positions[i]
+    if (!lanes.LOCKING_SPECS.has(spec)) continue
+    const nextIndex = positions[i + 1][1]
+    // Only the lane's tail may run them closer, once no other group has specs left.
+    const othersLeft = order.slice(nextIndex + 1).some(name => !security.includes(name))
+    if (othersLeft || nextIndex < order.length - 2) assert.ok(nextIndex - index > lanes.LOCK_GAP, `${spec} → ${positions[i + 1][0]}`)
+  }
+})

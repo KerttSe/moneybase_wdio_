@@ -57,6 +57,11 @@ Rules:
   a lane left with one account can still run it back to back.
 - CI splits each lane into blocks of 15 specs that run one after another on
   one BrowserStack parallel.
+- Specs that lock AUTH_SECURITY (`incorrectOtp`, `incorrectPasscode`,
+  `otpLockout`, `passcodeLockout`) run after the account's other specs, and the
+  account's next spec waits at least 8 specs (about 40 minutes) after each of
+  them, so a lock that is not undone cannot fail the next one. Only the lane's
+  tail, with no other group left, runs them closer.
 - Specs moved to ROG, LAZ, MUM and POP were chosen as account-agnostic, but
   their fixtures on those accounts are not yet verified by a full run.
 
