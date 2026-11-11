@@ -21,7 +21,8 @@ export default class TransactionsPage extends BasePage {
   }
 
   private get showAllBtnAndroid() {
-    return $('//*[contains(@text,"Show All") or contains(@content-desc,"Show All") or contains(@text,"See All") or contains(@content-desc,"See All")]')
+    // 2.27.0 labels the Recent Activity link "View All".
+    return $('//*[contains(@text,"Show All") or contains(@content-desc,"Show All") or contains(@text,"See All") or contains(@content-desc,"See All") or @text="View All" or @content-desc="View All"]')
   }
 
   /* ========================
@@ -94,7 +95,13 @@ export default class TransactionsPage extends BasePage {
       await this.transactionsHeaderIOS.waitForExist({ timeout: 15000 })
       return
     }
-    await this.transactionsHeaderAndroid.waitForExist({ timeout: 15000 })
+    // The list screen title changed across builds; accept it once Home has gone and the list chrome shows.
+    await browser.waitUntil(async () => {
+      if (await this.transactionsHeaderAndroid.isExisting().catch(() => false)) return true
+      const homeShown = await $('//*[contains(@resource-id,"home_screen")]').isDisplayed().catch(() => false)
+      if (homeShown) return false
+      return await $('(//*[@text="Activity" or @text="Recent Activity" or @text="All Transactions" or @content-desc="Filter" or @content-desc="filter" or @text="Filter"])[1]').isExisting().catch(() => false)
+    }, { timeout: 15000, interval: 500, timeoutMsg: 'View All did not open the transactions list (Android)' })
   }
 
   async verifyTransactionListDisplayed() {
