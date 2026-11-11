@@ -1107,7 +1107,9 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get addressContinueBtnAndroid() {
-    return $('//android.view.View[.//android.widget.TextView[@text="Continue"]]')
+    // The first View that merely contains "Continue" is the whole form; its centre is the post code
+    // field, so tapping it reopened the keyboard instead of submitting. Target the button itself.
+    return $('(//android.widget.TextView[@text="Continue"]/ancestor-or-self::*[@clickable="true"][1] | //android.widget.TextView[@text="Continue"])[1]')
   }
 
   private async waitForAddressTransitionSignalAndroid(timeoutMs = 10000) {
@@ -1262,7 +1264,9 @@ export default class AddBeneficiaryPage extends BasePage {
         await browser.hideKeyboard().catch(() => {})
         await browser.pause(500)
       }
-      if (!await this.addressContinueBtnAndroid.isDisplayed().catch(() => false)) break
+      // Continue is laid out again only after the keyboard has gone.
+      const continueShown = await this.addressContinueBtnAndroid.waitForDisplayed({ timeout: 4000 }).then(() => true).catch(() => false)
+      if (!continueShown) break
       await this.tapAndroidCenterPoint(this.addressContinueBtnAndroid).catch(() => {})
       transitioned = await this.waitForAddressTransitionSignalAndroid(attempt === 2 ? 15000 : 8000)
     }
@@ -2171,6 +2175,13 @@ export default class AddBeneficiaryPage extends BasePage {
           if (addedBeneficiaryShown) {
             return true
           }
+        }
+
+        // 2.27.0 opens the new beneficiary's details (Pay / Delete) after a successful OTP.
+        const beneficiaryDetailsShown = await $('//*[contains(@resource-id,"beneficiaryDetails_screen")]').isDisplayed().catch(() => false)
+        if (beneficiaryDetailsShown) {
+          console.log('[waitForOtpAndSubmitAndroid] ✅ Success: beneficiary details screen opened')
+          return true
         }
 
         const homeShown = await this.homeRootAndroid.isDisplayed().catch(() => false)
