@@ -1051,9 +1051,15 @@ export default class OrdersPage extends BasePage {
       .then(() => true)
       .catch(() => false)
 
-    if (!typed) {
+    // The web view input can report a successful setValue without receiving the text
+    // ("Please enter at least 2 characters"), so check the field and type keys if it is empty.
+    const holdsQuery = async () => {
+      const value = await input.getText().catch(() => '') || await input.getAttribute('text').catch(() => '') || ''
+      return value.toUpperCase().includes(query.toUpperCase())
+    }
+    if (!typed || !await holdsQuery()) {
       const searchHint = await this.getFirstDisplayed(
-        [this.investSearchInputContainerAndroid, this.searchInputAndroidByHint],
+        [this.investSearchInputContainerAndroid, this.searchInputAndroidByHint, input],
         'Search Instrument hint (Android)'
       )
       await this.tapCenterOnElement(searchHint)
@@ -1066,7 +1072,8 @@ export default class OrdersPage extends BasePage {
       const trigger = await this.getFirstDisplayed([this.searchInputTriggerAndroid], 'Search trigger (Android)')
       await this.tapCenterOnElement(trigger)
     }
-    await browser.hideKeyboard().catch(() => {})
+    // hideKeyboard() presses Back when no keyboard is shown, which clears the web view search.
+    if (await browser.isKeyboardShown().catch(() => false)) await browser.hideKeyboard().catch(() => {})
 
     await browser.pause(700)
   }
@@ -1516,6 +1523,17 @@ export default class OrdersPage extends BasePage {
 
     const webviewOpened = await this.selectLimitOrderTypeViaWebviewAndroid()
     if (!webviewOpened.opened && !webviewOpened.selected) {
+      // On shorter screens the order type field sits below Trade Value; scroll the web view to reach it.
+      for (let attempt = 0; attempt < 3; attempt += 1) {
+        if (await this.orderTypeDropdownAndroid.isDisplayed().catch(() => false)) break
+        const { width, height } = await browser.getWindowRect()
+        await browser.execute('mobile: scrollGesture', {
+          left: Math.round(width * 0.1), top: Math.round(height * 0.35),
+          width: Math.round(width * 0.8), height: Math.round(height * 0.4),
+          direction: 'down', percent: 0.6,
+        }).catch(() => {})
+        await browser.pause(700)
+      }
       await this.waitForAnyDisplayed([this.orderTypeDropdownAndroid], 8000, 'Market order type dropdown (Android)')
       await this.tapFirstDisplayed([this.orderTypeDropdownAndroid], 'Market order type dropdown (Android)')
     }

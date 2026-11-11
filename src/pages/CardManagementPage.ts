@@ -629,7 +629,19 @@ class CardManagementPage extends BasePage {
     }
 
     const cardItem = $(`//android.widget.TextView[contains(@text,"${lastFour}")]/ancestor::android.view.View[@clickable="true"][1]`)
-    await cardItem.waitForExist({ timeout: 15000 })
+    // Accounts collect cards over time (physical card creation adds one per run), so the wanted card
+    // can sit further along the Cards carousel; swipe through it until the card shows.
+    for (let swipe = 0; swipe < 8; swipe += 1) {
+      if (await cardItem.waitForExist({ timeout: swipe === 0 ? 8000 : 2000 }).then(() => true).catch(() => false)) break
+      const { width, height } = await browser.getWindowRect()
+      await browser.execute('mobile: swipeGesture', {
+        left: Math.round(width * 0.1), top: Math.round(height * 0.15),
+        width: Math.round(width * 0.8), height: Math.round(height * 0.2),
+        direction: 'left', percent: 0.75,
+      }).catch(() => {})
+      await browser.pause(600)
+    }
+    await cardItem.waitForExist({ timeout: 5000, timeoutMsg: `Card ··${lastFour} was not found in the Cards carousel (Android)` })
     await this.tap(cardItem)
   }
 
