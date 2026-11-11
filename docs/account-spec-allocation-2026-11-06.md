@@ -42,8 +42,8 @@ and `.github/workflows/wdio-regression.yml` use it. CI no longer sets
 | 1 | mum | MUM | 7 | SWIFT (`Swift Beneficiary`), FX, orders |
 | 1 | onboarding | none (fresh applicant) | 14 | Does not log in |
 | 2 | secondary | KER | 13 | Add funds, beneficiary with real OTP, account switch, salary, business statements, price plan |
-| 2 | laz | LAZ | 8 | Home search, P2P, recent payees, beneficiary validation, account picker, appearance |
-| 2 | pop | POP | 9 | Invest discover, support, Storyly, EUR wallet, individual statements |
+| 2 | laz | LAZ | 9 | Home search, P2P, recent payees, beneficiary validation, account picker, appearance, support chat (Chat does not open on POP) |
+| 2 | pop | POP | 8 | Invest discover, support, Storyly, EUR wallet, individual statements |
 | 2 | businessHolder | `BH_*` (KER phone, business SED00004) / `BC_ADMIN_SELF_ASSIGN_PHONE` | 10 | Business card admin; shares KER's phone, so the lane spaces it from KER specs |
 | 2 | authSecurity | `AUTH_SECURITY_*` | 8 | Own account; `incorrectOtp`, `incorrectPasscode`, `otpLockout`, `passcodeLockout` run after the rest |
 | 2 | personalDetails | `PD_*` | 2 | Own account |
