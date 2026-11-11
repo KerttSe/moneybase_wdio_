@@ -18,6 +18,10 @@ describe('Onboarding - account creation', function () {
       context = await onboardingPage.prepareSmokeOnboarding()
     }))
 
+    it(`OB-1.1a [TC3138/TC3139] Passcode screen rejects prohibited codes and warns on an easy one (${platform})`, smokeStep(async function () {
+      await onboardingPage.verifyPasscodeRulesOnPasscodeScreen()
+    }))
+
     it(`OB-1.2 Enter PIN and complete OTP verification (${platform})`, smokeStep(async function () {
       await onboardingPage.verifySmokeOnboardingMobile(context)
     }))

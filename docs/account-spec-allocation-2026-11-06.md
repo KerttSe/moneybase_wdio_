@@ -312,7 +312,6 @@ Assigned files under src/tests
 - `onboarding.nameRequired.spec.ts`
 - `onboarding.otpResend.spec.ts`
 - `onboarding.otpRetry.spec.ts`
-- `onboarding.passcodePolicy.spec.ts`
 - `onboarding.previousEmployment.spec.ts`
 - `onboarding.shortName.spec.ts`
 - `onboarding.spec.ts`

@@ -1298,6 +1298,31 @@ export default class OnboardingPage extends BasePage {
     }
   }
 
+  /**
+   * TC3138/TC3139 inside the main onboarding run: on the passcode screen reached by OB-1.1, prohibited
+   * codes are rejected and an easy code offers "change it" / "keep it". Choosing "change it" leaves the
+   * flow on the passcode screen, so the run continues with its own PIN.
+   */
+  async verifyPasscodeRulesOnPasscodeScreen() {
+    // iOS raises these warnings as native alerts, which onboarding.spec auto-accepts for permissions.
+    if (browser.isIOS) return
+    await this.passcodeScreen.waitForDisplayed({ timeout: 30000 })
+    for (const pin of ['1111', '1234']) {
+      await this.enterApplicantPasscodeDigits(pin)
+      await dismissTooEasyPasscodeWarning()
+      await this.passcodeScreen.waitForDisplayed({ timeout: 10000 })
+    }
+    const alert = passcodeWarning()
+    const change = passcodeWarningAction('change it')
+    const keep = passcodeWarningAction('keep it')
+    await this.enterApplicantPasscodeDigits('2580')
+    await change.waitForDisplayed({ timeout: 10000 })
+    await keep.waitForDisplayed({ timeout: 10000 })
+    await change.click()
+    await alert.waitForDisplayed({ reverse: true, timeout: 10000 })
+    await this.passcodeScreen.waitForDisplayed({ timeout: 10000 })
+  }
+
   async verifyTooEasyPasscodesRejected() {
     await this.prepareSmokeOnboarding()
     for (const pin of ['1111', '1234']) {
@@ -2978,7 +3003,9 @@ export default class OnboardingPage extends BasePage {
   async verifyApplicantOtpAllowsRetry() {
     const error = browser.isIOS
       ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label CONTAINS[c] "Entered code is incorrect" OR label CONTAINS[c] "OTP code is wrong")')
-      : $('//*[contains(@text,"Entered code is incorrect") or contains(@text,"OTP code is wrong") or contains(@text,"Invalid code")]')
+      // The backend may answer a wrong code with "Too many attempts…" instead of "Entered code is incorrect";
+      // both come as the same inline error under the code field, which is what TC3106 checks.
+      : $('(//*[contains(@resource-id,"tvMobileVerificationError")] | //*[contains(@text,"Entered code is incorrect") or contains(@text,"OTP code is wrong") or contains(@text,"Invalid code")])[1]')
     await this.otpInput.click()
     await this.otpInput.addValue('000000')
     if (browser.isIOS) await error.waitForExist({ timeout: 15000 })

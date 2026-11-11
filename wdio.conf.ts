@@ -375,7 +375,6 @@ const regressionLaneSpecs = (lane: string) => regressionLanes.laneOrder(lane).ma
 const nativeAlertAssertionSpecs = new Set([
   'authentication.changePasscodeCancel.spec.ts',
   'profile.businessSettings.spec.ts',
-  'onboarding.passcodePolicy.spec.ts',
   'personalDetails.nameEditConfirmation.spec.ts',
 ])
 
