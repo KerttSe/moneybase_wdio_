@@ -15,6 +15,8 @@ describe('Personal Details — read-only verification (TC1535-1546)', function (
   stopAfterFailedStep()
 
   before(async function () {
+    // The PD account asks to re-verify after its name was edited; close that screen and continue.
+    loginPage.closeVerificationRequired = true
     await loginPage.loginFlow(PD_AUTH)
     await home.ensureIndividualAccount()
   })

@@ -1102,10 +1102,28 @@ get payRootAndroid() {
   await this.postOtpContinueBtn.click().catch(() => {})
 }
 
+/** Opt-in per spec: close the post-login "Verification is required" screen instead of failing. */
+closeVerificationRequired = false
+
+/** Closes the post-login "Verification is required" screen with its Back action; true when it was shown. */
+async dismissVerificationRequiredIfShownAndroid() {
+  const title = $('//*[contains(@text,"Verification is required") or contains(@content-desc,"Verification is required")]')
+  if (!await title.isDisplayed().catch(() => false)) return false
+  const back = $('(//*[@text="Back" or @content-desc="Back"]/ancestor-or-self::*[@clickable="true"][1])[last()]')
+  if (await back.isDisplayed().catch(() => false)) await this.tap(back)
+  else await browser.back()
+  await title.waitForDisplayed({ reverse: true, timeout: 10000 }).catch(() => {})
+  return true
+}
+
 /** 2) we awaiting for  Home, if card exist ApplePay in-app) */
 async waitForPostOtpNextStep(timeout = 30000) {
   await this.waitForLoginOutcome(async () => {
     if (browser.isAndroid && await this.isHomeLoaded()) return true
+
+    // After a name edit the PD account asks to re-verify ("Verification is required / Verify Now / Back").
+    // Only specs that opt in (Personal Details) leave it with Back; elsewhere it stays a failure.
+    if (browser.isAndroid && this.closeVerificationRequired && await this.dismissVerificationRequiredIfShownAndroid()) return false
 
     await this.dismissPostOtpPopupAndroidOnce()
     if (browser.isIOS) {
