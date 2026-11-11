@@ -219,9 +219,12 @@ class PersonalDetailsPage extends BasePage {
   async verifyMobileEditCanBeCancelled() {
     const mobile = browser.isIOS
       ? $('-ios predicate string:type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND (name CONTAINS[c] "editMobile" OR label BEGINSWITH[c] "Mobile Number" OR label BEGINSWITH[c] "Phone Number")')
-      : $('(//*[contains(@resource-id,"editMobile") or contains(@resource-id,"editPhone")] | //*[@text="Mobile number" or @text="Phone number"]/ancestor::*[@clickable="true"][1])[1]')
+      // 2.27.0: the mobile row (layout_mobile_number) edits through its pencil icon, labelled "Mobile Number".
+      : $('(//*[contains(@resource-id,"layout_mobile_number")]//*[contains(@resource-id,"icon_pencil")] | //*[contains(@resource-id,"editMobile") or contains(@resource-id,"editPhone")] | //*[@text="Mobile number" or @text="Mobile Number" or @text="Phone number"]/ancestor::*[@clickable="true"][1])[1]')
     await mobile.waitForDisplayed({ timeout: 10000 })
-    const original = await mobile.getText()
+    // The pencil icon has no text, so compare the number field itself on Android.
+    const numberField = browser.isIOS ? mobile : $('(//*[contains(@resource-id,"textInputLayout_mobileNumber") and not(contains(@resource-id,"CountryCode"))] | //*[contains(@resource-id,"editMobile")])[1]')
+    const original = await numberField.getText().catch(() => '')
     await this.tap(mobile, 10000)
 
     const alert = browser.isIOS
@@ -229,14 +232,15 @@ class PersonalDetailsPage extends BasePage {
       : $('//*[@resource-id="android:id/parentPanel" or contains(@resource-id,":id/parentPanel") or @class="android.app.Dialog"]')
     const attribute = browser.isIOS ? '@label' : '@text'
     const lower = `translate(${attribute},"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz")`
-    const message = alert.$(`.//*[contains(${lower},"verif") and (contains(${lower},"mobile") or contains(${lower},"number"))]`)
+    // 2.27.0 says "Changing your mobile number will require you to validate your new number."
+    const message = alert.$(`.//*[(contains(${lower},"verif") or contains(${lower},"valid")) and (contains(${lower},"mobile") or contains(${lower},"number"))]`)
     await message.waitForDisplayed({ timeout: 10000 })
     const cancel = alert.$(`.//*[translate(${attribute},"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz")="cancel"]`)
     await this.tap(cancel, 10000)
     await alert.waitForDisplayed({ reverse: true, timeout: 10000 })
     await this.verifyPersonalDetailsScreenVisible()
     await mobile.waitForDisplayed({ timeout: 10000 })
-    if (await mobile.getText() !== original) throw new Error('TC2977: cancelling should leave the mobile row unchanged')
+    if (await numberField.getText().catch(() => '') !== original) throw new Error('TC2977: cancelling should leave the mobile row unchanged')
   }
 
   async editLastName(value: string, timeout = 10000) {

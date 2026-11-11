@@ -1059,6 +1059,8 @@ get payRootAndroid() {
   async tapContinueAfterOtp() {
     await this.waitForLoginOutcome(async () => {
       if (browser.isAndroid && await this.isHomeLoaded()) return true
+      // Opt-in specs (Personal Details) may meet the re-verification screen here, before Continue.
+      if (browser.isAndroid && this.closeVerificationRequired && await this.dismissVerificationRequiredIfShownAndroid()) return false
       await this.dismissPostOtpPopupAndroidOnce()
       if (browser.isIOS) {
         await this.dismissIOSAlerts()
