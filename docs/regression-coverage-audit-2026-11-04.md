@@ -1,6 +1,6 @@
 # Moneybase regression coverage audit
 
-Snapshot: 2026-11-04, local workspace (113 spec files). Published baseline:
+Snapshot: 2026-11-04, local workspace (113 spec files). Case statuses refreshed 2026-11-12; the workspace now has 112 spec files in `src/tests/{Cards,Core,Invest,Payments}`. Published baseline:
 [Moneybase main at 0ff9c01](https://github.com/KerttSe/moneybase_wdio_/commit/0ff9c01f3c3e3df969c9d6f94d49c46a60a5cfbf) (66 spec files).
 The counts below describe the **local workspace**, not a claim about the published commit or a successful full regression.
 
@@ -8,30 +8,33 @@ The [row-by-row audit](regression-matrix-row-audit-2026-11-04.md) lists all 519 
 
 ## Findings
 
-- **101 of 519 distinct source test cases** have matched UI evidence. There are **18 UI asserted** and **83 partial**.
-- **69 additional cases** have checks awaiting BrowserStack verification. The required-name spec strengthens KYC-011, which was already counted as partial.
-- 28 cases have reusable setup. Another 321 are pending attribution.
-- Of 198 P1 cases, 13 are UI asserted, 52 partial, 28 awaiting BrowserStack, 18 reuse only and 87 pending attribution.
+Statuses refreshed 2026-11-12 from BrowserStack runs (Android and iOS) since 2026-11-09. Rule: an Awaiting BrowserStack or Partial case counts as covered (UI asserted) when every spec cited for it passed on BrowserStack at least once.
+
+- **160 of 519 distinct source test cases** have matched UI evidence. There are **155 UI asserted** and **5 partial**.
+- **8 cases** still await BrowserStack verification: the passcode rules now in `onboarding.spec.ts` step OB-1.1a, `changePasscodeCancel` and `recoveryQuestions` (CI secrets), `otpRetry` (backend locks the OTP field), `cardManagement.pinTimeout` and `businessWallet.cancelCreation` (fixes pushed, blocked by staging login).
+- 5 cases stay partial because their specs have not passed on BrowserStack yet: `authentication.incorrectPasscode` and `authentication.passcodeLockout` (CI still uses the old locked security account) and `cardManagement.viewPin` (blocked by staging login).
+- 30 cases have reusable setup only. This includes AUTH-026 and PROFILE-015, downgraded from partial because `authentication.changePasscode.spec.ts` was removed in 52cb1494. Another 321 are pending attribution.
+- Of 198 P1 cases, 83 are UI asserted, 4 partial, 5 awaiting BrowserStack, 19 reuse only and 87 pending attribution.
 
 | Feature | Matrix | UI asserted | Partial | Awaiting BrowserStack | Reuse only | Unmapped | P1 not fully UI-asserted |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Authentication | 56 | 2 | 18 | 6 | 1 | 29 | 32 |
-| KYC and Onboarding | 47 | 1 | 11 | 4 | 6 | 25 | 22 |
-| Launch and Lifecycle | 11 | 4 | 2 | 0 | 1 | 4 | 2 |
-| Dashboard and Home | 35 | 1 | 8 | 5 | 2 | 19 | 10 |
-| Payments and Beneficiaries | 85 | 7 | 19 | 11 | 3 | 45 | 22 |
-| Cards and Business Cards | 92 | 2 | 13 | 5 | 6 | 66 | 30 |
-| Wallets and Statements | 45 | 1 | 5 | 20 | 1 | 18 | 20 |
-| Profile and Settings | 45 | 0 | 6 | 12 | 0 | 27 | 17 |
+| Authentication | 56 | 15 | 5 | 5 | 2 | 29 | 22 |
+| KYC and Onboarding | 47 | 15 | 0 | 1 | 6 | 25 | 14 |
+| Launch and Lifecycle | 11 | 6 | 0 | 0 | 1 | 4 | 1 |
+| Dashboard and Home | 35 | 14 | 0 | 0 | 2 | 19 | 4 |
+| Payments and Beneficiaries | 85 | 37 | 0 | 0 | 3 | 45 | 10 |
+| Cards and Business Cards | 92 | 19 | 0 | 1 | 6 | 66 | 25 |
+| Wallets and Statements | 45 | 25 | 0 | 1 | 1 | 18 | 7 |
+| Profile and Settings | 45 | 17 | 0 | 0 | 1 | 27 | 6 |
 | Crypto | 49 | 0 | 0 | 0 | 3 | 46 | 16 |
-| WebViews | 23 | 0 | 1 | 0 | 2 | 20 | 7 |
-| Support | 19 | 0 | 0 | 6 | 0 | 13 | 5 |
+| WebViews | 23 | 1 | 0 | 0 | 2 | 20 | 6 |
+| Support | 19 | 6 | 0 | 0 | 0 | 13 | 2 |
 | Joint Accounts | 12 | 0 | 0 | 0 | 3 | 9 | 2 |
-| **Total** | **519** | **18** | **83** | **69** | **28** | **321** | **185** |
+| **Total** | **519** | **155** | **5** | **8** | **30** | **321** | **115** |
 
-A spec can support several source test cases. [Business card relink](../src/tests/businessCard.relink.spec.ts) provides evidence for four cases spanning entry permissions, another user's card, wallet selection and relinking. [Lifecycle regression](../src/tests/lifecycle.regression.spec.ts) provides evidence for five cases spanning cold launch, session restoration and short/long backgrounding. The audit counts each source case once across all specs and platforms.
+A spec can support several source test cases. [Business card relink](../src/tests/Cards/business-cards/businessCard.relink.spec.ts) provides evidence for four cases spanning entry permissions, another user's card, wallet selection and relinking. [Lifecycle regression](../src/tests/Core/auth/lifecycle.regression.spec.ts) provides evidence for five cases spanning cold launch, session restoration and short/long backgrounding. The audit counts each source case once across all specs and platforms.
 
-The Account Picker, applicant passcode policy and logout journeys share one setup per feature and exercise eight distinct case IDs. The individual Wallet Details spec now opens the statement report and exercises two additional export-option cases. [Account Picker](../src/tests/accountPicker.search.spec.ts), [Passcode policy](../src/tests/onboarding.passcodePolicy.spec.ts), [Logout](../src/tests/profile.logout.spec.ts), [Statements](../src/tests/walletDetails.statementIndividual.spec.ts)
+The Account Picker, applicant passcode policy and logout journeys share one setup per feature and exercise eight distinct case IDs. The individual Wallet Details spec now opens the statement report and exercises two additional export-option cases. [Account Picker](../src/tests/Core/home-page/accountPicker.search.spec.ts), [Passcode policy](../src/tests/Core/onboarding/onboarding.spec.ts) step OB-1.1a, [Logout](../src/tests/Core/profile/profile.logout.spec.ts), [Statements](../src/tests/Payments/wallets/walletDetails.statementIndividual.spec.ts)
 
 ## Existing regression by CI block
 
@@ -54,21 +57,21 @@ Invest has six local specs. Portfolio, BMW buy order, price alert creation/delet
 
 | Case | Found in existing code | Gap or limit |
 | --- | --- | --- |
-| AUTH-001, AUTH-016, AUTH-018, AUTH-055 | [Phone validation](../src/tests/authentication.phoneValidation.spec.ts) requires the authentication screen and keypad. [Incorrect PIN](../src/tests/authentication.incorrectPasscode.spec.ts) requires feedback after individual key taps, and [OTP countdown](../src/tests/authentication.otpCountdown.spec.ts) requires the next flow's Resend control. [View PIN](../src/tests/cardManagement.viewPin.spec.ts) requires a passcode prompt and the revealed card PIN. | Scope is limited to the visible screen, feedback and transition. Per-digit values, keypad lock and the exact caller-supplied text remain unverified. |
-| KYC-011, KYC-015 | [Invalid names](../src/tests/onboarding.invalidNames.spec.ts) checks Next with valid names and rejection of invalid input. [Employment fields](../src/tests/onboarding.employmentFields.spec.ts) checks visible Company and Occupation for Employed. [Email consent](../src/tests/onboarding.emailTerms.spec.ts) exercises the positive route to email. | Empty-name combinations and individual required employment fields remain unverified. |
-| PAY-082, PAY-085 | [Auto Top-Up](../src/tests/autoTopUp.spec.ts) requires the Add Funds tile and opens the flow. [Partial salary](../src/tests/salary.partialValidation.spec.ts) requires the iOS field with the exact €0 placeholder. | Flag-off behavior and the salary currency rule with a non-EUR active wallet remain unverified. |
-| CARD-085 | [Terminate business card](../src/tests/businessCard.terminate.spec.ts) creates, freezes and terminates a new virtual card and checks the Inactive tab. | Transaction history is not independently verified. The comparison with a frozen card that has transactions remains open. |
-| CARD-012 / TC3399 | [Assign card](../src/tests/assignBusinessCard.spec.ts) verifies Continue becomes enabled on Android and proceeds to the next step. | Covers the positive state for the existing wallet context. No disabled-state or explicit wallet-selection assertion. |
-| CARD-015 / TC3402 | [Assign card](../src/tests/assignBusinessCard.spec.ts) submits the Android assignee address without field edits and checks success and a pending card. | Indirect evidence that the address step can complete. Field-by-field prefill and country mapping remain unverified. |
-| PROFILE-007 / TC2961 | [Relink](../src/tests/businessCard.relink.spec.ts) and [Card Limits](../src/tests/businessCard.cardLimits.spec.ts) require the Administration row and open Manage Cards. | Only the visible branch on the configured business account is exercised. |
-| PROFILE-015 / TC2969 | [Change Passcode](../src/tests/authentication.changePasscode.spec.ts) requires the Settings row to proceed and confirms successful change. | The configured account exercises one branch. Flag states and visibility direction remain unverified. |
-| PAY-068 / TC3339 | [FX regression](../src/tests/fxExchange.regression.spec.ts) taps the iOS currency wallet row, waits for dismissal and checks the applied currency. | Evidence applies to the live FX picker. The standalone native currency list and its dismissal timing remain unverified. |
-| PAY-001 / TC3272 | [P2P transfer](../src/tests/bankTransfer.p2p.individual.spec.ts) submits by slider and checks the outgoing amount; iOS also waits for details. | Zero fee and terminal status for a uniquely identified new transaction are not asserted. |
-| WALLET-001 / TC2910 | [Wallet Manager](../src/tests/addFundsBankTransferWalletManager.spec.ts) checks configured currencies and a displayed balance. | Does not compare every row against a seeded wallet inventory or validate each balance/icon. |
-| CARD-080, CARD-082 / TC3379, TC3381 | [Relink](../src/tests/businessCard.relink.spec.ts) changes an existing wallet on another user's card and checks updated Spend From. | The observable other-user permission is covered; loader and backend from/to keys are not. |
-| CARD-019, CARD-083 / TC3406, TC3382 | [Card limits](../src/tests/businessCard.cardLimits.spec.ts) asserts the same limit title for both card types. | No exact body comparison or proof that a blocked row stays unselected. |
-| PROFILE-024 / TC2978 | [Personal Details](../src/tests/personalDetails.spec.ts) edits names, taps Save and reads back visible values. | Values can still be in the unsaved form; no navigation pop or reopen/persistence assertion. |
-| WEB-001 / TC2887 | [Card top-up](../src/tests/addfunds.spec.ts) asserts the deposit success outcome. | It does not drive a specific gateway callback URL or check the amount on the success screen. |
+| AUTH-001, AUTH-016, AUTH-018, AUTH-055 | [Phone validation](../src/tests/Core/auth/authentication.phoneValidation.spec.ts) requires the authentication screen and keypad. [Incorrect PIN](../src/tests/Core/auth/authentication.incorrectPasscode.spec.ts) requires feedback after individual key taps, and [OTP countdown](../src/tests/Core/auth/authentication.otpCountdown.spec.ts) requires the next flow's Resend control. [View PIN](../src/tests/Cards/card-management/cardManagement.viewPin.spec.ts) requires a passcode prompt and the revealed card PIN. | Scope is limited to the visible screen, feedback and transition. Per-digit values, keypad lock and the exact caller-supplied text remain unverified. |
+| KYC-011, KYC-015 | [Invalid names](../src/tests/Core/onboarding/onboarding.invalidNames.spec.ts) checks Next with valid names and rejection of invalid input. [Employment fields](../src/tests/Core/onboarding/onboarding.employmentFields.spec.ts) checks visible Company and Occupation for Employed. [Email consent](../src/tests/Core/onboarding/onboarding.emailTerms.spec.ts) exercises the positive route to email. | Empty-name combinations and individual required employment fields remain unverified. |
+| PAY-082, PAY-085 | [Auto Top-Up](../src/tests/Payments/add-funds/autoTopUp.spec.ts) requires the Add Funds tile and opens the flow. [Partial salary](../src/tests/Payments/salary/salary.partialValidation.spec.ts) requires the iOS field with the exact €0 placeholder. | Flag-off behavior and the salary currency rule with a non-EUR active wallet remain unverified. |
+| CARD-085 | [Terminate business card](../src/tests/Cards/business-cards/businessCard.terminate.spec.ts) creates, freezes and terminates a new virtual card and checks the Inactive tab. | Transaction history is not independently verified. The comparison with a frozen card that has transactions remains open. |
+| CARD-012 / TC3399 | [Assign card](../src/tests/Cards/business-cards/assignBusinessCard.spec.ts) verifies Continue becomes enabled on Android and proceeds to the next step. | Covers the positive state for the existing wallet context. No disabled-state or explicit wallet-selection assertion. |
+| CARD-015 / TC3402 | [Assign card](../src/tests/Cards/business-cards/assignBusinessCard.spec.ts) submits the Android assignee address without field edits and checks success and a pending card. | Indirect evidence that the address step can complete. Field-by-field prefill and country mapping remain unverified. |
+| PROFILE-007 / TC2961 | [Relink](../src/tests/Cards/business-cards/businessCard.relink.spec.ts) and [Card Limits](../src/tests/Cards/business-cards/businessCard.cardLimits.spec.ts) require the Administration row and open Manage Cards. | Only the visible branch on the configured business account is exercised. |
+| PROFILE-015 / TC2969 | Change Passcode (removed in 52cb1494) requires the Settings row to proceed and confirms successful change. | The configured account exercises one branch. Flag states and visibility direction remain unverified. |
+| PAY-068 / TC3339 | [FX regression](../src/tests/Payments/fx-exchange/fxExchange.regression.spec.ts) taps the iOS currency wallet row, waits for dismissal and checks the applied currency. | Evidence applies to the live FX picker. The standalone native currency list and its dismissal timing remain unverified. |
+| PAY-001 / TC3272 | [P2P transfer](../src/tests/Payments/bank-transfers/bankTransfer.p2p.individual.spec.ts) submits by slider and checks the outgoing amount; iOS also waits for details. | Zero fee and terminal status for a uniquely identified new transaction are not asserted. |
+| WALLET-001 / TC2910 | [Wallet Manager](../src/tests/Payments/add-funds/addFundsBankTransferWalletManager.spec.ts) checks configured currencies and a displayed balance. | Does not compare every row against a seeded wallet inventory or validate each balance/icon. |
+| CARD-080, CARD-082 / TC3379, TC3381 | [Relink](../src/tests/Cards/business-cards/businessCard.relink.spec.ts) changes an existing wallet on another user's card and checks updated Spend From. | The observable other-user permission is covered; loader and backend from/to keys are not. |
+| CARD-019, CARD-083 / TC3406, TC3382 | [Card limits](../src/tests/Cards/business-cards/businessCard.cardLimits.spec.ts) asserts the same limit title for both card types. | No exact body comparison or proof that a blocked row stays unselected. |
+| PROFILE-024 / TC2978 | [Personal Details](../src/tests/Core/profile/personalDetails.spec.ts) edits names, taps Save and reads back visible values. | Values can still be in the unsaved form; no navigation pop or reopen/persistence assertion. |
+| WEB-001 / TC2887 | [Card top-up](../src/tests/Payments/add-funds/addfunds.spec.ts) asserts the deposit success outcome. | It does not drive a specific gateway callback URL or check the amount on the success screen. |
 
 Do not map Invest watchlist/BMW orders to Crypto, joint card management to joint artwork, or ordinary Invest navigation to webview persistence. Do not map onboarding name validation to Profile name validation. Uncalled Onfido helpers are reuse, not an executed test.
 

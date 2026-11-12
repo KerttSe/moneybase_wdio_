@@ -11,6 +11,27 @@ The initial expansion tracked 19 new specs and 41 named checks across 26 source 
 This is source-code coverage, not 26 passing device tests and not completion of
 all 519 cases. Repeated checkpoints for one source ID count as one matrix case.
 
+## BrowserStack Verification (2026-11-12)
+
+Android BrowserStack runs since 2026-11-09 (Pixel 9, Android 15, app 2.27.0): **102 of 112 specs passed at least once**, 10 have not yet. 19 specs also passed on iOS BrowserStack in the same window. Per-spec detail is on the `Spec Status 2026-11-12` sheet of `regression_automation_matrix_detailed_full_2026-11-12.xlsx`.
+
+Matrix effect: UI asserted 155, partial 5, awaiting BrowserStack 8, reuse only 30, unmapped 321.
+
+| Spec not yet green on Android | Blocker |
+| --- | --- |
+| `authentication.changePasscodeCancel.spec.ts` | CI secret AUTH_SECURITY_* still points to the old locked account. "Change passcode" match fixed in ea48fa6b, not yet verified. |
+| `authentication.incorrectPasscode.spec.ts` | CI secret AUTH_SECURITY_* still points to the old locked account. Attempts-message wait fixed in ea48fa6b, not yet verified. |
+| `authentication.passcodeLockout.spec.ts` | CI secret AUTH_SECURITY_* still points to the old locked account; not yet run on CRO40021. |
+| `authentication.recoveryQuestions.spec.ts` | AUTH_RECOVERY_MB_PHONE is not set in CI (and not in local .env). |
+| `businessWallet.cancelCreation.spec.ts` | BH_MB_PHONE missing in CI; fallback to AUTH_OTP_* fixed in 01e9acba, not yet verified. |
+| `cardManagement.pinTimeout.spec.ts` | Now picks any card that can show its PIN (4e505929, ROG account); blocked by staging login, not yet verified. |
+| `cardManagement.viewPin.spec.ts` | Now picks any card that can show its PIN (4e505929, ROG account); blocked by staging login, not yet verified. |
+| `onboarding.otpRetry.spec.ts` | Backend locks the OTP field after repeated wrong codes; inline-error lookup fixed, still red. |
+| `orders.regression.spec.ts` | Skipped on Android as a known issue (Market/Limit order types missing), d7d547e6. |
+| `physicalcardcreation.spec.ts` | BrowserStack Device Security / card OTP "Too many attempts"; expected to pass on a real device. |
+
+`onboarding.passcodePolicy.spec.ts` was merged into `onboarding.spec.ts` step OB-1.1a; `authentication.changePasscode.spec.ts` was removed in 52cb1494.
+
 ## Implemented Checks
 
 | Source TC | Matrix ID | Row | Spec | Platforms | Assertion / Limit |
