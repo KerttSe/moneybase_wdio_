@@ -1,0 +1,117 @@
+# Example for the regression workflow in the CI repo: pick test folders (multi-select checkboxes)
+# or one subfolder (dropdown). Merge the `inputs` and the "Resolve specs" step into the existing workflow;
+# keep its own checkout / setup / BrowserStack steps.
+name: Regression
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: Platform to run
+        type: choice
+        default: all
+        options: [all, android, ios]
+      bs_app_ios:
+        description: BrowserStack iOS app id (bs://...). Overrides BS_APP_IOS secret.
+        type: string
+        required: false
+      bs_app_android:
+        description: BrowserStack Android app id (bs://...). Overrides BS_APP_ANDROID secret.
+        type: string
+        required: false
+      cards:
+        description: Cards (business-cards, card-management)
+        type: boolean
+        default: true
+      core:
+        description: Core (auth, home-page, onboarding, profile, support)
+        type: boolean
+        default: true
+      invest:
+        description: Invest (discover-section, orders, portfolio, watchlist)
+        type: boolean
+        default: true
+      payments:
+        description: Payments (add-funds, bank-transfers, beneficiaries, fx-exchange, salary, transactions, wallets)
+        type: boolean
+        default: true
+      subfolder:
+        description: Only this subfolder (overrides the checkboxes above)
+        type: choice
+        default: '—'
+        options:
+          - '—'
+          - Cards/business-cards
+          - Cards/card-management
+          - Core/auth
+          - Core/home-page
+          - Core/onboarding
+          - Core/profile
+          - Core/support
+          - Invest/discover-section
+          - Invest/orders
+          - Invest/portfolio
+          - Invest/watchlist
+          - Payments/add-funds
+          - Payments/bank-transfers
+          - Payments/beneficiaries
+          - Payments/fx-exchange
+          - Payments/salary
+          - Payments/transactions
+          - Payments/wallets
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve specs
+        id: specs
+        env:
+          SUBFOLDER: ${{ inputs.subfolder }}
+          CARDS: ${{ inputs.cards }}
+          CORE: ${{ inputs.core }}
+          INVEST: ${{ inputs.invest }}
+          PAYMENTS: ${{ inputs.payments }}
+        run: |
+          folders=()
+          if [ "$SUBFOLDER" != "—" ]; then
+            folders+=("$SUBFOLDER")
+          else
+            [ "$CARDS" = "true" ] && folders+=(Cards)
+            [ "$CORE" = "true" ] && folders+=(Core)
+            [ "$INVEST" = "true" ] && folders+=(Invest)
+            [ "$PAYMENTS" = "true" ] && folders+=(Payments)
+          fi
+          if [ ${#folders[@]} -eq 0 ]; then
+            echo "::error::Select at least one folder or a subfolder"; exit 1
+          fi
+          args=""
+          for f in "${folders[@]}"; do
+            [ -d "src/tests/$f" ] || { echo "::error::src/tests/$f does not exist"; exit 1; }
+            # Quoted so WDIO expands the glob, not the shell (no globstar in Actions bash).
+            args="$args --spec 'src/tests/$f/**/*.spec.ts'"
+          done
+          echo "Running: ${folders[*]}"
+          echo "args=$args" >> "$GITHUB_OUTPUT"
+
+      # ... existing setup steps (node, npm ci, BrowserStack env) ...
+
+      - name: Run Android
+        if: inputs.platform != 'ios'
+        run: npx wdio run ./wdio.conf.ts ${{ steps.specs.outputs.args }}
+        env:
+          PLATFORM: android
+          BROWSERSTACK: 'true'
+          BS_APP_ANDROID: ${{ inputs.bs_app_android || secrets.BS_APP_ANDROID }}
+          # ... existing secrets ...
+
+      - name: Run iOS
+        if: inputs.platform != 'android'
+        run: npx wdio run ./wdio.conf.ts ${{ steps.specs.outputs.args }}
+        env:
+          PLATFORM: ios
+          BROWSERSTACK: 'true'
+          BS_APP_IOS: ${{ inputs.bs_app_ios || secrets.BS_APP_IOS }}
+          # ... existing secrets ...
