@@ -1055,6 +1055,9 @@ export default class OnboardingPage extends BasePage {
       await browser.pause(1000)
     }
 
+    // A local device keeps the last spec's login (installed app, noReset): leave it for a fresh Welcome.
+    if (browser.isAndroid) await this.leaveStoredLoginAndroid()
+
     const entryButton = await this.visibleWelcomeEntryButton(3000)
     if (entryButton) {
       await this.tapWelcomeControl(entryButton)
@@ -1084,6 +1087,21 @@ export default class OnboardingPage extends BasePage {
         (await this.registerScreen.isExisting().catch(() => false)) ||
         (await this.mobileInput.isExisting().catch(() => false)),
       { timeout: 30000, interval: 500, timeoutMsg: 'register_screen or mobile input did not appear' }
+    )
+  }
+
+  private async leaveStoredLoginAndroid() {
+    const logout = this.byId('login_button_logout')
+    if (!(await logout.waitForDisplayed({ timeout: 15000 }).then(() => true).catch(() => false))) return
+
+    await this.tapAndroidCenterPoint(logout)
+    const confirm = this.byId('logout_button_continue')
+    if (await confirm.waitForDisplayed({ timeout: 10000 }).then(() => true).catch(() => false)) {
+      await this.tapAndroidCenterPoint(confirm)
+    }
+    await browser.waitUntil(
+      async () => !(await logout.isDisplayed().catch(() => false)),
+      { timeout: 20000, interval: 500, timeoutMsg: 'Stored login did not log out before onboarding' },
     )
   }
 
