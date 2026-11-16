@@ -277,6 +277,7 @@ class BusinessCardTerminatePage extends BasePage {
   }
 
   public async verifyManageCardsSearchRequiresEveryWord() {
+    if (browser.isAndroid) return this.verifyManageCardsSearchRequiresEveryWordAndroid()
     const words = BH_SELF_NAME.toLowerCase().trim().split(/\s+/)
     if (words.length < 2) throw new Error('Manage Cards requires a seeded cardholder with at least two name tokens')
 
@@ -294,6 +295,30 @@ class BusinessCardTerminatePage extends BasePage {
     const noResults = browser.isIOS
       ? $('-ios predicate string:label IN {"No results", "No cards found", "No results found"}')
       : $('//*[@text="No results" or @text="No cards found" or @text="No results found"]')
+    await noResults.waitForDisplayed({ timeout: 10000 })
+  }
+
+  /**
+   * Uses whichever ACTIVE card the list shows first: terminate specs remove the admin's own virtual card,
+   * so a fixed cardholder makes this search check depend on run order.
+   */
+  private async verifyManageCardsSearchRequiresEveryWordAndroid() {
+    const activeRow = '//*[contains(@resource-id,"manageBusinessCards_screen")]//*[@clickable="true"][.//*[@text="ACTIVE"]]'
+    await $(`(${activeRow})[1]`).waitForDisplayed({ timeout: 20000, timeoutMsg: 'No ACTIVE card in Manage Cards' })
+    const texts = await $$(`(${activeRow})[1]//android.widget.TextView`).map((el) => el.getText())
+    const holder = texts.find((text) => /^\p{L}+(?:\s+\p{L}+)+$/u.test(text.trim()))?.trim()
+    if (!holder) throw new Error(`Could not read a two-word cardholder name from the first ACTIVE card: ${texts.join(' | ')}`)
+
+    const [first, second] = holder.toLowerCase().split(/\s+/)
+    const card = $(`(//*[contains(@resource-id,"manageBusinessCards_screen")]//*[@clickable="true"][.//android.widget.TextView[@text="${holder}"]])[1]`)
+    const search = $('(//*[contains(@resource-id,"manageBusinessCards_input_search")]//android.widget.EditText | //android.widget.EditText[contains(@resource-id,"search") or @text="Search"])[1]')
+    await search.waitForDisplayed({ timeout: 10000 })
+    await search.setValue(`${first} ${second}`)
+    await card.waitForDisplayed({ timeout: 10000, timeoutMsg: `"${first} ${second}" did not find ${holder}` })
+    await search.setValue(`${second} zz-unmatched-token`)
+    await card.waitForDisplayed({ reverse: true, timeout: 10000, timeoutMsg: 'A search with one unmatched word still showed the card' })
+
+    const noResults = $('//*[@text="No results" or @text="No cards found" or @text="No results found"]')
     await noResults.waitForDisplayed({ timeout: 10000 })
   }
 
