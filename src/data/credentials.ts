@@ -105,6 +105,15 @@ const getAuthBySlot = () => {
 
 export const AUTH: AuthData = getAuthBySlot()
 
+// Business-cards owner (DON00003) is the secondary login; CI may not pass BH_* or AUTH_OTP_*, so fall back to it.
+export const BH_AUTH: AuthData = {
+  ...secondaryAuth,
+  country: process.env.BH_MB_COUNTRY || secondaryAuth.country,
+  phone: process.env.BH_MB_PHONE || secondaryAuth.phone,
+  pin: process.env.BH_MB_PIN || process.env.MB_ALT_PIN || process.env.AUTH_OTP_MB_PIN || '2468',
+  otpPhone: process.env.BH_OTP_PHONE || secondaryAuth.otpPhone,
+}
+
 export const AUTH_SECURITY: AuthData = {
   country: process.env.MB_COUNTRY || 'Malta',
   get phone() {

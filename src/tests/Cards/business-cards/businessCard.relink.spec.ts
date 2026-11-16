@@ -1,5 +1,6 @@
 import { LoginPage } from '../../../pages/LoginPage'
 import BusinessCardRelinkPage from '../../../pages/BusinessCardRelinkPage'
+import { BH_AUTH } from '../../../data/credentials'
 
 const OTHER_USER = process.env.BH_OTHER_USER_NAME || 'Dmytri Kerteusz'
 
@@ -7,10 +8,9 @@ describe('Business Cards - Relink Card to Existing Wallet', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
 
   const loginPage = new LoginPage()
-  const country = process.env.BH_MB_COUNTRY || process.env.MB_COUNTRY || 'Malta'
-  const phone = process.env.BH_MB_PHONE
-  const pin = process.env.BH_MB_PIN || '2468'
-  if (!phone) throw new Error('BH_MB_PHONE is not set')
+  const country = BH_AUTH.country
+  const phone = BH_AUTH.phone
+  const pin = BH_AUTH.pin
 
   before(async function () {
     await loginPage.loginFlow({ country, phone, pin })
