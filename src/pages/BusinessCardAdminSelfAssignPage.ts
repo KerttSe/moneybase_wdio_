@@ -367,16 +367,53 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
       throw new Error('Admin self-assign popup did not open after tapping Add Card (iOS)')
     }
 
-    const addCardBtn = await this.addCardBtnAndroid.waitForExist({ timeout: 10000 }).then(
-      () => this.addCardBtnAndroid,
-      async () => {
-        await this.addCardBtnAndroidByText.waitForExist({ timeout: 5000 })
-        return this.addCardBtnAndroidByText
-      },
-    )
-    await this.tapElementCenterAndroid(addCardBtn).catch(async () => {
-      await this.tap(addCardBtn)
-    })
+    // Cards sync late: the "Add Card" placeholder found first can be replaced by the real card carousel,
+    // so a tap on its old position hits a card. Re-find the button each attempt and confirm the popup.
+    const popupShown = async (timeout: number) => browser.waitUntil(
+      async () => await this.adminSelfAssignAlertAndroid.isDisplayed().catch(() => false),
+      { timeout, interval: 500 },
+    ).then(() => true).catch(() => false)
+
+    const addCardExists = async () =>
+      (await this.addCardBtnAndroid.isExisting().catch(() => false)) ||
+      (await this.addCardBtnAndroidByText.isExisting().catch(() => false))
+
+    await browser.pause(3000)
+    for (let attempt = 0; attempt < 4; attempt += 1) {
+      // With cards on the account, "Add Card" is the last carousel slot and off screen: swipe to it.
+      for (let swipe = 0; swipe < 8 && !(await addCardExists()); swipe += 1) {
+        await this.swipeCardCarouselLeftAndroid()
+      }
+      const addCardBtn = await this.addCardBtnAndroid.waitForExist({ timeout: 15000 }).then(
+        () => this.addCardBtnAndroid,
+        async () => {
+          await this.addCardBtnAndroidByText.waitForExist({ timeout: 10000 })
+          return this.addCardBtnAndroidByText
+        },
+      )
+      await this.tapElementCenterAndroid(addCardBtn).catch(async () => {
+        await this.tap(addCardBtn)
+      })
+      if (await popupShown(10000)) return
+      // A card details screen may have opened instead; go back to the Cards list before retrying.
+      if (!(await this.addCardBtnAndroid.isExisting().catch(() => false)) && !(await this.addCardBtnAndroidByText.isExisting().catch(() => false))) {
+        await browser.back().catch(() => {})
+      }
+      await browser.pause(2000)
+    }
+  }
+
+  private async swipeCardCarouselLeftAndroid() {
+    const { width, height } = await browser.getWindowSize()
+    const y = Math.round(height * 0.25)
+    await browser.action('pointer', { parameters: { pointerType: 'touch' } })
+      .move({ x: Math.round(width * 0.85), y })
+      .down()
+      .pause(100)
+      .move({ duration: 400, x: Math.round(width * 0.15), y })
+      .up()
+      .perform()
+    await browser.pause(800)
   }
 
   public async selectVirtualCardType() {
@@ -442,7 +479,7 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
         (await this.adminSelfAssignAlertAndroid.isDisplayed().catch(() => false)) &&
         (await this.adminSelfAssignAlertMessageAndroid.isDisplayed().catch(() => false)),
       {
-        timeout: 20000,
+        timeout: 30000,
         interval: 500,
         timeoutMsg: 'Admin self-assign popup anchor/message did not appear after tapping Add Card (Android)',
       },

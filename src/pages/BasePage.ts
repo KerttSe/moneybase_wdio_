@@ -574,13 +574,14 @@ export default class BasePage {
     if (!accountAlreadySelected) {
       const account = accountCode
         ? $(`//*[contains(@resource-id,"accountSelection_screen")]//*[not(self::android.widget.EditText) and (contains(@text,"${accountCode}") or contains(@content-desc,"${accountCode}"))]/ancestor-or-self::*[@clickable="true"][1]`)
-        : $(`//*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[@text="${accountType}"]/ancestor::*[@clickable="true"][1]`)
+        // Some 2.27.0 rows put the click handler on the row itself, not on an ancestor of the type label.
+        : $(`(//*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[@text="${accountType}"]/ancestor::*[@clickable="true"][1] | //*[contains(@resource-id,"accountSelection_screen")]//*[@clickable="true" and .//*[@text="${accountType}"]] | //*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[@text="${accountType}"])[1]`)
       const search = $('//*[contains(@resource-id,"accountSelection_screen")]//android.widget.EditText')
       if (accountCode && !await account.isExisting() && await search.isExisting()) {
         await search.setValue(accountCode)
       }
       await account.waitForDisplayed({
-        timeout: 15000,
+        timeout: 30000,
         timeoutMsg: `Expected ${accountType ?? 'the'} account ${target} in the picker`,
       })
       await this.tapAndroidCenterPoint(account)

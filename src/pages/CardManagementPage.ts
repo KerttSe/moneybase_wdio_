@@ -411,21 +411,28 @@ class CardManagementPage extends BasePage {
       return
     }
 
-    const visible = await browser.waitUntil(
-      async () =>
-        (await this.isFreezeActionVisibleAndroid()) ||
-        (await this.isUnfreezeActionVisibleAndroid()),
-      { timeout: 12000, interval: 500 }
-    ).then(() => true).catch(() => false)
-    if (visible) return
+    const controlsVisible = async () =>
+      (await this.isFreezeActionVisibleAndroid()) || (await this.isUnfreezeActionVisibleAndroid())
 
-    await this.tap(this.firstCardItemAndroid, 8000).catch(() => {})
-    await browser.waitUntil(
-      async () =>
-        (await this.isFreezeActionVisibleAndroid()) ||
-        (await this.isUnfreezeActionVisibleAndroid()),
-      { timeout: 20000, interval: 500, timeoutMsg: 'Freeze/Unfreeze action was not visible on Android' }
-    )
+    // Cards sync slowly on staging: the tab first shows only the "Add New Card" placeholder and the
+    // real cards arrive later. Wait in rounds and reopen the tab between rounds to trigger a refresh.
+    for (let round = 0; round < 4; round += 1) {
+      if (await browser.waitUntil(controlsVisible, { timeout: round === 0 ? 20000 : 25000, interval: 500 }).then(() => true).catch(() => false)) return
+
+      await this.tap(this.firstCardItemAndroid, 8000).catch(() => {})
+      if (await browser.waitUntil(controlsVisible, { timeout: 8000, interval: 500 }).then(() => true).catch(() => false)) return
+
+      await markBrowserStackStep(`Cards not synced yet (round ${round + 1}), reopening Cards tab`)
+      await this.reopenCardsTabAndroid()
+    }
+    throw new Error('Freeze/Unfreeze action was not visible on Android (cards did not sync within ~2.5 min)')
+  }
+
+  private async reopenCardsTabAndroid() {
+    await this.tap($('~Home'), 8000).catch(() => {})
+    await browser.pause(2000)
+    await this.tap(this.cardsTab, 10000).catch(() => {})
+    await this.waitForCardsLoaded().catch(() => {})
   }
 
   private async waitForAndroidSelectedCardLoaded(timeoutMs = 15000) {

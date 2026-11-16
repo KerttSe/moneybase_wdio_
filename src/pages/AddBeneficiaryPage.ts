@@ -1401,19 +1401,22 @@ export default class AddBeneficiaryPage extends BasePage {
       this.newBtnAndroidByAddId,
     ]
 
-    for (const candidate of candidates) {
-      const shown = await candidate.waitForDisplayed({ timeout: 3000 }).catch(() => false)
-      if (!shown) continue
+    // The Pay screen loads slowly on staging: the sheet can take several seconds after the tap.
+    const sheetOpened = async () =>
+      (await this.newTransferTitleAndroid.isDisplayed().catch(() => false)) ||
+      (await this.newTransferAddBeneficiaryBtnAndroid.isDisplayed().catch(() => false)) ||
+      (await this.addBeneficiaryBtnAndroid.isDisplayed().catch(() => false))
 
-      await this.tap(candidate)
-      await browser.pause(500)
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      for (const candidate of candidates) {
+        const shown = await candidate.waitForDisplayed({ timeout: attempt === 0 ? 10000 : 4000 }).catch(() => false)
+        if (!shown) continue
 
-      const opened =
-        (await this.newTransferTitleAndroid.isDisplayed().catch(() => false)) ||
-        (await this.newTransferAddBeneficiaryBtnAndroid.isDisplayed().catch(() => false)) ||
-        (await this.addBeneficiaryBtnAndroid.isDisplayed().catch(() => false))
-
-      if (opened) return
+        await this.tap(candidate)
+        if (await browser.waitUntil(sheetOpened, { timeout: 10000, interval: 500 }).then(() => true).catch(() => false)) return
+        break
+      }
+      await browser.pause(2000)
     }
 
     throw new Error('New transfer button did not appear/open on Android Pay screen')
