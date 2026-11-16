@@ -164,7 +164,12 @@ const markBrowserStackFailure = async (error: Error) => {
     ? /\nError: ([^\n]+)/.exec(error.message)?.[1]
     : undefined
   const failure = specLoadMessage ? new Error(specLoadMessage) : error
-  const { reason, httpCode } = classifyFailureReason(failure)
+  // The visible screen tells a staging lock or error apart from a broken locator.
+  const screenText = await Promise.resolve()
+    .then(() => browser.getPageSource())
+    .then((source) => [...String(source).matchAll(/\b(?:text|content-desc|label)="([^"]+)"/g)].map((m) => m[1]).join(' '))
+    .catch(() => '')
+  const { reason, httpCode } = classifyFailureReason(failure, screenText)
   const shortMsg = failure.message?.slice(0, 150) ?? ''
   const lastStep = getLastBrowserStackStep()
 
