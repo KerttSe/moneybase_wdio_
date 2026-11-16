@@ -291,6 +291,14 @@ export default class BasePage {
       return true
     }
 
+    // 2.27.0 can open Google Pay's "Choose a card to add" list after login; it has no close button.
+    const gpayCardPicker = $('//*[contains(@resource-id,"clSelectCardGooglePay")]')
+    if (await gpayCardPicker.isDisplayed().catch(() => false)) {
+      await browser.back().catch(() => {})
+      await gpayCardPicker.waitForDisplayed({ reverse: true, timeout: 7000 }).catch(() => {})
+      return true
+    }
+
     const gpayFullScreenShown = await this.androidGooglePayScreen.isDisplayed().catch(() => false)
     if (gpayFullScreenShown) {
       const closeShown = await this.androidGooglePayCloseBtn.isDisplayed().catch(() => false)

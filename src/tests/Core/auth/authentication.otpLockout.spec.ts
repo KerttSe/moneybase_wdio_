@@ -2,17 +2,20 @@ import { browser } from '@wdio/globals'
 import { authenticationPage } from '../../../pages/AuthenticationPage'
 import { loginPage, LoginOtpRejectedError } from '../../../pages/LoginPage'
 import { AUTH_POOL } from '../../../data/credentials'
+import { lockoutAuth } from '../../../data/lockoutAuth'
 
 describe('Authentication - Security', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 300000))
 
   const [primaryAccount, secondaryAccount] = AUTH_POOL
-  const pin = process.env.AUTH_SECURITY_MB_PIN || '2468'
+  let pin = process.env.AUTH_SECURITY_MB_PIN || '2468'
 
   beforeEach(async function () {
     if (!browser.isIOS || process.env.AUTH_SECURITY_RUN_OTP_LOCKOUT !== 'true') return this.skip()
-    const phone = process.env.AUTH_SECURITY_MB_PHONE
-    if (!phone) throw new Error('AUTH_SECURITY_MB_PHONE is not set')
+    // Taken after the skip check, so a skipped platform does not use up a pooled account.
+    const lockout = lockoutAuth('otpLockout', { consume: true })
+    const phone = lockout.phone
+    pin = lockout.pin
     if (phone === primaryAccount.phone || phone === '99011190') {
       throw new Error('Authentication OTP specs must use a secondary/security account, not primary')
     }

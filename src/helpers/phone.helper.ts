@@ -1,5 +1,5 @@
 import { randomInt } from 'node:crypto'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 
 type GeneratedMtPhone = {
@@ -35,7 +35,78 @@ export const saveOnboardedAccount = (phone: GeneratedMtPhone, pin: string) => {
 
   writeFileSync(path, `${JSON.stringify(account, null, 2)}\n`)
   console.log(`[Onboarding] Saved onboarded account to ${path}: ${phone.otpPhone}`)
+  withPoolLock(() => {
+    const pool = readPool()
+    if (!pool.some((a) => a.phone === account.phone)) writePool([...pool, account])
+  })
 }
+
+/* ---------- onboarded account pool ----------
+ * Every finished onboarding adds its account here. Auth specs that lock an account take a fresh one
+ * (consume) so a lock never hits a shared login; specs that do not lock reuse any unlocked one. */
+
+type PooledAccount = OnboardedAccount & { usedAt?: string; usedBy?: string }
+
+const onboardedPoolPath = () =>
+  resolve(process.cwd(), process.env.ONBOARDED_POOL_FILE || '.generated/onboarded-pool.json')
+
+const readPool = (): PooledAccount[] => {
+  const path = onboardedPoolPath()
+  if (existsSync(path)) {
+    try {
+      const data = JSON.parse(readFileSync(path, 'utf8')) as unknown
+      if (Array.isArray(data)) return data as PooledAccount[]
+    } catch {}
+    return []
+  }
+  // First use: seed the pool with the latest single onboarded account, if any.
+  const latest = readLatestOnboardedAccount()
+  return latest ? [latest] : []
+}
+
+const writePool = (pool: PooledAccount[]) => {
+  const path = onboardedPoolPath()
+  mkdirSync(dirname(path), { recursive: true })
+  writeFileSync(path, `${JSON.stringify(pool, null, 2)}\n`)
+}
+
+// WDIO workers are separate processes: a lock directory keeps two specs from taking the same account.
+const withPoolLock = <T>(fn: () => T): T => {
+  const lock = `${onboardedPoolPath()}.lock`
+  mkdirSync(dirname(lock), { recursive: true })
+  const deadline = Date.now() + 10000
+  for (;;) {
+    try {
+      mkdirSync(lock)
+      break
+    } catch {
+      if (Date.now() > deadline) {
+        rmSync(lock, { recursive: true, force: true })
+        continue
+      }
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 50)
+    }
+  }
+  try {
+    return fn()
+  } finally {
+    rmSync(lock, { recursive: true, force: true })
+  }
+}
+
+export const takeOnboardedAccount = (usedBy: string, { consume }: { consume: boolean }): OnboardedAccount | null =>
+  withPoolLock(() => {
+    const pool = readPool()
+    const account = pool.find((a) => !a.usedAt)
+    if (!account) return null
+    if (consume) {
+      account.usedAt = new Date().toISOString()
+      account.usedBy = usedBy
+      writePool(pool)
+    }
+    console.log(`[Pool] ${usedBy} ${consume ? 'took' : 'reuses'} onboarded account ${account.otpPhone}; ${pool.filter((a) => !a.usedAt).length} unused left`)
+    return account
+  })
 
 export const readLatestOnboardedAccount = (): OnboardedAccount | null => {
   const path = onboardedAccountsPath()

@@ -1,15 +1,18 @@
 import { browser } from '@wdio/globals'
 import { authenticationPage } from '../../../pages/AuthenticationPage'
 import { AUTH_POOL } from '../../../data/credentials'
+import { lockoutAuth } from '../../../data/lockoutAuth'
 
 describe('Authentication - Security', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 300000))
 
   const [primaryAccount, secondaryAccount] = AUTH_POOL
-  const phone = process.env.AUTH_SECURITY_MB_PHONE
-  const pin = process.env.AUTH_SECURITY_MB_PIN || '2468'
+  // A fresh onboarded account per run (falls back to AUTH_SECURITY when the pool is empty).
+  const lockout = lockoutAuth('passcodeLockout', { consume: true })
+  const phone = lockout.phone
+  const pin = lockout.pin
   const otpPhone =
-    process.env.AUTH_SECURITY_OTP_PHONE ||
+    lockout.otpPhone ||
     (phone ? `+356 ${phone.slice(0, 4)} ${phone.slice(4)}` : '')
   if (!phone) throw new Error('AUTH_SECURITY_MB_PHONE is not set')
   if (phone === primaryAccount.phone || phone === '99011190') {

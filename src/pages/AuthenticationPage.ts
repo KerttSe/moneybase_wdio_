@@ -20,7 +20,8 @@ export default class AuthenticationPage extends BasePage {
   }
 
   private keypadDigitAndroid(d: string) {
-    return this.androidId(`keypad_text_${d}`)
+    // The in-app passcode keypads (pin_screen, Reset Passcode's pinKeyboardView) have digit texts but no keypad_text_* ids.
+    return $(`(//*[@resource-id="com.moneybase.qa:id/keypad_text_${d}"] | //*[contains(@resource-id,"keypad_text_${d}")] | //*[contains(@resource-id,"pin_screen") or contains(@resource-id,"pinKeyboardView")]//*[@text="${d}" or @content-desc="${d}"])[1]`)
   }
 
   private keypadDigitIOS(d: string) {
@@ -173,7 +174,7 @@ export default class AuthenticationPage extends BasePage {
   // The passcode check can spin a loader for several seconds before the remaining-attempts message.
   async waitForRemainingPasscodeAttempts(timeout = 30000) {
     const candidates = browser.isIOS ? [this.passcodeErrorIOS] : this.passcodeErrorAndroidCandidates
-    const remainingAttempts = /\b[1-9]\d*\s+(?:(?:remaining|more)\s+)?(?:attempts?|tries)\s*(?:left|remaining)\b|\b(?:remaining\s+(?:attempts?|tries)|(?:attempts?|tries)\s+(?:left|remaining))\s*:?\s*[1-9]\d*\b|\b[1-9]\d*\s+(?:remaining|more)\s+(?:attempts?|tries)\b/i
+    const remainingAttempts = /\b[1-9]\d*\s+(?:(?:remaining|more)\s+)?(?:attempts?|(?:re)?tries)\s*(?:left|remaining)\b|\b(?:remaining\s+(?:attempts?|(?:re)?tries)|(?:attempts?|(?:re)?tries)\s+(?:left|remaining))\s*:?\s*[1-9]\d*\b|\b[1-9]\d*\s+(?:remaining|more)\s+(?:attempts?|(?:re)?tries)\b/i
     await browser.waitUntil(async () => {
       for (const candidate of candidates) {
         if (!(await candidate.isDisplayed().catch(() => false))) continue
@@ -680,8 +681,8 @@ export default class AuthenticationPage extends BasePage {
     await this.enterPin(currentPin)
     const newPasscode = browser.isIOS
       ? $('-ios predicate string:label IN {"New Passcode", "Enter New Passcode", "Enter your new passcode"} OR name == "New Passcode"')
-      : $('//*[@text="New Passcode" or @text="Enter New Passcode" or @text="Enter your new passcode" or @content-desc="New Passcode"]')
-    await newPasscode.waitForDisplayed({ timeout: 15000 })
+      : $('//*[@text="New Passcode" or @text="Enter New Passcode" or @text="Enter your new passcode" or @text="Create a new passcode" or @content-desc="New Passcode"]')
+    await newPasscode.waitForDisplayed({ timeout: 20000 })
     await this.enterPin('0000')
     await dismissTooEasyPasscodeWarning()
     await newPasscode.waitForDisplayed({ timeout: 10000 })
