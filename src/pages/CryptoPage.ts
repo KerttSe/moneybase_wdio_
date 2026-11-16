@@ -62,6 +62,21 @@ class CryptoPage extends BasePage {
     await this.scrollDashboardToTop()
   }
 
+  /** CRYPTO-001: the avatar in the Crypto header opens the account menu for the current account. */
+  async verifyAccountMenuFromAvatar(accountCode: string) {
+    await this.scrollDashboardToTop()
+    await this.tap(this.id('crypto_button_userAvatar'))
+    await this.id('more_screen').waitForDisplayed({ timeout: 15000, timeoutMsg: 'CRYPTO-001: the avatar did not open the account menu' })
+    await $(`//*[contains(@text,"${accountCode}")]`).waitForDisplayed({ timeout: 10000, timeoutMsg: `CRYPTO-001: the account menu does not show ${accountCode}` })
+    for (const item of ['Personal Details', 'Settings', 'Log out']) {
+      await this.text(item).waitForExist({ timeout: 5000, timeoutMsg: `CRYPTO-001: the account menu has no "${item}"` })
+    }
+    const close = $('//*[@content-desc="Close"]')
+    if (await close.isDisplayed().catch(() => false)) await this.tap(close)
+    else await browser.back()
+    await this.dashboard.waitForDisplayed({ timeout: 15000 })
+  }
+
   /** CRYPTO-009/014 and the empty portfolio state on an account without crypto. */
   async verifyEmptyPortfolioState() {
     await this.text('Buy Crypto').waitForDisplayed({ timeout: 15000 })
@@ -215,11 +230,45 @@ class CryptoPage extends BasePage {
     await browser.waitUntil(async () => (await this.amountText()).startsWith('BTC'), {
       timeout: 10000, interval: 500, timeoutMsg: 'CRYPTO-032: swap did not switch the input to BTC',
     })
-    if ((await this.amountText()) !== estimate) {
-      throw new Error(`CRYPTO-032: swapped input "${await this.amountText()}" should equal the previous estimate "${estimate}"`)
+    // The live price can tick between reading the estimate and the swap, so allow a 1% drift.
+    const btc = (t: string) => Number(t.replace(/[^\d.]/g, ''))
+    const swapped = await this.amountText()
+    if (!(btc(estimate) > 0) || Math.abs(btc(swapped) - btc(estimate)) / btc(estimate) > 0.01) {
+      throw new Error(`CRYPTO-032: swapped input "${swapped}" should match the previous estimate "${estimate}"`)
     }
     if (!/^≈\s*€/.test(await this.estimateText())) throw new Error('CRYPTO-032: after swap the estimate should be in EUR')
     await this.tap($('//*[@content-desc="Swap currencies"]'))
+  }
+
+  // Real key presses: setValue pastes the whole string and skips the field's input filter.
+  private async typeAmount(value: string) {
+    await this.amountInput.clearValue()
+    await this.amountInput.click()
+    await browser.pause(500)
+    for (const ch of value) {
+      await browser.pressKeyCode(ch === '.' ? 56 : 7 + Number(ch))
+      await browser.pause(200)
+    }
+    await browser.pause(800)
+  }
+
+  /** CRYPTO-035: the amount keeps 2 decimals in EUR and the asset's 8 decimals in BTC. */
+  async verifyAmountPrecision() {
+    await this.typeAmount('12.3456')
+    if ((await this.amountText()) !== '€ 12.34') throw new Error(`CRYPTO-035: EUR amount should stop at 2 decimals, got "${await this.amountText()}"`)
+    await this.typeAmount('1')
+    await browser.hideKeyboard().catch(() => {})
+    await this.tap($('//*[@content-desc="Swap currencies"]'))
+    await browser.waitUntil(async () => (await this.amountText()).startsWith('BTC'), {
+      timeout: 10000, interval: 500, timeoutMsg: 'CRYPTO-035: swap did not switch the input to BTC',
+    })
+    await this.typeAmount('0.123456789')
+    if ((await this.amountText()) !== 'BTC 0.12345678') throw new Error(`CRYPTO-035: BTC amount should stop at 8 decimals, got "${await this.amountText()}"`)
+    await browser.hideKeyboard().catch(() => {})
+    await this.tap($('//*[@content-desc="Swap currencies"]'))
+    await browser.waitUntil(async () => (await this.amountText()).startsWith('€'), {
+      timeout: 10000, interval: 500, timeoutMsg: 'CRYPTO-035: swap did not switch the input back to EUR',
+    })
   }
 
   /** CRYPTO-044/045: the wallet picker lists All Wallets and each currency; picking USD sets it. */
@@ -364,6 +413,42 @@ class CryptoPage extends BasePage {
     await this.openBitcoinDetailsFromAllCrypto()
     await this.tap(this.starButton)
     await browser.pause(1500)
+  }
+
+  private addToggle(pair: string, state: 'Add' | 'Remove') {
+    return $(state === 'Add' ? `//*[@content-desc="Add ${pair} to watchlist"]` : `//*[@content-desc="Remove ${pair} from watchlist"]`)
+  }
+
+  private async openAddToWatchlist(query: string) {
+    await this.openWatchlistScreen()
+    await this.tap(this.id('watchlist_button_add_to_watchlist'))
+    await this.id('add_to_watchlist_screen').waitForDisplayed({ timeout: 15000, timeoutMsg: 'Add to watchlist screen did not open' })
+    const search = this.id('add_to_watchlist_input_search')
+    await search.click()
+    await search.setValue(query)
+    await browser.hideKeyboard().catch(() => {})
+    await browser.pause(1500)
+  }
+
+  /** CRYPTO-047: on Add to watchlist a pair toggles between + and checked, and the watchlist follows. */
+  async verifyAddToWatchlistToggle() {
+    const pair = 'Ethereum / Euro'
+    await this.openAddToWatchlist('eth')
+    await this.tap(this.addToggle(pair, 'Add'))
+    await this.addToggle(pair, 'Remove').waitForDisplayed({ timeout: 10000, timeoutMsg: `CRYPTO-047: ${pair} did not switch to added` })
+    await this.tap(this.addToggle(pair, 'Remove'))
+    await this.addToggle(pair, 'Add').waitForDisplayed({ timeout: 10000, timeoutMsg: `CRYPTO-047: a second tap did not remove ${pair}` })
+    await this.tap(this.addToggle(pair, 'Add'))
+    await this.addToggle(pair, 'Remove').waitForDisplayed({ timeout: 10000 })
+    await this.verifyWatchlistHasOnScreen('Ethereum', `CRYPTO-047: ${pair} is not on the watchlist after adding it`)
+
+    await this.openAddToWatchlist('eth')
+    await this.tap(this.addToggle(pair, 'Remove'))
+    await this.addToggle(pair, 'Add').waitForDisplayed({ timeout: 10000 })
+    await this.openWatchlistScreen()
+    await this.watchlistRow('Bitcoin').waitForDisplayed({ timeout: 15000 })
+    await this.watchlistRow('Ethereum').waitForDisplayed({ reverse: true, timeout: 10000, timeoutMsg: `CRYPTO-047: ${pair} stayed on the watchlist after removing it` })
+    await this.backToDashboard()
   }
 
   /** CRYPTO-049/048: search filters the watchlist; swipe left and Remove deletes the item. */
