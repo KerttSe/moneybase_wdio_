@@ -105,8 +105,23 @@ class CryptoPage extends BasePage {
 
   /** CRYPTO-014: an empty watchlist shows its message and a Browse Instruments call to action. */
   async verifyEmptyWatchlistWidget() {
-    await this.scrollTo(this.text('Your watchlist is empty.'))
-    await this.scrollTo(this.text('Browse Instruments'), 2)
+    // The dashboard widget hides itself once a watchlist is emptied in-session, so check the Watchlist screen.
+    await this.openWatchlistScreen()
+    await this.text('Your watchlist is empty.').waitForDisplayed({ timeout: 15000, timeoutMsg: 'CRYPTO-014: empty watchlist message missing' })
+    await this.text('Browse Instruments').waitForDisplayed({ timeout: 5000, timeoutMsg: 'CRYPTO-014: Browse Instruments call to action missing' })
+    await this.backToDashboard()
+  }
+
+  private async verifyWatchlistEmptyOnScreen(msg: string) {
+    await this.openWatchlistScreen()
+    await this.text('Your watchlist is empty.').waitForDisplayed({ timeout: 15000, timeoutMsg: msg })
+    await this.backToDashboard()
+  }
+
+  private async verifyWatchlistHasOnScreen(name: string, msg: string) {
+    await this.openWatchlistScreen()
+    await this.watchlistRow(name).waitForDisplayed({ timeout: 15000, timeoutMsg: msg })
+    await this.backToDashboard()
   }
 
   /** CRYPTO-007/024: the valuation currency picker offers EUR, GBP and USD only. */
@@ -127,6 +142,8 @@ class CryptoPage extends BasePage {
   }
 
   async openAllCrypto() {
+    if (await this.allCryptoScreen.isDisplayed().catch(() => false)) return
+    if (!(await this.dashboard.isDisplayed().catch(() => false))) await this.backToDashboard()
     await this.scrollTo(this.allCryptoViewAll, 8)
     await this.tap(this.allCryptoViewAll)
     await this.allCryptoScreen.waitForDisplayed({ timeout: 15000 })
@@ -227,6 +244,149 @@ class CryptoPage extends BasePage {
   async closeBuy() {
     await browser.back()
     await this.detailScreen.waitForDisplayed({ timeout: 10000 })
+  }
+
+  /* ---------- sort, watchlist star and the Watchlist screen ---------- */
+
+  private get watchlistScreen() { return this.id('watchlist_screen') }
+  private get watchlistSearch() { return this.id('watchlist_input_search') }
+  private watchlistRows() { return $$('//*[contains(@resource-id,"watchlist_widget_item")]') }
+  private watchlistRow(name: string) {
+    return $(`(//*[starts-with(@content-desc,"${name}:")]/ancestor-or-self::*[@clickable="true"][1] | //*[starts-with(@content-desc,"${name}:")])[1]`)
+  }
+
+  private async backToDashboard() {
+    for (let i = 0; i < 4 && !(await this.dashboard.isDisplayed().catch(() => false)); i += 1) {
+      await browser.back()
+      await browser.pause(1200)
+    }
+    await this.dashboard.waitForDisplayed({ timeout: 10000 })
+  }
+
+  async openWatchlistScreen() {
+    await this.backToDashboard()
+    await this.scrollDashboardToTop()
+    await this.tap(this.id('crypto_dashboard_market_btn'))
+    await this.watchlistScreen.waitForDisplayed({ timeout: 15000 })
+  }
+
+  private async swipeRowLeft(row: ChainableElement) {
+    const loc = await row.getLocation()
+    const size = await row.getSize()
+    const y = Math.round(loc.y + size.height / 2)
+    await browser.action('pointer', { parameters: { pointerType: 'touch' } })
+      .move({ x: Math.round(loc.x + size.width * 0.85), y }).down().pause(100)
+      .move({ duration: 400, x: Math.round(loc.x + size.width * 0.15), y }).up().perform()
+    await browser.pause(800)
+  }
+
+  private async tapRemoveFromWatchlist() {
+    // The swipe reveals a remove icon; tapping it asks "Remove from Watchlist" with CANCEL / OK.
+    const icon = $('(//*[@content-desc="Remove from watchlist"])[last()]')
+    await icon.waitForDisplayed({ timeout: 5000 })
+    await this.tapAndroidCenterPoint(icon)
+    const ok = $('//*[@resource-id="android:id/button1" or (@text="OK" and contains(@resource-id,"button1"))]')
+    await this.text('Remove from Watchlist').waitForDisplayed({ timeout: 10000, timeoutMsg: 'Remove confirmation did not appear' })
+    await this.tapAndroidCenterPoint(ok)
+    await ok.waitForDisplayed({ reverse: true, timeout: 10000 })
+    await this.watchlistScreen.waitForDisplayed({ timeout: 10000 })
+    await browser.pause(1500)
+  }
+
+  /** Leaves the watchlist empty so the empty-state checks do not depend on an earlier run. */
+  async clearWatchlist() {
+    await this.openWatchlistScreen()
+    await browser.waitUntil(async () =>
+      (await this.watchlistRows().length) > 0 || (await this.text('Your watchlist is empty.').isDisplayed().catch(() => false)),
+    { timeout: 15000, interval: 500, timeoutMsg: 'Watchlist screen did not load its list or empty state' })
+    for (let i = 0; i < 10 && (await this.watchlistRows().length) > 0; i += 1) {
+      await this.swipeRowLeft($('(//*[contains(@resource-id,"watchlist_widget_item")])[1]'))
+      await this.tapRemoveFromWatchlist()
+      await browser.pause(1500)
+    }
+    if ((await this.watchlistRows().length) > 0) throw new Error('Could not clear the crypto watchlist')
+    await this.backToDashboard()
+  }
+
+
+  private async allCryptoOrder() {
+    return (await $$('//*[contains(@resource-id,"allCrypto_list")]//*[contains(@content-desc,", price ")]').map((el) => el.getAttribute('content-desc')))
+      .map((desc) => desc.split(',')[1].trim())
+  }
+
+  /** CRYPTO-021: the sort menu defaults to Volume descending; Price reorders and a second tap flips it. */
+  async verifyAllCryptoSort() {
+    await this.allCryptoSearch.clearValue().catch(() => {})
+    await browser.hideKeyboard().catch(() => {})
+    await browser.pause(1500)
+    const byVolume = await this.allCryptoOrder()
+    await this.tap(this.id('allCrypto_button_filter'))
+    await this.text('Volume').waitForDisplayed({ timeout: 10000 })
+    await this.text('Descending').waitForDisplayed({ timeout: 5000, timeoutMsg: 'CRYPTO-021: default sort should be Volume, Descending' })
+    await this.tap(this.clickableWithText('Price'))
+    await browser.waitUntil(async () => (await this.allCryptoOrder()).join() !== byVolume.join(), {
+      timeout: 15000, interval: 500, timeoutMsg: 'CRYPTO-021: sorting by Price did not reorder All Crypto',
+    })
+    const byPrice = await this.allCryptoOrder()
+    await this.tap(this.id('allCrypto_button_filter'))
+    await this.tap(this.clickableWithText('Price'))
+    await browser.waitUntil(async () => (await this.allCryptoOrder()).join() !== byPrice.join(), {
+      timeout: 15000, interval: 500, timeoutMsg: 'CRYPTO-021: tapping Price again did not flip the order',
+    })
+  }
+
+  private get starButton() {
+    // Details toolbar: Back, title, then the watchlist star (Compose button without a label).
+    return $('(//android.widget.Button[@clickable="true"])[2]')
+  }
+
+  private async openBitcoinDetailsFromAllCrypto() {
+    await this.searchAllCrypto('btc')
+    await this.tap(this.allCryptoRow('Bitcoin', 'BTC'))
+    await this.detailScreen.waitForDisplayed({ timeout: 15000 })
+  }
+
+  /** CRYPTO-023: the star adds the asset to the watchlist and a second tap removes it. */
+  async verifyWatchlistStarToggle() {
+    await this.openBitcoinDetailsFromAllCrypto()
+    await this.tap(this.starButton)
+    await browser.pause(1500)
+    await this.verifyWatchlistHasOnScreen('Bitcoin', 'CRYPTO-023: the star did not add Bitcoin to the watchlist')
+
+    await this.openAllCrypto()
+    await this.openBitcoinDetailsFromAllCrypto()
+    await this.tap(this.starButton)
+    await browser.pause(1500)
+    await this.verifyWatchlistEmptyOnScreen('CRYPTO-023: a second star tap did not remove Bitcoin')
+
+    // Leave Bitcoin in the watchlist for the Watchlist screen checks.
+    await this.openAllCrypto()
+    await this.openBitcoinDetailsFromAllCrypto()
+    await this.tap(this.starButton)
+    await browser.pause(1500)
+  }
+
+  /** CRYPTO-049/048: search filters the watchlist; swipe left and Remove deletes the item. */
+  async verifyWatchlistSearchAndSwipeDelete() {
+    await this.openWatchlistScreen()
+    await this.watchlistRow('Bitcoin').waitForDisplayed({ timeout: 15000, timeoutMsg: 'Bitcoin is not on the Watchlist screen' })
+    await this.watchlistSearch.click()
+    await this.watchlistSearch.setValue('sol')
+    await browser.hideKeyboard().catch(() => {})
+    await this.text('No results found').waitForDisplayed({ timeout: 10000, timeoutMsg: 'CRYPTO-049: "sol" should not match a Bitcoin-only watchlist' })
+    await this.watchlistSearch.clearValue()
+    await this.watchlistSearch.setValue('btc')
+    await browser.hideKeyboard().catch(() => {})
+    await this.watchlistRow('Bitcoin').waitForDisplayed({ timeout: 10000, timeoutMsg: 'CRYPTO-049: "btc" did not find Bitcoin' })
+    await this.watchlistSearch.clearValue()
+    await browser.hideKeyboard().catch(() => {})
+    await browser.pause(1000)
+
+    await this.swipeRowLeft(this.watchlistRow('Bitcoin'))
+    await this.tapRemoveFromWatchlist()
+    await this.watchlistRow('Bitcoin').waitForDisplayed({ reverse: true, timeout: 10000, timeoutMsg: 'CRYPTO-048: Bitcoin stayed on the watchlist after Remove' })
+    await this.text('Your watchlist is empty.').waitForDisplayed({ timeout: 10000, timeoutMsg: 'CRYPTO-048: watchlist is not empty after Remove' })
+    await this.backToDashboard()
   }
 }
 

@@ -14,6 +14,7 @@ describe('Crypto (Android)', function () {
     await loginPage.loginFlow(AUTH)
     await home.ensureIndividualAccount()
     await crypto.openCryptoTab()
+    await crypto.clearWatchlist()
   })
 
   it('CR-1 [CRYPTO-009/014] Empty portfolio hides holdings and shows the empty watchlist', step(async function () {
@@ -35,6 +36,10 @@ describe('Crypto (Android)', function () {
     await crypto.verifyAllCryptoSearch()
   }))
 
+  it('CR-4b [CRYPTO-021] All Crypto sorts by Volume by default and by Price both ways', step(async function () {
+    await crypto.verifyAllCryptoSort()
+  }))
+
   it('CR-5 [CRYPTO-022/027] Details has no My Holding and Buy opens the Buy screen', step(async function () {
     await crypto.openBitcoinDetailsWithoutHolding()
     await crypto.openBuyFromDetails()
@@ -47,5 +52,14 @@ describe('Crypto (Android)', function () {
   it('CR-7 [CRYPTO-044/045] Settlement wallet picker selects USD and All Wallets', step(async function () {
     await crypto.verifySettlementWalletPicker()
     await crypto.closeBuy()
+  }))
+
+  it('CR-8 [CRYPTO-023] Watchlist star adds and removes the asset', step(async function () {
+    await crypto.openAllCrypto()
+    await crypto.verifyWatchlistStarToggle()
+  }))
+
+  it('CR-9 [CRYPTO-048/049] Watchlist search filters and swipe removes the asset', step(async function () {
+    await crypto.verifyWatchlistSearchAndSwipeDelete()
   }))
 })
