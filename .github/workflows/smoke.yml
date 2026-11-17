@@ -146,8 +146,31 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Onboarded account pool: onboarding appends accounts, lockout specs mark one as used.
+      # The cache carries the pool from run to run; see docs/ci/onboarded-pool-cache.md.
+      - name: Restore onboarded account pool
+        uses: actions/cache/restore@v4
+        with:
+          path: .generated/onboarded-pool.json
+          key: onboarded-pool-${{ matrix.platform }}-${{ github.run_id }}
+          restore-keys: |
+            onboarded-pool-${{ matrix.platform }}-
+
+      - name: Remember onboarded pool state
+        id: pool-before
+        shell: bash
+        run: echo "hash=${{ hashFiles('.generated/onboarded-pool.json') }}" >> "$GITHUB_OUTPUT"
+
       - name: Run tests
         run: npm run wdio -- --spec ${{ matrix.spec }}
+
+      # Only a job that changed the pool saves it, so a parallel job cannot overwrite it with an older copy.
+      - name: Save onboarded account pool
+        if: always() && hashFiles('.generated/onboarded-pool.json') != '' && hashFiles('.generated/onboarded-pool.json') != steps.pool-before.outputs.hash
+        uses: actions/cache/save@v4
+        with:
+          path: .generated/onboarded-pool.json
+          key: onboarded-pool-${{ matrix.platform }}-${{ github.run_id }}-${{ github.run_attempt }}-${{ strategy.job-index }}
 
       - name: Upload onboarded accounts artifact
         if: always()
@@ -213,8 +236,31 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Onboarded account pool: onboarding appends accounts, lockout specs mark one as used.
+      # The cache carries the pool from run to run; see docs/ci/onboarded-pool-cache.md.
+      - name: Restore onboarded account pool
+        uses: actions/cache/restore@v4
+        with:
+          path: .generated/onboarded-pool.json
+          key: onboarded-pool-${{ matrix.platform }}-${{ github.run_id }}
+          restore-keys: |
+            onboarded-pool-${{ matrix.platform }}-
+
+      - name: Remember onboarded pool state
+        id: pool-before
+        shell: bash
+        run: echo "hash=${{ hashFiles('.generated/onboarded-pool.json') }}" >> "$GITHUB_OUTPUT"
+
       - name: Run tests
         run: npm run wdio -- --spec ${{ matrix.spec }}
+
+      # Only a job that changed the pool saves it, so a parallel job cannot overwrite it with an older copy.
+      - name: Save onboarded account pool
+        if: always() && hashFiles('.generated/onboarded-pool.json') != '' && hashFiles('.generated/onboarded-pool.json') != steps.pool-before.outputs.hash
+        uses: actions/cache/save@v4
+        with:
+          path: .generated/onboarded-pool.json
+          key: onboarded-pool-${{ matrix.platform }}-${{ github.run_id }}-${{ github.run_attempt }}-${{ strategy.job-index }}
 
       - name: Upload onboarded accounts artifact
         if: always()
