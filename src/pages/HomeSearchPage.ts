@@ -236,6 +236,66 @@ class HomeSearchPage extends BasePage {
       timeoutMsg: 'Search must return the recipient read from Recent Payees or Recent Activity on Home',
     })
   }
+
+  /* ---------- search scope per account and the Recent section (Android) ---------- */
+
+  private get appSearchInput() { return $('//*[contains(@resource-id,"appSearch_input")]') }
+
+  private async openAppSearch(query = '') {
+    if (!(await this.appSearchInput.isDisplayed().catch(() => false))) {
+      await HomeScreenPage.waitForHomeLoaded()
+      await this.revealSearchInput()
+      await this.tap(this.searchInput, 10000)
+      await this.appSearchInput.waitForDisplayed({ timeout: 10000, timeoutMsg: 'App search did not open' })
+    }
+    await this.appSearchInput.clearValue().catch(() => {})
+    if (query) await this.appSearchInput.setValue(query)
+    await browser.hideKeyboard().catch(() => {})
+    await browser.pause(2500)
+  }
+
+  private async closeAppSearch() {
+    const avatar = $('//*[contains(@resource-id,"home_button_userAvatar")]')
+    for (let i = 0; i < 3 && !(await avatar.isDisplayed().catch(() => false)); i += 1) {
+      await browser.hideKeyboard().catch(() => {})
+      const cancel = $('//*[contains(@resource-id,"appSearch_button_cancel")]')
+      if (await cancel.isDisplayed().catch(() => false)) await this.tap(cancel)
+      else if (await this.appSearchInput.isDisplayed().catch(() => false)) await browser.back()
+      await browser.pause(1500)
+    }
+    await avatar.waitForDisplayed({ timeout: 15000, timeoutMsg: 'Home did not come back after closing search' })
+  }
+
+  private async sectionTitles() {
+    const titles = ['Recent', 'Beneficiaries', 'Contacts', 'Friends on Moneybase', 'Transactions', 'Instruments', 'Crypto']
+    const shown: string[] = []
+    for (const t of titles) if (await this.searchSection(t).isDisplayed().catch(() => false)) shown.push(t)
+    return shown
+  }
+
+  /**
+   * TC2958: retail search includes beneficiaries; business search is limited to recent, transactions and instruments.
+   * Android puts crypto inside Instruments, so beneficiaries are the observable difference.
+   */
+  public async verifySearchScopeRetailVsBusiness() {
+    const iban = $('//*[starts-with(@text,"MT") and string-length(@text)>25]')
+    await HomeScreenPage.ensureIndividualAccount()
+    await this.openAppSearch('ma')
+    await iban.waitForDisplayed({ timeout: 15000, timeoutMsg: 'TC2958: retail search for "ma" should list beneficiaries (rows with an IBAN)' })
+    console.log(`[Home Search] retail "ma" sections: ${(await this.sectionTitles()).join(', ')} + beneficiaries`)
+    await this.closeAppSearch()
+
+    await HomeScreenPage.ensureBusinessAccount()
+    await this.openAppSearch('ma')
+    await this.searchSection('Instruments').waitForDisplayed({ timeout: 15000 }).catch(() => {})
+    if (await iban.isDisplayed().catch(() => false)) throw new Error('TC2958: business search should not list beneficiaries')
+    const business = await this.sectionTitles()
+    console.log(`[Home Search] business "ma" sections: ${business.join(', ')}`)
+    const extra = business.filter((t) => !['Recent', 'Transactions', 'Instruments'].includes(t))
+    if (extra.length) throw new Error(`TC2958: business search should be limited to Recent, Transactions and Instruments, also showed [${extra.join(', ')}]`)
+    await this.closeAppSearch()
+    await HomeScreenPage.ensureIndividualAccount()
+  }
 }
 
 export default HomeSearchPage

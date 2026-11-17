@@ -97,6 +97,17 @@ class MoreMenuPage extends BasePage {
   }
 
   /**
+   * TC3064 (Android counterpart): a retail account is offered the referral flow; Invite a Friend opens the
+   * referral screen with the reward terms and the Invite Friends action. Nothing is sent.
+   */
+  async verifyReferAFriendFlow() {
+    await this.openItem('Invite a Friend')
+    await $('//*[contains(@text,"for each friend you invite")]').waitForDisplayed({ timeout: 15000, timeoutMsg: 'TC3064: the referral screen did not open' })
+    await this.text('Invite Friends').waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC3064: the referral screen has no Invite Friends action' })
+    await this.backToMore()
+  }
+
+  /**
    * TC2866: Call Us hands off to the phone dialer. The app is reopened afterwards; it may ask for the
    * passcode again, so this check runs last.
    */

@@ -268,6 +268,44 @@ class PersonalDetailsPage extends BasePage {
       { timeout, interval: 500, timeoutMsg: `Value "${expectedValue}" not found on Personal Details screen` },
     )
   }
+
+  /**
+   * TC2975 (Android): the first name rejects a short or numeric value, shown as the field warning or a disabled Save.
+   * Nothing is saved: the screen is left with Back and any discard prompt is accepted.
+   */
+  async verifyFirstNameValidationAndroid() {
+    const field = this.firstNameInputAndroid
+    const warning = $('//*[@resource-id="com.moneybase.qa:id/textNameWarning"]')
+    const alert = $('//*[@resource-id="android:id/parentPanel" or contains(@resource-id,":id/parentPanel") or @class="android.app.Dialog"]')
+    await field.waitForDisplayed({ timeout: 10000 })
+    const original = await field.getText()
+    await field.click()
+    if (await alert.waitForDisplayed({ timeout: 8000 }).catch(() => false)) {
+      await this.tap(alert.$('.//*[@text="Confirm" or @text="CONFIRM" or @text="Continue" or @text="CONTINUE"]'))
+      await alert.waitForDisplayed({ reverse: true, timeout: 10000 })
+    }
+    const rejected = async (value: string) => {
+      await field.clearValue()
+      await field.setValue(value)
+      await browser.hideKeyboard().catch(() => undefined)
+      await browser.pause(1000)
+      const warningText = (await warning.isDisplayed().catch(() => false)) ? await warning.getText().catch(() => '') : ''
+      const saveEnabled = (await this.saveButtonAndroid.getAttribute('enabled').catch(() => 'true')) === 'true'
+      console.log(`[PersonalDetails] first name "${value}": warning "${warningText}", Save enabled ${saveEnabled}`)
+      return warningText.trim().length > 0 || !saveEnabled
+    }
+    if (!(await rejected('A'))) throw new Error('TC2975: a 1-character first name should be rejected')
+    if (!(await rejected('Ann3'))) throw new Error('TC2975: a first name with digits should be rejected')
+    await field.clearValue()
+    await field.setValue(original)
+    await browser.hideKeyboard().catch(() => undefined)
+    for (let i = 0; i < 3 && (await field.isDisplayed().catch(() => false)); i += 1) {
+      await browser.back()
+      await browser.pause(1200)
+      const discard = $('//*[@resource-id="android:id/button2" or @text="Discard" or @text="DISCARD" or @text="Cancel" or @text="CANCEL" or @text="Leave" or @text="LEAVE"]')
+      if (await discard.isDisplayed().catch(() => false)) await this.tap(discard)
+    }
+  }
 }
 
 export default new PersonalDetailsPage()

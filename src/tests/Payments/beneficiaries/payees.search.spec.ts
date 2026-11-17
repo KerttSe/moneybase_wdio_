@@ -18,4 +18,8 @@ describe('Pay search filters (Android)', function () {
   it('A selected filter resets to All after leaving and re-entering search [TC3297]', step(async function () {
     await payees.verifyFilterResetsOnReentry()
   }))
+
+  it('A phone contact without Moneybase opens an SMS invite, not a payment [TC3292]', step(async function () {
+    await payees.verifyNonMoneybaseContactOpensInvite()
+  }))
 })

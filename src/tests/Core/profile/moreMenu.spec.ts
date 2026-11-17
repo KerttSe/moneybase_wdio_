@@ -32,6 +32,10 @@ describe('More menu (Android)', function () {
     await more.verifyFingerprintRow()
   }))
 
+  it('Invite a Friend opens the referral screen with its reward terms [TC3064]', step(async function () {
+    await more.verifyReferAFriendFlow()
+  }))
+
   it('Support > Call Us opens the phone dialer [TC2866]', step(async function () {
     await more.verifyCallUsOpensDialer()
   }))

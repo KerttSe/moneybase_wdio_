@@ -103,6 +103,7 @@ jobs:
               specs: [
                 'launch.spec.ts',
                 'homeSearch.spec.ts',
+                'homeSearch.scope.spec.ts',
                 'homeSearch.business.spec.ts',
                 'homeSpendAnalytics.spec.ts',
                 'homeStoryly.spec.ts',
@@ -230,6 +231,7 @@ jobs:
               name: "Onboarding & Account",
               specs: [
                 'personalDetails.spec.ts',
+                'personalDetails.nameValidation.spec.ts',
                 'profile.businessSettings.spec.ts',
                 'profile.appearance.spec.ts',
                 'personalDetails.nameEditConfirmation.spec.ts',
