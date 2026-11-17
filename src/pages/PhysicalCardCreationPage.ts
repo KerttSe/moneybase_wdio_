@@ -1551,6 +1551,92 @@ class PhysicalCardCreationPage extends BasePage {
     await this.waitForSyncToFinishIOS(60000)
     await this.blockCardIOS(20000)
   }
+
+  /* ---------- order-form rules (no card is created: the flow stops before the OTP) ---------- */
+
+  private async isConfirmAddressEnabledAndroid() {
+    const btn = $('(//*[@text="Confirm Address" or @content-desc="Confirm Address"]/ancestor-or-self::*[@clickable="true"][1] | //*[@text="Confirm Address" or @content-desc="Confirm Address"])[1]')
+    return (await btn.getAttribute('enabled').catch(() => 'false')) === 'true'
+  }
+
+  private async setFieldAndroid(field: ChainablePromiseElement, value: string) {
+    await this.tap(field)
+    await field.clearValue().catch(() => {})
+    if (value) await field.setValue(value)
+    await browser.hideKeyboard().catch(() => {})
+    await browser.pause(600)
+  }
+
+  /** Opens Add New Card, picks the physical card and confirms the default design, stopping on the delivery form. */
+  public async openPhysicalCardDeliveryFormAndroid() {
+    await this.openCardsTabAndroid()
+    await this.startAddNewCardAndroid()
+    await this.choosePhysicalCardTypeAndroid()
+    await this.confirmPhysicalCardAndroid()
+    await this.addressLine1Android.waitForDisplayed({ timeout: 20000, timeoutMsg: 'Delivery address form did not open' })
+  }
+
+  /** TC3223: Confirm Address needs Line 1, City and Post Code; Line 2 is optional. */
+  public async verifyDeliveryRequiredFieldsAndroid() {
+    await this.setFieldAndroid(this.addressLine1Android, 'Triq it-Torri 12')
+    await this.setFieldAndroid(this.addressLine2Android, '')
+    await this.setFieldAndroid(this.cityAndroid, 'Valletta')
+    await this.setFieldAndroid(this.postCodeAndroid, 'VLT 1010')
+    if (!(await this.isConfirmAddressEnabledAndroid())) throw new Error('TC3223: Confirm Address should be enabled with Address Line 2 empty')
+    await this.setFieldAndroid(this.cityAndroid, '')
+    if (await this.isConfirmAddressEnabledAndroid()) throw new Error('TC3223: Confirm Address should be disabled once City is cleared')
+    await this.setFieldAndroid(this.cityAndroid, 'Valletta')
+    if (!(await this.isConfirmAddressEnabledAndroid())) throw new Error('TC3223: Confirm Address should be enabled again after City is refilled')
+    await this.confirmDeliveryAddressAndroid()
+    await $('//*[contains(@text,"card PIN") or contains(@text,"Create PIN") or contains(@text,"4 digits")]').waitForDisplayed({ timeout: 20000, timeoutMsg: 'Create card PIN screen did not open' })
+  }
+
+  private readonly pinDialogAndroid = '//*[@resource-id="android:id/parentPanel" or contains(@resource-id,":id/parentPanel") or @class="android.app.Dialog"]'
+
+  private async easyPinDialogButtonsAndroid(pin: string) {
+    await this.typeOtpAndroid(pin)
+    await $(this.pinDialogAndroid).waitForDisplayed({ timeout: 10000, timeoutMsg: `PIN ${pin} did not raise an easy-PIN alert` })
+    const texts = await $$(`${this.pinDialogAndroid}//android.widget.TextView`).map((el) => el.getText())
+    const buttons = await $$(`${this.pinDialogAndroid}//android.widget.Button`).map((el) => el.getText())
+    console.log(`[PhysicalCard] PIN ${pin}: "${texts.join(' | ')}" buttons [${buttons.join(', ')}]`)
+    return buttons
+  }
+
+  private async tapPinDialogButtonAndroid(pattern: RegExp) {
+    // Re-find by text: elements from an earlier $$ go stale once the dialog re-renders.
+    const labels = await $$(`${this.pinDialogAndroid}//android.widget.Button`).map((el) => el.getText())
+    const label = labels.find((t) => pattern.test(t))
+    if (!label) throw new Error(`No dialog button matching ${pattern} in [${labels.join(', ')}]`)
+    const button = $(`(${this.pinDialogAndroid}//android.widget.Button[@text="${label}"])[1]`)
+    await this.tapAndroidCenterPoint(button)
+    await $(this.pinDialogAndroid).waitForDisplayed({ reverse: true, timeout: 10000 })
+    await browser.pause(800)
+  }
+
+  /** TC3226/TC3227/TC3229: 0000 is blocked with OK only; 1234 and 2580 warn with a choice, and Change it stays on Create PIN. */
+  public async verifyEasyPinRulesAndroid() {
+    const blocked = await this.easyPinDialogButtonsAndroid('0000')
+    if (blocked.length !== 1) throw new Error(`TC3226: 0000 should be blocked with a single OK, got [${blocked.join(', ')}]`)
+    await this.tapPinDialogButtonAndroid(/.*/)
+    for (const [tc, pin] of [['TC3227', '1234'], ['TC3229', '2580']]) {
+      const buttons = await this.easyPinDialogButtonsAndroid(pin)
+      if (buttons.length < 2) throw new Error(`${tc}: ${pin} should warn with a choice, got [${buttons.join(', ')}]`)
+      await this.tapPinDialogButtonAndroid(/change/i)
+      if (await $('//*[contains(@text,"Confirm your card PIN")]').isDisplayed().catch(() => false)) {
+        throw new Error(`${tc}: Change it should stay on Create PIN, not move to Confirm PIN`)
+      }
+    }
+  }
+
+  /** Leaves the order flow before any OTP, so no card is created. */
+  public async abandonCardOrderAndroid() {
+    for (let i = 0; i < 6 && !(await this.addNewCardBtnAndroid.isDisplayed().catch(() => false)); i += 1) {
+      await browser.back()
+      await browser.pause(1200)
+      const leave = $('//*[@resource-id="android:id/button1" or @text="Yes" or @text="YES" or @text="Leave" or @text="Discard"]')
+      if (await leave.isDisplayed().catch(() => false)) await this.tap(leave)
+    }
+  }
 }
 
 export default new PhysicalCardCreationPage()
