@@ -1797,6 +1797,43 @@ class BusinessCardPage extends BasePage {
   private get viewMyCardsBtnIOS() {
     return $('-ios predicate string:name == "View my Cards" OR label == "View my Cards" OR name == "View my cards" OR label == "View my cards"')
   }
+
+  /* ---------- assignee address form rules (Android; the card is not submitted) ---------- */
+
+  // Prefilled fields show no label, so they are found by order: Line 1, Line 2, City, Post Code (Country is a picker).
+  private addressFieldAndroid(label: string) {
+    const order: Record<string, number> = { 'Address Line 1': 1, 'Address Line 2': 2, City: 3, 'Post Code': 4 }
+    return $(`(//android.widget.EditText)[${order[label]}]`)
+  }
+
+  private async isAssignSubmitEnabledAndroid() {
+    return (await this.assignCardSubmitBtnAndroid.getAttribute('enabled').catch(() => 'false')) === 'true'
+  }
+
+  private async setAddressFieldAndroid(label: string, value: string) {
+    const field = this.addressFieldAndroid(label)
+    await field.waitForDisplayed({ timeout: 10000, timeoutMsg: `Assignee address field "${label}" not found` })
+    await this.tap(field)
+    await field.clearValue().catch(() => {})
+    if (value) await field.setValue(value)
+    await browser.hideKeyboard().catch(() => {})
+    await browser.pause(600)
+  }
+
+  /** TC3401: the submit button needs Line 1, City and Post Code; Line 2 is optional. Leaves without submitting. */
+  public async verifyAssigneeAddressRequiredFieldsAndroid() {
+    await this.assigneeAddressTitleAndroid.waitForExist({ timeout: 15000 })
+    await this.setAddressFieldAndroid('Address Line 2', '')
+    if (!(await this.isAssignSubmitEnabledAndroid())) throw new Error('TC3401: submit should be enabled with Address Line 2 empty')
+    const postCode = await this.addressFieldAndroid('Post Code').getText().catch(() => '')
+    await this.setAddressFieldAndroid('Post Code', '')
+    if (await this.isAssignSubmitEnabledAndroid()) throw new Error('TC3401: submit should be disabled once Post Code is cleared')
+    await this.setAddressFieldAndroid('Post Code', /\d/.test(postCode) ? postCode : 'VLT 1010')
+    await this.setAddressFieldAndroid('City', '')
+    if (await this.isAssignSubmitEnabledAndroid()) throw new Error('TC3401: submit should be disabled once City is cleared')
+    await this.setAddressFieldAndroid('City', 'Valletta')
+    if (!(await this.isAssignSubmitEnabledAndroid())) throw new Error('TC3401: submit should be enabled again with all required fields')
+  }
 }
 
 export default new BusinessCardPage()

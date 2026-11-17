@@ -165,6 +165,7 @@ jobs:
                 'autoTopUp.amountAboveRange.spec.ts',
                 'autoTopUp.amountBelowRange.spec.ts',
                 'transactions.spec.ts',
+                'transactions.personalNote.spec.ts',
                 'addfunds.spec.ts',
                 'addfunds.validation.spec.ts',
                 'fxExchange.spec.ts',
@@ -177,6 +178,7 @@ jobs:
               name: "Cards",
               specs: [
                 'assignBusinessCard.spec.ts',
+                'businessCard.assigneeAddressRules.spec.ts',
                 'businessCard.changeTypeClearsAssignee.spec.ts',
                 'businessCard.cancelCardType.spec.ts',
                 'businessCard.adminSelfAssign.spec.ts',

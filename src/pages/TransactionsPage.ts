@@ -133,4 +133,36 @@ export default class TransactionsPage extends BasePage {
       throw new Error('verifyNoErrors: error message detected on Transactions screen')
     }
   }
+
+  /**
+   * TC3334: the personal note on a transaction takes a 1000+ character text without a limit.
+   * The note is never saved: the edit is left with Back.
+   */
+  async verifyPersonalNoteHasNoLimitAndroid() {
+    await HomeScreenPage.ensureHomeBeforeSectionLookup()
+    const row = $('(//*[starts-with(@text,"Deposit by Card") or starts-with(@text,"To ") or starts-with(@text,"From ")]/ancestor-or-self::*[@clickable="true"][1])[1]')
+    await row.waitForDisplayed({ timeout: 20000, timeoutMsg: 'No transaction on Home Recent Activity' })
+    await this.tap(row)
+    const details = $('//*[contains(@resource-id,"transactionDetails_input_personalNote") or contains(@resource-id,"transactionDetails_button_personalNoteEdit")]')
+    await details.waitForDisplayed({ timeout: 15000, timeoutMsg: 'Transaction details did not open' })
+    const edit = $('//*[contains(@resource-id,"transactionDetails_button_personalNoteEdit")]')
+    if (await edit.isDisplayed().catch(() => false)) await this.tap(edit)
+    const input = $('(//*[contains(@resource-id,"transactionDetails_input_personalNote")]//android.widget.EditText | //*[contains(@resource-id,"transactionDetails_input_personalNote")])[1]')
+    await input.waitForDisplayed({ timeout: 10000 })
+    const block = 'Long note text for limit check. '
+    const text = block.repeat(Math.ceil(1100 / block.length)).slice(0, 1100).trim()
+    await this.tap(input)
+    await input.setValue(text)
+    await browser.pause(800)
+    const typed = await input.getText()
+    console.log(`[Transactions] personal note accepted ${typed.length} of ${text.length} characters`)
+    if (typed.length < 1000) throw new Error(`TC3334: the personal note stopped at ${typed.length} characters; it should accept 1000+`)
+    await browser.hideKeyboard().catch(() => {})
+    for (let i = 0; i < 3 && !(await $('//*[contains(@resource-id,"home_screen")]').isDisplayed().catch(() => false)); i += 1) {
+      await browser.back()
+      await browser.pause(1200)
+      const discard = $('//*[@resource-id="android:id/button2" or @text="Discard" or @text="DISCARD" or @text="Cancel" or @text="CANCEL"]')
+      if (await discard.isDisplayed().catch(() => false)) await this.tap(discard)
+    }
+  }
 }
