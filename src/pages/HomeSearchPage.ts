@@ -128,6 +128,39 @@ class HomeSearchPage extends BasePage {
     await HomeScreenPage.waitForHomeLoaded()
   }
 
+  /** TC2952: a result section with more than 5 rows shows 5 and a "See N more" control that expands it. */
+  public async verifyLongSectionCollapses() {
+    if (!browser.isAndroid) return
+    await this.dismissSearch()
+    await HomeScreenPage.ensureIndividualAccount()
+    await this.revealSearchInput()
+    await this.tap(this.searchInput, 10000)
+    const field = $('//*[contains(@resource-id,"appSearch_input")]')
+    await field.waitForDisplayed({ timeout: 10000 })
+    await field.clearValue()
+    await field.setValue('eur')
+    await browser.hideKeyboard().catch(() => {})
+    await this.searchSection('Instruments').waitForDisplayed({ timeout: 20000, timeoutMsg: 'TC2952: "eur" returned no results' })
+    await browser.pause(2000)
+    // Instruments come first (not collapsed on Android) and push the collapsed Transactions section below the fold.
+    const seeMore = $('//*[starts-with(@text,"See ") and contains(@text," more")]')
+    const { width, height } = await browser.getWindowSize()
+    for (let i = 0; i < 6 && !(await seeMore.isDisplayed().catch(() => false)); i += 1) {
+      await browser.action('pointer', { parameters: { pointerType: 'touch' } })
+        .move({ x: Math.round(width / 2), y: Math.round(height * 0.75) }).down().pause(100)
+        .move({ duration: 500, x: Math.round(width / 2), y: Math.round(height * 0.35) }).up().perform()
+      await browser.pause(1000)
+    }
+    await seeMore.waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC2952: a long Transactions section should show "See N more"' })
+    const hidden = Number(((await seeMore.getText()).match(/\d+/) || ['0'])[0])
+    if (!(hidden > 0)) throw new Error(`TC2952: "${await seeMore.getText()}" should name how many rows are hidden`)
+    await this.tap(seeMore)
+    // Expanded: "See N more" gives way to the hidden rows, with "Show less" at the end of the long list.
+    await seeMore.waitForDisplayed({ reverse: true, timeout: 10000, timeoutMsg: 'TC2952: tapping "See N more" did not expand the section' })
+    console.log(`[Home Search] the collapsed section hid ${hidden} rows and expanded on tap`)
+    await this.dismissSearch()
+  }
+
   public async verifySearchQueryRules() {
     await this.dismissSearch()
     await HomeScreenPage.ensureIndividualAccount()

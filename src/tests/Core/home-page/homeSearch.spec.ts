@@ -28,6 +28,11 @@ describe('Home Search - Individual', function () {
     await homeSearchPage.verifyHomeSearch()
   }))
 
+  it('[TC2952] A search section with more than 5 results collapses behind "See N more" (Android)', smokeStep(async function () {
+    if (!browser.isAndroid) return this.skip()
+    await homeSearchPage.verifyLongSectionCollapses()
+  }))
+
   it('[TC2949/TC2950/TC2951] Checks recents and the search query threshold', smokeStep(async function () {
     await homeSearchPage.verifySearchQueryRules()
   }))
