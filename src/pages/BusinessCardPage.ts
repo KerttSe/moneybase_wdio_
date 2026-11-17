@@ -1834,6 +1834,62 @@ class BusinessCardPage extends BasePage {
     await this.setAddressFieldAndroid('City', 'Valletta')
     if (!(await this.isAssignSubmitEnabledAndroid())) throw new Error('TC3401: submit should be enabled again with all required fields')
   }
+
+  /* ---------- report sheet on a frozen card (Android; Block is never tapped) ---------- */
+
+  private cardsId(name: string) {
+    return $(`(//*[@resource-id="${name}"] | //*[contains(@resource-id,"${name}")])[1]`)
+  }
+
+  private async waitForCardActionsAndroid() {
+    await browser.waitUntil(async () =>
+      (await this.cardsId('cards_button_freeze').isDisplayed().catch(() => false)) ||
+      (await this.cardsId('cards_button_report').isDisplayed().catch(() => false)),
+    { timeout: 60000, interval: 1000, timeoutMsg: 'Card actions did not load on the Cards tab' })
+  }
+
+  private async isCardFrozenAndroid() {
+    return this.cardsId('cards_button_report').isDisplayed().catch(() => false)
+  }
+
+  /** Opens the Cards tab of the current business account and waits for the selected card's actions. */
+  public async openBusinessCardActionsAndroid() {
+    await this.tap(this.cardsId('navigation_button_cards'))
+    await this.cardsId('cards_screen').waitForDisplayed({ timeout: 20000 })
+    await this.waitForCardActionsAndroid()
+  }
+
+  /** Freezes the card if needed and returns whether it was active before, so the caller can restore it. */
+  public async ensureCardFrozenAndroid() {
+    if (await this.isCardFrozenAndroid()) return false
+    await this.tap(this.cardsId('cards_button_freeze'))
+    await this.cardsId('cards_button_report').waitForDisplayed({ timeout: 30000, timeoutMsg: 'Freezing did not offer Report' })
+    return true
+  }
+
+  public async unfreezeCardAndroid() {
+    if (!(await this.isCardFrozenAndroid())) return
+    await this.tap(this.cardsId('cards_button_freeze'))
+    await this.cardsId('cards_button_security').waitForDisplayed({ timeout: 30000, timeoutMsg: 'Unfreezing did not bring Security back' })
+  }
+
+  /**
+   * TC3254 (Android counterpart): Report on a frozen card opens one "Lost / Stolen / Damaged" sheet with the
+   * warning text and Block / Cancel. Cancel closes it and the card stays frozen (not blocked).
+   */
+  public async verifyReportSheetAndCancelAndroid() {
+    await this.tap(this.cardsId('cards_button_report'))
+    await $('//*[@text="Lost / Stolen / Damaged"]').waitForDisplayed({ timeout: 15000, timeoutMsg: 'TC3254: Report did not open the Lost / Stolen / Damaged sheet' })
+    await $('//*[contains(@text,"Are you sure you want to report this card?") and contains(@text,"You will not be able to use this card again")]').waitForDisplayed({
+      timeout: 5000, timeoutMsg: 'TC3254: the report sheet does not show the warning text',
+    })
+    await $('//*[@text="Block"]').waitForDisplayed({ timeout: 5000, timeoutMsg: 'TC3254: the report sheet has no Block action' })
+    const cancel = $('//*[@text="Cancel"]')
+    await cancel.waitForDisplayed({ timeout: 5000, timeoutMsg: 'TC3254: the report sheet has no Cancel action' })
+    await this.tapAndroidCenterPoint(cancel)
+    await $('//*[@text="Lost / Stolen / Damaged"]').waitForDisplayed({ reverse: true, timeout: 10000, timeoutMsg: 'TC3254: Cancel did not close the report sheet' })
+    if (!(await this.isCardFrozenAndroid())) throw new Error('TC3254: after Cancel the card should still be frozen with Report available')
+  }
 }
 
 export default new BusinessCardPage()
