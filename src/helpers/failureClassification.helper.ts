@@ -1,7 +1,7 @@
 // Staging answers that block a flow no matter what the test does.
 const STAGING_SCREEN = /temporarily locked|too many attempt|something went wrong|please try again,? if this problem persists|still creating your account/
-// Login steps that stall because staging never sends the next screen (OTP, Home) back.
-const STAGING_LOGIN_STALL = /after (?:android )?passcode: mobile verification otp screen did not appear|after otp: continue\/home|after continue: neither home nor|login otp was rejected/
+// Steps that stall because staging never sends the next screen or data back (OTP, Home, order preview).
+const STAGING_LOGIN_STALL = /after (?:android )?passcode: mobile verification otp screen did not appear|after otp: continue\/home|after continue: neither home nor|login otp was rejected|login was rejected by app after passcode|preview data did not load/
 // Missing CI secrets or an account without the data the spec needs.
 const TEST_DATA = /\b[a-z0-9_]+_(?:phone|pin)\b.* is (?:not set|required)|cards did not sync/
 

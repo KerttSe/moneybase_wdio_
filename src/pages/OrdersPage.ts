@@ -2430,7 +2430,19 @@ export default class OrdersPage extends BasePage {
       $(`${dialog}//XCUIElementTypeStaticText[contains(@name,"${quantity} Share") or contains(@label,"${quantity} Share") or contains(@value,"${quantity} Share")]`),
     ]
 
-    await this.waitForAnyDisplayed(quantityCandidates, 12000, `${label} quantity ${quantity}`)
+    // Staging can keep the preview rows as loading placeholders for a long time, so allow 40s before deciding.
+    const shown = await this.waitForAnyDisplayed(quantityCandidates, 40000, `${label} quantity ${quantity}`)
+      .then(() => true)
+      .catch(() => false)
+    if (shown) return
+
+    const rowsLoaded = await $(`${dialog}//XCUIElementTypeStaticText[@name="Quantity" or @label="Quantity" or @value="Quantity"]`)
+      .isDisplayed()
+      .catch(() => false)
+    if (!rowsLoaded) {
+      throw new Error(`${label}: preview data did not load after 40s (rows stayed as loading placeholders), staging did not return the order estimate`)
+    }
+    throw new Error(`${label} quantity ${quantity} did not appear`)
   }
 
   private async tapOrderSubmitAndWaitForDialogIOS(

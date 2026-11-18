@@ -6,8 +6,9 @@ import { markBrowserStackStep } from '../helpers/browserstack.helper'
 import { waitForControlEnabled } from '../helpers/controlState.helper'
 
 export class LoginOtpRejectedError extends Error {
-  constructor(message: string) {
-    super(`Login OTP was rejected by app: ${message}`)
+  // beforeOtp: the app showed the error right after the passcode, before any OTP was typed (a backend login error).
+  constructor(message: string, beforeOtp = false) {
+    super(beforeOtp ? `Login was rejected by app after passcode, before OTP: ${message}` : `Login OTP was rejected by app: ${message}`)
     this.name = 'LoginOtpRejectedError'
   }
 }
@@ -636,13 +637,13 @@ private async getAndroidOtpErrorText() {
   return ''
 }
 
-private async throwAndroidOtpErrorIfPresent(prefix = 'Login OTP was rejected by app') {
+private async throwAndroidOtpErrorIfPresent(prefix = 'Login OTP was rejected by app', beforeOtp = false) {
   if (!browser.isAndroid) return
 
   const errorText = await this.getAndroidOtpErrorText()
   if (!errorText) return
 
-  if (prefix === 'Login OTP was rejected by app') throw new LoginOtpRejectedError(errorText)
+  if (prefix === 'Login OTP was rejected by app') throw new LoginOtpRejectedError(errorText, beforeOtp)
   throw new Error(`${prefix}: ${errorText}`)
 }
 
@@ -669,19 +670,20 @@ private async throwLoginOtpErrorIfPresent() {
 
 private async waitForLoginOutcome(
   condition: () => Promise<boolean>,
-  options: { timeout: number; interval?: number; timeoutMsg?: string },
+  options: { timeout: number; interval?: number; timeoutMsg?: string; beforeOtp?: boolean },
 ) {
+  const { beforeOtp = false, ...waitOptions } = options
   let rejection: LoginOtpRejectedError | undefined
   await browser.waitUntil(async () => {
     const message = await this.getLoginOtpErrorText()
     if (message) {
-      rejection = new LoginOtpRejectedError(message)
+      rejection = new LoginOtpRejectedError(message, beforeOtp)
       // WDIO retries exceptions thrown inside waitUntil until its timeout.
       // Resolve polling first, then throw outside it to fail immediately.
       return true
     }
     return condition()
-  }, options)
+  }, waitOptions)
   if (rejection) throw rejection
   await this.throwLoginOtpErrorIfPresent()
 }
@@ -1352,9 +1354,10 @@ private async loginFlowOnce(auth: AuthData) {
 	        timeout: 45000,
 	        interval: 500,
 	        timeoutMsg: 'After Android passcode: Mobile Verification OTP screen did not appear',
+	        beforeOtp: true,
 	      })
 
-	      await this.throwAndroidOtpErrorIfPresent()
+	      await this.throwAndroidOtpErrorIfPresent(undefined, true)
 
 	      // Compose: passcode may land on home directly (no separate OTP step)
 	      if (await this.homeRoot.isExisting().catch(() => false)
