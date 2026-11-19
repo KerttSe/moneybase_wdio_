@@ -1628,6 +1628,25 @@ class PhysicalCardCreationPage extends BasePage {
     }
   }
 
+  /**
+   * TC3230: on Confirm card PIN, a PIN that differs from the one just created shows an inline mismatch error
+   * and goes no further (no OTP, no order). Uses two non-easy PINs that differ in the last digit.
+   */
+  public async verifyConfirmPinMismatchAndroid() {
+    await this.typeOtpAndroid('4826')
+    const confirm = $('//*[contains(@text,"Confirm your card PIN")]')
+    await confirm.waitForDisplayed({ timeout: 15000, timeoutMsg: 'TC3230: Confirm card PIN screen did not open after a valid PIN' })
+    await this.typeOtpAndroid('4827')
+    const mismatch = $('//*[contains(@text,"match") or contains(@text,"Match") or contains(@text,"do not") or contains(@text,"incorrect")]')
+    await mismatch.waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC3230: no inline mismatch error after a different confirmation PIN' })
+    console.log(`[PhysicalCard] confirm mismatch: "${await mismatch.getText()}"`)
+    if (await $(this.pinDialogAndroid).isDisplayed().catch(() => false)) {
+      throw new Error('TC3230: the mismatch should be shown inline, not as a dialog')
+    }
+    const leftPin = $('//*[contains(@text,"verification code") or contains(@text,"OTP") or contains(@text,"Order Summary") or contains(@text,"successfully")]')
+    if (await leftPin.isDisplayed().catch(() => false)) throw new Error('TC3230: a mismatched PIN must not move past the PIN step')
+  }
+
   /** Leaves the order flow before any OTP, so no card is created. */
   public async abandonCardOrderAndroid() {
     for (let i = 0; i < 6 && !(await this.addNewCardBtnAndroid.isDisplayed().catch(() => false)); i += 1) {

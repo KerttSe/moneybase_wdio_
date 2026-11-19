@@ -123,6 +123,33 @@ class MoreMenuPage extends BasePage {
     await this.closeMore()
   }
 
+  /** Initials avatars (two capital letters) shown in the More header. */
+  private async headerInitials() {
+    const texts = await $$('//*[contains(@resource-id,"more_screen")]//android.widget.TextView').map((el) => el.getText().catch(() => ''))
+    return texts.filter((t) => /^[A-Z]{2}$/.test(t))
+  }
+
+  /**
+   * TC2875/TC2876 (Android counterpart): the More header of a joint account lists every holder, with an
+   * initials avatar each and their names joined with "&"; an individual account shows one holder only.
+   */
+  async verifyJointHolders(joint: boolean, minHolders = 2) {
+    await this.openMore()
+    await this.text('Documents').waitForDisplayed({ timeout: 10000, timeoutMsg: 'More menu rows did not load' })
+    const initials = await this.headerInitials()
+    const names = $('//*[contains(@resource-id,"more_screen")]//android.widget.TextView[contains(@text," & ")]')
+    const namesShown = await names.isDisplayed().catch(() => false)
+    if (joint) {
+      if (initials.length < minHolders) throw new Error(`TC2876: a joint account should show ${minHolders}+ holder avatars, got [${initials.join(', ')}]`)
+      if (!namesShown) throw new Error('TC2876: a joint account should show the holder names joined with "&"')
+      console.log(`[More] joint holders: ${await names.getText()} [${initials.join(', ')}]`)
+    } else {
+      if (initials.length !== 1) throw new Error(`TC2875: an individual account should show one holder avatar, got [${initials.join(', ')}]`)
+      if (namesShown) throw new Error('TC2875: an individual account should not list joint holder names')
+    }
+    await this.closeMore()
+  }
+
   /**
    * TC2866: Call Us hands off to the phone dialer. The app is reopened afterwards; it may ask for the
    * passcode again, so this check runs last.

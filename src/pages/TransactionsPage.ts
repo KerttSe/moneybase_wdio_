@@ -1,5 +1,5 @@
 import BasePage from './BasePage'
-import { $, browser } from '@wdio/globals'
+import { $, $$, browser } from '@wdio/globals'
 import HomeScreenPage from './HomeScreenPage'
 
 export default class TransactionsPage extends BasePage {
@@ -163,6 +163,66 @@ export default class TransactionsPage extends BasePage {
       await browser.pause(1200)
       const discard = $('//*[@resource-id="android:id/button2" or @text="Discard" or @text="DISCARD" or @text="Cancel" or @text="CANCEL"]')
       if (await discard.isDisplayed().catch(() => false)) await this.tap(discard)
+    }
+  }
+
+  /* ========================
+   * WALLET FILTER (Android 2.27.0)
+   * Filter opens "Select Wallet" with "All Accounts" and one row per wallet, named by currency.
+   * ====================== */
+
+  private async openTransactionsFromHomeAndroid() {
+    await this.tapShowAll()
+    await this.verifyTransactionsScreen()
+    await $('//*[@content-desc="Filter"]').waitForDisplayed({ timeout: 15000, timeoutMsg: 'Transactions has no Filter button' })
+  }
+
+  private async leaveTransactionsToHomeAndroid() {
+    for (let i = 0; i < 3 && !(await $('//*[contains(@resource-id,"home_screen")]').isDisplayed().catch(() => false)); i += 1) {
+      const back = $('//*[@content-desc="Back"]')
+      if (await back.isDisplayed().catch(() => false)) await this.tap(back)
+      else await browser.back()
+      await browser.pause(1200)
+    }
+  }
+
+  private async selectWalletFilterAndroid(walletName: string) {
+    await this.tap($('//*[@content-desc="Filter"]'))
+    await $('//*[@text="Select Wallet"]').waitForDisplayed({ timeout: 10000, timeoutMsg: 'Filter did not open Select Wallet' })
+    await this.tap($(`//*[@text="${walletName}"]`))
+    await $('//*[@text="Select Wallet"]').waitForDisplayed({ reverse: true, timeout: 10000 })
+    await browser.pause(2500)
+  }
+
+  /** Signed amounts in the visible list, e.g. "- $11.00", "+ USD16.00". */
+  private async visibleAmountsAndroid() {
+    const texts = await $$('//android.widget.TextView').map((el) => el.getText().catch(() => ''))
+    return texts.filter((t) => /^[+-] /.test(t))
+  }
+
+  private async assertOnlyUsdAndroid(tc: string, when: string) {
+    const amounts = await this.visibleAmountsAndroid()
+    // An exchange from EUR shows its EUR leg as "- EUR13.33"; a EUR wallet transaction shows the euro sign.
+    const euro = amounts.filter((a) => a.includes('\u20ac'))
+    if (!amounts.some((a) => a.includes('$'))) throw new Error(`${tc}: ${when}, the list shows no USD amount (${amounts.join(', ')})`)
+    if (euro.length) throw new Error(`${tc}: ${when}, the USD filter still lists EUR wallet transactions: ${euro.join(', ')}`)
+  }
+
+  /**
+   * TC3327: choosing the US Dollar wallet in Filter lists only that wallet's transactions, and the choice is
+   * still applied after leaving Transactions and opening it again. The filter is reset to All Accounts after.
+   */
+  async verifyWalletFilterPersistsAndroid() {
+    await this.openTransactionsFromHomeAndroid()
+    try {
+      await this.selectWalletFilterAndroid('US Dollar')
+      await this.assertOnlyUsdAndroid('TC3327', 'after choosing US Dollar')
+      await this.leaveTransactionsToHomeAndroid()
+      await this.openTransactionsFromHomeAndroid()
+      await this.assertOnlyUsdAndroid('TC3327', 'after leaving and reopening Transactions')
+    } finally {
+      await this.selectWalletFilterAndroid('All Accounts').catch(() => {})
+      await this.leaveTransactionsToHomeAndroid().catch(() => {})
     }
   }
 }

@@ -28,4 +28,8 @@ describe('Physical card order form rules (Android)', function () {
   it('Card PIN 0000 is blocked; 1234 and 2580 warn with a choice [TC3226, TC3227, TC3229]', step(async function () {
     await card.verifyEasyPinRulesAndroid()
   }))
+
+  it('A different confirmation PIN shows an inline mismatch error and goes no further [TC3230]', step(async function () {
+    await card.verifyConfirmPinMismatchAndroid()
+  }))
 })
