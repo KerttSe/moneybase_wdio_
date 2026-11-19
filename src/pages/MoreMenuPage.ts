@@ -108,6 +108,22 @@ class MoreMenuPage extends BasePage {
   }
 
   /**
+   * TC2960 (Android counterpart): Approvals and Beneficiaries are business-only More rows. `business` says
+   * which account is current; the rows must show on a business account and be absent on an individual one.
+   */
+  async verifyBusinessOnlyRows(business: boolean) {
+    await this.openMore()
+    await this.text('Documents').waitForDisplayed({ timeout: 10000, timeoutMsg: 'More menu rows did not load' })
+    for (const row of ['Approvals', 'Beneficiaries']) {
+      const shown = await this.text(row).isDisplayed().catch(() => false)
+      if (shown !== business) {
+        throw new Error(`TC2960: the "${row}" row should be ${business ? 'shown on a business' : 'hidden on an individual'} account`)
+      }
+    }
+    await this.closeMore()
+  }
+
+  /**
    * TC2866: Call Us hands off to the phone dialer. The app is reopened afterwards; it may ask for the
    * passcode again, so this check runs last.
    */

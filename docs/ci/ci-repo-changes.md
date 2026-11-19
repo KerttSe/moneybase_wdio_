@@ -16,6 +16,9 @@ Add each spec to the category list in that repository's `wdio-regression.yml`, a
 | `businessCard.assigneeAddressRules.spec.ts` | `cards` | `assignBusinessCard.spec.ts` | primary |
 | `physicalCard.orderFormRules.spec.ts` | `cards` | `physicalcardcreation.spec.ts` | rog |
 | `payees.search.spec.ts` | `bank_transfers` | `beneficiary.ibanLength.spec.ts` | rog |
+| `businessCard.reportSheet.spec.ts` | `cards` | `businessCard.terminate.spec.ts` | businessHolder |
+| `moreMenu.businessRows.spec.ts` | `onboarding_account` | `moreMenu.spec.ts` | primary |
+| `walletDetails.statementGenerate.spec.ts` | `bank_transfers` | `walletDetails.statementIndividual.spec.ts` | primary |
 
 The account group comes from `src/data/regressionAccounts.json`, which is part of the code checkout, so it needs no change in the CI repository if CI checks out this code.
 

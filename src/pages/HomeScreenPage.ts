@@ -1569,6 +1569,30 @@ class HomeScreenPage extends BasePage {
     await report.waitForDisplayed({ timeout: 15000 })
   }
 
+  /**
+   * TC2932 (Android counterpart): with the default range, Generate Statement completes and the app leaves the
+   * Statement screen for Home or the wallet with no error. Screens seen on the way are logged.
+   */
+  public async verifyGenerateStatementAndroid() {
+    const generate = $('//*[contains(@resource-id,"btnContinue") and @text="Generate Statement"]')
+    await generate.waitForDisplayed({ timeout: 15000, timeoutMsg: 'TC2932: Generate Statement is not shown' })
+    await this.tap(generate)
+    const error = $('//*[contains(@text,"went wrong") or contains(@text,"try again") or contains(@text,"failed") or contains(@text,"offline")]')
+    const landed = $('//*[contains(@resource-id,"home_screen")] | //*[contains(@resource-id,"walletDetails")]')
+    const seen = new Set<string>()
+    await browser.waitUntil(async () => {
+      if (await error.isDisplayed().catch(() => false)) {
+        throw new Error(`TC2932: statement generation showed an error: ${await error.getText().catch(() => '')}`)
+      }
+      for (const el of await $$('//android.widget.TextView[@text!=""]').getElements().catch(() => [])) {
+        const text = await el.getText().catch(() => '')
+        if (text && seen.size < 40) seen.add(text)
+      }
+      return !(await generate.isDisplayed().catch(() => false)) && await landed.isDisplayed().catch(() => false)
+    }, { timeout: 30000, interval: 700, timeoutMsg: 'TC2932: Generate Statement did not complete and return to Home or the wallet' })
+    console.log(`[Statement] seen after Generate: ${[...seen].slice(0, 40).join(' | ')}`)
+  }
+
   public async verifyStatementFormatSelection() {
     // Android offers PDF and EXCEL tabs (content-desc pdf / excel); iOS offers CSV and PDF.
     for (const format of browser.isIOS ? ['CSV', 'PDF'] : ['EXCEL', 'PDF']) {
