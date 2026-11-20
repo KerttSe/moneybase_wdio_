@@ -1363,6 +1363,24 @@ export default class AutoTopUpPage extends BasePage {
     await sheet.waitForDisplayed({ reverse: true, timeout: 10000, timeoutMsg: 'TC3350: the deposit sheet did not close' })
   }
 
+  /**
+   * TC3340 (Android): with an active Euro rule, Add new on the Auto Top-Up list defaults to Euro, warns that
+   * auto top-up is already enabled for that currency, and keeps Save disabled. Nothing is saved.
+   */
+  async verifySecondRuleForSameCurrencyBlockedAndroid() {
+    await this.openFromHome()
+    await this.goToAutoTopUpList()
+    await this.autoTopUpListScreen.waitForDisplayed({ timeout: 15000, timeoutMsg: 'TC3340: the Auto Top-Up list should show the active rule' })
+    await this.tap(this.addNewBtn)
+    await this.autoTopUpDetailsScreen.waitForDisplayed({ timeout: 15000, timeoutMsg: 'Add new did not open Auto Top-Up details' })
+    await $('//*[contains(@resource-id,"autoTopUpDetails_button_pickCurrency")]//*[@text="Euro"]').waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC3340: Add new should start on Euro' })
+    await $('//*[@text="Auto top-up is already enabled for the selected currency. Please select a different currency."]').waitForDisplayed({
+      timeout: 10000, timeoutMsg: 'TC3340: no warning that auto top-up is already enabled for Euro',
+    })
+    const save = $('//*[contains(@resource-id,"autoTopUpDetails_button_save")]')
+    if ((await save.getAttribute('enabled').catch(() => 'true')) === 'true') throw new Error('TC3340: Save should stay disabled for a second Euro rule')
+  }
+
   /** Leaves Auto Top-Up back to Home without saving. */
   async leaveToHomeAndroid() {
     for (let i = 0; i < 5 && !(await $('//*[contains(@resource-id,"home_screen")]').isDisplayed().catch(() => false)); i += 1) {
