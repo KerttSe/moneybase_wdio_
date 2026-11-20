@@ -426,6 +426,42 @@ class BusinessCardWalletPage extends BasePage {
     await this.tap(this.addWalletDialogOkAndroid)
     await this.addWalletDialogTitleAndroid.waitForExist({ reverse: true, timeout: 10000 }).catch(() => {})
   }
+
+  /** Opens the Assign Card form without the leftover-card cleanup that tapAssignCard runs (nothing is terminated). */
+  public async openAssignCardFormAndroid() {
+    await this.assignCardBtnAndroid.waitForExist({ timeout: 15000, timeoutMsg: 'Assign Card button not found on Manage Cards' })
+    await this.tap(this.assignCardBtnAndroid)
+    await $('//*[contains(@resource-id,"assignBusinessCard_screen")]').waitForDisplayed({ timeout: 15000, timeoutMsg: 'Assign Card form did not open' })
+  }
+
+  /**
+   * TC2930 (Android counterpart): a search that matches no wallet in the Spend From picker shows
+   * "No results found" while Add New Wallet stays available; clearing the search brings the wallets back.
+   */
+  public async verifyWalletPickerNoResultsAndroid() {
+    const search = $('//*[contains(@resource-id,"businessWalletSelection_input_search")]')
+    await search.waitForDisplayed({ timeout: 10000, timeoutMsg: 'Select Wallet has no search field' })
+    const rows = '//*[contains(@resource-id,"businessWalletSelection_screen")]//android.widget.TextView[contains(@text," · ") or starts-with(@text,"EUR") or starts-with(@text,"USD")]'
+    await $(rows).waitForExist({ timeout: 10000, timeoutMsg: 'Select Wallet lists no wallets before searching' })
+    await this.tap(search)
+    await search.setValue('zzqx')
+    await $('//*[@text="No results found"]').waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC2930: a search with no match should show "No results found"' })
+    if (await $(rows).isExisting().catch(() => false)) throw new Error('TC2930: wallets are still listed for a search with no match')
+    await $('//*[contains(@resource-id,"businessWalletSelection_button_addNewWallet")]').waitForDisplayed({ timeout: 5000, timeoutMsg: 'TC2930: Add New Wallet should stay available with no results' })
+    await search.clearValue()
+    await browser.hideKeyboard().catch(() => {})
+    await $(rows).waitForExist({ timeout: 10000, timeoutMsg: 'TC2930: clearing the search should list the wallets again' })
+  }
+
+  /** Leaves the picker and the Assign Card form without assigning anything. */
+  public async leaveAssignCardAndroid() {
+    for (let i = 0; i < 4 && !(await this.assignCardBtnAndroid.isDisplayed().catch(() => false)); i += 1) {
+      await browser.back()
+      await browser.pause(1200)
+      const discard = $('//*[@resource-id="android:id/button1" or @text="Discard" or @text="Leave" or @text="Yes"]')
+      if (await discard.isDisplayed().catch(() => false)) await this.tap(discard)
+    }
+  }
 }
 
 export default new BusinessCardWalletPage()
