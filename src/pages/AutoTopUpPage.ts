@@ -1339,4 +1339,39 @@ export default class AutoTopUpPage extends BasePage {
     if (!Number.isFinite(addNum) || addNum <= 0) throw new Error('CONFIGURATION_ERROR: Auto Top-Up amount must be positive');
     return $(`~autoTopupList_item_active_€500_€${addNum}`);
   }
+
+  /**
+   * TC3350 (Android): Add New Card in the Auto Top-Up card picker first explains that a deposit by card is
+   * needed and that the new card is usable after 30 days, offering Make Deposit. The sheet is closed
+   * without tapping Make Deposit, so no deposit starts.
+   */
+  async verifyAddNewCardNeedsDepositAndroid() {
+    const pickCard = $('//*[contains(@resource-id,"autoTopUpDetails_button_pickCard")]')
+    await pickCard.waitForDisplayed({ timeout: 15000, timeoutMsg: 'Auto Top-Up details have no card picker' })
+    await this.tap(pickCard)
+    const addNew = $('//*[contains(@resource-id,"autoTopUpCardSelectionModal_button_addNew")]')
+    await addNew.waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC3350: the card picker has no Add New Card' })
+    await this.tap(addNew)
+    const sheet = $('//*[contains(@resource-id,"autoTopUpRationaleModal_screen")]')
+    await sheet.waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC3350: Add New Card did not explain the deposit first' })
+    await $('//*[@text="Add card for Top-Ups"]').waitForDisplayed({ timeout: 5000 })
+    const body = $('//*[contains(@text,"make a deposit by card first")]')
+    await body.waitForDisplayed({ timeout: 5000, timeoutMsg: 'TC3350: the sheet should say a deposit by card is needed first' })
+    if (!(await body.getText()).includes('after 30 days')) throw new Error('TC3350: the sheet should say the new card is available after 30 days')
+    await $('//*[contains(@resource-id,"autoTopUpRationaleModal_button_makeDeposit")]').waitForDisplayed({ timeout: 5000, timeoutMsg: 'TC3350: the sheet has no Make Deposit action' })
+    await browser.back()
+    await sheet.waitForDisplayed({ reverse: true, timeout: 10000, timeoutMsg: 'TC3350: the deposit sheet did not close' })
+  }
+
+  /** Leaves Auto Top-Up back to Home without saving. */
+  async leaveToHomeAndroid() {
+    for (let i = 0; i < 5 && !(await $('//*[contains(@resource-id,"home_screen")]').isDisplayed().catch(() => false)); i += 1) {
+      const back = $('//*[contains(@resource-id,"_button_back") or @content-desc="Back" or @content-desc="Close"]')
+      if (await back.isDisplayed().catch(() => false)) await this.tap(back)
+      else await browser.back()
+      await browser.pause(1200)
+      const discard = $('//*[@resource-id="android:id/button1" or @text="Discard" or @text="Leave"]')
+      if (await discard.isDisplayed().catch(() => false)) await this.tap(discard)
+    }
+  }
 }

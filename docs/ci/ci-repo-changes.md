@@ -23,6 +23,7 @@ Add each spec to the category list in that repository's `wdio-regression.yml`, a
 | `walletDetails.statementGenerate.spec.ts` | `bank_transfers` | `walletDetails.statementIndividual.spec.ts` | pop |
 | `transactions.walletFilter.spec.ts` | `payments` | `transactions.personalNote.spec.ts` | primary |
 | `beneficiary.deleteConfirmation.spec.ts` | `bank_transfers` | `payees.search.spec.ts` | mum |
+| `autoTopUp.addNewCard.spec.ts` | `payments` | `autoTopUp.amountBelowRange.spec.ts` | pop |
 
 The account group comes from `src/data/regressionAccounts.json`, which is part of the code checkout, so it needs no change in the CI repository if CI checks out this code.
 
