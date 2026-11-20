@@ -24,7 +24,7 @@ describe('More menu joint account holders (Android)', function () {
     await more.verifyJointHolders(false)
   }))
 
-  it('Joint account lists every holder with an initials avatar and name [TC2875, TC2876]', step(async function () {
+  it('Joint account lists every holder with an initials avatar and name, with no show-more indicator for two holders [TC2875, TC2876, TC2878]', step(async function () {
     await home.ensureJointAccount()
     await more.verifyJointHolders(true)
   }))

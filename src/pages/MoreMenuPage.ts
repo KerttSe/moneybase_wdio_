@@ -143,6 +143,9 @@ class MoreMenuPage extends BasePage {
       if (initials.length < minHolders) throw new Error(`TC2876: a joint account should show ${minHolders}+ holder avatars, got [${initials.join(', ')}]`)
       if (!namesShown) throw new Error('TC2876: a joint account should show the holder names joined with "&"')
       console.log(`[More] joint holders: ${await names.getText()} [${initials.join(', ')}]`)
+      // TC2878: with two holders everything fits, so there is no show-more toggle or "+N" avatar.
+      const more = $('//*[contains(@resource-id,"more_screen")]//*[contains(translate(@text,"SHOWMRE","showmre"),"show more") or contains(translate(@content-desc,"SHOWMRE","showmre"),"show more") or starts-with(@text,"+") or contains(@text,"more names")]')
+      if (await more.isExisting().catch(() => false)) throw new Error(`TC2878: two holders should not show a "more" indicator, found "${await more.getText().catch(() => '')}"`)
     } else {
       if (initials.length !== 1) throw new Error(`TC2875: an individual account should show one holder avatar, got [${initials.join(', ')}]`)
       if (namesShown) throw new Error('TC2875: an individual account should not list joint holder names')
