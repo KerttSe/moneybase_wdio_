@@ -258,6 +258,10 @@ export class LoginPage extends BasePage {
           await this.debugSnapshot('prepare-ios-loop')
           snapshotTaken = true
         }
+        // A real iPhone keeps the previous user ("Welcome back, enter your passcode"); log out to sign in fresh.
+        if (await this.logOutRememberedIOSUserIfShown()) return false
+        // The Face ID offer can also appear right after that logout, before the register screen.
+        if (await this.skipIOSBiometricOfferIfShown()) return false
         // welcome entry may appear late on slow BrowserStack devices — retry inside the loop
         if (await this.tapWelcomeEntryButtonIfShown()) {
           await this.waitForWelcomeEntryTransition(10000).catch(() => {})
@@ -1133,6 +1137,8 @@ async waitForPostOtpNextStep(timeout = 30000) {
     if (browser.isIOS) {
       await this.dismissIOSAlerts()
       await this.dismissIOSPermissionAlertsIfPresent().catch(() => false)
+      // A real iPhone with Face ID enrolled is offered biometric sign-in after OTP; skip it.
+      if (await this.skipIOSBiometricOfferIfShown()) return false
     }
 	    const continueVisible =
 	      (await this.postOtpContinueBtn.isDisplayed().catch(() => false)) ||
@@ -1149,6 +1155,39 @@ async waitForPostOtpNextStep(timeout = 30000) {
     interval: 400,
     timeoutMsg: 'After Continue: neither Home nor ApplePay nor passcode appeared',
   })
+}
+
+/**
+ * On a device that keeps the app installed (noReset), the app opens on "Welcome back" for the last user.
+ * Tapping its logout control (and confirming) returns to the register screen so any account can sign in.
+ */
+private async logOutRememberedIOSUserIfShown() {
+  if (!browser.isIOS) return false
+  const logout = $('~login_button_logout')
+  if (!(await logout.isExisting().catch(() => false))) return false
+  await this.tap(logout)
+  await browser.pause(1000)
+  // iOS asks "Would you like to logout?" with a Continue button (logout_button_continue).
+  const confirm = $('-ios predicate string:name == "logout_button_continue" OR (type == "XCUIElementTypeButton" AND label IN[c] {"Continue", "Log out", "Logout", "Yes", "Confirm", "OK"})')
+  await confirm.waitForExist({ timeout: 5000 }).catch(() => {})
+  if (await confirm.isExisting().catch(() => false)) await this.tap(confirm)
+  console.log('[LoginPage] logged out the remembered iOS user')
+  await this.registerScreen.waitForExist({ timeout: 15000 }).catch(() => {})
+  return true
+}
+
+/** Skips the Face ID / Touch ID offer shown after login on a device with biometrics enrolled. */
+private async skipIOSBiometricOfferIfShown() {
+  if (!browser.isIOS) return false
+  // The offer is a modal ("Log in with Face ID" / "Use Face ID" / "Skip for now"); element types vary by build.
+  const offer = $('-ios predicate string:label CONTAINS[c] "Face ID" OR label CONTAINS[c] "Touch ID"')
+  if (!(await offer.isExisting().catch(() => false))) return false
+  const skip = $('-ios predicate string:name == "modal_button_secondary" OR label IN[c] {"Skip for now", "Skip", "Not now", "Not Now", "Maybe later", "Later", "No thanks"}')
+  if (!(await skip.isExisting().catch(() => false))) return false
+  await this.tap(skip)
+  console.log('[LoginPage] skipped the iOS biometric sign-in offer')
+  await browser.pause(1000)
+  return true
 }
 
 /** 3) Optional: close ApplePay (in-app) */
