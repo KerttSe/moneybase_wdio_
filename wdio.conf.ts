@@ -71,6 +71,11 @@ const iosAppCapabilities: Record<string, unknown> = iosRealDevice
     'appium:xcodeSigningId': process.env.IOS_XCODE_SIGNING_ID?.trim() || 'Apple Development',
     'appium:updatedWDABundleId': process.env.IOS_WDA_BUNDLE_ID?.trim() || 'com.dkertys.WebDriverAgentRunner',
     'appium:allowProvisioningDeviceRegistration': true,
+    // Xcode 26.2's static analyzer crashes building WebDriverAgent, so a copy built once with
+    // RUN_CLANG_STATIC_ANALYZER=NO is reused from IOS_WDA_DERIVED_DATA when set.
+    ...(process.env.IOS_WDA_DERIVED_DATA?.trim()
+      ? { 'appium:usePrebuiltWDA': true, 'appium:derivedDataPath': process.env.IOS_WDA_DERIVED_DATA.trim(), 'appium:useNewWDA': false }
+      : {}),
   }
   : { 'appium:app': iosApp }
 const onboardingCameraMediaUrls = [
@@ -295,7 +300,6 @@ const localCapabilities: WebdriverIO.Capabilities[] = [
     'appium:automationName': 'XCUITest',
     'appium:deviceName': iosDeviceName,
     'appium:udid': iosUdid || '4D8D55A7-2461-4ED7-A28B-9946162BA884',
-    ...iosAppCapabilities,
     // A real device keeps the TestFlight install; the simulator build is reinstalled clean.
     'appium:noReset': iosRealDevice,
     'appium:newCommandTimeout': 300,
@@ -309,6 +313,7 @@ const localCapabilities: WebdriverIO.Capabilities[] = [
     'appium:wdaStartupRetryInterval': 20000,
     'appium:showXcodeLog': false,
     'appium:nativeWebScreenshot': true,
+    ...iosAppCapabilities,
   },
   {
     platformName: 'Android',
