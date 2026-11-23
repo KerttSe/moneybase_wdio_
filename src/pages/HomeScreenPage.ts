@@ -1779,8 +1779,15 @@ class HomeScreenPage extends BasePage {
     const help = browser.isIOS
       ? $('//XCUIElementTypeNavigationBar[@name="Home"]/XCUIElementTypeButton[@name="home_button_help" or @name="Help" or @name="Support" or (not(@name) and not(@label))]')
       : $('//*[contains(@resource-id,"home_button_help") or contains(@resource-id,"home_button_support") or @content-desc="Help" or @content-desc="Support"]')
-    if (browser.isIOS && !await help.waitForDisplayed({ timeout: 5000 }).then(() => true).catch(() => false)) {
-      // App 2.26+ has no Help button on the Home bar; Support is a row in the More sheet.
+    if (browser.isIOS) {
+      // Older builds: a Help button on the Home bar. App 2.26+ has none (its unlabelled bar button is Analytics),
+      // so check that Support really opened and otherwise reach it from the More sheet.
+      if (await help.waitForDisplayed({ timeout: 5000 }).then(() => true).catch(() => false)) {
+        await this.tap(help)
+        if (await this.supportGreeting.waitForDisplayed({ timeout: 5000 }).then(() => true).catch(() => false)) return
+        await this.tap($('//XCUIElementTypeNavigationBar//XCUIElementTypeButton[@name="Home"]'), 5000).catch(() => {})
+        await this.waitForHomeLoaded()
+      }
       await this.openIOSMoreMenu()
       await this.dismissIOSMoreMenuTipIfPresent().catch(() => {})
       await this.tap($('-ios predicate string:type == "XCUIElementTypeStaticText" AND (name == "Support" OR label == "Support")'), 10000)

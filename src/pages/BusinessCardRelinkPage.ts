@@ -95,6 +95,18 @@ class BusinessCardRelinkPage extends BasePage {
       if (opened) return
     }
 
+    // App 2.26+: Home name/code open More; the account picker is the unlabelled direct button of the More bar.
+
+    const morePicker = $('(//XCUIElementTypeNavigationBar[@name="More"]/XCUIElementTypeButton[not(@name) and not(@label)])[1]')
+
+    if (await morePicker.isExisting().catch(() => false)) {
+
+      await morePicker.click().catch(() => {})
+
+      if (await this.subAccountsTitleIOS.waitForExist({ timeout: 5000 }).catch(() => false)) return
+
+    }
+
     await this.subAccountsTitleIOS.waitForExist({ timeout: 15000, timeoutMsg: 'Sub Accounts sheet did not open on iOS' })
   }
 
