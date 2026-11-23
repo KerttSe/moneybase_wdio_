@@ -12,6 +12,7 @@ Add each spec to the category list in that repository's `wdio-regression.yml`, a
 | `moreMenu.spec.ts` | `onboarding_account` | `profile.logout.spec.ts` | primary |
 | `personalDetails.nameValidation.spec.ts` | `onboarding_account` | `personalDetails.spec.ts` | primary |
 | `homeSearch.scope.spec.ts` | `home_navigation` | `homeSearch.spec.ts` | primary |
+| `home.recentActivityMenu.spec.ts` (iOS only) | `home_navigation` | `homeSearch.scope.spec.ts` | laz |
 | `transactions.personalNote.spec.ts` | `payments` | `transactions.spec.ts` | primary |
 | `businessCard.assigneeAddressRules.spec.ts` | `cards` | `assignBusinessCard.spec.ts` | primary |
 | `physicalCard.orderFormRules.spec.ts` | `cards` | `physicalcardcreation.spec.ts` | rog |
@@ -32,6 +33,8 @@ The account group comes from `src/data/regressionAccounts.json`, which is part o
 Both `rog` specs also passed on the Samsung under ROG40015 on 2026-11-17.
 
 `payees.search` step TC3292 taps a phone contact that is not on Moneybase. A BrowserStack device has no phone contacts, so expect that step to fail there; it is verified on the local Samsung.
+
+BrowserStack iOS: the `iPhone 16` device pool now asks for an Apple ID password when the app launches; `iPhone 16 Pro` / iOS 18 works with the current upload (2.22.2). Set `BS_IOS_DEVICE=iPhone 16 Pro` for iOS jobs. The iOS upload is 2.22.2 and needs refreshing to 2.27.x.
 
 ## 2. Onboarded account pool cache
 

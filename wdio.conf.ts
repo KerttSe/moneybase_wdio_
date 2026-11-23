@@ -58,6 +58,21 @@ if (!useBrowserStack && platformFilter !== 'ios' && androidUseInstalledApp && !a
 const iosUdid = process.env.IOS_UDID?.trim()
 const iosDeviceName = process.env.IOS_DEVICE_NAME?.trim() || (iosUdid ? 'iPhone' : 'iPhone 17 Pro')
 const iosApp = process.env.IOS_APP?.trim() || '/Users/dmytrokertys/Desktop/app/moneybase.app'
+// A real iPhone runs the build already installed on it (e.g. from TestFlight) and signs WebDriverAgent with the
+// developer team; set IOS_REAL_DEVICE=true with IOS_UDID and IOS_XCODE_ORG_ID.
+const iosRealDevice = process.env.IOS_REAL_DEVICE === 'true'
+if (!useBrowserStack && iosRealDevice && (!iosUdid || !process.env.IOS_XCODE_ORG_ID?.trim())) {
+  throw new Error('IOS_REAL_DEVICE=true requires IOS_UDID and IOS_XCODE_ORG_ID')
+}
+const iosAppCapabilities: Record<string, unknown> = iosRealDevice
+  ? {
+    'appium:bundleId': process.env.BS_IOS_BUNDLE_ID?.trim() || 'com.moneybase.quality',
+    'appium:xcodeOrgId': process.env.IOS_XCODE_ORG_ID?.trim(),
+    'appium:xcodeSigningId': process.env.IOS_XCODE_SIGNING_ID?.trim() || 'Apple Development',
+    'appium:updatedWDABundleId': process.env.IOS_WDA_BUNDLE_ID?.trim() || 'com.dkertys.WebDriverAgentRunner',
+    'appium:allowProvisioningDeviceRegistration': true,
+  }
+  : { 'appium:app': iosApp }
 const onboardingCameraMediaUrls = [
   process.env.ONBOARDING_CAMERA_FRONT_MEDIA_URL,
   process.env.ONBOARDING_CAMERA_BACK_MEDIA_URL,
@@ -280,8 +295,9 @@ const localCapabilities: WebdriverIO.Capabilities[] = [
     'appium:automationName': 'XCUITest',
     'appium:deviceName': iosDeviceName,
     'appium:udid': iosUdid || '4D8D55A7-2461-4ED7-A28B-9946162BA884',
-    'appium:app': iosApp,
-    'appium:noReset': false,
+    ...iosAppCapabilities,
+    // A real device keeps the TestFlight install; the simulator build is reinstalled clean.
+    'appium:noReset': iosRealDevice,
     'appium:newCommandTimeout': 300,
     'appium:permissions': '{"com.moneybase.quality":{"contacts":"YES","location":"no","notifications":"NO"}}',
     'appium:autoAcceptAlerts': true,

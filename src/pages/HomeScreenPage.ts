@@ -1593,6 +1593,25 @@ class HomeScreenPage extends BasePage {
     console.log(`[Statement] seen after Generate: ${[...seen].slice(0, 40).join(' | ')}`)
   }
 
+  /**
+   * TC3052 (iOS): long-pressing a Recent Activity transaction on Home shows a preview and a menu with
+   * "Show up to" and "Filter recent by wallet". The menu is dismissed without changing either setting.
+   */
+  public async verifyRecentActivityContextMenuIOS() {
+    await $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label == "Recent Activity"').waitForExist({ timeout: 20000, timeoutMsg: 'Home has no Recent Activity (iOS)' })
+    // Every transaction row shows a signed amount (+€…, -€…, -$…); its label wording varies by account.
+    const tx = await $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label BEGINSWITH "+" OR label BEGINSWITH "-") AND label MATCHES ".*[0-9].*"')
+    await tx.waitForExist({ timeout: 10000, timeoutMsg: 'Recent Activity has no transaction to long-press (iOS)' })
+    const { x, y } = await tx.getLocation()
+    const { width, height } = await tx.getSize()
+    await browser.execute('mobile: touchAndHold', { x: Math.round(x + width / 2), y: Math.round(y + height / 2), duration: 2 })
+    await $('-ios predicate string:name == "Preview"').waitForExist({ timeout: 10000, timeoutMsg: 'TC3052: long-press did not show a transaction preview' })
+    await $('-ios predicate string:type == "XCUIElementTypeButton" AND label == "Show up to"').waitForExist({ timeout: 5000, timeoutMsg: 'TC3052: the menu has no "Show up to"' })
+    await $('-ios predicate string:type == "XCUIElementTypeButton" AND label == "Filter recent by wallet"').waitForExist({ timeout: 5000, timeoutMsg: 'TC3052: the menu has no "Filter recent by wallet"' })
+    await browser.execute('mobile: tap', { x: 20, y: 120 })
+    await $('-ios predicate string:name == "Preview"').waitForExist({ reverse: true, timeout: 10000, timeoutMsg: 'TC3052: the preview did not close' })
+  }
+
   public async verifyStatementFormatSelection() {
     // Android offers PDF and EXCEL tabs (content-desc pdf / excel); iOS offers CSV and PDF.
     for (const format of browser.isIOS ? ['CSV', 'PDF'] : ['EXCEL', 'PDF']) {
