@@ -150,7 +150,9 @@ class HomeScreenPage extends BasePage {
   }
 
   private get moreAccountPickerIOS() {
-    return $('(//XCUIElementTypeNavigationBar[@name="More" or @label="More"]//XCUIElementTypeButton[not(@name="Camera") and not(@label="Camera") and not(@name="close") and not(@label="close")])[1]')
+    // The unlabelled direct child button under the name (it wraps the hidden "CODE • Type" labels). The nested
+    // unlabelled button inside the profile photo is the Camera, so only direct children qualify.
+    return $('(//XCUIElementTypeNavigationBar[@name="More" or @label="More"]/XCUIElementTypeButton[not(@name) and not(@label)])[1]')
   }
 
   private get profilePickerIndividualItemIOS() {
@@ -477,21 +479,6 @@ class HomeScreenPage extends BasePage {
     return await this.moreNavBarIOS.isExisting().catch(() => false)
   }
 
-  private async tapIOSMoreAccountPickerByCoordinate() {
-    const navShown = await this.moreNavBarIOS.isExisting().catch(() => false)
-    if (navShown) {
-      const location = await this.moreNavBarIOS.getLocation()
-      const size = await this.moreNavBarIOS.getSize()
-      await browser.execute('mobile: tap', {
-        x: Math.round(location.x + size.width / 2),
-        y: Math.round(location.y + size.height * 0.8),
-      })
-      return
-    }
-
-    await this.tapScreenPointIOS(0.5, 0.19, 'finger-ios-more-account-picker')
-  }
-
   public async openIOSMoreMenu() {
     if (await this.isIOSMoreOpen()) return
 
@@ -523,54 +510,35 @@ class HomeScreenPage extends BasePage {
   }
 
   private async openIOSSubAccountsSheet(expectedItem?: WdioEl) {
-    const alreadyOnMore = await this.moreNavBarIOS.isExisting().catch(() => false)
-    if (!alreadyOnMore) {
-      await this.waitForHomeLoaded()
-    }
-
     if (await this.isIOSSubAccountsSheetOpen(expectedItem)) return
 
-    await this.openIOSMoreMenu()
-    await this.dismissIOSMoreMenuTipIfPresent().catch(() => {})
-    // Re-open More menu in case tip dismissal navigated away
-    await this.openIOSMoreMenu().catch(() => {})
+    const waitOpen = (timeout: number) => browser
+      .waitUntil(async () => this.isIOSSubAccountsSheetOpen(expectedItem), { timeout, interval: 250 })
+      .then(() => true)
+      .catch(() => false)
 
-    const tapAttempts = [
-      async () => this.tap(this.moreAccountPickerIOS),
-      async () => this.tapIOSMoreAccountPickerByCoordinate(),
-    ]
-
-    for (const attempt of tapAttempts) {
-      await attempt().catch(() => {})
-      const opened = await browser
-        .waitUntil(async () => this.isIOSSubAccountsSheetOpen(expectedItem), {
-          timeout: 4000,
-          interval: 250,
-        })
-        .then(() => true)
-        .catch(() => false)
-      if (opened) return
+    // App 2.26+: the account code under the name on Home opens Sub Accounts directly.
+    const onMore = await this.moreNavBarIOS.isExisting().catch(() => false)
+    if (!onMore) {
+      await this.waitForHomeLoaded()
+      if (await this.profilePickerAccountCodeLabelIOS.isExisting().catch(() => false)) {
+        await this.tap(this.profilePickerAccountCodeLabelIOS).catch(() => {})
+        if (await waitOpen(5000)) return
+      }
     }
 
-    const legacyHomeTapAttempts = [
-      async () => this.tap(this.profilePickerUserNameLabelIOS),
-      async () => this.tap(this.profilePickerAccountCodeLabelIOS),
-    ]
-
-    for (const attempt of legacyHomeTapAttempts) {
-      await attempt().catch(() => {})
-      const opened = await browser
-        .waitUntil(async () => this.isIOSSubAccountsSheetOpen(expectedItem), {
-          timeout: 3000,
-          interval: 250,
-        })
-        .then(() => true)
-        .catch(() => false)
-      if (opened) return
+    // Older builds: the account row inside More. No coordinate tap here: on 2.26 the point under the
+    // More title is the profile photo Camera button.
+    await this.openIOSMoreMenu()
+    await this.dismissIOSMoreMenuTipIfPresent().catch(() => {})
+    await this.openIOSMoreMenu().catch(() => {})
+    if (await this.moreAccountPickerIOS.isExisting().catch(() => false)) {
+      await this.tap(this.moreAccountPickerIOS).catch(() => {})
+      if (await waitOpen(4000)) return
     }
 
     await browser.waitUntil(async () => this.isIOSSubAccountsSheetOpen(expectedItem), {
-      timeout: 15000,
+      timeout: 10000,
       interval: 500,
       timeoutMsg: 'Sub Accounts sheet did not open on iOS',
     })
@@ -1811,9 +1779,23 @@ class HomeScreenPage extends BasePage {
     const help = browser.isIOS
       ? $('//XCUIElementTypeNavigationBar[@name="Home"]/XCUIElementTypeButton[@name="home_button_help" or @name="Help" or @name="Support" or (not(@name) and not(@label))]')
       : $('//*[contains(@resource-id,"home_button_help") or contains(@resource-id,"home_button_support") or @content-desc="Help" or @content-desc="Support"]')
+    if (browser.isIOS && !await help.waitForDisplayed({ timeout: 5000 }).then(() => true).catch(() => false)) {
+      // App 2.26+ has no Help button on the Home bar; Support is a row in the More sheet.
+      await this.openIOSMoreMenu()
+      await this.dismissIOSMoreMenuTipIfPresent().catch(() => {})
+      await this.tap($('-ios predicate string:type == "XCUIElementTypeStaticText" AND (name == "Support" OR label == "Support")'), 10000)
+      await this.supportGreeting.waitForDisplayed({ timeout: 15000 })
+      return
+    }
     await help.waitForDisplayed({ timeout: 10000 })
     await this.tap(help)
     await this.supportTitle.waitForDisplayed({ timeout: 10000 })
+  }
+
+  private get supportGreeting() {
+    return browser.isIOS
+      ? $('-ios predicate string:label BEGINSWITH "Hi " AND label CONTAINS[c] "how can we help you"')
+      : $('//*[starts-with(@text,"Hi ") and contains(@text,"how can we help you")]')
   }
 
   public async verifySignedInSupportOptions() {
@@ -1855,6 +1837,14 @@ class HomeScreenPage extends BasePage {
       ? $('~modal_button_close')
       : $('//*[contains(@resource-id,"modal_button_close") or contains(@resource-id,"support_button_close") or @content-desc="Close"]')
     await this.tap(close, 10000)
+    if (browser.isIOS) {
+      await this.supportGreeting.waitForDisplayed({ reverse: true, timeout: 10000 })
+      // Support opened from More on 2.26+: close the More sheet too.
+      if (await this.moreNavBarIOS.isExisting().catch(() => false)) {
+        await this.tap($('//XCUIElementTypeNavigationBar[@name="More"]//XCUIElementTypeButton[@name="close"]'), 5000).catch(() => {})
+      }
+      return
+    }
     await this.supportTitle.waitForDisplayed({ reverse: true, timeout: 10000 })
   }
 

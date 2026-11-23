@@ -71,6 +71,9 @@ const iosAppCapabilities: Record<string, unknown> = iosRealDevice
     'appium:xcodeSigningId': process.env.IOS_XCODE_SIGNING_ID?.trim() || 'Apple Development',
     'appium:updatedWDABundleId': process.env.IOS_WDA_BUNDLE_ID?.trim() || 'com.dkertys.WebDriverAgentRunner',
     'appium:allowProvisioningDeviceRegistration': true,
+    // On a personal phone, decline system prompts (camera, photos, location) instead of accepting them.
+    'appium:autoAcceptAlerts': false,
+    'appium:autoDismissAlerts': true,
     // Xcode 26.2's static analyzer crashes building WebDriverAgent, so a copy built once with
     // RUN_CLANG_STATIC_ANALYZER=NO is reused from IOS_WDA_DERIVED_DATA when set.
     ...(process.env.IOS_WDA_DERIVED_DATA?.trim()
