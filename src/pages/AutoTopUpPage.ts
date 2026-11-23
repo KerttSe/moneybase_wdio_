@@ -1381,6 +1381,38 @@ export default class AutoTopUpPage extends BasePage {
     if ((await save.getAttribute('enabled').catch(() => 'true')) === 'true') throw new Error('TC3340: Save should stay disabled for a second Euro rule')
   }
 
+  /**
+   * TC3351 (iOS): the Auto Top-Up currency picker shows a search field only when more than 10 currencies are
+   * selectable. Counts the currency rows and checks the branch that applies to this account, then closes the picker.
+   * Returns the count so a caller can tell which branch ran.
+   */
+  async verifyCurrencySearchThresholdIOS() {
+    await this.currencyPicker.waitForExist({ timeout: 15000, timeoutMsg: 'Auto Top-Up details have no currency picker (iOS)' })
+    await this.tap(this.currencyPicker)
+    const screen = $('-ios predicate string:name == "currencySelection_screen"')
+    await screen.waitForExist({ timeout: 10000, timeoutMsg: 'The currency picker did not open (iOS)' })
+    // Read the search field before scrolling: the navigation-bar search collapses once the list scrolls.
+    const search = $('-ios predicate string:type == "XCUIElementTypeSearchField"')
+    const searchShown = await search.isExisting().catch(() => false)
+    // The table only keeps on-screen rows in the tree, so collect the row names while scrolling to the end.
+    const names = new Set<string>()
+    const rows = '-ios predicate string:type == "XCUIElementTypeCell" AND name BEGINSWITH "currencyPicker_item_"'
+    for (let i = 0; i < 6; i += 1) {
+      const before = names.size
+      for (const name of await $$(rows).map((el) => el.getAttribute('name').catch(() => ''))) if (name) names.add(name)
+      if (i > 0 && names.size === before) break
+      await browser.execute('mobile: swipe', { direction: 'up', elementId: (await screen).elementId }).catch(() => {})
+      await browser.pause(800)
+    }
+    const count = names.size
+    console.log(`[AutoTopUp] iOS currency picker: ${count} currencies, search ${searchShown ? 'shown' : 'hidden'}`)
+    if (count > 10 && !searchShown) throw new Error(`TC3351: ${count} currencies should show a search field`)
+    if (count <= 10 && searchShown) throw new Error(`TC3351: ${count} currencies should not show a search field`)
+    await this.tap($('-ios predicate string:name == "currencySelection_button_close"'))
+    await screen.waitForExist({ reverse: true, timeout: 10000 })
+    return count
+  }
+
   /** Leaves Auto Top-Up back to Home without saving. */
   async leaveToHomeAndroid() {
     for (let i = 0; i < 5 && !(await $('//*[contains(@resource-id,"home_screen")]').isDisplayed().catch(() => false)); i += 1) {
