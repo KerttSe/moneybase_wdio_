@@ -444,22 +444,6 @@ export default class AutoTopUpPage extends BasePage {
       })
       return
     }
-    // App 2.26+: the chips expose no selected state either; as on Android, the custom 1500 chip carries it.
-    const sections = [this.validationThresholdSection, this.validationAmountSection]
-    for (const section of sections) await section.waitForExist({ timeout: 10000 })
-    let anySelectedState = false
-    for (const section of sections) {
-      if (await section.$$('.//*[@selected="true" or @checked="true"]').length) anySelectedState = true
-    }
-    if (!anySelectedState) {
-      const customChip = this.validationAmountSection.$('.//XCUIElementTypeButton[contains(@label,"1500") or contains(@label,"1,500")]')
-      await browser.waitUntil(async () => (await customChip.isExisting().catch(() => false)) === selected, {
-        timeout: 10000,
-        interval: 500,
-        timeoutMsg: `Auto Top-Up amount must ${selected ? 'show the entered 1500' : 'be cleared after currency change'}`,
-      })
-      return
-    }
     for (const [label, section] of [['threshold', this.validationThresholdSection], ['amount', this.validationAmountSection]] as const) {
       await section.waitForExist({ timeout: 10000 })
       await browser.waitUntil(async () => {

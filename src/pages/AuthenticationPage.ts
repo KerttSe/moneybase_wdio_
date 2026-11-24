@@ -473,7 +473,7 @@ export default class AuthenticationPage extends BasePage {
     await title.waitForDisplayed({ timeout: 15000 })
 
     const privacy = browser.isIOS ? $('~Privacy Settings') : $('//*[@text="Privacy Settings" or @content-desc="Privacy Settings"]')
-    const close = browser.isIOS ? $('~Close Account') : $('//*[@text="Close Account" or @content-desc="Close Account"]')
+    const close = browser.isIOS ? $('-ios predicate string:name IN {"Close Account", "Close my Account"} OR label IN {"Close Account", "Close my Account"}') : $('//*[@text="Close Account" or @content-desc="Close Account"]')
     await close.waitForExist({ timeout: 10000 })
     if (await privacy.isExisting()) throw new Error('TC2963: Privacy Settings should be hidden for a business account')
 
