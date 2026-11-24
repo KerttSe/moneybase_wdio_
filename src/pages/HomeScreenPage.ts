@@ -489,7 +489,13 @@ class HomeScreenPage extends BasePage {
       $('//XCUIElementTypeNavigationBar[@name="Home"]//XCUIElementTypeImage[string-length(@label)=2]'),
     ]
 
+    const cancelSearch = async () => {
+      // A tap near the header can land on the Home search field on 2.26; leave search before retrying.
+      const cancel = $('//XCUIElementTypeNavigationBar[@name="Home"]//XCUIElementTypeButton[@name="Cancel"]')
+      if (await cancel.isExisting().catch(() => false)) await cancel.click().catch(() => {})
+    }
     for (const entry of entries) {
+      await cancelSearch()
       if (!await entry.isExisting()) continue
       await this.tap(entry).catch(() => {})
       const opened = await browser
@@ -502,6 +508,8 @@ class HomeScreenPage extends BasePage {
       if (opened) return
     }
 
+    await cancelSearch()
+    await this.tap(this.profilePickerUserNameLabelIOS).catch(() => {})
     await browser.waitUntil(async () => this.isIOSMoreOpen(), {
       timeout: 10000,
       interval: 500,
