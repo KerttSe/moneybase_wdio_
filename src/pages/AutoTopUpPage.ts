@@ -385,6 +385,15 @@ export default class AutoTopUpPage extends BasePage {
   async verifyValidationAmountDoneEnabled(enabled: boolean) {
     const { input, done } = await this.validationAmountControls()
     await input.waitForDisplayed({ timeout: 10000 })
+    if (browser.isIOS && !enabled && await done.isEnabled().catch(() => false)) {
+      // App 2.26 (SwiftUI) reports Done as enabled when it is blocked; a tap must keep the Custom Amount sheet.
+      await done.click()
+      await browser.pause(2000)
+      if (!await input.isExisting().catch(() => false)) {
+        throw new Error('Auto Top-Up custom amount Done must be disabled: tapping it closed the Custom Amount sheet')
+      }
+      return
+    }
     await waitForControlEnabled(done, enabled, 'Auto Top-Up custom amount Done')
   }
 
@@ -432,6 +441,22 @@ export default class AutoTopUpPage extends BasePage {
         timeout: 10000,
         interval: 500,
         timeoutMsg: `Auto Top-Up amount must ${selected ? 'show the entered €1,500' : 'be cleared after currency change'}`,
+      })
+      return
+    }
+    // App 2.26+: the chips expose no selected state either; as on Android, the custom 1500 chip carries it.
+    const sections = [this.validationThresholdSection, this.validationAmountSection]
+    for (const section of sections) await section.waitForExist({ timeout: 10000 })
+    let anySelectedState = false
+    for (const section of sections) {
+      if (await section.$$('.//*[@selected="true" or @checked="true"]').length) anySelectedState = true
+    }
+    if (!anySelectedState) {
+      const customChip = this.validationAmountSection.$('.//XCUIElementTypeButton[contains(@label,"1500") or contains(@label,"1,500")]')
+      await browser.waitUntil(async () => (await customChip.isExisting().catch(() => false)) === selected, {
+        timeout: 10000,
+        interval: 500,
+        timeoutMsg: `Auto Top-Up amount must ${selected ? 'show the entered 1500' : 'be cleared after currency change'}`,
       })
       return
     }

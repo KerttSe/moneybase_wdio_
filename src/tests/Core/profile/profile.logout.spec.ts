@@ -9,7 +9,9 @@ describe('Profile logout', function () {
     await home.cancelLogoutAndVerifyHome()
     await home.confirmLogout()
     // 2.27.0 lands on the Welcome screen (Sign In) after logout; older builds opened the mobile number entry.
-    const welcome = $('//*[contains(@resource-id,"welcomeToMoneybase_screen") or contains(@resource-id,"welcomeToMoneybase_button_logIn")]')
+    const welcome = browser.isIOS
+      ? $('-ios predicate string:name IN {"welcomeToMoneybase_screen", "welcomeToMoneybase_button_signIn", "welcomeToMoneybase_button_logIn"}')
+      : $('//*[contains(@resource-id,"welcomeToMoneybase_screen") or contains(@resource-id,"welcomeToMoneybase_button_logIn")]')
     await browser.waitUntil(
       async () => (await loginPage.mobileInput.isDisplayed().catch(() => false)) || (await welcome.isExisting().catch(() => false)),
       { timeout: 60000, interval: 1000, timeoutMsg: 'TC2995: confirming logout should return to the sign-in entry' },
