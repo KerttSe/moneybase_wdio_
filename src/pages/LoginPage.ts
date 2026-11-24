@@ -445,6 +445,20 @@ async clearMobile() {
 
 async verifyMobileContinueEnabled(enabled: boolean) {
   await this.mobileInput.waitForExist({ timeout: 10000 })
+  if (browser.isIOS && !enabled && await this.continueBtn.isEnabled().catch(() => false)) {
+    // App 2.26 (SwiftUI) reports Continue as enabled even when it is blocked; check that a tap does not leave
+    // the mobile number screen instead.
+    await this.continueBtn.click()
+    await browser.pause(3000)
+    const error = $('-ios predicate string:type == "XCUIElementTypeButton" AND label IN {"OK", "Ok", "Close", "Dismiss"}')
+    if (await error.isExisting().catch(() => false)) await error.click().catch(() => {})
+    const left = await $('~moneybase.AuthenticationLoginView').isExisting().catch(() => false)
+      || await $('-ios predicate string:name CONTAINS[c] "otp"').isExisting().catch(() => false)
+    if (left || !await this.mobileInput.isExisting().catch(() => false)) {
+      throw new Error('Mobile number Continue must be disabled: tapping it left the mobile number screen')
+    }
+    return
+  }
   await waitForControlEnabled(this.continueBtn, enabled, 'Mobile number Continue')
 }
 

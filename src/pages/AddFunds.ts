@@ -223,6 +223,14 @@ private get payProcessingBtnIOS() {
     await this.tap(this.amountInput)
     await this.amountInput.clearValue().catch(() => {})
     await this.amountInput.setValue(String(amount))
+    if (browser.isIOS && String(amount).includes('.')) {
+      // A device with a comma decimal separator drops the dot ("9.99" becomes "999"); retype with a comma.
+      const digits = (await this.amountInput.getAttribute('value').catch(() => '') || '').replace(/[^\d.,]/g, '')
+      if (!/[.,]/.test(digits)) {
+        await this.amountInput.clearValue().catch(() => {})
+        await this.amountInput.setValue(String(amount).replace('.', ','))
+      }
+    }
     if (browser.isAndroid) {
       await browser.hideKeyboard().catch(() => {})
       await browser.pause(300)
@@ -231,6 +239,15 @@ private get payProcessingBtnIOS() {
 
   async verifyContinueEnabled(enabled: boolean) {
     await this.amountInput.waitForExist({ timeout: 10000 })
+    if (browser.isIOS && !enabled && await this.continueBtn.isEnabled().catch(() => false)) {
+      // App 2.26 (SwiftUI) reports Continue as enabled when it is blocked; a tap must keep the Card Deposit screen.
+      await this.continueBtn.click()
+      await browser.pause(3000)
+      if (!await this.amountInput.isExisting().catch(() => false)) {
+        throw new Error('Card top-up Continue must be disabled: tapping it left the Card Deposit screen')
+      }
+      return
+    }
     await waitForControlEnabled(this.continueBtn, enabled, 'Card top-up Continue')
   }
 
