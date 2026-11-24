@@ -1,4 +1,5 @@
 import BasePage from './BasePage'
+import homeScreenPage from './HomeScreenPage'
 import { $, $$, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
 
@@ -275,7 +276,11 @@ class PricePlanPage extends BasePage {
   /** MPP-1.2: open More from the top Home profile button. */
   public async openMoreTab() {
     if (browser.isIOS) {
-      await this.moreTabIOS.waitForExist({ timeout: 10000 })
+      // On 2.26+ there is no More tab; More opens from the Home profile header.
+      if (!await this.moreTabIOS.waitForExist({ timeout: 5000 }).then(() => true).catch(() => false)) {
+        await homeScreenPage.openIOSMoreMenu()
+        return
+      }
       await this.moreTabIOS.click().catch(async () => {
         await this.tapIOSCenter(this.moreTabIOS, 'More tab')
       })

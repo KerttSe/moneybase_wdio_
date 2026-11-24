@@ -1,6 +1,7 @@
 import { $, browser, driver } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
 import BasePage from './BasePage'
+import homeScreenPage from './HomeScreenPage'
 import { loginPage } from './LoginPage'
 import OtpHelper from '../helpers/otp.helper'
 import { dismissTooEasyPasscodeWarning } from '../helpers/passcodeWarning.helper'
@@ -451,7 +452,9 @@ export default class AuthenticationPage extends BasePage {
 
   async openSettings() {
     if (browser.isIOS) {
-      await this.tap(this.moreTabIOS, 15000)
+      // Older builds have a More tab; on 2.26+ More opens from the Home profile header.
+      if (await this.moreTabIOS.isExisting().catch(() => false)) await this.tap(this.moreTabIOS, 15000)
+      else await homeScreenPage.openIOSMoreMenu()
     } else {
       await this.openAndroidMoreMenuFromProfile()
     }

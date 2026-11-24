@@ -1841,7 +1841,7 @@ class HomeScreenPage extends BasePage {
 
   private async closeSupport() {
     const close = browser.isIOS
-      ? $('~modal_button_close')
+      ? $('//XCUIElementTypeButton[@name="modal_button_close"] | //XCUIElementTypeNavigationBar[@name="Support"]//XCUIElementTypeButton[@name="close"]')
       : $('//*[contains(@resource-id,"modal_button_close") or contains(@resource-id,"support_button_close") or @content-desc="Close"]')
     await this.tap(close, 10000)
     if (browser.isIOS) {
