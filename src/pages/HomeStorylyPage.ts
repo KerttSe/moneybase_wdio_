@@ -404,9 +404,14 @@ class HomeStorylyPage extends BasePage {
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
     if (browser.isIOS) {
+      const shown = await browser.waitUntil(async () => this.isStorylyVisibleIOS(), { timeout: 15000, interval: 1000 })
+        .then(() => true).catch(() => false)
+      if (shown) return
+      // On a small screen (iPhone XS) with recent activity, "For You" sits below the fold on 2.26.
+      await browser.execute('mobile: swipe', { direction: 'up' }).catch(() => {})
       await browser.waitUntil(
         async () => this.isStorylyVisibleIOS(),
-        { timeout, interval: 1000, timeoutMsg: 'Storyly widget did not appear on iOS Home' }
+        { timeout: Math.max(timeout - 15000, 10000), interval: 1000, timeoutMsg: 'Storyly widget did not appear on iOS Home' }
       )
       return
     }

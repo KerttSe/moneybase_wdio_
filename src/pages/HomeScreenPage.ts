@@ -1316,7 +1316,11 @@ class HomeScreenPage extends BasePage {
     await browser.waitUntil(
       async () => {
         await this.dismissIOSPermissionAlertsIfPresent().catch(() => {})
-        return await this.homeRoot.isExisting().catch(() => false)
+        if (await this.homeRoot.isExisting().catch(() => false)) return true
+        // App 2.26+: the More sheet covers Home after a More-menu step; close it.
+        const moreClose = $('//XCUIElementTypeNavigationBar[@name="More"]/XCUIElementTypeButton[@name="close"]')
+        if (await moreClose.isExisting().catch(() => false)) await moreClose.click().catch(() => {})
+        return false
       },
       { timeout, interval: 500, timeoutMsg: 'Home screen did not appear on iOS (blocked by permission alert?)' },
     )
@@ -1531,7 +1535,7 @@ class HomeScreenPage extends BasePage {
     if (!available) return
     await this.tap(action)
     const report = browser.isIOS
-      ? $('-ios predicate string:type == "XCUIElementTypeNavigationBar" AND label IN {"Statements Report", "Statements"}')
+      ? $('-ios predicate string:type == "XCUIElementTypeNavigationBar" AND (label IN {"Statements Report", "Statements", "Statement"} OR name IN {"Statements Report", "Statements", "Statement"})')
       // Android 2.27.0 opens a "Statement" screen whose anchor is its Generate Statement button.
       : $('//*[@text="Statements Report" or @content-desc="Statements Report" or contains(@resource-id,"statementsReport_screen") or (contains(@resource-id,"btnContinue") and @text="Generate Statement")]')
     await report.waitForDisplayed({ timeout: 15000 })
@@ -1741,7 +1745,8 @@ class HomeScreenPage extends BasePage {
       const close = await closeBtn.isDisplayed().catch(() => false) ? closeBtn : undefined
       return { confirm, close }
     }
-    const confirm = $('~modal_button_primary')
+    // App 2.26+ shows a logout_screen whose confirm button is logout_button_continue.
+    const confirm = $('-ios predicate string:name IN {"modal_button_primary", "logout_button_continue"}')
     const close = $('~modal_button_close')
     await confirm.waitForDisplayed({ timeout: 10000 })
     await close.waitForDisplayed({ timeout: 10000 })
@@ -1916,7 +1921,8 @@ class HomeScreenPage extends BasePage {
       await this.tap(this.supportOption('Chat'), 10000)
     }
     if (browser.isIOS) {
-      await $('//XCUIElementTypeNavigationBar[@name="Conversations"]').waitForDisplayed({ timeout: 20000 })
+      // App 2.26+ opens the Freshchat thread directly ("Moneybase Support") instead of Conversations.
+      await $('//XCUIElementTypeNavigationBar[@name="Conversations" or @name="Moneybase Support"]').waitForDisplayed({ timeout: 20000 })
     } else {
       await browser.waitUntil(async () => /freshchat|CategoryListActivity|ConversationActivity/i.test(await browser.getCurrentActivity()), {
         timeout: 20000,

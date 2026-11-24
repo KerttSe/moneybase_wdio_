@@ -293,7 +293,8 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   private async validationAmountControls() {
-    if (browser.isIOS) return { input: $('~autoTopUpDetails_input_customAmount'), done: this.customAmountDoneBtn }
+    // App 2.26+: the Custom Amount sheet's text field has no accessibility id.
+    if (browser.isIOS) return { input: this.customAmountInput, done: this.customAmountDoneBtn }
     if (await this.customAmountModalInputAndroid.isExisting()) {
       return { input: this.customAmountModalInputAndroid, done: this.customAmountModalDoneBtnAndroid }
     }

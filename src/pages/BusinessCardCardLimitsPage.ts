@@ -73,6 +73,9 @@ class BusinessCardCardLimitsPage extends BasePage {
   private async waitForIOSSeDeKEHome(timeout = 30000) {
     await browser.waitUntil(
       async () => {
+        // App 2.26+: after switching from the More sheet, More stays open over Home; close it.
+        const moreClose = $('//XCUIElementTypeNavigationBar[@name="More"]/XCUIElementTypeButton[@name="close"]')
+        if (await moreClose.isExisting().catch(() => false)) await moreClose.click().catch(() => {})
         const homeShown = await this.homeRootIOS.isExisting().catch(() => false)
         const chipShown = await this.profilePickerCodeLabelIOS.isExisting().catch(() => false)
         if (!homeShown || !chipShown) return false
