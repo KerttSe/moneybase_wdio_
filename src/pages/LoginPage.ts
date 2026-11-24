@@ -1014,7 +1014,7 @@ private async isHomeLoaded() {
     if (!homeExists) return false
 
     // Passcode screen may sit on top of home_screen_view in the background accessibility tree
-    const passcodeOnTop = await $('-ios predicate string:type == "XCUIElementTypeOther" AND name == "loginKeyPad_1"').isExisting().catch(() => false)
+    const passcodeOnTop = await $('-ios predicate string:type == "XCUIElementTypeOther" AND name IN {"loginKeyPad_1", "loginKeyPad_one"}').isExisting().catch(() => false)
     if (passcodeOnTop) return false
 
     await this.dismissIOSHomeTipIfVisible().catch(() => false)

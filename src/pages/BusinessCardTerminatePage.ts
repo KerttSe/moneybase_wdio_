@@ -1,4 +1,5 @@
 import BasePage from './BasePage'
+import homeScreenPage from './HomeScreenPage'
 import { $, $$, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
 
@@ -710,8 +711,9 @@ class BusinessCardTerminatePage extends BasePage {
     if (await this.manageCardsNavBarIOS.isExisting().catch(() => false)) return
 
     if (!(await this.administrationItemIOS.isExisting().catch(() => false))) {
-      await this.moreTabIOS.waitForExist({ timeout: 15000 })
-      await this.tap(this.moreTabIOS)
+      // App 2.26+ has no More tab; More opens from the Home profile header.
+      if (await this.moreTabIOS.waitForExist({ timeout: 5000 }).then(() => true).catch(() => false)) await this.tap(this.moreTabIOS)
+      else await homeScreenPage.openIOSMoreMenu()
       await browser.pause(500)
     }
 
@@ -827,8 +829,9 @@ class BusinessCardTerminatePage extends BasePage {
   public async openAdministration() {
     await browser.switchContext('NATIVE_APP').catch(() => {})
     if (browser.isIOS) {
-      await this.moreTabIOS.waitForExist({ timeout: 15000 })
-      await this.tap(this.moreTabIOS)
+      // App 2.26+ has no More tab; More opens from the Home profile header.
+      if (await this.moreTabIOS.waitForExist({ timeout: 5000 }).then(() => true).catch(() => false)) await this.tap(this.moreTabIOS)
+      else await homeScreenPage.openIOSMoreMenu()
     } else {
       await this.openAndroidMoreMenuWithItem(this.administrationItemAndroid, 'Administration item')
     }

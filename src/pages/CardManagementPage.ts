@@ -3,6 +3,7 @@ import { $, $$, browser } from '@wdio/globals'
 import OtpHelper from '../helpers/otp.helper'
 import { markBrowserStackStep } from '../helpers/browserstack.helper'
 import HomeScreenPage from './HomeScreenPage'
+import { AUTH } from '../data/credentials'
 
 type CardSecurityControl = 'Swipe payments' | 'Contactless payments' | 'ATM withdrawals' | 'Online Transactions'
 
@@ -384,6 +385,7 @@ class CardManagementPage extends BasePage {
   private async waitForCardsLoaded() {
     if (browser.isIOS) {
       await this.cardsNavBarIOS.waitForExist({ timeout: 20000 })
+      if ((AUTH.individualAccountCode ?? 'VEG40002') !== 'VEG40002') return
       await this.jointAccountLabelIOS.waitForExist({ timeout: 10000 })
       const account = await this.jointAccountLabelIOS.getAttribute('label').catch(() => '')
       if (!/Joint/i.test(account)) {
@@ -726,9 +728,53 @@ class CardManagementPage extends BasePage {
     await this.waitForAndroidCardPinValue(10000)
   }
 
+  /**
+   * TC3183 (Android): the correct passcode reveals the card's own PIN. Checks the exact PIN of a card whose PIN
+   * the fixture knows, shown either as one 4-digit value or as four single digits under "Your card PIN".
+   */
+  public async verifyRevealedPinEquals(lastFour: string, passcode: string, expectedPin: string) {
+    if (!/^\d{4}$/.test(expectedPin)) throw new Error('CONFIGURATION_ERROR: expected card PIN must be 4 digits')
+    // Tapping a card opens View Card Details behind an OTP; swipe the carousel to it and use View PIN instead.
+    await this.openCardsTab()
+    const selected = $(`//android.widget.TextView[contains(@text,"${lastFour}")]`)
+    const { width, height } = await browser.getWindowRect()
+    for (let i = 0; i < 6; i += 1) {
+      const summary = await $$('//android.widget.TextView[@text!=""]').map((el) => el.getText().catch(() => ''))
+      // The selected card's number is the one shown above View PIN; stop once it is ours.
+      const idx = summary.findIndex((t) => t === 'View PIN')
+      if (idx > 0 && summary.slice(0, idx).some((t) => t.includes(lastFour)) && await selected.isExisting()) {
+        const viewPinBefore = summary.slice(0, idx).filter((t) => /··\s*\d{4}/.test(t))
+        if (viewPinBefore.length && viewPinBefore[viewPinBefore.length - 1].includes(lastFour)) break
+      }
+      await browser.execute('mobile: swipeGesture', {
+        left: Math.round(width * 0.1), top: Math.round(height * 0.15),
+        width: Math.round(width * 0.8), height: Math.round(height * 0.2),
+        direction: 'left', percent: 0.75,
+      }).catch(() => {})
+      await browser.pause(1200)
+    }
+    await this.viewPinButtonOnCardSummaryAndroid.waitForDisplayed({ timeout: 15000 })
+    await this.tap(this.viewPinButtonOnCardSummaryAndroid)
+    await this.verifyViewPinPasscodeGateDisplayed()
+    await this.enterAndroidPasscodeDigits(passcode)
+    if (!(await this.waitForAndroidPinAfterPasscode(30000))) throw new Error('Card PIN screen did not open after passcode on Android')
+    await this.cardPinTitleAndroid.waitForDisplayed({ timeout: 10000 })
+    const whole = $(`//*[@text="${expectedPin}" or @content-desc="${expectedPin}"]`)
+    let shown = await whole.isExisting().catch(() => false)
+    if (!shown) {
+      const digits = await $$('//*[string-length(@text)=1 and translate(@text,"0123456789","")=""]').map((el) => el.getText().catch(() => ''))
+      shown = digits.join('').includes(expectedPin)
+      console.log(`[CardManagement] PIN digits on screen: ${digits.length}`)
+    }
+    if (!shown) throw new Error(`TC3183: the revealed PIN for card ··${lastFour} is not the card's own PIN`)
+    await this.pinDoneButtonAndroid.waitForDisplayed({ timeout: 10000 })
+    await this.tap(this.pinDoneButtonAndroid)
+  }
+
   public async verifyCardPinClosesAutomatically(lastFour: string, passcode: string) {
     if (browser.isIOS) {
-      await HomeScreenPage.ensureJointAccount()
+      // The Joint account (VEG40003) only exists on the primary login; other slots use their own card.
+      if ((AUTH.individualAccountCode ?? 'VEG40002') === 'VEG40002') await HomeScreenPage.ensureJointAccount()
       await this.verifyCardPinDisplayed(passcode)
     } else {
       await this.revealCardPinForCardAndroid(lastFour, passcode)

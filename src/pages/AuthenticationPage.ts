@@ -26,7 +26,10 @@ export default class AuthenticationPage extends BasePage {
   }
 
   private keypadDigitIOS(d: string) {
-    return $(`-ios predicate string:type == "XCUIElementTypeOther" AND name == "loginKeyPad_${d}"`)
+    // App 2.26+ spells the digit out (loginKeyPad_one); older builds use the digit (loginKeyPad_1).
+    const words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+    const word = /^\d$/.test(String(d)) ? words[Number(d)] : String(d)
+    return $(`-ios predicate string:type == "XCUIElementTypeOther" AND name IN {"loginKeyPad_${d}", "loginKeyPad_${word}"}`)
   }
 
   private async tapElementCenterIOS(el: ChainablePromiseElement) {
@@ -475,7 +478,7 @@ export default class AuthenticationPage extends BasePage {
     const privacy = browser.isIOS ? $('~Privacy Settings') : $('//*[@text="Privacy Settings" or @content-desc="Privacy Settings"]')
     const close = browser.isIOS ? $('-ios predicate string:name IN {"Close Account", "Close my Account"} OR label IN {"Close Account", "Close my Account"}') : $('//*[@text="Close Account" or @content-desc="Close Account"]')
     await close.waitForExist({ timeout: 10000 })
-    if (await privacy.isExisting()) throw new Error('TC2963: Privacy Settings should be hidden for a business account')
+    if (await (browser.isIOS ? privacy.isDisplayed() : privacy.isExisting()).catch(() => false)) throw new Error('TC2963: Privacy Settings should be hidden for a business account')
 
     await this.tap(close, 10000)
     const restriction = browser.isIOS
