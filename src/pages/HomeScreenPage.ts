@@ -1186,7 +1186,12 @@ class HomeScreenPage extends BasePage {
 
   private get recentActivityRowsSelectorAndroid() {
     const heading = '@text="Recent Activity" or @text="Recent Activities" or @text="Recent Transactions"'
-    return `//*[contains(@resource-id,"home_screen")]//android.widget.TextView[${heading}]/following-sibling::android.view.View[preceding-sibling::android.widget.TextView[1][${heading}]]/descendant-or-self::android.view.View[count(android.widget.TextView)>=3]`
+    const legacy = `//*[contains(@resource-id,"home_screen")]//android.widget.TextView[${heading}]/following-sibling::android.view.View[preceding-sibling::android.widget.TextView[1][${heading}]]/descendant-or-self::android.view.View[count(android.widget.TextView)>=3]`
+    // 2.28 wraps the heading with "View All" in a header View; rows are siblings of that header,
+    // up to the next section header.
+    const section = `${heading} or @text="For you" or @text="Total Wealth" or @text="Spend Analytics" or @text="Recent Payees" or @text="Pending"`
+    const wrapped = `//*[contains(@resource-id,"home_screen")]//android.view.View[android.widget.TextView[${heading}]]/following-sibling::android.view.View[preceding-sibling::android.view.View[android.widget.TextView[${section}]][1][android.widget.TextView[${heading}]]]/descendant-or-self::android.view.View[count(android.widget.TextView)>=3]`
+    return `${legacy} | ${wrapped}`
   }
 
   private async recentActivityRowLabels(row: WebdriverIO.Element, index: number) {
@@ -1217,7 +1222,8 @@ class HomeScreenPage extends BasePage {
       const labels = await this.recentActivityRowLabels(row, index)
       for (const label of labels) {
         if (!await label.isDisplayed()) continue
-        const text = (await label.getText()).replace(/\s+/g, ' ').trim()
+        // 2.28 rows read "To Sengali Manta" / "From …"; search by the name itself.
+        const text = (await label.getText()).replace(/\s+/g, ' ').trim().replace(/^(to|from)\s+/i, '')
         const isName = text.length >= 3 && /\p{L}/u.test(text) && !/\d/.test(text) && !/^[A-Z]{1,3}$/.test(text)
         if (isName && !systemEntry.test(text)) return text
       }
