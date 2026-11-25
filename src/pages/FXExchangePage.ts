@@ -435,7 +435,8 @@ class FXExchangePage extends BasePage {
 
   private get exchangedToUsdAnchor() {
     if (browser.isAndroid) {
-      return $('//*[contains(@text,"Exchanged From Eur") or contains(@content-desc,"Exchanged From Eur")]')
+      // Case differs between builds ("Exchanged From Eur" in 2.27, other casing in 2.28), so match case-insensitively.
+      return $("//*[contains(translate(@text,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'exchanged from eur') or contains(translate(@text,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'exchanged to usd') or contains(translate(@content-desc,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'exchanged from eur') or contains(translate(@content-desc,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'exchanged to usd')]")
     }
     return $('~Exchanged to USD')
   }
@@ -992,6 +993,25 @@ class FXExchangePage extends BasePage {
       if (visible) return
 
       await this.smallScrollDownOnHome()
+    }
+
+    // Recent Activity sits above Total Wealth; if scrolling down passed it, come back up.
+    if (browser.isAndroid) {
+      const { width, height } = await browser.getWindowRect()
+      for (let attempt = 0; attempt < 6; attempt += 1) {
+        if (await this.exchangedToUsdAnchor.isDisplayed().catch(() => false)) return
+        await browser.performActions([{
+          type: 'pointer', id: 'finger-up', parameters: { pointerType: 'touch' },
+          actions: [
+            { type: 'pointerMove', duration: 0, x: Math.round(width * 0.5), y: Math.round(height * 0.45) },
+            { type: 'pointerDown', button: 0 },
+            { type: 'pointerMove', duration: 400, x: Math.round(width * 0.5), y: Math.round(height * 0.75) },
+            { type: 'pointerUp', button: 0 },
+          ],
+        }])
+        await browser.releaseActions().catch(() => {})
+        await browser.pause(500)
+      }
     }
 
     await this.exchangedToUsdAnchor.waitForExist({ timeout: 10000 })
