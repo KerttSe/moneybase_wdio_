@@ -1539,6 +1539,7 @@ class PhysicalCardCreationPage extends BasePage {
 
   public async preparePhysicalCardIOS() {
     await this.openCardsTabIOS()
+    await this.cleanupExistingPhysicalCardsIOS()
     await this.startAddNewCardIOS()
     await this.choosePhysicalCardTypeIOS()
     await this.confirmDefaultDesignIOS()
@@ -1594,6 +1595,25 @@ class PhysicalCardCreationPage extends BasePage {
     }
     if (await tracker.isExisting().catch(() => false)) return
     await this.tapAndVerify(physicalCell, async () => tracker.isExisting().catch(() => false), 'iOS Cards → select the physical card')
+  }
+
+  // Like Android's pre-cleanup: block physical cards a failed run left behind before ordering a new one.
+  // Only Card_Std (physical) cards are touched; the virtual card is never selected.
+  private async cleanupExistingPhysicalCardsIOS() {
+    const physicalCell = $('//XCUIElementTypeCell[.//XCUIElementTypeImage[starts-with(@name,"Card_Std")]]')
+    for (let i = 0; i < 3; i++) {
+      if (!await physicalCell.waitForExist({ timeout: 8000 }).then(() => true).catch(() => false)) return
+      console.warn(`[PhysicalCard][iOS] Blocking a leftover physical card before the spec (${i + 1})`)
+      await this.selectPhysicalCardIOS()
+      await this.waitForFreezeReadyIOS(60000)
+      if (await this.freezeButtonIOS.isExisting().catch(() => false)) {
+        await this.tap(this.freezeButtonIOS)
+        await this.unfreezeButtonIOS.waitForExist({ timeout: 20000 }).catch(() => {})
+      }
+      await this.waitForSyncToFinishIOS(60000)
+      await this.blockCardIOS(20000)
+      await this.openCardsTabIOS().catch(() => {})
+    }
   }
 
   public async finishPhysicalCardIOS() {
