@@ -1584,36 +1584,16 @@ class PhysicalCardCreationPage extends BasePage {
   // selected card) may only run once the physical card is confirmed selected. If that cannot be
   // confirmed, refuse instead of touching any card.
   private async selectPhysicalCardIOS() {
-    const physical = $('-ios predicate string:label CONTAINS[c] "Physical card" OR name CONTAINS[c] "Physical card"')
-    const selectedPhysical = $('-ios predicate string:(label CONTAINS[c] "Physical card" OR name CONTAINS[c] "Physical card") AND (selected == 1 OR label BEGINSWITH[c] "Selected")')
-    const virtual = $('-ios predicate string:label CONTAINS[c] "Virtual card" OR name CONTAINS[c] "Virtual card"')
-    await physical.waitForExist({ timeout: 20000 }).catch(() => {})
-    if (!await physical.isExisting().catch(() => false)) {
-      throw new Error('iOS: the physical card is not identifiable in the Cards pager; refusing to freeze/block')
+    // iOS cards are cells: physical ones carry a "Card_Std_*" image, virtual ones "Card_Virt_*".
+    // Only a physical card shows the delivery tracker (Ordered / Processing / Posted) in its details.
+    const physicalCell = $('//XCUIElementTypeCell[.//XCUIElementTypeImage[starts-with(@name,"Card_Std")]]')
+    const tracker = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label IN {"Ordered", "Processing", "Posted", "Delivered"}')
+    await physicalCell.waitForExist({ timeout: 20000 }).catch(() => {})
+    if (!await physicalCell.isExisting().catch(() => false)) {
+      throw new Error('iOS: no physical card (Card_Std image) in the Cards list; refusing to freeze/block')
     }
-    const hasVirtual = await virtual.isExisting().catch(() => false)
-    if (!hasVirtual) return // only the physical card is listed
-    const { width } = await browser.getWindowRect()
-    for (let i = 0; i < 6 && !await selectedPhysical.isExisting().catch(() => false); i++) {
-      const loc = await physical.getLocation().catch(() => ({ x: 0, y: 300 }))
-      const size = await physical.getSize().catch(() => ({ width: 0, height: 200 }))
-      const y = Math.round(loc.y + size.height / 2)
-      const toLeft = i < 3
-      await browser.performActions([{
-        type: 'pointer', id: 'finger-card-pager-ios', parameters: { pointerType: 'touch' },
-        actions: [
-          { type: 'pointerMove', duration: 0, x: Math.round(width * (toLeft ? 0.85 : 0.15)), y },
-          { type: 'pointerDown', button: 0 },
-          { type: 'pointerMove', duration: 350, x: Math.round(width * (toLeft ? 0.15 : 0.85)), y },
-          { type: 'pointerUp', button: 0 },
-        ],
-      }])
-      await browser.releaseActions().catch(() => {})
-      await browser.pause(1200)
-    }
-    if (!await selectedPhysical.isExisting().catch(() => false)) {
-      throw new Error('iOS: could not confirm the physical card is selected; refusing to freeze/block')
-    }
+    if (await tracker.isExisting().catch(() => false)) return
+    await this.tapAndVerify(physicalCell, async () => tracker.isExisting().catch(() => false), 'iOS Cards → select the physical card')
   }
 
   public async finishPhysicalCardIOS() {
