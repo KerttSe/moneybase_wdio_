@@ -663,11 +663,13 @@ export default class AutoTopUpPage extends BasePage {
     await browser.pause(500)
     
     await this.autoTopUpTile.waitForExist({ timeout: 15000 })
+    // The iOS details anchor also matches the tile's own "Auto Top-Up" label, so the tile must be gone too.
     await this.tapAndVerify(
       this.autoTopUpTile,
       async () =>
-        (await this.autoTopUpListScreen.isExisting().catch(() => false)) ||
-        (await this.autoTopUpDetailsScreen.isExisting().catch(() => false)),
+        (browser.isAndroid || !(await this.autoTopUpTile.isExisting().catch(() => false))) && (
+          (await this.autoTopUpListScreen.isExisting().catch(() => false)) ||
+          (await this.autoTopUpDetailsScreen.isExisting().catch(() => false))),
       'Add Funds → Auto Top-Up tile (list or details should open)',
     )
   }
