@@ -650,7 +650,8 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get otpPhoneViewAndroid() {
-    return $('//*[contains(@resource-id,"otpPhoneView") or contains(@resource-id,"otp_phone") or contains(@resource-id,"otpPhone")]')
+    // App 2.28 (Compose) shows the number as a plain text with no resource-id, e.g. "+356 9958 7171".
+    return $('(//*[contains(@resource-id,"otpPhoneView") or contains(@resource-id,"otp_phone") or contains(@resource-id,"otpPhone")] | //android.widget.TextView[starts-with(@text,"+") and string-length(translate(@text,"+0123456789 ",""))=0])[1]')
   }
 
   private get otpContinueBtnAndroid() {
@@ -2079,16 +2080,12 @@ export default class AddBeneficiaryPage extends BasePage {
 
     await browser.pause(3000)
 
-    const enterOtpDigits = async (intervalMs: number) => {
+    // Type the whole 6-digit code in one call: per-digit typing drops or repeats digits in the
+    // Compose OTP field (2.28 got stuck mid-code), and one value auto-submits like a paste.
+    const enterOtpDigits = async (_intervalMs: number) => {
       await this.tap(this.otpInputAndroid)
-      await this.otpInputAndroid.clearValue().catch(() => {})
       await browser.pause(300)
-      for (const digit of otp.split('')) {
-        // No isDisplayed() check — Compose briefly hides the EditText during slot animation
-        // which caused a false break after 2 digits. addValue will silently fail if auto-submitted.
-        await this.otpInputAndroid.addValue(digit).catch(() => {})
-        await browser.pause(intervalMs)
-      }
+      await this.pasteOtpAndroid(this.otpInputAndroid, otp)
     }
 
     await enterOtpDigits(20)

@@ -163,6 +163,64 @@ export default class BasePage {
     await browser.pause(300)
   }
 
+  // App 2.28 payment slider: a thumb ImageView "Slide to make payment" on a track
+  // (verificationOfPayee_slider_confirm, no SeekBar) beside a centred text with the same label.
+  // Drags the thumb to the end of the track, up to 3 times, until the thumb is gone.
+  protected async dragPaymentSliderThumbAndroid(): Promise<'absent' | 'done' | 'stuck'> {
+    const thumb = $('//android.widget.ImageView[@content-desc="Slide to make payment"]')
+    if (!await thumb.isDisplayed().catch(() => false)) return 'absent'
+    const track = $('//*[@resource-id="verificationOfPayee_slider_confirm" or @resource-id="varificationOfPayee_slider_confirm"]')
+    for (let i = 0; i < 3; i++) {
+      if (!await thumb.isDisplayed().catch(() => false)) return 'done'
+      const loc = await thumb.getLocation()
+      const size = await thumb.getSize()
+      const y = Math.round(loc.y + size.height / 2)
+      const startX = Math.round(loc.x + size.width / 2)
+      let endX = Math.round((await browser.getWindowRect()).width - 30)
+      if (await track.isExisting().catch(() => false)) {
+        const tLoc = await track.getLocation()
+        const tSize = await track.getSize()
+        endX = Math.round(tLoc.x + tSize.width - 10)
+      }
+      await browser.performActions([{
+        type: 'pointer',
+        id: 'finger-payment-slider',
+        parameters: { pointerType: 'touch' },
+        actions: [
+          { type: 'pointerMove', duration: 0, x: startX, y },
+          { type: 'pointerDown', button: 0 },
+          { type: 'pause', duration: 250 },
+          { type: 'pointerMove', duration: 1100, x: endX, y },
+          { type: 'pointerUp', button: 0 },
+        ],
+      }])
+      await browser.releaseActions().catch(() => {})
+      await browser.pause(1200)
+    }
+    return await thumb.isDisplayed().catch(() => false) ? 'stuck' : 'done'
+  }
+
+  // Pastes a code into an Android OTP field from the clipboard. Typing (per digit or as one value)
+  // drops digits in the 2.28 Compose OTP field, and a wrong code costs an OTP attempt.
+  // Returns true when the field holds the code or is gone (auto-submitted); else falls back to typing.
+  protected async pasteOtpAndroid(field: WdioEl | WebdriverIO.Element, otp: string): Promise<boolean> {
+    const el = field as WebdriverIO.Element
+    await el.clearValue().catch(() => {})
+    const pasted = await browser
+      .execute('mobile: setClipboard', { content: Buffer.from(otp).toString('base64'), contentType: 'plaintext' })
+      .then(async () => {
+        await browser.pressKeyCode(279) // KEYCODE_PASTE
+        await browser.pause(800)
+        return true
+      })
+      .catch(() => false)
+    const holdsCode = async () => (await el.getText().catch(() => '')).replace(/\D/g, '') === otp
+    if (pasted && (await holdsCode() || !(await el.isDisplayed().catch(() => false)))) return true
+    await el.clearValue().catch(() => {})
+    await el.addValue(otp).catch(async () => { await el.setValue(otp).catch(() => {}) })
+    return false
+  }
+
   protected async tapAndroidCenterPoint(element: WdioEl | WebdriverIO.Element, pointerId = 'finger-android-center-tap') {
     const target = (await element) as WebdriverIO.Element
     const location = await target.getLocation()
@@ -519,13 +577,18 @@ export default class BasePage {
     if (!browser.isAndroid) return
     if (!accountCode && !accountType) throw new Error('switchAndroidAccountByCode needs an account code or type')
     const target = accountCode ?? String(accountType)
+    // App 2.28 labels picker rows "Personal account" / "Joint account" / "Business account" instead of the bare type.
+    const typeLabels = accountType
+      ? [accountType, `${accountType} account`, ...(accountType === 'Individual' ? ['Personal account', 'Personal'] : [])]
+      : []
+    const typeTextMatch = typeLabels.map((l) => `@text="${l}"`).join(' or ')
 
     await browser.switchContext('NATIVE_APP')
     await this.stabilizeAndroidHomeSurface(20000)
 
     const homeAccountLabel = accountCode
       ? $(`//*[contains(@resource-id,"_button_userAvatar")]//android.widget.TextView[contains(@text,"${accountCode}")]`)
-      : $(`//*[contains(@resource-id,"_button_userAvatar")]//android.widget.TextView[starts-with(@text,"${accountType} •")]`)
+      : $(`//*[contains(@resource-id,"_button_userAvatar")]//android.widget.TextView[${typeLabels.map((l) => `starts-with(@text,"${l} •")`).join(' or ')}]`)
     if (await homeAccountLabel.isExisting()) return
 
     const userAvatar = this.byIdRx('home_button_userAvatar')
@@ -583,7 +646,7 @@ export default class BasePage {
       const account = accountCode
         ? $(`//*[contains(@resource-id,"accountSelection_screen")]//*[not(self::android.widget.EditText) and (contains(@text,"${accountCode}") or contains(@content-desc,"${accountCode}"))]/ancestor-or-self::*[@clickable="true"][1]`)
         // Some 2.27.0 rows put the click handler on the row itself, not on an ancestor of the type label.
-        : $(`(//*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[@text="${accountType}"]/ancestor::*[@clickable="true"][1] | //*[contains(@resource-id,"accountSelection_screen")]//*[@clickable="true" and .//*[@text="${accountType}"]] | //*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[@text="${accountType}"])[1]`)
+        : $(`(//*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[${typeTextMatch}]/ancestor::*[@clickable="true"][1] | //*[contains(@resource-id,"accountSelection_screen")]//*[@clickable="true" and .//*[${typeTextMatch}]] | //*[contains(@resource-id,"accountSelection_screen")]//android.widget.TextView[${typeTextMatch}])[1]`)
       const search = $('//*[contains(@resource-id,"accountSelection_screen")]//android.widget.EditText')
       if (accountCode && !await account.isExisting() && await search.isExisting()) {
         await search.setValue(accountCode)
@@ -658,6 +721,26 @@ export default class BasePage {
   async waitForDisplayed(el: WdioEl, timeout = 10000): Promise<WdioEl> {
     await el.waitForDisplayed({ timeout })
     return el
+  }
+
+  // Taps and verifies the tap took effect: waits for `opened()` (the next screen/sheet) and re-taps
+  // up to `attempts` times while it has not appeared. A tap that changes nothing fails with
+  // `what` in the message instead of a later, unrelated timeout.
+  async tapAndVerify(
+    el: ResolvableWdioEl,
+    opened: () => Promise<boolean>,
+    what: string,
+    { attempts = 3, waitMs = 6000 }: { attempts?: number; waitMs?: number } = {},
+  ) {
+    for (let i = 0; i < attempts; i++) {
+      if (await opened().catch(() => false)) return
+      await this.tap(el).catch(() => {})
+      const ok = await browser.waitUntil(async () => opened().catch(() => false), { timeout: waitMs, interval: 400 })
+        .then(() => true).catch(() => false)
+      if (ok) return
+      console.warn(`[tapAndVerify] ${what}: screen did not change after tap ${i + 1}/${attempts}`)
+    }
+    throw new Error(`Tap did not take effect: ${what}`)
   }
 
   async tap(el: ResolvableWdioEl, timeout = 10000) {

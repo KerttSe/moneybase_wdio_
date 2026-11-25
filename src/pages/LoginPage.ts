@@ -804,9 +804,7 @@ async enterOtp(code: string = '123456') {
     if (!hasField) return
     await field.click();
     await field.clearValue().catch(() => {})
-    await field.addValue(otp).catch(async () => {
-      await field.setValue(otp)
-    })
+    await this.pasteOtpAndroid(field, otp)
     await this.throwLoginOtpErrorIfPresent()
     return;
   }

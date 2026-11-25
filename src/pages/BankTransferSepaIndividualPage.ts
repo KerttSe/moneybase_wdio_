@@ -588,6 +588,10 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private async dragSliderToRightAndroid() {
+    const slider228 = await this.dragPaymentSliderThumbAndroid()
+    if (slider228 === 'done') return
+    if (slider228 === 'stuck') throw new Error('Slider drag did not trigger payment')
+
     const legacyShown = await this.seekBarAndroidLegacy.isDisplayed().catch(() => false)
 
     // Prefer dragging from the thumb/handle (works for new verification sheet)

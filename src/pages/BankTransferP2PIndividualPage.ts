@@ -468,18 +468,16 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     await browser.hideKeyboard().catch(() => {})
 
-    await browser.waitUntil(
-      async () =>
-        (await this.reviewPaymentBtnAndroid.isDisplayed().catch(() => false)) &&
-        (await this.reviewPaymentBtnAndroid.isEnabled().catch(() => false)),
-      {
-        timeout: 60000,
-        interval: 250,
-        timeoutMsg: 'Review payment button did not become enabled',
-      }
-    )
-
-    await this.tap(this.reviewPaymentBtnAndroid)
+    // 2.28: the Review button can report enabled=false on its wrapper while it is tappable, so the
+    // old "wait until enabled, then tap" never tapped. Tap whenever it is shown and stop once the
+    // review sheet (slider) is up.
+    const reviewOpen = async () =>
+      (await $('//*[contains(@resource-id,"erificationOfPayee_screen")]').isExisting().catch(() => false)) ||
+      (await this.isSlideHintVisibleAndroid())
+    await this.tapAndVerify(this.reviewPaymentBtnAndroid, reviewOpen, 'P2P → Review payment (review sheet should open)', {
+      attempts: 5,
+      waitMs: 8000,
+    })
   }
 
   private async resolveSeekBarAndroid() {
@@ -504,6 +502,10 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private async dragSliderToRightAndroid() {
+    const slider228 = await this.dragPaymentSliderThumbAndroid()
+    if (slider228 === 'done') return
+    if (slider228 === 'stuck') throw new Error('Slider drag did not trigger payment')
+
     const legacyShown = await this.seekBarAndroidLegacy.isDisplayed().catch(() => false)
 
     // Prefer dragging from the thumb/handle (works for new verification sheet)
@@ -982,8 +984,17 @@ class BankTransferP2PIndividualPage extends BasePage {
 
     const amountInput = await this.resolveAmountInputP2PAndroid()
     await amountInput.waitForExist({ timeout: 20000 })
-    await amountInput.clearValue().catch(() => {})
-    await amountInput.setValue(String(amount))
+    // Compose amount fields can drop typed characters; check the value and retype if needed,
+    // otherwise Review payment never enables.
+    const want = String(amount)
+    for (let i = 0; i < 3; i++) {
+      await amountInput.clearValue().catch(() => {})
+      await amountInput.setValue(want).catch(() => {})
+      await browser.pause(500)
+      const shown = (await amountInput.getText().catch(() => '')).replace(/[^\d]/g, '')
+      if (shown.startsWith(want.replace(/[^\d]/g, ''))) break
+      console.warn(`[P2P] Amount field shows "${shown}", retyping ${want}`)
+    }
   }
 
   public async reviewSmokeP2PAndroid(amount: number | string = 11) {

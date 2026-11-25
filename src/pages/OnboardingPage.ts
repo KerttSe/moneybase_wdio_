@@ -1600,10 +1600,7 @@ export default class OnboardingPage extends BasePage {
       })
     } else {
       await this.tap(this.otpInput)
-      await this.otpInput.clearValue().catch(() => {})
-      await this.otpInput.setValue(otp).catch(async () => {
-        await this.otpInput.addValue(otp)
-      })
+      await this.pasteOtpAndroid(this.otpInput, otp)
     }
     if (browser.isIOS) {
       await this.dismissIOSKeyboardIfOpen()

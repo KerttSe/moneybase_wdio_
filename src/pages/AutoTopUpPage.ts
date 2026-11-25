@@ -658,16 +658,13 @@ export default class AutoTopUpPage extends BasePage {
     await browser.pause(500)
     
     await this.autoTopUpTile.waitForExist({ timeout: 15000 })
-    await this.tap(this.autoTopUpTile)
-
-    const openedList = await this.autoTopUpListScreen
-      .waitForExist({ timeout: 6000 })
-      .then(() => true)
-      .catch(() => false)
-
-    if (!openedList) {
-      await this.autoTopUpDetailsScreen.waitForExist({ timeout: 15000 })
-    }
+    await this.tapAndVerify(
+      this.autoTopUpTile,
+      async () =>
+        (await this.autoTopUpListScreen.isExisting().catch(() => false)) ||
+        (await this.autoTopUpDetailsScreen.isExisting().catch(() => false)),
+      'Add Funds → Auto Top-Up tile (list or details should open)',
+    )
   }
 
   /**
@@ -681,8 +678,11 @@ export default class AutoTopUpPage extends BasePage {
 
     await this.autoTopUpListScreen.waitForExist({ timeout: 15000 })
     await this.addNewBtn.waitForExist({ timeout: 5000 })
-    await this.tap(this.addNewBtn)
-    await this.autoTopUpDetailsScreen.waitForExist({ timeout: 15000 })
+    await this.tapAndVerify(
+      this.addNewBtn,
+      async () => this.autoTopUpDetailsScreen.isExisting().catch(() => false),
+      'Auto Top-Up → Add New (details should open)',
+    )
   }
 
   /**

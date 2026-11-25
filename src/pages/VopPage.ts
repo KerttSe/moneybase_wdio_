@@ -149,6 +149,10 @@ class VopPage extends BasePage {
    * ========================= */
 
   private async slideToConfirmAndroid() {
+    const slider228 = await this.dragPaymentSliderThumbAndroid()
+    if (slider228 === 'done') return
+    if (slider228 === 'stuck') throw new Error('VOP slider drag did not confirm the payment')
+
     await this.vopSeekBarAndroid.waitForExist({ timeout: 15000, timeoutMsg: 'VOP SeekBar not found' })
 
     const seekBar = this.vopSeekBarAndroid
