@@ -1,6 +1,7 @@
 import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
+import { navTab } from '../helpers/navTab'
 
 const BH_ACCOUNT_CODE = process.env.BH_ACCOUNT_CODE || 'SED00004'
 const BH_SELF_NAME = process.env.BH_SELF_NAME || 'Dmytro Kertys'
@@ -53,7 +54,7 @@ class BusinessCardAdminSelfAssignPage extends BasePage {
   }
 
   private get cardsTabIOS() {
-    return $('~Cards')
+    return navTab('Cards')
   }
 
   private get addCardBtnAndroid() {

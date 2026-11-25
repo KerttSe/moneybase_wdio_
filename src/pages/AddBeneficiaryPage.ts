@@ -6,6 +6,7 @@ import { assertIOSOtpPhone, waitForIOSOtpOutcome } from '../helpers/iosOtp.helpe
 import { AUTH } from '../data/credentials'
 import HomeScreenPage from './HomeScreenPage'
 import { waitForControlEnabled } from '../helpers/controlState.helper'
+import { navTab } from '../helpers/navTab'
 
 export default class AddBeneficiaryPage extends BasePage {
   private get validationContinue() {
@@ -163,7 +164,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get homeTabAndroidA11y() {
-    return $('~Home')
+    return navTab('Home')
   }
 
   private get homeTabAndroidXpath() {
@@ -440,7 +441,7 @@ export default class AddBeneficiaryPage extends BasePage {
   }
 
   private get payTabAndroidA11y() {
-    return $('~Pay')
+    return navTab('Pay')
   }
 
   private get payTabAndroidLegacy() {
@@ -503,7 +504,7 @@ export default class AddBeneficiaryPage extends BasePage {
    * ========================= */
 
   private get payTabIOS() {
-    return $('~Pay')
+    return navTab('Pay')
   }
 
   private get addBtnIOS() {

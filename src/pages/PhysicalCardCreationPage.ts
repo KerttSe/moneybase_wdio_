@@ -6,6 +6,7 @@ import HomeScreenPage from './HomeScreenPage'
 import OtpHelper from '../helpers/otp.helper'
 import { AUTH } from '../data/credentials'
 import { assertIOSOtpPhone, waitForIOSOtpOutcome } from '../helpers/iosOtp.helper'
+import { navTab } from '../helpers/navTab'
 
 
 class PhysicalCardCreationPage extends BasePage {
@@ -159,11 +160,11 @@ class PhysicalCardCreationPage extends BasePage {
    * ========================= */
 
   private get cardsTabAndroid() {
-    return $('~Cards')
+    return navTab('Cards')
   }
 
   private get cardsTabIOS() {
-    return $('~Cards')
+    return navTab('Cards')
   }
 
   private get cardsTabIOSByPredicate() {
@@ -925,7 +926,7 @@ class PhysicalCardCreationPage extends BasePage {
     if (!reportShown) {
       console.log('[PhysicalCard] report button not visible, navigating Home → Cards to refresh...')
       const homeTab = $('//*[@resource-id="com.moneybase.qa:id/navigation_button_home"]')
-      const homeTabA11y = $('~Home')
+      const homeTabA11y = navTab('Home')
       if (await homeTab.isDisplayed().catch(() => false)) {
         await homeTab.click().catch(() => {})
       } else if (await homeTabA11y.isDisplayed().catch(() => false)) {
@@ -966,7 +967,7 @@ class PhysicalCardCreationPage extends BasePage {
     console.log('[PhysicalCard] add new card not visible after deletion, navigating Home → Cards to refresh...')
 
     const homeTab = $('//*[@resource-id="com.moneybase.qa:id/navigation_button_home"]')
-    const homeTabA11y = $('~Home')
+    const homeTabA11y = navTab('Home')
 
     if (await homeTab.isDisplayed().catch(() => false)) {
       await homeTab.click().catch(() => {})

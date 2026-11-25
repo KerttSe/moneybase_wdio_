@@ -3,6 +3,7 @@ import BasePage from './BasePage'
 import { openIOSPaymentReview } from '../helpers/iosPayment.helper'
 import { $, browser } from '@wdio/globals'
 import HomeScreenPage from './HomeScreenPage'
+import { navTab } from '../helpers/navTab'
 
 class BankTransferP2PIndividualPage extends BasePage {
   private byAndroidResId(id: string) {
@@ -112,7 +113,7 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get payTabAndroidByA11y() {
-    return $('~Pay')
+    return navTab('Pay')
   }
 
   private get payTabAndroidLegacy() {
@@ -353,7 +354,7 @@ class BankTransferP2PIndividualPage extends BasePage {
    * ========================= */
 
   private get payTabIOS() {
-    return $('~Pay')
+    return navTab('Pay')
   }
 
   private get payScreenIOS() {
@@ -419,7 +420,7 @@ class BankTransferP2PIndividualPage extends BasePage {
 
 
   private get homeTabIOS() {
-    return $('~Home')
+    return navTab('Home')
   }
 
   /* =========================
@@ -682,7 +683,7 @@ class BankTransferP2PIndividualPage extends BasePage {
   }
 
   private get homeTabAndroidA11y() {
-    return $('~Home')
+    return navTab('Home')
   }
 
   private get homeTabAndroidLegacy() {

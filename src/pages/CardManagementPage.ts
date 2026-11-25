@@ -4,12 +4,13 @@ import OtpHelper from '../helpers/otp.helper'
 import { markBrowserStackStep } from '../helpers/browserstack.helper'
 import HomeScreenPage from './HomeScreenPage'
 import { AUTH } from '../data/credentials'
+import { navTab } from '../helpers/navTab'
 
 type CardSecurityControl = 'Swipe payments' | 'Contactless payments' | 'ATM withdrawals' | 'Online Transactions'
 
 class CardManagementPage extends BasePage {
   private get cardsTab() {
-    return $('~Cards')
+    return navTab('Cards')
   }
 
   private get cardsNavBarIOS() {
@@ -431,7 +432,7 @@ class CardManagementPage extends BasePage {
   }
 
   private async reopenCardsTabAndroid() {
-    await this.tap($('~Home'), 8000).catch(() => {})
+    await this.tap(navTab('Home'), 8000).catch(() => {})
     await browser.pause(2000)
     await this.tap(this.cardsTab, 10000).catch(() => {})
     await this.waitForCardsLoaded().catch(() => {})

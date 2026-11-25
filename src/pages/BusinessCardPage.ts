@@ -2,6 +2,7 @@ import BasePage from './BasePage'
 import { $, $$, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
 import OtpHelper from '../helpers/otp.helper'
+import { navTab } from '../helpers/navTab'
 
 type WdioEl = ChainablePromiseElement
 
@@ -31,7 +32,7 @@ class BusinessCardPage extends BasePage {
   }
 
   private get cardsTabIOSA11y() {
-    return $('~Cards')
+    return navTab('Cards')
   }
 
   private get cardsRootIOS() {
@@ -43,7 +44,7 @@ class BusinessCardPage extends BasePage {
   }
 
   private get homeTabAndroidA11y() {
-    return $('~Home')
+    return navTab('Home')
   }
 
   private get homeTabAndroidXpath() {
@@ -51,7 +52,7 @@ class BusinessCardPage extends BasePage {
   }
 
   private get homeTabIOS() {
-    return $('~Home')
+    return navTab('Home')
   }
 
   private get addNewCardButtonAndroid() {

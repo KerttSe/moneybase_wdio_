@@ -1,6 +1,7 @@
 import BasePage from './BasePage'
 import { $, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
+import { navTab } from '../helpers/navTab'
 
 type WdioEl = ChainablePromiseElement
 
@@ -334,7 +335,7 @@ export default class CashFundsPage extends BasePage {
   }
 
   private get investTabAndroidA11y() {
-    return this.androidA11y('Invest')
+    return navTab('Invest')
   }
 
   private get investTabAndroidByText() {

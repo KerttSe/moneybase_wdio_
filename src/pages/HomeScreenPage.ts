@@ -3,6 +3,7 @@ import { $, $$, browser } from '@wdio/globals'
 import type { ChainablePromiseElement } from 'webdriverio'
 import { markBrowserStackStep } from '../helpers/browserstack.helper'
 import { AUTH } from '../data/credentials'
+import { navTab } from '../helpers/navTab'
 
 type WdioEl = ChainablePromiseElement
 
@@ -114,7 +115,7 @@ class HomeScreenPage extends BasePage {
   }
 
   private get homeTabAndroidA11y() {
-    return $('~Home')
+    return navTab('Home')
   }
 
   private get homeTabAndroidXpath() {
@@ -1266,7 +1267,7 @@ class HomeScreenPage extends BasePage {
 
   private get homeTab() {
     if (browser.isAndroid) return this.byId('navigation_button_home')
-    return $('~Home')
+    return navTab('Home')
   }
 
   private get androidBackButton() {
@@ -1888,7 +1889,7 @@ class HomeScreenPage extends BasePage {
 
   public async verifySupportFromCards(homeGreeting: string) {
     await this.closeSupport()
-    const tab = browser.isIOS ? $('~Cards') : this.byId('navigation_button_cards')
+    const tab = browser.isIOS ? navTab('Cards') : this.byId('navigation_button_cards')
     await this.tap(tab, 10000)
     const cards = browser.isIOS
       ? $('//XCUIElementTypeNavigationBar[@name="Cards"]')
@@ -2179,9 +2180,9 @@ class HomeScreenPage extends BasePage {
       ['Pay', [this.byId('navigation_button_pay'), $('//*[@content-desc="Pay"]')], this.payRootAndroid],
       ['Invest', [this.byId('navigation_button_invest'), $('//*[@content-desc="Invest" and @clickable="true"]')], $('//*[@text="Portfolio" or @content-desc="Portfolio"]')],
     ] as const : [
-      ['Cards', [$('~Cards')], $('-ios predicate string:name == "cards_screen" OR name == "card_item_addCard" OR name BEGINSWITH "CARDS_"')],
-      ['Pay', [$('~Pay')], $('-ios predicate string:name == "pay_screen_view" OR name == "pay_button_add"')],
-      ['Invest', [$('~Invest')], $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (name == "Portfolio" OR label == "Portfolio")')],
+      ['Cards', [navTab('Cards')], $('-ios predicate string:name == "cards_screen" OR name == "card_item_addCard" OR name BEGINSWITH "CARDS_"')],
+      ['Pay', [navTab('Pay')], $('-ios predicate string:name == "pay_screen_view" OR name == "pay_button_add"')],
+      ['Invest', [navTab('Invest')], $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (name == "Portfolio" OR label == "Portfolio")')],
     ] as const
 
     for (const [label, buttons, screen] of tabs) {

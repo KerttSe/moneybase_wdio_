@@ -4,6 +4,7 @@ import type { AuthData } from '../data/credentials'
 import type { ChainablePromiseElement } from 'webdriverio'
 import { markBrowserStackStep } from '../helpers/browserstack.helper'
 import { waitForControlEnabled } from '../helpers/controlState.helper'
+import { navTab } from '../helpers/navTab'
 
 export class LoginOtpRejectedError extends Error {
   // beforeOtp: the app showed the error right after the passcode, before any OTP was typed (a backend login error).
@@ -1057,7 +1058,7 @@ get homeTabAndroid() {
 }
 
 get homeTabAndroidA11y() {
-  return $('~Home')
+  return navTab('Home')
 }
 
 get homeTabAndroidXpath() {

@@ -3,6 +3,7 @@ import { openIOSPaymentReview } from '../helpers/iosPayment.helper'
 import { $, browser } from '@wdio/globals'
 import BankTransferP2PIndividualPage from './BankTransferP2PIndividualPage'
 import HomeScreenPage from './HomeScreenPage'
+import { navTab } from '../helpers/navTab'
 
 class BankTransferSepaIndividualPage extends BasePage {
   private readonly sepaBankName = 'HSBC Bank Malta plc'
@@ -157,7 +158,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get homeTabAndroidA11y() {
-    return $('~Home')
+    return navTab('Home')
   }
 
   private get homeTabAndroidLegacy() {
@@ -181,7 +182,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get payTabIOS() {
-    return $('~Pay')
+    return navTab('Pay')
   }
 
   private get payScreenIOS() {
@@ -248,7 +249,7 @@ class BankTransferSepaIndividualPage extends BasePage {
   }
 
   private get homeTabIOS() {
-    return $('~Home')
+    return navTab('Home')
   }
 
   private async ensureIndividualAccountIOS() {

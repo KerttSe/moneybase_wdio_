@@ -1,6 +1,7 @@
 import type { ChainablePromiseElement } from 'webdriverio'
 import { $, browser } from '@wdio/globals'
 import { AUTH, ELITE_INDIVIDUAL_CODE } from '../data/credentials'
+import { navTab } from '../helpers/navTab'
 
 type WdioEl = ChainablePromiseElement
 type ResolvableWdioEl = WdioEl | WebdriverIO.Element | Promise<WdioEl | WebdriverIO.Element>
@@ -98,7 +99,7 @@ export default class BasePage {
   }
 
   private get androidHomeTabA11y() {
-    return $('~Home')
+    return navTab('Home')
   }
 
   private get androidHomeTabXpath() {
@@ -206,8 +207,11 @@ export default class BasePage {
   protected async pasteOtpAndroid(field: WdioEl | WebdriverIO.Element, otp: string): Promise<boolean> {
     const el = field as WebdriverIO.Element
     await el.clearValue().catch(() => {})
+    const b64 = Buffer.from(otp).toString('base64')
+    // BrowserStack's Appium has no "mobile: setClipboard"; the classic endpoint works on both.
     const pasted = await browser
-      .execute('mobile: setClipboard', { content: Buffer.from(otp).toString('base64'), contentType: 'plaintext' })
+      .setClipboard(b64, 'plaintext')
+      .catch(() => browser.execute('mobile: setClipboard', { content: b64, contentType: 'plaintext' }))
       .then(async () => {
         await browser.pressKeyCode(279) // KEYCODE_PASTE
         await browser.pause(800)
