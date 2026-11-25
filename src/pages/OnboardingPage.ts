@@ -381,7 +381,7 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get somethingWentWrongTitle() {
-    return $('//*[@resource-id="com.moneybase.qa:id/alertTitle" and (@text="Something went wrong" or @content-desc="Something went wrong")]')
+    return $('(//*[@resource-id="com.moneybase.qa:id/alertTitle" and (@text="Something went wrong" or @content-desc="Something went wrong")] | //*[@text="Something went wrong" or @content-desc="Something went wrong"])[1]')
   }
 
   private get postVerificationContinueBtn() {
@@ -991,10 +991,11 @@ export default class OnboardingPage extends BasePage {
   private async throwIfSomethingWentWrong() {
     if (!browser.isAndroid) return
 
-    const alertTitle = $('//*[@resource-id="com.moneybase.qa:id/alertTitle" and (@text="Something went wrong" or @content-desc="Something went wrong")]')
+    const alertTitle = $('(//*[@resource-id="com.moneybase.qa:id/alertTitle" and (@text="Something went wrong" or @content-desc="Something went wrong")] | //*[@text="Something went wrong" or @content-desc="Something went wrong"])[1]')
     if (!(await alertTitle.isDisplayed().catch(() => false))) return
 
-    const message = await $('//*[@resource-id="android:id/message"]')
+    // 2.28 shows a Compose dialog without alertTitle/message ids, so fall back to its text.
+    const message = await $('(//*[@resource-id="android:id/message"] | //*[contains(@text,"Please try again")])[1]')
       .getText()
       .catch(() => 'No alert message')
 
@@ -1617,10 +1618,15 @@ export default class OnboardingPage extends BasePage {
     }
 
     await browser.waitUntil(
-      async () =>
-        (await this.onboardingNameScreen.isDisplayed().catch(() => false)) ||
-        (await this.verificationSuccessScreen.isDisplayed().catch(() => false)) ||
-        (await this.verificationSuccessTitle.isDisplayed().catch(() => false)),
+      async () => {
+        // A backend error after the OTP shows "Something went wrong"; report it instead of waiting 45s.
+        if (browser.isAndroid && await this.somethingWentWrongTitle.isDisplayed().catch(() => false)) {
+          throw new Error('Backend error after mobile OTP: "Something went wrong / Please try again" (staging)')
+        }
+        return (await this.onboardingNameScreen.isDisplayed().catch(() => false)) ||
+          (await this.verificationSuccessScreen.isDisplayed().catch(() => false)) ||
+          (await this.verificationSuccessTitle.isDisplayed().catch(() => false))
+      },
       {
         timeout: 45000,
         interval: 500,

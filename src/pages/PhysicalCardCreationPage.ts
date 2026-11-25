@@ -240,7 +240,7 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get otpInputAndroid() {
-    return $('id=com.moneybase.qa:id/otp_input')
+    return $('//*[@resource-id="com.moneybase.qa:id/otp_input" or @resource-id="otp_input"]')
   }
 
   private get pinInputAndroidFocused() {
@@ -380,7 +380,7 @@ class PhysicalCardCreationPage extends BasePage {
   }
 
   private get reportButtonAndroid() {
-    return $('(//*[@resource-id="com.moneybase.qa:id/cards_button_report"] | //*[contains(@resource-id,"cards_button_report")] | //*[@content-desc="cards_button_report"])[1]')
+    return $('(//*[@resource-id="com.moneybase.qa:id/cards_button_report"] | //*[contains(@resource-id,"cards_button_report")] | //*[@content-desc="cards_button_report"] | //*[starts-with(@text,"Report") and not(ancestor::*[contains(@resource-id,"cards_pager")])])[1]')
   }
 
   private get blockButtonAndroid() {
@@ -570,16 +570,8 @@ class PhysicalCardCreationPage extends BasePage {
     }
 
     await this.tap(target)
-    await target.clearValue().catch(() => {})
-
-    const typed = await target
-      .setValue(value)
-      .then(() => true)
-      .catch(() => false)
-
-    if (!typed) {
-      await browser.execute('mobile: type', { text: value }).catch(() => {})
-    }
+    // Paste the code: typing drops digits in 2.28 Compose code fields.
+    await this.pasteOtpAndroid(target, value)
   }
 
   private async closeCardSheetAndroid(timeoutMs = 60000) {
@@ -912,6 +904,39 @@ class PhysicalCardCreationPage extends BasePage {
 
     await browser.switchContext('NATIVE_APP').catch(() => {})
 
+    // 2.28 keeps ROG's approved virtual card in the same pager and may select it. Freeze/Report act on
+    // the selected card, so select the physical card first and never act on anything else.
+    const physicalCard = $('//*[contains(@content-desc,"Physical card")]')
+    if (await physicalCard.isExisting().catch(() => false)) {
+      const selectedPhysical = $('//*[starts-with(@content-desc,"Selected") and contains(@content-desc,"Physical card")]')
+      // The next card peeks at the screen edge and does not react to taps; swipe the pager to it.
+      const pager = $('//*[contains(@resource-id,"cards_pager_cards")]')
+      for (let i = 0; i < 6 && !await selectedPhysical.isExisting().catch(() => false); i++) {
+        const loc = await pager.getLocation()
+        const size = await pager.getSize()
+        const y = Math.round(loc.y + size.height / 2)
+        const toLeft = i < 3
+        const fromX = Math.round(loc.x + size.width * (toLeft ? 0.85 : 0.15))
+        const toX = Math.round(loc.x + size.width * (toLeft ? 0.15 : 0.85))
+        await browser.performActions([{
+          type: 'pointer', id: 'finger-card-pager', parameters: { pointerType: 'touch' },
+          actions: [
+            { type: 'pointerMove', duration: 0, x: fromX, y },
+            { type: 'pointerDown', button: 0 },
+            { type: 'pointerMove', duration: 350, x: toX, y },
+            { type: 'pointerUp', button: 0 },
+          ],
+        }])
+        await browser.releaseActions().catch(() => {})
+        await browser.pause(1200)
+      }
+      if (!await selectedPhysical.isExisting().catch(() => false)) {
+        throw new Error('Could not select the physical card in the Cards pager; refusing to freeze/report')
+      }
+    } else if (await $('//*[contains(@content-desc,"Virtual card")]').isExisting().catch(() => false)) {
+      throw new Error('Only a virtual card is listed; refusing to freeze/report it (physical card cleanup)')
+    }
+
     await this.waitForFreezeReadyAndroid(timeoutMs)
     const freezeShown = await this.freezeButtonAndroid.waitForDisplayed({ timeout: timeoutMs }).catch(() => false)
     if (freezeShown) {
@@ -920,7 +945,13 @@ class PhysicalCardCreationPage extends BasePage {
       await browser.pause(1500)
     }
 
-    const reportShown = await this.reportButtonAndroid.waitForDisplayed({ timeout: 10000 }).catch(() => false)
+    let reportShown = await this.reportButtonAndroid.waitForDisplayed({ timeout: 5000 }).catch(() => false)
+    // 2.28 moved Report under "More".
+    const moreBtn = $('//*[contains(@resource-id,"cards_button_more")]')
+    if (!reportShown && await moreBtn.isDisplayed().catch(() => false)) {
+      await this.tap(moreBtn).catch(() => {})
+      reportShown = await this.reportButtonAndroid.waitForDisplayed({ timeout: 10000 }).catch(() => false)
+    }
 
     // Fallback: if report button still not visible — navigate Home → Cards to force UI refresh
     if (!reportShown) {
@@ -1442,11 +1473,16 @@ class PhysicalCardCreationPage extends BasePage {
 
   public async setPhysicalCardPinAndroid(pin: string) {
     await this.createPinAndroid(pin)
+    // 2.28 dropped the Confirm PIN step and goes straight to the card OTP after one PIN entry.
+    const confirmPin = $('//*[contains(@text,"Confirm your card PIN")]')
+    const otpScreen = $('//*[contains(@text,"Enter the 6-digit code")]')
+    let needsConfirm = false
+    await browser.waitUntil(async () => {
+      if (await confirmPin.isDisplayed().catch(() => false)) { needsConfirm = true; return true }
+      return otpScreen.isDisplayed().catch(() => false)
+    }, { timeout: 15000, interval: 400, timeoutMsg: 'Neither Confirm card PIN nor the card OTP appeared after the PIN (Android)' })
+    if (!needsConfirm) return
     // Digits typed before the Confirm screen settles are lost, which leaves the PIN boxes empty.
-    await $('//*[contains(@text,"Confirm your card PIN")]').waitForDisplayed({
-      timeout: 15000,
-      timeoutMsg: 'Confirm card PIN screen did not appear (Android)',
-    })
     await browser.pause(1000)
     await this.reenterPinAndroid(pin)
   }

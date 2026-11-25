@@ -508,7 +508,8 @@ export default class AutoTopUpPage extends BasePage {
   }
 
   private get validationRuleRowAndroid() {
-    return $('(//*[@clickable="true"][.//*[contains(@text,"When balance falls below") and contains(@text,"500")]][.//*[starts-with(@text,"Add:") and (contains(@text,"1500") or contains(@text,"1,500"))]])[last()]')
+    // Our €500/€1500 rule in either orientation: 2.28 lists it as "When balance falls below: € 1500" / "Add: € 500".
+    return $('(//*[@clickable="true"][.//*[contains(@text,"When balance falls below")]][.//*[contains(@text,"1500") or contains(@text,"1,500")]][.//*[(starts-with(@text,"Add:") or contains(@text,"falls below")) and contains(@text,"500") and not(contains(@text,"1500")) and not(contains(@text,"1,500"))]])[last()]')
   }
 
   /**
@@ -518,7 +519,11 @@ export default class AutoTopUpPage extends BasePage {
   async removeLeftoverValidationRule() {
     if (!browser.isAndroid) return
     if (await this.cardPicker.isDisplayed().catch(() => false)) return
-    if (!await this.validationRuleRowAndroid.waitForDisplayed({ timeout: 5000 }).then(() => true).catch(() => false)) return
+    if (!await this.validationRuleRowAndroid.waitForDisplayed({ timeout: 5000 }).then(() => true).catch(() => false)) {
+      const texts = [...String(await browser.getPageSource().catch(() => '')).matchAll(/ (?:text|content-desc)="([^"]+)"/g)].map((m) => m[1])
+      console.log(`[AutoTopUp][cleanup] No €500 → €1500 rule row matched; list shows: ${texts.join(' | ').slice(0, 1500)}`)
+      return
+    }
     console.warn('[AutoTopUp][cleanup] Deleting leftover €500 → €1500 validation rule before the spec')
     await this.tap(this.validationRuleRowAndroid)
     await this.deleteAutoTopUp()
@@ -887,6 +892,18 @@ export default class AutoTopUpPage extends BasePage {
    * Saves the Auto Top-Up configuration.
    */
   async saveAutoTopUp() {
+    if (browser.isAndroid) {
+      // 2.28 reports enabled=false on the Save wrapper even when it saves, so tap and check that
+      // the details form closed instead of waiting for the enabled flag.
+      await this.saveBtn.waitForEnabled({ timeout: 3000 }).catch(() => {})
+      await this.tapAndVerify(
+        this.saveBtn,
+        async () => !(await this.autoTopUpDetailsScreen.isExisting().catch(() => false)),
+        'Auto Top-Up → Save (details form should close)',
+        { attempts: 3, waitMs: 10000 },
+      )
+      return
+    }
     await this.saveBtn.waitForEnabled({ timeout: 15000 })
     await this.tap(this.saveBtn)
     if (browser.isIOS) {
@@ -1215,6 +1232,9 @@ export default class AutoTopUpPage extends BasePage {
   }) {
     await this.openFromHome()
     await this.goToAutoTopUpList()
+    // A failed earlier smoke leaves its own €500 → €1500 EUR rule, which blocks a new EUR rule
+    // ("already enabled for the selected currency") and keeps Save disabled.
+    await this.removeLeftoverValidationRule()
     await this.tapAddNew()
     await this.selectCard(options.cardLabel)
     await this.selectCurrency(options.currency)
