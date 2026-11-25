@@ -32,6 +32,7 @@ function page(name, browser = {}, $ = selector => ({ selector })) {
   const result = load(`src/pages/${name}.ts`, {
     '@wdio/globals': globals,
     './BasePage': { default: class {} }, './HomeScreenPage': { default: {} },
+    '../helpers/navTab': { navTab: (name) => globalThis.$ ? globalThis.$(`~${name}`) : { selector: `~${name}` } },
     '../helpers/otp.helper': {}, '../helpers/iosOtp.helper': {},
     '../helpers/controlState.helper': control, '../data/credentials': { AUTH: {} },
   }).default

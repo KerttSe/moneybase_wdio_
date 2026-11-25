@@ -31,6 +31,7 @@ function loadPage(name, globals = {}, dependencies = {}) {
     './HomeScreenPage': { default: {} },
     './AddFunds': { default: class {} },
     '../data/credentials': { AUTH: {} },
+    '../helpers/navTab': { navTab: (name) => globalThis.$ ? globalThis.$(`~${name}`) : { selector: `~${name}` } },
     '../helpers/otp.helper': { default: {} },
     '../helpers/browserstack.helper': {},
     '../helpers/controlState.helper': {},

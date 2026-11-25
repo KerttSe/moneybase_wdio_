@@ -10,6 +10,7 @@ function loadPage(name, globals = {}, env = {}) {
   const mocks = {
     './BasePage': { default: class {} },
     './HomeScreenPage': { default: {} },
+    '../helpers/navTab': { navTab: (name) => globalThis.$ ? globalThis.$(`~${name}`) : { selector: `~${name}` } },
     '../helpers/otp.helper': { default: {} },
     '@wdio/globals': { browser: { isAndroid: true }, $: selector => ({ selector }), ...globals },
   }
