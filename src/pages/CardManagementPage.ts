@@ -796,6 +796,14 @@ class CardManagementPage extends BasePage {
 
   public async openMoreMenu() {
     await this.openCardsTab()
+    // A frozen card shows Unfreeze/Block instead of More; a failed earlier run can leave it frozen.
+    // Unfreeze to restore the baseline (never tap Block).
+    if (browser.isIOS && !await this.moreButton.isExisting().catch(() => false)
+      && await this.unfreezeButtonIOS.isExisting().catch(() => false)) {
+      console.warn('[CardManagement] Card is frozen; unfreezing before opening More')
+      await this.tap(this.unfreezeButtonIOS)
+      await this.moreButton.waitForExist({ timeout: 20000 })
+    }
     await this.tap(this.moreButton)
 
     if (browser.isIOS) {

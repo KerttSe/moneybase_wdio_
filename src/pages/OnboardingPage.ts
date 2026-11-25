@@ -2953,6 +2953,18 @@ export default class OnboardingPage extends BasePage {
       })
       return
     }
+    if (browser.isIOS) {
+      // SwiftUI reports this button's enabled flag unreliably (false with valid names), so check
+      // behaviour: a blocked Next leaves the name screen in place.
+      await next.waitForExist({ timeout: 10000 })
+      if (enabled) return
+      await this.tap(next).catch(() => {})
+      await browser.pause(1500)
+      if (!await this.onboardingNameScreen.isDisplayed().catch(() => false)) {
+        throw new Error('Onboarding personal details Next must be disabled: tapping it left the name screen')
+      }
+      return
+    }
     await waitForControlEnabled(next, enabled, 'Onboarding personal details Next')
   }
 

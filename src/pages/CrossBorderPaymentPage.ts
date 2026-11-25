@@ -354,7 +354,8 @@ class CrossBorderPaymentPage extends BasePage {
   }
 
   private get swiftFeeRowIOS() {
-    return $('-ios predicate string:name == "makePayment_button_feeOption" OR (type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND label IN {"Shared Fee", "Originator Fee"})')
+    // The new iOS build names the row makePayment_button_feeSelector and keeps the fee in its value.
+    return $('-ios predicate string:name IN {"makePayment_button_feeOption", "makePayment_button_feeSelector"} OR (type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND label IN {"Shared Fee", "Originator Fee"})')
   }
 
   private get swiftFeePickerIOS() {
@@ -362,7 +363,7 @@ class CrossBorderPaymentPage extends BasePage {
   }
 
   private swiftFeeTitleIOS(title: 'Shared Fee' | 'Originator Fee') {
-    return $('-ios predicate string:label == "' + title + '" OR name == "' + title + '"')
+    return $('-ios predicate string:label == "' + title + '" OR name == "' + title + '" OR (name == "makePayment_button_feeSelector" AND value == "' + title + '")')
   }
 
   private async selectSwiftFeeIOS(title: 'Shared Fee' | 'Originator Fee') {
