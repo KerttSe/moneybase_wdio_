@@ -920,7 +920,8 @@ export default class AutoTopUpPage extends BasePage {
    * when editing an existing rule).
    */
   async deleteAutoTopUp() {
-    await this.deleteBtn.waitForExist({ timeout: 15000 })
+    // 2.28 loads an existing rule's details slowly; Delete appeared after the old 15 s wait.
+    await this.deleteBtn.waitForExist({ timeout: 40000 })
     await this.tap(this.deleteBtn)
   }
 
@@ -1060,8 +1061,9 @@ export default class AutoTopUpPage extends BasePage {
       throw new Error(`Could not open Auto Top-Up rule for threshold amount: ${amount}`)
     }
 
-    await this.tap(item)
-    await this.autoTopUpDetailsScreen.waitForExist({ timeout: 15000 })
+    // 2.28: a tap on the rule row is sometimes not registered, and details load slowly.
+    await this.tapAndVerify(item, async () => this.autoTopUpDetailsScreen.isExisting().catch(() => false),
+      `Auto Top-Up list → rule ${amount} (details should open)`, { attempts: 3, waitMs: 15000 })
   }
 
   private async ensureOnHomeScreen() {
