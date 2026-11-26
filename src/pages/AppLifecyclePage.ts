@@ -31,8 +31,28 @@ class AppLifecyclePage {
       // covers its entire track, so the progress bar exposes the slide index.
       return progress.$$('.//android.view.View[@bounds = parent::*/@bounds]').length
     }
-    await carousel.waitForDisplayed({ timeout: 30000 })
-    await next.waitForDisplayed({ timeout: 10000 })
+    // New iOS build: a system "Enter Password" alert can cover the first launch; cancel it (never type).
+    await browser.waitUntil(async () => {
+      if (browser.isIOS && await $('-ios predicate string:label BEGINSWITH "Enter Password for"').isExisting().catch(() => false)) {
+        await browser.dismissAlert().catch(() => {})
+      }
+      return carousel.isDisplayed().catch(() => false)
+    }, { timeout: 30000, interval: 1000, timeoutMsg: 'Welcome screen did not appear' })
+    const iosSignIn = carousel.$('.//XCUIElementTypeButton[@label="Sign In" or @label="Sign in" or @name="welcomeToMoneybase_button_signIn" or @name="welcomeToMoneybase_button_logIn"]')
+    const hasNext = await next.waitForDisplayed({ timeout: 10000 }).then(() => true).catch(() => false)
+    if (!hasNext && browser.isIOS && await iosSignIn.isDisplayed().catch(() => false)) {
+      // The new iOS build replaced the carousel with one welcome screen that already shows Sign in.
+      console.warn('[Welcome] No carousel (single welcome screen); continuing with Sign in')
+      await iosSignIn.click()
+      await loginPage.mobileInput.waitForDisplayed({ timeout: 15000 })
+      return
+    }
+    if (!hasNext) {
+      const src = String(await browser.getPageSource().catch(() => ''))
+      const texts = [...new Set([...src.matchAll(/ (?:name|label|text|content-desc)="([^"]{1,60})"/g)].map((m) => m[1]))]
+      console.log(`[Welcome] Next missing; screen shows: ${texts.join(' | ').slice(0, 1000)}`)
+      throw new Error('Welcome carousel Next did not appear')
+    }
     if (browser.isAndroid) await progress.waitForExist({ timeout: 10000 })
     else await browser.waitUntil(async () => await currentSlide() !== '', { timeout: 10000 })
     const firstSlide = await currentSlide()

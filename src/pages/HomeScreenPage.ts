@@ -588,7 +588,12 @@ class HomeScreenPage extends BasePage {
     const search = browser.isIOS
       ? $('-ios predicate string:type == "XCUIElementTypeSearchField" OR name == "switchSubidentity_input_search"')
       : this.accountSelectionRootAndroid.$('.//android.widget.EditText')
-    await search.waitForDisplayed({ timeout: 10000 })
+    await search.waitForDisplayed({ timeout: 10000 }).catch(async (error) => {
+      const src = String(await browser.getPageSource().catch(() => ''))
+      const texts = [...new Set([...src.matchAll(/ (?:name|label|text|content-desc)="([^"]{1,60})"/g)].map((m) => m[1]))]
+      console.log(`[AccountPicker] search field missing; screen shows: ${texts.join(' | ').slice(0, 1200)}`)
+      throw error
+    })
     const allAccounts = await this.pickerAccountIds()
     if (allAccounts.length < 2) throw new Error('Account picker search requires at least two configured identities')
 
@@ -1846,7 +1851,7 @@ class HomeScreenPage extends BasePage {
 
   public async verifyGuestSupportOptions() {
     const help = browser.isIOS
-      ? $('-ios predicate string:type == "XCUIElementTypeButton" AND (name == "register_button_help" OR name == "loginNewMobile_button_help" OR label IN {"Help", "Support"})')
+      ? $('-ios predicate string:type == "XCUIElementTypeButton" AND (name == "register_button_help" OR name == "loginNewMobile_button_help" OR name == "QuestionMark" OR label IN {"Help", "Support"})')
       : $('//*[contains(@resource-id,"register_button_help") or contains(@resource-id,"loginNewMobile_button_help") or @content-desc="Help" or @content-desc="Support"]')
     await this.tap(help, 10000)
     await this.supportTitle.waitForDisplayed({ timeout: 10000 })
