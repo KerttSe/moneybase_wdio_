@@ -249,6 +249,15 @@ export class LoginPage extends BasePage {
       await this.waitForLoginEntry(async () => {
         await this.dismissIOSAlerts()
         await this.dismissIOSPermissionAlertsIfPresent().catch(() => {})
+        // The new iOS build can raise a system "Enter Password for “moneybase stg”" prompt on start;
+        // never type a password, just cancel it.
+        const passwordPrompt = $('-ios predicate string:label BEGINSWITH "Enter Password for"')
+        if (await passwordPrompt.isExisting().catch(() => false)) {
+          const cancel = $('-ios predicate string:type == "XCUIElementTypeButton" AND label == "Cancel"')
+          await cancel.click().catch(() => {})
+          await browser.pause(800)
+          return false
+        }
         // dismiss leftover CNContactPickerViewController sheet from a previous BS session
         const shareAllBtn = $('-ios predicate string:label BEGINSWITH "Share All" OR name BEGINSWITH "Share All"')
         if (await shareAllBtn.isExisting().catch(() => false)) {
