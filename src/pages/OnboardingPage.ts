@@ -1726,10 +1726,19 @@ export default class OnboardingPage extends BasePage {
 
   private async selectEmploymentStatus(status: 'Employed' | 'Student' | 'Unemployed' | 'Pensioner' | 'Homemaker') {
     await this.tap(this.onboardingEmploymentStatusBtn)
+    // The new iOS build spells it "Home Maker".
+    const label = status === 'Homemaker' && browser.isIOS
+      && await $('-ios predicate string:label == "Home Maker" OR name == "Home Maker"').isExisting().catch(() => false)
+      ? 'Home Maker' : status
     if (await this.employmentStatusSearchInput.isDisplayed().catch(() => false)) {
-      await this.typeIntoSearchInput(this.employmentStatusSearchInput, status)
+      await this.typeIntoSearchInput(this.employmentStatusSearchInput, label)
     }
-    await this.selectVisibleOption(status)
+    await this.selectVisibleOption(label).catch(async (error) => {
+      const src = String(await browser.getPageSource().catch(() => ''))
+      const texts = [...new Set([...src.matchAll(/ (?:name|label|value|text|content-desc)="([^"]{1,50})"/g)].map((m) => m[1]))]
+      console.log(`[Onboarding] employment option "${status}" missing; picker shows: ${texts.join(' | ').slice(0, 1000)}`)
+      throw error
+    })
     await this.waitForPickerClosed()
   }
 

@@ -247,6 +247,10 @@ class BusinessCardPage extends BasePage {
         // The new iOS build dropped the "Add Card" tile: assigning starts from More → Administration →
         // Manage Cards → Assign Card (the route the business wallet specs already use).
         const { default: homeScreenPage } = await import('./HomeScreenPage')
+        // More opens from Home's profile header, not from Cards; close any popover and go Home first.
+        const popover = $('~PopoverDismissRegion')
+        if (await popover.isExisting().catch(() => false)) await popover.click().catch(() => {})
+        await this.tap(navTab('Home')).catch(() => {})
         await homeScreenPage.openIOSMoreMenu()
         const admin = $('-ios predicate string:name == "Administration" OR label == "Administration"')
         await admin.waitForExist({ timeout: 15000, timeoutMsg: 'Administration item not found in More (iOS)' })
