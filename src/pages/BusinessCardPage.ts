@@ -1271,7 +1271,12 @@ class BusinessCardPage extends BasePage {
         !(await sheet.isExisting().catch(() => false)) &&
         !(await selectUser.isExisting().catch(() => false)),
       { timeout: 15000, interval: 500, timeoutMsg: 'No business card assignee was selected on iOS' }
-    )
+    ).catch(async (error) => {
+      const src = String(await browser.getPageSource().catch(() => ''))
+      const texts = [...new Set([...src.matchAll(/ (?:name|label)="([^"]{1,50})"/g)].map((m) => m[1]))]
+      console.log(`[BusinessCard] assignee not selected; screen shows: ${texts.slice(-60).join(' | ').slice(0, 1500)}`)
+      throw error
+    })
   }
 
   public async continueWithDefaultAssignee() {
