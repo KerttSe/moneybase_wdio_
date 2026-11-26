@@ -1185,6 +1185,16 @@ async waitForPostOtpNextStep(timeout = 30000) {
       await this.dismissIOSPermissionAlertsIfPresent().catch(() => false)
       // A real iPhone with Face ID enrolled is offered biometric sign-in after OTP; skip it.
       if (await this.skipIOSBiometricOfferIfShown()) return false
+      // New iOS build: the system "Enter Password" alert and the in-app "Enable Contacts" screen can
+      // follow the OTP; cancel the alert (never type a password) and get past the contacts screen.
+      if (await $('-ios predicate string:label BEGINSWITH "Enter Password for"').isExisting().catch(() => false)) {
+        await browser.dismissAlert().catch(() => {})
+        return false
+      }
+      if (await $('-ios predicate string:name == "ic_contacts_permission" OR name == "Enable Contacts"').isExisting().catch(() => false)) {
+        await this.dismissContactsPermissionIOS().catch(() => {})
+        return false
+      }
     }
 	    const continueVisible =
 	      (await this.postOtpContinueBtn.isDisplayed().catch(() => false)) ||
