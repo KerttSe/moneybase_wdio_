@@ -644,11 +644,12 @@ get otpFieldIOS() {
 }
 
 get otpFirstSlotIOS() {
-  return $('//XCUIElementTypeTextField[starts-with(@name, "OTP_entry_")][1]')
+  // The new iOS build can render one OTP_input_field instead of six OTP_entry_* slots.
+  return $('(//XCUIElementTypeTextField[@name="OTP_input_field"] | //XCUIElementTypeTextField[starts-with(@name, "OTP_entry_")])[1]')
 }
 
 get otpLastSlotIOS() {
-  return $('//XCUIElementTypeTextField[@name="OTP_entry_5"]')
+  return $('(//XCUIElementTypeTextField[@name="OTP_entry_5"] | //XCUIElementTypeTextField[@name="OTP_input_field"])[1]')
 }
 
 get otpIncorrectCodeIOS() {
