@@ -264,15 +264,18 @@ test('missing controls and driver errors cannot masquerade as disabled buttons',
   await assert.rejects(waitForControlEnabled({ waitForExist: async () => {}, isEnabled: async () => { throw new Error('transport') } }, false, 'fixture'), /transport/)
 })
 
-test('Auto Top-Up checks the iOS save control, not its always-enabled text child', async () => {
-  const calls = []
+test('Auto Top-Up checks the iOS save control by behaviour, not its always-enabled text child', async () => {
+  // SwiftUI reports a blocked Save as enabled, so on iOS the control is tapped and the form must stay.
+  const tapped = []
   const { default: Page } = loadPage('AutoTopUpPage', {
-    $: selector => ({ selector, waitForExist: async () => {} }),
-  }, { '../helpers/controlState.helper': { waitForControlEnabled: async (control, enabled) => calls.push({ selector: control.selector, enabled }) } })
-  await new Page().verifySaveEnabled(false)
-  assert.equal(calls[0].enabled, false)
-  assert.doesNotMatch(calls[0].selector, /XCUIElementTypeStaticText/)
-  assert.match(calls[0].selector, /autoTopup_button_save/)
+    browser: { isIOS: true, pause: async () => {} },
+    $: selector => ({ selector, waitForExist: async () => {}, isExisting: async () => true }),
+  }, { '../helpers/controlState.helper': { waitForControlEnabled: async () => { throw new Error('the flag must not decide on iOS') } } })
+  const page = new Page()
+  page.tap = async (el) => { tapped.push(el.selector) }
+  await page.verifySaveEnabled(false)
+  assert.match(tapped[0], /autoTopup_button_save/)
+  assert.doesNotMatch(tapped[0], /XCUIElementTypeStaticText/)
 })
 
 test('empty partial salary clears the input without leaving the previous amount', async () => {
