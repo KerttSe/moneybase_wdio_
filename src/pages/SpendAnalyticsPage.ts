@@ -157,8 +157,10 @@ class SpendAnalyticsPage extends BasePage {
           })
           // New iOS build: "Spend Analytics" is only a section header; the card below it opens Analytics.
           if (!await this.analyticsNavBarIOS.waitForExist({ timeout: 3000 }).then(() => true).catch(() => false)) {
-            const card = $('//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@name="Spend Analytics"]]/following-sibling::XCUIElementTypeCell[1]')
+            const card = $('//XCUIElementTypeStaticText[@name="Spend Analytics"]/following::XCUIElementTypeCell[1]')
             if (await card.isExisting().catch(() => false)) {
+              // The card sits just below the fold under its header; scroll it into view first.
+              if (!await card.isDisplayed().catch(() => false)) await this.scrollDownIOS().catch(() => {})
               await this.tapElementCenterIOS(card as unknown as WebdriverIO.Element).catch(() => {})
             }
           }
