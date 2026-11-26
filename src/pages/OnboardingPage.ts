@@ -107,7 +107,8 @@ export default class OnboardingPage extends BasePage {
   }
 
   private get otpInput() {
-    if (browser.isIOS) return $('(//XCUIElementTypeOther[@name="otp_input"]//XCUIElementTypeTextField | //XCUIElementTypeTextField[starts-with(@name, "OTP_entry_")])[1]')
+    // The new iOS build hides the OTP_entry_* slots (visible=false) behind one visible OTP_input_field.
+    if (browser.isIOS) return $('(//XCUIElementTypeTextField[@name="OTP_input_field"] | //XCUIElementTypeOther[@name="otp_input"]//XCUIElementTypeTextField[@visible="true"] | //XCUIElementTypeTextField[starts-with(@name, "OTP_entry_")])[1]')
     return this.byId('otp_input')
   }
 

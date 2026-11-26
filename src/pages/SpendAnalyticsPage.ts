@@ -42,7 +42,7 @@ class SpendAnalyticsPage extends BasePage {
   }
 
   private get analyticsNavBarIOS() {
-    return $('//XCUIElementTypeNavigationBar[@name="Analytics"]')
+    return $('//XCUIElementTypeNavigationBar[@name="Analytics" or @name="Spend Analytics" or @name="Statistics"]')
   }
 
   private get analyticsBackButtonIOS() {
@@ -155,6 +155,13 @@ class SpendAnalyticsPage extends BasePage {
           await this.tapElementCenterIOS(entry as unknown as WebdriverIO.Element).catch(async () => {
             await entry.click().catch(() => {})
           })
+          // New iOS build: "Spend Analytics" is only a section header; the card below it opens Analytics.
+          if (!await this.analyticsNavBarIOS.waitForExist({ timeout: 3000 }).then(() => true).catch(() => false)) {
+            const card = $('//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@name="Spend Analytics"]]/following-sibling::XCUIElementTypeCell[1]')
+            if (await card.isExisting().catch(() => false)) {
+              await this.tapElementCenterIOS(card as unknown as WebdriverIO.Element).catch(() => {})
+            }
+          }
         }
 
         return this.analyticsNavBarIOS.isExisting().catch(() => false)
