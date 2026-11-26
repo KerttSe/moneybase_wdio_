@@ -840,9 +840,16 @@ class BankTransferSepaIndividualPage extends BasePage {
   public async verifySepaAmountRules() {
     const input = await this.openSepaAmountInput()
     // The new iOS build can return no value attribute for the amount field; fall back to its label/text.
-    const read = async () => browser.isIOS
-      ? String((await input.getAttribute('value')) ?? (await input.getAttribute('label')) ?? (await input.getText().catch(() => '')) ?? '')
-      : input.getText()
+    // In the new build the amount container has no value; the typed amount is a child text ("€11").
+    const read = async () => {
+      if (!browser.isIOS) return input.getText()
+      const own = String((await input.getAttribute('value')) ?? (await input.getAttribute('label')) ?? '')
+      if (own.replace(/\D/g, '')) return own
+      const children = await input.$$('.//XCUIElementTypeStaticText | .//XCUIElementTypeTextField')
+        .map(el => el.getAttribute('value').then(v => v ?? el.getAttribute('label')).catch(() => ''))
+      // The amount is rendered twice (text + accessibility value); take one copy.
+      return children.find(text => /\d/.test(String(text))) ?? children.filter(Boolean)[0] ?? ''
+    }
     await input.click()
     await input.clearValue()
     // The new iOS build drops digits typed with addValue; press the number keys one by one instead.
@@ -874,15 +881,33 @@ class BankTransferSepaIndividualPage extends BasePage {
       }
     }
 
-    await input.clearValue()
     const belowMinimum = process.env.SEPA_TEST_BELOW_MIN_AMOUNT || '0.01'
     if (!/^\d+(?:\.\d+)?$/.test(belowMinimum) || Number(belowMinimum) <= 0) {
       throw new Error('SEPA_TEST_BELOW_MIN_AMOUNT must be a positive decimal amount')
     }
-    await input.setValue(belowMinimum)
+    const deleteKey = $('-ios predicate string:type == "XCUIElementTypeKey" AND (name ==[c] "delete" OR label ==[c] "delete")')
+    if (browser.isIOS && await deleteKey.isExisting().catch(() => false)) {
+      // The new iOS amount field ignores clearValue/setValue; erase and type with the keypad keys.
+      for (let i = 0; i < 12 && (await read()).replace(/\D/g, ''); i++) await deleteKey.click().catch(() => {})
+      for (const ch of belowMinimum) {
+        const key = ch === '.'
+          ? $('-ios predicate string:type == "XCUIElementTypeKey" AND name IN {".", ","}')
+          : $(`//XCUIElementTypeKey[@name="${ch}"]`)
+        await key.click()
+        await browser.pause(150)
+      }
+    } else {
+      await input.clearValue()
+      await input.setValue(belowMinimum)
+    }
     const entered = (await read()).replace(/[^\d.,]/g, '').replace(',', '.')
-    if (!entered || Number(entered) !== Number(belowMinimum)) throw new Error('The payment draft did not retain the below-minimum fixture amount')
-    if (await browser.isKeyboardShown()) await browser.hideKeyboard()
+    if (!entered || Number(entered) !== Number(belowMinimum)) throw new Error(`The payment draft did not retain the below-minimum fixture amount (field shows "${await read()}")`)
+    if (await browser.isKeyboardShown()) {
+      // The iOS number pad has no return key, so WDA cannot hide it; tap the payee header instead.
+      await browser.hideKeyboard().catch(async () => {
+        await $('~makePayment_label_title').click().catch(() => {})
+      })
+    }
     const minimumError = browser.isIOS
       ? $('-ios predicate string:label CONTAINS[c] "minimum" AND (label CONTAINS[c] "amount" OR label CONTAINS[c] "payment")')
       : $('//*[contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"minimum") and (contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"amount") or contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"payment"))]')
@@ -890,9 +915,19 @@ class BankTransferSepaIndividualPage extends BasePage {
     const review = browser.isIOS ? this.reviewPaymentBtnIOS : this.reviewPaymentBtnAndroid
     await review.waitForEnabled({ reverse: true, timeout: 10000 })
 
-    await input.clearValue()
-    await input.setValue('11')
-    if (await browser.isKeyboardShown()) await browser.hideKeyboard()
+    if (browser.isIOS && await deleteKey.isExisting().catch(() => false)) {
+      for (let i = 0; i < 8 && (await read()).replace(/\D/g, ''); i++) await deleteKey.click().catch(() => {})
+      await typeDigits('11')
+    } else {
+      await input.clearValue()
+      await input.setValue('11')
+    }
+    if (await browser.isKeyboardShown()) {
+      // The iOS number pad has no return key; tap the payee header to close it.
+      await browser.hideKeyboard().catch(async () => {
+        await $('~makePayment_label_title').click().catch(() => {})
+      })
+    }
     const instant = browser.isIOS
       ? $('-ios predicate string:label CONTAINS[c] "within seconds" OR (label CONTAINS[c] "instant" AND label CONTAINS[c] "second")')
       : $('//*[contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"within seconds") or (contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"instant") and contains(translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"second"))]')

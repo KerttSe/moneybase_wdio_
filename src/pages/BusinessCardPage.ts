@@ -1235,26 +1235,47 @@ class BusinessCardPage extends BasePage {
 
     if (await this.cardAssigneeLasVegasSelectedIOS.isExisting().catch(() => false)) return
 
-    await this.tap(this.cardAssigneeRowIOS, 3000)
+    // The new build opens Assign Card over Manage Cards, whose list also has a "Las Vegas" card, and the
+    // form row itself reads "Select User". So wait for the user sheet to add a new "Las Vegas" entry
+    // and pick the last one (the sheet is rendered after the background list).
+    const lasVegasCells = '//XCUIElementTypeStaticText[@name="Las Vegas" or @label="Las Vegas" or @value="Las Vegas"]/ancestor::XCUIElementTypeCell[1]'
+    const before = (await $$(lasVegasCells)).length
+    // A tap on the row's header does not open the picker; tap the "Select User" value itself.
+    const selectUser = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label == "Select User" OR name == "person_placeholder")')
+    await this.tap((await selectUser.isExisting().catch(() => false)) ? selectUser : this.cardAssigneeRowIOS, 3000)
 
+    // The user list spans two pages; scroll it until Las Vegas is rendered.
+    const { width, height } = await browser.getWindowRect()
     await browser.waitUntil(
-      async () =>
-        (await this.userSelectionTitleIOS.isExisting().catch(() => false)) ||
-        (await this.lasVegasUserOptionIOS.isExisting().catch(() => false)) ||
-        (await this.lasVegasUserTextIOS.isExisting().catch(() => false)),
-      { timeout: 10000, interval: 500, timeoutMsg: 'User selection sheet did not open on iOS' }
+      async () => {
+        if ((await $$(lasVegasCells)).length > before) return true
+        await browser.performActions([{
+          type: 'pointer', id: 'finger-user-sheet', parameters: { pointerType: 'touch' },
+          actions: [
+            { type: 'pointerMove', duration: 0, x: Math.round(width / 2), y: Math.round(height * 0.75) },
+            { type: 'pointerDown', button: 0 },
+            { type: 'pointerMove', duration: 400, x: Math.round(width / 2), y: Math.round(height * 0.4) },
+            { type: 'pointerUp', button: 0 },
+          ],
+        }]).catch(() => {})
+        await browser.releaseActions().catch(() => {})
+        return (await $$(lasVegasCells)).length > before
+      },
+      { timeout: 20000, interval: 800, timeoutMsg: 'User selection sheet did not show Las Vegas on iOS' }
     )
+    // Pick the entry inside the user sheet itself (assignBusinessCardUserSelection_screen), not the background list.
+    const sheetLasVegas = $('(//*[@name="assignBusinessCardUserSelection_screen"]//XCUIElementTypeStaticText[@name="Las Vegas" or @label="Las Vegas" or @value="Las Vegas"]/ancestor::XCUIElementTypeCell[1] | //*[@name="assignBusinessCardUserSelection_screen"]//XCUIElementTypeStaticText[@name="Las Vegas" or @label="Las Vegas"])[1]')
+    await this.tap((await sheetLasVegas.isExisting().catch(() => false)) ? sheetLasVegas : $(`(${lasVegasCells})[last()]`), 3000)
 
-    if (await this.lasVegasUserOptionIOS.isExisting().catch(() => false)) {
-      await this.tap(this.lasVegasUserOptionIOS, 3000)
-    } else {
-      await this.tap(this.lasVegasUserTextIOS, 3000)
-    }
-
+    // New build: the chosen user replaces "Select User" inside the Card Assignee cell itself.
+    const assigneeInCell = $('//XCUIElementTypeCell[@name="Card Assignee" or @label="Card Assignee"]//XCUIElementTypeStaticText[@name="Las Vegas" or @label="Las Vegas"]')
+    const sheetOpen = $('~assignBusinessCardUserSelection_screen')
     await browser.waitUntil(
       async () =>
         (await this.isIOSAssignBusinessCardFormVisible()) &&
-        (await this.cardAssigneeLasVegasSelectedIOS.isExisting().catch(() => false)),
+        !(await sheetOpen.isExisting().catch(() => false)) &&
+        ((await this.cardAssigneeLasVegasSelectedIOS.isExisting().catch(() => false)) ||
+          (await assigneeInCell.isExisting().catch(() => false))),
       { timeout: 15000, interval: 500, timeoutMsg: 'Las Vegas assignee was not selected on iOS' }
     )
   }

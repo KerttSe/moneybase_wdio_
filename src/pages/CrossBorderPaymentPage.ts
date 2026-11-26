@@ -152,8 +152,8 @@ class CrossBorderPaymentPage extends BasePage {
   public async verifyClosingWalletPickerPreservesWallet() {
     if (browser.isIOS) {
       await BankTransferP2PIndividualPage.prepareSmokeSwiftIOS(11)
-      const selector = $('-ios predicate string:type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND (name == "makePayment_button_walletSelect" OR label BEGINSWITH[c] "Pay from")')
-      const picker = $('-ios predicate string:name == "walletSelection_screen" OR (type == "XCUIElementTypeNavigationBar" AND label IN {"Select Wallet", "Wallets"})')
+      const selector = $('-ios predicate string:(type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND (name == "makePayment_button_walletSelect" OR label BEGINSWITH[c] "Pay from")) OR name == "makePayment_button_currencyPicker"')
+      const picker = $('-ios predicate string:name == "walletSelection_screen" OR name == "PopoverDismissRegion" OR (type == "XCUIElementTypeNavigationBar" AND label IN {"Select Wallet", "Wallets"})')
       const euro = $('-ios predicate string:type == "XCUIElementTypeCell" AND (label CONTAINS[c] "EUR" OR name CONTAINS[c] "EUR")')
       const selected = selector.$('.//*[contains(@label,"EUR") or contains(@name,"EUR")] | self::*[contains(@label,"EUR")]')
       if (!await selected.isDisplayed()) {
@@ -293,7 +293,7 @@ class CrossBorderPaymentPage extends BasePage {
       return
     }
 
-    const selector = $('-ios predicate string:type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND (name == "makePayment_button_walletSelect" OR label BEGINSWITH[c] "Pay from")')
+    const selector = $('-ios predicate string:(type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND (name == "makePayment_button_walletSelect" OR label BEGINSWITH[c] "Pay from")) OR name == "makePayment_button_currencyPicker"')
     const selected = selector.$(`.//*[contains(@label,"${currency}") or contains(@name,"${currency}")] | self::*[contains(@label,"${currency}")]`)
     if (!await selected.isDisplayed()) {
       await this.tap(selector, 10000)
