@@ -359,7 +359,8 @@ class CrossBorderPaymentPage extends BasePage {
   }
 
   private get swiftFeePickerIOS() {
-    return $('-ios predicate string:name == "swiftOptions_screen" OR (type == "XCUIElementTypeNavigationBar" AND label IN {"SWIFT", "SWIFT Fee", "SWIFT Fees"})')
+    // The new iOS build shows the fee options in a popover (PopoverDismissRegion) instead of a screen.
+    return $('-ios predicate string:name == "swiftOptions_screen" OR name == "PopoverDismissRegion" OR (type == "XCUIElementTypeNavigationBar" AND label IN {"SWIFT", "SWIFT Fee", "SWIFT Fees"})')
   }
 
   private swiftFeeTitleIOS(title: 'Shared Fee' | 'Originator Fee') {
@@ -369,13 +370,21 @@ class CrossBorderPaymentPage extends BasePage {
   private async selectSwiftFeeIOS(title: 'Shared Fee' | 'Originator Fee') {
     await this.tap(this.swiftFeeRowIOS, 15000)
     await this.swiftFeePickerIOS.waitForDisplayed({ timeout: 10000 })
-    const choice = $('//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="' + title + '"]] | //XCUIElementTypeButton[@label="' + title + '"]')
+    // In the popover the option is a plain text listed after the row's own value.
+    const choice = $('(//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="' + title + '"]] | //XCUIElementTypeButton[@label="' + title + '"] | (//XCUIElementTypeStaticText[@label="' + title + '"])[last()])[1]')
     await this.tap(choice, 10000)
     await this.swiftFeePickerIOS.waitForDisplayed({ reverse: true, timeout: 10000 })
     await this.swiftFeeTitleIOS(title).waitForDisplayed({ timeout: 10000 })
   }
 
   private async closeIOSPicker() {
+    // The new build's fee picker is a popover: dismiss it by its dismiss region. The screen's own
+    // lowercase "close" button would close the whole payment, so it is not used here.
+    const popoverDismiss = $('~PopoverDismissRegion')
+    if (await popoverDismiss.isExisting().catch(() => false)) {
+      await popoverDismiss.click()
+      return
+    }
     const close = $('-ios predicate string:type == "XCUIElementTypeButton" AND (name IN {"Close", "Cancel", "modal_button_close", "BackButton"} OR label IN {"Close", "Cancel"})')
     await this.tap(close, 10000)
   }
