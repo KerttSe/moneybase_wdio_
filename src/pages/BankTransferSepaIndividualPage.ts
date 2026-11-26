@@ -845,7 +845,18 @@ class BankTransferSepaIndividualPage extends BasePage {
       : input.getText()
     await input.click()
     await input.clearValue()
-    await input.addValue('12345678')
+    // The new iOS build drops digits typed with addValue; press the number keys one by one instead.
+    const typeDigits = async (digits: string) => {
+      if (browser.isIOS && await $(`//XCUIElementTypeKey[@name="${digits[0]}"]`).isExisting().catch(() => false)) {
+        for (const d of digits) {
+          await $(`//XCUIElementTypeKey[@name="${d}"]`).click()
+          await browser.pause(150)
+        }
+        return
+      }
+      await input.addValue(digits)
+    }
+    await typeDigits('12345678')
     const baseline = await read()
     if (browser.isAndroid) {
       // App 2.27.0 on Android caps a SEPA amount at EUR 500,000 instead of limiting the digit count.
@@ -856,7 +867,7 @@ class BankTransferSepaIndividualPage extends BasePage {
       if (!baseline.replace(/\D/g, '').startsWith('12345678')) {
         throw new Error('Expected eight leading digits before testing the ninth digit')
       }
-      await input.addValue('9')
+      await typeDigits('9')
       const actual = await read()
       if (actual !== baseline) {
         throw new Error(`Expected ninth digit to be rejected, amount changed from "${baseline}" to "${actual}"`)

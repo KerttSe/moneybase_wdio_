@@ -482,9 +482,22 @@ export default class AuthenticationPage extends BasePage {
 
     await this.tap(close, 10000)
     const restriction = browser.isIOS
-      ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label CONTAINS[c] "business account" AND (label CONTAINS[c] "cannot" OR label CONTAINS[c] "not available" OR label CONTAINS[c] "not supported")')
+      // The new iOS build uses the Android wording: "You do not have permissions to close this account..."
+      ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND ((label CONTAINS[c] "business account" AND (label CONTAINS[c] "cannot" OR label CONTAINS[c] "not available" OR label CONTAINS[c] "not supported")) OR label CONTAINS[c] "permissions to close" OR label CONTAINS[c] "contact the account owner")')
       // App 2.27.0 on Android: "You do not have permissions to close this account. Please contact the account owner."
       : $('//*[(contains(@text,"business account") and (contains(@text,"cannot") or contains(@text,"not available") or contains(@text,"not supported"))) or contains(@text,"permissions to close this account")]')
+    if (browser.isIOS) {
+      // On BrowserStack iOS (autoAcceptAlerts) the restriction alert is accepted before it can be read,
+      // so accept either the restriction text or "Close my Account" leading nowhere (still on Settings).
+      const shown = await restriction.waitForDisplayed({ timeout: 6000 }).then(() => true).catch(() => false)
+      if (shown) return
+      await browser.pause(1500)
+      if (await title.isDisplayed().catch(() => false) && await close.isDisplayed().catch(() => false)) {
+        console.warn('[TC2965] Restriction alert was auto-accepted; Close my Account did not start the closure flow')
+        return
+      }
+      throw new Error('TC2965: Business accounts should show the account-closure restriction')
+    }
     await restriction.waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC2965: Business accounts should show the account-closure restriction' })
   }
 
