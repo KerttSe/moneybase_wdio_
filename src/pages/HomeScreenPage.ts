@@ -1670,7 +1670,12 @@ class HomeScreenPage extends BasePage {
         ...children,
       ].join(' ').toLowerCase()
       return current.includes(expected)
-    }, { timeout: 10000, timeoutMsg: `Expected statement ${bound} month to be ${month}` })
+    }, { timeout: 10000, timeoutMsg: `Expected statement ${bound} month to be ${month}` }).catch(async (error) => {
+      const src = String(await browser.getPageSource().catch(() => ''))
+      const texts = [...new Set([...src.matchAll(/ (?:name|label|value|text|content-desc)="([^"]{1,50})"/g)].map((m) => m[1]))]
+      console.log(`[Statement] ${bound} month check failed; screen shows: ${texts.join(' | ').slice(0, 1200)}`)
+      throw error
+    })
   }
 
   private async selectStatementMonth(bound: 'From' | 'To', month: string) {

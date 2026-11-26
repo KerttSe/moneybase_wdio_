@@ -865,7 +865,7 @@ class BankTransferSepaIndividualPage extends BasePage {
       }
     } else {
       if (!baseline.replace(/\D/g, '').startsWith('12345678')) {
-        throw new Error('Expected eight leading digits before testing the ninth digit')
+        throw new Error(`Expected eight leading digits before testing the ninth digit, got "${baseline}"`)
       }
       await typeDigits('9')
       const actual = await read()
