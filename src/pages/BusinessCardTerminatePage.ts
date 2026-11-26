@@ -195,6 +195,12 @@ class BusinessCardTerminatePage extends BasePage {
   }
 
   private get selfUserOptionIOS() {
+    // The new build opens the user sheet over Manage Cards, whose list also shows card holders by name;
+    // prefer the row inside the sheet (assignBusinessCardUserSelection_screen).
+    return $(`//*[@name="assignBusinessCardUserSelection_screen"]//XCUIElementTypeStaticText[@name="${BH_SELF_NAME}" or @label="${BH_SELF_NAME}"]/ancestor::XCUIElementTypeCell[1]`)
+  }
+
+  private get selfUserOptionLegacyIOS() {
     return $(`//XCUIElementTypeStaticText[@name="${BH_SELF_NAME}" or @label="${BH_SELF_NAME}"]/ancestor::XCUIElementTypeCell[1]`)
   }
 
@@ -895,14 +901,20 @@ class BusinessCardTerminatePage extends BasePage {
       timeout: 15000,
       timeoutMsg: 'Assign Card To row not found after selecting virtual card type',
     })
-    await this.tap(assigneeRow)
+    // iOS: a tap on the row header does not open the picker; tap the "Select User" value.
+    const selectUserValue = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label == "Select User" OR name == "person_placeholder")')
+    await this.tap(browser.isIOS && await selectUserValue.isExisting().catch(() => false) ? selectUserValue : assigneeRow)
+    if (browser.isIOS) await $('~assignBusinessCardUserSelection_screen').waitForExist({ timeout: 10000 }).catch(() => {})
 
     if (browser.isIOS) {
-      await this.selfUserOptionIOS.waitForExist({
+      // Sheet-scoped row in the new build; older builds have no sheet id, so fall back to the plain row.
+      const sheetShown = await $('~assignBusinessCardUserSelection_screen').isExisting().catch(() => false)
+      const selfOption = sheetShown ? this.selfUserOptionIOS : this.selfUserOptionLegacyIOS
+      await selfOption.waitForExist({
         timeout: 15000,
         timeoutMsg: `User "${BH_SELF_NAME}" not found in Select User list`,
       })
-      await this.tap(this.selfUserOptionIOS)
+      await this.tap(selfOption)
       await browser.pause(600)
 
       if (await this.selectUserBtnIOS.isExisting().catch(() => false)) {
