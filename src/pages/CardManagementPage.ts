@@ -211,7 +211,8 @@ class CardManagementPage extends BasePage {
   }
 
   private get verificationOtpInputIOS() {
-    return $('//XCUIElementTypeTextView | //XCUIElementTypeTextField[starts-with(@name, "OTP_entry_")]')
+    // The new iOS build types the code into one visible OTP_input_field (the OTP_entry_* slots are hidden).
+    return $('(//XCUIElementTypeTextField[@name="OTP_input_field"] | //XCUIElementTypeTextView | //XCUIElementTypeTextField[starts-with(@name, "OTP_entry_")])[1]')
   }
 
   private get currentPasscodeNavBarIOS() {
@@ -994,11 +995,21 @@ class CardManagementPage extends BasePage {
 
     await this.verificationOtpInputIOS.waitForExist({ timeout: 15000 })
     await this.verificationOtpInputIOS.click().catch(() => {})
-    await this.verificationOtpInputIOS.addValue(otp).catch(async () => {
+    // The new iOS build drops digits typed with addValue (only "0" arrived and an attempt was lost),
+    // so press the on-screen number keys one by one when the keyboard is up.
+    const firstKey = $(`//XCUIElementTypeKey[@name="${otp[0]}"]`)
+    if (await firstKey.waitForExist({ timeout: 3000 }).then(() => true).catch(() => false)) {
       for (const digit of otp) {
-        await this.verificationOtpInputIOS.addValue(digit).catch(() => {})
+        await $(`//XCUIElementTypeKey[@name="${digit}"]`).click()
+        await browser.pause(250)
       }
-    })
+    } else {
+      await this.verificationOtpInputIOS.addValue(otp).catch(async () => {
+        for (const digit of otp) {
+          await this.verificationOtpInputIOS.addValue(digit).catch(() => {})
+        }
+      })
+    }
 
     await browser.waitUntil(
       async () =>

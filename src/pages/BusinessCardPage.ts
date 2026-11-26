@@ -242,7 +242,23 @@ class BusinessCardPage extends BasePage {
 
   public async tapAddNewCard() {
     if (browser.isIOS) {
-      await this.addNewCardButtonIOS.waitForExist({ timeout: 15000 })
+      const hasAddTile = await this.addNewCardButtonIOS.waitForExist({ timeout: 8000 }).then(() => true).catch(() => false)
+      if (!hasAddTile) {
+        // The new iOS build dropped the "Add Card" tile: assigning starts from More → Administration →
+        // Manage Cards → Assign Card (the route the business wallet specs already use).
+        const { default: homeScreenPage } = await import('./HomeScreenPage')
+        await homeScreenPage.openIOSMoreMenu()
+        const admin = $('-ios predicate string:name == "Administration" OR label == "Administration"')
+        await admin.waitForExist({ timeout: 15000, timeoutMsg: 'Administration item not found in More (iOS)' })
+        await this.tap(admin)
+        await $('//XCUIElementTypeNavigationBar[@name="Manage Cards"]').waitForExist({ timeout: 15000, timeoutMsg: 'Manage Cards did not open (iOS)' })
+        await this.tap($('-ios predicate string:name == "Assign Card" OR label == "Assign Card"'))
+        await browser.waitUntil(
+          async () => await this.isIOSAssignBusinessCardFormVisible(),
+          { timeout: 15000, interval: 500, timeoutMsg: 'Assign Business Card form did not open on iOS' }
+        )
+        return
+      }
       await this.tap(this.addNewCardButtonIOS)
       await browser.waitUntil(
         async () => await this.isIOSAssignBusinessCardFormVisible(),

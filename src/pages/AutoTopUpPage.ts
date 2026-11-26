@@ -277,6 +277,16 @@ export default class AutoTopUpPage extends BasePage {
       ? $('//*[@name="autoTopup_button_save" or @name="autoTopUpDetails_button_save"][1]')
       : this.saveBtn
     await this.autoTopUpDetailsScreen.waitForExist({ timeout: 10000 })
+    if (browser.isIOS && !enabled) {
+      // SwiftUI reports a blocked Save as enabled; check behaviour: tapping it must keep the form open.
+      await control.waitForExist({ timeout: 10000 })
+      await this.tap(control).catch(() => {})
+      await browser.pause(2000)
+      if (!await this.cardPicker.isExisting().catch(() => false)) {
+        throw new Error('Auto Top-Up Save must be disabled: tapping it closed the form')
+      }
+      return
+    }
     await waitForControlEnabled(control, enabled, 'Auto Top-Up Save')
   }
 

@@ -3036,6 +3036,16 @@ export default class OnboardingPage extends BasePage {
   async openApplicantOtpValidation() {
     const context = await this.prepareSmokeOnboarding()
     await this.enterPinTwice(context.pin)
+    // iOS: the OTP field can be in the tree without WDA reporting it displayed; existence is the anchor.
+    if (browser.isIOS) {
+      await this.otpInput.waitForExist({ timeout: 30000 }).catch(async (error) => {
+        const src = String(await browser.getPageSource().catch(() => ''))
+        const texts = [...new Set([...src.matchAll(/ (?:name|label)="([^"]{1,60})"/g)].map((m) => m[1]))]
+        console.log(`[Onboarding] OTP screen missing after PIN; screen shows: ${texts.join(' | ').slice(0, 1000)}`)
+        throw error
+      })
+      return
+    }
     await this.otpInput.waitForDisplayed({ timeout: 30000 })
   }
 
