@@ -153,7 +153,7 @@ class CrossBorderPaymentPage extends BasePage {
     if (browser.isIOS) {
       await BankTransferP2PIndividualPage.prepareSmokeSwiftIOS(11)
       const selector = $('-ios predicate string:(type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND (name == "makePayment_button_walletSelect" OR label BEGINSWITH[c] "Pay from")) OR name == "makePayment_button_currencyPicker"')
-      const picker = $('-ios predicate string:name == "walletSelection_screen" OR name == "PopoverDismissRegion" OR (type == "XCUIElementTypeNavigationBar" AND label IN {"Select Wallet", "Wallets"})')
+      const picker = $('-ios predicate string:name == "walletSelection_screen" OR (type == "XCUIElementTypeNavigationBar" AND label IN {"Select Wallet", "Wallets"})')
       const euro = $('-ios predicate string:type == "XCUIElementTypeCell" AND (label CONTAINS[c] "EUR" OR name CONTAINS[c] "EUR")')
       const selected = selector.$('.//*[contains(@label,"EUR") or contains(@name,"EUR")] | self::*[contains(@label,"EUR")]')
       if (!await selected.isDisplayed()) {
