@@ -228,7 +228,13 @@ export class LoginPage extends BasePage {
     await browser.waitUntil(async () => {
       blocked = await securityNotice.isDisplayed().catch(() => false)
       return blocked || await condition()
-    }, options)
+    }, options).catch(async (error) => {
+      // Name the screen we are stuck on, so an unknown interstitial is visible in the log.
+      const src = String(await browser.getPageSource().catch(() => ''))
+      const texts = [...new Set([...src.matchAll(/ (?:name|label|text|content-desc)="([^"]{1,80})"/g)].map((m) => m[1]))]
+      console.log(`[LoginPage] Stuck before login entry; screen shows: ${texts.join(' | ').slice(0, 1200)}`)
+      throw error
+    })
     if (blocked) throw new LoginDeviceSecurityError()
   }
 
