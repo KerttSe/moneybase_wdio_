@@ -839,7 +839,10 @@ class BankTransferSepaIndividualPage extends BasePage {
 
   public async verifySepaAmountRules() {
     const input = await this.openSepaAmountInput()
-    const read = () => browser.isIOS ? input.getAttribute('value') : input.getText()
+    // The new iOS build can return no value attribute for the amount field; fall back to its label/text.
+    const read = async () => browser.isIOS
+      ? String((await input.getAttribute('value')) ?? (await input.getAttribute('label')) ?? (await input.getText().catch(() => '')) ?? '')
+      : input.getText()
     await input.click()
     await input.clearValue()
     await input.addValue('12345678')
