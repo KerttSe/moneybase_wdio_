@@ -699,7 +699,7 @@ export default class AuthenticationPage extends BasePage {
     await this.waitForPasscodeScreen()
     await this.enterPin(currentPin)
     const newPasscode = browser.isIOS
-      ? $('-ios predicate string:label IN {"New Passcode", "Enter New Passcode", "Enter your new passcode"} OR name == "New Passcode"')
+      ? $('-ios predicate string:label IN {"New Passcode", "Enter New Passcode", "Enter your new passcode", "Create a new passcode"} OR name == "New Passcode"')
       : $('//*[@text="New Passcode" or @text="Enter New Passcode" or @text="Enter your new passcode" or @text="Create a new passcode" or @content-desc="New Passcode"]')
     await newPasscode.waitForDisplayed({ timeout: 20000 })
     await this.enterPin('0000')

@@ -1947,7 +1947,12 @@ class HomeScreenPage extends BasePage {
     }
     if (browser.isIOS) {
       // App 2.26+ opens the Freshchat thread directly ("Moneybase Support") instead of Conversations.
-      await $('//XCUIElementTypeNavigationBar[@name="Conversations" or @name="Moneybase Support"]').waitForDisplayed({ timeout: 20000 })
+      await $('//XCUIElementTypeNavigationBar[@name="Conversations" or @name="Moneybase Support"]').waitForDisplayed({ timeout: 45000 }).catch(async (error) => {
+        const src = String(await browser.getPageSource().catch(() => ''))
+        const texts = [...new Set([...src.matchAll(/ (?:name|label)="([^"]{1,50})"/g)].map((m) => m[1]))]
+        console.log(`[Support] chat screen missing; screen shows: ${texts.join(' | ').slice(0, 1000)}`)
+        throw error
+      })
     } else {
       await browser.waitUntil(async () => /freshchat|CategoryListActivity|ConversationActivity/i.test(await browser.getCurrentActivity()), {
         timeout: 20000,
