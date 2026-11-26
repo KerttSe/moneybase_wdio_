@@ -253,8 +253,12 @@ export class LoginPage extends BasePage {
         // never type a password, just cancel it.
         const passwordPrompt = $('-ios predicate string:label BEGINSWITH "Enter Password for"')
         if (await passwordPrompt.isExisting().catch(() => false)) {
-          const cancel = $('-ios predicate string:type == "XCUIElementTypeButton" AND label == "Cancel"')
-          await cancel.click().catch(() => {})
+          // It is a system alert outside the app tree; dismiss it through the alert API (= Cancel).
+          await browser.dismissAlert().catch(async () => {
+            await browser.execute('mobile: alert', { action: 'dismiss' }).catch(async () => {
+              await $('-ios predicate string:type == "XCUIElementTypeButton" AND label == "Cancel"').click().catch(() => {})
+            })
+          })
           await browser.pause(800)
           return false
         }

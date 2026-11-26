@@ -118,7 +118,8 @@ class CardManagementPage extends BasePage {
   }
 
   private get firstCardTransactionIOS() {
-    return $('(//XCUIElementTypeCell[@visible="true" and .//XCUIElementTypeStaticText[contains(@name, "€") or contains(@label, "€")]])[1]')
+    // The new iOS build tags each row card_payments_transaction (amount may be in any currency).
+    return $('(//*[@name="card_payments_transaction" and @visible="true"] | //XCUIElementTypeCell[@visible="true" and .//XCUIElementTypeStaticText[contains(@name, "€") or contains(@label, "€")]])[1]')
   }
 
   private get firstCardTransactionAndroid() {
@@ -801,8 +802,9 @@ class CardManagementPage extends BasePage {
     if (browser.isIOS && !await this.moreButton.isExisting().catch(() => false)
       && await this.unfreezeButtonIOS.isExisting().catch(() => false)) {
       console.warn('[CardManagement] Card is frozen; unfreezing before opening More')
-      await this.tap(this.unfreezeButtonIOS)
-      await this.moreButton.waitForExist({ timeout: 20000 })
+      // A plain tap on the Unfreeze element does nothing on iOS; use the card-action tap the freeze spec uses.
+      await this.tapIOSCardAction('Unfreeze', async () => this.moreButton.isExisting().catch(() => false),
+        'More did not appear after unfreezing the card on iOS')
     }
     await this.tap(this.moreButton)
 
