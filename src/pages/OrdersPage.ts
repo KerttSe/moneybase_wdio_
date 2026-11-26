@@ -605,7 +605,12 @@ export default class OrdersPage extends BasePage {
         interval: 500,
         timeoutMsg: `${label} did not appear`,
       }
-    )
+    ).catch(async (error) => {
+      const src = String(await browser.getPageSource().catch(() => ''))
+      const texts = [...new Set([...src.matchAll(/ (?:name|label|text|content-desc)="([^"]{1,60})"/g)].map((m) => m[1]))]
+      console.log(`[Orders] ${label} missing; screen shows: ${texts.join(' | ').slice(0, 1200)}`)
+      throw error
+    })
   }
 
   private async getFirstDisplayed(candidates: Array<WdioEl | WebdriverIO.Element>, label = 'element') {
@@ -2493,7 +2498,8 @@ export default class OrdersPage extends BasePage {
   private async waitForRecentActiveOrderIOS() {
     const activeCandidates = [
       this.iosA11y('ACTIVE'),
-      this.iosPredicate('type == "XCUIElementTypeStaticText" AND (name == "ACTIVE" OR label == "ACTIVE")'),
+      // Case-insensitive: the new iOS build may label the status "Active".
+      this.iosPredicate('type == "XCUIElementTypeStaticText" AND (name ==[c] "ACTIVE" OR label ==[c] "ACTIVE")'),
     ]
 
     await this.waitForAnyDisplayed(activeCandidates, 30000, 'Active order status (iOS)')

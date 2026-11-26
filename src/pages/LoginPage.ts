@@ -255,6 +255,20 @@ export class LoginPage extends BasePage {
       await this.waitForLoginEntry(async () => {
         await this.dismissIOSAlerts()
         await this.dismissIOSPermissionAlertsIfPresent().catch(() => {})
+        // A resumed onboarding session can reopen Onfido's document picker; leave it.
+        const onfido = $('-ios predicate string:name BEGINSWITH "Onfido."')
+        if (await onfido.isExisting().catch(() => false)) {
+          await $('-ios predicate string:type == "XCUIElementTypeButton" AND (name == "exit" OR label == "exit")').click().catch(() => {})
+          await browser.pause(1000)
+          return false
+        }
+        // A resumed session can open on "Mobile successfully verified." (left from a verified OTP); continue past it.
+        const verified = $('-ios predicate string:label BEGINSWITH "Mobile successfully verified"')
+        if (await verified.isExisting().catch(() => false)) {
+          await $('~modal_button_primary').click().catch(() => {})
+          await browser.pause(1000)
+          return false
+        }
         // The new iOS build can raise a system "Enter Password for “moneybase stg”" prompt on start;
         // never type a password, just cancel it.
         const passwordPrompt = $('-ios predicate string:label BEGINSWITH "Enter Password for"')
