@@ -98,13 +98,7 @@ export default class AddBeneficiaryPage extends BasePage {
     await control.waitForExist({ timeout: 10000 })
     const enabled = await control.isEnabled()
     if (enabled) await control.click()
-    if (browser.isIOS && kind !== 'name') {
-      // New iOS build shows no inline IBAN error text; check behaviourally (as Android does for TC3307):
-      // Continue must keep the bank-details form and must not open OTP. Missing text is logged for devs.
-      if (!enabled) await control.click().catch(() => {})
-      const shown = await this.validationError(kind).waitForDisplayed({ timeout: 6000 }).then(() => true).catch(() => false)
-      if (!shown) console.warn(`[AddBeneficiary] iOS shows no ${kind} error text for an invalid IBAN; checking that it is blocked`)
-    } else if (kind !== 'name' || enabled) {
+    if (kind !== 'name' || enabled) {
       await this.validationError(kind).waitForDisplayed({ timeout: 10000 })
       if (enabled) await waitForControlEnabled(control, true, 'Beneficiary validation recovery')
     }
