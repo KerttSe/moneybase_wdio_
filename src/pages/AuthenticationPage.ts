@@ -581,6 +581,16 @@ export default class AuthenticationPage extends BasePage {
 
   private async selectTheme(theme: Theme) {
     await this.tap(this.themeRow(theme), 10000)
+    if (browser.isIOS && !(await browser.waitUntil(() => this.isThemeSelected(theme), { timeout: 3000, interval: 500 }).then(() => true).catch(() => false))) {
+      // A tap on the "System" label can miss; tap the option's picture, then its radio image.
+      const picture = $(`~img_${theme.toLowerCase()}_mode`)
+      const radio = $(`//XCUIElementTypeStaticText[@name="${theme}"]/following::XCUIElementTypeImage[1]`)
+      for (const target of [picture, radio]) {
+        if (await this.isThemeSelected(theme)) break
+        if (await target.isExisting().catch(() => false)) await this.tap(target).catch(() => {})
+        await browser.pause(1000)
+      }
+    }
     await browser.waitUntil(() => this.isThemeSelected(theme), {
       timeout: 10000,
       timeoutMsg: `Expected ${theme} to be selected`,
