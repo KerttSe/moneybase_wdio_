@@ -269,8 +269,12 @@ class CrossBorderPaymentPage extends BasePage {
     if (await sharedNote.waitForDisplayed({ timeout: 5000 }).then(() => true).catch(() => false)) {
       await this.selectSwiftFeeIOS('Originator Fee')
       await originatorNote.waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC3288: Originator Fee should say all charges are paid by the sender' })
-      // The note fades out with the fee change; give it the transition time before failing.
-      await sharedNote.waitForDisplayed({ reverse: true, timeout: 5000, timeoutMsg: 'TC3288: the shared-fee note should go away for Originator Fee' })
+      // SwiftUI reuses the note element when its text changes. Re-query the old
+      // wording instead of checking visibility of the cached element (now the new note).
+      await browser.waitUntil(async () => {
+        const oldNote = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label CONTAINS[c] "shared between parties"')
+        return !await oldNote.isDisplayed().catch(() => false)
+      }, { timeout: 5000, interval: 300, timeoutMsg: 'TC3288: the shared-fee note should go away for Originator Fee' })
       return
     }
     await this.openSwiftReviewWithFee('SHA')
@@ -282,7 +286,10 @@ class CrossBorderPaymentPage extends BasePage {
 
   private async closeSwiftReview() {
     if (browser.isIOS) {
-      const close = $('-ios predicate string:type == "XCUIElementTypeButton" AND (name == "verificationOfPayee_button_close" OR label == "Close" OR name == "BackButton")')
+      // Fee wording is checked on the draft in iOS 2.28; there is no review
+      // to close until the following exchange-rate check opens one.
+      if (await $('~makePayment_button_review').isDisplayed().catch(() => false)) return
+      const close = $('//XCUIElementTypeButton[@name="verificationOfPayee_button_close" or @label="Close" or @name="BackButton"] | //XCUIElementTypeNavigationBar[@name="Review Payment"]//XCUIElementTypeButton[@name="modal_button_close"]')
       await this.tap(close, 10000)
       await $('~makePayment_button_review').waitForExist({ timeout: 15000 })
     } else {
@@ -452,6 +459,14 @@ class CrossBorderPaymentPage extends BasePage {
 
   private async selectSwiftFeeIOS(title: 'Shared Fee' | 'Originator Fee') {
     await this.tap(this.swiftFeeRowIOS, 15000)
+    const opened = await this.swiftFeePickerIOS.waitForDisplayed({ timeout: 2500 }).then(() => true).catch(() => false)
+    if (!opened) {
+      // On the EUR draft the cell tap can leave the picker closed. Target
+      // its visible fee title from the iOS hierarchy instead of the container.
+      const feeTitle = this.swiftFeeRowIOS.$('.//XCUIElementTypeStaticText[@label="Shared Fee" or @label="Originator Fee"]')
+      await feeTitle.waitForDisplayed({ timeout: 3000 })
+      await feeTitle.click()
+    }
     await this.swiftFeePickerIOS.waitForDisplayed({ timeout: 10000 })
     // In the popover the option is a plain text listed after the row's own value.
     const choice = $('(//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="' + title + '"]] | //XCUIElementTypeButton[@label="' + title + '"] | (//XCUIElementTypeStaticText[@label="' + title + '"])[last()])[1]')

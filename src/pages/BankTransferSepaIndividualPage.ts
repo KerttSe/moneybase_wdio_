@@ -964,6 +964,12 @@ class BankTransferSepaIndividualPage extends BasePage {
     if (after.length > limit.length || after.includes('X')) throw new Error('The payment reference accepted a 141st character')
   }
 
+  public async waitForSepaReviewIOS() {
+    await $('//XCUIElementTypeNavigationBar[@name="Review Payment"]').waitForDisplayed({ timeout: 15000 })
+    await $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label == "SEPA"').waitForDisplayed({ timeout: 10000 })
+    await $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label == "Amount"').waitForDisplayed({ timeout: 10000 })
+  }
+
   public async verifyNoFeeInSepaReview() {
     const feeRow = browser.isIOS
       ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label IN {"Fee", "Transfer Fee"} OR label BEGINSWITH[c] "Fee:")')
@@ -983,7 +989,13 @@ class BankTransferSepaIndividualPage extends BasePage {
   public async verifyReturningFromReviewPreservesAmount(amount: string) {
     const input = browser.isIOS ? this.amountInputIOS : await this.resolveAmountInputSepaAndroid()
     await input.waitForDisplayed({ timeout: 15000 })
-    const actual = (browser.isIOS ? await input.getAttribute('value') : await input.getText()).replace(/[^\d.,]/g, '')
+    let raw = browser.isIOS ? await input.getAttribute('value') : await input.getText()
+    if (browser.isIOS && !raw) {
+      // The amount accessibility id belongs to a cell on iOS 2.28; its
+      // displayed amount is a nested StaticText, not the cell's value.
+      raw = await input.$('.//XCUIElementTypeStaticText[@visible="true"]').getText()
+    }
+    const actual = String(raw ?? '').replace(/[^\d.,]/g, '')
     if (actual !== amount && actual !== `${amount}.00` && actual !== `${amount},00`) {
       throw new Error(`Expected amount ${amount} after closing review, got "${actual}"`)
     }
@@ -1074,9 +1086,16 @@ class BankTransferSepaIndividualPage extends BasePage {
       }
       // New iOS build labels the BIC row "BIC/SWIFT", as Android does.
       const label = field === 'BIC' ? 'BIC/SWIFT' : field
-      const row = $(`//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="${field}" or @label="${label}"]] | //XCUIElementTypeButton[@label="${field}" or @label="${label}" or contains(@name,"copy${field}")] | (//XCUIElementTypeStaticText[@label="${label}"]/following::XCUIElementTypeStaticText)[1]`)
-      const expected = String(await $(`(//XCUIElementTypeStaticText[@label="${label}"]/following::XCUIElementTypeStaticText)[1]`).getAttribute('label').catch(() => '')).replace(/\s/g, '')
-      await this.tap(row, 10000)
+      const value = $(`(//XCUIElementTypeStaticText[@label="${label}"]/following::XCUIElementTypeStaticText)[1]`)
+      await value.waitForDisplayed({ timeout: 10000, timeoutMsg: `TC3321: expected the ${label} value` })
+      const expected = String(await value.getAttribute('label')).replace(/\s/g, '')
+      if (!expected) throw new Error(`TC3321: the ${label} value is empty`)
+      const location = await value.getLocation()
+      const size = await value.getSize()
+      await browser.execute('mobile: tap', {
+        x: Math.round(location.x + size.width / 2),
+        y: Math.round(location.y + size.height / 2),
+      })
       const copied = $(`-ios predicate string:label CONTAINS[c] "${field}" AND label CONTAINS[c] "copied"`)
       await browser.waitUntil(async () => {
         if (await copied.isExisting().catch(() => false)) return true

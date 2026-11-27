@@ -1389,6 +1389,26 @@ export default class AutoTopUpPage extends BasePage {
    * needed and that the new card is usable after 30 days, offering Make Deposit. The sheet is closed
    * without tapping Make Deposit, so no deposit starts.
    */
+  async verifyAddNewCardNeedsDeposit() {
+    if (browser.isAndroid) return this.verifyAddNewCardNeedsDepositAndroid()
+    await this.cardPicker.waitForDisplayed({ timeout: 15000 })
+    await this.tap(this.cardPicker)
+    const addNew = $('-ios predicate string:name == "autoTopUpCardSelectionModal_button_addNew" OR label == "Add New Card"')
+    await this.tap(addNew)
+    const title = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label == "Add card for Top-Ups"')
+    await title.waitForDisplayed({ timeout: 10000 })
+    const body = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label CONTAINS[c] "make a deposit by card first"')
+    await body.waitForDisplayed({ timeout: 5000 })
+    if (!(await body.getText()).includes('after 30 days')) {
+      throw new Error('TC3350: Add New Card must explain the 30-day availability rule')
+    }
+    await $('-ios predicate string:name == "autoTopUpRationaleModal_button_makeDeposit" OR (type == "XCUIElementTypeButton" AND label == "Make Deposit")').waitForDisplayed({ timeout: 5000 })
+    const close = $('-ios predicate string:type == "XCUIElementTypeButton" AND (name IN {"autoTopUpRationaleModal_button_close", "modal_button_close", "close"} OR label IN {"Close", "Cancel"})')
+    await this.tap(close)
+    await title.waitForDisplayed({ reverse: true, timeout: 10000 })
+    await this.cardPicker.waitForDisplayed({ timeout: 10000 })
+  }
+
   async verifyAddNewCardNeedsDepositAndroid() {
     const pickCard = $('//*[contains(@resource-id,"autoTopUpDetails_button_pickCard")]')
     await pickCard.waitForDisplayed({ timeout: 15000, timeoutMsg: 'Auto Top-Up details have no card picker' })

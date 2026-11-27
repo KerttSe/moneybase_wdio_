@@ -236,7 +236,10 @@ private get payProcessingBtnIOS() {
         await browser.pause(150)
       }
       let typed = String(await this.amountInput.getAttribute('value').catch(() => '') || '')
-      if (text.includes('.') && typed.replace(/\D/g, '') === text.replace(/\D/g, '')) {
+      const enteredNumber = Number(typed.replace(/[^\d.,]/g, '').replace(',', '.'))
+      const separatorWasDropped = enteredNumber !== Number(text)
+        && enteredNumber === Number(text.replace('.', ''))
+      if (text.includes('.') && separatorWasDropped) {
         // The iOS card top-up field ignores the decimal key (whole euros only): "9.99" became "€999".
         // Keep the case's intent (an amount below the EUR 10 minimum) with the whole-euro part.
         const whole = text.split('.')[0]

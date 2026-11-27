@@ -276,8 +276,20 @@ class BusinessCardTerminatePage extends BasePage {
   }
 
   public async verifyActiveFilterSelected() {
+    if (browser.isIOS) {
+      await $('//XCUIElementTypeNavigationBar[@name="Manage Cards"]//XCUIElementTypeButton[@name="filter"]').waitForDisplayed({ timeout: 15000 })
+      await browser.waitUntil(async () => {
+        const rows = await $$('//XCUIElementTypeCell[.//XCUIElementTypeStaticText[starts-with(@label,"Physical ·") or starts-with(@label,"Virtual ·")]]')
+        if (!rows.length) return false
+        for (const row of rows) {
+          if (!await row.$('.//XCUIElementTypeStaticText[@label="ACTIVE"]').isExisting()) return false
+        }
+        return true
+      }, { timeout: 15000, interval: 500, timeoutMsg: 'TC3392: Manage Cards should initially list active cards only' })
+      return
+    }
     const active = browser.isIOS
-      ? $('-ios predicate string:type == "XCUIElementTypeButton" AND (name == "Active" OR label == "Active")')
+      ? $('-ios predicate string:name == "Active" OR label == "Active"')
       : $('(//*[@content-desc="Active" and @clickable="true"] | //*[@text="Active"]/ancestor::*[@clickable="true"][1])[1]')
     const inactive = browser.isIOS ? this.inactiveTabIOS : this.inactiveTabAndroid
     await active.waitForDisplayed({ timeout: 15000 })
@@ -300,19 +312,26 @@ class BusinessCardTerminatePage extends BasePage {
 
   public async verifyManageCardsSearchRequiresEveryWord() {
     if (browser.isAndroid) return this.verifyManageCardsSearchRequiresEveryWordAndroid()
-    const words = BH_SELF_NAME.toLowerCase().trim().split(/\s+/)
-    if (words.length < 2) throw new Error('Manage Cards requires a seeded cardholder with at least two name tokens')
-
-    const card = browser.isIOS ? this.ownVirtualCardIOS : this.ownVirtualCardAndroid
-    await card.waitForDisplayed({ timeout: 15000 })
+    const row = $('(//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="ACTIVE"]])[1]')
+    await row.waitForDisplayed({ timeout: 15000 })
+    const labels = await row.$$('.//XCUIElementTypeStaticText').map(text => text.getText())
+    const holder = labels.map(label => label.trim()).find(label => /^\p{L}+(?:\s+\p{L}+)+$/u.test(label))
+    if (!holder) throw new Error('TC3393: the active card fixture needs a displayed two-word cardholder name')
+    const words = holder.toLowerCase().split(/\s+/)
+    const card = () => $(`//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="${holder}"]]`)
     const search = browser.isIOS
       ? $('-ios predicate string:type == "XCUIElementTypeSearchField" OR name == "administration_input_search"')
       : $('(//android.widget.EditText[contains(@resource-id,"search") or @text="Search"] | //*[contains(@resource-id,"administration_input_search")]//android.widget.EditText)[1]')
+    for (let attempt = 0; attempt < 2 && !await search.isDisplayed().catch(() => false); attempt++) {
+      await browser.execute('mobile: swipe', { direction: 'down' })
+    }
     await search.waitForDisplayed({ timeout: 10000 })
     await search.setValue(words.slice(0, 2).join(' '))
-    await card.waitForDisplayed({ timeout: 10000 })
+    await card().waitForDisplayed({ timeout: 10000 })
     await search.setValue(`${words[1]} zz-unmatched-token`)
-    await card.waitForDisplayed({ reverse: true, timeout: 10000 })
+    await browser.waitUntil(async () => !await card().isDisplayed().catch(() => false), {
+      timeout: 10000, interval: 400, timeoutMsg: 'TC3393: a search with an unmatched word still shows the card',
+    })
 
     const noResults = browser.isIOS
       ? $('-ios predicate string:label IN {"No results", "No cards found", "No results found"}')

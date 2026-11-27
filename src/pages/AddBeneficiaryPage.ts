@@ -1484,13 +1484,8 @@ export default class AddBeneficiaryPage extends BasePage {
   async startAddBeneficiaryIOS() {
     if (!browser.isIOS) return
 
-    // Attempt to pre-grant contacts via XCUITest execute — works on some real devices
-    await browser.execute('mobile: setPermission', {
-      bundleId: this.iosBundleId,
-      access: 'contacts',
-      value: 'yes',
-    }).catch(() => {})
-
+    // Real iPhones require the contacts permission UI. XCUITest's
+    // mobile: setPermission is simulator-only; the sheet helpers handle devices.
     await this.dismissShareContactsSheetIOS(5000)
 
     await this.ensureIndividualAccountIOS()

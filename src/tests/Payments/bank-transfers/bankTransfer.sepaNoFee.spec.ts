@@ -10,7 +10,7 @@ describe('PAY-008 [TC3279] SEPA transfer fee', function () {
     await page.openSepaToReview(11)
     // TC3279 is about the fee on review. On iOS the fixture payee (a Moneybase MMEB IBAN) goes straight to
     // review without VOP, so VOP is optional here; the fee check below still has to pass.
-    if (browser.isIOS) await vop.waitForVopScreen(8000).catch(() => console.warn('[sepaNoFee] no VOP screen on iOS; checking the fee on review'))
+    if (browser.isIOS) await page.waitForSepaReviewIOS()
     else await vop.waitForVopScreen()
     await page.verifyNoFeeInSepaReview()
   })

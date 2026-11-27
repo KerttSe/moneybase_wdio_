@@ -1,4 +1,3 @@
-import { browser } from '@wdio/globals'
 import { AUTH } from '../../../data/credentials'
 import { loginPage } from '../../../pages/LoginPage'
 import home from '../../../pages/HomeScreenPage'
@@ -15,8 +14,6 @@ describe('WALLET-008 [TC2917] Individual wallet statements', function () {
   })
 
   it('[TC2933/TC2935] Statement date range', async function () {
-    // The new iOS Statement screen has no From/To dates (single generated statement); not checkable on iOS.
-    if (browser.isIOS) return this.skip()
     await home.verifyStatementDateRange()
   })
 

@@ -6,13 +6,13 @@ import AutoTopUpPage from '../../../pages/AutoTopUpPage'
 import { AUTH } from '../../../data/credentials'
 
 // Opens Add New Card in the Auto Top-Up card picker and closes the deposit sheet; nothing is saved or deposited.
-describe('Auto Top-Up Add New Card (Android)', function () {
+describe('Auto Top-Up Add New Card', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
   const step = stopAfterFailedStep()
   const page = new AutoTopUpPage()
 
   before(async function () {
-    if (!browser.isAndroid) return this.skip()
+    if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await loginPage.loginFlow(AUTH)
     await home.ensureIndividualAccount()
     await page.openFromHome()
@@ -25,6 +25,6 @@ describe('Auto Top-Up Add New Card (Android)', function () {
   })
 
   it('Add New Card asks for a deposit by card first and says the card is usable after 30 days [TC3350]', step(async function () {
-    await page.verifyAddNewCardNeedsDepositAndroid()
+    await page.verifyAddNewCardNeedsDeposit()
   }))
 })

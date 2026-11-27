@@ -892,7 +892,6 @@ export default class BasePage {
   async dismissIOSAlerts() {
     try {
       if (await browser.isAlertOpen()) {
-        await browser.sendAlertText('123456').catch(() => {})
         await browser.acceptAlert().catch(() => browser.dismissAlert().catch(() => {}))
       }
     } catch {}

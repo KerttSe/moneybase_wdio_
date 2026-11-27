@@ -530,9 +530,20 @@ class HomeScreenPage extends BasePage {
     const onMore = await this.moreNavBarIOS.isExisting().catch(() => false)
     if (!onMore) {
       await this.waitForHomeLoaded()
-      if (await this.profilePickerAccountCodeLabelIOS.isExisting().catch(() => false)) {
+      if (await this.profilePickerAccountCodeLabelIOS.isDisplayed().catch(() => false)) {
         await this.tap(this.profilePickerAccountCodeLabelIOS).catch(() => {})
         if (await waitOpen(5000)) return
+
+        // The first tap can open More and remove the Home label from the tree.
+        if (!await this.isIOSMoreOpen() && await this.profilePickerAccountCodeLabelIOS.isDisplayed().catch(() => false)) {
+          const location = await this.profilePickerAccountCodeLabelIOS.getLocation()
+          const size = await this.profilePickerAccountCodeLabelIOS.getSize()
+          await browser.execute('mobile: tap', {
+            x: Math.round(location.x + size.width / 2),
+            y: Math.round(location.y + size.height / 2),
+          })
+          if (await waitOpen(5000)) return
+        }
       }
     }
 
@@ -631,6 +642,20 @@ class HomeScreenPage extends BasePage {
     const allAccounts = await this.pickerAccountIds()
     if (allAccounts.length < 2) throw new Error('Account picker search requires at least two configured identities')
 
+    const holderRows: { name: string; ids: string[] }[] = []
+    if (browser.isIOS) {
+      for (const row of await $$('-ios predicate string:type == "XCUIElementTypeCell" AND name BEGINSWITH "switchSubidentity_item_"')) {
+        const id = String(await row.getAttribute('name'))
+        const ids = id.toUpperCase().match(/[A-Z]{3}\d{5}(?:-\d+)?\b/g) ?? []
+        const labels = await row.$$('.//XCUIElementTypeStaticText').map(text => text.getText())
+        const name = labels.map(label => label.trim()).find(label =>
+          label && !/^[A-Z]{3}\d{5}(?:-\d+)*$/.test(label)
+          && !['Individual', 'Business', 'Joint'].includes(label),
+        )
+        if (name && ids.length) holderRows.push({ name, ids })
+      }
+    }
+
     const matchingAccounts = allAccounts.filter(id => id.toLowerCase().includes(accountCode.toLowerCase()))
     if (matchingAccounts.length === 0 || matchingAccounts.length === allAccounts.length) {
       throw new Error('The account picker fixture must contain matching and non-matching account codes')
@@ -647,6 +672,16 @@ class HomeScreenPage extends BasePage {
     await waitForAccounts(matchingAccounts, 'TC2944: account code search should match regardless of case')
     await search.clearValue()
     await waitForAccounts(allAccounts, 'TC2945: clearing the query should restore the original identities')
+    if (browser.isIOS) {
+      const holder = holderRows[0]
+      if (!holder) throw new Error('TC2944: the picker fixture needs an account with a displayed holder name')
+      const query = holder.name.toLowerCase()
+      const expected = [...new Set(holderRows.filter(row => row.name.toLowerCase().includes(query)).flatMap(row => row.ids))].sort()
+      await search.setValue(query)
+      await waitForAccounts(expected, 'TC2944: holder-name search should match regardless of case')
+      await search.clearValue()
+      await waitForAccounts(allAccounts, 'TC2945: clearing the holder-name query should restore all identities')
+    }
     await search.setValue('zz-no-such-account-921')
     await waitForAccounts([], 'TC2946: an unmatched query should return no identities')
     await search.clearValue()
@@ -1600,6 +1635,21 @@ class HomeScreenPage extends BasePage {
    * TC2932 (Android counterpart): with the default range, Generate Statement completes and the app leaves the
    * Statement screen for Home or the wallet with no error. Screens seen on the way are logged.
    */
+  public async verifyGenerateStatement() {
+    if (browser.isIOS) {
+      const generate = $('-ios predicate string:type IN {"XCUIElementTypeButton", "XCUIElementTypeStaticText"} AND label == "Generate Statement"')
+      await generate.waitForDisplayed({ timeout: 15000 })
+      await this.tap(generate)
+      const confirmation = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label CONTAINS[c] "statement" OR label CONTAINS[c] "report") AND (label CONTAINS[c] "sent" OR label CONTAINS[c] "emailed" OR label CONTAINS[c] "successfully")')
+      await confirmation.waitForDisplayed({
+        timeout: 30000,
+        timeoutMsg: 'TC2932: statement generation did not show a report-sent success confirmation',
+      })
+      return
+    }
+    await this.verifyGenerateStatementAndroid()
+  }
+
   public async verifyGenerateStatementAndroid() {
     const generate = $('//*[contains(@resource-id,"btnContinue") and @text="Generate Statement"]')
     await generate.waitForDisplayed({ timeout: 15000, timeoutMsg: 'TC2932: Generate Statement is not shown' })
@@ -1673,11 +1723,21 @@ class HomeScreenPage extends BasePage {
     } else {
       await this.tap(picker, 10000)
     }
-    await this.tap(investment, 10000)
+    const accountWheel = $('(//XCUIElementTypePickerWheel)[last()]')
+    if (browser.isIOS && await accountWheel.isDisplayed().catch(() => false)
+      && await accountWheel.getAttribute('value') === 'Consolidated') {
+      await accountWheel.setValue('Investment Account')
+      await browser.waitUntil(async () => await accountWheel.getAttribute('value') === 'Investment Account', {
+        timeout: 10000,
+        timeoutMsg: 'TC2937: account picker should select Investment Account',
+      })
+    } else {
+      await this.tap(investment, 10000)
+    }
     const done = browser.isIOS ? $('~Done') : $('//*[@text="Done" or @content-desc="Done"]')
     if (await done.isDisplayed()) await this.tap(done)
     const selected = browser.isIOS
-      ? $('-ios predicate string:type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND (label == "Investment Account" OR (name == "statementsReport_button_accountType" AND value == "Investment Account"))')
+      ? $('-ios predicate string:type IN {"XCUIElementTypeButton", "XCUIElementTypeCell", "XCUIElementTypeStaticText"} AND (label == "Investment Account" OR (name == "statementsReport_button_accountType" AND value == "Investment Account"))')
       : $('//*[(contains(@resource-id,"statementsReport_button_accountType") or contains(@resource-id,"reportDatePickerAccountExposedDropdown")) and (@text="Investment Account" or @content-desc="Investment Account" or .//*[@text="Investment Account"])]')
     await selected.waitForDisplayed({ timeout: 15000, timeoutMsg: 'TC2937: statement type should be Investment Account' })
   }
@@ -1686,8 +1746,15 @@ class HomeScreenPage extends BasePage {
   private statementDateControl(bound: 'From' | 'To') {
     const id = 'statementsReport_button_' + bound.toLowerCase()
     return browser.isIOS
-      ? $(`//XCUIElementTypeButton[@name="${id}" or starts-with(@label,"${bound},")] | //XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="${bound}"]]`)
+      ? $(`//XCUIElementTypeButton[@name="${id}" or starts-with(@label,"${bound},")] | //XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="${bound}"]] | (//XCUIElementTypePickerWheel)[${bound === 'From' ? 1 : 2}]`)
       : $(`(//android.widget.NumberPicker)[${bound === 'From' ? 1 : 2}]`)
+  }
+
+  private normalizeStatementMonth(text: string) {
+    return text.toLowerCase().replace(
+      /\b(january|february|march|april|may|june|july|august|september|october|november|december)\b/g,
+      month => month.slice(0, 3),
+    )
   }
 
   private async verifyStatementMonth(bound: 'From' | 'To', month: string) {
@@ -1696,15 +1763,16 @@ class HomeScreenPage extends BasePage {
     const monthText = browser.isIOS
       ? control.$$('.//XCUIElementTypeStaticText')
       : control.$$('.//*[@resource-id="android:id/numberpicker_input"]')
-    const expected = month.toLowerCase()
+    const expected = this.normalizeStatementMonth(month)
     await browser.waitUntil(async () => {
       const children = await monthText.map(el => el.getText())
       const current = [
+        await control.getAttribute('value').catch(() => ''),
         await control.getText(),
         await control.getAttribute(browser.isIOS ? 'label' : 'content-desc'),
         ...children,
       ].join(' ').toLowerCase()
-      return current.includes(expected)
+      return this.normalizeStatementMonth(current).includes(expected)
     }, { timeout: 10000, timeoutMsg: `Expected statement ${bound} month to be ${month}` }).catch(async (error) => {
       const src = String(await browser.getPageSource().catch(() => ''))
       const texts = [...new Set([...src.matchAll(/ (?:name|label|value|text|content-desc)="([^"]{1,50})"/g)].map((m) => m[1]))]
@@ -1752,7 +1820,13 @@ class HomeScreenPage extends BasePage {
       }
       return
     }
-    await this.tap(this.statementDateControl(bound), 10000)
+    const dateControl = this.statementDateControl(bound)
+    if (await dateControl.getAttribute('type') === 'XCUIElementTypePickerWheel') {
+      const wheelValue = this.normalizeStatementMonth(month).replace(/^[a-z]/, letter => letter.toUpperCase())
+      await dateControl.setValue(wheelValue)
+      return
+    }
+    await this.tap(dateControl, 10000)
     const wheel = $('//XCUIElementTypePickerWheel')
     if (browser.isIOS && await wheel.isExisting()) {
       await wheel.setValue(month)

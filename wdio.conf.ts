@@ -500,10 +500,14 @@ export const config: WebdriverIO.Config = {
     if (String(sessionCaps.platformName ?? platformFilter).toLowerCase() === 'ios' && nativeAlertAssertionSpecs.has(specName)) {
       sessionCaps['appium:autoAcceptAlerts'] = false
     }
-    const authSlot = String(
-      process.env.MB_AUTH_SLOT ||
-      authSlotForSpec(specName),
-    )
+    const mappedAuthSlot = authSlotForSpec(specName)
+    const requestedAuthSlot = process.env.MB_AUTH_SLOT
+    // A batch-wide slot must not replace a spec's fixture owner. This also
+    // protects mixed-account CLI runs; unmapped diagnostic specs may override.
+    const authSlot = String(mappedAuthSlot || requestedAuthSlot || '')
+    if (mappedAuthSlot && requestedAuthSlot && mappedAuthSlot !== requestedAuthSlot) {
+      console.warn(`[WDIO] Ignoring batch auth slot ${requestedAuthSlot}; ${specName} belongs to ${mappedAuthSlot}`)
+    }
     if (['primary', 'secondary', 'kat', 'mai', 'laz', 'rog', 'mum', 'pop'].includes(authSlot)) {
       process.env.MB_AUTH_SLOT = authSlot
       console.log(`[WDIO] Auth slot for ${specName}: ${authSlot}`)

@@ -34,6 +34,13 @@ Matrix effect: UI asserted 155, partial 5, awaiting BrowserStack 8, reuse only 3
 
 ## Implemented Checks
 
+### Additions 2026-11-27
+
+- TC3083: `home.tabStateAfterBackground.spec.ts` checks that Cards stays selected with visible Cards content after three seconds in the background on iOS. Device verification pending.
+- TC2932: the existing `walletDetails.statementGenerate.spec.ts` now also runs on iOS and requires an explicit statement/report-sent success confirmation. Device verification pending for this branch.
+- TC3350: the existing `autoTopUp.addNewCard.spec.ts` now also runs on iOS and checks the first-deposit explanation, 30-day restriction, Make Deposit action and dismissal without a deposit. Device verification pending for this branch.
+- TC2944: the existing `accountPicker.search.spec.ts` also checks case-insensitive holder-name search on iOS, using the displayed names and identity IDs from the current account picker. Device verification pending for this assertion.
+
 | Source TC | Matrix ID | Row | Spec | Platforms | Assertion / Limit |
 | --- | --- | ---: | --- | --- | --- |
 | TC3163 | AUTH-033 | 34 | `authentication.phoneValidation.spec.ts` | Android, iOS | Valid configured number enables Continue. |

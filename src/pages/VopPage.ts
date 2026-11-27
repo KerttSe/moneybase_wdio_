@@ -55,7 +55,7 @@ class VopPage extends BasePage {
   }
 
   private get vopCloseBtnIOS() {
-    return $('~verificationOfPayee_button_close')
+    return $('//XCUIElementTypeButton[@name="verificationOfPayee_button_close"] | //XCUIElementTypeNavigationBar[@name="Review Payment"]//XCUIElementTypeButton[@name="modal_button_close"]')
   }
 
   private get vopResultLabelIOS() {
@@ -78,7 +78,13 @@ class VopPage extends BasePage {
   }
 
   public async isVopScreenVisible(): Promise<boolean> {
-    if (browser.isIOS) return this.vopScreenIOS.isExisting().catch(() => false)
+    if (browser.isIOS) {
+      if (await this.vopScreenIOS.isDisplayed().catch(() => false)) return true
+      const review = $('//XCUIElementTypeNavigationBar[@name="Review Payment"]')
+      const result = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label == "Verification is Unavailable"')
+      return await review.isDisplayed().catch(() => false)
+        && await result.isDisplayed().catch(() => false)
+    }
     return (
       (await this.vopScreenAndroid.isExisting().catch(() => false)) ||
       (await this.vopScreenAndroidTypo.isExisting().catch(() => false))
@@ -86,10 +92,6 @@ class VopPage extends BasePage {
   }
 
   public async waitForVopScreen(timeout = 15000) {
-    if (browser.isIOS) {
-      await this.vopScreenIOS.waitForExist({ timeout, timeoutMsg: 'VOP screen did not appear' })
-      return
-    }
     await browser.waitUntil(
       () => this.isVopScreenVisible(),
       { timeout, interval: 500, timeoutMsg: 'VOP screen did not appear' }
@@ -142,6 +144,9 @@ class VopPage extends BasePage {
   public async close() {
     const btn = browser.isIOS ? this.vopCloseBtnIOS : this.vopCloseBtnAndroid
     await this.tap(btn)
+    await browser.waitUntil(async () => !await this.isVopScreenVisible(), {
+      timeout: 10000, interval: 300, timeoutMsg: 'VOP sheet did not close',
+    })
   }
 
   /* =========================
