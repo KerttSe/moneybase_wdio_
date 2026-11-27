@@ -278,6 +278,33 @@ class HomeSearchPage extends BasePage {
    * Android puts crypto inside Instruments, so beneficiaries are the observable difference.
    */
   public async verifySearchScopeRetailVsBusiness() {
+    if (browser.isIOS) {
+      // iOS: the same search field and section titles that homeSearch / homeSearch.business pass with.
+      const query = async () => {
+        await HomeScreenPage.waitForHomeLoaded()
+        await this.revealSearchInput()
+        await this.tap(this.searchInput, 10000)
+        await this.activeSearchField.setValue('ma')
+        await browser.pause(2500)
+      }
+      await HomeScreenPage.ensureIndividualAccount()
+      await query()
+      await this.searchSection('Beneficiaries').waitForDisplayed({ timeout: 15000, timeoutMsg: 'TC2958: retail search for "ma" should list beneficiaries' })
+      console.log(`[Home Search] retail "ma" sections: ${(await this.sectionTitles()).join(', ')}`)
+      await this.dismissSearch()
+
+      await HomeScreenPage.ensureBusinessAccount()
+      await query()
+      await this.searchSection('Instruments').waitForDisplayed({ timeout: 15000 }).catch(() => {})
+      const business = await this.sectionTitles()
+      console.log(`[Home Search] business "ma" sections: ${business.join(', ')}`)
+      if (business.includes('Beneficiaries')) throw new Error('TC2958: business search should not list beneficiaries')
+      const extra = business.filter((t) => !['Recent', 'Transactions', 'Instruments'].includes(t))
+      if (extra.length) throw new Error(`TC2958: business search should be limited to Recent, Transactions and Instruments, also showed [${extra.join(', ')}]`)
+      await this.dismissSearch()
+      await HomeScreenPage.ensureIndividualAccount()
+      return
+    }
     const iban = $('//*[starts-with(@text,"MT") and string-length(@text)>25]')
     await HomeScreenPage.ensureIndividualAccount()
     await this.openAppSearch('ma')

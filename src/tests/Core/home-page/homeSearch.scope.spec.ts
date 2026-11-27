@@ -6,13 +6,13 @@ import HomeSearchPage from '../../../pages/HomeSearchPage'
 import { AUTH } from '../../../data/credentials'
 
 // The primary login holds an individual (VEG40002) and a business (DER00003) account.
-describe('Home search scope by account type (Android)', function () {
+describe('Home search scope by account type', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
   const step = stopAfterFailedStep()
   const search = new HomeSearchPage()
 
   before(async function () {
-    if (!browser.isAndroid) return this.skip()
+    if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await loginPage.loginFlow(AUTH)
     await HomeScreenPage.ensureIndividualAccount()
   })
