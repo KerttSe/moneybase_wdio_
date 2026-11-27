@@ -1606,8 +1606,8 @@ class HomeScreenPage extends BasePage {
   }
 
   public async verifyStatementFormatSelection() {
-    // Android offers PDF and EXCEL tabs (content-desc pdf / excel); iOS offers CSV and PDF.
-    for (const format of browser.isIOS ? ['CSV', 'PDF'] : ['EXCEL', 'PDF']) {
+    // Both platforms offer PDF and EXCEL (the new iOS build replaced CSV with EXCEL).
+    for (const format of ['EXCEL', 'PDF']) {
       const option = browser.isIOS
         ? $(`-ios predicate string:type == "XCUIElementTypeButton" AND (name == "${format}" OR label == "${format}")`)
         : $(`//*[@content-desc="${format.toLowerCase()}" or (@text="${format}" and @clickable="true")]`)
@@ -1621,7 +1621,7 @@ class HomeScreenPage extends BasePage {
 
   public async verifyStatementTypeSelection() {
     const picker = browser.isIOS
-      ? $('-ios predicate string:type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND (label == "Consolidated" OR name == "statementsReport_button_accountType")')
+      ? $('-ios predicate string:type IN {"XCUIElementTypeButton", "XCUIElementTypeCell", "XCUIElementTypeStaticText"} AND (label == "Consolidated" OR name == "statementsReport_button_accountType")')
       : $('(//*[contains(@resource-id,"statementsReport_button_accountType") or contains(@resource-id,"reportDatePickerAccountExposedDropdown")] | //*[@text="Consolidated"]/ancestor-or-self::*[@clickable="true"][1])[1]')
     const investment = browser.isIOS
       ? $('-ios predicate string:(name == "Investment Account" OR label == "Investment Account") AND type IN {"XCUIElementTypeButton", "XCUIElementTypeCell", "XCUIElementTypeStaticText"}')
