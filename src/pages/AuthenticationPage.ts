@@ -510,7 +510,11 @@ export default class AuthenticationPage extends BasePage {
 
   private async isThemeSelected(theme: Theme) {
     if (await this.isSettingsOptionSelected(this.themeRow(theme))) return true
-    return browser.isAndroid ? this.isThemeCheckedByColourAndroid(theme) : false
+    if (browser.isIOS) {
+      // New iOS build: each option is a label followed by a radio image; the chosen one is named ic_checked.
+      return $(`//XCUIElementTypeStaticText[@name="${theme}"]/following::XCUIElementTypeImage[1][@name="ic_checked"]`).isExisting().catch(() => false)
+    }
+    return this.isThemeCheckedByColourAndroid(theme)
   }
 
   // Android 2.27.0 marks the chosen theme only with a green check under its label and exposes no
