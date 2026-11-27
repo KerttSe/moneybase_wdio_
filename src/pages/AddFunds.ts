@@ -301,11 +301,12 @@ private get payProcessingBtnIOS() {
     const lowerText = 'translate(@text,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz")'
     const lowerDescription = 'translate(@content-desc,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz")'
     const message = browser.isIOS
-      ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label CONTAINS[c] "minimum" OR label CONTAINS[c] "min.")')
+      // New iOS build: a TextView "€10.00 is required to continue. Please try again." (no word "minimum").
+      ? $('-ios predicate string:type IN {"XCUIElementTypeStaticText", "XCUIElementTypeTextView"} AND (label CONTAINS[c] "minimum" OR label CONTAINS[c] "min." OR label CONTAINS[c] "required to continue")')
       : $(`//*[contains(${lowerText},"minimum") or contains(${lowerDescription},"minimum") or contains(${lowerText},"min.")]`)
     await message.waitForDisplayed({ timeout: 10000 })
     const text = browser.isIOS
-      ? await message.getAttribute('label')
+      ? String((await message.getAttribute('label').catch(() => '')) || (await message.getAttribute('value').catch(() => '')))
       : (await message.getText()) || (await message.getAttribute('content-desc'))
     if (!/(?:^|[^\d])10[.,]00(?:[^\d]|$)/.test(text)) {
       throw new Error('Minimum top-up error must include the formatted 10.00 limit')

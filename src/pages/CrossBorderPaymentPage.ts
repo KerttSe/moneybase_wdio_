@@ -269,7 +269,8 @@ class CrossBorderPaymentPage extends BasePage {
     if (await sharedNote.waitForDisplayed({ timeout: 5000 }).then(() => true).catch(() => false)) {
       await this.selectSwiftFeeIOS('Originator Fee')
       await originatorNote.waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC3288: Originator Fee should say all charges are paid by the sender' })
-      if (await sharedNote.isDisplayed().catch(() => false)) throw new Error('TC3288: the shared-fee note should go away for Originator Fee')
+      // The note fades out with the fee change; give it the transition time before failing.
+      await sharedNote.waitForDisplayed({ reverse: true, timeout: 5000, timeoutMsg: 'TC3288: the shared-fee note should go away for Originator Fee' })
       return
     }
     await this.openSwiftReviewWithFee('SHA')
