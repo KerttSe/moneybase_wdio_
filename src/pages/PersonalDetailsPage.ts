@@ -80,12 +80,25 @@ class PersonalDetailsPage extends BasePage {
 
   async navigateToPersonalDetails() {
     if (browser.isIOS) {
-      await this.tap(this.moreTabIOS, 15000)
-      await browser.pause(600)
-      const settings = this.settingsIOS
-      await this.tap(settings, 15000)
-      await browser.pause(600)
-      await this.tap(this.personalDetailsRowIOS, 15000)
+      // New build: no More tab; More opens from Home's profile header and lists Personal Details directly.
+      if (!(await this.moreTabIOS.isExisting().catch(() => false))) {
+        const { default: home } = await import('./HomeScreenPage')
+        await home.openIOSMoreMenu()
+        const row = $('//XCUIElementTypeStaticText[(@name="Personal Details" or @label="Personal Details") and @visible="true"]')
+        if (await row.waitForExist({ timeout: 10000 }).then(() => true).catch(() => false)) {
+          await this.tap(row)
+        } else {
+          await this.tap(this.settingsIOS, 15000)
+          await browser.pause(600)
+          await this.tap(this.personalDetailsRowIOS, 15000)
+        }
+      } else {
+        await this.tap(this.moreTabIOS, 15000)
+        await browser.pause(600)
+        await this.tap(this.settingsIOS, 15000)
+        await browser.pause(600)
+        await this.tap(this.personalDetailsRowIOS, 15000)
+      }
     } else {
       const topMoreButtonShown = await this.userAvatarAndroid.isDisplayed().catch(() => false)
 
