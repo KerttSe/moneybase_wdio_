@@ -21,31 +21,25 @@ describe('More menu', function () {
   }))
 
   it('Documents lists the identity and proof of address documents with their status [TC2982]', step(async function () {
-    // iOS screens for this step are not mapped yet; only TC2959 runs on iOS.
-    if (browser.isIOS) return this.skip()
     await more.verifyDocumentsList()
   }))
 
   it('Explore Moneybase Club Benefits opens the tier carousel on the current tier [TC2992]', step(async function () {
-    // iOS screens for this step are not mapped yet; only TC2959 runs on iOS.
-    if (browser.isIOS) return this.skip()
     await more.verifyClubBenefitsCarousel(process.env.MB_TIER || 'Starter')
   }))
 
   it('Settings shows the fingerprint sign-in row on a fingerprint device [TC2971]', step(async function () {
-    // iOS screens for this step are not mapped yet; only TC2959 runs on iOS.
+    // BS iPhones have no enrolled biometrics, so there is no fingerprint/Face ID row to check.
     if (browser.isIOS) return this.skip()
     await more.verifyFingerprintRow()
   }))
 
   it('Invite a Friend opens the referral screen with its reward terms [TC3064]', step(async function () {
-    // iOS screens for this step are not mapped yet; only TC2959 runs on iOS.
-    if (browser.isIOS) return this.skip()
     await more.verifyReferAFriendFlow()
   }))
 
   it('Support > Call Us opens the phone dialer [TC2866]', step(async function () {
-    // iOS screens for this step are not mapped yet; only TC2959 runs on iOS.
+    // On iOS the call prompt would be auto-accepted by BS and place a real call; not run on iOS.
     if (browser.isIOS) return this.skip()
     await more.verifyCallUsOpensDialer()
   }))

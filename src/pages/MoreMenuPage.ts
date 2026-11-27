@@ -67,6 +67,23 @@ class MoreMenuPage extends BasePage {
     await this.homeScreen.waitForDisplayed({ timeout: 15000 })
   }
 
+  private async openItemIOS(label: string) {
+    await this.openMore()
+    const row = $(`//XCUIElementTypeStaticText[(@name="${label}" or @label="${label}") and @visible="true"]`)
+    await row.waitForExist({ timeout: 10000, timeoutMsg: `More row "${label}" not found (iOS)` })
+    await this.tap(row)
+  }
+
+  private async backToMoreIOS() {
+    const back = $('//XCUIElementTypeNavigationBar//XCUIElementTypeButton[@name="More" or @label="More"]')
+    for (let i = 0; i < 3 && !(await this.moreNavBarIOS.isExisting().catch(() => false)); i += 1) {
+      if (await back.isExisting().catch(() => false)) await this.tap(back)
+      else await this.tap($('(//XCUIElementTypeNavigationBar//XCUIElementTypeButton)[1]')).catch(() => {})
+      await browser.pause(1200)
+    }
+    await this.moreNavBarIOS.waitForExist({ timeout: 10000, timeoutMsg: 'Did not return to the More menu (iOS)' })
+  }
+
   private async openItem(label: string) {
     await this.openMore()
     await this.tap(this.text(label))
@@ -88,6 +105,18 @@ class MoreMenuPage extends BasePage {
 
   /** TC2982: Documents lists each attached document with its status. */
   async verifyDocumentsList() {
+    if (browser.isIOS) {
+      // iOS Documents: one row per document ("Identity Document - Passport") with a status line
+      // ("Expires 28 May 2031 - VERIFIED").
+      await this.openItemIOS('Documents')
+      await $('//XCUIElementTypeNavigationBar[@name="Documents"]').waitForExist({ timeout: 15000, timeoutMsg: 'TC2982: Documents did not open (iOS)' })
+      await $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label BEGINSWITH "Identity Document"').waitForExist({ timeout: 10000, timeoutMsg: 'TC2982: no identity document row' })
+      await $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label BEGINSWITH "Proof of Address"').waitForExist({ timeout: 10000, timeoutMsg: 'TC2982: no proof of address row' })
+      const statuses = await $$('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label CONTAINS "VERIFIED" OR label CONTAINS "PENDING" OR label CONTAINS "EXPIRED" OR label CONTAINS "REJECTED" OR label CONTAINS[c] "expires")').length
+      if (statuses < 1) throw new Error('TC2982: expected document rows with a status')
+      await this.backToMoreIOS()
+      return
+    }
     await this.openItem('Documents')
     await this.text('Documents').waitForDisplayed({ timeout: 15000 })
     await this.id('recyclerDocuments').waitForDisplayed({ timeout: 15000, timeoutMsg: 'TC2982: Documents list did not load' })
@@ -101,6 +130,24 @@ class MoreMenuPage extends BasePage {
 
   /** TC2992: Explore Moneybase Club Benefits opens the tier carousel on the account's tier. */
   async verifyClubBenefitsCarousel(currentTier: string) {
+    if (browser.isIOS) {
+      await this.openItemIOS('Moneybase Club')
+      await $('//XCUIElementTypeNavigationBar[@name="Moneybase Club"]').waitForExist({ timeout: 15000, timeoutMsg: 'Moneybase Club did not open (iOS)' })
+      const explore = $('//XCUIElementTypeStaticText[@name="Explore Moneybase Club Benefits"] | //XCUIElementTypeButton[@name="Explore Moneybase Club Benefits"]')
+      await explore.waitForExist({ timeout: 10000, timeoutMsg: 'TC2992: Explore Moneybase Club Benefits is missing' })
+      await this.tap(explore)
+      await $('//XCUIElementTypeNavigationBar[@name="Moneybase Club Benefits"]').waitForExist({ timeout: 15000, timeoutMsg: 'TC2992: Explore did not open the tier carousel' })
+      for (const tier of ['Starter', 'Select', 'Premier', 'Elite']) {
+        await $(`//XCUIElementTypeButton[@name="${tier}"]`).waitForExist({ timeout: 10000, timeoutMsg: `TC2992: the tier picker has no "${tier}"` })
+      }
+      // The current tier's button is the selected one (traits "Selected", value "1").
+      const selected = $(`//XCUIElementTypeButton[@name="${currentTier}" and (@value="1" or contains(@traits,"Selected"))]`)
+      await selected.waitForExist({ timeout: 5000, timeoutMsg: `TC2992: the carousel should open on the current tier ${currentTier}` })
+      await this.tap($('//XCUIElementTypeNavigationBar[@name="Moneybase Club Benefits"]//XCUIElementTypeButton[@name="Moneybase Club"]')).catch(() => {})
+      await browser.pause(800)
+      await this.backToMoreIOS()
+      return
+    }
     await this.openItem('Moneybase Club')
     await this.id('tierDetails_screen').waitForDisplayed({ timeout: 15000, timeoutMsg: 'Moneybase Club did not open' })
     const explore = this.id('tierDetails_button_exploreClubBenefits')
@@ -132,6 +179,13 @@ class MoreMenuPage extends BasePage {
    * referral screen with the reward terms and the Invite Friends action. Nothing is sent.
    */
   async verifyReferAFriendFlow() {
+    if (browser.isIOS) {
+      await this.openItemIOS('Invite a friend')
+      await $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label CONTAINS[c] "for each friend you invite"').waitForExist({ timeout: 15000, timeoutMsg: 'TC3064: the referral screen did not open' })
+      await $('-ios predicate string:type IN {"XCUIElementTypeStaticText", "XCUIElementTypeButton"} AND label ==[c] "Invite friends"').waitForExist({ timeout: 10000, timeoutMsg: 'TC3064: the referral screen has no Invite Friends action' })
+      await this.backToMoreIOS()
+      return
+    }
     await this.openItem('Invite a Friend')
     await $('//*[contains(@text,"for each friend you invite")]').waitForDisplayed({ timeout: 15000, timeoutMsg: 'TC3064: the referral screen did not open' })
     await this.text('Invite Friends').waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC3064: the referral screen has no Invite Friends action' })
