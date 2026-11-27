@@ -93,25 +93,26 @@ class PricePlanPage extends BasePage {
     return $('android=new UiSelector().textMatches("(?i)STANDARD|(?i)STARTER|(?i)PLUS|(?i)PREMIUM")')
   }
 
+  // New iOS build: "My Price Plan" opens the Moneybase Club screen (tier, "No minimum balance required",
+  // Featured Benefits), the same content the Price Plan page used to show.
   private get screenTitleIOS() {
-    return this.iosText('Price Plan')
+    return this.iosPredicate('(type == "XCUIElementTypeStaticText" AND label == "Price Plan") OR (type == "XCUIElementTypeNavigationBar" AND name IN {"Price Plan", "Moneybase Club"})')
   }
 
   private get planHeaderIOS() {
     return this.iosPredicate(
       'type == "XCUIElementTypeStaticText" AND ' +
-      '(name IN {"STANDARD","STARTER","PLUS","PREMIUM"} OR ' +
-      'label IN {"STANDARD","STARTER","PLUS","PREMIUM"} OR ' +
-      'value IN {"STANDARD","STARTER","PLUS","PREMIUM"})'
+      '(name IN[c] {"STANDARD","STARTER","PLUS","PREMIUM","SELECT","ELITE"} OR ' +
+      'label IN[c] {"STANDARD","STARTER","PLUS","PREMIUM","SELECT","ELITE"})'
     )
   }
 
   private get benefitsHeaderIOS() {
-    return this.iosText('BENEFITS')
+    return this.iosPredicate('type == "XCUIElementTypeStaticText" AND (label ==[c] "BENEFITS" OR label ==[c] "Featured Benefits")')
   }
 
   private get noMinimumBalanceIOS() {
-    return this.iosText('NO MINIMUM BALANCE REQUIRED')
+    return this.iosPredicate('type == "XCUIElementTypeStaticText" AND label ==[c] "NO MINIMUM BALANCE REQUIRED"')
   }
 
   private get billingFrequencyAndroid() {
