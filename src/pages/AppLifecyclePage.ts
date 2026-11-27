@@ -1,6 +1,7 @@
 import { $, browser } from '@wdio/globals'
 import { loginPage } from './LoginPage'
 import HomeScreenPage from './HomeScreenPage'
+import { navTab } from '../helpers/navTab'
 
 class AppLifecyclePage {
   async verifyWelcomeCarousel() {
@@ -94,6 +95,25 @@ class AppLifecyclePage {
     await HomeScreenPage.waitForHomeLoaded()
     if (await loginPage.authLoginNavBar.isDisplayed()) {
       throw new Error('Re-authentication appeared within the 20-second grace period')
+    }
+  }
+
+  async verifyCardsTabSurvivesBackground() {
+    this.requireIOS()
+    const cardsContent = () => $('-ios predicate string:name == "cards_screen" OR name == "card_item_addCard" OR name BEGINSWITH "CARDS_"')
+    await navTab('Cards').click()
+    await cardsContent().waitForDisplayed({ timeout: 20000 })
+    if (!await navTab('Cards').isSelected()) {
+      throw new Error('TC3083: Cards tab was not selected before backgrounding')
+    }
+
+    await browser.background(3)
+    await browser.waitUntil(async () => {
+      return await navTab('Cards').isSelected().catch(() => false)
+        && await cardsContent().isDisplayed().catch(() => false)
+    }, { timeout: 15000, interval: 500, timeoutMsg: 'TC3083: Cards selection and content were not retained after foregrounding' })
+    if (await loginPage.authLoginNavBar.isDisplayed().catch(() => false)) {
+      throw new Error('TC3083: short background unexpectedly returned to authentication')
     }
   }
 
