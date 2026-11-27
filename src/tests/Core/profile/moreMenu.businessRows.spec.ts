@@ -6,18 +6,18 @@ import more from '../../../pages/MoreMenuPage'
 import { AUTH } from '../../../data/credentials'
 
 // Read-only: compares the More menu of the individual and the business account of the same login.
-describe('More menu business-only rows (Android)', function () {
+describe('More menu business-only rows', function () {
   this.timeout(Number(process.env.SPEC_MOCHA_TIMEOUT_MS || 600000))
   const step = stopAfterFailedStep()
 
   before(async function () {
-    if (!browser.isAndroid) return this.skip()
+    if (!(browser.isAndroid || browser.isIOS)) return this.skip()
     await loginPage.loginFlow(AUTH)
     await home.ensureIndividualAccount()
   })
 
   after(async function () {
-    if (browser.isAndroid) await home.ensureIndividualAccount().catch(() => {})
+    await home.ensureIndividualAccount().catch(() => {})
   })
 
   it('Individual account has no Approvals or Beneficiaries rows [TC2960]', step(async function () {

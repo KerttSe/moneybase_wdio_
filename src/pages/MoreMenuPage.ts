@@ -17,7 +17,27 @@ class MoreMenuPage extends BasePage {
   private get moreScreen() { return this.id('more_screen') }
   private get homeScreen() { return this.id('home_screen') }
 
+  /** iOS: the More sheet (opened from Home's profile header) and its rows. */
+  private get moreNavBarIOS() { return $('//XCUIElementTypeNavigationBar[@name="More"]') }
+
+  /** iOS keeps hidden More rows in the tree collapsed to 1pt with visible=false; only a real row counts. */
+  private async isRowShownIOS(label: string) {
+    const rows = await $$(`//XCUIElementTypeStaticText[@name="${label}" or @label="${label}"]`)
+    for (const row of rows) {
+      const visible = await row.getAttribute('visible').catch(() => 'false')
+      const height = Number(await row.getSize('height').catch(() => 0))
+      if (visible === 'true' && height > 2) return true
+    }
+    return false
+  }
+
   async openMore() {
+    if (browser.isIOS) {
+      const { default: home } = await import('./HomeScreenPage')
+      await home.openIOSMoreMenu()
+      await this.moreNavBarIOS.waitForExist({ timeout: 15000, timeoutMsg: 'More menu did not open (iOS)' })
+      return
+    }
     if (await this.moreScreen.isDisplayed().catch(() => false)) return
     await this.homeScreen.waitForDisplayed({ timeout: 20000, timeoutMsg: 'Home is not displayed' })
     await this.tap(this.id('home_button_userAvatar'))
@@ -36,6 +56,12 @@ class MoreMenuPage extends BasePage {
   }
 
   async closeMore() {
+    if (browser.isIOS) {
+      if (!(await this.moreNavBarIOS.isExisting().catch(() => false))) return
+      await this.tap($('//XCUIElementTypeNavigationBar[@name="More"]//XCUIElementTypeButton[@name="close"]'))
+      await this.moreNavBarIOS.waitForExist({ reverse: true, timeout: 10000 })
+      return
+    }
     if (!(await this.moreScreen.isDisplayed().catch(() => false))) return
     await this.tap($('//*[@content-desc="Close"]'))
     await this.homeScreen.waitForDisplayed({ timeout: 15000 })
@@ -49,6 +75,11 @@ class MoreMenuPage extends BasePage {
   /** TC2959: More has no Fixed Deposits row while the feature flag is off. */
   async verifyNoFixedDepositsRow() {
     await this.openMore()
+    if (browser.isIOS) {
+      await browser.waitUntil(() => this.isRowShownIOS('Documents'), { timeout: 10000, interval: 500, timeoutMsg: 'More menu rows did not load (iOS)' })
+      if (await this.isRowShownIOS('Fixed Deposits')) throw new Error('TC2959: the Fixed Deposits row should be hidden on the More menu')
+      return
+    }
     await this.text('Documents').waitForDisplayed({ timeout: 10000 })
     if (await $('//*[contains(@text,"Fixed Deposit") or contains(@content-desc,"Fixed Deposit")]').isExisting().catch(() => false)) {
       throw new Error('TC2959: the Fixed Deposits row should be hidden on the More menu')
@@ -113,9 +144,13 @@ class MoreMenuPage extends BasePage {
    */
   async verifyBusinessOnlyRows(business: boolean) {
     await this.openMore()
-    await this.text('Documents').waitForDisplayed({ timeout: 10000, timeoutMsg: 'More menu rows did not load' })
+    if (browser.isIOS) {
+      await browser.waitUntil(() => this.isRowShownIOS('Documents'), { timeout: 10000, interval: 500, timeoutMsg: 'More menu rows did not load (iOS)' })
+    } else {
+      await this.text('Documents').waitForDisplayed({ timeout: 10000, timeoutMsg: 'More menu rows did not load' })
+    }
     for (const row of ['Approvals', 'Beneficiaries']) {
-      const shown = await this.text(row).isDisplayed().catch(() => false)
+      const shown = browser.isIOS ? await this.isRowShownIOS(row) : await this.text(row).isDisplayed().catch(() => false)
       if (shown !== business) {
         throw new Error(`TC2960: the "${row}" row should be ${business ? 'shown on a business' : 'hidden on an individual'} account`)
       }
@@ -125,6 +160,16 @@ class MoreMenuPage extends BasePage {
 
   /** Initials avatars (two capital letters) shown in the More header. */
   private async headerInitials() {
+    if (browser.isIOS) {
+      // iOS More header: initials avatars are two-capital texts above the first row (Moneybase Club).
+      const clubY = Number(await $('//XCUIElementTypeStaticText[@name="Moneybase Club"]').getLocation('y').catch(() => 400))
+      const out: string[] = []
+      for (const el of await $$('//XCUIElementTypeStaticText')) {
+        const t = String((await el.getAttribute('label').catch(() => '')) || '')
+        if (/^[A-Z]{2}$/.test(t) && Number(await el.getLocation('y').catch(() => 9999)) < clubY) out.push(t)
+      }
+      return out
+    }
     const texts = await $$('//*[contains(@resource-id,"more_screen")]//android.widget.TextView').map((el) => el.getText().catch(() => ''))
     return texts.filter((t) => /^[A-Z]{2}$/.test(t))
   }
@@ -137,15 +182,19 @@ class MoreMenuPage extends BasePage {
     await this.openMore()
     await this.text('Documents').waitForDisplayed({ timeout: 10000, timeoutMsg: 'More menu rows did not load' })
     const initials = await this.headerInitials()
-    const names = $('//*[contains(@resource-id,"more_screen")]//android.widget.TextView[contains(@text," & ")]')
+    const names = browser.isIOS
+      ? $('//XCUIElementTypeStaticText[contains(@label," & ")]')
+      : $('//*[contains(@resource-id,"more_screen")]//android.widget.TextView[contains(@text," & ")]')
     const namesShown = await names.isDisplayed().catch(() => false)
     if (joint) {
       if (initials.length < minHolders) throw new Error(`TC2876: a joint account should show ${minHolders}+ holder avatars, got [${initials.join(', ')}]`)
       if (!namesShown) throw new Error('TC2876: a joint account should show the holder names joined with "&"')
-      console.log(`[More] joint holders: ${await names.getText()} [${initials.join(', ')}]`)
+      console.log(`[More] joint holders: ${await names.getAttribute(browser.isIOS ? 'label' : 'text').catch(() => '')} [${initials.join(', ')}]`)
       // TC2878: with two holders everything fits, so there is no show-more toggle or "+N" avatar.
-      const more = $('//*[contains(@resource-id,"more_screen")]//*[contains(translate(@text,"SHOWMRE","showmre"),"show more") or contains(translate(@content-desc,"SHOWMRE","showmre"),"show more") or starts-with(@text,"+") or contains(@text,"more names")]')
-      if (await more.isExisting().catch(() => false)) throw new Error(`TC2878: two holders should not show a "more" indicator, found "${await more.getText().catch(() => '')}"`)
+      const more = browser.isIOS
+        ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label CONTAINS[c] "show more" OR label CONTAINS[c] "more names" OR label MATCHES "^[+][0-9]+$")')
+        : $('//*[contains(@resource-id,"more_screen")]//*[contains(translate(@text,"SHOWMRE","showmre"),"show more") or contains(translate(@content-desc,"SHOWMRE","showmre"),"show more") or starts-with(@text,"+") or contains(@text,"more names")]')
+      if (await more.isExisting().catch(() => false)) throw new Error(`TC2878: two holders should not show a "more" indicator, found "${await more.getAttribute(browser.isIOS ? 'label' : 'text').catch(() => '')}"`)
     } else {
       if (initials.length !== 1) throw new Error(`TC2875: an individual account should show one holder avatar, got [${initials.join(', ')}]`)
       if (namesShown) throw new Error('TC2875: an individual account should not list joint holder names')
