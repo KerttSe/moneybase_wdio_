@@ -448,9 +448,17 @@ class BusinessCardCardLimitsPage extends BasePage {
         15000,
         'Assign Card To row not found',
       )
-    await this.tap(assigneeRow)
+    // iOS new build: tap the "Select User" value (the "Card Assignee" header does nothing) and pick the user
+    // inside assignBusinessCardUserSelection_screen, not the same name in the Manage Cards list behind it.
+    const selectUserValue = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label == "Select User" OR name == "person_placeholder")')
+    await this.tap(browser.isIOS && await selectUserValue.isExisting().catch(() => false) ? selectUserValue : assigneeRow)
+    const sheetShown = browser.isIOS && await $('~assignBusinessCardUserSelection_screen').waitForExist({ timeout: 10000 }).then(() => true).catch(() => false)
 
-    const selfUser = browser.isIOS ? this.selfUserOptionIOS : this.selfUserOptionAndroid
+    const selfUser = browser.isIOS
+      ? (sheetShown
+        ? $(`//*[@name="assignBusinessCardUserSelection_screen"]//XCUIElementTypeStaticText[@name="${BH_SELF_NAME}" or @label="${BH_SELF_NAME}"]/ancestor::XCUIElementTypeCell[1]`)
+        : this.selfUserOptionIOS)
+      : this.selfUserOptionAndroid
     await selfUser.waitForExist({ timeout: 15000, timeoutMsg: `"${BH_SELF_NAME}" not found in user list` })
 
     if (browser.isAndroid) {
