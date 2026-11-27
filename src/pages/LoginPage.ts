@@ -269,6 +269,14 @@ export class LoginPage extends BasePage {
           await browser.pause(1000)
           return false
         }
+        // An incomplete account (e.g. the Personal Details account TEC40001) resumes on a "Verify your identity"
+        // KYC modal; identity verification is never automated, so close it.
+        const verifyIdentity = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label == "Verify your identity"')
+        if (await verifyIdentity.isExisting().catch(() => false)) {
+          await $('~modal_button_close').click().catch(() => {})
+          await browser.pause(1000)
+          return false
+        }
         // The new iOS build can raise a system "Enter Password for “moneybase stg”" prompt on start;
         // never type a password, just cancel it.
         const passwordPrompt = $('-ios predicate string:label BEGINSWITH "Enter Password for"')
