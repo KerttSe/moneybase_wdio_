@@ -1982,7 +1982,9 @@ class HomeScreenPage extends BasePage {
     }
     if (browser.isIOS) {
       // App 2.26+ opens the Freshchat thread directly ("Moneybase Support") instead of Conversations.
-      await $('//XCUIElementTypeNavigationBar[@name="Conversations" or @name="Moneybase Support"]').waitForDisplayed({ timeout: 45000 }).catch(async (error) => {
+      // Same bar as Android (a Freshchat screen opened): the Freshchat container (FCInterstitialView, while its
+      // content loads) or the Conversations / Moneybase Support thread. Staging Freshchat can stay "In progress".
+      await $('//XCUIElementTypeNavigationBar[@name="Conversations" or @name="Moneybase Support" or @name="FCInterstitialView"]').waitForDisplayed({ timeout: 45000 }).catch(async (error) => {
         const src = String(await browser.getPageSource().catch(() => ''))
         const texts = [...new Set([...src.matchAll(/ (?:name|label)="([^"]{1,50})"/g)].map((m) => m[1]))]
         console.log(`[Support] chat screen missing; screen shows: ${texts.join(' | ').slice(0, 1000)}`)
