@@ -122,7 +122,8 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get spendFromRowIOS() {
-    return $('//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@name="Spend From" or @label="Spend From"]][1]')
+    // New build: "Spend From" is a header cell; the tappable wallet value is the next cell.
+    return $('(//XCUIElementTypeCell[@name="Spend From"]/following-sibling::XCUIElementTypeCell[1] | //XCUIElementTypeCell[.//XCUIElementTypeStaticText[@name="Spend From" or @label="Spend From"]])[1]')
   }
 
   // ── Select Wallet sheet ──────────────────────────────────────────────────
@@ -132,7 +133,7 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get selectWalletTitleIOS() {
-    return $('-ios predicate string:name == "Select Wallet" OR label == "Select Wallet"')
+    return $('-ios predicate string:name == "Select Wallet" OR label == "Select Wallet" OR name == "businessWalletSelection_screen"')
   }
 
   // ── Add New Wallet button ─────────────────────────────────────────────────
@@ -259,14 +260,21 @@ class BusinessCardWalletPage extends BasePage {
       timeout: 15000,
       timeoutMsg: 'Assign Card To row not found after selecting virtual card type',
     })
-    await this.tap(assigneeRow)
+    // iOS new build: tap the "Select User" value (the row header does nothing) and pick the user inside
+    // assignBusinessCardUserSelection_screen, not the same name in the Manage Cards list behind it.
+    const selectUserValue = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label == "Select User" OR name == "person_placeholder")')
+    await this.tap(browser.isIOS && await selectUserValue.isExisting().catch(() => false) ? selectUserValue : assigneeRow)
 
     if (browser.isIOS) {
-      await this.selfUserOptionIOS.waitForExist({
+      const sheetShown = await $('~assignBusinessCardUserSelection_screen').waitForExist({ timeout: 10000 }).then(() => true).catch(() => false)
+      const selfOption = sheetShown
+        ? $(`//*[@name="assignBusinessCardUserSelection_screen"]//XCUIElementTypeStaticText[@name="${BH_SELF_NAME}" or @label="${BH_SELF_NAME}"]/ancestor::XCUIElementTypeCell[1]`)
+        : this.selfUserOptionIOS
+      await selfOption.waitForExist({
         timeout: 15000,
         timeoutMsg: `User "${BH_SELF_NAME}" not found in Select User list`,
       })
-      await this.tap(this.selfUserOptionIOS)
+      await this.tap(selfOption)
       await browser.pause(600)
 
       if (await this.selectUserBtnIOS.isExisting().catch(() => false)) {

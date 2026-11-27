@@ -255,6 +255,17 @@ class CrossBorderPaymentPage extends BasePage {
       }
       return
     }
+    // The new iOS build moved the fee wording onto the payment screen, under the fee selector:
+    // Shared → "Swift fees to be shared between parties.", Originator → "All charges will be payed by me.".
+    const sharedNote = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label CONTAINS[c] "shared between parties"')
+    const originatorNote = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label CONTAINS[c] "payed by me"')
+    await this.selectSwiftFeeIOS('Shared Fee')
+    if (await sharedNote.waitForDisplayed({ timeout: 5000 }).then(() => true).catch(() => false)) {
+      await this.selectSwiftFeeIOS('Originator Fee')
+      await originatorNote.waitForDisplayed({ timeout: 10000, timeoutMsg: 'TC3288: Originator Fee should say all charges are paid by the sender' })
+      if (await sharedNote.isDisplayed().catch(() => false)) throw new Error('TC3288: the shared-fee note should go away for Originator Fee')
+      return
+    }
     await this.openSwiftReviewWithFee('SHA')
     await disclaimer.waitForDisplayed({ timeout: 10000 })
     await this.closeSwiftReview()

@@ -2009,8 +2009,9 @@ class HomeScreenPage extends BasePage {
       } else {
         await this.tap(action)
       }
+      // New iOS build: Portfolio has a custom header (a "Portfolio" text beside Back), not a navigation bar.
       const destination = browser.isIOS
-        ? $(`//XCUIElementTypeNavigationBar[@name="${title}"]`)
+        ? $(`//XCUIElementTypeNavigationBar[@name="${title}"] | //XCUIElementTypeStaticText[@name="${title}" and @visible="true" and preceding::*[@name="Back"]]`)
         : $(`//*[@text="${title}" or @content-desc="${title}"]`)
       await destination.waitForDisplayed({ timeout: 15000 })
       await this.tapHomeTab()

@@ -119,7 +119,7 @@ class CardManagementPage extends BasePage {
 
   private get firstCardTransactionIOS() {
     // The new iOS build tags each row card_payments_transaction (amount may be in any currency).
-    return $('(//*[@name="card_payments_transaction" and @visible="true"] | //XCUIElementTypeCell[@visible="true" and .//XCUIElementTypeStaticText[contains(@name, "€") or contains(@label, "€")]])[1]')
+    return $('(//*[@name="card_payments_transaction"] | //XCUIElementTypeCell[@visible="true" and .//XCUIElementTypeStaticText[contains(@name, "€") or contains(@label, "€")]])[1]')
   }
 
   private get firstCardTransactionAndroid() {
@@ -838,6 +838,21 @@ class CardManagementPage extends BasePage {
 
     if (browser.isIOS) {
       await this.firstCardTransactionIOS.waitForExist({ timeout: 15000 })
+      // In the new build the transactions sit below the delivery tracker, off-screen; scroll them into view.
+      const { width, height } = await browser.getWindowRect()
+      for (let i = 0; i < 5 && !(await this.firstCardTransactionIOS.isDisplayed().catch(() => false)); i++) {
+        await browser.performActions([{
+          type: 'pointer', id: 'finger-card-tx', parameters: { pointerType: 'touch' },
+          actions: [
+            { type: 'pointerMove', duration: 0, x: Math.round(width / 2), y: Math.round(height * 0.75) },
+            { type: 'pointerDown', button: 0 },
+            { type: 'pointerMove', duration: 400, x: Math.round(width / 2), y: Math.round(height * 0.4) },
+            { type: 'pointerUp', button: 0 },
+          ],
+        }]).catch(() => {})
+        await browser.releaseActions().catch(() => {})
+        await browser.pause(600)
+      }
       await this.tapElementCenterIOS(this.firstCardTransactionIOS as unknown as WebdriverIO.Element)
       await this.transactionDetailsHeaderIOS.waitForExist({ timeout: 15000 })
       await markBrowserStackStep('Opened first card transaction')
@@ -1135,7 +1150,16 @@ class CardManagementPage extends BasePage {
     await cardsTab.waitForDisplayed({ timeout: 10000 })
     if (browser.isIOS) await this.tap(cardsTab)
     else await this.tapAndroidCenterPoint(cardsTab)
-    await security.waitForDisplayed({ reverse: true, timeout: 10000 })
+    if (browser.isIOS) {
+      // The new build keeps the popped "Card Security" bar in the tree as displayed, so check that the
+      // Cards root is back (card name and card actions visible) and the security toggles are gone.
+      await browser.waitUntil(async () =>
+        (await $('~cards_label_cardName').isDisplayed().catch(() => false)) &&
+        !(await $('-ios predicate string:label == "Swipe payments" OR label == "Contactless payments"').isDisplayed().catch(() => false)),
+      { timeout: 10000, interval: 500, timeoutMsg: 'Reselecting Cards did not return from Card Security to the Cards root' })
+    } else {
+      await security.waitForDisplayed({ reverse: true, timeout: 10000 })
+    }
     await this.waitForCardsLoaded()
   }
 

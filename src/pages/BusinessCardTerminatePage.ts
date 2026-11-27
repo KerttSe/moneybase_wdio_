@@ -971,6 +971,21 @@ class BusinessCardTerminatePage extends BasePage {
     })
 
     if (browser.isIOS) {
+      // New build: once the assignee is chosen, a "Spend From" header cell appears; the wallet value is the
+      // next cell (empty with a chevron) and must be filled from businessWalletSelection_screen.
+      const spendFromValue = $('//XCUIElementTypeCell[@name="Spend From"]/following-sibling::XCUIElementTypeCell[1]')
+      if (await spendFromValue.isExisting().catch(() => false)
+        && !(await spendFromValue.$('.//XCUIElementTypeStaticText').isExisting().catch(() => false))) {
+        await this.tapElementCenterIOS(spendFromValue)
+        const walletSheet = $('~businessWalletSelection_screen')
+        if (await walletSheet.waitForExist({ timeout: 10000 }).then(() => true).catch(() => false)) {
+          const wallet = $('(//*[@name="businessWalletSelection_screen"]//XCUIElementTypeCell[.//XCUIElementTypeStaticText][not(.//XCUIElementTypeStaticText[contains(@label,"Add New")])])[1]')
+          await this.tap(wallet).catch(() => {})
+          await walletSheet.waitForExist({ reverse: true, timeout: 10000 }).catch(() => {})
+        } else {
+          console.warn('[BusinessCard] Spend From value tapped but the wallet sheet did not open (iOS)')
+        }
+      }
       await this.tapElementCenterIOS(continueBtn)
 
       await browser.waitUntil(
