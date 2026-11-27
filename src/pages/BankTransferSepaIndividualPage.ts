@@ -1072,10 +1072,17 @@ class BankTransferSepaIndividualPage extends BasePage {
         }, { timeout: 5000, interval: 500, timeoutMsg: `TC3321: expected ${label} to be copied to the clipboard` })
         continue
       }
-      const row = $(`//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="${field}"]] | //XCUIElementTypeButton[@label="${field}" or contains(@name,"copy${field}")]`)
+      // New iOS build labels the BIC row "BIC/SWIFT", as Android does.
+      const label = field === 'BIC' ? 'BIC/SWIFT' : field
+      const row = $(`//XCUIElementTypeCell[.//XCUIElementTypeStaticText[@label="${field}" or @label="${label}"]] | //XCUIElementTypeButton[@label="${field}" or @label="${label}" or contains(@name,"copy${field}")] | (//XCUIElementTypeStaticText[@label="${label}"]/following::XCUIElementTypeStaticText)[1]`)
+      const expected = String(await $(`(//XCUIElementTypeStaticText[@label="${label}"]/following::XCUIElementTypeStaticText)[1]`).getAttribute('label').catch(() => '')).replace(/\s/g, '')
       await this.tap(row, 10000)
       const copied = $(`-ios predicate string:label CONTAINS[c] "${field}" AND label CONTAINS[c] "copied"`)
-      await copied.waitForExist({ timeout: 5000, timeoutMsg: `TC3321: expected copy confirmation for ${field}` })
+      await browser.waitUntil(async () => {
+        if (await copied.isExisting().catch(() => false)) return true
+        const clip = Buffer.from(String(await browser.getClipboard().catch(() => '')), 'base64').toString('utf8')
+        return !!expected && clip.replace(/\s/g, '') === expected
+      }, { timeout: 5000, interval: 500, timeoutMsg: `TC3321: expected copy confirmation for ${field}` })
     }
 
     const input = browser.isIOS ? await this.continueToSepaAmountIOS() : await this.continueToSepaAmountAndroid()

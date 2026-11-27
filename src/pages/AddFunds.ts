@@ -221,8 +221,45 @@ private get payProcessingBtnIOS() {
       await this.amountInput.waitForDisplayed({ timeout: 15000 })
     }
     await this.tap(this.amountInput)
+    const text = String(amount)
+    const deleteKey = $('-ios predicate string:type == "XCUIElementTypeKey" AND (name ==[c] "delete" OR label ==[c] "delete")')
+    if (browser.isIOS && await deleteKey.waitForExist({ timeout: 3000 }).then(() => true).catch(() => false)) {
+      // New iOS build: setValue drops the decimal separator ("9.99" became "999 €" and Continue opened a EUR 999
+      // payment). Erase and type with the number-pad keys, as in the SEPA amount fix.
+      const shown = async () => String(await this.amountInput.getAttribute('value').catch(() => '') || '').replace(/[^\d]/g, '')
+      for (let i = 0; i < 12 && await shown(); i++) await deleteKey.click().catch(() => {})
+      for (const ch of text) {
+        const key = ch === '.' || ch === ','
+          ? $('-ios predicate string:type == "XCUIElementTypeKey" AND name IN {".", ","}')
+          : $(`//XCUIElementTypeKey[@name="${ch}"]`)
+        await key.click()
+        await browser.pause(150)
+      }
+      let typed = String(await this.amountInput.getAttribute('value').catch(() => '') || '')
+      if (text.includes('.') && typed.replace(/\D/g, '') === text.replace(/\D/g, '')) {
+        // The iOS card top-up field ignores the decimal key (whole euros only): "9.99" became "€999".
+        // Keep the case's intent (an amount below the EUR 10 minimum) with the whole-euro part.
+        const whole = text.split('.')[0]
+        console.warn(`[AddFunds] iOS card top-up ignores decimals; using ${whole} instead of ${text}`)
+        for (let i = 0; i < 12 && await shown(); i++) await deleteKey.click().catch(() => {})
+        for (const ch of whole) {
+          await $(`//XCUIElementTypeKey[@name="${ch}"]`).click()
+          await browser.pause(150)
+        }
+        typed = String(await this.amountInput.getAttribute('value').catch(() => '') || '')
+        if (Number(typed.replace(/\D/g, '')) !== Number(whole)) {
+          throw new Error(`Card top-up amount field shows "${typed}" after typing ${whole}`)
+        }
+        return
+      }
+      const typedNumber = Number(typed.replace(/[^\d.,]/g, '').replace(',', '.'))
+      if (typedNumber !== Number(text)) {
+        throw new Error(`Card top-up amount field shows "${typed}" after typing ${text}`)
+      }
+      return
+    }
     await this.amountInput.clearValue().catch(() => {})
-    await this.amountInput.setValue(String(amount))
+    await this.amountInput.setValue(text)
     if (browser.isIOS && String(amount).includes('.')) {
       // A device with a comma decimal separator drops the dot ("9.99" becomes "999"); retype with a comma.
       const digits = (await this.amountInput.getAttribute('value').catch(() => '') || '').replace(/[^\d.,]/g, '')

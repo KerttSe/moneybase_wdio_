@@ -167,7 +167,8 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get walletNameInputIOS() {
-    return $('//XCUIElementTypeTextField[1]')
+    // New build: the field is "newWallet_input_walletName" (a text element until focused).
+    return $('(//*[@name="newWallet_input_walletName"] | //XCUIElementTypeTextField)[1]')
   }
 
   private get addBtnAndroid() {
@@ -175,7 +176,8 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   private get addBtnIOS() {
-    return $('-ios predicate string:name == "Add" OR label == "Add"')
+    // New build renamed the New Wallet submit button from "Add" to "Create".
+    return $('-ios predicate string:name IN {"Add", "Create"} OR label IN {"Add", "Create"}')
   }
 
   // ── Add Wallet result dialog ──────────────────────────────────────────────
@@ -356,6 +358,17 @@ class BusinessCardWalletPage extends BasePage {
   public async enterWalletName(name: string) {
     const input = browser.isIOS ? this.walletNameInputIOS : this.walletNameInputAndroid
     await input.waitForExist({ timeout: 10000, timeoutMsg: 'Wallet name input not found' })
+    if (browser.isIOS && (await input.getAttribute('type').catch(() => '')) !== 'XCUIElementTypeTextField') {
+      // Focus the SwiftUI field first; it exposes a TextField only once tapped.
+      await this.tap(input)
+      const field = $('//XCUIElementTypeTextField')
+      const target = (await field.waitForExist({ timeout: 3000 }).then(() => true).catch(() => false)) ? field : input
+      await target.addValue(name)
+      await browser.pause(300)
+      const shown = String(await target.getAttribute('value').catch(() => '') || await input.getAttribute('value').catch(() => ''))
+      if (!shown.includes(name)) throw new Error(`Wallet name field shows "${shown}" after typing ${name}`)
+      return
+    }
     await input.clearValue()
     await input.setValue(name)
     await browser.pause(300)
@@ -365,6 +378,15 @@ class BusinessCardWalletPage extends BasePage {
     const button = browser.isIOS
       ? this.addBtnIOS
       : $('//*[@content-desc="Add" or self::android.widget.Button[@text="Add"] or self::android.view.View[./android.widget.TextView[@text="Add"]]]')
+    if (browser.isIOS && !enabled && await button.isEnabled().catch(() => false)) {
+      // SwiftUI reports the blocked Create button as enabled; a tap must keep the New Wallet form open.
+      await this.tap(button)
+      await browser.pause(2000)
+      if (!(await this.newWalletScreenTitleIOS.isExisting().catch(() => false))) {
+        throw new Error('New Wallet Add must be disabled: tapping it left the New Wallet form')
+      }
+      return
+    }
     await waitForControlEnabled(button, enabled, 'New Wallet Add')
   }
 
@@ -382,7 +404,8 @@ class BusinessCardWalletPage extends BasePage {
 
   public async cancelWalletCreation() {
     const close = browser.isIOS
-      ? $('-ios predicate string:type == "XCUIElementTypeButton" AND (name IN {"Close", "Cancel", "modal_button_close"} OR label IN {"Close", "Cancel"})')
+      // New iOS build closes New Wallet with newWallet_button_back, as Android 2.27.0 does.
+      ? $('-ios predicate string:type == "XCUIElementTypeButton" AND (name IN {"Close", "Cancel", "modal_button_close", "newWallet_button_back"} OR label IN {"Close", "Cancel"})')
       // 2.27.0 opens New Wallet as a full screen with a Back button instead of a Close action.
       : $('(//*[@resource-id="newWallet_button_back"] | //*[contains(@resource-id,"modal_button_close") or @content-desc="Close" or @content-desc="Cancel" or @text="Cancel"])[1]')
     await close.waitForDisplayed({ timeout: 10000 })

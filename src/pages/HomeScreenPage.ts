@@ -427,10 +427,10 @@ class HomeScreenPage extends BasePage {
     }
   }
 
-  private async ensureIndividualAccountIOS() {
+  private async ensureIndividualAccountIOS(accountCode?: string) {
     if (!browser.isIOS) return
 
-    const code = AUTH.individualAccountCode ?? 'VEG40002'
+    const code = accountCode ?? AUTH.individualAccountCode ?? 'VEG40002'
     await this.ensureIOSHomeAccount('Individual', code, this.individualAccountItemIOS)
   }
 
@@ -930,9 +930,10 @@ class HomeScreenPage extends BasePage {
     return false
   }
 
-  public async ensureIndividualAccount() {
+  // accountCode: for specs that log in with another account (e.g. Personal Details on TEC40001).
+  public async ensureIndividualAccount(accountCode?: string) {
     if (browser.isIOS) {
-      await this.ensureIndividualAccountIOS()
+      await this.ensureIndividualAccountIOS(accountCode)
       return
     }
 
@@ -2014,6 +2015,11 @@ class HomeScreenPage extends BasePage {
         ? $(`//XCUIElementTypeNavigationBar[@name="${title}"] | //XCUIElementTypeStaticText[@name="${title}" and @visible="true" and preceding::*[@name="Back"]]`)
         : $(`//*[@text="${title}" or @content-desc="${title}"]`)
       await destination.waitForDisplayed({ timeout: 15000 })
+      if (browser.isIOS && !(await navTab('Home').isExisting().catch(() => false))) {
+        // Portfolio (new iOS build) covers the tab bar; its Back is a text, not a button.
+        await this.tap($('//XCUIElementTypeButton[@name="Back" or @label="Back"] | //XCUIElementTypeStaticText[@name="Back" and @visible="true"]'))
+        await navTab('Home').waitForExist({ timeout: 10000 }).catch(() => {})
+      }
       await this.tapHomeTab()
       await this.waitForHomeLoaded()
     }

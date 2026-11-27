@@ -411,6 +411,8 @@ const nativeAlertAssertionSpecs = new Set([
   'authentication.changePasscodeCancel.spec.ts',
   'profile.businessSettings.spec.ts',
   'personalDetails.nameEditConfirmation.spec.ts',
+  // The "User card limit reached" alert is accepted by BS before the spec can read it.
+  'businessCard.cardLimits.spec.ts',
 ])
 
 const authSlotForSpec = (specName?: string) => {

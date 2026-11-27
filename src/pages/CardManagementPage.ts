@@ -409,6 +409,12 @@ class CardManagementPage extends BasePage {
 
   private async ensureActiveCardControlsVisible() {
     if (browser.isIOS) {
+      // After the transactions step the Cards list is scrolled down and SwiftUI drops the card actions
+      // from the tree; scroll back to the top before looking for Freeze/Unfreeze.
+      for (let i = 0; i < 4 && !((await this.isFreezeActionVisibleIOS()) || (await this.isUnfreezeActionVisibleIOS())); i++) {
+        await browser.execute('mobile: swipe', { direction: 'down' }).catch(() => {})
+        await browser.pause(600)
+      }
       await browser.waitUntil(
         async () => (await this.isFreezeActionVisibleIOS()) || (await this.isUnfreezeActionVisibleIOS()),
         { timeout: 20000, interval: 500, timeoutMsg: 'Freeze/Unfreeze action was not visible on iOS' }

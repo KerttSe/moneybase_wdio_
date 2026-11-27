@@ -9,7 +9,7 @@ describe('Personal Details edit confirmations', function () {
     loginPage.closeVerificationRequired = true
     await loginPage.loginFlow(PD_AUTH)
     // Settles Home and closes the "More menu has been moved" tip that covers the avatar.
-    await home.ensureIndividualAccount()
+    await home.ensureIndividualAccount(process.env.PD_INDIVIDUAL_CODE || 'TEC40001')
     await page.navigateToPersonalDetails()
     await page.verifyMobileEditCanBeCancelled()
     await page.verifyNameEditRequiresConfirmation()

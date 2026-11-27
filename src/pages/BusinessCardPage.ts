@@ -256,11 +256,18 @@ class BusinessCardPage extends BasePage {
         await admin.waitForExist({ timeout: 15000, timeoutMsg: 'Administration item not found in More (iOS)' })
         await this.tap(admin)
         await $('//XCUIElementTypeNavigationBar[@name="Manage Cards"]').waitForExist({ timeout: 15000, timeoutMsg: 'Manage Cards did not open (iOS)' })
-        await this.tap($('-ios predicate string:name == "Assign Card" OR label == "Assign Card"'))
-        await browser.waitUntil(
-          async () => await this.isIOSAssignBusinessCardFormVisible(),
-          { timeout: 15000, interval: 500, timeoutMsg: 'Assign Business Card form did not open on iOS' }
-        )
+        // Manage Cards itself shows "Assign Card" and holder names (e.g. Las Vegas), which the loose form
+        // check matches; wait for elements only the form has, and tap Assign Card again if it did not open.
+        const assignBtn = $('-ios predicate string:name == "Assign Card" OR label == "Assign Card"')
+        const formOnly = async () =>
+          (await this.cardTypeHeaderIOS.isExisting().catch(() => false)) ||
+          (await this.cardTypeRowIOS.isExisting().catch(() => false)) ||
+          (await this.continueBtnIOS.isExisting().catch(() => false))
+        for (let attempt = 0; attempt < 3 && !(await formOnly()); attempt++) {
+          await this.tap(assignBtn).catch(() => {})
+          await browser.waitUntil(formOnly, { timeout: 6000, interval: 500 }).catch(() => {})
+        }
+        if (!(await formOnly())) throw new Error('Assign Business Card form did not open on iOS')
         return
       }
       await this.tap(this.addNewCardButtonIOS)
@@ -1241,7 +1248,7 @@ class BusinessCardPage extends BasePage {
     // there if listed, otherwise the first selectable user, and confirm the name replaced "Select User".
     const selectUser = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND (label == "Select User" OR name == "person_placeholder")')
     const sheet = $('~assignBusinessCardUserSelection_screen')
-    const sheetRows = '//*[@name="assignBusinessCardUserSelection_screen"]//XCUIElementTypeCell[@name="assignBusinessCardUserSelection_button_select"]'
+    const sheetRows = '//*[@name="assignBusinessCardUserSelection_screen"]//XCUIElementTypeCell[starts-with(@name,"assignBusinessCardUserSelection_button_select")]'
     await this.tap((await selectUser.isExisting().catch(() => false)) ? selectUser : this.cardAssigneeRowIOS, 3000)
     const hasSheet = await sheet.waitForExist({ timeout: 10000 }).then(() => true).catch(() => false)
     if (!hasSheet) {
