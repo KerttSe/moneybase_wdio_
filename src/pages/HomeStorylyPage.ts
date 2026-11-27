@@ -29,12 +29,14 @@ class HomeStorylyPage extends BasePage {
     return $('//XCUIElementTypeCollectionView[@name="Storyly Bar"]')
   }
 
+  // The pinned first story ("Refer a Friend") opens the referral screen, not the story viewer; use the first
+  // story that is not pinned.
   private get firstStoryCellIOS() {
-    return $(`-ios predicate string:name BEGINSWITH "${this.firstStoryContentDescPrefix}"`)
+    return $(`-ios predicate string:type == "XCUIElementTypeCell" AND name BEGINSWITH "${this.firstStoryContentDescPrefix}" AND NOT (name CONTAINS[c] "pinned")`)
   }
 
   private get firstStoryImageIOS() {
-    return $(`//XCUIElementTypeCell[starts-with(@name,"${this.firstStoryContentDescPrefix}")]//XCUIElementTypeImage`)
+    return $(`//XCUIElementTypeCell[starts-with(@name,"${this.firstStoryContentDescPrefix}") and not(contains(@name,"pinned"))]//XCUIElementTypeImage`)
   }
 
   private get pendingHeaderIOS() {
