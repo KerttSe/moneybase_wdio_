@@ -389,8 +389,13 @@ class CrossBorderPaymentPage extends BasePage {
   public async verifyBalanceFeeIOS() {
     // e.g. "Balance: US$1,325.46  |  Fee: US$10.00"
     const line = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label BEGINSWITH "Balance:" AND label CONTAINS "Fee:"')
-    await line.waitForExist({ timeout: 10000, timeoutMsg: 'Balance and fee line not shown (iOS)' })
-    const text = String(await line.getAttribute('label'))
+    await line.waitForExist({ timeout: 15000, timeoutMsg: 'Balance and fee line not shown (iOS)' })
+    // The fee amount fills in a moment after the balance ("Balance: $5,625.65  |  Fee:" first).
+    let text = ''
+    await browser.waitUntil(async () => {
+      text = String(await line.getAttribute('label').catch(() => ''))
+      return /Balance:.*\d.*Fee:.*\d/.test(text)
+    }, { timeout: 15000, interval: 500 }).catch(() => {})
     if (!/Balance:.*\d.*Fee:.*\d/.test(text)) throw new Error(`Balance/fee line has no amounts: "${text}"`)
   }
 
@@ -427,7 +432,8 @@ class CrossBorderPaymentPage extends BasePage {
   public async openReviewAndVerifySwiftIOS() {
     await this.tap($('-ios predicate string:name == "makePayment_button_review" OR (type == "XCUIElementTypeButton" AND label == "Review Payment")'), 10000)
     await $('//XCUIElementTypeNavigationBar[@name="Review Payment"]').waitForExist({ timeout: 15000, timeoutMsg: 'Review Payment did not open (iOS)' })
-    await $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label == "SWIFT"').waitForExist({ timeout: 10000, timeoutMsg: 'Review should show the SWIFT payment type (iOS)' })
+    // The review lists "Type  Swift".
+    await $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label ==[c] "SWIFT"').waitForExist({ timeout: 10000, timeoutMsg: 'Review should show the SWIFT payment type (iOS)' })
   }
 
   private get swiftFeeRowIOS() {
