@@ -1124,8 +1124,13 @@ class BusinessCardPage extends BasePage {
   }
 
   private async verifyChangingCardTypeClearsAssigneeIOS() {
-    const selected = this.cardAssigneeLasVegasSelectedIOS
-    await selected.waitForExist({ timeout: 10000 })
+    // The assignee step picks Las Vegas when listed, otherwise the first selectable user (e.g. Andrew Miller);
+    // check whichever name is actually on the form.
+    const assigneeName = $('(//XCUIElementTypeCell[@name="Card Assignee" or @label="Card Assignee"]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeStaticText | //XCUIElementTypeStaticText[@label="CARD ASSIGNEE"]/following::XCUIElementTypeStaticText[1])[1]')
+    await assigneeName.waitForExist({ timeout: 10000 })
+    const name = String(await assigneeName.getAttribute('label').catch(() => '') || '')
+    if (!name || name === 'Select User') throw new Error('No assignee was selected before changing the card type')
+    const selected = $(`//XCUIElementTypeStaticText[@name="${name}" or @label="${name}"]`)
     await this.tap(this.cardTypeRowIOS)
     await this.changeCardTypeTitleIOS.waitForExist({ timeout: 10000 })
     await this.tap(this.changeCardTypeConfirmBtnIOS)
