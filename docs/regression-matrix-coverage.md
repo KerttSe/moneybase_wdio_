@@ -11,6 +11,22 @@ The initial expansion tracked 19 new specs and 41 named checks across 26 source 
 This is source-code coverage, not 26 passing device tests and not completion of
 all 519 cases. Repeated checkpoints for one source ID count as one matrix case.
 
+## iOS BrowserStack Verification (2026-11-27)
+
+New iOS build (BrowserStack iPhone 16, iOS 18; `bs://2441ccb7…`, then today's `bs://39c7cf07…`):
+**70 regression specs passed with real steps** (a spec that only skips on iOS is not counted), plus 6 smoke and
+authentication specs that most likely pass but have no step log yet. Against the 215 cases that are UI asserted on
+Android, **100 are covered on iOS by a passing spec** (13 more by the not-yet-logged specs).
+
+Known iOS blockers that stop further greens (app or data, not test code):
+- The app crashes about a second after the system "Enter Password for “moneybase stg”" alert closes, in roughly half
+  of the sessions; affected specs need a new session.
+- No inline IBAN error texts (length, checksum, country); Help removed from the Cards screen; Manage Cards has a
+  filter button instead of the Active tab; staging orders return "Something went wrong".
+- The Personal Details account (TEC40001) has an incomplete profile with no name, email or address fields;
+  no recovery phone (`AUTH_RECOVERY_MB_PHONE`); no second business wallet for relink; the card PIN OTP is rejected.
+- The account picker shows no search with the sub-accounts our test logins have (iOS design).
+
 ## BrowserStack Verification (2026-11-12)
 
 Android BrowserStack runs since 2026-11-09 (Pixel 9, Android 15, app 2.27.0): **102 of 112 specs passed at least once**, 10 have not yet. 19 specs also passed on iOS BrowserStack in the same window. Per-spec detail is on the `Spec Status 2026-11-12` sheet of `regression_automation_matrix_detailed_full_2026-11-12.xlsx`.
