@@ -585,9 +585,43 @@ class HomeScreenPage extends BasePage {
 
     if (browser.isIOS) await this.openIOSSubAccountsSheet()
     else await this.openAndroidSubAccountsSheet()
-    const search = browser.isIOS
-      ? $('-ios predicate string:type == "XCUIElementTypeSearchField" OR name == "switchSubidentity_input_search"')
+    // iOS: the Sub Accounts sheet opens at half height with its search hidden; the only SearchField visible is
+    // the More screen's one behind the sheet. Expand the sheet and pull its list down to reveal the sheet's own
+    // search, and only accept a search field that lies inside the sheet (below its title bar).
+    let search = browser.isIOS
+      ? $('-ios predicate string:name == "switchSubidentity_input_search"')
       : this.accountSelectionRootAndroid.$('.//android.widget.EditText')
+    if (browser.isIOS && !(await search.isDisplayed().catch(() => false))) {
+      const bar = $('//XCUIElementTypeNavigationBar[@name="Sub Accounts"]')
+      const sheetSearch = async () => {
+        const top = Number(await bar.getLocation('y').catch(() => 0))
+        for (const field of await $$('//XCUIElementTypeSearchField')) {
+          if (Number(await field.getLocation('y').catch(() => -1)) >= top && await field.isDisplayed().catch(() => false)) return field
+        }
+        return null
+      }
+      for (let i = 0; i < 3 && !(await sheetSearch()); i++) {
+        const r = await browser.getElementRect(await bar.elementId).catch(() => null)
+        if (r && i === 0) {
+          // Drag the sheet's title bar up to the large detent.
+          await browser.action('pointer', { parameters: { pointerType: 'touch' } })
+            .move({ x: Math.round(r.x + r.width / 2), y: Math.round(r.y + r.height / 2) }).down()
+            .move({ duration: 500, x: Math.round(r.x + r.width / 2), y: 120 }).up().perform().catch(() => {})
+        } else {
+          // Pull the account list down to reveal a hidden search bar.
+          const firstRow = $('(//XCUIElementTypeCell[starts-with(@name,"switchSubidentity_item_")])[1]')
+          const fr = await browser.getElementRect(await firstRow.elementId).catch(() => null)
+          if (fr) {
+            await browser.action('pointer', { parameters: { pointerType: 'touch' } })
+              .move({ x: Math.round(fr.x + fr.width / 2), y: Math.round(fr.y + 10) }).down()
+              .move({ duration: 500, x: Math.round(fr.x + fr.width / 2), y: Math.round(fr.y + 220) }).up().perform().catch(() => {})
+          }
+        }
+        await browser.pause(1000)
+      }
+      const found = await sheetSearch()
+      if (found) search = found as unknown as typeof search
+    }
     await search.waitForDisplayed({ timeout: 10000 }).catch(async (error) => {
       const src = String(await browser.getPageSource().catch(() => ''))
       const texts = [...new Set([...src.matchAll(/ (?:name|label|text|content-desc)="([^"]{1,60})"/g)].map((m) => m[1]))]
