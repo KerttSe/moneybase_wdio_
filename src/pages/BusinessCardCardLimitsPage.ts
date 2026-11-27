@@ -525,6 +525,19 @@ class BusinessCardCardLimitsPage extends BasePage {
       await this.tapElementCenterAndroid(this.closeUserSelectionSheetAndroid)
       await this.userSelectionSheetAndroid.waitForExist({ reverse: true, timeout: 10000 }).catch(() => {})
     }
+    if (browser.isIOS) {
+      // As on Android: after OK the user sheet (with its search active) stays over the form; leave the search,
+      // then close the sheet. The card type row behind it exists in the tree, so it cannot prove the form is back.
+      const sheet = $('//XCUIElementTypeNavigationBar[@name="Select User"]')
+      for (let i = 0; i < 3 && (await sheet.isExisting().catch(() => false)); i += 1) {
+        const cancel = $('//XCUIElementTypeButton[@name="Cancel" or @label="Cancel"]')
+        const close = $('~assignBusinessCardUserSelection_button_close')
+        if (await cancel.isExisting().catch(() => false)) await this.tap(cancel).catch(() => {})
+        else if (await close.isExisting().catch(() => false)) await this.tap(close).catch(() => {})
+        await browser.pause(800)
+      }
+      await sheet.waitForExist({ reverse: true, timeout: 10000, timeoutMsg: 'User selection sheet did not close after the limit popup' })
+    }
     for (let attempt = 0; attempt < 2; attempt += 1) {
       const formShown = browser.isAndroid
         ? await this.getCardTypeRowAndroid(1500).then(() => true).catch(() => false)
