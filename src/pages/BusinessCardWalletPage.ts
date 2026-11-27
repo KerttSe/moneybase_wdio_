@@ -2,7 +2,7 @@ import BasePage from './BasePage'
 import HomeScreenPage from './HomeScreenPage'
 import BusinessCardTerminatePage from './BusinessCardTerminatePage'
 import { waitForControlEnabled } from '../helpers/controlState.helper'
-import { $, browser } from '@wdio/globals'
+import { $, $$, browser } from '@wdio/globals'
 import allure from '@wdio/allure-reporter'
 import type { ChainablePromiseElement } from 'webdriverio'
 
@@ -428,7 +428,25 @@ class BusinessCardWalletPage extends BasePage {
     await this.tap(btn)
   }
 
+  /** iOS: the plan-limit dialog as a system alert (alert API) or an in-app alert view; returns its text. */
+  private async addWalletDialogTextIOS(): Promise<string> {
+    const alertText = String(await browser.getAlertText().catch(() => '') || '')
+    if (alertText) return alertText
+    const texts = await $$('-ios predicate string:type IN {"XCUIElementTypeStaticText", "XCUIElementTypeNavigationBar", "XCUIElementTypeTextView"} AND (label CONTAINS[c] "Add Wallet" OR label CONTAINS[c] "maximum")')
+      .map((el: WebdriverIO.Element) => el.getAttribute('label').catch(() => ''))
+    return texts.filter(Boolean).join('\n')
+  }
+
   public async verifyAddWalletDialog() {
+    if (browser.isIOS) {
+      let text = ''
+      await browser.waitUntil(async () => {
+        text = await this.addWalletDialogTextIOS()
+        return /add wallet|maximum/i.test(text)
+      }, { timeout: 15000, interval: 500, timeoutMsg: '"Add Wallet" dialog did not appear' })
+      console.log(`[Wallet] Add Wallet dialog (iOS): ${text.replace(/\n/g, ' | ')}`)
+      return
+    }
     await this.addWalletDialogTitleAndroid.waitForExist({
       timeout: 15000,
       timeoutMsg: '"Add Wallet" dialog did not appear',
@@ -436,6 +454,12 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   public async verifyPlanLimitMessage() {
+    if (browser.isIOS) {
+      const msg = await this.addWalletDialogTextIOS()
+      if (!msg.toLowerCase().includes('maximum')) throw new Error(`Unexpected dialog message: "${msg}"`)
+      allure.addAttachment('Add Wallet alert', msg, 'text/plain')
+      return
+    }
     await this.addWalletDialogMessageAndroid.waitForExist({
       timeout: 10000,
       timeoutMsg: 'Plan limit message not found in dialog',
@@ -453,6 +477,13 @@ class BusinessCardWalletPage extends BasePage {
   }
 
   public async dismissAddWalletDialog() {
+    if (browser.isIOS) {
+      // Close/OK/Cancel only: the other action reaches out to support (opens chat).
+      const close = $('-ios predicate string:type == "XCUIElementTypeButton" AND (name IN {"alert_button_close", "OK", "Cancel", "Close"} OR label IN {"OK", "Cancel", "Close"})')
+      if (await close.isExisting().catch(() => false)) await this.tap(close)
+      else await browser.dismissAlert().catch(() => {})
+      return
+    }
     await this.addWalletDialogOkAndroid.waitForExist({ timeout: 10000 })
     await this.tap(this.addWalletDialogOkAndroid)
     await this.addWalletDialogTitleAndroid.waitForExist({ reverse: true, timeout: 10000 }).catch(() => {})

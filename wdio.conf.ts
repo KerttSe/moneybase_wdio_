@@ -413,6 +413,8 @@ const nativeAlertAssertionSpecs = new Set([
   'personalDetails.nameEditConfirmation.spec.ts',
   // The "User card limit reached" alert is accepted by BS before the spec can read it.
   'businessCard.cardLimits.spec.ts',
+  // The plan-limit "Add Wallet" alert was auto-accepted, which tapped "reach out" and opened support chat.
+  'businessCard.walletReachOut.spec.ts',
 ])
 
 const authSlotForSpec = (specName?: string) => {
