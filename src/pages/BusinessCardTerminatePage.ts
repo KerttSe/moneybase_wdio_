@@ -980,7 +980,18 @@ class BusinessCardTerminatePage extends BasePage {
         const walletSheet = $('~businessWalletSelection_screen')
         if (await walletSheet.waitForExist({ timeout: 10000 }).then(() => true).catch(() => false)) {
           const wallet = $('(//*[@name="businessWalletSelection_screen"]//XCUIElementTypeCell[.//XCUIElementTypeStaticText][not(.//XCUIElementTypeStaticText[contains(@label,"Add New")])])[1]')
-          await this.tap(wallet).catch(() => {})
+          // The sheet opens with a progress indicator and only "Add New Wallet"; wait for the wallets to load.
+          const loaded = await wallet.waitForExist({ timeout: 25000 }).then(() => true).catch(() => false)
+          if (!loaded) {
+            const src = String(await browser.getPageSource().catch(() => ''))
+            const texts = [...new Set([...src.matchAll(/ (?:name|label)="([^"]{1,50})"/g)].map((m) => m[1]))]
+            console.log(`[BusinessCard] no wallet listed in Select Wallet (iOS); screen shows: ${texts.slice(-40).join(' | ')}`)
+            throw new Error('Select Wallet listed no wallet to spend from (iOS)')
+          }
+          await this.tap(wallet)
+          if (await $('~newWallet_button_back').isExisting().catch(() => false)) {
+            throw new Error('Spend From opened New Wallet instead of selecting an existing wallet (iOS)')
+          }
           await walletSheet.waitForExist({ reverse: true, timeout: 10000 }).catch(() => {})
         } else {
           console.warn('[BusinessCard] Spend From value tapped but the wallet sheet did not open (iOS)')

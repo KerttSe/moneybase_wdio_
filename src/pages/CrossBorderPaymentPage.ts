@@ -153,8 +153,14 @@ class CrossBorderPaymentPage extends BasePage {
     if (browser.isIOS) {
       await BankTransferP2PIndividualPage.prepareSmokeSwiftIOS(11)
       const selector = $('-ios predicate string:(type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND (name == "makePayment_button_walletSelect" OR label BEGINSWITH[c] "Pay from")) OR name == "makePayment_button_currencyPicker"')
-      const picker = $('-ios predicate string:name == "walletSelection_screen" OR (type == "XCUIElementTypeNavigationBar" AND label IN {"Select Wallet", "Wallets"})')
-      const euro = $('-ios predicate string:type == "XCUIElementTypeCell" AND (label CONTAINS[c] "EUR" OR name CONTAINS[c] "EUR")')
+      // New build: the wallet sheet is "Pay from Wallet" (currencySelection_*), rows currencyPicker_item_<CCY>.
+      const picker = $('-ios predicate string:name IN {"walletSelection_screen", "currencySelection_input_search", "currencySelection_button_close"} OR (type == "XCUIElementTypeNavigationBar" AND label IN {"Select Wallet", "Wallets", "Pay from Wallet"})')
+      const euro = $('-ios predicate string:type == "XCUIElementTypeCell" AND (name == "currencyPicker_item_EUR" OR label CONTAINS[c] "EUR" OR name CONTAINS[c] "EUR")')
+      const closeWalletPicker = async () => {
+        const close = $('~currencySelection_button_close')
+        if (await close.isExisting().catch(() => false)) await this.tap(close)
+        else await this.closeIOSPicker()
+      }
       const selected = selector.$('.//*[contains(@label,"EUR") or contains(@name,"EUR")] | self::*[contains(@label,"EUR")]')
       if (!await selected.isDisplayed()) {
         await this.tap(selector, 10000)
@@ -168,7 +174,7 @@ class CrossBorderPaymentPage extends BasePage {
       await euro.waitForDisplayed({ timeout: 10000 })
       if (await euro.isEnabled()) await euro.click()
       if (!await picker.isDisplayed()) throw new Error('TC2920: reselecting EUR should leave the picker open')
-      await this.closeIOSPicker()
+      await closeWalletPicker()
       await picker.waitForDisplayed({ reverse: true, timeout: 10000 })
       await selected.waitForDisplayed({ timeout: 10000 })
       return
