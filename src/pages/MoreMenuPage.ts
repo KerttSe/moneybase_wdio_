@@ -234,7 +234,11 @@ class MoreMenuPage extends BasePage {
    */
   async verifyJointHolders(joint: boolean, minHolders = 2) {
     await this.openMore()
-    await this.text('Documents').waitForDisplayed({ timeout: 10000, timeoutMsg: 'More menu rows did not load' })
+    if (browser.isIOS) {
+      await browser.waitUntil(() => this.isRowShownIOS('Documents'), { timeout: 10000, interval: 500, timeoutMsg: 'More menu rows did not load (iOS)' })
+    } else {
+      await this.text('Documents').waitForDisplayed({ timeout: 10000, timeoutMsg: 'More menu rows did not load' })
+    }
     const initials = await this.headerInitials()
     const names = browser.isIOS
       ? $('//XCUIElementTypeStaticText[contains(@label," & ")]')
