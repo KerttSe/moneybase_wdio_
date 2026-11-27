@@ -371,6 +371,65 @@ class CrossBorderPaymentPage extends BasePage {
     await openIOSPaymentReview()
   }
 
+  /* ---------- iOS SWIFT payment screen (new build; elements from today's iOS runs) ---------- */
+
+  public async openToPaymentScreenIOS(amount: number | string = 11) {
+    await BankTransferP2PIndividualPage.prepareSmokeSwiftIOS(amount)
+  }
+
+  public async verifySwiftPaymentScreenIOS() {
+    await $('~makePayment_input_amount').waitForExist({ timeout: 15000, timeoutMsg: 'SWIFT payment screen did not load (iOS)' })
+    await $('-ios predicate string:name == "makePayment_button_review" OR label == "Review Payment"').waitForExist({ timeout: 10000 })
+  }
+
+  public async verifyPayFromIOS(currency: string) {
+    await $(`-ios predicate string:type == "XCUIElementTypeStaticText" AND label == "PAY FROM • ${currency}"`).waitForExist({ timeout: 10000, timeoutMsg: `"Pay from" should show ${currency} (iOS)` })
+  }
+
+  public async verifyBalanceFeeIOS() {
+    // e.g. "Balance: US$1,325.46  |  Fee: US$10.00"
+    const line = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label BEGINSWITH "Balance:" AND label CONTAINS "Fee:"')
+    await line.waitForExist({ timeout: 10000, timeoutMsg: 'Balance and fee line not shown (iOS)' })
+    const text = String(await line.getAttribute('label'))
+    if (!/Balance:.*\d.*Fee:.*\d/.test(text)) throw new Error(`Balance/fee line has no amounts: "${text}"`)
+  }
+
+  public async verifyFeeRowIOS() {
+    await this.swiftFeeRowIOS.waitForExist({ timeout: 10000, timeoutMsg: 'Fee row not shown (iOS)' })
+    const any = $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label IN {"Shared Fee", "Originator Fee"}')
+    await any.waitForExist({ timeout: 10000, timeoutMsg: 'Fee row shows no fee option (iOS)' })
+  }
+
+  public async verifyFeePickerOptionsIOS() {
+    await this.tap(this.swiftFeeRowIOS, 15000)
+    await this.swiftFeePickerIOS.waitForDisplayed({ timeout: 10000 })
+    for (const option of ['Shared Fee', 'Originator Fee']) {
+      await $(`-ios predicate string:type == "XCUIElementTypeStaticText" AND label == "${option}"`).waitForExist({ timeout: 5000, timeoutMsg: `Fee picker has no "${option}" (iOS)` })
+    }
+    await this.closeIOSPicker()
+    await this.swiftFeePickerIOS.waitForDisplayed({ reverse: true, timeout: 10000 }).catch(() => {})
+  }
+
+  public async selectSwiftFeeOptionIOS(title: 'Shared Fee' | 'Originator Fee') {
+    await this.selectSwiftFeeIOS(title)
+  }
+
+  public async switchWalletIOS(currency: string) {
+    if (await $(`-ios predicate string:type == "XCUIElementTypeStaticText" AND label == "PAY FROM • ${currency}"`).isExisting().catch(() => false)) return
+    const selector = $('-ios predicate string:name == "makePayment_button_currencyPicker" OR (type == "XCUIElementTypeStaticText" AND label BEGINSWITH "PAY FROM")')
+    await this.tap(selector, 10000)
+    await $('~currencySelection_button_close').waitForExist({ timeout: 10000, timeoutMsg: '"Pay from Wallet" sheet did not open (iOS)' })
+    await this.tap($(`~currencyPicker_item_${currency}`), 10000)
+    await $('~currencySelection_button_close').waitForExist({ reverse: true, timeout: 10000 })
+    await this.verifyPayFromIOS(currency)
+  }
+
+  public async openReviewAndVerifySwiftIOS() {
+    await this.tap($('-ios predicate string:name == "makePayment_button_review" OR (type == "XCUIElementTypeButton" AND label == "Review Payment")'), 10000)
+    await $('//XCUIElementTypeNavigationBar[@name="Review Payment"]').waitForExist({ timeout: 15000, timeoutMsg: 'Review Payment did not open (iOS)' })
+    await $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label == "SWIFT"').waitForExist({ timeout: 10000, timeoutMsg: 'Review should show the SWIFT payment type (iOS)' })
+  }
+
   private get swiftFeeRowIOS() {
     // The new iOS build names the row makePayment_button_feeSelector and keeps the fee in its value.
     return $('-ios predicate string:name IN {"makePayment_button_feeOption", "makePayment_button_feeSelector"} OR (type IN {"XCUIElementTypeButton", "XCUIElementTypeCell"} AND label IN {"Shared Fee", "Originator Fee"})')
