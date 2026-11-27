@@ -236,6 +236,11 @@ class BusinessCardWalletPage extends BasePage {
     await btn.waitForExist({ timeout: 15000, timeoutMsg: 'Assign Card button not found on Manage Cards' })
     await this.tap(btn)
     const cardTypeRow = browser.isIOS ? this.cardTypeRowIOS : this.cardTypeRowAndroid
+    // iOS: the first tap after the cleanup sometimes does not open the form; tap Assign Card again.
+    for (let attempt = 0; browser.isIOS && attempt < 2; attempt += 1) {
+      if (await cardTypeRow.waitForExist({ timeout: 6000 }).then(() => true).catch(() => false)) break
+      if (await btn.isExisting().catch(() => false)) await this.tap(btn).catch(() => {})
+    }
     await cardTypeRow.waitForExist({
       timeout: 15000,
       timeoutMsg: 'Assign Card form did not open (Card Type row not found)',
