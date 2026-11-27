@@ -493,7 +493,11 @@ class BusinessCardCardLimitsPage extends BasePage {
   public async verifyUserLimitReached() {
     const limitEl = browser.isIOS ? this.userLimitReachedIOS : this.userLimitReachedAndroid
     await limitEl.waitForExist({ timeout: 10000, timeoutMsg: `"${USER_CARD_LIMIT_REACHED}" message did not appear` })
-    const text = await limitEl.getText().catch(async () => limitEl.getAttribute('content-desc').catch(() => ''))
+    // iOS shows the message as a navigation bar + text titled "User card limit reached"; getText on the bar is
+    // empty there, so read its label.
+    const text = browser.isIOS
+      ? String((await limitEl.getAttribute('label').catch(() => '')) || (await limitEl.getAttribute('name').catch(() => '')) || '')
+      : await limitEl.getText().catch(async () => limitEl.getAttribute('content-desc').catch(() => ''))
     if (!/user.*limit.*reached/i.test(text.trim())) {
       throw new Error(`Unexpected limit message text: "${text}"`)
     }
